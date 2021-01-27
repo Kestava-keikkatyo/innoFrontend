@@ -29,7 +29,7 @@
       }
     ],
     "linebreak-style": ["error", "windows"],
-    "quotes": ["error", "single"],
+    //"quotes": ["error", "single"],
     "semi": ["error", "never"],
     "eqeqeq": "error",
     "no-trailing-spaces": "error",
