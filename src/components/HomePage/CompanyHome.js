@@ -2,21 +2,16 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import { makeStyles } from '@material-ui/core/styles'
+import { Card, Typography, Paper, List, Grid } from '@material-ui/core'
 import {
-  Card,
-  Typography,
-  Paper,
-  List,
-  Grid
-} from '@material-ui/core'
-import { Message as MessageIcon,
+  Message as MessageIcon,
   InsertDriveFile as InsertDriveFileIcon,
   Assignment as AssignmentIcon,
   Accessibility as AccessibilityIcon,
 } from '@material-ui/icons'
 
 const CompanyHome = () => {
-  const useStyles = makeStyles(({
+  const useStyles = makeStyles({
     clickableIcon: {
       color: 'black',
       '&:hover': {
@@ -28,7 +23,7 @@ const CompanyHome = () => {
     textAlignAssignment: {
       width: '5px',
       height: '15px',
-      textAlign: 'center'
+      textAlign: 'center',
     },
     alignItemsAndJustifyContent: {
       width: '100%',
@@ -38,7 +33,7 @@ const CompanyHome = () => {
       alignItems: 'center',
       justifyContent: 'center',
     },
-  }))
+  })
 
   const classes = useStyles()
 
@@ -51,21 +46,56 @@ const CompanyHome = () => {
           className="paper-container"
         >
           <Typography variant="h6">Tiedotteet</Typography>
-          <List m={0.1}> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </List>
-          <List m={0.1}> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </List>
-          <List m={0.1}> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </List>
-          <List m={0.1}> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </List>
-          <List m={0.1}> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </List>
-          <List m={0.1}> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </List>
-          <List m={0.1}> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </List>
+          <List m={0.1}>
+            {' '}
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.{' '}
+          </List>
+          <List m={0.1}>
+            {' '}
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.{' '}
+          </List>
+          <List m={0.1}>
+            {' '}
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.{' '}
+          </List>
+          <List m={0.1}>
+            {' '}
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.{' '}
+          </List>
+          <List m={0.1}>
+            {' '}
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.{' '}
+          </List>
+          <List m={0.1}>
+            {' '}
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.{' '}
+          </List>
+          <List m={0.1}>
+            {' '}
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.{' '}
+          </List>
         </Paper>
       </Card>
-      <Grid spacing={8} justify="space-around" container direction="row" mt={5} className={classes.alignItemsAndJustifyContent}>
+      <Grid
+        spacing={8}
+        justify="space-around"
+        container
+        direction="row"
+        mt={5}
+        className={classes.alignItemsAndJustifyContent}
+      >
         <Grid item xs>
           <Link to="/workers">
             <AccessibilityIcon
-              className={classes.clickableIcon}>
-            </AccessibilityIcon>
+              className={classes.clickableIcon}
+            ></AccessibilityIcon>
           </Link>
           <Grid item className={classes.textAlignAssignment}>
             <Typography variant="body1">Työntekijät</Typography>
@@ -73,9 +103,7 @@ const CompanyHome = () => {
         </Grid>
         <Grid item xs>
           <Link to="/tasks">
-            <AssignmentIcon
-              className={classes.clickableIcon}>
-            </AssignmentIcon>
+            <AssignmentIcon className={classes.clickableIcon}></AssignmentIcon>
           </Link>
           <Grid item className={classes.textAlignAssignment}>
             <Typography variant="body1">Tehtävä-lista</Typography>
@@ -84,8 +112,8 @@ const CompanyHome = () => {
         <Grid item xs>
           <Link to="/documents">
             <InsertDriveFileIcon
-              className={classes.clickableIcon}>
-            </InsertDriveFileIcon>
+              className={classes.clickableIcon}
+            ></InsertDriveFileIcon>
           </Link>
           <Grid item className={classes.textAlignAssignment}>
             <Typography variant="body1">Asiakirjat</Typography>
@@ -93,12 +121,20 @@ const CompanyHome = () => {
         </Grid>
         <Grid item xs>
           <Link to="/messages">
-            <MessageIcon
-              className={classes.clickableIcon}>
-            </MessageIcon>
+            <MessageIcon className={classes.clickableIcon}></MessageIcon>
           </Link>
           <Grid item className={classes.textAlignAssignment}>
             <Typography variant="body1">Viestit</Typography>
+          </Grid>
+        </Grid>
+        <Grid item xs>
+          <Link to="/forms">
+            <InsertDriveFileIcon
+              className={classes.clickableIcon}
+            ></InsertDriveFileIcon>
+          </Link>
+          <Grid item className={classes.textAlignAssignment}>
+            <Typography variant="body1">Lomakkeet</Typography>
           </Grid>
         </Grid>
       </Grid>
