@@ -1,25 +1,26 @@
-import React, { useEffect, useState } from "react"
-import { Switch, Route, Redirect, useLocation } from "react-router-dom"
-import { useSelector, useDispatch } from "react-redux"
+import React, { useEffect, useState } from 'react'
+import { Switch, Route, Redirect, useLocation } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 
-import LandingPage from "./components/LandingPage"
-import HomePage from "./components/HomePage"
-import ProfilePage from "./components/ProfilePage"
-import WorkersPage from "./components/WorkersPage"
-import ContractsPage from "./components/ContractsPage"
-import PrivateRoute from "./components/PrivateRoute"
-import ProcessPage from "./components/ProcessPage"
-import TasksPage from "./components/TaskPage"
-import MessagePage from "./components/MessagePage"
-import DocumentPage from "./components/DocumentPage"
-import Drawer from "./components/Drawer"
-import AppBar from "./components/AppBar"
+import LandingPage from './components/LandingPage'
+import HomePage from './components/HomePage'
+import ProfilePage from './components/ProfilePage'
+import WorkersPage from './components/WorkersPage'
+import ContractsPage from './components/ContractsPage'
+import PrivateRoute from './components/PrivateRoute'
+import ProcessPage from './components/ProcessPage'
+import TasksPage from './components/TaskPage'
+import MessagePage from './components/MessagePage'
+import DocumentPage from './components/DocumentPage'
+import FormsPage from './components/FormsPage'
+import Drawer from './components/Drawer'
+import AppBar from './components/AppBar'
 
-import { clearAlert } from "./actions/alertActions"
-import Role from "./utils/role"
+import { clearAlert } from './actions/alertActions'
+import Role from './utils/role'
 
-import { CssBaseline, Snackbar, Toolbar } from "@material-ui/core"
-import { Alert } from "@material-ui/lab"
+import { CssBaseline, Snackbar, Toolbar } from '@material-ui/core'
+import { Alert } from '@material-ui/lab'
 
 /**
  * App component, main react component which acts as a container for all the other components.
@@ -32,7 +33,7 @@ const App = () => {
   const [open, setOpen] = useState(false)
 
   const handleSnackbarClose = (_event, reason) => {
-    if (reason !== "clickaway") {
+    if (reason !== 'clickaway') {
       dispatch(clearAlert())
     }
   }
@@ -126,6 +127,14 @@ const App = () => {
           loggedIn={loggedIn}
         >
           <DocumentPage />
+        </PrivateRoute>
+        <PrivateRoute
+          path="/forms"
+          role={data.role}
+          roles={[Role.Agency]}
+          loggedIn={loggedIn}
+        >
+          <FormsPage />
         </PrivateRoute>
         <Redirect from="*" to="/home" />
       </Switch>
