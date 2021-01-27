@@ -39,7 +39,7 @@ const LandingPage = () => {
       justify="center"
       spacing={0}
       alignItems="center"
-      style={{ minHeight: '100vh' }}>
+      style={{ minHeight: 'calc(100vh - 64px)' }}>
       <Box
         display="flex"
         flexDirection="column"
