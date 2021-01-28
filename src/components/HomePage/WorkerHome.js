@@ -74,6 +74,7 @@ const CompanyHome = () => {
       height: 150,
       alignItems: 'center',
       justifyContent: 'center',
+      textAlign: 'center',
     },
   }))
 
@@ -104,9 +105,7 @@ const CompanyHome = () => {
               className={classes.clickableIcon}>
             </AssessmentIcon>
           </Link>
-          <Grid item className={classes.textAlignAssignment}>
-            <Typography variant="body1">Perehdytys</Typography>
-          </Grid>
+          <Typography variant="body1">Perehdytys</Typography>
         </Grid>
         <Grid item xs>
           <Link to="/tasks">
@@ -114,9 +113,7 @@ const CompanyHome = () => {
               className={classes.clickableIcon}>
             </AssignmentIcon>
           </Link>
-          <Grid item className={classes.textAlignAssignment}>
-            <Typography variant="body1">Tehtävä-lista</Typography>
-          </Grid>
+          <Typography variant="body1">Tehtävä-lista</Typography>
         </Grid>
         <Grid item xs>
           <Link to="/documents">
@@ -124,9 +121,7 @@ const CompanyHome = () => {
               className={classes.clickableIcon}>
             </InsertDriveFileIcon>
           </Link>
-          <Grid item className={classes.textAlignAssignment}>
-            <Typography variant="body1">Asiakirjat</Typography>
-          </Grid>
+          <Typography variant="body1">Asiakirjat</Typography>
         </Grid>
         <Grid item xs>
           <Link to="/messages">
@@ -134,17 +129,13 @@ const CompanyHome = () => {
               className={classes.clickableIcon}>
             </MessageIcon>
           </Link>
-          <Grid item className={classes.textAlignAssignment}>
-            <Typography variant="body1">Viestit</Typography>
-          </Grid>
+          <Typography variant="body1">Viestit</Typography>
         </Grid>
         <Grid item xs>
           <InsertEmoticonIcon onClick={handleClickDialog}
             className={classes.clickableIcon}>
           </InsertEmoticonIcon>
-          <Grid item className={classes.emoticonTextAlignment}>
-            <Typography variant="body1">Fiilis</Typography>
-          </Grid>
+          <Typography variant="body1">Fiilis</Typography>
         </Grid>
         <Dialog
           aria-labelledby="form-dialog-title"
