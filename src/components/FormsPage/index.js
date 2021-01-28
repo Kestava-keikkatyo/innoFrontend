@@ -1,49 +1,36 @@
 import React, { useState } from 'react'
 
-import { Container, Typography, Button } from '@material-ui/core'
+import { AgencyForms } from './AgencyForm'
 
-import { makeStyles } from '@material-ui/core/styles'
+import { Container, Typography } from '@material-ui/core'
 
+/**
+ * state.forms:
+ * type: int for the time being,
+ * @todo figure out a better way to contextualize the form type.
+ * ContractsPage is a good model.
+ */
 const FormsHome = () => {
-  const useStyles = makeStyles({
-    clickableIcon: {
-      color: 'black',
-      '&:hover': {
-        color: 'blue',
-      },
-      width: 60,
-      height: 60,
-    },
-    textAlignAssignment: {
-      width: '5px',
-      height: '15px',
-      textAlign: 'center',
-    },
-    alignItemsAndJustifyContent: {
-      width: '100%',
-      padding: '30px',
-      margin: '20px',
-      height: 150,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
+  const [state, setState] = useState({
+    forms: [
+      { id: 0, type: 0 },
+      { id: 1, type: 0 },
+    ],
   })
 
-  const classes = useStyles()
-
-  const [state, setState] = useState({ forms: [{}] })
-  const newForm = () => {
-    console.log(state.forms)
-    alert('klik')
-    setState(state.forms.push())
+  const addForm = () => {
+    const index = state.forms.length
+    const patchedForms = state.forms
+    patchedForms.push({ id: index + 1, type: 0 })
+    setState({ forms: patchedForms })
   }
   return (
     <>
       <Container maxWidth="md" disableGutters>
         <Typography>
-          <Button className={classes.clickableIcon} onClick={newForm}>
-            Uusi
-          </Button>
+          <main>
+            <AgencyForms forms={state.forms} onAdd={addForm}></AgencyForms>
+          </main>
         </Typography>
       </Container>
     </>
