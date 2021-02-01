@@ -1,27 +1,27 @@
-import React from 'react'
+import React from "react"
 
-import { Container, Typography, Button } from '@material-ui/core'
-import { FormikTextField } from '../FormField'
-import { makeStyles } from '@material-ui/core/styles'
-import { useTranslation } from 'react-i18next'
-import { Formik } from 'formik'
+import { Container, Typography, Button } from "@material-ui/core"
+//import { FormikTextField } from '../FormField'
+import { makeStyles } from "@material-ui/core/styles"
+//import { useTranslation } from 'react-i18next'
+//import { Formik } from 'formik'
+import Collapsible from "react-collapsible"
 
 /**
  * @todo Learn the FormikForms system and utilize it here.
+ * @exports components/AgencyFormExpandable
  */
-export const AgencyForm = () => {
-  const { t } = useTranslation()
+export const AgencyFormExpandable = () => {
+  //const { t } = useTranslation()
   return (
     <>
       <Container maxWidth="md" disableGutters>
         <Typography>
-          <Formik>
-            <FormikTextField
-              label={t('testytext')}
-              name="test"
-              type="text"
-            ></FormikTextField>
-          </Formik>
+          <Collapsible trigger="Lomake">
+            <div>
+              <p>Lomake 1</p>
+            </div>
+          </Collapsible>
         </Typography>
       </Container>
     </>
@@ -29,30 +29,30 @@ export const AgencyForm = () => {
 }
 
 /**
- * @exports components/Forms
+ * @exports components/AgencyForms
  */
 export const AgencyForms = (props) => {
   const useStyles = makeStyles({
     clickableIcon: {
-      color: 'black',
-      '&:hover': {
-        color: 'blue',
+      color: "black",
+      "&:hover": {
+        color: "blue",
       },
       width: 60,
       height: 60,
     },
     textAlignAssignment: {
-      width: '5px',
-      height: '15px',
-      textAlign: 'center',
+      width: "5px",
+      height: "15px",
+      textAlign: "center",
     },
     alignItemsAndJustifyContent: {
-      width: '100%',
-      padding: '30px',
-      margin: '20px',
+      width: "100%",
+      padding: "30px",
+      margin: "20px",
       height: 150,
-      alignItems: 'center',
-      justifyContent: 'center',
+      alignItems: "center",
+      justifyContent: "center",
     },
   })
   const classes = useStyles()
@@ -65,7 +65,7 @@ export const AgencyForms = (props) => {
         Uusi lomake
       </Button>
       {forms.map((form) => (
-        <AgencyForm key={form.id}></AgencyForm>
+        <AgencyFormExpandable key={form.id}></AgencyFormExpandable>
       ))}
     </div>
   )
