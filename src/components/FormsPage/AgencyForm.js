@@ -46,6 +46,9 @@ const useStyles = makeStyles((theme) => ({
  * @todo useTranslation for languagesupport
  * @todo Styles and responsiveness,
  * @todo Figure out the relationship between worker and agency => does the agency need the form as it is or just templates and the worker needs the "working version".
+ * @todo datePicker component should search currentDate for defaultvalue if possible
+ * @todo print to pdf?
+ * @todo inflation? Figure out a more compact and readable way to produce the forms
  * @exports components/FormContainerExpandable
  */
 export const FormContainerExpandable = () => {
@@ -76,10 +79,17 @@ export const AgencyForm = () => {
     setState({ ...state, [event.target.name]: event.target.checked })
   }
 
-  const { first, second } = state
+  const {
+    first: lawHonored,
+    second: representative,
+    third: employmentStatement,
+    fourth: riskAssessment,
+    fifth: activities,
+    sixth: rescuePlan,
+  } = state
 
   return (
-    <div>
+    <form>
       <FormControl
         component="fieldset"
         className={classes.formControl}
@@ -112,7 +122,11 @@ export const AgencyForm = () => {
         <FormGroup>
           <FormControlLabel
             control={
-              <Checkbox checked={first} onChange={handleChange} name="first" />
+              <Checkbox
+                checked={lawHonored}
+                onChange={handleChange}
+                name="lawHonored"
+              />
             }
           />
         </FormGroup>
@@ -132,16 +146,16 @@ export const AgencyForm = () => {
           <FormControlLabel
             control={
               <Checkbox
-                checked={second}
+                checked={representative}
                 onChange={handleChange}
-                name="second"
+                name="representative"
               />
             }
             label="Vuokrayrityksen edustaja käy paikan päällä tutustumassa työolosuhteisiin ennen työntekijöiden valintaa"
           />
         </FormGroup>
       </FormControl>
-      <div className={classes.Container}>
+      <div className={classes.Container} noValidate>
         <TextField
           id="date"
           label="Pvm."
@@ -160,7 +174,183 @@ export const AgencyForm = () => {
           inputProps={{ step: 300 }}
         />
       </div>
-    </div>
+      <FormControl
+        component="fieldset"
+        className={classes.formControl}
+        name="header"
+      >
+        <FormLabel>
+          Työtehtävissä tarvittavat henkilönsuojaimet (+työvaatetus) ja kuvaus
+          siitä kumpi osapuoli vastaa tarvittavien suojainten toimittamisesta
+          työntekijöille ja suojainten huollosta
+        </FormLabel>
+        <InputLabel htmlFor="henkilonsuojaimet"></InputLabel>
+        <Input id="henkilonsuojaimet" />
+      </FormControl>
+      <FormControl
+        component="fieldset"
+        className={classes.formControl}
+        name="header"
+      >
+        <FormLabel>
+          Kuvaus vuokratyöntekijöiden perehdytyksestä ja työnopastuksesta (ketkä
+          perehdyttävät, kuinka kauan kestää, mitä asioita käydään läpi, mitä
+          perehdytysmateriaalia vuokratyöntekijöille annetaan jne.)
+        </FormLabel>
+        <InputLabel htmlFor="perehdytys-opastus"></InputLabel>
+        <Input id="perehdytys-opastus" />
+      </FormControl>
+      <FormControl
+        component="fieldset"
+        className={classes.formControl}
+        name="header"
+      >
+        <FormLabel>
+          Miten toimitaan työtapaturman sattuessa vuokratyöntekijälle,
+          sairauspoissaolotilanteissa ja muissa vaaratilanteissa (onnettomuus ja
+          poikkeustilanteet, läheltä piti -tilanteet, väkivalta- ja
+          uhkatilanteet)
+        </FormLabel>
+        <InputLabel htmlFor="tapaturma-vaara"></InputLabel>
+        <Input id="tapaturma-vaara" />
+      </FormControl>
+      <FormControl
+        component="fieldset"
+        className={classes.formControl}
+        name="header"
+      >
+        <FormLabel>
+          Miten vuokratyöntekijä ilmoittaa työtapaturmista,
+          sairauspoissaoloista, muista vaaratilanteista tai muista
+          turvallisuushavainnoista (ongelmat, puutteet, turvallisuusaloitteet)
+        </FormLabel>
+        <InputLabel htmlFor="tekija-ilmoittaa"></InputLabel>
+        <Input id="tekija-ilmoittaa" />
+      </FormControl>
+      <FormControl
+        component="fieldset"
+        className={classes.formControl}
+        name="header"
+      >
+        Työntekijä ottaa työturvallisuusasioissa yhteyttä henkilöön/henkilöihin:
+        <InputLabel htmlFor="yhteyshenkilonimi">Nimi</InputLabel>
+        <Input id="yhteyshenkilonimi" />
+      </FormControl>
+      <FormControl
+        component="fieldset"
+        className={classes.formControl}
+        name="header"
+      >
+        <InputLabel htmlFor="yhteyshenkilopuh">Puh.</InputLabel>
+        <Input id="yhteyshenkilopuh" />
+      </FormControl>
+      <FormControl
+        component="fieldset"
+        className={classes.formControl}
+        name="header"
+      >
+        <InputLabel htmlFor="yhteyshenkilomail">E-mail</InputLabel>
+        <Input id="yhteyshenkilomail" />
+      </FormControl>
+      <FormControl
+        component="fieldset"
+        className={classes.formControl}
+        name="header"
+      >
+        <InputLabel htmlFor="yhteyshenkilohuone">
+          Työhuoneen sijainti
+        </InputLabel>
+        <Input id="yhteyshenkilohuone" />
+      </FormControl>
+      <br></br>
+      <FormControl
+        component="fieldset"
+        className={classes.formControl}
+        name="header"
+      >
+        <InputLabel htmlFor="yhteyshenkilonimi">Nimi</InputLabel>
+        <Input id="yhteyshenkilonimi" />
+      </FormControl>
+      <FormControl
+        component="fieldset"
+        className={classes.formControl}
+        name="header"
+      >
+        <InputLabel htmlFor="yhteyshenkilopuh">Puh.</InputLabel>
+        <Input id="yhteyshenkilopuh" />
+      </FormControl>
+      <FormControl
+        component="fieldset"
+        className={classes.formControl}
+        name="header"
+      >
+        <InputLabel htmlFor="yhteyshenkilomail">E-mail</InputLabel>
+        <Input id="yhteyshenkilomail" />
+      </FormControl>
+      <FormControl
+        component="fieldset"
+        className={classes.formControl}
+        name="header"
+      >
+        <InputLabel htmlFor="yhteyshenkilohuone">
+          Työhuoneen sijainti
+        </InputLabel>
+        <Input id="yhteyshenkilohuone" />
+      </FormControl>
+      <FormGroup>
+        Käyttäjäyritys toimittaa vuokrayritykselle kopion (tarvittaessa):
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={employmentStatement}
+              onChange={handleChange}
+              name="employmentStatement"
+            />
+          }
+          label="Työterveyshuollon työpaikkaselvityksestä"
+        />
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={riskAssessment}
+              onChange={handleChange}
+              name="riskAssessment"
+            />
+          }
+          label="Viimeisimmän riskin arvioinnin tuloksista"
+        />
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={activities}
+              onChange={handleChange}
+              name="activities"
+            />
+          }
+          label="Työsuojelun toimintaohjelmasta"
+        />
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={rescuePlan}
+              onChange={handleChange}
+              name="rescuePlan"
+            />
+          }
+          label="Pelastussuunnitelmasta"
+        />
+      </FormGroup>
+      <div className={classes.Container} noValidate>
+        <TextField
+          id="date"
+          label="Pvm. mennessä"
+          type="date"
+          defaultValue="2021-02-04"
+          className={classes.TextField}
+          InputLabelProps={{ shrink: true }}
+        />
+      </div>
+    </form>
   )
 }
 
