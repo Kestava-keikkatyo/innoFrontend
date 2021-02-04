@@ -90,27 +90,25 @@ export const AgencyForm = () => {
 
   return (
     <form>
-      <FormControl
+      <FormInputField
+        styles={classes.formControl}
         component="fieldset"
-        className={classes.formControl}
-        name="header"
-      >
-        <FormLabel>
-          Lomake 1 - ASIAKASSOPIMUKSEEN LIITTYVÄT TYÖTURVALLISUUS- JA
+        formname="header"
+        labelValue="Lomake 1 - ASIAKASSOPIMUKSEEN LIITTYVÄT TYÖTURVALLISUUS- JA
           TYÖHYVINVOINTIASIAT (vuokrausyrityksen ja käyttäjäyrityksen edustajat
-          täyttävät yhdessä)
-        </FormLabel>
-        <InputLabel htmlFor="vuokrausyritys-input">Vuokrausyritys</InputLabel>
-        <Input id="vuokra-input" />
-      </FormControl>
-      <FormControl
+          täyttävät yhdessä)"
+        html="vuokrausyritys-input"
+        htmlValue="Vuokrausyritys"
+        inputId="vuokra-input"
+      />
+      <FormInputField
+        styles={classes.formControl}
         component="fieldset"
-        className={classes.formControl}
-        name="header2"
-      >
-        <InputLabel htmlFor="kayttajayritys-input">Käyttäjäyritys</InputLabel>
-        <Input id="kayttaja-input" />
-      </FormControl>
+        formname="header2"
+        html="kayttajayritys-input"
+        htmlValue="Käyttäjäyritys"
+        inputId="kayttaja-input"
+      />
       <FormControl
         component="fieldset"
         className={classes.formControl}
@@ -155,25 +153,25 @@ export const AgencyForm = () => {
           />
         </FormGroup>
       </FormControl>
-      <div className={classes.Container} noValidate>
-        <TextField
-          id="date"
-          label="Pvm."
-          type="date"
-          defaultValue="2021-02-04"
-          className={classes.TextField}
-          InputLabelProps={{ shrink: true }}
-        />
-        <TextField
-          id="time"
-          label="klo"
-          type="time"
-          defaultValue="07:30"
-          className={classes.TextField}
-          InputLabelProps={{ shrink: true }}
-          inputProps={{ step: 300 }}
-        />
-      </div>
+      <DatePicker
+        styles={classes.Container}
+        text={classes.TextField}
+        id="date"
+        label="Pvm."
+        type="date"
+        defaultvalue="2021-02-04"
+        inputlabelprops={true}
+      />{" "}
+      <DatePicker
+        styles={classes.Container}
+        text={classes.TextField}
+        id="time"
+        label="klo"
+        type="time"
+        defaultvalue="07:30"
+        inputlabelprops={true}
+        inputprops={300}
+      />
       <FormControl
         component="fieldset"
         className={classes.formControl}
@@ -340,17 +338,59 @@ export const AgencyForm = () => {
           label="Pelastussuunnitelmasta"
         />
       </FormGroup>
-      <div className={classes.Container} noValidate>
-        <TextField
-          id="date"
-          label="Pvm. mennessä"
-          type="date"
-          defaultValue="2021-02-04"
-          className={classes.TextField}
-          InputLabelProps={{ shrink: true }}
-        />
-      </div>
+      <DatePicker
+        styles={classes.Container}
+        text={classes.TextField}
+        id="date"
+        label="Pvm. mennessä"
+        type="date"
+        defaultValue="2021-02-04"
+        inputlabelprops={true}
+      />
     </form>
+  )
+}
+
+export const FormInputField = (
+  styles,
+  component,
+  formName,
+  labelValue, //labelValue misuse? maybe should be its own heading
+  html,
+  htmlValue,
+  inputId
+) => {
+  return (
+    <FormControl component={component} className={styles} name={formName}>
+      <FormLabel>{labelValue}</FormLabel>
+      <InputLabel htmlFor={html}>{htmlValue}</InputLabel>
+      <Input id={inputId} />
+    </FormControl>
+  )
+}
+
+export const DatePicker = (
+  styles,
+  text,
+  id,
+  label,
+  type,
+  defaultValue,
+  inputLabel,
+  inputLabelProps
+) => {
+  return (
+    <div className={styles} noValidate>
+      <TextField
+        id={id}
+        label={label}
+        type={type}
+        defaultValue={defaultValue}
+        className={text}
+        InputLabelProps={{ shrink: inputLabelProps }}
+        InputLabel={{ step: inputLabel }}
+      />
+    </div>
   )
 }
 
