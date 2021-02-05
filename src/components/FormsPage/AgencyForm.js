@@ -86,7 +86,7 @@ export const AgencyForm = () => {
     riskAssessment,
     activities,
     rescuePlan,
-    trainingGivenF2F,
+    /**trainingGivenF2F,
     trainingGivenPhone,
     assessment,
     assignment,
@@ -96,7 +96,7 @@ export const AgencyForm = () => {
     obligation,
     instructions,
     illness,
-    accredited,
+    accredited,*/
   } = state
 
   return (
@@ -244,90 +244,6 @@ export const AgencyForm = () => {
         styles={classes.formControl}
         labelValue="Vuokrayrityksen yhteyshenkilön yhteystiedot"
       />
-      <FormInputField
-        styles={classes.formControl}
-        labelValue="Vuokrausyritys ja perehdytyksen antaja: "
-        html="vuokra-perehdytys"
-        inputId="vuokra-perehdytys"
-      />
-      <DatePicker
-        styles={classes.Container}
-        text={classes.TextField}
-        id="date"
-        label="Pvm."
-        type="date"
-        defaultValue="2021-02-04"
-        inputLabelProps={true}
-      />
-      <FormInputField
-        styles={classes.formControl}
-        labelValue="Työntekijä:  "
-        html="tyontekija"
-        inputId="tyontekija"
-      />
-      <FormInputField
-        styles={classes.formControl}
-        labelValue="Yleisperehdytys annettu "
-      />
-      <FormGroup>
-        <FormControlLabel
-          control={
-            <Checkbox checked={trainingGivenF2F} onChange={handleChange} />
-          }
-          label="Kasvotusten"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox checked={trainingGivenPhone} onChange={handleChange} />
-          }
-          label="Puhelimitse"
-        />
-      </FormGroup>
-      <FormGroup>
-        Seuraavat asiat on käyty läpi ylesiperehdytyksen yhteydessä kaikille
-        vuokratyöntekijöille
-        <FormControlLabel
-          control={<Checkbox checked={assignment} onChange={handleChange} />}
-          label="Työtehtävä ja siinä vaadittu osaaminen"
-        />
-        <FormControlLabel
-          control={<Checkbox checked={overtime} onChange={handleChange} />}
-          label="Ylityökäytäntö"
-        />
-        <FormControlLabel
-          control={<Checkbox checked={equipment} onChange={handleChange} />}
-          label="Työssä tarvittavat henkilösuojaimet(+työvaatetus) ja niiden saaminen käyttöön"
-        />
-        <FormControlLabel
-          control={<Checkbox checked={contact} onChange={handleChange} />}
-          label="Kenelle työntekijä ilmoittaa havaitsemistaan vioista ja puutteista"
-        />
-        <FormControlLabel
-          control={<Checkbox checked={assessment} onChange={handleChange} />}
-          label="Olennaisimmat asiat käyttäjäyrityksen työpaikkaselvityksestä/riskien arvioinnista"
-        />
-      </FormGroup>
-      <FormGroup>
-        Seuraavat asiat on käyty läpi yleisperehdytyksen yhteydessä uusille
-        vuokratyöntekijöille (jotka saavat ensimmäistä kertaa
-        yleisperehdytyksen)
-        <FormControlLabel
-          control={<Checkbox checked={obligation} onChange={handleChange} />}
-          label="Työturvallisuuslain mukaiset työntekijän velvoitteet ja oikeus pidättäytyä työstä"
-        />
-        <FormControlLabel
-          control={<Checkbox checked={instructions} onChange={handleChange} />}
-          label="Toimintaohjeet työtapaturman tai muun vaaratilanteen sattuessa vuokratyöntekijälle"
-        />
-        <FormControlLabel
-          control={<Checkbox checked={illness} onChange={handleChange} />}
-          label="Toimintaohjeet vuokratyöntekijän sairastuessa"
-        />
-        <FormControlLabel
-          control={<Checkbox checked={accredited} onChange={handleChange} />}
-          label="Vuokrayrityksen työsuojeluvaltuutettu"
-        />
-      </FormGroup>
     </form>
   )
 }
