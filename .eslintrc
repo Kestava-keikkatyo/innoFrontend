@@ -28,7 +28,7 @@
         "SwitchCase": 1
       }
     ],
-    "linebreak-style": ["error", "windows"],
+    "linebreak-style": ["error", "windows", "linux"],
     //"quotes": ["error", "single"],
     "semi": ["error", "never"],
     "eqeqeq": "error",

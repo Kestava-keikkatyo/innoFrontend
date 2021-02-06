@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from "react"
 
 import {
   Box,
@@ -7,13 +7,13 @@ import {
   FormControl,
   RadioGroup,
   FormControlLabel,
-  Radio
-} from '@material-ui/core'
-import { Search as SearchIcon } from '@material-ui/icons'
+  Radio,
+} from "@material-ui/core"
+import { Search as SearchIcon } from "@material-ui/icons"
 
 const UserSearch = ({ fetchWorkers }) => {
-  const [input, setInput] = useState('')
-  const [searchType, setSearchType] = useState('worker')
+  const [input, setInput] = useState("")
+  const [searchType, setSearchType] = useState("worker")
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -31,16 +31,22 @@ const UserSearch = ({ fetchWorkers }) => {
       display="flex"
       justifyContent="flex-end"
       alignItems="center"
-      flexWrap="wrap">
+      flexWrap="wrap"
+    >
       <FormControl component="fieldset">
         <RadioGroup
           aria-label="search type"
           row
           name="searchType"
           value={searchType}
-          onChange={handleChange}>
+          onChange={handleChange}
+        >
           <FormControlLabel value="worker" control={<Radio />} label="Worker" />
-          <FormControlLabel value="business" control={<Radio />} label="Business" />
+          <FormControlLabel
+            value="business"
+            control={<Radio />}
+            label="Business"
+          />
         </RadioGroup>
       </FormControl>
       <form onSubmit={handleSubmit}>
