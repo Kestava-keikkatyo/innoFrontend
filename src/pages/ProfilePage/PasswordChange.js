@@ -2,7 +2,7 @@ import React from 'react'
 import { Formik, Form } from 'formik'
 import PropTypes from 'prop-types'
 
-import { FormikTextField } from '../FormField'
+import { FormikTextField } from '../../components/FormField'
 
 import { Card, CardContent, Typography, Button, Box } from '@material-ui/core'
 

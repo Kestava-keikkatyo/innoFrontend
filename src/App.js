@@ -2,25 +2,26 @@ import React, { useEffect, useState } from 'react'
 import { Switch, Route, Redirect, useLocation } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
-import LandingPage from './components/LandingPage'
-import HomePage from './components/HomePage'
-import ProfilePage from './components/ProfilePage'
-import WorkersPage from './components/WorkersPage'
-import ContractsPage from './components/ContractsPage'
+import LandingPage from './pages/LandingPage'
+import HomePage from './pages/HomePage'
+import ProfilePage from './pages/ProfilePage'
+import WorkersPage from './pages/WorkersPage'
+import ContractsPage from './pages/ContractsPage'
 import PrivateRoute from './components/PrivateRoute'
-import ProcessPage from './components/ProcessPage'
-import TasksPage from './components/TaskPage'
-import MessagePage from './components/MessagePage'
-import DocumentPage from './components/DocumentPage'
-import FormsPage from './components/FormsPage'
-import Drawer from './components/Drawer'
-import AppBar from './components/AppBar'
+import ProcessPage from './pages/ProcessPage'
+import TasksPage from './pages/TaskPage'
+import MessagePage from './pages/MessagePage'
+import DocumentPage from './pages/DocumentPage'
+import FormsPage from './pages/FormsPage'
+import WorkerStatistics from './pages/WorkerStatistics'
+import ResponsiveDrawer from './components/NewAppBar'
 
 import { clearAlert } from './actions/alertActions'
 import Role from './utils/role'
 
 import { CssBaseline, Snackbar, Toolbar } from '@material-ui/core'
 import { Alert } from '@material-ui/lab'
+
 
 /**
  * App component, main react component which acts as a container for all the other components.
@@ -53,14 +54,17 @@ const App = () => {
     <>
       <ScrollToTop />
       <CssBaseline />
-      <AppBar handleDrawer={handleDrawer} />
+      {/* <AppBar handleDrawer={handleDrawer} />
       <Toolbar />
       <Drawer
         open={open}
         handleDrawer={handleDrawer}
         loggedIn={loggedIn}
         role={data.role}
-      />
+      /> */}
+      { loggedIn &&
+        <ResponsiveDrawer />
+      }
       <Snackbar open={alert.open} onClose={handleSnackbarClose}>
         <Alert
           onClose={handleSnackbarClose}
@@ -79,6 +83,9 @@ const App = () => {
         </Route>
         <PrivateRoute path="/profile" loggedIn={loggedIn}>
           <ProfilePage />
+        </PrivateRoute>
+        <PrivateRoute path="/fiilismittari" loggedIn={loggedIn}>
+          <WorkerStatistics />
         </PrivateRoute>
         <PrivateRoute
           path="/contracts"

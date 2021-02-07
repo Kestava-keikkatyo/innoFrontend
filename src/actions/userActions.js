@@ -91,6 +91,10 @@ export const me = (role) => {
       type: userConstants.REQUEST
     })
     try {
+      //TODO: PURKKAMALLIRATKAISU
+      // Kirjautuessa sisään setItem ei ehdi päivittää loggedInnoAppUseria
+      if(!localStorage.getItem('loggedInnoAppUser'))
+        return
       const { data: profile } = await userService.me(role)
       dispatch({
         type: userConstants.PROFILE_SUCCESS,
@@ -121,6 +125,7 @@ export const update = (updateData, role) => {
       })
       dispatch(setAlert('User information updated'))
     } catch (error) {
+      console.log('update error');
       statusHandler(dispatch, error)
     }
   }
@@ -134,7 +139,8 @@ export const update = (updateData, role) => {
  */
 const statusHandler = (dispatch, response) => {
   if (!response || response.status === 401 || response.status === 500) {
-    logoutUser()
+    // console.log(response.status);
+    // logoutUser()
     dispatch({ type: userConstants.FAILURE })
     dispatch(setAlert('invalid token', 'error'))
   } else {

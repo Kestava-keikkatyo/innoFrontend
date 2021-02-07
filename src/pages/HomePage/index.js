@@ -6,7 +6,7 @@ import Role from '../../utils/role'
 import WorkerHome from './WorkerHome'
 import CompanyHome from './CompanyHome'
 import VisitorHome from './VisitorHome'
-import PageLoading from '../PageLoading'
+import PageLoading from '../../components/PageLoading'
 
 
 import {

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { me } from '../../actions/userActions'
 import contractsService from '../../services/contractsService'
 
-import PageLoading from '../PageLoading'
+import PageLoading from '../../components/PageLoading'
 import UserSearch from './UserSearch'
 import SearchTable from './SearchTable'
 import CurrentTable from './CurrentTable'
