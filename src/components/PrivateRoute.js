@@ -2,6 +2,9 @@ import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
+import { useSelector } from 'react-redux'
+import AppNavigation from './NavigationComponents'
+
 /**
  * Private route component. Renders the child components if the user is logged in
  * (and in an authorized role for the route). If the user isn't logged in they are
@@ -29,12 +32,14 @@ import PropTypes from 'prop-types'
  *  </PrivateRoute>
  * </Switch>
  */
-const PrivateRoute = ({ loggedIn, role, roles, children, ...rest }) => {
+const PrivateRoute = ({ roles, children, ...rest }) => {
+  const { loggedIn, data } = useSelector((state) => state.user)
+
   return (
     <Route
       {...rest}
       render={({ location }) => {
-        if (!loggedIn) {
+        if (!loggedIn || !data) {
           return <Redirect
             to={{
               pathname: '/',
@@ -43,7 +48,7 @@ const PrivateRoute = ({ loggedIn, role, roles, children, ...rest }) => {
           />
         }
 
-        if (role && roles.indexOf(role) === -1) {
+        if (data.role && roles.indexOf(data.role) === -1) {
           return <Redirect
             to={{
               pathname: '/home',
@@ -52,7 +57,11 @@ const PrivateRoute = ({ loggedIn, role, roles, children, ...rest }) => {
           />
         }
 
-        return children
+        return (
+          <AppNavigation>
+            {children}
+          </AppNavigation>
+        )
       }}
     />
   )
@@ -64,6 +73,10 @@ PrivateRoute.propTypes = {
   children: PropTypes.node.isRequired,
   role: PropTypes.string,
   roles: PropTypes.arrayOf(PropTypes.oneOf(['worker', 'business', 'agency']))
+}
+
+PrivateRoute.defaultProps = {
+  roles: ['worker', 'business', 'agency']
 }
 
 export default PrivateRoute

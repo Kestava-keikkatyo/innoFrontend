@@ -25,10 +25,12 @@ import MoodIcon from '@material-ui/icons/Mood';
 import TimelineIcon from '@material-ui/icons/Timeline';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import { ExpandLess, ExpandMore, Home, StarBorder } from '@material-ui/icons';
+import { AccountCircle, Contacts, ExpandLess, ExpandMore, Home, PeopleAlt, StarBorder } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
-import { logout } from '../actions/userActions';
-import { useDispatch } from 'react-redux';
+import { logout } from '../../actions/userActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import Role from '../../utils/role'
 
 const drawerWidth = 300;
 
@@ -39,11 +41,21 @@ function ResponsiveDrawer(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [open, setOpen] = React.useState(true);
   const dispatch = useDispatch()
+  const { t } = useTranslation()
+  const { loggedIn, data } = useSelector((state) => state.user)
+  const role = data.role
 
+
+  /**
+   * Function for opening and closing drawer component.
+   * Passed as prop to [AppBar]{@link module:components/AppBar} and
+   * [Drawer]{@link module:components/Drawer}.
+   * @function
+   */
   const handleClick = () => {
     setOpen(!open);
   };
-
+  
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -53,7 +65,10 @@ function ResponsiveDrawer(props) {
 
       <div className="">
         <div className={`color-primary ${classes.toolbar}`}/>
-        {/* <img className={classes.logo} src={logo} alt="logo" /> */}
+        {/*
+        *TODO: tähän tulee logo
+        *
+        *  <img className={classes.logo} src={logo} alt="logo" /> */}
         <Typography variant="h6" align="center">FI / EN / SV</Typography>
         <Divider />
       </div>
@@ -120,6 +135,25 @@ function ResponsiveDrawer(props) {
               <ListItemText primary="My Feedback" />
             </ListItem>
           </List>
+
+          <ListItem button component={Link} to="/profile">
+            <ListItemIcon><AccountCircle /></ListItemIcon>
+            <ListItemText primary="Profile" />
+          </ListItem>
+          
+            {role === Role.Agency &&
+              <ListItem button component={Link} to="/contracts">
+                <ListItemIcon><Contacts /></ListItemIcon>
+                <ListItemText primary="Contracts" />
+              </ListItem>
+            }
+            {(role === Role.Agency || role === Role.Business) &&
+              <ListItem button component={Link} to="/workers">
+                <ListItemIcon><PeopleAlt /></ListItemIcon>
+                <ListItemText primary="Workers" />
+              </ListItem>
+            }
+
         </Collapse>
       </List>
       </div>

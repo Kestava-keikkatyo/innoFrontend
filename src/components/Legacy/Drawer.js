@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
-import { logout } from '../actions/userActions'
-import Role from '../utils/role'
+import { logout } from '../../actions/userActions'
+import Role from '../../utils/role'
 
 import {
   Divider,
