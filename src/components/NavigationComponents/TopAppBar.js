@@ -1,4 +1,4 @@
-import { AppBar, Divider, IconButton, makeStyles, Toolbar, Typography } from '@material-ui/core'
+import { AppBar, IconButton, makeStyles, Toolbar, Typography } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu';
 import React from 'react'
 import { useSelector } from 'react-redux';
