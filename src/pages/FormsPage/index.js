@@ -1,39 +1,31 @@
 import React, { useState } from "react"
-
-import { AgencyForms } from "./AgencyForm"
-
-import { Container, Typography } from "@material-ui/core"
+import { FormQuestionnaire } from "../../components/formquestionnaire"
 
 /**
- * state.forms:
- * type: int for the time being,
- * @todo figure out a better way to contextualize the form type.
- * ContractsPage is a good model.
+ * @note The "forms" referenced throughout this systems component names are not input forms or the like as in webdev jargon,
+ * but rather legislative/agreement forms between participants - see model from TTK in Google Drive. Naming is hard.
  */
 const FormsHome = () => {
   const [state, setState] = useState({
-    forms: [
-      { id: 0, type: 0 },
-      { id: 1, type: 0 },
-    ],
+    modules: [{ type: "checkbox" }, { type: "text" }],
   })
 
-  const addForm = () => {
-    const index = state.forms.length
-    const patchedForms = state.forms
-    patchedForms.push({ id: index + 1, type: 0 })
-    setState({ forms: patchedForms })
+  const handleChange = (event) => {
+    setState({ type: event.target.value })
   }
+
+  const addModule = () => {}
+
   return (
-    <>
-      <Container maxWidth="md" disableGutters>
-        <Typography>
-          <main>
-            <AgencyForms forms={state.forms} onAdd={addForm}></AgencyForms>
-          </main>
-        </Typography>
-      </Container>
-    </>
+    <div>
+      <main>
+        <FormQuestionnaire
+          modules={state.modules}
+          onAdd={addModule}
+          onChange={handleChange}
+        ></FormQuestionnaire>
+      </main>
+    </div>
   )
 }
 
