@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
-import { logout } from '../actions/userActions'
-import Role from '../utils/role'
+import { logout } from '../../actions/userActions'
+import Role from '../../utils/role'
 
 import {
   Divider,
@@ -80,6 +80,10 @@ const Drawer = ({ open, handleDrawer, loggedIn, role }) => {
             <Divider />
             <List disablePadding>
               <ListItem button component={Link} to="/home">
+                <ListItemIcon><Home /></ListItemIcon>
+                <ListItemText primary={t('home')} />
+              </ListItem>
+              <ListItem button component={Link} to="/fiilismittari">
                 <ListItemIcon><Home /></ListItemIcon>
                 <ListItemText primary={t('home')} />
               </ListItem>

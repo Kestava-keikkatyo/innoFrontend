@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import i18n, { getCurrentLocale } from '../i18nextInit'
+import i18n, { getCurrentLocale } from '../../i18nextInit'
 
 import {
   AppBar as MUIAppBar,

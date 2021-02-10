@@ -12,3 +12,144 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.worker-line-chart {
+  margin-top: 3rem;
+}
+
+.worker-statistics-summary {
+  text-align: center;
+  background-color: white;
+  margin: 1rem 0 !important;
+  padding: 2rem 1rem;
+  border-radius: .5rem;
+  border: 1px solid rgba(200, 200, 200, 150);
+  -webkit-box-shadow: 5px 5px 10px -2px rgba(0,0,0,0.4); 
+  box-shadow: 5px 5px 10px -2px rgba(0,0,0,0.4);
+}
+
+.worker-statistics-button-row {
+  margin: 1rem;
+}
+
+.worker-statistics-add-entry {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 1rem;
+}
+
+.worker-statistics-summary .current-mood {
+  transform: scale(3.3);
+}
+
+.worker-statistics-summary .MuiTypography-h3 {
+  padding-top: 50px;
+  font-weight: bold;
+}
+
+.worker-statistics-summary .MuiGrid-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.drawer ul {
+  margin-left: 1rem;
+}
+
+.drawer .color-primary {
+  background-color: #3f51b5;
+}
+
+.text-secondary {
+  color: gray;
+}
+
+.drawer .MuiListItemText-primary,
+.drawer .MuiSvgIcon-root,
+.worker-statistics-summary .MuiTypography-body1 {
+  font-weight: 600 !important;
+  color: grey;
+}
+
+.drawer-logout .MuiListItemIcon-root{
+  margin: 1rem 0 1rem 1rem;
+}
+
+.drawer .MuiDrawer-paper {
+  overflow-y: unset !important;
+}
+
+.drawer {
+  position: relative;
+}
+
+.drawer .MuiListItemIcon-root {
+  transform: scale(1.33);
+}
+
+/*
+ *  SCROLLBAR STYLE
+ */
+
+.drawer *::-webkit-scrollbar-track
+ {
+   box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+   border-radius: 10px;
+   background-color: #F5F5F5;
+ }
+ 
+.drawer *::-webkit-scrollbar
+ {
+   width: 8px;
+   background-color: #F5F5F5;
+ }
+ 
+.drawer *::-webkit-scrollbar-thumb
+ {
+   border-radius: 10px;
+   box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+   background-color: #999;
+ }
+
+ .drawer *::-webkit-scrollbar-thumb:hover
+ {
+   border-radius: 10px;
+   background-color: #555;
+;
+ }
+
+/**
+*   Drawer overflow
+*/
+.drawer {
+  height: 100vh; /* or position:absolute; height:100%; */
+  display: flex;
+  flex-direction: column;
+}
+
+/* an arbitrary container of fixed height */
+.drawer-header {
+  height: 267;
+}
+
+/* this is the flex container that will take the rest of the height */
+.content-wrapper {
+  display: flex;
+  flex: 1;
+  min-height: 0px; /* IMPORTANT: you need this for non-chrome browsers */
+}
+
+/* the container for our overflowed content */
+.overflow-container {
+  flex: 1;
+  overflow: auto;
+}
+
+.app-bar-container {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}

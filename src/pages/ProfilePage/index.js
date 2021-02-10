@@ -6,7 +6,7 @@ import Role from '../../utils/role'
 import WorkerProfile from './WorkerProfile'
 import CompanyProfile from './CompanyProfile'
 import PasswordChange from './PasswordChange'
-import PageLoading from '../PageLoading'
+import PageLoading from '../../components/PageLoading'
 
 import {
   Typography,

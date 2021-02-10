@@ -6,7 +6,10 @@ import { loadUser } from '../utils/storage'
 import userConstants from '../constants/userConstants'
 
 const userData = loadUser()
-const initialState = userData ? { loggedIn: true, data: userData } : { loggedIn: false, data: {} }
+const initialState = { 
+  loggedIn: !!userData,
+  data: userData || {} 
+}
 
 /**
  * user reducer that controls user state
