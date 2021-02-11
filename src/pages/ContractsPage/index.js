@@ -40,15 +40,23 @@ const ContractsPage = () => {
   const [searchData, setSearchData] = useState(null)
   const [currentList, setCurrentList] = useState([])
   const [displayModal, setDisplayModal] = useState(false)
+  const [currentType, setCurrentType] = useState('worker');
 
   //to be switched to retrieve contracts
   useEffect(() => {
+    async function fetchContracts() {
+      const res = await contractsService.showBusinessContracts()
+      setCurrentList(res.data)
+    }
+
     dispatch(me(data.role))
+    fetchContracts()
   }, [dispatch, data.role])
 
   const fetchWorkers = async (input, searchType) => {
     // siirto reduxiin
     const result = await contractsService.searchUsers(input, searchType)
+    setCurrentType(searchType)
     setSearchList(result.data)
   }
 
@@ -61,10 +69,17 @@ const ContractsPage = () => {
     if (!currentList.some((value) => value.id === searchData.id)) {
       setCurrentList(prevList => [searchData, ...prevList])
     }
+    contractsService.addBusinessContract(searchData.id, currentType)
     setDisplayModal(false)
   }
 
-  const removeContract = (id) => {
+  /**
+   * TODO: Check when route is working in backend
+   * @param {*} id 
+   */
+  const removeContract = async (id) => {
+    const res = await contractsService.deleteBusinessContractById(id)
+    console.log(res);
     setCurrentList(prevList => prevList.filter((value) => value.id !== id))
   }
 

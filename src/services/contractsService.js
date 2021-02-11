@@ -38,6 +38,41 @@ const searchUsers = async (input, searchType) => {
   }
 }
 
+const addBusinessContract = async (id, type) => {
+  try {
+    switch (type) {
+      case 'worker':
+        return await axios.post(`${baseUrl}/businesscontracts`, {workerId: id}, authHeader())
+      case 'business':
+        return await axios.post(`${baseUrl}/businesscontracts`, {businessId: id}, authHeader())
+      default:
+        return console.log('Unknown type');
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+/**
+ * TODO: Tee service jolla voi listata käyttäjän kaikki tehdyt contractit
+ * @param {*} id 
+ * @param {*} role 
+ */
+const showBusinessContracts = async () => {
+  return await axios.get(`${baseUrl}/agencies/businesscontracts`, authHeader())
+}
+
+/**
+ * TODO: Tarkista, kun route on valmis.
+ * @param {*} contractId 
+ */
+const deleteBusinessContractById = async (contractId) => {
+  return await axios.delete(`${baseUrl}/businesscontracts/${contractId}`, authHeader())
+}
+
 export default {
-  searchUsers
+  searchUsers,
+  addBusinessContract,
+  showBusinessContracts,
+  deleteBusinessContractById
 }
