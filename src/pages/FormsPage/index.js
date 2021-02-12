@@ -1,30 +1,33 @@
+import { UsbOutlined } from "@material-ui/icons"
 import React, { useState } from "react"
-import { FormQuestionnaire } from "../../components/formquestionnaire"
+import uuid from "react-uuid"
+import {
+  QuestionModule,
+  QuestionForm,
+} from "../../components/formquestionnaire"
 
-/**
- * @note The "forms" referenced throughout this systems component names are not input forms or the like as in webdev jargon,
- * but rather legislative/agreement forms between participants - see model from TTK in Google Drive. Naming is hard.
- */
 const FormsHome = () => {
-  const [state, setState] = useState({
-    modules: [{ type: "checkbox" }, { type: "text" }],
-  })
+  const [modules, setModules] = useState([
+    { id: 1, type: "text" },
+    { id: 2, type: "checkbox" },
+  ])
 
-  const handleChange = (event) => {
-    setState({ type: event.target.value })
+  const addModule = (type) => {
+    setModules([...modules, { id: uuid(), type }])
   }
-
-  const addModule = () => {}
 
   return (
     <div>
-      <main>
-        <FormQuestionnaire
-          modules={state.modules}
-          onAdd={addModule}
-          onChange={handleChange}
-        ></FormQuestionnaire>
-      </main>
+      <QuestionForm addModule={addModule} />
+      <ul>
+        {modules.map((form) => {
+          return (
+            <li key={form.id}>
+              <QuestionModule type={form.type}></QuestionModule>
+            </li>
+          )
+        })}
+      </ul>
     </div>
   )
 }

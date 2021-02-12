@@ -1,41 +1,34 @@
-import React from "react"
+import React, { useState } from "react"
 
-/**
- * @exports components/FormQuestionnaire
- * @use This component handles the questionnaire a corporate user fills to create a form for another user to fill.
- */
-export const FormQuestionnaire = (props) => {
-  const { modules, onChange } = props
+export const QuestionForm = ({ addModule }) => {
+  const [option, setOption] = useState("")
 
-  const handleSubmit = (event) => {}
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    console.log(option)
+    addModule(option)
+  }
 
   return (
-    <div>
-      <h1>Otsikoi lomake ja valitse kysymykset</h1>
-      <form onSubmit={handleSubmit}>
-        <select value={modules} onChange={onChange}>
-          <option value="text">Tekstikenttä</option>
-          <option value="checkbox">Checkbox</option>
-        </select>
-        <input type="submit" value="Lisää" />
-      </form>
-      <div>
-        <form>
-          <input type="text" placeholder="Otsikko/Lomakkeen nimi" />
-        </form>
-        {modules.map((questionmodule) => (
-          <QuestionnaireModule key={questionmodule.type}></QuestionnaireModule>
-        ))}
-      </div>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <label>Valinta</label>
+      <select
+        value={option}
+        onChange={(event) => setOption(event.target.value)}
+      >
+        <option value="text">Tekstikenttä</option>
+        <option value="checkbox">Checkbox</option>
+      </select>
+      <input type="submit" value="Submit" />
+    </form>
   )
 }
 
-export const QuestionnaireModule = (type) => {
+export const QuestionModule = ({ type }) => {
   return (
     <div>
-      <input type={type} />
       <label>Tämä on moduuli</label>
+      <input type={type} />
     </div>
   )
 }
