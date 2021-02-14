@@ -10,15 +10,18 @@ import {
   Radio,
 } from "@material-ui/core"
 import { Search as SearchIcon } from "@material-ui/icons"
+import { updateSearchList } from "../../actions/businessContractActions"
+import { useDispatch } from "react-redux"
 
-const UserSearch = ({ fetchWorkers }) => {
+const UserSearch = () => {
+  const dispatch = useDispatch()
   const [input, setInput] = useState("")
   const [searchType, setSearchType] = useState("worker")
 
   const handleSubmit = (event) => {
     event.preventDefault()
     if (input.length > 0) {
-      fetchWorkers(input, searchType)
+      dispatch(updateSearchList(input, searchType))
     }
   }
 

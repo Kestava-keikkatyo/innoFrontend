@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { me } from '../../actions/userActions'
-import contractsService from '../../services/contractsService'
 
 import PageLoading from '../../components/PageLoading'
 import UserSearch from './UserSearch'
@@ -11,6 +10,7 @@ import CurrentTable from './CurrentTable'
 import ContractModal from './ContractModal'
 
 import { Container, Typography, Divider, Card, CardContent, makeStyles } from '@material-ui/core'
+import ActiveLastBreadcrumb from '../../components/ActiveLastBreadcrumb'
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -35,52 +35,18 @@ const ContractsPage = () => {
   const { data, ...user } = useSelector(state => state.user)
   const dispatch = useDispatch()
   const classes = useStyles()
-
-  const [searchList, setSearchList] = useState([])
+  
   const [searchData, setSearchData] = useState(null)
-  const [currentList, setCurrentList] = useState([])
   const [displayModal, setDisplayModal] = useState(false)
-  const [currentType, setCurrentType] = useState('worker');
 
   //to be switched to retrieve contracts
   useEffect(() => {
-    async function fetchContracts() {
-      const res = await contractsService.showBusinessContracts()
-      setCurrentList(res.data)
-    }
-
     dispatch(me(data.role))
-    fetchContracts()
   }, [dispatch, data.role])
-
-  const fetchWorkers = async (input, searchType) => {
-    // siirto reduxiin
-    const result = await contractsService.searchUsers(input, searchType)
-    setCurrentType(searchType)
-    setSearchList(result.data)
-  }
 
   const openModal = (worker) => {
     setSearchData(worker)
     setDisplayModal(true)
-  }
-
-  const addContract = () => {
-    if (!currentList.some((value) => value.id === searchData.id)) {
-      setCurrentList(prevList => [searchData, ...prevList])
-    }
-    contractsService.addBusinessContract(searchData.id, currentType)
-    setDisplayModal(false)
-  }
-
-  /**
-   * TODO: Check when route is working in backend
-   * @param {*} id 
-   */
-  const removeContract = async (id) => {
-    const res = await contractsService.deleteBusinessContractById(id)
-    console.log(res);
-    setCurrentList(prevList => prevList.filter((value) => value.id !== id))
   }
 
   if (user.loading || !user.profile) {
@@ -91,46 +57,33 @@ const ContractsPage = () => {
 
   return (
     <Container maxWidth="lg">
-      <Typography style={{ paddingTop: '1rem' }} align="center" variant="h4">
+      <ActiveLastBreadcrumb />
+      <Typography style={{ paddingTop: '1rem' }} variant="h4" className="text-secondary">
         Contracts
       </Typography>
       <Card className={classes.card} variant="outlined">
         <CardContent>
-          <Typography gutterBottom variant="h5" align="center">
-            make contracts
+          <Typography gutterBottom variant="h5">
+            Make contract
           </Typography>
-          <UserSearch fetchWorkers={fetchWorkers} />
+          <UserSearch />
           <Divider />
-          {searchList.length ?
-            <SearchTable
-              workers={searchList}
-              addWorker={openModal} /> :
-            <Typography style={{ padding: '1rem' }} variant="h6" align="center">
-              no results
-            </Typography>
-          }
+          <SearchTable
+            addWorker={openModal} /> 
           <ContractModal
             displayModal={displayModal}
             closeModal={() => setDisplayModal(false)}
-            addContract={addContract}
             workerData={searchData}
           />
         </CardContent>
       </Card>
       <Card className={classes.card} variant="outlined">
         <CardContent>
-          <Typography gutterBottom variant="h5" align="center">
-            current contracts
+          <Typography gutterBottom variant="h5">
+            Current contracts
           </Typography>
           <Divider />
-          {currentList.length ?
-            <CurrentTable
-              contracts={currentList}
-              removeContract={removeContract} /> :
-            <Typography style={{ padding: '1rem' }} variant="h6" align="center">
-              no contracts
-            </Typography>
-          }
+          <CurrentTable />
         </CardContent>
       </Card>
     </Container>
