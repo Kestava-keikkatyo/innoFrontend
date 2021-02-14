@@ -168,7 +168,10 @@ code {
   display: none;
 }
 
-/**
-* Search bar
-*/
-
+#breadcrumbs {
+  margin: 1rem 0;
+  padding: .5rem;
+  background-color: rgb(159, 209, 253);
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}

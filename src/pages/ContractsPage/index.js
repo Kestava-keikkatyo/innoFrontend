@@ -10,7 +10,6 @@ import CurrentTable from './CurrentTable'
 import ContractModal from './ContractModal'
 
 import { Container, Typography, Divider, Card, CardContent, makeStyles } from '@material-ui/core'
-import ActiveLastBreadcrumb from '../../components/ActiveLastBreadcrumb'
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -57,7 +56,6 @@ const ContractsPage = () => {
 
   return (
     <Container maxWidth="lg">
-      <ActiveLastBreadcrumb />
       <Typography style={{ paddingTop: '1rem' }} variant="h4" className="text-secondary">
         Contracts
       </Typography>

@@ -33,9 +33,10 @@ const App = () => {
 
       <SnackbarNotification />
       <Switch>
-        <PrivateRoute path="/home" >
-          <HomePage />
-        </PrivateRoute>
+        <Route exact path="/login">
+          <LandingPage />
+        </Route>
+        
         <PrivateRoute path="/profile" >
           <ProfilePage />
         </PrivateRoute>
@@ -63,10 +64,10 @@ const App = () => {
         <PrivateRoute path="/workers" roles={[Role.Business, Role.Agency]} >
           <WorkersPage />
         </PrivateRoute>
-        <Route exact path="/">
-          <LandingPage />
-        </Route>
-        <Redirect from="*" to="/home" />
+        <PrivateRoute path="/" >
+          <HomePage />
+        </PrivateRoute>
+        <Redirect from="*" to="/login" />
       </Switch>
     </>
   )

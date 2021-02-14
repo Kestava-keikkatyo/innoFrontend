@@ -1,29 +1,35 @@
 import React from 'react';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
+import { useSelector } from 'react-redux';
+import { Container } from '@material-ui/core';
 
-function handleClick(event) {
-  event.preventDefault();
-  console.info('You clicked a breadcrumb.');
-}
+const ActiveLastBreadcrumb = () => {
+  const { links } = useSelector(state => state.breadcrumb)
 
-export default function ActiveLastBreadcrumb() {
   return (
-    <Breadcrumbs aria-label="breadcrumb">
-      <Link color="inherit" href="/" onClick={handleClick}>
-        Main
-      </Link>
-      {/* <Link color="inherit" href="/getting-started/installation/" onClick={handleClick}>
-        Core
-      </Link> */}
-      <Link
-        color="textPrimary"
-        href="/components/breadcrumbs/"
-        onClick={handleClick}
-        aria-current="page"
-      >
-        Feel-o-meter
-      </Link>
-    </Breadcrumbs>
+    <Container>
+      <Breadcrumbs aria-label="breadcrumb" id="breadcrumbs">
+        <Link
+            color="textPrimary"
+            href="/"
+            aria-current="page"
+          >
+            Home
+          </Link>
+        { links.map( (l, key) => 
+          <Link
+            key={key}
+            color="textPrimary"
+            href={l.link}
+            aria-current="page"
+          >
+            {l.name}
+          </Link>
+        )}
+      </Breadcrumbs>
+    </Container>
   );
 }
+
+export default ActiveLastBreadcrumb
