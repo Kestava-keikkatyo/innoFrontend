@@ -52,9 +52,9 @@ const SearchTable = () => {
           {contracts.map((contract) => (
             <TableRow key={contract.id}>
               <TableCell component="th" scope="row">{contract.id}</TableCell>
-              <TableCell align="right">{contract.name}</TableCell>
-              <TableCell align="right">{contract.email}</TableCell>
-              <TableCell align="right">{contract.type}</TableCell>
+              <TableCell align="right">{contract.user?.name || contract.business?.name}</TableCell>
+              <TableCell align="right">{contract.user?.email || contract.business?.email}</TableCell>
+              <TableCell align="right">{contract.contractType}</TableCell>
               <TableCell align="right">{contract.contractMade ? 'made': 'pending'}</TableCell>
               <TableCell padding="none" align="right">
                 <IconButton
