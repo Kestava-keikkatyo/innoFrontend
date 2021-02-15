@@ -16,7 +16,7 @@ import MoodIcon from '@material-ui/icons/Mood';
 import TimelineIcon from '@material-ui/icons/Timeline';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import { AccountCircle, Contacts, ExpandLess, ExpandMore, Home, PeopleAlt, StarBorder } from '@material-ui/icons';
+import { Contacts, ExpandLess, ExpandMore, Home, PeopleAlt, StarBorder, Security } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import { logout } from '../../actions/userActions';
 import { useDispatch, useSelector } from 'react-redux';
@@ -39,6 +39,37 @@ const ResponsiveDrawer = () => {
   const handleClick = () => {
     setOpen(!open);
   };
+
+  const nestedStatisticItems = () => (
+    <Collapse in={open} timeout="auto" unmountOnExit>
+      <List component="div" disablePadding>
+        <ListItem button className={classes.nested}>
+          <ListItemIcon>
+            <StarBorder />
+          </ListItemIcon>
+          <ListItemText primary="Achievments" />
+        </ListItem>
+        <ListItem button className={classes.nested} component={Link} to="/fiilismittari">
+          <ListItemIcon>
+            <MoodIcon />
+          </ListItemIcon>
+          <ListItemText primary="Feel-o-Meter" />
+        </ListItem>
+        <ListItem button className={classes.nested}>
+          <ListItemIcon>
+            <TimelineIcon />
+          </ListItemIcon>
+          <ListItemText primary="Work history" />
+        </ListItem>
+        <ListItem button className={classes.nested}>
+          <ListItemIcon>
+            <FeedbackIcon />
+          </ListItemIcon>
+          <ListItemText primary="My Feedback" />
+        </ListItem>
+      </List>
+    </Collapse>
+  )
   
   return(
     <div className="drawer">
@@ -54,74 +85,38 @@ const ResponsiveDrawer = () => {
       </div>
 
       <div className="content-wrapper">
-      <List className="overflow-container">
-        <ListItem fontSize="large" button mt={100} component={Link} to="/home">
-          <ListItemIcon>{<Home />}</ListItemIcon>
-          <ListItemText primary="Home" />
-        </ListItem>
-        <ListItem fontSize="large" button mt={100} component={Link} to="/messages">
-          <ListItemIcon>{<MailIcon />}</ListItemIcon>
-          <ListItemText primary="Messages" />
-        </ListItem>
-        <Divider />
-        <ListItem button component={Link} to="/home">
-          <ListItemIcon>{<CalendarTodayIcon />}</ListItemIcon>
-          <ListItemText primary="Schedule" />
-        </ListItem>
-        <Divider />
-        <ListItem button component={Link} to="/documents">
-          <ListItemIcon>{<InboxIcon />}</ListItemIcon>
-          <ListItemText primary="Documents" />
-        </ListItem>
-        <Divider />
-        <ListItem button component={Link} to="/tasks">
-          <ListItemIcon>{<AssignmentIcon />}</ListItemIcon>
-          <ListItemText primary="Assignments" />
-        </ListItem>
-        <Divider />
-
-        <ListItem button onClick={handleClick} className="expandable-button">
-        <ListItemIcon>
-          <EqualizerIcon />
-        </ListItemIcon>
-        <ListItemText primary="Statistics" />
-          {open ? <ExpandLess /> : <ExpandMore />}
-        </ListItem>
-
-        <Collapse in={open} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItem button className={classes.nested}>
-              <ListItemIcon>
-                <StarBorder />
-              </ListItemIcon>
-              <ListItemText primary="Achievments" />
-            </ListItem>
-            <ListItem button className={classes.nested} component={Link} to="/fiilismittari">
-              <ListItemIcon>
-                <MoodIcon />
-              </ListItemIcon>
-              <ListItemText primary="Feel-o-Meter" />
-            </ListItem>
-            <ListItem button className={classes.nested}>
-              <ListItemIcon>
-                <TimelineIcon />
-              </ListItemIcon>
-              <ListItemText primary="Work history" />
-            </ListItem>
-            <ListItem button className={classes.nested}>
-              <ListItemIcon>
-                <FeedbackIcon />
-              </ListItemIcon>
-              <ListItemText primary="My Feedback" />
-            </ListItem>
-          </List>
-        </Collapse>
-
-        <ListItem button component={Link} to="/profile">
-          <ListItemIcon><AccountCircle /></ListItemIcon>
-          <ListItemText primary="Profile" />
-        </ListItem>
-        
+        <List className="overflow-container">
+          <ListItem fontSize="large" button mt={100} component={Link} to="/home">
+            <ListItemIcon>{<Home />}</ListItemIcon>
+            <ListItemText primary="Home" />
+          </ListItem>
+          <Divider />
+          <ListItem fontSize="large" button mt={100} component={Link} to="/databank">
+            <ListItemIcon>{<Security />}</ListItemIcon>
+            <ListItemText primary="Health and Security" />
+          </ListItem>
+          <Divider />
+          <ListItem fontSize="large" button mt={100} component={Link} to="/messages">
+            <ListItemIcon>{<MailIcon />}</ListItemIcon>
+            <ListItemText primary="Messages" />
+          </ListItem>
+          <Divider />
+          <ListItem button component={Link} to="/home">
+            <ListItemIcon>{<CalendarTodayIcon />}</ListItemIcon>
+            <ListItemText primary="Schedule" />
+          </ListItem>
+          <Divider />
+          <ListItem button component={Link} to="/documents">
+            <ListItemIcon>{<InboxIcon />}</ListItemIcon>
+            <ListItemText primary="Documents" />
+          </ListItem>
+          <Divider />
+          <ListItem button component={Link} to="/tasks">
+            <ListItemIcon>{<AssignmentIcon />}</ListItemIcon>
+            <ListItemText primary="Assignments" />
+          </ListItem>
+          <Divider />
+          
           {role === Role.Agency &&
             <ListItem button component={Link} to="/contracts">
               <ListItemIcon><Contacts /></ListItemIcon>
@@ -134,7 +129,20 @@ const ResponsiveDrawer = () => {
               <ListItemText primary="Workers" />
             </ListItem>
           }
-      </List>
+
+          {role === Role.Worker &&
+          <>
+            <ListItem button onClick={handleClick} className="expandable-button">
+              <ListItemIcon>
+                <EqualizerIcon />
+              </ListItemIcon>
+              <ListItemText primary="Statistics" />
+              {open ? <ExpandLess /> : <ExpandMore />}
+            </ListItem>
+            {nestedStatisticItems()}
+          </>
+          }
+        </List>
       </div>
 
         <ListItem button className="drawer-logout" onClick={() => dispatch(logout())}>

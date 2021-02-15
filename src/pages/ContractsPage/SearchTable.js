@@ -7,11 +7,22 @@ import {
   TableRow,
   TableCell,
   TableBody,
-  IconButton
+  IconButton,
+  Typography
 } from '@material-ui/core'
 import { Add as AddIcon } from '@material-ui/icons'
+import { useSelector } from 'react-redux'
 
-const SearchTable = ({ workers, addWorker }) => {
+const SearchTable = ({ addWorker }) => {
+  const { searchList } = useSelector(state => state.businessContracts)
+  const workers = searchList
+
+  if(!workers.length) return (
+    <Typography style={{ padding: '1rem' }} variant="h6" align="center" className="text-secondary">
+      no results
+    </Typography>
+  )
+
   return (
     <TableContainer>
       <Table aria-label="searched workers">

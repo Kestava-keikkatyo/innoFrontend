@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import AppNavigation from './NavigationComponents'
+import ActiveLastBreadcrumb from './ActiveLastBreadcrumb'
+import { setBreadcrumb } from '../actions/breadcrumbActions'
+import pathConverter from '../utils/pathConverter'
 
 /**
  * Private route component. Renders the child components if the user is logged in
@@ -32,17 +35,22 @@ import AppNavigation from './NavigationComponents'
  *  </PrivateRoute>
  * </Switch>
  */
-const PrivateRoute = ({ roles, children, ...rest }) => {
+const PrivateRoute = ({ roles, children, path, ...rest }) => {
   const { loggedIn, data } = useSelector((state) => state.user)
+  const dispatch = useDispatch()
 
+  useEffect( () => {
+    dispatch(setBreadcrumb(pathConverter(path)))
+  }, [dispatch, path])
   return (
     <Route
       {...rest}
+      path={path}
       render={({ location }) => {
         if (!loggedIn || !data) {
           return <Redirect
             to={{
-              pathname: '/',
+              pathname: '/login',
               state: { from: location }
             }}
           />
@@ -59,6 +67,7 @@ const PrivateRoute = ({ roles, children, ...rest }) => {
 
         return (
           <AppNavigation>
+            <ActiveLastBreadcrumb />
             {children}
           </AppNavigation>
         )

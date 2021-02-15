@@ -136,6 +136,7 @@ export const update = (updateData, role) => {
  * @function
  * @param {function} dispatch - dispatch function
  * @param {Object} response - error response object
+ * @todo Why on earth would you do that?
  */
 const statusHandler = (dispatch, response) => {
   if (!response || response.status === 401 || response.status === 500) {
