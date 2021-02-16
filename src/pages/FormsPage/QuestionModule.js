@@ -11,7 +11,7 @@ const QuestionModule = ({update, questionIndex}) => {
 
   useEffect(() => {
     update({name: input, type: option}, questionIndex)
-  }, [input, option])
+  }, [input, option, questionIndex, update])
 
   // console.log(input);
   return ( 
