@@ -21,31 +21,11 @@ const useStyles = makeStyles((theme) => ({
  * this is a comment made from terminal.
  */
 export const QuestionForm = ({ addModule }) => {
-  const [option, setOption] = useState("text")
-
-  const handleAdd = (event) => {
-    event.preventDefault()
-    addModule(option)
-  }
+  
 
   return (
     <Container>
-      <Typography style={{ padding: "1rem" }} variant="h6" align="center">
-        Add modules attached to questions:
-      </Typography>
-      <form>
-        <label style={{ padding: "1rem" }} align="center">
-          Choose
-        </label>
-        <select
-          value={option}
-          onChange={(event) => setOption(event.target.value)}
-        >
-          <option value="text">Textfield</option>
-          <option value="checkbox">Checkbox</option>
-        </select>
-        <button onClick={handleAdd}>Add Module</button>
-      </form>
+      
     </Container>
   )
 }

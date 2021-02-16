@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import uuid from "react-uuid"
-import { QuestionModule, QuestionForm } from "../../components/QuestionForm"
 import { FormContainer } from "../../components/FormContainer"
 
 import {
@@ -11,6 +10,7 @@ import {
   Typography,
   makeStyles,
 } from "@material-ui/core"
+import QuestionModule from "./QuestionModule"
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -25,10 +25,7 @@ const useStyles = makeStyles((theme) => ({
  * @todo Fix the test form display, maybe button that "peeks" at the form?
  */
 const FormsPage = () => {
-  const [modules, setModules] = useState([
-    { id: uuid(), type: "text" },
-    { id: uuid(), type: "checkbox" },
-  ])
+  const [questionCount, setQuestionCount] = useState(["",""]);
   const [forms, setForms] = useState([
     {
       id: uuid(),
@@ -37,24 +34,14 @@ const FormsPage = () => {
     },
   ])
   const [titleValue, setTitleValue] = useState("")
-  const [questions, setQuestions] = useState([""])
 
   const classes = useStyles()
-
-  const addModule = (type) => {
-    setModules([...modules, { id: uuid(), type }])
-  }
 
   // This is ugly af, see if the behaviour for submitting the
   // child-components data and this components data can be done in a more readable manner.
   const addForm = (event) => {
     event.preventDefault()
     setForms([...forms, { id: uuid(), title: titleValue }])
-  }
-
-  const handleUserInput = (event, title) => {
-    if (title) setTitleValue(event.target.value)
-    else setQuestions(event.target.value)
   }
 
   return (
@@ -71,32 +58,25 @@ const FormsPage = () => {
           >
             Generation tool
           </Typography>
-          <QuestionForm addModule={addModule} />
-          <form onSubmit={(event) => addForm(event)}>
+          <Typography style={{ padding: "1rem" }} variant="h6" align="center">
+            Add modules attached to questions:
+          </Typography>
+            
+          <button onClick={() => setQuestionCount([...questionCount, ""])}>
+            Add Module +
+          </button>
+          <form onSubmit={(e) => addForm(e)}>
             <label>Title: </label>
             <input
               type="text"
               name="title"
-              onChange={(event) => handleUserInput(event, true)}
+              onChange={(e) => setTitleValue(e.target.value)}
             />
-            <ul>
-              {modules.map((questionModule) => {
-                return (
-                  <li key={questionModule.id}>
-                    <label>Question: </label>
-                    <input
-                      type="text"
-                      name="question"
-                      onChange={(event) => handleUserInput(event, false)}
-                    />
-                    <label>Value: {questionModule.type}</label>
-                  </li>
-                )
-              })}
-            </ul>
+            <div>
+              {questionCount.map(e => <QuestionModule />)}
+            </div>
             <input type="submit" value="Submit" />
           </form>
-          <button onClick={() => console.log(modules)}>LOG</button>
         </CardContent>
       </Card>
       <Divider />
