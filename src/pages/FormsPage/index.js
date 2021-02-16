@@ -25,15 +25,8 @@ const useStyles = makeStyles((theme) => ({
  * @todo Fix the test form display, maybe button that "peeks" at the form?
  */
 const FormsPage = () => {
-  const [questionCount, setQuestionCount] = useState(["",""]);
-  const [forms, setForms] = useState([
-    {
-      id: uuid(),
-      title: "Test Form",
-      pairs: [{ question: "", type: "" }],
-    },
-  ])
-  const [titleValue, setTitleValue] = useState("")
+  const [questions, setQuestions] = useState([])
+  const [title, setTitle] = useState("")
 
   const classes = useStyles()
 
@@ -41,7 +34,14 @@ const FormsPage = () => {
   // child-components data and this components data can be done in a more readable manner.
   const addForm = (event) => {
     event.preventDefault()
-    setForms([...forms, { id: uuid(), title: titleValue }])
+    const newForm = { title, questions }
+    console.log(newForm);
+  }
+
+  const setQuestionsChild = (element, index) => {
+    let temp = questions
+    temp[index] = element
+    setQuestions(temp)
   }
 
   return (
@@ -62,7 +62,9 @@ const FormsPage = () => {
             Add modules attached to questions:
           </Typography>
             
-          <button onClick={() => setQuestionCount([...questionCount, ""])}>
+          <button onClick={() => setQuestions(
+            [...questions, {name: "Type your question here.", type: "text"}]
+            )}>
             Add Module +
           </button>
           <form onSubmit={(e) => addForm(e)}>
@@ -70,36 +72,16 @@ const FormsPage = () => {
             <input
               type="text"
               name="title"
-              onChange={(e) => setTitleValue(e.target.value)}
+              onChange={(e) => setTitle(e.target.value)}
             />
             <div>
-              {questionCount.map(e => <QuestionModule />)}
+              {questions.map((e, i) => <QuestionModule key={i} update={setQuestionsChild} questionIndex={i} />)}
             </div>
             <input type="submit" value="Submit" />
           </form>
         </CardContent>
       </Card>
       <Divider />
-      <Card className={classes.card} variant="outlined">
-        <CardContent>
-          <Typography
-            style={{ paddingTop: "1rem" }}
-            align="center"
-            variant="h4"
-          >
-            Generated forms
-          </Typography>
-          <ul>
-            {forms.map((form) => {
-              return (
-                <li key={form.id}>
-                  <FormContainer name={form.name}></FormContainer>
-                </li>
-              )
-            })}
-          </ul>
-        </CardContent>
-      </Card>
     </Container>
   )
 }

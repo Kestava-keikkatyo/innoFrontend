@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 
-const QuestionModule = () => {
+const QuestionModule = ({update, questionIndex}) => {
   const [input, setInput] = useState();
   const [option, setOption] = useState("text")
 
-  console.log(input);
+  // const onInputChange = (e) => {
+  //   setQuestions()
+  // }
+
+  useEffect(() => {
+    update({name: input, type: option}, questionIndex)
+  }, [input, option])
+
+  // console.log(input);
   return ( 
     <>
     <div>
