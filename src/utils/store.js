@@ -1,3 +1,4 @@
+
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
 import userReducer from '../reducers/userReducer'
@@ -15,4 +16,3 @@ const reducer = combineReducers({
 })
 
 export default createStore(reducer, composeEnhancer(applyMiddleware(thunk)))
-
