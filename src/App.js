@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Switch, Route, Redirect, useLocation } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
 
+import SnackbarNotification from './components/SnackbarNotification'
 import LandingPage from './pages/LandingPage'
 import HomePage from './pages/HomePage'
 import ProfilePage from './pages/ProfilePage'
@@ -15,11 +15,9 @@ import DocumentPage from './pages/DocumentPage'
 import FormsPage from './pages/FormsPage'
 import WorkerStatistics from './pages/WorkerStatistics'
 
-import { clearAlert } from './actions/alertActions'
 import Role from './utils/role'
 
-import { CssBaseline, Snackbar } from '@material-ui/core'
-import { Alert } from '@material-ui/lab'
+import { CssBaseline } from '@material-ui/core'
 
 
 /**
@@ -27,34 +25,18 @@ import { Alert } from '@material-ui/lab'
  * @exports App
  */
 const App = () => {
-  const alert = useSelector((state) => state.alert)
-  const dispatch = useDispatch()
-
-  const handleSnackbarClose = (_event, reason) => {
-    if (reason !== 'clickaway') {
-      dispatch(clearAlert())
-    }
-  }
-
   // extra toolbar prevents content from going underneath appbar.
   return (
     <>
       <ScrollToTop />
       <CssBaseline />
 
-      <Snackbar open={alert.open} onClose={handleSnackbarClose}>
-        <Alert
-          onClose={handleSnackbarClose}
-          severity={alert.severity}
-          variant="filled"
-        >
-          {alert.message}
-        </Alert>
-      </Snackbar>
+      <SnackbarNotification />
       <Switch>
-        <PrivateRoute path="/home" >
-          <HomePage />
-        </PrivateRoute>
+        <Route exact path="/login">
+          <LandingPage />
+        </Route>
+        
         <PrivateRoute path="/profile" >
           <ProfilePage />
         </PrivateRoute>
@@ -82,10 +64,10 @@ const App = () => {
         <PrivateRoute path="/workers" roles={[Role.Business, Role.Agency]} >
           <WorkersPage />
         </PrivateRoute>
-        <Route exact path="/">
-          <LandingPage />
-        </Route>
-        <Redirect from="*" to="/home" />
+        <PrivateRoute path="/" >
+          <HomePage />
+        </PrivateRoute>
+        <Redirect from="*" to="/login" />
       </Switch>
     </>
   )

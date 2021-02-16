@@ -6,11 +6,11 @@ const WorkerStatisticsButtonRow = () => {
   return (
     <Grid container className="worker-statistics-button-row">
       <Grid item xs={6}>
-        <Typography variant="h4" className="text-secondary">Feel-o-meter</Typography>
+        <Typography variant="h4" className="text-secondary">Mood statistics</Typography>
       </Grid>
       <Grid item xs={6} className="worker-statistics-add-entry">
         <div>
-          <Button variant="outlined" color="primary" size="large">
+          <Button variant="outlined" color="primary" >
             <AddIcon /> New Entry
           </Button>
         </div>
