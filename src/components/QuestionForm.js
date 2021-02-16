@@ -16,12 +16,11 @@ const useStyles = makeStyles((theme) => ({
 /**
  * @exports components/QuestionForm
  * @param {Object} addModule - props, passes module option to parent on adding a module
- * @param {Object} addForm - props, passes event to parent on submit
  * @use This component handles the questionnaire a corporate user fills to create a form for another user to fill.
  * @todo Change submit button behaviour to a regular button, keep submit for actually submitting the whole form.
  * this is a comment made from terminal.
  */
-export const QuestionForm = ({ addModule, addForm }) => {
+export const QuestionForm = ({ addModule }) => {
   const [option, setOption] = useState("text")
 
   const handleAdd = (event) => {
@@ -29,17 +28,12 @@ export const QuestionForm = ({ addModule, addForm }) => {
     addModule(option)
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    addForm(event)
-  }
-
   return (
     <Container>
       <Typography style={{ padding: "1rem" }} variant="h6" align="center">
         Add modules attached to questions:
       </Typography>
-      <form onSubmit={handleSubmit}>
+      <form>
         <label style={{ padding: "1rem" }} align="center">
           Choose
         </label>
@@ -51,7 +45,6 @@ export const QuestionForm = ({ addModule, addForm }) => {
           <option value="checkbox">Checkbox</option>
         </select>
         <button onClick={handleAdd}>Add Module</button>
-        <input type="submit" value="Submit" />
       </form>
     </Container>
   )
@@ -66,8 +59,6 @@ export const QuestionModule = ({ type }) => {
   return (
     <Card className={classes.card} variant="outlined">
       <CardContent>
-        <label>Question: </label>
-        <input type="text" required />
         <label>Answer type: {type}</label>
       </CardContent>
     </Card>

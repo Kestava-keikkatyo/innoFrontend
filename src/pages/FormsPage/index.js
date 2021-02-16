@@ -21,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
 /**
  * @note Page for creating forms that corporate users can fill, see the documents in Google Drive by TTK.
  * @todo Roles visibility in this section? Worker able to see forms that reference them? How to pass the object with module types with questions attached to each?
- * @todo Snackbar alert for validation! useDispatch!
+ * @todo Snackbar alert for validation!
+ * @todo Fix the test form display, maybe button that "peeks" at the form?
  */
 const FormsPage = () => {
   const [modules, setModules] = useState([
@@ -31,10 +32,12 @@ const FormsPage = () => {
   const [forms, setForms] = useState([
     {
       id: uuid(),
-      name: "Test Form",
-      modules: [{}],
+      title: "Test Form",
+      pairs: [{ question: "", type: "" }],
     },
   ])
+  const [titleValue, setTitleValue] = useState("")
+  const [questions, setQuestions] = useState([""])
 
   const classes = useStyles()
 
@@ -42,8 +45,16 @@ const FormsPage = () => {
     setModules([...modules, { id: uuid(), type }])
   }
 
+  // This is ugly af, see if the behaviour for submitting the
+  // child-components data and this components data can be done in a more readable manner.
   const addForm = (event) => {
-    setForms([...forms, { id: uuid(), name: "Test form" }])
+    event.preventDefault()
+    setForms([...forms, { id: uuid(), title: titleValue }])
+  }
+
+  const handleUserInput = (event, title) => {
+    if (title) setTitleValue(event.target.value)
+    else setQuestions(event.target.value)
   }
 
   return (
@@ -60,16 +71,31 @@ const FormsPage = () => {
           >
             Generation tool
           </Typography>
-          <QuestionForm addModule={addModule} addForm={addForm} />
-          <ul>
-            {modules.map((questionModule) => {
-              return (
-                <li key={questionModule.id}>
-                  <QuestionModule type={questionModule.type}></QuestionModule>
-                </li>
-              )
-            })}
-          </ul>
+          <QuestionForm addModule={addModule} />
+          <form onSubmit={(event) => addForm(event)}>
+            <label>Title: </label>
+            <input
+              type="text"
+              name="title"
+              onChange={(event) => handleUserInput(event, true)}
+            />
+            <ul>
+              {modules.map((questionModule) => {
+                return (
+                  <li key={questionModule.id}>
+                    <label>Question: </label>
+                    <input
+                      type="text"
+                      name="question"
+                      onChange={(event) => handleUserInput(event, false)}
+                    />
+                    <QuestionModule type={questionModule.type}></QuestionModule>
+                  </li>
+                )
+              })}
+            </ul>
+            <input type="submit" value="Submit" />
+          </form>
           <button onClick={() => console.log(modules)}>LOG</button>
         </CardContent>
       </Card>
