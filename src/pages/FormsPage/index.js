@@ -89,7 +89,7 @@ const FormsPage = () => {
                       name="question"
                       onChange={(event) => handleUserInput(event, false)}
                     />
-                    <QuestionModule type={questionModule.type}></QuestionModule>
+                    <label>Value: {questionModule.type}</label>
                   </li>
                 )
               })}

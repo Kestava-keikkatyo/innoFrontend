@@ -49,18 +49,3 @@ export const QuestionForm = ({ addModule }) => {
     </Container>
   )
 }
-
-/**
- * @exports components/QuestionForm
- * @param {Object} type - type of answer for the module.
- */
-export const QuestionModule = ({ type }) => {
-  const classes = useStyles()
-  return (
-    <Card className={classes.card} variant="outlined">
-      <CardContent>
-        <label>Answer type: {type}</label>
-      </CardContent>
-    </Card>
-  )
-}
