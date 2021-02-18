@@ -10,7 +10,12 @@ import {
 } from "@material-ui/core"
 import QuestionModule from "./QuestionModule"
 import { useDispatch, useSelector } from "react-redux"
-import { setTitle, setQuestions } from "../../actions/formActions"
+import { setTitle, addQuestion } from "../../actions/formActions"
+
+const initialQuestion = {
+  name: "Type your question here.",
+  type: "text",
+}
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -28,7 +33,6 @@ const FormsPage = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
   const { currentForm } = useSelector((state) => state.form)
-  //const [questions, setQuestions] = useState([])
 
   const title = currentForm.title
   const questions = currentForm.questions
@@ -44,7 +48,7 @@ const FormsPage = () => {
   const setQuestionsChild = (element, index) => {
     let temp = questions
     temp[index] = element
-    dispatch(setQuestions(temp))
+    // dispatch(setQuestions(temp))
   }
 
   return (
@@ -66,17 +70,7 @@ const FormsPage = () => {
           </Typography>
 
           <button
-            onClick={() =>
-              dispatch(
-                setQuestions([
-                  ...questions,
-                  {
-                    name: "Type your question here.",
-                    type: "text",
-                  },
-                ])
-              )
-            }
+            onClick={ () => dispatch(addQuestion(initialQuestion)) }
           >
             Add Module +
           </button>

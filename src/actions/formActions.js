@@ -11,7 +11,7 @@ export const setTitle = (title) => async (dispatch) => {
   dispatch({ type: "UPDATE_TITLE", data: title })
 }
 
-export const setQuestions = (questions) => async (dispatch) => {
-  dispatch({ type: "UPDATE_QUESTIONS", data: questions })
-  console.log(questions)
+export const addQuestion = (question) => async (dispatch) => {
+  console.log(question);
+  dispatch({ type: "ADD_QUESTION", data: question })
 }

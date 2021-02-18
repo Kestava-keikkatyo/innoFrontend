@@ -16,12 +16,20 @@ const formReducer = (state = initialState, action) => {
     case "UPDATE_TITLE":
       return {
         ...state,
-        title: action.data,
+        currentForm: {
+          ...state.currentForm,
+          title: action.data,
+        }
       }
-    case "UPDATE_QUESTIONS":
+    case "ADD_QUESTION":
       return {
         ...state,
-        questions: action.data,
+        currentForm: {
+          ...state.currentForm,
+          questions: [
+            ...state.currentForm.questions, action.data
+          ]
+        }
       }
     default:
       return state
