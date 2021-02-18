@@ -8,5 +8,10 @@
  * @function
  */
 export const setTitle = (title) => async (dispatch) => {
-  dispatch({ type: 'UPDATE_TITLE', data: title})
+  dispatch({ type: "UPDATE_TITLE", data: title })
+}
+
+export const setQuestions = (questions) => async (dispatch) => {
+  dispatch({ type: "UPDATE_QUESTIONS", data: questions })
+  console.log(questions)
 }
