@@ -13,6 +13,7 @@ import {
 import { Delete as DeleteIcon } from '@material-ui/icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteBusinessContractById, fetchBusinessContracts } from '../../actions/businessContractActions'
+import { setAlert } from '../../actions/alertActions'
 
 /**
  * 
@@ -28,6 +29,11 @@ const SearchTable = () => {
     if(!madeContracts.length)
       dispatch(fetchBusinessContracts())
   }, [dispatch, madeContracts.length])
+
+  const deleteContract = (id, name) => {
+    dispatch(deleteBusinessContractById(id))
+    dispatch(setAlert("Deleted "+name+" contract."))
+  }
 
   if(!contracts.length) return (
     <Typography style={{ padding: '1rem' }} variant="h6" align="center" className="text-secondary">
@@ -60,7 +66,7 @@ const SearchTable = () => {
                 <IconButton
                   aria-label="remove from organization"
                   color="secondary"
-                  onClick={() => dispatch(deleteBusinessContractById(contract.id))}>
+                  onClick={() => deleteContract(contract.id, contract.user?.name || contract.business?.name)}>
                   <DeleteIcon />
                 </IconButton>
               </TableCell>

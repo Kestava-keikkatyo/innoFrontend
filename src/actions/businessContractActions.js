@@ -26,11 +26,13 @@ export const fetchBusinessContracts = () => async (dispatch) => {
  * @todo check for result handling. 
  */
 export const deleteBusinessContractById = (id) => async (dispatch) => {
-  // const res = await contractsService.deleteBusinessContractById(id)
-  dispatch({ type: businessContractConstants.DELETE, data: id })
+  const res = await contractsService.deleteBusinessContractById(id)
+  if(res.status === 200)
+    dispatch({ type: businessContractConstants.DELETE, data: id })
 }
 
-export const addBusinessContract = (contract) => async (dispatch) => {
-  
-  dispatch({type: businessContractConstants.ADD_CONTRACT, data: contract})
+export const addBusinessContract = (user, type) => async (dispatch) => {
+  const res = await contractsService.addBusinessContract(user.id, type)
+  if(res.status === 201)
+    dispatch({type: businessContractConstants.ADD_CONTRACT, data: { id: res.data.contract.id, user }})
 }

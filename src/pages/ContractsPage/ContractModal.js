@@ -13,16 +13,18 @@ import {
 import { Close as CloseIcon } from "@material-ui/icons"
 import { useDispatch, useSelector } from "react-redux"
 import { addBusinessContract } from "../../actions/businessContractActions"
+import { setAlert } from "../../actions/alertActions"
 
 const WorkerModal = ({ displayModal, closeModal, workerData }) => {
   const dispatch = useDispatch()
   const { madeContracts } = useSelector(state => state.businessContracts)
 
   const addContract = () => {
-    if (!madeContracts.some((value) => value.business === workerData.id || value.user === workerData.id)) {
-      dispatch(addBusinessContract(workerData))
+    if (!madeContracts.some((value) => value.business?.id === workerData.id || value.user?.id === workerData.id)) {
+      dispatch(addBusinessContract(workerData, workerData.feelings ? 'worker': 'business'))
+      dispatch(setAlert("Success: Invitation sent to worker", "success"))
     } else {
-      //Alert here
+      dispatch(setAlert("Failed: You allready have contract with this worker.", "error"))
     }
     closeModal()
   }
