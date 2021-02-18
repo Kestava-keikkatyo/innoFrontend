@@ -1,10 +1,10 @@
 /**
- * Redux breadcrumb actions
- * @module actions/breadcrumbActions
+ * Redux form actions
+ * @module actions/formActions
  */
 
 /**
- * Sets breadcrumb that is shown inside a {@link https://material-ui.com/components/breadcrumb/|MUI breadcrumb component}
+ * @todo Tarvitaan service kutsu backendiin clearille(submitForm)
  * @function
  */
 export const setTitle = (title) => async (dispatch) => {
@@ -24,6 +24,9 @@ export const updateQuestion = (question, index) => async (dispatch) => {
 }
 
 export const setDescription = (description) => async (dispatch) => {
-  console.log(description)
   dispatch({ type: "SET_DESCRIPTION", data: description })
+}
+
+export const submitForm = (form) => async (dispatch) => {
+  dispatch({ type: "CLEAR_CURRENT_FORM" })
 }

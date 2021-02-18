@@ -2,13 +2,14 @@
  * Redux form reducer
  * @module
  */
+const initialCurrentForm = {
+  title: "",
+  description: "",
+  questions: [],
+}
 
 const initialState = {
-  currentForm: {
-    title: "",
-    description: "",
-    questions: [],
-  },
+  currentForm: initialCurrentForm,
 }
 
 const formReducer = (state = initialState, action) => {
@@ -55,6 +56,8 @@ const formReducer = (state = initialState, action) => {
           questions: action.data,
         },
       }
+    case "CLEAR_CURRENT_FORM":
+      return { ...state, currentForm: initialCurrentForm }
     default:
       return state
   }

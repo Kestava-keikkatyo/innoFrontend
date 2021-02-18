@@ -14,6 +14,7 @@ import {
   setTitle,
   addQuestion,
   setDescription,
+  submitForm,
 } from "../../actions/formActions"
 
 const initialQuestion = {
@@ -38,15 +39,13 @@ const FormsPage = () => {
   const dispatch = useDispatch()
   const { currentForm } = useSelector((state) => state.form)
 
-  const title = currentForm.title
   const questions = currentForm.questions
 
   // This is ugly af, see if the behaviour for submitting the
   // child-components data and this components data can be done in a more readable and safe manner.
   const addForm = (event) => {
     event.preventDefault()
-    const newForm = { title, questions }
-    console.log(newForm)
+    dispatch(submitForm(currentForm))
   }
 
   return (
@@ -75,12 +74,14 @@ const FormsPage = () => {
             <input
               type="text"
               name="title"
+              value={currentForm.title}
               onChange={({ target }) => dispatch(setTitle(target.value))}
             />
             <label>Description: </label>
             <input
               type="text"
               name="title"
+              value={currentForm.description}
               onChange={({ target }) => dispatch(setDescription(target.value))}
             />
             <div>
