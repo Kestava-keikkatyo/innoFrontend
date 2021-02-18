@@ -12,7 +12,6 @@ export const setTitle = (title) => async (dispatch) => {
 }
 
 export const addQuestion = (question) => async (dispatch) => {
-  console.log(question);
   dispatch({ type: "ADD_QUESTION", data: question })
 }
 
@@ -21,5 +20,10 @@ export const setQuestions = (questions) => async (dispatch) => {
 }
 
 export const updateQuestion = (question, index) => async (dispatch) => {
-  dispatch({ type: "UPDATE_QUESTION", data: {question, index} })
+  dispatch({ type: "UPDATE_QUESTION", data: { question, index } })
+}
+
+export const setDescription = (description) => async (dispatch) => {
+  console.log(description)
+  dispatch({ type: "SET_DESCRIPTION", data: description })
 }

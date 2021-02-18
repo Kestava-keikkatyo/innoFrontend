@@ -10,7 +10,11 @@ import {
 } from "@material-ui/core"
 import QuestionModule from "./QuestionModule"
 import { useDispatch, useSelector } from "react-redux"
-import { setTitle, addQuestion } from "../../actions/formActions"
+import {
+  setTitle,
+  addQuestion,
+  setDescription,
+} from "../../actions/formActions"
 
 const initialQuestion = {
   name: "Type your question here.",
@@ -63,9 +67,7 @@ const FormsPage = () => {
             Add modules attached to questions:
           </Typography>
 
-          <button
-            onClick={ () => dispatch(addQuestion(initialQuestion)) }
-          >
+          <button onClick={() => dispatch(addQuestion(initialQuestion))}>
             Add Module +
           </button>
           <form onSubmit={(e) => addForm(e)}>
@@ -75,12 +77,15 @@ const FormsPage = () => {
               name="title"
               onChange={({ target }) => dispatch(setTitle(target.value))}
             />
+            <label>Description: </label>
+            <input
+              type="text"
+              name="title"
+              onChange={({ target }) => dispatch(setDescription(target.value))}
+            />
             <div>
               {questions.map((e, i) => (
-                <QuestionModule
-                  key={i}
-                  questionIndex={i}
-                />
+                <QuestionModule key={i} questionIndex={i} />
               ))}
             </div>
             <input type="submit" value="Submit" />

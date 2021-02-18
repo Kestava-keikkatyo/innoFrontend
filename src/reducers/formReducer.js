@@ -19,17 +19,23 @@ const formReducer = (state = initialState, action) => {
         currentForm: {
           ...state.currentForm,
           title: action.data,
-        }
+        },
+      }
+    case "SET_DESCRIPTION":
+      return {
+        ...state,
+        currentForm: {
+          ...state.currentForm,
+          description: action.data,
+        },
       }
     case "ADD_QUESTION":
       return {
         ...state,
         currentForm: {
           ...state.currentForm,
-          questions: [
-            ...state.currentForm.questions, action.data
-          ]
-        }
+          questions: [...state.currentForm.questions, action.data],
+        },
       }
     case "UPDATE_QUESTION":
       let temp = state.currentForm.questions
@@ -38,16 +44,16 @@ const formReducer = (state = initialState, action) => {
         ...state,
         currentForm: {
           ...state.currentForm,
-          questions: temp
-        }
+          questions: temp,
+        },
       }
     case "SET_QUESTIONS":
       return {
         ...state,
         currentForm: {
           ...state.currentForm,
-          questions: action.data
-        }
+          questions: action.data,
+        },
       }
     default:
       return state
