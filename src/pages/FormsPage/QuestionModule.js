@@ -1,20 +1,17 @@
 import React, { useEffect } from "react"
 import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { updateQuestion } from "../../actions/formActions"
 
-const QuestionModule = ({ update, questionIndex }) => {
+const QuestionModule = ({ questionIndex }) => {
   const [input, setInput] = useState()
   const [option, setOption] = useState("text")
-
-  // const onInputChange = (e) => {
-  //   setQuestions()
-  // }
-  // Very commit
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    update({ name: input, type: option }, questionIndex)
-  }, [input, option, questionIndex, update])
+    dispatch(updateQuestion({ name: input, type: option }, questionIndex))
+  }, [input, option, questionIndex, dispatch])
 
-  // console.log(input);
   return (
     <>
       <div>

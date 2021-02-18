@@ -31,6 +31,24 @@ const formReducer = (state = initialState, action) => {
           ]
         }
       }
+    case "UPDATE_QUESTION":
+      let temp = state.currentForm.questions
+      temp[action.data.index] = action.data.question
+      return {
+        ...state,
+        currentForm: {
+          ...state.currentForm,
+          questions: temp
+        }
+      }
+    case "SET_QUESTIONS":
+      return {
+        ...state,
+        currentForm: {
+          ...state.currentForm,
+          questions: action.data
+        }
+      }
     default:
       return state
   }

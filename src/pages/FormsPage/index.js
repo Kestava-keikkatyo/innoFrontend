@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 
 import {
   Card,
@@ -36,19 +36,13 @@ const FormsPage = () => {
 
   const title = currentForm.title
   const questions = currentForm.questions
-  console.log(currentForm)
+
   // This is ugly af, see if the behaviour for submitting the
   // child-components data and this components data can be done in a more readable and safe manner.
   const addForm = (event) => {
     event.preventDefault()
     const newForm = { title, questions }
     console.log(newForm)
-  }
-
-  const setQuestionsChild = (element, index) => {
-    let temp = questions
-    temp[index] = element
-    // dispatch(setQuestions(temp))
   }
 
   return (
@@ -85,7 +79,6 @@ const FormsPage = () => {
               {questions.map((e, i) => (
                 <QuestionModule
                   key={i}
-                  update={setQuestionsChild}
                   questionIndex={i}
                 />
               ))}

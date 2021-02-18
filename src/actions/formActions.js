@@ -15,3 +15,11 @@ export const addQuestion = (question) => async (dispatch) => {
   console.log(question);
   dispatch({ type: "ADD_QUESTION", data: question })
 }
+
+export const setQuestions = (questions) => async (dispatch) => {
+  dispatch({ type: "SET_QUESTIONS", data: questions })
+}
+
+export const updateQuestion = (question, index) => async (dispatch) => {
+  dispatch({ type: "UPDATE_QUESTION", data: {question, index} })
+}
