@@ -9,6 +9,8 @@ import {
   makeStyles,
 } from "@material-ui/core"
 import QuestionModule from "./QuestionModule"
+import { useDispatch, useSelector } from "react-redux"
+import { setTitle } from "../../actions/formActions"
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -23,10 +25,12 @@ const useStyles = makeStyles((theme) => ({
  * @todo Fix the test form display, maybe button that "peeks" at the form?
  */
 const FormsPage = () => {
-  const [questions, setQuestions] = useState([])
-  const [title, setTitle] = useState("")
-
   const classes = useStyles()
+  const dispatch = useDispatch()
+  const { currentForm } = useSelector(state => state.form)
+  const [questions, setQuestions] = useState([])
+
+  const title = currentForm.title
 
   // This is ugly af, see if the behaviour for submitting the
   // child-components data and this components data can be done in a more readable manner.
@@ -70,7 +74,7 @@ const FormsPage = () => {
             <input
               type="text"
               name="title"
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={({ target }) => dispatch(setTitle(target.value))}
             />
             <div>
               {questions.map((e, i) => <QuestionModule key={i} update={setQuestionsChild} questionIndex={i} />)}
