@@ -3,6 +3,11 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { updateQuestion } from "../../actions/formActions"
 
+/**
+ * Module for displaying and handling user input in the form generation tool
+ * @param {int} questionIndex - Index for the question in the array in the parent state.
+ * @todo Add radiobutton group, radiobutton group inline, checkbox group
+ */
 const QuestionModule = ({ questionIndex }) => {
   const [input, setInput] = useState()
   const [option, setOption] = useState("text")
