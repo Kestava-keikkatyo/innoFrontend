@@ -1,4 +1,6 @@
 import React from "react"
+import QuestionModule from "./QuestionModule"
+import { useDispatch, useSelector } from "react-redux"
 
 import {
   Card,
@@ -8,8 +10,7 @@ import {
   Typography,
   makeStyles,
 } from "@material-ui/core"
-import QuestionModule from "./QuestionModule"
-import { useDispatch, useSelector } from "react-redux"
+
 import {
   setTitle,
   addQuestion,
@@ -29,9 +30,8 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 /**
- * @note Page for creating forms that corporate users can fill, see the documents in Google Drive by TTK.
+ * @use This is the Form Generator tool. Page for creating forms that corporate users can fill, see the documents in Google Drive by TTK.
  * @todo Roles visibility in this section? Worker able to see forms that reference them? How to pass the object with module types with questions attached to each?
- * @todo Snackbar alert for validation!
  * @todo Fix the test form display, maybe button that "peeks" at the form?
  */
 const FormsPage = () => {

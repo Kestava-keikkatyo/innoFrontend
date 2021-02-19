@@ -1,6 +1,5 @@
 /**
- * Redux form reducer
- * @module
+ * @State
  */
 const initialCurrentForm = {
   title: "",
@@ -12,6 +11,13 @@ const initialState = {
   currentForm: initialCurrentForm,
 }
 
+/**
+ * Redux form reducer that controls the form generator tool state.
+ * @module
+ *
+ * @param {Object} state - initial state
+ * @param {Object} action - dispatched action
+ */
 const formReducer = (state = initialState, action) => {
   switch (action.type) {
     case "UPDATE_TITLE":
