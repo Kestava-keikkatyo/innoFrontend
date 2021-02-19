@@ -41,8 +41,6 @@ const FormsPage = () => {
 
   const questions = currentForm.questions
 
-  // This is ugly af, see if the behaviour for submitting the
-  // child-components data and this components data can be done in a more readable and safe manner.
   const addForm = (event) => {
     event.preventDefault()
     dispatch(submitForm(currentForm))
@@ -69,7 +67,11 @@ const FormsPage = () => {
           <button onClick={() => dispatch(addQuestion(initialQuestion))}>
             Add Module +
           </button>
-          <form onSubmit={(e) => addForm(e)}>
+          <form
+            onSubmit={(e) =>
+              addForm(e, currentForm.title, currentForm.description)
+            }
+          >
             <label>Title: </label>
             <input
               type="text"

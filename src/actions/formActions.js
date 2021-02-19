@@ -2,6 +2,7 @@
  * Redux form actions
  * @module actions/formActions
  */
+import { setAlert } from "./alertActions"
 
 /**
  * @todo Tarvitaan service kutsu backendiin clearille(submitForm)
@@ -28,5 +29,23 @@ export const setDescription = (description) => async (dispatch) => {
 }
 
 export const submitForm = (form) => async (dispatch) => {
+  // Valintarakenne: tarkista onko titlet yms inputit täytetty ja heitä error jos ei.
+  if (form.title === "") {
+    dispatch(setAlert("Title is required", "error"))
+    return
+  }
+  //ugleeeeeh
+  const result = form.questions.forEach((element) => {
+    console.log(element)
+    if (!element.name || element.name === "") {
+      dispatch(setAlert("Questions are required", "error"))
+      return "error"
+    }
+  })
+  if (result === "error") return
+  if (form.description === "") {
+    dispatch(setAlert("Description is required", "error"))
+    return
+  }
   dispatch({ type: "CLEAR_CURRENT_FORM" })
 }
