@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,6 +7,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchFeelings } from '../../actions/feelingActions';
+import { formatDate } from '../../utils/dateUtils';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -26,18 +29,6 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-function createData(date, rate, details) {
-  return { date, rate, details };
-}
-
-const rows = [
-  createData('2.2.2021', 5, 'Good day...'),
-  createData('3.2.2021', 5, ''),
-  createData('4.2.2021', 2, 'No comments'),
-  createData('5.2.2021', 4, 'It\'s OK.'),
-  createData('6.2.2021', 3, ''),
-];
-
 const useStyles = makeStyles({
   table: {
     minWidth: 300,
@@ -46,7 +37,12 @@ const useStyles = makeStyles({
 
 export default function CustomizedTables() {
   const classes = useStyles();
-
+  const feelings = useSelector(state => state.feeling?.feelings)
+  const dispatch = useDispatch()
+  useEffect( () => {
+    dispatch(fetchFeelings())
+  }, [dispatch])
+  console.log(feelings);
   return (
     <TableContainer component={Paper} className="table-container">
       <Table className={classes.table} aria-label="customized table">
@@ -58,13 +54,13 @@ export default function CustomizedTables() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.date}>
+          {feelings.map((feel, i) => (
+            <StyledTableRow key={i}>
               <StyledTableCell component="th" scope="row">
-                {row.date}
+                {formatDate(feel.createdAt)}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.rate}</StyledTableCell>
-              <StyledTableCell align="right">{row.details}</StyledTableCell>
+              <StyledTableCell align="right">{feel.value}</StyledTableCell>
+              <StyledTableCell align="right">{feel.note}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
