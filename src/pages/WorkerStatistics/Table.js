@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,8 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchFeelings } from '../../actions/feelingActions';
+import { useSelector } from 'react-redux';
 import { formatDate } from '../../utils/dateUtils';
 
 const StyledTableCell = withStyles((theme) => ({
@@ -38,11 +37,7 @@ const useStyles = makeStyles({
 export default function CustomizedTables() {
   const classes = useStyles();
   const feelings = useSelector(state => state.feeling?.feelings)
-  const dispatch = useDispatch()
-  useEffect( () => {
-    dispatch(fetchFeelings())
-  }, [dispatch])
-  console.log(feelings);
+  
   return (
     <TableContainer component={Paper} className="table-container">
       <Table className={classes.table} aria-label="customized table">

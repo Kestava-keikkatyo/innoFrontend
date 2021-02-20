@@ -28,6 +28,11 @@ code {
   box-shadow: 5px 5px 10px -2px rgba(0,0,0,0.4);
 }
 
+.no-data-text {
+  margin: auto !important;
+  color: gray;
+}
+
 .worker-statistics-add-entry {
   display: flex;
   justify-content: flex-end;
@@ -170,4 +175,13 @@ code {
   background-color: rgb(159, 209, 253);
   border: 1px solid #ddd;
   border-radius: 3px;
+}
+
+.new-feeling-modal .MuiFormGroup-row {
+  display: flex;
+  justify-content: center;
+}
+
+.radio-side-label {
+  margin: auto 0 0 0;
 }
