@@ -20,7 +20,7 @@ import { Contacts, ExpandLess, ExpandMore, Home, PeopleAlt, StarBorder, Security
 import { Link } from 'react-router-dom';
 import { logout } from '../../actions/userActions';
 import { useDispatch, useSelector } from 'react-redux';
-import Role from '../../utils/role'
+import Role from '../../constants/role'
 
 const ResponsiveDrawer = () => {
   const classes = useStyles();
