@@ -61,7 +61,7 @@ const feelingReducer = (state = initialState, action) => {
       let tempData = []
       state.feelings.map(f => {
         tempLabels.push(formatDate(f.createdAt))
-        tempData.push(f.value)
+        return tempData.push(f.value)
       })
       return {
         ...state,

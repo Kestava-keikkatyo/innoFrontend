@@ -4,6 +4,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setAlert } from '../../actions/alertActions'
 import { submitFeeling, updateFeeling } from '../../actions/feelingActions'
+import Spacing from '../../components/Spacing'
 
 const NewFeelingEntryModal = ({ modalState }) => {
   const { isOpen, setIsOpen } = modalState
@@ -27,6 +28,7 @@ const NewFeelingEntryModal = ({ modalState }) => {
         </Box>
       </DialogTitle>
       <DialogContent dividers>
+      <Spacing pv2 >
         <FormControl component="fieldset" fullWidth>
           <FormLabel component="legend">How do you feel today?</FormLabel>
             <RadioGroup
@@ -53,6 +55,7 @@ const NewFeelingEntryModal = ({ modalState }) => {
               </span>
           </RadioGroup>
         </FormControl>
+        </Spacing>
         <FormControl component="fieldset" fullWidth>
           <TextField
             id="outlined-multiline-static"
