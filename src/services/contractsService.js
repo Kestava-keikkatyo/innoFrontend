@@ -70,9 +70,27 @@ const deleteBusinessContractById = async (contractId) => {
   return await axios.delete(`${baseUrl}/businesscontracts/${contractId}`, authHeader())
 }
 
+const fetchBusinessContracts = async () => {
+  try {
+    return await axios.get(`${baseUrl}/businesscontracts`, authHeader())
+  } catch (error) {
+    return Promise.reject(error.response)
+  }
+}
+
+const updateBusinessContract = async (id) => {
+  try {
+    return await axios.put(`${baseUrl}/businesscontracts/${id}`, {}, authHeader())
+  } catch (error) {
+    return Promise.reject(error.response)
+  }
+}
+
 export default {
   searchUsers,
   addBusinessContract,
   showBusinessContracts,
-  deleteBusinessContractById
+  deleteBusinessContractById,
+  fetchBusinessContracts,
+  updateBusinessContract
 }
