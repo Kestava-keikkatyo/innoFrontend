@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux"
 import { updateQuestion } from "../../actions/formActions"
 import { Divider } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
+import formConstants from "../../constants/formConstants"
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -43,9 +44,9 @@ const QuestionModule = ({ questionIndex }) => {
         />
         <label className={classes.header}>Choose</label>
         <select value={option} onChange={(e) => setOption(e.target.value)}>
-          <option value="text">Textfield</option>
-          <option value="checkbox">Checkbox</option>
-          <option value="radio">Radio Button</option>
+          {formConstants.fieldTypes.map(t => 
+            <option key={t.value} value={t.value}>{t.text}</option>
+          )}
         </select>
         <Divider></Divider>
       </div>
