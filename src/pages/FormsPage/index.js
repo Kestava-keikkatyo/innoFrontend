@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
   card: {
     margin: theme.spacing(2, 0),
   },
+  header: { color: "#A9A9A9", align: "center", padding: "1rem" },
 }))
 
 /**
@@ -72,14 +73,14 @@ const FormsPage = () => {
               addForm(e, currentForm.title, currentForm.description)
             }
           >
-            <label>Title: </label>
+            <label className={classes.header}>Title: </label>
             <input
               type="text"
               name="title"
               value={currentForm.title}
               onChange={({ target }) => dispatch(setTitle(target.value))}
             />
-            <label>Description: </label>
+            <label className={classes.header}>Description: </label>
             <input
               type="text"
               name="title"
