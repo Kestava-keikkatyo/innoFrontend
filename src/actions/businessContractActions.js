@@ -2,7 +2,7 @@
  * Redux alert actions
  * @module actions/alertActions
  */
-import businessContractConstants from '../constants/businessContractConstants'
+import businessContractConstants from '../constants/contractConstants'
 import contractsService from '../services/contractsService'
 
 

@@ -1,15 +1,12 @@
 /**
- * Redux alert reducer
+ * Redux workContract reducer
  * @module
  */
-// import alertConstants from '../constants/alertConstants'
-// import contractsService from '../services/contractsService'
-
 import contractConstants from "../constants/contractConstants"
 
 const initialState = {
   searchList: [],
-  madeContracts: []
+  madeContracts: {}
 }
 
 /**
@@ -18,7 +15,7 @@ const initialState = {
  * @param {Object} state - current state
  * @param {Object} action - dispatched action
  */
-const businessContractReducer = (state = initialState, action) => {
+const workContractReducer = (state = initialState, action) => {
   switch (action.type) {
     case contractConstants.UPDATE:
       return {
@@ -46,4 +43,4 @@ const businessContractReducer = (state = initialState, action) => {
   }
 }
 
-export default businessContractReducer
+export default workContractReducer

@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import contractsService from '../../services/contractsService'
-
 import WorkerSearch from './WorkerSearch'
 import SearchTable from './SearchTable'
 import WorkerModal from './WorkerModal'
@@ -13,6 +11,7 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core'
+import { useSelector } from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -30,16 +29,10 @@ const useStyles = makeStyles((theme) => ({
  * - Creates workcontract between worker and business (agency view)
  */
 const WorkersPage = () => {
-  const [workers, setWorkers] = useState([])
+  const workContracts = useSelector(state => state.workContracts)
   const [workerData, setWorkerData] = useState(null)
   const [displayModal, setDisplayModal] = useState(false)
   const classes = useStyles()
-
-  const fetchWorkers = async (input) => {
-    // siirto reduxiin
-    const result = await contractsService.searchUsers(input, 'worker')
-    setWorkers(result.data)
-  }
 
   const openModal = (worker) => {
     setWorkerData(worker)
@@ -56,11 +49,10 @@ const WorkersPage = () => {
           <Typography gutterBottom variant="h5" align="center">
             add workers to businesses
           </Typography>
-          <WorkerSearch fetchWorkers={fetchWorkers} />
+          <WorkerSearch />
           <Divider />
-          {workers.length ?
+          {workContracts.searchList.length ?
             <SearchTable
-              workers={workers}
               addWorker={openModal}  /> :
             <Typography style={{ padding: '1rem' }} variant="h6" align="center">
               nothing here
@@ -69,8 +61,7 @@ const WorkersPage = () => {
         </CardContent>
       </Card>
       <WorkerModal
-        displayModal={displayModal}
-        closeModal={() => setDisplayModal(false)}
+        modalState={{displayModal, setDisplayModal}}
         workerData={workerData}
       />
       <Card className={classes.card} variant="outlined">

@@ -4,6 +4,7 @@ import thunk from 'redux-thunk'
 import userReducer from '../reducers/userReducer'
 import alertReducer from '../reducers/alertReducer'
 import businessContractReducer from '../reducers/businessContractReducer'
+import workContractReducer from '../reducers/workContractReducer'
 import breadcrumbReducer from '../reducers/breadcrumbReducer'
 import feelingReducer from '../reducers/feelingReducer'
 import documentReducer from '../reducers/documentReducer'
@@ -14,6 +15,7 @@ const reducer = combineReducers({
   user: userReducer,
   alert: alertReducer,
   businessContracts: businessContractReducer,
+  workContracts: workContractReducer,
   breadcrumb: breadcrumbReducer,
   feeling: feelingReducer,
   document: documentReducer,
