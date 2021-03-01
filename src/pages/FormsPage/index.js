@@ -3,6 +3,7 @@ import QuestionModule from "./QuestionModule"
 import { useDispatch, useSelector } from "react-redux"
 
 import {
+  Button,
   Card,
   Container,
   Divider,
@@ -26,15 +27,27 @@ const initialQuestion = {
 const useStyles = makeStyles((theme) => ({
   card: {
     margin: theme.spacing(2, 0),
+    display: "grid",
   },
-  header: { color: "#A9A9A9", align: "center", padding: "1rem" },
-  field: { color: "#A9A9A9" },
+  header: {
+    margin: theme.spacing(2, 0),
+    fontSize: 15,
+    color: "#A9A9A9",
+    align: "center",
+    display: "grid-inline",
+  },
+  field: {
+    margin: theme.spacing(2, 0),
+    display: "grid",
+    width: "60%",
+  },
 }))
 
 /**
  * @use This is the Form Generator tool. Page for creating forms that corporate users can fill, see the documents in Google Drive by TTK.
  * @todo Roles visibility in this section? Worker able to see forms that reference them? How to pass the object with module types with questions attached to each?
  * @todo Fix the test form display, maybe button that "peeks" at the form?
+ * @todo Could user be able to import a ready made template from a pdf and the tool automatically generates a form?
  */
 const FormsPage = () => {
   const classes = useStyles()
@@ -50,40 +63,37 @@ const FormsPage = () => {
 
   return (
     <Container>
-      <Typography style={{ paddingTop: "1rem" }} align="center" variant="h4">
+      <Typography align="center" variant="h4">
         Forms
       </Typography>
-      <Card className={classes.card} variant="outlined">
-        <CardContent>
-          <Typography
-            style={{ paddingTop: "1rem" }}
-            align="center"
-            variant="h4"
-          >
-            Generation tool
-          </Typography>
-          <Typography style={{ padding: "1rem" }} variant="h6" align="center">
-            Add modules attached to questions:
-          </Typography>
-
-          <button onClick={() => dispatch(addQuestion(initialQuestion))}>
-            Add Module +
-          </button>
-          <form
-            onSubmit={(e) =>
-              addForm(e, currentForm.title, currentForm.description)
-            }
-          >
-            <label className={classes.header}>Title: </label>
+      <form
+        onSubmit={(e) => addForm(e, currentForm.title, currentForm.description)}
+      >
+        <input
+          style={{ align: "left", display: "grid" }}
+          type="submit"
+          value="Submit"
+        />
+        <Card className={classes.card} variant="outlined">
+          <CardContent align="center">
+            <Typography align="center" variant="h4">
+              Generation tool
+            </Typography>
+            <Typography style={{ padding: "1rem" }} variant="h6" align="center">
+              Add modules attached to questions:
+            </Typography>
+            <label className={classes.header}>Form Title</label>
             <input
               className={classes.field}
+              placeholder="Your title..."
               type="text"
               name="title"
               value={currentForm.title}
               onChange={({ target }) => dispatch(setTitle(target.value))}
             />
-            <label className={classes.header}>Description: </label>
             <input
+              className={classes.field}
+              placeholder="Your description..."
               type="text"
               name="title"
               value={currentForm.description}
@@ -94,10 +104,12 @@ const FormsPage = () => {
                 <QuestionModule key={i} questionIndex={i} />
               ))}
             </div>
-            <input type="submit" value="Submit" />
-          </form>
-        </CardContent>
-      </Card>
+            <Button onClick={() => dispatch(addQuestion(initialQuestion))}>
+              Add Question
+            </Button>
+          </CardContent>
+        </Card>
+      </form>
       <Divider />
     </Container>
   )

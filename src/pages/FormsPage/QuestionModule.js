@@ -2,11 +2,18 @@ import React, { useEffect } from "react"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { updateQuestion } from "../../actions/formActions"
+import { Divider } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 
-const useStyles = makeStyles({
-  header: { color: "#A9A9A9", align: "center", padding: "1rem" },
-})
+const useStyles = makeStyles((theme) => ({
+  header: {
+    margin: theme.spacing(1, 0),
+    color: "#A9A9A9",
+    align: "center",
+    padding: "1rem",
+    display: "inline-grid",
+  },
+}))
 
 /**
  * Module for displaying and handling user input in the form generation tool
@@ -28,6 +35,8 @@ const QuestionModule = ({ questionIndex }) => {
       <div>
         <label className={classes.header}>Question: </label>
         <input
+          style={{ width: "50%" }}
+          placeholder="Your question..."
           type="text"
           name="question"
           onChange={(e) => setInput(e.target.value)}
@@ -36,7 +45,9 @@ const QuestionModule = ({ questionIndex }) => {
         <select value={option} onChange={(e) => setOption(e.target.value)}>
           <option value="text">Textfield</option>
           <option value="checkbox">Checkbox</option>
+          <option value="radio">Radio Button</option>
         </select>
+        <Divider></Divider>
       </div>
     </>
   )
