@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(2, 0),
   },
   header: { color: "#A9A9A9", align: "center", padding: "1rem" },
+  field: { color: "#A9A9A9" },
 }))
 
 /**
@@ -75,6 +76,7 @@ const FormsPage = () => {
           >
             <label className={classes.header}>Title: </label>
             <input
+              className={classes.field}
               type="text"
               name="title"
               value={currentForm.title}
