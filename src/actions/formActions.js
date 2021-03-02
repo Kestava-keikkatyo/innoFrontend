@@ -41,6 +41,10 @@ export const updateQuestion = (question, index) => async (dispatch) => {
   dispatch({ type: "UPDATE_QUESTION", data: { question, index } })
 }
 
+export const removeQuestion = (questionIndex) => async (dispatch) => {
+  dispatch({ type: "REMOVE_QUESTION", data: questionIndex })
+}
+
 /**
  * Sets the description of the form.
  * @function

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import { updateQuestion } from "../../actions/formActions"
-import { Divider } from "@material-ui/core"
+import { removeQuestion, updateQuestion } from "../../actions/formActions"
+import { Divider, Button } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import formConstants from "../../constants/formConstants"
 
@@ -44,10 +44,18 @@ const QuestionModule = ({ questionIndex }) => {
         />
         <label className={classes.header}>Choose</label>
         <select value={option} onChange={(e) => setOption(e.target.value)}>
-          {formConstants.fieldTypes.map(t => 
-            <option key={t.value} value={t.value}>{t.text}</option>
-          )}
+          {formConstants.fieldTypes.map((t) => (
+            <option key={t.value} value={t.value}>
+              {t.text}
+            </option>
+          ))}
         </select>
+        <Button
+          style={{ color: "red" }}
+          onClick={() => dispatch(removeQuestion(questionIndex))}
+        >
+          Remove
+        </Button>
         <Divider></Divider>
       </div>
     </>
