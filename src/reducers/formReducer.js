@@ -57,8 +57,10 @@ const formReducer = (state = initialState, action) => {
 
     case "REMOVE_QUESTION":
       console.log("REMOVE CALLED")
+      console.log(action.data)
       let temp1 = state.currentForm.questions
-      temp1.splice(action.data.index, 1)
+      temp1.splice(action.data, 1)
+      console.log(temp1)
       return {
         ...state,
         currentForm: {

@@ -34,7 +34,7 @@ const QuestionModule = ({ questionIndex }) => {
   return (
     <>
       <div>
-        <label className={classes.header}>Question: </label>
+        <label className={classes.header}>Question: {questionIndex}</label>
         <input
           style={{ width: "50%" }}
           placeholder="Your question..."
