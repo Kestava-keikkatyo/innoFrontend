@@ -15,6 +15,11 @@ const documentReducer = (state = initialState, action) => {
         ...state,
         businessContracts: action.data
       }
+    case "FETCH_WORK_CONTRACTS":
+      return {
+        ...state,
+        workContracts: action.data
+      }
     case "ACTIVATE_BUSINESS_CONTRACT":
       return {
         ...state,

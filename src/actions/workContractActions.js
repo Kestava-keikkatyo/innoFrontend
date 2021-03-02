@@ -12,28 +12,27 @@ import contractsService from '../services/contractsService'
  */
 export const updateSearchList = (input) => async (dispatch) => {
   const res = await contractsService.searchUsers(input, 'worker')
-  dispatch({ type: contractConstants.UPDATE, data: res.data })
+  dispatch({ type: contractConstants.W_UPDATE, data: res.data })
 }
 
-// export const fetchBusinessContracts = () => async (dispatch) => {
-//   const res = await contractsService.showBusinessContracts()
-//   dispatch({ type: contractConstants.FETCH, data: res.data })
-// }
+export const fetchWorkContracts = () => async (dispatch) => {
+  const res = await contractsService.fetchWorkContracts()
+  dispatch({ type: contractConstants.W_FETCH, data: res.data })
+}
 
-// /**
-//  * 
-//  * @param {*} id
-//  * @todo check for result handling. 
-//  */
-// export const deleteBusinessContractById = (id) => async (dispatch) => {
-//   const res = await contractsService.deleteBusinessContractById(id)
-//   if(res.status === 200)
-//     dispatch({ type: contractConstants.DELETE, data: id })
-// }
+/**
+ * 
+ * @param {*} id
+ * @todo check for result handling. 
+ */
+export const deleteWorkContractById = (id) => async (dispatch) => {
+  const res = await contractsService.deleteWorkContractById(id)
+  if(res.status === 200)
+    dispatch({ type: contractConstants.W_DELETE, data: id })
+}
 
 export const addWorkContract = (user, business) => async (dispatch) => {
-  console.log(user, business);
-  // const res = await contractsService.addWorkContract(user.id, business.id)
-  // if(res.status < 299)
-  //   dispatch({type: contractConstants.ADD_CONTRACT, data: { id: res.data.contract.id, user }})
+  const res = await contractsService.addWorkContract(business.business.id, user.id)
+  if(res.status < 299)
+    dispatch({type: contractConstants.ADD_W_CONTRACT, data: res.data})
 }

@@ -93,12 +93,23 @@ const addWorkContract = async (businessId, workerId, validityPeriod="2021-02-12"
     validityPeriod,
     processStatus: "0"
   }
-
   try {
     return await axios.post(`${baseUrl}/workcontracts/`, body, authHeader())
   } catch (error) {
     return Promise.reject(error.response)
   }
+}
+
+const fetchWorkContracts = async () => {
+  try {
+    return await axios.get(`${baseUrl}/workcontracts`, authHeader())
+  } catch (error) {
+    return Promise.reject(error.response)
+  }
+}
+
+const deleteWorkContractById = async (contractId) => {
+  return await axios.delete(`${baseUrl}/workcontracts/${contractId}`, authHeader())
 }
 
 export default {
@@ -108,5 +119,7 @@ export default {
   deleteBusinessContractById,
   fetchBusinessContracts,
   updateBusinessContract,
-  addWorkContract
+  addWorkContract,
+  fetchWorkContracts,
+  deleteWorkContractById,
 }

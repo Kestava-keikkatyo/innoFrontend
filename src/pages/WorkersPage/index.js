@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import WorkerSearch from './WorkerSearch'
 import SearchTable from './SearchTable'
 import WorkerModal from './WorkerModal'
+import CurrentWorkerTable from "./CurrentWorkerTable";
 
 import {
   Card,
@@ -69,6 +70,7 @@ const WorkersPage = () => {
           <Typography gutterBottom variant="h5" align="center">
             current workers
           </Typography>
+          <CurrentWorkerTable />
         </CardContent>
       </Card>
     </Container>

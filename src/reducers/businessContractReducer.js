@@ -20,23 +20,23 @@ const initialState = {
  */
 const businessContractReducer = (state = initialState, action) => {
   switch (action.type) {
-    case contractConstants.UPDATE:
+    case contractConstants.B_UPDATE:
       return {
         ...state,
         searchList: action.data
       }
-    case contractConstants.FETCH:
+    case contractConstants.B_FETCH:
       return {
         ...state,
         madeContracts: action.data
       }
-    case contractConstants.DELETE:
+    case contractConstants.B_DELETE:
       const filteredList = state.madeContracts.filter((value) => value.id !== action.data)
       return {
         ...state,
         madeContracts: filteredList
       }
-    case contractConstants.ADD_CONTRACT:
+    case contractConstants.ADD_B_CONTRACT:
       return {
         ...state,
         madeContracts: [...state.madeContracts, action.data]

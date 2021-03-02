@@ -3,17 +3,36 @@ import React, { useEffect } from 'react'
 import { Button, Container, Typography } from '@material-ui/core'
 import { DataGrid } from '@material-ui/data-grid';
 import { useDispatch, useSelector } from 'react-redux';
-import { activateBusinessContract, fetchDocuments } from '../../actions/documentActions';
+import { activateBusinessContract, fetchBusinessDocuments, fetchWorkDocuments } from '../../actions/documentActions';
 import Spacing from '../../components/Spacing';
+import { formatDate } from '../../utils/dateUtils';
 
 const DocumentHome = () => {
   const { businessContracts } = useSelector(state => state.document)
+  const { workContracts } = useSelector(state => state.document)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchDocuments())
+    dispatch(fetchBusinessDocuments())
+    dispatch(fetchWorkDocuments())
   }, [dispatch])
-
+  //id	Name	Email	Type	Status
+  const workColumns = [
+    // { field: 'id', headerName: 'ID', width: 250 },
+    { field: 'createdAt', headerName: 'Created at', width: 250 },
+    { field: 'agency', headerName: 'Agency', width: 250 },
+    { field: 'business', headerName: 'Business', width: 250, },
+    { field: 'user', headerName: 'User', width: 250, },
+    { 
+      field: 'validityPeriod',
+      headerName: 'Validity Period',
+      width: 200,
+      renderCell: (params) => 
+      <>
+        {formatDate(params.getValue('validityPeriod'))}
+      </>
+      },
+  ];
   const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
     { field: 'createdAt', headerName: 'Created at', width: 130 },
@@ -39,7 +58,6 @@ const DocumentHome = () => {
     },
   ];
 
-  console.log(businessContracts);
   return (
     <Container>
       <Typography variant="h4" color="secondary">Documents</Typography>
@@ -50,7 +68,7 @@ const DocumentHome = () => {
       <Spacing mv4/>
       <Typography variant="h5" color="textSecondary">Work contracts</Typography>
       <div style={{ height: 400, width: '100%' }}>
-        <DataGrid rows={businessContracts} columns={columns} pageSize={5} />
+        <DataGrid rows={workContracts} columns={workColumns} pageSize={5} />
       </div>
     </Container>
   )
