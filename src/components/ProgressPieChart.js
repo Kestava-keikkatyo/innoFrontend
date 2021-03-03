@@ -21,7 +21,24 @@ const options = {
 const data = {
   maintainAspectRatio: false,
   responsive: false,
-  labels: ["AVG: mood"],
+  // labels: ["AVG: mood"],
+};
+
+const ProgressPieChart = ({children, datasets}) => {
+  return (
+    <div style={styles.relative}>
+      {/**height to width ratio is 2:1 */}
+      <Doughnut height={150} width={300} data={{...data, datasets}} options={options}/>
+      <div style={styles.pieContainer}>
+        {children}
+      </div>
+      <div id="legend" />
+    </div>
+  );
+}
+
+ProgressPieChart.defaultProps = {
+  children: undefined,
   datasets: [
     {
       data: [4.5, 0.5],
@@ -29,19 +46,6 @@ const data = {
       // hoverBackgroundColor: 'blue',
     }
   ]
-};
-
-const ProgressPieChart = ({children}) => {
-  return (
-    <div style={styles.relative}>
-      {/**height to width ratio is 2:1 */}
-      <Doughnut height={150} width={300} data={data} options={options}/>
-      <div style={styles.pieContainer}>
-        {children}
-      </div>
-      <div id="legend" />
-    </div>
-  );
 }
 
 const styles = {

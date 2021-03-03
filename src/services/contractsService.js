@@ -70,9 +70,56 @@ const deleteBusinessContractById = async (contractId) => {
   return await axios.delete(`${baseUrl}/businesscontracts/${contractId}`, authHeader())
 }
 
+const fetchBusinessContracts = async () => {
+  try {
+    return await axios.get(`${baseUrl}/businesscontracts`, authHeader())
+  } catch (error) {
+    return Promise.reject(error.response)
+  }
+}
+
+const updateBusinessContract = async (id) => {
+  try {
+    return await axios.put(`${baseUrl}/businesscontracts/${id}`, {}, authHeader())
+  } catch (error) {
+    return Promise.reject(error.response)
+  }
+}
+
+const addWorkContract = async (businessId, workerId, validityPeriod="2021-02-12") => {
+  const body = {
+    businessId,
+    workerId,
+    validityPeriod,
+    processStatus: "0"
+  }
+  try {
+    return await axios.post(`${baseUrl}/workcontracts/`, body, authHeader())
+  } catch (error) {
+    return Promise.reject(error.response)
+  }
+}
+
+const fetchWorkContracts = async () => {
+  try {
+    return await axios.get(`${baseUrl}/workcontracts`, authHeader())
+  } catch (error) {
+    return Promise.reject(error.response)
+  }
+}
+
+const deleteWorkContractById = async (contractId) => {
+  return await axios.delete(`${baseUrl}/workcontracts/${contractId}`, authHeader())
+}
+
 export default {
   searchUsers,
   addBusinessContract,
   showBusinessContracts,
-  deleteBusinessContractById
+  deleteBusinessContractById,
+  fetchBusinessContracts,
+  updateBusinessContract,
+  addWorkContract,
+  fetchWorkContracts,
+  deleteWorkContractById,
 }

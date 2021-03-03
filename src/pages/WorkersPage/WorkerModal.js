@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import {
   Dialog,
@@ -15,9 +15,27 @@ import {
   FormControl
 } from '@material-ui/core'
 import { Close as CloseIcon } from '@material-ui/icons'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchBusinessContracts } from '../../actions/businessContractActions'
+import { addWorkContract } from '../../actions/workContractActions'
 
-const WorkerModal = ({ displayModal, closeModal, workerData }) => {
+const WorkerModal = ({ modalState, workerData }) => {
+  const {displayModal, setDisplayModal} = modalState
   const [business, setBusiness] = useState('')
+  const businessContracts = useSelector(state => state.businessContracts.madeContracts)
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchBusinessContracts())
+  }, [dispatch])
+
+  const submit = () => {
+    // if ((business.typeof !== "object") || (workerData.typeof !== "object")) return
+    dispatch(addWorkContract(workerData, business))
+    closeModal()
+  }
+
+  const closeModal = () => setDisplayModal(false)
 
   return (
     <Dialog open={displayModal} onClose={closeModal} fullWidth>
@@ -48,15 +66,15 @@ const WorkerModal = ({ displayModal, closeModal, workerData }) => {
               value={business}
               onChange={(event) => setBusiness(event.target.value)}
             >
-              <MenuItem value="business">business</MenuItem>
-              <MenuItem value="business2">business2</MenuItem>
-              <MenuItem value="business3">business3</MenuItem>
+              { businessContracts.filter(bc => bc.contractType === 'Business').map(bc => 
+                <MenuItem key={bc.id} value={bc}>{bc.business?.name}</MenuItem>
+              )}
             </Select>
           </FormControl>
         </div>
       </DialogContent>
       <DialogActions>
-        <Button onClick={closeModal} color="primary" variant="outlined">
+        <Button onClick={submit} color="primary" variant="outlined">
           Add worker
         </Button>
       </DialogActions>

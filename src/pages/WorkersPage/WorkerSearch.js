@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import {
   Box,
@@ -6,14 +6,21 @@ import {
   IconButton,
 } from '@material-ui/core'
 import { Search as SearchIcon } from '@material-ui/icons'
+import { updateSearchList } from '../../actions/workContractActions'
+import { useDispatch } from 'react-redux'
 
-const WorkerSearch = ({ fetchWorkers }) => {
+const WorkerSearch = () => {
+  const dispatch = useDispatch()
   const [input, setInput] = useState('')
+
+  useEffect(() => {
+    dispatch(updateSearchList('a'))
+  }, [dispatch])
 
   const handleSubmit = (event) => {
     event.preventDefault()
     if (input.length > 0) {
-      fetchWorkers(input)
+      dispatch(updateSearchList(input))
     }
   }
 

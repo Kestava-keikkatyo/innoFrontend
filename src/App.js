@@ -15,7 +15,7 @@ import DocumentPage from './pages/DocumentPage'
 import FormsPage from './pages/FormsPage'
 import WorkerStatistics from './pages/WorkerStatistics'
 
-import Role from './utils/role'
+import Role from './constants/role'
 
 import { CssBaseline } from '@material-ui/core'
 

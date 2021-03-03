@@ -10,8 +10,10 @@ import {
   IconButton
 } from '@material-ui/core'
 import { Add as AddIcon } from '@material-ui/icons'
+import { useSelector } from 'react-redux'
 
-const SearchTable = ({ workers, addWorker }) => {
+const SearchTable = ({ addWorker }) => {
+  const workers = useSelector(state => state.workContracts.searchList)
   return (
     <TableContainer>
       <Table aria-label="searched workers">

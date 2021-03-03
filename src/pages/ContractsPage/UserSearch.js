@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 import {
   Box,
@@ -13,10 +13,16 @@ import { Search as SearchIcon } from "@material-ui/icons"
 import { updateSearchList } from "../../actions/businessContractActions"
 import { useDispatch } from "react-redux"
 
+const INIT_SEARCH_TYPE = "worker"
+
 const UserSearch = () => {
   const dispatch = useDispatch()
   const [input, setInput] = useState("")
-  const [searchType, setSearchType] = useState("worker")
+  const [searchType, setSearchType] = useState(INIT_SEARCH_TYPE)
+
+  useEffect(() => {
+    dispatch(updateSearchList("a", INIT_SEARCH_TYPE))
+  }, [dispatch])
 
   const handleSubmit = (event) => {
     event.preventDefault()
