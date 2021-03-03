@@ -8,6 +8,7 @@ import workContractReducer from '../reducers/workContractReducer'
 import breadcrumbReducer from '../reducers/breadcrumbReducer'
 import feelingReducer from '../reducers/feelingReducer'
 import documentReducer from '../reducers/documentReducer'
+import formReducer from '../reducers/formReducer'
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -19,6 +20,7 @@ const reducer = combineReducers({
   breadcrumb: breadcrumbReducer,
   feeling: feelingReducer,
   document: documentReducer,
+  form: formReducer,
 })
 
 export default createStore(reducer, composeEnhancer(applyMiddleware(thunk)))
