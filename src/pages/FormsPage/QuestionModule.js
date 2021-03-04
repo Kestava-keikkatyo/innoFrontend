@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { removeQuestion, updateQuestion } from "../../actions/formActions"
 import { Divider, Button } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
@@ -23,13 +23,8 @@ const useStyles = makeStyles((theme) => ({
  */
 const QuestionModule = ({ questionIndex }) => {
   const classes = useStyles()
-  const [input, setInput] = useState()
-  const [option, setOption] = useState("text")
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(updateQuestion({ name: input, type: option }, questionIndex))
-  }, [input, option, questionIndex, dispatch])
+  const questions = useSelector((state) => state.form.currentForm.questions)
 
   return (
     <>
@@ -40,10 +35,28 @@ const QuestionModule = ({ questionIndex }) => {
           placeholder="Your question..."
           type="text"
           name="question"
-          onChange={(e) => setInput(e.target.value)}
+          value={questions[questionIndex].name}
+          onChange={(e) =>
+            dispatch(
+              updateQuestion(
+                { ...questions[questionIndex], name: e.target.value },
+                questionIndex
+              )
+            )
+          }
         />
         <label className={classes.header}>Choose</label>
-        <select value={option} onChange={(e) => setOption(e.target.value)}>
+        <select
+          value={questions[questionIndex].type}
+          onChange={(e) =>
+            dispatch(
+              updateQuestion(
+                { ...questions[questionIndex], type: e.target.value },
+                questionIndex
+              )
+            )
+          }
+        >
           {formConstants.fieldTypes.map((t) => (
             <option key={t.value} value={t.value}>
               {t.text}
