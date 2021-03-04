@@ -1,10 +1,10 @@
-import React, { useEffect } from "react"
-import { useState } from "react"
-import { useDispatch } from "react-redux"
+import React from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { removeQuestion, updateQuestion } from "../../actions/formActions"
-import { Divider, Button } from "@material-ui/core"
+import { Button } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import formConstants from "../../constants/formConstants"
+import ExpandableQuestionModule from "./ExpandableQuestionOptions"
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -20,17 +20,12 @@ const useStyles = makeStyles((theme) => ({
  * Module for displaying and handling user input in the form generation tool
  * @param {int} questionIndex - Index for the question in the array in the parent state.
  * @todo Add radiobutton group, radiobutton group inline, checkbox group
+ * @todo add options
  */
 const QuestionModule = ({ questionIndex }) => {
   const classes = useStyles()
-  const [input, setInput] = useState()
-  const [option, setOption] = useState("text")
+  const { questions } = useSelector(state => state.form.currentForm)
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(updateQuestion({ name: input, type: option }, questionIndex))
-  }, [input, option, questionIndex, dispatch])
-
   return (
     <>
       <div>
@@ -40,10 +35,13 @@ const QuestionModule = ({ questionIndex }) => {
           placeholder="Your question..."
           type="text"
           name="question"
-          onChange={(e) => setInput(e.target.value)}
+          value={questions[questionIndex].name}
+          onChange={({ target }) => dispatch(updateQuestion({ ...questions[questionIndex], name: target.value }, questionIndex))}
         />
         <label className={classes.header}>Choose</label>
-        <select value={option} onChange={(e) => setOption(e.target.value)}>
+        <select value={questions[questionIndex].type}
+        onChange={({ target }) => dispatch(updateQuestion({ ...questions[questionIndex], type: target.value }, questionIndex))}
+        >
           {formConstants.fieldTypes.map((t) => (
             <option key={t.value} value={t.value}>
               {t.text}
@@ -56,7 +54,7 @@ const QuestionModule = ({ questionIndex }) => {
         >
           Remove
         </Button>
-        <Divider></Divider>
+        <ExpandableQuestionModule index={questionIndex} />
       </div>
     </>
   )

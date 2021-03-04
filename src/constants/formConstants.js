@@ -1,3 +1,9 @@
+
+const comment = {
+  text: 'Comment',
+  value: 'comment'
+}
+
 const textField = {
   text: 'Textfield',
   value: 'textfield'
@@ -18,35 +24,30 @@ const checkBoxGroup = {
   value: 'checkbox-group'
 }
 
-const radioButton = {
-  text: 'Radiobutton',
-  value: 'radiobutton'
-}
-
 const radioButtonGroup = {
   text: 'Radiobutton group',
   value: 'radiobutton-group'
 }
 
 const radioButtonRow = {
-  text: 'Radiobutton inline group',
-  value: 'radiobutton-group-inline'
+  text: 'Radiobutton group row',
+  value: 'radiobutton-group-row'
 }
 
 export default {
+  comment,
   textField,
   textArea,
   checkBox,
   checkBoxGroup,
-  radioButton,
   radioButtonGroup,
   radioButtonRow,
   fieldTypes: [
+    comment,
     textField,
     textArea,
     checkBox,
     checkBoxGroup,
-    radioButton,
     radioButtonGroup,
     radioButtonRow,
   ]
