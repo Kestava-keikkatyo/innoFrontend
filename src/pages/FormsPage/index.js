@@ -20,7 +20,7 @@ import {
 } from "../../actions/formActions"
 
 const initialQuestion = {
-  name: "Type your question here.",
+  name: "",
   type: "text",
 }
 

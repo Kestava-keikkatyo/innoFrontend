@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import React from "react"
+=======
+import React, { useEffect } from "react"
+import { useState } from "react"
+>>>>>>> e7cb2338e3f5ce589ae4fb3755de748ebea04c12
 import { useDispatch, useSelector } from "react-redux"
 import { removeQuestion, updateQuestion } from "../../actions/formActions"
 import { Button } from "@material-ui/core"
@@ -24,8 +29,14 @@ const useStyles = makeStyles((theme) => ({
  */
 const QuestionModule = ({ questionIndex }) => {
   const classes = useStyles()
+<<<<<<< HEAD
   const { questions } = useSelector(state => state.form.currentForm)
   const dispatch = useDispatch()
+=======
+  const dispatch = useDispatch()
+  const questions = useSelector((state) => state.form.currentForm.questions)
+
+>>>>>>> e7cb2338e3f5ce589ae4fb3755de748ebea04c12
   return (
     <>
       <div>
@@ -36,11 +47,34 @@ const QuestionModule = ({ questionIndex }) => {
           type="text"
           name="question"
           value={questions[questionIndex].name}
+<<<<<<< HEAD
           onChange={({ target }) => dispatch(updateQuestion({ ...questions[questionIndex], name: target.value }, questionIndex))}
         />
         <label className={classes.header}>Choose</label>
         <select value={questions[questionIndex].type}
         onChange={({ target }) => dispatch(updateQuestion({ ...questions[questionIndex], type: target.value }, questionIndex))}
+=======
+          onChange={(e) =>
+            dispatch(
+              updateQuestion(
+                { ...questions[questionIndex], name: e.target.value },
+                questionIndex
+              )
+            )
+          }
+        />
+        <label className={classes.header}>Choose</label>
+        <select
+          value={questions[questionIndex].type}
+          onChange={(e) =>
+            dispatch(
+              updateQuestion(
+                { ...questions[questionIndex], type: e.target.value },
+                questionIndex
+              )
+            )
+          }
+>>>>>>> e7cb2338e3f5ce589ae4fb3755de748ebea04c12
         >
           {formConstants.fieldTypes.map((t) => (
             <option key={t.value} value={t.value}>
