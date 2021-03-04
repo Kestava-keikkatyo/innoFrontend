@@ -57,11 +57,11 @@ const App = () => {
         <PrivateRoute path="/contracts" roles={[Role.Agency]}>
           <ContractsPage />
         </PrivateRoute>
+        <PrivateRoute path="/forms/newform" roles={[Role.Agency]}>
+          <NewFormPage />
+        </PrivateRoute>
         <PrivateRoute path="/forms" roles={[Role.Agency]}>
           <FormsPage />
-        </PrivateRoute>
-        <PrivateRoute path="/newform" roles={[Role.Agency]}>
-          <NewFormPage />
         </PrivateRoute>
         <PrivateRoute path="/workers" roles={[Role.Business, Role.Agency]}>
           <WorkersPage />

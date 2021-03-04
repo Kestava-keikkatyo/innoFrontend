@@ -11,7 +11,7 @@ const FormsPage = () => {
     <>
       <Grid>
         <Grid item xs>
-          <Link to="/newform">
+          <Link to="/forms/newform">
             <InsertDriveFileIcon></InsertDriveFileIcon>
           </Link>
         </Grid>
