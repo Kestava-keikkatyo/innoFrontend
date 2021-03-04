@@ -42,6 +42,15 @@ export const updateQuestion = (question, index) => async (dispatch) => {
 }
 
 /**
+ * Removes the indicated question from the array.
+ * @function
+ * @param {int} index - Index of the question which is to be removed.
+ */
+export const removeQuestion = (index) => async (dispatch) => {
+  dispatch({ type: "REMOVE_QUESTION", data: index })
+}
+
+/**
  * Sets the description of the form.
  * @function
  * @param {string} description - Description of the form.
@@ -62,7 +71,6 @@ export const submitForm = (form) => async (dispatch) => {
   }
   //ugleeeeeh && karvalakki certified :--DD
   const result = form.questions.forEach((element) => {
-    console.log(element)
     if (!element.name || element.name === "") {
       dispatch(setAlert("Questions are required", "error"))
       return "error"
