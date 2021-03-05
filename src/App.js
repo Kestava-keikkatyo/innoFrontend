@@ -1,24 +1,24 @@
-import React, { useEffect } from 'react'
-import { Switch, Route, Redirect, useLocation } from 'react-router-dom'
+import React, { useEffect } from "react"
+import { Switch, Route, Redirect, useLocation } from "react-router-dom"
 
-import SnackbarNotification from './components/SnackbarNotification'
-import LandingPage from './pages/LandingPage'
-import HomePage from './pages/HomePage'
-import ProfilePage from './pages/ProfilePage'
-import WorkersPage from './pages/WorkersPage'
-import ContractsPage from './pages/ContractsPage'
-import PrivateRoute from './components/PrivateRoute'
-import ProcessPage from './pages/ProcessPage'
-import TasksPage from './pages/TaskPage'
-import MessagePage from './pages/MessagePage'
-import DocumentPage from './pages/DocumentPage'
-import FormsPage from './pages/FormsPage'
-import WorkerStatistics from './pages/WorkerStatistics'
+import SnackbarNotification from "./components/SnackbarNotification"
+import LandingPage from "./pages/LandingPage"
+import HomePage from "./pages/HomePage"
+import ProfilePage from "./pages/ProfilePage"
+import WorkersPage from "./pages/WorkersPage"
+import ContractsPage from "./pages/ContractsPage"
+import PrivateRoute from "./components/PrivateRoute"
+import ProcessPage from "./pages/ProcessPage"
+import TasksPage from "./pages/TaskPage"
+import MessagePage from "./pages/MessagePage"
+import DocumentPage from "./pages/DocumentPage"
+import FormsPage from "./pages/FormsPage"
+import WorkerStatistics from "./pages/WorkerStatistics"
 
-import Role from './constants/role'
+import Role from "./constants/role"
 
-import { CssBaseline } from '@material-ui/core'
-
+import { CssBaseline } from "@material-ui/core"
+import NewFormPage from "./pages/FormsPage/NewFormPage"
 
 /**
  * App component, main react component which acts as a container for all the other components.
@@ -36,35 +36,37 @@ const App = () => {
         <Route exact path="/login">
           <LandingPage />
         </Route>
-        
-        <PrivateRoute path="/profile" >
+        <PrivateRoute path="/profile">
           <ProfilePage />
         </PrivateRoute>
-        <PrivateRoute path="/tasks" >
+        <PrivateRoute path="/tasks">
           <TasksPage />
         </PrivateRoute>
-        <PrivateRoute path="/messages" >
+        <PrivateRoute path="/messages">
           <MessagePage />
         </PrivateRoute>
-        <PrivateRoute path="/documents" >
+        <PrivateRoute path="/documents">
           <DocumentPage />
         </PrivateRoute>
-        <PrivateRoute path="/process" roles={[Role.Worker]} >
+        <PrivateRoute path="/process" roles={[Role.Worker]}>
           <ProcessPage />
         </PrivateRoute>
-        <PrivateRoute path="/fiilismittari" roles={[Role.Worker]} >
+        <PrivateRoute path="/fiilismittari" roles={[Role.Worker]}>
           <WorkerStatistics />
         </PrivateRoute>
-        <PrivateRoute path="/contracts" roles={[Role.Agency]} >
+        <PrivateRoute path="/contracts" roles={[Role.Agency]}>
           <ContractsPage />
         </PrivateRoute>
-        <PrivateRoute path="/forms" roles={[Role.Agency]} >
+        <PrivateRoute path="/forms/newform" roles={[Role.Agency]}>
+          <NewFormPage />
+        </PrivateRoute>
+        <PrivateRoute path="/forms" roles={[Role.Agency]}>
           <FormsPage />
         </PrivateRoute>
-        <PrivateRoute path="/workers" roles={[Role.Business, Role.Agency]} >
+        <PrivateRoute path="/workers" roles={[Role.Business, Role.Agency]}>
           <WorkersPage />
         </PrivateRoute>
-        <PrivateRoute path="/" >
+        <PrivateRoute path="/">
           <HomePage />
         </PrivateRoute>
         <Redirect from="*" to="/login" />

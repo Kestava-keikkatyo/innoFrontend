@@ -1,86 +1,69 @@
 import React from "react"
-import QuestionModule from "./QuestionModule"
-import { useDispatch, useSelector } from "react-redux"
-
+import { Link } from "react-router-dom"
 import {
-  Button,
-  Container,
-  makeStyles,
+  Grid,
+  Card,
+  CardHeader,
+  Fab,
+  CardContent,
+  Typography,
 } from "@material-ui/core"
+import { InsertDriveFile as InsertDriveFileIcon } from "@material-ui/icons"
+import { makeStyles } from "@material-ui/core/styles"
+import { AddIcon } from "@material-ui/data-grid"
 
-import {
-  setTitle,
-  addQuestion,
-  setDescription,
-  submitForm,
-} from "../../actions/formActions"
-import CustomFormInput from "./CustomFormInput"
-import NewFormHeader from "./NewFormHeader"
-
-const initialQuestion = {
-  name: "",
-  type: "text",
-  subTitle: "",
-  scaleOptionTitleLeft: "",
-  scaleOptionTitleCenter: "",
-  scaleOptionTitleRight: "",
-  minLen: 0,
-  maxLen: 1000,
-  rowHeight: 4,
-  scale: 5,
-  optional: false,
-  options: []
-}
 /**
- * @use This is the Form Generator tool. Page for creating forms that corporate users can fill, see the documents in Google Drive by TTK.
- * @todo Roles visibility in this section? Worker able to see forms that reference them? How to pass the object with module types with questions attached to each?
- * @todo Fix the test form display, maybe button that "peeks" at the form?
- * @todo Make a preview button and view.
- * @todo Could user be able to import a ready made template from a pdf and the tool automatically generates a form?
+ * This is ugly for the time being.
+ * @todo map existing templates from a directory into the grids for preview.
  */
 const FormsPage = () => {
-  const classes = useStyles()
-  const dispatch = useDispatch()
-  const { currentForm } = useSelector((state) => state.form)
-  const { questions } = useSelector((state) => state.form.currentForm)
-
-  const addForm = (event) => {
-    event.preventDefault()
-    dispatch(submitForm(currentForm))
-  }
-
   return (
-    <Container className={classes.card} variant="outlined">
-      <form onSubmit={(e) => addForm(e, currentForm.title, currentForm.description)}>
-      <NewFormHeader />
-      <div className="create-form" >
-        <CustomFormInput
-          label="Form Title"
-          placeholder="Your title..."
-          type="text"
-          name="title"
-          value={currentForm.title}
-          onChange={({ target }) => dispatch(setTitle(target.value))}
-        />
-        <CustomFormInput
-          label="Description"
-          placeholder="Your description..."
-          type="text"
-          name="title"
-          value={currentForm.description}
-          onChange={({ target }) => dispatch(setDescription(target.value))}
-        />
-        <div>
-          {questions.map((e, i) => (
-            <QuestionModule key={i} questionIndex={i} />
-          ))}
-        </div>
-        <Button onClick={() => dispatch(addQuestion(initialQuestion))}>
-          Add Question
-        </Button>
-        </div>
-      </form>
-    </Container>
+    <>
+      <Grid
+        spacing={8}
+        justify="center"
+        alignItems="center"
+        container
+        direction="row"
+        mt={5}
+      >
+        <Grid item>
+          <Link to="/forms/newform">
+            <Fab size="medium" color="primary" aria-label="add">
+              <AddIcon />
+            </Fab>
+          </Link>
+        </Grid>
+        <Grid item>
+          <Card variant="outlined">
+            <CardContent style={{ padding: "10%" }}>
+              <Typography color="textSecondary">This is a template</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item>
+          <Card variant="outlined">
+            <CardContent style={{ padding: "10%" }}>
+              <Typography color="textSecondary">This is a template</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item>
+          <Card variant="outlined">
+            <CardContent style={{ padding: "10%" }}>
+              <Typography color="textSecondary">This is a template</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item>
+          <Card variant="outlined">
+            <CardContent style={{ padding: "10%" }}>
+              <Typography color="textSecondary">This is a template</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+    </>
   )
 }
 
