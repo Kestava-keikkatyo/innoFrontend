@@ -19,13 +19,15 @@ const initialState = {
  * @param {Object} action - dispatched action
  */
 const formReducer = (state = initialState, action) => {
-  switch (action.type) {
+  const { data, type } = action
+  let temp
+  switch (type) {
     case "UPDATE_TITLE":
       return {
         ...state,
         currentForm: {
           ...state.currentForm,
-          title: action.data,
+          title: data,
         },
       }
     case "SET_DESCRIPTION":
@@ -33,7 +35,7 @@ const formReducer = (state = initialState, action) => {
         ...state,
         currentForm: {
           ...state.currentForm,
-          description: action.data,
+          description: data,
         },
       }
     case "ADD_QUESTION":
@@ -41,12 +43,12 @@ const formReducer = (state = initialState, action) => {
         ...state,
         currentForm: {
           ...state.currentForm,
-          questions: [...state.currentForm.questions, action.data],
+          questions: [...state.currentForm.questions, data],
         },
       }
     case "UPDATE_QUESTION":
-      let temp = state.currentForm.questions
-      temp[action.data.index] = action.data.question
+      temp = state.currentForm.questions
+      temp[data.index] = data.question
       return {
         ...state,
         currentForm: {
@@ -54,27 +56,42 @@ const formReducer = (state = initialState, action) => {
           questions: temp,
         },
       }
-
-    case "REMOVE_QUESTION":
-      console.log("REMOVE CALLED")
-      console.log(action.data)
-      let temp1 = state.currentForm.questions
-      temp1.splice(action.data, 1)
-      console.log(temp1)
+    case "UPDATE_QUESTION_OPTION":
+      temp = state.currentForm.questions
+      temp[data.questionIndex].options[data.optionIndex] = data.option
       return {
         ...state,
         currentForm: {
           ...state.currentForm,
-          questions: temp1,
+          questions: temp,
         },
       }
-
+    case "REMOVE_QUESTION":
+      temp = state.currentForm.questions
+      temp.splice(data, 1)
+      return {
+        ...state,
+        currentForm: {
+          ...state.currentForm,
+          questions: temp,
+        },
+      }
+    case "REMOVE_OPTION":
+      temp = state.currentForm.questions
+      temp[data.questionIndex].options.splice(data.optionIndex, 1)
+      return {
+        ...state,
+        currentForm: {
+          ...state.currentForm,
+          questions: temp
+        },
+      }
     case "SET_QUESTIONS":
       return {
         ...state,
         currentForm: {
           ...state.currentForm,
-          questions: action.data,
+          questions: data,
         },
       }
     case "CLEAR_CURRENT_FORM":

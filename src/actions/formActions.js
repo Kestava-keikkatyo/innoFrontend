@@ -41,6 +41,11 @@ export const updateQuestion = (question, index) => async (dispatch) => {
   dispatch({ type: "UPDATE_QUESTION", data: { question, index } })
 }
 
+export const updateQuestionOption = ( option, questionIndex, optionIndex ) => async (dispatch) => {
+  console.log(option, questionIndex, optionIndex);
+  dispatch({ type: "UPDATE_QUESTION_OPTION", data: { option, questionIndex, optionIndex } })
+}
+
 /**
  * Removes the indicated question from the array.
  * @function
@@ -48,6 +53,16 @@ export const updateQuestion = (question, index) => async (dispatch) => {
  */
 export const removeQuestion = (index) => async (dispatch) => {
   dispatch({ type: "REMOVE_QUESTION", data: index })
+}
+
+/**
+ * Removes the indicated option from the array.
+ * @function
+ * @param {int} questionIndex - Index of the question which is removed option.
+ * @param {int} optionIndex - Index of the option which is to be removed.
+ */
+export const removeOption = (questionIndex, optionIndex) => async (dispatch) => {
+  dispatch({ type: "REMOVE_OPTION", data: {questionIndex, optionIndex} })
 }
 
 /**

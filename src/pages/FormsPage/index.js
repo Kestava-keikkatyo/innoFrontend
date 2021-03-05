@@ -4,11 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 
 import {
   Button,
-  Card,
   Container,
-  Divider,
-  CardContent,
-  Typography,
   makeStyles,
 } from "@material-ui/core"
 
@@ -18,31 +14,23 @@ import {
   setDescription,
   submitForm,
 } from "../../actions/formActions"
+import CustomFormInput from "./CustomFormInput"
+import NewFormHeader from "./NewFormHeader"
 
 const initialQuestion = {
   name: "",
   type: "text",
+  subTitle: "",
+  scaleOptionTitleLeft: "",
+  scaleOptionTitleCenter: "",
+  scaleOptionTitleRight: "",
+  minLen: 0,
+  maxLen: 1000,
+  rowHeight: 4,
+  scale: 5,
+  optional: false,
+  options: []
 }
-
-const useStyles = makeStyles((theme) => ({
-  card: {
-    margin: theme.spacing(2, 0),
-    display: "grid",
-  },
-  header: {
-    margin: theme.spacing(2, 0),
-    fontSize: 15,
-    color: "#A9A9A9",
-    align: "center",
-    display: "grid-inline",
-  },
-  field: {
-    margin: theme.spacing(2, 0),
-    display: "grid",
-    width: "60%",
-  },
-}))
-
 /**
  * @use This is the Form Generator tool. Page for creating forms that corporate users can fill, see the documents in Google Drive by TTK.
  * @todo Roles visibility in this section? Worker able to see forms that reference them? How to pass the object with module types with questions attached to each?
@@ -62,57 +50,41 @@ const FormsPage = () => {
   }
 
   return (
-    <Container>
-      <Typography align="center" variant="h4">
-        Forms
-      </Typography>
-      <form
-        onSubmit={(e) => addForm(e, currentForm.title, currentForm.description)}
-      >
-        <input
-          style={{ align: "left", display: "grid" }}
-          type="submit"
-          value="Submit"
+    <Container className={classes.card} variant="outlined">
+      <form onSubmit={(e) => addForm(e, currentForm.title, currentForm.description)}>
+      <NewFormHeader />
+      <div className="create-form" >
+        <CustomFormInput
+          label="Form Title"
+          placeholder="Your title..."
+          type="text"
+          name="title"
+          value={currentForm.title}
+          onChange={({ target }) => dispatch(setTitle(target.value))}
         />
-        <Card className={classes.card} variant="outlined">
-          <CardContent align="center">
-            <Typography align="center" variant="h4">
-              Generation tool
-            </Typography>
-            <Typography style={{ padding: "1rem" }} variant="h6" align="center">
-              Add modules attached to questions:
-            </Typography>
-            <label className={classes.header}>Form Title</label>
-            <input
-              className={classes.field}
-              placeholder="Your title..."
-              type="text"
-              name="title"
-              value={currentForm.title}
-              onChange={({ target }) => dispatch(setTitle(target.value))}
-            />
-            <input
-              className={classes.field}
-              placeholder="Your description..."
-              type="text"
-              name="title"
-              value={currentForm.description}
-              onChange={({ target }) => dispatch(setDescription(target.value))}
-            />
-            <div>
-              {questions.map((e, i) => (
-                <QuestionModule key={i} questionIndex={i} />
-              ))}
-            </div>
-            <Button onClick={() => dispatch(addQuestion(initialQuestion))}>
-              Add Question
-            </Button>
-          </CardContent>
-        </Card>
+        <CustomFormInput
+          label="Description"
+          placeholder="Your description..."
+          type="text"
+          name="title"
+          value={currentForm.description}
+          onChange={({ target }) => dispatch(setDescription(target.value))}
+        />
+        <div>
+          {questions.map((e, i) => (
+            <QuestionModule key={i} questionIndex={i} />
+          ))}
+        </div>
+        <Button onClick={() => dispatch(addQuestion(initialQuestion))}>
+          Add Question
+        </Button>
+        </div>
       </form>
-      <Divider />
     </Container>
   )
 }
+
+const useStyles = makeStyles((theme) => ({
+}))
 
 export default FormsPage
