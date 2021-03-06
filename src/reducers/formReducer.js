@@ -22,6 +22,11 @@ const formReducer = (state = initialState, action) => {
   const { data, type } = action
   let temp
   switch (type) {
+    case "SET_CURRENT_FORM":
+      return {
+        ...state,
+        currentForm: data
+      }
     case "UPDATE_TITLE":
       return {
         ...state,

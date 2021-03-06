@@ -5,6 +5,21 @@
 import { setAlert } from "./alertActions"
 
 /**
+ * Replaces the currentForm with the data imported from file systems
+ * @function
+ * @param {string} title - Form title.
+ * @todo add validation
+ */
+export const importForm = (file) => async (dispatch) => {
+  let fr = new FileReader()
+  fr.onloadend = e => {
+    const data = JSON.parse(fr.result)
+    dispatch({ type: "SET_CURRENT_FORM", data })
+  }
+  fr.readAsText(file)
+}
+
+/**
  * Updates the title of the generated form
  * @function
  * @param {string} title - Form title.

@@ -51,6 +51,7 @@ const QuestionModule = ({ questionIndex }) => {
       <Grid container>
         <Grid item xs={8}>
           <CustomFormInput
+            labelFontSize="large"
             label={`Question: ${questionIndex}`}
             placeholder="Your question..."
             type="text"
