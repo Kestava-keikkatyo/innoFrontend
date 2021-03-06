@@ -19,6 +19,7 @@ import Role from "./constants/role"
 
 import { CssBaseline } from "@material-ui/core"
 import NewFormPage from "./pages/FormsPage/NewFormPage"
+import FormPreviewPage from "./pages/FormPreviewPage"
 
 /**
  * App component, main react component which acts as a container for all the other components.
@@ -57,10 +58,13 @@ const App = () => {
         <PrivateRoute path="/contracts" roles={[Role.Agency]}>
           <ContractsPage />
         </PrivateRoute>
-        <PrivateRoute path="/forms/newform" roles={[Role.Agency]}>
+        <PrivateRoute path="/forms/newform/preview" roles={[Role.Business, Role.Agency]}>
+          <FormPreviewPage />
+        </PrivateRoute>
+        <PrivateRoute path="/forms/newform" roles={[Role.Business, Role.Agency]}>
           <NewFormPage />
         </PrivateRoute>
-        <PrivateRoute path="/forms" roles={[Role.Agency]}>
+        <PrivateRoute path="/forms" roles={[Role.Business, Role.Agency]}>
           <FormsPage />
         </PrivateRoute>
         <PrivateRoute path="/workers" roles={[Role.Business, Role.Agency]}>

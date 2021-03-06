@@ -1,6 +1,7 @@
 import { Button, Grid, Typography } from '@material-ui/core';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { importForm } from '../../actions/formActions';
 import FileUploader from '../../components/FileUploader';
 
@@ -12,13 +13,17 @@ const NewFormHeader = () => {
     justify="space-between">
       <Grid item xs={6}>
         <Typography variant="h4" color="secondary" >
-          Form Creation
+          Form Editor
         </Typography>
       </Grid>
       <Grid item xs={6} >
         <Grid container direction="row-reverse">
-          <Button>Preview</Button>
-          <Button>Submit</Button>
+          <Button>
+            <Link to="/forms/newform/preview">Preview</Link>
+          </Button>
+          <Button>
+            Submit
+          </Button>
           <FileUploader accept="data:text/json" handleFile={(data) => dispatch(importForm(data))}>
             Import
           </FileUploader>

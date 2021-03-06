@@ -68,12 +68,12 @@ const QuestionModule = ({ questionIndex }) => {
           />
         </Grid>
         <Grid item xs={4}>
-        <Grid
-          style={{ paddingTop: 4 }}
-          container
-          direction="column"
-          justify="flex-end"
-          alignItems="flex-end" >
+          <Grid
+            style={{ paddingTop: 4 }}
+            container
+            direction="column"
+            justify="flex-end"
+            alignItems="flex-end" >
             <Button style={{ color: "red" }}
               onClick={() => dispatch(removeQuestion(questionIndex))} >
               Remove
