@@ -1,20 +1,14 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import {
-  Grid,
-  Card,
-  // CardHeader,
-  Fab,
-  CardContent,
-  Typography,
-} from "@material-ui/core"
-// import { InsertDriveFile as InsertDriveFileIcon } from "@material-ui/icons"
-// import { makeStyles } from "@material-ui/core/styles"
+import testFormConstants from "../../constants/testFormConstants"
+import { Grid, Card, Fab, CardContent, Typography } from "@material-ui/core"
 import { AddIcon } from "@material-ui/data-grid"
+import GridFormPreview from "./GridFormPreview"
 
 /**
  * This is ugly for the time being.
  * @todo map existing templates from a directory into the grids for preview.
+ * @todo OnHover preview, pip for every node? So onMouseEnter renders an image(?) of the finished pdf(?)
  */
 const FormsPage = () => {
   return (
@@ -34,6 +28,14 @@ const FormsPage = () => {
             </Fab>
           </Link>
         </Grid>
+        {testFormConstants.map((t) => (
+          <GridFormPreview
+            item
+            key={t.value}
+            formTitle={t.title}
+            formDesc={t.description}
+          />
+        ))}
         <Grid item>
           <Card variant="outlined">
             <CardContent style={{ padding: "10%" }}>
