@@ -1,42 +1,32 @@
-import { FormControl, FormControlLabel, FormGroup, FormLabel, Radio, Typography } from '@material-ui/core';
+import { FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, Radio, Typography } from '@material-ui/core';
 import React from 'react';
 
-const FormRadio = () => {
-  const [state, setState] = React.useState({
-    choclate: true,
-    vanilla: false,
-    strawberry: false,
-  });
+const FormRadio = ({ question }) => {
+  const { name, subTitle, options } = question
+  const [state, setState] = React.useState(
+    options.map(name => {
+      return { name, value: false }
+    })
+  )
 
-  const handleRadioChange = (event) => {
-    setState({
-      choclate: false,
-      vanilla: false,
-      strawberry: false, [event.target.name]: event.target.checked });
+  const handleChange = (index) => {
+    setState(state.map((o, i) => i === index ? { ...o, value: true }: { ...o, value: false } ))
   }
-
-  const { choclate, vanilla, strawberry } = state;
   
   return ( 
     <>
-      <Typography variant="h6" >5. Whats your favourite ice cream.</Typography>
+      <Typography variant="h6" >{ name }</Typography>
       <FormControl component="fieldset">
-        <FormLabel component="legend">5. Which of these ice creams do you like.</FormLabel>
+        <FormLabel component="legend">{ name }</FormLabel>
         <FormGroup>
-          <FormControlLabel
-            control={<Radio checked={choclate} onChange={handleRadioChange} name="choclate" />}
-            label="Choclate"
+        { state.map((o, i) =>
+          <FormControlLabel key={i}
+            control={<Radio checked={o.value} onChange={() => handleChange(i)} name={o.name} />}
+            label={o.name}
           />
-          <FormControlLabel
-            control={<Radio checked={vanilla} onChange={handleRadioChange} name="vanilla" />}
-            label="Vanilla"
-          />
-          <FormControlLabel
-            control={<Radio checked={strawberry} onChange={handleRadioChange} name="strawberry" />}
-            label="Strawberry"
-          />
+        )}
         </FormGroup>
-        {/* <FormHelperText>Be careful</FormHelperText> */}
+        <FormHelperText>{ subTitle }</FormHelperText>
       </FormControl>
     </>
    )
