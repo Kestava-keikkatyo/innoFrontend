@@ -8,9 +8,10 @@ export default (path) => {
   nameList = nameList.filter(e => e !== "")
   let p = ""
   nameList.forEach(e => {
+    p=p+"/"+e
     list.push({
       name: capitalizeFirstLetter(e),
-      link: p+"/"+e
+      link: p
     })
   });
   return list

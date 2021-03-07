@@ -1,5 +1,6 @@
-import { Button, Grid, Link, Typography } from '@material-ui/core';
+import { Button, Grid, Typography } from '@material-ui/core';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const FormPreviewHeader = ({ _ }) => {
   return (
