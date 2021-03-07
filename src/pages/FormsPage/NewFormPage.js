@@ -16,9 +16,12 @@ import {
 import CustomFormInput from "./CustomFormInput"
 import NewFormHeader from "./NewFormHeader"
 
+/**
+ * @todo move to constants
+ */
 const initialQuestion = {
   name: "",
-  type: "text",
+  type: "comment",
   subTitle: "",
   scaleOptionTitleLeft: "",
   scaleOptionTitleCenter: "",

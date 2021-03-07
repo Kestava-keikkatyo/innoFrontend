@@ -1,10 +1,11 @@
 import { Input, Typography } from '@material-ui/core'
 import React from 'react'
 
-const FormText = () => {
+const FormText = ({ question }) => {
+  const { name } = question
   return ( 
     <>
-      <Typography variant="h6" >1. First question skidmark. Whats your favourite cow breed.</Typography>
+      <Typography variant="h6" >{ name }</Typography>
       <Input />
     </>
    )

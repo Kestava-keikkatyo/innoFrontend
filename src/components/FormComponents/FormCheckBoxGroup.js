@@ -1,40 +1,34 @@
-import { Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Typography } from '@material-ui/core'
+import { Checkbox, FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, Typography } from '@material-ui/core'
 import React from 'react'
 
-const FormCheckBoxGroup = () => {
-  const [state, setState] = React.useState({
-    choclate: true,
-    vanilla: false,
-    strawberry: false,
-  });
+const FormCheckBoxGroup = ({ question }) => {
+  const { name, subTitle, options } = question
+  const [state, setState] = React.useState(
+    options.map(name => {
+      return { name, value: false }
+    })
+  )
 
-  const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
+  const handleChange = (index) => {
+    setState(state.map((o, i) => i === index ? { ...o, value: !o.value }: o ))
   };
 
-  const { choclate, vanilla, strawberry } = state;
-  const error = [choclate, vanilla, strawberry].filter((v) => v).length !== 2;
-  
+  // const error = [choclate, vanilla, strawberry].filter((v) => v).length !== 2;
+  // required error={error}
   return ( 
     <>
-      <Typography variant="h6" >4. Whats your favourite ice cream.</Typography>
-        <FormControl component="fieldset" required error={error}>
-        <FormLabel component="legend">4. Which of these ice creams do you like.</FormLabel>
+      <Typography variant="h6" >{ name }</Typography>
+        <FormControl component="fieldset" >
+        <FormLabel component="legend">{ name }</FormLabel>
         <FormGroup>
-          <FormControlLabel
-            control={<Checkbox checked={choclate} onChange={handleChange} name="choclate" />}
-            label="Choclate"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={vanilla} onChange={handleChange} name="vanilla" />}
-            label="Vanilla"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={strawberry} onChange={handleChange} name="strawberry" />}
-            label="Strawberry"
-          />
+          { state.map((o, i) =>
+            <FormControlLabel key={o.name}
+              control={<Checkbox checked={o.value} onChange={() => handleChange(i)} name={o.name} />}
+              label={o.name}
+            />
+          )}
         </FormGroup>
-        {/* <FormHelperText>Be careful</FormHelperText> */}
+        <FormHelperText>{ subTitle }</FormHelperText>
       </FormControl>
     </>
    )

@@ -3,6 +3,7 @@
  * @module actions/formActions
  */
 import { setAlert } from "./alertActions"
+import raw from '../forms/initForm.json';
 
 /**
  * Replaces the currentForm with the data imported from file systems
@@ -17,6 +18,10 @@ export const importForm = (file) => async (dispatch) => {
     dispatch({ type: "SET_CURRENT_FORM", data })
   }
   fr.readAsText(file)
+}
+
+export const importFormByPath = (path) => async (dispatch) => {
+  dispatch({ type: "SET_CURRENT_FORM", data: raw })
 }
 
 /**

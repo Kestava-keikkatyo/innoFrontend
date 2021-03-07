@@ -1,12 +1,13 @@
 import { TextField, Typography } from '@material-ui/core'
 import React from 'react'
 
-const FormTextArea = () => {
+const FormTextArea = ({ question }) => {
+  const { name, rowHeight } = question
   return ( 
     <>
-      <Typography variant="h6" >2. Write an essay of your life.</Typography>
+      <Typography variant="h6" >{ name }</Typography>
       <Typography variant="body1" >This is an optional sub for questions fyi.</Typography>
-      <TextField multiline rows={4} variant="outlined"/>
+      <TextField multiline rows={rowHeight} variant="outlined"/>
     </>
    )
 }
