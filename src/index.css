@@ -185,3 +185,64 @@ code {
 .radio-side-label {
   margin: auto 0 0 0;
 }
+
+.customFormInputDiv {
+  font: inherit;
+  width: 100%;
+  border: 0;
+  margin: 0;
+  display: block;
+  padding: 6px 0 7px;
+}
+
+.customFormInput {
+  font-size: large;
+  width: 100%;
+  border: 1px solid #999;
+  background-color: lemonchiffon !important;
+  border-radius: 2px;
+  padding: .5rem;
+  display: block;
+}
+
+.customFormLabel {
+  color: gray;
+  width: 100%;
+  border: 0;
+  margin: 0;
+  display: block;
+}
+
+.fontsmall {
+  font-size: x-small;
+}
+
+.fontmedium {
+  font-size: medium;
+}
+
+.fontlarge {
+  font-size: x-large;
+}
+
+.create-form {
+  background-color: white;
+  margin: 1rem 0 !important;
+  padding: 2rem 1rem;
+  border-radius: .5rem;
+  border: 1px solid rgba(200, 200, 200, 150);
+  -webkit-box-shadow: 5px 5px 10px -2px rgba(0,0,0,0.4); 
+  box-shadow: 5px 5px 10px -2px rgba(0,0,0,0.4);
+}
+
+.label-type {
+  top: -1.5rem;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}

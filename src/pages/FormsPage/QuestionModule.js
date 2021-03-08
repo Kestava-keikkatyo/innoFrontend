@@ -1,21 +1,41 @@
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { removeQuestion, updateQuestion } from "../../actions/formActions"
-import { Button } from "@material-ui/core"
-import { makeStyles } from "@material-ui/core/styles"
+import { Button, Grid } from "@material-ui/core"
 import formConstants from "../../constants/formConstants"
 import ExpandableQuestionModule from "./ExpandableQuestionOptions"
+import AddOptionsModule from "./AddOptionsModule"
+import CustomFormInput from "./CustomFormInput"
+import Spacing from "../../components/Spacing";
 
-const useStyles = makeStyles((theme) => ({
-  header: {
-    margin: theme.spacing(1, 0),
-    color: "#A9A9A9",
-    align: "center",
-    padding: "1rem",
-    display: "inline-grid",
-  },
-}))
-
+const TypeDropDown = ({index}) => {
+  const dispatch = useDispatch()
+  const questions = useSelector((state) => state.form.currentForm.questions)
+  return ( 
+  <Spacing ph4 className="relative" style={{ width: "100%" }}>
+    <label className="absolute label-type">Question type</label>
+    <select
+      className="customFormInput"
+      value={questions[index].type}
+      onChange={(e) =>
+        dispatch(
+          updateQuestion(
+            { ...questions[index], type: e.target.value },
+            index
+          )
+        )
+      }
+    >
+      {formConstants.fieldTypes.map((t) => (
+        <option key={t.value} value={t.value}>
+          {t.text}
+        </option>
+      ))}
+    </select>
+  </Spacing> 
+  );
+}
+ 
 /**
  * Module for displaying and handling user input in the form generation tool
  * @param {int} questionIndex - Index for the question in the array in the parent state.
@@ -23,56 +43,50 @@ const useStyles = makeStyles((theme) => ({
  * @todo add options
  */
 const QuestionModule = ({ questionIndex }) => {
-  const classes = useStyles()
   const dispatch = useDispatch()
   const questions = useSelector((state) => state.form.currentForm.questions)
 
   return (
     <>
-      <div>
-        <label className={classes.header}>Question: {questionIndex}</label>
-        <input
-          style={{ width: "50%" }}
-          placeholder="Your question..."
-          type="text"
-          name="question"
-          value={questions[questionIndex].name}
-          onChange={(e) =>
-            dispatch(
-              updateQuestion(
-                { ...questions[questionIndex], name: e.target.value },
-                questionIndex
+      <Grid container>
+        <Grid item xs={8}>
+          <CustomFormInput
+            labelFontSize="large"
+            label={`Question: ${questionIndex}`}
+            placeholder="Your question..."
+            type="text"
+            name="question"
+            value={questions[questionIndex].name}
+            onChange={(e) =>
+              dispatch(
+                updateQuestion(
+                  { ...questions[questionIndex], name: e.target.value },
+                  questionIndex
+                )
               )
-            )
-          }
-        />
-        <label className={classes.header}>Choose</label>
-        <select
-          value={questions[questionIndex].type}
-          onChange={(e) =>
-            dispatch(
-              updateQuestion(
-                { ...questions[questionIndex], type: e.target.value },
-                questionIndex
-              )
-            )
-          }
-        >
-          {formConstants.fieldTypes.map((t) => (
-            <option key={t.value} value={t.value}>
-              {t.text}
-            </option>
-          ))}
-        </select>
-        <Button
-          style={{ color: "red" }}
-          onClick={() => dispatch(removeQuestion(questionIndex))}
-        >
-          Remove
-        </Button>
+            }
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <Grid
+            style={{ paddingTop: 4 }}
+            container
+            direction="column"
+            justify="flex-end"
+            alignItems="flex-end" >
+            <Button style={{ color: "red" }}
+              onClick={() => dispatch(removeQuestion(questionIndex))} >
+              Remove
+            </Button>
+            <TypeDropDown index={questionIndex} />
+          </Grid>
+        </Grid>
+        { questions[questionIndex].type.includes("group") &&
+          <AddOptionsModule index={questionIndex} /> }
         <ExpandableQuestionModule index={questionIndex} />
-      </div>
+      </Grid>
     </>
   )
 }
+
 export default QuestionModule

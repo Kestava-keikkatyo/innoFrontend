@@ -1,118 +1,75 @@
 import React from "react"
-import QuestionModule from "./QuestionModule"
-import { useDispatch, useSelector } from "react-redux"
-
-import {
-  Button,
-  Card,
-  Container,
-  Divider,
-  CardContent,
-  Typography,
-  makeStyles,
-} from "@material-ui/core"
-
-import {
-  setTitle,
-  addQuestion,
-  setDescription,
-  submitForm,
-} from "../../actions/formActions"
-
-const initialQuestion = {
-  name: "",
-  type: "text",
-}
-
-const useStyles = makeStyles((theme) => ({
-  card: {
-    margin: theme.spacing(2, 0),
-    display: "grid",
-  },
-  header: {
-    margin: theme.spacing(2, 0),
-    fontSize: 15,
-    color: "#A9A9A9",
-    align: "center",
-    display: "grid-inline",
-  },
-  field: {
-    margin: theme.spacing(2, 0),
-    display: "grid",
-    width: "60%",
-  },
-}))
+import { Link } from "react-router-dom"
+import testFormConstants from "../../constants/testFormConstants"
+import { Grid, Card, Fab, CardContent, Typography } from "@material-ui/core"
+import { AddIcon } from "@material-ui/data-grid"
+import GridFormPreview from "./GridFormPreview"
 
 /**
- * @use This is the Form Generator tool. Page for creating forms that corporate users can fill, see the documents in Google Drive by TTK.
- * @todo Roles visibility in this section? Worker able to see forms that reference them? How to pass the object with module types with questions attached to each?
- * @todo Fix the test form display, maybe button that "peeks" at the form?
- * @todo Make a preview button and view.
- * @todo Could user be able to import a ready made template from a pdf and the tool automatically generates a form?
+ * This is ugly for the time being.
+ * @todo map existing templates from a directory into the grids for preview.
+ * @todo OnHover preview, pip for every node? So onMouseEnter renders an image(?) of the finished pdf(?)
  */
 const FormsPage = () => {
-  const classes = useStyles()
-  const dispatch = useDispatch()
-  const { currentForm } = useSelector((state) => state.form)
-  const { questions } = useSelector((state) => state.form.currentForm)
-
-  const addForm = (event) => {
-    event.preventDefault()
-    dispatch(submitForm(currentForm))
-  }
-
   return (
-    <Container>
-      <Typography align="center" variant="h4">
-        Forms
-      </Typography>
-      <form
-        onSubmit={(e) => addForm(e, currentForm.title, currentForm.description)}
+    <>
+      <Grid
+        spacing={8}
+        justify="center"
+        alignItems="center"
+        container
+        direction="row"
+        mt={5}
       >
-        <input
-          style={{ align: "left", display: "grid" }}
-          type="submit"
-          value="Submit"
-        />
-        <Card className={classes.card} variant="outlined">
-          <CardContent align="center">
-            <Typography align="center" variant="h4">
-              Generation tool
-            </Typography>
-            <Typography style={{ padding: "1rem" }} variant="h6" align="center">
-              Add modules attached to questions:
-            </Typography>
-            <label className={classes.header}>Form Title</label>
-            <input
-              className={classes.field}
-              placeholder="Your title..."
-              type="text"
-              name="title"
-              value={currentForm.title}
-              onChange={({ target }) => dispatch(setTitle(target.value))}
-            />
-            <input
-              className={classes.field}
-              placeholder="Your description..."
-              type="text"
-              name="title"
-              value={currentForm.description}
-              onChange={({ target }) => dispatch(setDescription(target.value))}
-            />
-            <div>
-              {questions.map((e, i) => (
-                <QuestionModule key={i} questionIndex={i} />
-              ))}
-            </div>
-            <Button onClick={() => dispatch(addQuestion(initialQuestion))}>
-              Add Question
-            </Button>
-          </CardContent>
-        </Card>
-      </form>
-      <Divider />
-    </Container>
+        <Grid item>
+          <Link to="/forms/newform">
+            <Fab size="medium" color="primary" aria-label="add">
+              <AddIcon />
+            </Fab>
+          </Link>
+        </Grid>
+        {testFormConstants.map((t) => (
+          <GridFormPreview
+            item
+            key={t.value}
+            formTitle={t.title}
+            formDesc={t.description}
+          />
+        ))}
+        <Grid item>
+          <Card variant="outlined">
+            <CardContent style={{ padding: "10%" }}>
+              <Typography color="textSecondary">This is a template</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item>
+          <Card variant="outlined">
+            <CardContent style={{ padding: "10%" }}>
+              <Typography color="textSecondary">This is a template</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item>
+          <Card variant="outlined">
+            <CardContent style={{ padding: "10%" }}>
+              <Typography color="textSecondary">This is a template</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item>
+          <Card variant="outlined">
+            <CardContent style={{ padding: "10%" }}>
+              <Typography color="textSecondary">This is a template</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+    </>
   )
 }
+
+// const useStyles = makeStyles((theme) => ({
+// }))
 
 export default FormsPage

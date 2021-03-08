@@ -3,6 +3,26 @@
  * @module actions/formActions
  */
 import { setAlert } from "./alertActions"
+import raw from '../forms/lomake1.json';
+
+/**
+ * Replaces the currentForm with the data imported from file systems
+ * @function
+ * @param {string} title - Form title.
+ * @todo add validation
+ */
+export const importForm = (file) => async (dispatch) => {
+  let fr = new FileReader()
+  fr.onloadend = e => {
+    const data = JSON.parse(fr.result)
+    dispatch({ type: "SET_CURRENT_FORM", data })
+  }
+  fr.readAsText(file)
+}
+
+export const importFormByPath = (path) => async (dispatch) => {
+  dispatch({ type: "SET_CURRENT_FORM", data: raw })
+}
 
 /**
  * Updates the title of the generated form
@@ -41,6 +61,11 @@ export const updateQuestion = (question, index) => async (dispatch) => {
   dispatch({ type: "UPDATE_QUESTION", data: { question, index } })
 }
 
+export const updateQuestionOption = ( option, questionIndex, optionIndex ) => async (dispatch) => {
+  console.log(option, questionIndex, optionIndex);
+  dispatch({ type: "UPDATE_QUESTION_OPTION", data: { option, questionIndex, optionIndex } })
+}
+
 /**
  * Removes the indicated question from the array.
  * @function
@@ -48,6 +73,16 @@ export const updateQuestion = (question, index) => async (dispatch) => {
  */
 export const removeQuestion = (index) => async (dispatch) => {
   dispatch({ type: "REMOVE_QUESTION", data: index })
+}
+
+/**
+ * Removes the indicated option from the array.
+ * @function
+ * @param {int} questionIndex - Index of the question which is removed option.
+ * @param {int} optionIndex - Index of the option which is to be removed.
+ */
+export const removeOption = (questionIndex, optionIndex) => async (dispatch) => {
+  dispatch({ type: "REMOVE_OPTION", data: {questionIndex, optionIndex} })
 }
 
 /**

@@ -8,14 +8,15 @@ export default (path) => {
   nameList = nameList.filter(e => e !== "")
   let p = ""
   nameList.forEach(e => {
+    p=p+"/"+e
     list.push({
       name: capitalizeFirstLetter(e),
-      link: p+"/"+e
+      link: p
     })
   });
   return list
 }
 
-function capitalizeFirstLetter(string) {
+export function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
 }

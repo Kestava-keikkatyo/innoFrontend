@@ -30,8 +30,8 @@ const radioButtonGroup = {
 }
 
 const radioButtonRow = {
-  text: 'Radiobutton group row',
-  value: 'radiobutton-group-row'
+  text: 'Radiobutton row',
+  value: 'radiobutton-row'
 }
 
 export default {

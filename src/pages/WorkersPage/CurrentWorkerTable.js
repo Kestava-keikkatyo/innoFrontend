@@ -24,7 +24,7 @@ const CurrentWorkerTable = () => {
   const { madeContracts } = useSelector(state => state.workContracts)
   const dispatch = useDispatch()
   const contracts = madeContracts
-  console.log(contracts);
+
   useEffect(() => {
     if(!madeContracts.length)
       dispatch(fetchWorkContracts())
