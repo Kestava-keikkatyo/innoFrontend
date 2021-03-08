@@ -3,7 +3,7 @@
  * @module actions/formActions
  */
 import { setAlert } from "./alertActions"
-import raw from '../forms/initForm.json';
+import raw from '../forms/lomake1.json';
 
 /**
  * Replaces the currentForm with the data imported from file systems
