@@ -6,36 +6,45 @@ import formConstants from "../../constants/formConstants"
 import ExpandableQuestionModule from "./ExpandableQuestionOptions"
 import AddOptionsModule from "./AddOptionsModule"
 import CustomFormInput from "./CustomFormInput"
-import Spacing from "../../components/Spacing";
+import Spacing from "../../components/Spacing"
 
-const TypeDropDown = ({index}) => {
+const TypeDropDown = ({ index }) => {
   const dispatch = useDispatch()
   const questions = useSelector((state) => state.form.currentForm.questions)
-  return ( 
-  <Spacing ph4 className="relative" style={{ width: "100%" }}>
-    <label className="absolute label-type">Question type</label>
-    <select
-      className="customFormInput"
-      value={questions[index].type}
-      onChange={(e) =>
-        dispatch(
-          updateQuestion(
-            { ...questions[index], type: e.target.value },
-            index
+  return (
+    <Spacing ph4 className="relative" style={{ width: "100%" }}>
+      <label className="absolute label-type">Question type</label>
+      <select
+        className="customFormInput"
+        value={questions[index].type}
+        onChange={(e) =>
+          dispatch(
+            updateQuestion({ ...questions[index], type: e.target.value }, index)
           )
-        )
-      }
-    >
-      {formConstants.fieldTypes.map((t) => (
-        <option key={t.value} value={t.value}>
-          {t.text}
-        </option>
-      ))}
-    </select>
-  </Spacing> 
-  );
+        }
+      >
+        {formConstants.fieldTypes.map((t) => (
+          <option key={t.value} value={t.value}>
+            {t.text}
+          </option>
+        ))}
+      </select>
+    </Spacing>
+  )
 }
- 
+
+/**
+ * Kontakti ja datepicker erikseen,
+ * vai selectissä textareat yms näiden kanssa?
+ */
+const AdditionalInfoModule = () => {
+  return (
+    <>
+      <div></div>
+    </>
+  )
+}
+
 /**
  * Module for displaying and handling user input in the form generation tool
  * @param {int} questionIndex - Index for the question in the array in the parent state.
@@ -73,16 +82,20 @@ const QuestionModule = ({ questionIndex }) => {
             container
             direction="column"
             justify="flex-end"
-            alignItems="flex-end" >
-            <Button style={{ color: "red" }}
-              onClick={() => dispatch(removeQuestion(questionIndex))} >
+            alignItems="flex-end"
+          >
+            <Button
+              style={{ color: "red" }}
+              onClick={() => dispatch(removeQuestion(questionIndex))}
+            >
               Remove
             </Button>
             <TypeDropDown index={questionIndex} />
           </Grid>
         </Grid>
-        { questions[questionIndex].type.includes("group") &&
-          <AddOptionsModule index={questionIndex} /> }
+        {questions[questionIndex].type.includes("group") && (
+          <AddOptionsModule index={questionIndex} />
+        )}
         <ExpandableQuestionModule index={questionIndex} />
       </Grid>
     </>
