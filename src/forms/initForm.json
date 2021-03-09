@@ -1,1 +1,104 @@
-{"title":"Preview Form title","description":"This is description for preview form title... This is just temporariry text. TODO: Change this text to real preview.","questions":[{"name":"This is just a comment comment.","type":"comment","subTitle":"","scaleOptionTitleLeft":"","scaleOptionTitleCenter":"","scaleOptionTitleRight":"","minLen":0,"maxLen":1000,"rowHeight":4,"scale":5,"optional":false,"options":[]},{"name":"First question skidmark. Whats your favourite cow breed.","type":"textfield","subTitle":"","scaleOptionTitleLeft":"","scaleOptionTitleCenter":"","scaleOptionTitleRight":"","minLen":0,"maxLen":1000,"rowHeight":4,"scale":5,"optional":false,"options":[]},{"name":"Write an essay of your life.","type":"textarea","subTitle":"This is an optional sub for questions fyi.","scaleOptionTitleLeft":"","scaleOptionTitleCenter":"","scaleOptionTitleRight":"","minLen":0,"maxLen":1000,"rowHeight":4,"scale":5,"optional":false,"options":[]},{"name":"I am sane.","type":"checkbox","subTitle":"","scaleOptionTitleLeft":"","scaleOptionTitleCenter":"","scaleOptionTitleRight":"","minLen":0,"maxLen":1000,"rowHeight":4,"scale":5,"optional":false,"options":[]},{"name":"Whats your favourite ice cream.","type":"checkbox-group","subTitle":"","scaleOptionTitleLeft":"","scaleOptionTitleCenter":"","scaleOptionTitleRight":"","minLen":0,"maxLen":1000,"rowHeight":4,"scale":5,"optional":false,"options":["Choclate","Vanilla","Strawberry"]},{"name":"Whats your favourite ice cream.","type":"radiobutton-group","subTitle":"","scaleOptionTitleLeft":"","scaleOptionTitleCenter":"","scaleOptionTitleRight":"","minLen":0,"maxLen":1000,"rowHeight":4,"scale":5,"optional":false,"options":["Choclate","Vanilla","Strawberry"]},{"name":"How ya feelin mon.","type":"radiobutton-row","subTitle":"YeeYee boiii","scaleOptionTitleLeft":"Bad","scaleOptionTitleCenter":"","scaleOptionTitleRight":"Good","minLen":0,"maxLen":1000,"rowHeight":4,"scale":"4","optional":false,"options":[]}]}
+{
+  "title": "Preview Form title",
+  "description": "This is description for preview form title... This is just temporariry text. TODO: Change this text to real preview.",
+  "questions": [
+    {
+      "name": "This is just a comment comment.",
+      "type": "comment",
+      "subTitle": "",
+      "scaleOptionTitleLeft": "",
+      "scaleOptionTitleCenter": "",
+      "scaleOptionTitleRight": "",
+      "minLen": 0,
+      "maxLen": 1000,
+      "rowHeight": 4,
+      "scale": 5,
+      "optional": false,
+      "options": []
+    },
+    {
+      "name": "First question skidmark. Whats your favourite cow breed.",
+      "type": "textfield",
+      "subTitle": "",
+      "scaleOptionTitleLeft": "",
+      "scaleOptionTitleCenter": "",
+      "scaleOptionTitleRight": "",
+      "minLen": 0,
+      "maxLen": 1000,
+      "rowHeight": 4,
+      "scale": 5,
+      "optional": false,
+      "options": []
+    },
+    {
+      "name": "Write an essay of your life.",
+      "type": "textarea",
+      "subTitle": "This is an optional sub for questions fyi.",
+      "scaleOptionTitleLeft": "",
+      "scaleOptionTitleCenter": "",
+      "scaleOptionTitleRight": "",
+      "minLen": 0,
+      "maxLen": 1000,
+      "rowHeight": 4,
+      "scale": 5,
+      "optional": false,
+      "options": []
+    },
+    {
+      "name": "I am sane.",
+      "type": "checkbox",
+      "subTitle": "",
+      "scaleOptionTitleLeft": "",
+      "scaleOptionTitleCenter": "",
+      "scaleOptionTitleRight": "",
+      "minLen": 0,
+      "maxLen": 1000,
+      "rowHeight": 4,
+      "scale": 5,
+      "optional": false,
+      "options": []
+    },
+    {
+      "name": "Whats your favourite ice cream.",
+      "type": "checkbox-group",
+      "subTitle": "",
+      "scaleOptionTitleLeft": "",
+      "scaleOptionTitleCenter": "",
+      "scaleOptionTitleRight": "",
+      "minLen": 0,
+      "maxLen": 1000,
+      "rowHeight": 4,
+      "scale": 5,
+      "optional": false,
+      "options": ["Choclate", "Vanilla", "Strawberry"]
+    },
+    {
+      "name": "Whats your favourite ice cream.",
+      "type": "radiobutton-group",
+      "subTitle": "",
+      "scaleOptionTitleLeft": "",
+      "scaleOptionTitleCenter": "",
+      "scaleOptionTitleRight": "",
+      "minLen": 0,
+      "maxLen": 1000,
+      "rowHeight": 4,
+      "scale": 5,
+      "optional": false,
+      "options": ["Choclate", "Vanilla", "Strawberry"]
+    },
+    {
+      "name": "How ya feelin mon.",
+      "type": "radiobutton-row",
+      "subTitle": "YeeYee boiii",
+      "scaleOptionTitleLeft": "Bad",
+      "scaleOptionTitleCenter": "",
+      "scaleOptionTitleRight": "Good",
+      "minLen": 0,
+      "maxLen": 1000,
+      "rowHeight": 4,
+      "scale": "4",
+      "optional": false,
+      "options": []
+    }
+  ]
+}
