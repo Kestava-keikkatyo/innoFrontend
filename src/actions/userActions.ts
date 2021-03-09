@@ -94,10 +94,10 @@ export const me = (role: roles) => async (dispatch: any) => {
     // Kirjautuessa sisään setItem ei ehdi päivittää loggedInnoAppUseria
     if(!localStorage.getItem('loggedInnoAppUser'))
       return
-    const { data: profile } = await userService.me(role)
+    const { data } = await userService.me(role)    
     dispatch({
       type: USER_PROFILE,
-      profile
+      data
     })
   } catch (error) {
     statusHandler(dispatch, error)
