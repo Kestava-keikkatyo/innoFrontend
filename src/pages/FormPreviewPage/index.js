@@ -20,9 +20,9 @@ import FormContactInfo from "../../components/FormComponents/FormContactInfo"
 const FormPreviewPage = ({ _ }) => {
   const { currentForm } = useSelector((state) => state.form)
   const dispatch = useDispatch()
-  useEffect(() => {
+  /*useEffect(() => {
     dispatch(importFormByPath("___"))
-  }, [dispatch])
+  }, [dispatch])*/
 
   return (
     <Container>

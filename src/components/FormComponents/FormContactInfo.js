@@ -1,7 +1,7 @@
 import {
   FormControl,
   FormControlLabel,
-  TextField,
+  Input,
   Typography,
 } from "@material-ui/core"
 import React from "react"
@@ -18,10 +18,7 @@ const FormContactInfo = ({ question }) => {
     <>
       <Typography variant="h6">Contact: </Typography>
       <FormControl>
-        <FormControlLabel
-          control={<TextField label="Name"></TextField>}
-          label={name}
-        ></FormControlLabel>
+        <FormControlLabel control={<Input />} label={name}></FormControlLabel>
       </FormControl>
     </>
   )
