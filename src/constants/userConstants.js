@@ -1,9 +1,0 @@
-const userConstants = {
-  REQUEST: 'USER_REQUEST',
-  LOGIN_SUCCESS: 'USER_LOGIN_SUCCESS',
-  FAILURE: 'USER_FAILURE',
-  LOGOUT: 'USER_LOGOUT',
-  PROFILE_SUCCESS: 'USER_PROFILE_SUCCESS'
-}
-
-export default userConstants

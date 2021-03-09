@@ -1,7 +1,8 @@
 import { Input, Typography } from '@material-ui/core'
 import React from 'react'
+import { FormComponentProps } from '../../types'
 
-const FormText = ({ question }) => {
+const FormText: React.FC<FormComponentProps> = ({ question }) => {
   const { name } = question
   return ( 
     <>

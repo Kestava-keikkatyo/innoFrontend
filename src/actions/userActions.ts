@@ -5,8 +5,8 @@
 import userService from '../services/userService'
 import { saveUser, logoutUser } from '../utils/storage'
 import history from '../utils/history'
-import userConstants from '../constants/userConstants'
 import { setAlert } from './alertActions'
+import { Credentials, LOGIN, LOGOUT, roles, SignUpUser, USER_FAILURE, USER_PROFILE, USER_REQUEST } from '../types'
 
 /**
  * Logs user in
@@ -15,15 +15,15 @@ import { setAlert } from './alertActions'
  * @param {string} role - User's role
  * @param {Object} from - User redirection path
  */
-export const login = (credentials, role, from) => {
-  return async dispatch => {
+export const login = (credentials: Credentials, role: roles, from: string) => {
+  return async (dispatch: any) => {
     dispatch({
-      type: userConstants.REQUEST,
+      type: USER_REQUEST,
     })
     try {
       const { data } = await userService.login(credentials, role)
       dispatch({
-        type: userConstants.LOGIN_SUCCESS,
+        type: LOGIN,
         data
       })
       saveUser(data)
@@ -31,7 +31,7 @@ export const login = (credentials, role, from) => {
       dispatch(setAlert('login successful', 'success'))
     } catch (error) {
       dispatch({
-        type: userConstants.FAILURE,
+        type: USER_FAILURE,
       })
       dispatch(setAlert('login failed', 'error'))
     }
@@ -44,15 +44,15 @@ export const login = (credentials, role, from) => {
  * @param {Object} user - Basic user information (name, email, password...)
  * @param {string} role - User's role
  */
-export const signup = (user, role) => {
-  return async dispatch => {
+export const signup = (user: SignUpUser, role: roles) => {
+  return async (dispatch: any) => {
     dispatch({
-      type: userConstants.REQUEST,
+      type: USER_REQUEST,
     })
     try {
       const { data } = await userService.signup(user, role)
       dispatch({
-        type: userConstants.LOGIN_SUCCESS,
+        type: LOGIN,
         data
       })
       saveUser(data)
@@ -60,7 +60,7 @@ export const signup = (user, role) => {
       dispatch(setAlert('signup successful', 'success'))
     } catch (error) {
       dispatch({
-        type: userConstants.FAILURE,
+        type: USER_FAILURE,
       })
       dispatch(setAlert('signup failed', 'error'))
     }
@@ -72,9 +72,9 @@ export const signup = (user, role) => {
  * @function
  */
 export const logout = () => {
-  return async dispatch => {
+  return async (dispatch: any) => {
     logoutUser()
-    dispatch({ type: userConstants.LOGOUT })
+    dispatch({ type: LOGOUT })
     history.push('/')
     dispatch(setAlert('user logged out'))
   }
@@ -85,10 +85,10 @@ export const logout = () => {
  * @function
  * @param {string} role - user's role
  */
-export const me = (role) => {
-  return async dispatch => {
+export const me = (role: roles) => {
+  return async (dispatch: any) => {
     dispatch({
-      type: userConstants.REQUEST
+      type: USER_REQUEST
     })
     try {
       //TODO: PURKKAMALLIRATKAISU
@@ -97,7 +97,7 @@ export const me = (role) => {
         return
       const { data: profile } = await userService.me(role)
       dispatch({
-        type: userConstants.PROFILE_SUCCESS,
+        type: USER_PROFILE,
         profile
       })
     } catch (error) {
@@ -112,22 +112,20 @@ export const me = (role) => {
  * @param {Object} updateData - updated profile information
  * @param {string} role - user's role
  */
-export const update = (updateData, role) => {
-  return async dispatch => {
+export const update = (updateData: any, role: roles) => async (dispatch: any) => {
+  dispatch({
+    type: USER_REQUEST
+  })
+  try {
+    const { data: profile } = await userService.update(updateData, role)
     dispatch({
-      type: userConstants.REQUEST
+      type: USER_PROFILE,
+      profile
     })
-    try {
-      const { data: profile } = await userService.update(updateData, role)
-      dispatch({
-        type: userConstants.PROFILE_SUCCESS,
-        profile
-      })
-      dispatch(setAlert('User information updated'))
-    } catch (error) {
-      console.log('update error');
-      statusHandler(dispatch, error)
-    }
+    dispatch(setAlert('User information updated'))
+  } catch (error) {
+    console.log('update error');
+    statusHandler(dispatch, error)
   }
 }
 
@@ -138,11 +136,10 @@ export const update = (updateData, role) => {
  * @param {Object} response - error response object
  * @todo Why on earth would you do that?
  */
-const statusHandler = (dispatch, response) => {
+const statusHandler = (dispatch: Function, response: any) => {
   if (!response || response.status === 401 || response.status === 500) {
-    // console.log(response.status);
     // logoutUser()
-    dispatch({ type: userConstants.FAILURE })
+    dispatch({ type: USER_FAILURE })
     dispatch(setAlert('invalid token', 'error'))
   } else {
     window.location.reload()

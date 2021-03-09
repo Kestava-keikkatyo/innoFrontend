@@ -1,7 +1,13 @@
 import { Typography } from '@material-ui/core';
+import { string } from 'prop-types';
 import React from 'react';
 
-const FormHeader = ({ title, description }) => {
+interface Props {
+  title: string,
+  description: string
+}
+
+const FormHeader: React.FC<Props> = ({ title, description }) => {
   return ( 
     <>
       <Typography variant="h4">{ title }</Typography>

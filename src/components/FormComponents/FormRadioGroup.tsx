@@ -1,11 +1,12 @@
 import { FormControl, FormControlLabel, Grid, Radio, RadioGroup, Typography } from '@material-ui/core';
 import React from 'react';
+import { FormComponentProps } from '../../types';
 
-const FormRadioGroup = ({ question }) => {
+const FormRadioGroup: React.FC<FormComponentProps> = ({ question }) => {
   const { name, scale } = question
   const [state, setState] = React.useState(0)
 
-  const handleChange = ({ target }) => {
+  const handleChange = ({ target }: any) => {
     setState(parseInt(target.value))
   }
   
@@ -23,7 +24,10 @@ const FormRadioGroup = ({ question }) => {
               value={state}
               onChange={handleChange}
             >
-              { Array(parseInt(scale)).fill().map((_, i) => (
+              {/**
+               * @todo type checking for scale
+               */
+              Array(scale).fill(0).map((_, i) => (
                 <FormControlLabel
                   key={i}
                   labelPlacement="top"

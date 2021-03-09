@@ -1,7 +1,8 @@
 import { Checkbox, FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, Typography } from '@material-ui/core'
 import React from 'react'
+import { FormComponentProps } from '../../types'
 
-const FormCheckBoxGroup = ({ question }) => {
+const FormCheckBoxGroup: React.FC<FormComponentProps> = ({ question }) => {
   const { name, subTitle, options } = question
   const [state, setState] = React.useState(
     options.map(name => {
@@ -9,7 +10,7 @@ const FormCheckBoxGroup = ({ question }) => {
     })
   )
 
-  const handleChange = (index) => {
+  const handleChange = (index: number) => {
     setState(state.map((o, i) => i === index ? { ...o, value: !o.value }: o ))
   };
 

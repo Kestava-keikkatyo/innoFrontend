@@ -3,7 +3,7 @@
  * @module
  */
 import { loadUser } from '../utils/storage'
-import userConstants from '../constants/userConstants'
+import { LOGIN, LOGOUT, UserActionTypes, USER_FAILURE, USER_PROFILE, USER_REQUEST } from '../types'
 
 const userData = loadUser()
 const initialState = { 
@@ -17,27 +17,27 @@ const initialState = {
  * @param {Object} state - current state
  * @param {Object} action - dispatched action
  */
-const userReducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action: UserActionTypes) => {
   switch (action.type) {
-    case userConstants.REQUEST:
+    case USER_REQUEST:
       return {
         loading: true,
         data: state.data,
         loggedIn: !!state.loggedIn
       }
-    case userConstants.LOGIN_SUCCESS:
+    case LOGIN:
       return {
         loggedIn: true,
         data: action.data
       }
-    case userConstants.PROFILE_SUCCESS:
+    case USER_PROFILE:
       return {
         loggedIn: true,
         data: state.data,
-        profile: action.profile
+        profile: action.data
       }
-    case userConstants.FAILURE:
-    case userConstants.LOGOUT:
+    case USER_FAILURE:
+    case LOGOUT:
       return { loggedIn: false, data: {} }
     default:
       return state

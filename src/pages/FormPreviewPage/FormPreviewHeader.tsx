@@ -1,8 +1,8 @@
-import { Button, Grid, Typography } from '@material-ui/core';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Button, Grid, Typography } from '@material-ui/core'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-const FormPreviewHeader = ({ _ }) => {
+const FormPreviewHeader = () => {
   return (
     <Grid container direction="row"
       justify="space-between">
@@ -22,4 +22,4 @@ const FormPreviewHeader = ({ _ }) => {
   )
 }
  
-export default FormPreviewHeader;
+export default FormPreviewHeader

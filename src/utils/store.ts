@@ -12,6 +12,13 @@ import formReducer from '../reducers/formReducer'
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
+/**
+ * @todo define this
+ */
+export interface IRootState{
+  
+}
+
 const reducer = combineReducers({
   user: userReducer,
   alert: alertReducer,
@@ -23,4 +30,4 @@ const reducer = combineReducers({
   form: formReducer,
 })
 
-export default createStore(reducer, composeEnhancer(applyMiddleware(thunk)))
+export default createStore<any, any, any, any>(reducer, composeEnhancer(applyMiddleware(thunk)))

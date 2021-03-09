@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import PropTypes from 'prop-types'
 
 import { useDispatch, useSelector } from 'react-redux'
 import AppNavigation from './NavigationComponents'
 import ActiveLastBreadcrumb from './ActiveLastBreadcrumb'
 import { setBreadcrumb } from '../actions/breadcrumbActions'
 import pathConverter from '../utils/pathConverter'
+import { PrivateRouteProps, roles } from '../types'
 
 /**
  * Private route component. Renders the child components if the user is logged in
@@ -35,8 +35,8 @@ import pathConverter from '../utils/pathConverter'
  *  </PrivateRoute>
  * </Switch>
  */
-const PrivateRoute = ({ roles, children, path, ...rest }) => {
-  const { loggedIn, data } = useSelector((state) => state.user)
+const PrivateRoute: React.FC<PrivateRouteProps> = ({ roles, children, path, ...rest }) => {
+  const { loggedIn, data } = useSelector((state: any) => state.user)
   const dispatch = useDispatch()
 
   useEffect( () => {
@@ -56,7 +56,11 @@ const PrivateRoute = ({ roles, children, path, ...rest }) => {
           />
         }
 
-        if (data.role && roles.indexOf(data.role) === -1) {
+        /**
+         * @todo refactor this
+         */
+        //data.role && roles.indexOf(data.role) === -1
+        if (!data.role) {
           return <Redirect
             to={{
               pathname: '/home',
@@ -76,16 +80,8 @@ const PrivateRoute = ({ roles, children, path, ...rest }) => {
   )
 }
 
-PrivateRoute.propTypes = {
-  loggedIn: PropTypes.bool,
-  path: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-  role: PropTypes.string,
-  roles: PropTypes.arrayOf(PropTypes.oneOf(['worker', 'business', 'agency']))
-}
-
 PrivateRoute.defaultProps = {
-  roles: ['worker', 'business', 'agency']
+  roles: [roles.Worker, roles.Business, roles.Agency]
 }
 
 export default PrivateRoute

@@ -1,26 +1,23 @@
-import { Container } from '@material-ui/core';
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import FormCheckBox from '../../components/FormComponents/FormCheckBox';
-import FormCheckBoxGroup from '../../components/FormComponents/FormCheckBoxGroup';
-import FormComment from '../../components/FormComponents/FormComment';
-import { useSelector } from 'react-redux';
-import FormHeader from '../../components/FormComponents/FormHeader';
-import FormRadio from '../../components/FormComponents/FormRadio';
-import FormRadioGroup from '../../components/FormComponents/FormRadioGroup';
-import FormText from '../../components/FormComponents/FormText';
-import FormTextArea from '../../components/FormComponents/FormTextArea';
-import FormPreviewHeader from './FormPreviewHeader';
-import { importFormByPath } from '../../actions/formActions';
-import formConstants from '../../constants/formConstants';
-import { setAlert } from '../../actions/alertActions';
+import { Container } from '@material-ui/core'
+import React from 'react'
+import { useDispatch } from 'react-redux'
+import FormCheckBox from '../../components/FormComponents/FormCheckBox'
+import FormCheckBoxGroup from '../../components/FormComponents/FormCheckBoxGroup'
+import FormComment from '../../components/FormComponents/FormComment'
+import { useSelector } from 'react-redux'
+import FormHeader from '../../components/FormComponents/FormHeader'
+import FormRadio from '../../components/FormComponents/FormRadio'
+import FormRadioGroup from '../../components/FormComponents/FormRadioGroup'
+import FormText from '../../components/FormComponents/FormText'
+import FormTextArea from '../../components/FormComponents/FormTextArea'
+import FormPreviewHeader from './FormPreviewHeader'
+import formConstants from '../../constants/formConstants'
+import { setAlert } from '../../actions/alertActions'
+import { Question } from '../../types'
 
-const FormPreviewPage = ({ _ }) => {
-  const { currentForm } = useSelector(state => state.form)
+const FormPreviewPage: React.FC = () => {
+  const { currentForm } = useSelector((state: any) => state.form)
   const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(importFormByPath('___'))
-  }, [dispatch])
 
   return ( 
     <Container>
@@ -28,7 +25,7 @@ const FormPreviewPage = ({ _ }) => {
       <div className="create-form" >
         <FormHeader title={currentForm.title} description={currentForm.description} />
         {
-          currentForm.questions.map((q, k) => {
+          currentForm.questions.map((q: Question, k: number) => {
             switch (q.type) {
               case formConstants.textField.value:
                 return <FormText key={k} question={q} />
@@ -52,7 +49,7 @@ const FormPreviewPage = ({ _ }) => {
         }
       </div>
     </Container>
-  );
+  )
 }
  
-export default FormPreviewPage;
+export default FormPreviewPage
