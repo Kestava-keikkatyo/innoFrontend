@@ -1,37 +1,46 @@
-
 const comment = {
-  text: 'Comment',
-  value: 'comment'
+  text: "Comment",
+  value: "comment",
 }
 
 const textField = {
-  text: 'Textfield',
-  value: 'textfield'
+  text: "Textfield",
+  value: "textfield",
 }
 
 const textArea = {
-  text: 'Textarea',
-  value: 'textarea'
+  text: "Textarea",
+  value: "textarea",
 }
 
 const checkBox = {
-  text: 'Checkbox',
-  value: 'checkbox'
+  text: "Checkbox",
+  value: "checkbox",
 }
 
 const checkBoxGroup = {
-  text: 'Checkbox group',
-  value: 'checkbox-group'
+  text: "Checkbox group",
+  value: "checkbox-group",
 }
 
 const radioButtonGroup = {
-  text: 'Radiobutton group',
-  value: 'radiobutton-group'
+  text: "Radiobutton group",
+  value: "radiobutton-group",
 }
 
 const radioButtonRow = {
-  text: 'Radiobutton row',
-  value: 'radiobutton-row'
+  text: "Radiobutton row",
+  value: "radiobutton-row",
+}
+
+const datePicker = {
+  text: "Datepicker",
+  value: "datepicker",
+}
+
+const contactInfo = {
+  text: "ContactInformation",
+  value: "contact-information",
 }
 
 export default {
@@ -42,6 +51,8 @@ export default {
   checkBoxGroup,
   radioButtonGroup,
   radioButtonRow,
+  datePicker,
+  contactInfo,
   fieldTypes: [
     comment,
     textField,
@@ -50,5 +61,7 @@ export default {
     checkBoxGroup,
     radioButtonGroup,
     radioButtonRow,
-  ]
+    datePicker,
+    contactInfo,
+  ],
 }
