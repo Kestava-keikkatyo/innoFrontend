@@ -7,9 +7,9 @@ export enum roles {
 }
 
 export enum fontSizes {
-  small = 'worker',
-  medium = 'agency',
-  large = 'business'
+  small = 'small',
+  medium = 'medium',
+  large = 'large'
 }
 
 export enum inputTypes {
@@ -21,10 +21,15 @@ export enum inputTypes {
 export interface User {
   name: string,
   email: string,
+  type: roles.Agency | roles.Business | roles.Business
 }
 
 export interface SignUpUser extends User {
   password: string
+}
+
+export interface LoggedInUser extends User {
+  token: string,
 }
 
 export interface Credentials {

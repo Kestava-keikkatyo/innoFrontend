@@ -85,24 +85,22 @@ export const logout = () => {
  * @function
  * @param {string} role - user's role
  */
-export const me = (role: roles) => {
-  return async (dispatch: any) => {
+export const me = (role: roles) => async (dispatch: any) => {
+  dispatch({
+    type: USER_REQUEST
+  })
+  try {
+    //TODO: PURKKAMALLIRATKAISU
+    // Kirjautuessa sisään setItem ei ehdi päivittää loggedInnoAppUseria
+    if(!localStorage.getItem('loggedInnoAppUser'))
+      return
+    const { data: profile } = await userService.me(role)
     dispatch({
-      type: USER_REQUEST
+      type: USER_PROFILE,
+      profile
     })
-    try {
-      //TODO: PURKKAMALLIRATKAISU
-      // Kirjautuessa sisään setItem ei ehdi päivittää loggedInnoAppUseria
-      if(!localStorage.getItem('loggedInnoAppUser'))
-        return
-      const { data: profile } = await userService.me(role)
-      dispatch({
-        type: USER_PROFILE,
-        profile
-      })
-    } catch (error) {
-      statusHandler(dispatch, error)
-    }
+  } catch (error) {
+    statusHandler(dispatch, error)
   }
 }
 
