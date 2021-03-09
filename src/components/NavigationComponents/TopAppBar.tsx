@@ -14,18 +14,18 @@ const drawerWidth = navConstants.DRAWER_WIDTH
  * TODO: Sulje kun klikkaa boxin ulkopuolelta
  * @param {*} param0 
  */
-const UserMenuDropdown = ({open}) => {
+const UserMenuDropdown: React.FC<{ open: boolean }> = ({ open }) => {
   const dispatch = useDispatch()
 
   return(
     <div className={`${open ? 'hidden': ''} user-menu-dropdown`}>
       <List className="overflow-container">
-        <ListItem fontSize="large" button mt={100} component={Link} to="/profile">
+        <ListItem button component={Link} to="/profile">
           {/* <ListItemIcon>{<Home />}</ListItemIcon> */}
           <ListItemText primary="Profile settings" />
         </ListItem>
         <Divider />
-        <ListItem fontSize="large" button mt={100} component={Link} to="/settings">
+        <ListItem button component={Link} to="/settings">
           {/* <ListItemIcon>{<MailIcon />}</ListItemIcon> */}
           <ListItemText primary="App settings" />
         </ListItem>
@@ -44,9 +44,9 @@ const UserMenuDropdown = ({open}) => {
   )
 }
 
-const TopAppBar = ({ handleDrawerToggle }) => {
+const TopAppBar: React.FC<any> = ({ handleDrawerToggle }) => {
   const classes = useStyles();
-  const { data } = useSelector((state) => state.user)
+  const { data } = useSelector((state: any) => state.user)
   const [open, setOpen] = useState(true)
 
   return(

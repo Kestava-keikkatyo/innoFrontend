@@ -6,6 +6,18 @@ export enum roles {
   Business = 'business'
 }
 
+export enum fontSizes {
+  small = 'worker',
+  medium = 'agency',
+  large = 'business'
+}
+
+export enum inputTypes {
+  number = 'number',
+  text = 'text',
+  date = 'date'
+}
+
 export interface User {
   name: string,
   email: string,

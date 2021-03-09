@@ -9,7 +9,7 @@ import navConstants from '../../constants/navConstants';
 
 const drawerWidth = navConstants.DRAWER_WIDTH
 
-function AppNavigation(props) {
+const AppNavigation = (props: { window: any, children: any }) => {
   const { window, children } = props;
   const classes = useStyles();
   const theme = useTheme();

@@ -2,7 +2,7 @@ import { Button, Grid, Typography } from '@material-ui/core'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const FormPreviewHeader = () => {
+const FormPreviewHeader: React.FC = () => {
   return (
     <Grid container direction="row"
       justify="space-between">

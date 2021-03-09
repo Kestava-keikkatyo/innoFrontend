@@ -1,14 +1,14 @@
-import { Snackbar } from '@material-ui/core'
+import { Snackbar, SnackbarCloseReason } from '@material-ui/core'
 import { Alert } from '@material-ui/lab'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { clearAlert } from '../actions/alertActions'
 
-const SnackbarNotification = () => {
-  const alert = useSelector((state) => state.alert)
+const SnackbarNotification: React.FC = () => {
+  const alert = useSelector((state: any) => state.alert)
   const dispatch = useDispatch()
   
-  const handleSnackbarClose = (_event, reason) => {
+  const handleSnackbarClose = (_: React.SyntheticEvent<any, Event>, reason?: SnackbarCloseReason) => {
     if (reason !== 'clickaway') {
       dispatch(clearAlert())
     }

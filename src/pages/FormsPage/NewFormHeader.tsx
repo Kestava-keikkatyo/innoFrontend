@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import { importForm } from '../../actions/formActions';
 import FileUploader from '../../components/FileUploader';
 
-const NewFormHeader = () => {
-  const { currentForm } = useSelector(state => state.form)
+const NewFormHeader: React.FC = () => {
+  const { currentForm } = useSelector((state: any) => state.form)
   const dispatch = useDispatch()
   return ( 
     <Grid container direction="row"
@@ -24,7 +24,7 @@ const NewFormHeader = () => {
           <Button>
             Submit
           </Button>
-          <FileUploader accept="data:text/json" handleFile={(data) => dispatch(importForm(data))}>
+          <FileUploader accept="data:text/json" handleFile={(data: any) => dispatch(importForm(data))}>
             Import
           </FileUploader>
           <Button download={`${currentForm.title}.json`}

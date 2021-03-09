@@ -10,7 +10,6 @@ import ContractsPage from "./pages/ContractsPage"
 import PrivateRoute from "./components/PrivateRoute"
 import ProcessPage from "./pages/ProcessPage"
 import TasksPage from "./pages/TaskPage"
-import MessagePage from "./pages/MessagePage"
 import DocumentPage from "./pages/DocumentPage"
 import FormsPage from "./pages/FormsPage"
 import WorkerStatistics from "./pages/WorkerStatistics"
@@ -40,9 +39,6 @@ const App: React.FC = () => {
         </PrivateRoute>
         <PrivateRoute path="/tasks">
           <TasksPage />
-        </PrivateRoute>
-        <PrivateRoute path="/messages">
-          <MessagePage />
         </PrivateRoute>
         <PrivateRoute path="/documents">
           <DocumentPage />

@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { fontSizes, inputTypes } from '../../types';
 
-const CustomFormInput = ({ labelFontSize, label, type, name, placeholder, value, onChange, className, inputClassName, labelClassName }) => {
+const CustomFormInput: React.FC<any> = ({ labelFontSize, label, type, name, placeholder, value, onChange, className, inputClassName, labelClassName }) => {
   return (
     <div className={`${className} customFormInputDiv`}>
       <label className={`${labelClassName} font${labelFontSize} customFormLabel`}>{label}</label>
@@ -28,8 +29,8 @@ CustomFormInput.defaultProps = {
 }
 
 CustomFormInput.propTypes = {
-  labelFontSize: PropTypes.oneOf(['small', 'medium', 'large']),
-  type: PropTypes.oneOf(['number', 'text', 'date'])
+  labelFontSize: PropTypes.oneOf([fontSizes.small, fontSizes.medium, fontSizes.large]),
+  type: PropTypes.oneOf([inputTypes.number, inputTypes.text, inputTypes.date])
 }
  
 export default CustomFormInput;

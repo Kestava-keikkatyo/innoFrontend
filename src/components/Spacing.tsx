@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core';
 import React from 'react';
 
-const Spacing = ({
+const Spacing: React.FC<any> = ({
   p0, pt0, pr0, pb0, pl0, ph0, pv0, m0, mt0, mr0, mb0, ml0, mv0, mh0,
   p1, pt1, pr1, pb1, pl1, ph1, pv1, m1, mt1, mr1, mb1, ml1, mv1, mh1,
   p2, pt2, pr2, pb2, pl2, ph2, pv2, m2, mt2, mr2, mb2, ml2, mv2, mh2,

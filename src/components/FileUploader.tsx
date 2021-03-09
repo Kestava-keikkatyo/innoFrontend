@@ -2,13 +2,14 @@ import { Button } from '@material-ui/core';
 import React from 'react';
 import PropTypes from 'prop-types'
 
-const FileUploader = ({ handleFile, accept, children }) => {
-  const hiddenFileInput = React.useRef(null);
+const FileUploader: React.FC<any> = ({ handleFile, accept, children }) => {
+  const hiddenFileInput = React.useRef<HTMLInputElement>(null);
   
-  const handleClick = event => {
-    hiddenFileInput.current.click();
+  const handleClick = () => {
+    if(hiddenFileInput !== null && hiddenFileInput.current !== null)
+      hiddenFileInput.current.click();
   };
-  const handleChange = event => {
+  const handleChange = (event: any) => {
     const fileUploaded = event.target.files[0];
     handleFile(fileUploaded);
   };

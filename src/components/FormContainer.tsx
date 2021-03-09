@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
  * @param {Object} name - name of the form generated and displayed
  * @use returns a container for the listen forms generated with the form generation tool.
  */
-export const FormContainer = ({ name }) => {
+export const FormContainer: React.FC<{name: string}> = ({ name }) => {
   const classes = useStyles()
   return (
     <Container>

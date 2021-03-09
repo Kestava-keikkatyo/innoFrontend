@@ -1,5 +1,4 @@
 import { Typography } from '@material-ui/core';
-import { string } from 'prop-types';
 import React from 'react';
 
 interface Props {

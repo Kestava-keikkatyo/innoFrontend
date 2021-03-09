@@ -22,12 +22,12 @@ import { logout } from '../../actions/userActions';
 import { useDispatch, useSelector } from 'react-redux';
 import Role from '../../constants/role'
 
-const ResponsiveDrawer = () => {
+const ResponsiveDrawer: React.FC = () => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const dispatch = useDispatch()
 
-  const { data } = useSelector((state) => state.user)
+  const { data } = useSelector((state: any) => state.user)
   const role = data.role
 
   /**
@@ -86,17 +86,17 @@ const ResponsiveDrawer = () => {
 
       <div className="content-wrapper">
         <List className="overflow-container">
-          <ListItem fontSize="large" button mt={100} component={Link} to="/home">
+          <ListItem button component={Link} to="/home">
             <ListItemIcon>{<Home />}</ListItemIcon>
             <ListItemText primary="Home" />
           </ListItem>
           <Divider />
-          <ListItem fontSize="large" button mt={100} component={Link} to="/databank">
+          <ListItem button component={Link} to="/databank">
             <ListItemIcon>{<Security />}</ListItemIcon>
             <ListItemText primary="Health and Security" />
           </ListItem>
           <Divider />
-          <ListItem fontSize="large" button mt={100} component={Link} to="/messages">
+          <ListItem button component={Link} to="/messages">
             <ListItemIcon>{<MailIcon />}</ListItemIcon>
             <ListItemText primary="Messages" />
           </ListItem>

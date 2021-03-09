@@ -15,6 +15,7 @@ import {
 } from "../../actions/formActions"
 import CustomFormInput from "./CustomFormInput"
 import NewFormHeader from "./NewFormHeader"
+import { Question } from "../../types"
 
 /**
  * @todo move to constants
@@ -41,19 +42,19 @@ const initialQuestion = {
  * @todo Make a preview button and view.
  * @todo Could user be able to import a ready made template from a pdf and the tool automatically generates a form?
  */
-const NewFormPage = () => {
+const NewFormPage: React.FC = () => {
   const dispatch = useDispatch()
-  const { currentForm } = useSelector((state) => state.form)
-  const { questions } = useSelector((state) => state.form.currentForm)
+  const { currentForm } = useSelector((state: any) => state.form)
+  const { questions } = useSelector((state: any) => state.form.currentForm)
 
-  const addForm = (event) => {
+  const addForm = (event: any): void => {
     event.preventDefault()
     dispatch(submitForm(currentForm))
   }
 
   return (
   <Container>
-    <form onSubmit={(e) => addForm(e, currentForm.title, currentForm.description)}>
+    <form onSubmit={addForm}>
     <NewFormHeader />
     <div className="create-form" >
       <CustomFormInput
@@ -63,7 +64,7 @@ const NewFormPage = () => {
         type="text"
         name="title"
         value={currentForm.title}
-        onChange={({ target }) => dispatch(setTitle(target.value))}
+        onChange={({ target }: any) => dispatch(setTitle(target.value))}
       />
       <CustomFormInput
         label="Description"
@@ -72,10 +73,10 @@ const NewFormPage = () => {
         type="text"
         name="title"
         value={currentForm.description}
-        onChange={({ target }) => dispatch(setDescription(target.value))}
+        onChange={({ target }: any) => dispatch(setDescription(target.value))}
       />
       <div>
-        {questions.map((_, i) => (
+        {questions.map((_: Question, i: number) => (
           <QuestionModule key={i} questionIndex={i} />
         ))}
       </div>

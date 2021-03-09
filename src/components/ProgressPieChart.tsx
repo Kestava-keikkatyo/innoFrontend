@@ -1,5 +1,5 @@
 import { Doughnut } from "react-chartjs-2"
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 const options = {
   legend: {
@@ -24,7 +24,11 @@ const data = {
   // labels: ["AVG: mood"],
 };
 
-const ProgressPieChart = ({children, datasets}) => {
+interface Props {
+  datasets: any,
+  children: ReactNode
+}
+const ProgressPieChart: React.FC<Props> = ({children, datasets}) => {
   return (
     <div style={styles.relative}>
       {/**height to width ratio is 2:1 */}
@@ -48,7 +52,11 @@ ProgressPieChart.defaultProps = {
   ]
 }
 
-const styles = {
+interface IStyles {
+  pieContainer: React.CSSProperties,
+  relative: React.CSSProperties
+}
+const styles: IStyles = {
   pieContainer: {
     width: "40%",
     height: "40%",

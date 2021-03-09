@@ -8,7 +8,11 @@ import { Card, CardContent, Grid, Typography } from "@material-ui/core"
  * @todo OnHover preview? PIP?
  * @todo for now reads data from a constant JSON file --> implement redux here.
  */
-const GridFormPreview = ({ formTitle, formDesc }) => {
+interface Props {
+  formTitle: string,
+  formDesc: string
+}
+const GridFormPreview: React.FC<Props> = ({ formTitle, formDesc }) => {
   return (
     <>
       <Grid item>

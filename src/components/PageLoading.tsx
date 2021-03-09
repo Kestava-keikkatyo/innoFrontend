@@ -14,7 +14,7 @@ import { Grid, CircularProgress } from '@material-ui/core'
  * }
  */
 
-const PageLoading = () => {
+const PageLoading: React.FC = () => {
   return (
     <Grid
       container

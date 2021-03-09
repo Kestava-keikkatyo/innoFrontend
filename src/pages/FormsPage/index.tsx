@@ -10,7 +10,7 @@ import GridFormPreview from "./GridFormPreview"
  * @todo map existing templates from a directory into the grids for preview.
  * @todo OnHover preview, pip for every node? So onMouseEnter renders an image(?) of the finished pdf(?)
  */
-const FormsPage = () => {
+const FormsPage: React.FC = () => {
   return (
     <>
       <Grid
@@ -19,7 +19,7 @@ const FormsPage = () => {
         alignItems="center"
         container
         direction="row"
-        mt={5}
+        // mt={5} does not exist
       >
         <Grid item>
           <Link to="/forms/newform">
@@ -28,14 +28,13 @@ const FormsPage = () => {
             </Fab>
           </Link>
         </Grid>
-        {testFormConstants.map((t) => (
+        {testFormConstants.map((t, i) =>
           <GridFormPreview
-            item
-            key={t.value}
+            key={i}
             formTitle={t.title}
             formDesc={t.description}
           />
-        ))}
+        )}
         <Grid item>
           <Card variant="outlined">
             <CardContent style={{ padding: "10%" }}>
@@ -68,8 +67,5 @@ const FormsPage = () => {
     </>
   )
 }
-
-// const useStyles = makeStyles((theme) => ({
-// }))
 
 export default FormsPage

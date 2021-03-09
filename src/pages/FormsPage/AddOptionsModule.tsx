@@ -3,13 +3,17 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeOption, updateQuestion, updateQuestionOption } from '../../actions/formActions';
 
-const AddOptionsModule = ({ index }) => {
+interface Props {
+  index: number
+}
+
+const AddOptionsModule: React.FC<Props> = ({ index }) => {
   const dispatch = useDispatch()
-  const { questions } = useSelector((state) => state.form.currentForm)
+  const { questions } = useSelector((state: any) => state.form.currentForm)
 
   return ( 
     <>
-    {questions[index].options.map((opt, i) =>
+    {questions[index].options.map((opt: string, i: number) =>
     <div key={i}>
       <input value={opt}
         onChange={({ target }) => dispatch(updateQuestionOption(target.value, index, i ))

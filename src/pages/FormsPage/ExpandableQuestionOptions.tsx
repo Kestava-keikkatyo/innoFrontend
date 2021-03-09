@@ -1,12 +1,20 @@
 import { Button, Divider, Grid, makeStyles } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateQuestion } from '../../actions/formActions';
 import CustomFormInput from './CustomFormInput';
 
-const ExpandedBodyModule = ({ index, children }) => {
+interface Index {
+  index: number
+}
+
+interface Props extends Index {
+  children?: ReactNode
+}
+
+const ExpandedBodyModule: React.FC<Props> = ({ index, children }) => {
   const classes = useStyles()
-  const { questions } = useSelector(state => state.form.currentForm)
+  const { questions } = useSelector((state: any) => state.form.currentForm)
   const dispatch = useDispatch()
   const [hidden, setHidden] = useState(true)
 
@@ -19,7 +27,7 @@ const ExpandedBodyModule = ({ index, children }) => {
       placeholder="Type subtitle here..."
       type="text" name="sub-title"
       value={questions[index].subTitle}
-      onChange={(e) => dispatch(
+      onChange={(e: any) => dispatch(
           updateQuestion(
             { ...questions[index], subTitle: e.target.value }, index
           )
@@ -37,8 +45,8 @@ const ExpandedBodyModule = ({ index, children }) => {
  )
 }
 
-const ExpandedTextModule = ({ index, children}) => {
-  const { questions } = useSelector(state => state.form.currentForm)
+const ExpandedTextModule: React.FC<Props> = ({ index, children }) => {
+  const { questions } = useSelector((state: any) => state.form.currentForm)
   const dispatch = useDispatch()
   
   return(
@@ -47,7 +55,7 @@ const ExpandedTextModule = ({ index, children}) => {
         label="Answer min len"
         type="number" name="sub-title"
         value={questions[index].minLen}
-        onChange={(e) => dispatch(
+        onChange={(e: any) => dispatch(
             updateQuestion(
               { ...questions[index], minLen: e.target.value }, index )
           )} />
@@ -55,7 +63,7 @@ const ExpandedTextModule = ({ index, children}) => {
         label="Answer max len"
           type="number" name="sub-title"
           value={questions[index].maxLen}
-          onChange={(e) => dispatch(
+          onChange={(e: any) => dispatch(
           updateQuestion(
             { ...questions[index], maxLen: e.target.value }, index )
         )} />
@@ -69,8 +77,8 @@ const ExpandedTextModule = ({ index, children}) => {
  * @param {*} param0 
  * @todo Laita tähän tilanhallinta
  */
-const ExpandedHorizontalRadioModule = ({ index }) => {
-  const { questions } = useSelector(state => state.form.currentForm)
+const ExpandedHorizontalRadioModule: React.FC<Index> = ({ index }) => {
+  const { questions } = useSelector((state: any) => state.form.currentForm)
   const dispatch = useDispatch()
 
   return(
@@ -79,7 +87,7 @@ const ExpandedHorizontalRadioModule = ({ index }) => {
         label="Scale"
         type="number" name="scale-val"
         value={questions[index].scale}
-        onChange={(e) => dispatch(
+        onChange={(e: any) => dispatch(
             updateQuestion(
               { ...questions[index], scale: e.target.value }, index
             )
@@ -92,7 +100,7 @@ const ExpandedHorizontalRadioModule = ({ index }) => {
           placeholder="Left title"
           type="text" name="scale-left"
           value={questions[index].scaleOptionTitleLeft}
-          onChange={(e) => dispatch(
+          onChange={(e: any) => dispatch(
               updateQuestion(
                 { ...questions[index], scaleOptionTitleLeft: e.target.value }, index
               )
@@ -105,7 +113,7 @@ const ExpandedHorizontalRadioModule = ({ index }) => {
           placeholder="Center title"
           type="text" name="scale-center"
             value={questions[index].scaleOptionTitleCenter}
-            onChange={(e) => dispatch(
+            onChange={(e: any) => dispatch(
                 updateQuestion(
                   { ...questions[index], scaleOptionTitleCenter: e.target.value }, index
                 )
@@ -118,7 +126,7 @@ const ExpandedHorizontalRadioModule = ({ index }) => {
           placeholder="Right title"
           type="text" name="scale-right"
             value={questions[index].scaleOptionTitleRight}
-            onChange={(e) => dispatch(
+            onChange={(e: any) => dispatch(
                 updateQuestion(
                   { ...questions[index], scaleOptionTitleRight: e.target.value }, index
                 )
@@ -133,15 +141,15 @@ const ExpandedHorizontalRadioModule = ({ index }) => {
 /**
  * @todo handle options
  */
-const ExpandedRadioButtonGroupModule = ({ index }) => <ExpandedBodyModule  index={index} />
+const ExpandedRadioButtonGroupModule: React.FC<Index> = ({ index }) => <ExpandedBodyModule index={index} />
 
 /**
  * @todo handle options
  */
-const ExpandedCheckBoxModule = ({ index }) => <ExpandedBodyModule  index={index} />
+const ExpandedCheckBoxModule: React.FC<Index> = ({ index }) => <ExpandedBodyModule index={index} />
 
-const ExpandedTextAreaModule = ({ index }) => {
-  const { questions } = useSelector(state => state.form.currentForm)
+const ExpandedTextAreaModule: React.FC<Index> = ({ index }) => {
+  const { questions } = useSelector((state: any) => state.form.currentForm)
   const dispatch = useDispatch()
   
   return(
@@ -150,7 +158,7 @@ const ExpandedTextAreaModule = ({ index }) => {
       label="row height"
       type="number" name="row-height"
       value={questions[index].rowHeight}
-      onChange={(e) => dispatch(
+      onChange={(e: any) => dispatch(
         updateQuestion(
           { ...questions[index], rowHeight: e.target.value }, index
         )
@@ -159,8 +167,8 @@ const ExpandedTextAreaModule = ({ index }) => {
   )
 }
 
-const ExpandableQuestionModule = ({ index }) => {
-  const { questions } = useSelector(state => state.form.currentForm)
+const ExpandableQuestionModule: React.FC<Index> = ({ index }) => {
+  const { questions } = useSelector((state: any) => state.form.currentForm)
 
   if(!questions || !questions[index]) return <></>
 
@@ -182,7 +190,7 @@ const ExpandableQuestionModule = ({ index }) => {
   }
 }
  
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   hidden: {
     display: 'none'
   },
