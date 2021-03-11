@@ -18,7 +18,21 @@ const FormContactInfo = ({ question }) => {
     <>
       <Typography variant="h6">Contact: </Typography>
       <FormControl>
-        <FormControlLabel control={<Input />} label={name}></FormControlLabel>
+        <FormControlLabel
+          control={<Input />}
+          placeholder="Name: "
+          label={name}
+        ></FormControlLabel>
+        <FormControlLabel
+          control={<Input />}
+          placeholder="Phone: "
+          label={name}
+        ></FormControlLabel>
+        <FormControlLabel
+          control={<Input />}
+          placeholder="Email: "
+          label={name}
+        ></FormControlLabel>
       </FormControl>
     </>
   )
