@@ -28,8 +28,8 @@ import {
 export const importForm = (file: any) => async (dispatch: any) => {
   let fr = new FileReader()
   fr.onloadend = (e) => {
-    const data = typeof fr.result === 'string' ? JSON.parse(fr.result): {}
-    dispatch({ type: "SET_CURRENT_FORM", data })
+    const data = typeof fr.result === "string" ? JSON.parse(fr.result) : {}
+    dispatch({ type: SET_CURRENT_FORM, data })
   }
   fr.readAsText(file)
 }
