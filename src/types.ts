@@ -72,7 +72,7 @@ declare global {
   }
 }
 
-interface FormQuestion {
+export interface FormQuestion {
   question: string
   options: any
 }

@@ -1,4 +1,3 @@
-import { FormatFunction } from "i18next"
 import { Form } from "../types"
 import {
   SET_CURRENT_FORM,
@@ -28,8 +27,8 @@ const initialState = {
  * Redux form reducer that controls the form generator tool state.
  * @module
  *
- * @param {Object} state - initial state
- * @param {Object} action - dispatched action
+ * @param {Form} state - initial state
+ * @param {FormActionTypes} action - dispatched action
  */
 const formReducer = (state = initialState, action: FormActionTypes) => {
   const { data, type } = action
