@@ -139,7 +139,7 @@ interface SetQuestionsAction {
   data: any
 }
 
-interface ClearCurrenFormAction {
+interface ClearCurrentFormAction {
   type: typeof CLEAR_CURRENT_FORM
   data: any
 }
@@ -154,7 +154,7 @@ export type FormActionTypes =
   | RemoveQuestionAction
   | RemoveOptionAction
   | SetQuestionsAction
-  | ClearCurrenFormAction
+  | ClearCurrentFormAction
 
 export const LOGIN = "USER_LOGIN"
 export const LOGOUT = "USER_LOGOUT"

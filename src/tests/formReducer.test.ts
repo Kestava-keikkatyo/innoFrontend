@@ -4,5 +4,6 @@ import deepFreeze from "deep-freeze"
 describe("formReducer", () => {
   test("Should return default state", () => {
     const newState = formReducer(undefined, {})
+    expect(newState).toEqual({ title: "", description: "", questions: [] })
   })
 })
