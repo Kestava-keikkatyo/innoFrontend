@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { fontSizes, inputTypes } from '../../types';
+import { fontSizes, inputTypes } from '../../types/types';
 
 const CustomFormInput: React.FC<any> = ({ labelFontSize, label, type, name, placeholder, value, onChange, className, inputClassName, labelClassName }) => {
   return (

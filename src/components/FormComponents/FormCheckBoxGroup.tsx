@@ -1,6 +1,6 @@
 import { Checkbox, FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, Typography } from '@material-ui/core'
 import React from 'react'
-import { FormComponentProps } from '../../types'
+import { FormComponentProps } from '../../types/types'
 
 const FormCheckBoxGroup: React.FC<FormComponentProps> = ({ question }) => {
   const { name, subTitle, options } = question

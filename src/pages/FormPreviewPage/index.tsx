@@ -13,7 +13,7 @@ import FormTextArea from '../../components/FormComponents/FormTextArea'
 import FormPreviewHeader from './FormPreviewHeader'
 import formConstants from '../../constants/formConstants'
 import { setAlert } from '../../actions/alertActions'
-import { Question } from '../../types'
+import { Question } from '../../types/types'
 import FormContactInfo from '../../components/FormComponents/FormContactInfo'
 import FormDatePicker from '../../components/FormComponents/FormDatePicker'
 

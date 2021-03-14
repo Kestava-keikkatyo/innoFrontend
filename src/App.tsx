@@ -16,7 +16,7 @@ import WorkerStatistics from "./pages/WorkerStatistics"
 import { CssBaseline } from "@material-ui/core"
 import NewFormPage from "./pages/FormsPage/NewFormPage"
 import FormPreviewPage from "./pages/FormPreviewPage"
-import { roles } from "./types"
+import { roles } from "./types/types"
 
 /**
  * App component, main react component which acts as a container for all the other components.

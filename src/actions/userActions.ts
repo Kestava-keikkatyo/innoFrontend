@@ -6,7 +6,7 @@ import userService from '../services/userService'
 import { saveUser, logoutUser } from '../utils/storage'
 import history from '../utils/history'
 import { setAlert } from './alertActions'
-import { Credentials, LOGIN, LOGOUT, roles, SignUpUser, USER_FAILURE, USER_PROFILE, USER_REQUEST } from '../types'
+import { Credentials, LOGIN, LOGOUT, roles, SignUpUser, USER_FAILURE, USER_PROFILE, USER_REQUEST } from '../types/types'
 
 /**
  * Logs user in

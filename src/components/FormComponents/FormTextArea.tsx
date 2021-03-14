@@ -1,6 +1,6 @@
 import { TextField, Typography } from '@material-ui/core'
 import React from 'react'
-import { FormComponentProps } from '../../types'
+import { FormComponentProps } from '../../types/types'
 
 const FormTextArea: React.FC<FormComponentProps> = ({ question }) => {
   const { name, rowHeight } = question

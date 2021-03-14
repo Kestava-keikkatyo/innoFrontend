@@ -6,7 +6,7 @@ import AppNavigation from './NavigationComponents'
 import ActiveLastBreadcrumb from './ActiveLastBreadcrumb'
 import { setBreadcrumb } from '../actions/breadcrumbActions'
 import pathConverter from '../utils/pathConverter'
-import { PrivateRouteProps, roles } from '../types'
+import { PrivateRouteProps, roles } from '../types/types'
 
 /**
  * Private route component. Renders the child components if the user is logged in

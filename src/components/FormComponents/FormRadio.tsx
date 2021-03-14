@@ -1,6 +1,6 @@
 import { FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, Radio, Typography } from '@material-ui/core';
 import React from 'react';
-import { FormComponentProps } from '../../types';
+import { FormComponentProps } from '../../types/types';
 
 const FormRadio: React.FC<FormComponentProps> = ({ question }) => {
   const { name, subTitle, options } = question

@@ -1,6 +1,6 @@
 import { Typography } from '@material-ui/core';
 import React from 'react'
-import { FormComponentProps } from '../../types';
+import { FormComponentProps } from '../../types/types';
 
 const FormComment: React.FC<FormComponentProps> = ({ question }) => {
   const { comment } = question

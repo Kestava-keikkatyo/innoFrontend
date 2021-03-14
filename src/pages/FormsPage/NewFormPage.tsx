@@ -15,7 +15,7 @@ import {
 } from "../../actions/formActions"
 import CustomFormInput from "./CustomFormInput"
 import NewFormHeader from "./NewFormHeader"
-import { Question } from "../../types"
+import { Question } from "../../types/types"
 
 /**
  * @todo move to constants
