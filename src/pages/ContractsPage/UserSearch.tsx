@@ -12,7 +12,7 @@ import {
 import { Search as SearchIcon } from "@material-ui/icons"
 import { updateSearchList } from "../../actions/businessContractActions"
 import { useDispatch } from "react-redux"
-import { businessContractType, roles } from "../../types/types"
+import { roles } from "../../types/types"
 
 const INIT_SEARCH_TYPE = roles.Worker
 

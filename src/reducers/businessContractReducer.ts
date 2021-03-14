@@ -5,7 +5,7 @@
 // import alertConstants from '../constants/alertConstants'
 // import contractsService from '../services/contractsService'
 
-import { ADD_B_CONTRACT, BusinessContractActions, BusinessContractState, B_DELETE, B_FETCH, B_UPDATE } from "../types/state"
+import { ACTIVATE_B_CONTRACT, ADD_B_CONTRACT, BusinessContractActions, BusinessContractState, B_DELETE, B_FETCH, B_UPDATE } from "../types/state"
 
 const initialState: BusinessContractState = {
   searchList: [],
@@ -40,6 +40,12 @@ const businessContractReducer = (state: BusinessContractState = initialState, ac
       return {
         ...state,
         madeContracts: [...state.madeContracts, action.data]
+      }
+    case ACTIVATE_B_CONTRACT:
+      return {
+        ...state,
+        madeContracts: 
+          state.madeContracts.map((c: any) => c.id === action.data ? { ...c, contractMade: true }: c)
       }
     default:
       return state

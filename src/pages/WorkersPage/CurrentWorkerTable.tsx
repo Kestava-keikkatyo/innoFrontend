@@ -14,6 +14,7 @@ import { Delete as DeleteIcon } from '@material-ui/icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteWorkContractById, fetchWorkContracts } from '../../actions/workContractActions'
 import { setAlert } from '../../actions/alertActions'
+import { IRootState } from '../../utils/store'
 
 /**
  * 
@@ -21,7 +22,7 @@ import { setAlert } from '../../actions/alertActions'
  * @todo make table responsive
  */
 const CurrentWorkerTable = () => {
-  const { madeContracts } = useSelector((state: any) => state.workContracts)
+  const { madeContracts } = useSelector((state: IRootState) => state.workContracts)
   const dispatch = useDispatch()
   const contracts = madeContracts
 

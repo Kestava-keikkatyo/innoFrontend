@@ -7,6 +7,7 @@ import ActiveLastBreadcrumb from './ActiveLastBreadcrumb'
 import { setBreadcrumb } from '../actions/breadcrumbActions'
 import pathConverter from '../utils/pathConverter'
 import { PrivateRouteProps, roles } from '../types/types'
+import { IRootState } from '../utils/store'
 
 /**
  * Private route component. Renders the child components if the user is logged in
@@ -36,7 +37,7 @@ import { PrivateRouteProps, roles } from '../types/types'
  * </Switch>
  */
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ roles, children, path, ...rest }) => {
-  const { loggedIn, data } = useSelector((state: any) => state.user)
+  const { loggedIn, data } = useSelector((state: IRootState) => state.user)
   const dispatch = useDispatch()
 
   useEffect( () => {

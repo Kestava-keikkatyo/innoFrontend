@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { me, update } from '../../actions/userActions'
-import Role from '../../constants/role'
 
 import WorkerProfile from './WorkerProfile'
 import CompanyProfile from './CompanyProfile'
@@ -16,6 +15,7 @@ import {
   Button,
   Container
 } from '@material-ui/core'
+import { roles } from '../../types/types'
 
 /**
  * The main profile page component.
@@ -61,10 +61,10 @@ const ProfilePage = () => {
         </Card>
       </Box>
       <Box paddingBottom={2}>
-        {data.role === Role.Worker &&
+        {data.role === roles.Worker &&
           <WorkerProfile profile={user.profile} handleSubmit={updateUser} />}
-        {(data.role === Role.Agency ||
-          data.role === Role.Business) &&
+        {(data.role === roles.Agency ||
+          data.role === roles.Business) &&
           <CompanyProfile profile={user.profile} handleSubmit={updateUser} />}
       </Box>
       <Box paddingBottom={2}>

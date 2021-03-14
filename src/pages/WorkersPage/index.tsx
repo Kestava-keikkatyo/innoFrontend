@@ -13,6 +13,7 @@ import {
   makeStyles
 } from '@material-ui/core'
 import { useSelector } from 'react-redux'
+import { IRootState } from '../../utils/store';
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -30,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
  * - Creates workcontract between worker and business (agency view)
  */
 const WorkersPage = () => {
-  const workContracts = useSelector((state: any) => state.workContracts)
+  const workContracts = useSelector((state: IRootState) => state.workContracts)
   const [workerData, setWorkerData] = useState(null)
   const [displayModal, setDisplayModal] = useState(false)
   const classes = useStyles()

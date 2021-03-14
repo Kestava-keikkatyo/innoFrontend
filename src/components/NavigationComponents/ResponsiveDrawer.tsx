@@ -20,14 +20,15 @@ import { Contacts, ExpandLess, ExpandMore, Home, PeopleAlt, StarBorder, Security
 import { Link } from 'react-router-dom';
 import { logout } from '../../actions/userActions';
 import { useDispatch, useSelector } from 'react-redux';
-import Role from '../../constants/role'
+import { roles } from "../../types/types";
+import { IRootState } from "../../utils/store";
 
 const ResponsiveDrawer: React.FC = () => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const dispatch = useDispatch()
 
-  const { data } = useSelector((state: any) => state.user)
+  const { data } = useSelector((state: IRootState) => state.user)
   const role = data.role
 
   /**
@@ -117,20 +118,20 @@ const ResponsiveDrawer: React.FC = () => {
           </ListItem>
           <Divider />
           
-          {role === Role.Agency &&
+          {role === roles.Agency &&
             <ListItem button component={Link} to="/contracts">
               <ListItemIcon><Contacts /></ListItemIcon>
               <ListItemText primary="Contracts" />
             </ListItem>
           }
-          {(role === Role.Agency || role === Role.Business) &&
+          {(role === roles.Agency || role === roles.Business) &&
             <ListItem button component={Link} to="/workers">
               <ListItemIcon><PeopleAlt /></ListItemIcon>
               <ListItemText primary="Workers" />
             </ListItem>
           }
 
-          {role === Role.Worker &&
+          {role === roles.Worker &&
           <>
             <ListItem button onClick={handleClick} className="expandable-button">
               <ListItemIcon>

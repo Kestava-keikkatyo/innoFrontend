@@ -14,11 +14,12 @@ import { Close as CloseIcon } from "@material-ui/icons"
 import { useDispatch, useSelector } from "react-redux"
 import { addBusinessContract } from "../../actions/businessContractActions"
 import { setAlert } from "../../actions/alertActions"
-import { severity, businessContractType, roles } from "../../types/types"
+import { severity, roles } from "../../types/types"
+import { IRootState } from "../../utils/store"
 
 const WorkerModal: React.FC<any> = ({ displayModal, closeModal, workerData }) => {
   const dispatch = useDispatch()
-  const { madeContracts } = useSelector((state: any) => state.businessContracts)
+  const { madeContracts } = useSelector((state: IRootState) => state.businessContracts)
   
   const addContract = () => {
     if (!madeContracts.some((value: any) => value.business?.id === workerData.id || value.user?.id === workerData.id)) {

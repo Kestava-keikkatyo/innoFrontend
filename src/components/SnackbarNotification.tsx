@@ -3,9 +3,10 @@ import { Alert } from '@material-ui/lab'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { clearAlert } from '../actions/alertActions'
+import { IRootState } from '../utils/store'
 
 const SnackbarNotification: React.FC = () => {
-  const alert = useSelector((state: any) => state.alert)
+  const alert = useSelector((state: IRootState) => state.alert)
   const dispatch = useDispatch()
   
   const handleSnackbarClose = (_: React.SyntheticEvent<any, Event>, reason?: SnackbarCloseReason) => {

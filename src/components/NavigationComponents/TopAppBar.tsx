@@ -7,6 +7,7 @@ import profileThumb from '../../assets/profile-thumb.jpg'
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import { logout } from '../../actions/userActions';
+import { IRootState } from '../../utils/store';
 
 const drawerWidth = navConstants.DRAWER_WIDTH
 
@@ -46,7 +47,7 @@ const UserMenuDropdown: React.FC<{ open: boolean }> = ({ open }) => {
 
 const TopAppBar: React.FC<any> = ({ handleDrawerToggle }) => {
   const classes = useStyles();
-  const { data } = useSelector((state: any) => state.user)
+  const { data } = useSelector((state: IRootState) => state.user)
   const [open, setOpen] = useState(true)
 
   return(

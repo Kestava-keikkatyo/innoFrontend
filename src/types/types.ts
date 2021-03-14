@@ -32,6 +32,12 @@ export interface BreadcrumbLink {
   link: string
 }
 
+export interface Feeling {
+  value: 0 | 1 | 2 | 3,
+  note: string,
+  isPrivate: boolean
+}
+
 export interface Question {
   name: string,
   type: string,

@@ -3,8 +3,8 @@
  * @module
  */
 import axios from 'axios'
+import { roles } from '../types/types'
 import { loadUser } from '../utils/storage'
-import Role from '../constants/role'
 
 const baseUrl = 'http://localhost:3001/api'
 
@@ -27,11 +27,11 @@ const authHeader = () => {
 const signup = async (user, role) => {
   try {
     switch (role) {
-      case Role.Worker:
+      case roles.Worker:
         return await axios.post(`${baseUrl}/users`, user)
-      case Role.Agency:
+      case roles.Agency:
         return await axios.post(`${baseUrl}/agencies`, user)
-      case Role.Business:
+      case roles.Business:
         return await axios.post(`${baseUrl}/businesses`, user)
       default:
         // Unsuitable role selected return Promise.reject.
@@ -51,11 +51,11 @@ const signup = async (user, role) => {
 const login = async (credentials, role) => {
   try {
     switch (role) {
-      case Role.Worker:
+      case roles.Worker:
         return await axios.post(`${baseUrl}/login/worker`, credentials)
-      case Role.Agency:
+      case roles.Agency:
         return await axios.post(`${baseUrl}/login/agency`, credentials)
-      case Role.Business:
+      case roles.Business:
         return await axios.post(`${baseUrl}/login/business`, credentials)
       default:
         // Unsuitable role selected return Promise.reject.
@@ -73,11 +73,11 @@ const login = async (credentials, role) => {
 const me = async (role) => {
   try {
     switch (role) {
-      case Role.Worker:
+      case roles.Worker:
         return await axios.get(`${baseUrl}/users/me`, authHeader())
-      case Role.Agency:
+      case roles.Agency:
         return await axios.get(`${baseUrl}/agencies/me`, authHeader())
-      case Role.Business:
+      case roles.Business:
         return await axios.get(`${baseUrl}/businesses/me`, authHeader())
       default:
         // If user changes localstorages role value to something not mentioned above,
@@ -97,11 +97,11 @@ const me = async (role) => {
 const update = async (updateData, role) => {
   try {
     switch (role) {
-      case Role.Worker:
+      case roles.Worker:
         return await axios.put(`${baseUrl}/users`, updateData, authHeader())
-      case Role.Agency:
+      case roles.Agency:
         return await axios.put(`${baseUrl}/agencies`, updateData, authHeader())
-      case Role.Business:
+      case roles.Business:
         return await axios.put(`${baseUrl}/businesses`, updateData, authHeader())
       default:
         return Promise.reject({ status: 500 })

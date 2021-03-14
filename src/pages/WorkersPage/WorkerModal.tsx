@@ -18,11 +18,12 @@ import { Close as CloseIcon } from '@material-ui/icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchBusinessContracts } from '../../actions/businessContractActions'
 import { addWorkContract } from '../../actions/workContractActions'
+import { IRootState } from '../../utils/store'
 
 const WorkerModal: React.FC<any> = ({ modalState, workerData }) => {
   const {displayModal, setDisplayModal} = modalState
   const [business, setBusiness] = useState('')
-  const businessContracts = useSelector((state: any) => state.businessContracts.madeContracts)
+  const businessContracts = useSelector((state: IRootState) => state.businessContracts.madeContracts)
 
   const dispatch = useDispatch()
   useEffect(() => {

@@ -1,3 +1,5 @@
+import { ADD_FEELING, CLEAR_CURRENT_FEELING, FeelingActionTypes, FeelingState, FETCH_FEELINGS, SET_CURRENT_FEELING, UPDATE_FEELING_DATASET } from "../types/state"
+import { Feeling } from "../types/types"
 import { formatDate } from "../utils/dateUtils"
 
 /**
@@ -19,25 +21,25 @@ const initialDataset = {
   ]
 }
 
-const initialFeeling = {
+const initialFeeling: Feeling = {
   value: 0,
   note: "",
   isPrivate: false,
 }
-const initialState = {
+const initialState: FeelingState = {
   currentFeeling: initialFeeling,
   feelingDataSet: initialDataset,
   feelings: [],
 }
 
-const feelingReducer = (state = initialState, action) => {
+const feelingReducer = (state: FeelingState = initialState, action: FeelingActionTypes) => {
   switch (action.type) {
-    case "FETCH_FEELINGS":
+    case FETCH_FEELINGS:
       return {
         ...state,
         feelings: action.data
       }
-    case "SET_CURRENT_FEELING":
+    case SET_CURRENT_FEELING:
       return {
         ...state,
         currentFeeling: {
@@ -45,21 +47,21 @@ const feelingReducer = (state = initialState, action) => {
           ...action.data
         }
       }
-    case "SUBMIT_FEELING":
+    case ADD_FEELING:
       return {
         ...state,
         feelings: action.data,
         currentFeeling: initialFeeling
       }
-    case "CLEAR_CURRENT_FEELING":
+    case CLEAR_CURRENT_FEELING:
       return {
         ...state,
         currentFeeling: initialFeeling
       }
-    case "UPDATE_DATA_SET":
-      let tempLabels = []
-      let tempData = []
-      state.feelings.map(f => {
+    case UPDATE_FEELING_DATASET:
+      let tempLabels: any = []
+      let tempData: any = []
+      state.feelings.map((f: any) => {
         tempLabels.push(formatDate(f.createdAt))
         return tempData.push(f.value)
       })

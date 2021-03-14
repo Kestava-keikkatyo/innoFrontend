@@ -1,4 +1,4 @@
-import { roles, severity } from "./types"
+import { Feeling, roles, severity } from "./types"
 
 export interface User {
   id?: string,
@@ -104,6 +104,12 @@ export const ADD_B_CONTRACT = 'ADD_BUSINESS_CONTRACT'
 export const B_FETCH = 'FETCH_BUSINESS_CONTRACTS'
 export const B_UPDATE = 'UPDATE_BUSINESS_SEARCH'
 export const B_DELETE = 'DELETE_BUSINESS_CONTRACT_BY_ID'
+export const ACTIVATE_B_CONTRACT = 'ACTIVATE_BUSINESS_CONTRACT'
+
+interface ActivateBusinessContract {
+  type: typeof ACTIVATE_B_CONTRACT
+  data: any
+}
 
 interface AddBusinessContractAction {
   type: typeof ADD_B_CONTRACT
@@ -126,7 +132,7 @@ interface DeleteBusinessContractAction {
 }
 
 export type BusinessContractActions = AddBusinessContractAction | BusinessContractFetchAction |
-UpdateBusinessSearchAction | DeleteBusinessContractAction
+UpdateBusinessSearchAction | DeleteBusinessContractAction | ActivateBusinessContract
 
 export interface WorkContractState {
   searchList: object[],
@@ -159,3 +165,43 @@ interface DeleteWorkContractAction {
 }
 
 export type WorkContractActionTypes = AddWorkContractAction | FetchWorkContractAction | UpdateWorkContractAction | DeleteWorkContractAction
+
+export interface FeelingState {
+  currentFeeling: Feeling,
+  feelingDataSet: any,
+  feelings: Feeling[]
+}
+
+export const ADD_FEELING = 'ADD_FEELING'
+export const FETCH_FEELINGS = 'FETCH_FEELINGS'
+export const CLEAR_CURRENT_FEELING = 'CLEAR_CURRENT_FEELING'
+export const SET_CURRENT_FEELING = 'SET_CURRENT_FEELING'
+export const UPDATE_FEELING_DATASET = 'UPDATE_FEELING_DATASET'
+
+interface AddFeelingAction {
+  type: typeof ADD_FEELING
+  data: any
+}
+
+export interface FetchFeelingsAction {
+  type: typeof FETCH_FEELINGS
+  data: any
+}
+
+interface ClearCurrentFeelingAction {
+  type: typeof CLEAR_CURRENT_FEELING
+  data: any
+}
+
+interface SetCurrentFeelingAction {
+  type: typeof SET_CURRENT_FEELING
+  data: any
+}
+
+interface UpdateFeelingDatasetAction {
+  type: typeof UPDATE_FEELING_DATASET
+  data: any
+}
+
+export type FeelingActionTypes = AddFeelingAction | FetchFeelingsAction | ClearCurrentFeelingAction |
+SetCurrentFeelingAction | UpdateFeelingDatasetAction

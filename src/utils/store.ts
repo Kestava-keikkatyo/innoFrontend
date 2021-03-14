@@ -7,17 +7,9 @@ import businessContractReducer from '../reducers/businessContractReducer'
 import workContractReducer from '../reducers/workContractReducer'
 import breadcrumbReducer from '../reducers/breadcrumbReducer'
 import feelingReducer from '../reducers/feelingReducer'
-import documentReducer from '../reducers/documentReducer'
 import formReducer from '../reducers/formReducer'
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-
-/**
- * @todo define this
- */
-export interface IRootState{
-  
-}
 
 const reducer = combineReducers({
   user: userReducer,
@@ -26,8 +18,9 @@ const reducer = combineReducers({
   workContracts: workContractReducer,
   breadcrumb: breadcrumbReducer,
   feeling: feelingReducer,
-  document: documentReducer,
   form: formReducer,
 })
+
+export type IRootState = ReturnType<typeof reducer>
 
 export default createStore<any, any, any, any>(reducer, composeEnhancer(applyMiddleware(thunk)))

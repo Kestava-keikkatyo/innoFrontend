@@ -3,19 +3,21 @@ import React, { useEffect } from 'react'
 import { Button, Container, Typography } from '@material-ui/core'
 import { DataGrid } from '@material-ui/data-grid';
 import { useDispatch, useSelector } from 'react-redux';
-import { activateBusinessContract, fetchBusinessDocuments, fetchWorkDocuments } from '../../actions/documentActions';
 import Spacing from '../../components/Spacing';
 import { formatDate } from '../../utils/dateUtils';
+import { activateBusinessContract, fetchBusinessContracts } from '../../actions/businessContractActions';
+import { fetchWorkContracts } from '../../actions/workContractActions';
 
 const DocumentHome = () => {
-  const { businessContracts } = useSelector(state => state.document)
-  const { workContracts } = useSelector(state => state.document)
+  const businessContracts = useSelector(state => state.businessContracts.madeContracts)
+  const workContracts = useSelector(state => state.workContracts.madeContracts)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchBusinessDocuments())
-    dispatch(fetchWorkDocuments())
+    dispatch(fetchBusinessContracts())
+    dispatch(fetchWorkContracts())
   }, [dispatch])
+
   //id	Name	Email	Type	Status
   const workColumns = [
     // { field: 'id', headerName: 'ID', width: 250 },
