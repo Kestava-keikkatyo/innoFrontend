@@ -36,7 +36,7 @@ const useStyles = makeStyles({
 
 export default function CustomizedTables() {
   const classes = useStyles();
-  const feelings = useSelector(state => state.feeling?.feelings)
+  const feelings = useSelector((state: any) => state.feeling?.feelings)
   
   return (
     <TableContainer component={Paper} className="table-container">
@@ -49,7 +49,7 @@ export default function CustomizedTables() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {feelings.map((feel, i) => (
+          {feelings.map((feel: any, i: number) => (
             <StyledTableRow key={i}>
               <StyledTableCell component="th" scope="row">
                 {formatDate(feel.createdAt)}

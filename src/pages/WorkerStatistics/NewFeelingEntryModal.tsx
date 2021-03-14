@@ -6,10 +6,10 @@ import { setAlert } from '../../actions/alertActions'
 import { submitFeeling, updateFeeling } from '../../actions/feelingActions'
 import Spacing from '../../components/Spacing'
 
-const NewFeelingEntryModal = ({ modalState }) => {
+const NewFeelingEntryModal: React.FC<any> = ({ modalState }) => {
   const { isOpen, setIsOpen } = modalState
   const dispatch = useDispatch()
-  const feeling = useSelector(state => state.feeling?.currentFeeling)
+  const feeling = useSelector((state: any) => state.feeling?.currentFeeling)
 
   const submit = () => {
     dispatch(submitFeeling(feeling))
@@ -41,7 +41,7 @@ const NewFeelingEntryModal = ({ modalState }) => {
               <span className="radio-side-label MuiTypography-body1">
                 Not so good
               </span>
-            { Array(4).fill().map((_, i) => (
+            { Array(4).fill(0).map((_, i) => (
                 <FormControlLabel
                   key={i}
                   labelPlacement="bottom"

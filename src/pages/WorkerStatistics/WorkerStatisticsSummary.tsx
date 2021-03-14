@@ -5,11 +5,11 @@ import { averageFeeling, calculateCheer, getDataSet, getTotalDataSet } from "../
 import { useSelector } from "react-redux"
 
 const WorkerStatisticsSummary = () => {
-  const feelings = useSelector(state => state.feeling?.feelings)
+  const feelings = useSelector((state: any) => state.feeling?.feelings)
 
   if(!feelings|| feelings.length === 0)
     return(
-    <div className="worker-statistics-summary" spacing={1}>
+    <div className="worker-statistics-summary">
       <Typography variant="h5" className="no-data-text">Oops! No data.</Typography>
       <Typography className="no-data-text">If you see this, then you haven't probably added any entries yet.</Typography>
     </div>

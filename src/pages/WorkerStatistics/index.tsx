@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchFeelings } from '../../actions/feelingActions';
 
 const WorkerStatistics = () => {
-  const feelings = useSelector(state => state.feeling?.feelings)
+  const feelings = useSelector((state: any) => state.feeling?.feelings)
   const dispatch = useDispatch()
 
   useEffect( () => {

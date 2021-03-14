@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateDataSet } from '../../actions/feelingActions';
 
 const Chart = () => {
-  const { feelingDataSet, feeling } = useSelector(state => state.feeling)
+  const { feelingDataSet, feeling } = useSelector((state: any) => state.feeling)
   const dispatch = useDispatch()
   useEffect( () => {
     dispatch(updateDataSet())
