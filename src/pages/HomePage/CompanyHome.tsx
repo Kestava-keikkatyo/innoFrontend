@@ -46,37 +46,37 @@ const CompanyHome = () => {
           className="paper-container"
         >
           <Typography variant="h6">Tiedotteet</Typography>
-          <List m={0.1}>
+          <List>
             {' '}
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.{' '}
           </List>
-          <List m={0.1}>
+          <List>
             {' '}
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.{' '}
           </List>
-          <List m={0.1}>
+          <List>
             {' '}
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.{' '}
           </List>
-          <List m={0.1}>
+          <List>
             {' '}
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.{' '}
           </List>
-          <List m={0.1}>
+          <List>
             {' '}
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.{' '}
           </List>
-          <List m={0.1}>
+          <List>
             {' '}
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.{' '}
           </List>
-          <List m={0.1}>
+          <List>
             {' '}
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.{' '}
@@ -88,7 +88,6 @@ const CompanyHome = () => {
         justify="space-around"
         container
         direction="row"
-        mt={5}
         className={classes.alignItemsAndJustifyContent}
       >
         <Grid item xs>

@@ -14,7 +14,7 @@ import {
 } from '@material-ui/core'
 
 const Home = () => {
-  const { data, ...user } = useSelector(state => state.user)
+  const { data, ...user } = useSelector((state: any) => state.user)
 
   const dispatch = useDispatch()
 

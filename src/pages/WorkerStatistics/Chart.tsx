@@ -11,7 +11,6 @@ const Chart = () => {
     dispatch(updateDataSet())
   }, [feeling, dispatch])
 
-  console.log(feelingDataSet);
   return (
     <div className="worker-line-chart">
       <Button variant="outlined" color="primary" size="small">1w</Button>

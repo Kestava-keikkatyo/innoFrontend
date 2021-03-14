@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core'
 import { Delete as DeleteIcon } from '@material-ui/icons'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteBusinessContractById, fetchBusinessContracts } from '../../actions/businessContractActions'
+import { deleteWorkContractById, fetchWorkContracts } from '../../actions/workContractActions'
 import { setAlert } from '../../actions/alertActions'
 
 /**
@@ -20,19 +20,19 @@ import { setAlert } from '../../actions/alertActions'
  * @param {*} param0 
  * @todo make table responsive
  */
-const SearchTable = () => {
-  const { madeContracts } = useSelector(state => state.businessContracts)
+const CurrentWorkerTable = () => {
+  const { madeContracts } = useSelector((state: any) => state.workContracts)
   const dispatch = useDispatch()
   const contracts = madeContracts
 
   useEffect(() => {
     if(!madeContracts.length)
-      dispatch(fetchBusinessContracts())
+      dispatch(fetchWorkContracts())
   }, [dispatch, madeContracts.length])
 
-  const deleteContract = (id, name) => {
-    dispatch(deleteBusinessContractById(id))
-    dispatch(setAlert("Deleted "+name+" contract."))
+  const deleteContract = (id: any) => {
+    dispatch(deleteWorkContractById(id))
+    dispatch(setAlert("Deleted "+id+" contract."))
   }
 
   if(!contracts.length) return (
@@ -47,26 +47,26 @@ const SearchTable = () => {
         <TableHead>
           <TableRow>
             <TableCell>id</TableCell>
-            <TableCell align="right">Name</TableCell>
-            <TableCell align="right">Email</TableCell>
-            <TableCell align="right">Type</TableCell>
-            <TableCell align="right">Status</TableCell>
+            <TableCell align="right">Created at</TableCell>
+            <TableCell align="right">Business</TableCell>
+            <TableCell align="right">User</TableCell>
+            <TableCell align="right">Validity Period</TableCell>
             <TableCell align="right">Remove</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {contracts.map((contract) => (
+          {contracts.map((contract: any) => (
             <TableRow key={contract.id}>
               <TableCell component="th" scope="row">{contract.id}</TableCell>
-              <TableCell align="right">{contract.user?.name || contract.business?.name}</TableCell>
-              <TableCell align="right">{contract.user?.email || contract.business?.email}</TableCell>
-              <TableCell align="right">{contract.contractType}</TableCell>
-              <TableCell align="right">{contract.contractMade ? 'made': 'pending'}</TableCell>
+              <TableCell align="right">{contract.createdAt}</TableCell>
+              <TableCell align="right">{contract.business}</TableCell>
+              <TableCell align="right">{contract.user}</TableCell>
+              <TableCell align="right">{contract.validityPeriod}</TableCell>
               <TableCell padding="none" align="right">
                 <IconButton
                   aria-label="remove from organization"
                   color="secondary"
-                  onClick={() => deleteContract(contract.id, contract.user?.name || contract.business?.name)}>
+                  onClick={() => deleteContract(contract.id)}>
                   <DeleteIcon />
                 </IconButton>
               </TableCell>
@@ -78,4 +78,4 @@ const SearchTable = () => {
   )
 }
 
-export default SearchTable
+export default CurrentWorkerTable

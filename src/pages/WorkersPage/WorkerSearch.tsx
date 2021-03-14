@@ -17,7 +17,7 @@ const WorkerSearch = () => {
     dispatch(updateSearchList('a'))
   }, [dispatch])
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault()
     if (input.length > 0) {
       dispatch(updateSearchList(input))

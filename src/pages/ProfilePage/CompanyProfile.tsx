@@ -11,7 +11,7 @@ import { Card, CardContent, Typography, Button, Box, FormControlLabel, Switch } 
  * @param {Object} props.profile - Company profile data that is used for initialization
  * @param {function} props.handleSubmit - Function for updating company's profile information
  */
-const CompanyProfile = ({ profile, handleSubmit }) => {
+const CompanyProfile: React.FC<any> = ({ profile, handleSubmit }) => {
   const [edit, setEdit] = useState(true)
 
   return (
@@ -44,7 +44,7 @@ const CompanyProfile = ({ profile, handleSubmit }) => {
             city: profile.city || '',
           }}
           validate={values => {
-            const errors = {}
+            const errors: any = {}
             const phoneRegExp = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/g
             const postnumRegExp = /(^\d{5}$)|(^\d{5}-\d{4}$)/g
             const requiredError = 'Field is required'

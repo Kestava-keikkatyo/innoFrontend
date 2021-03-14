@@ -24,14 +24,14 @@ const UserSearch = () => {
     dispatch(updateSearchList("a", INIT_SEARCH_TYPE))
   }, [dispatch])
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault()
     if (input.length > 0) {
       dispatch(updateSearchList(input, searchType))
     }
   }
 
-  const handleChange = (event) => {
+  const handleChange = (event: any) => {
     setSearchType(event.target.value)
   }
 

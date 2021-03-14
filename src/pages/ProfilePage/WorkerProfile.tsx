@@ -24,7 +24,7 @@ import { Delete as DeleteIcon, Add as AddIcon } from '@material-ui/icons'
  * @param {Object} props.profile - Worker profile data that is used for initialization
  * @param {function} props.handleSubmit - Function for updating worker's profile information
  */
-const WorkerProfile = ({ profile, handleSubmit }) => {
+const WorkerProfile: React.FC<any> = ({ profile, handleSubmit }) => {
   const [edit, setEdit] = useState(true)
 
   return (
@@ -106,21 +106,21 @@ const WorkerProfile = ({ profile, handleSubmit }) => {
                           <AddIcon />
                         </IconButton>
                       </Box>
-                      {values.licenses.map((license, index) => (
-                        <Box key={index}
+                      {values.licenses.map((_: any, i: number) => (
+                        <Box key={i}
                           display="flex"
                           flexDirection="row"
                           alignItems="center">
                           <FormikTextField
                             label="Name"
-                            name={`licenses.${index}`}
+                            name={`licenses.${i}`}
                             type="text"
                             disabled={edit}
                             fullWidth
                           />
                           <IconButton
                             disabled={edit}
-                            onClick={() => arrayHelpers.remove(index)}>
+                            onClick={() => arrayHelpers.remove(i)}>
                             <DeleteIcon />
                           </IconButton>
                         </Box>

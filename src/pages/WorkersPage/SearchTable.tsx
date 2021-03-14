@@ -12,8 +12,8 @@ import {
 import { Add as AddIcon } from '@material-ui/icons'
 import { useSelector } from 'react-redux'
 
-const SearchTable = ({ addWorker }) => {
-  const workers = useSelector(state => state.workContracts.searchList)
+const SearchTable: React.FC<any> = ({ addWorker }) => {
+  const workers = useSelector((state: any) => state.workContracts.searchList)
   return (
     <TableContainer>
       <Table aria-label="searched workers">
@@ -26,7 +26,7 @@ const SearchTable = ({ addWorker }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {workers.map((worker) => (
+          {workers.map((worker: any) => (
             <TableRow key={worker.id}>
               <TableCell component="th" scope="row">{worker.id}</TableCell>
               <TableCell align="right">{worker.name}</TableCell>

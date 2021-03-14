@@ -23,7 +23,7 @@ import {
  * @param {boolean} props.loggingIn - User currently signing up
  * @param {function} props.handleSubmit - Function for sending user credentials
  */
-const SignUpForm = ({ loggingIn, handleSubmit }) => {
+const SignUpForm: React.FC<any> = ({ loggingIn, handleSubmit }) => {
   const [open, setOpen] = useState(false)
   const { t } = useTranslation()
 
@@ -44,7 +44,7 @@ const SignUpForm = ({ loggingIn, handleSubmit }) => {
             name: '', email: '', password: '', passwordConfirm: '', role: ''
           }}
           validate={values => {
-            const errors = {}
+            const errors: any = {}
             const emailRegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
             const requiredError = t('field_required')
             if (!values.email) {

@@ -14,7 +14,7 @@ import { Card, CardContent, Typography, Button, Box, CircularProgress } from '@m
  * @param {boolean} props.loggingIn - User currently loggin in
  * @param {function} props.handleSubmit - Function for sending user credentials
  */
-const LogInForm = ({ loggingIn, handleSubmit }) => {
+const LogInForm: React.FC<any> = ({ loggingIn, handleSubmit }) => {
   const { t } = useTranslation()
 
   const roleOptions = [
@@ -32,7 +32,7 @@ const LogInForm = ({ loggingIn, handleSubmit }) => {
         <Formik
           initialValues={{ email: '', password: '', role: '' }}
           validate={values => {
-            const errors = {}
+            const errors: any = {}
             const emailRegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
             const requiredError = t('field_required')
             if (!values.email) {

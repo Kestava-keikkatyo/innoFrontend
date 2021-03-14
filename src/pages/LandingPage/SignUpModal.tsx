@@ -18,7 +18,7 @@ import { Close as CloseIcon } from '@material-ui/icons'
  * @param {boolean} props.open - Determines if modal is displayed
  * @param {function} props.handleClose - Closes modal
  */
-const SignUpModal = ({ open, handleClose }) => {
+const SignUpModal: React.FC<any> = ({ open, handleClose }) => {
   return (
     <Dialog open={open} onClose={handleClose}>
       <DialogTitle>

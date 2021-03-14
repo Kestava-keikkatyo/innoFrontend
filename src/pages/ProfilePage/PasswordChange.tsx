@@ -14,7 +14,7 @@ import { Card, CardContent, Typography, Button, Box } from '@material-ui/core'
  * @param {boolean} props.hide - Determines if form for changing password is displayed
  * @param {function} props.handleSubmit - Function for updating password
  */
-const PasswordChange = ({ handleSubmit, hide }) => {
+const PasswordChange: React.FC<any> = ({ handleSubmit, hide }) => {
   return (
     <Card variant="outlined">
       <CardContent>
@@ -39,7 +39,7 @@ const PasswordChange = ({ handleSubmit, hide }) => {
         <Formik
           initialValues={{ password: '', passwordConfirm: '' }}
           validate={values => {
-            const errors = {}
+            const errors: any = {}
             const requiredError = 'Field is required'
             if (!values.password) {
               errors.password = requiredError

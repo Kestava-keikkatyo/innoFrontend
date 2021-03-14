@@ -30,12 +30,12 @@ const useStyles = makeStyles((theme) => ({
  * - Creates workcontract between worker and business (agency view)
  */
 const WorkersPage = () => {
-  const workContracts = useSelector(state => state.workContracts)
+  const workContracts = useSelector((state: any) => state.workContracts)
   const [workerData, setWorkerData] = useState(null)
   const [displayModal, setDisplayModal] = useState(false)
   const classes = useStyles()
 
-  const openModal = (worker) => {
+  const openModal = (worker: any) => {
     setWorkerData(worker)
     setDisplayModal(true)
   }

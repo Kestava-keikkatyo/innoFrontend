@@ -24,14 +24,14 @@ import {
  */
 const ProfilePage = () => {
   const [display, setDisplay] = useState(false)
-  const { data, ...user } = useSelector(state => state.user)
+  const { data, ...user } = useSelector((state: any) => state.user)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(me(data.role))
   }, [dispatch, data.role])
 
-  const updateUser = (updateData) => {
+  const updateUser = (updateData: any) => {
     dispatch(update(updateData, data.role))
   }
 

@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
  * in workerpage
  */
 const ContractsPage = () => {
-  const { data, ...user } = useSelector(state => state.user)
+  const { data, ...user } = useSelector((state: any) => state.user)
   const dispatch = useDispatch()
   const classes = useStyles()
   
@@ -43,7 +43,7 @@ const ContractsPage = () => {
     dispatch(me(data.role))
   }, [dispatch, data.role])
 
-  const openModal = (worker) => {
+  const openModal = (worker: any) => {
     setSearchData(worker)
     setDisplayModal(true)
   }

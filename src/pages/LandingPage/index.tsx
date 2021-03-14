@@ -21,15 +21,15 @@ const LandingPage = () => {
   const [logInForm, setLogInForm] = useState(false)
   const location = useLocation()
   const dispatch = useDispatch()
-  const loggingIn = useSelector(state => state.user.loading)
+  const loggingIn = useSelector((state: any) => state.user.loading)
   const { t } = useTranslation()
 
-  const signupSubmit = ({ role, ...user }) => {
+  const signupSubmit = ({ role, ...user }: any) => {
     dispatch(signup(user, role))
   }
 
-  const loginSubmit = ({ role, ...credentials }) => {
-    const { from } = location.state || { from: { pathname: '/home' } }
+  const loginSubmit = ({ role, ...credentials }: any) => {
+    const { from }: any = location.state || { from: { pathname: '/home' } }
     dispatch(login(credentials, role, from))
   }
 
@@ -46,7 +46,6 @@ const LandingPage = () => {
         width="320px">
         <SwitchTransition mode='out-in'>
           <CSSTransition
-            key={logInForm}
             addEndListener={(node, done) => {
               node.addEventListener('transitionend', done, false)
             }}

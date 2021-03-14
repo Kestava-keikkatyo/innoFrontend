@@ -19,10 +19,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchBusinessContracts } from '../../actions/businessContractActions'
 import { addWorkContract } from '../../actions/workContractActions'
 
-const WorkerModal = ({ modalState, workerData }) => {
+const WorkerModal: React.FC<any> = ({ modalState, workerData }) => {
   const {displayModal, setDisplayModal} = modalState
   const [business, setBusiness] = useState('')
-  const businessContracts = useSelector(state => state.businessContracts.madeContracts)
+  const businessContracts = useSelector((state: any) => state.businessContracts.madeContracts)
 
   const dispatch = useDispatch()
   useEffect(() => {
@@ -64,9 +64,9 @@ const WorkerModal = ({ modalState, workerData }) => {
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={business}
-              onChange={(event) => setBusiness(event.target.value)}
+              onChange={({ target }: any) => setBusiness(target.value)}
             >
-              { businessContracts.filter(bc => bc.contractType === 'Business').map(bc => 
+              { businessContracts.filter((bc: any) => bc.contractType === 'Business').map((bc: any) => 
                 <MenuItem key={bc.id} value={bc}>{bc.business?.name}</MenuItem>
               )}
             </Select>

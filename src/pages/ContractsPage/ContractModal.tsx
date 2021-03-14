@@ -15,12 +15,12 @@ import { useDispatch, useSelector } from "react-redux"
 import { addBusinessContract } from "../../actions/businessContractActions"
 import { setAlert } from "../../actions/alertActions"
 
-const WorkerModal = ({ displayModal, closeModal, workerData }) => {
+const WorkerModal: React.FC<any> = ({ displayModal, closeModal, workerData }) => {
   const dispatch = useDispatch()
-  const { madeContracts } = useSelector(state => state.businessContracts)
+  const { madeContracts } = useSelector((state: any) => state.businessContracts)
 
   const addContract = () => {
-    if (!madeContracts.some((value) => value.business?.id === workerData.id || value.user?.id === workerData.id)) {
+    if (!madeContracts.some((value: any) => value.business?.id === workerData.id || value.user?.id === workerData.id)) {
       dispatch(addBusinessContract(workerData, workerData.feelings ? 'worker': 'business'))
       dispatch(setAlert("Success: Invitation sent to worker", "success"))
     } else {
