@@ -2,10 +2,13 @@
  * Redux alert actions
  * @module actions/alertActions
  */
-import alertConstants from '../constants/alertConstants'
 
-let timeoutId
+import { ALERT_CLEAR, ALERT_SET } from "../types/state"
+import { severity } from "../types/types"
 
+
+let timeoutId: any
+const initialSeverity = severity.Info 
 /**
  * Sets alert that is shown inside a {@link https://material-ui.com/components/snackbars/|MUI snackbar component}
  * @function
@@ -13,11 +16,10 @@ let timeoutId
  * @param {string} [severity=info] - alert severity (error, warning, info, success)
  * @param {number} [duration=5]  - amount of time the alert is shown in seconds
  */
-export const setAlert = (message, severity = 'info', duration = 5) => async dispatch => {
+export const setAlert = (message: string, severity = initialSeverity, duration: number = 5) => async (dispatch: any) => {
   dispatch({
-    type: alertConstants.SET,
-    message,
-    severity
+    type: ALERT_SET,
+    data: {message, severity}
   })
 
   if (timeoutId) {
@@ -26,7 +28,7 @@ export const setAlert = (message, severity = 'info', duration = 5) => async disp
 
   timeoutId = setTimeout(() => {
     dispatch({
-      type: alertConstants.CLEAR
+      type: ALERT_CLEAR
     })
   }, duration * 1000)
 }
@@ -42,6 +44,6 @@ export const clearAlert = () => {
   }
 
   return {
-    type: alertConstants.CLEAR,
+    type: ALERT_CLEAR,
   }
 }

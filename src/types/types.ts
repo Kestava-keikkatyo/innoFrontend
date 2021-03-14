@@ -6,6 +6,15 @@ export enum roles {
   Business = 'business'
 }
 
+export type businessContractType = roles.Business | roles.Worker
+
+export enum severity {
+  Error = 'error',
+  Warning = 'warning',
+  Info = 'info',
+  Success = 'success'
+}
+
 export enum fontSizes {
   small = 'small',
   medium = 'medium',
@@ -18,23 +27,9 @@ export enum inputTypes {
   date = 'date'
 }
 
-export interface User {
+export interface BreadcrumbLink {
   name: string,
-  email: string,
-  type: roles.Agency | roles.Business | roles.Business
-}
-
-export interface SignUpUser extends User {
-  password: string
-}
-
-export interface LoggedInUser extends User {
-  token: string,
-}
-
-export interface Credentials {
-  email: string,
-  password: string
+  link: string
 }
 
 export interface Question {
@@ -70,36 +65,3 @@ declare global {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
   }
 }
-
-export const LOGIN = 'USER_LOGIN'
-export const LOGOUT = 'USER_LOGOUT'
-export const USER_REQUEST = 'USER_REQUEST'
-export const USER_FAILURE = 'USER_FAILURE'
-export const USER_PROFILE = 'USER_PROFILE'
-
-interface UserProfileAction {
-  type: typeof USER_PROFILE
-  data: any
-}
-
-interface LoginAction {
-  type: typeof LOGIN
-  data: any
-}
-
-interface UserFailureAction {
-  type: typeof USER_FAILURE
-  data: any
-}
-
-interface UserRequestAction {
-  type: typeof USER_REQUEST
-  data: any
-}
-
-interface LogoutAction {
-  type: typeof LOGOUT
-  data: any
-}
-
-export type UserActionTypes = LoginAction | LogoutAction | UserProfileAction | UserRequestAction | UserFailureAction

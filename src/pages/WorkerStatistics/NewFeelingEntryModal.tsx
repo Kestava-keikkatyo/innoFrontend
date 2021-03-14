@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setAlert } from '../../actions/alertActions'
 import { submitFeeling, updateFeeling } from '../../actions/feelingActions'
 import Spacing from '../../components/Spacing'
+import { severity } from '../../types/types'
 
 const NewFeelingEntryModal: React.FC<any> = ({ modalState }) => {
   const { isOpen, setIsOpen } = modalState
@@ -14,7 +15,7 @@ const NewFeelingEntryModal: React.FC<any> = ({ modalState }) => {
   const submit = () => {
     dispatch(submitFeeling(feeling))
     setIsOpen(false)
-    dispatch(setAlert("Successfully added new entry.", "success"))
+    dispatch(setAlert("Successfully added new entry.", severity.Success))
   }
 
   return (
@@ -94,7 +95,7 @@ const NewFeelingEntryModal: React.FC<any> = ({ modalState }) => {
 NewFeelingEntryModal.defaultProps = {
   modalState: {
     isOpen: false,
-    setIsOpen: () => "drip"
+    setIsOpen: () => ""
   }
 }
  

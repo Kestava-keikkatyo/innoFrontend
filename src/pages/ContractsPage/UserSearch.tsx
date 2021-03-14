@@ -12,13 +12,14 @@ import {
 import { Search as SearchIcon } from "@material-ui/icons"
 import { updateSearchList } from "../../actions/businessContractActions"
 import { useDispatch } from "react-redux"
+import { businessContractType, roles } from "../../types/types"
 
-const INIT_SEARCH_TYPE = "worker"
+const INIT_SEARCH_TYPE = roles.Worker
 
 const UserSearch = () => {
   const dispatch = useDispatch()
   const [input, setInput] = useState("")
-  const [searchType, setSearchType] = useState(INIT_SEARCH_TYPE)
+  const [searchType, setSearchType] = useState<any>(INIT_SEARCH_TYPE)
 
   useEffect(() => {
     dispatch(updateSearchList("a", INIT_SEARCH_TYPE))

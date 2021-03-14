@@ -6,7 +6,8 @@ import userService from '../services/userService'
 import { saveUser, logoutUser } from '../utils/storage'
 import history from '../utils/history'
 import { setAlert } from './alertActions'
-import { Credentials, LOGIN, LOGOUT, roles, SignUpUser, USER_FAILURE, USER_PROFILE, USER_REQUEST } from '../types/types'
+import { Credentials, LOGIN, LOGOUT, SignUpUser, USER_FAILURE, USER_PROFILE, USER_REQUEST } from '../types/state'
+import { roles, severity } from '../types/types'
 
 /**
  * Logs user in
@@ -28,12 +29,12 @@ export const login = (credentials: Credentials, role: roles, from: string) => {
       })
       saveUser(data)
       history.push(from)
-      dispatch(setAlert('login successful', 'success'))
+      dispatch(setAlert('login successful', severity.Success))
     } catch (error) {
       dispatch({
         type: USER_FAILURE,
       })
-      dispatch(setAlert('login failed', 'error'))
+      dispatch(setAlert('login failed', severity.Error))
     }
   }
 }
@@ -57,12 +58,12 @@ export const signup = (user: SignUpUser, role: roles) => {
       })
       saveUser(data)
       history.push('/home')
-      dispatch(setAlert('signup successful', 'success'))
+      dispatch(setAlert('signup successful', severity.Success))
     } catch (error) {
       dispatch({
         type: USER_FAILURE,
       })
-      dispatch(setAlert('signup failed', 'error'))
+      dispatch(setAlert('signup failed', severity.Error))
     }
   }
 }
@@ -138,7 +139,7 @@ const statusHandler = (dispatch: Function, response: any) => {
   if (!response || response.status === 401 || response.status === 500) {
     // logoutUser()
     dispatch({ type: USER_FAILURE })
-    dispatch(setAlert('invalid token', 'error'))
+    dispatch(setAlert('invalid token', severity.Error))
   } else {
     window.location.reload()
   }

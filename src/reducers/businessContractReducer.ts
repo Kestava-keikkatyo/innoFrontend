@@ -5,9 +5,9 @@
 // import alertConstants from '../constants/alertConstants'
 // import contractsService from '../services/contractsService'
 
-import contractConstants from "../constants/contractConstants"
+import { ADD_B_CONTRACT, BusinessContractActions, BusinessContractState, B_DELETE, B_FETCH, B_UPDATE } from "../types/state"
 
-const initialState = {
+const initialState: BusinessContractState = {
   searchList: [],
   madeContracts: []
 }
@@ -18,25 +18,25 @@ const initialState = {
  * @param {Object} state - current state
  * @param {Object} action - dispatched action
  */
-const businessContractReducer = (state = initialState, action) => {
+const businessContractReducer = (state: BusinessContractState = initialState, action: BusinessContractActions) => {
   switch (action.type) {
-    case contractConstants.B_UPDATE:
+    case B_UPDATE:
       return {
         ...state,
         searchList: action.data
       }
-    case contractConstants.B_FETCH:
+    case B_FETCH:
       return {
         ...state,
         madeContracts: action.data
       }
-    case contractConstants.B_DELETE:
-      const filteredList = state.madeContracts.filter((value) => value.id !== action.data)
+    case B_DELETE:
+      const filteredList = state.madeContracts.filter((value: any) => value.id !== action.data)
       return {
         ...state,
         madeContracts: filteredList
       }
-    case contractConstants.ADD_B_CONTRACT:
+    case ADD_B_CONTRACT:
       return {
         ...state,
         madeContracts: [...state.madeContracts, action.data]

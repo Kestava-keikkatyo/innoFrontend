@@ -3,15 +3,11 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import { useSelector } from 'react-redux';
 import { Container } from '@material-ui/core';
-
-interface Link {
-  name: string,
-  link: string
-}
+import { BreadcrumbLink } from '../types/types';
 
 const ActiveLastBreadcrumb: React.FC = () => {
-  const { links } = useSelector((state: any) => state.breadcrumb)
-
+  const links = useSelector((state: any) => state.breadcrumb)
+  
   return (
     <Container>
       <Breadcrumbs aria-label="breadcrumb" id="breadcrumbs">
@@ -22,7 +18,7 @@ const ActiveLastBreadcrumb: React.FC = () => {
           >
             Home
           </Link>
-        { links.map( (l: Link, key: number) => 
+        { links.map( (l: BreadcrumbLink, key: number) => 
           <Link
             key={key}
             color="textPrimary"

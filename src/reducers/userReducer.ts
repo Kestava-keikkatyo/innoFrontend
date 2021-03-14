@@ -3,7 +3,7 @@
  * @module
  */
 import { loadUser } from '../utils/storage'
-import { LOGIN, LOGOUT, UserActionTypes, USER_FAILURE, USER_PROFILE, USER_REQUEST } from '../types/types'
+import { LOGIN, LOGOUT, UserActionTypes, USER_FAILURE, USER_PROFILE, USER_REQUEST } from '../types/state'
 
 const userData = loadUser()
 const initialState = { 

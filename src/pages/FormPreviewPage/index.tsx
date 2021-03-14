@@ -13,7 +13,7 @@ import FormTextArea from '../../components/FormComponents/FormTextArea'
 import FormPreviewHeader from './FormPreviewHeader'
 import formConstants from '../../constants/formConstants'
 import { setAlert } from '../../actions/alertActions'
-import { Question } from '../../types/types'
+import { Question, severity } from '../../types/types'
 import FormContactInfo from '../../components/FormComponents/FormContactInfo'
 import FormDatePicker from '../../components/FormComponents/FormDatePicker'
 
@@ -51,7 +51,7 @@ const FormPreviewPage: React.FC = () => {
               return <FormContactInfo key={k} question={q} />
             default:
               dispatch(
-                setAlert("Cannot read question of type: " + q.type, "error")
+                setAlert("Cannot read question of type: " + q.type, severity.Error)
               )
               return <></>
           }
