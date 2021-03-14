@@ -1,4 +1,4 @@
-export const formatDate = (str) => {
+export const formatDate = (str: string) => {
   const date = new Date(str);
   // Results below assume UTC timezone - your results may vary
 

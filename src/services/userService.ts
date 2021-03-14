@@ -3,7 +3,8 @@
  * @module
  */
 import axios from 'axios'
-import { roles } from '../types/types'
+import { Credentials, roles } from '../types/types'
+import { User } from '../types/state'
 import { loadUser } from '../utils/storage'
 
 const baseUrl = 'http://localhost:3001/api'
@@ -24,7 +25,7 @@ const authHeader = () => {
  * @param {Object} user - basic user information
  * @param {string} role - account role to be created (worker, agency, business)
  */
-const signup = async (user, role) => {
+const signup = async (user: User, role: roles) => {
   try {
     switch (role) {
       case roles.Worker:
@@ -45,10 +46,10 @@ const signup = async (user, role) => {
 /**
  * sends out login request
  * @function
- * @param {Object} credentials - user's credentials ({email: ..., password: ...})
- * @param {string} role - account role
+ * @param {Credentials} credentials - user's credentials ({email: ..., password: ...})
+ * @param {roles} role - account role
  */
-const login = async (credentials, role) => {
+const login = async (credentials: Credentials, role: roles) => {
   try {
     switch (role) {
       case roles.Worker:
@@ -70,7 +71,7 @@ const login = async (credentials, role) => {
  * sends out me request that gets user profile information
  * @param {string} role - account role
  */
-const me = async (role) => {
+const me = async (role: roles) => {
   try {
     switch (role) {
       case roles.Worker:
@@ -94,7 +95,7 @@ const me = async (role) => {
  * @param {Object} updateData - profile values to be updated
  * @param {string} role - account role
  */
-const update = async (updateData, role) => {
+const update = async (updateData: User, role: roles) => {
   try {
     switch (role) {
       case roles.Worker:

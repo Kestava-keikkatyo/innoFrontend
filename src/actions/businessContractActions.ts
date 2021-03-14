@@ -17,7 +17,7 @@ export const updateSearchList = (input: string, searchType: businessContractType
 }
 
 export const fetchBusinessContracts = () => async (dispatch: any) => {
-  const res = await contractsService.showBusinessContracts()
+  const res = await contractsService.fetchBusinessContracts()
   if(res.status === 200)
     dispatch({ type: B_FETCH, data: res.data })
 }

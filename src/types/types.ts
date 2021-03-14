@@ -32,6 +32,11 @@ export interface BreadcrumbLink {
   link: string
 }
 
+export interface Credentials {
+  email: string,
+  password: string
+}
+
 export interface Feeling {
   value: 0 | 1 | 2 | 3,
   note: string,

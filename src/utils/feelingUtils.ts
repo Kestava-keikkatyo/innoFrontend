@@ -1,7 +1,9 @@
+import { Feeling } from "../types/types"
+
 const colors = ["red", "orange", "yellow", "yellowgreen", "green"]
 const cheers = ["C'moon!", "Not Bad!", "Decent!", "Great!", "Excellent!"]
 
-const calculateColor = (value, maxValue) => {
+const calculateColor = (value: number, maxValue: number) => {
   const index = Math.round((value / maxValue) * 100)
     if (index < 20)
       return colors[0]
@@ -17,7 +19,7 @@ const calculateColor = (value, maxValue) => {
       return "white";
 }
 
-export const calculateCheer = (value, maxValue) => {
+export const calculateCheer = (value: number, maxValue: number) => {
   const index = Math.round((value / maxValue) * 100)
     if (index < 20)
       return cheers[0]
@@ -33,7 +35,7 @@ export const calculateCheer = (value, maxValue) => {
       return "oops! :(";
 }
 
-export const averageFeeling = (feelingList) => {
+export const averageFeeling = (feelingList: Feeling[]) => {
   let total = 0;
   for(let i = 0; i < feelingList.length; i++) {
       total += feelingList[i].value;
@@ -42,7 +44,7 @@ export const averageFeeling = (feelingList) => {
   return Math.round((avg + Number.EPSILON) * 10) / 10
 }
 
-export const getDataSet = (value) => {
+export const getDataSet = (value: number) => {
   return [ {
       data: [value, 3-value],
       backgroundColor: [calculateColor(value, 3), '#ddd'],
@@ -50,7 +52,7 @@ export const getDataSet = (value) => {
     } ]
 }
 
-export const getTotalDataSet = (total) => {
+export const getTotalDataSet = (total: number) => {
   return [ {
       data: [total, 99-total],
       backgroundColor: [calculateColor(total, 100), '#ddd'],

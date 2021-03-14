@@ -3,6 +3,7 @@
  * @module
  */
 import axios from 'axios'
+import { businessContractType } from '../types/types'
 import { loadUser } from '../utils/storage'
 
 const baseUrl = 'http://localhost:3001/api'
@@ -23,7 +24,7 @@ const authHeader = () => {
  * @param {string} input - input that is searched
  * @param {string} searchType - determines if workers or businesses are searched
  */
-const searchUsers = async (input, searchType) => {
+const searchUsers = async (input: string, searchType: businessContractType) => {
   try {
     switch (searchType) {
       case 'worker':
@@ -38,7 +39,7 @@ const searchUsers = async (input, searchType) => {
   }
 }
 
-const addBusinessContract = async (id, type) => {
+const addBusinessContract = async (id: string, type: businessContractType) => {
   try {
     switch (type) {
       case 'worker':
@@ -54,19 +55,10 @@ const addBusinessContract = async (id, type) => {
 }
 
 /**
- * TODO: Tee service jolla voi listata käyttäjän kaikki tehdyt contractit
- * @param {*} id 
- * @param {*} role 
- */
-const showBusinessContracts = async () => {
-  return await axios.get(`${baseUrl}/agencies/businesscontracts`, authHeader())
-}
-
-/**
  * TODO: Tarkista, kun route on valmis.
  * @param {*} contractId 
  */
-const deleteBusinessContractById = async (contractId) => {
+const deleteBusinessContractById = async (contractId: string) => {
   return await axios.delete(`${baseUrl}/businesscontracts/${contractId}`, authHeader())
 }
 
@@ -78,7 +70,7 @@ const fetchBusinessContracts = async () => {
   }
 }
 
-const updateBusinessContract = async (id) => {
+const updateBusinessContract = async (id: string) => {
   try {
     return await axios.put(`${baseUrl}/businesscontracts/${id}`, {}, authHeader())
   } catch (error) {
@@ -86,7 +78,7 @@ const updateBusinessContract = async (id) => {
   }
 }
 
-const addWorkContract = async (businessId, workerId, validityPeriod="2021-02-12") => {
+const addWorkContract = async (businessId: string, workerId: string, validityPeriod="2021-02-12") => {
   const body = {
     businessId,
     workerId,
@@ -108,14 +100,13 @@ const fetchWorkContracts = async () => {
   }
 }
 
-const deleteWorkContractById = async (contractId) => {
+const deleteWorkContractById = async (contractId: string) => {
   return await axios.delete(`${baseUrl}/workcontracts/${contractId}`, authHeader())
 }
 
 export default {
   searchUsers,
   addBusinessContract,
-  showBusinessContracts,
   deleteBusinessContractById,
   fetchBusinessContracts,
   updateBusinessContract,

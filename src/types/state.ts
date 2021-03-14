@@ -1,7 +1,7 @@
 import { Feeling, roles, severity } from "./types"
 
 export interface User {
-  id?: string,
+  id: string,
   name: string,
   email: string,
   type: roles.Agency | roles.Business | roles.Business
@@ -13,11 +13,6 @@ export interface SignUpUser extends User {
 
 export interface LoggedInUser extends User {
   token: string,
-}
-
-export interface Credentials {
-  email: string,
-  password: string
 }
 
 export const LOGIN = 'USER_LOGIN'

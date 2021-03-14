@@ -1,3 +1,5 @@
+import { LoggedInUser } from "../types/state"
+
 /**
  * Stores, loads and removes user's information (email, name, token and role) from localStorage
  * @module utils/storage
@@ -9,7 +11,7 @@ const storageKey = 'loggedInnoAppUser'
  * @function
  * @param {Object} user - user information containing (email, name, token and role)
  */
-export const saveUser = (user) => {
+export const saveUser = (user: LoggedInUser) => {
   try {
     const serializedUser = JSON.stringify(user)
     localStorage.setItem(storageKey, serializedUser)

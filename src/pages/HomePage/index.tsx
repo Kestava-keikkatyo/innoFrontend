@@ -12,7 +12,6 @@ import {
   Container
 } from '@material-ui/core'
 import { roles } from '../../types/types'
-import { IRootState } from '../../utils/store'
 
 const Home = () => {
   const { data, ...user } = useSelector((state: any) => state.user)
