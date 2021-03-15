@@ -92,7 +92,6 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
 }
 
 LogInForm.propTypes = {
-  loggingIn: PropTypes.bool,
   handleSubmit: PropTypes.func.isRequired
 }
 
