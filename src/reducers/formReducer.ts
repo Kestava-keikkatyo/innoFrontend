@@ -1,4 +1,4 @@
-import { Form } from "../types"
+import { Form } from "../types/types"
 import {
   SET_CURRENT_FORM,
   UPDATE_TITLE,
@@ -11,7 +11,7 @@ import {
   SET_QUESTIONS,
   CLEAR_CURRENT_FORM,
   FormActionTypes,
-} from "../types"
+} from "../types/state"
 
 const initialCurrentForm: Form = {
   title: "",

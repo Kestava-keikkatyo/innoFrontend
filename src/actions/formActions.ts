@@ -4,7 +4,7 @@
  */
 import { setAlert } from "./alertActions"
 import raw from "../forms/lomake1.json"
-import { Form, FormQuestion } from "../types"
+import { Form, FormQuestion, severity } from "../types/types"
 import {
   SET_CURRENT_FORM,
   UPDATE_TITLE,
@@ -16,8 +16,7 @@ import {
   REMOVE_OPTION,
   SET_QUESTIONS,
   CLEAR_CURRENT_FORM,
-  FormActionTypes,
-} from "../types"
+} from "../types/state"
 
 /**
  * Replaces the currentForm with the data imported from file systems
@@ -133,19 +132,19 @@ export const setDescription = (description: string) => async (
  */
 export const submitForm = (form: Form) => async (dispatch: any) => {
   if (form.title === "") {
-    dispatch(setAlert("Title is required", "error"))
+    dispatch(setAlert("Title is required", severity.Error))
     return
   }
   //ugleeeeeh && karvalakki certified :--DD
   const result = form.questions.forEach((element) => {
     if (!element.question || element.question === "") {
-      dispatch(setAlert("Questions are required", "error"))
+      dispatch(setAlert("Questions are required", severity.Error))
       return null
     }
   })
   if (result === null) return
   if (form.description === "") {
-    dispatch(setAlert("Description is required", "error"))
+    dispatch(setAlert("Description is required", severity.Error))
     return
   }
   dispatch({ type: CLEAR_CURRENT_FORM })

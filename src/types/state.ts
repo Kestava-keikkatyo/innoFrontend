@@ -200,3 +200,76 @@ interface UpdateFeelingDatasetAction {
 
 export type FeelingActionTypes = AddFeelingAction | FetchFeelingsAction | ClearCurrentFeelingAction |
 SetCurrentFeelingAction | UpdateFeelingDatasetAction
+
+export const SET_CURRENT_FORM = "SET_CURRENT_FORM"
+export const UPDATE_TITLE = "UPDATE_TITLE"
+export const SET_DESCRIPTION = "SET_DESCRIPTION"
+export const ADD_QUESTION = "ADD_QUESTION"
+export const UPDATE_QUESTION = "UPDATE_QUESTION"
+export const UPDATE_QUESTION_OPTION = "UPDATE_QUESTION_OPTION"
+export const REMOVE_QUESTION = "REMOVE_QUESTION"
+export const REMOVE_OPTION = "REMOVE_OPTION"
+export const SET_QUESTIONS = "SET_QUESTIONS"
+export const CLEAR_CURRENT_FORM = "CLEAR_CURRENT_FORM"
+
+interface SetCurrentFormAction {
+  type: typeof SET_CURRENT_FORM
+  data: any
+}
+
+interface UpdateTitleAction {
+  type: typeof UPDATE_TITLE
+  data: any
+}
+
+interface SetDescriptionAction {
+  type: typeof SET_DESCRIPTION
+  data: any
+}
+
+interface AddQuestionAction {
+  type: typeof ADD_QUESTION
+  data: any
+}
+
+interface UpdateQuestionAction {
+  type: typeof UPDATE_QUESTION
+  data: any
+}
+
+interface UpdateQuestionOptionAction {
+  type: typeof UPDATE_QUESTION_OPTION
+  data: any
+}
+
+interface RemoveQuestionAction {
+  type: typeof REMOVE_QUESTION
+  data: any
+}
+
+interface RemoveOptionAction {
+  type: typeof REMOVE_OPTION
+  data: any
+}
+
+interface SetQuestionsAction {
+  type: typeof SET_QUESTIONS
+  data: any
+}
+
+interface ClearCurrentFormAction {
+  type: typeof CLEAR_CURRENT_FORM
+  data: any
+}
+
+export type FormActionTypes =
+  | SetCurrentFormAction
+  | UpdateTitleAction
+  | SetDescriptionAction
+  | AddQuestionAction
+  | UpdateQuestionAction
+  | UpdateQuestionOptionAction
+  | RemoveQuestionAction
+  | RemoveOptionAction
+  | SetQuestionsAction
+  | ClearCurrentFormAction
