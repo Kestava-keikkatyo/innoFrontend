@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 /**
- * @exports components/FormContainer
+ * @component
  * @param {Object} name - name of the form generated and displayed
  * @returns returns a container for the listen forms generated with the form generation tool.
  */

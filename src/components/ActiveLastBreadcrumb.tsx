@@ -6,6 +6,13 @@ import { Container } from '@material-ui/core';
 import { BreadcrumbLink } from '../types/types';
 import { IRootState } from '../utils/store';
 
+/**
+ * @component
+ * @desc Renders a path and links in path. Uses breadcrumbReducer and
+ * brearcrumbActions to handle its state.
+ * @see {@link breadcrumbReducer}
+ * @see {@link breadcrumbActions}
+ */
 const ActiveLastBreadcrumb: React.FC = () => {
   const links = useSelector((state: IRootState) => state.breadcrumb)
   

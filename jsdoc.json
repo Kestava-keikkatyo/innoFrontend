@@ -1,9 +1,10 @@
 {
   "tags": {
-    "allowUnknownTags": ["optional"] //or true
+    "allowUnknownTags": ["optional", "component"]
   },
   "plugins": [
     "node_modules/better-docs/typescript",
+    "node_modules/better-docs/component",
     "plugins/markdown"
   ],
   "source": {

@@ -1,23 +1,35 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import TopAppBar from './TopAppBar';
-import ResponsiveDrawer from './ResponsiveDrawer';
-import navConstants from '../../constants/navConstants';
+import React, { ReactNode } from 'react'
+import PropTypes from 'prop-types'
+import Drawer from '@material-ui/core/Drawer'
+import Hidden from '@material-ui/core/Hidden'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
+import TopAppBar from './TopAppBar'
+import ResponsiveDrawer from './ResponsiveDrawer'
+import navConstants from '../../constants/navConstants'
 
 const drawerWidth = navConstants.DRAWER_WIDTH
 
-const AppNavigation = (props: { window: any, children: any }) => {
-  const { window, children } = props;
-  const classes = useStyles();
-  const theme = useTheme();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+/**
+ * @component
+ * @desc Parent component of Navigation. Includes Drawer 
+ * and navigation bar on top of the app.
+ * @param props
+ * @param {any} props.window
+ * @param {ReactNode} props.children A page component.
+ */
+const AppNavigation = (props: { window: any, children: ReactNode }) => {
+  const { window, children } = props
+  const classes = useStyles()
+  const theme = useTheme()
+  const [mobileOpen, setMobileOpen] = React.useState(false)
   
+  /**
+   * An event function. 
+   * Handles the drawer toggling on small screen size.
+   */
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+    setMobileOpen(!mobileOpen)
+  }
 
   const container = window !== undefined ? () => window().document.body : undefined
 
@@ -62,7 +74,7 @@ const AppNavigation = (props: { window: any, children: any }) => {
         {children}
       </div>
     </div>
-  );
+  )
 }
 
 AppNavigation.propTypes = {
@@ -89,6 +101,6 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     paddingRight: 0,
   },
-}));
+}))
 
-export default AppNavigation;
+export default AppNavigation

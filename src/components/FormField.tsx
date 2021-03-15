@@ -15,9 +15,9 @@ import {
 } from '@material-ui/core'
 
 /**
- * Formik text input field. Uses material ui TextField component.
+ * @component
+ * @desc Formik text input field. Uses material ui TextField component.
  * Used inside Formik and Form that are imported form 'formik'.
- * @exports components/FormikTextField
  * @param {Object} props
  * @param {string} props.label - Field label
  * @param {string} props.name - Field name
@@ -58,9 +58,9 @@ FormikTextField.propTypes = {
 }
 
 /**
- * Formik select input field. Uses material ui.
+ * @component
+ * @desc Formik select input field. Uses material ui.
  * Used inside Formik and Form that are imported from 'formik'.
- * @exports components/FormikSelectField
  * @param {Object} props
  * @param {string} props.label - Field label
  * @param {string} props.name - Field name
@@ -112,9 +112,9 @@ FormikSelectField.propTypes = {
 }
 
 /**
- * Formik radio input field. Uses material ui.
+ * @component
+ * @desc Formik radio input field. Uses material ui.
  * Used inside Formik and Form that are imported from 'formik'.
- * @exports components/FormikRadioField
  * @param {Object} props
  * @param {string} props.label - Field label
  * @param {string} props.name - Field name

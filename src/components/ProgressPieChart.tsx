@@ -1,38 +1,18 @@
 import { Doughnut } from "react-chartjs-2"
-import React, { ReactNode } from 'react'
+import React from 'react'
+import { progressPieOptions, progressPieData } from "../constants/statisticsConstants";
+import { PieChartProps } from "../types/props";
 
-const options = {
-  legend: {
-    display: false,
-    position: "right"
-  },
-  elements: {
-    arc: {
-      borderWidth: 0
-    }
-  },
-  cutoutPercentage: 90,
-  tooltips: {
-    enabled: false
-  },
-  maintainAspectRatio : false
-};
-
-const data = {
-  maintainAspectRatio: false,
-  responsive: false,
-  // labels: ["AVG: mood"],
-};
-
-interface Props {
-  datasets: any,
-  children: ReactNode
-}
-const ProgressPieChart: React.FC<Props> = ({children, datasets}) => {
+/**
+ * @component
+ * @desc This component renders a single pie chart.
+ * @param {PieChartProps} props
+ */
+const ProgressPieChart: React.FC<PieChartProps> = ({children, datasets}) => {
   return (
     <div style={styles.relative}>
       {/**height to width ratio is 2:1 */}
-      <Doughnut height={150} width={300} data={{...data, datasets}} options={options}/>
+      <Doughnut height={150} width={300} data={{...progressPieData, datasets}} options={progressPieOptions}/>
       <div style={styles.pieContainer}>
         {children}
       </div>

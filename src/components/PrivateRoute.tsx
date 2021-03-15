@@ -6,21 +6,20 @@ import AppNavigation from './NavigationComponents'
 import ActiveLastBreadcrumb from './ActiveLastBreadcrumb'
 import { setBreadcrumb } from '../actions/breadcrumbActions'
 import pathConverter from '../utils/pathConverter'
-import { PrivateRouteProps, roles } from '../types/types'
+import { roles } from '../types/types'
+import { PrivateRouteProps } from '../types/props'
+import { IRootState } from '../utils/store'
 
 /**
- * Private route component. Renders the child components if the user is logged in
+ * @component
+ * @desc Private route component. Renders the child components if the user is logged in
  * (and in an authorized role for the route). If the user isn't logged in they are
  * redirected to the landing page (login/signup). If the user is logged in but doesn't have
  * the correct role, they are redirected to the home page. Used inside Switch component that is imported from 'react-router-dom'.
- * @exports components/PrivateRoute
- * @param {Object} props
- * @param {(boolean | undefined)} props.loggedIn User's loggedIn status. Can be undefined if user isn't loggedIn.
+ * @param {PrivateRouteProps} props
  * @param {string} props.path Route's path
  * @param {node} props.children Components that the route renders.
- * @param {string} [props.role] Required if private route is role specific. User's current role.
- * @param {("worker"|"business"|"agency")} [props.roles] Required if private route is role specific.
- * Roles that are authorized.
+ * @param {roles[]} [props.roles] Required if private route is role specific.
  * @example
  * <Switch>
  *  <PrivateRoute path="/profile" loggedIn={ loggedIn }>
@@ -28,15 +27,13 @@ import { PrivateRouteProps, roles } from '../types/types'
  *  </PrivateRoute>
  *  <PrivateRoute
  *    path="/workers"
- *    role={ data ? data.role : undefined }
- *    roles={ [Role.Business, Role.Agency] }
- *    loggedIn={ loggedIn }>
+ *    roles={ [Role.Business, Role.Agency] }>
  *    <WorkersPage />
  *  </PrivateRoute>
  * </Switch>
  */
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ roles, children, path, ...rest }) => {
-  const { loggedIn, data } = useSelector((state: any) => state.user)
+  const { loggedIn, data } = useSelector((state: IRootState) => state.user)
   const dispatch = useDispatch()
 
   useEffect( () => {
@@ -57,9 +54,8 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ roles, children, path, ...r
         }
 
         /**
-         * @todo refactor this
+         * @todo BrokenAccessControl: refactor this. need to validate role.
          */
-        //data.role && roles.indexOf(data.role) === -1
         if (!data.role) {
           return <Redirect
             to={{

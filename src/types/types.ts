@@ -57,6 +57,9 @@ export interface Feeling {
   isPrivate: boolean
 }
 
+/**
+ * @interface
+ */
 export interface Question {
   name: string
   type: string
@@ -71,18 +74,6 @@ export interface Question {
   optional: boolean
   options: string[]
   comment: string
-}
-
-export interface FormComponentProps {
-  question: Question
-}
-
-export interface PrivateRouteProps {
-  loggedIn?: boolean
-  role?: string
-  roles?: roles[]
-  children: React.ReactNode
-  path: string | string[] | undefined
 }
 
 declare global {

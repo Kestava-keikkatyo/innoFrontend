@@ -33,7 +33,7 @@ export const importForm = (file: any) => async (dispatch: any) => {
   fr.readAsText(file)
 }
 
-export const importFormByPath = (path: any) => async (dispatch: any) => {
+export const importFormByPath = () => async (dispatch: any) => {
   dispatch({ type: SET_CURRENT_FORM, data: raw })
 }
 

@@ -1,7 +1,13 @@
 import { Checkbox, FormControl, FormControlLabel, Typography } from '@material-ui/core'
 import React from 'react'
-import { FormComponentProps } from '../../types/types';
+import { FormComponentProps } from '../../types/props';
 
+/**
+ * @component
+ * @desc Renders a single checkbox question in form.
+ * @param {FormComponentProps} props
+ * @param {Question} props.question A question object.
+ */
 const FormCheckBox: React.FC<FormComponentProps> = ({ question }) => {
   const { name } = question
   const [state, setState] = React.useState(false)

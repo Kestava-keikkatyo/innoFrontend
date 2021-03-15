@@ -1,18 +1,16 @@
 import React from "react"
 import { Card, CardContent, Grid, Typography } from "@material-ui/core"
+import { GridFormPreviewProps } from "../../types/props"
 
 /**
- * Modular component that displays forms from store.
+ * @component
+ * @desc Modular component that displays forms from store.
  * @param {string} formTitle - title of the form to be viewed.
  * @param {string} formDesc - description of the form.
  * @todo OnHover preview? PIP?
  * @todo for now reads data from a constant JSON file --> implement redux here.
  */
-interface Props {
-  formTitle: string,
-  formDesc: string
-}
-const GridFormPreview: React.FC<Props> = ({ formTitle, formDesc }) => {
+const GridFormPreview: React.FC<GridFormPreviewProps> = ({ formTitle, formDesc }) => {
   return (
     <>
       <Grid item>

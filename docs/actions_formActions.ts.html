@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> actions/formActions.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-actions_alertActions.html">actions/alertActions</a></li><li><a href="module-actions_breadcrumbActions.html">actions/breadcrumbActions</a></li><li><a href="module-actions_feelingActions.html">actions/feelingActions</a></li><li><a href="module-actions_formActions.html">actions/formActions</a></li><li><a href="module-actions_userActions.html">actions/userActions</a></li><li><a href="module-App.html">App</a></li><li><a href="module-components_LandingPage_LandingPage.html">components/LandingPage/LandingPage</a></li><li><a href="module-components_LandingPage_LogInForm.html">components/LandingPage/LogInForm</a></li><li><a href="module-components_LandingPage_SignUpForm.html">components/LandingPage/SignUpForm</a></li><li><a href="module-components_LandingPage_SignUpModal.html">components/LandingPage/SignUpModal</a></li><li><a href="module-components_ProfilePage_CompanyProfile.html">components/ProfilePage/CompanyProfile</a></li><li><a href="module-components_ProfilePage_PasswordChange.html">components/ProfilePage/PasswordChange</a></li><li><a href="module-components_ProfilePage_ProfilePage.html">components/ProfilePage/ProfilePage</a></li><li><a href="module-components_ProfilePage_WorkerProfile.html">components/ProfilePage/WorkerProfile</a></li><li><a href="module-components_QuestionForm.html">components/QuestionForm</a></li><li><a href="module-utils_storage.html">utils/storage</a></li><li><a href="reducers_alertReducer.module_ts.html">ts</a></li><li><a href="reducers_breadcrumbReducer.module_ts.html">ts</a></li><li><a href="reducers_businessContractReducer.module_ts.html">ts</a></li><li><a href="reducers_feelingReducer.module_ts.html">ts</a></li><li><a href="reducers_formReducer.module_ts.html">ts</a></li><li><a href="reducers_userReducer.module_ts.html">ts</a></li><li><a href="reducers_workContractReducer.module_ts.html">ts</a></li><li><a href="services_contractsService.module_ts.html">ts</a></li><li><a href="services_feelingService.module_ts.html">ts</a></li><li><a href="services_userService.module_ts.html">ts</a></li></ul><h3>Interfaces</h3><ul><li><a href="FileUploaderProps.html">FileUploaderProps</a></li><li><a href="FormComponentProps.html">FormComponentProps</a></li><li><a href="FormHeaderProps.html">FormHeaderProps</a></li><li><a href="GridFormPreviewProps.html">GridFormPreviewProps</a></li><li><a href="PieChartProps.html">PieChartProps</a></li><li><a href="PrivateRouteProps.html">PrivateRouteProps</a></li><li><a href="Question.html">Question</a></li><li><a href="TopAppBarProps.html">TopAppBarProps</a></li></ul><h3>Components</h3><ul><li><a href="ActiveLastBreadcrumb.html">ActiveLastBreadcrumb</a></li><li><a href="AppNavigation.html">AppNavigation</a></li><li><a href="FileUploader.html">FileUploader</a></li><li><a href="FormCheckBox.html">FormCheckBox</a></li><li><a href="FormCheckBoxGroup.html">FormCheckBoxGroup</a></li><li><a href="FormComment.html">FormComment</a></li><li><a href="FormContainer.html">FormContainer</a></li><li><a href="FormHeader.html">FormHeader</a></li><li><a href="FormikRadioField.html">FormikRadioField</a></li><li><a href="FormikSelectField.html">FormikSelectField</a></li><li><a href="FormikTextField.html">FormikTextField</a></li><li><a href="FormRadio.html">FormRadio</a></li><li><a href="FormRadioGroup.html">FormRadioGroup</a></li><li><a href="FormText.html">FormText</a></li><li><a href="FormTextArea.html">FormTextArea</a></li><li><a href="GridFormPreview.html">GridFormPreview</a></li><li><a href="PageLoading.html">PageLoading</a></li><li><a href="PrivateRoute.html">PrivateRoute</a></li><li><a href="ProgressPieChart.html">ProgressPieChart</a></li><li><a href="ResponsiveDrawer.html">ResponsiveDrawer</a></li><li><a href="SnackbarNotification.html">SnackbarNotification</a></li><li><a href="Spacing.html">Spacing</a></li><li><a href="TopAppBar.html">TopAppBar</a></li><li><a href="UserMenuDropdown.html">UserMenuDropdown</a></li></ul><h3>Global</h3><ul><li><a href="global.html#comment">comment</a></li><li><a href="global.html#ContractsPage">ContractsPage</a></li><li><a href="global.html#CurrentWorkerTable">CurrentWorkerTable</a></li><li><a href="global.html#ExpandedCheckBoxModule">ExpandedCheckBoxModule</a></li><li><a href="global.html#ExpandedHorizontalRadioModule">ExpandedHorizontalRadioModule</a></li><li><a href="global.html#ExpandedRadioButtonGroupModule">ExpandedRadioButtonGroupModule</a></li><li><a href="global.html#FormContactInfo">FormContactInfo</a></li><li><a href="global.html#FormsPage">FormsPage</a></li><li><a href="global.html#initialQuestion">initialQuestion</a></li><li><a href="global.html#NewFormPage">NewFormPage</a></li><li><a href="global.html#QuestionModule">QuestionModule</a></li><li><a href="global.html#SearchTable">SearchTable</a></li><li><a href="global.html#testFormConstants">testFormConstants</a></li><li><a href="global.html#WorkersPage">WorkersPage</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>actions/formActions.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Redux form actions
+ * @module actions/formActions
+ */
+import { setAlert } from "./alertActions"
+import raw from "../forms/lomake1.json"
+import { Form, FormQuestion, severity } from "../types/types"
+import {
+  SET_CURRENT_FORM,
+  UPDATE_TITLE,
+  SET_DESCRIPTION,
+  ADD_QUESTION,
+  UPDATE_QUESTION,
+  UPDATE_QUESTION_OPTION,
+  REMOVE_QUESTION,
+  REMOVE_OPTION,
+  SET_QUESTIONS,
+  CLEAR_CURRENT_FORM,
+} from "../types/state"
+
+/**
+ * Replaces the currentForm with the data imported from file systems
+ * @function
+ * @param {string} title - Form title.
+ * @todo add validation
+ */
+export const importForm = (file: any) => async (dispatch: any) => {
+  let fr = new FileReader()
+  fr.onloadend = (e) => {
+    const data = typeof fr.result === "string" ? JSON.parse(fr.result) : {}
+    dispatch({ type: SET_CURRENT_FORM, data })
+  }
+  fr.readAsText(file)
+}
+
+export const importFormByPath = () => async (dispatch: any) => {
+  dispatch({ type: SET_CURRENT_FORM, data: raw })
+}
+
+/**
+ * Updates the title of the generated form
+ * @function
+ * @param {string} title - Form title.
+ */
+export const setTitle = (title: string) => async (dispatch: any) => {
+  dispatch({ type: UPDATE_TITLE, data: title })
+}
+
+/**
+ * Adds question to array from the QuestionModule
+ * @function
+ * @param {FormQuestion} question - Question object that includes two strings: question input and answer option.
+ */
+export const addQuestion = (question: FormQuestion) => async (
+  dispatch: any
+) => {
+  dispatch({ type: ADD_QUESTION, data: question })
+}
+
+/**
+ *
+ * @function
+ * @param {Array&lt;FormQuestion>} questions
+ */
+export const setQuestions = (questions: Array&lt;FormQuestion>) => async (
+  dispatch: any
+) => {
+  dispatch({ type: SET_QUESTIONS, data: questions })
+}
+
+/**
+ * Updates the edited Question input to the array.
+ * @function
+ * @param {FormQuestion} question - Question object that includes two strings: question input and answer option.
+ * @param {number} index - Index of the question which was edited.
+ */
+export const updateQuestion = (question: FormQuestion, index: number) => async (
+  dispatch: any
+) => {
+  dispatch({ type: UPDATE_QUESTION, data: { question, index } })
+}
+
+export const updateQuestionOption = (
+  option: any,
+  questionIndex: number,
+  optionIndex: number
+) => async (dispatch: any) => {
+  console.log(option, questionIndex, optionIndex)
+  dispatch({
+    type: UPDATE_QUESTION_OPTION,
+    data: { option, questionIndex, optionIndex },
+  })
+}
+
+/**
+ * Removes the indicated question from the array.
+ * @function
+ * @param {number} index - Index of the question which is to be removed.
+ */
+export const removeQuestion = (index: number) => async (dispatch: any) => {
+  dispatch({ type: REMOVE_QUESTION, data: index })
+}
+
+/**
+ * Removes the indicated option from the array.
+ * @function
+ * @param {number} questionIndex - Index of the question which is removed option.
+ * @param {number} optionIndex - Index of the option which is to be removed.
+ */
+export const removeOption = (
+  questionIndex: number,
+  optionIndex: number
+) => async (dispatch: any) => {
+  dispatch({ type: REMOVE_OPTION, data: { questionIndex, optionIndex } })
+}
+
+/**
+ * Sets the description of the form.
+ * @function
+ * @param {string} description - Description of the form.
+ */
+export const setDescription = (description: string) => async (
+  dispatch: any
+) => {
+  dispatch({ type: SET_DESCRIPTION, data: description })
+}
+
+/**
+ * Submits the form to storage.
+ * @param {Form} form - Edited Form Object to be submitted.
+ * @todo Service call backend.
+ */
+export const submitForm = (form: Form) => async (dispatch: any) => {
+  if (form.title === "") {
+    dispatch(setAlert("Title is required", severity.Error))
+    return
+  }
+  //ugleeeeeh &amp;&amp; karvalakki certified :--DD
+  const result = form.questions.forEach((element) => {
+    if (!element.question || element.question === "") {
+      dispatch(setAlert("Questions are required", severity.Error))
+      return null
+    }
+  })
+  if (result === null) return
+  if (form.description === "") {
+    dispatch(setAlert("Description is required", severity.Error))
+    return
+  }
+  dispatch({ type: CLEAR_CURRENT_FORM })
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

@@ -4,7 +4,7 @@ import { BreadcrumbLink } from "../types/types"
  * Returns list of path objects
  * Karvalakki certified :D
  */
-export default (path: any) => {
+export default (path: string) => {
   let list: BreadcrumbLink[] = []
   let nameList = path.trim().split("/")
   nameList = nameList.filter((e: string) => e !== "")

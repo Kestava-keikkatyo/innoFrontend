@@ -8,12 +8,16 @@ import { ExpandLess, ExpandMore } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import { logout } from '../../actions/userActions';
 import { IRootState } from '../../utils/store';
+import { TopAppBarProps } from '../../types/props'
 
 const drawerWidth = navConstants.DRAWER_WIDTH
 
 /**
- * TODO: Sulje kun klikkaa boxin ulkopuolelta
- * @param {*} param0 
+ * @component
+ * @desc This will be probably deleted in future version.
+ * @param props
+ * @param {boolean} open checks if MenuDropdown is open.
+ * @deprecated
  */
 const UserMenuDropdown: React.FC<{ open: boolean }> = ({ open }) => {
   const dispatch = useDispatch()
@@ -45,7 +49,15 @@ const UserMenuDropdown: React.FC<{ open: boolean }> = ({ open }) => {
   )
 }
 
-const TopAppBar: React.FC<any> = ({ handleDrawerToggle }) => {
+/**
+ * @component
+ * @desc Basically a stripe on top off the application
+ * which contains drawerbutton when screenwidth is small.
+ * @param {TopAppBarProps} props
+ * @param {MouseEvent} props.handleDrawerToggle An event function. 
+ * Handles the drawer toggling on small screen size.
+ */
+const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
   const classes = useStyles();
   const { data } = useSelector((state: IRootState) => state.user)
   const [open, setOpen] = useState(true)

@@ -1,7 +1,13 @@
 import { FormControl, FormControlLabel, Grid, Radio, RadioGroup, Typography } from '@material-ui/core';
 import React from 'react';
-import { FormComponentProps } from '../../types/types';
+import { FormComponentProps } from '../../types/props';
 
+/**
+ * @component
+ * @desc Renders a single radiobutton group (horizontal) question in form.
+ * @param {FormComponentProps} props
+ * @param {Question} props.question A question object.
+ */
 const FormRadioGroup: React.FC<FormComponentProps> = ({ question }) => {
   const { name, scale } = question
   const [state, setState] = React.useState(0)

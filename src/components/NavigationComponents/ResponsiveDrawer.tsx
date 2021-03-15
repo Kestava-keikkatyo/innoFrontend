@@ -23,6 +23,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { roles } from "../../types/types";
 import { IRootState } from "../../utils/store";
 
+/**
+ * @component
+ * @desc A component which renders the drawer on the left side of application.
+ * There is actually two drawers which are rendered at at different time.
+ * One for mobile view one for web view.
+ */
 const ResponsiveDrawer: React.FC = () => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);

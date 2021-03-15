@@ -1,7 +1,13 @@
 import { Checkbox, FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, Typography } from '@material-ui/core'
 import React from 'react'
-import { FormComponentProps } from '../../types/types'
+import { FormComponentProps } from '../../types/props'
 
+/**
+ * @component
+ * @desc Renders a single checkbox group (vertical) question in form.
+ * @param {FormComponentProps} props
+ * @param {Question} props.question A question object.
+ */
 const FormCheckBoxGroup: React.FC<FormComponentProps> = ({ question }) => {
   const { name, subTitle, options } = question
   const [state, setState] = React.useState(
@@ -14,8 +20,6 @@ const FormCheckBoxGroup: React.FC<FormComponentProps> = ({ question }) => {
     setState(state.map((o, i) => i === index ? { ...o, value: !o.value }: o ))
   };
 
-  // const error = [choclate, vanilla, strawberry].filter((v) => v).length !== 2;
-  // required error={error}
   return ( 
     <>
       <Typography variant="h6" >{ name }</Typography>
