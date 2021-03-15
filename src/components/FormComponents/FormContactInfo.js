@@ -9,7 +9,6 @@ import React from "react"
 /**
  * CustomFormInput cant be used as control?
  * @param {} param0
- * @returns
  */
 const FormContactInfo = ({ question }) => {
   const { name } = question
