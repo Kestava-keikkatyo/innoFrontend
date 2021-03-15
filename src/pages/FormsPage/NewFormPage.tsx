@@ -20,7 +20,7 @@ import { Question } from "../../types/types"
 /**
  * @todo move to constants
  */
-const initialQuestion = {
+const initialQuestion: any = {
   name: "",
   type: "comment",
   subTitle: "",

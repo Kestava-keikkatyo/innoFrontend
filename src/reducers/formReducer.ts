@@ -1,7 +1,19 @@
-/**
- * @State
- */
-const initialCurrentForm = {
+import { Form } from "../types"
+import {
+  SET_CURRENT_FORM,
+  UPDATE_TITLE,
+  SET_DESCRIPTION,
+  ADD_QUESTION,
+  UPDATE_QUESTION,
+  UPDATE_QUESTION_OPTION,
+  REMOVE_QUESTION,
+  REMOVE_OPTION,
+  SET_QUESTIONS,
+  CLEAR_CURRENT_FORM,
+  FormActionTypes,
+} from "../types"
+
+const initialCurrentForm: Form = {
   title: "",
   description: "",
   questions: [],
@@ -15,19 +27,19 @@ const initialState = {
  * Redux form reducer that controls the form generator tool state.
  * @module
  *
- * @param {Object} state - initial state
- * @param {Object} action - dispatched action
+ * @param {Form} state - initial state
+ * @param {FormActionTypes} action - dispatched action
  */
-const formReducer = (state = initialState, action) => {
+const formReducer = (state = initialState, action: FormActionTypes) => {
   const { data, type } = action
   let temp
   switch (type) {
-    case "SET_CURRENT_FORM":
+    case SET_CURRENT_FORM:
       return {
         ...state,
-        currentForm: data
+        currentForm: data,
       }
-    case "UPDATE_TITLE":
+    case UPDATE_TITLE:
       return {
         ...state,
         currentForm: {
@@ -35,7 +47,7 @@ const formReducer = (state = initialState, action) => {
           title: data,
         },
       }
-    case "SET_DESCRIPTION":
+    case SET_DESCRIPTION:
       return {
         ...state,
         currentForm: {
@@ -43,7 +55,7 @@ const formReducer = (state = initialState, action) => {
           description: data,
         },
       }
-    case "ADD_QUESTION":
+    case ADD_QUESTION:
       return {
         ...state,
         currentForm: {
@@ -51,7 +63,7 @@ const formReducer = (state = initialState, action) => {
           questions: [...state.currentForm.questions, data],
         },
       }
-    case "UPDATE_QUESTION":
+    case UPDATE_QUESTION:
       temp = state.currentForm.questions
       temp[data.index] = data.question
       return {
@@ -61,7 +73,7 @@ const formReducer = (state = initialState, action) => {
           questions: temp,
         },
       }
-    case "UPDATE_QUESTION_OPTION":
+    case UPDATE_QUESTION_OPTION:
       temp = state.currentForm.questions
       temp[data.questionIndex].options[data.optionIndex] = data.option
       return {
@@ -71,7 +83,7 @@ const formReducer = (state = initialState, action) => {
           questions: temp,
         },
       }
-    case "REMOVE_QUESTION":
+    case REMOVE_QUESTION:
       temp = state.currentForm.questions
       temp.splice(data, 1)
       return {
@@ -81,17 +93,17 @@ const formReducer = (state = initialState, action) => {
           questions: temp,
         },
       }
-    case "REMOVE_OPTION":
+    case REMOVE_OPTION:
       temp = state.currentForm.questions
       temp[data.questionIndex].options.splice(data.optionIndex, 1)
       return {
         ...state,
         currentForm: {
           ...state.currentForm,
-          questions: temp
+          questions: temp,
         },
       }
-    case "SET_QUESTIONS":
+    case SET_QUESTIONS:
       return {
         ...state,
         currentForm: {
@@ -99,7 +111,7 @@ const formReducer = (state = initialState, action) => {
           questions: data,
         },
       }
-    case "CLEAR_CURRENT_FORM":
+    case CLEAR_CURRENT_FORM:
       return { ...state, currentForm: initialCurrentForm }
 
     default:
