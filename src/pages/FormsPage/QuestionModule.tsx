@@ -8,9 +8,11 @@ import AddOptionsModule from "./AddOptionsModule"
 import CustomFormInput from "./CustomFormInput"
 import Spacing from "../../components/Spacing"
 
-const TypeDropDown: React.FC<{ index: number }> = ({index}) => {
+const TypeDropDown: React.FC<{ index: number }> = ({ index }) => {
   const dispatch = useDispatch()
-  const questions = useSelector((state: any) => state.form.currentForm.questions)
+  const questions = useSelector(
+    (state: any) => state.form.currentForm.questions
+  )
   return (
     <Spacing ph4 className="relative" style={{ width: "100%" }}>
       <label className="absolute label-type">Question type</label>
@@ -51,9 +53,13 @@ const AdditionalInfoModule = () => {
  * @todo Add radiobutton group, radiobutton group inline, checkbox group
  * @todo add options
  */
-const QuestionModule: React.FC<{ questionIndex: number }> = ({ questionIndex }) => {
+const QuestionModule: React.FC<{ questionIndex: number }> = ({
+  questionIndex,
+}) => {
   const dispatch = useDispatch()
-  const questions = useSelector((state: any) => state.form.currentForm.questions)
+  const questions = useSelector(
+    (state: any) => state.form.currentForm.questions
+  )
 
   return (
     <>
