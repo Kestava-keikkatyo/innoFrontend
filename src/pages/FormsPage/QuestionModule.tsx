@@ -8,9 +8,6 @@ import AddOptionsModule from "./AddOptionsModule"
 import CustomFormInput from "./CustomFormInput"
 import Spacing from "../../components/Spacing"
 
-// Vim fugitive test comment and this is another try.
-
-
 const TypeDropDown: React.FC<{ index: number }> = ({ index }) => {
   const dispatch = useDispatch()
   const questions = useSelector(
