@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
 import { Link as RouterLink, useLocation } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
 import { login, signup } from '../../actions/userActions'
