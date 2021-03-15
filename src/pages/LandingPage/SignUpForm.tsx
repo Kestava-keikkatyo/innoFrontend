@@ -15,17 +15,18 @@ import {
   CircularProgress,
   Link
 } from '@material-ui/core'
+import { useSelector } from 'react-redux'
 
 /**
  * Signup form for worker, agency and business.
  * @exports components/LandingPage/SignUpForm
  * @param {Object} props
- * @param {boolean} props.loggingIn - User currently signing up
  * @param {function} props.handleSubmit - Function for sending user credentials
  */
-const SignUpForm: React.FC<any> = ({ loggingIn, handleSubmit }) => {
+const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
   const [open, setOpen] = useState(false)
   const { t } = useTranslation()
+  const { loading } = useSelector((state: any) => state.user)
 
   const roleOptions = [
     { value: 'worker', label: t('worker') },
@@ -126,10 +127,10 @@ const SignUpForm: React.FC<any> = ({ loggingIn, handleSubmit }) => {
                 <SignUpModal open={open} handleClose={() => setOpen(false)} />
                 <Button
                   type="submit"
-                  disabled={!dirty || !isValid || loggingIn}
+                  disabled={!dirty || !isValid || loading}
                   variant="contained"
                   color="primary">
-                  {loggingIn ? <CircularProgress size={24} /> : t('submit')}
+                  {loading ? <CircularProgress size={24} /> : t('submit')}
                 </Button>
               </Box>
             </Form>
@@ -141,7 +142,6 @@ const SignUpForm: React.FC<any> = ({ loggingIn, handleSubmit }) => {
 }
 
 SignUpForm.propTypes = {
-  loggingIn: PropTypes.bool,
   handleSubmit: PropTypes.func.isRequired
 }
 

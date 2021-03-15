@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { FormikTextField, FormikRadioField } from '../../components/FormField'
 
 import { Card, CardContent, Typography, Button, Box, CircularProgress } from '@material-ui/core'
+import { useSelector } from 'react-redux'
 
 /**
  * Login form for worker, agency and business.
@@ -14,15 +15,16 @@ import { Card, CardContent, Typography, Button, Box, CircularProgress } from '@m
  * @param {boolean} props.loggingIn - User currently loggin in
  * @param {function} props.handleSubmit - Function for sending user credentials
  */
-const LogInForm: React.FC<any> = ({ loggingIn, handleSubmit }) => {
+const LogInForm: React.FC<any> = ({ handleSubmit }) => {
   const { t } = useTranslation()
+  const { loading } = useSelector((state: any) => state.user)
 
   const roleOptions = [
     { value: 'worker', label: t('worker') },
     { value: 'agency', label: t('agency') },
     { value: 'business', label: t('business') }
   ]
-
+  
   return (
     <Card variant="outlined">
       <CardContent>
@@ -75,10 +77,10 @@ const LogInForm: React.FC<any> = ({ loggingIn, handleSubmit }) => {
                 />
                 <Button
                   type="submit"
-                  disabled={!dirty || !isValid || loggingIn}
+                  disabled={!dirty || !isValid || loading}
                   variant="contained"
                   color="primary">
-                  {loggingIn ? <CircularProgress size={24} /> : t('submit')}
+                  {loading ? <CircularProgress size={24} /> : t('submit')}
                 </Button>
               </Box>
             </Form>
