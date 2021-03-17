@@ -7,6 +7,12 @@ import { submitFeeling, updateFeeling } from '../../actions/feelingActions'
 import Spacing from '../../components/Spacing'
 import { severity } from '../../types/types'
 
+/**
+ * @component
+ * A modal panel, which shows form for new feeling entry.
+ * @param {*} props
+ * @param {} modalState contains a useState for modal handling, needs to be deconstructed.
+ */
 const NewFeelingEntryModal: React.FC<any> = ({ modalState }) => {
   const { isOpen, setIsOpen } = modalState
   const dispatch = useDispatch()

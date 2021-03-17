@@ -20,6 +20,13 @@ import { fetchBusinessContracts } from '../../actions/businessContractActions'
 import { addWorkContract } from '../../actions/workContractActions'
 import { IRootState } from '../../utils/store'
 
+/**
+ * @component
+ * @desc A modal panel to connect worker user with business user.
+ * @param props
+ * @param {state} props.modalState
+ * @param {worker} props.workerData
+ */
 const WorkerModal: React.FC<any> = ({ modalState, workerData }) => {
   const {displayModal, setDisplayModal} = modalState
   const [business, setBusiness] = useState('')

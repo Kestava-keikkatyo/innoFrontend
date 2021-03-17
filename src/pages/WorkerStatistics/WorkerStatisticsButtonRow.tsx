@@ -4,6 +4,10 @@ import React from 'react'
 import { useState } from 'react';
 import NewFeelingEntryModal from './NewFeelingEntryModal';
 
+/**
+ * @component
+ * Header for feel-o-meter statistics page.
+ */
 const WorkerStatisticsButtonRow = () => {
   const [isOpen, setIsOpen] = useState(false)
 

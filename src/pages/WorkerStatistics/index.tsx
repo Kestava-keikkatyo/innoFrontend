@@ -7,6 +7,12 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchFeelings } from '../../actions/feelingActions';
 
+/**
+ * @component
+ * Renders Feel-o-meter page. Contains {@link Chart}, 
+ * {@link NewFeelingEntryModal}, {@link Table}, {@link WorkerStatisticsButtonRow}, {@link WorkerStatistics}
+ * and {@link Chart}
+ */
 const WorkerStatistics = () => {
   const feelings = useSelector((state: any) => state.feeling?.feelings)
   const dispatch = useDispatch()

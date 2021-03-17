@@ -12,8 +12,8 @@ import {
 import { Close as CloseIcon } from '@material-ui/icons'
 
 /**
- * Modal for displaying terms of service and other same kind of stuff
- * @exports components/LandingPage/SignUpModal
+ * @component
+ * @desc Modal for displaying terms of service and other same kind of stuff
  * @param {Object} props
  * @param {boolean} props.open - Determines if modal is displayed
  * @param {function} props.handleClose - Closes modal

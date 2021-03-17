@@ -18,8 +18,8 @@ import {
 import { Delete as DeleteIcon, Add as AddIcon } from '@material-ui/icons'
 
 /**
- * Component for displaying and updating worker profile information.
- * @exports components/ProfilePage/WorkerProfile
+ * @component
+ * @desc Component for displaying and updating worker profile information.
  * @param {Object} props
  * @param {Object} props.profile - Worker profile data that is used for initialization
  * @param {function} props.handleSubmit - Function for updating worker's profile information

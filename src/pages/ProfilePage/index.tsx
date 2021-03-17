@@ -18,9 +18,9 @@ import {
 import { roles } from '../../types/types'
 
 /**
- * The main profile page component.
+ * @component
+ * @desc The main profile page component.
  * Container for WorkerProfile, CompanyProfile and PasswordChange components.
- * @exports components/ProfilePage/ProfilePage
  */
 const ProfilePage = () => {
   const [display, setDisplay] = useState(false)

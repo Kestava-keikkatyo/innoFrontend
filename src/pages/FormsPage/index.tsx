@@ -6,7 +6,8 @@ import { AddIcon } from "@material-ui/data-grid"
 import GridFormPreview from "./GridFormPreview"
 
 /**
- * This is ugly for the time being.
+ * @component
+ * @desc This is ugly for the time being.
  * @todo map existing templates from a directory into the grids for preview.
  * @todo OnHover preview, pip for every node? So onMouseEnter renders an image(?) of the finished pdf(?)
  */

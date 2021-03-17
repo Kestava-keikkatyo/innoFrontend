@@ -16,6 +16,11 @@ import { roles } from "../../types/types"
 
 const INIT_SEARCH_TYPE = roles.Worker
 
+/**
+ * @component
+ * @desc
+ * A searchbar for searching worker users or business users.
+ */
 const UserSearch = () => {
   const dispatch = useDispatch()
   const [input, setInput] = useState("")

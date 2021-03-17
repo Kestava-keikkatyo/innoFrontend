@@ -2,6 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { fontSizes, inputTypes } from '../../types/types';
 
+/**
+ * @component
+ * @desc A generic form input in form editor page.
+ * @param {*} props check full list of props from source. 
+ */
 const CustomFormInput: React.FC<any> = ({ labelFontSize, label, type, name, placeholder, value, onChange, className, inputClassName, labelClassName }) => {
   return (
     <div className={`${className} customFormInputDiv`}>

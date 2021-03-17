@@ -13,9 +13,9 @@ import './landingPage.css'
 import { Box, Button, Divider, Grid } from '@material-ui/core'
 
 /**
- * The main landing page component.
+ * @component
+ * @desc The main landing page component.
  * Container for LogInForm and SignUpForm.
- * @exports components/LandingPage/LandingPage
  */
 const LandingPage = () => {
   const [logInForm, setLogInForm] = useState<any>(false)

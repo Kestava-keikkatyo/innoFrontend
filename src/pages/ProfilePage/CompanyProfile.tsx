@@ -5,8 +5,8 @@ import { FormikTextField } from '../../components/FormField'
 import { Card, CardContent, Typography, Button, Box, FormControlLabel, Switch } from '@material-ui/core'
 
 /**
- * Component for displaying and updating agency/business profile information.
- * @exports components/ProfilePage/CompanyProfile
+ * @component
+ * @desc Component for displaying and updating agency/business profile information.
  * @param {Object} props
  * @param {Object} props.profile - Company profile data that is used for initialization
  * @param {function} props.handleSubmit - Function for updating company's profile information

@@ -8,8 +8,8 @@ import { Card, CardContent, Typography, Button, Box } from '@material-ui/core'
 
 
 /**
- * Component for changing worker/agency/business password.
- * @exports components/ProfilePage/PasswordChange
+ * @component
+ * @desc Component for changing worker/agency/business password.
  * @param {Object} props
  * @param {boolean} props.hide - Determines if form for changing password is displayed
  * @param {function} props.handleSubmit - Function for updating password

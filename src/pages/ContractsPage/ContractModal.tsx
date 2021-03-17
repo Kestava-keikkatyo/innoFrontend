@@ -17,6 +17,14 @@ import { setAlert } from "../../actions/alertActions"
 import { severity, roles } from "../../types/types"
 import { IRootState } from "../../utils/store"
 
+/**
+ * @component
+ * @desc A modal panel to connect worker user or business user with agency.
+ * @param props
+ * @param {Function} props.displayModal callback function when opened.
+ * @param {Function} props.closeModal callback when closed.
+ * @param {worker} props.workerData data of the added worker.
+ */
 const WorkerModal: React.FC<any> = ({ displayModal, closeModal, workerData }) => {
   const dispatch = useDispatch()
   const { madeContracts } = useSelector((state: IRootState) => state.businessContracts)

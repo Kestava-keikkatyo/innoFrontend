@@ -36,8 +36,9 @@ const TypeDropDown: React.FC<{ index: number }> = ({ index }) => {
 }
 
 /**
- * Module for displaying and handling user input in the form generation tool
- * @param {int} questionIndex - Index for the question in the array in the parent state.
+ * @component
+ * @desc Module for displaying and handling user input in the form generation tool
+ * @param {int} props.questionIndex - Index for the question in the array in the parent state.
  * @todo Add radiobutton group, radiobutton group inline, checkbox group
  * @todo add options
  */

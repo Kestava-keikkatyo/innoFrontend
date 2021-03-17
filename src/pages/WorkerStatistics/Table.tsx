@@ -34,6 +34,11 @@ const useStyles = makeStyles({
   },
 });
 
+/**
+ * @component
+ * @desc Custom table component in worker feel-o-meter
+ * page. Displays workers feeling entry history.
+ */
 export default function CustomizedTables() {
   const classes = useStyles();
   const feelings = useSelector((state: any) => state.feeling?.feelings)

@@ -18,9 +18,10 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 /**
- * demo version, currently only retrieves workers and businesses by name
+ * @component
+ * @description
+ * - retrieves workers and businesses by name
  *
- * TODO:
  * - Displays all the current businesscontracts, including pending ones (agency view, business view, worker view).
  * - Creates businesscontracts with businesses and workers (agency view).
  * - Accepts businesscontracts (worker view and business view).

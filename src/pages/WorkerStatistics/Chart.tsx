@@ -4,6 +4,12 @@ import {Line} from 'react-chartjs-2';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateDataSet } from '../../actions/feelingActions';
 
+/**
+ * @component
+ * Displays a line chart in statistics page.
+ * Has a row of buttons on top of it.
+ * @todo make buttons work.
+ */
 const Chart = () => {
   const { feelingDataSet, feeling } = useSelector((state: any) => state.feeling)
   const dispatch = useDispatch()

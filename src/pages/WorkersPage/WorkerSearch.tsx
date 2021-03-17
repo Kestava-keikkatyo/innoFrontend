@@ -9,6 +9,11 @@ import { Search as SearchIcon } from '@material-ui/icons'
 import { updateSearchList } from '../../actions/workContractActions'
 import { useDispatch } from 'react-redux'
 
+/**
+ * @component
+ * @desc
+ * A searchbar for searching workers.
+ */
 const WorkerSearch = () => {
   const dispatch = useDispatch()
   const [input, setInput] = useState('')

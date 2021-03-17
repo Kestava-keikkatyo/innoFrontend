@@ -9,8 +9,8 @@ import { Card, CardContent, Typography, Button, Box, CircularProgress } from '@m
 import { useSelector } from 'react-redux'
 
 /**
- * Login form for worker, agency and business.
- * @exports components/LandingPage/LogInForm
+ * @component
+ * @desc Login form for worker, agency and business.
  * @param {Object} props
  * @param {boolean} props.loggingIn - User currently loggin in
  * @param {function} props.handleSubmit - Function for sending user credentials

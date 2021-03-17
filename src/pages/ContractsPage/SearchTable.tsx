@@ -14,6 +14,13 @@ import { Add as AddIcon } from '@material-ui/icons'
 import { useSelector } from 'react-redux'
 import { IRootState } from '../../utils/store'
 
+/**
+ * @component
+ * @desc A table to search worker users to create new business contract.
+ * @param props
+ * @param {Function} props.addWorker add button click listener function,
+ * which passes workers data to parent component state.
+ */
 const SearchTable: React.FC<any> = ({ addWorker }) => {
   const { searchList } = useSelector((state: IRootState) => state.businessContracts)
   const workers = searchList

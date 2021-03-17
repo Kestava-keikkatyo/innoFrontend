@@ -17,6 +17,12 @@ import { Question, severity } from '../../types/types'
 import FormContactInfo from '../../components/FormComponents/FormContactInfo'
 import FormDatePicker from '../../components/FormComponents/FormDatePicker'
 
+/**
+ * @component
+ * @desc A parent component to form preview page.
+ * Loops through all questions and shows corresponding 
+ * type of component.
+ */
 const FormPreviewPage: React.FC = () => {
   const { currentForm } = useSelector((state: any) => state.form)
   const dispatch = useDispatch()

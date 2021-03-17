@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom';
 import { importForm } from '../../actions/formActions';
 import FileUploader from '../../components/FileUploader';
 
+/**
+ * @component
+ * @desc Form editors header.
+ */
 const NewFormHeader: React.FC = () => {
   const { currentForm } = useSelector((state: any) => state.form)
   const dispatch = useDispatch()

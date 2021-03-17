@@ -12,6 +12,13 @@ interface Props extends Index {
   children?: ReactNode
 }
 
+/**
+ * @component
+ * @desc basic part of question module.
+ * @param props
+ * @param {number} props.index
+ * @param {ReactNode} props.children
+ */
 const ExpandedBodyModule: React.FC<Props> = ({ index, children }) => {
   const classes = useStyles()
   const { questions } = useSelector((state: any) => state.form.currentForm)

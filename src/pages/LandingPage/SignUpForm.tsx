@@ -18,8 +18,8 @@ import {
 import { useSelector } from 'react-redux'
 
 /**
- * Signup form for worker, agency and business.
- * @exports components/LandingPage/SignUpForm
+ * @component
+ * @desc Signup form for worker, agency and business.
  * @param {Object} props
  * @param {function} props.handleSubmit - Function for sending user credentials
  */

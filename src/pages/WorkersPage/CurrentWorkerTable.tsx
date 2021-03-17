@@ -17,8 +17,8 @@ import { setAlert } from '../../actions/alertActions'
 import { IRootState } from '../../utils/store'
 
 /**
- * 
- * @param {*} param0 
+ * @component
+ * @desc A table to show all active work contracts.
  * @todo make table responsive
  */
 const CurrentWorkerTable = () => {

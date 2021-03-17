@@ -3,9 +3,17 @@ import ProgressPieChart from "../../components/ProgressPieChart"
 import React from 'react'
 import { averageFeeling, calculateCheer, getDataSet, getTotalDataSet } from "../../utils/feelingUtils"
 import { useSelector } from "react-redux"
+import { IRootState } from "../../utils/store"
 
+/**
+ * @component
+ * Shows summary of workers feelings statistics. 
+ * Shows an error message when feelings list is empty or
+ * not found. Summary uses utils to calculate data. Data
+ * is shown in Doughnut charts.
+ */
 const WorkerStatisticsSummary = () => {
-  const feelings = useSelector((state: any) => state.feeling?.feelings)
+  const feelings = useSelector((state: IRootState) => state.feeling?.feelings)
 
   if(!feelings|| feelings.length === 0)
     return(

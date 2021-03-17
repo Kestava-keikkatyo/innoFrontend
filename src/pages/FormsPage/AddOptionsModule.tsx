@@ -7,6 +7,12 @@ interface Props {
   index: number
 }
 
+/**
+ * @component
+ * @desc In form editors page component which handles add options
+ * for radiobutton group and checkbox group.
+ * @param {number} props.index 
+ */
 const AddOptionsModule: React.FC<Props> = ({ index }) => {
   const dispatch = useDispatch()
   const { questions } = useSelector((state: any) => state.form.currentForm)

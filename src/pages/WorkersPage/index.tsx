@@ -22,9 +22,10 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 /**
- * demo version
+ * @component
  *
- * TODO:
+ * @desc
+ * Root component for work contract page (agency).
  * - Displays all the current workers that agency has a businesscontract with (agency view).
  * - Displays all the current workcontracts that agency has made (agency view).
  * - Displays all the current workcontracts where business/worker is involved (worker view and business view).
