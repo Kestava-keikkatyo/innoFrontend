@@ -6,6 +6,7 @@ import { updateDataSet } from '../../actions/feelingActions';
 
 /**
  * @component
+ * @desc
  * Displays a line chart in statistics page.
  * Has a row of buttons on top of it.
  * @todo make buttons work.

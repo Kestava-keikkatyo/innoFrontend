@@ -1,0 +1,223 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> pages/WorkerStatistics/NewFeelingEntryModal.tsx</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-actions_alertActions.html">actions/alertActions</a></li><li><a href="module-actions_breadcrumbActions.html">actions/breadcrumbActions</a></li><li><a href="module-actions_feelingActions.html">actions/feelingActions</a></li><li><a href="module-actions_formActions.html">actions/formActions</a></li><li><a href="module-actions_userActions.html">actions/userActions</a></li><li><a href="module-App.html">App</a></li><li><a href="module-components_QuestionForm.html">components/QuestionForm</a></li><li><a href="module-utils_storage.html">utils/storage</a></li><li><a href="reducers_alertReducer.module_ts.html">ts</a></li><li><a href="reducers_breadcrumbReducer.module_ts.html">ts</a></li><li><a href="reducers_businessContractReducer.module_ts.html">ts</a></li><li><a href="reducers_feelingReducer.module_ts.html">ts</a></li><li><a href="reducers_formReducer.module_ts.html">ts</a></li><li><a href="reducers_userReducer.module_ts.html">ts</a></li><li><a href="reducers_workContractReducer.module_ts.html">ts</a></li><li><a href="services_contractsService.module_ts.html">ts</a></li><li><a href="services_feelingService.module_ts.html">ts</a></li><li><a href="services_userService.module_ts.html">ts</a></li></ul><h3>Interfaces</h3><ul><li><a href="FileUploaderProps.html">FileUploaderProps</a></li><li><a href="FormComponentProps.html">FormComponentProps</a></li><li><a href="FormHeaderProps.html">FormHeaderProps</a></li><li><a href="GridFormPreviewProps.html">GridFormPreviewProps</a></li><li><a href="PieChartProps.html">PieChartProps</a></li><li><a href="PrivateRouteProps.html">PrivateRouteProps</a></li><li><a href="Question.html">Question</a></li><li><a href="TopAppBarProps.html">TopAppBarProps</a></li></ul><h3>Components</h3><ul><li><a href="ActiveLastBreadcrumb.html">ActiveLastBreadcrumb</a></li><li><a href="AddOptionsModule.html">AddOptionsModule</a></li><li><a href="AppNavigation.html">AppNavigation</a></li><li><a href="Chart.html">Chart</a></li><li><a href="CompanyProfile.html">CompanyProfile</a></li><li><a href="ContractsPage.html">ContractsPage</a></li><li><a href="CurrentWorkerTable.html">CurrentWorkerTable</a></li><li><a href="CustomFormInput.html">CustomFormInput</a></li><li><a href="ExpandedBodyModule.html">ExpandedBodyModule</a></li><li><a href="FileUploader.html">FileUploader</a></li><li><a href="FormCheckBox.html">FormCheckBox</a></li><li><a href="FormCheckBoxGroup.html">FormCheckBoxGroup</a></li><li><a href="FormComment.html">FormComment</a></li><li><a href="FormContainer.html">FormContainer</a></li><li><a href="FormHeader.html">FormHeader</a></li><li><a href="FormikRadioField.html">FormikRadioField</a></li><li><a href="FormikSelectField.html">FormikSelectField</a></li><li><a href="FormikTextField.html">FormikTextField</a></li><li><a href="FormPreviewHeader.html">FormPreviewHeader</a></li><li><a href="FormPreviewPage.html">FormPreviewPage</a></li><li><a href="FormRadio.html">FormRadio</a></li><li><a href="FormRadioGroup.html">FormRadioGroup</a></li><li><a href="FormsPage.html">FormsPage</a></li><li><a href="FormText.html">FormText</a></li><li><a href="FormTextArea.html">FormTextArea</a></li><li><a href="GridFormPreview.html">GridFormPreview</a></li><li><a href="LandingPage.html">LandingPage</a></li><li><a href="LogInForm.html">LogInForm</a></li><li><a href="module.html#.exports">exports</a></li><li><a href="NewFeelingEntryModal.html">NewFeelingEntryModal</a></li><li><a href="NewFormHeader.html">NewFormHeader</a></li><li><a href="NewFormPage.html">NewFormPage</a></li><li><a href="PageLoading.html">PageLoading</a></li><li><a href="PasswordChange.html">PasswordChange</a></li><li><a href="PrivateRoute.html">PrivateRoute</a></li><li><a href="ProfilePage.html">ProfilePage</a></li><li><a href="ProgressPieChart.html">ProgressPieChart</a></li><li><a href="QuestionModule.html">QuestionModule</a></li><li><a href="ResponsiveDrawer.html">ResponsiveDrawer</a></li><li><a href="SearchTable.html">SearchTable</a></li><li><a href="SignUpForm.html">SignUpForm</a></li><li><a href="SignUpModal.html">SignUpModal</a></li><li><a href="SnackbarNotification.html">SnackbarNotification</a></li><li><a href="Spacing.html">Spacing</a></li><li><a href="TopAppBar.html">TopAppBar</a></li><li><a href="UserMenuDropdown.html">UserMenuDropdown</a></li><li><a href="UserSearch.html">UserSearch</a></li><li><a href="WorkerModal.html">WorkerModal</a></li><li><a href="WorkerProfile.html">WorkerProfile</a></li><li><a href="WorkerSearch.html">WorkerSearch</a></li><li><a href="WorkersPage.html">WorkersPage</a></li><li><a href="WorkerStatistics.html">WorkerStatistics</a></li><li><a href="WorkerStatisticsButtonRow.html">WorkerStatisticsButtonRow</a></li><li><a href="WorkerStatisticsSummary.html">WorkerStatisticsSummary</a></li></ul><h3>Global</h3><ul><li><a href="global.html#comment">comment</a></li><li><a href="global.html#ExpandedCheckBoxModule">ExpandedCheckBoxModule</a></li><li><a href="global.html#ExpandedHorizontalRadioModule">ExpandedHorizontalRadioModule</a></li><li><a href="global.html#ExpandedRadioButtonGroupModule">ExpandedRadioButtonGroupModule</a></li><li><a href="global.html#FormContactInfo">FormContactInfo</a></li><li><a href="global.html#initialQuestion">initialQuestion</a></li><li><a href="global.html#testFormConstants">testFormConstants</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>pages/WorkerStatistics/NewFeelingEntryModal.tsx</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, FormLabel, IconButton, Radio, RadioGroup, TextField, Typography } from '@material-ui/core'
+import { Close as CloseIcon } from "@material-ui/icons"
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setAlert } from '../../actions/alertActions'
+import { submitFeeling, updateFeeling } from '../../actions/feelingActions'
+import Spacing from '../../components/Spacing'
+import { severity } from '../../types/types'
+
+/**
+ * @component
+ * A modal panel, which shows form for new feeling entry.
+ * @param {*} props
+ * @param {} modalState contains a useState for modal handling, needs to be deconstructed.
+ */
+const NewFeelingEntryModal: React.FC&lt;any> = ({ modalState }) => {
+  const { isOpen, setIsOpen } = modalState
+  const dispatch = useDispatch()
+  const feeling = useSelector((state: any) => state.feeling?.currentFeeling)
+
+  const submit = () => {
+    dispatch(submitFeeling(feeling))
+    setIsOpen(false)
+    dispatch(setAlert("Successfully added new entry.", severity.Success))
+  }
+
+  return (
+    &lt;Dialog className="new-feeling-modal" open={isOpen} onClose={() => setIsOpen(false)} fullWidth>
+      &lt;DialogTitle>
+        &lt;Box display="flex" justifyContent="space-between" alignItems="center">
+          &lt;Typography variant="h6">New Feeling Entry&lt;/Typography>
+          &lt;IconButton onClick={() => setIsOpen(false)}>
+            &lt;CloseIcon />
+          &lt;/IconButton>
+        &lt;/Box>
+      &lt;/DialogTitle>
+      &lt;DialogContent dividers>
+      &lt;Spacing pv2 >
+        &lt;FormControl component="fieldset" fullWidth>
+          &lt;FormLabel component="legend">How do you feel today?&lt;/FormLabel>
+            &lt;RadioGroup
+              row
+              aria-label="gender"
+              name="gender1"
+              value={feeling.value}
+              onChange={({ target }) => dispatch(updateFeeling({ value: parseInt(target.value) }))}
+            >
+              &lt;span className="radio-side-label MuiTypography-body1">
+                Not so good
+              &lt;/span>
+            { Array(4).fill(0).map((_, i) => (
+                &lt;FormControlLabel
+                  key={i}
+                  labelPlacement="bottom"
+                  value={i}
+                  control={&lt;Radio />}
+                  label={i}
+                />
+              )) }
+              &lt;span className="radio-side-label MuiTypography-body1">
+                Good!
+              &lt;/span>
+          &lt;/RadioGroup>
+        &lt;/FormControl>
+        &lt;/Spacing>
+        &lt;FormControl component="fieldset" fullWidth>
+          &lt;TextField
+            id="outlined-multiline-static"
+            label="Notes (optional)"
+            multiline
+            rows={4}
+            placeholder="Add additional information"
+            variant="outlined"
+            onChange={({ target }) => dispatch(updateFeeling({ note: target.value }))}
+          />
+        &lt;/FormControl>
+        &lt;FormControl component="fieldset" fullWidth>
+          &lt;FormControlLabel
+            control={
+              &lt;Checkbox
+                checked={feeling.isPrivate}
+                onChange={({ target }) => dispatch(updateFeeling({ isPrivate: target.checked }))}
+                name="anonymous"
+                color="primary"
+              />
+            }
+            label="Submit anonymously"
+          />
+        &lt;/FormControl>
+      &lt;/DialogContent>
+      &lt;DialogActions>
+        &lt;Button color="primary" variant="outlined"
+          onClick={submit}>
+          Publish
+        &lt;/Button>
+      &lt;/DialogActions>
+    &lt;/Dialog>
+  )
+}
+
+NewFeelingEntryModal.defaultProps = {
+  modalState: {
+    isOpen: false,
+    setIsOpen: () => ""
+  }
+}
+ 
+export default NewFeelingEntryModal</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>
