@@ -9,6 +9,12 @@ import * as types from "../types/state.ts"
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
 
+const defaultState = {
+    severity: "info",
+    message: "",
+    open: false,
+}
+
 describe('alertReducer', () => {
     test('Should return default state', () => {
         const newState = alertReducer(undefined, {})
@@ -20,13 +26,14 @@ describe('alertReducer', () => {
     })
 
     test('Should return a new state with action ALERT_SET and ALERT_CLEAR', () => {
-        const defaultState = alertReducer(undefined, {}) 
+        const defaultState = alertReducer({}, {}) 
         const action = {
             type: types.ALERT_SET,
             message: 'text',
             severity: 'error'
         }
 
+        let a
         deepFreeze(defaultState)
         const setState = alertReducer(defaultState, action)
 
