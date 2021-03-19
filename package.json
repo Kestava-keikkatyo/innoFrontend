@@ -64,7 +64,6 @@
     ]
   },
   "devDependencies": {
-    "@microsoft/tsdoc": "^0.13.0",
     "@types/deep-freeze": "^0.1.2",
     "@types/jest": "^26.0.20",
     "@types/material-ui": "^0.21.8",
