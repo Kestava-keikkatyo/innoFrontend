@@ -11,7 +11,7 @@ import Spacing from "../../components/Spacing"
 const TypeDropDown: React.FC<{ index: number }> = ({ index }) => {
   const dispatch = useDispatch()
   const questions = useSelector(
-    (state: any) => state.form.currentForm.questions
+    (state: any) => state.form.questions
   )
   return (
     <Spacing ph4 className="relative" style={{ width: "100%" }}>
@@ -47,7 +47,7 @@ const QuestionModule: React.FC<{ questionIndex: number }> = ({
 }) => {
   const dispatch = useDispatch()
   const questions = useSelector(
-    (state: any) => state.form.currentForm.questions
+    (state: any) => state.form.questions
   )
 
   return (

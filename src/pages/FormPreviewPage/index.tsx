@@ -24,7 +24,7 @@ import FormDatePicker from '../../components/FormComponents/FormDatePicker'
  * type of component.
  */
 const FormPreviewPage: React.FC = () => {
-  const { currentForm } = useSelector((state: any) => state.form)
+  const { title, description, questions } = useSelector((state: any) => state.form)
   const dispatch = useDispatch()
 
   return (
@@ -32,10 +32,10 @@ const FormPreviewPage: React.FC = () => {
       <FormPreviewHeader />
       <div className="create-form">
         <FormHeader
-          title={currentForm.title}
-          description={currentForm.description}
+          title={title}
+          description={description}
         />
-        {currentForm.questions.map((q: Question, k: number) => {
+        {questions.map((q: Question, k: number) => {
           switch (q.type) {
             case formConstants.textField.value:
               return <FormText key={k} question={q} />

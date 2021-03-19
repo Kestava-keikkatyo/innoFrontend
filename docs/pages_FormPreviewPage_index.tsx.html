@@ -119,10 +119,10 @@ const FormPreviewPage: React.FC = () => {
       &lt;FormPreviewHeader />
       &lt;div className="create-form">
         &lt;FormHeader
-          title={currentForm.title}
-          description={currentForm.description}
+          title={title}
+          description={description}
         />
-        {currentForm.questions.map((q: Question, k: number) => {
+        {questions.map((q: Question, k: number) => {
           switch (q.type) {
             case formConstants.textField.value:
               return &lt;FormText key={k} question={q} />

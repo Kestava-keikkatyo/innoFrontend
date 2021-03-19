@@ -2,7 +2,7 @@ import { Button, Grid, Typography } from '@material-ui/core';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { importForm } from '../../actions/formActions';
+import { importFormByPath } from '../../actions/formActions';
 import FileUploader from '../../components/FileUploader';
 
 /**
@@ -10,7 +10,8 @@ import FileUploader from '../../components/FileUploader';
  * @desc Form editors header.
  */
 const NewFormHeader: React.FC = () => {
-  const { currentForm } = useSelector((state: any) => state.form)
+  const currentForm = useSelector((state: any) => state.form)
+  const { title } = currentForm
   const dispatch = useDispatch()
   return ( 
     <Grid container direction="row"
@@ -28,10 +29,10 @@ const NewFormHeader: React.FC = () => {
           <Button>
             Submit
           </Button>
-          <FileUploader accept="data:text/json" handleFile={(data: any) => dispatch(importForm(data))}>
+          <FileUploader accept="data:text/json" handleFile={(data: any) => dispatch(importFormByPath())}>
             Import
           </FileUploader>
-          <Button download={`${currentForm.title}.json`}
+          <Button download={`${title}.json`}
             href={`data:text/json;charset=utf-8,${encodeURIComponent(
               JSON.stringify(currentForm)
             )}`} >

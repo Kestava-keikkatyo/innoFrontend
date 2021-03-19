@@ -118,7 +118,7 @@ const NewFormHeader: React.FC = () => {
           &lt;FileUploader accept="data:text/json" handleFile={(data: any) => dispatch(importForm(data))}>
             Import
           &lt;/FileUploader>
-          &lt;Button download={`${currentForm.title}.json`}
+          &lt;Button download={`${title}.json`}
             href={`data:text/json;charset=utf-8,${encodeURIComponent(
               JSON.stringify(currentForm)
             )}`} >

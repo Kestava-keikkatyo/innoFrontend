@@ -45,8 +45,8 @@ const initialQuestion: any = {
  */
 const NewFormPage: React.FC = () => {
   const dispatch = useDispatch()
-  const { currentForm } = useSelector((state: any) => state.form)
-  const { questions } = useSelector((state: any) => state.form.currentForm)
+  const currentForm = useSelector((state: any) => state.form)
+  const { title, description, questions } = currentForm
 
   const addForm = (event: any): void => {
     event.preventDefault()
@@ -64,7 +64,7 @@ const NewFormPage: React.FC = () => {
         placeholder="Your title..."
         type="text"
         name="title"
-        value={currentForm.title}
+        value={title}
         onChange={({ target }: any) => dispatch(setTitle(target.value))}
       />
       <CustomFormInput
@@ -73,7 +73,7 @@ const NewFormPage: React.FC = () => {
         placeholder="Your description..."
         type="text"
         name="title"
-        value={currentForm.description}
+        value={description}
         onChange={({ target }: any) => dispatch(setDescription(target.value))}
       />
       <div>

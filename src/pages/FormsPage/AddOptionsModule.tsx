@@ -15,7 +15,7 @@ interface Props {
  */
 const AddOptionsModule: React.FC<Props> = ({ index }) => {
   const dispatch = useDispatch()
-  const { questions } = useSelector((state: any) => state.form.currentForm)
+  const { questions } = useSelector((state: any) => state.form)
 
   return ( 
     <>

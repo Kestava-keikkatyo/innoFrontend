@@ -21,7 +21,7 @@ interface Props extends Index {
  */
 const ExpandedBodyModule: React.FC<Props> = ({ index, children }) => {
   const classes = useStyles()
-  const { questions } = useSelector((state: any) => state.form.currentForm)
+  const { questions } = useSelector((state: any) => state.form)
   const dispatch = useDispatch()
   const [hidden, setHidden] = useState(true)
 
@@ -53,7 +53,7 @@ const ExpandedBodyModule: React.FC<Props> = ({ index, children }) => {
 }
 
 const ExpandedTextModule: React.FC<Props> = ({ index, children }) => {
-  const { questions } = useSelector((state: any) => state.form.currentForm)
+  const { questions } = useSelector((state: any) => state.form)
   const dispatch = useDispatch()
   
   return(
@@ -85,7 +85,7 @@ const ExpandedTextModule: React.FC<Props> = ({ index, children }) => {
  * @todo Laita tähän tilanhallinta
  */
 const ExpandedHorizontalRadioModule: React.FC<Index> = ({ index }) => {
-  const { questions } = useSelector((state: any) => state.form.currentForm)
+  const { questions } = useSelector((state: any) => state.form)
   const dispatch = useDispatch()
 
   return(
@@ -156,7 +156,7 @@ const ExpandedRadioButtonGroupModule: React.FC<Index> = ({ index }) => <Expanded
 const ExpandedCheckBoxModule: React.FC<Index> = ({ index }) => <ExpandedBodyModule index={index} />
 
 const ExpandedTextAreaModule: React.FC<Index> = ({ index }) => {
-  const { questions } = useSelector((state: any) => state.form.currentForm)
+  const { questions } = useSelector((state: any) => state.form)
   const dispatch = useDispatch()
   
   return(
@@ -175,7 +175,7 @@ const ExpandedTextAreaModule: React.FC<Index> = ({ index }) => {
 }
 
 const ExpandableQuestionModule: React.FC<Index> = ({ index }) => {
-  const { questions } = useSelector((state: any) => state.form.currentForm)
+  const { questions } = useSelector((state: any) => state.form)
 
   if(!questions || !questions[index]) return <></>
 

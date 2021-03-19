@@ -147,11 +147,11 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
         ...state,
         currentForm: {
           ...state.currentForm,
-          questions: [...state.currentForm.questions, data],
+          questions: [...state.questions, data],
         },
       }
     case UPDATE_QUESTION:
-      temp = state.currentForm.questions
+      temp = state.questions
       temp[data.index] = data.question
       return {
         ...state,
@@ -161,7 +161,7 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
         },
       }
     case UPDATE_QUESTION_OPTION:
-      temp = state.currentForm.questions
+      temp = state.questions
       temp[data.questionIndex].options[data.optionIndex] = data.option
       return {
         ...state,
@@ -171,7 +171,7 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
         },
       }
     case REMOVE_QUESTION:
-      temp = state.currentForm.questions
+      temp = state.questions
       temp.splice(data, 1)
       return {
         ...state,
@@ -181,7 +181,7 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
         },
       }
     case REMOVE_OPTION:
-      temp = state.currentForm.questions
+      temp = state.questions
       temp[data.questionIndex].options.splice(data.optionIndex, 1)
       return {
         ...state,
