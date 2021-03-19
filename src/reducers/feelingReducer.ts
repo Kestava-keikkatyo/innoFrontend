@@ -1,11 +1,11 @@
+/**
+ * @module reducer/feeling
+ * @desc Redux feeling reducer
+ */
 import { ADD_FEELING, CLEAR_CURRENT_FEELING, FeelingActionTypes, FeelingState, FETCH_FEELINGS, SET_CURRENT_FEELING, UPDATE_FEELING_DATASET } from "../types/state"
 import { Feeling } from "../types/types"
 import { formatDate } from "../utils/dateUtils"
 
-/**
- * Redux feeling reducer
- * @module
- */
 const initialDataset = {
   labels: [ ],
   datasets: [
@@ -32,6 +32,12 @@ const initialState: FeelingState = {
   feelings: [],
 }
 
+/**
+ * @function
+ * @desc Redux feeling reducer that controls the feeling state.
+ * @param {FeelingState} state - initial state
+ * @param {FeelingActionTypes} action - dispatched action
+ */
 const feelingReducer = (state: FeelingState = initialState, action: FeelingActionTypes) => {
   switch (action.type) {
     case FETCH_FEELINGS:

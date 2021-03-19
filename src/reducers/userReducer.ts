@@ -1,6 +1,6 @@
 /**
- * Redux user reducer
- * @module
+ * @module reducer/user
+ * @desc Redux user reducer
  */
 import { loadUser } from '../utils/storage'
 import { LOGIN, LOGOUT, UserActionTypes, USER_FAILURE, USER_PROFILE, USER_REQUEST } from '../types/state'
@@ -12,10 +12,10 @@ const initialState = {
 }
 
 /**
- * user reducer that controls user state
  * @function
+ * @desc user reducer that controls user state
  * @param {Object} state - current state
- * @param {Object} action - dispatched action
+ * @param {UserActionTypes} action - dispatched action
  */
 const userReducer = (state = initialState, action: UserActionTypes) => {
   switch (action.type) {

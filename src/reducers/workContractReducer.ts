@@ -1,6 +1,6 @@
 /**
- * Redux workContract reducer
- * @module
+ * @module reducer/workContract
+ * @desc Redux workContract reducer
  */
 import { ADD_W_CONTRACT, WorkContractState, WorkContractActionTypes, W_DELETE, W_FETCH, W_UPDATE } from "../types/state"
 
@@ -10,8 +10,8 @@ const initialState: WorkContractState = {
 }
 
 /**
- * alert reducer that controls alert state
  * @function
+ * @desc alert reducer that controls alert state
  * @param {WorkContractState} state - current state
  * @param {WorkContractActionTypes} action - dispatched action
  */

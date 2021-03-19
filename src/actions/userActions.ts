@@ -1,12 +1,18 @@
 /**
- * Redux user actions
- * @module actions/userActions
+ * @module userActions
+ * @desc Redux user actions
  */
 import userService from '../services/userService'
 import { saveUser, logoutUser } from '../utils/storage'
 import history from '../utils/history'
 import { setAlert } from './alertActions'
-import { LOGIN, LOGOUT, SignUpUser, USER_FAILURE, USER_PROFILE, USER_REQUEST } from '../types/state'
+import {
+  LOGIN,
+  LOGOUT,
+  USER_FAILURE,
+  USER_PROFILE,
+  USER_REQUEST,
+  SignUpUser } from '../types/state'
 import { Credentials, roles, severity } from '../types/types'
 
 /**

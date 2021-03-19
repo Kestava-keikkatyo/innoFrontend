@@ -1,14 +1,13 @@
+/**
+ * @module reducer/breadcrumb
+ * @desc Redux breadcrumb reducer
+ */
 import { BreadcrumbActionTypes, BREADCRUMB_ADD, BREADCRUMB_SET } from "../types/state"
 import { BreadcrumbLink } from "../types/types"
 
 /**
- * Redux breadcrumb reducer
- * @module
- */
-
-/**
- * breadcrumb reducer that controls breadcrumb state
  * @function
+ * @desc breadcrumb reducer that controls breadcrumb state
  * @param {BreadcrumbLink[]} state - current state
  * @param {BreadcrumbActionTypes} action - dispatched action
  */

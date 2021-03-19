@@ -1,6 +1,6 @@
 /**
- * Redux alert reducer
- * @module
+ * @module reducer/alert
+ * @desc Redux alert reducer
  */
 import { AlertActionTypes, AlertState, ALERT_CLEAR, ALERT_SET } from '../types/state'
 import { severity } from '../types/types'
@@ -12,8 +12,8 @@ const initialState: AlertState = {
 }
 
 /**
- * alert reducer that controls alert state
  * @function
+ * @desc alert reducer that controls alert state
  * @param {Object} state - current state
  * @param {Object} action - dispatched action
  */

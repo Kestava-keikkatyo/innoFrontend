@@ -1,8 +1,7 @@
 /**
- * Redux alert actions
- * @module actions/alertActions
+ * @module actions/alert 
+ * @desc Redux alert actions
  */
-
 import { ALERT_CLEAR, ALERT_SET } from "../types/state"
 import { severity } from "../types/types"
 
@@ -10,8 +9,8 @@ import { severity } from "../types/types"
 let timeoutId: any
 const initialSeverity = severity.Info 
 /**
- * Sets alert that is shown inside a {@link https://material-ui.com/components/snackbars/|MUI snackbar component}
  * @function
+ * @desc Sets alert that is shown inside a {@link https://material-ui.com/components/snackbars/|MUI snackbar component}
  * @param {string} message - text that alert displays (displayed in MUI snackbar)
  * @param {string} [severity=info] - alert severity (error, warning, info, success)
  * @param {number} [duration=5]  - amount of time the alert is shown in seconds
@@ -34,8 +33,8 @@ export const setAlert = (message: string, severity = initialSeverity, duration: 
 }
 
 /**
- * Clears alert.
  * @function
+ * @desc Clears alert.
  */
 export const clearAlert = () => {
 

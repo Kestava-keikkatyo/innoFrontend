@@ -19,8 +19,8 @@ import FormPreviewPage from "./pages/FormPreviewPage"
 import { roles } from "./types/types"
 
 /**
+ * @component
  * App component, main react component which acts as a container for all the other components.
- * @exports App
  */
 const App: React.FC = () => {
   // extra toolbar prevents content from going underneath appbar.

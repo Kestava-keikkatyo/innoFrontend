@@ -1,3 +1,7 @@
+/**
+ * @module reducer/form
+ * @desc Redux form reducer
+ */
 import { Form } from "../types/types"
 import {
   SET_CURRENT_FORM,
@@ -24,9 +28,8 @@ const initialState = {
 }
 
 /**
- * Redux form reducer that controls the form generator tool state.
- * @module
- *
+ * @function
+ * @desc Redux form reducer that controls the form generator tool state.
  * @param {Form} state - initial state
  * @param {FormActionTypes} action - dispatched action
  */

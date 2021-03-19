@@ -1,10 +1,7 @@
 /**
- * Redux alert reducer
- * @module
+ * @module reducer/businessContract
+ * @desc Redux alert reducer
  */
-// import alertConstants from '../constants/alertConstants'
-// import contractsService from '../services/contractsService'
-
 import { ACTIVATE_B_CONTRACT, ADD_B_CONTRACT, BusinessContractActions, BusinessContractState, B_DELETE, B_FETCH, B_UPDATE } from "../types/state"
 
 const initialState: BusinessContractState = {
@@ -13,10 +10,10 @@ const initialState: BusinessContractState = {
 }
 
 /**
- * alert reducer that controls alert state
  * @function
- * @param {Object} state - current state
- * @param {Object} action - dispatched action
+ * @desc alert reducer that controls alert state
+ * @param {BusinessContractState} state - current state
+ * @param {BusinessContractActions} action - dispatched action
  */
 const businessContractReducer = (state: BusinessContractState = initialState, action: BusinessContractActions) => {
   switch (action.type) {

@@ -1,6 +1,6 @@
 /**
- * Redux form actions
- * @module actions/formActions
+ * @module actions/form
+ * @desc Redux form actions
  */
 import { setAlert } from "./alertActions"
 import raw from "../forms/lomake1.json"
@@ -19,27 +19,16 @@ import {
 } from "../types/state"
 
 /**
- * Replaces the currentForm with the data imported from file systems
  * @function
- * @param {string} title - Form title.
- * @todo add validation
+ * @desc Replaces the currentForm with the data imported from file systems
  */
-export const importForm = (file: any) => async (dispatch: any) => {
-  let fr = new FileReader()
-  fr.onloadend = (e) => {
-    const data = typeof fr.result === "string" ? JSON.parse(fr.result) : {}
-    dispatch({ type: SET_CURRENT_FORM, data })
-  }
-  fr.readAsText(file)
-}
-
 export const importFormByPath = () => async (dispatch: any) => {
   dispatch({ type: SET_CURRENT_FORM, data: raw })
 }
 
 /**
- * Updates the title of the generated form
  * @function
+ * @desc Updates the title of the generated form
  * @param {string} title - Form title.
  */
 export const setTitle = (title: string) => async (dispatch: any) => {
@@ -47,8 +36,8 @@ export const setTitle = (title: string) => async (dispatch: any) => {
 }
 
 /**
- * Adds question to array from the QuestionModule
  * @function
+ * @desc Adds question to array from the QuestionModule
  * @param {FormQuestion} question - Question object that includes two strings: question input and answer option.
  */
 export const addQuestion = (question: FormQuestion) => async (
@@ -58,8 +47,8 @@ export const addQuestion = (question: FormQuestion) => async (
 }
 
 /**
- *
  * @function
+ * @desc Setter for questions.
  * @param {Array<FormQuestion>} questions
  */
 export const setQuestions = (questions: Array<FormQuestion>) => async (
@@ -69,8 +58,8 @@ export const setQuestions = (questions: Array<FormQuestion>) => async (
 }
 
 /**
- * Updates the edited Question input to the array.
  * @function
+ * @desc Updates the edited Question input to the array.
  * @param {FormQuestion} question - Question object that includes two strings: question input and answer option.
  * @param {number} index - Index of the question which was edited.
  */
@@ -80,8 +69,15 @@ export const updateQuestion = (question: FormQuestion, index: number) => async (
   dispatch({ type: UPDATE_QUESTION, data: { question, index } })
 }
 
+/**
+ * @function
+ * @desc Updates the questions options array.
+ * @param {string} option 
+ * @param {number} questionIndex 
+ * @param {number} optionIndex 
+ */
 export const updateQuestionOption = (
-  option: any,
+  option: string,
   questionIndex: number,
   optionIndex: number
 ) => async (dispatch: any) => {
@@ -93,8 +89,8 @@ export const updateQuestionOption = (
 }
 
 /**
- * Removes the indicated question from the array.
  * @function
+ * @desc Removes the indicated question from the array.
  * @param {number} index - Index of the question which is to be removed.
  */
 export const removeQuestion = (index: number) => async (dispatch: any) => {
@@ -102,8 +98,8 @@ export const removeQuestion = (index: number) => async (dispatch: any) => {
 }
 
 /**
- * Removes the indicated option from the array.
  * @function
+ * @desc Removes the indicated option from the array.
  * @param {number} questionIndex - Index of the question which is removed option.
  * @param {number} optionIndex - Index of the option which is to be removed.
  */
@@ -115,8 +111,8 @@ export const removeOption = (
 }
 
 /**
- * Sets the description of the form.
  * @function
+ * @desc Sets the description of the form.
  * @param {string} description - Description of the form.
  */
 export const setDescription = (description: string) => async (
@@ -126,7 +122,8 @@ export const setDescription = (description: string) => async (
 }
 
 /**
- * Submits the form to storage.
+ * @function
+ * @desc Submits the form to storage.
  * @param {Form} form - Edited Form Object to be submitted.
  * @todo Service call backend.
  */
