@@ -1,6 +1,6 @@
 /**
- * Contract requests to backend
- * @module
+ * @module service/contract
+ * @desc Contract requests to backend.
  */
 import axios from 'axios'
 import { businessContractType } from '../types/types'
@@ -9,8 +9,8 @@ import { loadUser } from '../utils/storage'
 const baseUrl = 'http://localhost:3001/api'
 
 /**
- * helper function for setting up request header
  * @function
+ * @desc Helper function for setting up request header.
  */
 const authHeader = () => {
   return {
@@ -19,8 +19,8 @@ const authHeader = () => {
 }
 
 /**
- * Gets workers or businesses by name (LIKE behavior)
  * @function
+ * @desc Gets workers or businesses by name (LIKE behavior)
  * @param {string} input - input that is searched
  * @param {string} searchType - determines if workers or businesses are searched
  */

@@ -1,6 +1,6 @@
 /**
- * User requests to backend
- * @module
+ * @module service/user
+ * @desc User requests to backend.
  */
 import axios from 'axios'
 import { Credentials, roles } from '../types/types'
@@ -20,10 +20,10 @@ const authHeader = () => {
 }
 
 /**
- * sends out signup request
  * @function
- * @param {Object} user - basic user information
- * @param {string} role - account role to be created (worker, agency, business)
+ * @desc sends out signup request.
+ * @param {User} user - Basic user information.
+ * @param {roles} role - Account role to be created (worker, agency, business).
  */
 const signup = async (user: User, role: roles) => {
   try {
@@ -44,8 +44,8 @@ const signup = async (user: User, role: roles) => {
 }
 
 /**
- * sends out login request
  * @function
+ * @desc Sends out login request
  * @param {Credentials} credentials - user's credentials ({email: ..., password: ...})
  * @param {roles} role - account role
  */
@@ -68,8 +68,9 @@ const login = async (credentials: Credentials, role: roles) => {
 }
 
 /**
- * sends out me request that gets user profile information
- * @param {string} role - account role
+ * @function
+ * @desc Sends out me request that gets user profile information.
+ * @param {roles} role - Account role.
  */
 const me = async (role: roles) => {
   try {
@@ -91,9 +92,10 @@ const me = async (role: roles) => {
 }
 
 /**
- * sends out update request that replaces user's profile information with updateData values
- * @param {Object} updateData - profile values to be updated
- * @param {string} role - account role
+ * @function
+ * @desc sends out update request that replaces user's profile information with updateData values
+ * @param {User} updateData - profile values to be updated
+ * @param {roles} role - account role
  */
 const update = async (updateData: User, role: roles) => {
   try {
