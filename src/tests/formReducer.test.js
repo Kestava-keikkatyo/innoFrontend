@@ -104,6 +104,27 @@ describe("formReducer", () => {
     })
   })
 
+  test("Should handle UPDATE_QUESTION_OPTION", () => {
+    expect(
+      formReducer(testForm, {
+        type: types.UPDATE_QUESTION_OPTION,
+        data: {
+          option: "test option",
+        },
+        questionIndex: 0,
+        optionIndex: 0,
+      })
+    ).toEqual({
+      currentForm: {
+        title: "",
+        description: "",
+        questions: [
+          { question: "", options: "test option"}
+        ]
+      }
+    })
+  })
+
 
 
 

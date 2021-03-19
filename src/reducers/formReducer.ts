@@ -29,6 +29,7 @@ const initialState = {
  *
  * @param {Form} state - initial state
  * @param {FormActionTypes} action - dispatched action
+ * @todo - Figure out immutability: formReducer is not a pure function. Ditch temp?
  */
 const formReducer = (state = initialState, action: FormActionTypes) => {
   const { data, type } = action
@@ -39,6 +40,7 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
         ...state,
         currentForm: data,
       }
+
     case UPDATE_TITLE:
       return {
         ...state,
@@ -47,6 +49,7 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
           title: data,
         },
       }
+
     case SET_DESCRIPTION:
       return {
         ...state,
@@ -55,6 +58,7 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
           description: data,
         },
       }
+
     case ADD_QUESTION:
       return {
         ...state,
@@ -63,6 +67,7 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
           questions: [...state.currentForm.questions, data],
         },
       }
+
     case UPDATE_QUESTION:
       temp = state.currentForm.questions
       temp[data.index] = data.question
@@ -73,6 +78,7 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
           questions: temp,
         },
       }
+
     case UPDATE_QUESTION_OPTION:
       temp = state.currentForm.questions
       temp[data.questionIndex].options[data.optionIndex] = data.option
@@ -83,6 +89,7 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
           questions: temp,
         },
       }
+
     case REMOVE_QUESTION:
       temp = state.currentForm.questions
       temp.splice(data, 1)
@@ -93,6 +100,7 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
           questions: temp,
         },
       }
+
     case REMOVE_OPTION:
       temp = state.currentForm.questions
       temp[data.questionIndex].options.splice(data.optionIndex, 1)
@@ -103,6 +111,7 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
           questions: temp,
         },
       }
+
     case SET_QUESTIONS:
       return {
         ...state,
@@ -111,6 +120,7 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
           questions: data,
         },
       }
+
     case CLEAR_CURRENT_FORM:
       return { ...state, currentForm: initialCurrentForm }
 
