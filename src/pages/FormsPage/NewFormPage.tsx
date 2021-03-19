@@ -76,7 +76,7 @@ const NewFormPage: React.FC = () => {
         value={description}
         onChange={({ target }: any) => dispatch(setDescription(target.value))}
       />
-      <div>
+      <div>{console.log(questions)}
         {questions.map((_: Question, i: number) => (
           <QuestionModule key={i} questionIndex={i} />
         ))}
