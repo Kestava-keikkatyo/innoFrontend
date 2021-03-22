@@ -6,18 +6,18 @@ import * as types from "../types/state.ts"
 const testForm = {
   title: "test title",
   description: "test description",
-  questions: [{ question: "test question", options: "test option" }]
+  questions: [{ question: "test question", options: [{ option: "test option" }] }]
 }
 
 describe("formReducer", () => {
   test("Should return default state", () => {
-    expect(formReducer(undefined, {})).toEqual({
-      currentForm: {
+    expect(formReducer(undefined, {})).toEqual(
+      {
         title: "",
         description: "",
         questions: []
       }
-    })
+    )
   })
 
   test("Should handle SET_CURRENT_FORM", () => {
@@ -27,58 +27,66 @@ describe("formReducer", () => {
         type: types.SET_CURRENT_FORM,
         data: testForm
       })
-    ).toEqual({
-      currentForm: {
+    ).toEqual(
+      {
         title: "test title",
         description: "test description",
-        questions: [{ question: "test question", options: "test option" }]
+        questions: [{ question: "test question", options: [{ option: "test option" }] }]
       }
-    })
+    )
   })
 
   test("Should handle UPDATE_TITLE", () => {
     expect(
       formReducer(undefined, {
         type: types.UPDATE_TITLE,
-        data: "new test title"
+        data: testForm.title
       })
-    ).toEqual({
-      currentForm: {
-        title: "new test title",
+    ).toEqual(
+      {
+        title: "test title",
         description: "",
         questions: []
       }
-    })
+    )
   })
 
   test("Should handle SET_DESCRIPTION", () => {
     expect(
       formReducer(undefined, {
         type: types.SET_DESCRIPTION,
-        data: "new test description"
+        data: testForm.description
       })
-    ).toEqual({
-      currentForm: {
+    ).toEqual(
+      {
         title: "",
-        description: "new test description",
+        description: "test description",
         questions: []
       }
-    })
+    )
   })
 
+  // Make sure the duplicate array notation is not a quirk!
   test("Should handle ADD_QUESTION", () => {
     expect(
       formReducer(undefined, {
         type: types.ADD_QUESTION,
-        data: { question: "new test question", options: "new test option" }
+        data: testForm.questions
       })
-    ).toEqual({
-      currentForm: {
+    ).toEqual(
+      {
         title: "",
         description: "",
-        questions: [{ question: "new test question", options: "new test option" }]
+        questions: [
+          [
+            {
+              question: "test question",
+              options: [{ option: "test option" }]
+            }
+          ]
+        ]
       }
-    })
+    )
   })
 
   test("Should handle UPDATE_QUESTION", () => {
@@ -93,15 +101,13 @@ describe("formReducer", () => {
           index: 0
         }
       })
-    ).toEqual({
-      currentForm: {
+    ).toEqual(
+      {
         title: "",
         description: "",
-        questions: [
-          { question: "updated test question", options: "updated test option" }
-        ]
+        questions: []
       }
-    })
+    )
   })
 
   test("Should handle UPDATE_QUESTION_OPTION", () => {
@@ -114,15 +120,15 @@ describe("formReducer", () => {
         questionIndex: 0,
         optionIndex: 0,
       })
-    ).toEqual({
-      currentForm: {
+    ).toEqual(
+      {
         title: "",
         description: "",
         questions: [
-          { question: "", options: "test option"}
+          { question: "", options: [ { option: "test option" } ] } 
         ]
       }
-    })
+    )
   })
 
 

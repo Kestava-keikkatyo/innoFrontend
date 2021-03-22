@@ -2,7 +2,7 @@
  * @module reducer/form
  * @desc Redux form reducer
  */
-import { Form } from "../types/types"
+import { Form, FormQuestion } from "../types/types"
 import {
   SET_CURRENT_FORM,
   UPDATE_TITLE,
@@ -51,32 +51,28 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
 
     case ADD_QUESTION:
       return {
-          ...state,
-          questions: [...state.questions, data],
+        ...state,
+        questions: [...state.questions, data],
       }
 
     case UPDATE_QUESTION:
-      temp = state.questions
-      temp[data.index] = data.question
       return {
         ...state,
-        questions: temp 
+        questions: state.questions.map((q, i) => i === data.index ? data.question : q),
       }
 
     case UPDATE_QUESTION_OPTION:
-      temp = state.questions
-      temp[data.questionIndex].options[data.optionIndex] = data.option
+      //temp = state.questions
+      //temp[data.questionIndex].options[data.optionIndex] = data.option
       return {
         ...state,
-        questions: temp,
+        questions: state.questions.map((o, i) => i === data.questionIndex ? data.option : o),
       }
 
     case REMOVE_QUESTION:
-      temp = state.questions
-      temp.splice(data, 1)
       return {
         ...state,
-        questions: temp,
+        questions: state.questions.filter((q, i) => i !== data)
       }
 
     case REMOVE_OPTION:
