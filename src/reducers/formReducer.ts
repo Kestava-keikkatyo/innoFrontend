@@ -58,7 +58,7 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
     case UPDATE_QUESTION:
       return {
         ...state,
-        questions: state.questions.map((q, i) => i === data.index 
+        questions: state.questions.map((q, i) => i === data.index
           ? data.question : q),
       }
 
@@ -69,8 +69,12 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
       const getOptions = (q: any) => q.options.map((o: any, j: number) => j === data.optionIndex ? data.option : o)
       return {
         ...state,
-        questions: state.questions.map((q, i) => i !== data.questionIndex 
-          ? q: {...q, options: getOptions(q)}),
+        questions: state.questions.map((q, i) => i !== data.questionIndex
+          ? q : {
+            ...q, options: q.options.map((o: any, j: number) => j === data.optionIndex
+              ? data.option : o
+            )
+          }),
       }
 
     case REMOVE_QUESTION:
@@ -79,13 +83,19 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
         questions: state.questions.filter((_, i) => i !== data)
       }
 
-    // figure out how to return questions while editing in the options scope.
+    // deletes the specified index in all questionmodules.
     case REMOVE_OPTION:
       temp = state.questions
       temp[data.questionIndex].options.splice(data.optionIndex, 1)
+      const getOptions1 = (q: any) => q.options.map((o: any, j: number) => j === data.optionIndex ? data.option : o)
       return {
         ...state,
-        questions: temp,
+        questions: state.questions.map((q, i) => i === data.questionIndex
+          ? q : { 
+            ...q, options: q.options.filter((o: any, j: number) => j === data.optionIndex
+              ? data.option : o)
+          }
+        ),
       }
 
     case SET_QUESTIONS:
