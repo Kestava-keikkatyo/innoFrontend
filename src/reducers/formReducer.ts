@@ -84,13 +84,15 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
       }
 
     // deletes the specified index in all questionmodules.
+      // update: no longer deletes from all modules, but still deletes multiple 
+      // if more options exist after in the same module
     case REMOVE_OPTION:
       temp = state.questions
       temp[data.questionIndex].options.splice(data.optionIndex, 1)
       const getOptions1 = (q: any) => q.options.map((o: any, j: number) => j === data.optionIndex ? data.option : o)
       return {
         ...state,
-        questions: state.questions.map((q, i) => i === data.questionIndex
+        questions: state.questions.map((q, i) => i !== data.questionIndex
           ? q : { 
             ...q, options: q.options.filter((o: any, j: number) => j === data.optionIndex
               ? data.option : o)
