@@ -58,15 +58,18 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
     case UPDATE_QUESTION:
       return {
         ...state,
-        questions: state.questions.map((q, i) => i === data.index ? data.question : q),
+        questions: state.questions.map((q, i) => i === data.index 
+          ? data.question : q),
       }
 
+    // breaks when inputting in to the input field.
     case UPDATE_QUESTION_OPTION:
       //temp = state.questions
       //temp[data.questionIndex].options[data.optionIndex] = data.option
       return {
         ...state,
-        questions: state.questions.map((o, i) => i === data.questionIndex ? data.option : o),
+        questions: state.questions.map((o, i) => i === data.questionIndex 
+          ? o: data.option),
       }
 
     case REMOVE_QUESTION:
@@ -75,6 +78,7 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
         questions: state.questions.filter((q, i) => i !== data)
       }
 
+    // figure out how to return questions while editing in the options scope.
     case REMOVE_OPTION:
       temp = state.questions
       temp[data.questionIndex].options.splice(data.optionIndex, 1)
