@@ -66,16 +66,17 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
     case UPDATE_QUESTION_OPTION:
       //temp = state.questions
       //temp[data.questionIndex].options[data.optionIndex] = data.option
+      const getOptions = (q: any) => q.options.map((o: any, j: number) => j === data.optionIndex ? data.option : o)
       return {
         ...state,
-        questions: state.questions.map((o, i) => i === data.questionIndex 
-          ? o: data.option),
+        questions: state.questions.map((q, i) => i !== data.questionIndex 
+          ? q: {...q, options: getOptions(q)}),
       }
 
     case REMOVE_QUESTION:
       return {
         ...state,
-        questions: state.questions.filter((q, i) => i !== data)
+        questions: state.questions.filter((_, i) => i !== data)
       }
 
     // figure out how to return questions while editing in the options scope.
