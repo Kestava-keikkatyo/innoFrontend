@@ -131,7 +131,20 @@ describe("formReducer", () => {
     )
   })
 
-
+  test("Should test REMOVE_QUESTION", () => {
+    expect(
+      formReducer(testForm, {
+        type: types.REMOVE_QUESTION,
+        data: 0,
+      })
+    ).toEqual(
+      {
+        title: "test title",
+        description: "test description",
+        questions: [],
+      }
+    )
+  })
 
 
 

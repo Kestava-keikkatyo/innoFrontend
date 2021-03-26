@@ -64,9 +64,6 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
 
     // breaks when inputting in to the input field.
     case UPDATE_QUESTION_OPTION:
-      //temp = state.questions
-      //temp[data.questionIndex].options[data.optionIndex] = data.option
-      const getOptions = (q: any) => q.options.map((o: any, j: number) => j === data.optionIndex ? data.option : o)
       return {
         ...state,
         questions: state.questions.map((q, i) => i !== data.questionIndex
@@ -86,6 +83,8 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
     // deletes the specified index in all questionmodules.
       // update: no longer deletes from all modules, but still deletes multiple 
       // if more options exist after in the same module
+      // update 2: no longer deletes multiple, so works "as intended", but instead somehow 
+      // we can't remove the first three lines before the return statement POG.
     case REMOVE_OPTION:
       temp = state.questions
       temp[data.questionIndex].options.splice(data.optionIndex, 1)
@@ -94,8 +93,7 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
         ...state,
         questions: state.questions.map((q, i) => i !== data.questionIndex
           ? q : { 
-            ...q, options: q.options.filter((o: any, j: number) => j === data.optionIndex
-              ? data.option : o)
+            ...q, options: q.options.filter((j: number) => j !== data.optionIndex)
           }
         ),
       }
