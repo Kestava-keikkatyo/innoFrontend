@@ -62,7 +62,8 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
           ? data.question : q),
       }
 
-    // breaks when inputting in to the input field.
+    // Is this broke? check tests: expects the option to be an object but seems to output
+      // only string. Intended?
     case UPDATE_QUESTION_OPTION:
       return {
         ...state,
@@ -85,7 +86,7 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
       // if more options exist after in the same module
       // update 2: no longer deletes multiple, so works "as intended", but instead somehow 
       // we can't remove the first three lines before the return statement POG.
-      // update 3: The web Gods have deemed me worthy and it now works as intended I guess. What was needed was specifying
+      // update 3: The web Gods have deemed me worthy and it _should_ work as intended I guess. What was needed was specifying
       // the _: any in the filter test but I haven't the faintest idea why it would work like this.
     case REMOVE_OPTION:
       // temp = state.questions
