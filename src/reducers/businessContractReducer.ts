@@ -28,7 +28,7 @@ const businessContractReducer = (state: BusinessContractState = initialState, ac
         madeContracts: action.data
       }
     case B_DELETE:
-      const filteredList = state.madeContracts.filter((value: any) => value.id !== action.data)
+      const filteredList = state.madeContracts.filter((value: any) => value._id !== action.data)
       return {
         ...state,
         madeContracts: filteredList
@@ -42,7 +42,7 @@ const businessContractReducer = (state: BusinessContractState = initialState, ac
       return {
         ...state,
         madeContracts: 
-          state.madeContracts.map((c: any) => c.id === action.data ? { ...c, contractMade: true }: c)
+          state.madeContracts.map((c: any) => c._id === action.data ? { ...c, contractMade: true }: c)
       }
     default:
       return state

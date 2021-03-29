@@ -86,7 +86,7 @@ export const FormikSelectField: React.FC<any> = ({ options, label, ...props }) =
     <FormControl
       style={{ minHeight: '5rem', minWidth: 120 }}
       error={!!errorText}>
-      <InputLabel id={props.id || props.name}>{label}</InputLabel>
+      <InputLabel id={props._id || props.name}>{label}</InputLabel>
       <Select {...field} >
         {options.map((option: any) => (
           <MenuItem key={option.value} value={option.value}>
@@ -141,7 +141,7 @@ export const FormikRadioField: React.FC<any> = ({ options, label, ...props }) =>
     <FormControl
       style={{ minHeight: '6.5rem' }}
       error={!!errorText}>
-      <FormLabel id={props.id || props.name}>{label}</FormLabel>
+      <FormLabel id={props._id || props.name}>{label}</FormLabel>
       <RadioGroup
         style={{ display: 'flex', flexFlow: 'row wrap', justifyContent: 'space-around' }}
         {...field}>

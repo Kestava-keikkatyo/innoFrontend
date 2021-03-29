@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 import { Question, roles } from "./types";
 
 /**
@@ -27,6 +27,8 @@ export interface GridFormPreviewProps {
    * Description to display.
    */
   formDesc: string
+  /**On click function */
+  formId: string
 }
 
 /**

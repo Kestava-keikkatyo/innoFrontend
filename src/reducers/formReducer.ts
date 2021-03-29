@@ -2,7 +2,7 @@
  * @module reducer/form
  * @desc Redux form reducer
  */
-import { Form, FormQuestion } from "../types/types"
+import { Form } from "../types/types"
 import {
   SET_CURRENT_FORM,
   UPDATE_TITLE,

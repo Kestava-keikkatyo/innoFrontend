@@ -28,7 +28,7 @@ const workContractReducer = (state: WorkContractState = initialState, action: Wo
         madeContracts: action.data
       }
     case W_DELETE:
-      const filteredList = state.madeContracts.filter((value: any) => value.id !== action.data)
+      const filteredList = state.madeContracts.filter((value: any) => value._id !== action.data)
       return {
         ...state,
         madeContracts: filteredList

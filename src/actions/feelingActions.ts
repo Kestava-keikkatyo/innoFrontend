@@ -42,5 +42,5 @@ export const updateDataSet = () => async (dispatch: any) => {
 export const submitFeeling = (feeling: Feeling) => async (dispatch: any) => {
   const res = await feelingService.postFeeling(feeling)
   if(res.status === 200)
-    dispatch({ type: ADD_FEELING, data: res.data.feelings })
+    dispatch({ type: ADD_FEELING, data: res.data })
 }

@@ -17,6 +17,7 @@ import {
   SET_QUESTIONS,
   CLEAR_CURRENT_FORM,
 } from "../types/state"
+import formServices from "../services/formServices"
 
 /**
  * @function
@@ -24,6 +25,15 @@ import {
  */
 export const importFormByPath = () => async (dispatch: any) => {
   dispatch({ type: SET_CURRENT_FORM, data: raw })
+}
+
+/**
+ * @function
+ * @desc Replaces the currentForm with the data imported from file systems
+ */
+ export const setFormById = (id: string) => async (dispatch: any) => {
+   const data = await formServices.fetchFormById(id)   
+  dispatch({ type: SET_CURRENT_FORM, data })
 }
 
 /**

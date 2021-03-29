@@ -57,8 +57,8 @@ const CurrentWorkerTable = () => {
         </TableHead>
         <TableBody>
           {contracts.map((contract: any) => (
-            <TableRow key={contract.id}>
-              <TableCell component="th" scope="row">{contract.id}</TableCell>
+            <TableRow key={contract._id}>
+              <TableCell component="th" scope="row">{contract._id}</TableCell>
               <TableCell align="right">{contract.createdAt}</TableCell>
               <TableCell align="right">{contract.business}</TableCell>
               <TableCell align="right">{contract.user}</TableCell>
@@ -67,7 +67,7 @@ const CurrentWorkerTable = () => {
                 <IconButton
                   aria-label="remove from organization"
                   color="secondary"
-                  onClick={() => deleteContract(contract.id)}>
+                  onClick={() => deleteContract(contract._id)}>
                   <DeleteIcon />
                 </IconButton>
               </TableCell>

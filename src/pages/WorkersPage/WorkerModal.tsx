@@ -60,7 +60,7 @@ const WorkerModal: React.FC<any> = ({ modalState, workerData }) => {
       <DialogContent dividers>
         {workerData &&
           <Typography color="textSecondary" variant="body2">
-            id: {workerData.id} <br />
+            id: {workerData._id} <br />
             created: {workerData.createdAt} <br />
             email: {workerData.email}
           </Typography>
@@ -75,7 +75,7 @@ const WorkerModal: React.FC<any> = ({ modalState, workerData }) => {
               onChange={({ target }: any) => setBusiness(target.value)}
             >
               { businessContracts.filter((bc: any) => bc.contractType === 'Business').map((bc: any) => 
-                <MenuItem key={bc.id} value={bc}>{bc.business?.name}</MenuItem>
+                <MenuItem key={bc._id} value={bc}>{bc.business?.name}</MenuItem>
               )}
             </Select>
           </FormControl>
