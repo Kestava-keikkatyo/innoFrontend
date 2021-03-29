@@ -58,19 +58,21 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
     case UPDATE_QUESTION:
       return {
         ...state,
-        questions: state.questions.map((q, i) => i === data.index 
+        questions: state.questions.map((q, i) => i === data.index
           ? data.question : q),
       }
 
-    // breaks when inputting in to the input field.
+    // Is this broke? check tests: expects the option to be an object but seems to output
+      // only string. Intended?
     case UPDATE_QUESTION_OPTION:
-      //temp = state.questions
-      //temp[data.questionIndex].options[data.optionIndex] = data.option
-      const getOptions = (q: any) => q.options.map((o: any, j: number) => j === data.optionIndex ? data.option : o)
       return {
         ...state,
-        questions: state.questions.map((q, i) => i !== data.questionIndex 
-          ? q: {...q, options: getOptions(q)}),
+        questions: state.questions.map((q, i) => i !== data.questionIndex
+          ? q : {
+            ...q, options: q.options.map((o: any, j: number) => j === data.optionIndex
+              ? data.option : o
+            )
+          }),
       }
 
     case REMOVE_QUESTION:
@@ -79,13 +81,24 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
         questions: state.questions.filter((_, i) => i !== data)
       }
 
-    // figure out how to return questions while editing in the options scope.
+    // deletes the specified index in all questionmodules.
+      // update: no longer deletes from all modules, but still deletes multiple 
+      // if more options exist after in the same module
+      // update 2: no longer deletes multiple, so works "as intended", but instead somehow 
+      // we can't remove the first three lines before the return statement POG.
+      // update 3: The web Gods have deemed me worthy and it _should_ work as intended I guess. What was needed was specifying
+      // the _: any in the filter test but I haven't the faintest idea why it would work like this.
     case REMOVE_OPTION:
-      temp = state.questions
-      temp[data.questionIndex].options.splice(data.optionIndex, 1)
+      // temp = state.questions
+      // temp[data.questionIndex].options.splice(data.optionIndex, 1)
+      // const getOptions1 = (q: any) => q.options.map((o: any, j: number) => j === data.optionIndex ? data.option : o)
       return {
         ...state,
-        questions: temp,
+        questions: state.questions.map((q, i) => i !== data.questionIndex
+          ? q : { 
+            ...q, options: q.options.filter((_: any,j: number) => j !== data.optionIndex)
+          }
+        ),
       }
 
     case SET_QUESTIONS:

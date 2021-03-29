@@ -91,7 +91,6 @@ export const updateQuestionOption = (
   questionIndex: number,
   optionIndex: number
 ) => async (dispatch: any) => {
-  console.log(option, questionIndex, optionIndex)
   dispatch({
     type: UPDATE_QUESTION_OPTION,
     data: { option, questionIndex, optionIndex },

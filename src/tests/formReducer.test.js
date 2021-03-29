@@ -6,7 +6,11 @@ import * as types from "../types/state.ts"
 const testForm = {
   title: "test title",
   description: "test description",
-  questions: [{ question: "test question", options: [{ option: "test option" }] }]
+  questions: [
+    {
+      question: "test question", options: [{ option: "test option" }]
+    }
+  ]
 }
 
 describe("formReducer", () => {
@@ -115,23 +119,64 @@ describe("formReducer", () => {
       formReducer(testForm, {
         type: types.UPDATE_QUESTION_OPTION,
         data: {
-          option: "test option",
-        },
-        questionIndex: 0,
-        optionIndex: 0,
+          option: "new test option",
+          questionIndex: 0,
+          optionIndex: 0,
+        }
       })
     ).toEqual(
       {
-        title: "",
-        description: "",
+        title: "test title",
+        description: "test description",
         questions: [
-          { question: "", options: [ { option: "test option" } ] } 
+          {
+            question: "test question", options: [{ option: "new test option" }]
+          }
         ]
       }
     )
   })
 
+  test("Should handle REMOVE_QUESTION", () => {
+    expect(
+      formReducer(testForm, {
+        type: types.REMOVE_QUESTION,
+        data: 0,
+      })
+    ).toEqual(
+      {
+        title: "test title",
+        description: "test description",
+        questions: [],
+      }
+    )
+  })
 
+  test("Should handle REMOVE_OPTION", () => {
+    expect(
+      formReducer(testForm, {
+        type: types.REMOVE_OPTION,
+        data: {
+          questionIndex: 0,
+          optionIndex: 0,
+        }
+      })
+    ).toEqual(
+      {
+        title: "test title",
+        description: "test description",
+        questions: [
+          {
+            question: "test question", options: []
+          }
+        ]
+      }
+    )
+  })
+
+  test("Should handle SET_QUESTIONS", () => {
+
+  })
 
 
 
