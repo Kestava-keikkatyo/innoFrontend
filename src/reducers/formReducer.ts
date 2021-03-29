@@ -32,7 +32,6 @@ const initialState: Form = {
  */
 const formReducer = (state = initialState, action: FormActionTypes) => {
   const { data, type } = action
-  let temp
   switch (type) {
     case SET_CURRENT_FORM:
       return data
