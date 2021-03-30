@@ -70,7 +70,6 @@ describe("formReducer", () => {
     )
   })
 
-  // Make sure the duplicate array notation is not a quirk!
   test("Should handle ADD_QUESTION", () => {
     expect(
       formReducer(testForm, {
