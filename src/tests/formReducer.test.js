@@ -73,22 +73,28 @@ describe("formReducer", () => {
   // Make sure the duplicate array notation is not a quirk!
   test("Should handle ADD_QUESTION", () => {
     expect(
-      formReducer(undefined, {
+      formReducer(testForm, {
         type: types.ADD_QUESTION,
-        data: testForm.questions
+        data: {
+          question: "added test question",
+          options: [{ option: "added test option" }],
+        }
       })
     ).toEqual(
       {
-        title: "",
-        description: "",
-        questions: [
+        title: "test title",
+        description: "test description",
+        questions:
           [
             {
               question: "test question",
               options: [{ option: "test option" }]
+            },
+            {
+              question: "added test question",
+              options: [{ option: "added test option" }]
             }
           ]
-        ]
       }
     )
   })
