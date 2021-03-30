@@ -31,34 +31,33 @@ const initialState: Form = {
  * @todo - Figure out immutability: formReducer is not a pure function. Ditch temp?
  */
 const formReducer = (state = initialState, action: FormActionTypes) => {
-  const { data, type } = action
-  switch (type) {
+  switch (action.type) {
     case SET_CURRENT_FORM:
-      return data
+      return action.data
 
     case UPDATE_TITLE:
       return {
         ...state,
-        title: data,
+        title: action.data,
       }
 
     case SET_DESCRIPTION:
       return {
         ...state,
-        description: data,
+        description: action.data,
       }
 
     case ADD_QUESTION:
       return {
         ...state,
-        questions: [...state.questions, data],
+        questions: [...state.questions, action.data],
       }
 
     case UPDATE_QUESTION:
       return {
         ...state,
-        questions: state.questions.map((q, i) => i === data.index
-          ? data.question : q),
+        questions: state.questions.map((q, i) => i === action.data.index
+          ? action.data.question : q),
       }
 
     // Is this broke? check tests: expects the option to be an object but seems to output
@@ -66,10 +65,10 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
     case UPDATE_QUESTION_OPTION:
       return {
         ...state,
-        questions: state.questions.map((q, i) => i !== data.questionIndex
+        questions: state.questions.map((q, i) => i !== action.data.questionIndex
           ? q : {
-            ...q, options: q.options.map((o: any, j: number) => j === data.optionIndex
-              ? data.option : o
+            ...q, options: q.options.map((o: any, j: number) => j === action.data.optionIndex
+              ? action.data.option : o
             )
           }),
       }
@@ -77,25 +76,15 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
     case REMOVE_QUESTION:
       return {
         ...state,
-        questions: state.questions.filter((_, i) => i !== data)
+        questions: state.questions.filter((_, i) => i !== action.data)
       }
 
-    // deletes the specified index in all questionmodules.
-      // update: no longer deletes from all modules, but still deletes multiple 
-      // if more options exist after in the same module
-      // update 2: no longer deletes multiple, so works "as intended", but instead somehow 
-      // we can't remove the first three lines before the return statement POG.
-      // update 3: The web Gods have deemed me worthy and it _should_ work as intended I guess. What was needed was specifying
-      // the _: any in the filter test but I haven't the faintest idea why it would work like this.
     case REMOVE_OPTION:
-      // temp = state.questions
-      // temp[data.questionIndex].options.splice(data.optionIndex, 1)
-      // const getOptions1 = (q: any) => q.options.map((o: any, j: number) => j === data.optionIndex ? data.option : o)
-      return {
+     return {
         ...state,
-        questions: state.questions.map((q, i) => i !== data.questionIndex
+        questions: state.questions.map((q, i) => i !== action.data.questionIndex
           ? q : { 
-            ...q, options: q.options.filter((_: any,j: number) => j !== data.optionIndex)
+            ...q, options: q.options.filter((_: any,j: number) => j !== action.data.optionIndex)
           }
         ),
       }
@@ -103,7 +92,7 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
     case SET_QUESTIONS:
       return {
         ...state,
-        questions: data,
+        questions: action.data,
       }
 
     case CLEAR_CURRENT_FORM:

@@ -70,25 +70,30 @@ describe("formReducer", () => {
     )
   })
 
-  // Make sure the duplicate array notation is not a quirk!
   test("Should handle ADD_QUESTION", () => {
     expect(
-      formReducer(undefined, {
+      formReducer(testForm, {
         type: types.ADD_QUESTION,
-        data: testForm.questions
+        data: {
+          question: "added test question",
+          options: [{ option: "added test option" }],
+        }
       })
     ).toEqual(
       {
-        title: "",
-        description: "",
-        questions: [
+        title: "test title",
+        description: "test description",
+        questions:
           [
             {
               question: "test question",
               options: [{ option: "test option" }]
+            },
+            {
+              question: "added test question",
+              options: [{ option: "added test option" }]
             }
           ]
-        ]
       }
     )
   })
@@ -114,6 +119,7 @@ describe("formReducer", () => {
     )
   })
 
+  // something
   test("Should handle UPDATE_QUESTION_OPTION", () => {
     expect(
       formReducer(testForm, {
@@ -130,7 +136,7 @@ describe("formReducer", () => {
         description: "test description",
         questions: [
           {
-            question: "test question", options: [{ option: "new test option" }]
+            question: "test question", options: ["new test option"]
           }
         ]
       }
@@ -175,9 +181,37 @@ describe("formReducer", () => {
   })
 
   test("Should handle SET_QUESTIONS", () => {
-
+    expect(
+      formReducer(undefined, {
+        type: types.SET_QUESTIONS,
+        data: testForm.questions
+      })
+    ).toEqual(
+      {
+        title: "",
+        description: "",
+        questions: [
+          {
+            question: "test question", options: [{ option: "test option" }]
+          }
+        ]
+      }
+    )
   })
 
+  test("Should handle CLEAR_CURRENT_FORM", () => {
+    expect(
+      formReducer(testForm, {
+        type: types.CLEAR_CURRENT_FORM
+      }) 
+    ).toEqual(
+      {
+        title: "",
+        description: "",
+        questions: []
+      }
+    )
+  })
 
 
 
