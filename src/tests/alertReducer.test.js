@@ -15,6 +15,7 @@ const defaultState = {
   open: false,
 }
 
+//test
 describe("alertReducer", () => {
   test("Should return default state", () => {
     const newState = alertReducer(undefined, {})
