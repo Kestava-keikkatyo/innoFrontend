@@ -6,7 +6,7 @@ import axios from 'axios'
 import { Feeling } from '../types/types'
 import { loadUser } from '../utils/storage'
 
-const baseUrl = 'http://localhost:3001/api/feelings/'
+const baseUrl = 'http://localhost:3001/api/feelings'
 
 /**
  * @function
@@ -23,7 +23,7 @@ const authHeader = () => {
  * @desc Fetches all feelings avaible with current token.
  */
 const getFeelings = async () => {
-  return await axios.get(baseUrl, authHeader())
+  return await axios.get(`${baseUrl}?page=1&limit=10`, authHeader())
 }
 
 /**

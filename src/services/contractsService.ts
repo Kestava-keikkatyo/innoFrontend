@@ -64,7 +64,8 @@ const deleteBusinessContractById = async (contractId: string) => {
 
 const fetchBusinessContracts = async () => {
   try {
-    return await axios.get(`${baseUrl}/businesscontracts`, authHeader())
+    const res = await axios.get(`${baseUrl}/businesscontracts?page=1&limit=10`, authHeader())    
+    return res.data.docs[0].businessContracts
   } catch (error) {
     return Promise.reject(error.response)
   }
@@ -94,7 +95,8 @@ const addWorkContract = async (businessId: string, workerId: string, validityPer
 
 const fetchWorkContracts = async () => {
   try {
-    return await axios.get(`${baseUrl}/workcontracts`, authHeader())
+    const res = await axios.get(`${baseUrl}/workcontracts?page=1&limit=10`, authHeader())    
+    return res.data.docs[0].workContracts
   } catch (error) {
     return Promise.reject(error.response)
   }

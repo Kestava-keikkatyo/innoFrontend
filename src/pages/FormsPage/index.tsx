@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link } from "react-router-dom"
-import testFormConstants from "../../constants/testFormConstants"
 import { Grid, Card, Fab, CardContent, Typography } from "@material-ui/core"
 import { AddIcon } from "@material-ui/data-grid"
 import GridFormPreview from "./GridFormPreview"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchFormList } from "../../actions/formListActions"
 
 /**
  * @component
@@ -12,6 +13,14 @@ import GridFormPreview from "./GridFormPreview"
  * @todo OnHover preview, pip for every node? So onMouseEnter renders an image(?) of the finished pdf(?)
  */
 const FormsPage: React.FC = () => {
+  //add communityForms
+  const { myForms } = useSelector((state: any) => state.formList)
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    dispatch(fetchFormList())
+  }, [dispatch])
+  
   return (
     <>
       <Grid
@@ -29,11 +38,12 @@ const FormsPage: React.FC = () => {
             </Fab>
           </Link>
         </Grid>
-        {testFormConstants.map((t, i) =>
+        {myForms.docs.map((t: any, i: number) =>
           <GridFormPreview
             key={i}
             formTitle={t.title}
             formDesc={t.description}
+            formId={t._id}
           />
         )}
         <Grid item>

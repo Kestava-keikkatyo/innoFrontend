@@ -1,6 +1,8 @@
 import React from "react"
 import { Card, CardContent, Grid, Typography } from "@material-ui/core"
 import { GridFormPreviewProps } from "../../types/props"
+import { useDispatch } from "react-redux"
+import { setFormById } from "../../actions/formActions"
 
 /**
  * @component
@@ -10,10 +12,16 @@ import { GridFormPreviewProps } from "../../types/props"
  * @todo OnHover preview? PIP?
  * @todo for now reads data from a constant JSON file --> implement redux here.
  */
-const GridFormPreview: React.FC<GridFormPreviewProps> = ({ formTitle, formDesc }) => {
+const GridFormPreview: React.FC<GridFormPreviewProps> = ({ formTitle, formDesc, formId }) => {
+  const dispatch = useDispatch()
+
+  const handleClick = () => {
+    dispatch(setFormById(formId))
+    
+  }
   return (
     <>
-      <Grid item>
+      <Grid item onClick={handleClick}>
         <Card variant="outlined">
           <CardContent style={{ padding: "10%" }}>
             <Typography variant="h4">{formTitle}</Typography>

@@ -2,7 +2,7 @@
  * @module reducer/form
  * @desc Redux form reducer
  */
-import { Form, FormQuestion } from "../types/types"
+import { Form } from "../types/types"
 import {
   SET_CURRENT_FORM,
   UPDATE_TITLE,
@@ -32,7 +32,6 @@ const initialState: Form = {
  */
 const formReducer = (state = initialState, action: FormActionTypes) => {
   const { data, type } = action
-  let temp
   switch (type) {
     case SET_CURRENT_FORM:
       return data

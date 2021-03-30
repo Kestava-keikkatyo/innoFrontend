@@ -44,8 +44,8 @@ const SearchTable: React.FC<any> = ({ addWorker }) => {
         </TableHead>
         <TableBody>
           {workers.map((worker: any) => (
-            <TableRow key={worker.id}>
-              <TableCell component="th" scope="row">{worker.id}</TableCell>
+            <TableRow key={worker._id}>
+              <TableCell component="th" scope="row">{worker._id}</TableCell>
               <TableCell align="right">{worker.name}</TableCell>
               <TableCell align="right">{worker.email}</TableCell>
               <TableCell padding="none" align="right">

@@ -88,7 +88,7 @@ const QuestionModule: React.FC<{ questionIndex: number }> = ({
             <TypeDropDown index={questionIndex} />
           </Grid>
         </Grid>
-        {questions[questionIndex].type.includes("group") && (
+        {questions[questionIndex].type?.includes("group") && (
           <AddOptionsModule index={questionIndex} />
         )}
         <ExpandableQuestionModule index={questionIndex} />

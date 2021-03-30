@@ -18,8 +18,7 @@ export const updateSearchList = (input: string, searchType: businessContractType
 
 export const fetchBusinessContracts = () => async (dispatch: any) => {
   const res = await contractsService.fetchBusinessContracts()
-  if(res.status === 200)
-    dispatch({ type: B_FETCH, data: res.data })
+  dispatch({ type: B_FETCH, data: res })
 }
 
 /**
@@ -40,9 +39,9 @@ export const deleteBusinessContractById = (id: string) => async (dispatch: any) 
  * @param {businessContractType} type "Worker" or "Business"
  */
 export const addBusinessContract = (user: User, type: businessContractType) => async (dispatch: any) => {
-  const res = await contractsService.addBusinessContract(user.id, type)
+  const res = await contractsService.addBusinessContract(user._id, type)
   if(res && res.status === 201)
-    dispatch({type: ADD_B_CONTRACT, data: { id: res.data.contract.id, user }})
+    dispatch({type: ADD_B_CONTRACT, data: { id: res.data.contract._id, user }})
 }
 
 /**

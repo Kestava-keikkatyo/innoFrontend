@@ -21,15 +21,15 @@ import { Question } from "../../types/types"
  * @todo move to constants
  */
 const initialQuestion: any = {
-  name: "",
+  title: "", //name
   type: "comment",
   subTitle: "",
   scaleOptionTitleLeft: "",
   scaleOptionTitleCenter: "",
   scaleOptionTitleRight: "",
-  minLen: 0,
-  maxLen: 1000,
-  rowHeight: 4,
+  answerMinLen: 0,
+  answerMaxLen: 1000,
+  rows: 4, //rowheight
   scale: 5,
   optional: false,
   options: []

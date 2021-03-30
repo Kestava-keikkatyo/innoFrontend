@@ -1,7 +1,7 @@
 import { Feeling, roles, severity } from "./types"
 
 export interface User {
-  id: string,
+  _id: string,
   name: string,
   email: string,
   type: roles.Agency | roles.Business | roles.Business
@@ -273,3 +273,13 @@ export type FormActionTypes =
   | RemoveOptionAction
   | SetQuestionsAction
   | ClearCurrentFormAction
+
+  export const FETCH_FORM_LIST = "FETCH_FORM_LIST"
+
+  interface FetchFormListAction {
+    type: typeof FETCH_FORM_LIST
+    data: any
+  }
+
+export type FormListActionTypes =
+  | FetchFormListAction

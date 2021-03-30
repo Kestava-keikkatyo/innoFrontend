@@ -53,7 +53,7 @@ const ProfilePage = () => {
               General
             </Typography>
             <Typography color="textSecondary" variant="body2">
-              id: {user.profile.id} <br />
+              id: {user.profile._id} <br />
               created: {user.profile.createdAt} <br />
               email: {user.profile.email}
             </Typography>
