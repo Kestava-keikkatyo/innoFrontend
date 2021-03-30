@@ -61,15 +61,15 @@ export interface Feeling {
  * @interface
  */
 export interface Question {
-  name: string
+  title: string
   type: string
   subTitle: string
   scaleOptionTitleLeft: string
   scaleOptionTitleCenter: string
   scaleOptionTitleRight: string
-  minLen: number
-  maxLen: number
-  rowHeight: number
+  answerMinLength: number
+  answerMaxLength: number
+  rows: number
   scale: number
   optional: boolean
   options: string[]

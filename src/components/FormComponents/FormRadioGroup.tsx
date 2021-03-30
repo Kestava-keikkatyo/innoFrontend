@@ -9,7 +9,7 @@ import { FormComponentProps } from '../../types/props';
  * @param {Question} props.question A question object.
  */
 const FormRadioGroup: React.FC<FormComponentProps> = ({ question }) => {
-  const { name, scale } = question
+  const { title, scale } = question
   const [state, setState] = React.useState(0)
 
   const handleChange = ({ target }: any) => {
@@ -19,7 +19,7 @@ const FormRadioGroup: React.FC<FormComponentProps> = ({ question }) => {
   return ( 
     <Grid container alignItems="flex-start">
       <Grid item xs={3}>
-        <Typography variant="h6" >{ name }</Typography>
+        <Typography variant="h6" >{ title }</Typography>
       </Grid>
       <Grid item xs={9}>
         <FormControl component="fieldset" fullWidth>

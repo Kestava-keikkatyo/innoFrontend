@@ -9,12 +9,12 @@ import { FormComponentProps } from '../../types/props'
  * @param {Question} props.question A question object.
  */
 const FormTextArea: React.FC<FormComponentProps> = ({ question }) => {
-  const { name, rowHeight } = question
+  const { title, rows } = question
   return ( 
     <>
-      <Typography variant="h6" >{ name }</Typography>
+      <Typography variant="h6" >{ title }</Typography>
       <Typography variant="body1" >This is an optional sub for questions fyi.</Typography>
-      <TextField multiline rows={rowHeight} variant="outlined"/>
+      <TextField multiline rows={rows} variant="outlined"/>
     </>
    )
 }

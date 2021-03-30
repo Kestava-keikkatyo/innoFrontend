@@ -9,10 +9,10 @@ import { FormComponentProps } from '../../types/props'
  * @param {Question} props.question A question object.
  */
 const FormText: React.FC<FormComponentProps> = ({ question }) => {
-  const { name } = question
+  const { title } = question
   return ( 
     <>
-      <Typography variant="h6" >{ name }</Typography>
+      <Typography variant="h6" >{ title }</Typography>
       <Input />
     </>
    )

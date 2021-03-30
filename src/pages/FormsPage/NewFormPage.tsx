@@ -27,8 +27,8 @@ const initialQuestion: any = {
   scaleOptionTitleLeft: "",
   scaleOptionTitleCenter: "",
   scaleOptionTitleRight: "",
-  answerMinLen: 0,
-  answerMaxLen: 1000,
+  answerMinLength: 0,
+  answerMaxLength: 1000,
   rows: 4, //rowheight
   scale: 5,
   optional: false,

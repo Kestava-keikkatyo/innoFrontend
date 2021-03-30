@@ -3,6 +3,7 @@ import { Card, CardContent, Grid, Typography } from "@material-ui/core"
 import { GridFormPreviewProps } from "../../types/props"
 import { useDispatch } from "react-redux"
 import { setFormById } from "../../actions/formActions"
+import { useHistory } from "react-router"
 
 /**
  * @component
@@ -14,10 +15,10 @@ import { setFormById } from "../../actions/formActions"
  */
 const GridFormPreview: React.FC<GridFormPreviewProps> = ({ formTitle, formDesc, formId }) => {
   const dispatch = useDispatch()
-
+  const history = useHistory();
   const handleClick = () => {
     dispatch(setFormById(formId))
-    
+    history.push(`/forms/newform`)
   }
   return (
     <>

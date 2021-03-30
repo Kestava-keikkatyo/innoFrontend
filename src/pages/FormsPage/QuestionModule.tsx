@@ -60,11 +60,11 @@ const QuestionModule: React.FC<{ questionIndex: number }> = ({
             placeholder="Your question..."
             type="text"
             name="question"
-            value={questions[questionIndex].name}
+            value={questions[questionIndex].title}
             onChange={(e: any) =>
               dispatch(
                 updateQuestion(
-                  { ...questions[questionIndex], name: e.target.value },
+                  { ...questions[questionIndex], title: e.target.value },
                   questionIndex
                 )
               )

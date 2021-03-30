@@ -61,18 +61,18 @@ const ExpandedTextModule: React.FC<Props> = ({ index, children }) => {
       <CustomFormInput
         label="Answer min len"
         type="number" name="sub-title"
-        value={questions[index].minLen}
+        value={questions[index].answerMinLength}
         onChange={(e: any) => dispatch(
             updateQuestion(
-              { ...questions[index], minLen: e.target.value }, index )
+              { ...questions[index], answerMinLength: e.target.value }, index )
           )} />
       <CustomFormInput
         label="Answer max len"
           type="number" name="sub-title"
-          value={questions[index].maxLen}
+          value={questions[index].answerMaxLength}
           onChange={(e: any) => dispatch(
           updateQuestion(
-            { ...questions[index], maxLen: e.target.value }, index )
+            { ...questions[index], answerMaxLength: e.target.value }, index )
         )} />
       {children}
     </ExpandedBodyModule>
