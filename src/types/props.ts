@@ -76,6 +76,7 @@ export interface TopAppBarProps {
    * An event function. Handles the drawer toggling on small screen size.
    */
   handleDrawerToggle: React.MouseEventHandler
+  open: boolean
 }
 
 /**

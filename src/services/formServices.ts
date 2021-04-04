@@ -51,8 +51,24 @@ const fetchFormById = async (id: string) => {
   }
 }
 
+/**
+ * @todo make converted form type.
+ * @param form 
+ * @returns 
+ */
+const postForm = async (form: any) => {
+  try {
+    console.log(form);
+    const res = await axios.post(`${baseUrl}`, form, authHeader())    
+    return res
+  } catch (error) {
+    console.log(error);
+  }
+}
+
  export default {
   fetchMyFormList,
   fetchCommunityFormList,
-  fetchFormById
+  fetchFormById,
+  postForm
  }

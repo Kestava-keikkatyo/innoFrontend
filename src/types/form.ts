@@ -8,7 +8,7 @@ const comment = {
 
 const textField = {
   text: "Textfield",
-  value: "textfield",
+  value: "text",
 }
 
 const textArea = {
@@ -23,17 +23,17 @@ const checkBox = {
 
 const checkBoxGroup = {
   text: "Checkbox group",
-  value: "checkbox-group",
+  value: "checkbox_group"
 }
 
 const radioButtonGroup = {
   text: "Radiobutton group",
-  value: "radiobutton-group",
+  value: "radiobutton_group",
 }
 
 const radioButtonRow = {
-  text: "Radiobutton row",
-  value: "radiobutton-row",
+  text: "Radiobutton group horizontal",
+  value: "radiobutton_group_horizontal",
 }
 
 const datePicker = {
@@ -41,9 +41,14 @@ const datePicker = {
   value: "datepicker",
 }
 
+const timePicker = {
+  text: "Timepicker",
+  value: "timepicker",
+}
+
 const contactInfo = {
   text: "ContactInformation",
-  value: "contact-information",
+  value: "contact_information",
 }
 
 export default {
@@ -56,6 +61,7 @@ export default {
   radioButtonRow,
   datePicker,
   contactInfo,
+  timePicker,
   fieldTypes: [
     comment,
     textField,
@@ -65,6 +71,7 @@ export default {
     radioButtonGroup,
     radioButtonRow,
     datePicker,
+    timePicker,
     contactInfo,
   ],
 }

@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core";
+import { Button, makeStyles, Menu, MenuItem } from "@material-ui/core";
 import React from 'react';
 import Divider from '@material-ui/core/Divider';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
@@ -7,7 +7,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MailIcon from '@material-ui/icons/Mail';
-import Typography from '@material-ui/core/Typography';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
@@ -22,6 +21,45 @@ import { logout } from '../../actions/userActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { roles } from "../../types/types";
 import { IRootState } from "../../utils/store";
+import logo from '../../assets/keikka-kaveri4.png'
+import TranslateIcon from '@material-ui/icons/Translate';
+
+const LangMenuDropDown = () => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event: any) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  return(
+    <>
+      <div className="drawer-top">
+        <Button
+        onClick={handleClick}
+        style={{ height: '48px' }} >
+          <TranslateIcon
+            style={{ fontSize: '36px' }}
+            className="translate-icon" />
+        </Button>
+        {/* <Typography variant="body2">FI</Typography> */}
+      </div>
+      <Menu
+        id="forms-settings"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <MenuItem onClick={handleClose}>Suomi</MenuItem>
+        <MenuItem onClick={handleClose}>English</MenuItem>
+        <MenuItem onClick={handleClose}>Svenska</MenuItem>
+      </Menu>
+    </>
+  )
+}
 
 /**
  * @component
@@ -29,7 +67,7 @@ import { IRootState } from "../../utils/store";
  * There is actually two drawers which are rendered at at different time.
  * One for mobile view one for web view.
  */
-const ResponsiveDrawer: React.FC = () => {
+const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const dispatch = useDispatch()
@@ -82,12 +120,11 @@ const ResponsiveDrawer: React.FC = () => {
     <div className="drawer">
 
       <div className="">
-        <div className={`color-primary ${classes.toolbar}`}/>
-        {/*
-        *TODO: tähän tulee logo
-        *
-        *  <img className={classes.logo} src={logo} alt="logo" /> */}
-        <Typography variant="h6" align="center">FI / EN / SV</Typography>
+        <LangMenuDropDown />
+        { isOpen ?
+          <img className={classes.logo} src={logo} alt="logo" /> :
+          <div className={classes.logo} />}
+        {/* <Typography variant="h6" align="center">FI / EN / SV</Typography> */}
         <Divider />
       </div>
 
@@ -100,7 +137,7 @@ const ResponsiveDrawer: React.FC = () => {
           <Divider />
           <ListItem button component={Link} to="/databank">
             <ListItemIcon>{<Security />}</ListItemIcon>
-            <ListItemText primary="Health and Security" />
+            <ListItemText primary="Security" />
           </ListItem>
           <Divider />
           <ListItem button component={Link} to="/messages">
@@ -165,9 +202,9 @@ const useStyles = makeStyles((theme) => ({
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   logo: {
-    width: 170,
-    height: 170,
+    height: 130,
     padding: 30,
+    paddingTop: 0,
     display: "block",
     marginLeft: "auto",
     marginRight: "auto",
@@ -176,5 +213,9 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(4),
   },
 }));
+
+ResponsiveDrawer.defaultProps = {
+  isOpen: true
+}
 
 export default ResponsiveDrawer

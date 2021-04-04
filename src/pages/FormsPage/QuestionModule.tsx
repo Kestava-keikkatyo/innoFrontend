@@ -13,16 +13,17 @@ const TypeDropDown: React.FC<{ index: number }> = ({ index }) => {
   const questions = useSelector(
     (state: any) => state.form.questions
   )
+  
   return (
     <Spacing ph4 className="relative" style={{ width: "100%" }}>
       <label className="absolute label-type">Question type</label>
       <select
         className="customFormInput"
-        value={questions[index].type}
-        onChange={(e) =>
+        value={questions[index].questionType}
+        onChange={(e) =>{
           dispatch(
-            updateQuestion({ ...questions[index], type: e.target.value }, index)
-          )
+            updateQuestion({ ...questions[index], questionType: e.target.value }, index)
+          )}
         }
       >
         {formConstants.fieldTypes.map((t) => (
@@ -88,7 +89,7 @@ const QuestionModule: React.FC<{ questionIndex: number }> = ({
             <TypeDropDown index={questionIndex} />
           </Grid>
         </Grid>
-        {questions[questionIndex].type?.includes("group") && (
+        {questions[questionIndex].questionType?.includes("group") && (
           <AddOptionsModule index={questionIndex} />
         )}
         <ExpandableQuestionModule index={questionIndex} />

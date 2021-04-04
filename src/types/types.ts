@@ -57,12 +57,26 @@ export interface Feeling {
   isPrivate: boolean
 }
 
+export enum questionTypes {
+  Comment = 'comment',
+  Text = 'text',
+  Textarea = 'textarea',
+  CheckBox = 'checkbox',
+  CheckboxGroup = 'checkbox_group',
+  RadiobuttonGroup = 'radiobutton_group',
+  RadiobuttonGroupHorizontal = 'radiobutton_group_horizontal',
+  ContactInformation = 'contact_information',
+  DatePicker = 'date_picker',
+  TimePicker = 'time_picker'
+}
+
 /**
  * @interface
  */
 export interface Question {
   title: string
-  type: string
+  ordering?: number
+  questionType: string
   subTitle: string
   scaleOptionTitleLeft: string
   scaleOptionTitleCenter: string
@@ -90,5 +104,7 @@ export interface FormQuestion {
 export interface Form {
   title: string
   description: string
-  questions: Array<FormQuestion>
+  isPublic: boolean
+  tags: string[]
+  questions: Array<Question>
 }

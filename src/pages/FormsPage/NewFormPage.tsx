@@ -22,13 +22,13 @@ import { Question } from "../../types/types"
  */
 const initialQuestion: any = {
   title: "", //name
-  type: "comment",
+  questionType: "comment", //type
   subTitle: "",
   scaleOptionTitleLeft: "",
   scaleOptionTitleCenter: "",
   scaleOptionTitleRight: "",
-  answerMinLength: 0,
-  answerMaxLength: 1000,
+  answerMinLength: 0, //minLength
+  answerMaxLength: 1000, //maxLength
   rows: 4, //rowheight
   scale: 5,
   optional: false,
@@ -53,6 +53,8 @@ const NewFormPage: React.FC = () => {
     dispatch(submitForm(currentForm))
   }
 
+  console.log(currentForm);
+  
   return (
   <Container>
     <form onSubmit={addForm}>
@@ -76,7 +78,7 @@ const NewFormPage: React.FC = () => {
         value={description}
         onChange={({ target }: any) => dispatch(setDescription(target.value))}
       />
-      <div>{console.log(questions)}
+      <div>
         {questions.map((_: Question, i: number) => (
           <QuestionModule key={i} questionIndex={i} />
         ))}

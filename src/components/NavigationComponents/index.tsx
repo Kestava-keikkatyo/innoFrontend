@@ -6,8 +6,9 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
 import TopAppBar from './TopAppBar'
 import ResponsiveDrawer from './ResponsiveDrawer'
 import navConstants from '../../constants/navConstants'
+import clsx from 'clsx'
 
-const drawerWidth = navConstants.DRAWER_WIDTH
+// const drawerWidth = navConstants.DRAWER_WIDTH
 
 /**
  * @component
@@ -22,12 +23,17 @@ const AppNavigation = (props: { window: any, children: ReactNode }) => {
   const classes = useStyles()
   const theme = useTheme()
   const [mobileOpen, setMobileOpen] = React.useState(false)
+  const [open, setOpen] = React.useState(false);
+
+  const handleDrawer = () => {
+    setOpen(!open);
+  }
   
   /**
    * An event function. 
    * Handles the drawer toggling on small screen size.
    */
-  const handleDrawerToggle = () => {
+  const handleDrawerMobile = () => {
     setMobileOpen(!mobileOpen)
   }
 
@@ -35,7 +41,12 @@ const AppNavigation = (props: { window: any, children: ReactNode }) => {
 
   return (
     <div className={classes.root}>
-      <TopAppBar handleDrawerToggle={handleDrawerToggle} />
+      <Hidden lgUp implementation="css">
+        <TopAppBar open={open} handleDrawerToggle={handleDrawerMobile} />
+      </Hidden>
+      <Hidden mdDown implementation="css">
+        <TopAppBar open={open} handleDrawerToggle={handleDrawer} />
+      </Hidden>
 
       <nav className={classes.drawer} aria-label="mailbox folders">
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -45,7 +56,7 @@ const AppNavigation = (props: { window: any, children: ReactNode }) => {
             variant="temporary"
             anchor={theme.direction === 'rtl' ? 'right' : 'left'}
             open={mobileOpen}
-            onClose={handleDrawerToggle}
+            onClose={handleDrawerMobile}
             classes={{
               paper: classes.drawerPaper,
             }}
@@ -58,13 +69,20 @@ const AppNavigation = (props: { window: any, children: ReactNode }) => {
         </Hidden>
         <Hidden mdDown implementation="css">
           <Drawer
+            className={clsx(classes.drawer, {
+              [classes.drawerOpen]: open,
+              [classes.drawerClose]: !open,
+            })}
             classes={{
-              paper: classes.drawerPaper,
+              paper: clsx({
+                [classes.drawerOpen]: open,
+                [classes.drawerClose]: !open,
+              }),
             }}
             variant="permanent"
             open
           >
-            <ResponsiveDrawer />
+            <ResponsiveDrawer isOpen={open} />
           </Drawer>
         </Hidden>
       </nav>
@@ -87,19 +105,37 @@ const useStyles = makeStyles((theme) => ({
   },
   drawer: {
     [theme.breakpoints.up('lg')]: {
-      width: drawerWidth,
+      // width: drawerWidth,
       flexShrink: 0,
     },
   },
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
-    width: drawerWidth,
+    // width: drawerWidth,
     overflow: 'hidden',
   },
   content: {
     flexGrow: 1,
     paddingRight: 0,
+  },
+  drawerOpen: {
+    width: navConstants.DRAWER_WIDTH,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  drawerClose: {
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    overflowX: 'hidden',
+    width: theme.spacing(7) + 1,
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing(9) + 1,
+    },
   },
 }))
 

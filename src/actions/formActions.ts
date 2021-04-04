@@ -15,9 +15,10 @@ import {
   REMOVE_QUESTION,
   REMOVE_OPTION,
   SET_QUESTIONS,
-  CLEAR_CURRENT_FORM,
 } from "../types/state"
 import formServices from "../services/formServices"
+import { convertForm } from "../utils/formUtils"
+import { addToFormList } from "./formListActions"
 
 /**
  * @function
@@ -141,17 +142,21 @@ export const submitForm = (form: Form) => async (dispatch: any) => {
     dispatch(setAlert("Title is required", severity.Error))
     return
   }
-  //ugleeeeeh && karvalakki certified :--DD
-  const result = form.questions.forEach((element) => {
-    if (!element.question || element.question === "") {
-      dispatch(setAlert("Questions are required", severity.Error))
-      return null
-    }
-  })
-  if (result === null) return
-  if (form.description === "") {
-    dispatch(setAlert("Description is required", severity.Error))
-    return
-  }
-  dispatch({ type: CLEAR_CURRENT_FORM })
+  const res = await formServices.postForm(convertForm(form))
+  console.log(res);
+  
+  dispatch(addToFormList(form))
+  // //ugleeeeeh && karvalakki certified :--DD
+  // const result = form.questions.forEach((element: any) => {
+  //   if (!element.question || element.question === "") {
+  //     dispatch(setAlert("Questions are required", severity.Error))
+  //     return null
+  //   }
+  // })
+  // if (result === null) return
+  // if (form.description === "") {
+  //   dispatch(setAlert("Description is required", severity.Error))
+  //   return
+  // }
+  // dispatch({ type: CLEAR_CURRENT_FORM })
 }

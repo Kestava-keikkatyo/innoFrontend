@@ -3,7 +3,6 @@ import { Route, Redirect } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
 import AppNavigation from './NavigationComponents'
-import ActiveLastBreadcrumb from './ActiveLastBreadcrumb'
 import { setBreadcrumb } from '../actions/breadcrumbActions'
 import pathConverter from '../utils/pathConverter'
 import { roles } from '../types/types'
@@ -67,7 +66,6 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ roles, children, path, ...r
 
         return (
           <AppNavigation>
-            <ActiveLastBreadcrumb />
             {children}
           </AppNavigation>
         )

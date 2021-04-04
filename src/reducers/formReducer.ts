@@ -20,6 +20,8 @@ import {
 const initialState: Form = {
   title: "",
   description: "",
+  tags: [],
+  isPublic: true,
   questions: [],
 }
 

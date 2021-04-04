@@ -1,8 +1,8 @@
 import { Button, Grid, Typography } from '@material-ui/core';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { importFormByPath } from '../../actions/formActions';
+import { Link, useHistory } from 'react-router-dom';
+import { importFormByPath, submitForm } from '../../actions/formActions';
 import FileUploader from '../../components/FileUploader';
 
 /**
@@ -11,8 +11,14 @@ import FileUploader from '../../components/FileUploader';
  */
 const NewFormHeader: React.FC = () => {
   const currentForm = useSelector((state: any) => state.form)
+  const history = useHistory()
   const { title } = currentForm
   const dispatch = useDispatch()
+
+  const handleSubmit = () => {
+    dispatch(submitForm(currentForm))
+    history.push("/forms")
+  }
   return ( 
     <Grid container direction="row"
     justify="space-between">
@@ -26,7 +32,7 @@ const NewFormHeader: React.FC = () => {
           <Button>
             <Link to="/forms/newform/preview">Preview</Link>
           </Button>
-          <Button>
+          <Button onClick={handleSubmit} >
             Submit
           </Button>
           <FileUploader accept="data:text/json" handleFile={(data: any) => dispatch(importFormByPath())}>

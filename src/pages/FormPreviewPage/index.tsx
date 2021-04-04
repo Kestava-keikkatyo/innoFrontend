@@ -11,9 +11,8 @@ import FormRadioGroup from '../../components/FormComponents/FormRadioGroup'
 import FormText from '../../components/FormComponents/FormText'
 import FormTextArea from '../../components/FormComponents/FormTextArea'
 import FormPreviewHeader from './FormPreviewHeader'
-import formConstants from '../../constants/formConstants'
 import { setAlert } from '../../actions/alertActions'
-import { Question, severity } from '../../types/types'
+import { Question, questionTypes, severity } from '../../types/types'
 import FormContactInfo from '../../components/FormComponents/FormContactInfo'
 import FormDatePicker from '../../components/FormComponents/FormDatePicker'
 
@@ -35,29 +34,29 @@ const FormPreviewPage: React.FC = () => {
           title={title}
           description={description}
         />
-        {questions.map((q: Question, k: number) => {
-          switch (q.type) {
-            case formConstants.textField.value:
+        {questions.map((q: Question, k: number) => {          
+          switch (q.questionType) {
+            case questionTypes.Text:
               return <FormText key={k} question={q} />
-            case formConstants.textArea.value:
+            case questionTypes.Textarea:
               return <FormTextArea key={k} question={q} />
-            case formConstants.checkBox.value:
+            case questionTypes.CheckBox:
               return <FormCheckBox key={k} question={q} />
-            case formConstants.checkBoxGroup.value:
+            case questionTypes.CheckboxGroup:
               return <FormCheckBoxGroup key={k} question={q} />
-            case formConstants.radioButtonGroup.value:
+            case questionTypes.RadiobuttonGroup:
               return <FormRadio key={k} question={q} />
-            case formConstants.radioButtonRow.value:
+            case questionTypes.RadiobuttonGroupHorizontal:
               return <FormRadioGroup key={k} question={q} />
-            case formConstants.comment.value:
+            case questionTypes.Comment:
               return <FormComment key={k} question={q} />
-            case formConstants.datePicker.value:
+            case questionTypes.DatePicker:
               return <FormDatePicker key={k} question={q} />
-            case formConstants.contactInfo.value:
+            case questionTypes.ContactInformation:
               return <FormContactInfo key={k} question={q} />
             default:
               dispatch(
-                setAlert("Cannot read question of type: " + q.type, severity.Error)
+                setAlert("Cannot read question of type: " + q.questionType, severity.Error)
               )
               return <></>
           }
