@@ -56,6 +56,8 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
       }
 
     case UPDATE_QUESTION:
+      temp = state.questions
+      temp[data.index] = data.question
       return {
         ...state,
         questions: state.questions.map((q, i) => i === action.data.index
