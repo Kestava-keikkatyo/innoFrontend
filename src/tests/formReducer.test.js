@@ -6,6 +6,8 @@ import * as types from "../types/state.ts"
 const testForm = {
   title: "test title",
   description: "test description",
+  tags: [],
+  isPublic: true,
   questions: [
     {
       question: "test question", options: [{ option: "test option" }]
@@ -19,7 +21,9 @@ describe("formReducer", () => {
       {
         title: "",
         description: "",
-        questions: []
+        tags: [],
+        isPublic: true,
+        questions: [],
       }
     )
   })
@@ -35,6 +39,8 @@ describe("formReducer", () => {
       {
         title: "test title",
         description: "test description",
+        tags: [],
+        isPublic: true,
         questions: [{ question: "test question", options: [{ option: "test option" }] }]
       }
     )
@@ -50,6 +56,8 @@ describe("formReducer", () => {
       {
         title: "test title",
         description: "",
+        tags: [],
+        isPublic: true,
         questions: []
       }
     )
@@ -65,7 +73,9 @@ describe("formReducer", () => {
       {
         title: "",
         description: "test description",
-        questions: []
+        tags: [],
+        isPublic: true,
+        questions: [],
       }
     )
   })
@@ -83,6 +93,8 @@ describe("formReducer", () => {
       {
         title: "test title",
         description: "test description",
+        tags: [],
+        isPublic: true,
         questions:
           [
             {
@@ -114,6 +126,8 @@ describe("formReducer", () => {
       {
         title: "",
         description: "",
+        tags: [],
+        isPublic: true,
         questions: []
       }
     )
@@ -134,6 +148,8 @@ describe("formReducer", () => {
       {
         title: "test title",
         description: "test description",
+        tags: [],
+        isPublic: true,
         questions: [
           {
             question: "test question", options: ["new test option"]
@@ -153,6 +169,8 @@ describe("formReducer", () => {
       {
         title: "test title",
         description: "test description",
+        tags: [],
+        isPublic: true,
         questions: [],
       }
     )
@@ -171,6 +189,8 @@ describe("formReducer", () => {
       {
         title: "test title",
         description: "test description",
+        tags: [],
+        isPublic: true,
         questions: [
           {
             question: "test question", options: []
@@ -190,6 +210,8 @@ describe("formReducer", () => {
       {
         title: "",
         description: "",
+        tags: [],
+        isPublic: true,
         questions: [
           {
             question: "test question", options: [{ option: "test option" }]
@@ -203,11 +225,13 @@ describe("formReducer", () => {
     expect(
       formReducer(testForm, {
         type: types.CLEAR_CURRENT_FORM
-      }) 
+      })
     ).toEqual(
       {
         title: "",
         description: "",
+        tags: [],
+        isPublic: true,
         questions: []
       }
     )
