@@ -57,8 +57,8 @@ const SearchTable = () => {
         </TableHead>
         <TableBody>
           {contracts.map((contract: any) => (
-            <TableRow key={contract.id}>
-              <TableCell component="th" scope="row">{contract.id}</TableCell>
+            <TableRow key={contract._id}>
+              <TableCell component="th" scope="row">{contract._id}</TableCell>
               <TableCell align="right">{contract.user?.name || contract.business?.name}</TableCell>
               <TableCell align="right">{contract.user?.email || contract.business?.email}</TableCell>
               <TableCell align="right">{contract.contractType}</TableCell>
@@ -67,7 +67,7 @@ const SearchTable = () => {
                 <IconButton
                   aria-label="remove from organization"
                   color="secondary"
-                  onClick={() => deleteContract(contract.id, contract.user?.name || contract.business?.name)}>
+                  onClick={() => deleteContract(contract._id, contract.user?.name || contract.business?.name)}>
                   <DeleteIcon />
                 </IconButton>
               </TableCell>

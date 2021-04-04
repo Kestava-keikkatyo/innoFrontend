@@ -23,7 +23,7 @@ export const updateSearchList = (input: string) => async (dispatch: any) => {
  */
 export const fetchWorkContracts = () => async (dispatch: any) => {
   const res = await contractsService.fetchWorkContracts()
-  dispatch({ type: W_FETCH, data: res.data })
+  dispatch({ type: W_FETCH, data: res })
 }
 
 /**
@@ -44,7 +44,7 @@ export const deleteWorkContractById = (id: string) => async (dispatch: any) => {
  * @param business Business user.
  */
 export const addWorkContract = (worker: User, business: any) => async (dispatch: any) => {
-  const res = await contractsService.addWorkContract(business.business.id, worker.id)
+  const res = await contractsService.addWorkContract(business.business._id, worker._id)
   if(res && res.status === 200)
     dispatch({type: ADD_W_CONTRACT, data: res.data})
 }

@@ -9,7 +9,7 @@ import { FormComponentProps } from '../../types/props';
  * @param {Question} props.question A question object.
  */
 const FormCheckBox: React.FC<FormComponentProps> = ({ question }) => {
-  const { name } = question
+  const { title } = question
   const [state, setState] = React.useState(false)
 
   const handleChange = () => {
@@ -22,7 +22,7 @@ const FormCheckBox: React.FC<FormComponentProps> = ({ question }) => {
         <FormControl>
           <FormControlLabel
             control={<Checkbox checked={state} onChange={handleChange} />}
-            label={ name }
+            label={ title }
           />
         </FormControl>
     </>

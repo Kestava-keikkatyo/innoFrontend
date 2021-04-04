@@ -20,6 +20,8 @@ import {
 const initialState: Form = {
   title: "",
   description: "",
+  tags: [],
+  isPublic: true,
   questions: [],
 }
 
@@ -31,28 +33,26 @@ const initialState: Form = {
  * @todo - Figure out immutability: formReducer is not a pure function. Ditch temp?
  */
 const formReducer = (state = initialState, action: FormActionTypes) => {
-  const { data, type } = action
-  let temp
-  switch (type) {
+  switch (action.type) {
     case SET_CURRENT_FORM:
-      return data
+      return action.data
 
     case UPDATE_TITLE:
       return {
         ...state,
-        title: data,
+        title: action.data,
       }
 
     case SET_DESCRIPTION:
       return {
         ...state,
-        description: data,
+        description: action.data,
       }
 
     case ADD_QUESTION:
       return {
         ...state,
-        questions: [...state.questions, data],
+        questions: [...state.questions, action.data],
       }
 
     case UPDATE_QUESTION:
@@ -60,37 +60,43 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
       temp[data.index] = data.question
       return {
         ...state,
-        questions: temp,
+        questions: state.questions.map((q, i) => i === action.data.index
+          ? action.data.question : q),
       }
 
+    // Is this broke? check tests: expects the option to be an object but seems to output
+      // only string. Intended?
     case UPDATE_QUESTION_OPTION:
-      temp = state.questions
-      temp[data.questionIndex].options[data.optionIndex] = data.option
       return {
         ...state,
-        questions: temp,
+        questions: state.questions.map((q, i) => i !== action.data.questionIndex
+          ? q : {
+            ...q, options: q.options.map((o: any, j: number) => j === action.data.optionIndex
+              ? action.data.option : o
+            )
+          }),
       }
 
     case REMOVE_QUESTION:
-      temp = state.questions
-      temp.splice(data, 1)
       return {
         ...state,
-        questions: temp,
+        questions: state.questions.filter((_, i) => i !== action.data)
       }
 
     case REMOVE_OPTION:
-      temp = state.questions
-      temp[data.questionIndex].options.splice(data.optionIndex, 1)
-      return {
+     return {
         ...state,
-        questions: temp,
+        questions: state.questions.map((q, i) => i !== action.data.questionIndex
+          ? q : { 
+            ...q, options: q.options.filter((_: any,j: number) => j !== action.data.optionIndex)
+          }
+        ),
       }
 
     case SET_QUESTIONS:
       return {
         ...state,
-        questions: data,
+        questions: action.data,
       }
 
     case CLEAR_CURRENT_FORM:

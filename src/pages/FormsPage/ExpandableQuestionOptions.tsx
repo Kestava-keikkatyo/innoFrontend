@@ -2,6 +2,7 @@ import { Button, Divider, Grid, makeStyles } from '@material-ui/core';
 import React, { ReactNode, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateQuestion } from '../../actions/formActions';
+import { questionTypes } from '../../types/types';
 import CustomFormInput from './CustomFormInput';
 
 interface Index {
@@ -61,18 +62,18 @@ const ExpandedTextModule: React.FC<Props> = ({ index, children }) => {
       <CustomFormInput
         label="Answer min len"
         type="number" name="sub-title"
-        value={questions[index].minLen}
+        value={questions[index].answerMinLength}
         onChange={(e: any) => dispatch(
             updateQuestion(
-              { ...questions[index], minLen: e.target.value }, index )
+              { ...questions[index], answerMinLength: e.target.value }, index )
           )} />
       <CustomFormInput
         label="Answer max len"
           type="number" name="sub-title"
-          value={questions[index].maxLen}
+          value={questions[index].answerMaxLength}
           onChange={(e: any) => dispatch(
           updateQuestion(
-            { ...questions[index], maxLen: e.target.value }, index )
+            { ...questions[index], answerMaxLength: e.target.value }, index )
         )} />
       {children}
     </ExpandedBodyModule>
@@ -179,18 +180,18 @@ const ExpandableQuestionModule: React.FC<Index> = ({ index }) => {
 
   if(!questions || !questions[index]) return <></>
 
-  switch (questions[index].type) {
-    case 'textfield':
+  switch (questions[index].questionType) {
+    case questionTypes.Text:
       return <ExpandedTextModule index={index} />
-    case 'textarea':
+    case questionTypes.Textarea:
       return <ExpandedTextAreaModule index={index} />
-    case 'checkbox':
+    case questionTypes.CheckBox:
       return <ExpandedCheckBoxModule index={index} />
-    case 'checkbox-group':
+    case questionTypes.CheckboxGroup:
       return <ExpandedCheckBoxModule index={index} />
-    case 'radiobutton-group':
+    case questionTypes.RadiobuttonGroup:
       return <ExpandedRadioButtonGroupModule index={index} />
-    case 'radiobutton-row':
+    case questionTypes.RadiobuttonGroupHorizontal:
       return <ExpandedHorizontalRadioModule index={index} />
     default:
       return <></>

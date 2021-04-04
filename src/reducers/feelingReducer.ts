@@ -56,7 +56,10 @@ const feelingReducer = (state: FeelingState = initialState, action: FeelingActio
     case ADD_FEELING:
       return {
         ...state,
-        feelings: action.data,
+        feelings: [
+          ...state.feelings,
+          action.data
+        ],
         currentFeeling: initialFeeling
       }
     case CLEAR_CURRENT_FEELING:

@@ -30,7 +30,7 @@ const WorkerModal: React.FC<any> = ({ displayModal, closeModal, workerData }) =>
   const { madeContracts } = useSelector((state: IRootState) => state.businessContracts)
   
   const addContract = () => {
-    if (!madeContracts.some((value: any) => value.business?.id === workerData.id || value.user?.id === workerData.id)) {
+    if (!madeContracts.some((value: any) => value.business?._id === workerData._id || value.user?._id === workerData._id)) {
       dispatch(addBusinessContract(workerData, workerData.feelings ? roles.Worker: roles.Business))
       dispatch(setAlert("Success: Invitation sent to worker", severity.Success))
     } else {
@@ -52,7 +52,7 @@ const WorkerModal: React.FC<any> = ({ displayModal, closeModal, workerData }) =>
       <DialogContent dividers>
         {workerData && (
           <Typography color="textSecondary" variant="body2">
-            id: {workerData.id} <br />
+            id: {workerData._id} <br />
             name: {workerData.name} <br />
             created: {workerData.createdAt} <br />
             email: {workerData.email}

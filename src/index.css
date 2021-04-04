@@ -58,8 +58,14 @@ code {
   margin-left: 1rem;
 }
 
-.drawer .color-primary {
-  background-color: #3f51b5;
+.drawer .color-primary, .MuiFab-primary {
+  background-color: #EB5A00 !important;
+}
+
+.drawer-top {
+  background-color: #fff;
+  border-top: #EB5A00 16px solid;
+  height: 64px !important;
 }
 
 .text-secondary {
@@ -146,7 +152,8 @@ code {
 /* the container for our overflowed content */
 .overflow-container {
   flex: 1;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .app-bar-container {
@@ -170,11 +177,11 @@ code {
 }
 
 #breadcrumbs {
-  margin: 1rem 0;
-  padding: .5rem;
-  background-color: rgb(159, 209, 253);
-  border: 1px solid #ddd;
-  border-radius: 3px;
+  /* margin: 1rem 0; */
+  /* padding: .5rem; */
+  /* background-color: #EB5A003a; */
+  /* border: 1px solid #ddd; */
+  /* border-radius: 3px; */
 }
 
 .new-feeling-modal .MuiFormGroup-row {
@@ -245,4 +252,69 @@ code {
 
 .relative {
   position: relative;
+}
+
+.horizontal-scroll {
+  overflow: auto;
+  white-space: nowrap;
+  height: 250px;
+  padding-left: 0;
+}
+
+.horizontal-scroll li {
+  display: inline-block;
+  padding: 14px;
+  text-decoration: none;
+}
+
+.makeStyles-content-5 {
+  overflow: hidden;
+}
+
+.new-form-btn {
+  text-align: end;
+}
+
+.form-banner {
+  max-width: 1232px;
+  height: 250px;
+  background: url('assets/form-banner.jpg');
+  margin-bottom: 2rem;
+}
+
+.form-banner-filter {
+  max-width: 1232px;
+  height: 250px;
+  background-color: #EB5A003a;
+  position: relative;
+}
+
+.form-filter-search {
+  color: #ddd;
+  background-color: #0009;
+  padding: 1.5rem;
+  position: absolute;
+  width: 50%;
+  top: 5%;
+  right: 25%;
+}
+
+.form-filter-search legend {
+  color: #ddd !important;
+}
+
+nav * {
+  border-right: 0 !important;
+}
+
+.toolbar {
+  flex: 1;
+  justify-content: space-between;
+}
+
+.translate-icon {
+  padding: .5rem;
+  color: white !important;
+  background-color: #EB5A00;
+  border-radius: 2rem;
 }

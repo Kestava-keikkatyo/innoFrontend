@@ -9,7 +9,7 @@ import { FormComponentProps } from '../../types/props';
  * @param {Question} props.question A question object.
  */
 const FormRadio: React.FC<FormComponentProps> = ({ question }) => {
-  const { name, subTitle, options } = question
+  const { title, subTitle, options } = question
   const [state, setState] = React.useState(
     options.map(name => {
       return { name, value: false }
@@ -22,9 +22,9 @@ const FormRadio: React.FC<FormComponentProps> = ({ question }) => {
   
   return ( 
     <>
-      <Typography variant="h6" >{ name }</Typography>
+      <Typography variant="h6" >{ title }</Typography>
       <FormControl component="fieldset">
-        <FormLabel component="legend">{ name }</FormLabel>
+        <FormLabel component="legend">{ title }</FormLabel>
         <FormGroup>
         { state.map((o, i) =>
           <FormControlLabel key={i}

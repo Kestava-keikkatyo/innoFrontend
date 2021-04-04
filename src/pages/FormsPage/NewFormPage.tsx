@@ -21,15 +21,15 @@ import { Question } from "../../types/types"
  * @todo move to constants
  */
 const initialQuestion: any = {
-  name: "",
-  type: "comment",
+  title: "", //name
+  questionType: "comment", //type
   subTitle: "",
   scaleOptionTitleLeft: "",
   scaleOptionTitleCenter: "",
   scaleOptionTitleRight: "",
-  minLen: 0,
-  maxLen: 1000,
-  rowHeight: 4,
+  answerMinLength: 0, //minLength
+  answerMaxLength: 1000, //maxLength
+  rows: 4, //rowheight
   scale: 5,
   optional: false,
   options: []
@@ -53,6 +53,8 @@ const NewFormPage: React.FC = () => {
     dispatch(submitForm(currentForm))
   }
 
+  console.log(currentForm);
+  
   return (
   <Container>
     <form onSubmit={addForm}>
