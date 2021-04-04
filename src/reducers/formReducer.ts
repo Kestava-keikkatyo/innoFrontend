@@ -55,14 +55,12 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
         questions: [...state.questions, action.data],
       }
 
-    case UPDATE_QUESTION:
-      temp = state.questions
-      temp[data.index] = data.question
-      return {
-        ...state,
-        questions: state.questions.map((q, i) => i === action.data.index
-          ? action.data.question : q),
-      }
+      case UPDATE_QUESTION:
+        return {
+          ...state,
+          questions: state.questions.map((q, i) => i === action.data.index
+            ? action.data.question : q),
+        }
 
     // Is this broke? check tests: expects the option to be an object but seems to output
       // only string. Intended?

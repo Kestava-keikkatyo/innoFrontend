@@ -19,17 +19,18 @@ const initialState: AlertState = {
  */
 const alertReducer = (state = initialState, action: AlertActionTypes) => {
   //this should be illegal
-  if (!action.data.severity) action.data.severity = severity.Info
   switch (action.type) {
     case ALERT_SET:
+      // const sev = 
       return {
-        severity: action.data.severity,
+        severity: (action.data.severity) ? action.data.severity: severity.Info,
         message: action.data.message,
         open: true
       }
     case ALERT_CLEAR:
       return {
-        ...state, open: false
+        ...state,
+        open: false
       }
     default:
       return state
