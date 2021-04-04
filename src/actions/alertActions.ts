@@ -15,7 +15,7 @@ let timeoutId: any
  * @param {string} [severity=info] - alert severity (error, warning, info, success)
  * @param {number} [duration=5]  - amount of time the alert is shown in seconds
  */
-export const setAlert = (message: string, severity: string, duration: number = 5) => async (dispatch: any) => {
+export const setAlert = (message: string, severity?: severity | undefined, duration: number = 5) => async (dispatch: any) => {
   dispatch({
     type: ALERT_SET,
     data: {message, severity}
