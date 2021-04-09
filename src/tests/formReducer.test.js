@@ -10,74 +10,68 @@ const testForm = {
   isPublic: true,
   questions: [
     {
-      question: "test question", options: [{ option: "test option" }]
-    }
-  ]
+      question: "test question",
+      options: [{ option: "test option" }],
+    },
+  ],
 }
 
 describe("formReducer", () => {
   test("Should return default state", () => {
-    expect(formReducer(undefined, {})).toEqual(
-      {
-        title: "",
-        description: "",
-        tags: [],
-        isPublic: true,
-        questions: [],
-      }
-    )
+    expect(formReducer(undefined, {})).toEqual({
+      title: "",
+      description: "",
+      tags: [],
+      isPublic: true,
+      questions: [],
+    })
   })
 
   test("Should handle SET_CURRENT_FORM", () => {
-
     expect(
       formReducer([], {
         type: types.SET_CURRENT_FORM,
-        data: testForm
+        data: testForm,
       })
-    ).toEqual(
-      {
-        title: "test title",
-        description: "test description",
-        tags: [],
-        isPublic: true,
-        questions: [{ question: "test question", options: [{ option: "test option" }] }]
-      }
-    )
+    ).toEqual({
+      title: "test title",
+      description: "test description",
+      tags: [],
+      isPublic: true,
+      questions: [
+        { question: "test question", options: [{ option: "test option" }] },
+      ],
+    })
   })
 
   test("Should handle UPDATE_TITLE", () => {
     expect(
       formReducer(undefined, {
         type: types.UPDATE_TITLE,
-        data: testForm.title
+        data: testForm.title,
       })
-    ).toEqual(
-      {
-        title: "test title",
-        description: "",
-        tags: [],
-        isPublic: true,
-        questions: []
-      }
-    )
+    ).toEqual({
+      title: "test title",
+      description: "",
+      tags: [],
+      isPublic: true,
+      questions: [],
+    })
   })
 
   test("Should handle SET_DESCRIPTION", () => {
     expect(
       formReducer(undefined, {
         type: types.SET_DESCRIPTION,
-        data: testForm.description
+        data: testForm.description,
       })
-    ).toEqual(
-      {
-        title: "",
-        description: "test description",
-        tags: [],
-        isPublic: true,
-        questions: [],
-      }
-    )
+    ).toEqual({
+      title: "",
+      description: "test description",
+      tags: [],
+      isPublic: true,
+      questions: [],
+    })
   })
 
   test("Should handle ADD_QUESTION", () => {
@@ -87,27 +81,24 @@ describe("formReducer", () => {
         data: {
           question: "added test question",
           options: [{ option: "added test option" }],
-        }
+        },
       })
-    ).toEqual(
-      {
-        title: "test title",
-        description: "test description",
-        tags: [],
-        isPublic: true,
-        questions:
-          [
-            {
-              question: "test question",
-              options: [{ option: "test option" }]
-            },
-            {
-              question: "added test question",
-              options: [{ option: "added test option" }]
-            }
-          ]
-      }
-    )
+    ).toEqual({
+      title: "test title",
+      description: "test description",
+      tags: [],
+      isPublic: true,
+      questions: [
+        {
+          question: "test question",
+          options: [{ option: "test option" }],
+        },
+        {
+          question: "added test question",
+          options: [{ option: "added test option" }],
+        },
+      ],
+    })
   })
 
   test("Should handle UPDATE_QUESTION", () => {
@@ -117,20 +108,18 @@ describe("formReducer", () => {
         data: {
           question: {
             question: "updated test question",
-            options: "updated test option"
+            options: "updated test option",
           },
-          index: 0
-        }
+          index: 0,
+        },
       })
-    ).toEqual(
-      {
-        title: "",
-        description: "",
-        tags: [],
-        isPublic: true,
-        questions: []
-      }
-    )
+    ).toEqual({
+      title: "",
+      description: "",
+      tags: [],
+      isPublic: true,
+      questions: [],
+    })
   })
 
   // something
@@ -142,21 +131,20 @@ describe("formReducer", () => {
           option: "new test option",
           questionIndex: 0,
           optionIndex: 0,
-        }
+        },
       })
-    ).toEqual(
-      {
-        title: "test title",
-        description: "test description",
-        tags: [],
-        isPublic: true,
-        questions: [
-          {
-            question: "test question", options: ["new test option"]
-          }
-        ]
-      }
-    )
+    ).toEqual({
+      title: "test title",
+      description: "test description",
+      tags: [],
+      isPublic: true,
+      questions: [
+        {
+          question: "test question",
+          options: ["new test option"],
+        },
+      ],
+    })
   })
 
   test("Should handle REMOVE_QUESTION", () => {
@@ -165,15 +153,13 @@ describe("formReducer", () => {
         type: types.REMOVE_QUESTION,
         data: 0,
       })
-    ).toEqual(
-      {
-        title: "test title",
-        description: "test description",
-        tags: [],
-        isPublic: true,
-        questions: [],
-      }
-    )
+    ).toEqual({
+      title: "test title",
+      description: "test description",
+      tags: [],
+      isPublic: true,
+      questions: [],
+    })
   })
 
   test("Should handle REMOVE_OPTION", () => {
@@ -183,67 +169,53 @@ describe("formReducer", () => {
         data: {
           questionIndex: 0,
           optionIndex: 0,
-        }
+        },
       })
-    ).toEqual(
-      {
-        title: "test title",
-        description: "test description",
-        tags: [],
-        isPublic: true,
-        questions: [
-          {
-            question: "test question", options: []
-          }
-        ]
-      }
-    )
+    ).toEqual({
+      title: "test title",
+      description: "test description",
+      tags: [],
+      isPublic: true,
+      questions: [
+        {
+          question: "test question",
+          options: [],
+        },
+      ],
+    })
   })
 
   test("Should handle SET_QUESTIONS", () => {
     expect(
       formReducer(undefined, {
         type: types.SET_QUESTIONS,
-        data: testForm.questions
+        data: testForm.questions,
       })
-    ).toEqual(
-      {
-        title: "",
-        description: "",
-        tags: [],
-        isPublic: true,
-        questions: [
-          {
-            question: "test question", options: [{ option: "test option" }]
-          }
-        ]
-      }
-    )
+    ).toEqual({
+      title: "",
+      description: "",
+      tags: [],
+      isPublic: true,
+      questions: [
+        {
+          question: "test question",
+          options: [{ option: "test option" }],
+        },
+      ],
+    })
   })
 
   test("Should handle CLEAR_CURRENT_FORM", () => {
     expect(
       formReducer(testForm, {
-        type: types.CLEAR_CURRENT_FORM
+        type: types.CLEAR_CURRENT_FORM,
       })
-    ).toEqual(
-      {
-        title: "",
-        description: "",
-        tags: [],
-        isPublic: true,
-        questions: []
-      }
-    )
+    ).toEqual({
+      title: "",
+      description: "",
+      tags: [],
+      isPublic: true,
+      questions: [],
+    })
   })
-
-
-
-
-
-
-
-
-
-
 })

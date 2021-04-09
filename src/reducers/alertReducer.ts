@@ -18,8 +18,6 @@ const initialState: AlertState = {
  * @param {Object} action - dispatched action
  */
 const alertReducer = (state = initialState, action: AlertActionTypes) => {
-  //this should be illegal
-  if (!action.data.severity) action.data.severity = severity.Info
   switch (action.type) {
     case ALERT_SET:
       return {
