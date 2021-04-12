@@ -16,6 +16,7 @@ import { Form } from "../types/types"
  export const fetchFormList = () => async (dispatch: any) => {
    const data1 = await formServices.fetchMyFormList()
    const data2 = await formServices.fetchCommunityFormList()   
+   if(!data1) return
    dispatch({ type: FETCH_FORM_LIST, data: {myForms: data1, communityForms: data2} })
  }
 
