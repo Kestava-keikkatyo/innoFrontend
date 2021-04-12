@@ -17,7 +17,7 @@ import { Box, Button, Divider, Grid } from '@material-ui/core'
  * @desc The main landing page component.
  * Container for LogInForm and SignUpForm.
  */
-const LandingPage = () => {
+const LoginPage = () => {
   const [logInForm, setLogInForm] = useState<any>(false)
   const location = useLocation()
   const dispatch = useDispatch()
@@ -82,4 +82,4 @@ const LandingPage = () => {
   )
 }
 
-export default LandingPage
+export default LoginPage
