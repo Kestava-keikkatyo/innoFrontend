@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import { Switch, Route, Redirect, useLocation } from "react-router-dom"
 
 import SnackbarNotification from "./components/SnackbarNotification"
+import LandingPage from "./pages/LandingPage"
 import LoginPage from "./pages/LoginPage"
 import HomePage from "./pages/HomePage"
 import ProfilePage from "./pages/ProfilePage"
@@ -70,9 +71,12 @@ const App: React.FC = () => {
         <PrivateRoute path="/workers" roles={[roles.Business, roles.Agency]}>
           <WorkersPage />
         </PrivateRoute>
-        <PrivateRoute path="/">
+        <PrivateRoute path="/home">
           <HomePage />
         </PrivateRoute>
+        <Route path="/">
+          <LandingPage />
+        </Route>
         <Redirect from="*" to="/login" />
       </Switch>
     </>
