@@ -13,11 +13,19 @@
 .text-card {
   position: absolute;
   float: left;
-  top: 20%;
+  top: 10%;
   left: 10%;
   opacity: 0.5;
   width: calc(35%);
-  height: calc(60%);
+  height: calc(50%);
   padding: 15px;
 }
 
+.logo-card {
+  position: absolute;
+  top: 80%;
+  left: 10%;
+  width: calc(80%);
+  height: calc(15%);
+  opacity: 0.5;
+}
