@@ -1,48 +1,56 @@
-import { Button, makeStyles, Menu, MenuItem } from "@material-ui/core";
-import React from 'react';
-import Divider from '@material-ui/core/Divider';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import MailIcon from '@material-ui/icons/Mail';
-import AssignmentIcon from '@material-ui/icons/Assignment';
-import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
-import EqualizerIcon from '@material-ui/icons/Equalizer';
-import { Collapse } from '@material-ui/core';
-import MoodIcon from '@material-ui/icons/Mood';
-import TimelineIcon from '@material-ui/icons/Timeline';
-import FeedbackIcon from '@material-ui/icons/Feedback';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import { Contacts, ExpandLess, ExpandMore, Home, PeopleAlt, StarBorder, Security } from '@material-ui/icons';
-import { Link } from 'react-router-dom';
-import { logout } from '../../actions/userActions';
-import { useDispatch, useSelector } from 'react-redux';
-import { roles } from "../../types/types";
-import { IRootState } from "../../utils/store";
+import { Button, makeStyles, Menu, MenuItem } from '@material-ui/core'
+import React from 'react'
+import Divider from '@material-ui/core/Divider'
+import InboxIcon from '@material-ui/icons/MoveToInbox'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+import AssignmentIcon from '@material-ui/icons/Assignment'
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday'
+import EqualizerIcon from '@material-ui/icons/Equalizer'
+import InsertDriveFile from '@material-ui/icons/InsertDriveFile'
+import { Collapse } from '@material-ui/core'
+import MoodIcon from '@material-ui/icons/Mood'
+import TimelineIcon from '@material-ui/icons/Timeline'
+import FeedbackIcon from '@material-ui/icons/Feedback'
+import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'
+import {
+  Contacts,
+  ExpandLess,
+  ExpandMore,
+  Home,
+  PeopleAlt,
+  StarBorder,
+  Security,
+} from '@material-ui/icons'
+import { Link } from 'react-router-dom'
+import { logout } from '../../actions/userActions'
+import { useDispatch, useSelector } from 'react-redux'
+import { roles } from '../../types/types'
+import { IRootState } from '../../utils/store'
 import logo from '../../assets/keikka-kaveri4.png'
-import TranslateIcon from '@material-ui/icons/Translate';
+import TranslateIcon from '@material-ui/icons/Translate'
 
 const LangMenuDropDown = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState(null)
 
   const handleClick = (event: any) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const handleClose = () => {
-    setAnchorEl(null);
-  };
-  return(
+    setAnchorEl(null)
+  }
+  return (
     <>
       <div className="drawer-top">
-        <Button
-        onClick={handleClick}
-        style={{ height: '48px' }} >
+        <Button onClick={handleClick} style={{ height: '48px' }}>
           <TranslateIcon
             style={{ fontSize: '36px' }}
-            className="translate-icon" />
+            className="translate-icon"
+          />
         </Button>
         {/* <Typography variant="body2">FI</Typography> */}
       </div>
@@ -68,8 +76,8 @@ const LangMenuDropDown = () => {
  * One for mobile view one for web view.
  */
 const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
-  const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const classes = useStyles()
+  const [open, setOpen] = React.useState(true)
   const dispatch = useDispatch()
 
   const { data } = useSelector((state: IRootState) => state.user)
@@ -82,8 +90,8 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
    * @function
    */
   const handleClick = () => {
-    setOpen(!open);
-  };
+    setOpen(!open)
+  }
 
   const nestedStatisticItems = () => (
     <Collapse in={open} timeout="auto" unmountOnExit>
@@ -93,12 +101,6 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
             <StarBorder />
           </ListItemIcon>
           <ListItemText primary="Achievments" />
-        </ListItem>
-        <ListItem button className={classes.nested} component={Link} to="/fiilismittari">
-          <ListItemIcon>
-            <MoodIcon />
-          </ListItemIcon>
-          <ListItemText primary="Feel-o-Meter" />
         </ListItem>
         <ListItem button className={classes.nested}>
           <ListItemIcon>
@@ -115,15 +117,16 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
       </List>
     </Collapse>
   )
-  
-  return(
-    <div className="drawer">
 
+  return (
+    <div className="drawer">
       <div className="">
         <LangMenuDropDown />
-        { isOpen ?
-          <img className={classes.logo} src={logo} alt="logo" /> :
-          <div className={classes.logo} />}
+        {isOpen ? (
+          <img className={classes.logo} src={logo} alt="logo" />
+        ) : (
+          <div className={classes.logo} />
+        )}
         {/* <Typography variant="h6" align="center">FI / EN / SV</Typography> */}
         <Divider />
       </div>
@@ -137,12 +140,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           <Divider />
           <ListItem button component={Link} to="/databank">
             <ListItemIcon>{<Security />}</ListItemIcon>
-            <ListItemText primary="Security" />
-          </ListItem>
-          <Divider />
-          <ListItem button component={Link} to="/messages">
-            <ListItemIcon>{<MailIcon />}</ListItemIcon>
-            <ListItemText primary="Messages" />
+            <ListItemText primary="Databank" />
           </ListItem>
           <Divider />
           <ListItem button component={Link} to="/home">
@@ -160,40 +158,69 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
             <ListItemText primary="Assignments" />
           </ListItem>
           <Divider />
-          
-          {role === roles.Agency &&
-            <ListItem button component={Link} to="/contracts">
-              <ListItemIcon><Contacts /></ListItemIcon>
-              <ListItemText primary="Contracts" />
-            </ListItem>
-          }
-          {(role === roles.Agency || role === roles.Business) &&
-            <ListItem button component={Link} to="/workers">
-              <ListItemIcon><PeopleAlt /></ListItemIcon>
-              <ListItemText primary="Workers" />
-            </ListItem>
-          }
 
-          {role === roles.Worker &&
-          <>
-            <ListItem button onClick={handleClick} className="expandable-button">
+          {role === roles.Agency && (
+            <>
+              <ListItem button component={Link} to="/contracts">
+                <ListItemIcon>
+                  <Contacts />
+                </ListItemIcon>
+                <ListItemText primary="Contracts" />
+              </ListItem>
+              <Divider />
+            </>
+          )}
+          {(role === roles.Agency || role === roles.Business) && (
+            <>
+              <ListItem button component={Link} to="/workers">
+                <ListItemIcon>
+                  <PeopleAlt />
+                </ListItemIcon>
+                <ListItemText primary="Workers" />
+              </ListItem>
+              <Divider />
+            </>
+          )}
+          {(role === roles.Agency || role === roles.Business) && (
+            <>
+              <ListItem button component={Link} to="/forms">
+                <ListItemIcon>
+                  <InsertDriveFile />
+                </ListItemIcon>
+                <ListItemText primary="Forms" />
+              </ListItem>
+              <Divider />
+            </>
+          )}
+          <ListItem button component={Link} to="/report">
+            <ListItemIcon>
+              <ErrorOutlineIcon />
+            </ListItemIcon>
+            <ListItemText primary="Report" />
+          </ListItem>
+          <Divider />
+          {role === roles.Worker && (
+            <ListItem button component={Link} to="/fiilismittari">
               <ListItemIcon>
-                <EqualizerIcon />
+                <MoodIcon />
               </ListItemIcon>
-              <ListItemText primary="Statistics" />
-              {open ? <ExpandLess /> : <ExpandMore />}
+              <ListItemText primary="Mood" />
             </ListItem>
-            {nestedStatisticItems()}
-          </>
-          }
+          )}
         </List>
       </div>
 
-        <ListItem button className="drawer-logout" onClick={() => dispatch(logout())}>
-          <Divider />
-          <ListItemIcon><ExitToAppIcon /></ListItemIcon>
-          <ListItemText primary="Exit Application" />
-        </ListItem>
+      <ListItem
+        button
+        className="drawer-logout"
+        onClick={() => dispatch(logout())}
+      >
+        <Divider />
+        <ListItemIcon>
+          <ExitToAppIcon />
+        </ListItemIcon>
+        <ListItemText primary="Exit Application" />
+      </ListItem>
     </div>
   )
 }
@@ -205,17 +232,17 @@ const useStyles = makeStyles((theme) => ({
     height: 130,
     padding: 30,
     paddingTop: 0,
-    display: "block",
-    marginLeft: "auto",
-    marginRight: "auto",
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
   nested: {
     paddingLeft: theme.spacing(4),
   },
-}));
+}))
 
 ResponsiveDrawer.defaultProps = {
-  isOpen: true
+  isOpen: true,
 }
 
 export default ResponsiveDrawer

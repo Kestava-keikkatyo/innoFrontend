@@ -1,7 +1,7 @@
 import React from 'react'
 
 import vastuualueet from '../../assets/tietopankki/vastuualueet.json'
-// import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import {
   Card,
   List,
@@ -12,24 +12,21 @@ import {
   CardHeader,
   Button,
   Grid,
+  Container,
 } from '@material-ui/core'
-import MoodForm from './MoodForm'
-import Spacing from '../../components/Spacing'
 
-const WorkerHome = () => {
-  // const useStyles = makeStyles({})
+const BusinessHome = () => {
+  const useStyles = makeStyles({})
 
-  // const classes = useStyles()
+  const classes = useStyles()
 
   return (
     <Grid container>
       <Grid item xs={12} md={6}>
-        <Spacing mr5>
-          <MoodForm />
-        </Spacing>
+        {/* <Container variant="outlined"></Container> */}
       </Grid>
       <Grid item xs={12} md={6}>
-        <div className="report-container">
+        <Card variant="outlined">
           <CardHeader
             action={
               <Button variant="outlined" color="primary">
@@ -42,17 +39,17 @@ const WorkerHome = () => {
           <CardContent>
             <List component="nav" aria-label="mailbox folders">
               <Divider />
-              {vastuualueet.worker.map((e, i) => (
+              {vastuualueet.business.map((e, i) => (
                 <ListItem key={i} divider>
                   <ListItemText primary={`${i + 1}. ${e}`} />
                 </ListItem>
               ))}
             </List>
           </CardContent>
-        </div>
+        </Card>
       </Grid>
     </Grid>
   )
 }
 
-export default WorkerHome
+export default BusinessHome

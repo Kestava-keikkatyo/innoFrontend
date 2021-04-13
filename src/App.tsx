@@ -1,22 +1,24 @@
-import React, { useEffect } from "react"
-import { Switch, Route, Redirect, useLocation } from "react-router-dom"
+import React, { useEffect } from 'react'
+import { Switch, Route, Redirect, useLocation } from 'react-router-dom'
 
-import SnackbarNotification from "./components/SnackbarNotification"
-import LandingPage from "./pages/LandingPage"
-import HomePage from "./pages/HomePage"
-import ProfilePage from "./pages/ProfilePage"
-import WorkersPage from "./pages/WorkersPage"
-import ContractsPage from "./pages/ContractsPage"
-import PrivateRoute from "./components/PrivateRoute"
-import ProcessPage from "./pages/ProcessPage"
-import TasksPage from "./pages/TaskPage"
-import DocumentPage from "./pages/DocumentPage"
-import FormsPage from "./pages/FormsPage"
-import WorkerStatistics from "./pages/WorkerStatistics"
-import { CssBaseline } from "@material-ui/core"
-import NewFormPage from "./pages/FormsPage/NewFormPage"
-import FormPreviewPage from "./pages/FormPreviewPage"
-import { roles } from "./types/types"
+import SnackbarNotification from './components/SnackbarNotification'
+import LandingPage from './pages/LandingPage'
+import HomePage from './pages/HomePage'
+import ProfilePage from './pages/ProfilePage'
+import WorkersPage from './pages/WorkersPage'
+import ContractsPage from './pages/ContractsPage'
+import PrivateRoute from './components/PrivateRoute'
+import ProcessPage from './pages/ProcessPage'
+import TasksPage from './pages/TaskPage'
+import DocumentPage from './pages/DocumentPage'
+import FormsPage from './pages/FormsPage'
+import WorkerStatistics from './pages/WorkerStatistics'
+import ReportPage from './pages/ReportPage'
+import { CssBaseline } from '@material-ui/core'
+import NewFormPage from './pages/FormsPage/NewFormPage'
+import FormPreviewPage from './pages/FormPreviewPage'
+import { roles } from './types/types'
+import InductionPage from './pages/InductionPage'
 
 /**
  * @component
@@ -34,6 +36,9 @@ const App: React.FC = () => {
         <Route exact path="/login">
           <LandingPage />
         </Route>
+        <PrivateRoute path="/induction">
+          <InductionPage />
+        </PrivateRoute>
         <PrivateRoute path="/profile">
           <ProfilePage />
         </PrivateRoute>
@@ -49,13 +54,22 @@ const App: React.FC = () => {
         <PrivateRoute path="/fiilismittari" roles={[roles.Worker]}>
           <WorkerStatistics />
         </PrivateRoute>
+        <PrivateRoute path="/report">
+          <ReportPage />
+        </PrivateRoute>
         <PrivateRoute path="/contracts" roles={[roles.Agency]}>
           <ContractsPage />
         </PrivateRoute>
-        <PrivateRoute path="/forms/newform/preview" roles={[roles.Business, roles.Agency]}>
+        <PrivateRoute
+          path="/forms/newform/preview"
+          roles={[roles.Business, roles.Agency]}
+        >
           <FormPreviewPage />
         </PrivateRoute>
-        <PrivateRoute path="/forms/newform" roles={[roles.Business, roles.Agency]}>
+        <PrivateRoute
+          path="/forms/newform"
+          roles={[roles.Business, roles.Agency]}
+        >
           <NewFormPage />
         </PrivateRoute>
         <PrivateRoute path="/forms" roles={[roles.Business, roles.Agency]}>

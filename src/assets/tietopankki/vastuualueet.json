@@ -1,0 +1,29 @@
+{
+  "agency": [
+    "Yleisvastuu työturvallisuudesta ja työaikalain noudattamisesta",
+    "Työntekijöiden vakuuttaminen työtapaturmien ja ammattitautien varalta",
+    "Työterveyshuollon järjestäminen",
+    "Työsuojelun yhteistoiminnan järjestäminen",
+    "Vuokratyöntekijän riittävän ammattitaidon ja työhön soveltumisen varmistaminen",
+    "Yleisperehdytyksen antaminen",
+    "Tarvittavien henkilönsuojainten hankinta",
+    "Käyttäjäyrityksen velvoitteiden täyttämisen varmistaminen"
+  ],
+  "business": [
+    "Työn vaarojen selvittäminen ja arviointi",
+    "Työn edellyttämien ammattitaitovaatimusten ja erityispiirteiden sekä muiden tarvittavien tietojen ilmoittaminen vuokrayritykselle",
+    "Vuokratyön aloittamisesta ilmoittaminen työpaikan työterveyshuollolle ja työsuojeluvaltuutetulle",
+    "Tarvittavien henkilönsuojainten hankinta",
+    "Työnopastuksen antaminen vuokratyöntekijälle",
+    "Vastuu työnjohdosta ja -valvonnasta",
+    "Työn aikaisesta työn turvallisuudesta ja terveellisyydestä huolehtiminen",
+    "Tarvittavien henkilönsuojainten ja turvavälineiden käyttämisen varmistaminen"
+  ],
+  "worker": [
+    "Työnantajan ohjeiden ja määräysten noudattaminen",
+    "Omasta ja työkavereiden turvallisuudesta huolehtiminen",
+    "Häirinnän ja epäasiallisen kohtelun välttäminen",
+    "Työvälineiden, henkilönsuojainten ja turvalaitteiden asianmukainen käyttö",
+    "Havaitsemistaan vioista ja puutteista ilmoittaminen"
+  ]
+}

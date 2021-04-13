@@ -16,3 +16,21 @@
 .fade-exit-active {
   transition: opacity 250ms, transform 250ms;
 }
+
+.container-sign-up {
+  background-image: url('../../assets/ttk.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(3px) grayscale(1);
+  min-width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -999;
+  /* background-color: #5555 !important; */
+}
+
+.box-sign-up {
+  background-color: white;
+}

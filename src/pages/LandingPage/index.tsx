@@ -31,42 +31,46 @@ const LandingPage = () => {
     const { from }: any = location.state || { from: { pathname: '/home' } }
     dispatch(login(credentials, role, from))
   }
-  
+
   return (
     <Grid
       container
       justify="center"
       spacing={0}
       alignItems="center"
-      style={{ minHeight: 'calc(100vh - 64px)' }}>
+      style={{ minHeight: '100vh' }}
+    >
+      <div className="container-sign-up" />
       <Box
         display="flex"
         flexDirection="column"
-        width="320px">
-        <SwitchTransition mode='out-in'>
+        width="320px"
+        className="box-sign-up"
+      >
+        <SwitchTransition mode="out-in">
           <CSSTransition
             key={logInForm}
             addEndListener={(node, done) => {
               node.addEventListener('transitionend', done, false)
             }}
-            classNames='fade'>
+            classNames="fade"
+          >
             <Box paddingBottom={2}>
-              {logInForm ?
-                <SignUpForm handleSubmit={signupSubmit} /> :
+              {logInForm ? (
+                <SignUpForm handleSubmit={signupSubmit} />
+              ) : (
                 <LogInForm handleSubmit={loginSubmit} />
-              }
+              )}
             </Box>
           </CSSTransition>
         </SwitchTransition>
-        <Grid
-          style={{ textAlign: 'center' }}
-          container
-          alignItems="center">
+        <Grid style={{ textAlign: 'center' }} container alignItems="center">
           <Grid item xs style={{ padding: '0 1em' }}>
             <Button
               variant="outlined"
-              color="secondary"
-              onClick={() => setLogInForm(!logInForm)}>
+              color="primary"
+              onClick={() => setLogInForm(!logInForm)}
+            >
               {logInForm ? t('log_in') : t('sign_up')}
             </Button>
           </Grid>

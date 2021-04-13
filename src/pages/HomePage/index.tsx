@@ -3,15 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { me } from '../../actions/userActions'
 
 import WorkerHome from './WorkerHome'
-import CompanyHome from './CompanyHome'
-import VisitorHome from './VisitorHome'
 import PageLoading from '../../components/PageLoading'
 
-
-import {
-  Container
-} from '@material-ui/core'
+import { Container, Typography } from '@material-ui/core'
 import { roles } from '../../types/types'
+import BusinessHome from './BusinessHome'
+import AgencyHome from './AgencyHome'
 
 const Home = () => {
   const { data, ...user } = useSelector((state: any) => state.user)
@@ -27,21 +24,28 @@ const Home = () => {
     }
   }, [dispatch, data.role])
 
-
   if (user.loading) {
     return <PageLoading />
   }
 
+  const getContent = () => {
+    switch (data.role) {
+      case roles.Business:
+        return <BusinessHome />
+      case roles.Agency:
+        return <AgencyHome />
+      case roles.Worker:
+        return <WorkerHome />
+      default:
+        return <></>
+    }
+  }
   return (
-    <Container maxWidth="md" disableGutters>
-      {data.role === roles.Worker &&
-        <WorkerHome />}
-      {(data.role === roles.Agency ||
-        data.role === roles.Business) &&
-        <CompanyHome />}
-      {!data.role &&
-        <VisitorHome />
-      }
+    <Container>
+      <Typography variant="h4" color="primary">
+        Home
+      </Typography>
+      {getContent()}
     </Container>
   )
 }

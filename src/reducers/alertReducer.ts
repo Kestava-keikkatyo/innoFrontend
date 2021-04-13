@@ -2,7 +2,12 @@
  * @module reducer/alert
  * @desc Redux alert reducer
  */
-import { AlertActionTypes, AlertState, ALERT_CLEAR, ALERT_SET } from '../types/state'
+import {
+  AlertActionTypes,
+  AlertState,
+  ALERT_CLEAR,
+  ALERT_SET,
+} from '../types/state'
 import { severity } from '../types/types'
 
 const initialState: AlertState = {
@@ -21,16 +26,15 @@ const alertReducer = (state = initialState, action: AlertActionTypes) => {
   //this should be illegal
   switch (action.type) {
     case ALERT_SET:
-      // const sev = 
       return {
-        severity: (action.data.severity) ? action.data.severity: severity.Info,
+        severity: action.data.severity ? action.data.severity : severity.Info,
         message: action.data.message,
-        open: true
+        open: true,
       }
     case ALERT_CLEAR:
       return {
         ...state,
-        open: false
+        open: false,
       }
     default:
       return state

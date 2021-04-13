@@ -123,6 +123,10 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    [theme.breakpoints.down('lg')]: {
+      width: `100vw`,
+      // marginLeft: drawerWidth,
+    },
   },
   appBarShift: {
     backgroundColor: 'white',
