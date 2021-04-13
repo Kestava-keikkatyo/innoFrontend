@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardContent, Grid, Typography } from '@material-ui/core'
+import { Card, CardContent, Grid, Typography, Paper } from '@material-ui/core'
 import { withStyles } from '@material-ui/core'
 
 const WhiteTypography = withStyles({
@@ -11,15 +11,12 @@ const WhiteTypography = withStyles({
 const LandingPage = () => {
   return (
     <div>
-      <div>
-        <div className="landing-banner" />
-      </div>
-      <Card
-        className="text-card"
-        variant="outlined"
-        style={{ backgroundColor: 'black' }}
-      >
-        <CardContent>
+      <div className="landing-banner" />
+      <div className="blank">
+        <Paper
+          className="text-card text-white"
+          style={{ backgroundColor: '#0007' }}
+        >
           <WhiteTypography align="center" variant="h1" gutterBottom>
             {'KeikkaKaveri'}
           </WhiteTypography>
@@ -31,20 +28,20 @@ const LandingPage = () => {
               'KeikkaKaveri tarjoaa tietoa, koulutusta ja välineitä turvallisten ja terveellisten työolojen kehittämiseen ja ylläpitämiseen.'
             }
           </WhiteTypography>
-        </CardContent>
-      </Card>
-      <Card
-        className="logo-card"
-        variant="outlined"
-        style={{ backgroundColor: 'black' }}
-      >
-        <CardContent>
-          <WhiteTypography variant="h5" gutterBottom>
-            {'Yhteistyössä: '}
-          </WhiteTypography>
-        </CardContent>
-      </Card>
-      <div className="blank" />
+        </Paper>
+        <Card
+          className="logo-card"
+          variant="outlined"
+          style={{ backgroundColor: 'black' }}
+        >
+          <CardContent>
+            <WhiteTypography variant="h5" gutterBottom>
+              {'Yhteistyössä: '}
+            </WhiteTypography>
+          </CardContent>
+        </Card>
+      </div>
+
       <Grid container className="green">
         <Grid item xs={12} md={6} className="part1">
           Part1
