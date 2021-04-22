@@ -8,23 +8,11 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import AssignmentIcon from '@material-ui/icons/Assignment'
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday'
-import EqualizerIcon from '@material-ui/icons/Equalizer'
 import InsertDriveFile from '@material-ui/icons/InsertDriveFile'
-import { Collapse } from '@material-ui/core'
 import MoodIcon from '@material-ui/icons/Mood'
-import TimelineIcon from '@material-ui/icons/Timeline'
-import FeedbackIcon from '@material-ui/icons/Feedback'
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
-import {
-  Contacts,
-  ExpandLess,
-  ExpandMore,
-  Home,
-  PeopleAlt,
-  StarBorder,
-  Security,
-} from '@material-ui/icons'
+import { Contacts, Home, PeopleAlt, Security } from '@material-ui/icons'
 import { Link } from 'react-router-dom'
 import { logout } from '../../actions/userActions'
 import { useDispatch, useSelector } from 'react-redux'
@@ -77,7 +65,6 @@ const LangMenuDropDown = () => {
  */
 const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
   const classes = useStyles()
-  const [open, setOpen] = React.useState(true)
   const dispatch = useDispatch()
 
   const { data } = useSelector((state: IRootState) => state.user)
@@ -89,34 +76,9 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
    * [Drawer]{@link module:components/Drawer}.
    * @function
    */
-  const handleClick = () => {
-    setOpen(!open)
-  }
-
-  const nestedStatisticItems = () => (
-    <Collapse in={open} timeout="auto" unmountOnExit>
-      <List component="div" disablePadding>
-        <ListItem button className={classes.nested}>
-          <ListItemIcon>
-            <StarBorder />
-          </ListItemIcon>
-          <ListItemText primary="Achievments" />
-        </ListItem>
-        <ListItem button className={classes.nested}>
-          <ListItemIcon>
-            <TimelineIcon />
-          </ListItemIcon>
-          <ListItemText primary="Work history" />
-        </ListItem>
-        <ListItem button className={classes.nested}>
-          <ListItemIcon>
-            <FeedbackIcon />
-          </ListItemIcon>
-          <ListItemText primary="My Feedback" />
-        </ListItem>
-      </List>
-    </Collapse>
-  )
+  // const handleClick = () => {
+  //   setOpen(!open)
+  // }
 
   return (
     <div className="drawer">

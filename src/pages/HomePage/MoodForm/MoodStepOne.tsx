@@ -3,7 +3,7 @@ import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied'
 import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied'
 import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt'
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied'
-import { Grid, List, ListItem, makeStyles } from '@material-ui/core'
+import { Grid, makeStyles } from '@material-ui/core'
 
 const MoodStepOne: React.FC = () => {
   const useStyles = makeStyles({

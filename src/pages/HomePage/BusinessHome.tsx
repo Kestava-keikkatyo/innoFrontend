@@ -1,7 +1,6 @@
 import React from 'react'
 
 import vastuualueet from '../../assets/tietopankki/vastuualueet.json'
-import { makeStyles } from '@material-ui/core/styles'
 import {
   Card,
   List,
@@ -12,14 +11,9 @@ import {
   CardHeader,
   Button,
   Grid,
-  Container,
 } from '@material-ui/core'
 
 const BusinessHome = () => {
-  const useStyles = makeStyles({})
-
-  const classes = useStyles()
-
   return (
     <Grid container>
       <Grid item xs={12} md={6}>

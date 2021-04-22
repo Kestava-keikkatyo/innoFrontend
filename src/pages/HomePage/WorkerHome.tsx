@@ -1,9 +1,7 @@
 import React from 'react'
 
 import vastuualueet from '../../assets/tietopankki/vastuualueet.json'
-// import { makeStyles } from '@material-ui/core/styles'
 import {
-  Card,
   List,
   CardContent,
   ListItem,
@@ -17,10 +15,6 @@ import MoodForm from './MoodForm'
 import Spacing from '../../components/Spacing'
 
 const WorkerHome = () => {
-  // const useStyles = makeStyles({})
-
-  // const classes = useStyles()
-
   return (
     <Grid container>
       <Grid item xs={12} md={6}>
