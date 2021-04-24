@@ -19,6 +19,7 @@ import NewFormPage from './pages/FormsPage/NewFormPage'
 import FormPreviewPage from './pages/FormPreviewPage'
 import { roles } from './types/types'
 import InductionPage from './pages/InductionPage'
+import Databank from './pages/Databank'
 
 /**
  * @component
@@ -33,6 +34,9 @@ const App: React.FC = () => {
 
       <SnackbarNotification />
       <Switch>
+        <Route exact path="/databank">
+          <Databank />
+        </Route>
         <Route exact path="/login">
           <LandingPage />
         </Route>

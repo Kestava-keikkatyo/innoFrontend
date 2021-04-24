@@ -413,6 +413,42 @@ nav * {
   border-radius: 60px !important;
 }
 
+.databank-top-container {
+  height: 300px;
+}
+
+.databank-banner {
+  position: absolute;
+  z-index: -5;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  background-image: linear-gradient(
+    136deg,
+    rgb(115, 55, 255) 0%,
+    rgb(33, 148, 242) 50%,
+    rgb(64, 213, 233) 100%
+  );
+}
+
+.databank-logo {
+  position: absolute;
+  z-index: -4;
+  top: calc(50% - 52px);
+  left: calc(50% - 100px);
+  width: 200px;
+  height: 104px;
+  background-image: url('./assets/keikka-kaveri4.png');
+  background-size: contain;
+}
+
+.databank-nav {
+  background-color: #eb5a00ee;
+  color: #ddd;
+  padding: 0.5rem;
+  margin-top: -30px;
+}
+
 /* background: radial-gradient(
     circle,
     rgb(255, 255, 255, 0.7) 0%,
