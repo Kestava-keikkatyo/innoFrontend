@@ -32,7 +32,7 @@ const AgencyHome = () => {
               <Divider />
               {vastuualueet.agency.map((e, i) => (
                 <ListItem key={i} divider>
-                  <ListItemText primary={`${i + 1}. ${e}`} />
+                  <ListItemText primary={`${i + 1}. ${e.tip}`} />
                 </ListItem>
               ))}
             </List>

@@ -8,7 +8,8 @@ import {
 } from '@material-ui/core'
 import { SearchIcon } from '@material-ui/data-grid'
 import React from 'react'
-import JobLifeline from './JobLifeline'
+import RoleResponsibilities from './RoleResponsibilities'
+// import JobLifeline from './JobLifeline'
 
 export interface DatabankProps {}
 
@@ -52,7 +53,8 @@ const Databank: React.FC<DatabankProps> = () => {
             {/* <Button color="inherit">Rekistöröidy</Button> */}
           </Grid>
         </Grid>
-        <JobLifeline />
+        {/* <JobLifeline /> */}
+        <RoleResponsibilities />
       </Container>
     </div>
   )

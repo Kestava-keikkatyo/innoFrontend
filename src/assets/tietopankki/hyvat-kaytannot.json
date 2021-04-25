@@ -1,0 +1,59 @@
+[
+  {
+    "title": "Asiakassopimuksen solmiminen",
+    "details": [
+      "Käyttäjäyrityksen kanssa käydään läpi lainsäädännöstä seuraavien vastuiden jakautuminen vuokratyössä.",
+      "Sopimuksen teon yhteydessä sovitaan perehdytyksen ja työnopastuksen toteuttamiskäytännöstä. Vuokratyöntekijälle voidaan järjestää sama perehdyttämisprosessi kuin yrityksen omille työntekijöille.",
+      "Asiakassopimuksen yhteydessä sovitaan myös siitä jaetaanko vuokratyöntekijälle jotain perehdytysmateriaalia perehdytyksen/työnopastuksen yhteydessä.",
+      "Perehdytysmateriaalin kokoamisessa yhteen paikkaan ja sen jakamisessa voidaan hyödyntää internetiä/intranetiä, jolloin vuokratyöntekijöille järjestetään pääsy intra- tai internettiin myös työpaikalla.",
+      "Perehdytysprosessin sopimisen yhteydessä sovitaan miten perehdytettävien oppiminen eli olennaisen tiedon sisäistäminen varmistetaan. Oppimista voidaan arvioida esimerkiksi seurantakeskustelujen tai käytännön harjoitusten avulla.",
+      "Sovittaviin asioihin kuuluu myös toiminta työtapaturmien, sairauspoissaolojen ja muiden poikkeustilanteiden osalta. Vuokratyöntekijöiden tapaturmista ilmoittamisen sekä niiden tutkinnan ja analysoinnin osalta voidaan toimia käyttäjäyrityksessä samalla tavalla kuin vakituistenkin henkilöiden kohdalla.",
+      "Sopimuksen solmimisen jälkeen käyttäjäyritys tiedottaa asiasta omalle vakituiselle henkilöstölleen.",
+      "Vuokrayrityksen edustaja voi tavata käyttäjäyrityksen luottamusmiehet ja työsuojeluvaltuutetun ennen vuokratyöntekijöiden saapumista."
+    ]
+  },
+  {
+    "title": "Työntekijän tilaus ja valinta",
+    "details": [
+      "Käyttäjäyritys voi osallistua myös itse vuokratyöntekijän valintaan ja esimerkiksi haastatella parhaita ehdokkaita.",
+      "Uusille tai kokemattomammille vuokratyöntekijöille voidaan tarjota ensin helpompia työtehtäviä, jolloin vuokratyöntekijät saavat kokemusta ja käyttäjäyrityksessä voidaan tutustua vuokratyöntekijään.",
+      "Vuokrausyrityksessä kannattaa kerätä palautetta työn sujumisesta sekä vuokratyöntekijältä että käyttäjäyrityksestä.",
+      "Mikäli tiedetään etukäteen, että kiireelliset rekrytoinnit ovat todennäköisiä, voidaan perehdytystä ennakoida antamalla tarvittava perehdytys jo etukäteen. Pelkkä vuokrausyrityksen antama yleisperehdytys ei kuitenkaan riitä, vaan käyttäjäyrityksessä tulee antaa myös työhön ja työoloihin liittyvä perehdytys.",
+      "Mikäli tehtävään ei löydetä kaikkia vaatimuksia täyttävää henkilöä, voidaan käyttäjäyrityksen kanssa neuvotella tilanteesta ja pohtia soveltuuko lähimpänä vaatimusten täyttämistä oleva henkilö työhön. Tarvittaessa voidaan vuokratyöntekijän työnkuvaa pyrkiä muuttamaan siten, että hänen osaamisensa riittää tehtävään.",
+      "Työntekijöiden valinnan sekä yleisperehdytyksen ja etukäteistietojen antamisen kannalta on hyödyllistä, että perehdytyksen antaja käy etukäteen vierailulla tutustumassa käyttäjäyrityksen toimitiloihin.",
+      "Vierailukäyntiin on voidaan yhdistää myös vaarojen kartoittaminen/riskien arviointi, joka tehdään yhdessä asiakasyrityksen edustajan kanssa.",
+      "Vaarojen tunnistamisessa ja riskien arvioinnissa on hyvä olla mukana myös työsuojeluvaltuutettu.",
+      "Työn tekemisen paikka voi olla kaikille vuokratyön osapuolille ennestään tuntematon. Näissäkin tilanteissa vuokratyöntekijälle tulee varmistaa riittävä opastus työhön ja työoloihin."
+    ]
+  },
+  {
+    "title": "Työsopimus ja yleisperehdytys",
+    "details": [
+      "Työsopimus kannattaa tehdä kirjallisena aina kun se on mahdollista.",
+      "Yleisperehdytys annetaan kasvotusten työntekijän kanssa eli sovitaan hänen kanssaan tapaaminen perehdytystä varten aina kun se on mahdollista.",
+      "Yleisiä asioita ja vuokrayrityksen toimintaperiaatteita koskeva perehdytys voidaan antaa työntekijälle jo ennen kuin varsinainen työtehtävä ja käyttäjäyritys ovat tiedossa.",
+      "Yleisperehdytystä varten voidaan järjestää erillisiä tilaisuuksia, joissa perehdytetään samalla kerralla useampia uusia vuokratyöntekijöitä.",
+      "Kiireellisessä perehdytystilanteessa työturvallisuuteen liittyvän tieto on ensisijaisesti opastettavaa asiaa.",
+      "Kiireellisten tilausten työnopastusongelmaan voi toimia ratkaisuna etukäteisperehdytys, jossa rekrytoiduille vuokratyöntekijöille annetaan työnopastus käyttäjäyrityksessä jo ennen tilaustarvetta.",
+      "Huonosti suomea osaavien henkilöiden perehdytyksessä kannattaa hyödyntää selkeitä, yksiselitteisiä kuvia, selkokieltä ja havainnollista esimerkkien näyttämisiä.",
+      "Vuokrayritys voi kustantaa vuokratyöntekijöilleen esimerkiksi työturvallisuus- tai työhyvinvointikorttikoulutuksen tai muun vaadittavan työturvallisuuskoulutuksen.",
+      "Hyvänä periaatteena on soittaa jokaiselle ensimmäistä kertaa käyttäjäyritykseen töihin menevälle ensimmäisen päivän jälkeen tai ainakin jossain vaiheessa ensimmäisen työviikon aikana."
+    ]
+  },
+  {
+    "title": "Opastus työhön ja työoloihin",
+    "details": [
+      "Työnopastus voidaan toteuttaa kaksivaiheisesti. Ensimmäisessä osassa voidaan käydä asioita läpi kahden kesken esimerkiksi toimistossa. Tätä seuraa työpaikkakierros, joka sisältää sekä työtiloihin että työtehtäviin tutustumisen.",
+      "Työnopastuksessa kannattaa hyödyntää kokeneita, työturvallisuusasioissa esimerkillisesti toimivia työntekijöitä.",
+      "Työnopastuksessa tulee paljon uutta tietoa lyhyen ajan sisään, joten työntekijän oppiminen kannattaa varmistaa esimerkiksi kysymyksillä, keskusteluilla ja käytännön havainnoinnilla. Tukena voi käyttää myös kirjallisessa muodossa työntekijälle annettavia ohjeita."
+    ]
+  },
+  {
+    "title": "Työsuoritus ja valvonta",
+    "details": [
+      "Perehdytyksen ja työnopastuksen jälkeen vuokratyöntekijä aloittaa varsinaiset työtehtävät. Hyvä käytäntö on nimetä vuokratyöntekijälle ensimmäisiksi päiviksi työpari tai muu henkilö, joka ohjaa jatkuvasti työntekijän suoriutumista ja auttaa tarvittaessa.",
+      "Vuokratyöntekijät voidaan ottaa toimeksiantonsa aikana mukaan kaikkiin sellaisiin yleisiin koulutus- ja tiedottamistilaisuuksiin, joissa esitetään vuokratyöntekijöille tarpeellista tietoa.",
+      "Vuokratyöntekijä on hyvä ottaa työyhteisöön tasavertaiseksi jäseneksi varsinkin pidemmissä toimeksiannoissa."
+    ]
+  }
+]
