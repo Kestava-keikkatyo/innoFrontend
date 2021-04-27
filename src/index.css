@@ -470,6 +470,11 @@ nav * {
   margin-bottom: 1rem;
 }
 
+.databank-nav-link {
+  text-decoration: none !important;
+  color: white !important;
+}
+
 /* background: radial-gradient(
     circle,
     rgb(255, 255, 255, 0.7) 0%,

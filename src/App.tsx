@@ -19,6 +19,10 @@ import NewFormPage from './pages/FormsPage/NewFormPage'
 import FormPreviewPage from './pages/FormPreviewPage'
 import { roles } from './types/types'
 import InductionPage from './pages/InductionPage'
+import DatabankRoute from './components/DatabankRoute'
+import BestPractices from './pages/Databank/BestPractices'
+import JobLifeline from './pages/Databank/JobLifeline'
+import RoleResponsibilities from './pages/Databank/RoleResponsibilities'
 import Databank from './pages/Databank'
 
 /**
@@ -34,12 +38,21 @@ const App: React.FC = () => {
 
       <SnackbarNotification />
       <Switch>
-        <Route exact path="/databank">
-          <Databank />
-        </Route>
         <Route exact path="/login">
           <LandingPage />
         </Route>
+        <DatabankRoute path="/databank/lifeline">
+          <JobLifeline />
+        </DatabankRoute>
+        <DatabankRoute path="/databank/responsibilities">
+          <RoleResponsibilities />
+        </DatabankRoute>
+        <DatabankRoute path="/databank/best-practices">
+          <BestPractices />
+        </DatabankRoute>
+        <DatabankRoute path="/databank">
+          <Databank />
+        </DatabankRoute>
         <PrivateRoute path="/induction">
           <InductionPage />
         </PrivateRoute>
