@@ -20,6 +20,11 @@
   height: 250px;
 }
 
+.logo {
+  width: 200px;
+  height: 100px;
+}
+
 .orange,
 .blue,
 .green,
