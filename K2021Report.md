@@ -33,6 +33,13 @@ The app is developed to (TODO)fit/implement parts of the model provided by Tampe
 
 ### Stack
 
+(TODO)
+Frontend: React with Redux and Material UI
+
+Backend: Node.js with Express.js, MongoDB
+
+Testing/Deployment/Voodoo: AWS & Jenkins
+
 ### Setup
 
 To run this project locally you need:
