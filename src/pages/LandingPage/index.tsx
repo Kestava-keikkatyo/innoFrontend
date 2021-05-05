@@ -17,6 +17,7 @@ import { withStyles } from '@material-ui/core'
 import SwipeableViews from 'react-swipeable-views'
 import Spacing from '../../components/Spacing'
 import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons'
+import logo from '../../assets/keikka-kaveri4.png'
 
 const WhiteTypography = withStyles({
   root: {
@@ -164,20 +165,23 @@ const LandingPage = () => {
             </Grid>
           </Grid>
           <Grid item xs={12} className="landing-part42">
-            <Grid container>
-              <Grid xs={3} item>
-                <SimpleList />
+            <Spacing p5>
+              <Grid container>
+                <Grid xs={3} item>
+                  <img src={logo} alt="logo" className="bw-logo" />
+                  <SimpleList />
+                </Grid>
+                <Grid xs={3} item>
+                  <SimpleList />
+                </Grid>
+                <Grid xs={3} item>
+                  <SimpleList />
+                </Grid>
+                <Grid xs={3} item>
+                  <SimpleList />
+                </Grid>
               </Grid>
-              <Grid xs={3} item>
-                <SimpleList />
-              </Grid>
-              <Grid xs={3} item>
-                <SimpleList />
-              </Grid>
-              <Grid xs={3} item>
-                <SimpleList />
-              </Grid>
-            </Grid>
+            </Spacing>
           </Grid>
         </Grid>
       </SwipeableViews>

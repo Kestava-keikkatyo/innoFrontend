@@ -95,3 +95,8 @@
 .MuiMobileStepper-dotActive {
   background-color: rgb(110, 0, 110) !important;
 }
+
+.bw-logo {
+  filter: grayscale(1) !important;
+  height: 100px;
+}
