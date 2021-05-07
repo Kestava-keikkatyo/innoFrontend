@@ -10,6 +10,10 @@
   z-index: -99;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .text-card {
   width: 50%;
   padding: 15px;
@@ -97,6 +101,91 @@
 }
 
 .bw-logo {
-  filter: grayscale(1) !important;
+  filter: invert(1) grayscale(1) !important;
   height: 100px;
+}
+
+.text-white {
+  color: #fffb !important;
+}
+
+.landing-bg-dark {
+  background-color: #000a;
+}
+
+.intro-container {
+  max-width: 450px;
+  height: 450px;
+  border-radius: 450px;
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
+}
+
+.landing-header-offset {
+  margin-top: 80px !important;
+}
+
+.landing-partner {
+  max-height: 150px;
+  filter: grayscale(1);
+  margin-right: 2rem;
+}
+
+.landing-partner-invert {
+  max-height: 150px;
+  filter: grayscale(1) invert(1);
+  margin-right: 2rem;
+}
+
+/**
+* Animation moving partners
+*/
+#partner-container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  max-height: 250px;
+  overflow: hidden;
+  display: flex !important;
+}
+
+#partner-box {
+  margin: 10px 0;
+  -webkit-animation-name: move;
+  -webkit-animation-duration: 8s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: right;
+  -webkit-animation-timing-function: linear;
+}
+
+#partner-box:hover {
+  -webkit-animation-play-state: paused;
+}
+
+@keyframes move {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: -1175px;
+  }
+}
+
+.lifespan-container {
+  display: flex !important;
+  height: 150px !important;
+}
+
+.lifespan-step {
+  margin: 1rem;
+}
+
+.lifespan-lines {
+  position: absolute;
+  width: 850px;
+  height: 200px;
+  border: 10px blue solid;
+  top: 80px;
+  left: 180px;
+  z-index: -1;
 }
