@@ -15,7 +15,7 @@ const baseUrl = 'http://localhost:3001/api'
  */
 const authHeader = () => {
   return {
-    headers: { 'x-access-token': `${loadUser().token}` }
+    headers: { 'x-access-token': `${loadUser().token}` },
   }
 }
 
@@ -29,7 +29,7 @@ const signup = async (user: User, role: roles) => {
   try {
     switch (role) {
       case roles.Worker:
-        return await axios.post(`${baseUrl}/users`, user)
+        return await axios.post(`${baseUrl}/workers`, user)
       case roles.Agency:
         return await axios.post(`${baseUrl}/agencies`, user)
       case roles.Business:
@@ -76,7 +76,7 @@ const me = async (role: roles) => {
   try {
     switch (role) {
       case roles.Worker:
-        return await axios.get(`${baseUrl}/users/me`, authHeader())
+        return await axios.get(`${baseUrl}/workers/me`, authHeader())
       case roles.Agency:
         return await axios.get(`${baseUrl}/agencies/me`, authHeader())
       case roles.Business:
@@ -101,11 +101,15 @@ const update = async (updateData: User, role: roles) => {
   try {
     switch (role) {
       case roles.Worker:
-        return await axios.put(`${baseUrl}/users`, updateData, authHeader())
+        return await axios.put(`${baseUrl}/workers`, updateData, authHeader())
       case roles.Agency:
         return await axios.put(`${baseUrl}/agencies`, updateData, authHeader())
       case roles.Business:
-        return await axios.put(`${baseUrl}/businesses`, updateData, authHeader())
+        return await axios.put(
+          `${baseUrl}/businesses`,
+          updateData,
+          authHeader()
+        )
       default:
         return Promise.reject({ status: 500 })
     }
@@ -118,5 +122,5 @@ export default {
   signup,
   login,
   me,
-  update
+  update,
 }

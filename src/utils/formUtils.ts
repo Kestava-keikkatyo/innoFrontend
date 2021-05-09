@@ -1,4 +1,4 @@
-import { Form, questionTypes } from "../types/types";
+import { Form, questionTypes } from '../types/types'
 
 // const initialForm = {
 //   tags: [],
@@ -18,18 +18,54 @@ import { Form, questionTypes } from "../types/types";
 //       timepicker: []
 //   },
 // }
+interface BaseQuestion {
+  ordering: number
+  title: string
+}
+
+interface TextQuestion extends BaseQuestion {
+  ansMinLength: number
+  ansMaxLength: number
+}
+
+interface TextQuestion extends BaseQuestion {
+  ansMinLength: number
+  ansMaxLength: number
+}
+
+interface TextAreaQuestion extends BaseQuestion {
+  ansMinLength: number
+  ansMaxLength: number
+}
+
+interface CheckboxQuestion extends BaseQuestion {}
+
+export type QuestionType = TextAreaQuestion | TextQuestion
+
+interface QuestionsObject {
+  // comment: [],
+  text: TextQuestion[]
+  textarea: TextAreaQuestion[]
+  checkbox: CheckboxQuestion[]
+  // checkbox_group: [],
+  // radiobutton_group: [],
+  // radiobutton_group_horizontal: [],
+  // contact_information: [],
+  // datepicker: [],
+  // timepicker: []
+}
 
 const initialQuestions = {
-    comment: [],
-    text: [],
-    textarea: [],
-    checkbox: [],
-    checkbox_group: [],
-    radiobutton_group: [],
-    radiobutton_group_horizontal: [],
-    contact_information: [],
-    datepicker: [],
-    timepicker: []
+  comment: [],
+  text: [],
+  textarea: [],
+  checkbox: [],
+  checkbox_group: [],
+  radiobutton_group: [],
+  radiobutton_group_horizontal: [],
+  contact_information: [],
+  datepicker: [],
+  timepicker: [],
 }
 
 export const convertForm = (form: Form): any => {
@@ -39,7 +75,7 @@ export const convertForm = (form: Form): any => {
     let temp: any = {
       ordering: i,
       title: q.title,
-      subTitle: q.subTitle,
+      subtitle: q.subTitle,
       optional: q.optional,
     }
 
@@ -53,7 +89,7 @@ export const convertForm = (form: Form): any => {
         temp = {
           ...temp,
           answerMaxLength: q.answerMaxLength,
-          answerMinLength: q.answerMinLength
+          answerMinLength: q.answerMinLength,
         }
         questions.text = questions.text.concat(temp)
         break
@@ -63,7 +99,7 @@ export const convertForm = (form: Form): any => {
           ...temp,
           answerMaxLength: q.answerMaxLength,
           answerMinLength: q.answerMinLength,
-          rows: q.rows
+          rows: q.rows,
         }
         questions.textarea = questions.textarea.concat(temp)
         break
@@ -91,11 +127,15 @@ export const convertForm = (form: Form): any => {
           scaleOptionTitleRight: q.scaleOptionTitleRight,
           options: q.options,
         }
-        questions.radiobutton_group_horizontal = questions.radiobutton_group_horizontal.concat(temp)
+        questions.radiobutton_group_horizontal = questions.radiobutton_group_horizontal.concat(
+          temp
+        )
         break
 
       case questionTypes.ContactInformation:
-        questions.contact_information = questions.contact_information.concat(temp)
+        questions.contact_information = questions.contact_information.concat(
+          temp
+        )
         break
 
       case questionTypes.DatePicker:
@@ -119,6 +159,6 @@ export const convertForm = (form: Form): any => {
     title: form.title,
     description: form.description,
     tags: form.tags,
-    isPublic: form.isPublic
+    isPublic: form.isPublic,
   }
 }
