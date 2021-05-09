@@ -3,6 +3,7 @@ import { Switch, Route, Redirect, useLocation } from "react-router-dom"
 
 import SnackbarNotification from "./components/SnackbarNotification"
 import LandingPage from "./pages/LandingPage"
+import LoginPage from "./pages/LoginPage"
 import HomePage from "./pages/HomePage"
 import ProfilePage from "./pages/ProfilePage"
 import WorkersPage from "./pages/WorkersPage"
@@ -32,7 +33,7 @@ const App: React.FC = () => {
       <SnackbarNotification />
       <Switch>
         <Route exact path="/login">
-          <LandingPage />
+          <LoginPage />
         </Route>
         <PrivateRoute path="/profile">
           <ProfilePage />
@@ -52,10 +53,16 @@ const App: React.FC = () => {
         <PrivateRoute path="/contracts" roles={[roles.Agency]}>
           <ContractsPage />
         </PrivateRoute>
-        <PrivateRoute path="/forms/newform/preview" roles={[roles.Business, roles.Agency]}>
+        <PrivateRoute
+          path="/forms/newform/preview"
+          roles={[roles.Business, roles.Agency]}
+        >
           <FormPreviewPage />
         </PrivateRoute>
-        <PrivateRoute path="/forms/newform" roles={[roles.Business, roles.Agency]}>
+        <PrivateRoute
+          path="/forms/newform"
+          roles={[roles.Business, roles.Agency]}
+        >
           <NewFormPage />
         </PrivateRoute>
         <PrivateRoute path="/forms" roles={[roles.Business, roles.Agency]}>
@@ -64,9 +71,12 @@ const App: React.FC = () => {
         <PrivateRoute path="/workers" roles={[roles.Business, roles.Agency]}>
           <WorkersPage />
         </PrivateRoute>
-        <PrivateRoute path="/">
+        <PrivateRoute path="/home">
           <HomePage />
         </PrivateRoute>
+        <Route path="/">
+          <LandingPage />
+        </Route>
         <Redirect from="*" to="/login" />
       </Switch>
     </>

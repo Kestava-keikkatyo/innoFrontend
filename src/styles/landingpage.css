@@ -1,0 +1,215 @@
+.landing-banner {
+  width: 100%;
+  height: 100vh;
+  background: url('../assets/ttk.jpg');
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: blur(2px) grayscale(1);
+  z-index: -99;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-card {
+  width: 50%;
+  padding: 15px;
+}
+
+.logo-card {
+  width: 100%;
+  height: 250px;
+}
+
+.logo {
+  width: 200px;
+  height: 100px;
+}
+
+.landing-part1,
+.landing-part4 {
+  width: 100%;
+  height: 100vh;
+}
+
+.landing-part41,
+.landing-part42 {
+  width: 100%;
+  max-height: 50% !important;
+}
+
+.landing-part2 {
+  background-color: #499437;
+  height: calc(100vh - 230px);
+}
+
+.landing-part3 {
+  background-color: #378394;
+}
+
+.landing-part4 {
+  background-color: #eb5a00;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.bg-green {
+  background: #499437 !important;
+}
+
+.part1 {
+  background-color: aliceblue;
+}
+
+.landing-title-container {
+  max-height: 5rem;
+}
+
+.landing-stepper {
+  position: absolute;
+  bottom: 20px;
+  left: calc(50% - 112px);
+  z-index: 1000;
+  background-color: #0000 !important;
+}
+
+.MuiMobileStepper-dot {
+  background-color: #f5005777 !important;
+}
+
+.MuiMobileStepper-dotActive {
+  background-color: rgb(110, 0, 110) !important;
+}
+
+.bw-logo {
+  filter: invert(1) grayscale(1) !important;
+  height: 100px;
+}
+
+.text-white {
+  color: #fffb !important;
+}
+
+.landing-bg-dark {
+  background-color: #000a;
+}
+
+.intro-container {
+  max-width: 450px;
+  height: 450px;
+  border-radius: 450px;
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
+}
+
+.landing-header-offset {
+  margin-top: 80px !important;
+}
+
+.landing-partner {
+  max-height: 150px;
+  filter: grayscale(1);
+  margin-right: 2rem;
+}
+
+.landing-partner-invert {
+  max-height: 150px;
+  filter: grayscale(1) invert(1);
+  margin-right: 2rem;
+}
+
+/**
+* Animation moving partners
+*/
+#partner-container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  max-height: 250px;
+  overflow: hidden;
+  display: flex !important;
+}
+
+#partner-box {
+  margin: 10px 0;
+  -webkit-animation-name: move;
+  -webkit-animation-duration: 8s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: right;
+  -webkit-animation-timing-function: linear;
+}
+
+#partner-box:hover {
+  -webkit-animation-play-state: paused;
+}
+
+@keyframes move {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: -1175px;
+  }
+}
+
+.lifespan-container {
+  display: flex !important;
+  height: 150px !important;
+  overflow: visible;
+}
+
+.lifespan-step {
+  margin: 1rem;
+  flex: 1;
+}
+
+.landing-nav-link {
+  color: #fff !important;
+  text-decoration: none !important;
+  font-weight: bolder !important;
+  padding-left: 2rem;
+}
+
+.landing-appbar {
+  background-color: #eb5a00aa !important;
+}
+
+.landing-login {
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+/* .lifespan-connector1 {
+  width: 100%;
+  height: 10px;
+  background: #499437;
+  position: absolute;
+  /* left: calc(-50% + 20px); 
+  right: calc(50% + 20px);
+  top: 20%;
+  flex: 1 1 auto;
+ } */
+/*
+.lifespan-connector2 {
+  width: 100%;
+  height: 10px;
+  background: #499437;
+  position: absolute;
+  left: calc(-50% + 20px);
+  right: calc(50% + 20px);
+  bottom: 20%;
+  flex: 1 1 auto;
+} */

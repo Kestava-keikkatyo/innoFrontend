@@ -10,6 +10,7 @@ import store from './utils/store'
 import history from './utils/history'
 
 import './index.css'
+import "./styles/landingpage.css"
 
 ReactDOM.render(
   <Provider store={store}>
