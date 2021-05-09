@@ -29,14 +29,7 @@
   height: 100px;
 }
 
-.orange,
-.blue,
-.green,
-.blank,
-.part1,
 .landing-part1,
-.landing-part2,
-.landing-part3,
 .landing-part4 {
   width: 100%;
   height: 100vh;
@@ -50,6 +43,7 @@
 
 .landing-part2 {
   background-color: #499437;
+  height: calc(100vh - 230px);
 }
 
 .landing-part3 {
@@ -72,8 +66,8 @@
   background-color: blue;
 }
 
-.green {
-  background-color: green;
+.bg-green {
+  background: #499437 !important;
 }
 
 .part1 {
@@ -174,18 +168,48 @@
 .lifespan-container {
   display: flex !important;
   height: 150px !important;
+  overflow: visible;
 }
 
 .lifespan-step {
   margin: 1rem;
+  flex: 1;
 }
 
-.lifespan-lines {
-  position: absolute;
-  width: 850px;
-  height: 200px;
-  border: 10px blue solid;
-  top: 80px;
-  left: 180px;
-  z-index: -1;
+.landing-nav-link {
+  color: #fff !important;
+  text-decoration: none !important;
+  font-weight: bolder !important;
+  padding-left: 2rem;
 }
+
+.landing-appbar {
+  background-color: #eb5a00aa !important;
+}
+
+.landing-login {
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+/* .lifespan-connector1 {
+  width: 100%;
+  height: 10px;
+  background: #499437;
+  position: absolute;
+  /* left: calc(-50% + 20px); 
+  right: calc(50% + 20px);
+  top: 20%;
+  flex: 1 1 auto;
+ } */
+/*
+.lifespan-connector2 {
+  width: 100%;
+  height: 10px;
+  background: #499437;
+  position: absolute;
+  left: calc(-50% + 20px);
+  right: calc(50% + 20px);
+  bottom: 20%;
+  flex: 1 1 auto;
+} */

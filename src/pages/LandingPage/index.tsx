@@ -1,16 +1,20 @@
 import React, { useState } from 'react'
 import {
-  Grid,
-  Typography,
   useTheme,
   Button,
   MobileStepper,
+  AppBar,
+  Toolbar,
+  Typography,
+  Grid,
 } from '@material-ui/core'
 import SwipeableViews from 'react-swipeable-views'
 import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons'
 import FooterPage from './FooterPage'
 import FirstLandingPage from './FirstLandingPage'
 import ContentLifeSpan from './ContentWorkLifeSpan'
+import ContentResponsibilities from './ContentResponsibilities'
+import { Link } from 'react-router-dom'
 
 const LandingPage = () => {
   const theme = useTheme()
@@ -21,6 +25,30 @@ const LandingPage = () => {
   }
   return (
     <div>
+      <AppBar position="fixed" elevation={0} className="landing-appbar">
+        <Toolbar className="toolbar" variant="dense">
+          <Button color="inherit">KEIKKAKAVERI</Button>
+          <Grid container>
+            <Typography>
+              <Link className="landing-nav-link" to="/home">
+                Työpöytä
+              </Link>
+            </Typography>
+
+            <Typography>
+              <Link className="landing-nav-link" to="/databank">
+                Tietopankki{' '}
+              </Link>
+            </Typography>
+          </Grid>
+
+          <Typography style={{ width: 150 }}>
+            <Link className="landing-login" to="/login">
+              Kirjaudu sisään{' '}
+            </Link>
+          </Typography>
+        </Toolbar>
+      </AppBar>
       <MobileStepper
         variant="dots"
         steps={4}
@@ -58,22 +86,7 @@ const LandingPage = () => {
          */}
         <FirstLandingPage />
         <ContentLifeSpan />
-        <Grid container className="landing-part3">
-          <Grid item xs={12} className="landing-title-container">
-            <Typography variant="h4" color="secondary">
-              Vastuualueet
-            </Typography>
-            <Button variant="contained" color="secondary">
-              Lue lisää
-            </Button>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            Part3
-          </Grid>
-          <Grid item xs={12} md={6}>
-            Part4
-          </Grid>
-        </Grid>
+        <ContentResponsibilities />
         <FooterPage />
       </SwipeableViews>
     </div>

@@ -8,32 +8,32 @@ import {
   Typography,
 } from '@material-ui/core'
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Spacing from '../../components/Spacing'
 
 export interface ContentLifeSpanProps {}
 
 const LifeSpanStep: React.FC<any> = ({ header, content, form }) => (
-  <>
-    <Card variant="outlined" className="lifespan-step">
-      <CardContent>
-        <Typography variant="body1">{header}</Typography>
-        <Spacing m2 />
-        <Typography variant="body2" color="textSecondary" gutterBottom>
-          {content}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <Typography color="textSecondary" gutterBottom>
-          {form}
-        </Typography>
-      </CardActions>
-    </Card>
-  </>
+  <Card variant="outlined" className="lifespan-step relative">
+    <CardContent>
+      <Typography variant="body1">{header}</Typography>
+      <Spacing m2 />
+      <Typography variant="body2" color="textSecondary" gutterBottom>
+        {content}
+      </Typography>
+    </CardContent>
+    <CardActions disableSpacing>
+      <Typography color="textSecondary" gutterBottom>
+        {form}
+      </Typography>
+    </CardActions>
+  </Card>
 )
 
 const ContentLifeSpan: React.FC<ContentLifeSpanProps> = () => {
   return (
     <Container>
+      <Spacing m5 p2 />
       <Grid
         container
         direction="row"
@@ -44,12 +44,15 @@ const ContentLifeSpan: React.FC<ContentLifeSpanProps> = () => {
           <Typography variant="h3">Työn elinkaari</Typography>
         </Grid>
         <Grid item>
-          <Button>Lue lisää elinkaaresta</Button>
+          <Link to="/databank" style={{ textDecoration: 'none' }}>
+            <Button color="secondary" variant="contained">
+              Lue lisää elinkaaresta
+            </Button>
+          </Link>
         </Grid>
       </Grid>
-
-      <Grid container className="relative">
-        <div className="lifespan-lines" />
+      <Spacing m5 />
+      <Grid container className="landing-part2">
         <Grid item className="lifespan-container">
           <Grid container>
             <Grid item xs={4}>
