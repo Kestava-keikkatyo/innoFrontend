@@ -36,7 +36,7 @@ Ideas for future development:
   2. Admin role: Develop a role for administration to maintain the userspace - adding articles to the "feed", managing users(enforcing terms etc).
   3. Seed data: 
   4. Documentation: Generating (automated) documentation for the codebase.
-  5. Testing: Much of the Frontend is not covered.
+  5. Testing: Much of the project is not covered.
 
 
 ## Instructions for developers
