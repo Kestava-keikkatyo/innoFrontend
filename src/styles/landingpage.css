@@ -46,24 +46,12 @@
   height: calc(100vh - 230px);
 }
 
-.landing-part3 {
-  background-color: #378394;
-}
-
 .landing-part4 {
   background-color: #eb5a00;
 }
 
 .bg-white {
   background-color: #fff;
-}
-
-.orange {
-  background-color: orange;
-}
-
-.blue {
-  background-color: blue;
 }
 
 .bg-green {
@@ -143,6 +131,7 @@
   display: flex !important;
 }
 
+/*TODO: HANDLE THIS WARNING*/
 #partner-box {
   margin: 10px 0;
   -webkit-animation-name: move;

@@ -25,7 +25,7 @@ const RoleResponsibilities: React.SFC<RoleResponsibilitiesProps> = () => {
   const [activeStep, setActiveStep] = useState(0)
   const [steps, setSteps] = useState(responsibilities.worker)
   const [showDetails, setShowDetails] = useState<any>(false)
-  const [header, setHeader] = useState<string>(roles.Worker)
+  const [header, setHeader] = useState<string>('Vuokratyöntekijä')
 
   const handleSwitch = (role: roles) => {
     switch (role) {

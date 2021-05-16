@@ -9,9 +9,7 @@ import {
 import { SearchIcon } from '@material-ui/data-grid'
 import React from 'react'
 import { Link } from 'react-router-dom'
-// import BestPractices from './BestPractices'
-// import RoleResponsibilities from './RoleResponsibilities'
-// import JobLifeline from './JobLifeline'
+import logo from '../assets/keikka-kaveri4.png'
 
 export interface DatabankProps {
   path: string
@@ -25,7 +23,20 @@ const DatabankRoute: React.FC<DatabankProps> = ({ path, children }) => {
     <div>
       <div className="databank-top-container relative">
         <div className="databank-banner" />
-        <div className="databank-logo" />
+
+        <div className="databank-logo">
+          <Link to="/" style={{ height: 200 }}>
+            <img src={logo} alt="keikkakaveri logo" />{' '}
+          </Link>
+        </div>
+
+        <div className="databank-desktop-link">
+          <Link to="/home" style={{ textDecoration: 'none' }}>
+            <Button variant="contained" color="primary">
+              Työpöytä
+            </Button>
+          </Link>
+        </div>
       </div>
       <Container>
         <Grid

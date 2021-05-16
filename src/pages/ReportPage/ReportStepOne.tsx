@@ -22,9 +22,9 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
           id="demo-simple-select"
           defaultValue=""
         >
-          <MenuItem value={10}>Businessi</MenuItem>
-          <MenuItem value={20}>HP yritys</MenuItem>
-          <MenuItem value={30}>Äiti</MenuItem>
+          <MenuItem value={10}>Työnantaja 1</MenuItem>
+          <MenuItem value={20}>Työnantaja 2</MenuItem>
+          <MenuItem value={30}>Työnantaja 3</MenuItem>
         </Select>
       </FormControl>
     </>

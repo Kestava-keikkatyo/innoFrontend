@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom'
 
 const LandingPage = () => {
   const theme = useTheme()
-  const [activeStep, setActiveStep] = useState(1)
+  const [activeStep, setActiveStep] = useState(0)
 
   const handleStepChange = (step: any) => {
     setActiveStep(step)
@@ -37,14 +37,14 @@ const LandingPage = () => {
 
             <Typography>
               <Link className="landing-nav-link" to="/databank">
-                Tietopankki{' '}
+                Tietopankki
               </Link>
             </Typography>
           </Grid>
 
           <Typography style={{ width: 150 }}>
             <Link className="landing-login" to="/login">
-              Kirjaudu sisään{' '}
+              Kirjaudu sisään
             </Link>
           </Typography>
         </Toolbar>
@@ -85,8 +85,8 @@ const LandingPage = () => {
          * First page
          */}
         <FirstLandingPage />
-        <ContentLifeSpan />
         <ContentResponsibilities />
+        <ContentLifeSpan />
         <FooterPage />
       </SwipeableViews>
     </div>

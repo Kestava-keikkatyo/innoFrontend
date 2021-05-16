@@ -34,6 +34,18 @@ code {
   box-shadow: 5px 5px 10px -2px rgba(0, 0, 0, 0.4);
 }
 
+.responsibilty-card {
+  background-color: white;
+  /* margin: 1rem 0 !important; */
+  margin-right: 1rem;
+  height: 600px !important;
+  overflow: auto;
+  border-radius: 4px;
+  border: 1px solid rgba(200, 200, 200, 150);
+  -webkit-box-shadow: 5px 5px 10px -2px rgba(0, 0, 0, 0.4);
+  box-shadow: 5px 5px 10px -2px rgba(0, 0, 0, 0.4);
+}
+
 .no-data-text {
   margin: auto !important;
   color: gray;
@@ -433,13 +445,29 @@ nav * {
 
 .databank-logo {
   position: absolute;
-  z-index: -4;
+  z-index: 4;
   top: calc(50% - 52px);
   left: calc(50% - 100px);
   width: 200px;
   height: 104px;
-  background-image: url('./assets/keikka-kaveri4.png');
-  background-size: contain;
+  /* background-image: url('./assets/keikka-kaveri4.png'); */
+  /* background-size: contain; */
+}
+
+.databank-logo img {
+  width: 200px;
+  height: 104px;
+}
+
+.databank-logo img:hover {
+  transform: scale(1.2);
+  transition: 1s ease-in-out;
+}
+
+.databank-desktop-link {
+  position: absolute;
+  right: 2rem;
+  top: 1rem;
 }
 
 .databank-nav {
@@ -500,4 +528,65 @@ nav * {
 .flip-enter-active,
 .flip-exit-active {
   transition: opacity 500ms, transform 500ms;
+}
+
+.triangle-card {
+  margin: 1rem;
+  border: #000a solid 1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 400px;
+  width: 400px;
+  border-radius: 3px;
+  background-color: #ffffff;
+  /* box-shadow: 10px 0 50px rgba(0, 0, 0, 0.5); */
+  overflow: hidden;
+}
+
+.triangle-h2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 20px 0 0 20px;
+  font-size: 44px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 15px;
+  color: #ffffffff;
+  mix-blend-mode: difference;
+}
+
+.triangle-p {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 0 20px 60px 20px;
+  font-size: 18px;
+  color: #ffffff;
+  mix-blend-mode: difference;
+}
+
+.triangle {
+  height: 100%;
+  width: 100%;
+  border-radius: 3px;
+  transform: rotate(70deg);
+  margin-top: -430px;
+  margin-left: 200px;
+}
+
+.triangle-content a {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 0 20px 20px 0;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 28px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 3px;
+  /* box-shadow: 10px 0 50px rgba(0, 0, 0, 0.5); */
 }

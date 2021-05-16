@@ -54,7 +54,7 @@ const App: React.FC = () => {
         <DatabankRoute path="/databank">
           <Databank />
         </DatabankRoute>
-        <PrivateRoute path="/induction">
+        <PrivateRoute path="/instruction">
           <InductionPage />
         </PrivateRoute>
         <PrivateRoute path="/profile">

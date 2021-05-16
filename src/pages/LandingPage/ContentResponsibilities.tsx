@@ -1,7 +1,19 @@
-import { Button, Container, Grid, Typography } from '@material-ui/core'
+import {
+  Button,
+  CardContent,
+  CardHeader,
+  Container,
+  Divider,
+  Grid,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+} from '@material-ui/core'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Spacing from '../../components/Spacing'
+import vastuualueet from '../../assets/tietopankki/vastuualueet.json'
 
 export interface ContentResponsibilitiesProps {}
 
@@ -29,13 +41,70 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
       <Spacing m5 />
       <Grid container className="landing-part3">
         <Grid item xs={12} md={4}>
-          Part3
+          <div className="responsibilty-card">
+            <CardHeader
+              action={
+                <Button variant="outlined" color="primary">
+                  Lue lisää
+                </Button>
+              }
+              title="Työntekijä"
+            />
+            <CardContent>
+              <List component="nav" aria-label="mailbox folders">
+                <Divider />
+                {vastuualueet.worker.map((e, i) => (
+                  <ListItem key={i} divider>
+                    <ListItemText primary={`${i + 1}. ${e.tip}`} />
+                  </ListItem>
+                ))}
+              </List>
+            </CardContent>
+          </div>
         </Grid>
         <Grid item xs={12} md={4}>
-          Part4
+          <div className="responsibilty-card">
+            <CardHeader
+              action={
+                <Button variant="outlined" color="primary">
+                  Lue lisää
+                </Button>
+              }
+              title="Käyttäjäyritys"
+            />
+            <CardContent>
+              <List component="nav" aria-label="mailbox folders">
+                <Divider />
+                {vastuualueet.business.map((e, i) => (
+                  <ListItem key={i} divider>
+                    <ListItemText primary={`${i + 1}. ${e.tip}`} />
+                  </ListItem>
+                ))}
+              </List>
+            </CardContent>
+          </div>
         </Grid>
         <Grid item xs={12} md={4}>
-          Part4
+          <div className="responsibilty-card">
+            <CardHeader
+              action={
+                <Button variant="outlined" color="primary">
+                  Lue lisää
+                </Button>
+              }
+              title="Vuokratyöyritys"
+            />
+            <CardContent>
+              <List component="nav" aria-label="mailbox folders">
+                <Divider />
+                {vastuualueet.agency.map((e, i) => (
+                  <ListItem key={i} divider>
+                    <ListItemText primary={`${i + 1}. ${e.tip}`} />
+                  </ListItem>
+                ))}
+              </List>
+            </CardContent>
+          </div>
         </Grid>
       </Grid>
     </Container>
