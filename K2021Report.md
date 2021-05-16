@@ -17,6 +17,7 @@
 ## Introduction
 
 ### What is KeikkaKaveri
+
 KeikkaKaveri is a web app developed to assist temporary workers in their work.
 
 KeikkaKaveri is developed by Metropolia in collaboration with (TODO)various organizations for Työturvallisuuskeskus(TTK, the Centre for Occupational Safety). 
@@ -28,17 +29,25 @@ The app is developed to (TODO)fit/implement parts of the model provided by Tampe
 
 ### Priorities and ideas for future developers
 
+Priorities for future development should revolve around the three-way-interface that includes the worker, their agency and the customer. The app should also continue to implement the TTY model.
+
+Ideas for future development:
+  1. Internationalization: Accessible in Finnish, Swedish and English.
+  2. Admin role: Develop a role for administration to maintain the userspace - adding articles to the "feed", managing users(enforcing terms etc).
+  3. Seed data 
+  4. Documentation: Generating (automated) documentation for the codebase.
+  5. Testing: Much of the project is not covered.
+
 
 ## Instructions for developers
 
 ### Stack
 
-(TODO)
 Frontend: React with Redux and Material UI
 
 Backend: Node.js with Express.js, MongoDB
 
-Testing/Deployment/Voodoo: AWS & Jenkins
+Testing/Deployment: AWS & Jenkins
 
 ### Setup
 
@@ -46,10 +55,18 @@ To run this project locally you need:
 
 * Node.js (lts)
 * Git
-* a text editor of your choosing
-* (TODO, Atlas? What about AWS?)Backend with MongoDB connection
+* A text editor of your choosing
+* Backend with MongoDB connection
 
 #### AWS
+
+TODO:
+Reference AWS documentation in this section.
+
+To publish static files in the build folder to s3-bucket, run
+```
+npm run deploy
+```
 
 #### Databases
 
