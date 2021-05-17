@@ -2,23 +2,23 @@
 
 ## Table of contents
 
-* [About](#about)
-* [Setup](#setup)
-  * [Cloning](#cloning)
-  * [VSCode](#vscode)
-  * [Running locally](#running-locally)
-* [Available scripts](#available-scripts)
-  * [Create React App scripts](#create-react-app-scripts)
-    * [npm start](#npm-start)
-    * [npm test](#npm-test)
-    * [npm run build](#npm-run-build)
-    * [npm run eject](#npm-run-eject)
-  * [npm run lint](#npm-run-lint)
-  * [npm run lint-and-fix](#npm-run-lint-and-fix)
-  * [npm run docs](#npm-run-docs)
-* [Tests](#tests)
-  * [Running tests once](#running-tests-once)
-  * [Creating coverage report](#creating-coverage-report)
+- [About](#about)
+- [Setup](#setup)
+  - [Cloning](#cloning)
+  - [VSCode](#vscode)
+  - [Running locally](#running-locally)
+- [Available scripts](#available-scripts)
+  - [Create React App scripts](#create-react-app-scripts)
+    - [npm start](#npm-start)
+    - [npm test](#npm-test)
+    - [npm run build](#npm-run-build)
+    - [npm run eject](#npm-run-eject)
+  - [npm run lint](#npm-run-lint)
+  - [npm run lint-and-fix](#npm-run-lint-and-fix)
+  - [npm run docs](#npm-run-docs)
+- [Tests](#tests)
+  - [Running tests once](#running-tests-once)
+  - [Creating coverage report](#creating-coverage-report)
 
 ## About
 
@@ -30,10 +30,10 @@ All the dependencies can be seen in the package.json file.
 
 To run this project locally you need:
 
-* Node.js (lts)
-* Git
-* VSCode
-* Backend with MongoDB connection
+- Node.js (lts)
+- Git
+- VSCode
+- Backend with MongoDB connection
 
 ### Cloning
 
@@ -130,7 +130,7 @@ JSDoc configuration can be changed in the jsdoc.json file.
 
 ## Tests
 
-Tests are created using Jest with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for React components. 
+Tests are created using Jest with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for React components.
 
 ### Running tests once
 
@@ -148,4 +148,4 @@ To create a coverage report, in this project directory:
 $ CI=true npm test -- --coverage
 ```
 
-A coverage report is created in the coverage folder of this project. Coverage folder contains both HTML and Cobertura reports. 
+A coverage report is created in the coverage folder of this project. Coverage folder contains both HTML and Cobertura reports.
