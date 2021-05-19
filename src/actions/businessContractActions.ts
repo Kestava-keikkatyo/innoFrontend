@@ -3,7 +3,7 @@
  * @desc Redux businessContract actions
  */
 import contractsService from '../services/contractsService'
-import { ACTIVATE_B_CONTRACT, ADD_B_CONTRACT, B_DELETE, B_FETCH, B_UPDATE, User } from '../types/state'
+import { ACTIVATE_B_CONTRACT, ADD_B_CONTRACT, B_DELETE, B_FETCH, B_UPDATE, DECLINE_B_CONTRACT } from '../types/state'
 import { businessContractType } from '../types/types'
 
 
@@ -16,6 +16,12 @@ export const updateSearchList = (input: string, searchType: businessContractType
   dispatch({ type: B_UPDATE, data: res.data })
 }
 
+/**
+ * @function
+ * @description
+ * Retrieves BusinessContracts from database.
+ * This can be used by every user type Worker, Business and Agency.
+ */
 export const fetchBusinessContracts = () => async (dispatch: any) => {
   const res = await contractsService.fetchBusinessContracts()
   dispatch({ type: B_FETCH, data: res })
@@ -35,13 +41,13 @@ export const deleteBusinessContractById = (id: string) => async (dispatch: any) 
 /**
  * @function
  * @desc Adds new business contract between logged in Agency user and Worker/Business user.
- * @param {User} user Business or Worker user
- * @param {businessContractType} type "Worker" or "Business"
+ * @param {string} contractId BusinessContract id
+ * @param {string} user Business or Worker id
  */
-export const addBusinessContract = (user: User, type: businessContractType) => async (dispatch: any) => {
-  const res = await contractsService.addBusinessContract(user._id, type)
-  if(res && res.status === 201)
-    dispatch({type: ADD_B_CONTRACT, data: { id: res.data.contract._id, user }})
+export const addBusinessContract = (contractId:string, userId: string) => async (dispatch: any) => {
+  const res = await contractsService.addBusinessContract(contractId,userId)
+  if(res && res.status === 200)
+    dispatch({type: ADD_B_CONTRACT, data: res.data })
 }
 
 /**
@@ -54,4 +60,17 @@ export const activateBusinessContract = (id: string) => async (dispatch: any) =>
   const res = await contractsService.updateBusinessContract(id)
   if( res.status === 200 )
     dispatch({ type: ACTIVATE_B_CONTRACT, data: id })
+}
+
+/**
+ * @function
+ * @description
+ * Used by Agency to decline BusinessContract with Worker or Business.
+ * @param {string} contractId The id of BusinessContract. 
+ * @param {string} userId The id of Worker or Business.
+ */
+export const declineBusinessContract = (contractId:string, userId:string) => async (dispatch:any) => {
+  const res = await contractsService.declineBusinessContract(contractId,userId)
+  if (res && res.status === 200)
+    dispatch({type: DECLINE_B_CONTRACT, data: res.data})
 }

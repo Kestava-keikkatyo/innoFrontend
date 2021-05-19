@@ -27,11 +27,11 @@ import { IRootState } from "../../utils/store"
  */
 const WorkerModal: React.FC<any> = ({ displayModal, closeModal, workerData }) => {
   const dispatch = useDispatch()
-  const { madeContracts } = useSelector((state: IRootState) => state.businessContracts)
+  const { businessContract } = useSelector((state: IRootState) => state.businessContracts)
   
   const addContract = () => {
-    if (!madeContracts.some((value: any) => value.business?._id === workerData._id || value.user?._id === workerData._id)) {
-      dispatch(addBusinessContract(workerData, workerData.feelings ? roles.Worker: roles.Business))
+    if (!businessContract.some((value: any) => value.requestContracts.businesses.includes(workerData._id)  || value.requestContracts.workers.includes(workerData._id))) {
+      dispatch(addBusinessContract(businessContract[0]._id, workerData._id))
       dispatch(setAlert("Success: Invitation sent to worker", severity.Success))
     } else {
       dispatch(setAlert("Failed: You allready have contract with this worker.", severity.Error))

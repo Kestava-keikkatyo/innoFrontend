@@ -92,7 +92,8 @@ export type BreadcrumbActionTypes = BreadcrumbAddAction | BreadcrumbSetAction
 
 export interface BusinessContractState {
   searchList: object[],
-  madeContracts: object[]
+  madeContracts: object[],
+  businessContract: object[]
 }
 
 export const ADD_B_CONTRACT = 'ADD_BUSINESS_CONTRACT'
@@ -100,6 +101,7 @@ export const B_FETCH = 'FETCH_BUSINESS_CONTRACTS'
 export const B_UPDATE = 'UPDATE_BUSINESS_SEARCH'
 export const B_DELETE = 'DELETE_BUSINESS_CONTRACT_BY_ID'
 export const ACTIVATE_B_CONTRACT = 'ACTIVATE_BUSINESS_CONTRACT'
+export const DECLINE_B_CONTRACT = 'DECLINE_BUSINESS_CONTRACT'
 
 interface ActivateBusinessContract {
   type: typeof ACTIVATE_B_CONTRACT
@@ -126,8 +128,13 @@ interface DeleteBusinessContractAction {
   data: any
 }
 
+interface DeclineBusinessCOntractAction {
+  type: typeof DECLINE_B_CONTRACT
+  data: any
+}
+
 export type BusinessContractActions = AddBusinessContractAction | BusinessContractFetchAction |
-UpdateBusinessSearchAction | DeleteBusinessContractAction | ActivateBusinessContract
+UpdateBusinessSearchAction | DeleteBusinessContractAction | ActivateBusinessContract | DeclineBusinessCOntractAction
 
 export interface WorkContractState {
   searchList: object[],

@@ -42,24 +42,25 @@ const searchUsers = async (input: string, searchType: businessContractType) => {
   }
 }
 
-const addBusinessContract = async (id: string, type: businessContractType) => {
+const addBusinessContract = async (contractId:string, userId: string) => {
   try {
-    switch (type) {
-      case 'worker':
-        return await axios.post(
-          `${baseUrl}/businesscontracts`,
-          { workerId: id },
-          authHeader()
-        )
-      case 'business':
-        return await axios.post(
-          `${baseUrl}/businesscontracts`,
-          { businessId: id },
-          authHeader()
-        )
-      default:
-        return console.log('Unknown type')
-    }
+    return await axios.put(
+      `${baseUrl}/businesscontracts/${contractId}/${userId}/accept`,
+      {},
+      authHeader()
+    )
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const declineBusinessContract = async (contractId:string, userId:string) => {
+  try {
+    return await axios.put(
+      `${baseUrl}/businesscontracts/${contractId}/${userId}/decline`,
+      {},
+      authHeader()
+    )
   } catch (error) {
     console.log(error)
   }
@@ -82,7 +83,7 @@ const fetchBusinessContracts = async () => {
       `${baseUrl}/businesscontracts?page=1&limit=10`,
       authHeader()
     )
-    return res.data.docs[0].businessContracts
+    return res.data.docs
   } catch (error) {
     return Promise.reject(error.response)
   }
@@ -124,7 +125,7 @@ const fetchWorkContracts = async () => {
       `${baseUrl}/workcontracts?page=1&limit=10`,
       authHeader()
     )
-    return res.data.docs[0].workContracts
+    return res.data.docs
   } catch (error) {
     return Promise.reject(error.response)
   }
@@ -140,6 +141,7 @@ const deleteWorkContractById = async (contractId: string) => {
 export default {
   searchUsers,
   addBusinessContract,
+  declineBusinessContract,
   deleteBusinessContractById,
   fetchBusinessContracts,
   updateBusinessContract,

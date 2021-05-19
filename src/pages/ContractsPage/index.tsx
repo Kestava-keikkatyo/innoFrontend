@@ -6,9 +6,8 @@ import { me } from '../../actions/userActions'
 import PageLoading from '../../components/PageLoading'
 import UserSearch from './UserSearch'
 import SearchTable from './SearchTable'
-import CurrentTable from './CurrentTable'
+import ContractsTable from './ContractsTable'
 import ContractModal from './ContractModal'
-
 import { Container, Typography, Divider, Card, CardContent, makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
@@ -76,15 +75,7 @@ const ContractsPage = () => {
           />
         </CardContent>
       </Card>
-      <Card className={classes.card} variant="outlined">
-        <CardContent>
-          <Typography gutterBottom variant="h5">
-            Current contracts
-          </Typography>
-          <Divider />
-          <CurrentTable />
-        </CardContent>
-      </Card>
+      <ContractsTable/>
     </Container>
   )
 }
