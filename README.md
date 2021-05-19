@@ -37,9 +37,9 @@ Ideas for future development:
 
 ### Stack
 
-Frontend: React with Redux and Material UI
+Frontend: React/Redux and Material UI
 
-Backend: Node.js with Express.js, MongoDB
+Backend: Node.js, Express.js and MongoDB
 
 Testing/Deployment: AWS & Jenkins
 
