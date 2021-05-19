@@ -50,7 +50,7 @@ To run this project locally you need:
 * Node.js (lts)
 * Git
 * A text editor of your choosing
-* Backend with MongoDB connection
+* [Backend](https://github.com/Kestava-keikkatyo/innoBackend) with MongoDB connection
 
 #### AWS
 
