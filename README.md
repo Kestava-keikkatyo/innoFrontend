@@ -18,7 +18,7 @@ KeikkaKaveri is a web app developed to assist temporary workers in their work.
 
 KeikkaKaveri is developed by Metropolia in collaboration with various organizations for Työturvallisuuskeskus(TTK, the Centre for Occupational Safety). 
 
-The app is developed to fit/implement parts of the model provided by Tampereen teknillinen yliopisto(TTY, Tampere University of Technology), namely the three-way communication of relevant parties (TODO)(agency, worker, customer) and to display information relevant to all who need it.
+The app is developed to fit/implement parts of the model provided by Tampereen teknillinen yliopisto(TTY, Tampere University of Technology), namely the three-way communication of relevant parties (agency, worker, customer business) and to display information relevant to all who need it.
 
 
 ### Priorities and ideas for future developers
