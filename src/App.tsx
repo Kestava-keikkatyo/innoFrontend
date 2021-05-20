@@ -1,30 +1,39 @@
-import React, { useEffect } from 'react'
-import { Switch, Route, Redirect, useLocation } from 'react-router-dom'
+import React, { useEffect } from "react";
+import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 
-import SnackbarNotification from './components/SnackbarNotification'
-import LandingPage from './pages/LandingPage'
-import LoginPage from './pages/LoginPage'
-import HomePage from './pages/HomePage'
-import ProfilePage from './pages/ProfilePage'
-import WorkersPage from './pages/WorkersPage'
-import ContractsPage from './pages/ContractsPage'
-import PrivateRoute from './components/PrivateRoute'
-import ProcessPage from './pages/ProcessPage'
-import TasksPage from './pages/TaskPage'
-import DocumentPage from './pages/DocumentPage'
-import FormsPage from './pages/FormsPage'
-import WorkerStatistics from './pages/WorkerStatistics'
-import { CssBaseline } from '@material-ui/core'
-import NewFormPage from './pages/FormsPage/NewFormPage'
-import FormPreviewPage from './pages/FormPreviewPage'
-import { roles } from './types/types'
-import InductionPage from './pages/InductionPage'
-import DatabankRoute from './components/DatabankRoute'
-import BestPractices from './pages/Databank/BestPractices'
-import JobLifeline from './pages/Databank/JobLifeline'
-import RoleResponsibilities from './pages/Databank/RoleResponsibilities'
-import Databank from './pages/Databank'
-import ReportPage from './pages/ReportPage'
+import SnackbarNotification from "./components/SnackbarNotification";
+import LandingPage from "./pages/LandingPage";
+import LoginPage from "./pages/LoginPage";
+import HomePage from "./pages/HomePage";
+import ProfilePage from "./pages/ProfilePage";
+import WorkersPage from "./pages/WorkersPage";
+import ContractsPage from "./pages/ContractsPage";
+import PrivateRoute from "./components/PrivateRoute";
+import ProcessPage from "./pages/ProcessPage";
+import TasksPage from "./pages/TaskPage";
+import DocumentPage from "./pages/DocumentPage";
+import FormsPage from "./pages/FormsPage";
+import WorkerStatistics from "./pages/WorkerStatistics";
+import { CssBaseline } from "@material-ui/core";
+import NewFormPage from "./pages/FormsPage/NewFormPage";
+import FormPreviewPage from "./pages/FormPreviewPage";
+import { roles } from "./types/types";
+import InductionPage from "./pages/InductionPage";
+import DatabankRoute from "./components/DatabankRoute";
+import BestPractices from "./pages/Databank/BestPractices";
+import JobLifeline from "./pages/Databank/JobLifeline";
+import RoleResponsibilities from "./pages/Databank/RoleResponsibilities";
+import Databank from "./pages/Databank";
+import ReportPage from "./pages/ReportPage";
+import Admin from "./pages/AdminPage";
+import AdminRoute from "./components/AdminRoute";
+import AdminDatabank from "./pages/AdminPage/AdminDatabank";
+import Users from "./pages/AdminPage/Users";
+import Agency from "./pages/AdminPage/Agency";
+import UserCompany from "./pages/AdminPage/UserCompany";
+
+
+
 
 /**
  * @component
@@ -42,6 +51,21 @@ const App: React.FC = () => {
         <Route exact path="/login">
           <LoginPage />
         </Route>
+        <AdminRoute path="/admin">
+          <Admin />
+        </AdminRoute>
+        <AdminRoute path="/admin/users">
+          <Users />
+        </AdminRoute>
+        <AdminRoute path="/admin/usercompany">
+          <UserCompany />
+        </AdminRoute>
+        <AdminRoute path="/admin/agency">
+          <Agency />
+        </AdminRoute>
+        <AdminRoute path="/admin/admindatabank">
+          <AdminDatabank />
+        </AdminRoute>
         <DatabankRoute path="/databank/lifeline">
           <JobLifeline />
         </DatabankRoute>
@@ -105,16 +129,16 @@ const App: React.FC = () => {
         <Redirect from="*" to="/login" />
       </Switch>
     </>
-  )
-}
+  );
+};
 
 const ScrollToTop = () => {
-  const { pathname } = useLocation()
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
-  return null
-}
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
 
-export default App
+export default App;
