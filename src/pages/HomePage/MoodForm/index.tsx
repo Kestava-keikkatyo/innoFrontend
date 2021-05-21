@@ -12,9 +12,11 @@ import SendIcon from '@material-ui/icons/Send'
 import CreateIcon from '@material-ui/icons/Create'
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions'
 import { Container } from '@material-ui/core'
-import ReportStepThree from '../../ReportPage/ReportStepThree'
+import MoodStepThree from '../../ReportPage/ReportStepThree'
 import ReportStepTwo from '../../ReportPage/ReportStepTwo'
 import MoodStepOne from './MoodStepOne'
+import { updateDataSet,updateFeeling } from '../../../actions/feelingActions'
+import { useDispatch } from 'react-redux'
 
 const ColorlibConnector = withStyles({
   alternativeLabel: {
@@ -120,6 +122,14 @@ const useStyles = makeStyles((theme) => ({
 const getSteps = () => {
   return ['Your mood', 'Fill details', 'Send']
 }
+/*
+
+const dispatch:any = useDispatch()
+
+const onAddMessage:any = (message: any) => {
+  dispatch(updateFeeling(message));
+};
+*/
 
 const getStepContent = (step: any) => {
   switch (step) {
@@ -128,13 +138,13 @@ const getStepContent = (step: any) => {
     case 1:
       return <ReportStepTwo />
     case 2:
-      return <ReportStepThree />
+      return <MoodStepThree />
     default:
       return <p>Unknown step</p>
   }
 }
 
-const MoodForm = () => {
+const MoodForm: React.FC<any> = ({ handleSubmit }) => {
   const classes = useStyles()
   const [activeStep, setActiveStep] = React.useState(0)
   const steps = getSteps()
@@ -192,7 +202,7 @@ const MoodForm = () => {
               </Button>
               <Button
                 variant="contained"
-                onClick={handleNext}
+                onClick={activeStep === steps.length - 1 ? handleSubmit : handleNext}
                 className={`${classes.button} ${classes.primary}`}
               >
                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}

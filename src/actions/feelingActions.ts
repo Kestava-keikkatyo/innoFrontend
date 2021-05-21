@@ -18,7 +18,7 @@ export const fetchFeelings = () => async (dispatch: any) => {
 /**
  * @function
  * @desc Updates the feelings.
- * @deprecated
+ *
  */
 export const updateFeeling = (data: any) => async (dispatch: any) => {
   dispatch({ type: SET_CURRENT_FEELING, data})
@@ -35,7 +35,7 @@ export const updateDataSet = () => async (dispatch: any) => {
 /**
  * @function
  * @desc This function posts a new feeling entry.
- * @param {Feeling} feeling 
+ * @param {Feeling} feeling
  * @todo post feeling palauttaa koko käyttäjä objektin,
  * muuta tämä palauttamaan vain postattu feeling objekti
  */
@@ -43,4 +43,5 @@ export const submitFeeling = (feeling: Feeling) => async (dispatch: any) => {
   const res = await feelingService.postFeeling(feeling)
   if(res.status === 200)
     dispatch({ type: ADD_FEELING, data: res.data })
+    console.log('Feeling: res.data: ', res.data)
 }

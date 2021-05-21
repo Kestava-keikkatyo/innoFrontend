@@ -1,14 +1,38 @@
 import { TextField, Typography } from '@material-ui/core'
-import React from 'react'
+import React, { ChangeEvent } from 'react'
 import FileUploader from '../../components/FileUploader'
 
-export interface ReportStepThreeProps {}
+import {submitFeeling, updateDataSet, updateFeeling} from '../../actions/feelingActions'
+import { useDispatch, useSelector } from 'react-redux'
+import { FeelingState, UPDATE_FEELING_DATASET } from '../../types/state'
+import { IRootState } from '../../utils/store'
+import { AnySchemaConstructor } from 'yup'
 
-const ReportStepThree: React.FC<ReportStepThreeProps> = () => {
+export interface ReportStepThreeProps {
+  //addMessage(message: any): void;
+}
+
+const ReportStepThree: React.FC<any> = () => {
+
+  const [message, setMessage]: any = React.useState('')
+
+  const dispatch:any = useDispatch()
+
+  const currentFeeling:any = useSelector<IRootState>(state => state.feeling.currentFeeling)
+
+
+
+  const updateMessage = (event: ChangeEvent<HTMLInputElement>) => {
+    setMessage(event.target.value);
+    currentFeeling.note = message
+    dispatch(updateFeeling(currentFeeling))
+    //addMessage(message)
+  };
+
   return (
     <>
       <Typography>Fill in Details</Typography>
-      <TextField multiline rows={4} variant="outlined" />
+      <TextField onChange={updateMessage} value={message} multiline rows={4} variant="outlined" />
       <FileUploader handleFile={() => ''}>
         <span>Upload file</span>
       </FileUploader>

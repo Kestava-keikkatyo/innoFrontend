@@ -14,12 +14,30 @@ import {
 import MoodForm from './MoodForm'
 import Spacing from '../../components/Spacing'
 
+import {submitFeeling} from '../../actions/feelingActions'
+import { useDispatch, useSelector } from 'react-redux'
+import { FeelingState } from '../../types/state'
+import { IRootState } from '../../utils/store'
+import { AnySchemaConstructor } from 'yup'
+
 const WorkerHome = () => {
+
+  const dispatch = useDispatch()
+
+  const currentFeeling:any = useSelector<IRootState>(state => state.feeling.currentFeeling)
+
+  const onHandleSubmit = () => {
+    console.log("### currentFeeling:", currentFeeling)
+    dispatch(submitFeeling(currentFeeling))
+    console.log("### currentFeeling submitted")
+
+  }
+
   return (
     <Grid container>
       <Grid item xs={12} md={6}>
         <Spacing mr5>
-          <MoodForm />
+          <MoodForm handleSubmit={onHandleSubmit} />
         </Spacing>
       </Grid>
       <Grid item xs={12} md={6}>
