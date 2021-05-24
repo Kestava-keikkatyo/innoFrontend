@@ -16,7 +16,7 @@
 
  /**
   * @function
-  * @desc Redux feeling reducer that controls the feeling state.
+  * @desc Redux file reducer that controls the file state.
   * @param {FileState} state - initial state
   * @param {A} action - dispatched action
   */
@@ -25,7 +25,7 @@
       case SET_CURRENT_FILE:
         return {
           ...state,
-          currentUpload: {
+          currentFile: {
             ...state.currentFile,
             ...action.data
           }
