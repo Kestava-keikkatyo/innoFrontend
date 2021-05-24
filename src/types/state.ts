@@ -15,11 +15,53 @@ export interface LoggedInUser extends User {
   token: string,
 }
 
+export const AGENCY_FETCH = 'AGENCY_FETCH'
+export const AGENCY_UPDATE = 'AGENCY_FETCH'
+export const USERCOMPANY_FETCH = 'USERCOMPANY_FETCH'
+export const USERCOMPANY_UPDATE = 'AGENCY_FETCH'
+export const WORKERS_FETCH = 'WORKERS_FETCH'
+export const WORKER_UPDATE = 'AGENCY_FETCH'
+
+
+interface FetchWorkers {
+  type: typeof WORKERS_FETCH
+  data: any
+}
+
+interface FetchUserCompanies {
+  type: typeof USERCOMPANY_FETCH
+  data: any
+}
+
+interface FetchAgencyCompanies {
+  type: typeof USERCOMPANY_FETCH
+  data: any
+}
+interface UpdateWorker {
+  type: typeof WORKER_UPDATE
+  data: any
+}
+interface UpdateAgency {
+  type: typeof AGENCY_UPDATE
+  data: any
+}
+
+interface UpdateUserCompany {
+  type: typeof AGENCY_UPDATE
+  data: any
+}
+
+
+export type AdminActionTypes = FetchAgencyCompanies | FetchUserCompanies | FetchWorkers | UpdateAgency | UpdateUserCompany | UpdateWorker
+
 export const LOGIN = 'USER_LOGIN'
 export const LOGOUT = 'USER_LOGOUT'
 export const USER_REQUEST = 'USER_REQUEST'
 export const USER_FAILURE = 'USER_FAILURE'
 export const USER_PROFILE = 'USER_PROFILE'
+
+
+
 
 interface UserProfileAction {
   type: typeof USER_PROFILE
