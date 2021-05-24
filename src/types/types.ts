@@ -57,6 +57,10 @@ export interface Feeling {
   isPrivate: boolean
 }
 
+export interface File{
+  file: {}
+}
+
 export enum questionTypes {
   Comment = 'comment',
   Text = 'text',

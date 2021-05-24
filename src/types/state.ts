@@ -1,4 +1,4 @@
-import { Feeling, Form, roles, severity } from "./types"
+import {File, Feeling, Form, roles, severity } from "./types"
 
 export interface User {
   _id: string,
@@ -174,11 +174,22 @@ export interface FeelingState {
   feelings: Feeling[]
 }
 
+export interface FileState {
+  currentFile: File
+}
+
 export const ADD_FEELING = 'ADD_FEELING'
 export const FETCH_FEELINGS = 'FETCH_FEELINGS'
 export const CLEAR_CURRENT_FEELING = 'CLEAR_CURRENT_FEELING'
 export const SET_CURRENT_FEELING = 'SET_CURRENT_FEELING'
 export const UPDATE_FEELING_DATASET = 'UPDATE_FEELING_DATASET'
+
+export const SET_CURRENT_FILE = 'SET_CURRENT_FILE'
+
+export interface SetCurrentFileAction {
+  type: typeof SET_CURRENT_FILE
+  data: any
+}
 
 interface AddFeelingAction {
   type: typeof ADD_FEELING
@@ -207,6 +218,8 @@ interface UpdateFeelingDatasetAction {
 
 export type FeelingActionTypes = AddFeelingAction | FetchFeelingsAction | ClearCurrentFeelingAction |
 SetCurrentFeelingAction | UpdateFeelingDatasetAction
+
+export type FileActionTypes = SetCurrentFileAction
 
 export const SET_CURRENT_FORM = "SET_CURRENT_FORM"
 export const UPDATE_TITLE = "UPDATE_TITLE"

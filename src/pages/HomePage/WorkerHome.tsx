@@ -15,10 +15,11 @@ import MoodForm from './MoodForm'
 import Spacing from '../../components/Spacing'
 
 import {submitFeeling} from '../../actions/feelingActions'
+import {submitFile} from '../../actions/fileActions'
 import { useDispatch, useSelector } from 'react-redux'
-import { FeelingState } from '../../types/state'
+
 import { IRootState } from '../../utils/store'
-import { AnySchemaConstructor } from 'yup'
+
 
 const WorkerHome = () => {
 
@@ -26,8 +27,12 @@ const WorkerHome = () => {
 
   const currentFeeling:any = useSelector<IRootState>(state => state.feeling.currentFeeling)
 
+  let currentFile:any = useSelector<IRootState>(state => state.file.currentFile)
+
   const onHandleSubmit = () => {
     console.log("### currentFeeling:", currentFeeling)
+    console.log("### currentFile:", currentFile)
+    dispatch(submitFile(currentFile))
     dispatch(submitFeeling(currentFeeling))
     console.log("### currentFeeling submitted")
 

@@ -15,8 +15,6 @@ import { Container } from '@material-ui/core'
 import MoodStepThree from '../../ReportPage/ReportStepThree'
 import ReportStepTwo from '../../ReportPage/ReportStepTwo'
 import MoodStepOne from './MoodStepOne'
-import { updateDataSet,updateFeeling } from '../../../actions/feelingActions'
-import { useDispatch } from 'react-redux'
 
 const ColorlibConnector = withStyles({
   alternativeLabel: {
@@ -122,32 +120,24 @@ const useStyles = makeStyles((theme) => ({
 const getSteps = () => {
   return ['Your mood', 'Fill details', 'Send']
 }
-/*
-
-const dispatch:any = useDispatch()
-
-const onAddMessage:any = (message: any) => {
-  dispatch(updateFeeling(message));
-};
-*/
-
-const getStepContent = (step: any) => {
-  switch (step) {
-    case 0:
-      return <MoodStepOne />
-    case 1:
-      return <ReportStepTwo />
-    case 2:
-      return <MoodStepThree />
-    default:
-      return <p>Unknown step</p>
-  }
-}
 
 const MoodForm: React.FC<any> = ({ handleSubmit }) => {
   const classes = useStyles()
   const [activeStep, setActiveStep] = React.useState(0)
   const steps = getSteps()
+
+  const getStepContent = (step: any) => {
+    switch (step) {
+      case 0:
+        return <MoodStepOne />
+      case 1:
+        return <ReportStepTwo />
+      case 2:
+        return <MoodStepThree/>
+      default:
+        return <p>Unknown step</p>
+    }
+  }
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1)
@@ -159,6 +149,11 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
 
   const handleReset = () => {
     setActiveStep(0)
+  }
+
+  const handleFinnish = () => {
+    handleSubmit()
+    setActiveStep(steps.length)
   }
 
   return (
@@ -200,13 +195,24 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
               >
                 Back
               </Button>
-              <Button
-                variant="contained"
-                onClick={activeStep === steps.length - 1 ? handleSubmit : handleNext}
-                className={`${classes.button} ${classes.primary}`}
-              >
-                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-              </Button>
+
+              {activeStep === steps.length - 1 ? (
+                  <Button
+                    variant="contained"
+                    onClick={handleFinnish}
+                    className={`${classes.button} ${classes.primary}`}
+                    >
+                    Finish
+                  </Button>
+                ) : (
+                  <Button
+                  variant="contained"
+                  onClick={handleNext}
+                  className={`${classes.button} ${classes.primary}`}
+                  >
+                  Next
+                  </Button>
+              )}
             </div>
           </Container>
         )}
@@ -216,3 +222,5 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
 }
 
 export default MoodForm
+
+

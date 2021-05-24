@@ -63,7 +63,7 @@ export interface PrivateRouteProps {
    */
   accept?: string
   /**
-   * Child components which are rendered inside button. 
+   * Child components which are rendered inside button.
    */
   children: React.ReactNode
 }

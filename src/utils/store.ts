@@ -2,6 +2,7 @@
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
 import userReducer from '../reducers/userReducer'
+import fileReducer from '../reducers/fileReducer'
 import alertReducer from '../reducers/alertReducer'
 import businessContractReducer from '../reducers/businessContractReducer'
 import workContractReducer from '../reducers/workContractReducer'
@@ -21,6 +22,7 @@ const reducer = combineReducers({
   feeling: feelingReducer,
   form: formReducer,
   formList: formListReducer,
+  file: fileReducer
 })
 
 export type IRootState = ReturnType<typeof reducer>
