@@ -42,11 +42,11 @@ const searchUsers = async (input: string, searchType: businessContractType) => {
   }
 }
 
-const addBusinessContract = async (contractId:string, userId: string) => {
+const addBusinessContract = async (contractId:string, userId: string, form?:string) => {
   try {
     return await axios.put(
       `${baseUrl}/businesscontracts/${contractId}/${userId}/accept`,
-      {},
+      {form},
       authHeader()
     )
   } catch (error) {

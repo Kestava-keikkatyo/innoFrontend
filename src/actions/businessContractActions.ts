@@ -44,8 +44,8 @@ export const deleteBusinessContractById = (id: string) => async (dispatch: any) 
  * @param {string} contractId BusinessContract id
  * @param {string} user Business or Worker id
  */
-export const addBusinessContract = (contractId:string, userId: string) => async (dispatch: any) => {
-  const res = await contractsService.addBusinessContract(contractId,userId)
+export const addBusinessContract = (contractId:string, userId: string, form?:string) => async (dispatch: any) => {
+  const res = await contractsService.addBusinessContract(contractId,userId,form)
   if(res && res.status === 200)
     dispatch({type: ADD_B_CONTRACT, data: res.data })
 }

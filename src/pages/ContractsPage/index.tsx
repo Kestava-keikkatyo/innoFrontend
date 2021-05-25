@@ -72,6 +72,7 @@ const ContractsPage = () => {
             displayModal={displayModal}
             closeModal={() => setDisplayModal(false)}
             workerData={searchData}
+            forms={user.profile.forms}
           />
         </CardContent>
       </Card>
