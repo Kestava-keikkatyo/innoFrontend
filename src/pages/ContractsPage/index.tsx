@@ -62,7 +62,7 @@ const ContractsPage = () => {
       <Card className={classes.card} variant="outlined">
         <CardContent>
           <Typography gutterBottom variant="h5">
-            Make contract
+            Tee sopimus
           </Typography>
           <UserSearch />
           <Divider />
