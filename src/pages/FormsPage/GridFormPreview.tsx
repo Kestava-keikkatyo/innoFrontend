@@ -4,10 +4,14 @@ import EditIcon from '@material-ui/icons/Edit'
 import MoveToInboxIcon from '@material-ui/icons/MoveToInbox'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import { GridFormPreviewProps } from "../../types/props"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { setFormById } from "../../actions/formActions"
 import { useHistory } from "react-router"
+import formServices from "../../services/formServices"
 
+import pdfMake from 'pdfmake/build/pdfmake.js';
+import pdfFonts from 'pdfmake/build/vfs_fonts.js';
+import htmlToPdfmake from 'html-to-pdfmake'
 
 const FormMenuDropDown = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -53,6 +57,165 @@ const GridFormPreview: React.FC<GridFormPreviewProps> = ({ formTitle, formDesc, 
     dispatch(setFormById(formId))
     history.push(`/forms/newform`)
   }
+
+  const handleDownload = async () => {
+    let form:any = await formServices.fetchFormById(formId)
+    console.log("form ", form)
+
+    pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+    // pdf styles
+    let styles:any = {
+      title: {
+        fillColor: '#000',
+        color:'#000',
+        fontSize:16,
+        bold: true,
+        margin:[0,0,0,15]
+      },
+      description:{
+        fillColor: '#000',
+        color:'#00f',
+        fontSize:12,
+        margin:[0,0,0,15]
+      },
+      question: {
+        width: '100%',
+        fontSize: 14,
+        bold: true,
+        margin:[0,0,0,15],
+      },
+      answer: {
+        width: '100%',
+        fontSize: 12,
+        margin:[0,0,0,15],
+        color:'#57585a'
+      },
+      subTitle:{
+        fontSize: 11,
+        margin:[0,0,0,15],
+        color:'darkGray'
+      },
+      date: {
+        color:'#ff0000'
+      },
+      option:{
+        width: '100%',
+        fontSize: 12,
+        color: 'red',
+        margin:[0,0,0,15]
+      }
+    }
+
+    // pdf content
+    let content:any = []
+
+    content.push([
+      {text: formTitle,style: 'title'},
+      {text: formDesc,style: 'description'}
+    ]);
+
+
+    {form.questions.map((q: any | null, k:number) => (
+
+      // comment
+      (q && q.questionType === 'comment' ? content.push(
+          {text: q.title, style: 'question'}
+        ) : null
+      ),
+      // text
+      (q && q.questionType === 'text' ? content.push(
+        [
+          {text: q.title, style: 'question'},
+          {text: q.subtitle,  style: 'subTitle'}
+        ]
+       ) : null
+      ),
+      // textarea
+      (q && q.questionType === 'textarea' ? content.push(
+        [
+          {text: q.title, style: 'question'},
+          {text: q.subtitle, style: 'subTitle'}
+        ]
+       ) : null
+      ),
+      // checkbox
+      (q && q.questionType === 'checkbox' ? content.push(
+        [
+          {text: q.title, style: 'question'},
+          {text: q.subtitle, style: 'subTitle'}
+        ]
+       ) : null
+      ),
+      // checkbox_group
+      (q && q.questionType === 'checkbox_group' ? content.push(
+        [
+          {text: q.title, style: 'question'},
+          {text: q.subtitle, style: 'subTitle'}
+        ]
+       ) : null,
+       (q && q.questionType==='checkbox_group' && q.options ? q.options.map((option: any) => (
+        (option ? content.push(
+          {text: option, style: 'option'}
+        ) : null)
+       )): null)
+      ),
+      // radiobutton_group
+      (q && q.questionType === 'radiobutton_group' ? content.push(
+        [
+          {text: q.title, style: 'question'},
+          {text: q.subtitle, style: 'subTitle'}
+        ]
+       ) : null,
+       (q && q.questionType==='radiobutton_group' && q.options ? q.options.map((option: any) => (
+        (option ? content.push(
+          {text: option, style: 'option'}
+        ) : null)
+       )): null)
+      ),
+      // radiobutton_group_horizontal
+      (q && q.questionType === 'radiobutton_group_horizontal' ? content.push(
+        [
+          {text: q.title, style: 'question'},
+          {text: q.subtitle, style: 'subTitle'} /*,
+          {text: q.scaleOptionTitleCenter},
+          {text: q.scaleOptionTitleLeft},
+          {text:q.scaleOptionTitleRight} */
+        ]
+       ) : null,
+       (q && q.questionType==='radiobutton_group_horizontal' && q.options ? q.options.map((option: any) => (
+        (option ? content.push(
+          {text: option, style: 'option'}
+        ) : null)
+       )): null)
+      ),
+      // "contact_information"
+      (q && q.questionType === 'contact_information' ? content.push(
+        [
+          {text: q.title, style: 'question'},
+          {text: q.subtitle, style: 'subTitle'}
+        ]
+       ) : null
+      )
+
+    ))
+    };
+
+    // test html to pdf make
+    let p:any = htmlToPdfmake(`<p>date: 03.03.2017</p>`);
+    content.push(p)
+
+    // pdf document
+    var doc = {
+      content: content,
+      styles: styles
+    };
+
+    pdfMake.createPdf(doc).download(formTitle);
+
+  }
+
+
   return (
     <li>
       <Card style={{width: '400px'}}>
@@ -77,7 +240,8 @@ const GridFormPreview: React.FC<GridFormPreviewProps> = ({ formTitle, formDesc, 
           <IconButton aria-label="add to favorites" onClick={handleClick}>
             <EditIcon />
           </IconButton>
-          <IconButton aria-label="share">
+
+          <IconButton aria-label="share" onClick={handleDownload}>
             <MoveToInboxIcon />
           </IconButton>
         </CardActions>
