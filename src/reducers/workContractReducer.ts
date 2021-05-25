@@ -6,7 +6,8 @@ import { ADD_W_CONTRACT, WorkContractState, WorkContractActionTypes, W_DELETE, W
 
 const initialState: WorkContractState = {
   searchList: [],
-  madeContracts: []
+  madeContracts: [],
+  workContracts: []
 }
 
 /**
@@ -25,7 +26,7 @@ const workContractReducer = (state: WorkContractState = initialState, action: Wo
     case W_FETCH:
       return {
         ...state,
-        madeContracts: action.data
+        workContracts: action.data
       }
     case W_DELETE:
       const filteredList = state.madeContracts.filter((value: any) => value._id !== action.data)

@@ -180,7 +180,8 @@ UpdateBusinessSearchAction | DeleteBusinessContractAction | ActivateBusinessCont
 
 export interface WorkContractState {
   searchList: object[],
-  madeContracts: object[]
+  madeContracts: object[],
+  workContracts: object[]
 }
 
 export const ADD_W_CONTRACT = 'ADD_WORK_CONTRACT'

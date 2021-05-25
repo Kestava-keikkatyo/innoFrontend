@@ -1,9 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import WorkerSearch from './WorkerSearch'
-import SearchTable from './SearchTable'
-import WorkerModal from './WorkerModal'
-import CurrentWorkerTable from "./CurrentWorkerTable";
-
 import {
   Card,
   Container,
@@ -12,8 +8,13 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { IRootState } from '../../utils/store';
+import { fetchWorkContracts } from '../../actions/workContractActions';
+import { fetchBusinessContracts } from '../../actions/businessContractActions';
+import MakeWorkContracts from './MakeWorkContracts';
+import WorkerModal from './WorkerModal';
+import ManageWorkContracts from './ManageWorkContracts';
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -32,10 +33,17 @@ const useStyles = makeStyles((theme) => ({
  * - Creates workcontract between worker and business (agency view)
  */
 const WorkersPage = () => {
-  const workContracts = useSelector((state: IRootState) => state.workContracts)
+  const { businessContract } = useSelector((state:IRootState) => state.businessContracts)
+  const { workContracts } = useSelector((state: IRootState) => state.workContracts)
   const [workerData, setWorkerData] = useState(null)
   const [displayModal, setDisplayModal] = useState(false)
   const classes = useStyles()
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    dispatch(fetchBusinessContracts())
+    dispatch(fetchWorkContracts())
+  },[dispatch])
 
   const openModal = (worker: any) => {
     setWorkerData(worker)
@@ -45,36 +53,23 @@ const WorkersPage = () => {
   return (
     <Container maxWidth="lg">
       <Typography style={{ paddingTop: '1rem' }} align="center" variant="h4">
-        Workers
+        Make WorkContracts 
       </Typography>
       <Card className={classes.card} variant="outlined">
         <CardContent>
           <Typography gutterBottom variant="h5" align="center">
-            add workers to businesses
+            Make workContract for Business that has BusinessContract with you.
           </Typography>
           <WorkerSearch />
           <Divider />
-          {workContracts.searchList.length ?
-            <SearchTable
-              addWorker={openModal}  /> :
-            <Typography style={{ padding: '1rem' }} variant="h6" align="center">
-              nothing here
-            </Typography>
-          }
+          <MakeWorkContracts addWorker={openModal}
+          madeContracts={businessContract.length >= 1 ? businessContract[0].madeContracts.businesses : []}/>
+          <WorkerModal
+          modalState={{displayModal,setDisplayModal}}
+          workerData={workerData}/>
         </CardContent>
       </Card>
-      <WorkerModal
-        modalState={{displayModal, setDisplayModal}}
-        workerData={workerData}
-      />
-      <Card className={classes.card} variant="outlined">
-        <CardContent>
-          <Typography gutterBottom variant="h5" align="center">
-            current workers
-          </Typography>
-          <CurrentWorkerTable />
-        </CardContent>
-      </Card>
+      <ManageWorkContracts workContracts={workContracts}/>
     </Container>
   )
 }
