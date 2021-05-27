@@ -31,6 +31,7 @@ import AdminDatabank from "./pages/AdminPage/AdminDatabank";
 import Users from "./pages/AdminPage/Users";
 import Agency from "./pages/AdminPage/Agency";
 import UserCompany from "./pages/AdminPage/UserCompany";
+import BusinessContractPage from "./pages/BusinessContractsPage";
 
 
 
@@ -101,6 +102,9 @@ const App: React.FC = () => {
         </PrivateRoute>
         <PrivateRoute path="/contracts" roles={[roles.Agency]}>
           <ContractsPage />
+        </PrivateRoute>
+        <PrivateRoute path="/bcontracts" roles={[roles.Business]}>
+          <BusinessContractPage />
         </PrivateRoute>
         <PrivateRoute
           path="/forms/newform/preview"
