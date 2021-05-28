@@ -31,6 +31,11 @@ export interface GridFormPreviewProps {
   formId: string
 }
 
+export interface FormProps{
+
+  currentForm: object
+}
+
 /**
  * @interface
  * Private routes props.
