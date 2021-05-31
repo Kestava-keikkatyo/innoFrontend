@@ -28,62 +28,63 @@
   * @param {File} upload new file object
   */
  const postFile = async (upload: File) => {
-   //return await axios.post(baseUrl, file, authHeader())
 
-   console.log("SERVICE upload",upload)
-
-   let fileUploaded:any = upload.file
-
-   let file:any = fileUploaded.name;
-   // split the filename to get the name and type
-   let fileParts = fileUploaded.name.split('.');
-  console.log("fileUploaded",fileUploaded.name)
-   let fileName = fileParts[0]
-   let fileType = fileParts[1]
-   console.log("preparing the upload")
-
-   // Generate unique id to add it to the filename, since AWS S3 overrides files which have the same name
-   const uniqueId = uuidv4()+'-'
-
-   file = uniqueId+file;
-   fileName = uniqueId+fileName;
-
-   let newFile:any = {
-    file: file,
-    fileName: fileName,
-    fileType: fileType
-  }
-
-  let res:any ={
-    data:{
-      mediaUrl:''
+   let res:any ={
+      data:{
+        fileUrl:''
+      }
     }
-  }
 
-   await axios.post(baseUrl, newFile).then(response => {
-     let returnData = response.data.data.returnData
-     let signedReguest = returnData.signedRequest
-     let url = returnData.url
-     res.data.mediaUrl = returnData.url
+    console.log("SERVICE upload",upload)
 
-     console.log("retrunData ", returnData)
-     console.log("signedReguest ", signedReguest)
-     console.log("url ",url)
+    let fileUploaded:any = upload.file
 
-     // put the fileType in the headers for the upload
-     let options = {
-       headers:{
-         'content-Type': newFile.fileType
-       }
-     }
+    // get the filename and replace the space or multiple spaces with '-'
+    let filename:any = fileUploaded.name.replace(/\s+/g, '-');
 
-     axios.put(signedReguest, fileUploaded, options).then(result => {
-       console.log("Response from s3")
-     }).catch(error => {console.log(error)})
 
-   })
-   console.log("file uploaded successfully");
-   return res
+    // Generate unique id to add it to the filename, since AWS S3 overrides files which have the same name
+    const uniqueId = uuidv4()+'-'
+
+    filename = uniqueId+filename;
+
+    // get the file type
+    let fileType:any = fileUploaded.type
+
+    // split the file type 'image/png' to get the type and the extention separately
+    let typeParts = fileType.split('/');
+    let typePartOne:any = typeParts[0]
+    let typePartTwo = typeParts[1]
+
+    let newFile:any = {
+      file: filename,
+      fileType: fileType,
+      typePartOne: typePartOne,
+      typePartTwo: typePartTwo
+    }
+
+    await axios.post(baseUrl, newFile).then(response => {
+      let returnData = response.data.data.returnData
+      let signedReguest = returnData.signedRequest
+      let url = returnData.url
+      res.data.fileUrl = returnData.url
+
+      console.log("retrunData ", returnData)
+
+      // put the fileType in the headers for the upload
+      let options = {
+        headers:{
+          'content-Type': newFile.fileType
+        }
+      }
+
+      axios.put(signedReguest, fileUploaded, options).then(result => {
+        console.log("Response from s3")
+      }).catch(error => {console.log(error)})
+
+    })
+    console.log("file uploaded successfully");
+    return res
 
  }
 

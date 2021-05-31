@@ -12,6 +12,7 @@ import { IRootState } from "../../../utils/store"
 import { FeelingState } from '../../../types/state'
 import {updateFeeling}  from '../../../actions/feelingActions'
 
+
 const MoodStepOne: React.FC = () => {
   const useStyles = makeStyles({
     clickableIconGreen: {
@@ -34,9 +35,9 @@ const MoodStepOne: React.FC = () => {
 
   const currentFeeling:any = useSelector<IRootState>(state => state.feeling.currentFeeling)
 
-  const updateMood = (value:any) => {
-    currentFeeling.value = value
-    console.log("currentFeeling.value: ", currentFeeling.value)
+  const updateMood = (v:any) => {
+    currentFeeling.value = v
+    console.log('MoodStepOne:currentFeeling:', currentFeeling)
     dispatch(updateFeeling(currentFeeling))
   };
 

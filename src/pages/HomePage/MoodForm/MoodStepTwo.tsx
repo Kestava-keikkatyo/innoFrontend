@@ -1,48 +1,60 @@
+import 'date-fns'
 import React from 'react'
-import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied'
-import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied'
-import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt'
-import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied'
-import { Grid, makeStyles } from '@material-ui/core'
+import Grid from '@material-ui/core/Grid'
+import DateFnsUtils from '@date-io/date-fns'
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from '@material-ui/pickers'
+import { Typography } from '@material-ui/core'
+import { useDispatch, useSelector } from 'react-redux'
+import { IRootState } from '../../../utils/store'
+import { updateFeeling} from '../../../actions/feelingActions'
 
-const MoodStepTwo: React.FC = () => {
-  const useStyles = makeStyles({
-    clickableIconGreen: {
-      color: '#ccc',
-      '&:hover': {
-        color: '#444',
-      },
-      width: 60,
-      height: 60,
-    },
-    flexCenter: {
-      display: 'flex',
-      justifyContent: 'center',
-    },
-  })
 
-  const classes = useStyles()
+const MoodStepTwo = () =>{
+// The first commit of Material-UI
+const [selectedDate, setSelectedDate] = React.useState(
+  new Date('2014-08-18T21:11:54')
+)
 
-  return (
-    <>
-      <Grid container className="mood-step-one" justify="center">
-        <Grid item className={classes.flexCenter} xs={3}>
-          <SentimentVeryDissatisfiedIcon
-            className={classes.clickableIconGreen}
-          />
-        </Grid>
-        <Grid item className={classes.flexCenter} xs={3}>
-          <SentimentDissatisfiedIcon className={classes.clickableIconGreen} />
-        </Grid>
-        <Grid item className={classes.flexCenter} xs={3}>
-          <SentimentSatisfiedIcon className={classes.clickableIconGreen} />
-        </Grid>
-        <Grid item className={classes.flexCenter} xs={3}>
-          <SentimentSatisfiedAltIcon className={classes.clickableIconGreen} />
-        </Grid>
-      </Grid>
-    </>
-  )
+const handleDateChange = (date: any) => {
+  setSelectedDate(date)
 }
 
+return (
+  <>
+    <Typography>When did this happen?</Typography>
+    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <Grid container justify="space-around">
+        <KeyboardDatePicker
+          disableToolbar
+          variant="inline"
+          format="MM/dd/yyyy"
+          margin="normal"
+          id="date-picker-inline"
+          label="Date picker inline"
+          value={selectedDate}
+          onChange={handleDateChange}
+          KeyboardButtonProps={{
+            'aria-label': 'change date',
+          }}
+        />
+        <KeyboardTimePicker
+          margin="normal"
+          id="time-picker"
+          label="Time picker"
+          value={selectedDate}
+          onChange={handleDateChange}
+          KeyboardButtonProps={{
+            'aria-label': 'change time',
+          }}
+        />
+      </Grid>
+    </MuiPickersUtilsProvider>
+  </>
+)
+
+}
 export default MoodStepTwo

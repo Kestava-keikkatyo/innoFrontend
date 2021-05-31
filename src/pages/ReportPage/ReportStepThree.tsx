@@ -14,25 +14,10 @@ export interface ReportStepThreeProps {
 
 const ReportStepThree: React.FC<any> = () => {
 
-  const [message, setMessage]: any = React.useState('')
-
-  const dispatch:any = useDispatch()
-
-  const currentFeeling:any = useSelector<IRootState>(state => state.feeling.currentFeeling)
-
-
-
-  const updateMessage = (event: ChangeEvent<HTMLInputElement>) => {
-    setMessage(event.target.value);
-    currentFeeling.note = message
-    dispatch(updateFeeling(currentFeeling))
-    //addMessage(message)
-  };
-
   return (
     <>
       <Typography>Fill in Details</Typography>
-      <TextField onChange={updateMessage} value={message} multiline rows={4} variant="outlined" />
+      <TextField multiline rows={4} variant="outlined" />
       <FileUploader handleFile={() => ''}>
         <span>Upload file</span>
       </FileUploader>

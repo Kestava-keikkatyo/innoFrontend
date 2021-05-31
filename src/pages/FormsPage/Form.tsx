@@ -81,6 +81,7 @@ const Form: React.FC<any> = ({currentForm}) => {
                             ) : null
                         }
 
+
                         {(q && q && q.questionType === 'text') ? (
                             <div>
                                 <p style={styles.title}>{q.title}</p>
@@ -101,8 +102,8 @@ const Form: React.FC<any> = ({currentForm}) => {
                         {(q && q && q.questionType === 'checkbox') ? (
                             <div>
                                 <table>
-                                    <tr key={k}>
-                                            <td style={styles.option}><img style={styles.img} src={checkboxUnckecked}/></td>
+                                    <tr>
+                                            <td style={styles.option}><img style={styles.img} src={checkboxChecked}/></td>
                                             <td style={styles.option}>{q.title}</td>
                                     </tr>
                                 </table>
@@ -118,7 +119,7 @@ const Form: React.FC<any> = ({currentForm}) => {
                                 <p style={styles.subTitle}>{q.subtitle}</p>
                                 <table style={styles.table} >
                                 {q.options ? q.options.map((option: any, k:number) => (
-                                        <tr key={k}>
+                                        <tr key={q._id}>
                                             <td style={styles.option}><img style={styles.img} src={checkboxUnckecked}/></td>
                                             <td style={styles.option}>{option}</td>
                                         </tr>
@@ -137,7 +138,7 @@ const Form: React.FC<any> = ({currentForm}) => {
                                 <p style={styles.subTitle}>{q.subtitle}</p>
                                 <table style={styles.table} >
                                 {q.options ? q.options.map((option: any, k:number) => (
-                                        <tr key={k}>
+                                        <tr key={q._id}>
                                             <td style={styles.option}><img style={styles.img} src={checkboxUnckecked}/></td>
                                             <td style={styles.option}>{option}</td>
                                         </tr>
@@ -155,7 +156,7 @@ const Form: React.FC<any> = ({currentForm}) => {
                                 <p style={styles.subTitle}>{q.subtitle}</p>
                                 <table style={styles.table} >
                                 {q.options ? q.options.map((option: any, k:number) => (
-                                        <tr key={k}>
+                                        <tr key={q._id}>
                                             <td style={styles.option}><img style={styles.img} src={checkboxUnckecked}/></td>
                                             <td style={styles.option}>{option}</td>
                                         </tr>
@@ -172,13 +173,15 @@ const Form: React.FC<any> = ({currentForm}) => {
                                 <p style={styles.title}>{q.title}</p>
                                 <p style={styles.subTitle}>{q.subtitle}</p>
                                 <table style={styles.table} >
+                                <tr>
                                 {q.options ? q.options.map((option: any, k:number) => (
-                                        <tr key={k}>
+                                        <div key={q._id}>
                                             <td style={styles.option}><img style={styles.img} src={checkboxUnckecked}/></td>
                                             <td style={styles.option}>{option}</td>
-                                        </tr>
+                                        </div>
                                 )) : null
                                 }
+                                </tr>
                                 </table>
 
                             </div>

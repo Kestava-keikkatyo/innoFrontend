@@ -12,9 +12,11 @@ import SendIcon from '@material-ui/icons/Send'
 import CreateIcon from '@material-ui/icons/Create'
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions'
 import { Container } from '@material-ui/core'
-import MoodStepThree from '../../ReportPage/ReportStepThree'
-import ReportStepTwo from '../../ReportPage/ReportStepTwo'
 import MoodStepOne from './MoodStepOne'
+import MoodStepTwo from './MoodStepTwo'
+import MoodStepThree from './MoodStepThree'
+
+
 
 const ColorlibConnector = withStyles({
   alternativeLabel: {
@@ -131,7 +133,7 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
       case 0:
         return <MoodStepOne />
       case 1:
-        return <ReportStepTwo />
+        return <MoodStepTwo />
       case 2:
         return <MoodStepThree/>
       default:

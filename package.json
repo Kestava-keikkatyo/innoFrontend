@@ -33,6 +33,7 @@
     "i18next-browser-languagedetector": "^6.0.1",
     "i18next-xhr-backend": "^3.2.2",
     "jquery": "^3.6.0",
+    "moment": "^2.29.1",
     "pdfmake": "^0.1.71",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
