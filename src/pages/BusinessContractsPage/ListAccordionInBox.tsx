@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 import {
   Accordion,
   AccordionActions,
   AccordionDetails,
   AccordionSummary,
-  Container,
   makeStyles,
   Theme,
   Divider
@@ -14,6 +13,9 @@ import {
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 import Avatar from '@material-ui/core/Avatar';
+import { fetchBusinessContracts } from "../../actions/businessContractActions";
+import { useDispatch, useSelector } from "react-redux";
+import { IRootState } from "../../utils/store";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -37,8 +39,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-export const ListAccordionInBox = () => {
-  const classes = useStyles();
+export const ListAccordionInBox = (prop: { contracts: any[] })  => {
+  const classes = useStyles(); 
+  
   return (
     <div className={classes.root}>
       <Accordion>

@@ -5,7 +5,6 @@ import {
   AccordionActions,
   AccordionDetails,
   AccordionSummary,
-  Container,
   makeStyles,
   Theme,
   Divider
@@ -35,7 +34,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-export const ListAccordionSent = () => {
+export const ListAccordionSent = (prop: { contracts: any[] })  => {
   const classes = useStyles();
   return (
     <div className={classes.root}>

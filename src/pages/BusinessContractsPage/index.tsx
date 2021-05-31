@@ -1,23 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import PhoneIcon from "@material-ui/icons/Phone";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import PersonPinIcon from "@material-ui/icons/PersonPin";
-import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import SendIcon from "@material-ui/icons/Send";
 import AllInboxIcon from "@material-ui/icons/AllInbox";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
-import {
- 
-  Container,
-} from "@material-ui/core";
+import { Container } from "@material-ui/core";
 import ListAccordionInBox from "./ListAccordionInBox";
 import ListAccordionSent from "./ListAccordionSent";
 import { ListAccordionDone } from "./ListAccordionDone";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchBusinessContracts } from "../../actions/businessContractActions";
+import { IRootState } from "../../utils/store";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -38,7 +34,7 @@ function TabPanel(props: TabPanelProps) {
     >
       {value === index && (
         <Box p={3}>
-          <Typography>{children}</Typography>
+          {children}
         </Box>
       )}
     </div>
@@ -67,7 +63,28 @@ const useStyles = makeStyles((theme: Theme) => ({
 const BusinessContractsPage = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const { businessContract } = useSelector((state: IRootState) => state.businessContracts)
+  const dispatch = useDispatch()
+  const contracts = businessContract
+  const pending:any = []
+  const sent:any = []
+  const ready:any = []
 
+  useEffect(() => {
+    dispatch(fetchBusinessContracts())
+  }, [dispatch])
+
+  contracts.map((contract:any) => {
+    console.log(contract)
+    if (contract.pendingContracts.length === 1) {
+      pending.push(contract)
+    } else if (contract.requestContracts.length === 1) {
+      sent.push(contract)
+    } else if (contract.madeContracts.length === 1) {
+      ready.push(contract)
+    } 
+  })
+  
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
@@ -103,13 +120,13 @@ const BusinessContractsPage = () => {
           </Tabs>
         </AppBar>
         <TabPanel value={value} index={0}>
-          <ListAccordionInBox />
+          <ListAccordionInBox contracts={pending}/>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <ListAccordionSent />
+          <ListAccordionSent contracts={sent}/>
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <ListAccordionDone />
+          <ListAccordionDone contracts={ready}/>
         </TabPanel>
       </div>
     </Container>
