@@ -7,15 +7,15 @@ import {
   AccordionSummary,
   makeStyles,
   Theme,
-  Divider
-
+  Divider,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
-import Avatar from '@material-ui/core/Avatar';
+import Avatar from "@material-ui/core/Avatar";
 import { fetchBusinessContracts } from "../../actions/businessContractActions";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../utils/store";
+import contractsService from "../../services/contractsService";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -35,58 +35,61 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   display: {
     display: "column",
-    width: "30em"
-  }
+    width: "30em",
+  },
 }));
 
-export const ListAccordionInBox = (prop: { contracts: any[] })  => {
-  const classes = useStyles(); 
-  
-  return (
-    <div className={classes.root}>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <div className={classes.column}>
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-          </div>
-          <div className={classes.column}>
-            <Typography className={classes.heading}>Accordion 1</Typography>
-          </div>
-          <div className={classes.column}>
-            <Typography className={classes.color}>Käsittelemätön</Typography>
-          </div>
-          <div className={classes.column}>
-            <Button>Siirry yrityksen nettisivuille</Button>
-          </div>
-        </AccordionSummary>
-        <AccordionDetails>
-          <div className={classes.display}>
-            <Typography>
-              Puh: 0505555555
-            </Typography>
-            <Typography>
-              Email: ohra@luukku.com
-            </Typography>
-            <Divider/>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-              eget.
-            </Typography>
-          </div>
-        </AccordionDetails>
-        <AccordionActions>
-          <Button>Hylkää sopimus</Button>
-          <Button>Esikatsele lomaketta</Button>
-          <Button>Tulosta pdf</Button>
-          <Button>Lataa ja lähetä allekirjoitettu sopimus</Button>
-        </AccordionActions>
-      </Accordion>
-    </div>
-  )}
+export const ListAccordionInBox = (prop: { contracts: any[] }) => {
+  const classes = useStyles();
+  const { contracts } = prop;
+  if (contracts.length < 1) {
+    return <p>no results</p>;
+  } else
+    return (
+      <div className={classes.root}>
+        {contracts.map((contract: any) => (
+          <Accordion key={contract._id}>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <div className={classes.column}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+              </div>
+              <div className={classes.column}>
+                <Typography className={classes.heading}>{contract.agency.name}</Typography>
+              </div>
+              <div className={classes.column}>
+                <Typography className={classes.color}>
+                  Käsittelemätön
+                </Typography>
+              </div>
+              <div className={classes.column}>
+                <Button>Siirry yrityksen nettisivuille</Button>
+              </div>
+            </AccordionSummary>
+            <AccordionDetails>
+              <div className={classes.display}>
+                <Typography>Email: {contract.agency.email}</Typography>
+                <Divider />
+                <Typography>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+                  eget.
+                </Typography>
+              </div>
+            </AccordionDetails>
+            <AccordionActions>
+              <Button>Hylkää sopimus</Button>
+              <Button>Esikatsele lomaketta</Button>
+              <Button>Tulosta pdf</Button>
+              <Button>Lataa ja lähetä allekirjoitettu sopimus</Button>
+            </AccordionActions>
+          </Accordion>
+        ))}
+      </div>
+    );
+};
 
-export default ListAccordionInBox
+export default ListAccordionInBox;

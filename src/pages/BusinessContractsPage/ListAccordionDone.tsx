@@ -35,10 +35,15 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export const ListAccordionDone = (prop: { contracts: any[] }) => {
-  const classes = useStyles();
+  const classes = useStyles()
+  const {contracts} = prop
+  if (contracts.length < 1) {
+    return <p>no results</p>;
+  } else
   return (
     <div className={classes.root}>
-      <Accordion>
+      {contracts.map((contract:any) =>(
+        <Accordion key={contract._id}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -48,7 +53,7 @@ export const ListAccordionDone = (prop: { contracts: any[] }) => {
             <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
           </div>
           <div className={classes.column}>
-            <Typography className={classes.heading}>Accordion 1</Typography>
+            <Typography className={classes.heading}> Name: {contract.agency.name}</Typography>
           </div>
           <div className={classes.column}>
             <Typography className={classes.color}>Valmis</Typography>
@@ -60,10 +65,7 @@ export const ListAccordionDone = (prop: { contracts: any[] }) => {
         <AccordionDetails>
           <div className={classes.display}>
             <Typography>
-              Puh: 0505555555
-            </Typography>
-            <Typography>
-              Email: ohra@luukku.com
+              Email: {contract.agency.email}
             </Typography>
             <Divider/>
             <Typography>
@@ -80,6 +82,7 @@ export const ListAccordionDone = (prop: { contracts: any[] }) => {
           <Button>Lataa ja lähetä allekirjoitettu sopimus</Button>
         </AccordionActions>
       </Accordion>
+      ))}
     </div>
   )}
 export default ListAccordionDone;
