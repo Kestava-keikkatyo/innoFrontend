@@ -16,6 +16,7 @@ import { fetchBusinessContracts } from "../../actions/businessContractActions";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../utils/store";
 import contractsService from "../../services/contractsService";
+import BusinessContractsButtons from './BusinessContractsButtons'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -80,12 +81,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
                 </Typography>
               </div>
             </AccordionDetails>
-            <AccordionActions>
-              <Button>Hylkää sopimus</Button>
-              <Button>Esikatsele lomaketta</Button>
-              <Button>Tulosta pdf</Button>
-              <Button>Lataa ja lähetä allekirjoitettu sopimus</Button>
-            </AccordionActions>
+            <BusinessContractsButtons/>
           </Accordion>
         ))}
       </div>

@@ -12,6 +12,8 @@ import {
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
+import BusinessContractsButtons from './BusinessContractsButtons'
+
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
@@ -75,12 +77,7 @@ export const ListAccordionSent = (prop: { contracts: any[] })  => {
             </Typography>
           </div>
         </AccordionDetails>
-        <AccordionActions>
-          <Button>Hylkää sopimus</Button>
-          <Button>Esikatsele lomaketta</Button>
-          <Button>Tulosta pdf</Button>
-          <Button>Lataa ja lähetä allekirjoitettu sopimus</Button>
-        </AccordionActions>
+        <BusinessContractsButtons />
       </Accordion>
       ))}
     </div>
