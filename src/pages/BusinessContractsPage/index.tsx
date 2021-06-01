@@ -76,11 +76,11 @@ const BusinessContractsPage = () => {
 
   contracts.map((contract:any) => {
     console.log(contract)
-    if (contract.pendingContracts.length > 0) {
+    if (contract.pendingContracts) {
       pending.push(contract)
-    } else if (contract.requestContracts.length > 0) {
+    } else if (contract.requestContracts) {
       sent.push(contract)
-    } else if (contract.madeContracts.length > 0) {
+    } else if (contract.madeContracts) {
       ready.push(contract)
     }
   })
@@ -126,7 +126,7 @@ const BusinessContractsPage = () => {
           <ListAccordionSent contracts={sent}/>
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <ListAccordionDone contracts={ready}/>
+          <ListAccordionDone contracts={ready} />
         </TabPanel>
       </div>
     </Container>

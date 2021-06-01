@@ -3,7 +3,7 @@
  * @desc Redux businessContract actions
  */
 import contractsService from '../services/contractsService'
-import { ACTIVATE_B_CONTRACT, ADD_B_CONTRACT, B_DELETE, B_FETCH, B_UPDATE, DECLINE_B_CONTRACT } from '../types/state'
+import { ACTIVATE_B_CONTRACT, ADD_B_CONTRACT, B_DELETE, B_FETCH, B_UPDATE, DECLINE_B_CONTRACT, B_SEND } from '../types/state'
 import { businessContractType } from '../types/types'
 
 
@@ -49,7 +49,11 @@ export const addBusinessContract = (contractId:string, userId: string, form?:str
   if(res && res.status === 200)
     dispatch({type: ADD_B_CONTRACT, data: res.data })
 }
-
+export const sendBusinessContract = (contractId:string, form?:string) => async (dispatch: any) => {
+  const res = await contractsService.sendBusinessContract(contractId,form)
+  if(res && res.status === 200)
+    dispatch({type: B_SEND, data: res.data })
+}
 /**
  * @function
  * @desc Activates new business contract. 

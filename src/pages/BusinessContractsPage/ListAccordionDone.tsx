@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-export const ListAccordionDone = (prop: { contracts: any[] }) => {
+export const ListAccordionDone = (prop: { contracts: any[]}) => {
   const classes = useStyles()
   const {contracts} = prop
   if (contracts.length < 1) {
@@ -76,7 +76,7 @@ export const ListAccordionDone = (prop: { contracts: any[] }) => {
             </Typography>
           </div>
         </AccordionDetails>
-        <BusinessContractsButtons formId={contract.formId} />
+        <BusinessContractsButtons contractId={contract._id} />
       </Accordion>
       ))}
     </div>

@@ -77,7 +77,7 @@ export const ListAccordionSent = (prop: { contracts: any[] })  => {
             </Typography>
           </div>
         </AccordionDetails>
-        <BusinessContractsButtons formId={contract.formId} />
+        <BusinessContractsButtons contractId={contract._id} />
       </Accordion>
       ))}
     </div>

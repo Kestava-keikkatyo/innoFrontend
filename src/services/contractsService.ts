@@ -54,6 +54,18 @@ const addBusinessContract = async (contractId:string, userId: string, form?:stri
   }
 }
 
+const sendBusinessContract = async (contractId:string, form?:string) => {
+  try {
+    return await axios.put(
+      `${baseUrl}/businesscontracts/send/${contractId}/`,
+      {form},
+      authHeader()
+    )
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 const declineBusinessContract = async (contractId:string, userId:string) => {
   try {
     return await axios.put(
@@ -71,8 +83,9 @@ const declineBusinessContract = async (contractId:string, userId:string) => {
  * @param {*} contractId
  */
 const deleteBusinessContractById = async (contractId: string) => {
-  return await axios.delete(
-    `${baseUrl}/businesscontracts/${contractId}`,
+  return await axios.put(
+    `${baseUrl}/businesscontracts/refuse/${contractId}`,
+    {},
     authHeader()
   )
 }
@@ -148,4 +161,5 @@ export default {
   addWorkContract,
   fetchWorkContracts,
   deleteWorkContractById,
+  sendBusinessContract
 }
