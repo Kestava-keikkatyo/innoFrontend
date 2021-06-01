@@ -4,7 +4,7 @@
  * @module reducer/file
  * @desc Redux file reducer
  */
- import { SET_CURRENT_FILE, FileState, FileActionTypes, SetCurrentFileAction} from "../types/state"
+ import { SET_CURRENT_FILE, FileState, FileActionTypes} from "../types/state"
  import {File} from "../types/types"
 
  const initialFile: File = {

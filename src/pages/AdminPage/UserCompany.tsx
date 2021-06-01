@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import {
   TableContainer,
@@ -7,13 +7,11 @@ import {
   TableRow,
   TableCell,
   TableBody,
-  IconButton,
   Typography,
 } from "@material-ui/core";
-import { Delete as DeleteIcon } from "@material-ui/icons";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { IRootState } from "../../utils/store";
-import { setAlert } from "../../actions/alertActions";
+
 
 
 /**
@@ -23,9 +21,9 @@ import { setAlert } from "../../actions/alertActions";
  */
 const UserCompany = () => {
   const { data } = useSelector((state: IRootState) => state.user);
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   const workers = data;
-  
+
   /*
   useEffect(() => {
     if (!workers.length) dispatch(s);
