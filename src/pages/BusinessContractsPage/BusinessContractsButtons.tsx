@@ -2,10 +2,9 @@ import React, { useEffect } from "react";
 import {
   AccordionActions,
 } from "@material-ui/core";
-
 import Button from "@material-ui/core/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { setFormById } from "../../actions/formActions";
+import { getFormById } from "../../actions/formActions";
 import { IRootState } from "../../utils/store";
 
 export interface BusinessContractsButtonsProps {
@@ -19,12 +18,11 @@ const BusinessContractsButtons: React.FC<BusinessContractsButtonsProps> = ({form
     const dispatch = useDispatch()
 
     useEffect(() => {
-       dispatch(setFormById(formId))
+       dispatch(getFormById(formId))
       }, [dispatch])
 
     const handleEsitteleLomaketta =  () => {
         console.log('currentForm', currentForm)
-
 
     }
 

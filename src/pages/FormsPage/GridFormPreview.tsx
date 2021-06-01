@@ -5,7 +5,7 @@ import MoveToInboxIcon from '@material-ui/icons/MoveToInbox'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import { GridFormPreviewProps } from "../../types/props"
 import { useDispatch, useSelector } from "react-redux"
-import { setFormById } from "../../actions/formActions"
+import { getFormById } from "../../actions/formActions"
 import { useHistory } from "react-router"
 import formServices from "../../services/formServices"
 import pdfMake from 'pdfmake/build/pdfmake.js';
@@ -56,7 +56,7 @@ const GridFormPreview: React.FC<GridFormPreviewProps> = ({ formTitle, formDesc, 
   const dispatch = useDispatch()
   const history = useHistory();
   const handleClick = () => {
-    dispatch(setFormById(formId))
+    dispatch(getFormById(formId))
     history.push(`/forms/newform`)
   }
 

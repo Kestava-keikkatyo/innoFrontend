@@ -32,8 +32,8 @@ export const importFormByPath = () => async (dispatch: any) => {
  * @function
  * @desc Replaces the currentForm with the data imported from file systems
  */
- export const setFormById = (id: string) => async (dispatch: any) => {
-   const data = await formServices.fetchFormById(id)   
+ export const getFormById = (id: string) => async (dispatch: any) => {
+   const data = await formServices.fetchFormById(id)
   dispatch({ type: SET_CURRENT_FORM, data })
 }
 
@@ -83,9 +83,9 @@ export const updateQuestion = (question: FormQuestion, index: number) => async (
 /**
  * @function
  * @desc Updates the questions options array.
- * @param {string} option 
- * @param {number} questionIndex 
- * @param {number} optionIndex 
+ * @param {string} option
+ * @param {number} questionIndex
+ * @param {number} optionIndex
  */
 export const updateQuestionOption = (
   option: string,
@@ -144,7 +144,7 @@ export const submitForm = (form: Form) => async (dispatch: any) => {
   }
   const res = await formServices.postForm(convertForm(form))
   console.log(res);
-  
+
   dispatch(addToFormList(form))
   // //ugleeeeeh && karvalakki certified :--DD
   // const result = form.questions.forEach((element: any) => {
