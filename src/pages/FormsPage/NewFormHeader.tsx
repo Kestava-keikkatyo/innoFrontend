@@ -19,7 +19,7 @@ const NewFormHeader: React.FC = () => {
     dispatch(submitForm(currentForm))
     history.push("/forms")
   }
-  return ( 
+  return (
     <Grid container direction="row"
     justify="space-between">
       <Grid item xs={6}>
@@ -29,6 +29,9 @@ const NewFormHeader: React.FC = () => {
       </Grid>
       <Grid item xs={6} >
         <Grid container direction="row-reverse">
+        <Button>
+            <Link to="/forms">Back</Link>
+          </Button>
           <Button>
             <Link to="/forms/newform/preview">Preview</Link>
           </Button>
@@ -49,5 +52,5 @@ const NewFormHeader: React.FC = () => {
     </Grid>
    );
 }
- 
+
 export default NewFormHeader;
