@@ -76,7 +76,7 @@ export const ListAccordionDone = (prop: { contracts: any[] }) => {
             </Typography>
           </div>
         </AccordionDetails>
-        <BusinessContractsButtons />
+        <BusinessContractsButtons formId={contract.formId} />
       </Accordion>
       ))}
     </div>
