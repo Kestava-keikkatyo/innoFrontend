@@ -76,15 +76,15 @@ const BusinessContractsPage = () => {
 
   contracts.map((contract:any) => {
     console.log(contract)
-    if (contract.pendingContracts.length === 1) {
+    if (contract.pendingContracts.length > 0) {
       pending.push(contract)
-    } else if (contract.requestContracts.length === 1) {
+    } else if (contract.requestContracts.length > 0) {
       sent.push(contract)
-    } else if (contract.madeContracts.length === 1) {
+    } else if (contract.madeContracts.length > 0) {
       ready.push(contract)
-    } 
+    }
   })
-  
+
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
