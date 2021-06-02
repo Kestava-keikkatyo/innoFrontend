@@ -15,6 +15,7 @@ import Avatar from "@material-ui/core/Avatar";
 import { useDispatch} from "react-redux";
 import { useHistory } from "react-router-dom";
 import { sendBusinessContract } from "../../actions/businessContractActions";
+import { getFormById } from "../../actions/formActions";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -47,14 +48,13 @@ export const ListAccordionSent = (prop: { contracts: any[] })  => {
 
 
   const handleEsitteleLomaketta =  (formId:any) => {
-
+    dispatch(getFormById(formId))
     history.push(`/business-contract-preview`)
   }
 
   const loadAndSendContract = (contractId:any) => {
 
     alert()
-
     dispatch(sendBusinessContract(contractId))
   }
 

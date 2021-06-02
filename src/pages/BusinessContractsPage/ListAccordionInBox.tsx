@@ -50,7 +50,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
   const currentForm:any = useSelector((state: IRootState ) => state.form)
 
   const handleEsitteleLomaketta =  (formId:any) => {
-
+    dispatch(getFormById(formId))
     history.push(`/business-contract-preview`)
   }
 
