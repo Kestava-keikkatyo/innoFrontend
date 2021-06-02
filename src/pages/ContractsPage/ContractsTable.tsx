@@ -205,25 +205,17 @@ const MCTable = (prop: { contracts: []; deleteContract: Function }) => {
         <Table aria-label="searched workers">
           <TableHead>
             <TableRow>
-              <TableCell>Id</TableCell>
+              <TableCell align="center">Remove</TableCell>
               <TableCell align="right">Name</TableCell>
               <TableCell align="right">Email</TableCell>
               <TableCell align="right">Type</TableCell>
               <TableCell align="right">Status</TableCell>
-              <TableCell align="right">Remove</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {contracts.map((contract: any) => (
               <TableRow key={contract._id}>
-                <TableCell component="th" scope="row">
-                  {contract._id}
-                </TableCell>
-                <TableCell align="right">{contract.businessId.name}</TableCell>
-                <TableCell align="right">{contract.businessId.email}</TableCell>
-                <TableCell align="right">{contract.businessId.userType}</TableCell>
-                <TableCell align="right">{"Made"}</TableCell>
-                <TableCell padding="none" align="right">
+                <TableCell padding="none" align="center">
                   <IconButton
                     aria-label="remove from organization"
                     color="secondary"
@@ -232,6 +224,10 @@ const MCTable = (prop: { contracts: []; deleteContract: Function }) => {
                     <DeleteIcon />
                   </IconButton>
                 </TableCell>
+                <TableCell align="right">{contract.businessId.name}</TableCell>
+                <TableCell align="right">{contract.businessId.email}</TableCell>
+                <TableCell align="right">{contract.businessId.userType}</TableCell>
+                <TableCell align="right">{"Made"}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -265,29 +261,19 @@ const RCTable = (prop: {
         <Table aria-label="searched workers">
           <TableHead>
             <TableRow>
-              <TableCell>Id</TableCell>
+              <TableCell align="center">Accept</TableCell>
+              <TableCell align="center">Info</TableCell>
+              <TableCell align="center">Decline</TableCell>
               <TableCell align="right">Name</TableCell>
               <TableCell align="right">Email</TableCell>
               <TableCell align="right">Type</TableCell>
               <TableCell align="right">Status</TableCell>
-              <TableCell align="right">Accept</TableCell>
-              <TableCell align="right">Info</TableCell>
-              <TableCell align="right">Decline</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {contracts.map((contract: any) => (
               <TableRow key={contract._id}>
-                <TableCell component="th" scope="row">
-                  {contract._id}
-                </TableCell>
-                <TableCell align="right">{contract.businessId.name}</TableCell>
-                <TableCell align="right">{contract.businessId.email}</TableCell>
-                <TableCell align="right">{contract.businessId.userType}</TableCell>
-                <TableCell align="right">{"Pending"}</TableCell>
-                
-                <TableCell padding="none" align="right">
-                  
+                <TableCell padding="none" align="center">
                   <IconButton
                     aria-label="accept contract"
                     color="secondary"
@@ -296,15 +282,16 @@ const RCTable = (prop: {
                     <DoneIcon />
                   </IconButton>
                 </TableCell>
-                <TableCell align="right">
+                <TableCell align="center">
                   <IconButton
                     aria-label="remove from organization"
                     color="secondary"
                     onClick={() => {console.log("notificationbutton")}}
                   >
                     <NotificationsIcon />
-                  </IconButton></TableCell>
-                <TableCell padding="none" align="right">
+                  </IconButton>
+                </TableCell>
+                <TableCell padding="none" align="center">
                   <IconButton
                     aria-label="decline contract"
                     color="secondary"
@@ -313,6 +300,10 @@ const RCTable = (prop: {
                     <ClearIcon />
                   </IconButton>
                 </TableCell>
+                <TableCell align="right">{contract.businessId.name}</TableCell>
+                <TableCell align="right">{contract.businessId.email}</TableCell>
+                <TableCell align="right">{contract.businessId.userType}</TableCell>
+                <TableCell align="right">{"Pending"}</TableCell>
               </TableRow>
             ))}
           </TableBody>
