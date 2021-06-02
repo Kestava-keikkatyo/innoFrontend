@@ -15,11 +15,11 @@ export interface BusinessContractsButtonsProps {
 
 const BusinessContractsButtons: React.FC<BusinessContractsButtonsProps> = ({formId, contractId}) => {
 
-    
+
 
     const currentForm:any = useSelector((state: IRootState ) => state.form)
     const dispatch = useDispatch()
-   
+
 
     const history = useHistory()
 
@@ -27,7 +27,7 @@ const BusinessContractsButtons: React.FC<BusinessContractsButtonsProps> = ({form
        dispatch(getFormById(formId))
       }, [dispatch, formId])
 
-      
+
     const handleEsitteleLomaketta =  () => {
         console.log('currentForm', currentForm)
         history.push(`/business-contract-preview`)
@@ -41,21 +41,17 @@ const BusinessContractsButtons: React.FC<BusinessContractsButtonsProps> = ({form
     }
 
 
-      const loadAndSendContract = () => {
+    const loadAndSendContract = () => {
         console.log("contract id ",contractId)
         dispatch(sendBusinessContract(contractId))
-      }
-    
-    
+    }
+
+
 
     return (
         <AccordionActions>
         <Button onClick={rejectContract}>Hylkää sopimus</Button>
         <Button onClick={handleEsitteleLomaketta}>Esikatsele lomaketta</Button>
-        <Button>Hylkää sopimus</Button>
-        <Button onClick={handleEsitteleLomaketta}>
-          Esikatsele lomaketta
-        </Button>
         <Button>Tulosta pdf</Button>
         <Button onClick={loadAndSendContract}>Lataa ja lähetä allekirjoitettu sopimus</Button>
       </AccordionActions>
@@ -64,10 +60,4 @@ const BusinessContractsButtons: React.FC<BusinessContractsButtonsProps> = ({form
 }
 export default BusinessContractsButtons
 
-function setAlert(arg0: string): any {
-  throw new Error("Function not implemented.");
-}
-function agencyId(_id: any, agencyId: any): (dispatch: any) => Promise<void> {
-  throw new Error("Function not implemented.");
-}
 
