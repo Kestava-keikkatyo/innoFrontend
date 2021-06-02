@@ -14,7 +14,7 @@ import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { deleteBusinessContractById, sendBusinessContract } from "../../actions/businessContractActions";
+import { refuseBusinessContractById, sendBusinessContract } from "../../actions/businessContractActions";
 import { getFormById } from "../../actions/formActions";
 import { IRootState } from "../../utils/store";
 
@@ -55,22 +55,16 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
   }
 
   const rejectContract = (contractId:any, formId:any) => {
-
     dispatch(getFormById(formId))
-
     if (window.confirm(`Poistetaanko ${currentForm.title}`)) {
-      dispatch(deleteBusinessContractById(contractId));
+      dispatch(refuseBusinessContractById(contractId));
     }
   }
 
-
   const loadAndSendContract = (contractId:any) => {
-
     alert()
-
     dispatch(sendBusinessContract(contractId))
   }
-
 
   const { contracts } = prop;
   if (contracts.length < 1) {

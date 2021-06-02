@@ -82,7 +82,7 @@ const declineBusinessContract = async (contractId:string, userId:string) => {
  * TODO: Tarkista, kun route on valmis.
  * @param {*} contractId
  */
-const deleteBusinessContractById = async (contractId: string) => {
+const refuseBusinessContractById = async (contractId: string) => {
   return await axios.put(
     `${baseUrl}/businesscontracts/refuse/${contractId}`,
     {},
@@ -155,7 +155,7 @@ export default {
   searchUsers,
   addBusinessContract,
   declineBusinessContract,
-  deleteBusinessContractById,
+  refuseBusinessContractById,
   fetchBusinessContracts,
   updateBusinessContract,
   addWorkContract,

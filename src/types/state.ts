@@ -166,7 +166,7 @@ interface UpdateBusinessSearchAction {
   data: any
 }
 
-interface DeleteBusinessContractAction {
+interface RefuseBusinessContractAction {
   type: typeof B_DELETE
   data: any
 }
@@ -182,7 +182,7 @@ interface SendBusinessContract {
 }
 
 export type BusinessContractActions = AddBusinessContractAction | BusinessContractFetchAction |
-UpdateBusinessSearchAction | DeleteBusinessContractAction | ActivateBusinessContract | DeclineBusinessCOntractAction | SendBusinessContract
+UpdateBusinessSearchAction | RefuseBusinessContractAction | ActivateBusinessContract | DeclineBusinessCOntractAction | SendBusinessContract
 
 export interface WorkContractState {
   searchList: object[],

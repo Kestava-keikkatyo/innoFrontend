@@ -32,8 +32,8 @@ export const fetchBusinessContracts = () => async (dispatch: any) => {
  * @desc Deletes a business contract by id.
  * @param {string} id
  */
-export const deleteBusinessContractById = (id: string) => async (dispatch: any) => {
-  const res = await contractsService.deleteBusinessContractById(id)
+export const refuseBusinessContractById = (id: string) => async (dispatch: any) => {
+  const res = await contractsService.refuseBusinessContractById(id)
   if(res.status === 200)
     dispatch({ type: B_DELETE, data: id })
 }

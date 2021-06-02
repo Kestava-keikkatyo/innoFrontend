@@ -21,7 +21,6 @@ import DoneIcon from "@material-ui/icons/Done";
 import ClearIcon from "@material-ui/icons/Clear";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  deleteBusinessContractById,
   fetchBusinessContracts,
   addBusinessContract,
   declineBusinessContract,
@@ -56,11 +55,6 @@ const ContractsTable = () => {
   useEffect(() => {
     dispatch(fetchBusinessContracts());
   }, [dispatch]);
-
-  const deleteContract = (id: string, name: string) => {
-    dispatch(deleteBusinessContractById(id));
-    dispatch(setAlert("Deleted " + name + " contract.", severity.Info, 3));
-  };
 
   const acceptContract = (contractId: string, userId: string) => {
     dispatch(addBusinessContract(contractId, userId));
@@ -107,7 +101,8 @@ const ContractsTable = () => {
                 <Divider />
                 <MCTable
                   contracts={contracts[0].pendingContracts.businesses}
-                  deleteContract={deleteContract}
+                  contractId={businessContract[0]._id}
+                  declineContract={declineContract}
                 />
               </CardContent>
               <CardContent>
@@ -117,7 +112,8 @@ const ContractsTable = () => {
                 <Divider />
                 <MCTable
                   contracts={contracts[0].pendingContracts.workers}
-                  deleteContract={deleteContract}
+                  contractId={businessContract[0]._id}
+                  declineContract={declineContract}
                 />
               </CardContent>
             </Card>
@@ -165,7 +161,8 @@ const ContractsTable = () => {
                 <Divider />
                 <MCTable
                   contracts={contracts[0].madeContracts.businesses}
-                  deleteContract={deleteContract}
+                  contractId={businessContract[0]._id}
+                  declineContract={declineContract}
                 />
               </CardContent>
               <CardContent>
@@ -175,7 +172,8 @@ const ContractsTable = () => {
                 <Divider />
                 <MCTable
                   contracts={contracts[0].madeContracts.workers}
-                  deleteContract={deleteContract}
+                  contractId={businessContract[0]._id}
+                  declineContract={declineContract}
                 />
               </CardContent>
             </Card>
@@ -186,8 +184,8 @@ const ContractsTable = () => {
     );
 };
 
-const MCTable = (prop: { contracts: []; deleteContract: Function }) => {
-  const { contracts, deleteContract } = prop;
+const MCTable = (prop: { contracts: []; declineContract: Function; contractId: string; }) => {
+  const { contracts, contractId, declineContract } = prop;
   if (!contracts.length)
     return (
       <Typography
@@ -219,7 +217,7 @@ const MCTable = (prop: { contracts: []; deleteContract: Function }) => {
                   <IconButton
                     aria-label="remove from organization"
                     color="secondary"
-                    onClick={() => deleteContract(contract._id, contract.name)}
+                    onClick={() => declineContract(contractId, contract.businessId._id)}
                   >
                     <DeleteIcon />
                   </IconButton>
@@ -277,7 +275,7 @@ const RCTable = (prop: {
                   <IconButton
                     aria-label="accept contract"
                     color="secondary"
-                    onClick={() => acceptContract(contractId, contract._id)}
+                    onClick={() => acceptContract(contractId, contract.businessId._id)}
                   >
                     <DoneIcon />
                   </IconButton>
@@ -286,7 +284,7 @@ const RCTable = (prop: {
                   <IconButton
                     aria-label="remove from organization"
                     color="secondary"
-                    onClick={() => {console.log("notificationbutton")}}
+                    onClick={() => {console.log(contract.formId)}}
                   >
                     <NotificationsIcon />
                   </IconButton>
