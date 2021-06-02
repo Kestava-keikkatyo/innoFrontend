@@ -32,6 +32,7 @@ import Users from "./pages/AdminPage/Users";
 import Agency from "./pages/AdminPage/Agency";
 import UserCompany from "./pages/AdminPage/UserCompany";
 import BusinessContractPage from "./pages/BusinessContractsPage";
+import BusinessContractPreviewPage from './pages/BusinessContractPreviewPage'
 
 
 
@@ -103,7 +104,7 @@ const App: React.FC = () => {
         <PrivateRoute path="/contracts" roles={[roles.Agency]}>
           <ContractsPage />
         </PrivateRoute>
-        <PrivateRoute path="/bcontracts" roles={[roles.Business]}>
+        <PrivateRoute path="/business-contracts" roles={[roles.Business]}>
           <BusinessContractPage />
         </PrivateRoute>
         <PrivateRoute
@@ -111,6 +112,12 @@ const App: React.FC = () => {
           roles={[roles.Business, roles.Agency]}
         >
           <FormPreviewPage />
+        </PrivateRoute>
+        <PrivateRoute
+          path="/business-contract-preview"
+          roles={[roles.Business, roles.Agency]}
+        >
+          <BusinessContractPreviewPage />
         </PrivateRoute>
         <PrivateRoute
           path="/forms/newform"

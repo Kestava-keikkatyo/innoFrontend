@@ -83,6 +83,8 @@ const BusinessContractsPage = () => {
     } else if (contract.madeContracts) {
       ready.push(contract)
     }
+    // an arrow function should return a value
+    return ''
   })
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {

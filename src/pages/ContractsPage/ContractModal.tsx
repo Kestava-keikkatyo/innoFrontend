@@ -19,9 +19,8 @@ import { Close as CloseIcon } from "@material-ui/icons"
 import { useDispatch, useSelector } from "react-redux"
 import { addBusinessContract } from "../../actions/businessContractActions"
 import { setAlert } from "../../actions/alertActions"
-import { severity, roles } from "../../types/types"
+import { severity } from "../../types/types"
 import { IRootState } from "../../utils/store"
-import { Divider } from "material-ui"
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -43,7 +42,7 @@ const WorkerModal: React.FC<any> = ({ displayModal, closeModal, workerData, form
   const { businessContract } = useSelector((state: IRootState) => state.businessContracts)
   const [form, setForm] = React.useState('');
   const classes = useStyles();
-  
+
   const addContract = () => {
     if (!businessContract.some((value: any) => value.requestContracts.businesses.includes(workerData._id)  || value.requestContracts.workers.includes(workerData._id))) {
       dispatch(addBusinessContract(businessContract[0]._id, workerData._id, form))

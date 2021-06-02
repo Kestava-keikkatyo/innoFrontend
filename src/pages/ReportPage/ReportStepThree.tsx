@@ -1,12 +1,7 @@
 import { TextField, Typography } from '@material-ui/core'
-import React, { ChangeEvent } from 'react'
+import React from 'react'
 import FileUploader from '../../components/FileUploader'
 
-import {submitFeeling, updateDataSet, updateFeeling} from '../../actions/feelingActions'
-import { useDispatch, useSelector } from 'react-redux'
-import { FeelingState, UPDATE_FEELING_DATASET } from '../../types/state'
-import { IRootState } from '../../utils/store'
-import { AnySchemaConstructor } from 'yup'
 
 export interface ReportStepThreeProps {
   //addMessage(message: any): void;

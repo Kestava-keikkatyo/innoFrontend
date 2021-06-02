@@ -4,7 +4,7 @@ import EditIcon from '@material-ui/icons/Edit'
 import MoveToInboxIcon from '@material-ui/icons/MoveToInbox'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import { GridFormPreviewProps } from "../../types/props"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { getFormById } from "../../actions/formActions"
 import { useHistory } from "react-router"
 import formServices from "../../services/formServices"

@@ -1,10 +1,9 @@
 import { TextField, Typography } from '@material-ui/core'
-import React, { ChangeEvent, useRef } from 'react'
+import React from 'react'
 import FileUploader from '../../../components/FileUploader'
 import { useDispatch, useSelector } from "react-redux"
 import { updateFeeling} from '../../../actions/feelingActions'
 import { IRootState } from '../../../utils/store'
-import feelingService from '../../../services/feelingService'
 
 
 export interface MoodStepThreeProps {

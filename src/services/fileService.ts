@@ -63,10 +63,10 @@
       typePartTwo: typePartTwo
     }
 
-    await axios.post(baseUrl, newFile).then(response => {
+    await axios.post(baseUrl, newFile, authHeader()).then(response => {
       let returnData = response.data.data.returnData
       let signedReguest = returnData.signedRequest
-      let url = returnData.url
+      //let url = returnData.url
       res.data.fileUrl = returnData.url
 
       console.log("retrunData ", returnData)

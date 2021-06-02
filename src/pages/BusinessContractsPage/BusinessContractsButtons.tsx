@@ -6,16 +6,10 @@ import Button from "@material-ui/core/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { getFormById } from "../../actions/formActions";
 import { IRootState } from "../../utils/store";
-import { sendBusinessContract, deleteBusinessContractById } from "../../actions/businessContractActions";
-import pdfMake from 'pdfmake/build/pdfmake.js';
-import pdfFonts from 'pdfmake/build/vfs_fonts.js';
-import htmlToPdfmake from "html-to-pdfmake";
-import ReactDOMServer from "react-dom/server";
-import formServices from "../../services/formServices";
-import Form from "../FormsPage/Form";
-
+import { useHistory } from "react-router"
+import { deleteBusinessContractById, sendBusinessContract } from "../../actions/businessContractActions";
 export interface BusinessContractsButtonsProps {
-    formId?: string,
+    formId: string,
     contractId: string
 }
 
@@ -25,15 +19,18 @@ const BusinessContractsButtons: React.FC<BusinessContractsButtonsProps> = ({form
 
     const currentForm:any = useSelector((state: IRootState ) => state.form)
     const dispatch = useDispatch()
-    /*
+   
+
+    const history = useHistory()
+
     useEffect(() => {
        dispatch(getFormById(formId))
-      }, [dispatch])
+      }, [dispatch, formId])
 
-      */
+      
     const handleEsitteleLomaketta =  () => {
         console.log('currentForm', currentForm)
-
+        history.push(`/business-contract-preview`)
     }
 
     const rejectContract = () => {
@@ -55,6 +52,10 @@ const BusinessContractsButtons: React.FC<BusinessContractsButtonsProps> = ({form
         <AccordionActions>
         <Button onClick={rejectContract}>Hylkää sopimus</Button>
         <Button onClick={handleEsitteleLomaketta}>Esikatsele lomaketta</Button>
+        <Button>Hylkää sopimus</Button>
+        <Button onClick={handleEsitteleLomaketta}>
+          Esikatsele lomaketta
+        </Button>
         <Button>Tulosta pdf</Button>
         <Button onClick={loadAndSendContract}>Lataa ja lähetä allekirjoitettu sopimus</Button>
       </AccordionActions>

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import Accordion from '@material-ui/core/Accordion';
 import { AccordionDetails, AccordionSummary, Button, Card, CardContent, Checkbox, Divider, Grid, List, ListItem, ListItemIcon, ListItemText, makeStyles, Paper, Typography } from "@material-ui/core";
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
@@ -62,8 +62,8 @@ const ManageWorkContracts:React.FC<{workContracts:any}> = ({workContracts}) => {
 
 const WorkContractsTable:React.FC<{contracts:any}> = ({contracts}) => {
   const [checked, setChecked] = React.useState([0]);
-  const [left, setLeft] = React.useState([0, 1, 2, 3]);
-  const [right, setRight] = React.useState([4, 5, 6, 7]);
+  const [left] = React.useState([0, 1, 2, 3]);
+  const [right] = React.useState([4, 5, 6, 7]);
   const job = contracts
   const classes = useStyles()
 
@@ -119,12 +119,12 @@ const WorkContractsTable:React.FC<{contracts:any}> = ({contracts}) => {
       <Grid item xs={12} md={6}>
         <Card className={classes.card} variant="outlined">
           <CardContent>
-            <Typography gutterBottom variant="h5"> 
+            <Typography gutterBottom variant="h5">
               Accepted Workers
             </Typography>
           </CardContent>
           <CardContent>
-            <Typography gutterBottom variant="h6"> 
+            <Typography gutterBottom variant="h6">
               Workers
             </Typography>
             <Divider />
@@ -140,7 +140,7 @@ const WorkContractsTable:React.FC<{contracts:any}> = ({contracts}) => {
             </Typography>
           </CardContent>
           <CardContent>
-            <Typography gutterBottom variant="h6"> 
+            <Typography gutterBottom variant="h6">
               Workers
             </Typography>
             <Divider />
@@ -157,10 +157,10 @@ const WorkContractsTable:React.FC<{contracts:any}> = ({contracts}) => {
             <Divider/>
           </CardContent>
           <CardContent>
-            <Typography gutterBottom variant="h6"> 
+            <Typography gutterBottom variant="h6">
               Business:{acceptedStatus(job.acceptedBusiness)}
             </Typography>
-            <Typography gutterBottom variant="h6"> 
+            <Typography gutterBottom variant="h6">
               Agency:{acceptedStatus(job.acceptedAgency)}
             </Typography>
           </CardContent>

@@ -8,9 +8,6 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers'
 import { Typography } from '@material-ui/core'
-import { useDispatch, useSelector } from 'react-redux'
-import { IRootState } from '../../../utils/store'
-import { updateFeeling} from '../../../actions/feelingActions'
 
 
 const MoodStepTwo = () =>{

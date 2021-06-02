@@ -1,15 +1,11 @@
-import React ,{ ChangeEvent, useState } from 'react'
+import React from 'react'
 import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied'
 import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied'
 import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt'
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied'
 import { Grid, makeStyles } from '@material-ui/core'
-import { Feeling } from '../../../types/types'
-
-
 import { useDispatch, useSelector } from 'react-redux'
 import { IRootState } from "../../../utils/store"
-import { FeelingState } from '../../../types/state'
 import {updateFeeling}  from '../../../actions/feelingActions'
 
 
