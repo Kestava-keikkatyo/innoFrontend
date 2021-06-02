@@ -293,7 +293,7 @@ const RCTable = (prop: {
                   <IconButton
                     aria-label="decline contract"
                     color="secondary"
-                    onClick={() => declineContract(contractId, contract._id)}
+                    onClick={() => declineContract(contractId, contract.businessId._id)}
                   >
                     <ClearIcon />
                   </IconButton>
