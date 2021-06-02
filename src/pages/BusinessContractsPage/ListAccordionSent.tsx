@@ -6,12 +6,15 @@ import {
   AccordionSummary,
   makeStyles,
   Theme,
-  Divider
+  Divider,
+  AccordionActions
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
-import BusinessContractsButtons from './BusinessContractsButtons'
+import { useDispatch} from "react-redux";
+import { useHistory } from "react-router-dom";
+import { sendBusinessContract } from "../../actions/businessContractActions";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -37,6 +40,25 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const ListAccordionSent = (prop: { contracts: any[] })  => {
   const classes = useStyles()
+
+  const dispatch = useDispatch()
+
+  const history = useHistory()
+
+
+  const handleEsitteleLomaketta =  (formId:any) => {
+
+    history.push(`/business-contract-preview`)
+  }
+
+  const loadAndSendContract = (contractId:any) => {
+
+    alert()
+
+    dispatch(sendBusinessContract(contractId))
+  }
+
+
   const {contracts} = prop
   if (contracts.length < 1) {
     return <p>no results</p>;
@@ -76,7 +98,11 @@ export const ListAccordionSent = (prop: { contracts: any[] })  => {
             </Typography>
           </div>
         </AccordionDetails>
-        <BusinessContractsButtons contractId={contract._id} formId={contract.formId} />
+        <AccordionActions>
+              <Button onClick={() => handleEsitteleLomaketta(contract.formId)}>Esikatsele lomaketta</Button>
+              <Button>Tulosta pdf</Button>
+              <Button onClick={() => loadAndSendContract(contract._id)}>Lataa ja lähetä allekirjoitettu sopimus</Button>
+        </AccordionActions>
       </Accordion>
       ))}
     </div>

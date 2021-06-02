@@ -6,12 +6,16 @@ import {
   AccordionSummary,
   makeStyles,
   Theme,
-  Divider
+  Divider,
+  AccordionActions
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 import Avatar from '@material-ui/core/Avatar';
-import BusinessContractsButtons from './BusinessContractsButtons'
+import { useHistory } from "react-router";
+import { getFormById } from "../../actions/formActions";
+import { useDispatch, useSelector } from "react-redux";
+import { IRootState } from "../../utils/store";
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
@@ -36,6 +40,20 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const ListAccordionDone = (prop: { contracts: any[]}) => {
   const classes = useStyles()
+
+  const history = useHistory()
+
+  const dispatch = useDispatch()
+
+  const currentForm:any = useSelector((state: IRootState ) => state.form)
+
+  const handleEsitteleLomaketta =  (formId:any) => {
+
+    dispatch(getFormById(formId))
+    console.log("currentForm", currentForm)
+    history.push(`/business-contract-preview`)
+  }
+
   const {contracts} = prop
   if (contracts.length < 1) {
     return <p>no results</p>;
@@ -75,7 +93,10 @@ export const ListAccordionDone = (prop: { contracts: any[]}) => {
             </Typography>
           </div>
         </AccordionDetails>
-        <BusinessContractsButtons contractId={contract._id} formId={contract.formId} />
+        <AccordionActions>
+              <Button onClick={() => handleEsitteleLomaketta(contract.formId)}>Esikatsele lomaketta</Button>
+              <Button>Tulosta pdf</Button>
+        </AccordionActions>
       </Accordion>
       ))}
     </div>

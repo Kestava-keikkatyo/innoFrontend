@@ -7,11 +7,16 @@ import {
   makeStyles,
   Theme,
   Divider,
+  AccordionActions
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
-import BusinessContractsButtons from './BusinessContractsButtons'
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
+import { deleteBusinessContractById, sendBusinessContract } from "../../actions/businessContractActions";
+import { getFormById } from "../../actions/formActions";
+import { IRootState } from "../../utils/store";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -37,6 +42,36 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const ListAccordionInBox = (prop: { contracts: any[] }) => {
   const classes = useStyles();
+
+  const dispatch = useDispatch()
+
+  const history = useHistory()
+
+  const currentForm:any = useSelector((state: IRootState ) => state.form)
+
+  const handleEsitteleLomaketta =  (formId:any) => {
+
+    history.push(`/business-contract-preview`)
+  }
+
+  const rejectContract = (contractId:any, formId:any) => {
+
+    dispatch(getFormById(formId))
+
+    if (window.confirm(`Poistetaanko ${currentForm.title}`)) {
+      dispatch(deleteBusinessContractById(contractId));
+    }
+  }
+
+
+  const loadAndSendContract = (contractId:any) => {
+
+    alert()
+
+    dispatch(sendBusinessContract(contractId))
+  }
+
+
   const { contracts } = prop;
   if (contracts.length < 1) {
     return <p>no results</p>;
@@ -76,7 +111,13 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
                 </Typography>
               </div>
             </AccordionDetails>
-            <BusinessContractsButtons contractId={contract._id} formId={contract.formId} />
+
+            <AccordionActions>
+              <Button onClick={() => rejectContract(contract._id, contract.formId)}>Hylkää sopimus</Button>
+              <Button onClick={() => handleEsitteleLomaketta(contract.formId)}>Esikatsele lomaketta</Button>
+              <Button>Tulosta pdf</Button>
+              <Button onClick={() => loadAndSendContract(contract._id)}>Lataa ja lähetä allekirjoitettu sopimus</Button>
+            </AccordionActions>
           </Accordion>
         ))}
       </div>
