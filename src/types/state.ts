@@ -359,3 +359,79 @@ export type FormActionTypes =
 export type FormListActionTypes =
   | FetchFormListAction
   | AddToFormList
+
+
+// BUSINESS CONTRACT FORM
+export const SET_CURRENT_BUSINESS_CONTRACT_FORM = "SET_CURRENT_BUSINESS_CONTRACT_FORM"
+export const UPDATE_BUSINESS_CONTRACT_TITLE = "UPDATE_BUSINESS_CONTRACT_TITLE"
+export const SET_BUSINESS_CONTRACT_DESCRIPTION = "SET_BUSINESS_CONTRACT_DESCRIPTION"
+export const ADD_BUSINESS_CONTRACT_QUESTION = "ADD_BUSINESS_CONTRACT_QUESTION"
+export const UPDATE_BUSINESS_CONTRACT_QUESTION = "UPDATE_BUSINESS_CONTRACT_QUESTION"
+export const UPDATE_BUSINESS_CONTRACT_QUESTION_OPTION = "UPDATE_BUSINESS_CONTRACT_QUESTION_OPTION"
+export const REMOVE_BUSINESS_CONTRACT_QUESTION = "REMOVE_BUSINESS_CONTRACT_QUESTION"
+export const REMOVE_BUSINESS_CONTRACT_OPTION = "REMOVE_BUSINESS_CONTRACT_OPTION"
+export const SET_BUSINESS_CONTRACT_QUESTIONS = "SET_BUSINESS_CONTRACT_QUESTIONS"
+export const CLEAR_CURRENT_BUSINESS_CONTRACT_FORM = "CLEAR_CURRENT_BUSINESS_CONTRACT_FORM"
+
+
+interface SetCurrentBusinessContractFormAction {
+  type: typeof SET_CURRENT_BUSINESS_CONTRACT_FORM
+  data: any
+}
+
+interface UpdateBusinessContractTitleAction {
+  type: typeof UPDATE_BUSINESS_CONTRACT_TITLE
+  data: any
+}
+
+interface SetBusinessContractDescriptionAction {
+  type: typeof SET_BUSINESS_CONTRACT_DESCRIPTION
+  data: any
+}
+
+interface AddBusinessContractQuestionAction {
+  type: typeof ADD_BUSINESS_CONTRACT_QUESTION
+  data: any
+}
+
+interface UpdateBusinessContractQuestionAction {
+  type: typeof UPDATE_BUSINESS_CONTRACT_QUESTION
+  data: any
+}
+
+interface UpdateBusinessContractQuestionOptionAction {
+  type: typeof UPDATE_BUSINESS_CONTRACT_QUESTION_OPTION
+  data: any
+}
+
+interface RemoveBusinessContractQuestionAction {
+  type: typeof REMOVE_BUSINESS_CONTRACT_QUESTION
+  data: any
+}
+
+interface RemoveBusinessContractOptionAction {
+  type: typeof REMOVE_BUSINESS_CONTRACT_OPTION
+  data: any
+}
+
+interface SetBusinessContractQuestionsAction {
+  type: typeof SET_BUSINESS_CONTRACT_QUESTIONS
+  data: any
+}
+
+interface ClearCurrentBusinessContractFormAction {
+  type: typeof CLEAR_CURRENT_BUSINESS_CONTRACT_FORM
+  data: any
+}
+
+export type BusinessContractFormActionTypes =
+  | SetCurrentBusinessContractFormAction
+  | UpdateBusinessContractTitleAction
+  | SetBusinessContractDescriptionAction
+  | AddBusinessContractQuestionAction
+  | UpdateBusinessContractQuestionAction
+  | UpdateBusinessContractQuestionOptionAction
+  | RemoveBusinessContractQuestionAction
+  | RemoveBusinessContractOptionAction
+  | SetBusinessContractQuestionsAction
+  | ClearCurrentBusinessContractFormAction

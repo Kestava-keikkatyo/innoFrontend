@@ -14,8 +14,10 @@ import Button from "@material-ui/core/Button";
 import Avatar from '@material-ui/core/Avatar';
 import { useHistory } from "react-router";
 import { getFormById } from "../../actions/formActions";
-import { useDispatch, useSelector } from "react-redux";
-import { IRootState } from "../../utils/store";
+import { useDispatch } from "react-redux";
+import { getFormByIdAndSetBusinessContractForm } from "../../actions/businessContractFormActions";
+
+
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
@@ -45,12 +47,10 @@ export const ListAccordionDone = (prop: { contracts: any[]}) => {
 
   const dispatch = useDispatch()
 
-  const currentForm:any = useSelector((state: IRootState ) => state.form)
-
   const handleEsitteleLomaketta =  (formId:any) => {
 
     dispatch(getFormById(formId))
-    console.log("currentForm", currentForm)
+    dispatch(getFormByIdAndSetBusinessContractForm(formId))
     history.push(`/business-contract-preview`)
   }
 

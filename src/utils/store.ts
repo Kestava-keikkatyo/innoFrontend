@@ -10,6 +10,7 @@ import breadcrumbReducer from '../reducers/breadcrumbReducer'
 import feelingReducer from '../reducers/feelingReducer'
 import formReducer from '../reducers/formReducer'
 import formListReducer from '../reducers/formListReducer'
+import buisnessContractFormReducer from '../reducers/businessContractFormReducer'
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -22,7 +23,9 @@ const reducer = combineReducers({
   feeling: feelingReducer,
   form: formReducer,
   formList: formListReducer,
-  file: fileReducer
+  file: fileReducer,
+  businessContractForm: buisnessContractFormReducer
+
 })
 
 export type IRootState = ReturnType<typeof reducer>

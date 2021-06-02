@@ -16,6 +16,7 @@ import { useDispatch} from "react-redux";
 import { useHistory } from "react-router-dom";
 import { sendBusinessContract } from "../../actions/businessContractActions";
 import { getFormById } from "../../actions/formActions";
+import { getFormByIdAndSetBusinessContractForm } from "../../actions/businessContractFormActions";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -47,8 +48,10 @@ export const ListAccordionSent = (prop: { contracts: any[] })  => {
   const history = useHistory()
 
 
+
   const handleEsitteleLomaketta =  (formId:any) => {
     dispatch(getFormById(formId))
+    dispatch(getFormByIdAndSetBusinessContractForm(formId))
     history.push(`/business-contract-preview`)
   }
 

@@ -91,7 +91,8 @@ export interface Question {
   scale: number
   optional: boolean
   options: string[]
-  comment: string
+  comment: string,
+  answer:string
 }
 
 declare global {
@@ -106,6 +107,40 @@ export interface FormQuestion {
 }
 
 export interface Form {
+  title: string
+  description: string
+  isPublic: boolean
+  tags: string[]
+  questions: Array<Question>
+}
+
+
+// Business contract form types
+
+export interface BusinessContractQuestion {
+  title: string
+  ordering?: number
+  questionType: string
+  subTitle: string
+  scaleOptionTitleLeft: string
+  scaleOptionTitleCenter: string
+  scaleOptionTitleRight: string
+  answerMinLength: number
+  answerMaxLength: number
+  rows: number
+  scale: number
+  optional: boolean
+  options: string[]
+  comment: string,
+  answer: string
+}
+
+export interface BusinessContractFormQuestion {
+  question: string
+  options: any
+}
+
+export interface BusinessContractForm {
   title: string
   description: string
   isPublic: boolean
