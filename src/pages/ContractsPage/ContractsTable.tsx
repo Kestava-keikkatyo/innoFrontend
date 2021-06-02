@@ -16,6 +16,7 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import { Delete as DeleteIcon } from "@material-ui/icons";
+import NotificationsIcon from '@material-ui/icons/Notifications';
 import DoneIcon from "@material-ui/icons/Done";
 import ClearIcon from "@material-ui/icons/Clear";
 import { useDispatch, useSelector } from "react-redux";
@@ -218,9 +219,9 @@ const MCTable = (prop: { contracts: []; deleteContract: Function }) => {
                 <TableCell component="th" scope="row">
                   {contract._id}
                 </TableCell>
-                <TableCell align="right">{contract.name}</TableCell>
-                <TableCell align="right">{contract.email}</TableCell>
-                <TableCell align="right">{contract.userType}</TableCell>
+                <TableCell align="right">{contract.businessId.name}</TableCell>
+                <TableCell align="right">{contract.businessId.email}</TableCell>
+                <TableCell align="right">{contract.businessId.userType}</TableCell>
                 <TableCell align="right">{"Made"}</TableCell>
                 <TableCell padding="none" align="right">
                   <IconButton
@@ -270,6 +271,7 @@ const RCTable = (prop: {
               <TableCell align="right">Type</TableCell>
               <TableCell align="right">Status</TableCell>
               <TableCell align="right">Accept</TableCell>
+              <TableCell align="right">Info</TableCell>
               <TableCell align="right">Decline</TableCell>
             </TableRow>
           </TableHead>
@@ -279,11 +281,13 @@ const RCTable = (prop: {
                 <TableCell component="th" scope="row">
                   {contract._id}
                 </TableCell>
-                <TableCell align="right">{contract.name}</TableCell>
-                <TableCell align="right">{contract.email}</TableCell>
-                <TableCell align="right">{contract.userType}</TableCell>
+                <TableCell align="right">{contract.businessId.name}</TableCell>
+                <TableCell align="right">{contract.businessId.email}</TableCell>
+                <TableCell align="right">{contract.businessId.userType}</TableCell>
                 <TableCell align="right">{"Pending"}</TableCell>
+                
                 <TableCell padding="none" align="right">
+                  
                   <IconButton
                     aria-label="accept contract"
                     color="secondary"
@@ -292,6 +296,14 @@ const RCTable = (prop: {
                     <DoneIcon />
                   </IconButton>
                 </TableCell>
+                <TableCell align="right">
+                  <IconButton
+                    aria-label="remove from organization"
+                    color="secondary"
+                    onClick={() => {console.log("notificationbutton")}}
+                  >
+                    <NotificationsIcon />
+                  </IconButton></TableCell>
                 <TableCell padding="none" align="right">
                   <IconButton
                     aria-label="decline contract"
@@ -306,6 +318,7 @@ const RCTable = (prop: {
           </TableBody>
         </Table>
       </TableContainer>
+      
     );
 };
 
