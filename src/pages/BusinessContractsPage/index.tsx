@@ -92,14 +92,13 @@ const BusinessContractsPage = () => {
   };
 
   return (
-    <Container>
+    <Container maxWidth="xl">
       <div className={classes.root}>
         <AppBar position="static" color="default">
           <Tabs
             value={value}
             onChange={handleChange}
-            variant="scrollable"
-            scrollButtons="on"
+            variant="fullWidth"
             indicatorColor="primary"
             textColor="primary"
             aria-label="scrollable force tabs example"

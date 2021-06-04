@@ -118,6 +118,10 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     paddingRight: 0,
+    marginLeft: "20%",
+    [theme.breakpoints.down('md')]: {
+      marginLeft:"auto"
+    }
   },
   drawerOpen: {
     width: navConstants.DRAWER_WIDTH,
