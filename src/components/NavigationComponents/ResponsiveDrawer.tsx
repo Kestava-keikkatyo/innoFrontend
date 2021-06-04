@@ -20,7 +20,7 @@ import { roles } from '../../types/types'
 import { IRootState } from '../../utils/store'
 import logo from '../../assets/keikka-kaveri4.png'
 import TranslateIcon from '@material-ui/icons/Translate'
-
+import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 const LangMenuDropDown = () => {
   const [anchorEl, setAnchorEl] = React.useState(null)
 
@@ -179,6 +179,15 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
               </ListItemIcon>
               <ListItemText primary="Mood" />
             </ListItem>
+          )}
+            {role === roles.Worker && (
+            <ListItem button component={Link} to="/sopimukset">
+              <ListItemIcon>
+                <AssignmentTurnedInIcon />
+              </ListItemIcon>
+              <ListItemText primary="sopimukset" />
+            </ListItem>
+            
           )}
         </List>
       </div>

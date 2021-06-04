@@ -33,6 +33,7 @@ import Agency from "./pages/AdminPage/Agency";
 import UserCompany from "./pages/AdminPage/UserCompany";
 import BusinessContractPage from "./pages/BusinessContractsPage";
 import BusinessContractPreviewPage from './pages/BusinessContractPreviewPage'
+import WorkerContracts from "./pages/WorkersPage/WorkerContracts";
 
 
 
@@ -97,6 +98,9 @@ const App: React.FC = () => {
         </PrivateRoute>
         <PrivateRoute path="/fiilismittari" roles={[roles.Worker]}>
           <WorkerStatistics />
+        </PrivateRoute>
+        <PrivateRoute path="/sopimukset" roles={[roles.Worker]}>
+          <WorkerContracts />
         </PrivateRoute>
         <PrivateRoute path="/report">
           <ReportPage />

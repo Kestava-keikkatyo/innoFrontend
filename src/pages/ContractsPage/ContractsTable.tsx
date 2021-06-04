@@ -24,6 +24,7 @@ import {
   fetchBusinessContracts,
   addBusinessContract,
   declineBusinessContract,
+  acceptBusinessContract,
 } from "../../actions/businessContractActions";
 import { setAlert } from "../../actions/alertActions";
 import { IRootState } from "../../utils/store";
@@ -44,6 +45,11 @@ const useStyles = makeStyles((theme) => ({
  * - If Agecy accepts BusinessContracts requested contracts moves to Made contracts.
  * @returns Grid
  */
+/*
+
+*/
+
+
 const ContractsTable = () => {
   const { businessContract } = useSelector(
     (state: IRootState) => state.businessContracts
@@ -56,9 +62,10 @@ const ContractsTable = () => {
     dispatch(fetchBusinessContracts());
   }, [dispatch]);
 
-  const acceptContract = (contractId: string, userId: string) => {
-    dispatch(addBusinessContract(contractId, userId));
+  const acceptContract = (contractId: string, userId: string, formId:string) => {
+    dispatch(acceptBusinessContract(contractId, userId, formId));
     dispatch(setAlert("Contract accepted.", severity.Info, 3));
+    //console.log("contractID :",contractId, " userID :",userId, " formID : ",formId)
   };
 
   const declineContract = (contractId: string, userId: string) => {
@@ -243,7 +250,9 @@ const RCTable = (prop: {
   const { contracts, contractId, acceptContract, declineContract } = prop;
 
   if (!contracts.length)
+  
     return (
+      
       <Typography
         style={{ padding: "1rem" }}
         variant="h6"
@@ -271,11 +280,13 @@ const RCTable = (prop: {
           <TableBody>
             {contracts.map((contract: any) => (
               <TableRow key={contract._id}>
+                
                 <TableCell padding="none" align="center">
                   <IconButton
                     aria-label="accept contract"
                     color="secondary"
-                    onClick={() => acceptContract(contractId, contract.businessId._id)}
+                    onClick={() => acceptContract(contractId, contract.businessId._id, contract.formId)}
+                    
                   >
                     <DoneIcon />
                   </IconButton>
