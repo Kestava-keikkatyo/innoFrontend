@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import navConstants from '../../constants/navConstants';
 import profileThumb from '../../assets/profile-thumb.jpg'
 
-const drawerWidth = navConstants.DRAWER_WIDTH
+//const drawerWidth = navConstants.DRAWER_WIDTH
 
 const TopAppBar = ({ handleDrawerToggle }) => {
   const classes = useStyles();
@@ -35,10 +35,10 @@ const TopAppBar = ({ handleDrawerToggle }) => {
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    [theme.breakpoints.up('lg')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
-    },
+    //[theme.breakpoints.up('lg')]: {
+    // width: `calc(100% - ${drawerWidth}px)`,
+    // marginLeft: drawerWidth,
+    //},
   },
   menuButton: {
     marginRight: theme.spacing(2),
