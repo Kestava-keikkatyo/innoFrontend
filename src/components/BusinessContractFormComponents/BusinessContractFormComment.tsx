@@ -9,10 +9,10 @@ import { FormComponentProps } from '../../types/props';
  * @param {Question} props.question A question object.
  */
 const BusinssContractFormComment: React.FC<FormComponentProps> = ({ question }) => {
-  const { comment } = question
+  const { title } = question
   return (
     <>
-    <Typography variant="h6" >{comment}</Typography>
+    <Typography variant="h6" >{title}</Typography>
     </>
    );
 }

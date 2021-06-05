@@ -9,12 +9,12 @@ import { FormComponentProps } from '../../types/props';
  * @param {Question} props.question A question object.
  */
 const FormComment: React.FC<FormComponentProps> = ({ question }) => {
-  const { comment } = question
-  return ( 
+  const { title } = question
+  return (
     <>
-    <Typography variant="h6" >{comment}</Typography>
+    <Typography variant="h6" >{title}</Typography>
     </>
    );
 }
- 
+
 export default FormComment;

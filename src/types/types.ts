@@ -92,7 +92,8 @@ export interface Question {
   optional: boolean
   options: string[]
   comment: string,
-  answer:string
+  answer:any,
+  checked: any
 }
 
 declare global {
@@ -132,7 +133,8 @@ export interface BusinessContractQuestion {
   optional: boolean
   options: string[]
   comment: string,
-  answer: string
+  answer: any,
+  checked: any
 }
 
 export interface BusinessContractFormQuestion {

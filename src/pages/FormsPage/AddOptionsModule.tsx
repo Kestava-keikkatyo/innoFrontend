@@ -11,13 +11,15 @@ interface Props {
  * @component
  * @desc In form editors page component which handles add options
  * for radiobutton group and checkbox group.
- * @param {number} props.index 
+ * @param {number} props.index
  */
 const AddOptionsModule: React.FC<Props> = ({ index }) => {
   const dispatch = useDispatch()
   const { questions } = useSelector((state: any) => state.form)
 
-  return ( 
+  console.log("questions[index].options",questions[index].options)
+
+  return (
     <>
     {questions[index].options.map((opt: string, i: number) =>
     <div key={i}>
@@ -38,5 +40,5 @@ const AddOptionsModule: React.FC<Props> = ({ index }) => {
     </>
    );
 }
- 
+
 export default AddOptionsModule;

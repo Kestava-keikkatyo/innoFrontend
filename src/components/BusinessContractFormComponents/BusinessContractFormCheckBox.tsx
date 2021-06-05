@@ -12,8 +12,11 @@ const BusinessContractFormCheckBox: React.FC<FormComponentProps> = ({ question }
   const { title } = question
   const [state, setState] = React.useState(false)
 
+  question.checked = state
+
   const handleChange = () => {
     setState(!state)
+
   }
 
   return (

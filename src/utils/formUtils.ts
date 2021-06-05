@@ -88,6 +88,7 @@ export const convertForm = (form: Form): any => {
       case questionTypes.Text:
         temp = {
           ...temp,
+          answer: q.answer,
           answerMaxLength: q.answerMaxLength,
           answerMinLength: q.answerMinLength,
         }
@@ -97,6 +98,7 @@ export const convertForm = (form: Form): any => {
       case questionTypes.Textarea:
         temp = {
           ...temp,
+          answer: q.answer,
           answerMaxLength: q.answerMaxLength,
           answerMinLength: q.answerMinLength,
           rows: q.rows,
@@ -105,16 +107,28 @@ export const convertForm = (form: Form): any => {
         break
 
       case questionTypes.CheckBox:
+        temp = {
+          ...temp,
+          checked: q.checked
+        }
         questions.checkbox = questions.checkbox.concat(temp)
         break
 
       case questionTypes.CheckboxGroup:
-        temp = { ...temp, options: q.options }
+        temp = {
+           ...temp,
+           options: q.options,
+           checked: q.checked
+        }
         questions.checkbox_group = questions.checkbox_group.concat(temp)
         break
 
       case questionTypes.RadiobuttonGroup:
-        temp = { ...temp, options: q.options }
+        temp = {
+           ...temp,
+           options: q.options,
+           checked: q.checked
+        }
         questions.radiobutton_group = questions.radiobutton_group.concat(temp)
         break
 
@@ -126,6 +140,7 @@ export const convertForm = (form: Form): any => {
           scaleOptionTitleCenter: q.scaleOptionTitleCenter,
           scaleOptionTitleRight: q.scaleOptionTitleRight,
           options: q.options,
+          checked: q.checked
         }
         questions.radiobutton_group_horizontal = questions.radiobutton_group_horizontal.concat(
           temp
@@ -133,18 +148,30 @@ export const convertForm = (form: Form): any => {
         break
 
       case questionTypes.ContactInformation:
+        temp = {
+          ...temp,
+          answer: q.answer
+        }
         questions.contact_information = questions.contact_information.concat(
           temp
         )
         break
 
       case questionTypes.DatePicker:
-        temp = { ...temp, isClosedTimeFrame: q.isClosedTimeFrame }
+        temp = {
+          ...temp,
+          isClosedTimeFrame: q.isClosedTimeFrame,
+          answer: q.answer
+        }
         questions.datepicker = questions.datepicker.concat(temp)
         break
 
       case questionTypes.TimePicker:
-        temp = { ...temp, isClosedTimeFrame: q.isClosedTimeFrame }
+        temp = {
+          ...temp,
+          isClosedTimeFrame: q.isClosedTimeFrame,
+          answer: q.answer
+        }
         questions.timepicker = questions.timepicker.concat(temp)
         break
 

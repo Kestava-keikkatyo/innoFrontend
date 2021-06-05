@@ -128,7 +128,7 @@ const FormsPage: React.FC = () => {
       <Typography variant="h4">My Forms</Typography>
       <ul className="horizontal-scroll">
         {myForms.docs.map((t: any, i: number) => (
-          <GridFormPreview
+           <GridFormPreview
             key={i}
             formTitle={t.title}
             formDesc={t.description}

@@ -20,6 +20,8 @@ const BusinssContractFormRadio: React.FC<FormComponentProps> = ({ question }) =>
     setState(state.map((o, i) => i === index ? { ...o, value: true }: { ...o, value: false } ))
   }
 
+  question.checked = state
+
   return (
     <>
       <Typography variant="h6" >{ title }</Typography>
