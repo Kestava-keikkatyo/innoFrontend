@@ -3,7 +3,7 @@
  * @desc Redux businessContract actions
  */
 import contractsService from '../services/contractsService'
-import { ACTIVATE_B_CONTRACT, ADD_B_CONTRACT, B_DELETE, B_FETCH, B_UPDATE, DECLINE_B_CONTRACT, B_SEND } from '../types/state'
+import { ACTIVATE_B_CONTRACT, ADD_B_CONTRACT, B_DELETE, B_FETCH, B_UPDATE, DECLINE_B_CONTRACT, B_SEND, B_ACCEPT } from '../types/state'
 import { businessContractType } from '../types/types'
 
 
@@ -53,6 +53,12 @@ export const sendBusinessContract = (contractId:string, form?:string) => async (
   const res = await contractsService.sendBusinessContract(contractId,form)
   if(res && res.status === 200)
     dispatch({type: B_SEND, data: res.data })
+}
+
+export const acceptBusinessContract = (contractId:string, userId:string,form?:string) => async (dispatch: any) => {
+  const res = await contractsService.acceptBusinessContract(contractId,userId,form) 
+  if(res && res.status === 200)
+    dispatch({type: B_ACCEPT, data: res.data})
 }
 /**
  * @function

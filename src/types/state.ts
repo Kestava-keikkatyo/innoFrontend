@@ -145,6 +145,7 @@ export const B_DELETE = 'DELETE_BUSINESS_CONTRACT_BY_ID'
 export const ACTIVATE_B_CONTRACT = 'ACTIVATE_BUSINESS_CONTRACT'
 export const DECLINE_B_CONTRACT = 'DECLINE_BUSINESS_CONTRACT'
 export const B_SEND = 'SEND_BUSINESS_CONTRACT'
+export const B_ACCEPT = 'ACCEPT_BUSINESS_CONTRACT'
 
 interface ActivateBusinessContract {
   type: typeof ACTIVATE_B_CONTRACT
@@ -181,8 +182,13 @@ interface SendBusinessContract {
   data: any
 }
 
+interface AcceptBusinessContract {
+  type: typeof B_ACCEPT
+  data: any
+}
+
 export type BusinessContractActions = AddBusinessContractAction | BusinessContractFetchAction |
-UpdateBusinessSearchAction | RefuseBusinessContractAction | ActivateBusinessContract | DeclineBusinessCOntractAction | SendBusinessContract
+UpdateBusinessSearchAction | RefuseBusinessContractAction | ActivateBusinessContract | DeclineBusinessCOntractAction | SendBusinessContract | AcceptBusinessContract
 
 export interface WorkContractState {
   searchList: object[],

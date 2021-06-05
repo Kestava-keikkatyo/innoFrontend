@@ -8,9 +8,6 @@ import SendIcon from "@material-ui/icons/Send";
 import AllInboxIcon from "@material-ui/icons/AllInbox";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 import { Container } from "@material-ui/core";
-import ListAccordionInBox from "./ListAccordionInBox";
-import ListAccordionSent from "./ListAccordionSent";
-import { ListAccordionDone } from "./ListAccordionDone";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBusinessContracts } from "../../actions/businessContractActions";
 import { IRootState } from "../../utils/store";
@@ -60,7 +57,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const BusinessContractsPage = () => {
+const WorkerContracts = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const { businessContract } = useSelector((state: IRootState) => state.businessContracts)
@@ -92,13 +89,14 @@ const BusinessContractsPage = () => {
   };
 
   return (
-    <Container maxWidth="xl">
+    <Container>
       <div className={classes.root}>
         <AppBar position="static" color="default">
           <Tabs
             value={value}
             onChange={handleChange}
-            variant="fullWidth"
+            variant="scrollable"
+            scrollButtons="on"
             indicatorColor="primary"
             textColor="primary"
             aria-label="scrollable force tabs example"
@@ -121,16 +119,16 @@ const BusinessContractsPage = () => {
           </Tabs>
         </AppBar>
         <TabPanel value={value} index={0}>
-          <ListAccordionInBox contracts={pending}/>
+      
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <ListAccordionSent contracts={sent}/>
+        
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <ListAccordionDone contracts={ready} />
+        
         </TabPanel>
       </div>
     </Container>
   );
 };
-export default BusinessContractsPage;
+export default WorkerContracts;

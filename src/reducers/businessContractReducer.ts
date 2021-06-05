@@ -2,7 +2,7 @@
  * @module reducer/businessContract
  * @desc Redux alert reducer
  */
-import { ACTIVATE_B_CONTRACT, ADD_B_CONTRACT, BusinessContractActions, BusinessContractState, B_DELETE, B_FETCH, B_UPDATE, DECLINE_B_CONTRACT } from "../types/state"
+import { ACTIVATE_B_CONTRACT, ADD_B_CONTRACT, BusinessContractActions, BusinessContractState, B_DELETE, B_FETCH, B_UPDATE, DECLINE_B_CONTRACT, B_ACCEPT } from "../types/state"
 
 const initialState: BusinessContractState = {
   searchList: [],
@@ -49,6 +49,11 @@ const businessContractReducer = (state: BusinessContractState = initialState, ac
         ...state,
         madeContracts: 
           state.madeContracts.map((c: any) => c._id === action.data ? { ...c, contractMade: true }: c)
+      }
+    case B_ACCEPT:
+      return {
+          ...state,
+          businessContract: [action.data]
       }
     default:
       return state
