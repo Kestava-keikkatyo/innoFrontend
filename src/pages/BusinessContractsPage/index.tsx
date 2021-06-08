@@ -4,6 +4,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
+import BusinessIcon from "@material-ui/icons/Business";
 import SendIcon from "@material-ui/icons/Send";
 import AllInboxIcon from "@material-ui/icons/AllInbox";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
@@ -14,6 +15,7 @@ import { ListAccordionDone } from "./ListAccordionDone";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBusinessContracts } from "../../actions/businessContractActions";
 import { IRootState } from "../../utils/store";
+import BusinessList from "./BusinessesList";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -32,11 +34,7 @@ function TabPanel(props: TabPanelProps) {
       aria-labelledby={`scrollable-force-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box p={3}>
-          {children}
-        </Box>
-      )}
+      {value === index && <Box p={3}>{children}</Box>}
     </div>
   );
 }
@@ -63,29 +61,31 @@ const useStyles = makeStyles((theme: Theme) => ({
 const BusinessContractsPage = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  const { businessContract } = useSelector((state: IRootState) => state.businessContracts)
-  const dispatch = useDispatch()
-  const contracts = businessContract
-  const pending:any = []
-  const sent:any = []
-  const ready:any = []
+  const { businessContract } = useSelector(
+    (state: IRootState) => state.businessContracts
+  );
+  const dispatch = useDispatch();
+  const contracts = businessContract;
+  const pending: any = [];
+  const sent: any = [];
+  const ready: any = [];
 
   useEffect(() => {
-    dispatch(fetchBusinessContracts())
-  }, [dispatch])
+    dispatch(fetchBusinessContracts());
+  }, [dispatch]);
 
-  contracts.map((contract:any) => {
-    console.log(contract)
+  contracts.map((contract: any) => {
+    console.log(contract);
     if (contract.pendingContracts) {
-      pending.push(contract)
+      pending.push(contract);
     } else if (contract.requestContracts) {
-      sent.push(contract)
+      sent.push(contract);
     } else if (contract.madeContracts) {
-      ready.push(contract)
+      ready.push(contract);
     }
     // an arrow function should return a value
-    return ''
-  })
+    return "";
+  });
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
@@ -104,29 +104,37 @@ const BusinessContractsPage = () => {
             aria-label="scrollable force tabs example"
           >
             <Tab
+              label="Selaa HP-yrityksiä"
+              icon={<BusinessIcon />}
+              {...a11yProps(0)}
+            />
+            <Tab
               label="Saapuneet sopimukset"
               icon={<NotificationsActiveIcon />}
-              {...a11yProps(0)}
+              {...a11yProps(1)}
             />
             <Tab
               label="Lähetetyt sopimukset"
               icon={<SendIcon />}
-              {...a11yProps(1)}
+              {...a11yProps(2)}
             />
             <Tab
               label="Valmiit sopimukset"
               icon={<AllInboxIcon />}
-              {...a11yProps(2)}
+              {...a11yProps(3)}
             />
           </Tabs>
         </AppBar>
         <TabPanel value={value} index={0}>
-          <ListAccordionInBox contracts={pending}/>
+          <BusinessList />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <ListAccordionSent contracts={sent}/>
+          <ListAccordionInBox contracts={pending} />
         </TabPanel>
         <TabPanel value={value} index={2}>
+          <ListAccordionSent contracts={sent} />
+        </TabPanel>
+        <TabPanel value={value} index={3}>
           <ListAccordionDone contracts={ready} />
         </TabPanel>
       </div>
