@@ -22,7 +22,6 @@ import ClearIcon from "@material-ui/icons/Clear";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchBusinessContracts,
-  addBusinessContract,
   declineBusinessContract,
   acceptBusinessContract,
 } from "../../actions/businessContractActions";
@@ -88,7 +87,7 @@ const ContractsTable = () => {
     return (
       <>
 
-      
+
         <Grid
           container
           direction="column"
@@ -186,7 +185,7 @@ const ContractsTable = () => {
             </Card>
           </Grid>
         </Grid>
-        
+
       </>
     );
 };
@@ -250,9 +249,9 @@ const RCTable = (prop: {
   const { contracts, contractId, acceptContract, declineContract } = prop;
 
   if (!contracts.length)
-  
+
     return (
-      
+
       <Typography
         style={{ padding: "1rem" }}
         variant="h6"
@@ -280,13 +279,13 @@ const RCTable = (prop: {
           <TableBody>
             {contracts.map((contract: any) => (
               <TableRow key={contract._id}>
-                
+
                 <TableCell padding="none" align="center">
                   <IconButton
                     aria-label="accept contract"
                     color="secondary"
                     onClick={() => acceptContract(contractId, contract.businessId._id, contract.formId)}
-                    
+
                   >
                     <DoneIcon />
                   </IconButton>
@@ -318,7 +317,7 @@ const RCTable = (prop: {
           </TableBody>
         </Table>
       </TableContainer>
-      
+
     );
 };
 

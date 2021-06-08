@@ -34,6 +34,7 @@ import UserCompany from "./pages/AdminPage/UserCompany";
 import BusinessContractPage from "./pages/BusinessContractsPage";
 import BusinessContractPreviewPage from './pages/BusinessContractPreviewPage'
 import WorkerContracts from "./pages/WorkersPage/WorkerContracts";
+import BusinessContractEditPage from './pages/BusinessContracEditPage'
 
 
 
@@ -122,6 +123,12 @@ const App: React.FC = () => {
           roles={[roles.Business, roles.Agency]}
         >
           <BusinessContractPreviewPage />
+        </PrivateRoute>
+        <PrivateRoute
+          path="/business-contract-editor"
+          roles={[roles.Business, roles.Agency]}
+        >
+          <BusinessContractEditPage />
         </PrivateRoute>
         <PrivateRoute
           path="/forms/newform"

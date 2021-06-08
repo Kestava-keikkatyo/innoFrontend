@@ -370,6 +370,7 @@ export type FormListActionTypes =
 // BUSINESS CONTRACT FORM
 export const SET_CURRENT_BUSINESS_CONTRACT_FORM = "SET_CURRENT_BUSINESS_CONTRACT_FORM"
 export const UPDATE_BUSINESS_CONTRACT_TITLE = "UPDATE_BUSINESS_CONTRACT_TITLE"
+export const UPDATE_BUSINESS_CONTRACT_ANSWER = "UPDATE_BUSINESS_CONTRACT_ANSWER"
 export const SET_BUSINESS_CONTRACT_DESCRIPTION = "SET_BUSINESS_CONTRACT_DESCRIPTION"
 export const ADD_BUSINESS_CONTRACT_QUESTION = "ADD_BUSINESS_CONTRACT_QUESTION"
 export const UPDATE_BUSINESS_CONTRACT_QUESTION = "UPDATE_BUSINESS_CONTRACT_QUESTION"
@@ -387,6 +388,11 @@ interface SetCurrentBusinessContractFormAction {
 
 interface UpdateBusinessContractTitleAction {
   type: typeof UPDATE_BUSINESS_CONTRACT_TITLE
+  data: any
+}
+
+interface UpdateBusinessContractAnswerAction {
+  type: typeof UPDATE_BUSINESS_CONTRACT_ANSWER
   data: any
 }
 
@@ -433,6 +439,7 @@ interface ClearCurrentBusinessContractFormAction {
 export type BusinessContractFormActionTypes =
   | SetCurrentBusinessContractFormAction
   | UpdateBusinessContractTitleAction
+  | UpdateBusinessContractAnswerAction
   | SetBusinessContractDescriptionAction
   | AddBusinessContractQuestionAction
   | UpdateBusinessContractQuestionAction
@@ -441,3 +448,20 @@ export type BusinessContractFormActionTypes =
   | RemoveBusinessContractOptionAction
   | SetBusinessContractQuestionsAction
   | ClearCurrentBusinessContractFormAction
+
+  export const FETCH_BUSINESS_CONTRACT_LIST = "FETCH_BUSINESS_CONTRACT_LIST"
+  export const ADD_TO_BUSINESS_CONTRACT_LIST = "ADD_TO_BUSINESS_CONTRACT_LIST"
+
+  interface FetchBusinessContractListAction {
+    type: typeof FETCH_BUSINESS_CONTRACT_LIST
+    data: any
+  }
+
+  interface AddToBusinessContractList {
+    type: typeof ADD_TO_BUSINESS_CONTRACT_LIST
+    data: Form
+  }
+
+export type BusinssContractListActionTypes =
+  | FetchBusinessContractListAction
+  | AddToBusinessContractList
