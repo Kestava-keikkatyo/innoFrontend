@@ -8,6 +8,7 @@
  import {
     SET_CURRENT_BUSINESS_CONTRACT_FORM,
     UPDATE_BUSINESS_CONTRACT_TITLE,
+    UPDATE_BUSINESS_CONTRACT_ANSWER,
     SET_BUSINESS_CONTRACT_DESCRIPTION,
     ADD_BUSINESS_CONTRACT_QUESTION,
     UPDATE_BUSINESS_CONTRACT_QUESTION,
@@ -48,6 +49,15 @@
  export const setTitle = (title: string) => async (dispatch: any) => {
    dispatch({ type: UPDATE_BUSINESS_CONTRACT_TITLE, data: title })
  }
+
+  /**
+  * @function
+  * @desc Updates the answer of the generated form
+  * @param {any} answer - Form title.
+  */
+   export const setAnswer = (answer: any) => async (dispatch: any) => {
+    dispatch({ type: UPDATE_BUSINESS_CONTRACT_ANSWER, data: answer })
+  }
 
  /**
   * @function
@@ -149,7 +159,11 @@
      return
    }
    const res = await formServices.postForm(convertForm(form))
-   console.log(res);
+   console.log("submitBusinessContractForm res: ", res);
+   console.log("submitBusinessContractForm res.data._id: ", res?.data._id);
+
+   const data = await formServices.fetchFormById(res?.data._id)
+   dispatch({type: SET_CURRENT_BUSINESS_CONTRACT_FORM, data})
 
    dispatch(addToFormList(form))
    // //ugleeeeeh && karvalakki certified :--DD

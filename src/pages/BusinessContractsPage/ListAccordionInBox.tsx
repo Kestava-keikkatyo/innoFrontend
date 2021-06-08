@@ -14,7 +14,7 @@ import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { activateBusinessContract, refuseBusinessContractById, sendBusinessContract } from "../../actions/businessContractActions";
+import { activateBusinessContract, refuseBusinessContractById} from "../../actions/businessContractActions";
 import { getFormById } from "../../actions/formActions";
 import { IRootState } from "../../utils/store";
 import { getFormByIdAndSetBusinessContractForm } from "../../actions/businessContractFormActions";
@@ -50,11 +50,21 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
 
   const currentForm:any = useSelector((state: IRootState ) => state.form)
 
-  const handleEsitteleLomaketta =  (formId:any) => {
+  const currentBusinessContractForm:any = useSelector((state: IRootState ) => state.businessContractForm)
+
+  const handleEsitteleJaTäytäLomaketta =  (formId:any) => {
     dispatch(getFormById(formId))
     dispatch(getFormByIdAndSetBusinessContractForm(formId))
     history.push(`/business-contract-preview`)
   }
+
+  const handleMuokkaaTäytettyäLomaketta =  () => {
+
+    history.push(`/business-contract-editor`)
+
+  }
+
+
 
   const rejectContract = (contractId:any, formId:any) => {
     dispatch(getFormById(formId))
@@ -110,7 +120,8 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
 
             <AccordionActions>
               <Button onClick={() => rejectContract(contract._id, contract.formId)}>Hylkää sopimus</Button>
-              <Button onClick={() => handleEsitteleLomaketta(contract.formId)}>Esikatsele lomaketta</Button>
+              <Button onClick={() => handleEsitteleJaTäytäLomaketta(contract.formId)}>Esikatsele tai täydennä lomaketta</Button>
+              {currentBusinessContractForm._id && currentBusinessContractForm._id !== '' ? <Button onClick={handleMuokkaaTäytettyäLomaketta}>Muokkaa Täydettyä lomaketta</Button> : null}
               <Button>Tulosta pdf</Button>
               <Button onClick={() => loadAndSendContract(contract._id)}>Lataa ja lähetä allekirjoitettu sopimus</Button>
             </AccordionActions>

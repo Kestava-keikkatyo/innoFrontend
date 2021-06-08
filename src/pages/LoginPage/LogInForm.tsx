@@ -24,7 +24,7 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
     { value: 'agency', label: t('agency') },
     { value: 'business', label: t('business') }
   ]
-  
+
   return (
     <Card variant="outlined">
       <CardContent>
@@ -32,7 +32,7 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
           {t('log_in')}
         </Typography>
         <Formik
-          initialValues={{ email: '', password: '', role: '' }}
+          initialValues={{ email: 'jarmo@test.com', password: 'jarmo123', role: '' }}
           validate={values => {
             const errors: any = {}
             const emailRegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
@@ -67,13 +67,13 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
                   label={t('email_label')}
                   name="email"
                   type="text"
-                  placeholder="test@test.com"
+                  placeholder="jarmo@test.com"
                 />
                 <FormikTextField
                   label={t('password')}
                   name="password"
                   type="password"
-                  placeholder="jorma123"
+                  placeholder="jarmo123"
                 />
                 <Button
                   type="submit"

@@ -2,7 +2,7 @@ import { AppBar, IconButton, makeStyles, Toolbar, Typography } from '@material-u
 import MenuIcon from '@material-ui/icons/Menu';
 import React from 'react'
 import { useSelector } from 'react-redux';
-import navConstants from '../../constants/navConstants';
+//import navConstants from '../../constants/navConstants';
 import profileThumb from '../../assets/profile-thumb.jpg'
 
 //const drawerWidth = navConstants.DRAWER_WIDTH
