@@ -180,3 +180,27 @@
    // }
    // dispatch({ type: CLEAR_CURRENT_FORM })
  }
+
+
+
+/**
+ * @function
+ * @desc Submits the updated form to storage.
+ * @param {Form} form - Edited Form Object to be submitted.
+ * @todo Service call backend.
+ */
+ export const submitEditedForm = (formId:any, form: BusinessContractForm) => async (dispatch: any) => {
+  if (form.title === "") {
+    dispatch(setAlert("Title is required", severity.Error))
+    return
+  }
+  console.log("submitEditedForm: formId ", formId);
+  console.log("submitEditedForm: FormObject ", form);
+  const res = await formServices.updateForm(formId, convertForm(form))
+
+  const data = await formServices.fetchFormById(res?.data._id)
+  dispatch({type: SET_CURRENT_BUSINESS_CONTRACT_FORM, data})
+
+  dispatch(addToFormList(form))
+
+}

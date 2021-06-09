@@ -32,7 +32,8 @@ const initialQuestion: any = {
   rows: 4, //rowheight
   scale: 5,
   optional: false,
-  options: []
+  options: [],
+  checked: false
 }
 
 /**
@@ -54,7 +55,7 @@ const NewFormPage: React.FC = () => {
   }
 
   console.log(currentForm);
-  
+
   return (
   <Container>
     <form onSubmit={addForm}>

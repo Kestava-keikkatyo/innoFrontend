@@ -1,6 +1,9 @@
 import { Checkbox, FormControl, FormControlLabel, Typography } from '@material-ui/core'
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { updateQuestion } from '../../actions/businessContractFormActions';
 import { FormComponentProps } from '../../types/props';
+import { IRootState } from '../../utils/store';
 
 /**
  * @component
@@ -10,21 +13,30 @@ import { FormComponentProps } from '../../types/props';
  */
 const BusinessContractFormCheckBox: React.FC<FormComponentProps> = ({ question }) => {
   const { title } = question
-  const [state, setState] = React.useState(false)
+  let { checked } = question
 
-  question.checked = state
+  let index:any = question?.ordering
+
+  const questions = useSelector((state: IRootState) => state.businessContractForm.questions)
+
+  const dispatch = useDispatch()
 
   const handleChange = () => {
-    setState(!state)
+    checked = !checked
+    dispatch(
+      updateQuestion({ ...questions[index], checked: checked }, index)
+    )
 
   }
 
+  console.log("checked", checked)
+
   return (
     <>
-      <Typography variant="h6" >Check the box if true.</Typography>
+      <Typography variant="h6" ></Typography>
         <FormControl>
           <FormControlLabel
-            control={<Checkbox checked={state} onChange={handleChange} />}
+            control={<Checkbox checked={checked} onChange={handleChange} />}
             label={ title }
           />
         </FormControl>

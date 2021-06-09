@@ -55,6 +55,7 @@ interface QuestionsObject {
   // timepicker: []
 }
 
+/*
 const initialQuestions = {
   comment: [],
   text: [],
@@ -67,9 +68,21 @@ const initialQuestions = {
   datepicker: [],
   timepicker: [],
 }
+*/
 
 export const convertForm = (form: Form): any => {
-  let questions = initialQuestions
+  let questions = {
+    comment: [],
+    text: [],
+    textarea: [],
+    checkbox: [],
+    checkbox_group: [],
+    radiobutton_group: [],
+    radiobutton_group_horizontal: [],
+    contact_information: [],
+    datepicker: [],
+    timepicker: [],
+  }
   form.questions.map((q: any, i: number) => {
     //base part
     let temp: any = {
