@@ -14,7 +14,7 @@ import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { activateBusinessContract, refuseBusinessContractById} from "../../actions/businessContractActions";
+import { sendBusinessContract, refuseBusinessContractById} from "../../actions/businessContractActions";
 import { getFormById } from "../../actions/formActions";
 import { IRootState } from "../../utils/store";
 import { getFormByIdAndSetBusinessContractForm } from "../../actions/businessContractFormActions";
