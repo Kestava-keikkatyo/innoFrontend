@@ -14,7 +14,7 @@ import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { activateBusinessContract, refuseBusinessContractById} from "../../actions/businessContractActions";
+import { sendBusinessContract, refuseBusinessContractById} from "../../actions/businessContractActions";
 import { getFormById } from "../../actions/formActions";
 import { IRootState } from "../../utils/store";
 import { getFormByIdAndSetBusinessContractForm } from "../../actions/businessContractFormActions";
@@ -81,9 +81,9 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
     }
   }
 
-  const loadAndSendContract = (contractId:any) => {
+  const loadAndSendContract = (contractId:any, formId:any) => {
     alert()
-    dispatch(activateBusinessContract(contractId))
+    dispatch(sendBusinessContract(contractId, formId))
   }
 
   const { contracts } = prop;
@@ -131,7 +131,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
               <Button onClick={() => handleEsitteleJaTäytäLomaketta(contract.formId)}>Esikatsele tai täydennä lomaketta</Button>
               <Button onClick={handleMuokkaaTäytettyäLomaketta}>Muokkaa Täydettyä lomaketta</Button>
               <Button>Tulosta pdf</Button>
-              <Button onClick={() => loadAndSendContract(contract._id)}>Lataa ja lähetä allekirjoitettu sopimus</Button>
+              <Button onClick={() => loadAndSendContract(contract._id, contract.formId)}>Lataa ja lähetä allekirjoitettu sopimus</Button>
             </AccordionActions>
           </Accordion>
         ))}
