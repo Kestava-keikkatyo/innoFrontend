@@ -73,9 +73,9 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
     }
   }
 
-  const loadAndSendContract = (contractId:any) => {
+  const loadAndSendContract = (contractId:any, formId:any) => {
     alert()
-    dispatch(activateBusinessContract(contractId))
+    dispatch(sendBusinessContract(contractId, formId))
   }
 
   const { contracts } = prop;
@@ -123,7 +123,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
               <Button onClick={() => handleEsitteleJaTäytäLomaketta(contract.formId)}>Esikatsele tai täydennä lomaketta</Button>
               {currentBusinessContractForm._id && currentBusinessContractForm._id !== '' ? <Button onClick={handleMuokkaaTäytettyäLomaketta}>Muokkaa Täydettyä lomaketta</Button> : null}
               <Button>Tulosta pdf</Button>
-              <Button onClick={() => loadAndSendContract(contract._id)}>Lataa ja lähetä allekirjoitettu sopimus</Button>
+              <Button onClick={() => loadAndSendContract(contract._id, contract.formId)}>Lataa ja lähetä allekirjoitettu sopimus</Button>
             </AccordionActions>
           </Accordion>
         ))}
