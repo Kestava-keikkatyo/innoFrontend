@@ -131,7 +131,7 @@ export const convertForm = (form: Form): any => {
         temp = {
            ...temp,
            options: q.options,
-           checked: q.checked
+           optionValues: q.optionValues
         }
         questions.checkbox_group = questions.checkbox_group.concat(temp)
         break
@@ -140,7 +140,7 @@ export const convertForm = (form: Form): any => {
         temp = {
            ...temp,
            options: q.options,
-           checked: q.checked
+           optionValues: q.optionValues
         }
         questions.radiobutton_group = questions.radiobutton_group.concat(temp)
         break
@@ -153,7 +153,7 @@ export const convertForm = (form: Form): any => {
           scaleOptionTitleCenter: q.scaleOptionTitleCenter,
           scaleOptionTitleRight: q.scaleOptionTitleRight,
           options: q.options,
-          checked: q.checked
+          optionValues: q.optionValues
         }
         questions.radiobutton_group_horizontal = questions.radiobutton_group_horizontal.concat(
           temp
@@ -163,7 +163,7 @@ export const convertForm = (form: Form): any => {
       case questionTypes.ContactInformation:
         temp = {
           ...temp,
-          answer: q.answer
+          contactInfoAnswer: q.contactInfoAnswer
         }
         questions.contact_information = questions.contact_information.concat(
           temp

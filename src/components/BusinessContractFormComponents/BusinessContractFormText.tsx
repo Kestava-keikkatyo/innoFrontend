@@ -29,10 +29,6 @@ const BusinssContractFormText: React.FC<FormComponentProps> = ({ question }) => 
 
   }
 
-  console.log('qustions:  ', question)
-  console.log('question.ordering:  ', question.ordering)
-  //console.log('state:  ', state)
-
   return (
     <>
       <Typography variant="h6" >{ title }</Typography>

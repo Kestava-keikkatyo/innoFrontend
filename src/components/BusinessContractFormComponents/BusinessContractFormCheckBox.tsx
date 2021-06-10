@@ -29,8 +29,6 @@ const BusinessContractFormCheckBox: React.FC<FormComponentProps> = ({ question }
 
   }
 
-  console.log("checked", checked)
-
   return (
     <>
       <Typography variant="h6" ></Typography>

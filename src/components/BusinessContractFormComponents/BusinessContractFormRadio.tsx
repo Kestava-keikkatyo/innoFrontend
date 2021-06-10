@@ -10,17 +10,21 @@ import { FormComponentProps } from '../../types/props';
  */
 const BusinssContractFormRadio: React.FC<FormComponentProps> = ({ question }) => {
   const { title, subTitle, options } = question
+  let {optionValues} = question
   const [state, setState] = React.useState(
-    options.map(name => {
-      return { name, value: false }
+    options.map((name,i) => {
+      return { name, value: optionValues[i] }
     })
   )
 
   const handleChange = (index: number) => {
     setState(state.map((o, i) => i === index ? { ...o, value: true }: { ...o, value: false } ))
-  }
+    // Change all option values to false
+    optionValues.map((_value, i) => {return optionValues[i] = false})
+    // update selected option
+    optionValues[index] = !optionValues[index]
 
-  question.checked = state
+  }
 
   return (
     <>

@@ -91,9 +91,11 @@ export interface Question {
   scale: number
   optional: boolean
   options: string[]
-  comment: string,
-  answer:any,
+  comment: string
+  answer:any
+  contactInfoAnswer: object
   checked: any
+  optionValues: boolean[]
 }
 
 declare global {
@@ -133,8 +135,10 @@ export interface BusinessContractQuestion {
   optional: boolean
   options: string[]
   comment: string,
-  answer: any,
+  answer: any
+  contactInfoAnswer: object
   checked: any
+  optionValues: boolean[]
 }
 
 export interface BusinessContractFormQuestion {

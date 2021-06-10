@@ -33,7 +33,15 @@ const initialQuestion: any = {
   scale: 5,
   optional: false,
   options: [],
-  checked: false
+  optionValues: [],
+  checked: false,
+  answer: '',
+  contactInfoAnswer: {
+    name:'',
+    phone: '',
+    email: ''
+  }
+
 }
 
 /**

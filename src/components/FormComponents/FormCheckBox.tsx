@@ -18,7 +18,7 @@ const FormCheckBox: React.FC<FormComponentProps> = ({ question }) => {
 
   return (
     <>
-      <Typography variant="h6" >Check the box if true.</Typography>
+      <Typography variant="h6" >{/*Check the box if true.*/}</Typography>
         <FormControl>
           <FormControlLabel
             control={<Checkbox checked={state} onChange={handleChange} />}

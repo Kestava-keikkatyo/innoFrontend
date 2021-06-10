@@ -15,6 +15,7 @@ import {
   REMOVE_QUESTION,
   REMOVE_OPTION,
   SET_QUESTIONS,
+  REMOVE_OPTION_VALUE,
 } from "../types/state"
 import formServices from "../services/formServices"
 import { convertForm } from "../utils/formUtils"
@@ -118,6 +119,19 @@ export const removeOption = (
   optionIndex: number
 ) => async (dispatch: any) => {
   dispatch({ type: REMOVE_OPTION, data: { questionIndex, optionIndex } })
+}
+
+/**
+ * @function
+ * @desc Removes the indicated option from the array.
+ * @param {number} questionIndex - Index of the question which is removed option.
+ * @param {number} optionValueIndex - Index of the optionValue which is to be removed.
+ */
+ export const removeOptionValue = (
+  questionIndex: number,
+  optionValueIndex: number
+) => async (dispatch: any) => {
+  dispatch({ type: REMOVE_OPTION_VALUE, data: { questionIndex, optionValueIndex } })
 }
 
 /**
