@@ -1,5 +1,22 @@
 import {File, Feeling, Form, roles, severity } from "./types"
 
+export interface AgencyState {
+    agencies: []
+}
+
+
+export const A_FETCH = 'AGENCY_FETCH'
+
+
+interface FetchAllAgencyCompanies {
+  type: typeof A_FETCH,
+  data: any
+}
+
+export type AgencyActionTypes = FetchAllAgencyCompanies
+
+
+
 export interface User {
   _id: string,
   name: string,

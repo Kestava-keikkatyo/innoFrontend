@@ -15,7 +15,7 @@ import { ListAccordionDone } from "./ListAccordionDone";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBusinessContracts } from "../../actions/businessContractActions";
 import { IRootState } from "../../utils/store";
-import BusinessList from "./BusinessesList";
+import AgenciesList from "./AgenciesList";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -126,7 +126,7 @@ const BusinessContractsPage = () => {
           </Tabs>
         </AppBar>
         <TabPanel value={value} index={0}>
-          <BusinessList />
+          <AgenciesList />
         </TabPanel>
         <TabPanel value={value} index={1}>
           <ListAccordionInBox contracts={pending} />
