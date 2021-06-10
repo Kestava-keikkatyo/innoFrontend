@@ -12,6 +12,7 @@ import {
   UPDATE_QUESTION_OPTION,
   REMOVE_QUESTION,
   REMOVE_OPTION,
+  REMOVE_OPTION_VALUE,
   SET_QUESTIONS,
   CLEAR_CURRENT_FORM,
   FormActionTypes,
@@ -85,11 +86,21 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
      return {
         ...state,
         questions: state.questions.map((q, i) => i !== action.data.questionIndex
-          ? q : { 
+          ? q : {
             ...q, options: q.options.filter((_: any,j: number) => j !== action.data.optionIndex)
           }
         ),
       }
+
+    case REMOVE_OPTION_VALUE:
+      return {
+           ...state,
+           questions: state.questions.map((q, i) => i !== action.data.questionIndex
+             ? q : {
+               ...q, optionValues: q.optionValues.filter((_: any,j: number) => j !== action.data.optionValueIndex)
+             }
+           ),
+        }
 
     case SET_QUESTIONS:
       return {

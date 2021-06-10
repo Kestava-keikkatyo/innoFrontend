@@ -14,10 +14,12 @@ import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { activateBusinessContract, refuseBusinessContractById} from "../../actions/businessContractActions";
+import { sendBusinessContract, refuseBusinessContractById} from "../../actions/businessContractActions";
 import { getFormById } from "../../actions/formActions";
 import { IRootState } from "../../utils/store";
 import { getFormByIdAndSetBusinessContractForm } from "../../actions/businessContractFormActions";
+import { severity } from "../../types/types";
+import { setAlert } from "../../actions/alertActions";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -60,7 +62,13 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
 
   const handleMuokkaaTäytettyäLomaketta =  () => {
 
-    history.push(`/business-contract-editor`)
+    if(currentBusinessContractForm._id && currentBusinessContractForm._id !== '')
+      history.push(`/business-contract-editor`)
+    else
+      dispatch(
+      setAlert("Lomake ei ole vielä täydetty" , severity.Error)
+      )
+
 
   }
 
@@ -73,9 +81,9 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
     }
   }
 
-  const loadAndSendContract = (contractId:any) => {
+  const loadAndSendContract = (contractId:any, formId:any) => {
     alert()
-    dispatch(activateBusinessContract(contractId))
+    dispatch(sendBusinessContract(contractId, formId))
   }
 
   const { contracts } = prop;
@@ -121,9 +129,9 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
             <AccordionActions>
               <Button onClick={() => rejectContract(contract._id, contract.formId)}>Hylkää sopimus</Button>
               <Button onClick={() => handleEsitteleJaTäytäLomaketta(contract.formId)}>Esikatsele tai täydennä lomaketta</Button>
-              {currentBusinessContractForm._id && currentBusinessContractForm._id !== '' ? <Button onClick={handleMuokkaaTäytettyäLomaketta}>Muokkaa Täydettyä lomaketta</Button> : null}
+              <Button onClick={handleMuokkaaTäytettyäLomaketta}>Muokkaa Täydettyä lomaketta</Button>
               <Button>Tulosta pdf</Button>
-              <Button onClick={() => loadAndSendContract(contract._id)}>Lataa ja lähetä allekirjoitettu sopimus</Button>
+              <Button onClick={() => loadAndSendContract(contract._id, contract.formId)}>Lataa ja lähetä allekirjoitettu sopimus</Button>
             </AccordionActions>
           </Accordion>
         ))}

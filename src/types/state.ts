@@ -301,6 +301,7 @@ export const UPDATE_QUESTION = "UPDATE_QUESTION"
 export const UPDATE_QUESTION_OPTION = "UPDATE_QUESTION_OPTION"
 export const REMOVE_QUESTION = "REMOVE_QUESTION"
 export const REMOVE_OPTION = "REMOVE_OPTION"
+export const REMOVE_OPTION_VALUE = "REMOVE_OPTION_VALUE"
 export const SET_QUESTIONS = "SET_QUESTIONS"
 export const CLEAR_CURRENT_FORM = "CLEAR_CURRENT_FORM"
 
@@ -343,6 +344,10 @@ interface RemoveOptionAction {
   type: typeof REMOVE_OPTION
   data: any
 }
+interface RemoveOptionValueAction {
+  type: typeof REMOVE_OPTION_VALUE
+  data: any
+}
 
 interface SetQuestionsAction {
   type: typeof SET_QUESTIONS
@@ -363,6 +368,7 @@ export type FormActionTypes =
   | UpdateQuestionOptionAction
   | RemoveQuestionAction
   | RemoveOptionAction
+  | RemoveOptionValueAction
   | SetQuestionsAction
   | ClearCurrentFormAction
 

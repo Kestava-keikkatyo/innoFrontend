@@ -10,6 +10,9 @@ import {
   TableBody
 } from "@material-ui/core"
 import React from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { updateQuestion } from "../../actions/businessContractFormActions"
+import { IRootState } from "../../utils/store"
 
 /**
  * CustomFormInput cant be used as control?
@@ -18,15 +21,48 @@ import React from "react"
  const BusinssContractFormContactInfo: React.FC<any> = ({ question }) => {
   const { title } = question
 
-  let answer = {
-    name: '',
-    phone: '',
-    email: ''
+  let {contactInfoAnswer} = question
+
+  const questions = useSelector((state: IRootState) => state.businessContractForm.questions)
+
+  const dispatch = useDispatch()
+
+  let index:any = question?.ordering
+
+  const handleChange = (e:any, input:string) => {
+
+    let answer = {
+      name: contactInfoAnswer.name,
+      phone: contactInfoAnswer.phone,
+      email: contactInfoAnswer.email
+    }
+
+    switch(input){
+      case 'name':
+        answer.name = e.target.value
+        dispatch(
+          updateQuestion({ ...questions[index], contactInfoAnswer: answer }, index)
+        )
+        break
+      case 'phone':
+        answer.phone = e.target.value
+        dispatch(
+          updateQuestion({ ...questions[index], contactInfoAnswer: answer }, index)
+        )
+        break
+      case 'email':
+        answer.email = e.target.value
+        dispatch(
+          updateQuestion({ ...questions[index], contactInfoAnswer: answer }, index)
+        )
+        break
+      default:
+        break
+    }
+
   }
 
-  question.answer = answer
-
-  console.log("question.answer", question.answer)
+  console.log("contactInfoAnswer", contactInfoAnswer)
 
   return (
     <>
@@ -36,15 +72,15 @@ import React from "react"
           <TableRow>
             <TableCell>
               <InputLabel>Name</InputLabel>
-              <Input onChange={(e) => {answer.name = e.target.value}} />
+              <Input value={contactInfoAnswer.name || ''} onChange={(e) => {handleChange(e, "name")}} />
             </TableCell>
             <TableCell>
               <InputLabel>Phone</InputLabel>
-              <Input onChange={(e) => {answer.phone = e.target.value}} />
+              <Input value={contactInfoAnswer.phone || ''} onChange={(e) => {handleChange(e, "phone")}} />
             </TableCell>
             <TableCell>
               <InputLabel>Email</InputLabel>
-              <Input onChange={(e) => {answer.email = e.target.value}} />
+              <Input value={contactInfoAnswer.email || ''} onChange={(e) => {handleChange(e, "email")}} />
             </TableCell>
           </TableRow>
         </TableBody>

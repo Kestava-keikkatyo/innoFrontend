@@ -1,6 +1,9 @@
 import { TextField, Typography } from '@material-ui/core'
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateQuestion } from '../../actions/businessContractFormActions'
 import { FormComponentProps } from '../../types/props'
+import { IRootState } from '../../utils/store'
 
 /**
  * @component
@@ -11,14 +14,26 @@ import { FormComponentProps } from '../../types/props'
 const BusinssContractFormTextArea: React.FC<FormComponentProps> = ({ question }) => {
   const { title, subTitle, rows } = question
 
+  let { answer } = question
+
+  const questions = useSelector((state: IRootState) => state.businessContractForm.questions)
+
+  const dispatch = useDispatch()
+
+  let index:any = question?.ordering
+
   const handleChange = (e:any) => {
-      question.answer = e.target.value
+    dispatch(
+      updateQuestion({ ...questions[index], answer: e.target.value }, index)
+    )
+
   }
+
   return (
     <>
       <Typography variant="h6" >{ title }</Typography>
       <Typography variant="body1" >{subTitle}</Typography>
-      <TextField onChange={handleChange}  multiline rows={rows} variant="outlined"/>
+      <TextField value={answer || ''} onChange={handleChange}  multiline rows={rows} variant="outlined"/>
     </>
    )
 }

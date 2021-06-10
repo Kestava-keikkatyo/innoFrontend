@@ -2,7 +2,7 @@ import { Button, Grid, Typography } from '@material-ui/core'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
-import { submitForm } from '../../actions/businessContractFormActions'
+import { submitEditedForm } from '../../actions/businessContractFormActions'
 import { IRootState } from '../../utils/store'
 
 /**
@@ -19,7 +19,7 @@ const Header: React.FC<any> = () => {
 
   const handleSave = () => {
     console.log("currentBusinssContractForm", currentBusinssContractForm)
-    dispatch(submitForm(currentBusinssContractForm))
+    dispatch(submitEditedForm(currentBusinssContractForm._id, currentBusinssContractForm))
     history.push(`/business-contracts`)
 
   }

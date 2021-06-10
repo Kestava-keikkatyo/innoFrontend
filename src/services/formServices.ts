@@ -4,9 +4,9 @@
  */
  import axios from 'axios'
  import { loadUser } from '../utils/storage'
- 
+
  const baseUrl = 'http://localhost:3001/api/forms'
- 
+
  /**
   * @function
   * @desc Helper function for setting up request header.
@@ -16,7 +16,7 @@
      headers: { 'x-access-token': `${loadUser().token}` }
    }
  }
- 
+
  /**
   * @function
   * @desc Fetches all feelings avaible with current token.
@@ -34,7 +34,7 @@
  const fetchCommunityFormList = async () => {
    try {
     const res = await axios.get(`${baseUrl}?page=1&limit=10`, authHeader())
-    return res.data 
+    return res.data
    } catch (error) {
     console.log(error);
     return {docs: []}
@@ -44,7 +44,7 @@
 const fetchFormById = async (id: string) => {
   try {
    const res = await axios.get(`${baseUrl}/${id}`, authHeader())
-   return res.data 
+   return res.data
   } catch (error) {
    console.log(error);
    return {}
@@ -53,13 +53,29 @@ const fetchFormById = async (id: string) => {
 
 /**
  * @todo make converted form type.
- * @param form 
- * @returns 
+ * @param form
+ * @returns
  */
 const postForm = async (form: any) => {
   try {
     console.log(form);
-    const res = await axios.post(`${baseUrl}`, form, authHeader())    
+    const res = await axios.post(`${baseUrl}`, form, authHeader())
+    return res
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+/**
+ * @todo make converted form type.
+ * @param form
+ * @returns
+ */
+ const updateForm = async (formId:any, form: any) => {
+  try {
+    console.log("formService:updateForm: formId ", formId);
+    console.log("formService:updateForm: FormObject ", form);
+    const res = await axios.put(`${baseUrl}/${formId}`, form, authHeader())
     return res
   } catch (error) {
     console.log(error);
@@ -70,5 +86,6 @@ const postForm = async (form: any) => {
   fetchMyFormList,
   fetchCommunityFormList,
   fetchFormById,
-  postForm
+  postForm,
+  updateForm
  }

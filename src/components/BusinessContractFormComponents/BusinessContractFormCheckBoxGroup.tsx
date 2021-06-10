@@ -11,17 +11,18 @@ import { FormComponentProps } from '../../types/props'
 const BusinssContractFormCheckBoxGroup: React.FC<FormComponentProps> = ({ question }) => {
   const { title, subTitle, options } = question
 
+  let {optionValues} = question
+
   const [state, setState] = React.useState(
-    options.map(name => {
-      return { name, value: false }
+    options.map((name,i) => {
+      return { name, value: optionValues[i] }
     })
   )
 
   const handleChange = (index: number) => {
     setState(state.map((o, i) => i === index ? { ...o, value: !o.value }: o ))
+    optionValues[index] = !optionValues[index]
   };
-
-  question.checked = state
 
   return (
     <>

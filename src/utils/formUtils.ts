@@ -55,6 +55,7 @@ interface QuestionsObject {
   // timepicker: []
 }
 
+/*
 const initialQuestions = {
   comment: [],
   text: [],
@@ -67,9 +68,21 @@ const initialQuestions = {
   datepicker: [],
   timepicker: [],
 }
+*/
 
 export const convertForm = (form: Form): any => {
-  let questions = initialQuestions
+  let questions = {
+    comment: [],
+    text: [],
+    textarea: [],
+    checkbox: [],
+    checkbox_group: [],
+    radiobutton_group: [],
+    radiobutton_group_horizontal: [],
+    contact_information: [],
+    datepicker: [],
+    timepicker: [],
+  }
   form.questions.map((q: any, i: number) => {
     //base part
     let temp: any = {
@@ -118,7 +131,7 @@ export const convertForm = (form: Form): any => {
         temp = {
            ...temp,
            options: q.options,
-           checked: q.checked
+           optionValues: q.optionValues
         }
         questions.checkbox_group = questions.checkbox_group.concat(temp)
         break
@@ -127,7 +140,7 @@ export const convertForm = (form: Form): any => {
         temp = {
            ...temp,
            options: q.options,
-           checked: q.checked
+           optionValues: q.optionValues
         }
         questions.radiobutton_group = questions.radiobutton_group.concat(temp)
         break
@@ -140,7 +153,7 @@ export const convertForm = (form: Form): any => {
           scaleOptionTitleCenter: q.scaleOptionTitleCenter,
           scaleOptionTitleRight: q.scaleOptionTitleRight,
           options: q.options,
-          checked: q.checked
+          optionValues: q.optionValues
         }
         questions.radiobutton_group_horizontal = questions.radiobutton_group_horizontal.concat(
           temp
@@ -150,7 +163,7 @@ export const convertForm = (form: Form): any => {
       case questionTypes.ContactInformation:
         temp = {
           ...temp,
-          answer: q.answer
+          contactInfoAnswer: q.contactInfoAnswer
         }
         questions.contact_information = questions.contact_information.concat(
           temp

@@ -1,7 +1,7 @@
 import { Button, Typography } from '@material-ui/core';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeOption, updateQuestion, updateQuestionOption } from '../../actions/formActions';
+import { removeOption, removeOptionValue, updateQuestion, updateQuestionOption } from '../../actions/formActions';
 
 interface Props {
   index: number
@@ -19,6 +19,11 @@ const AddOptionsModule: React.FC<Props> = ({ index }) => {
 
   console.log("questions[index].options",questions[index].options)
 
+  const handleDelete = (questionIndex:number, optionIndex:number) => {
+    dispatch(removeOption(questionIndex, optionIndex))
+    dispatch(removeOptionValue(questionIndex, optionIndex))
+  }
+
   return (
     <>
     {questions[index].options.map((opt: string, i: number) =>
@@ -27,15 +32,16 @@ const AddOptionsModule: React.FC<Props> = ({ index }) => {
         onChange={({ target }) => dispatch(updateQuestionOption(target.value, index, i ))
         }/>
       <Button color="secondary"
-      onClick={() => dispatch(removeOption(index, i))}>
-        Delete option</Button>
+        onClick={() => handleDelete(index, i)}>
+        Delete option
+      </Button>
     </div>
     )}
     <Typography>Add an option</Typography>
     <Button onClick={ () =>
       dispatch(
         updateQuestion(
-        { ...questions[index], options: [...questions[index].options, ""] }, index )
+        { ...questions[index], options: [...questions[index].options, ""], optionValues: [...questions[index].optionValues, false] }, index )
       )} >add</Button>
     </>
    );
