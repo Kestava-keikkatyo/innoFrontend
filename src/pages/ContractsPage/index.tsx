@@ -1,19 +1,59 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-
 import { me } from '../../actions/userActions'
-
+import { fetchBusinessContracts } from "../../actions/businessContractActions";
 import PageLoading from '../../components/PageLoading'
 import UserSearch from './UserSearch'
 import SearchTable from './SearchTable'
 import ContractsTable from './ContractsTable'
 import ContractModal from './ContractModal'
-import { Container, Typography, Divider, Card, CardContent, makeStyles } from '@material-ui/core'
+import { Container, Typography, Divider, Card, CardContent, makeStyles, Box, Tabs, AppBar, Tab, useTheme, Direction } from '@material-ui/core'
+import SwipeableViews from 'react-swipeable-views'
+import BusinessSendContracts from './BusinessSendContracts'
+import WorkerSendContracts from './WorkerSendContracts'
+import { IRootState } from '../../utils/store'
+
+interface TabPanelProps {
+  children?: React.ReactNode
+  index: number
+  value: number
+  dir: Direction
+}
+
+const TabPanel = (props: TabPanelProps) => {
+  const { children, value, index, ...other } = props
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`full-width-tabpanel-${index}`}
+      aria-labelledby={`full-width-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box p={3}>
+          {children}
+        </Box>
+      )}
+    </div>
+  )
+}
+
+const a11yProps = (index: any) => {
+  return {
+    id: `full-width-tab-${index}`,
+    'aria-controls': `full-width-tabpanel-${index}`,
+  }
+}
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: theme.palette.background.paper,
+    width: 500,
+  },
   card: {
     margin: theme.spacing(2, 0)
-  },
+  }
 }))
 
 /**
@@ -32,15 +72,20 @@ const useStyles = makeStyles((theme) => ({
  */
 const ContractsPage = () => {
   const { data, ...user } = useSelector((state: any) => state.user)
+  const { businessContract } = useSelector(
+    (state: IRootState) => state.businessContracts
+  )
   const dispatch = useDispatch()
   const classes = useStyles()
-  
+  const theme = useTheme()
   const [searchData, setSearchData] = useState(null)
   const [displayModal, setDisplayModal] = useState(false)
+  const [value, setValue] = useState(0);
 
   //to be switched to retrieve contracts
   useEffect(() => {
     dispatch(me(data.role))
+    dispatch(fetchBusinessContracts())
   }, [dispatch, data.role])
 
   const openModal = (worker: any) => {
@@ -48,35 +93,70 @@ const ContractsPage = () => {
     setDisplayModal(true)
   }
 
+  const handleChange = (event: any, newValue: any) => {
+    setValue(newValue)
+  }
+
+  const handleChangeIndex = (index: any) => {
+    setValue(index)
+  }
+
   if (user.loading || !user.profile) {
     return (
       <PageLoading />
     )
   }
-
   return (
     <Container maxWidth="lg">
-      <Typography style={{ paddingTop: '1rem' }} variant="h4" className="text-secondary">
-        Contracts
-      </Typography>
-      <Card className={classes.card} variant="outlined">
-        <CardContent>
-          <Typography gutterBottom variant="h5">
-            Tee sopimus
+      <AppBar position="static" color="default">
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          indicatorColor="primary"
+          textColor="primary"
+          variant="fullWidth"
+          aria-label="full width tabs example"
+        >
+          <Tab label="Omat sopimukset" {...a11yProps(0)} />
+          <Tab label="Yritykseltä saapuneet sopimukset" {...a11yProps(1)} />
+          <Tab label="Työntekijältä saapuneet sopimukset" {...a11yProps(2)} />
+        </Tabs>
+      </AppBar>
+      <SwipeableViews
+        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+        index={value}
+        onChangeIndex={handleChangeIndex}
+      >
+        <TabPanel value={value} index={0} dir={theme.direction}>
+          <Typography style={{ paddingTop: '1rem' }} variant="h4" className="text-secondary">
+            Contracts
           </Typography>
-          <UserSearch />
-          <Divider />
-          <SearchTable
-            addWorker={openModal} /> 
-          <ContractModal
-            displayModal={displayModal}
-            closeModal={() => setDisplayModal(false)}
-            workerData={searchData}
-            forms={user.profile.forms}
-          />
-        </CardContent>
-      </Card>
-      <ContractsTable/>
+          <Card className={classes.card} variant="outlined">
+            <CardContent>
+              <Typography gutterBottom variant="h5">
+                Tee sopimus
+              </Typography>
+              <UserSearch />
+              <Divider />
+              <SearchTable
+                addWorker={openModal} />
+              <ContractModal
+                displayModal={displayModal}
+                closeModal={() => setDisplayModal(false)}
+                workerData={searchData}
+                forms={user.profile.forms}
+              />
+            </CardContent>
+          </Card>
+          <ContractsTable businessContract={businessContract}/>
+        </TabPanel>
+        <TabPanel value={value} index={1} dir={theme.direction}>
+          <BusinessSendContracts businessContract={businessContract}/>
+        </TabPanel>
+        <TabPanel value={value} index={2} dir={theme.direction}>
+          <WorkerSendContracts businessContract={businessContract}/>
+        </TabPanel>
+      </SwipeableViews>
     </Container>
   )
 }

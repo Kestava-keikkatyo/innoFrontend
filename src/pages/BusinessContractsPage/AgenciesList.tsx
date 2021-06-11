@@ -32,18 +32,14 @@ const AgenciesList = () => {
 
   useEffect(() => {
     dispatch(fetchAgencies("j"));
-  }, [dispatch]);
+  }, [dispatch])
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
     if (input.length > 0) {
       dispatch(fetchAgencies(input));
     }
-  };
-
-  const logAgencies = () => {
-    console.log("tämä on fetchAgencies ", fetchAgencies);
-  };
+  }
 
   if (agencies.length < 1) {
     return(
@@ -61,7 +57,6 @@ const AgenciesList = () => {
         >
           <FormControl component="fieldset"></FormControl>
           <form onSubmit={handleSubmit}>
-            {logAgencies}
             <Box display="flex" alignItems="center">
               <InputBase
                 placeholder="search with name"

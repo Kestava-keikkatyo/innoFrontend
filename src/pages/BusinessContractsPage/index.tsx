@@ -92,8 +92,7 @@ const BusinessContractsPage = () => {
   };
 
   return (
-    <Container maxWidth="xl">
-      <div className={classes.root}>
+    <Container maxWidth="xl" className={classes.root}>
         <AppBar position="static" color="default">
           <Tabs
             value={value}
@@ -137,7 +136,6 @@ const BusinessContractsPage = () => {
         <TabPanel value={value} index={3}>
           <ListAccordionDone contracts={ready} />
         </TabPanel>
-      </div>
     </Container>
   );
 };
