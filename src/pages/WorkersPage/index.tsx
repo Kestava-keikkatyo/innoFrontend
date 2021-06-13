@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
  * - Displays all the current workcontracts where business/worker is involved (worker view and business view).
  * - Creates workcontract between worker and business (agency view)
  */
-const WorkersPage = () => {
+const WorkerContractPage = () => {
   const { businessContract } = useSelector((state:IRootState) => state.businessContracts)
   const { workContracts } = useSelector((state: IRootState) => state.workContracts)
   const [workerData, setWorkerData] = useState(null)
@@ -74,4 +74,4 @@ const WorkersPage = () => {
   )
 }
 
-export default WorkersPage
+export default WorkerContractPage

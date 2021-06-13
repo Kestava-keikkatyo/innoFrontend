@@ -152,7 +152,7 @@ export type BreadcrumbActionTypes = BreadcrumbAddAction | BreadcrumbSetAction
 export interface BusinessContractState {
   searchList: object[],
   madeContracts: object[],
-  businessContract: object[]
+  businessContract: any
 }
 
 export const ADD_B_CONTRACT = 'ADD_BUSINESS_CONTRACT'

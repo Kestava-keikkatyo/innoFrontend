@@ -35,7 +35,7 @@ import BusinessContractPage from "./pages/BusinessContractsPage";
 import BusinessContractPreviewPage from './pages/BusinessContractPreviewPage'
 import BusinessContractFill from './pages/BusinessContractPreviewPage/BusinessContractFill'
 import BusinessContractEdit from './pages/BusinessContractPreviewPage/BusinessContractEdit'
-import WorkerContracts from "./pages/WorkersPage/WorkerContracts";
+import WorkerContractPage from "./pages/WorkersPage";
 
 
 
@@ -103,7 +103,7 @@ const App: React.FC = () => {
           <WorkerStatistics />
         </PrivateRoute>
         <PrivateRoute path="/sopimukset" roles={[roles.Worker]}>
-          <WorkerContracts />
+          <WorkerContractPage />
         </PrivateRoute>
         <PrivateRoute path="/report">
           <ReportPage />
