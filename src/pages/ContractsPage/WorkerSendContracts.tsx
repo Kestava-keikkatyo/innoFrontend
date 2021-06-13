@@ -20,8 +20,8 @@ import MCTable from "./MCTable"
 const useStyles = makeStyles((theme) => ({
   card: {
     margin: theme.spacing(2, 0),
-  },
-}));
+  }
+}))
 
 interface BusinessContractObject {
   _id: string
@@ -33,28 +33,15 @@ interface BusinessContractObject {
     businesses: []
     workers: []
   }
-  pendingContracts: {
-    businesses: []
-    workers: []
-  }
 }
 
-/**
- * @component
- * @description
- * - Returns Grid with two cards.
- * - Cards show Agency Made BusinessContracts and Requested BusinessContracts.
- * - Agency can accept BusinessContract from Requested BusinessContracts.
- * - If Agecy accepts BusinessContracts requested contracts moves to Made contracts.
- * @returns Grid
- */
-const ContractsTable = (props: { businessContract: BusinessContractObject[] }) => {
+const WorkerSendContracts = (props: { businessContract: BusinessContractObject[] }) => {
   const { businessContract } = props 
   const classes = useStyles()
   const dispatch = useDispatch()
   const contracts = businessContract
 
-  const acceptContract = (contractId: string, userId: string, formId:string) => {
+  const acceptContract = (contractId: string, userId: string, formId: string) => {
     dispatch(acceptBusinessContract(contractId, userId, formId))
     dispatch(setAlert("Contract accepted.", severity.Info, 3))
   }
@@ -85,35 +72,6 @@ const ContractsTable = (props: { businessContract: BusinessContractObject[] }) =
           justify="center"
           alignItems="stretch"
         >
-           <Grid item xs={12}>
-            <Card className={classes.card} variant="outlined">
-              <CardContent>
-                <Typography gutterBottom variant="h5">
-                  Lähetetyt sopimukset
-                </Typography>
-                <Typography gutterBottom variant="h6">
-                  Businesses
-                </Typography>
-                <Divider />
-                <MCTable
-                  contracts={contracts[0].pendingContracts.businesses}
-                  contractId={businessContract[0]._id}
-                  declineContract={declineContract}
-                />
-              </CardContent>
-              <CardContent>
-                <Typography gutterBottom variant="h6">
-                  Workers
-                </Typography>
-                <Divider />
-                <MCTable
-                  contracts={contracts[0].pendingContracts.workers}
-                  contractId={businessContract[0]._id}
-                  declineContract={declineContract}
-                />
-              </CardContent>
-            </Card>
-          </Grid>
           <Grid item xs={12}>
             <Card className={classes.card} variant="outlined">
               <CardContent>
@@ -179,4 +137,4 @@ const ContractsTable = (props: { businessContract: BusinessContractObject[] }) =
     )
 }
 
-export default ContractsTable
+export default WorkerSendContracts
