@@ -39,7 +39,7 @@ const datePicker = {
 }
 
 const timePicker = {
-  text: "Datepicker",
+  text: "Timepicker",
   value: "timepicker",
 }
 

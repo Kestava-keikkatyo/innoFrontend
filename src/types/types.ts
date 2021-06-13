@@ -70,8 +70,8 @@ export enum questionTypes {
   RadiobuttonGroup = 'radiobutton_group',
   RadiobuttonGroupHorizontal = 'radiobutton_group_horizontal',
   ContactInformation = 'contact_information',
-  DatePicker = 'date_picker',
-  TimePicker = 'time_picker'
+  Datepicker = 'datepicker',
+  Timepicker = 'timepicker'
 }
 
 /**
@@ -115,6 +115,7 @@ export interface Form {
   isPublic: boolean
   tags: string[]
   questions: Array<Question>
+  filled: boolean
 }
 
 
@@ -152,4 +153,5 @@ export interface BusinessContractForm {
   isPublic: boolean
   tags: string[]
   questions: Array<Question>
+  filled: boolean
 }

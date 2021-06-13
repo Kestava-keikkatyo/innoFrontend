@@ -16,6 +16,8 @@
     REMOVE_BUSINESS_CONTRACT_QUESTION,
     REMOVE_BUSINESS_CONTRACT_OPTION,
     SET_BUSINESS_CONTRACT_QUESTIONS,
+    SET_BUSINESS_CONTRACT_FILLED
+
  } from "../types/state"
  import formServices from "../services/formServices"
  import { convertForm } from "../utils/formUtils"
@@ -35,10 +37,19 @@
   */
   export const getFormByIdAndSetBusinessContractForm = (id: string) => async (dispatch: any) => {
     const data = await formServices.fetchFormById(id)
-    data._id = ''
-    data.createdAt = ''
-    data.isPublic = false
+    //data._id = ''
+    //data.createdAt = ''
+    //data.isPublic = false
    dispatch({ type: SET_CURRENT_BUSINESS_CONTRACT_FORM, data })
+ }
+
+  /**
+  * @function
+  * @desc Replaces current businessContractForm with the data imported from file systems
+  */
+   export const SetBusinessContractForm = (form: BusinessContractForm) => async (dispatch: any) => {
+
+   dispatch({ type: SET_CURRENT_BUSINESS_CONTRACT_FORM, form })
  }
 
  /**
@@ -49,6 +60,15 @@
  export const setTitle = (title: string) => async (dispatch: any) => {
    dispatch({ type: UPDATE_BUSINESS_CONTRACT_TITLE, data: title })
  }
+
+  /**
+  * @function
+  * @desc Updates the title of the generated form
+  * @param {boolean} filled - Business Contract Form filled.
+  */
+   export const setFilled = (filled: boolean) => async (dispatch: any) => {
+    dispatch({ type: SET_BUSINESS_CONTRACT_FILLED, data: filled })
+  }
 
   /**
   * @function
@@ -152,8 +172,7 @@
   */
  export const submitForm = (form: BusinessContractForm) => async (dispatch: any) => {
 
-     console.log("### Business contract form: ", form)
-
+   console.log("### Business contract form: ", form)
    if (form.title === "") {
      dispatch(setAlert("Title is required", severity.Error))
      return

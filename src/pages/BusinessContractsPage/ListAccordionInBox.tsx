@@ -17,9 +17,10 @@ import { useHistory } from "react-router";
 import { sendBusinessContract, refuseBusinessContractById} from "../../actions/businessContractActions";
 import { getFormById } from "../../actions/formActions";
 import { IRootState } from "../../utils/store";
-import { getFormByIdAndSetBusinessContractForm } from "../../actions/businessContractFormActions";
+import { getFormByIdAndSetBusinessContractForm} from "../../actions/businessContractFormActions";
 import { severity } from "../../types/types";
 import { setAlert } from "../../actions/alertActions";
+//import formServices from "../../services/formServices";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -54,25 +55,39 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
 
   const currentBusinessContractForm:any = useSelector((state: IRootState ) => state.businessContractForm)
 
-  const handleEsitteleJaTäytäLomaketta =  (formId:any) => {
-    dispatch(getFormById(formId))
-    dispatch(getFormByIdAndSetBusinessContractForm(formId))
+  const handleEsitteleLomaketta = (formId:any) => {
+
+    if(!currentBusinessContractForm._id || currentBusinessContractForm._id === ''){
+      //dispatch(getFormById(formId))
+      dispatch(getFormByIdAndSetBusinessContractForm(formId))
+    }
     history.push(`/business-contract-preview`)
+
+  }
+
+  const handleTäytäLomaketta =  (formId:any) => {
+
+    if(currentBusinessContractForm.filled){
+      dispatch(
+        setAlert("Lomake on jo täydetty" , severity.Error)
+        )
+    }else{
+      //dispatch(getFormById(formId))
+      dispatch(getFormByIdAndSetBusinessContractForm(formId))
+      history.push(`/business-contract-fill`)
+    }
+
   }
 
   const handleMuokkaaTäytettyäLomaketta =  () => {
 
-    if(currentBusinessContractForm._id && currentBusinessContractForm._id !== '')
-      history.push(`/business-contract-editor`)
+    if(currentBusinessContractForm.filled)
+      history.push(`/business-contract-edit`)
     else
       dispatch(
       setAlert("Lomake ei ole vielä täydetty" , severity.Error)
       )
-
-
   }
-
-
 
   const rejectContract = (contractId:any, formId:any) => {
     dispatch(getFormById(formId))
@@ -128,8 +143,14 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
 
             <AccordionActions>
               <Button onClick={() => rejectContract(contract._id, contract.formId)}>Hylkää sopimus</Button>
-              <Button onClick={() => handleEsitteleJaTäytäLomaketta(contract.formId)}>Esikatsele tai täydennä lomaketta</Button>
-              <Button onClick={handleMuokkaaTäytettyäLomaketta}>Muokkaa Täydettyä lomaketta</Button>
+              <Button onClick={() => handleEsitteleLomaketta(contract.formId)}>
+                Esikatsele lomaketta
+              </Button>
+              <Button onClick={() => handleTäytäLomaketta(contract.formId)}>
+                Täytä lomaketta
+              </Button>
+              <Button onClick={handleMuokkaaTäytettyäLomaketta}>
+                Muokkaa Täydettyä lomaketta</Button>
               <Button>Tulosta pdf</Button>
               <Button onClick={() => loadAndSendContract(contract._id, contract.formId)}>Lataa ja lähetä allekirjoitettu sopimus</Button>
             </AccordionActions>

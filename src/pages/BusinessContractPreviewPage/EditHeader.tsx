@@ -9,7 +9,7 @@ import { IRootState } from '../../utils/store'
  * @component
  * @desc A header for preview page.
  */
-const Header: React.FC<any> = () => {
+const EditHeader: React.FC<any> = () => {
 
   const currentBusinssContractForm = useSelector((state: IRootState) => state.businessContractForm)
 
@@ -30,7 +30,7 @@ const Header: React.FC<any> = () => {
       justify="space-between">
         <Grid item xs={6}>
           <Typography variant="h4" color="secondary" >
-            Business Contract Editor
+            Edit Filled Business Contract
           </Typography>
         </Grid>
         <Grid item xs={6} >
@@ -47,4 +47,4 @@ const Header: React.FC<any> = () => {
   )
 }
 
-export default Header
+export default EditHeader

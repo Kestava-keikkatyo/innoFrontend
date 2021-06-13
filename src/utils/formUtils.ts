@@ -170,7 +170,7 @@ export const convertForm = (form: Form): any => {
         )
         break
 
-      case questionTypes.DatePicker:
+      case questionTypes.Datepicker:
         temp = {
           ...temp,
           isClosedTimeFrame: q.isClosedTimeFrame,
@@ -179,7 +179,7 @@ export const convertForm = (form: Form): any => {
         questions.datepicker = questions.datepicker.concat(temp)
         break
 
-      case questionTypes.TimePicker:
+      case questionTypes.Timepicker:
         temp = {
           ...temp,
           isClosedTimeFrame: q.isClosedTimeFrame,
@@ -200,5 +200,6 @@ export const convertForm = (form: Form): any => {
     description: form.description,
     tags: form.tags,
     isPublic: form.isPublic,
+    filled: form.filled
   }
 }

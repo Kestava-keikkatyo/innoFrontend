@@ -10,11 +10,14 @@ import BusinssContractFormRadio from '../../components/BusinessContractFormCompo
 import BusinssContractFormRadioGroup from '../../components/BusinessContractFormComponents/BusinessContractFormRadioGroup'
 import BusinssContractFormText from '../../components/BusinessContractFormComponents/BusinessContractFormText'
 import BusinssContractFormTextArea from '../../components/BusinessContractFormComponents/BusinessContractFormTextArea'
-import Header from './Header'
+import SubmitHeader from './SubmitHeader'
+
 import { setAlert } from '../../actions/alertActions'
 import { Question, questionTypes, severity } from '../../types/types'
 import BusinssContractFormContactInfo from '../../components/BusinessContractFormComponents/BusinessContractFormContactInfo'
-import BusinssContractFormDatePicker from '../../components/BusinessContractFormComponents/BusinessContractFormDatePicker'
+import BusinssContractFormDatepicker from '../../components/BusinessContractFormComponents/BusinssContractFormDatepicker'
+import BusinssContractFormTimepicker from '../../components/BusinessContractFormComponents/BusinssContractFormTimepicker'
+
 
 
 /**
@@ -23,17 +26,14 @@ import BusinssContractFormDatePicker from '../../components/BusinessContractForm
  * Loops through all questions and shows corresponding
  * type of component.
  */
-const BusinessContractEditPage: React.FC = () => {
+const BusinessContractFill: React.FC = () => {
   const { title, description, questions } = useSelector((state: any) => state.businessContractForm)
   const dispatch = useDispatch()
 
-  const businessContractForm:any = useSelector((state: any) => state.businessContractForm)
 
-  console.log('€€€businessContractForm', businessContractForm)
-  console.log('€€€questions', questions)
   return (
     <Container>
-      <Header/>
+      <SubmitHeader/>
       <div className="create-form">
         <BusinessContractFormHeader
           title={title}
@@ -55,8 +55,10 @@ const BusinessContractEditPage: React.FC = () => {
               return <BusinssContractFormRadioGroup key={k} question={q} />
             case questionTypes.Comment:
               return <BusinssContractFormComment key={k} question={q} />
-            case questionTypes.DatePicker:
-              return <BusinssContractFormDatePicker key={k} question={q} />
+            case questionTypes.Datepicker:
+              return <BusinssContractFormDatepicker key={k} question={q}/>
+            case questionTypes.Timepicker:
+              return <BusinssContractFormTimepicker key={k} question={q} />
             case questionTypes.ContactInformation:
               return <BusinssContractFormContactInfo key={k} question={q} />
             default:
@@ -72,4 +74,6 @@ const BusinessContractEditPage: React.FC = () => {
   )
 }
 
-export default BusinessContractEditPage
+
+
+export default BusinessContractFill

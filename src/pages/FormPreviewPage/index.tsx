@@ -14,12 +14,13 @@ import FormPreviewHeader from './FormPreviewHeader'
 import { setAlert } from '../../actions/alertActions'
 import { Question, questionTypes, severity } from '../../types/types'
 import FormContactInfo from '../../components/FormComponents/FormContactInfo'
-import FormDatePicker from '../../components/FormComponents/FormDatePicker'
+import FormTimepicker from '../../components/FormComponents/FormTimepicker'
+import FormDatepicker from '../../components/FormComponents/FormDatepicker'
 
 /**
  * @component
  * @desc A parent component to form preview page.
- * Loops through all questions and shows corresponding 
+ * Loops through all questions and shows corresponding
  * type of component.
  */
 const FormPreviewPage: React.FC = () => {
@@ -34,7 +35,7 @@ const FormPreviewPage: React.FC = () => {
           title={title}
           description={description}
         />
-        {questions.map((q: Question, k: number) => {          
+        {questions.map((q: Question, k: number) => {
           switch (q.questionType) {
             case questionTypes.Text:
               return <FormText key={k} question={q} />
@@ -50,8 +51,10 @@ const FormPreviewPage: React.FC = () => {
               return <FormRadioGroup key={k} question={q} />
             case questionTypes.Comment:
               return <FormComment key={k} question={q} />
-            case questionTypes.DatePicker:
-              return <FormDatePicker key={k} question={q} />
+            case questionTypes.Datepicker:
+              return <FormDatepicker key={k} question={q} />
+            case questionTypes.Timepicker:
+              return <FormTimepicker key={k} question={q} />
             case questionTypes.ContactInformation:
               return <FormContactInfo key={k} question={q} />
             default:

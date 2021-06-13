@@ -9,6 +9,7 @@ import {
   SET_CURRENT_FORM,
   UPDATE_TITLE,
   SET_DESCRIPTION,
+  SET_FILLED,
   ADD_QUESTION,
   UPDATE_QUESTION,
   UPDATE_QUESTION_OPTION,
@@ -143,6 +144,17 @@ export const setDescription = (description: string) => async (
   dispatch: any
 ) => {
   dispatch({ type: SET_DESCRIPTION, data: description })
+}
+
+/**
+ * @function
+ * @desc Sets the filled value of the form.
+ * @param {boolean} filled - filled value of the form.
+ */
+ export const setFilled = (filled: boolean) => async (
+  dispatch: any
+) => {
+  dispatch({ type: SET_FILLED, data: filled })
 }
 
 /**

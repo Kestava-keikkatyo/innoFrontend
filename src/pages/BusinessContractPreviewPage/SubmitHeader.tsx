@@ -2,14 +2,14 @@ import { Button, Grid, Typography } from '@material-ui/core'
 import React from 'react'
 import {useDispatch, useSelector } from 'react-redux'
 import { Link, useHistory} from 'react-router-dom'
-import { submitForm } from '../../actions/businessContractFormActions'
+import { submitForm} from '../../actions/businessContractFormActions'
 import { IRootState } from '../../utils/store'
 
 /**
  * @component
  * @desc A header for preview page.
  */
-const Header: React.FC<any> = () => {
+const SubmitHeader: React.FC<any> = () => {
 
   const currentBusinssContractForm = useSelector((state: IRootState) => state.businessContractForm)
 
@@ -18,7 +18,7 @@ const Header: React.FC<any> = () => {
   const history = useHistory()
 
   const handleSubmit = () => {
-    console.log("currentBusinssContractForm", currentBusinssContractForm)
+    currentBusinssContractForm.filled = true
     dispatch(submitForm(currentBusinssContractForm))
     history.push(`/business-contracts`)
 
@@ -29,7 +29,7 @@ const Header: React.FC<any> = () => {
       justify="space-between">
         <Grid item xs={6}>
           <Typography variant="h4" color="secondary" >
-            Preview or Fill Business Contract Form
+            Fill Business Contract Form
           </Typography>
         </Grid>
         <Grid item xs={6} >
@@ -46,4 +46,4 @@ const Header: React.FC<any> = () => {
   )
 }
 
-export default Header
+export default SubmitHeader

@@ -7,11 +7,12 @@
     SET_CURRENT_BUSINESS_CONTRACT_FORM,
     UPDATE_BUSINESS_CONTRACT_TITLE,
     SET_BUSINESS_CONTRACT_DESCRIPTION,
+    SET_BUSINESS_CONTRACT_FILLED,
     ADD_BUSINESS_CONTRACT_QUESTION,
     UPDATE_BUSINESS_CONTRACT_QUESTION,
     UPDATE_BUSINESS_CONTRACT_QUESTION_OPTION,
     REMOVE_BUSINESS_CONTRACT_QUESTION,
-     REMOVE_BUSINESS_CONTRACT_OPTION,
+    REMOVE_BUSINESS_CONTRACT_OPTION,
     SET_BUSINESS_CONTRACT_QUESTIONS,
     CLEAR_CURRENT_BUSINESS_CONTRACT_FORM,
    BusinessContractFormActionTypes,
@@ -23,6 +24,7 @@
    tags: [],
    isPublic: true,
    questions: [],
+   filled: false
  }
 
  /**
@@ -48,7 +50,11 @@
          ...state,
          description: action.data,
        }
-
+     case SET_BUSINESS_CONTRACT_FILLED:
+        return {
+          ...state,
+          filled: action.data,
+        }
      case ADD_BUSINESS_CONTRACT_QUESTION:
        return {
          ...state,

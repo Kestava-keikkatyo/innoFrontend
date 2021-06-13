@@ -7,6 +7,7 @@ import {
   SET_CURRENT_FORM,
   UPDATE_TITLE,
   SET_DESCRIPTION,
+  SET_FILLED,
   ADD_QUESTION,
   UPDATE_QUESTION,
   UPDATE_QUESTION_OPTION,
@@ -24,6 +25,7 @@ const initialState: Form = {
   tags: [],
   isPublic: true,
   questions: [],
+  filled: false
 }
 
 /**
@@ -48,6 +50,11 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
       return {
         ...state,
         description: action.data,
+      }
+    case SET_FILLED:
+      return {
+          ...state,
+          filled: action.data,
       }
 
     case ADD_QUESTION:

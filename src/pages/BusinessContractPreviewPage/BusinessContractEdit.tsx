@@ -10,8 +10,7 @@ import BusinssContractFormRadio from '../../components/BusinessContractFormCompo
 import BusinssContractFormRadioGroup from '../../components/BusinessContractFormComponents/BusinessContractFormRadioGroup'
 import BusinssContractFormText from '../../components/BusinessContractFormComponents/BusinessContractFormText'
 import BusinssContractFormTextArea from '../../components/BusinessContractFormComponents/BusinessContractFormTextArea'
-import PreviewHeader from './PreviewHeader'
-
+import EditHeader from './EditHeader'
 import { setAlert } from '../../actions/alertActions'
 import { Question, questionTypes, severity } from '../../types/types'
 import BusinssContractFormContactInfo from '../../components/BusinessContractFormComponents/BusinessContractFormContactInfo'
@@ -25,14 +24,17 @@ import BusinssContractFormTimepicker from '../../components/BusinessContractForm
  * Loops through all questions and shows corresponding
  * type of component.
  */
-const BusinessContractPreviewPage: React.FC = () => {
+const BusinessContractEdit: React.FC = () => {
   const { title, description, questions } = useSelector((state: any) => state.businessContractForm)
   const dispatch = useDispatch()
 
+  const businessContractForm:any = useSelector((state: any) => state.businessContractForm)
 
+  console.log('€€€businessContractForm', businessContractForm)
+  console.log('€€€questions', questions)
   return (
     <Container>
-      <PreviewHeader/>
+      <EditHeader/>
       <div className="create-form">
         <BusinessContractFormHeader
           title={title}
@@ -55,7 +57,7 @@ const BusinessContractPreviewPage: React.FC = () => {
             case questionTypes.Comment:
               return <BusinssContractFormComment key={k} question={q} />
             case questionTypes.Datepicker:
-              return <BusinssContractFormDatepicker key={k} question={q}/>
+              return <BusinssContractFormDatepicker key={k} question={q} />
             case questionTypes.Timepicker:
               return <BusinssContractFormTimepicker key={k} question={q} />
             case questionTypes.ContactInformation:
@@ -73,6 +75,4 @@ const BusinessContractPreviewPage: React.FC = () => {
   )
 }
 
-
-
-export default BusinessContractPreviewPage
+export default BusinessContractEdit
