@@ -22,7 +22,7 @@ import { Question } from "../../types/types"
  */
 const initialQuestion: any = {
   title: "", //name
-  questionType: "comment", //type
+  questionType: "text", //type
   subTitle: "",
   scaleOptionTitleLeft: "",
   scaleOptionTitleCenter: "",

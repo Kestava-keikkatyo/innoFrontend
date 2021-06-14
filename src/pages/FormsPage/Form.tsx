@@ -132,7 +132,7 @@ const Form: React.FC<any> = ({currentForm}) => {
                                 {q.options ? q.options.map((option: any, k:number) => (
                                         <tr key={q._id}>
                                             <td style={styles.option}>
-                                                {q.checked && q.checked[k] && q.checked[k].value ? (<img style={styles.img} src={checkboxChecked} alt='checkbox-checked'/>) : (<img style={styles.img} src={checkboxUnckecked} alt='checkbox-unchecked'/>)}
+                                                {q.optionValues && q.optionValues[k] ? (<img style={styles.img} src={checkboxChecked} alt='checkbox-checked'/>) : (<img style={styles.img} src={checkboxUnckecked} alt='checkbox-unchecked'/>)}
                                             </td>
                                             <td style={styles.option}>{option}</td>
                                         </tr>
@@ -155,7 +155,7 @@ const Form: React.FC<any> = ({currentForm}) => {
                                 {q.options ? q.options.map((option: any, k:number) => (
                                         <tr key={q._id}>
                                             <td style={styles.option}>
-                                                {q.checked && q.checked[k] && q.checked[k].value ? (<img style={styles.img} src={checkboxChecked} alt='checkbox-checked'/>) : (<img style={styles.img} src={checkboxUnckecked} alt='checkbox-unchecked'/>)}
+                                                {q.optionValues && q.optionValues[k] ? (<img style={styles.img} src={checkboxChecked} alt='checkbox-checked'/>) : (<img style={styles.img} src={checkboxUnckecked} alt='checkbox-unchecked'/>)}
                                             </td>
                                             <td style={styles.option}>{option}</td>
                                         </tr>
@@ -178,7 +178,7 @@ const Form: React.FC<any> = ({currentForm}) => {
                                 {q.options ? q.options.map((option: any, k:number) => (
                                         <div key={q._id}>
                                             <td style={styles.option}>
-                                                {q.checked && q.checked[k] && q.checked[k].value ? (<img style={styles.img} src={checkboxChecked} alt='checkbox-checked'/>) : (<img style={styles.img} src={checkboxUnckecked} alt='checkbox-unchecked'/>)}
+                                                {q.optionValues && q.optionValues[k] ? (<img style={styles.img} src={checkboxChecked} alt='checkbox-checked'/>) : (<img style={styles.img} src={checkboxUnckecked} alt='checkbox-unchecked'/>)}
                                             </td>
                                             <td style={styles.option}>{option}</td>
                                         </div>
@@ -198,14 +198,14 @@ const Form: React.FC<any> = ({currentForm}) => {
                                 <p style={styles.subTitle}>{q.subtitle}</p>
                                 <table key={q._id}>
                                     <tbody>
-                                        {q.answer ? (
+                                        {q.contactInfoAnswer ? (
 
                                             <tr key={q._id}>
-                                                <td style={{marginRight: 100, marginLeft:'-5',border:'none', fontSize:12 }}>Name. {q.answer.name} </td>
+                                                <td style={{marginRight: 100, marginLeft:'-5',border:'none', fontSize:12 }}>Name. {q.contactInfoAnswer.name} </td>
 
-                                                <td style={{marginRight: 100,border:'none', fontSize:12 }}>Phone. {q.answer.phone} </td>
+                                                <td style={{marginRight: 100,border:'none', fontSize:12 }}>Phone. {q.contactInfoAnswer.phone} </td>
 
-                                                <td style={{border:'none', fontSize:12 }}>Email. {q.answer.email}</td>
+                                                <td style={{border:'none', fontSize:12 }}>Email. {q.contactInfoAnswer.email}</td>
 
                                             </tr>
 
@@ -230,6 +230,37 @@ const Form: React.FC<any> = ({currentForm}) => {
 
                             </div>
                             ) : null
+                        }
+
+                        {(q && (q.questionType === 'datepicker' || q.questionType === 'timepicker')) ? (
+                            <table>
+                                <tbody>
+
+                                    <tr>
+                                        <td style={{marginRight: 100,border:'none', fontSize:12 }}>
+                                            {(q.questionType === 'datepicker') ? (
+
+                                                <>
+                                                    {q.title} {q.answer}
+                                                </>
+
+                                                ) : null
+                                            }
+
+                                            {(q.questionType === 'timepicker') ? (
+                                                <>
+                                                    {q.title} {q.answer}
+                                                </>
+
+                                                ) : null
+                                            }
+                                        </td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                            ): null
                         }
 
                     </div>
