@@ -8,7 +8,7 @@ import SearchTable from './SearchTable'
 import ContractsTable from './ContractsTable'
 import ContractModal from './ContractModal'
 import { Container, Typography, Divider, Card, CardContent, makeStyles, Box, Tabs, AppBar, Tab, useTheme, Direction } from '@material-ui/core'
-import SwipeableViews from 'react-swipeable-views'
+import Paper from '@material-ui/core/Paper';
 import BusinessSendContracts from './BusinessSendContracts'
 import WorkerSendContracts from './WorkerSendContracts'
 import { IRootState } from '../../utils/store'
@@ -46,15 +46,19 @@ const a11yProps = (index: any) => {
   }
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: {
-    backgroundColor: theme.palette.background.paper,
-    width: 500,
+    flexGrow: 1,
+    width: "88em",
   },
   card: {
-    margin: theme.spacing(2, 0)
+    width: "75em"
+  },
+  tab: {
+    width: "75em"
   }
-}))
+  
+});
 
 /**
  * @component
@@ -97,10 +101,6 @@ const ContractsPage = () => {
     setValue(newValue)
   }
 
-  const handleChangeIndex = (index: any) => {
-    setValue(index)
-  }
-
   if (user.loading || !user.profile) {
     return (
       <PageLoading />
@@ -110,6 +110,7 @@ const ContractsPage = () => {
     <Container maxWidth="lg">
       <AppBar position="static" color="default">
         <Tabs
+          
           value={value}
           onChange={handleChange}
           indicatorColor="primary"
@@ -122,16 +123,12 @@ const ContractsPage = () => {
           <Tab label="Työntekijältä saapuneet sopimukset" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
-      <SwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={value}
-        onChangeIndex={handleChangeIndex}
-      >
-        <TabPanel value={value} index={0} dir={theme.direction}>
-          <Typography style={{ paddingTop: '1rem' }} variant="h4" className="text-secondary">
+      <Paper square className={classes.root}>
+        <TabPanel value={value} index={0} dir={theme.direction} >
+          <Typography style={{ paddingTop: '1rem' }} variant="h4" >
             Contracts
           </Typography>
-          <Card className={classes.card} variant="outlined">
+          <Card variant="outlined" className={classes.card}>
             <CardContent>
               <Typography gutterBottom variant="h5">
                 Tee sopimus
@@ -156,7 +153,7 @@ const ContractsPage = () => {
         <TabPanel value={value} index={2} dir={theme.direction}>
           <WorkerSendContracts businessContract={businessContract}/>
         </TabPanel>
-      </SwipeableViews>
+        </Paper>
     </Container>
   )
 }
