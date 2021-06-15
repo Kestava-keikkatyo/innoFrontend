@@ -41,6 +41,7 @@ const searchUsers = async (input: string, searchType: businessContractType) => {
     return Promise.reject(error.response)
   }
 }
+
 const acceptBusinessContract = async (contractId:string, userId: string, form?:string) => {
   try {
     return await axios.put(
@@ -161,9 +162,18 @@ const deleteWorkContractById = async (contractId: string) => {
     authHeader()
   )
 }
+// Create a business contract when a new agency sign up
+const createBusinessContract = async () => {
+  try {
+    return await axios.post(`${baseUrl}/businesscontracts/`,{}, authHeader())
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 export default {
   searchUsers,
+  createBusinessContract,
   addBusinessContract,
   declineBusinessContract,
   refuseBusinessContractById,
