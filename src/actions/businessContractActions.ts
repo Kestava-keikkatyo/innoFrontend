@@ -12,8 +12,8 @@ import { businessContractType } from '../types/types'
  * @desc Updates searchlist
  */
 export const updateSearchList = (input: string, searchType: businessContractType) => async (dispatch: any) => {
-  const res = await contractsService.searchUsers(input, searchType)
-  dispatch({ type: B_UPDATE, data: res.data })
+    const res = await contractsService.searchUsers(input, searchType)
+    dispatch({ type: B_UPDATE, data: res.data })
 }
 
 /**
@@ -56,15 +56,15 @@ export const sendBusinessContract = (contractId:string, form?:string) => async (
 }
 
 export const acceptBusinessContract = (contractId:string, userId:string,form?:string) => async (dispatch: any) => {
-  const res = await contractsService.acceptBusinessContract(contractId,userId,form) 
+  const res = await contractsService.acceptBusinessContract(contractId,userId,form)
   if(res && res.status === 200)
     dispatch({type: B_ACCEPT, data: res.data})
 }
 /**
  * @function
- * @desc Activates new business contract. 
- * Activation is avaible only for Worker and Business users. 
- * @param {string} id The id of business contract. 
+ * @desc Activates new business contract.
+ * Activation is avaible only for Worker and Business users.
+ * @param {string} id The id of business contract.
  */
 export const activateBusinessContract = (id: string) => async (dispatch: any) => {
   const res = await contractsService.updateBusinessContract(id)
@@ -76,7 +76,7 @@ export const activateBusinessContract = (id: string) => async (dispatch: any) =>
  * @function
  * @description
  * Used by Agency to decline BusinessContract with Worker or Business.
- * @param {string} contractId The id of BusinessContract. 
+ * @param {string} contractId The id of BusinessContract.
  * @param {string} userId The id of Worker or Business.
  */
 export const declineBusinessContract = (contractId:string, userId:string) => async (dispatch:any) => {

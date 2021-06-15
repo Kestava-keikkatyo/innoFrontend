@@ -26,9 +26,11 @@ const UserSearch = () => {
   const [input, setInput] = useState("")
   const [searchType, setSearchType] = useState<any>(INIT_SEARCH_TYPE)
 
+
   useEffect(() => {
-    dispatch(updateSearchList("a", INIT_SEARCH_TYPE))
+    dispatch(updateSearchList("", INIT_SEARCH_TYPE))
   }, [dispatch])
+
 
   const handleSubmit = (event: any) => {
     event.preventDefault()
@@ -39,6 +41,7 @@ const UserSearch = () => {
 
   const handleChange = (event: any) => {
     setSearchType(event.target.value)
+    dispatch(updateSearchList("",event.target.value))
   }
 
   return (
@@ -56,12 +59,8 @@ const UserSearch = () => {
           value={searchType}
           onChange={handleChange}
         >
-          <FormControlLabel value="worker" control={<Radio />} label="Worker" />
-          <FormControlLabel
-            value="business"
-            control={<Radio />}
-            label="Business"
-          />
+          <FormControlLabel value={roles.Worker} control={<Radio />} label="Worker" />
+          <FormControlLabel value={roles.Business} control={<Radio />} label="Business"/>
         </RadioGroup>
       </FormControl>
       <form onSubmit={handleSubmit}>

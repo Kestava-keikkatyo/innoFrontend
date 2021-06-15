@@ -3,6 +3,7 @@
  * @desc Redux user actions
  */
 import userService from '../services/userService'
+import contractsService from '../services/contractsService'
 import { saveUser, logoutUser } from '../utils/storage'
 import history from '../utils/history'
 import { setAlert } from './alertActions'
@@ -63,6 +64,20 @@ export const signup = (user: SignUpUser, role: roles) => {
         data
       })
       saveUser(data)
+
+      // if the signed up user is an agency, create a business contract for it
+      if(data.role === 'agency'){
+        try{
+          const res = await contractsService.createBusinessContract()
+          console.log("#### res:",res)
+
+        }catch (error){
+          statusHandler(dispatch, error)
+
+        }
+
+
+      }
       history.push('/home')
       dispatch(setAlert('signup successful', severity.Success))
     } catch (error) {
@@ -101,7 +116,7 @@ export const me = (role: roles) => async (dispatch: any) => {
     // Kirjautuessa sisään setItem ei ehdi päivittää loggedInnoAppUseria
     if(!localStorage.getItem('loggedInnoAppUser'))
       return
-    const { data } = await userService.me(role)    
+    const { data } = await userService.me(role)
     dispatch({
       type: USER_PROFILE,
       data
