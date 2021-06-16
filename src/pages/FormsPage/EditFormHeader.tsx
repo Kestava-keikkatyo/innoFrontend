@@ -2,29 +2,29 @@ import { Button, Grid, Typography } from '@material-ui/core';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { importFormByPath, submitForm } from '../../actions/formActions';
+import { importFormByPath, updateForm} from '../../actions/formActions';
 import FileUploader from '../../components/FileUploader';
 
 /**
  * @component
  * @desc Form editors header.
  */
-const NewFormHeader: React.FC = () => {
+const EditFormHeader: React.FC = () => {
   const currentForm = useSelector((state: any) => state.form)
   const history = useHistory()
   const { title } = currentForm
   const dispatch = useDispatch()
 
-  const handleSubmit = () => {
-    dispatch(submitForm(currentForm))
-    history.push("/forms")
+  const handleSave = () => {
+    dispatch(updateForm(currentForm._id, currentForm))
+    history.push(`/forms`)
   }
   return (
     <Grid container direction="row"
     justify="space-between">
       <Grid item xs={6}>
         <Typography variant="h4" color="secondary" >
-          Create a new Form
+          Form Editor
         </Typography>
       </Grid>
       <Grid item xs={6} >
@@ -33,10 +33,10 @@ const NewFormHeader: React.FC = () => {
             <Link to="/forms">Back</Link>
           </Button>
           <Button>
-            <Link to="/forms/newform/preview">Preview</Link>
+            <Link to="/forms/edit-form/preview">Preview</Link>
           </Button>
-          <Button onClick={handleSubmit} >
-            Submit
+          <Button onClick={handleSave} >
+            Save
           </Button>
           <FileUploader accept="data:text/json" handleFile={(data: any) => dispatch(importFormByPath())}>
             Import
@@ -53,4 +53,4 @@ const NewFormHeader: React.FC = () => {
    );
 }
 
-export default NewFormHeader;
+export default EditFormHeader;

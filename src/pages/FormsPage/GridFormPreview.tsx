@@ -57,7 +57,7 @@ const GridFormPreview: React.FC<GridFormPreviewProps> = ({ formTitle, formDesc, 
   const history = useHistory();
   const handleClick = () => {
     dispatch(getFormById(formId))
-    history.push(`/forms/newform`)
+    history.push(`/forms/edit-form`)
   }
 
   const handleDownload = async () => {

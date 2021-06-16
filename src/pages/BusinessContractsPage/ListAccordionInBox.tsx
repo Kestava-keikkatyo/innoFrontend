@@ -20,7 +20,13 @@ import { IRootState } from "../../utils/store";
 import { getFormByIdAndSetBusinessContractForm} from "../../actions/businessContractFormActions";
 import { severity } from "../../types/types";
 import { setAlert } from "../../actions/alertActions";
-//import formServices from "../../services/formServices";
+import formServices from "../../services/formServices"
+import pdfMake from 'pdfmake/build/pdfmake.js';
+import pdfFonts from 'pdfmake/build/vfs_fonts.js';
+import htmlToPdfmake from 'html-to-pdfmake'
+import ReactDOMServer from "react-dom/server";
+import Form from "../FormsPage/Form";
+import BusinessContractFill from "../BusinessContractPreviewPage/BusinessContractFill";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -61,11 +67,13 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
       //dispatch(getFormById(formId))
       dispatch(getFormByIdAndSetBusinessContractForm(formId))
     }
-    history.push(`/business-contract-preview`)
+    history.push(`/business-contracts/business-contract-preview`)
 
   }
 
-  const handleTäytäLomaketta =  (formId:any) => {
+  const handleTäytäLomaketta =  (businessContractId: any, formId:any) => {
+
+    console.log("businessContractId", businessContractId)
 
     if(currentBusinessContractForm.filled){
       dispatch(
@@ -74,7 +82,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
     }else{
       //dispatch(getFormById(formId))
       dispatch(getFormByIdAndSetBusinessContractForm(formId))
-      history.push(`/business-contract-fill`)
+      history.push(`/business-contracts/business-contract-fill`)
     }
 
   }
@@ -82,7 +90,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
   const handleMuokkaaTäytettyäLomaketta =  () => {
 
     if(currentBusinessContractForm.filled)
-      history.push(`/business-contract-edit`)
+      history.push(`/business-contracts/business-contract-edit`)
     else
       dispatch(
       setAlert("Lomake ei ole vielä täydetty" , severity.Error)
@@ -99,6 +107,29 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
   const loadAndSendContract = (contractId:any, formId:any) => {
     alert()
     dispatch(sendBusinessContract(contractId, formId))
+  }
+
+  // Print PDF
+  const handleTulostaLomaketta =  async (formId:any) => {
+    let form:any = await formServices.fetchFormById(formId)
+    console.log("form ", form)
+
+    pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+    // pdf content
+    let content:any = []
+
+    let html = ReactDOMServer.renderToString(<Form currentForm={form}/>)
+    let htmlForm:any = htmlToPdfmake(html);
+
+    content.push(htmlForm)
+
+    // pdf document
+    var doc = {
+      content: content
+    };
+
+    pdfMake.createPdf(doc).download(form.title);
   }
 
   const { contracts } = prop;
@@ -146,12 +177,12 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
               <Button onClick={() => handleEsitteleLomaketta(contract.formId)}>
                 Esikatsele lomaketta
               </Button>
-              <Button onClick={() => handleTäytäLomaketta(contract.formId)}>
+              <Button onClick={() => handleTäytäLomaketta(contract._id, contract.formId)}>
                 Täytä lomaketta
               </Button>
               <Button onClick={handleMuokkaaTäytettyäLomaketta}>
                 Muokkaa Täydettyä lomaketta</Button>
-              <Button>Tulosta pdf</Button>
+              <Button onClick={() => handleTulostaLomaketta(contract.formId)}>Tulosta pdf</Button>
               <Button onClick={() => loadAndSendContract(contract._id, contract.formId)}>Lataa ja lähetä allekirjoitettu sopimus</Button>
             </AccordionActions>
           </Accordion>

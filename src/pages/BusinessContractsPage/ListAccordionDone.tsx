@@ -16,6 +16,12 @@ import { useHistory } from "react-router";
 import { getFormById } from "../../actions/formActions";
 import { useDispatch } from "react-redux";
 import { getFormByIdAndSetBusinessContractForm } from "../../actions/businessContractFormActions";
+import formServices from "../../services/formServices"
+import pdfMake from 'pdfmake/build/pdfmake.js';
+import pdfFonts from 'pdfmake/build/vfs_fonts.js';
+import htmlToPdfmake from 'html-to-pdfmake'
+import ReactDOMServer from "react-dom/server";
+import Form from "../FormsPage/Form";
 
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -47,11 +53,35 @@ export const ListAccordionDone = (prop: { contracts: any[]}) => {
 
   const dispatch = useDispatch()
 
+  // Preview buisness contract form
   const handleEsitteleLomaketta =  (formId:any) => {
 
     dispatch(getFormById(formId))
     dispatch(getFormByIdAndSetBusinessContractForm(formId))
     history.push(`/business-contract-preview`)
+  }
+
+  // Print PDF
+  const handleTulostaLomaketta =  async (formId:any) => {
+    let form:any = await formServices.fetchFormById(formId)
+    console.log("form ", form)
+
+    pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+    // pdf content
+    let content:any = []
+
+    let html = ReactDOMServer.renderToString(<Form currentForm={form}/>)
+    let htmlForm:any = htmlToPdfmake(html);
+
+    content.push(htmlForm)
+
+    // pdf document
+    var doc = {
+        content: content
+    };
+
+    pdfMake.createPdf(doc).download(form.title);
   }
 
   const {contracts} = prop
@@ -95,7 +125,7 @@ export const ListAccordionDone = (prop: { contracts: any[]}) => {
         </AccordionDetails>
         <AccordionActions>
               <Button onClick={() => handleEsitteleLomaketta(contract.formId)}>Esikatsele lomaketta</Button>
-              <Button>Tulosta pdf</Button>
+              <Button onClick={() => handleTulostaLomaketta(contract.formId)}>Tulosta pdf</Button>
         </AccordionActions>
       </Accordion>
       ))}

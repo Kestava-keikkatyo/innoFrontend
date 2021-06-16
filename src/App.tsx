@@ -16,6 +16,7 @@ import FormsPage from "./pages/FormsPage";
 import WorkerStatistics from "./pages/WorkerStatistics";
 import { CssBaseline } from "@material-ui/core";
 import NewFormPage from "./pages/FormsPage/NewFormPage";
+import EditFormPage from "./pages/FormsPage/EditFormPage";
 import FormPreviewPage from "./pages/FormPreviewPage";
 import { roles } from "./types/types";
 import InductionPage from "./pages/InductionPage";
@@ -111,6 +112,24 @@ const App: React.FC = () => {
         <PrivateRoute path="/contracts" roles={[roles.Agency]}>
           <ContractsPage />
         </PrivateRoute>
+        <PrivateRoute
+          path="/business-contracts/business-contract-preview"
+          roles={[roles.Business, roles.Agency]}
+        >
+          <BusinessContractPreviewPage />
+        </PrivateRoute>
+        <PrivateRoute
+          path="/business-contracts/business-contract-fill"
+          roles={[roles.Business, roles.Agency]}
+        >
+          <BusinessContractFill />
+        </PrivateRoute>
+        <PrivateRoute
+          path="/business-contracts/business-contract-edit"
+          roles={[roles.Business, roles.Agency]}
+        >
+          <BusinessContractEdit />
+        </PrivateRoute>
         <PrivateRoute path="/business-contracts" roles={[roles.Business]}>
           <BusinessContractPage />
         </PrivateRoute>
@@ -121,28 +140,22 @@ const App: React.FC = () => {
           <FormPreviewPage />
         </PrivateRoute>
         <PrivateRoute
-          path="/business-contract-preview"
+          path="/forms/edit-form/preview"
           roles={[roles.Business, roles.Agency]}
         >
-          <BusinessContractPreviewPage />
-        </PrivateRoute>
-        <PrivateRoute
-          path="/business-contract-fill"
-          roles={[roles.Business, roles.Agency]}
-        >
-          <BusinessContractFill />
-        </PrivateRoute>
-        <PrivateRoute
-          path="/business-contract-edit"
-          roles={[roles.Business, roles.Agency]}
-        >
-          <BusinessContractEdit />
+          <FormPreviewPage />
         </PrivateRoute>
         <PrivateRoute
           path="/forms/newform"
           roles={[roles.Business, roles.Agency]}
         >
           <NewFormPage />
+        </PrivateRoute>
+        <PrivateRoute
+          path="/forms/edit-form"
+          roles={[roles.Business, roles.Agency]}
+        >
+          <EditFormPage />
         </PrivateRoute>
         <PrivateRoute path="/forms" roles={[roles.Business, roles.Agency]}>
           <FormsPage />

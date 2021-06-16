@@ -126,6 +126,18 @@ const updateBusinessContract = async (id: string) => {
   }
 }
 
+const updateBusinessContractFormId = async (businessContractId: string, formId: string) => {
+  try {
+    return await axios.put(
+      `${baseUrl}/businesscontracts/${businessContractId}/saveForm`,
+      {form: formId},
+      authHeader()
+    )
+  } catch (error) {
+    return Promise.reject(error.response)
+  }
+}
+
 const addWorkContract = async (
   businessId: string,
   workerId: string,
@@ -183,5 +195,6 @@ export default {
   fetchWorkContracts,
   deleteWorkContractById,
   sendBusinessContract,
-  acceptBusinessContract
+  acceptBusinessContract,
+  updateBusinessContractFormId
 }
