@@ -8,10 +8,10 @@ import SearchTable from './SearchTable'
 import ContractsTable from './ContractsTable'
 import ContractModal from './ContractModal'
 import { Container, Typography, Divider, Card, CardContent, makeStyles, Box, Tabs, AppBar, Tab, useTheme, Direction } from '@material-ui/core'
-import Paper from '@material-ui/core/Paper';
 import BusinessSendContracts from './BusinessSendContracts'
 import WorkerSendContracts from './WorkerSendContracts'
 import { IRootState } from '../../utils/store'
+
 
 interface TabPanelProps {
   children?: React.ReactNode
@@ -46,19 +46,14 @@ const a11yProps = (index: any) => {
   }
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
-    width: "88em",
+    backgroundColor: theme.palette.background.paper,
   },
   card: {
-    width: "75em"
+    width: "100%",
   },
-  tab: {
-    width: "75em"
-  }
-  
-});
+}));
 
 /**
  * @component
@@ -107,9 +102,9 @@ const ContractsPage = () => {
     )
   }
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" >
       <AppBar position="static" color="default">
-        <Tabs
+        <Tabs 
           
           value={value}
           onChange={handleChange}
@@ -123,13 +118,13 @@ const ContractsPage = () => {
           <Tab label="Työntekijältä saapuneet sopimukset" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
-      <Paper square className={classes.root}>
-        <TabPanel value={value} index={0} dir={theme.direction} >
-          <Typography style={{ paddingTop: '1rem' }} variant="h4" >
+        
+        <TabPanel  value={value} index={0} dir={theme.direction }  >
+          <Typography  style={{ paddingTop: '1rem' }} variant="h4"  >
             Contracts
           </Typography>
-          <Card variant="outlined" className={classes.card}>
-            <CardContent>
+          <Card className={classes.card} variant="outlined">
+            <CardContent >
               <Typography gutterBottom variant="h5">
                 Tee sopimus
               </Typography>
@@ -153,7 +148,7 @@ const ContractsPage = () => {
         <TabPanel value={value} index={2} dir={theme.direction}>
           <WorkerSendContracts businessContract={businessContract}/>
         </TabPanel>
-        </Paper>
+  
     </Container>
   )
 }

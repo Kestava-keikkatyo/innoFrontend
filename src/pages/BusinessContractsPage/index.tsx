@@ -16,6 +16,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBusinessContracts } from "../../actions/businessContractActions";
 import { IRootState } from "../../utils/store";
 import AgenciesList from "./AgenciesList";
+import ReceivedWorkerContracts from "../WorkerContractPage/ReceivedWorkerContracts";
+import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -108,19 +110,24 @@ const BusinessContractsPage = () => {
               {...a11yProps(0)}
             />
             <Tab
-              label="Saapuneet sopimukset"
-              icon={<NotificationsActiveIcon />}
+              label="Lähetetyt sopimukset"
+              icon={<SendIcon/>}
               {...a11yProps(1)}
             />
             <Tab
-              label="Lähetetyt sopimukset"
-              icon={<SendIcon />}
+              label="Saapuneet sopimukset"
+              icon={<NotificationsActiveIcon />}
               {...a11yProps(2)}
+            />
+            <Tab
+              label="Odottavat sopimukset"
+              icon={<HourglassEmptyIcon />}
+              {...a11yProps(3)}
             />
             <Tab
               label="Valmiit sopimukset"
               icon={<AllInboxIcon />}
-              {...a11yProps(3)}
+              {...a11yProps(4)}
             />
           </Tabs>
         </AppBar>
@@ -128,12 +135,15 @@ const BusinessContractsPage = () => {
           <AgenciesList />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <ListAccordionInBox contracts={pending} />
+          <ReceivedWorkerContracts/>
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <ListAccordionSent contracts={sent} />
+          <ListAccordionInBox contracts={pending} />
         </TabPanel>
         <TabPanel value={value} index={3}>
+          <ListAccordionSent contracts={sent} />
+        </TabPanel>
+        <TabPanel value={value} index={4}>
           <ListAccordionDone contracts={ready} />
         </TabPanel>
     </Container>

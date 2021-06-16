@@ -20,7 +20,7 @@ import MCTable from "./MCTable"
 const useStyles = makeStyles((theme) => ({
   card: {
     margin: theme.spacing(2, 0),
-    width: "75em"
+    
   },
 }));
 
