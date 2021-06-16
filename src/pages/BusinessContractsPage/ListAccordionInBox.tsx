@@ -26,7 +26,6 @@ import pdfFonts from 'pdfmake/build/vfs_fonts.js';
 import htmlToPdfmake from 'html-to-pdfmake'
 import ReactDOMServer from "react-dom/server";
 import Form from "../FormsPage/Form";
-import BusinessContractFill from "../BusinessContractPreviewPage/BusinessContractFill";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -82,7 +81,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
     }else{
       //dispatch(getFormById(formId))
       dispatch(getFormByIdAndSetBusinessContractForm(formId))
-      history.push({pathname: `/business-contract-fill`,state: { contractId: contractId}})
+      history.push({pathname: `/business-contracts/business-contract-fill`,state: { contractId: contractId}})
       //history.push(`/business-contract-fill`,{ params: contractId})
     }
 
@@ -108,6 +107,29 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
   const loadAndSendContract = (contractId:any, formId:any) => {
     alert()
     dispatch(sendBusinessContract(contractId, formId))
+  }
+
+  // Print PDF
+  const handleTulostaLomaketta =  async (formId:any) => {
+    let form:any = await formServices.fetchFormById(formId)
+    console.log("form ", form)
+
+    pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+    // pdf content
+    let content:any = []
+
+    let html = ReactDOMServer.renderToString(<Form currentForm={form}/>)
+    let htmlForm:any = htmlToPdfmake(html);
+
+    content.push(htmlForm)
+
+    // pdf document
+    var doc = {
+        content: content
+    };
+
+    pdfMake.createPdf(doc).download(form.title);
   }
 
   if (contracts.length < 1) {
