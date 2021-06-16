@@ -54,6 +54,14 @@ const acceptBusinessContract = async (contractId:string, userId: string, form?:s
   }
 }
 
+/**
+ * @description Backend call function which is used when Agency sends BusinessContract
+ * request to Worker or Business.
+ * @param contractId - BusinessContractId
+ * @param userId - Worker/Business id
+ * @param form - formid
+ * @returns Backend response.
+ */
 const addBusinessContract = async (contractId:string, userId: string, form?:string) => {
   try {
     return await axios.put(
@@ -61,6 +69,21 @@ const addBusinessContract = async (contractId:string, userId: string, form?:stri
       {form},
       authHeader()
     )
+  } catch (error) {
+    console.log(error)
+  }
+}
+/**
+ * @description Backend call function which is used when Worker or Business sends BusinessContract
+ * request to Agency.
+ * @param contractId
+ * @return Backend response. 
+ */
+const addBusinessContractWorkerBusiness = async (contractId:string) => {
+  try {
+    return await axios.put(`${baseUrl}/businesscontracts/${contractId}/add`,
+    {},
+    authHeader())
   } catch (error) {
     console.log(error)
   }
@@ -171,10 +194,27 @@ const createBusinessContract = async () => {
   }
 }
 
+/**
+ * @function
+ * @description Function is used to update BusinessContractDocumentObjects formId
+ * which is inside of array of objects.
+ * @param form New formId
+ */
+const updateBusinessContractsForm = async (contractId:string,form:string) => {
+  try {
+    return await axios.put(`${baseUrl}/businesscontracts/${contractId}/saveForm`,
+    {form},
+    authHeader())
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export default {
   searchUsers,
   createBusinessContract,
   addBusinessContract,
+  addBusinessContractWorkerBusiness,
   declineBusinessContract,
   refuseBusinessContractById,
   fetchBusinessContracts,
@@ -183,5 +223,6 @@ export default {
   fetchWorkContracts,
   deleteWorkContractById,
   sendBusinessContract,
-  acceptBusinessContract
+  acceptBusinessContract,
+  updateBusinessContractsForm
 }

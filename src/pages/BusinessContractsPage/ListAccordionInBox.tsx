@@ -45,11 +45,13 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export const ListAccordionInBox = (prop: { contracts: any[] }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   const dispatch = useDispatch()
 
   const history = useHistory()
+
+  const { contracts } = prop
 
   const currentForm:any = useSelector((state: IRootState ) => state.form)
 
@@ -65,7 +67,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
 
   }
 
-  const handleTäytäLomaketta =  (formId:any) => {
+  const handleTäytäLomaketta =  (formId:any, contractId:string) => {
 
     if(currentBusinessContractForm.filled){
       dispatch(
@@ -74,7 +76,8 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
     }else{
       //dispatch(getFormById(formId))
       dispatch(getFormByIdAndSetBusinessContractForm(formId))
-      history.push(`/business-contract-fill`)
+      history.push({pathname: `/business-contract-fill`,state: { contractId: contractId}})
+      //history.push(`/business-contract-fill`,{ params: contractId})
     }
 
   }
@@ -101,7 +104,6 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
     dispatch(sendBusinessContract(contractId, formId))
   }
 
-  const { contracts } = prop;
   if (contracts.length < 1) {
     return <p>no results</p>;
   } else
@@ -146,7 +148,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
               <Button onClick={() => handleEsitteleLomaketta(contract.formId)}>
                 Esikatsele lomaketta
               </Button>
-              <Button onClick={() => handleTäytäLomaketta(contract.formId)}>
+              <Button onClick={() => handleTäytäLomaketta(contract.formId,contract._id)}>
                 Täytä lomaketta
               </Button>
               <Button onClick={handleMuokkaaTäytettyäLomaketta}>
