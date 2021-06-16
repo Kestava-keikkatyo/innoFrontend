@@ -172,17 +172,17 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
             </AccordionDetails>
 
             <AccordionActions>
-              <Button onClick={() => rejectContract(contract._id, contract.formId)}>Hylkää sopimus</Button>
-              <Button onClick={() => handleEsitteleLomaketta(contract.formId)}>
+              <Button onClick={() => rejectContract(contract._id, contract.pendingContracts.formId)}>Hylkää sopimus</Button>
+              <Button onClick={() => handleEsitteleLomaketta(contract.pendingContracts.formId)}>
                 Esikatsele lomaketta
               </Button>
-              <Button onClick={() => handleTäytäLomaketta(contract.formId,contract._id)}>
+              <Button onClick={() => handleTäytäLomaketta(contract.pendingContracts.formId,contract._id)}>
                 Täytä lomaketta
               </Button>
               <Button onClick={handleMuokkaaTäytettyäLomaketta}>
-                Muokkaa Täydettyä lomaketta</Button>
-              <Button onClick={() => handleTulostaLomaketta(contract.formId)}>Tulosta pdf</Button>
-              <Button onClick={() => loadAndSendContract(contract._id, contract.formId)}>Lataa ja lähetä allekirjoitettu sopimus</Button>
+                Muokkaa Täytettyä lomaketta</Button>
+              <Button>Tulosta pdf</Button>
+              <Button onClick={() => loadAndSendContract(contract._id, contract.pendingContracts.formId)}>Lataa ja lähetä allekirjoitettu sopimus</Button>
             </AccordionActions>
           </Accordion>
         ))}
