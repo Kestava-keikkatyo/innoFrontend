@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 interface BusinessContractObject {
   _id: string
-  requestContracts: {
+  receivedContracts: {
     businesses: []
     workers: []
   }
@@ -52,7 +52,7 @@ const BusinessSendContracts = (props: { businessContract: BusinessContractObject
     dispatch(setAlert("Contract declined.", severity.Info, 3))
   }
 
-  if (contracts[0] === undefined || !contracts.length)
+  if (contracts[0].receivedContracts === undefined || !contracts.length)
     return (
       <Typography
         style={{ padding: "1rem" }}
@@ -84,7 +84,7 @@ const BusinessSendContracts = (props: { businessContract: BusinessContractObject
                     </Typography>
                 <Divider />
                 <RCTable
-                  contracts={contracts[0].requestContracts.businesses}
+                  contracts={contracts[0].receivedContracts.businesses}
                   contractId={businessContract[0]._id}
                   acceptContract={acceptContract}
                   declineContract={declineContract}
@@ -96,7 +96,7 @@ const BusinessSendContracts = (props: { businessContract: BusinessContractObject
                 </Typography>
                 <Divider />
                 <RCTable
-                  contracts={contracts[0].requestContracts.workers}
+                  contracts={contracts[0].receivedContracts.workers}
                   contractId={businessContract[0]._id}
                   acceptContract={acceptContract}
                   declineContract={declineContract}
