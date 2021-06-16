@@ -52,7 +52,7 @@ const WorkerSendContracts = (props: { businessContract: BusinessContractObject[]
     dispatch(setAlert("Contract declined.", severity.Info, 3))
   }
 
-  if (contracts[0].receivedContracts === undefined || !contracts.length)
+  if (contracts[0].receivedContracts.workers === undefined || !contracts.length)
     return (
       <Typography
         style={{ padding: "1rem" }}
@@ -79,16 +79,7 @@ const WorkerSendContracts = (props: { businessContract: BusinessContractObject[]
                 <Typography gutterBottom variant="h5">
                   Saapuneet sopimukset
                 </Typography>
-                <Typography gutterBottom variant="h6">
-                  Businesses
-                </Typography>
                 <Divider />
-                <RCTable
-                  contracts={contracts[0].receivedContracts.businesses}
-                  contractId={businessContract[0]._id}
-                  acceptContract={acceptContract}
-                  declineContract={declineContract}
-                />
               </CardContent>
               <CardContent>
                 <Typography gutterBottom variant="h6">
@@ -110,15 +101,7 @@ const WorkerSendContracts = (props: { businessContract: BusinessContractObject[]
                 <Typography gutterBottom variant="h5">
                   Valmiit sopimukset
                 </Typography>
-                <Typography gutterBottom variant="h6">
-                  Businesses
-                </Typography>
                 <Divider />
-                <MCTable
-                  contracts={contracts[0].madeContracts.businesses}
-                  contractId={businessContract[0]._id}
-                  declineContract={declineContract}
-                />
               </CardContent>
               <CardContent>
                 <Typography gutterBottom variant="h6">

@@ -18,7 +18,7 @@ import {
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import DoneIcon from "@material-ui/icons/Done";
 import ClearIcon from "@material-ui/icons/Clear";
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -26,7 +26,6 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-     
     },
     paper: {
       backgroundColor: theme.palette.background.paper,
@@ -35,15 +34,13 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingLeft: "0.5em",
       paddingRight: "0.5em",
       padding: theme.spacing(1),
-      
-      
     },
     buttonProperties: {
       color: "#f50057",
     },
     companyHeader: {
       textAlign: "center",
-    }
+    },
   })
 );
 
@@ -65,8 +62,8 @@ const RCTable = (prop: {
   };
 
   const greet = () => {
-    alert("Ahoy! Tervetuloa")
-  }
+    alert("Ahoy! Tervetuloa");
+  };
 
   const { contracts, contractId, acceptContract, declineContract } = prop;
   if (!contracts.length)
@@ -96,6 +93,7 @@ const RCTable = (prop: {
             </TableRow>
           </TableHead>
           <TableBody>
+            {console.log("contracts",contracts)}
             {contracts.map((contract: any) => (
               <TableRow key={contract._id}>
                 <TableCell padding="none" align="center">
@@ -106,44 +104,58 @@ const RCTable = (prop: {
                       acceptContract(
                         contractId,
                         contract.businessId._id,
-                        contract.formId)}>
+                        contract.formId
+                      )
+                    }
+                  >
                     <DoneIcon />
                   </IconButton>
                 </TableCell>
                 <TableCell align="center">
-                  <div>
-                    <IconButton type="button" onClick={handleOpen}>
-                      <NotificationsIcon className={classes.buttonProperties} />
-                    </IconButton>
-                    <Modal
-                      aria-labelledby="transition-modal-title"
-                      aria-describedby="transition-modal-description"
-                      className={classes.modal}
-                      open={open}
-                      onClose={handleClose}
-                      closeAfterTransition
-                      BackdropComponent={Backdrop}
-                      BackdropProps={{
-                        timeout: 500,
-                      }}
-                    >
-                      <Fade in={open}>
-                        <div className={classes.paper}>
-                          <h2 id="transition-modal-title" className={classes.companyHeader}>{contract.businessId.name}</h2>
-                          <div>
-                          <p id="transition-modal-description" className={classes.companyHeader}>
-                              <p>Puh: 055 555 555</p>
-                              <p>Osoite: viipulan vaapulan polku 18 3D </p>
-                              <p>Sopimuksen luontipäivä 18.2.2022</p>
-                          <Button variant="contained" color="secondary" onClick={greet}>
+                  <div></div>
+                  <IconButton type="button" onClick={handleOpen}>
+                    <NotificationsIcon className={classes.buttonProperties} />
+                  </IconButton>
+                  <Modal
+                    aria-labelledby="transition-modal-title"
+                    aria-describedby="transition-modal-description"
+                    className={classes.modal}
+                    open={open}
+                    onClose={handleClose}
+                    closeAfterTransition
+                    BackdropComponent={Backdrop}
+                    BackdropProps={{
+                      timeout: 500,
+                    }}
+                  >
+                    <Fade in={open}>
+                      <div className={classes.paper}>
+                        <h2
+                          id="transition-modal-title"
+                          className={classes.companyHeader}
+                        >
+                          {contract.businessId.name}
+                        </h2>
+                        <div>
+                          <p
+                            id="transition-modal-description"
+                            className={classes.companyHeader}
+                          >
+                            <p>Puh: 055 555 555</p>
+                            <p>Osoite: viipulan vaapulan polku 18 3D </p>
+                            <p>Sopimuksen luontipäivä 18.2.2022</p>
+                            <Button
+                              variant="contained"
+                              color="secondary"
+                              onClick={greet}
+                            >
                               Siirry yrityksen nettisivuille tästä
                             </Button>
                           </p>
-                          </div>
                         </div>
-                      </Fade>
-                    </Modal>
-                  </div>
+                      </div>
+                    </Fade>
+                  </Modal>
                 </TableCell>
                 <TableCell padding="none" align="center">
                   <IconButton
@@ -158,9 +170,7 @@ const RCTable = (prop: {
                 </TableCell>
                 <TableCell align="right">{contract.businessId.name}</TableCell>
                 <TableCell align="right">{contract.businessId.email}</TableCell>
-                <TableCell align="right">
-                  {contract.businessId.userType}
-                </TableCell>
+                <TableCell align="right">{contract.businessId.userType}</TableCell>
                 <TableCell align="right">{"Pending"}</TableCell>
               </TableRow>
             ))}
