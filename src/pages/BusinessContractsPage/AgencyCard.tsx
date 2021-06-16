@@ -10,6 +10,8 @@ import { red } from "@material-ui/core/colors";
 import Button from "@material-ui/core/Button";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { Grid } from "@material-ui/core";
+import { useDispatch } from "react-redux";
+import { addBusinessContractWorkerBusiness } from "../../actions/businessContractActions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -60,14 +62,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const AgencyCard = (prop: { agency: any }) => {
-  const classes = useStyles();
+interface Agency {
+  businessContracts: [string],
+  name: string,
+  email: string
+}
 
-  const acceptCooperation = () => {
-    alert("Yhteistyö tehty");
-  };
+export const AgencyCard = (prop: { agency: Agency }) => {
+  const classes = useStyles()
+  const dispatch = useDispatch()
+  const { agency } = prop
 
-  const { agency } = prop;
+  const contractId = agency.businessContracts[0]
+
+  const acceptCooperation = (contractId:string) => {
+    console.log("Lähetetään pyyntö HP-Yritykselle.")
+    dispatch(addBusinessContractWorkerBusiness(contractId))
+  }
+  const transferToAgencyPage = () => {
+    alert("HP-Yrityksen sivut aukeaa...")
+  }
+
+  
   return (
     <Card className={classes.root}>
       <CardHeader
@@ -93,7 +109,7 @@ export const AgencyCard = (prop: { agency: any }) => {
               className={classes.button}
               variant="contained"
               color="primary"
-              onClick={acceptCooperation}
+              onClick={transferToAgencyPage}
             >
               Siirry yrityksen sivuille
             </Button>
@@ -101,7 +117,7 @@ export const AgencyCard = (prop: { agency: any }) => {
               className={classes.button}
               variant="contained"
               color="primary"
-              onClick={acceptCooperation}
+              onClick={() => acceptCooperation(contractId)}
             >
               Lähetä yhteistyökutsu
             </Button>

@@ -15,11 +15,11 @@ const SubmitHeader: React.FC<any> = () => {
 
   const dispatch = useDispatch()
 
-  const history = useHistory()
+  const history:any = useHistory()
 
   const handleSubmit = () => {
     currentBusinssContractForm.filled = true
-    dispatch(submitForm(currentBusinssContractForm))
+    dispatch(submitForm(currentBusinssContractForm, history.location.state.contractId))
     history.push(`/business-contracts`)
 
   }

@@ -20,6 +20,7 @@
 
  } from "../types/state"
  import formServices from "../services/formServices"
+ import contractsService from "../services/contractsService"
  import { convertForm } from "../utils/formUtils"
  import { addToFormList } from "./formListActions"
 
@@ -168,9 +169,10 @@
   * @function
   * @desc Submits business contract form to the storage.
   * @param {BusinessContractForm} form - Edited Form Object to be submitted.
+  * @param {string} contractId - BusinessContractId
   * @todo Service call backend.
   */
- export const submitForm = (form: BusinessContractForm) => async (dispatch: any) => {
+ export const submitForm = (form: BusinessContractForm,contractId:string) => async (dispatch: any) => {
 
    console.log("### Business contract form: ", form)
    if (form.title === "") {
@@ -181,6 +183,9 @@
    console.log("submitBusinessContractForm res: ", res);
    console.log("submitBusinessContractForm res.data._id: ", res?.data._id);
 
+   const formUpdate = await contractsService.updateBusinessContractsForm(contractId,res?.data._id)
+   console.log(formUpdate)
+   
    const data = await formServices.fetchFormById(res?.data._id)
    dispatch({type: SET_CURRENT_BUSINESS_CONTRACT_FORM, data})
 

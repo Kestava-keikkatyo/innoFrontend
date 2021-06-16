@@ -3,7 +3,7 @@
  * @desc Redux businessContract actions
  */
 import contractsService from '../services/contractsService'
-import { ACTIVATE_B_CONTRACT, ADD_B_CONTRACT, B_DELETE, B_FETCH, B_UPDATE, DECLINE_B_CONTRACT, B_SEND, B_ACCEPT } from '../types/state'
+import { ACTIVATE_B_CONTRACT, ADD_B_CONTRACT, B_DELETE, B_FETCH, B_UPDATE, DECLINE_B_CONTRACT, B_SEND, B_ACCEPT, ADD_B_WB_CONTRACT } from '../types/state'
 import { businessContractType } from '../types/types'
 
 
@@ -41,6 +41,7 @@ export const refuseBusinessContractById = (id: string) => async (dispatch: any) 
 /**
  * @function
  * @desc Adds new business contract between logged in Agency user and Worker/Business user.
+ * Must be Agency to use this.
  * @param {string} contractId BusinessContract id
  * @param {string} user Business or Worker id
  */
@@ -49,6 +50,18 @@ export const addBusinessContract = (contractId:string, userId: string, form?:str
   if(res && res.status === 200)
     dispatch({type: ADD_B_CONTRACT, data: res.data })
 }
+/**
+ * @function
+ * @desc Adds new business contract between logged in Worker/Business user and Agency user.
+ * Must be Worker/Business to use this.
+ * @param {string} contractId BusinessContract id 
+ */
+export const addBusinessContractWorkerBusiness = (contractId:string) => async (dispatch:any) => {
+  const res = await contractsService.addBusinessContractWorkerBusiness(contractId)
+  if (res && res.status === 200)
+    dispatch({type: ADD_B_WB_CONTRACT, data: res.data})
+}
+
 export const sendBusinessContract = (contractId:string, form?:string) => async (dispatch: any) => {
   const res = await contractsService.sendBusinessContract(contractId,form)
   if(res && res.status === 200)

@@ -187,4 +187,25 @@ export const submitForm = (form: Form) => async (dispatch: any) => {
   // dispatch({ type: CLEAR_CURRENT_FORM })
 }
 
+/**
+ * @function
+ * @desc Submits the updated form to storage.
+ * @param {Form} form - Edited Form Object to be submitted.
+ * @todo Service call backend.
+ */
+ export const updateForm = (formId:any, form: Form) => async (dispatch: any) => {
+  if (form.title === "") {
+    dispatch(setAlert("Title is required", severity.Error))
+    return
+  }
+
+  const res = await formServices.updateForm(formId, convertForm(form))
+
+  const data = await formServices.fetchFormById(res?.data._id)
+  dispatch({type: SET_CURRENT_FORM, data})
+
+  dispatch(addToFormList(form))
+
+}
+
 
