@@ -4,7 +4,7 @@ export interface ReceivedWorkerContractsProps {
     props: any
 }
  
-const ReceivedWorkerContracts: React.SFC<ReceivedWorkerContractsProps> = (props) => {
+const ReceivedWorkerContracts = () => {
     return ( <></> );
 }
  

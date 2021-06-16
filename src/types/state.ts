@@ -156,6 +156,7 @@ export interface BusinessContractState {
 }
 
 export const ADD_B_CONTRACT = 'ADD_BUSINESS_CONTRACT'
+export const ADD_B_WB_CONTRACT = 'ADD_BUSINESS_CONTRACT_WORKER_BUSINESS'
 export const B_FETCH = 'FETCH_BUSINESS_CONTRACTS'
 export const B_UPDATE = 'UPDATE_BUSINESS_SEARCH'
 export const B_DELETE = 'DELETE_BUSINESS_CONTRACT_BY_ID'
@@ -171,6 +172,11 @@ interface ActivateBusinessContract {
 
 interface AddBusinessContractAction {
   type: typeof ADD_B_CONTRACT
+  data: any
+}
+
+interface AddBusinessContractWorkerBusinessAction {
+  type: typeof ADD_B_WB_CONTRACT
   data: any
 }
 
@@ -204,7 +210,7 @@ interface AcceptBusinessContract {
   data: any
 }
 
-export type BusinessContractActions = AddBusinessContractAction | BusinessContractFetchAction |
+export type BusinessContractActions = AddBusinessContractAction | AddBusinessContractWorkerBusinessAction | BusinessContractFetchAction |
 UpdateBusinessSearchAction | RefuseBusinessContractAction | ActivateBusinessContract | DeclineBusinessCOntractAction | SendBusinessContract | AcceptBusinessContract
 
 export interface WorkContractState {

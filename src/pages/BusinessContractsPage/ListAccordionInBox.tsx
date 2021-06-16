@@ -51,11 +51,13 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export const ListAccordionInBox = (prop: { contracts: any[] }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   const dispatch = useDispatch()
 
   const history = useHistory()
+
+  const { contracts } = prop
 
   const currentForm:any = useSelector((state: IRootState ) => state.form)
 
@@ -71,9 +73,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
 
   }
 
-  const handleTäytäLomaketta =  (businessContractId: any, formId:any) => {
-
-    console.log("businessContractId", businessContractId)
+  const handleTäytäLomaketta =  (formId:any, contractId:string) => {
 
     if(currentBusinessContractForm.filled){
       dispatch(
@@ -82,7 +82,8 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
     }else{
       //dispatch(getFormById(formId))
       dispatch(getFormByIdAndSetBusinessContractForm(formId))
-      history.push(`/business-contracts/business-contract-fill`)
+      history.push({pathname: `/business-contract-fill`,state: { contractId: contractId}})
+      //history.push(`/business-contract-fill`,{ params: contractId})
     }
 
   }
@@ -109,30 +110,6 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
     dispatch(sendBusinessContract(contractId, formId))
   }
 
-  // Print PDF
-  const handleTulostaLomaketta =  async (formId:any) => {
-    let form:any = await formServices.fetchFormById(formId)
-    console.log("form ", form)
-
-    pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
-    // pdf content
-    let content:any = []
-
-    let html = ReactDOMServer.renderToString(<Form currentForm={form}/>)
-    let htmlForm:any = htmlToPdfmake(html);
-
-    content.push(htmlForm)
-
-    // pdf document
-    var doc = {
-      content: content
-    };
-
-    pdfMake.createPdf(doc).download(form.title);
-  }
-
-  const { contracts } = prop;
   if (contracts.length < 1) {
     return <p>no results</p>;
   } else
@@ -177,7 +154,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
               <Button onClick={() => handleEsitteleLomaketta(contract.formId)}>
                 Esikatsele lomaketta
               </Button>
-              <Button onClick={() => handleTäytäLomaketta(contract._id, contract.formId)}>
+              <Button onClick={() => handleTäytäLomaketta(contract.formId,contract._id)}>
                 Täytä lomaketta
               </Button>
               <Button onClick={handleMuokkaaTäytettyäLomaketta}>
