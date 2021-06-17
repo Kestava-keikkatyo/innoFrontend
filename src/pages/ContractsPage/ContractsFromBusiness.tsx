@@ -14,8 +14,8 @@ import {
 } from "../../actions/businessContractActions";
 import { setAlert } from "../../actions/alertActions";
 import { severity } from "../../types/types";
-import RCTable from "./ContractsReceivedTable";
-import MCTable from "./ContractsSendTable";
+import ContractsReceivedTable from "./ContractsReceivedTable";
+import ContractsSendTable from "./ContractsSendTable";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -93,7 +93,7 @@ const ContractsFromBusiness = (props: {
                   Businesses
                 </Typography>
                 <Divider />
-                <RCTable
+                <ContractsReceivedTable
                   contracts={contracts[0].receivedContracts.businesses}
                   contractId={businessContract[0]._id}
                   acceptContract={acceptContract}
@@ -113,7 +113,7 @@ const ContractsFromBusiness = (props: {
                   Businesses
                 </Typography>
                 <Divider />
-                <MCTable
+                <ContractsSendTable
                   contracts={contracts[0].madeContracts.businesses}
                   contractId={businessContract[0]._id}
                   declineContract={declineContract}

@@ -5,7 +5,7 @@ import {
 from "@material-ui/core"
 import { Delete as DeleteIcon } from "@material-ui/icons"
 
-const MCTable = (prop: { contracts: []; declineContract: Function; contractId: string; }) => {
+const ContractsSendTable = (prop: { contracts: []; declineContract: Function; contractId: string; }) => {
   const { contracts, contractId, declineContract } = prop
   if (!contracts.length)
     return (
@@ -54,4 +54,4 @@ const MCTable = (prop: { contracts: []; declineContract: Function; contractId: s
       </TableContainer>
     )
 }
-export default MCTable
+export default ContractsSendTable

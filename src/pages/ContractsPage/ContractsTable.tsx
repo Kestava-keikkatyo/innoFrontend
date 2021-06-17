@@ -14,8 +14,8 @@ import {
 } from "../../actions/businessContractActions";
 import { setAlert } from "../../actions/alertActions";
 import { severity } from "../../types/types";
-import RCTable from "./ContractsReceivedTable"
-import MCTable from "./ContractsSendTable"
+import ContractsReceivedTable from "./ContractsReceivedTable"
+import ContractsSendTable from "./ContractsSendTable"
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -96,7 +96,7 @@ const ContractsTable = (props: { businessContract: BusinessContractObject[] }) =
                   Businesses
                 </Typography>
                 <Divider />
-                <MCTable
+                <ContractsSendTable
                   contracts={contracts[0].pendingContracts.businesses}
                   contractId={businessContract[0]._id}
                   declineContract={declineContract}
@@ -107,7 +107,7 @@ const ContractsTable = (props: { businessContract: BusinessContractObject[] }) =
                   Workers
                 </Typography>
                 <Divider />
-                <MCTable
+                <ContractsSendTable
                   contracts={contracts[0].pendingContracts.workers}
                   contractId={businessContract[0]._id}
                   declineContract={declineContract}
@@ -125,7 +125,7 @@ const ContractsTable = (props: { businessContract: BusinessContractObject[] }) =
                   Businesses
                 </Typography>
                 <Divider />
-                <RCTable
+                <ContractsReceivedTable
                   contracts={contracts[0].requestContracts.businesses}
                   contractId={businessContract[0]._id}
                   acceptContract={acceptContract}
@@ -137,7 +137,7 @@ const ContractsTable = (props: { businessContract: BusinessContractObject[] }) =
                   Workers
                 </Typography>
                 <Divider />
-                <RCTable
+                <ContractsReceivedTable
                   contracts={contracts[0].requestContracts.workers}
                   contractId={businessContract[0]._id}
                   acceptContract={acceptContract}
@@ -156,7 +156,7 @@ const ContractsTable = (props: { businessContract: BusinessContractObject[] }) =
                   Businesses
                 </Typography>
                 <Divider />
-                <MCTable
+                <ContractsSendTable
                   contracts={contracts[0].madeContracts.businesses}
                   contractId={businessContract[0]._id}
                   declineContract={declineContract}
@@ -167,7 +167,7 @@ const ContractsTable = (props: { businessContract: BusinessContractObject[] }) =
                   Workers
                 </Typography>
                 <Divider />
-                <MCTable
+                <ContractsSendTable
                   contracts={contracts[0].madeContracts.workers}
                   contractId={businessContract[0]._id}
                   declineContract={declineContract}
