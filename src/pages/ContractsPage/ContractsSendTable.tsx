@@ -38,14 +38,14 @@ const MCTable = (prop: { contracts: []; declineContract: Function; contractId: s
                   <IconButton
                     aria-label="remove from organization"
                     color="secondary"
-                    onClick={() => declineContract(contractId, contract.businessId._id)}
+                    onClick={() => declineContract(contractId, contract.businessId ? contract.businessId._id : contract.workerId._id)}
                   >
                     <DeleteIcon />
                   </IconButton>
                 </TableCell>
-                <TableCell align="right">{contract.businessId.name}</TableCell>
-                <TableCell align="right">{contract.businessId.email}</TableCell>
-                <TableCell align="right">{contract.businessId.userType}</TableCell>
+                <TableCell align="right">{contract.businessId ? contract.businessId.name : contract.workerId.name}</TableCell>
+                <TableCell align="right">{contract.businessId ? contract.businessId.email : contract.workerId.email}</TableCell>
+                <TableCell align="right">{contract.businessId ? contract.businessId.userType : contract.workerId.userType}</TableCell>
                 <TableCell align="right">{"Made"}</TableCell>
               </TableRow>
             ))}

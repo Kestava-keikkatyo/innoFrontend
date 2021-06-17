@@ -17,7 +17,7 @@ import {
 } from "@material-ui/core"
 import { Close as CloseIcon } from "@material-ui/icons"
 import { useDispatch, useSelector } from "react-redux"
-import { addBusinessContract } from "../../actions/businessContractActions"
+import { addBusinessContractWorkerBusiness } from "../../actions/businessContractActions"
 import { setAlert } from "../../actions/alertActions"
 import { severity } from "../../types/types"
 import { IRootState } from "../../utils/store"
@@ -37,19 +37,14 @@ const useStyles = makeStyles((theme) => ({
  * @param {Function} props.closeModal callback when closed.
  * @param {worker} props.workerData data of the added worker.
  */
-const CooperationInfoModal: React.FC<any> = ({ displayModal, closeModal, workerData, forms }) => {
+const CooperationInfoModal: React.FC<any> = ({ displayModal, closeModal, agency, contractId,forms }) => {
   const dispatch = useDispatch()
-  const { businessContract } = useSelector((state: IRootState) => state.businessContracts)
   const [form, setForm] = React.useState('');
   const classes = useStyles();
 
   const addContract = () => {
-    if (!businessContract.some((value: any) => value.requestContracts.businesses.includes(workerData._id)  || value.requestContracts.workers.includes(workerData._id))) {
-      dispatch(addBusinessContract(businessContract[0]._id, workerData._id, form))
-      dispatch(setAlert("Success: Invitation sent to worker", severity.Success))
-    } else {
-      dispatch(setAlert("Failed: You already have contract with this worker.", severity.Error))
-    }
+    dispatch(addBusinessContractWorkerBusiness(contractId));
+    dispatch(setAlert("Success: Invitation sent to worker", severity.Success))
     closeModal()
   }
 
@@ -69,12 +64,12 @@ const CooperationInfoModal: React.FC<any> = ({ displayModal, closeModal, workerD
         </Box>
       </DialogTitle>
       <DialogContent dividers>
-        {workerData && (
+        {agency && (
           <Typography color="textSecondary" variant="body2">
-            id: {workerData._id} <br />
-            name: {workerData.name} <br />
-            created: {workerData.createdAt} <br />
-            email: {workerData.email}
+            id: {agency._id} <br />
+            name: {agency.name} <br />
+            created: {agency.createdAt} <br />
+            email: {agency.email}
           </Typography>
         )}
         <FormControl className={classes.formControl}>
