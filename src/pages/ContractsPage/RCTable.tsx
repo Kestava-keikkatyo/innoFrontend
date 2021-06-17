@@ -19,6 +19,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import DoneIcon from "@material-ui/icons/Done";
 import ClearIcon from "@material-ui/icons/Clear";
 import Button from "@material-ui/core/Button";
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -85,6 +86,7 @@ const RCTable = (prop: {
             <TableRow>
               <TableCell align="center">Accept</TableCell>
               <TableCell align="center">Info</TableCell>
+              <TableCell align="center">Lähetä takaisin</TableCell>
               <TableCell align="center">Decline</TableCell>
               <TableCell align="right">Name</TableCell>
               <TableCell align="right">Email</TableCell>
@@ -156,6 +158,14 @@ const RCTable = (prop: {
                       </div>
                     </Fade>
                   </Modal>
+                </TableCell>
+                <TableCell padding="none" align="center">
+                  <IconButton
+                    aria-label="decline contract"
+                    color="secondary"
+                  >
+                    <ArrowBackIcon/>
+                  </IconButton>
                 </TableCell>
                 <TableCell padding="none" align="center">
                   <IconButton
