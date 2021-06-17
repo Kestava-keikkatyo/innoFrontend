@@ -14,8 +14,8 @@ import {
 } from "../../actions/businessContractActions";
 import { setAlert } from "../../actions/alertActions";
 import { severity } from "../../types/types";
-import RCTable from "./RCTable"
-import MCTable from "./MCTable"
+import RCTable from "./ContractsReceivedTable"
+import MCTable from "./ContractsSendTable"
 
 const useStyles = makeStyles((theme) => ({
   card: {

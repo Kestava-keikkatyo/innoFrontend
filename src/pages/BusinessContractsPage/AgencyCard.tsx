@@ -127,10 +127,12 @@ export const AgencyCard = (prop: { agency: Agency }) => {
               type="button"
               onClick={handleOpen}
             >
-              Lähetä yhteystyökutsu
+              Lähetä yhteistyökutsu
             </Button>
             <CooperationInfoModal
               displayModal={displayModal}
+              agency={agency}
+              contractId={contractId}
               closeModal={() => setDisplayModal(false)}
             />
           </Grid>
