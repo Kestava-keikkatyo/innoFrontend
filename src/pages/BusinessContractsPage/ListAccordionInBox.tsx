@@ -181,7 +181,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
               </Button>
               <Button onClick={handleMuokkaaTäytettyäLomaketta}>
                 Muokkaa Täytettyä lomaketta</Button>
-              <Button>Tulosta pdf</Button>
+              <Button onClick={() => handleTulostaLomaketta(contract.pendingContracts.formId)}>Tulosta pdf</Button>
               <Button onClick={() => loadAndSendContract(contract._id, contract.pendingContracts.formId)}>Lataa ja lähetä allekirjoitettu sopimus</Button>
             </AccordionActions>
           </Accordion>

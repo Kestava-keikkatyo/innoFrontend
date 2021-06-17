@@ -37,6 +37,9 @@ import BusinessContractPreviewPage from './pages/BusinessContractPreviewPage'
 import BusinessContractFill from './pages/BusinessContractPreviewPage/BusinessContractFill'
 import BusinessContractEdit from './pages/BusinessContractPreviewPage/BusinessContractEdit'
 import WorkerContractPage from "./pages/WorkersPage";
+import ContractFormManagerPage from './pages/ContractsPage/ContractFormManagerPage'
+import ContractFormPreviewPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormPreviewPage'
+import ContractFormEditPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormEditPage'
 
 
 
@@ -108,6 +111,15 @@ const App: React.FC = () => {
         </PrivateRoute>
         <PrivateRoute path="/report">
           <ReportPage />
+        </PrivateRoute>
+        <PrivateRoute path="/contracts/contract-form-manager/contract-form-preview" roles={[roles.Agency]}>
+          <ContractFormPreviewPage />
+        </PrivateRoute>
+        <PrivateRoute path="/contracts/contract-form-manager/contract-form-edit" roles={[roles.Agency]}>
+          <ContractFormEditPage />
+        </PrivateRoute>
+        <PrivateRoute path="/contracts/contract-form-manager" roles={[roles.Agency]}>
+          <ContractFormManagerPage />
         </PrivateRoute>
         <PrivateRoute path="/contracts" roles={[roles.Agency]}>
           <ContractsPage />

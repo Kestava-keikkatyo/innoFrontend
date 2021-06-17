@@ -8,17 +8,14 @@ import {
   TableRow,
   TableBody,
   IconButton,
-  Backdrop,
   createStyles,
-  Fade,
   makeStyles,
-  Modal,
   Theme,
 } from "@material-ui/core";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import DoneIcon from "@material-ui/icons/Done";
 import ClearIcon from "@material-ui/icons/Clear";
-import Button from '@material-ui/core/Button';
+import InfoModal from './InfoModal'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -26,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-     
+
     },
     paper: {
       backgroundColor: theme.palette.background.paper,
@@ -35,8 +32,8 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingLeft: "0.5em",
       paddingRight: "0.5em",
       padding: theme.spacing(1),
-      
-      
+
+
     },
     buttonProperties: {
       color: "#f50057",
@@ -54,21 +51,15 @@ const RCTable = (prop: {
   declineContract: Function;
 }) => {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+
+  const [displayModal, setDisplayModal] = React.useState(false)
 
   const handleOpen = () => {
-    setOpen(true);
+    setDisplayModal(true)
   };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const greet = () => {
-    alert("Ahoy! Tervetuloa")
-  }
 
   const { contracts, contractId, acceptContract, declineContract } = prop;
+
   if (!contracts.length)
     return (
       <Typography
@@ -98,6 +89,7 @@ const RCTable = (prop: {
           <TableBody>
             {contracts.map((contract: any) => (
               <TableRow key={contract._id}>
+
                 <TableCell padding="none" align="center">
                   <IconButton
                     aria-label="accept contract"
@@ -110,41 +102,18 @@ const RCTable = (prop: {
                     <DoneIcon />
                   </IconButton>
                 </TableCell>
+
                 <TableCell align="center">
-                  <div>
                     <IconButton type="button" onClick={handleOpen}>
                       <NotificationsIcon className={classes.buttonProperties} />
                     </IconButton>
-                    <Modal
-                      aria-labelledby="transition-modal-title"
-                      aria-describedby="transition-modal-description"
-                      className={classes.modal}
-                      open={open}
-                      onClose={handleClose}
-                      closeAfterTransition
-                      BackdropComponent={Backdrop}
-                      BackdropProps={{
-                        timeout: 500,
-                      }}
-                    >
-                      <Fade in={open}>
-                        <div className={classes.paper}>
-                          <h2 id="transition-modal-title" className={classes.companyHeader}>{contract.businessId.name}</h2>
-                          <div>
-                          <p id="transition-modal-description" className={classes.companyHeader}>
-                              <p>Puh: 055 555 555</p>
-                              <p>Osoite: viipulan vaapulan polku 18 3D </p>
-                              <p>Sopimuksen luontipäivä 18.2.2022</p>
-                          <Button variant="contained" color="secondary" onClick={greet}>
-                              Siirry yrityksen nettisivuille tästä
-                            </Button>
-                          </p>
-                          </div>
-                        </div>
-                      </Fade>
-                    </Modal>
-                  </div>
+                    <InfoModal
+                      displayModal={displayModal}
+                      closeModal={() => setDisplayModal(false)}
+                      contract={contract}
+                    />
                 </TableCell>
+
                 <TableCell padding="none" align="center">
                   <IconButton
                     aria-label="decline contract"
@@ -156,12 +125,17 @@ const RCTable = (prop: {
                     <ClearIcon />
                   </IconButton>
                 </TableCell>
+
                 <TableCell align="right">{contract.businessId.name}</TableCell>
+
                 <TableCell align="right">{contract.businessId.email}</TableCell>
+
                 <TableCell align="right">
                   {contract.businessId.userType}
                 </TableCell>
+
                 <TableCell align="right">{"Pending"}</TableCell>
+
               </TableRow>
             ))}
           </TableBody>
