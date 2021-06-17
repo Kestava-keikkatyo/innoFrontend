@@ -10,13 +10,13 @@ import AllInboxIcon from "@material-ui/icons/AllInbox";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 import { Container } from "@material-ui/core";
 import ListAccordionInBox from "./ListAccordionInBox";
-import ListAccordionSent from "./ListAccordionSent";
-import { ListAccordionDone } from "./ListAccordionDone";
+import ListAccordionWaiting from "./ListAccordionWaiting";
+import ListAccordionDone  from "./ListAccordionDone";
+import ListAccordionSent from "./ListAccordionSent"
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBusinessContracts } from "../../actions/businessContractActions";
 import { IRootState } from "../../utils/store";
 import AgenciesList from "./AgenciesList";
-import ReceivedWorkerContracts from "../WorkerContractPage/ReceivedWorkerContracts";
 import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
 
 interface TabPanelProps {
@@ -66,24 +66,30 @@ const BusinessContractsPage = () => {
   const { businessContract } = useSelector(
     (state: IRootState) => state.businessContracts
   );
-  const dispatch = useDispatch();
-  const contracts = businessContract;
-  const pending: any = [];
-  const sent: any = [];
-  const ready: any = [];
+  const dispatch = useDispatch()
+  const contracts = businessContract
+  const pending: any = []
+  const waiting: any = []
+  const ready: any = []
+  const sent: any = []
 
   useEffect(() => {
-    dispatch(fetchBusinessContracts());
+    dispatch(fetchBusinessContracts())
   }, [dispatch]);
 
   contracts.map((contract: any) => {
-    console.log(contract);
+    console.log(contract)
     if (contract.pendingContracts) {
-      pending.push(contract);
+      pending.push(contract)
     } else if (contract.requestContracts) {
-      sent.push(contract);
+      waiting.push(contract)
     } else if (contract.madeContracts) {
-      ready.push(contract);
+      ready.push(contract)
+    } else if (contract.receivedContracts) {
+      sent.push(contract)
+      console.log(sent)
+    } else {
+
     }
     // an arrow function should return a value
     return "";
@@ -135,13 +141,13 @@ const BusinessContractsPage = () => {
           <AgenciesList />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <ReceivedWorkerContracts/>
+          <ListAccordionSent contracts={sent}/>
         </TabPanel>
         <TabPanel value={value} index={2}>
           <ListAccordionInBox contracts={pending} />
         </TabPanel>
         <TabPanel value={value} index={3}>
-          <ListAccordionSent contracts={sent} />
+          <ListAccordionWaiting contracts={waiting} />
         </TabPanel>
         <TabPanel value={value} index={4}>
           <ListAccordionDone contracts={ready} />

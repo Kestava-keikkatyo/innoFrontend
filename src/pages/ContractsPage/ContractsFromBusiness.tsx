@@ -14,45 +14,54 @@ import {
 } from "../../actions/businessContractActions";
 import { setAlert } from "../../actions/alertActions";
 import { severity } from "../../types/types";
-import RCTable from "./RCTable"
-import MCTable from "./MCTable"
+import RCTable from "./RCTable";
+import MCTable from "./MCTable";
 
 const useStyles = makeStyles((theme) => ({
   card: {
     margin: theme.spacing(2, 0),
-    width: "100%"
-  }
-}))
+    width: "100%",
+  },
+}));
 
 interface BusinessContractObject {
-  _id: string
-  requestContracts: {
-    businesses: []
-    workers: []
-  }
+  _id: string;
+  receivedContracts: {
+    businesses: [];
+    workers: [];
+  };
   madeContracts: {
-    businesses: []
-    workers: []
-  }
+    businesses: [];
+    workers: [];
+  };
 }
 
-const WorkerSendContracts = (props: { businessContract: BusinessContractObject[] }) => {
-  const { businessContract } = props 
-  const classes = useStyles()
-  const dispatch = useDispatch()
-  const contracts = businessContract
+const ContractsFromBusiness = (props: {
+  businessContract: BusinessContractObject[];
+}) => {
+  const { businessContract } = props;
+  const classes = useStyles();
+  const dispatch = useDispatch();
+  const contracts = businessContract;
 
-  const acceptContract = (contractId: string, userId: string, formId: string) => {
-    dispatch(acceptBusinessContract(contractId, userId, formId))
-    dispatch(setAlert("Contract accepted.", severity.Info, 3))
-  }
+  const acceptContract = (
+    contractId: string,
+    userId: string,
+    formId: string
+  ) => {
+    dispatch(acceptBusinessContract(contractId, userId, formId));
+    dispatch(setAlert("Contract accepted.", severity.Info, 3));
+  };
 
   const declineContract = (contractId: string, userId: string) => {
-    dispatch(declineBusinessContract(contractId, userId))
-    dispatch(setAlert("Contract declined.", severity.Info, 3))
-  }
+    dispatch(declineBusinessContract(contractId, userId));
+    dispatch(setAlert("Contract declined.", severity.Info, 3));
+  };
 
-  if (contracts[0] === undefined || !contracts.length)
+  if (
+    contracts[0].receivedContracts.businesses === undefined ||
+    !contracts.length
+  )
     return (
       <Typography
         style={{ padding: "1rem" }}
@@ -62,7 +71,7 @@ const WorkerSendContracts = (props: { businessContract: BusinessContractObject[]
       >
         no results
       </Typography>
-    )
+    );
   else
     return (
       <>
@@ -79,24 +88,13 @@ const WorkerSendContracts = (props: { businessContract: BusinessContractObject[]
                 <Typography gutterBottom variant="h5">
                   Saapuneet sopimukset
                 </Typography>
+                <Divider />
                 <Typography gutterBottom variant="h6">
                   Businesses
                 </Typography>
                 <Divider />
                 <RCTable
-                  contracts={contracts[0].requestContracts.businesses}
-                  contractId={businessContract[0]._id}
-                  acceptContract={acceptContract}
-                  declineContract={declineContract}
-                />
-              </CardContent>
-              <CardContent>
-                <Typography gutterBottom variant="h6">
-                  Workers
-                </Typography>
-                <Divider />
-                <RCTable
-                  contracts={contracts[0].requestContracts.workers}
+                  contracts={contracts[0].receivedContracts.businesses}
                   contractId={businessContract[0]._id}
                   acceptContract={acceptContract}
                   declineContract={declineContract}
@@ -110,6 +108,7 @@ const WorkerSendContracts = (props: { businessContract: BusinessContractObject[]
                 <Typography gutterBottom variant="h5">
                   Valmiit sopimukset
                 </Typography>
+                <Divider />
                 <Typography gutterBottom variant="h6">
                   Businesses
                 </Typography>
@@ -120,22 +119,11 @@ const WorkerSendContracts = (props: { businessContract: BusinessContractObject[]
                   declineContract={declineContract}
                 />
               </CardContent>
-              <CardContent>
-                <Typography gutterBottom variant="h6">
-                  Workers
-                </Typography>
-                <Divider />
-                <MCTable
-                  contracts={contracts[0].madeContracts.workers}
-                  contractId={businessContract[0]._id}
-                  declineContract={declineContract}
-                />
-              </CardContent>
             </Card>
           </Grid>
         </Grid>
       </>
-    )
-}
+    );
+};
 
-export default WorkerSendContracts
+export default ContractsFromBusiness;

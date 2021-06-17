@@ -23,7 +23,6 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-
     },
     paper: {
       backgroundColor: theme.palette.background.paper,
@@ -40,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     companyHeader: {
       textAlign: "center",
-    }
+    },
   })
 );
 
@@ -87,6 +86,7 @@ const RCTable = (prop: {
             </TableRow>
           </TableHead>
           <TableBody>
+            {console.log("contracts",contracts)}
             {contracts.map((contract: any) => (
               <TableRow key={contract._id}>
 
@@ -98,7 +98,10 @@ const RCTable = (prop: {
                       acceptContract(
                         contractId,
                         contract.businessId._id,
-                        contract.formId)}>
+                        contract.formId
+                      )
+                    }
+                  >
                     <DoneIcon />
                   </IconButton>
                 </TableCell>
@@ -129,11 +132,7 @@ const RCTable = (prop: {
                 <TableCell align="right">{contract.businessId.name}</TableCell>
 
                 <TableCell align="right">{contract.businessId.email}</TableCell>
-
-                <TableCell align="right">
-                  {contract.businessId.userType}
-                </TableCell>
-
+                <TableCell align="right">{contract.businessId.userType}</TableCell>
                 <TableCell align="right">{"Pending"}</TableCell>
 
               </TableRow>

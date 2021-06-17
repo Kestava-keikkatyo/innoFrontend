@@ -8,9 +8,9 @@ import SearchTable from './SearchTable'
 import ContractsTable from './ContractsTable'
 import ContractModal from './ContractModal'
 import { Container, Typography, Divider, Card, CardContent, makeStyles, Box, Tabs, AppBar, Tab, useTheme, Direction } from '@material-ui/core'
-import BusinessSendContracts from './BusinessSendContracts'
-import WorkerSendContracts from './WorkerSendContracts'
+import ContractsFromBusiness from './ContractsFromBusiness'
 import { IRootState } from '../../utils/store'
+import ContractsFromWorkers from './ContractsFromWorkers';
 
 
 interface TabPanelProps {
@@ -143,10 +143,10 @@ const ContractsPage = () => {
           <ContractsTable businessContract={businessContract}/>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <BusinessSendContracts businessContract={businessContract}/>
+          <ContractsFromBusiness businessContract={businessContract}/>
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-          <WorkerSendContracts businessContract={businessContract}/>
+          <ContractsFromWorkers businessContract={businessContract}/>
         </TabPanel>
   
     </Container>
