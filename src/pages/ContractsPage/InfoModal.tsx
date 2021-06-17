@@ -31,11 +31,6 @@ const WorkerModal: React.FC<any> = ({ displayModal, closeModal, contract }) => {
 
   console.log("infoModal: contract: ", contract)
 
-  useEffect(() => {
-
-
-
-  }, [contract])
 
   const handleBusinessWebsiteButton = () => {
     closeModal()
