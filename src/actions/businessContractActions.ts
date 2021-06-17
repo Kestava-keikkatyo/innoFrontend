@@ -72,6 +72,8 @@ export const acceptBusinessContract = (contractId:string, userId:string,form?:st
   const res = await contractsService.acceptBusinessContract(contractId,userId,form)
   if(res && res.status === 200)
     dispatch({type: B_ACCEPT, data: res.data})
+    //tähän -> fetch kutsu 
+    //dispatch(fetch) 
 }
 /**
  * @function

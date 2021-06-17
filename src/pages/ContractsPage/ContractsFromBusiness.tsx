@@ -102,25 +102,6 @@ const ContractsFromBusiness = (props: {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12}>
-            <Card className={classes.card} variant="outlined">
-              <CardContent>
-                <Typography gutterBottom variant="h5">
-                  Valmiit sopimukset
-                </Typography>
-                <Divider />
-                <Typography gutterBottom variant="h6">
-                  Businesses
-                </Typography>
-                <Divider />
-                <ContractsSendTable
-                  contracts={contracts[0].madeContracts.businesses}
-                  contractId={businessContract[0]._id}
-                  declineContract={declineContract}
-                />
-              </CardContent>
-            </Card>
-          </Grid>
         </Grid>
       </>
     );
