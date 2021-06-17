@@ -16,6 +16,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import DoneIcon from "@material-ui/icons/Done";
 import ClearIcon from "@material-ui/icons/Clear";
 import InfoModal from './InfoModal'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -125,12 +126,22 @@ const RCTable = (prop: {
                       declineContract(contractId, contract.businessId._id)
                     }
                   >
+                    <ArrowBackIcon />
+                  </IconButton>
+                </TableCell>
+                <TableCell padding="none" align="center">
+                  <IconButton
+                    aria-label="decline contract"
+                    color="secondary"
+                    onClick={() =>
+                      declineContract(contractId, contract.businessId._id)
+                    }
+                  >
                     <ClearIcon />
                   </IconButton>
                 </TableCell>
 
                 <TableCell align="right">{contract.businessId.name}</TableCell>
-
                 <TableCell align="right">{contract.businessId.email}</TableCell>
                 <TableCell align="right">{contract.businessId.userType}</TableCell>
                 <TableCell align="right">{"Pending"}</TableCell>
