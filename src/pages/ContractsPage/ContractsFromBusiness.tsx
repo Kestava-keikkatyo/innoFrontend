@@ -15,7 +15,6 @@ import {
 import { setAlert } from "../../actions/alertActions";
 import { severity } from "../../types/types";
 import ContractsReceivedTable from "./ContractsReceivedTable";
-import ContractsSendTable from "./ContractsSendTable";
 
 const useStyles = makeStyles((theme) => ({
   card: {

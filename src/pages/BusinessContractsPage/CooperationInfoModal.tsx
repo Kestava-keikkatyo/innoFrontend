@@ -16,11 +16,10 @@ import {
   makeStyles,
 } from "@material-ui/core"
 import { Close as CloseIcon } from "@material-ui/icons"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { addBusinessContractWorkerBusiness } from "../../actions/businessContractActions"
 import { setAlert } from "../../actions/alertActions"
 import { severity } from "../../types/types"
-import { IRootState } from "../../utils/store"
 
 const useStyles = makeStyles((theme) => ({
   formControl: {

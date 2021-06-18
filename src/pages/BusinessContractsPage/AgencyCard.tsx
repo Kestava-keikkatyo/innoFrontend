@@ -83,10 +83,6 @@ export const AgencyCard = (prop: { agency: Agency }) => {
 
   const contractId = agency.businessContracts[0];
 
-  const acceptCooperation = (contractId: string) => {
-    console.log("Lähetetään pyyntö HP-Yritykselle.");
-    dispatch(addBusinessContractWorkerBusiness(contractId));
-  };
   const transferToAgencyPage = () => {
     alert("HP-Yrityksen sivut aukeaa...");
   };

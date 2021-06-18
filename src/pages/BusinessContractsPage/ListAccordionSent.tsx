@@ -13,16 +13,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { refuseBusinessContractById, sendBusinessContract } from "../../actions/businessContractActions";
-import { getFormById } from "../../actions/formActions";
-import { getFormByIdAndSetBusinessContractForm } from "../../actions/businessContractFormActions";
-import formServices from "../../services/formServices"
-import pdfMake from 'pdfmake/build/pdfmake.js';
-import pdfFonts from 'pdfmake/build/vfs_fonts.js';
-import htmlToPdfmake from 'html-to-pdfmake'
-import ReactDOMServer from "react-dom/server";
-import Form from "../FormsPage/Form";
+import { refuseBusinessContractById } from "../../actions/businessContractActions";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

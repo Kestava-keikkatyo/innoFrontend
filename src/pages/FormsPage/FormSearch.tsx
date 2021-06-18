@@ -8,7 +8,6 @@ import {
 import { Search as SearchIcon } from "@material-ui/icons"
 import { updatFormList } from "../../actions/formListActions"
 import { useDispatch } from "react-redux"
-import { roles } from "../../types/types"
 
 const INIT_SEARCH_TYPE = 'myforms'
 
@@ -34,11 +33,7 @@ const FormSearch = () => {
 
     }
   }
-
-  const handleChange = (event: any) => {
-    dispatch(updatFormList("",event.target.value))
-  }
-
+  
   return (
     <Box
       display="flex"

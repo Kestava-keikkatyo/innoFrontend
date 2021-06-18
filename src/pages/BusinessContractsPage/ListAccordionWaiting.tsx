@@ -14,7 +14,6 @@ import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 import { useDispatch} from "react-redux";
 import { useHistory } from "react-router-dom";
-import { sendBusinessContract } from "../../actions/businessContractActions";
 import { getFormById } from "../../actions/formActions";
 import { getFormByIdAndSetBusinessContractForm } from "../../actions/businessContractFormActions";
 import formServices from "../../services/formServices"
@@ -59,12 +58,6 @@ export const ListAccordionWaiting = (prop: { contracts: any[] })  => {
     dispatch(getFormById(formId))
     dispatch(getFormByIdAndSetBusinessContractForm(formId))
     history.push(`/business-contract-preview`)
-  }
-
-  const loadAndSendContract = (contractId:any) => {
-
-    alert()
-    dispatch(sendBusinessContract(contractId))
   }
 
   // Print PDF
@@ -133,7 +126,6 @@ export const ListAccordionWaiting = (prop: { contracts: any[] })  => {
         <AccordionActions>
               <Button onClick={() => handleEsitteleLomaketta(contract.formId)}>Esikatsele lomaketta</Button>
               <Button onClick={() => handleTulostaLomaketta(contract.formId)}>Tulosta pdf</Button>
-              <Button onClick={() => loadAndSendContract(contract._id)}>Lataa ja lähetä allekirjoitettu sopimus</Button>
         </AccordionActions>
       </Accordion>
       ))}

@@ -64,8 +64,10 @@ export const addBusinessContractWorkerBusiness = (contractId:string) => async (d
 
 export const sendBusinessContract = (contractId:string, form?:string) => async (dispatch: any) => {
   const res = await contractsService.sendBusinessContract(contractId,form)
+  const r = await contractsService.fetchBusinessContracts()
   if(res && res.status === 200)
     dispatch({type: B_SEND, data: res.data })
+    dispatch({ type: B_FETCH, data: r })
 }
 
 export const acceptBusinessContract = (contractId:string, userId:string,form?:string) => async (dispatch: any) => {

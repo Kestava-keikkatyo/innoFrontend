@@ -105,8 +105,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
   }
 
   const loadAndSendContract = (contractId:any) => {
-    alert()
-    dispatch(sendBusinessContract(contractId, currentBusinessContractForm._id))
+        dispatch(sendBusinessContract(contractId, currentBusinessContractForm._id))
   }
 
   // Print PDF
