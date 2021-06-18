@@ -8,7 +8,7 @@ import BusinessIcon from "@material-ui/icons/Business";
 import SendIcon from "@material-ui/icons/Send";
 import AllInboxIcon from "@material-ui/icons/AllInbox";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
-import { Container } from "@material-ui/core";
+import { Badge, Container } from "@material-ui/core";
 import ListAccordionInBox from "./ListAccordionInBox";
 import ListAccordionWaiting from "./ListAccordionWaiting";
 import ListAccordionDone  from "./ListAccordionDone";
@@ -117,22 +117,34 @@ const BusinessContractsPage = () => {
             />
             <Tab
               label="Lähetetyt sopimukset"
-              icon={<SendIcon/>}
+              icon={
+              <Badge badgeContent={sent.length} color="secondary">
+                <SendIcon/>
+              </Badge>}
               {...a11yProps(1)}
             />
             <Tab
               label="Saapuneet sopimukset"
-              icon={<NotificationsActiveIcon />}
+              icon={
+              <Badge badgeContent={pending.length} color="secondary">
+                <NotificationsActiveIcon />
+              </Badge>}
               {...a11yProps(2)}
             />
             <Tab
               label="Odottavat sopimukset"
-              icon={<HourglassEmptyIcon />}
+              icon={
+              <Badge badgeContent={waiting.length} color="secondary">
+                <HourglassEmptyIcon />
+              </Badge>}
               {...a11yProps(3)}
             />
             <Tab
               label="Valmiit sopimukset"
-              icon={<AllInboxIcon />}
+              icon={
+              <Badge badgeContent={ready.length} color="secondary">
+                <AllInboxIcon />
+              </Badge>}
               {...a11yProps(4)}
             />
           </Tabs>
