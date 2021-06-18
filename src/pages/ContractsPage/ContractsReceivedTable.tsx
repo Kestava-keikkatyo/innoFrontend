@@ -49,20 +49,17 @@ const RCTable = (prop: {
   contractId: string;
   acceptContract: Function;
   declineContract: Function;
+  sendBackContract: Function
 }) => {
   const classes = useStyles();
 
   const [displayModal, setDisplayModal] = React.useState(false)
 
-  const sendBackContract = (contractId: string, userId: string) => {
-
-  }
-
   const handleOpen = () => {
     setDisplayModal(true)
   };
 
-  const { contracts, contractId, acceptContract, declineContract } = prop;
+  const { contracts, contractId, acceptContract, declineContract, sendBackContract } = prop;
 
   if (!contracts.length)
     return (
@@ -127,7 +124,7 @@ const RCTable = (prop: {
                     aria-label="decline contract"
                     color="secondary"
                     onClick={() =>
-                      sendBackContract(contractId, contract.businessId._id)
+                      sendBackContract(contractId, contract.businessId._id, contract.formId)
                     }
                   >
                     <ArrowBackIcon />

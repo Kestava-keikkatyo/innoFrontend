@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import {
   declineBusinessContract,
   acceptBusinessContract,
+  sendBackBusinessContract,
 } from "../../actions/businessContractActions";
 import { setAlert } from "../../actions/alertActions";
 import { severity } from "../../types/types";
@@ -56,6 +57,11 @@ const ContractsFromBusiness = (props: {
     dispatch(declineBusinessContract(contractId, userId));
     dispatch(setAlert("Contract declined.", severity.Info, 3));
   };
+  
+  const sendBackContract = (contractId: string, userId: string, formId:string) => {
+    dispatch(sendBackBusinessContract(contractId,userId,formId))
+    dispatch(setAlert("Contract sended back.",severity.Info,3))
+  }
 
   if (
     contracts[0].receivedContracts.businesses === undefined ||
@@ -97,6 +103,7 @@ const ContractsFromBusiness = (props: {
                   contractId={businessContract[0]._id}
                   acceptContract={acceptContract}
                   declineContract={declineContract}
+                  sendBackContract={sendBackContract}
                 />
               </CardContent>
             </Card>

@@ -210,6 +210,25 @@ const updateBusinessContractsForm = async (contractId:string,form:string) => {
   }
 }
 
+/**
+ * @function
+ * @description Function is used to update BusinessContractDocumentObject.
+ * Used when Agency is not satisfied with Contract that Worker/Business sended to Agency.
+ * With this function contract is sended back to Worker/Business.
+ * @param contractId BusinessContractId
+ * @param userId Worker/Business ID 
+ * @param form Form ID
+ */
+const sendBackBusinessContract = async (contractId:string, userId:string, form:string) => {
+  try {
+    return await axios.put(`${baseUrl}/businesscontracts/${contractId}/${userId}/sendBack`,
+    {form},
+    authHeader())
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export default {
   searchUsers,
   createBusinessContract,
@@ -224,5 +243,6 @@ export default {
   deleteWorkContractById,
   sendBusinessContract,
   acceptBusinessContract,
-  updateBusinessContractsForm
+  updateBusinessContractsForm,
+  sendBackBusinessContract
 }

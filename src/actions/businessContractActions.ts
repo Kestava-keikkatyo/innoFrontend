@@ -3,7 +3,7 @@
  * @desc Redux businessContract actions
  */
 import contractsService from '../services/contractsService'
-import { ACTIVATE_B_CONTRACT, ADD_B_CONTRACT, B_DELETE, B_FETCH, B_UPDATE, DECLINE_B_CONTRACT, B_SEND, B_ACCEPT, ADD_B_WB_CONTRACT } from '../types/state'
+import { ACTIVATE_B_CONTRACT, ADD_B_CONTRACT, B_DELETE, B_FETCH, B_UPDATE, DECLINE_B_CONTRACT, B_SEND, B_ACCEPT, ADD_B_WB_CONTRACT, SEND_BACK_B_CONTRACT } from '../types/state'
 import { businessContractType } from '../types/types'
 
 
@@ -100,4 +100,17 @@ export const declineBusinessContract = (contractId:string, userId:string) => asy
   const res = await contractsService.declineBusinessContract(contractId,userId)
   if (res && res.status === 200)
     dispatch({type: DECLINE_B_CONTRACT, data: res.data})
+}
+/**
+ * @function
+ * @description
+ * Used by Agency to send back BusinessContract with Worker or Business.
+ * @param {string} contractId The id of BusinessContract. 
+ * @param {string} userId  The id of Worker or Business.
+ * @param {string} formId The id of Form that was linked to Worker or Business.
+ */
+export const sendBackBusinessContract = (contractId:string, userId:string, formId:string) => async (dispatch:any) => {
+  const res = await contractsService.sendBackBusinessContract(contractId,userId,formId)
+  if (res && res.status === 200)
+    dispatch({type: SEND_BACK_B_CONTRACT , data: res.data})
 }
