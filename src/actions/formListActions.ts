@@ -23,3 +23,12 @@ export const fetchFormList = () => async (dispatch: any) => {
 export const addToFormList = (form: Form) => async (dispatch: any) => {
   dispatch({ type: ADD_TO_FORM_LIST, data: form })
 }
+
+/**
+ * @function
+ * @desc Updates searchlist
+ */
+ export const updatFormList = (input: string, formType: any) => async (dispatch: any) => {
+  //const res = await formServices.searchForms(input, formType)
+  //dispatch({ type: F_UPDATE, data: res.data })
+}

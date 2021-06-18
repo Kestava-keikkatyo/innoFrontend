@@ -41,6 +41,15 @@ export const importFormByPath = () => async (dispatch: any) => {
 
 /**
  * @function
+ * @desc Delete form by Id
+ */
+ export const DeleteFormById = (id: string) => async (dispatch: any) => {
+  const data = await formServices.deleteForm(id)
+  console.log("delete data", data)
+
+}
+/**
+ * @function
  * @desc Updates the title of the generated form
  * @param {string} title - Form title.
  */

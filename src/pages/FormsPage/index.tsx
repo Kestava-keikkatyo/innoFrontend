@@ -4,48 +4,70 @@ import {
   Fab,
   Typography,
   Container,
-  FormControl,
-  FormLabel,
-  Paper,
   Tab,
   Tabs,
-  withStyles,
-  Select,
-  MenuItem,
   Grid,
+  Theme,
 } from '@material-ui/core'
 import { AddIcon } from '@material-ui/data-grid'
-import GridFormPreview from './GridFormPreview'
-import { useDispatch, useSelector } from 'react-redux'
+
+
 import { fetchFormList } from '../../actions/formListActions'
 import Spacing from '../../components/Spacing'
+import { useSelector, useDispatch } from 'react-redux'
 
-const StyledTabs = withStyles({
-  indicator: {
-    display: 'flex',
-    justifyContent: 'center',
-    backgroundColor: 'transparent',
-    '& > span': {
-      width: '100%',
-      backgroundColor: '#EB5A00',
-    },
-  },
-})((props: any) => (
-  <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />
-))
+import {Divider, Card, CardContent, makeStyles, Box, AppBar } from '@material-ui/core'
 
-const StyledTab = withStyles((theme) => ({
+
+import FormSearch from './FormSearch'
+import MyFormsTable from './MyFormsTable'
+import CommonFormsTable from './CommonFormsTable'
+import CommunityFormsTable from './CommunityFormsTable'
+
+
+
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: any;
+  value: any;
+}
+
+function TabPanel(props: TabPanelProps) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`wrapped-tabpanel-${index}`}
+      aria-labelledby={`wrapped-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box p={3}>
+          <div>{children}</div>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+function a11yProps(index: any) {
+  return {
+    id: `wrapped-tab-${index}`,
+    'aria-controls': `wrapped-tabpanel-${index}`,
+  };
+}
+
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    // textTransform: "none",
-    color: '#EB5A00',
-    fontWeight: theme.typography.fontWeightRegular,
-    fontSize: theme.typography.pxToRem(15),
-    marginRight: theme.spacing(1),
-    '&:focus': {
-      opacity: 1,
-    },
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
   },
-}))((props: any) => <Tab disableRipple {...props} />)
+  card: {
+    width: "100%",
+  },
+}));
 
 /**
  * @component
@@ -54,14 +76,17 @@ const StyledTab = withStyles((theme) => ({
  * @todo OnHover preview, pip for every node? So onMouseEnter renders an image(?) of the finished pdf(?)
  */
 const FormsPage: React.FC = () => {
-  const [value, setValue] = React.useState(1)
 
-  const handleChange = (_e: any, newValue: any) => {
-    setValue(newValue)
-  }
+
+  const classes = useStyles();
+  const [value, setValue] = React.useState('one');
+
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
+    setValue(newValue);
+  };
 
   //add communityForms
-  const { myForms } = useSelector((state: any) => state.formList)
+  //const { myForms } = useSelector((state: any) => state.formList)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -71,39 +96,15 @@ const FormsPage: React.FC = () => {
   /* <div className="form-banner-filter"> */
   return (
     <Container className="relative">
-      <div className="form-banner" />
+      <div className="form-banner" style={{ height: '200px'}} />
       <Grid
         container
         direction="row"
         justify="space-evenly"
         alignItems="flex-end"
         className="form-search-container"
-        style={{ height: '250px', paddingBottom: '50px' }}
+        style={{ height: '200px', paddingBottom: '50px' }}
       >
-        <Grid item xs={12} md={8}>
-          <Typography variant="h4">Search</Typography>
-          <label htmlFor="form-filter-input">Search term</label>
-          <input
-            id="form-filter-input"
-            type="text"
-            className="customFormInput formSearchInput"
-          />
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <FormControl component="fieldset">
-            <FormLabel component="legend">Search templates from</FormLabel>
-            <Select
-              aria-label="position"
-              name="position"
-              defaultValue="me"
-              variant="outlined"
-            >
-              <MenuItem value="me">My Forms</MenuItem>
-              <MenuItem value="common">Common</MenuItem>
-              <MenuItem value="community">Community</MenuItem>
-            </Select>
-          </FormControl>
-        </Grid>
       </Grid>
       <div className="new-form-btn">
         <Link to="/forms/newform">
@@ -112,30 +113,56 @@ const FormsPage: React.FC = () => {
           </Fab>
         </Link>
       </div>
-      <Paper square>
-        <StyledTabs
-          value={value}
-          onChange={handleChange}
-          aria-label="styled tabs example"
-        >
-          <StyledTab label="Search" disabled />
-          <StyledTab label="My Forms" />
-          <StyledTab label="Common" />
-          <StyledTab label="Community" />
-        </StyledTabs>
-      </Paper>
+
+      <div className={classes.root}>
+        <AppBar color='default'  position="static">
+          <Tabs value={value} onChange={handleChange} aria-label="wrapped label tabs example">
+            <Tab value="one" label="My Forms" wrapped {...a11yProps('one')} />
+            <Tab value="two" label="Common" {...a11yProps('two')} />
+            <Tab value="three" label="Community" {...a11yProps('three')} />
+          </Tabs>
+        </AppBar>
+        <TabPanel value={value} index="one">
+          <Typography  style={{ paddingTop: '1rem', paddingBottom: '1rem' }} variant="h4"  >
+            My Forms
+          </Typography>
+          <Card className={classes.card} variant="outlined">
+            <CardContent >
+              <FormSearch />
+              <Divider />
+              <MyFormsTable/>
+            </CardContent>
+          </Card>
+        </TabPanel>
+        <TabPanel value={value} index="two">
+        <Typography  style={{ paddingTop: '1rem', paddingBottom: '1rem' }} variant="h4"  >
+            Common Forms
+          </Typography>
+          <Card className={classes.card} variant="outlined">
+            <CardContent >
+              <FormSearch />
+              <Divider />
+              <CommonFormsTable/>
+            </CardContent>
+          </Card>
+        </TabPanel>
+        <TabPanel value={value} index="three">
+        <Typography  style={{ paddingTop: '1rem', paddingBottom: '1rem' }} variant="h4"  >
+            Community Forms
+          </Typography>
+          <Card className={classes.card} variant="outlined">
+            <CardContent >
+              <FormSearch />
+              <Divider />
+              <CommunityFormsTable/>
+            </CardContent>
+          </Card>
+        </TabPanel>
+      </div>
+
+
       <Spacing m5 />
-      <Typography variant="h4">My Forms</Typography>
-      <ul className="horizontal-scroll">
-        {myForms.docs.map((t: any, i: number) => (
-           <GridFormPreview
-            key={i}
-            formTitle={t.title}
-            formDesc={t.description}
-            formId={t._id}
-          />
-        ))}
-      </ul>
+
     </Container>
   )
 }

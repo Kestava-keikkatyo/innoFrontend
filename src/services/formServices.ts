@@ -82,10 +82,48 @@ const postForm = async (form: any) => {
   }
 }
 
+/**
+ * @param id
+ * @returns
+ */
+ const deleteForm = async (formId:any) => {
+  try {
+    const res = await axios.delete(`${baseUrl}/${formId}`, authHeader())
+    console.log("delete res", res)
+    return res
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+/**
+ * @function
+ * @desc Gets forms by title
+ * @param {string} input - input that is searched
+ * @param {string} searchType - determines if myforms, common forms  or community forms are searched
+ */
+ const searchForms = async (input: string, searchType: any) => {
+  try {
+    switch (searchType) {
+      case 'myforms':
+        return await axios.get(`${baseUrl}/myforms?title=${input}`, authHeader())
+      case 'common':
+        return await axios.get(`${baseUrl}/common?title=${input}`,authHeader())
+      case 'community':
+        return await axios.get(`${baseUrl}/community?title=${input}`, authHeader())
+      default:
+        return Promise.reject({ status: 500 })
+    }
+  } catch (error) {
+    return Promise.reject(error.response)
+  }
+}
+
  export default {
   fetchMyFormList,
   fetchCommunityFormList,
   fetchFormById,
   postForm,
-  updateForm
+  updateForm,
+  deleteForm
  }
