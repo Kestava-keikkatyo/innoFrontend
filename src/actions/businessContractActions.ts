@@ -33,9 +33,13 @@ export const fetchBusinessContracts = () => async (dispatch: any) => {
  * @param {string} id
  */
 export const refuseBusinessContractById = (id: string) => async (dispatch: any) => {
+  //
   const res = await contractsService.refuseBusinessContractById(id)
+  const r = await contractsService.fetchBusinessContracts()
+ 
   if(res.status === 200)
     dispatch({ type: B_DELETE, data: id })
+    dispatch({ type: B_FETCH, data: r })
 }
 
 /**
@@ -58,8 +62,10 @@ export const addBusinessContract = (contractId:string, userId: string, form?:str
  */
 export const addBusinessContractWorkerBusiness = (contractId:string) => async (dispatch:any) => {
   const res = await contractsService.addBusinessContractWorkerBusiness(contractId)
+  const r = await contractsService.fetchBusinessContracts()
   if (res && res.status === 200)
     dispatch({type: ADD_B_WB_CONTRACT, data: res.data})
+    dispatch({ type: B_FETCH, data: r })
 }
 
 export const sendBusinessContract = (contractId:string, form?:string) => async (dispatch: any) => {
