@@ -12,6 +12,8 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { Grid } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { addBusinessContractWorkerBusiness } from "../../actions/businessContractActions";
+import CooperationInfoModal from "./CooperationInfoModal";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,27 +65,32 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 interface Agency {
-  businessContracts: [string],
-  name: string,
-  email: string
+  businessContracts: [string];
+  name: string;
+  email: string;
 }
 
 export const AgencyCard = (prop: { agency: Agency }) => {
-  const classes = useStyles()
-  const dispatch = useDispatch()
-  const { agency } = prop
+  const classes = useStyles();
+  const dispatch = useDispatch();
+  const { agency } = prop;
 
-  const contractId = agency.businessContracts[0]
+  const [displayModal, setDisplayModal] = React.useState(false);
 
-  const acceptCooperation = (contractId:string) => {
-    console.log("Lähetetään pyyntö HP-Yritykselle.")
-    dispatch(addBusinessContractWorkerBusiness(contractId))
-  }
+  const handleOpen = () => {
+    setDisplayModal(true);
+  };
+
+  const contractId = agency.businessContracts[0];
+
+  const acceptCooperation = (contractId: string) => {
+    console.log("Lähetetään pyyntö HP-Yritykselle.");
+    dispatch(addBusinessContractWorkerBusiness(contractId));
+  };
   const transferToAgencyPage = () => {
-    alert("HP-Yrityksen sivut aukeaa...")
-  }
+    alert("HP-Yrityksen sivut aukeaa...");
+  };
 
-  
   return (
     <Card className={classes.root}>
       <CardHeader
@@ -117,10 +124,17 @@ export const AgencyCard = (prop: { agency: Agency }) => {
               className={classes.button}
               variant="contained"
               color="primary"
-              onClick={() => acceptCooperation(contractId)}
+              type="button"
+              onClick={handleOpen}
             >
               Lähetä yhteistyökutsu
             </Button>
+            <CooperationInfoModal
+              displayModal={displayModal}
+              agency={agency}
+              contractId={contractId}
+              closeModal={() => setDisplayModal(false)}
+            />
           </Grid>
           <Grid className={classes.gridText} item sm={8} xs={12}>
             <Typography variant="body2" color="textSecondary" component="p">

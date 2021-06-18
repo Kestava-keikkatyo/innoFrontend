@@ -55,10 +55,8 @@ export const ListAccordionDone = (prop: { contracts: any[]}) => {
 
   // Preview buisness contract form
   const handleEsitteleLomaketta =  (formId:any) => {
-
-    dispatch(getFormById(formId))
     dispatch(getFormByIdAndSetBusinessContractForm(formId))
-    history.push(`/business-contract-preview`)
+    history.push(`/business-contracts/business-contract-preview`)
   }
 
   // Print PDF
@@ -124,8 +122,8 @@ export const ListAccordionDone = (prop: { contracts: any[]}) => {
           </div>
         </AccordionDetails>
         <AccordionActions>
-              <Button onClick={() => handleEsitteleLomaketta(contract.formId)}>Esikatsele lomaketta</Button>
-              <Button onClick={() => handleTulostaLomaketta(contract.formId)}>Tulosta pdf</Button>
+              <Button onClick={() => handleEsitteleLomaketta(contract.madeContracts.formId)}>Esikatsele lomaketta</Button>
+              <Button onClick={() => handleTulostaLomaketta(contract.madeContracts.formId)}>Tulosta pdf</Button>
         </AccordionActions>
       </Accordion>
       ))}

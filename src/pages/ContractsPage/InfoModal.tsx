@@ -63,13 +63,13 @@ const WorkerModal: React.FC<any> = ({ displayModal, closeModal, contract }) => {
                     <b>Contract id:</b> {contract._id}
                  </Typography>
                  <Typography color="textSecondary" variant="body1">
-                    <b>Business id:</b> {contract.businessId._id}
+                    <b>Business id:</b> {contract.businessId ? contract.businessId._id : contract.workerId._id}
                  </Typography>
                  <Typography color="textSecondary" variant="body1">
-                    <b>Business name:</b>   {contract.businessId.name}
+                    <b>Business name:</b>   {contract.businessId ? contract.businessId.name : contract.workerId.name}
                  </Typography>
                  <Typography color="textSecondary" variant="body1">
-                    <b>Business email:</b>  {contract.businessId.email}
+                    <b>Business email:</b>  {contract.businessId ? contract.businessId.email : contract.workerId.email}
                  </Typography>
 
             </>

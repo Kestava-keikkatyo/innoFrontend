@@ -14,8 +14,8 @@ import {
 } from "../../actions/businessContractActions";
 import { setAlert } from "../../actions/alertActions";
 import { severity } from "../../types/types";
-import RCTable from "./RCTable"
-import MCTable from "./MCTable"
+import ContractsReceivedTable from "./ContractsReceivedTable"
+import ContractsSendTable from "./ContractsSendTable"
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -86,31 +86,10 @@ const WorkerSendContracts = (props: { businessContract: BusinessContractObject[]
                   Workers
                 </Typography>
                 <Divider />
-                <RCTable
+                <ContractsReceivedTable
                   contracts={contracts[0].receivedContracts.workers}
                   contractId={businessContract[0]._id}
                   acceptContract={acceptContract}
-                  declineContract={declineContract}
-                />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12}>
-            <Card className={classes.card} variant="outlined">
-              <CardContent>
-                <Typography gutterBottom variant="h5">
-                  Valmiit sopimukset
-                </Typography>
-                <Divider />
-              </CardContent>
-              <CardContent>
-                <Typography gutterBottom variant="h6">
-                  Workers
-                </Typography>
-                <Divider />
-                <MCTable
-                  contracts={contracts[0].madeContracts.workers}
-                  contractId={businessContract[0]._id}
                   declineContract={declineContract}
                 />
               </CardContent>

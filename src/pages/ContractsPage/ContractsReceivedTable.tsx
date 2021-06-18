@@ -16,6 +16,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import DoneIcon from "@material-ui/icons/Done";
 import ClearIcon from "@material-ui/icons/Clear";
 import InfoModal from './InfoModal'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -53,6 +54,10 @@ const RCTable = (prop: {
 
   const [displayModal, setDisplayModal] = React.useState(false)
 
+  const sendBackContract = (contractId: string, userId: string) => {
+
+  }
+
   const handleOpen = () => {
     setDisplayModal(true)
   };
@@ -78,6 +83,7 @@ const RCTable = (prop: {
             <TableRow>
               <TableCell align="center">Accept</TableCell>
               <TableCell align="center">Info</TableCell>
+              <TableCell align="center">Lähetä takaisin</TableCell>
               <TableCell align="center">Decline</TableCell>
               <TableCell align="right">Name</TableCell>
               <TableCell align="right">Email</TableCell>
@@ -97,7 +103,7 @@ const RCTable = (prop: {
                     onClick={() =>
                       acceptContract(
                         contractId,
-                        contract.businessId._id,
+                        contract.businessId ? contract.businessId._id : contract.workerId._id,
                         contract.formId
                       )
                     }
@@ -116,23 +122,32 @@ const RCTable = (prop: {
                       contract={contract}
                     />
                 </TableCell>
-
                 <TableCell padding="none" align="center">
                   <IconButton
                     aria-label="decline contract"
                     color="secondary"
                     onClick={() =>
-                      declineContract(contractId, contract.businessId._id)
+                      sendBackContract(contractId, contract.businessId._id)
+                    }
+                  >
+                    <ArrowBackIcon />
+                  </IconButton>
+                </TableCell>
+                <TableCell padding="none" align="center">
+                  <IconButton
+                    aria-label="decline contract"
+                    color="secondary"
+                    onClick={() =>
+                      declineContract(contractId, contract.businessId ? contract.businessId._id : contract.workerId._id)
                     }
                   >
                     <ClearIcon />
                   </IconButton>
                 </TableCell>
 
-                <TableCell align="right">{contract.businessId.name}</TableCell>
-
-                <TableCell align="right">{contract.businessId.email}</TableCell>
-                <TableCell align="right">{contract.businessId.userType}</TableCell>
+                <TableCell align="right">{contract.businessId ? contract.businessId.name : contract.workerId.name}</TableCell>
+                <TableCell align="right">{contract.businessId ? contract.businessId.email : contract.workerId.email}</TableCell>
+                <TableCell align="right">{contract.businessId ? contract.businessId.userType : contract.workerId.userType}</TableCell>
                 <TableCell align="right">{"Pending"}</TableCell>
 
               </TableRow>
