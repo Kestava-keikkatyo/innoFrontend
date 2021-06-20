@@ -96,29 +96,6 @@ const postForm = async (form: any) => {
   }
 }
 
-/**
- * @function
- * @desc Gets forms by title
- * @param {string} input - input that is searched
- * @param {string} searchType - determines if myforms, common forms  or community forms are searched
- */
- const searchForms = async (input: string, searchType: any) => {
-  try {
-    switch (searchType) {
-      case 'myforms':
-        return await axios.get(`${baseUrl}/myforms?title=${input}`, authHeader())
-      case 'common':
-        return await axios.get(`${baseUrl}/common?title=${input}`,authHeader())
-      case 'community':
-        return await axios.get(`${baseUrl}/community?title=${input}`, authHeader())
-      default:
-        return Promise.reject({ status: 500 })
-    }
-  } catch (error) {
-    return Promise.reject(error.response)
-  }
-}
-
  export default {
   fetchMyFormList,
   fetchCommunityFormList,

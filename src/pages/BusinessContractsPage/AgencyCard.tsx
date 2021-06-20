@@ -10,8 +10,8 @@ import { red } from "@material-ui/core/colors";
 import Button from "@material-ui/core/Button";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { Grid } from "@material-ui/core";
-import { useDispatch } from "react-redux";
-import { addBusinessContractWorkerBusiness } from "../../actions/businessContractActions";
+
+
 import CooperationInfoModal from "./CooperationInfoModal";
 
 
@@ -72,7 +72,7 @@ interface Agency {
 
 export const AgencyCard = (prop: { agency: Agency }) => {
   const classes = useStyles();
-  const dispatch = useDispatch();
+
   const { agency } = prop;
 
   const [displayModal, setDisplayModal] = React.useState(false);

@@ -8,7 +8,13 @@ import {
   TableCell,
   TableBody,
   IconButton,
-  Typography
+  Typography,
+  Box,
+  InputBase,
+  Divider,
+  withStyles,
+  Theme,
+  createStyles
 } from '@material-ui/core'
 import { useSelector } from 'react-redux'
 
@@ -28,6 +34,8 @@ import Form from './Form'
 import ReactDOMServer from "react-dom/server";
 import { setAlert } from '../../actions/alertActions'
 import { fetchFormList } from '../../actions/formListActions'
+import { SearchIcon } from '@material-ui/data-grid'
+
 
 /**
  * @component
@@ -37,22 +45,33 @@ const MyFormsTable: React.FC<any> = () => {
 
   const { myForms } = useSelector((state: any) => state.formList)
 
+  const [forms, setForms] = React.useState([])
+
+  const [filter, setFilter] = React.useState('')
+
   const dispatch = useDispatch()
 
   const history = useHistory()
 
   useEffect(() => {
+      setForms(myForms.docs)
       dispatch(fetchFormList())
   }, [dispatch, myForms])
 
-  const handleEdit= (formId: any) => {
+  // handle user input in the search field
+  const handleFilterchange = (event:any) => {
+    setFilter(event.target.value)
+
+  }
+
+  const handleEdit = (formId: any) => {
     dispatch(getFormById(formId))
     history.push(`/forms/edit-form`)
   }
 
   const handleDelete = (formId: any) => {
-
     dispatch(DeleteFormById(formId))
+    dispatch(fetchFormList())
     dispatch(setAlert("Form deleted successfully!"))
 
   }
@@ -81,53 +100,100 @@ const MyFormsTable: React.FC<any> = () => {
 
   }
 
-  if(!myForms.docs) return (
+  // Table head styles
+  const StyledTableCell = withStyles((theme: Theme) =>
+  createStyles({
+    head: {
+      backgroundColor: '#CCCCCC',
+      color: '#212121',
+    }
+  }),
+  )(TableCell);
+
+
+  // Table row styles
+  const StyledTableRow = withStyles((theme: Theme) =>
+    createStyles({
+      root: {
+        '&:nth-of-type(odd)': {
+          backgroundColor: theme.palette.action.hover,
+        },
+      },
+    }),
+  )(TableRow);
+
+
+  if(!forms) return (
     <Typography style={{ padding: '1rem' }} variant="h6" align="center" className="text-secondary">
       no results
     </Typography>
   )
 
   return (
-    <TableContainer>
-      <Table aria-label="searched workers">
-        <TableHead>
-          <TableRow>
-            <TableCell align="left">Title</TableCell>
-            <TableCell align="left">Description</TableCell>
-            <TableCell align="left">Edit</TableCell>
-            <TableCell align="left">Delete</TableCell>
-            <TableCell align="left">Download</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {myForms.docs.map((form: any) => (
-            <TableRow key={form._id}>
-              <TableCell align="left">{form.title}</TableCell>
-              <TableCell align="left">{form.description}</TableCell>
-
-              <TableCell padding="none" align="left">
-                <IconButton aria-label="add to favorites" onClick={() => handleEdit(form._id)}>
-                    <EditIcon />
-                </IconButton>
-              </TableCell>
-
-              <TableCell>
-                <IconButton aria-label="share" onClick={() => handleDelete(form._id)}>
-                    <DeleteIcon />
-                </IconButton>
-              </TableCell>
-
-              <TableCell>
-                <IconButton aria-label="share" onClick={() => handleDownload(form._id)}>
-                    <MoveToInboxIcon />
-                </IconButton>
-              </TableCell>
-
+    <div>
+      <Box
+          display="flex"
+          justifyContent="flex-start"
+          alignItems="center"
+          flexWrap="wrap"
+        >
+        <form>
+          <Box display="flex" alignItems="center">
+            <InputBase
+                placeholder="Search by title..."
+                value={filter}
+                onChange={handleFilterchange}
+            />
+            <IconButton>
+              <SearchIcon />
+            </IconButton>
+          </Box>
+        </form>
+      </Box>
+      <Divider />
+      <TableContainer style={{overflow:'auto'}}>
+        <Table aria-label="searched workers">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell align="left">Title</StyledTableCell>
+              <StyledTableCell align="left">Description</StyledTableCell>
+              <StyledTableCell align="left">Edit</StyledTableCell>
+              <StyledTableCell align="left">Delete</StyledTableCell>
+              <StyledTableCell align="left">Download</StyledTableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {forms && forms.filter((form: any) => (
+              form.title.toLowerCase().includes(filter.toLowerCase())
+            )).map((form: any) => (
+              <StyledTableRow key={form._id}>
+                <TableCell align="left">{form.title}</TableCell>
+                <TableCell align="left">{form.description}</TableCell>
+
+                <TableCell padding="none" align="left">
+                  <IconButton aria-label="add to favorites" onClick={() => handleEdit(form._id)}>
+                      <EditIcon />
+                  </IconButton>
+                </TableCell>
+
+                <TableCell>
+                  <IconButton aria-label="share" onClick={() => handleDelete(form._id)}>
+                      <DeleteIcon />
+                  </IconButton>
+                </TableCell>
+
+                <TableCell>
+                  <IconButton aria-label="share" onClick={() => handleDownload(form._id)}>
+                      <MoveToInboxIcon />
+                  </IconButton>
+                </TableCell>
+
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   )
 }
 

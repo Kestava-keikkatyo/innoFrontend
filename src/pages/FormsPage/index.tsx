@@ -10,16 +10,12 @@ import {
   Theme,
 } from '@material-ui/core'
 import { AddIcon } from '@material-ui/data-grid'
-
-
 import { fetchFormList } from '../../actions/formListActions'
 import Spacing from '../../components/Spacing'
 import { useDispatch } from 'react-redux'
 
-import {Divider, Card, CardContent, makeStyles, Box, AppBar } from '@material-ui/core'
+import {Card, CardContent, makeStyles, Box, AppBar } from '@material-ui/core'
 
-
-import FormSearch from './FormSearch'
 import MyFormsTable from './MyFormsTable'
 import CommonFormsTable from './CommonFormsTable'
 import CommunityFormsTable from './CommunityFormsTable'
@@ -128,8 +124,6 @@ const FormsPage: React.FC = () => {
           </Typography>
           <Card className={classes.card} variant="outlined">
             <CardContent >
-              <FormSearch />
-              <Divider />
               <MyFormsTable/>
             </CardContent>
           </Card>
@@ -140,8 +134,6 @@ const FormsPage: React.FC = () => {
           </Typography>
           <Card className={classes.card} variant="outlined">
             <CardContent >
-              <FormSearch />
-              <Divider />
               <CommonFormsTable/>
             </CardContent>
           </Card>
@@ -152,8 +144,6 @@ const FormsPage: React.FC = () => {
           </Typography>
           <Card className={classes.card} variant="outlined">
             <CardContent >
-              <FormSearch />
-              <Divider />
               <CommunityFormsTable/>
             </CardContent>
           </Card>

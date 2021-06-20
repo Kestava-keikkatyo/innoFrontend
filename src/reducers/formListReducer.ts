@@ -6,7 +6,7 @@
    FormListActionTypes,
    FETCH_FORM_LIST,
  } from "../types/state"
- 
+
  const initialState = {
    communityForms: {
      docs: []
@@ -14,8 +14,11 @@
    myForms: {
     docs: []
   },
+  commonForms: {
+    docs: []
+  }
  }
- 
+
  /**
   * @function
   * @desc Redux form reducer that controls the form generator tool state.
@@ -36,6 +39,5 @@
        return state
    }
  }
- 
+
  export default formListReducer
- 
