@@ -17,13 +17,14 @@ import {
   createStyles
 } from '@material-ui/core'
 import { useSelector } from 'react-redux'
-
-import EditIcon from '@material-ui/icons/Edit'
+import FileCopyIcon from '@material-ui/icons/FileCopy';
 import MoveToInboxIcon from '@material-ui/icons/MoveToInbox'
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import { setAlert } from '../../actions/alertActions'
 
 
 import { useDispatch } from "react-redux"
-import { getFormById } from "../../actions/formActions"
+import { submitForm } from "../../actions/formActions"
 import { useHistory } from "react-router"
 import formServices from "../../services/formServices"
 import pdfMake from 'pdfmake/build/pdfmake.js';
@@ -62,8 +63,18 @@ const CommonFormsTable: React.FC<any> = () => {
   }
 
   const handlePreview = (formId: any) => {
-    dispatch(getFormById(formId))
-    history.push(`/forms/edit-form`)
+    //dispatch(getFormById(formId))
+    //history.push(`/forms/edit-form`)
+    alert(formId)
+  }
+
+  const handleCopy = async (formId: any) => {
+    const form:any = await formServices.fetchFormById(formId)
+    form._id = ''
+    form.common = false
+    dispatch(submitForm(form))
+    dispatch(setAlert("Form copied successfully!"))
+    history.push("/forms")
   }
 
   const handleDownload = async (formId: any) => {
@@ -148,6 +159,7 @@ const CommonFormsTable: React.FC<any> = () => {
               <StyledTableCell align="left">Title</StyledTableCell>
               <StyledTableCell align="left">Description</StyledTableCell>
               <StyledTableCell align="left">Preview</StyledTableCell>
+              <StyledTableCell align="left">Copy to my Forms</StyledTableCell>
               <StyledTableCell align="left">Download</StyledTableCell>
             </TableRow>
           </TableHead>
@@ -161,7 +173,13 @@ const CommonFormsTable: React.FC<any> = () => {
 
                 <TableCell padding="none" align="left">
                   <IconButton aria-label="add to favorites" onClick={() => handlePreview(form._id)}>
-                      <EditIcon />
+                      <VisibilityIcon />
+                  </IconButton>
+                </TableCell>
+
+                <TableCell padding="none" align="left">
+                  <IconButton aria-label="add to favorites" onClick={() => handleCopy(form._id)}>
+                      <FileCopyIcon />
                   </IconButton>
                 </TableCell>
 
