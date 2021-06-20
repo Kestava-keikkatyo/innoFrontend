@@ -18,7 +18,8 @@ import {
 } from '@material-ui/core'
 import { useSelector } from 'react-redux'
 
-import EditIcon from '@material-ui/icons/Edit'
+
+import VisibilityIcon from '@material-ui/icons/Visibility';
 import MoveToInboxIcon from '@material-ui/icons/MoveToInbox'
 import { useDispatch } from "react-redux"
 
@@ -62,7 +63,7 @@ const CommunityFormsTable: React.FC<any> = () => {
   }
 
   const handlePreview = (formId: any) => {
-    alert()
+    alert(formId)
   }
 
   const handleDownload = async (formId: any) => {
@@ -160,7 +161,7 @@ const CommunityFormsTable: React.FC<any> = () => {
 
                 <TableCell padding="none" align="left">
                   <IconButton aria-label="add to favorites" onClick={() => handlePreview(form._id)}>
-                      <EditIcon />
+                      <VisibilityIcon />
                   </IconButton>
                 </TableCell>
 
