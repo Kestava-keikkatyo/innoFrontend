@@ -1,3 +1,4 @@
+import { fetchFormList } from './formListActions';
 /**
  * @module actions/form
  * @desc Redux form actions
@@ -46,6 +47,7 @@ export const importFormByPath = () => async (dispatch: any) => {
  */
  export const DeleteFormById = (id: string) => async (dispatch: any) => {
   const data = await formServices.deleteForm(id)
+  dispatch(fetchFormList())
   console.log("delete data", data)
 
 }
@@ -195,6 +197,7 @@ export const submitForm = (form: Form) => async (dispatch: any) => {
   console.log(res);
 
   dispatch(addToFormList(form))
+  dispatch(fetchFormList())
   // //ugleeeeeh && karvalakki certified :--DD
   // const result = form.questions.forEach((element: any) => {
   //   if (!element.question || element.question === "") {

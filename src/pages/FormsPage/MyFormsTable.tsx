@@ -43,11 +43,7 @@ import { SearchIcon } from '@material-ui/data-grid'
  */
 const MyFormsTable: React.FC<any> = () => {
 
-  const { myForms } = useSelector((state: any) => state.formList)
-
-
-  const [forms, setForms] = React.useState([])
-
+  const  myForms  = useSelector((state: any) => state.formList.myForms)
 
   const [filter, setFilter] = React.useState('')
 
@@ -56,9 +52,8 @@ const MyFormsTable: React.FC<any> = () => {
   const history = useHistory()
 
   useEffect(() => {
-    setForms(myForms.docs)
     dispatch(fetchFormList())
-  }, [dispatch, myForms.docs])
+  }, [dispatch])
 
   // handle user input in the search field
   const handleFilterchange = (event:any) => {
@@ -73,9 +68,7 @@ const MyFormsTable: React.FC<any> = () => {
 
   const handleDelete = (formId: any) => {
     dispatch(DeleteFormById(formId))
-    dispatch(fetchFormList())
     dispatch(setAlert("Form deleted successfully!"))
-
   }
 
   const handleDownload = async (formId: any) => {
@@ -125,7 +118,7 @@ const MyFormsTable: React.FC<any> = () => {
   )(TableRow);
 
 
-  if(!forms) return (
+  if(!myForms.docs) return (
     <Typography style={{ padding: '1rem' }} variant="h6" align="center" className="text-secondary">
       no results
     </Typography>
@@ -165,7 +158,7 @@ const MyFormsTable: React.FC<any> = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {forms && forms.filter((form: any) => (
+            {myForms.docs && myForms.docs.filter((form: any) => (
               form.title.toLowerCase().includes(filter.toLowerCase())
             )).map((form: any) => (
               <StyledTableRow key={form._id}>

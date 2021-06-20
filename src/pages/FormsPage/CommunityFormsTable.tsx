@@ -41,9 +41,7 @@ import { SearchIcon } from '@material-ui/data-grid'
  */
 const CommunityFormsTable: React.FC<any> = () => {
 
-  const { communityForms } = useSelector((state: any) => state.formList)
-
-  const [forms, setForms] = React.useState([])
+  const communityForms = useSelector((state: any) => state.formList.communityForms)
 
   const [filter, setFilter] = React.useState('')
 
@@ -51,10 +49,11 @@ const CommunityFormsTable: React.FC<any> = () => {
 
   //const history = useHistory()
 
+
   useEffect(() => {
-      setForms(communityForms.docs)
-      dispatch(fetchFormList())
-  }, [dispatch, communityForms.docs])
+    dispatch(fetchFormList())
+  }, [dispatch])
+
 
   // handle user input in the search field
   const handleFilterchange = (event:any) => {
@@ -113,7 +112,7 @@ const CommunityFormsTable: React.FC<any> = () => {
   )(TableRow);
 
 
-  if(!forms) return (
+  if(!communityForms.docs) return (
     <Typography style={{ padding: '1rem' }} variant="h6" align="center" className="text-secondary">
       no results
     </Typography>
@@ -152,7 +151,7 @@ const CommunityFormsTable: React.FC<any> = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {forms && forms.filter((form: any) => (
+            {communityForms.docs && communityForms.docs.filter((form: any) => (
               form.title.toLowerCase().includes(filter.toLowerCase())
             )).map((form: any) => (
               <StyledTableRow key={form._id}>

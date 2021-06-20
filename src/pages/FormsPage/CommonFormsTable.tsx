@@ -43,9 +43,7 @@ import { SearchIcon } from '@material-ui/data-grid'
  */
 const CommonFormsTable: React.FC<any> = () => {
 
-  const { commonForms } = useSelector((state: any) => state.formList)
-
-  const [forms, setForms] = React.useState([])
+  const commonForms = useSelector((state: any) => state.formList.commonForms)
 
   const [filter, setFilter] = React.useState('')
 
@@ -54,9 +52,8 @@ const CommonFormsTable: React.FC<any> = () => {
   const history = useHistory()
 
   useEffect(() => {
-      setForms(commonForms.docs)
       dispatch(fetchFormList())
-  }, [dispatch, commonForms.docs])
+  }, [dispatch])
 
   // handle user input in the search field
   const handleFilterchange = (event:any) => {
@@ -116,7 +113,7 @@ const CommonFormsTable: React.FC<any> = () => {
   )(TableRow);
 
 
-  if(!forms) return (
+  if(!commonForms.docs) return (
     <Typography style={{ padding: '1rem' }} variant="h6" align="center" className="text-secondary">
       no results
     </Typography>
@@ -155,7 +152,7 @@ const CommonFormsTable: React.FC<any> = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {forms && forms.filter((form: any) => (
+            {commonForms.docs && commonForms.docs.filter((form: any) => (
               form.title.toLowerCase().includes(filter.toLowerCase())
             )).map((form: any) => (
               <StyledTableRow key={form._id}>
