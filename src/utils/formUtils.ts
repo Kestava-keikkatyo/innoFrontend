@@ -200,6 +200,7 @@ export const convertForm = (form: Form): any => {
     description: form.description,
     tags: form.tags,
     isPublic: form.isPublic,
-    filled: form.filled
+    filled: form.filled,
+    common: form.common
   }
 }

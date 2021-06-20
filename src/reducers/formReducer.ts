@@ -8,6 +8,7 @@ import {
   UPDATE_TITLE,
   SET_DESCRIPTION,
   SET_FILLED,
+  SET_COMMON,
   ADD_QUESTION,
   UPDATE_QUESTION,
   UPDATE_QUESTION_OPTION,
@@ -25,7 +26,8 @@ const initialState: Form = {
   tags: [],
   isPublic: true,
   questions: [],
-  filled: false
+  filled: false,
+  common: false
 }
 
 /**
@@ -55,6 +57,11 @@ const formReducer = (state = initialState, action: FormActionTypes) => {
       return {
           ...state,
           filled: action.data,
+      }
+    case SET_COMMON:
+      return {
+            ...state,
+            common: action.data,
       }
 
     case ADD_QUESTION:

@@ -10,6 +10,7 @@ import {
   UPDATE_TITLE,
   SET_DESCRIPTION,
   SET_FILLED,
+  SET_COMMON,
   ADD_QUESTION,
   UPDATE_QUESTION,
   UPDATE_QUESTION_OPTION,
@@ -168,11 +169,24 @@ export const setDescription = (description: string) => async (
 
 /**
  * @function
+ * @desc Sets the common value of the form.
+ * @param {boolean} common - common value of the form.
+ */
+ export const setCommon = (common: boolean) => async (
+  dispatch: any
+) => {
+  dispatch({ type: SET_COMMON, data: common })
+}
+
+
+/**
+ * @function
  * @desc Submits the form to storage.
  * @param {Form} form - Edited Form Object to be submitted.
  * @todo Service call backend.
  */
 export const submitForm = (form: Form) => async (dispatch: any) => {
+  console.log("formActions:form ", form)
   if (form.title === "") {
     dispatch(setAlert("Title is required", severity.Error))
     return

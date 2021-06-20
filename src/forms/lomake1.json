@@ -1,305 +1,206 @@
 {
-  "title": "ASIAKASSOPIMUKSEEN LIITTYVÄT TYÖTURVALLISUUS- JA TYÖHYVINVOINTIASIAT",
-  "description": "LOMAKE 1: vuokrausyrityksen ja käyttäjäyrityksen edustajat täyttävät yhdessä",
-  "questions": [
-    {
-      "name": "Vuokrausyritys:",
-      "type": "textfield",
-      "subTitle": "",
-      "scaleOptionTitleLeft": "",
-      "scaleOptionTitleCenter": "",
-      "scaleOptionTitleRight": "",
-      "minLen": 0,
-      "maxLen": 1000,
-      "rowHeight": 4,
-      "scale": 5,
-      "optional": false,
-      "options": []
-    },
-    {
-      "name": "Käyttäjäyritys:",
-      "type": "textfield",
-      "subTitle": "",
-      "scaleOptionTitleLeft": "",
-      "scaleOptionTitleCenter": "",
-      "scaleOptionTitleRight": "",
-      "minLen": 0,
-      "maxLen": 1000,
-      "rowHeight": 4,
-      "scale": 5,
-      "optional": false,
-      "options": []
-    },
-    {
-      "name": "Lainsäädännöstä seuraavat työturvallisuusvastuut on käyty yhdessä läpi",
-      "type": "checkbox",
-      "subTitle": "",
-      "scaleOptionTitleLeft": "",
-      "scaleOptionTitleCenter": "",
-      "scaleOptionTitleRight": "",
-      "minLen": 0,
-      "maxLen": 1000,
-      "rowHeight": 4,
-      "scale": 5,
-      "optional": false,
-      "options": []
-    },
-    {
-      "name": "TYÖNTEKIJÖILTÄ TYÖSSÄ EDELLYTETTÄVÄ KOULUTUS JA TYÖKOKEMUS SEKÄ TYÖN AMMATTITAITOVAATIMUKSET",
-      "type": "textarea",
-      "subTitle": "",
-      "scaleOptionTitleLeft": "",
-      "scaleOptionTitleCenter": "",
-      "scaleOptionTitleRight": "",
-      "minLen": 0,
-      "maxLen": 1000,
-      "rowHeight": 4,
-      "scale": 5,
-      "optional": false,
-      "options": []
-    },
-    {
-      "name": "TYÖN ERITYISPIIRTEET, TYÖSSÄ ESIINTYVÄT HAITTA-JA VAARATEKIJÄT SEKÄ MUUT TYÖTURVALLISUUDEN KANNALTA ERITYISESTI HUOMIOITAVAT SEIKAT (esim. terveydentilavaatimukset)",
-      "type": "textarea",
-      "subTitle": "",
-      "scaleOptionTitleLeft": "",
-      "scaleOptionTitleCenter": "",
-      "scaleOptionTitleRight": "",
-      "minLen": 0,
-      "maxLen": 1000,
-      "rowHeight": 4,
-      "scale": 5,
-      "optional": false,
-      "options": []
-    },
-    {
-      "name": "Vuokrayrityksen edustaja käy paikan päällä tutustumassa työolosuhteisiin ennen työntekijöiden valintaa",
-      "type": "checkbox",
-      "subTitle": "",
-      "scaleOptionTitleLeft": "",
-      "scaleOptionTitleCenter": "",
-      "scaleOptionTitleRight": "",
-      "minLen": 0,
-      "maxLen": 1000,
-      "rowHeight": 4,
-      "scale": 5,
-      "optional": false,
-      "options": []
-    },
-    {
-      "name": "Pvm ja klo",
-      "type": "textfield",
-      "subTitle": "",
-      "scaleOptionTitleLeft": "",
-      "scaleOptionTitleCenter": "",
-      "scaleOptionTitleRight": "",
-      "minLen": 0,
-      "maxLen": 1000,
-      "rowHeight": 4,
-      "scale": 5,
-      "optional": false,
-      "options": []
-    },
-    {
-      "name": "TYÖTEHTÄVISSÄ TARVITTAVAT HENKILÖNSUOJAIMET (+työvaatetus) JA KUVAUS SIITÄ KUMPI OSAPUOLI VASTAA TARVITTAVIEN SUOJAINTEN TOIMITTAMISESTA TYÖNTEKIJÖILLE JA SUOJAINTEN HUOLLOSTA",
-      "type": "textarea",
-      "subTitle": "",
-      "scaleOptionTitleLeft": "",
-      "scaleOptionTitleCenter": "",
-      "scaleOptionTitleRight": "",
-      "minLen": 0,
-      "maxLen": 1000,
-      "rowHeight": 4,
-      "scale": 5,
-      "optional": false,
-      "options": []
-    },
-    {
-      "name": "KUVAUS VUOKRATYÖNTEKIJÖIDEN PEREHDYTYKSESTÄ JA TYÖNOPASTUKSESTA (ketkä perehdyttävät, kuinka kauan kestää, mitä asioita käydään läpi, mitä perehdytysmateriaalia vuokratyöntekijöille annetaan jne.)",
-      "type": "textarea",
-      "subTitle": "",
-      "scaleOptionTitleLeft": "",
-      "scaleOptionTitleCenter": "",
-      "scaleOptionTitleRight": "",
-      "minLen": 0,
-      "maxLen": 1000,
-      "rowHeight": 4,
-      "scale": 5,
-      "optional": false,
-      "options": []
-    },
-    {
-      "name": "MITEN TOIMITAAN TYÖTAPATURMAN SATTUESSA VUOKRATYÖNTEKIJÄLLE, SAIRAUSPOISSAOLOTILANTEISSA JA MUISSA VAARATILANTEISSA (onnettomuus ja poikkeustilanteet, läheltä piti –tilanteet, väkivalta- ja uhkatilanteet)",
-      "type": "textarea",
-      "subTitle": "",
-      "scaleOptionTitleLeft": "",
-      "scaleOptionTitleCenter": "",
-      "scaleOptionTitleRight": "",
-      "minLen": 0,
-      "maxLen": 1000,
-      "rowHeight": 4,
-      "scale": 5,
-      "optional": false,
-      "options": []
-    },
-    {
-      "name": "MITEN VUOKRATYÖNTEKIJÄ ILMOITTAA TYÖTAPATURMISTA, SAIRAUSPOISSAOLOISTA, MUISTA VAARATILANTEISTA TAI MUISTA TURVALLISUUSHAVAINNOISTA (ongelmat, puutteet, turvallisuusaloitteet)",
-      "type": "textarea",
-      "subTitle": "",
-      "scaleOptionTitleLeft": "",
-      "scaleOptionTitleCenter": "",
-      "scaleOptionTitleRight": "",
-      "minLen": 0,
-      "maxLen": 1000,
-      "rowHeight": 4,
-      "scale": 5,
-      "optional": false,
-      "options": []
-    },
-    {
-      "name": "MITEN TUETAAN VUOKRATYÖNTEKIJÄN TYÖKYKYÄ (VARHAISEN TUEN MALLI)?",
-      "type": "textarea",
-      "subTitle": "",
-      "scaleOptionTitleLeft": "",
-      "scaleOptionTitleCenter": "",
-      "scaleOptionTitleRight": "",
-      "minLen": 0,
-      "maxLen": 1000,
-      "rowHeight": 4,
-      "scale": 5,
-      "optional": false,
-      "options": []
-    },
-    {
-      "name": "TYÖNTEKIJÄ OTTAA TYÖTURVALLISUUSASIOISSA YHTEYTTÄ HENKILÖÖN/HENKILÖIHIN:",
-      "type": "comment",
-      "subTitle": "",
-      "scaleOptionTitleLeft": "",
-      "scaleOptionTitleCenter": "",
-      "scaleOptionTitleRight": "",
-      "minLen": 0,
-      "maxLen": 1000,
-      "rowHeight": 4,
-      "scale": 5,
-      "optional": false,
-      "options": []
-    },
-    {
-      "name": "Nimi",
-      "type": "textfield",
-      "subTitle": "",
-      "scaleOptionTitleLeft": "",
-      "scaleOptionTitleCenter": "",
-      "scaleOptionTitleRight": "",
-      "minLen": 0,
-      "maxLen": 1000,
-      "rowHeight": 4,
-      "scale": 5,
-      "optional": false,
-      "options": []
-    },
-    {
-      "name": "Puh.",
-      "type": "textfield",
-      "subTitle": "",
-      "scaleOptionTitleLeft": "",
-      "scaleOptionTitleCenter": "",
-      "scaleOptionTitleRight": "",
-      "minLen": 0,
-      "maxLen": 1000,
-      "rowHeight": 4,
-      "scale": 5,
-      "optional": false,
-      "options": []
-    },
-    {
-      "name": "E-mail.",
-      "type": "textfield",
-      "subTitle": "",
-      "scaleOptionTitleLeft": "",
-      "scaleOptionTitleCenter": "",
-      "scaleOptionTitleRight": "",
-      "minLen": 0,
-      "maxLen": 1000,
-      "rowHeight": 4,
-      "scale": 5,
-      "optional": false,
-      "options": []
-    },
-    {
-      "name": "Työhuoneen sijainti",
-      "type": "textfield",
-      "subTitle": "",
-      "scaleOptionTitleLeft": "",
-      "scaleOptionTitleCenter": "",
-      "scaleOptionTitleRight": "",
-      "minLen": 0,
-      "maxLen": 1000,
-      "rowHeight": 4,
-      "scale": 5,
-      "optional": false,
-      "options": []
-    },
-    {
-      "name": "Käyttäjäyritys toimittaa vuokrayritykselle kopion (tarvittaessa):",
-      "type": "checkbox-group",
-      "subTitle": "",
-      "scaleOptionTitleLeft": "",
-      "scaleOptionTitleCenter": "",
-      "scaleOptionTitleRight": "",
-      "minLen": 0,
-      "maxLen": 1000,
-      "rowHeight": 4,
-      "scale": 5,
-      "optional": false,
-      "options": [
-        "Työterveyshuollon työpaikkaselvityksestä",
-        "Viimeisimmän riskin arvioinnin tuloksista",
-        "Työsuojelun toimintaohjelmasta",
-        "Pelastussuunnitelmasta"
-      ]
-    },
-    {
-      "name": "KUVAUS VUOKRAYRITYKSEN JA KÄYTTÄJÄYRITYKSEN VÄLISESTÄ YHTEYDENPIDOSTA ASIAKKUUDEN AIKANA",
-      "type": "textarea",
-      "subTitle": "",
-      "scaleOptionTitleLeft": "",
-      "scaleOptionTitleCenter": "",
-      "scaleOptionTitleRight": "",
-      "minLen": 0,
-      "maxLen": 1000,
-      "rowHeight": 4,
-      "scale": 5,
-      "optional": false,
-      "options": []
-    },
-    {
-      "name": "VUOKRAYRITYKSEN YHTEYSHENKILÖN YHTEYSTIEDOT (nimi, puh, email)",
-      "type": "textfield",
-      "subTitle": "",
-      "scaleOptionTitleLeft": "",
-      "scaleOptionTitleCenter": "",
-      "scaleOptionTitleRight": "",
-      "minLen": 0,
-      "maxLen": 1000,
-      "rowHeight": 4,
-      "scale": 5,
-      "optional": false,
-      "options": []
-    },
-    {
-      "name": "KÄYTTÄJÄYRITYKSEN YHTEYSHENKILÖN YHTEYSTIEDOT (nimi, puh, email)",
-      "type": "textfield",
-      "subTitle": "",
-      "scaleOptionTitleLeft": "",
-      "scaleOptionTitleCenter": "",
-      "scaleOptionTitleRight": "",
-      "minLen": 0,
-      "maxLen": 1000,
-      "rowHeight": 4,
-      "scale": 5,
-      "optional": false,
-      "options": []
-    }
-  ]
+  "title": "LOMAKE 1 - ASIAKASSOPIMUKSEEN LIITTYVÄT TYÖTURVALLISUUS- JA TYÖHYVINVOINTIASIAT",
+  "description": "Vuokrausyrityksen ja käyttäjäyrityksen edustajat täyttävät yhdessä",
+  "isPublic": true,
+  "common": true,
+  "filled": false,
+  "tags": [],
+  "questions": {
+    "checkbox": [
+      {
+        "ordering": 2,
+        "title": "Lainsäädännöstä seuraavat työturvallisuusvastuut on käyty yhdessä läpi",
+        "subtitle": "",
+        "optional": false,
+        "checked": false
+      },
+      {
+        "ordering": 5,
+        "title": "Vuokrayrityksen edustaja käy paikan päällä tutustu…sa työolosuhteisiin ennen työntekijöiden valintaa",
+        "subtitle": "",
+        "optional": false,
+        "checked": false
+      }
+    ],
+    "checkbox_group":
+    [
+      {
+        "ordering": 15,
+        "title": "Käyttäjäyritys toimittaa vuokrayritykselle kopion (tarvittaessa):",
+        "subtitle": "",
+        "optional": false,
+        "options": ["Työterveyshuollon työpaikkaselvityksestä", "Viimeisimmän riskin arvioinnin tuloksista", "Työsuojelun toimintaohjelmasta", "Pelastussuunnitelmasta"],
+        "optionValues": [false, false, false, false]
+      }
+
+    ],
+    "comment": [],
+    "contact_information":[
+      {
+        "ordering": 13,
+        "title": "TYÖNTEKIJÄ OTTAA TYÖTURVALLISUUSASIOISSA YHTEYTTÄ HENKILÖÖN/HENKILÖIHIN:",
+        "subtitle": "",
+        "optional": false,
+        "contactInfoAnswer": {"name": "", "phone": "", "email": ""}
+      },
+      {
+        "ordering": 18,
+        "title": "VUOKRAYRITYKSEN YHTEYSHENKILÖN YHTEYSTIEDOT",
+        "subtitle": "",
+        "optional": false,
+        "contactInfoAnswer": {"name": "", "phone": "", "email": ""}
+      },
+      {
+        "ordering": 19,
+        "title": "KÄYTTÄJÄYRITYKSEN YHTEYSHENKILÖN YHTEYSTIEDOT",
+        "subtitle": "",
+        "optional": false,
+        "contactInfoAnswer": {"name": "", "phone": "", "email": ""}
+      }
+    ],
+    "datepicker": [
+      {
+        "ordering": 6,
+        "title": "Pvm.",
+        "subtitle": "",
+        "optional": false,
+        "isClosedTimeFrame": true,
+        "answer": ""
+      },
+      {
+        "ordering": 16,
+        "title": "mennessä (päivämäärä)",
+        "subtitle": "",
+        "optional": false,
+        "isClosedTimeFrame": true,
+        "answer": ""
+      }
+    ],
+    "radiobutton_group": [],
+    "radiobutton_group_horizontal": [],
+    "text":[
+      {
+        "ordering": 0,
+        "title": "Vuokrausyritys:",
+        "subtitle": "",
+        "optional": false,
+        "answer": "",
+        "answerMaxLength": 1000,
+        "answerMinLength": 0
+      },
+      {
+        "ordering": 1,
+        "title": "Käyttäjäyritys: ",
+        "subtitle": "",
+        "optional": false,
+        "answer": "",
+        "answerMaxLength": 1000,
+        "answerMinLength": 0
+      },
+      {
+        "ordering": 14,
+        "title": "Työhuoneen sijainti",
+        "subtitle": "",
+        "optional": false,
+        "answer": "",
+        "answerMaxLength": 1000,
+        "answerMinLength": 0
+      }
+    ],
+    "textarea": [
+      {
+        "ordering": 3,
+        "title": "TYÖNTEKIJÖILTÄ TYÖSSÄ EDELLYTETTÄVÄ KOULUTUS JA TYÖKOKEMUS SEKÄ TYÖN AMMATTITAITOVAATIMUKSET",
+        "subtitle": "",
+        "optional": false,
+        "answer": "",
+        "answerMaxLength": 1000,
+        "answerMinLength": 0,
+        "rows": 4
+      },
+      {
+        "ordering": 4,
+        "title": "TYÖN ERITYISPIIRTEET, TYÖSSÄ ESIINTYVÄT HAITTA-JA VAARATEKIJÄT SEKÄ MUUT TYÖTURVALLISUUDEN KANNALTA ERITYISESTI HUOMIOITAVAT SEIKAT (esim. terveydentilavaatimukset)",
+        "subtitle": "",
+        "optional": false,
+        "answer": "",
+        "answerMaxLength": 1000,
+        "answerMinLength": 0,
+        "rows": 4
+      },
+      {
+        "ordering": 8,
+        "title": "TYÖTEHTÄVISSÄ TARVITTAVAT HENKILÖNSUOJAIMET (+työv…TTAMISESTA TYÖNTEKIJÖILLE JA SUOJAINTEN HUOLLOSTA",
+        "subtitle": "",
+        "optional": false,
+        "answer": "",
+        "answerMaxLength": 1000,
+        "answerMinLength": 0,
+        "rows": 4
+      },
+      {
+        "ordering": 9,
+        "title": "KUVAUS VUOKRATYÖNTEKIJÖIDEN PEREHDYTYKSESTÄ JA TYÖNOPASTUKSESTA (ketkä perehdyttävät, kuinka kauan kestää, mitä asioita käydään läpi, mitä perehdytysmateriaalia vuokratyöntekijöille annetaan jne.)",
+        "subtitle": "",
+        "optional": false,
+        "answer": "",
+        "answerMaxLength": 1000,
+        "answerMinLength": 0,
+        "rows": 4
+      },
+      {
+        "ordering": 10,
+        "title":  "MITEN TOIMITAAN TYÖTAPATURMAN SATTUESSA VUOKRATYÖNTEKIJÄLLE, SAIRAUSPOISSAOLOTILANTEISSA JA MUISSA VAARATILANTEISSA (onnettomuus ja poikkeustilanteet, läheltä piti –tilanteet, väkivalta- ja uhkatilanteet)",
+        "subtitle": "",
+        "optional": false,
+        "answer": "",
+        "answerMaxLength": 1000,
+        "answerMinLength": 0,
+        "rows": 4
+      },
+      {
+        "ordering": 11,
+        "title": "MITEN VUOKRATYÖNTEKIJÄ ILMOITTAA TYÖTAPATURMISTA, SAIRAUSPOISSAOLOISTA, MUISTA VAARATILANTEISTA TAI MUISTA TURVALLISUUSHAVAINNOISTA (ongelmat, puutteet, turvallisuusaloitteet)",
+        "subtitle": "",
+        "optional": false,
+        "answer": "",
+        "answerMaxLength": 1000,
+        "answerMinLength": 0,
+        "rows": 4
+      },
+      {
+        "ordering": 12,
+        "title": "MITEN TUETAAN VUOKRATYÖNTEKIJÄN TYÖKYKYÄ (VARHAISEN TUEN MALLI)?",
+        "subtitle": "",
+        "optional": false,
+        "answer": "",
+        "answerMaxLength": 1000,
+        "answerMinLength": 0,
+        "rows": 4
+      },
+      {
+        "ordering": 17,
+        "title":  "KUVAUS VUOKRAYRITYKSEN JA KÄYTTÄJÄYRITYKSEN VÄLISESTÄ YHTEYDENPIDOSTA ASIAKKUUDEN AIKANA",
+        "subtitle": "",
+        "optional": false,
+        "answer": "",
+        "answerMaxLength": 1000,
+        "answerMinLength": 0,
+        "rows": 4
+      }
+    ],
+    "timepicker":[
+      {
+        "ordering": 7,
+        "title": "Klo.",
+        "subtitle": "",
+        "optional": false,
+        "isClosedTimeFrame": true,
+        "answer": ""
+      }
+    ]
+
+
+  }
+
 }

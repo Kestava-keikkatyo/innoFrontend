@@ -19,7 +19,7 @@
 
  /**
   * @function
-  * @desc Fetches all feelings avaible with current token.
+  * @desc Fetches myForms
   */
  const fetchMyFormList = async () => {
    try{
@@ -41,6 +41,16 @@
    }
 }
 
+const fetchCommonFormList = async () => {
+  try {
+   const res = await axios.get(`${baseUrl}/common?page=1&limit=10`, authHeader())
+   return res.data
+  } catch (error) {
+   console.log(error);
+   return {docs: []}
+  }
+}
+
 const fetchFormById = async (id: string) => {
   try {
    const res = await axios.get(`${baseUrl}/${id}`, authHeader())
@@ -58,7 +68,7 @@ const fetchFormById = async (id: string) => {
  */
 const postForm = async (form: any) => {
   try {
-    console.log(form);
+    console.log("formServices:form: ", form);
     const res = await axios.post(`${baseUrl}`, form, authHeader())
     return res
   } catch (error) {
@@ -99,6 +109,7 @@ const postForm = async (form: any) => {
  export default {
   fetchMyFormList,
   fetchCommunityFormList,
+  fetchCommonFormList,
   fetchFormById,
   postForm,
   updateForm,

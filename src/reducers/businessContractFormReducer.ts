@@ -8,6 +8,7 @@
     UPDATE_BUSINESS_CONTRACT_TITLE,
     SET_BUSINESS_CONTRACT_DESCRIPTION,
     SET_BUSINESS_CONTRACT_FILLED,
+    SET_BUSINESS_CONTRACT_COMMON,
     ADD_BUSINESS_CONTRACT_QUESTION,
     UPDATE_BUSINESS_CONTRACT_QUESTION,
     UPDATE_BUSINESS_CONTRACT_QUESTION_OPTION,
@@ -24,7 +25,8 @@
    tags: [],
    isPublic: true,
    questions: [],
-   filled: false
+   filled: false,
+   common: false
  }
 
  /**
@@ -54,6 +56,12 @@
         return {
           ...state,
           filled: action.data,
+        }
+
+      case SET_BUSINESS_CONTRACT_COMMON:
+        return {
+            ...state,
+            common: action.data,
         }
      case ADD_BUSINESS_CONTRACT_QUESTION:
        return {

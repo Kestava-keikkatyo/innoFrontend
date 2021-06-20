@@ -113,6 +113,7 @@ export interface Form {
   title: string
   description: string
   isPublic: boolean
+  common: boolean
   tags: string[]
   questions: Array<Question>
   filled: boolean
@@ -151,6 +152,7 @@ export interface BusinessContractForm {
   title: string
   description: string
   isPublic: boolean
+  common: boolean
   tags: string[]
   questions: Array<Question>
   filled: boolean

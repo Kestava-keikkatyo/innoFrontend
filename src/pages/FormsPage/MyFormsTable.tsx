@@ -45,7 +45,9 @@ const MyFormsTable: React.FC<any> = () => {
 
   const { myForms } = useSelector((state: any) => state.formList)
 
+
   const [forms, setForms] = React.useState([])
+
 
   const [filter, setFilter] = React.useState('')
 
@@ -54,9 +56,9 @@ const MyFormsTable: React.FC<any> = () => {
   const history = useHistory()
 
   useEffect(() => {
-      setForms(myForms.docs)
-      dispatch(fetchFormList())
-  }, [dispatch, myForms])
+    setForms(myForms.docs)
+    dispatch(fetchFormList())
+  }, [dispatch, myForms.docs])
 
   // handle user input in the search field
   const handleFilterchange = (event:any) => {

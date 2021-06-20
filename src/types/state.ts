@@ -309,6 +309,7 @@ export const SET_CURRENT_FORM = "SET_CURRENT_FORM"
 export const UPDATE_TITLE = "UPDATE_TITLE"
 export const SET_DESCRIPTION = "SET_DESCRIPTION"
 export const SET_FILLED = "SET_FILLED"
+export const SET_COMMON = "SET_COMMON"
 export const ADD_QUESTION = "ADD_QUESTION"
 export const UPDATE_QUESTION = "UPDATE_QUESTION"
 export const UPDATE_QUESTION_OPTION = "UPDATE_QUESTION_OPTION"
@@ -335,6 +336,11 @@ interface SetDescriptionAction {
 
 interface SetFilledAction {
   type: typeof SET_FILLED
+  data: any
+}
+
+interface SetCommonAction {
+  type: typeof SET_COMMON
   data: any
 }
 
@@ -382,6 +388,7 @@ export type FormActionTypes =
   | UpdateTitleAction
   | SetDescriptionAction
   | SetFilledAction
+  | SetCommonAction
   | AddQuestionAction
   | UpdateQuestionAction
   | UpdateQuestionOptionAction
@@ -415,6 +422,7 @@ export const UPDATE_BUSINESS_CONTRACT_TITLE = "UPDATE_BUSINESS_CONTRACT_TITLE"
 export const UPDATE_BUSINESS_CONTRACT_ANSWER = "UPDATE_BUSINESS_CONTRACT_ANSWER"
 export const SET_BUSINESS_CONTRACT_DESCRIPTION = "SET_BUSINESS_CONTRACT_DESCRIPTION"
 export const SET_BUSINESS_CONTRACT_FILLED = "SET_BUSINESS_CONTRACT_FILLED"
+export const SET_BUSINESS_CONTRACT_COMMON = "SET_BUSINESS_CONTRACT_COMMON"
 export const ADD_BUSINESS_CONTRACT_QUESTION = "ADD_BUSINESS_CONTRACT_QUESTION"
 export const UPDATE_BUSINESS_CONTRACT_QUESTION = "UPDATE_BUSINESS_CONTRACT_QUESTION"
 export const UPDATE_BUSINESS_CONTRACT_QUESTION_OPTION = "UPDATE_BUSINESS_CONTRACT_QUESTION_OPTION"
@@ -446,6 +454,11 @@ interface SetBusinessContractDescriptionAction {
 
 interface SetBusinessContractFilledAction {
   type: typeof SET_BUSINESS_CONTRACT_FILLED
+  data: any
+}
+
+interface SetBusinessContractCommonAction {
+  type: typeof SET_BUSINESS_CONTRACT_COMMON
   data: any
 }
 
@@ -490,6 +503,7 @@ export type BusinessContractFormActionTypes =
   | UpdateBusinessContractAnswerAction
   | SetBusinessContractDescriptionAction
   | SetBusinessContractFilledAction
+  | SetBusinessContractCommonAction
   | AddBusinessContractQuestionAction
   | UpdateBusinessContractQuestionAction
   | UpdateBusinessContractQuestionOptionAction

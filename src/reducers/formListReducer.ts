@@ -33,7 +33,8 @@
        return {
          ...state,
          myForms: data.myForms,
-         communityForms: data.communityForms
+         communityForms: data.communityForms,
+         commonForms: data.commonForms
        }
      default:
        return state

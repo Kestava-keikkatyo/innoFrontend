@@ -54,7 +54,7 @@ const CommunityFormsTable: React.FC<any> = () => {
   useEffect(() => {
       setForms(communityForms.docs)
       dispatch(fetchFormList())
-  }, [dispatch, communityForms])
+  }, [dispatch, communityForms.docs])
 
   // handle user input in the search field
   const handleFilterchange = (event:any) => {
