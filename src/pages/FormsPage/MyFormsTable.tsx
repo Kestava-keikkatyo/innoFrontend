@@ -165,7 +165,7 @@ const MyFormsTable: React.FC<any> = () => {
                 <TableCell align="left">{form.title}</TableCell>
                 <TableCell align="left">{form.description}</TableCell>
 
-                <TableCell padding="none" align="left">
+                <TableCell padding='none' align="center">
                   <IconButton aria-label="add to favorites" onClick={() => handleEdit(form._id)}>
                       <EditIcon />
                   </IconButton>

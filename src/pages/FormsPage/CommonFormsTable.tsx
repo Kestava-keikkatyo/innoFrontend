@@ -171,13 +171,13 @@ const CommonFormsTable: React.FC<any> = () => {
                 <TableCell align="left">{form.title}</TableCell>
                 <TableCell align="left">{form.description}</TableCell>
 
-                <TableCell padding="none" align="left">
+                <TableCell>
                   <IconButton aria-label="add to favorites" onClick={() => handlePreview(form._id)}>
                       <VisibilityIcon />
                   </IconButton>
                 </TableCell>
 
-                <TableCell padding="none" align="left">
+                <TableCell>
                   <IconButton aria-label="add to favorites" onClick={() => handleCopy(form._id)}>
                       <FileCopyIcon />
                   </IconButton>
