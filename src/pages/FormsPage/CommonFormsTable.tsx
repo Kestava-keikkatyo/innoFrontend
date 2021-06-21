@@ -24,7 +24,7 @@ import { setAlert } from '../../actions/alertActions'
 
 
 import { useDispatch } from "react-redux"
-import { submitForm } from "../../actions/formActions"
+import { getFormById, submitForm } from "../../actions/formActions"
 import { useHistory } from "react-router"
 import formServices from "../../services/formServices"
 import pdfMake from 'pdfmake/build/pdfmake.js';
@@ -63,9 +63,9 @@ const CommonFormsTable: React.FC<any> = () => {
   }
 
   const handlePreview = (formId: any) => {
-    //dispatch(getFormById(formId))
-    //history.push(`/forms/edit-form`)
-    alert(formId)
+    dispatch(getFormById(formId))
+    history.push({pathname:'/forms/preview'})
+
   }
 
   const handleCopy = async (formId: any) => {

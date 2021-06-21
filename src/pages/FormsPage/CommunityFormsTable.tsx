@@ -34,6 +34,8 @@ import ReactDOMServer from "react-dom/server";
 
 import { fetchFormList } from '../../actions/formListActions'
 import { SearchIcon } from '@material-ui/data-grid'
+import { getFormById } from '../../actions/formActions';
+import { useHistory } from 'react-router-dom';
 
 
 /**
@@ -48,7 +50,7 @@ const CommunityFormsTable: React.FC<any> = () => {
 
   const dispatch = useDispatch()
 
-  //const history = useHistory()
+  const history = useHistory()
 
 
   useEffect(() => {
@@ -63,7 +65,8 @@ const CommunityFormsTable: React.FC<any> = () => {
   }
 
   const handlePreview = (formId: any) => {
-    alert(formId)
+    dispatch(getFormById(formId))
+    history.push({pathname:'/forms/preview'})
   }
 
   const handleDownload = async (formId: any) => {

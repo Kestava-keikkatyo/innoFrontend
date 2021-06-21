@@ -18,6 +18,8 @@ const FormPreviewHeader: React.FC<any> = () => {
 
   if(pathname === '/forms/edit-form/preview'){
     backUrl = '/forms/edit-form'
+  }else if (pathname === '/forms/preview'){
+    backUrl = '/forms'
   }
 
   return (

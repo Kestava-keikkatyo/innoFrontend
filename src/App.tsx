@@ -169,6 +169,9 @@ const App: React.FC = () => {
         >
           <EditFormPage />
         </PrivateRoute>
+        <PrivateRoute path="/forms/preview" roles={[roles.Business, roles.Agency]}>
+          <FormPreviewPage />
+        </PrivateRoute>
         <PrivateRoute path="/forms" roles={[roles.Business, roles.Agency]}>
           <FormsPage />
         </PrivateRoute>
