@@ -88,7 +88,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
         {isOpen ? (
           <img className={classes.logo} src={logo} alt="logo" />
         ) : (
-          <img className={classes.logo} src={logo} alt="logo"/>
+          <div className={classes.logo} />
         )}
         {/* <Typography variant="h6" align="center">FI / EN / SV</Typography> */}
         <Divider />

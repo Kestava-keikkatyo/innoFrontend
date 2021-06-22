@@ -1,10 +1,14 @@
-import { AppBar, IconButton, makeStyles, Toolbar } from '@material-ui/core'
+import { AppBar, IconButton, makeStyles, Menu, MenuItem, Toolbar, Typography } from '@material-ui/core'
+import { AccountCircle } from '@material-ui/icons';
 import MenuIcon from '@material-ui/icons/Menu';
 import clsx from 'clsx';
-import React from 'react'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux';
 import navConstants from '../../constants/navConstants';
 import { TopAppBarProps } from '../../types/props'
+import { IRootState } from '../../utils/store';
 import ActiveLastBreadcrumb from '../ActiveLastBreadcrumb';
+import profileThumb from '../../assets/profile-thumb.jpg'
 
 const drawerWidth = navConstants.DRAWER_WIDTH
 
@@ -55,8 +59,20 @@ const drawerWidth = navConstants.DRAWER_WIDTH
  */
 const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
   const classes = useStyles();
-  // const { data } = useSelector((state: IRootState) => state.user)
-  // const [open, setOpen] = useState(true)
+  const { data } = useSelector((state: IRootState) => state.user)
+  //const [openn, setOpen] = useState(true)
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open1 = Boolean(anchorEl);
+
+  const handleMenu = (event:any) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
 
   return(
     <AppBar 
@@ -77,14 +93,37 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
             <MenuIcon />
           </IconButton>
           {/**Here comes the rest appbar stuff */}
-          {/* <div className="app-bar-container" onClick={() => setOpen(!open)}>
-            <Hidden xsDown implementation="css">
-              <Typography>{data.name || 'Loading'}</Typography>
-            </Hidden>
-            <img className={classes.logo} src={profileThumb} alt="logo" />
-            {open ? <ExpandLess /> : <ExpandMore />}
-            <UserMenuDropdown open={open}/>
-          </div> */}
+          <div className="app-bar-container">
+            <Typography className={classes.text}>{data.name || 'Loading'}</Typography>
+            {/**<img className={classes.logo} src={profileThumb} alt="logo" />*/}
+            <IconButton
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="primary"
+              >
+              <AccountCircle />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={open1}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>My account</MenuItem>
+              </Menu>
+          </div>
         </Toolbar>
       </AppBar>
   )
@@ -137,6 +176,10 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
+  },
+  text: {
+    color: 'black',
+    marginTop: '1%'
   },
 }))
 

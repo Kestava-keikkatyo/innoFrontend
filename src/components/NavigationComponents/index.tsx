@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Drawer from '@material-ui/core/Drawer'
 import Hidden from '@material-ui/core/Hidden'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import TopAppBar from './TopAppBar'
+import TopAppBar from './TopAppBarType'
 import ResponsiveDrawer from './ResponsiveDrawer'
 import navConstants from '../../constants/navConstants'
 import clsx from 'clsx'
@@ -118,7 +118,7 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     paddingRight: 0,
-    marginLeft: "20%",
+    marginLeft: "0%",
     [theme.breakpoints.down('md')]: {
       marginLeft:"auto"
     }
@@ -136,10 +136,10 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     overflowX: 'hidden',
-    //width: theme.spacing(7) + 1,
-    //[theme.breakpoints.up('sm')]: {
-    //  width: theme.spacing(9) + 1,
-    //},
+    width: theme.spacing(7) + 1,
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing(9) + 1,
+    },
   },
 }))
 
