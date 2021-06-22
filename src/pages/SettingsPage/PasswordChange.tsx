@@ -30,7 +30,6 @@ const PasswordChange: React.FC<any> = ({ handleSubmit, hide }) => {
             color="textSecondary"
             variant="body2"
             onClick={hide}>
-            cancel
           </Typography>
         </Box>
         <Typography gutterBottom color="textSecondary" variant="body2">

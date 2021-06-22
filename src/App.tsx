@@ -19,7 +19,7 @@ import NewFormPage from "./pages/FormsPage/NewFormPage";
 import EditFormPage from "./pages/FormsPage/EditFormPage";
 import FormPreviewPage from "./pages/FormPreviewPage";
 import { roles } from "./types/types";
-import InductionPage from "./pages/InductionPage";
+import InductionPage from "./pages/ProfilePage";
 import DatabankRoute from "./components/DatabankRoute";
 import BestPractices from "./pages/Databank/BestPractices";
 import JobLifeline from "./pages/Databank/JobLifeline";

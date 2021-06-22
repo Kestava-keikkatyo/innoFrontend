@@ -1,85 +1,97 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { me, update } from '../../actions/userActions'
-
-import WorkerProfile from './WorkerProfile'
-import CompanyProfile from './CompanyProfile'
-import PasswordChange from './PasswordChange'
-import PageLoading from '../../components/PageLoading'
-
 import {
+  Avatar,
+  Container,
+  Grid,
+  makeStyles,
   Typography,
-  Card,
-  CardContent,
-  Box,
-  Button,
-  Container
 } from '@material-ui/core'
-import { roles } from '../../types/types'
+import React from 'react'
+import Spacing from '../../components/Spacing'
+import banner from '../../assets/form-banner.jpg'
+export interface InductionPageProps {}
 
-/**
- * @component
- * @desc The main profile page component.
- * Container for WorkerProfile, CompanyProfile and PasswordChange components.
- */
-const ProfilePage = () => {
-  const [display, setDisplay] = useState(false)
-  const { data, ...user } = useSelector((state: any) => state.user)
-  const dispatch = useDispatch()
+const useStyles = makeStyles((theme) => ({
+  avatar: {
+    color: theme.palette.getContrastText('#eb5a00'),
+    backgroundColor: '#eb5a00',
+    width: theme.spacing(20),
+    height: theme.spacing(20),
+  },
+}))
 
-  useEffect(() => {
-    dispatch(me(data.role))
-  }, [dispatch, data.role])
-
-  const updateUser = (updateData: any) => {
-    dispatch(update(updateData, data.role))
-  }
-
-  if (user.loading || !user.profile) {
-    return (
-      <PageLoading />
-    )
-  }
+const InductionPage: React.FC<InductionPageProps> = () => {
+  const classes = useStyles()
 
   return (
-    <Container maxWidth="sm">
-      <Typography style={{ padding: '1rem' }} align="center" variant="h4">
-        User information
+    <Container className="relative">
+      <img src={banner} alt="Banner" className="profile-banner" />
+      <Grid container direction="row" justify="center" alignItems="flex-end">
+        <Grid item xs={12} md={2} style={{ marginTop: -100 }}>
+          <Avatar
+            style={{ margin: 'auto' }}
+            className={classes.avatar}
+            aria-label="recipe"
+
+            
+          >
+            JB
+          </Avatar>
+        </Grid>
+        <Grid item xs={12} md={10}>
+          <Typography variant="h3">Jarmo Business</Typography>
+        </Grid>
+      </Grid>
+      <Spacing m5 />
+      <Typography variant="h4">Contact information</Typography>
+      <Typography variant="body1">
+        &bull; My working hours are 8am till 4pm. &bull; I prefer emailing
+        &bull; Phonenumber 045 555 5555 &bull; Email jarmo@business.com &bull;
+        Linkedin https//:linkedin.com/ &bull; I am using Whatsapp, Slack,
+        Telegram
       </Typography>
-      <Box paddingBottom={2}>
-        <Card variant="outlined">
-          <CardContent>
-            <Typography gutterBottom variant="h4">
-              General
-            </Typography>
-            <Typography color="textSecondary" variant="body2">
-              id: {user.profile._id} <br />
-              created: {user.profile.createdAt} <br />
-              email: {user.profile.email}
-            </Typography>
-          </CardContent>
-        </Card>
-      </Box>
-      <Box paddingBottom={2}>
-        {data.role === roles.Worker &&
-          <WorkerProfile profile={user.profile} handleSubmit={updateUser} />}
-        {(data.role === roles.Agency ||
-          data.role === roles.Business) &&
-          <CompanyProfile profile={user.profile} handleSubmit={updateUser} />}
-      </Box>
-      <Box paddingBottom={2}>
-        {display ?
-          <PasswordChange handleSubmit={updateUser} hide={() => setDisplay(false)} /> :
-          <Button
-            style={{ display: 'block', margin: '0 auto' }}
-            variant="outlined"
-            onClick={() => setDisplay(prevDisplay => !prevDisplay)}>
-            change password
-          </Button>
-        }
-      </Box>
+      <Spacing m5 />
+      <Typography variant="h4">Video</Typography>
+      <iframe
+        width="100%"
+        height="600"
+        src="https://www.youtube.com/embed/BxV14h0kFs0"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      ></iframe>
+      <Spacing m5 />
+      <Typography variant="h4">Instructions</Typography>
+      <ol>
+        <li>
+          First decide what type of filling you would like and check to see if
+          there is some available.
+        </li>
+
+        <li>
+          Next take two slices of bread and butter each of them on one side
+          only.
+        </li>
+
+        <li>
+          Put your filling on one slice of bread, butter side up. You may choose
+          two fillings.
+        </li>
+
+        <li>
+          Place the other piece of bread, butter side down, on top of the
+          filling.
+        </li>
+
+        <li>Now cut your sandwich carefully with a knife.</li>
+
+        <li>Now sit down and enjoy your sandwich.</li>
+
+        <li>Finally, clear away the things you have been using.</li>
+      </ol>
+      <Spacing m5 />
     </Container>
   )
 }
 
-export default ProfilePage
+export default InductionPage
