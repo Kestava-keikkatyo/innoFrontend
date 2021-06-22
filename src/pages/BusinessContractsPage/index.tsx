@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { makeStyles, Theme } from "@material-ui/core/styles";
+import { makeStyles, Theme, useTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -8,7 +8,7 @@ import BusinessIcon from "@material-ui/icons/Business";
 import SendIcon from "@material-ui/icons/Send";
 import AllInboxIcon from "@material-ui/icons/AllInbox";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
-import { Badge, Container } from "@material-ui/core";
+import { Badge, Container, Tooltip, useMediaQuery } from "@material-ui/core";
 import ListAccordionInBox from "./ListAccordionInBox";
 import ListAccordionWaiting from "./ListAccordionWaiting";
 import ListAccordionDone  from "./ListAccordionDone";
@@ -52,17 +52,25 @@ const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
     width: "100%",
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.paper
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
   },
+  tab: {
+    minWidth:"20%",
+    maxWidth: "20%"
+  }
 }));
 
 const BusinessContractsPage = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+
+  const theme = useTheme()
+  const matches = useMediaQuery(theme.breakpoints.down('md'))
+
   const { businessContract } = useSelector(
     (state: IRootState) => state.businessContracts
   );
@@ -110,40 +118,42 @@ const BusinessContractsPage = () => {
             textColor="primary"
             aria-label="scrollable force tabs example"
           >
-            <Tab
-              label="Selaa HP-yrityksiä"
-              icon={<BusinessIcon />}
+            <Tab className={classes.tab}
+              label={matches ? " " : "Selaa HP-yrityksiä"}
+              icon={
+                matches ? <Tooltip title="Selaa HP-yrityksiä" placement="top" arrow><BusinessIcon/></Tooltip> : <BusinessIcon/>
+              }
               {...a11yProps(0)}
             />
-            <Tab
-              label="Lähetetyt sopimukset"
+            <Tab className={classes.tab}
+              label={matches ? " " : "Lähetetyt sopimukset"}
               icon={
               <Badge badgeContent={sent.length} color="secondary">
-                <SendIcon/>
+                {matches ? <Tooltip title="Lähetetyt sopimukset" placement="top" arrow><SendIcon/></Tooltip> : <SendIcon/>}
               </Badge>}
               {...a11yProps(1)}
             />
-            <Tab
-              label="Saapuneet sopimukset"
+            <Tab className={classes.tab}
+              label={matches ? " " : "Saapuneet sopimukset"}
               icon={
               <Badge badgeContent={pending.length} color="secondary">
-                <NotificationsActiveIcon />
+                {matches ? <Tooltip title="Saapuneet sopimukset" placement="top" arrow><NotificationsActiveIcon/></Tooltip> : <NotificationsActiveIcon/>}
               </Badge>}
               {...a11yProps(2)}
             />
-            <Tab
-              label="Odottavat sopimukset"
+            <Tab className={classes.tab}
+              label={matches ? " " : "Odottavat sopimukset"}
               icon={
               <Badge badgeContent={waiting.length} color="secondary">
-                <HourglassEmptyIcon />
+                {matches ? <Tooltip title="Odottavat sopimukset" placement="top" arrow><HourglassEmptyIcon/></Tooltip> : <HourglassEmptyIcon/>}
               </Badge>}
               {...a11yProps(3)}
             />
-            <Tab
-              label="Valmiit sopimukset"
+            <Tab className={classes.tab}
+              label={matches ? " " : "Valmiit sopimukset"}
               icon={
               <Badge badgeContent={ready.length} color="secondary">
-                <AllInboxIcon />
+                {matches ? <Tooltip title="Valmiit sopimukset" placement="top" arrow><AllInboxIcon/></Tooltip> : <AllInboxIcon/>}
               </Badge>}
               {...a11yProps(4)}
             />

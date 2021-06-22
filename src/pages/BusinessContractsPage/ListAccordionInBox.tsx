@@ -7,10 +7,14 @@ import {
   makeStyles,
   Theme,
   Divider,
-  AccordionActions
+  AccordionActions,
+  IconButton,
+  useMediaQuery,
+  useTheme,
+  Button,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Button from "@material-ui/core/Button";
+
 import Avatar from "@material-ui/core/Avatar";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
@@ -26,31 +30,52 @@ import pdfFonts from 'pdfmake/build/vfs_fonts.js';
 import htmlToPdfmake from 'html-to-pdfmake'
 import ReactDOMServer from "react-dom/server";
 import Form from "../FormsPage/Form";
+import VisibilityIcon from '@material-ui/icons/Visibility';
+
+import SendIcon from '@material-ui/icons/Send';
+import EditIcon from '@material-ui/icons/Edit';
+import SaveAltIcon from '@material-ui/icons/SaveAlt';
+import CloseIcon from '@material-ui/icons/Close';
+import ListAltIcon from '@material-ui/icons/ListAlt';
+
+import Tooltip from '@material-ui/core/Tooltip';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
     width: "100%",
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.paper
+  },
+  logoColumn:{
+    flexBasis: '20%'
+  },
+  column: {
+    flexBasis: '40%',
+    wordWrap:'break-word',
+    marginLeft:'10px'
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
   },
-  column: {
-    flexBasis: "33.33%",
-  },
   color: {
     color: "red",
   },
-  display: {
-    display: "column",
-    width: "30em",
-  },
+  info: {
+    display:'column',
+    width: "30rem",
+  }
+
 }));
 
 export const ListAccordionInBox = (prop: { contracts: any[] }) => {
   const classes = useStyles()
+
+  const theme = useTheme()
+
+  const matches = useMediaQuery(theme.breakpoints.down('sm'))
+
+  console.log("matches", matches)
 
   const dispatch = useDispatch()
 
@@ -135,7 +160,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
     return <p>no results</p>;
   } else
     return (
-      <div className={classes.root}>
+      <div className="listAccordion-div">
         {contracts.map((contract: any) => (
           <Accordion key={contract._id}>
             <AccordionSummary
@@ -143,7 +168,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <div className={classes.column}>
+              <div className={classes.logoColumn}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
               </div>
               <div className={classes.column}>
@@ -154,34 +179,61 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
                   Käsittelemätön
                 </Typography>
               </div>
-              <div className={classes.column}>
-                <Button>Siirry yrityksen nettisivuille</Button>
-              </div>
             </AccordionSummary>
             <AccordionDetails>
-              <div className={classes.display}>
-                <Typography>Email: {contract.agency.email}</Typography>
+              <div className={classes.info}>
+                <Typography style={{margin:'10px 5px'}}>Email: {contract.agency.email}</Typography>
                 <Divider />
-                <Typography>
+                <Typography style={{margin:'10px 5px'}}>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
                   eget.
                 </Typography>
+                <Button style={{margin:'5px'}} color='primary' variant='contained'>
+                  Yrityksen Nettisivu
+                </Button>
+
               </div>
             </AccordionDetails>
 
-            <AccordionActions>
-              <Button onClick={() => rejectContract(contract._id, contract.pendingContracts.formId)}>Hylkää sopimus</Button>
-              <Button onClick={() => handleEsitteleLomaketta(contract.pendingContracts.formId)}>
-                Esikatsele lomaketta
-              </Button>
-              <Button onClick={() => handleTäytäLomaketta(contract.pendingContracts.formId,contract._id)}>
-                Täytä lomaketta
-              </Button>
-              <Button onClick={handleMuokkaaTäytettyäLomaketta}>
-                Muokkaa Täytettyä lomaketta</Button>
-              <Button onClick={() => handleTulostaLomaketta(contract.pendingContracts.formId)}>Tulosta pdf</Button>
-              <Button onClick={() => loadAndSendContract(contract._id)}>Lähetä sopimus</Button>
+            <AccordionActions disableSpacing>
+
+              <Tooltip title="Hylkää Sopimus" placement="top" arrow>
+                <IconButton onClick={() => rejectContract(contract._id, contract.pendingContracts.formId)}>
+                  <CloseIcon />
+                </IconButton>
+              </Tooltip>
+
+              <Tooltip title="Esikatsele Lomakettä" placement="top" arrow>
+                <IconButton onClick={() => handleEsitteleLomaketta(contract.pendingContracts.formId)}>
+                  <VisibilityIcon />
+                </IconButton>
+              </Tooltip>
+
+              <Tooltip title="Täytä lomaketta" placement="top" arrow>
+                <IconButton onClick={() => handleTäytäLomaketta(contract.pendingContracts.formId,contract._id)}>
+                  <ListAltIcon />
+                </IconButton>
+              </Tooltip>
+
+              <Tooltip title="Muokkaa Täytettyä lomaketta" placement="top" arrow>
+                <IconButton onClick={handleMuokkaaTäytettyäLomaketta}>
+                  <EditIcon />
+                </IconButton>
+              </Tooltip>
+
+              <Tooltip title="Tulosta pdf" placement="top" arrow>
+                <IconButton onClick={() => handleTulostaLomaketta(contract.pendingContracts.formId)}>
+                  <SaveAltIcon />
+                </IconButton>
+              </Tooltip>
+
+              <Tooltip title="Lähetä Sopimus" placement="top" arrow>
+                <IconButton onClick={() => loadAndSendContract(contract._id)}>
+                  <SendIcon />
+                </IconButton>
+              </Tooltip>
+
             </AccordionActions>
           </Accordion>
         ))}
