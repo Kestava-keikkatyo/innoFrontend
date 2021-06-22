@@ -7,34 +7,43 @@ import {
   makeStyles,
   Theme,
   Divider,
-  AccordionActions
+  AccordionActions,
+  IconButton
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 import { useDispatch } from "react-redux";
 import { refuseBusinessContractById } from "../../actions/businessContractActions";
+import Tooltip from '@material-ui/core/Tooltip';
+import CloseIcon from '@material-ui/icons/Close';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
     width: "100%",
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.paper
+  },
+  logoColumn:{
+    flexBasis: '20%'
+  },
+  column: {
+    flexBasis: '40%',
+    wordWrap:'break-word',
+    marginLeft:'10px'
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
   },
-  column: {
-    flexBasis: "33.33%",
-  },
   color: {
     color: "gold",
   },
-  display: {
-    display: "column",
-    width: "30em"
+  info: {
+    display:'column',
+    width: "30rem",
   }
+
 }));
 
 export const ListAccordioSent = (prop: { contracts: any[] }) => {
@@ -61,7 +70,7 @@ export const ListAccordioSent = (prop: { contracts: any[] }) => {
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <div className={classes.column}>
+              <div className={classes.logoColumn}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
               </div>
               <div className={classes.column}>
@@ -70,25 +79,28 @@ export const ListAccordioSent = (prop: { contracts: any[] }) => {
               <div className={classes.column}>
                 <Typography className={classes.color}>Odottaa</Typography>
               </div>
-              <div className={classes.column}>
-                <Button>Siirry yrityksen nettisivuille</Button>
-              </div>
             </AccordionSummary>
             <AccordionDetails>
-              <div className={classes.display}>
-                <Typography>
-                  Email: {contract.agency.email}
-                </Typography>
+              <div className={classes.info}>
+                <Typography style={{margin:'10px 5px'}}>Email: {contract.agency.email}</Typography>
                 <Divider />
-                <Typography>
+                <Typography style={{margin:'10px 5px'}}>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
                   eget.
-            </Typography>
+                </Typography>
+                <Button style={{margin:'5px'}} color='primary' variant='contained'>
+                  Yrityksen Nettisivu
+                </Button>
+
               </div>
             </AccordionDetails>
             <AccordionActions>
-              <Button onClick={() => rejectContract(contract._id)}>Hylkää sopimus</Button>
+              <Tooltip title="Hylkää Sopimus" placement="top" arrow>
+                <IconButton onClick={() => rejectContract(contract._id)}>
+                  <CloseIcon />
+                </IconButton>
+              </Tooltip>
             </AccordionActions>
           </Accordion>
         ))}

@@ -7,7 +7,9 @@ import {
   makeStyles,
   Theme,
   Divider,
-  AccordionActions
+  AccordionActions,
+  Tooltip,
+  IconButton
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
@@ -22,27 +24,35 @@ import pdfFonts from 'pdfmake/build/vfs_fonts.js';
 import htmlToPdfmake from 'html-to-pdfmake'
 import ReactDOMServer from "react-dom/server";
 import Form from "../FormsPage/Form";
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import SaveAltIcon from '@material-ui/icons/SaveAlt';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
     width: "100%",
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.paper
+  },
+  logoColumn:{
+    flexBasis: '20%'
+  },
+  column: {
+    flexBasis: '40%',
+    wordWrap:'break-word',
+    marginLeft:'10px'
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
   },
-  column: {
-    flexBasis: "33.33%",
-  },
   color: {
     color: "gold",
   },
-  display: {
-    display: "column",
-    width: "30em"
+  info: {
+    display:'column',
+    width: "30rem",
   }
+
 }));
 
 export const ListAccordionWaiting = (prop: { contracts: any[] })  => {
@@ -97,7 +107,7 @@ export const ListAccordionWaiting = (prop: { contracts: any[] })  => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <div className={classes.column}>
+          <div className={classes.logoColumn}>
             <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
           </div>
           <div className={classes.column}>
@@ -106,26 +116,36 @@ export const ListAccordionWaiting = (prop: { contracts: any[] })  => {
           <div className={classes.column}>
             <Typography className={classes.color}>Odottaa</Typography>
           </div>
-          <div className={classes.column}>
-            <Button>Siirry yrityksen nettisivuille</Button>
-          </div>
         </AccordionSummary>
         <AccordionDetails>
-          <div className={classes.display}>
-            <Typography>
-              Email: {contract.agency.email}
-            </Typography>
-            <Divider/>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-              eget.
-            </Typography>
-          </div>
-        </AccordionDetails>
+              <div className={classes.info}>
+                <Typography style={{margin:'10px 5px'}}>Email: {contract.agency.email}</Typography>
+                <Divider />
+                <Typography style={{margin:'10px 5px'}}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+                  eget.
+                </Typography>
+                <Button style={{margin:'5px'}} color='primary' variant='contained'>
+                  Yrityksen Nettisivu
+                </Button>
+
+              </div>
+            </AccordionDetails>
         <AccordionActions>
-              <Button onClick={() => handleEsitteleLomaketta(contract.formId)}>Esikatsele lomaketta</Button>
-              <Button onClick={() => handleTulostaLomaketta(contract.formId)}>Tulosta pdf</Button>
+
+              <Tooltip title="Esikatsele Lomakettä" placement="top" arrow>
+                <IconButton onClick={() => handleEsitteleLomaketta(contract.formId)}>
+                  <VisibilityIcon />
+                </IconButton>
+              </Tooltip>
+
+              <Tooltip title="Tulosta pdf" placement="top" arrow>
+                <IconButton onClick={() => handleTulostaLomaketta(contract.formId)}>
+                  <SaveAltIcon />
+                </IconButton>
+              </Tooltip>
+
         </AccordionActions>
       </Accordion>
       ))}
