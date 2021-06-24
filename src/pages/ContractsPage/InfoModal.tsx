@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react';
 
 import {
   Dialog,
@@ -9,12 +9,12 @@ import {
   Button,
   IconButton,
   DialogActions,
-} from "@material-ui/core"
-import { Close as CloseIcon } from "@material-ui/icons"
-import { useDispatch } from "react-redux"
+} from '@material-ui/core';
+import { Close as CloseIcon } from '@material-ui/icons';
+import { useDispatch } from 'react-redux';
 
-import { useHistory } from "react-router"
-import { getFormByIdAndSetBusinessContractForm } from "../../actions/businessContractFormActions"
+import { useHistory } from 'react-router';
+import { getFormByIdAndSetBusinessContractForm } from '../../actions/businessContractFormActions';
 
 /**
  * @component
@@ -25,28 +25,24 @@ import { getFormByIdAndSetBusinessContractForm } from "../../actions/businessCon
  * @param {contract} props.contract business contract.
  */
 const WorkerModal: React.FC<any> = ({ displayModal, closeModal, contract }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const history = useHistory()
+  const history = useHistory();
 
-  console.log("infoModal: contract: ", contract)
-
+  console.log('infoModal: contract: ', contract);
 
   const handleBusinessWebsiteButton = () => {
-    closeModal()
-  }
+    closeModal();
+  };
 
   const handleContractFormButton = () => {
-    dispatch(getFormByIdAndSetBusinessContractForm(contract.formId))
+    dispatch(getFormByIdAndSetBusinessContractForm(contract.formId));
     //history.push({pathname: `/contracts/contract-form-manager`,state: { formId: contract.formId}})
-    history.push(`/contracts/contract-form-manager`)
-  }
-
-
+    history.push(`/contracts/contract-form-manager`);
+  };
 
   return (
     <Dialog open={displayModal} onClose={closeModal} fullWidth>
-
       <DialogTitle>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Typography variant="h6">Info</Typography>
@@ -58,43 +54,53 @@ const WorkerModal: React.FC<any> = ({ displayModal, closeModal, contract }) => {
 
       <DialogContent dividers>
         {contract && (
-            <>
-                <Typography color="textSecondary" variant="body1">
-                    <b>Contract id:</b> {contract._id}
-                 </Typography>
-                 <Typography color="textSecondary" variant="body1">
-                    <b>Business id:</b> {contract.businessId ? contract.businessId._id : contract.workerId._id}
-                 </Typography>
-                 <Typography color="textSecondary" variant="body1">
-                    <b>Business name:</b>   {contract.businessId ? contract.businessId.name : contract.workerId.name}
-                 </Typography>
-                 <Typography color="textSecondary" variant="body1">
-                    <b>Business email:</b>  {contract.businessId ? contract.businessId.email : contract.workerId.email}
-                 </Typography>
-
-            </>
-
-
+          <>
+            <Typography color="textSecondary" variant="body1">
+              <b>Contract id:</b> {contract._id}
+            </Typography>
+            <Typography color="textSecondary" variant="body1">
+              <b>Business id:</b>{' '}
+              {contract.businessId
+                ? contract.businessId._id
+                : contract.workerId._id}
+            </Typography>
+            <Typography color="textSecondary" variant="body1">
+              <b>Business name:</b>{' '}
+              {contract.businessId
+                ? contract.businessId.name
+                : contract.workerId.name}
+            </Typography>
+            <Typography color="textSecondary" variant="body1">
+              <b>Business email:</b>{' '}
+              {contract.businessId
+                ? contract.businessId.email
+                : contract.workerId.email}
+            </Typography>
+          </>
         )}
       </DialogContent>
 
       <DialogActions>
-        <Button color="primary" variant="outlined"
-            onClick={handleContractFormButton}>
-            Contract Form
+        <Button
+          color="primary"
+          variant="outlined"
+          onClick={handleContractFormButton}
+        >
+          Contract Form
         </Button>
-        <Button color="primary" variant="outlined"
-            onClick={handleBusinessWebsiteButton}>
-            Business Website
+        <Button
+          color="primary"
+          variant="outlined"
+          onClick={handleBusinessWebsiteButton}
+        >
+          Business Website
         </Button>
-        <Button color="primary" variant="outlined"
-          onClick={() => closeModal()}>
+        <Button color="primary" variant="outlined" onClick={() => closeModal()}>
           Close
         </Button>
-
       </DialogActions>
     </Dialog>
-  )
-}
+  );
+};
 
-export default WorkerModal
+export default WorkerModal;

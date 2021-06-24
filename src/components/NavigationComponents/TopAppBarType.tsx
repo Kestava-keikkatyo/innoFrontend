@@ -1,16 +1,22 @@
-import { AppBar, IconButton, makeStyles, Menu, MenuItem, Toolbar, Typography } from '@material-ui/core'
+import {
+  AppBar,
+  IconButton,
+  makeStyles,
+  Menu,
+  MenuItem,
+  Toolbar,
+  Typography,
+} from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
 import MenuIcon from '@material-ui/icons/Menu';
 import clsx from 'clsx';
-import React, { useState } from 'react'
+import React from 'react';
 import { useSelector } from 'react-redux';
 import navConstants from '../../constants/navConstants';
-import { TopAppBarProps } from '../../types/props'
+import { TopAppBarProps } from '../../types/props';
 import { IRootState } from '../../utils/store';
-import ActiveLastBreadcrumb from '../ActiveLastBreadcrumb';
-import profileThumb from '../../assets/profile-thumb.jpg'
 
-const drawerWidth = navConstants.DRAWER_WIDTH
+const drawerWidth = navConstants.DRAWER_WIDTH;
 
 /**
  * @component
@@ -53,19 +59,19 @@ const drawerWidth = navConstants.DRAWER_WIDTH
  * @desc Basically a stripe on top off the application
  * which contains drawerbutton when screenwidth is small.
  * @param {TopAppBarProps} props
- * @param {MouseEvent} props.handleDrawerToggle An event function. 
+ * @param {MouseEvent} props.handleDrawerToggle An event function.
  * Handles the drawer toggling on small screen size.
  * @todo refaktoroi tämä.
  */
 const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
   const classes = useStyles();
-  const { data } = useSelector((state: IRootState) => state.user)
+  const { data } = useSelector((state: IRootState) => state.user);
   //const [openn, setOpen] = useState(true)
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open1 = Boolean(anchorEl);
 
-  const handleMenu = (event:any) => {
+  const handleMenu = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -73,61 +79,63 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
     setAnchorEl(null);
   };
 
-
-  return(
-    <AppBar 
-    position="fixed" 
-    elevation={0} 
-    className={clsx(classes.appBar, {
-      [classes.appBarShift]: open,
-    })} >
-        <Toolbar className="toolbar" variant="dense">
-          <ActiveLastBreadcrumb />
+  return (
+    <AppBar
+      position="fixed"
+      elevation={0}
+      className={clsx(classes.appBar, {
+        [classes.appBarShift]: open,
+      })}
+    >
+      <Toolbar className="toolbar" variant="dense">
+        {/*<ActiveLastBreadcrumb />*/}
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          edge="end"
+          onClick={handleDrawerToggle}
+          className={classes.menuButton}
+        >
+          <MenuIcon />
+        </IconButton>
+        {/**Here comes the rest appbar stuff */}
+        <div className="app-bar-container">
+          <Typography className={classes.text}>
+            {data.name || 'Loading'}
+          </Typography>
+          {/**<img className={classes.logo} src={profileThumb} alt="logo" />*/}
           <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="end"
-            onClick={handleDrawerToggle}
-            className={classes.menuButton}
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleMenu}
+            color="primary"
           >
-            <MenuIcon />
+            <AccountCircle />
           </IconButton>
-          {/**Here comes the rest appbar stuff */}
-          <div className="app-bar-container">
-            <Typography className={classes.text}>{data.name || 'Loading'}</Typography>
-            {/**<img className={classes.logo} src={profileThumb} alt="logo" />*/}
-            <IconButton
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="primary"
-              >
-              <AccountCircle />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={open1}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-              </Menu>
-          </div>
-        </Toolbar>
-      </AppBar>
-  )
-}
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorEl}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            open={open1}
+            onClose={handleClose}
+          >
+            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={handleClose}>My account</MenuItem>
+          </Menu>
+        </div>
+      </Toolbar>
+    </AppBar>
+  );
+};
 
 const useStyles = makeStyles((theme) => ({
   // appBar: {
@@ -143,7 +151,7 @@ const useStyles = makeStyles((theme) => ({
     // [theme.breakpoints.up('lg')]: {
     //   display: 'none',
     // },
-    color: 'black'
+    color: 'black',
   },
   logo: {
     width: 40,
@@ -179,8 +187,8 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     color: 'black',
-    marginTop: '1%'
+    marginTop: '1%',
   },
-}))
+}));
 
-export default TopAppBar
+export default TopAppBar;

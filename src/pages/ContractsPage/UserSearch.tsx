@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from 'react';
 
 import {
   Box,
@@ -8,41 +8,41 @@ import {
   RadioGroup,
   FormControlLabel,
   Radio,
-} from "@material-ui/core"
-import { Search as SearchIcon } from "@material-ui/icons"
-import { updateSearchList } from "../../actions/businessContractActions"
-import { useDispatch } from "react-redux"
-import { roles } from "../../types/types"
+} from '@material-ui/core';
+import { Search as SearchIcon } from '@material-ui/icons';
+import { updateSearchList } from '../../actions/businessContractActions';
+import { useDispatch } from 'react-redux';
+import { roles } from '../../types/types';
 
-const INIT_SEARCH_TYPE = roles.Worker
+const INIT_SEARCH_TYPE = roles.Worker;
 
 /**
  * @component
  * @desc
+ * @deprecated
+ * ###### This component is not in use ######
  * A searchbar for searching worker users or business users.
  */
 const UserSearch = () => {
-  const dispatch = useDispatch()
-  const [input, setInput] = useState("")
-  const [searchType, setSearchType] = useState<any>(INIT_SEARCH_TYPE)
-
+  const dispatch = useDispatch();
+  const [input, setInput] = useState('');
+  const [searchType, setSearchType] = useState<any>(INIT_SEARCH_TYPE);
 
   useEffect(() => {
-    dispatch(updateSearchList("", INIT_SEARCH_TYPE))
-  }, [dispatch])
-
+    dispatch(updateSearchList('', INIT_SEARCH_TYPE));
+  }, [dispatch]);
 
   const handleSubmit = (event: any) => {
-    event.preventDefault()
+    event.preventDefault();
     if (input.length > 0) {
-      dispatch(updateSearchList(input, searchType))
+      dispatch(updateSearchList(input, searchType));
     }
-  }
+  };
 
   const handleChange = (event: any) => {
-    setSearchType(event.target.value)
-    dispatch(updateSearchList("",event.target.value))
-  }
+    setSearchType(event.target.value);
+    dispatch(updateSearchList('', event.target.value));
+  };
 
   return (
     <Box
@@ -59,8 +59,16 @@ const UserSearch = () => {
           value={searchType}
           onChange={handleChange}
         >
-          <FormControlLabel value={roles.Worker} control={<Radio />} label="Worker" />
-          <FormControlLabel value={roles.Business} control={<Radio />} label="Business"/>
+          <FormControlLabel
+            value={roles.Worker}
+            control={<Radio />}
+            label="Worker"
+          />
+          <FormControlLabel
+            value={roles.Business}
+            control={<Radio />}
+            label="Business"
+          />
         </RadioGroup>
       </FormControl>
       <form onSubmit={handleSubmit}>
@@ -76,7 +84,7 @@ const UserSearch = () => {
         </Box>
       </form>
     </Box>
-  )
-}
+  );
+};
 
-export default UserSearch
+export default UserSearch;
