@@ -14,13 +14,24 @@ import {
   Divider,
   withStyles,
   Theme,
-  createStyles
+  createStyles,
+  makeStyles,
+  useTheme,
+  useMediaQuery,
+  Tooltip
 } from '@material-ui/core'
 import { useSelector } from 'react-redux'
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  AccordionActions,
+} from "@material-ui/core";
 
 import EditIcon from '@material-ui/icons/Edit'
-import MoveToInboxIcon from '@material-ui/icons/MoveToInbox'
+//import MoveToInboxIcon from '@material-ui/icons/MoveToInbox'
 import DeleteIcon from '@material-ui/icons/Delete';
+import SaveAltIcon from '@material-ui/icons/SaveAlt';
 
 import { useDispatch } from "react-redux"
 import { DeleteFormById, getFormById } from "../../actions/formActions"
@@ -35,6 +46,8 @@ import ReactDOMServer from "react-dom/server";
 import { setAlert } from '../../actions/alertActions'
 import { fetchFormList } from '../../actions/formListActions'
 import { SearchIcon } from '@material-ui/data-grid'
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
 
 
 /**
@@ -43,13 +56,19 @@ import { SearchIcon } from '@material-ui/data-grid'
  */
 const MyFormsTable: React.FC<any> = () => {
 
-  const  myForms  = useSelector((state: any) => state.formList.myForms)
+  const  myForms:any  = useSelector((state: any) => state.formList.myForms)
 
   const [filter, setFilter] = React.useState('')
 
   const dispatch = useDispatch()
 
   const history = useHistory()
+
+  const classes = useStyles();
+
+  const theme = useTheme()
+  const matches = useMediaQuery(theme.breakpoints.down('sm')) // sm: korkeintaan 960px
+
 
   useEffect(() => {
     dispatch(fetchFormList())
@@ -118,6 +137,104 @@ const MyFormsTable: React.FC<any> = () => {
   )(TableRow);
 
 
+  // Table view for desktop devices
+  const tableView = () => {
+    return (
+    <TableContainer style={{overflow:'auto'}}>
+      <Table aria-label="searched workers">
+        <TableHead>
+          <TableRow>
+            <StyledTableCell align="left">Title</StyledTableCell>
+            <StyledTableCell align="left">Description</StyledTableCell>
+            <StyledTableCell align="left">Edit</StyledTableCell>
+            <StyledTableCell align="left">Delete</StyledTableCell>
+            <StyledTableCell align="left">Download</StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {myForms.docs && myForms.docs.filter((form: any) => (
+            form.title.toLowerCase().includes(filter.toLowerCase())
+          )).map((form: any) => (
+            <StyledTableRow key={form._id}>
+            <TableCell align="left">{form.title}</TableCell>
+            <TableCell align="left">{form.description}</TableCell>
+
+            <TableCell padding='none' align="center">
+              <IconButton aria-label="add to favorites" onClick={() => handleEdit(form._id)}>
+                  <EditIcon />
+              </IconButton>
+            </TableCell>
+
+            <TableCell padding="none" align="center">
+              <IconButton aria-label="share" onClick={() => handleDelete(form._id)}>
+                  <DeleteIcon />
+              </IconButton>
+            </TableCell>
+
+            <TableCell padding="none" align="center">
+              <IconButton aria-label="share" onClick={() => handleDownload(form._id)}>
+                  <SaveAltIcon />
+              </IconButton>
+            </TableCell>
+
+          </StyledTableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+
+    )
+  }
+
+  // Accordion view for mobile devices
+  const accordionView = () => {
+
+    return (
+      myForms.docs && myForms.docs.filter((form: any) => (
+        form.title.toLowerCase().includes(filter.toLowerCase())
+      )).map((form: any) => (
+        <div key={form._id} className={classes.accordionDiv}>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Typography className={classes.heading}>{form.title}</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography className={classes.description}>{form.description}</Typography>
+            </AccordionDetails>
+            <AccordionActions>
+
+              <Tooltip title="Edit form" placement="top" arrow>
+                <IconButton onClick={() => handleEdit(form._id)}>
+                  <EditIcon />
+                </IconButton>
+              </Tooltip>
+
+              <Tooltip title="Delete form" placement="top" arrow>
+                <IconButton onClick={() => handleDelete(form._id)}>
+                  <DeleteIcon />
+                </IconButton>
+              </Tooltip>
+
+              <Tooltip title="Download pdf" placement="top" arrow>
+                <IconButton onClick={() => handleDownload(form._id)}>
+                  <SaveAltIcon />
+                </IconButton>
+              </Tooltip>
+
+            </AccordionActions>
+          </Accordion>
+        </div>
+
+    ))
+
+    )
+
+  }
+
   if(!myForms.docs) return (
     <Typography style={{ padding: '1rem' }} variant="h6" align="center" className="text-secondary">
       no results
@@ -146,50 +263,28 @@ const MyFormsTable: React.FC<any> = () => {
         </form>
       </Box>
       <Divider />
-      <TableContainer style={{overflow:'auto'}}>
-        <Table aria-label="searched workers">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell align="left">Title</StyledTableCell>
-              <StyledTableCell align="left">Description</StyledTableCell>
-              <StyledTableCell align="left">Edit</StyledTableCell>
-              <StyledTableCell align="left">Delete</StyledTableCell>
-              <StyledTableCell align="left">Download</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {myForms.docs && myForms.docs.filter((form: any) => (
-              form.title.toLowerCase().includes(filter.toLowerCase())
-            )).map((form: any) => (
-              <StyledTableRow key={form._id}>
-                <TableCell align="left">{form.title}</TableCell>
-                <TableCell align="left">{form.description}</TableCell>
-
-                <TableCell padding='none' align="center">
-                  <IconButton aria-label="add to favorites" onClick={() => handleEdit(form._id)}>
-                      <EditIcon />
-                  </IconButton>
-                </TableCell>
-
-                <TableCell>
-                  <IconButton aria-label="share" onClick={() => handleDelete(form._id)}>
-                      <DeleteIcon />
-                  </IconButton>
-                </TableCell>
-
-                <TableCell>
-                  <IconButton aria-label="share" onClick={() => handleDownload(form._id)}>
-                      <MoveToInboxIcon />
-                  </IconButton>
-                </TableCell>
-
-              </StyledTableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      {matches ? accordionView() : tableView()}
     </div>
   )
 }
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    accordionDiv: {
+      width: '100%',
+      marginTop: 12,
+      border: '1px solid #E0E0E0',
+      borderRadius: 5
+    },
+    heading: {
+      fontSize: theme.typography.pxToRem(14),
+      fontWeight: theme.typography.fontWeightRegular,
+    },
+    description: {
+      fontSize: theme.typography.pxToRem(13),
+      color: '#6C6C6C'
+    },
+  }),
+);
 
 export default MyFormsTable
