@@ -576,8 +576,6 @@ export type BusinssContractListActionTypes =
     data: any
   }
   
-
-
   export type EditProfileActionTypes = 
   | ChangeProfilePictureAction
   | ChangeContactInformationAction
@@ -587,4 +585,33 @@ export type BusinssContractListActionTypes =
   | UpdateCurrentProfile
   | PostProfile
  
-  
+  export interface NotificationsState {
+    notifications: {}
+  }
+
+  export const FETCH_NOTIFICATIONS = "FETCH_NOTIFICATIONS"
+  export const POST_NOTIFICATIONS = "POST_NOTIFICATIONS"
+  export const UPDATE_NOTIFICATIONS = "UPDATE_NOTIFICATIONS"
+  export const READ_NOTIFICATIONS = "READ_NOTIFICATIONS"
+
+  interface FetchNotifications {
+    type: typeof FETCH_NOTIFICATIONS
+    data: any
+  }
+
+  interface PostNotifications {
+    type: typeof POST_NOTIFICATIONS
+    data: any
+  }
+
+  interface UpdateNotifications {
+    type: typeof UPDATE_NOTIFICATIONS
+    data: any
+  }
+
+  interface ReadNotifications {
+    type: typeof READ_NOTIFICATIONS
+    data: any
+  }
+
+  export type NotificationsActions = FetchNotifications | PostNotifications | UpdateNotifications | ReadNotifications

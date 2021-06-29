@@ -166,3 +166,7 @@ export interface editProfile {
   video: string
   instructions: string
 }
+export interface Notifications {
+  userId: string
+  message: []
+}

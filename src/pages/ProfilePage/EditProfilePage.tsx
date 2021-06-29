@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../utils/store';
 import { createProfile } from '../../actions/editProfileActions';
 import { useState } from 'react';
+import FileUploader from '../../components/FileUploader';
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -30,17 +31,23 @@ const useStyles = makeStyles((theme) => ({
   contactButton: {
     marginLeft: '1%',
   },
-  pictureEdit: {
-    display: 'flex',
-    alignContent: 'center',
+  picture: {
+    display: "flex",
+    alignContent: "center",
+    color: "f50057"
   },
   information: {
     display: 'flex',
     alignItems: 'row',
   },
   cover: {
-    marginLeft: '30%',
+    textAlign: "center",
+    marginRight: "22%"
   },
+  root: {
+    color: "#f50057",
+    textAlign: "center",
+  }
 }));
 
 const EditProfilePage: React.FC = () => {
@@ -59,7 +66,7 @@ const EditProfilePage: React.FC = () => {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
-
+  /*
   const changePicture = () => {
     alert('Tästä vaihdetaan profiilikuva');
   };
@@ -67,6 +74,7 @@ const EditProfilePage: React.FC = () => {
   const changeCover = () => {
     alert('Tästä vaihdetaan taustalla oleva kuva');
   };
+  */
 
   const returnToProfile = () => {
     history.push('/instruction');
@@ -80,7 +88,7 @@ const EditProfilePage: React.FC = () => {
     <Container className="relative">
       <div>
         <Button
-          className={classes.pictureEdit}
+          className={classes.picture}
           onClick={returnToProfile}
           color="secondary"
         >
@@ -95,22 +103,21 @@ const EditProfilePage: React.FC = () => {
             <Avatar style={{ margin: 'auto' }} className={classes.avatar}>
               JB
             </Avatar>
-            <Button
-              className={classes.pictureEdit}
-              onClick={changePicture}
-              color="secondary"
-            >
-              Change profile picture
-            </Button>
+            <FileUploader handleFile={() => ""}>
+              <span
+              className={classes.root}
+              >Upload profile picture</span>
+            </FileUploader>
           </Grid>
           <Grid item xs={12} md={10}>
-            <Button
-              className={classes.cover}
-              color="secondary"
-              onClick={changeCover}
-            >
-              Change cover image
-            </Button>
+          <div className={classes.cover}>
+          <FileUploader 
+          handleFile={() => ""}>
+              <span
+              className={classes.root}
+              >Upload cover</span>
+            </FileUploader>
+            </div>
             <Typography variant="h4">User information</Typography>
 
             <TextField
