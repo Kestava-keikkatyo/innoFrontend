@@ -9,6 +9,7 @@ import { TopAppBarProps } from '../../types/props'
 import { IRootState } from '../../utils/store';
 import ActiveLastBreadcrumb from '../ActiveLastBreadcrumb';
 import profileThumb from '../../assets/profile-thumb.jpg'
+import { useHistory } from 'react-router-dom';
 
 const drawerWidth = navConstants.DRAWER_WIDTH
 
@@ -73,6 +74,15 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
     setAnchorEl(null);
   };
 
+  const history = useHistory()
+
+  const handleClickProfile = () => {
+    history.push('/instruction')
+  }
+
+  const handleClickProfileSettings = () => {
+    history.push('/profile-edit')
+  }
 
   return(
     <AppBar 
@@ -120,8 +130,8 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
                 open={open1}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClickProfile}>Profiili</MenuItem>
+                <MenuItem onClick={handleClickProfileSettings}>Asetukset</MenuItem>
               </Menu>
           </div>
         </Toolbar>

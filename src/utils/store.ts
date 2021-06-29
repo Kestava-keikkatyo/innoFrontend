@@ -12,6 +12,7 @@ import formReducer from '../reducers/formReducer'
 import formListReducer from '../reducers/formListReducer'
 import buisnessContractFormReducer from '../reducers/businessContractFormReducer'
 import agencyReducer from '../reducers/agencyReducer'
+import profileReducer from '../reducers/profileReducer'
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -26,7 +27,8 @@ const reducer = combineReducers({
   formList: formListReducer,
   file: fileReducer,
   businessContractForm: buisnessContractFormReducer,
-  agencies: agencyReducer
+  agencies: agencyReducer,
+  profileForm: profileReducer
 
 })
 

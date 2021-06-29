@@ -4,7 +4,6 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
-import BusinessIcon from "@material-ui/icons/Business";
 import ProfileGeneralInfo from "./ProfileGeneralInfo";
 import { Container } from "@material-ui/core";
 import UpdateProfileInfo from "./UpdateProfileInfo";
@@ -52,7 +51,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const BusinessContractsPage = () => {
+const ProfileSettingsPage = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   
@@ -106,4 +105,4 @@ const BusinessContractsPage = () => {
     </Container>
   );
 };
-export default BusinessContractsPage;
+export default ProfileSettingsPage;

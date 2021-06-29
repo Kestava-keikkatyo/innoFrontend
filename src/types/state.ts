@@ -528,3 +528,63 @@ export type BusinessContractFormActionTypes =
 export type BusinssContractListActionTypes =
   | FetchBusinessContractListAction
   | AddToBusinessContractList
+
+  //Edit profile
+  
+  //export const CLEAR_CURRENT_BUSINESS_CONTRACT_FORM = "CLEAR_CURRENT_BUSINESS_CONTRACT_FORM"
+  
+  export const CHANGE_PROFILE_PIC = "CHANGE_PROFILE_PIC"
+  export const CHANGE_COVER_IMAGE = "CHANGE_COVER_IMAGE"
+  export const CHANGE_CONTACT_INFORMATION = "CHANGE_CONTACT_INFORMATION"
+  export const CHANGE_VIDEO = "CHANGE_VIDEO"
+  export const CHANGE_INSTRUCTION = "CHANGE_INSTRUCTION"
+  export const UPDATE_CURRENT_PROFILE = "UPDATE_CURRENT_PROFILE"
+  export const POST_PROFILE = "POST_PROFILE"
+  
+  interface ChangeProfilePictureAction {
+    type: typeof CHANGE_PROFILE_PIC
+    data: any
+  }
+
+  interface ChangeCoverImageAction {
+    type: typeof CHANGE_COVER_IMAGE
+    data: any
+  }
+
+  interface ChangeContactInformationAction {
+    type: typeof CHANGE_CONTACT_INFORMATION
+    data: any
+  }
+
+  interface ChangeVideoAction {
+    type: typeof CHANGE_VIDEO
+    data: any
+  }
+
+  interface ChangeInstructionAction {
+    type: typeof CHANGE_INSTRUCTION
+    data: any
+  }
+
+  interface UpdateCurrentProfile {
+    type: typeof SET_CURRENT_FORM
+    data: any
+  }
+
+  interface PostProfile {
+    type: typeof POST_PROFILE
+    data: any
+  }
+  
+
+
+  export type EditProfileActionTypes = 
+  | ChangeProfilePictureAction
+  | ChangeContactInformationAction
+  | ChangeCoverImageAction
+  | ChangeVideoAction
+  | ChangeInstructionAction
+  | UpdateCurrentProfile
+  | PostProfile
+ 
+  

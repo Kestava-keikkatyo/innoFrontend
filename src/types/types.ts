@@ -157,3 +157,12 @@ export interface BusinessContractForm {
   questions: Array<Question>
   filled: boolean
 }
+
+export interface editProfile {
+  cover: Object
+  profilePicture: Object
+  userInformation: string
+  contactInformation: string
+  video: string
+  instructions: string
+}

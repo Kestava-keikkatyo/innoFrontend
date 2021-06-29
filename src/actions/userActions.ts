@@ -3,6 +3,7 @@
  * @desc Redux user actions
  */
 import userService from '../services/userService'
+import profileService from '../services/profileService'
 import contractsService from '../services/contractsService'
 import { saveUser, logoutUser } from '../utils/storage'
 import history from '../utils/history'
@@ -64,7 +65,17 @@ export const signup = (user: SignUpUser, role: roles) => {
         data
       })
       saveUser(data)
-
+      const profile = {
+        cover: {},
+        profilePicture: {},
+        userInformation: "user information",
+        contactInformation: "contact information",
+        video: "link",
+        instructions: "instructions",
+      }
+      const profileResponse = await profileService.makeProfile(profile)
+      console.log("profile res ", profileResponse)
+      const profileId = profileResponse.profile._id
       // if the signed up user is an agency, create a business contract for it
       if(data.role === 'agency'){
         try{

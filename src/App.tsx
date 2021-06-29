@@ -40,6 +40,9 @@ import WorkerContractPage from "./pages/WorkersPage";
 import ContractFormManagerPage from './pages/ContractsPage/ContractFormManagerPage'
 import ContractFormPreviewPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormPreviewPage'
 import ContractFormEditPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormEditPage'
+import EditProfilePage from "./pages/ProfilePage/EditProfilePage";
+
+
 
 
 
@@ -93,6 +96,9 @@ const App: React.FC = () => {
         </PrivateRoute>
         <PrivateRoute path="/profile">
           <ProfilePage />
+        </PrivateRoute>
+        <PrivateRoute path="/profile-edit">
+          <EditProfilePage />
         </PrivateRoute>
         <PrivateRoute path="/tasks">
           <TasksPage />
