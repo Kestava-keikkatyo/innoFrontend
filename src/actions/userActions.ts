@@ -65,17 +65,7 @@ export const signup = (user: SignUpUser, role: roles) => {
         data
       })
       saveUser(data)
-      const profile = {
-        cover: {},
-        profilePicture: {},
-        userInformation: "user information",
-        contactInformation: "contact information",
-        video: "link",
-        instructions: "instructions",
-      }
-      const profileResponse = await profileService.makeProfile(profile)
-      console.log("profile res ", profileResponse)
-      const profileId = profileResponse.profile._id
+
       // if the signed up user is an agency, create a business contract for it
       if(data.role === 'agency'){
         try{
@@ -87,8 +77,19 @@ export const signup = (user: SignUpUser, role: roles) => {
 
         }
 
-
       }
+      const profile = {
+        cover: {},
+        profilePicture: {},
+        userInformation: "user information",
+        contactInformation: "contact information",
+        video: "link",
+        instructions: "instructions",
+      }
+      const profileResponse = await profileService.createProfile(profile)
+      console.log("profile res ", profileResponse)
+
+
       history.push('/home')
       dispatch(setAlert('signup successful', severity.Success))
     } catch (error) {
