@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../utils/store";
 import { makeProfile } from "../../actions/editProfileActions";
 import { useState } from "react";
-
+import FileUploader from "../../components/FileUploader";
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -31,19 +31,24 @@ const useStyles = makeStyles((theme) => ({
   contactButton: {
     marginLeft: "1%",
   },
-  pictureEdit: {
+  picture: {
     display: "flex",
     alignContent: "center",
+    color: "f50057"
   },
   information: {
     display: "flex",
     alignItems: "row",
   },
   cover: {
-    marginLeft: "30%",
+    textAlign: "center",
+    marginRight: "22%"
   },
+  root: {
+    color: "#f50057",
+    textAlign: "center",
+  }
 }));
-
 
 const EditProfilePage: React.FC = () => {
   const currentProfile: any = useSelector(
@@ -61,7 +66,7 @@ const EditProfilePage: React.FC = () => {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
-
+  /*
   const changePicture = () => {
     alert("Tästä vaihdetaan profiilikuva");
   };
@@ -69,6 +74,7 @@ const EditProfilePage: React.FC = () => {
   const changeCover = () => {
     alert("Tästä vaihdetaan taustalla oleva kuva");
   };
+  */
 
   const returnToProfile = () => {
     history.push("/instruction");
@@ -82,7 +88,7 @@ const EditProfilePage: React.FC = () => {
     <Container className="relative">
       <div>
         <Button
-          className={classes.pictureEdit}
+          className={classes.picture}
           onClick={returnToProfile}
           color="secondary"
         >
@@ -97,22 +103,21 @@ const EditProfilePage: React.FC = () => {
             <Avatar style={{ margin: "auto" }} className={classes.avatar}>
               JB
             </Avatar>
-            <Button
-              className={classes.pictureEdit}
-              onClick={changePicture}
-              color="secondary"
-            >
-              Change profile picture
-            </Button>
+            <FileUploader handleFile={() => ""}>
+              <span
+              className={classes.root}
+              >Upload profile picture</span>
+            </FileUploader>
           </Grid>
           <Grid item xs={12} md={10}>
-            <Button
-              className={classes.cover}
-              color="secondary"
-              onClick={changeCover}
-            >
-              Change cover image
-            </Button>
+          <div className={classes.cover}>
+          <FileUploader 
+          handleFile={() => ""}>
+              <span
+              className={classes.root}
+              >Upload cover</span>
+            </FileUploader>
+            </div>
             <Typography variant="h4">User information</Typography>
 
             <TextField
@@ -121,9 +126,11 @@ const EditProfilePage: React.FC = () => {
               style={{ margin: 8 }}
               placeholder="Tell general about yourself"
               fullWidth
-              margin="normal"              
+              margin="normal"
               value={data.userInformation}
-              onChange={(e) => setData({ ...data, userInformation: e.target.value })}
+              onChange={(e) =>
+                setData({ ...data, userInformation: e.target.value })
+              }
               InputLabelProps={{
                 shrink: true,
               }}
@@ -142,7 +149,9 @@ const EditProfilePage: React.FC = () => {
           fullWidth
           margin="normal"
           value={data.contactInformation}
-          onChange={(e) => setData({ ...data, contactInformation: e.target.value })}
+          onChange={(e) =>
+            setData({ ...data, contactInformation: e.target.value })
+          }
           InputLabelProps={{
             shrink: true,
           }}
