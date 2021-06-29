@@ -6,44 +6,42 @@ import {
   makeStyles,
   Typography,
   TextField,
-} from "@material-ui/core";
-import React from "react";
-import Spacing from "../../components/Spacing";
-import banner from "../../assets/form-banner.jpg";
-import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { IRootState } from "../../utils/store";
-import { makeProfile } from "../../actions/editProfileActions";
-import { useState } from "react";
-
+} from '@material-ui/core';
+import React from 'react';
+import Spacing from '../../components/Spacing';
+import banner from '../../assets/form-banner.jpg';
+import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { IRootState } from '../../utils/store';
+import { createProfile } from '../../actions/editProfileActions';
+import { useState } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
-    color: theme.palette.getContrastText("#eb5a00"),
-    backgroundColor: "#eb5a00",
+    color: theme.palette.getContrastText('#eb5a00'),
+    backgroundColor: '#eb5a00',
     width: theme.spacing(20),
     height: theme.spacing(20),
   },
   contact: {
-    display: "flex",
-    flexDirection: "row",
+    display: 'flex',
+    flexDirection: 'row',
   },
   contactButton: {
-    marginLeft: "1%",
+    marginLeft: '1%',
   },
   pictureEdit: {
-    display: "flex",
-    alignContent: "center",
+    display: 'flex',
+    alignContent: 'center',
   },
   information: {
-    display: "flex",
-    alignItems: "row",
+    display: 'flex',
+    alignItems: 'row',
   },
   cover: {
-    marginLeft: "30%",
+    marginLeft: '30%',
   },
 }));
-
 
 const EditProfilePage: React.FC = () => {
   const currentProfile: any = useSelector(
@@ -52,10 +50,10 @@ const EditProfilePage: React.FC = () => {
   const [data, setData] = useState({
     cover: {},
     profilePicture: {},
-    userInformation: "",
-    contactInformation: "",
-    video: "",
-    instructions: "",
+    userInformation: '',
+    contactInformation: '',
+    video: '',
+    instructions: '',
   });
 
   const classes = useStyles();
@@ -63,19 +61,19 @@ const EditProfilePage: React.FC = () => {
   const dispatch = useDispatch();
 
   const changePicture = () => {
-    alert("Tästä vaihdetaan profiilikuva");
+    alert('Tästä vaihdetaan profiilikuva');
   };
 
   const changeCover = () => {
-    alert("Tästä vaihdetaan taustalla oleva kuva");
+    alert('Tästä vaihdetaan taustalla oleva kuva');
   };
 
   const returnToProfile = () => {
-    history.push("/instruction");
+    history.push('/instruction');
   };
 
   const postProfile = () => {
-    dispatch(makeProfile(currentProfile._id, currentProfile));
+    dispatch(createProfile(currentProfile));
   };
 
   return (
@@ -94,7 +92,7 @@ const EditProfilePage: React.FC = () => {
 
         <Grid container direction="row" justify="center" alignItems="flex-end">
           <Grid item xs={12} md={2} style={{ marginTop: -100 }}>
-            <Avatar style={{ margin: "auto" }} className={classes.avatar}>
+            <Avatar style={{ margin: 'auto' }} className={classes.avatar}>
               JB
             </Avatar>
             <Button
@@ -121,9 +119,11 @@ const EditProfilePage: React.FC = () => {
               style={{ margin: 8 }}
               placeholder="Tell general about yourself"
               fullWidth
-              margin="normal"              
+              margin="normal"
               value={data.userInformation}
-              onChange={(e) => setData({ ...data, userInformation: e.target.value })}
+              onChange={(e) =>
+                setData({ ...data, userInformation: e.target.value })
+              }
               InputLabelProps={{
                 shrink: true,
               }}
@@ -142,7 +142,9 @@ const EditProfilePage: React.FC = () => {
           fullWidth
           margin="normal"
           value={data.contactInformation}
-          onChange={(e) => setData({ ...data, contactInformation: e.target.value })}
+          onChange={(e) =>
+            setData({ ...data, contactInformation: e.target.value })
+          }
           InputLabelProps={{
             shrink: true,
           }}
@@ -174,9 +176,9 @@ const EditProfilePage: React.FC = () => {
           <TextField
             name="instructions"
             style={{
-              width: "75%",
-              margin: "0.5% 0 2% 0",
-              border: "1px solid grey",
+              width: '75%',
+              margin: '0.5% 0 2% 0',
+              border: '1px solid grey',
             }}
             id="standard-multiline-static"
             multiline
@@ -188,7 +190,7 @@ const EditProfilePage: React.FC = () => {
           <Button
             type="submit"
             color="secondary"
-            style={{ height: "2%", justifyContent: "center", marginTop: "8%" }}
+            style={{ height: '2%', justifyContent: 'center', marginTop: '8%' }}
             onClick={postProfile}
           >
             Save changes and return

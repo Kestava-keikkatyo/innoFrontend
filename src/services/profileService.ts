@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { loadUser } from '../utils/storage'
 
-const baseUrl = 'http://localhost:3001/api/profilePage'
+const baseUrl = 'http://localhost:3001/api/profile'
 
 const authHeader = () => {
     return {
@@ -11,12 +11,12 @@ const authHeader = () => {
 
 const updateProfile = async (profile: Object, id: any) => {
     const res = await axios.put(`${baseUrl}`, profile)
-    return res.data   
+    return res.data
 }
 
-const makeProfile = async (profile: Object) => {
-  const res = await axios.post(baseUrl, profile, authHeader())
-  return res.data   
+const createProfile = async (profile: Object) => {
+  const res = await axios.post(`${baseUrl}`, profile, authHeader())
+  return res.data
 }
 
 const getProfile = async (profile: Object) => {
@@ -41,5 +41,5 @@ export default {
     updateProfile,
     fetchProfileById,
     getProfile,
-    makeProfile,
+    createProfile,
 }

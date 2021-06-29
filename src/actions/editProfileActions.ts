@@ -53,11 +53,11 @@ export const updateProfile = (profile: Object, profileId: any) => async (dispatc
   }
 };
 
-export const makeProfile = (profile: Object, profileId: any) => async (dispatch: any) => {
+export const createProfile = (profile: Object) => async (dispatch: any) => {
   try {
-    const response = await profileService.makeProfile(profile);
+    const response = await profileService.createProfile(profile);
     return response
-    
+
   } catch (error) {
     console.log(error);
   }
