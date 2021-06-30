@@ -1,3 +1,4 @@
+
 import { EditProfileActionTypes } from "../types/state";
 import { editProfile } from "../types/types";
 /*
@@ -13,6 +14,7 @@ import {
   CHANGE_COVER_IMAGE,
   CHANGE_CONTACT_INFORMATION,
   CHANGE_VIDEO,
+  SET_CURRENT_PROFILE,
   CHANGE_INSTRUCTION,
 } from "../types/state";
 
@@ -30,6 +32,9 @@ const profileReducer = (
   action: EditProfileActionTypes
 ) => {
   switch (action.type) {
+    case SET_CURRENT_PROFILE:
+      return action.data
+
     case CHANGE_PROFILE_PIC:
       return {
         ...state,

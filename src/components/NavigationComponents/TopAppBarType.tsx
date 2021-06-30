@@ -1,15 +1,30 @@
-import { AppBar, Box, Divider, IconButton, List, ListItem, ListItemSecondaryAction, ListItemText, makeStyles, Menu, MenuItem, Popover, Toolbar, Typography } from '@material-ui/core'
+import {
+  AppBar,
+  Box,
+  Divider,
+  IconButton,
+  List,
+  ListItem,
+  ListItemSecondaryAction,
+  ListItemText,
+  makeStyles,
+  Menu,
+  MenuItem,
+  Popover,
+  Toolbar,
+  Typography,
+} from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
 import CheckIcon from '@material-ui/icons/Check';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MenuIcon from '@material-ui/icons/Menu';
 import clsx from 'clsx';
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import navConstants from '../../constants/navConstants';
 import { TopAppBarProps } from '../../types/props';
 import { IRootState } from '../../utils/store';
-import ActiveLastBreadcrumb from '../ActiveLastBreadcrumb';
+//import ActiveLastBreadcrumb from '../ActiveLastBreadcrumb';
 import { useHistory } from 'react-router-dom';
 import { fetchNotifications } from '../../actions/notificationsActions';
 
@@ -62,48 +77,51 @@ const drawerWidth = navConstants.DRAWER_WIDTH;
  */
 const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
   const classes = useStyles();
-  const { data } = useSelector((state: IRootState) => state.user)
-  const { notifications } = useSelector((state: IRootState) => state.notifications)
-  const dispatch = useDispatch()
+  const { data } = useSelector((state: IRootState) => state.user);
+  const { notifications } = useSelector(
+    (state: IRootState) => state.notifications
+  );
+  const dispatch = useDispatch();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open1 = Boolean(anchorEl);
 
   useEffect(() => {
-    dispatch(fetchNotifications())
+    dispatch(fetchNotifications());
     setInterval(() => {
-      dispatch(fetchNotifications())
-    }, 30000)
-  }, [])
+      dispatch(fetchNotifications());
+    }, 30000);
+  }, [dispatch]);
 
   const handleMenu = (event: any) => {
     setAnchorEl(event.currentTarget);
-  }
+  };
 
   const handleClose = () => {
-    setAnchorEl(null)
-  }
+    setAnchorEl(null);
+  };
 
-  const [anchorElNotifications, setAnchorElNotifications] = React.useState(null)
-  const open2 = Boolean(anchorElNotifications)
+  const [anchorElNotifications, setAnchorElNotifications] =
+    React.useState(null);
+  const open2 = Boolean(anchorElNotifications);
 
   const handleNotifications = (event: any) => {
-    setAnchorElNotifications(event.currentTarget)
-  }
+    setAnchorElNotifications(event.currentTarget);
+  };
 
   const handleCloseNotifications = () => {
-    setAnchorElNotifications(null)
-  }
+    setAnchorElNotifications(null);
+  };
 
-  const history = useHistory()
+  const history = useHistory();
 
   const handleClickProfile = () => {
-    history.push('/instruction')
-  }
+    history.push('/instruction');
+  };
 
   const handleClickProfileSettings = () => {
-    history.push('/profile-edit')
-  }
+    history.push('/profile-edit');
+  };
 
   return (
     <AppBar
@@ -111,9 +129,10 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
       elevation={0}
       className={clsx(classes.appBar, {
         [classes.appBarShift]: open,
-      })} >
+      })}
+    >
       <Toolbar className="toolbar" variant="dense">
-        <ActiveLastBreadcrumb />
+        {/*<ActiveLastBreadcrumb />*/}
         <IconButton
           color="inherit"
           aria-label="open drawer"
@@ -134,7 +153,8 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
             aria-controls="menu-appbar"
             aria-haspopup="true"
             color="primary"
-            onClick={handleNotifications}>
+            onClick={handleNotifications}
+          >
             <NotificationsIcon />
           </IconButton>
           <Popover
@@ -152,30 +172,33 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
             }}
           >
             <Box>
-              <Typography className={classes.notificationsHeader}>Notifications:</Typography>
+              <Typography className={classes.notificationsHeader}>
+                Notifications:
+              </Typography>
               <Divider />
-              {notifications.message ? notifications.message.map((message: any) => {
+              {notifications.message ? (
+                notifications.message.map((message: any) => {
                   if (!message.is_read) {
                     return (
                       <>
-                      <List>
-                        <ListItem>
-                          <ListItemText
-                            primary={message.text}
-                          />
-                          <ListItemSecondaryAction>
-                            <IconButton edge="end" aria-label="check">
-                              <CheckIcon />
-                            </IconButton>
-                          </ListItemSecondaryAction>
-                        </ListItem>
-                      </List>
-                      <Divider/>
+                        <List>
+                          <ListItem>
+                            <ListItemText primary={message.text} />
+                            <ListItemSecondaryAction>
+                              <IconButton edge="end" aria-label="check">
+                                <CheckIcon />
+                              </IconButton>
+                            </ListItemSecondaryAction>
+                          </ListItem>
+                        </List>
+                        <Divider />
                       </>
-                    )
+                    );
                   }
-                }) : <></>
-              }
+                })
+              ) : (
+                <></>
+              )}
             </Box>
           </Popover>
           <IconButton
@@ -208,8 +231,8 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
         </div>
       </Toolbar>
     </AppBar>
-  )
-}
+  );
+};
 
 const useStyles = makeStyles((theme) => ({
   // appBar: {
@@ -263,12 +286,12 @@ const useStyles = makeStyles((theme) => ({
     color: 'black',
     marginTop: '1%',
     [theme.breakpoints.down('xs')]: {
-      marginTop: '5%'
-    }
+      marginTop: '5%',
+    },
   },
   notificationsHeader: {
-    textAlign: 'center'
-  }
-}))
+    textAlign: 'center',
+  },
+}));
 
 export default TopAppBar;

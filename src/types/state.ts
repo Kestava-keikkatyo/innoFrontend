@@ -530,17 +530,23 @@ export type BusinssContractListActionTypes =
   | AddToBusinessContractList
 
   //Edit profile
-  
+
   //export const CLEAR_CURRENT_BUSINESS_CONTRACT_FORM = "CLEAR_CURRENT_BUSINESS_CONTRACT_FORM"
-  
+
   export const CHANGE_PROFILE_PIC = "CHANGE_PROFILE_PIC"
   export const CHANGE_COVER_IMAGE = "CHANGE_COVER_IMAGE"
   export const CHANGE_CONTACT_INFORMATION = "CHANGE_CONTACT_INFORMATION"
   export const CHANGE_VIDEO = "CHANGE_VIDEO"
   export const CHANGE_INSTRUCTION = "CHANGE_INSTRUCTION"
   export const UPDATE_CURRENT_PROFILE = "UPDATE_CURRENT_PROFILE"
+  export const SET_CURRENT_PROFILE = "SET_CURRENT_PROFILE"
   export const POST_PROFILE = "POST_PROFILE"
-  
+
+  interface SetCurrentProfileAction {
+    type: typeof SET_CURRENT_PROFILE
+    data: any
+  }
+
   interface ChangeProfilePictureAction {
     type: typeof CHANGE_PROFILE_PIC
     data: any
@@ -575,8 +581,8 @@ export type BusinssContractListActionTypes =
     type: typeof POST_PROFILE
     data: any
   }
-  
-  export type EditProfileActionTypes = 
+
+  export type EditProfileActionTypes =
   | ChangeProfilePictureAction
   | ChangeContactInformationAction
   | ChangeCoverImageAction
@@ -584,7 +590,8 @@ export type BusinssContractListActionTypes =
   | ChangeInstructionAction
   | UpdateCurrentProfile
   | PostProfile
- 
+  | SetCurrentProfileAction
+
   export interface NotificationsState {
     notifications: {}
   }

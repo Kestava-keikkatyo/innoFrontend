@@ -3,6 +3,7 @@ import {
   CHANGE_COVER_IMAGE,
   CHANGE_PROFILE_PIC,
   CHANGE_CONTACT_INFORMATION,
+  SET_CURRENT_PROFILE,
   CHANGE_VIDEO,
   CHANGE_INSTRUCTION,
   UPDATE_CURRENT_PROFILE,
@@ -55,8 +56,19 @@ export const updateProfile = (profile: Object, profileId: any) => async (dispatc
 
 export const createProfile = (profile: Object) => async (dispatch: any) => {
   try {
-    const response = await profileService.createProfile(profile);
-    return response
+    const data = await profileService.createProfile(profile);
+    dispatch({type: SET_CURRENT_PROFILE, data : data})
+    console.log("done")
+
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchProfileById = (id: string) => async (dispatch: any) => {
+  try {
+    const data = await profileService.fetchProfileById(id)
+    dispatch({type: SET_CURRENT_PROFILE, data : data})
 
   } catch (error) {
     console.log(error);

@@ -14,7 +14,9 @@ import {
   USER_FAILURE,
   USER_PROFILE,
   USER_REQUEST,
-  SignUpUser } from '../types/state'
+  SignUpUser,
+  SET_CURRENT_PROFILE
+} from '../types/state'
 import { Credentials, roles, severity } from '../types/types'
 
 /**
@@ -36,6 +38,7 @@ export const login = (credentials: Credentials, role: roles, from: string) => {
         data
       })
       saveUser(data)
+      console.log("user login data", data)
       history.push(from)
       dispatch(setAlert('login successful', severity.Success))
     } catch (error) {
@@ -87,6 +90,7 @@ export const signup = (user: SignUpUser, role: roles) => {
         instructions: "instructions",
       }
       const profileResponse = await profileService.createProfile(profile)
+      dispatch({type: SET_CURRENT_PROFILE, data : profileResponse})
       console.log("profile res ", profileResponse)
 
 

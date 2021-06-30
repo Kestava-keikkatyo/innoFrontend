@@ -7,13 +7,16 @@ import {
   Typography,
   TextField,
 } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Spacing from '../../components/Spacing';
 import banner from '../../assets/form-banner.jpg';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../utils/store';
-import { createProfile } from '../../actions/editProfileActions';
+import {
+  createProfile,
+  fetchProfileById,
+} from '../../actions/editProfileActions';
 import { useState } from 'react';
 import FileUploader from '../../components/FileUploader';
 
@@ -32,28 +35,31 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '1%',
   },
   picture: {
-    display: "flex",
-    alignContent: "center",
-    color: "f50057"
+    display: 'flex',
+    alignContent: 'center',
+    color: 'f50057',
   },
   information: {
     display: 'flex',
     alignItems: 'row',
   },
   cover: {
-    textAlign: "center",
-    marginRight: "22%"
+    textAlign: 'center',
+    marginRight: '22%',
   },
   root: {
-    color: "#f50057",
-    textAlign: "center",
-  }
+    color: '#f50057',
+    textAlign: 'center',
+  },
 }));
 
 const EditProfilePage: React.FC = () => {
   const currentProfile: any = useSelector(
     (state: IRootState) => state.profileForm
   );
+
+  const userData: any = useSelector((state: IRootState) => state.user.data);
+
   const [data, setData] = useState({
     cover: {},
     profilePicture: {},
@@ -75,6 +81,10 @@ const EditProfilePage: React.FC = () => {
     alert('Tästä vaihdetaan taustalla oleva kuva');
   };
   */
+
+  useEffect(() => {
+    dispatch(fetchProfileById(userData.profileId));
+  }, [dispatch, userData.profileId]);
 
   const returnToProfile = () => {
     history.push('/instruction');
@@ -103,20 +113,15 @@ const EditProfilePage: React.FC = () => {
             <Avatar style={{ margin: 'auto' }} className={classes.avatar}>
               JB
             </Avatar>
-            <FileUploader handleFile={() => ""}>
-              <span
-              className={classes.root}
-              >Upload profile picture</span>
+            <FileUploader handleFile={() => ''}>
+              <span className={classes.root}>Upload profile picture</span>
             </FileUploader>
           </Grid>
           <Grid item xs={12} md={10}>
-          <div className={classes.cover}>
-          <FileUploader 
-          handleFile={() => ""}>
-              <span
-              className={classes.root}
-              >Upload cover</span>
-            </FileUploader>
+            <div className={classes.cover}>
+              <FileUploader handleFile={() => ''}>
+                <span className={classes.root}>Upload cover</span>
+              </FileUploader>
             </div>
             <Typography variant="h4">User information</Typography>
 
