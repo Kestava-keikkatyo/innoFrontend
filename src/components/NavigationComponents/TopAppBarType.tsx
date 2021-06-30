@@ -116,7 +116,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
   const history = useHistory();
 
   const handleClickProfile = () => {
-    history.push('/instruction');
+    history.push('/profile');
   };
 
   const handleClickProfileSettings = () => {

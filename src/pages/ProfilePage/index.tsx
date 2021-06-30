@@ -26,9 +26,7 @@ const InductionPage: React.FC<InductionPageProps> = () => {
   const classes = useStyles();
   const history = useHistory();
 
-  const editProfile = () => {
-    history.push("/profile-edit");
-  };
+  
 
   return <></>;
 };

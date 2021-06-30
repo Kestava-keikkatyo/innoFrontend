@@ -91,7 +91,7 @@ const App: React.FC = () => {
         <DatabankRoute path="/databank">
           <Databank />
         </DatabankRoute>
-        <PrivateRoute path="/instruction">
+        <PrivateRoute path="/profile">
           <InductionPage />
         </PrivateRoute>
         <PrivateRoute path="/profile">
