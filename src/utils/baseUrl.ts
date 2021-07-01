@@ -1,7 +1,7 @@
 
-let baseurl = 'http://localhost:3001';
+let baseUrl = 'http://localhost:3001/api';
 
 if(process.env.NODE_ENV === 'production'){
-  baseurl = 'http://';
+  baseUrl = 'http://';
 }
- export default baseurl;
+ export default baseUrl;
