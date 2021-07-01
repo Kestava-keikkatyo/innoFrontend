@@ -7,7 +7,7 @@
  import {File} from '../types/types'
  import { loadUser } from '../utils/storage'
 
- const baseUrl = 'http://localhost:3001/api/uploads'
+ import baseUrl from '../utils/baseUrl'
 
 
  /**
@@ -63,7 +63,7 @@
       typePartTwo: typePartTwo
     }
 
-    await axios.post(baseUrl, newFile, authHeader()).then(response => {
+    await axios.post(`${baseUrl}/uploads`, newFile, authHeader()).then(response => {
       let returnData = response.data.data.returnData
       let signedReguest = returnData.signedRequest
       //let url = returnData.url

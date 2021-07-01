@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { loadUser } from '../utils/storage'
 
-const baseUrl = 'http://localhost:3001/api'
+import baseUrl from '../utils/baseUrl'
 
 
 const authHeader = () => {
@@ -24,4 +24,4 @@ const searchAgencies = async (input: string) => {
 
   export default {
        searchAgencies
-  } 
+  }

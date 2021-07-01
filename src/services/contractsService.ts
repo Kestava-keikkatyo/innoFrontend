@@ -6,7 +6,7 @@ import axios from 'axios'
 import { businessContractType } from '../types/types'
 import { loadUser } from '../utils/storage'
 
-const baseUrl = 'http://localhost:3001/api'
+import baseUrl from '../utils/baseUrl'
 
 /**
  * @function
@@ -216,7 +216,7 @@ const updateBusinessContractsForm = async (contractId:string,form:string) => {
  * Used when Agency is not satisfied with Contract that Worker/Business sended to Agency.
  * With this function contract is sended back to Worker/Business.
  * @param contractId BusinessContractId
- * @param userId Worker/Business ID 
+ * @param userId Worker/Business ID
  * @param form Form ID
  */
 const sendBackBusinessContract = async (contractId:string, userId:string, form:string) => {

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { loadUser } from '../utils/storage'
+import baseUrl from '../utils/baseUrl'
 
-const baseUrl = 'http://localhost:3001/api/profile'
 
 const authHeader = () => {
     return {
@@ -16,18 +16,18 @@ const updateProfile = async (profile: Object, profileId: any) => {
 }
 
 const createProfile = async (profile: Object) => {
-  const res = await axios.post(`${baseUrl}`, profile, authHeader())
+  const res = await axios.post(`${baseUrl}/profile`, profile, authHeader())
   return res.data
 }
 
 const getProfile = async (profile: Object) => {
-    const res = await axios.get(`${baseUrl}`)
+    const res = await axios.get(`${baseUrl}/profile`)
     return res.data
 }
 
 const fetchProfileById = async (id: string) => {
     try {
-     const res = await axios.get(`${baseUrl}/${id}`, authHeader())
+     const res = await axios.get(`${baseUrl}/profile/${id}`, authHeader())
      return res.data
     } catch (error) {
      console.log(error);
