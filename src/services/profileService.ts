@@ -10,7 +10,7 @@ const authHeader = () => {
   }
 
 const updateProfile = async (profile: Object, profileId: any) => {
-    const res = await axios.put(`${baseUrl}/${profileId}`, profile, authHeader())
+    const res = await axios.put(`${baseUrl}/profile/${profileId}`, profile, authHeader())
     console.log('res##',res)
     return res.data
 }
