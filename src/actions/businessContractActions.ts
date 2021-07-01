@@ -3,6 +3,7 @@
  * @desc Redux businessContract actions
  */
 import contractsService from '../services/contractsService'
+import notificationsService from '../services/notificationsService'
 import { ACTIVATE_B_CONTRACT, ADD_B_CONTRACT, B_DELETE, B_FETCH, B_UPDATE, DECLINE_B_CONTRACT, B_SEND, B_ACCEPT, ADD_B_WB_CONTRACT, SEND_BACK_B_CONTRACT } from '../types/state'
 import { businessContractType } from '../types/types'
 
@@ -51,6 +52,7 @@ export const refuseBusinessContractById = (id: string) => async (dispatch: any) 
  */
 export const addBusinessContract = (contractId:string, userId: string, form?:string) => async (dispatch: any) => {
   const res = await contractsService.addBusinessContract(contractId,userId,form)
+  await notificationsService.updateNotifications(userId,"HP-Yritys lähetti sinulle asiakassopimuspyynnön.")
   if(res && res.status === 200)
     dispatch({type: ADD_B_CONTRACT, data: res.data })
 }
@@ -67,7 +69,13 @@ export const addBusinessContractWorkerBusiness = (contractId:string) => async (d
     dispatch({type: ADD_B_WB_CONTRACT, data: res.data})
     dispatch({ type: B_FETCH, data: r })
 }
-
+/**
+ * @function
+ * @desc Function to send businessContract request from agency back to agency.
+ * Must be worker or business to use this.
+ * @param {string} contractId BusinessContract Id
+ * @param {string} form Forms Id 
+ */
 export const sendBusinessContract = (contractId:string, form?:string) => async (dispatch: any) => {
   const res = await contractsService.sendBusinessContract(contractId,form)
   const r = await contractsService.fetchBusinessContracts()
@@ -75,9 +83,17 @@ export const sendBusinessContract = (contractId:string, form?:string) => async (
     dispatch({type: B_SEND, data: res.data })
     dispatch({ type: B_FETCH, data: r })
 }
-
+/**
+ * @function
+ * @desc Function to accept businessContract that was accepted by Worker or Business.
+ * Must be Agency to use this.
+ * @param {string} contractId BusinessContract Id
+ * @param {string} userId Users Id
+ * @param {string} form Form Id 
+ */
 export const acceptBusinessContract = (contractId:string, userId:string,form?:string) => async (dispatch: any) => {
   const res = await contractsService.acceptBusinessContract(contractId,userId,form)
+  await notificationsService.updateNotifications(userId,"HP-Yritys hyväksyi asiakassopimuksen kanssasi.")
   if(res && res.status === 200)
     dispatch({type: B_ACCEPT, data: res.data})
     //tähän -> fetch kutsu 
@@ -104,6 +120,7 @@ export const activateBusinessContract = (id: string) => async (dispatch: any) =>
  */
 export const declineBusinessContract = (contractId:string, userId:string) => async (dispatch:any) => {
   const res = await contractsService.declineBusinessContract(contractId,userId)
+  await notificationsService.updateNotifications(userId,"HP-Yritys hylkäsi asiakassopimuspyynnön kanssasi.")
   if (res && res.status === 200)
     dispatch({type: DECLINE_B_CONTRACT, data: res.data})
 }
@@ -117,6 +134,7 @@ export const declineBusinessContract = (contractId:string, userId:string) => asy
  */
 export const sendBackBusinessContract = (contractId:string, userId:string, formId:string) => async (dispatch:any) => {
   const res = await contractsService.sendBackBusinessContract(contractId,userId,formId)
+  await notificationsService.updateNotifications(userId,"HP-Yritys lähetti asiakassopimuspyynnön takaisin.")
   if (res && res.status === 200)
     dispatch({type: SEND_BACK_B_CONTRACT , data: res.data})
 }

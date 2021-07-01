@@ -1,21 +1,5 @@
-import {
-  AppBar,
-  Box,
-  Divider,
-  IconButton,
-  List,
-  ListItem,
-  ListItemSecondaryAction,
-  ListItemText,
-  makeStyles,
-  Menu,
-  MenuItem,
-  Popover,
-  Toolbar,
-  Typography,
-} from '@material-ui/core';
+import { AppBar, Badge,  IconButton, makeStyles, Menu, MenuItem, Popover, Toolbar, Typography } from '@material-ui/core'
 import { AccountCircle } from '@material-ui/icons';
-import CheckIcon from '@material-ui/icons/Check';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MenuIcon from '@material-ui/icons/Menu';
 import clsx from 'clsx';
@@ -27,6 +11,7 @@ import { IRootState } from '../../utils/store';
 //import ActiveLastBreadcrumb from '../ActiveLastBreadcrumb';
 import { useHistory } from 'react-router-dom';
 import { fetchNotifications } from '../../actions/notificationsActions';
+import Notifications from './Notifications'
 
 const drawerWidth = navConstants.DRAWER_WIDTH;
 
@@ -148,15 +133,16 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
             {data.name || 'Loading'}
           </Typography>
           {/**<img className={classes.logo} src={profileThumb} alt="logo" />*/}
-          <IconButton
-            aria-label="notifications"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            color="primary"
-            onClick={handleNotifications}
-          >
-            <NotificationsIcon />
-          </IconButton>
+          <Badge badgeContent={notifications.unread_messages ? notifications.unread_messages.length : 0} color="secondary">
+            <IconButton
+              aria-label="notifications"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              color="primary"
+              onClick={handleNotifications}>
+              <NotificationsIcon />
+            </IconButton>
+          </Badge>
           <Popover
             id="menu-appbar"
             open={open2}
@@ -171,35 +157,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
               horizontal: 'center',
             }}
           >
-            <Box>
-              <Typography className={classes.notificationsHeader}>
-                Notifications:
-              </Typography>
-              <Divider />
-              {notifications.message ? (
-                notifications.message.map((message: any) => {
-                  if (!message.is_read) {
-                    return (
-                      <>
-                        <List>
-                          <ListItem>
-                            <ListItemText primary={message.text} />
-                            <ListItemSecondaryAction>
-                              <IconButton edge="end" aria-label="check">
-                                <CheckIcon />
-                              </IconButton>
-                            </ListItemSecondaryAction>
-                          </ListItem>
-                        </List>
-                        <Divider />
-                      </>
-                    );
-                  }
-                })
-              ) : (
-                <></>
-              )}
-            </Box>
+           {notifications.unread_messages ?  <Notifications notifications={notifications.unread_messages} handleCloseNotifications={handleCloseNotifications}/>  : <></>}
           </Popover>
           <IconButton
             aria-label="account of current user"
@@ -286,12 +244,9 @@ const useStyles = makeStyles((theme) => ({
     color: 'black',
     marginTop: '1%',
     [theme.breakpoints.down('xs')]: {
-      marginTop: '5%',
-    },
-  },
-  notificationsHeader: {
-    textAlign: 'center',
-  },
-}));
+      marginTop: '5%'
+    }
+  }
+}))
 
 export default TopAppBar;

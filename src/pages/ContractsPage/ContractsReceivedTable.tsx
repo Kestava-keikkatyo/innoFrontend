@@ -140,7 +140,9 @@ const RCTable = (prop: {
                     onClick={() =>
                       sendBackContract(
                         contractId,
-                        contract.businessId._id,
+                        contract.businessId
+                          ? contract.businessId._id
+                          : contract.workerId._id,
                         contract.formId
                       )
                     }
