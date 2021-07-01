@@ -3,12 +3,9 @@
  * @desc User requests to backend.
  */
  import axios from 'axios'
+ import baseUrl from '../utils/baseUrl'
 
- import { AdminActionTypes} from '../types/state'
 
- 
- const baseUrl = 'http://localhost:3001/api'
- 
  const fetchAllWorkers = async () => {
    try {
      const res = await axios.get(
@@ -19,8 +16,7 @@
      return Promise.reject(error.response)
    }
  }
- 
+
  export default {
    fetchAllWorkers
  }
- 

@@ -4,8 +4,8 @@
  */
 import axios from 'axios'
 import { loadUser } from '../utils/storage'
+import baseUrl from '../utils/baseUrl'
 
-const baseUrl = 'http://localhost:3001/api'
 
 /**
 * @function

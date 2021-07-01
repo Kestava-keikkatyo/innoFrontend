@@ -140,7 +140,7 @@ const ContractsTable = (props: {
                   </AccordionSummary>
                   <AccordionDetails>
                     <ContractsSendTable
-                      contracts={contracts[0].pendingContracts.businesses}
+                      contracts={contracts[0]?.pendingContracts?.businesses}
                       contractId={businessContract[0]._id}
                       declineContract={declineContract}
                     />
@@ -161,7 +161,7 @@ const ContractsTable = (props: {
                   </AccordionSummary>
                   <AccordionDetails>
                     <ContractsSendTable
-                      contracts={contracts[0].pendingContracts.workers}
+                      contracts={contracts[0]?.pendingContracts?.workers}
                       contractId={businessContract[0]._id}
                       declineContract={declineContract}
                     />
@@ -195,7 +195,7 @@ const ContractsTable = (props: {
                   </AccordionSummary>
                   <AccordionDetails>
                     <ContractsReceivedTable
-                      contracts={contracts[0].requestContracts.businesses}
+                      contracts={contracts[0]?.requestContracts?.businesses}
                       contractId={businessContract[0]._id}
                       acceptContract={acceptContract}
                       declineContract={declineContract}
@@ -218,7 +218,7 @@ const ContractsTable = (props: {
                   </AccordionSummary>
                   <AccordionDetails>
                     <ContractsReceivedTable
-                      contracts={contracts[0].requestContracts.workers}
+                      contracts={contracts[0]?.requestContracts?.workers}
                       contractId={businessContract[0]._id}
                       acceptContract={acceptContract}
                       declineContract={declineContract}
@@ -254,7 +254,7 @@ const ContractsTable = (props: {
                   </AccordionSummary>
                   <AccordionDetails>
                     <ContractsSendTable
-                      contracts={contracts[0].madeContracts.businesses}
+                      contracts={contracts[0]?.madeContracts?.businesses}
                       contractId={businessContract[0]._id}
                       declineContract={declineContract}
                     />
@@ -275,7 +275,7 @@ const ContractsTable = (props: {
                   </AccordionSummary>
                   <AccordionDetails>
                     <ContractsSendTable
-                      contracts={contracts[0].madeContracts.workers}
+                      contracts={contracts[0]?.madeContracts?.workers}
                       contractId={businessContract[0]._id}
                       declineContract={declineContract}
                     />

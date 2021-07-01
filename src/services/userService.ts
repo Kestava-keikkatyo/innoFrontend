@@ -7,7 +7,7 @@ import { Credentials, roles } from '../types/types'
 import { User } from '../types/state'
 import { loadUser } from '../utils/storage'
 
-const baseUrl = 'http://localhost:3001/api'
+import baseUrl from '../utils/baseUrl'
 
 /**
  * helper function for setting up request header
