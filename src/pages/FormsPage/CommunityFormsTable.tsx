@@ -149,7 +149,7 @@ const CommunityFormsTable: React.FC<any> = () => {
                     <TableCell align="left">{form.title}</TableCell>
                     <TableCell align="left">{form.description}</TableCell>
 
-                    <TableCell padding="none" align="center">
+                    <TableCell padding="none" style={{ paddingLeft: 16 }}>
                       <IconButton
                         aria-label="add to favorites"
                         onClick={() => handlePreview(form._id)}
@@ -158,7 +158,7 @@ const CommunityFormsTable: React.FC<any> = () => {
                       </IconButton>
                     </TableCell>
 
-                    <TableCell padding="none" align="center">
+                    <TableCell padding="none" style={{ paddingLeft: 24 }}>
                       <IconButton
                         aria-label="share"
                         onClick={() => handleDownload(form._id)}

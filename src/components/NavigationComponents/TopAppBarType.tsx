@@ -13,6 +13,8 @@ import {
   Popover,
   Toolbar,
   Typography,
+  useTheme,
+  useMediaQuery,
 } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
 import CheckIcon from '@material-ui/icons/Check';
@@ -27,6 +29,7 @@ import { IRootState } from '../../utils/store';
 //import ActiveLastBreadcrumb from '../ActiveLastBreadcrumb';
 import { useHistory } from 'react-router-dom';
 import { fetchNotifications } from '../../actions/notificationsActions';
+import ActiveLastBreadcrumb from '../ActiveLastBreadcrumb';
 
 const drawerWidth = navConstants.DRAWER_WIDTH;
 
@@ -83,6 +86,9 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
   );
   const dispatch = useDispatch();
 
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down('sm'));
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open1 = Boolean(anchorEl);
 
@@ -132,7 +138,6 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
       })}
     >
       <Toolbar className="toolbar" variant="dense">
-        {/*<ActiveLastBreadcrumb />*/}
         <IconButton
           color="inherit"
           aria-label="open drawer"
@@ -142,6 +147,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
         >
           <MenuIcon />
         </IconButton>
+        {matches ? null : <ActiveLastBreadcrumb />}
         {/**Here comes the rest appbar stuff */}
         <div className="app-bar-container">
           <Typography className={classes.text}>
