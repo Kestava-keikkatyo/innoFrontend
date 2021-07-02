@@ -1,32 +1,31 @@
 import {
   Avatar,
-  Button,
   Container,
   Grid,
   makeStyles,
   Typography,
-} from "@material-ui/core";
-import React from "react";
-import Spacing from "../../components/Spacing";
-import banner from "../../assets/form-banner.jpg";
+} from '@material-ui/core';
+import React from 'react';
+import Spacing from '../../components/Spacing';
+import banner from '../../assets/form-banner.jpg';
 import { useDispatch, useSelector } from 'react-redux';
-import { IRootState } from "../../utils/store";
-import { fetchProfileById } from "../../actions/editProfileActions";
+import { IRootState } from '../../utils/store';
+import { fetchProfileById } from '../../actions/editProfileActions';
 export interface ProfilePageProps {}
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
-    color: theme.palette.getContrastText("#eb5a00"),
-    backgroundColor: "#eb5a00",
+    color: theme.palette.getContrastText('#eb5a00'),
+    backgroundColor: '#eb5a00',
     width: theme.spacing(20),
     height: theme.spacing(20),
   },
   contact: {
-    display: "flex",
-    flexDirection: "row",
+    display: 'flex',
+    flexDirection: 'row',
   },
   contactButton: {
-    marginLeft: "1%",
+    marginLeft: '1%',
   },
 }));
 
@@ -38,13 +37,9 @@ const Profile: React.FC<ProfilePageProps> = () => {
     (state: IRootState) => state.profileForm
   );
 
-
-
-    const profileInfo = (id:any) => {
-      dispatch(fetchProfileById(userData.profileId))
-     
-    }
-    
+  const profileInfo = (id: any) => {
+    dispatch(fetchProfileById(userData.profileId));
+  };
 
   return (
     <Container className="relative">
@@ -52,7 +47,7 @@ const Profile: React.FC<ProfilePageProps> = () => {
       <Grid container direction="row" justify="center" alignItems="flex-end">
         <Grid item xs={12} md={2} style={{ marginTop: -100 }}>
           <Avatar
-            style={{ margin: "auto" }}
+            style={{ margin: 'auto' }}
             className={classes.avatar}
             aria-label="recipe"
           >
@@ -76,7 +71,6 @@ const Profile: React.FC<ProfilePageProps> = () => {
       <Spacing m5 />
       <div className={classes.contact}>
         <Typography variant="h4"> information</Typography>
-
       </div>
 
       <iframe
@@ -90,12 +84,9 @@ const Profile: React.FC<ProfilePageProps> = () => {
       ></iframe>
       <h1>{profileInfo}</h1>
       <Typography variant="h4">Instructions</Typography>
-      <Typography>
-        {currentProfile.instructions}
-      </Typography>
+      <Typography>{currentProfile.instructions}</Typography>
     </Container>
   );
 };
 
 export default Profile;
-

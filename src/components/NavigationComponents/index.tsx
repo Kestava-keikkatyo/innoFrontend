@@ -1,50 +1,49 @@
-import React, { ReactNode, useState } from 'react'
-import PropTypes from 'prop-types'
-import Drawer from '@material-ui/core/Drawer'
-import Hidden from '@material-ui/core/Hidden'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import TopAppBar from './TopAppBarType'
-import ResponsiveDrawer from './ResponsiveDrawer'
-import navConstants from '../../constants/navConstants'
-import clsx from 'clsx'
-import { useEffect } from 'react'
+import React, { ReactNode } from 'react';
+import PropTypes from 'prop-types';
+import Drawer from '@material-ui/core/Drawer';
+import Hidden from '@material-ui/core/Hidden';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import TopAppBar from './TopAppBarType';
+import ResponsiveDrawer from './ResponsiveDrawer';
+import navConstants from '../../constants/navConstants';
+import clsx from 'clsx';
 
 // const drawerWidth = navConstants.DRAWER_WIDTH
 
 /**
  * @component
- * @desc Parent component of Navigation. Includes Drawer 
+ * @desc Parent component of Navigation. Includes Drawer
  * and navigation bar on top of the app.
  * @param props
  * @param {any} props.windowProp
  * @param {ReactNode} props.children A page component.
  */
-const AppNavigation = (props: { windowProp: any, children: ReactNode }) => {
-  const { windowProp, children } = props
-  const classes = useStyles()
-  const theme = useTheme()
-  const [mobileOpen, setMobileOpen] = React.useState(false)
-  const [open, setOpen] = React.useState(false)
-
+const AppNavigation = (props: { windowProp: any; children: ReactNode }) => {
+  const { windowProp, children } = props;
+  const classes = useStyles();
+  const theme = useTheme();
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
 
   const handleDrawer = () => {
-    console.log(window.innerWidth)
+    console.log(window.innerWidth);
     if (window.innerWidth <= 1216) {
-      setMobileOpen(!mobileOpen)
+      setMobileOpen(!mobileOpen);
     } else {
-      setOpen(!open)
+      setOpen(!open);
     }
-  }
-  
+  };
+
   /**
-   * An event function. 
+   * An event function.
    * Handles the drawer toggling on small screen size.
    */
   const handleDrawerMobile = () => {
-    setMobileOpen(!mobileOpen)
-  }
+    setMobileOpen(!mobileOpen);
+  };
 
-  const container = windowProp !== undefined ? () => windowProp().document.body : undefined
+  const container =
+    windowProp !== undefined ? () => windowProp().document.body : undefined;
 
   return (
     <div className={classes.root}>
@@ -94,8 +93,8 @@ const AppNavigation = (props: { windowProp: any, children: ReactNode }) => {
         {children}
       </div>
     </div>
-  )
-}
+  );
+};
 
 AppNavigation.propTypes = {
   windowProp: PropTypes.func,
@@ -120,10 +119,10 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     paddingRight: 0,
-    marginLeft: "0%",
+    marginLeft: '0%',
     [theme.breakpoints.down('md')]: {
-      marginLeft:"auto"
-    }
+      marginLeft: 'auto',
+    },
   },
   drawerOpen: {
     width: navConstants.DRAWER_WIDTH,
@@ -143,6 +142,6 @@ const useStyles = makeStyles((theme) => ({
       width: theme.spacing(9) + 1,
     },
   },
-}))
+}));
 
-export default AppNavigation
+export default AppNavigation;

@@ -7,14 +7,13 @@ import {
   Typography,
   TextField,
 } from '@material-ui/core';
-import React, { useEffect } from 'react';
+import React from 'react';
 import Spacing from '../../components/Spacing';
 import banner from '../../assets/form-banner.jpg';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../utils/store';
 import {
-  createProfile,
   fetchProfileById,
   updateProfile,
 } from '../../actions/editProfileActions';
@@ -55,8 +54,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const EditProfilePage: React.FC = () => {
-  
-
   const userData: any = useSelector((state: IRootState) => state.user.data);
 
   // const [data, setData] = useState({
@@ -68,7 +65,6 @@ const EditProfilePage: React.FC = () => {
   //   instructions: '',
   // });
 
-
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
@@ -76,25 +72,24 @@ const EditProfilePage: React.FC = () => {
   const currentProfile: any = useSelector(
     (state: IRootState) => state.profileForm
   );
-  let [loading, setLoading] = useState(true)
-  const [data, setData] = useState(currentProfile)
+  let [loading, setLoading] = useState(true);
+  const [data, setData] = useState(currentProfile);
   React.useEffect(() => {
-    dispatch(fetchProfileById(userData.profileId))
-    setLoading(false)
-  }, [dispatch, fetchProfileById, userData.profileId, loading])
-
+    dispatch(fetchProfileById(userData.profileId));
+    setLoading(false);
+  }, [dispatch, userData.profileId, loading]);
 
   const returnToProfile = () => {
     history.push('/profile');
   };
   //dispatch(updateForm(currentForm._id, currentForm))
-  const profileEdit = (e:any) => {
-    e.preventDefault()
+  const profileEdit = (e: any) => {
+    e.preventDefault();
     dispatch(updateProfile(data, userData.profileId));
-    history.push('/profile')
+    history.push('/profile');
   };
 
-  console.log("PROFIILI ", currentProfile)
+  console.log('PROFIILI ', currentProfile);
 
   return (
     <Container className="relative">
@@ -134,7 +129,7 @@ const EditProfilePage: React.FC = () => {
               fullWidth
               margin="normal"
               value={data.userInformation}
-              onChange={e =>
+              onChange={(e) =>
                 setData({ ...data, userInformation: e.target.value })
               }
               InputLabelProps={{
@@ -175,7 +170,7 @@ const EditProfilePage: React.FC = () => {
           fullWidth
           margin="normal"
           value={data.video}
-          onChange={e => setData({ ...data, video: e.target.value })}
+          onChange={(e) => setData({ ...data, video: e.target.value })}
           InputLabelProps={{
             shrink: true,
           }}
@@ -196,7 +191,7 @@ const EditProfilePage: React.FC = () => {
             multiline
             rows={10}
             value={data.instructions}
-            onChange={e => setData({ ...data, instructions: e.target.value })}
+            onChange={(e) => setData({ ...data, instructions: e.target.value })}
           />
           <Spacing m5 />
           <Button
@@ -214,7 +209,3 @@ const EditProfilePage: React.FC = () => {
 };
 
 export default EditProfilePage;
-function getUserId() {
-  throw new Error('Function not implemented.');
-}
-

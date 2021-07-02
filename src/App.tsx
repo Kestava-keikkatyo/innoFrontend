@@ -1,53 +1,46 @@
-import React, { useEffect } from "react";
-import { Switch, Route, Redirect, useLocation } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
 
-import SnackbarNotification from "./components/SnackbarNotification";
-import LandingPage from "./pages/LandingPage";
-import LoginPage from "./pages/LoginPage";
-import HomePage from "./pages/HomePage";
-import ProfilePage from "./pages/ProfilePage";
-import WorkersPage from "./pages/WorkersPage";
-import ContractsPage from "./pages/ContractsPage";
-import PrivateRoute from "./components/PrivateRoute";
-import ProcessPage from "./pages/ProcessPage";
-import TasksPage from "./pages/TaskPage";
-import DocumentPage from "./pages/DocumentPage";
-import FormsPage from "./pages/FormsPage";
-import WorkerStatistics from "./pages/WorkerStatistics";
-import { CssBaseline } from "@material-ui/core";
-import NewFormPage from "./pages/FormsPage/NewFormPage";
-import EditFormPage from "./pages/FormsPage/EditFormPage";
-import FormPreviewPage from "./pages/FormPreviewPage";
-import { roles } from "./types/types";
-import InductionPage from "./pages/ProfilePage";
-import DatabankRoute from "./components/DatabankRoute";
-import BestPractices from "./pages/Databank/BestPractices";
-import JobLifeline from "./pages/Databank/JobLifeline";
-import RoleResponsibilities from "./pages/Databank/RoleResponsibilities";
-import Databank from "./pages/Databank";
-import ReportPage from "./pages/ReportPage";
-import Admin from "./pages/AdminPage";
-import AdminRoute from "./components/AdminRoute";
-import AdminDatabank from "./pages/AdminPage/AdminDatabank";
-import Users from "./pages/AdminPage/Users";
-import Agency from "./pages/AdminPage/Agency";
-import UserCompany from "./pages/AdminPage/UserCompany";
-import BusinessContractPage from "./pages/BusinessContractsPage";
-import BusinessContractPreviewPage from './pages/BusinessContractPreviewPage'
-import BusinessContractFill from './pages/BusinessContractPreviewPage/BusinessContractFill'
-import BusinessContractEdit from './pages/BusinessContractPreviewPage/BusinessContractEdit'
-import WorkerContractPage from "./pages/WorkersPage";
-import ContractFormManagerPage from './pages/ContractsPage/ContractFormManagerPage'
-import ContractFormPreviewPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormPreviewPage'
-import ContractFormEditPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormEditPage'
-import EditProfilePage from "./pages/ProfilePage/EditProfilePage";
-import Profile from "./pages/ProfilePage";
-
-
-
-
-
-
+import SnackbarNotification from './components/SnackbarNotification';
+import LandingPage from './pages/LandingPage';
+import LoginPage from './pages/LoginPage';
+import HomePage from './pages/HomePage';
+import ProfilePage from './pages/ProfilePage';
+import WorkersPage from './pages/WorkersPage';
+import ContractsPage from './pages/ContractsPage';
+import PrivateRoute from './components/PrivateRoute';
+import ProcessPage from './pages/ProcessPage';
+import TasksPage from './pages/TaskPage';
+import DocumentPage from './pages/DocumentPage';
+import FormsPage from './pages/FormsPage';
+import WorkerStatistics from './pages/WorkerStatistics';
+import { CssBaseline } from '@material-ui/core';
+import NewFormPage from './pages/FormsPage/NewFormPage';
+import EditFormPage from './pages/FormsPage/EditFormPage';
+import FormPreviewPage from './pages/FormPreviewPage';
+import { roles } from './types/types';
+import DatabankRoute from './components/DatabankRoute';
+import BestPractices from './pages/Databank/BestPractices';
+import JobLifeline from './pages/Databank/JobLifeline';
+import RoleResponsibilities from './pages/Databank/RoleResponsibilities';
+import Databank from './pages/Databank';
+import ReportPage from './pages/ReportPage';
+import Admin from './pages/AdminPage';
+import AdminRoute from './components/AdminRoute';
+import AdminDatabank from './pages/AdminPage/AdminDatabank';
+import Users from './pages/AdminPage/Users';
+import Agency from './pages/AdminPage/Agency';
+import UserCompany from './pages/AdminPage/UserCompany';
+import BusinessContractPage from './pages/BusinessContractsPage';
+import BusinessContractPreviewPage from './pages/BusinessContractPreviewPage';
+import BusinessContractFill from './pages/BusinessContractPreviewPage/BusinessContractFill';
+import BusinessContractEdit from './pages/BusinessContractPreviewPage/BusinessContractEdit';
+import WorkerContractPage from './pages/WorkersPage';
+import ContractFormManagerPage from './pages/ContractsPage/ContractFormManagerPage';
+import ContractFormPreviewPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormPreviewPage';
+import ContractFormEditPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormEditPage';
+import EditProfilePage from './pages/ProfilePage/EditProfilePage';
+import Profile from './pages/ProfilePage';
 
 /**
  * @component
@@ -119,13 +112,22 @@ const App: React.FC = () => {
         <PrivateRoute path="/report">
           <ReportPage />
         </PrivateRoute>
-        <PrivateRoute path="/contracts/contract-form-manager/contract-form-preview" roles={[roles.Agency]}>
+        <PrivateRoute
+          path="/contracts/contract-form-manager/contract-form-preview"
+          roles={[roles.Agency]}
+        >
           <ContractFormPreviewPage />
         </PrivateRoute>
-        <PrivateRoute path="/contracts/contract-form-manager/contract-form-edit" roles={[roles.Agency]}>
+        <PrivateRoute
+          path="/contracts/contract-form-manager/contract-form-edit"
+          roles={[roles.Agency]}
+        >
           <ContractFormEditPage />
         </PrivateRoute>
-        <PrivateRoute path="/contracts/contract-form-manager" roles={[roles.Agency]}>
+        <PrivateRoute
+          path="/contracts/contract-form-manager"
+          roles={[roles.Agency]}
+        >
           <ContractFormManagerPage />
         </PrivateRoute>
         <PrivateRoute path="/contracts" roles={[roles.Agency]}>
@@ -176,7 +178,10 @@ const App: React.FC = () => {
         >
           <EditFormPage />
         </PrivateRoute>
-        <PrivateRoute path="/forms/preview" roles={[roles.Business, roles.Agency]}>
+        <PrivateRoute
+          path="/forms/preview"
+          roles={[roles.Business, roles.Agency]}
+        >
           <FormPreviewPage />
         </PrivateRoute>
         <PrivateRoute path="/forms" roles={[roles.Business, roles.Agency]}>

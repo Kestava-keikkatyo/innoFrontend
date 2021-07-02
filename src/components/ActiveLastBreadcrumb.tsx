@@ -6,7 +6,6 @@ import { BreadcrumbLink } from '../types/types';
 import { IRootState } from '../utils/store';
 import { Link } from 'react-router-dom';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 /**
