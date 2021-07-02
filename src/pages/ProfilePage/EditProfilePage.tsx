@@ -76,18 +76,13 @@ const EditProfilePage: React.FC = () => {
   const currentProfile: any = useSelector(
     (state: IRootState) => state.profileForm
   );
-  
+  let [loading, setLoading] = useState(true)
   const [data, setData] = useState(currentProfile)
   React.useEffect(() => {
     dispatch(fetchProfileById(userData.profileId))
-  }, [dispatch, fetchProfileById, userData.profileId])
+    setLoading(false)
+  }, [dispatch, fetchProfileById, userData.profileId, loading])
 
-
-  /*
-  console.log('data ',data)
-  console.log('currentProfile ',currentProfile)
-  console.log('userData ',userData)
-*/
 
   const returnToProfile = () => {
     history.push('/profile');
@@ -95,9 +90,11 @@ const EditProfilePage: React.FC = () => {
   //dispatch(updateForm(currentForm._id, currentForm))
   const profileEdit = (e:any) => {
     e.preventDefault()
-    console.log(userData.profileId)
-    dispatch(updateProfile(data, "60db1f929620754a292aa936"));
+    dispatch(updateProfile(data, userData.profileId));
+    history.push('/profile')
   };
+
+  console.log("PROFIILI ", currentProfile)
 
   return (
     <Container className="relative">
@@ -134,7 +131,6 @@ const EditProfilePage: React.FC = () => {
               id="standard-full-width"
               name="userInformation"
               style={{ margin: 8 }}
-              placeholder="Tell general about yourself"
               fullWidth
               margin="normal"
               value={data.userInformation}
@@ -155,7 +151,6 @@ const EditProfilePage: React.FC = () => {
           id="standard-full-width"
           name="contactInfo"
           style={{ margin: 8 }}
-          placeholder="Write info about contacting yourself"
           fullWidth
           margin="normal"
           value={data.contactInformation}

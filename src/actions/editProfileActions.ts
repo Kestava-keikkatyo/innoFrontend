@@ -34,21 +34,11 @@ export const setProfilePic = (profilepic: Object) => async (dispatch: any) => {
   dispatch({ type: CHANGE_PROFILE_PIC, data: profilepic });
 };
 
-/*
-export const updateProfile = (profile: Object) => async (
-  dispatch: any
-)  =>  {
-  const response = await ProfileService.updateProfile(profile)
-  return response
-} catch (error) {
-  console.log(error);
-}
-*/
 
 export const updateProfile = (profile: Object, profileId: any) => async (dispatch: any) => {
   try {
     const response = await profileService.updateProfile(profile, profileId);
-    const data = await profileService.fetchProfileById(response?.data._id)
+    const data = await profileService.fetchProfileById(response?._id)
     dispatch({type: SET_CURRENT_PROFILE , data})
   } catch (error) {
     console.log(error);

@@ -41,6 +41,7 @@ import ContractFormManagerPage from './pages/ContractsPage/ContractFormManagerPa
 import ContractFormPreviewPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormPreviewPage'
 import ContractFormEditPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormEditPage'
 import EditProfilePage from "./pages/ProfilePage/EditProfilePage";
+import Profile from "./pages/ProfilePage";
 
 
 
@@ -92,7 +93,7 @@ const App: React.FC = () => {
           <Databank />
         </DatabankRoute>
         <PrivateRoute path="/profile">
-          <InductionPage />
+          <Profile />
         </PrivateRoute>
         <PrivateRoute path="/profile">
           <ProfilePage />
