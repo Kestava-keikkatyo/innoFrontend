@@ -8,6 +8,8 @@ import {
   Popover,
   Toolbar,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
 import NotificationsIcon from '@material-ui/icons/Notifications';
@@ -18,7 +20,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import navConstants from '../../constants/navConstants';
 import { TopAppBarProps } from '../../types/props';
 import { IRootState } from '../../utils/store';
-//import ActiveLastBreadcrumb from '../ActiveLastBreadcrumb';
+import ActiveLastBreadcrumb from '../ActiveLastBreadcrumb';
 import { useHistory } from 'react-router-dom';
 import { fetchNotifications } from '../../actions/notificationsActions';
 import Notifications from './Notifications';
