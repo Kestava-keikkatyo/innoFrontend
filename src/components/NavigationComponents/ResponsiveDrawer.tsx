@@ -1,37 +1,37 @@
-import { Button, makeStyles, Menu, MenuItem } from '@material-ui/core'
-import React from 'react'
-import Divider from '@material-ui/core/Divider'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
-import AssignmentIcon from '@material-ui/icons/Assignment'
-import CalendarTodayIcon from '@material-ui/icons/CalendarToday'
-import InsertDriveFile from '@material-ui/icons/InsertDriveFile'
-import MoodIcon from '@material-ui/icons/Mood'
-import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline'
-import ExitToAppIcon from '@material-ui/icons/ExitToApp'
-import { Contacts, Home, PeopleAlt, Security } from '@material-ui/icons'
-import { Link } from 'react-router-dom'
-import { logout } from '../../actions/userActions'
-import { useDispatch, useSelector } from 'react-redux'
-import { roles } from '../../types/types'
-import { IRootState } from '../../utils/store'
-import logo from '../../assets/keikka-kaveri4.png'
-import TranslateIcon from '@material-ui/icons/Translate'
+import { Button, makeStyles, Menu, MenuItem } from '@material-ui/core';
+import React from 'react';
+import Divider from '@material-ui/core/Divider';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import InsertDriveFile from '@material-ui/icons/InsertDriveFile';
+import MoodIcon from '@material-ui/icons/Mood';
+import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { Contacts, Home, PeopleAlt, Security } from '@material-ui/icons';
+import { Link } from 'react-router-dom';
+import { logout } from '../../actions/userActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { roles } from '../../types/types';
+import { IRootState } from '../../utils/store';
+import logo from '../../assets/keikkakaveri_logo.png';
+import TranslateIcon from '@material-ui/icons/Translate';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 const LangMenuDropDown = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null)
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event: any) => {
-    setAnchorEl(event.currentTarget)
-  }
+    setAnchorEl(event.currentTarget);
+  };
 
   const handleClose = () => {
-    setAnchorEl(null)
-  }
+    setAnchorEl(null);
+  };
   return (
     <>
       <div className="drawer-top">
@@ -55,8 +55,8 @@ const LangMenuDropDown = () => {
         <MenuItem onClick={handleClose}>Svenska</MenuItem>
       </Menu>
     </>
-  )
-}
+  );
+};
 
 /**
  * @component
@@ -65,11 +65,11 @@ const LangMenuDropDown = () => {
  * One for mobile view one for web view.
  */
 const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
-  const classes = useStyles()
-  const dispatch = useDispatch()
+  const classes = useStyles();
+  const dispatch = useDispatch();
 
-  const { data } = useSelector((state: IRootState) => state.user)
-  const role = data.role
+  const { data } = useSelector((state: IRootState) => state.user);
+  const role = data.role;
 
   /**
    * Function for opening and closing drawer component.
@@ -181,15 +181,15 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
               <ListItemText primary="Mood" />
             </ListItem>
           )}
-            {role === roles.Worker && (
+          {role === roles.Worker && (
             <ListItem button component={Link} to="/sopimukset">
               <ListItemIcon>
                 <AssignmentTurnedInIcon />
               </ListItemIcon>
               <ListItemText primary="sopimukset" />
-            </ListItem>            
+            </ListItem>
           )}
-            {role === roles.Worker && (
+          {role === roles.Worker && (
             <ListItem button component={Link} to="/business-contracts">
               <ListItemIcon>
                 <LibraryBooksIcon />
@@ -212,8 +212,8 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
         <ListItemText primary="Exit Application" />
       </ListItem>
     </div>
-  )
-}
+  );
+};
 
 const useStyles = makeStyles((theme) => ({
   // necessary for content to be below app bar
@@ -229,10 +229,10 @@ const useStyles = makeStyles((theme) => ({
   nested: {
     paddingLeft: theme.spacing(4),
   },
-}))
+}));
 
 ResponsiveDrawer.defaultProps = {
   isOpen: true,
-}
+};
 
-export default ResponsiveDrawer
+export default ResponsiveDrawer;

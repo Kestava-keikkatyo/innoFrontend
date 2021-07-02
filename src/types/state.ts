@@ -600,6 +600,7 @@ export type BusinssContractListActionTypes =
   export const POST_NOTIFICATIONS = "POST_NOTIFICATIONS"
   export const UPDATE_NOTIFICATIONS = "UPDATE_NOTIFICATIONS"
   export const READ_NOTIFICATIONS = "READ_NOTIFICATIONS"
+  export const CLEAR_ALL_NOTIFICATION = "CLEAR_ALL_NOTIFICATION"
 
   interface FetchNotifications {
     type: typeof FETCH_NOTIFICATIONS
@@ -621,4 +622,9 @@ export type BusinssContractListActionTypes =
     data: any
   }
 
-  export type NotificationsActions = FetchNotifications | PostNotifications | UpdateNotifications | ReadNotifications
+  interface ClearAllNotifications {
+    type: typeof CLEAR_ALL_NOTIFICATION
+    data: any
+  }
+
+  export type NotificationsActions = FetchNotifications | PostNotifications | UpdateNotifications | ReadNotifications | ClearAllNotifications
