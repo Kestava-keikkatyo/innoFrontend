@@ -6,7 +6,8 @@ import {
   SET_CURRENT_PROFILE,
   CHANGE_VIDEO,
   CHANGE_INSTRUCTION,
-  UPDATE_CURRENT_PROFILE,
+
+
 } from "../types/state";
 
 
@@ -48,7 +49,7 @@ export const updateProfile = (profile: Object, profileId: any) => async (dispatc
   try {
     const response = await profileService.updateProfile(profile, profileId);
     const data = await profileService.fetchProfileById(response?.data._id)
-    dispatch({type: UPDATE_CURRENT_PROFILE , data})
+    dispatch({type: SET_CURRENT_PROFILE , data})
   } catch (error) {
     console.log(error);
   }

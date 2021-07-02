@@ -69,15 +69,33 @@ const updateNotifications = async (userId:string,notificationMessage:string) => 
 
 /**
  * @function
- * @desc Updates notifications message array lists object.
+ * @desc Moves object inside unread_messages array to read_messages array.
  * When user clicks notifications message text in user interface,
  * this function is used to mark message as read.
+ * @param textId unread_messages arrays objects id.
  */
-const readNotifications = (textId:string) => {
+const readNotifications = async (textId:string) => {
   try {
-    return axios.put(
+    return await axios.put(
       `${baseUrl}/notifications/${textId}/read`,
       {},
+      authHeader()
+    )
+  } catch (error) {
+    return Promise.reject(error.response)
+  }
+}
+/**
+ * @desc
+ * Moves all notifications from unread_messages array to 
+ * read_messages array.
+ * @param clearAllArray Array contain all messages in unread_messages.
+ */
+const clearAllNotifications = async (clearAllArray: []) => {
+  try {
+    return await axios.put(
+      `${baseUrl}/notifications/clearAll`,
+      {clearAllArray},
       authHeader()
     )
   } catch (error) {
@@ -89,5 +107,6 @@ export default {
   fetchNotifications,
   postNotifications,
   updateNotifications,
-  readNotifications
+  readNotifications,
+  clearAllNotifications
 }

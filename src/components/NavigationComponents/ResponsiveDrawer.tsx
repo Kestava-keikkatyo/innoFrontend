@@ -18,7 +18,7 @@ import { logout } from '../../actions/userActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { roles } from '../../types/types';
 import { IRootState } from '../../utils/store';
-import logo from '../../assets/keikka-kaveri4.png';
+import logo from '../../assets/keikkakaveri_logo.png';
 import TranslateIcon from '@material-ui/icons/Translate';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';

@@ -18,6 +18,7 @@ import {
   SET_CURRENT_PROFILE
 } from '../types/state'
 import { Credentials, roles, severity } from '../types/types'
+import notificationsService from '../services/notificationsService'
 
 /**
  * Logs user in
@@ -93,6 +94,8 @@ export const signup = (user: SignUpUser, role: roles) => {
       dispatch({type: SET_CURRENT_PROFILE, data : profileResponse})
       console.log("profile res ", profileResponse)
 
+      const notificationsResponse = await notificationsService.postNotifications()
+      console.log("notifications res ", notificationsResponse.status)
 
       history.push('/home')
       dispatch(setAlert('signup successful', severity.Success))

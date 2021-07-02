@@ -16,6 +16,7 @@ import { IRootState } from '../../utils/store';
 import {
   createProfile,
   fetchProfileById,
+  updateProfile,
 } from '../../actions/editProfileActions';
 import { useState } from 'react';
 import FileUploader from '../../components/FileUploader';
@@ -54,44 +55,48 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const EditProfilePage: React.FC = () => {
-  const currentProfile: any = useSelector(
-    (state: IRootState) => state.profileForm
-  );
+  
 
   const userData: any = useSelector((state: IRootState) => state.user.data);
 
-  const [data, setData] = useState({
-    cover: {},
-    profilePicture: {},
-    userInformation: '',
-    contactInformation: '',
-    video: '',
-    instructions: '',
-  });
+  // const [data, setData] = useState({
+  //   cover: {},
+  //   profilePicture: {},
+  //   userInformation: '',
+  //   contactInformation: '',
+  //   video: '',
+  //   instructions: '',
+  // });
+
 
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
+
+  const currentProfile: any = useSelector(
+    (state: IRootState) => state.profileForm
+  );
+  
+  const [data, setData] = useState(currentProfile)
+  React.useEffect(() => {
+    dispatch(fetchProfileById(userData.profileId))
+  }, [dispatch, fetchProfileById, userData.profileId])
+
+
   /*
-  const changePicture = () => {
-    alert('Tästä vaihdetaan profiilikuva');
-  };
-
-  const changeCover = () => {
-    alert('Tästä vaihdetaan taustalla oleva kuva');
-  };
-  */
-
-  useEffect(() => {
-    dispatch(fetchProfileById(userData.profileId));
-  }, [dispatch, userData.profileId]);
+  console.log('data ',data)
+  console.log('currentProfile ',currentProfile)
+  console.log('userData ',userData)
+*/
 
   const returnToProfile = () => {
-    history.push('/instruction');
+    history.push('/profile');
   };
-
-  const postProfile = () => {
-    dispatch(createProfile(currentProfile));
+  //dispatch(updateForm(currentForm._id, currentForm))
+  const profileEdit = (e:any) => {
+    e.preventDefault()
+    console.log(userData.profileId)
+    dispatch(updateProfile(data, "60db1f929620754a292aa936"));
   };
 
   return (
@@ -133,7 +138,7 @@ const EditProfilePage: React.FC = () => {
               fullWidth
               margin="normal"
               value={data.userInformation}
-              onChange={(e) =>
+              onChange={e =>
                 setData({ ...data, userInformation: e.target.value })
               }
               InputLabelProps={{
@@ -175,7 +180,7 @@ const EditProfilePage: React.FC = () => {
           fullWidth
           margin="normal"
           value={data.video}
-          onChange={(e) => setData({ ...data, video: e.target.value })}
+          onChange={e => setData({ ...data, video: e.target.value })}
           InputLabelProps={{
             shrink: true,
           }}
@@ -196,14 +201,14 @@ const EditProfilePage: React.FC = () => {
             multiline
             rows={10}
             value={data.instructions}
-            onChange={(e) => setData({ ...data, instructions: e.target.value })}
+            onChange={e => setData({ ...data, instructions: e.target.value })}
           />
           <Spacing m5 />
           <Button
             type="submit"
             color="secondary"
             style={{ height: '2%', justifyContent: 'center', marginTop: '8%' }}
-            onClick={postProfile}
+            onClick={profileEdit}
           >
             Save changes and return
           </Button>
@@ -214,3 +219,7 @@ const EditProfilePage: React.FC = () => {
 };
 
 export default EditProfilePage;
+function getUserId() {
+  throw new Error('Function not implemented.');
+}
+

@@ -2,7 +2,7 @@
  * @module reducer/notifications
  * @desc Redux alert reducer
  */
-import { FETCH_NOTIFICATIONS, POST_NOTIFICATIONS, UPDATE_NOTIFICATIONS, READ_NOTIFICATIONS, NotificationsState, NotificationsActions } from '../types/state'
+import { FETCH_NOTIFICATIONS, POST_NOTIFICATIONS, UPDATE_NOTIFICATIONS, READ_NOTIFICATIONS, NotificationsState, NotificationsActions, CLEAR_ALL_NOTIFICATION } from '../types/state'
 
 const initialState: NotificationsState = {
   notifications: {}
@@ -24,6 +24,11 @@ const notificationsReducer = (state: NotificationsState = initialState, action: 
         ...state
       }
     case READ_NOTIFICATIONS:
+      return {
+        ...state,
+        notifications: action.data
+      }
+    case CLEAR_ALL_NOTIFICATION:
       return {
         ...state,
         notifications: action.data

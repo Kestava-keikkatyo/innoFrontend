@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useState } from 'react'
 import PropTypes from 'prop-types'
 import Drawer from '@material-ui/core/Drawer'
 import Hidden from '@material-ui/core/Hidden'
@@ -7,6 +7,7 @@ import TopAppBar from './TopAppBarType'
 import ResponsiveDrawer from './ResponsiveDrawer'
 import navConstants from '../../constants/navConstants'
 import clsx from 'clsx'
+import { useEffect } from 'react'
 
 // const drawerWidth = navConstants.DRAWER_WIDTH
 
@@ -15,18 +16,24 @@ import clsx from 'clsx'
  * @desc Parent component of Navigation. Includes Drawer 
  * and navigation bar on top of the app.
  * @param props
- * @param {any} props.window
+ * @param {any} props.windowProp
  * @param {ReactNode} props.children A page component.
  */
-const AppNavigation = (props: { window: any, children: ReactNode }) => {
-  const { window, children } = props
+const AppNavigation = (props: { windowProp: any, children: ReactNode }) => {
+  const { windowProp, children } = props
   const classes = useStyles()
   const theme = useTheme()
   const [mobileOpen, setMobileOpen] = React.useState(false)
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false)
+
 
   const handleDrawer = () => {
-    setOpen(!open);
+    console.log(window.innerWidth)
+    if (window.innerWidth <= 1216) {
+      setMobileOpen(!mobileOpen)
+    } else {
+      setOpen(!open)
+    }
   }
   
   /**
@@ -37,16 +44,11 @@ const AppNavigation = (props: { window: any, children: ReactNode }) => {
     setMobileOpen(!mobileOpen)
   }
 
-  const container = window !== undefined ? () => window().document.body : undefined
+  const container = windowProp !== undefined ? () => windowProp().document.body : undefined
 
   return (
     <div className={classes.root}>
-      <Hidden lgUp implementation="css">
-        <TopAppBar open={open} handleDrawerToggle={handleDrawerMobile} />
-      </Hidden>
-      <Hidden mdDown implementation="css">
-        <TopAppBar open={open} handleDrawerToggle={handleDrawer} />
-      </Hidden>
+      <TopAppBar open={open} handleDrawerToggle={handleDrawer} />
 
       <nav className={classes.drawer} aria-label="mailbox folders">
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -96,7 +98,7 @@ const AppNavigation = (props: { window: any, children: ReactNode }) => {
 }
 
 AppNavigation.propTypes = {
-  window: PropTypes.func,
+  windowProp: PropTypes.func,
 };
 
 const useStyles = makeStyles((theme) => ({
