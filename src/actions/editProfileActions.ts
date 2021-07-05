@@ -56,10 +56,10 @@ export const createProfile = (profile: Object) => async (dispatch: any) => {
   }
 };
 
-export const fetchProfileById = (id: string) => async (dispatch: any) => {
+export const fetchProfileById = (id: string ) => async (dispatch: any) => {
   try {
     const data = await profileService.fetchProfileById(id)
-    dispatch({type: SET_CURRENT_PROFILE, data : data})
+    dispatch({type: SET_CURRENT_PROFILE, data})
 
   } catch (error) {
     console.log(error);

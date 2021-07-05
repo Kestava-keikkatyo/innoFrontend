@@ -40,7 +40,7 @@ import ContractFormManagerPage from './pages/ContractsPage/ContractFormManagerPa
 import ContractFormPreviewPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormPreviewPage';
 import ContractFormEditPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormEditPage';
 import EditProfilePage from './pages/ProfilePage/EditProfilePage';
-import Profile from './pages/ProfilePage';
+import UserProfilePage from './pages/ProfilePage/UserProfilePage';
 
 /**
  * @component
@@ -86,10 +86,7 @@ const App: React.FC = () => {
           <Databank />
         </DatabankRoute>
         <PrivateRoute path="/profile">
-          <Profile />
-        </PrivateRoute>
-        <PrivateRoute path="/profile">
-          <ProfilePage />
+          <UserProfilePage />
         </PrivateRoute>
         <PrivateRoute path="/profile-edit">
           <EditProfilePage />

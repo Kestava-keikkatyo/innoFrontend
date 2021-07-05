@@ -7,13 +7,14 @@ import {
   Typography,
   TextField,
 } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Spacing from '../../components/Spacing';
 import banner from '../../assets/form-banner.jpg';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../utils/store';
 import {
+  createProfile,
   fetchProfileById,
   updateProfile,
 } from '../../actions/editProfileActions';
@@ -57,6 +58,17 @@ const EditProfilePage: React.FC = () => {
   
 
   const userData: any = useSelector((state: IRootState) => state.user.data);
+
+  // const [data, setData] = useState({
+  //   cover: {},
+  //   profilePicture: {},
+  //   userInformation: '',
+  //   contactInformation: '',
+  //   video: '',
+  //   instructions: '',
+  // });
+
+
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
@@ -66,9 +78,6 @@ const EditProfilePage: React.FC = () => {
   console.log('CURRENT PROFILE EDIT PROFILE ', currentProfile)
 
   const [data, setData] = useState(currentProfile)
-
-
-  
   React.useEffect(() => {
     dispatch(fetchProfileById(userData.profileId))
   }, [dispatch, userData.profileId])
