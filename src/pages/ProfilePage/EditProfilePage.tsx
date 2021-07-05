@@ -7,7 +7,7 @@ import {
   Typography,
   TextField,
 } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Spacing from '../../components/Spacing';
 import banner from '../../assets/form-banner.jpg';
 import { useHistory } from 'react-router-dom';
@@ -53,26 +53,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const EditProfilePage: React.FC = () => {
-  
-
+export const EditProfilePage = (props: {currentProfile: any}) => {
+  const { currentProfile } = props
   const userData: any = useSelector((state: IRootState) => state.user.data);
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
-
-  const currentProfile: any = useSelector((state: IRootState) => state.profileForm);
  
   console.log('CURRENT PROFILE EDIT PROFILE ', currentProfile)
 
   const [data, setData] = useState(currentProfile)
 
+  console.log('CURRENT PROFILE DATA ', data)
 
-  
-  React.useEffect(() => {
-    dispatch(fetchProfileById(userData.profileId))
-  }, [dispatch, userData.profileId])
-
+  useEffect(() => {
+    setData(currentProfile)
+  }, [currentProfile])
 
   const returnToProfile = () => {
     history.push('/profile');
@@ -84,8 +80,6 @@ const EditProfilePage: React.FC = () => {
     dispatch(updateProfile(data, userData.profileId));
     history.push('/profile')
   };
-
-  
 
   return (
     <Container className="relative">

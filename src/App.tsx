@@ -5,7 +5,6 @@ import SnackbarNotification from './components/SnackbarNotification';
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
-import ProfilePage from './pages/ProfilePage';
 import WorkersPage from './pages/WorkersPage';
 import ContractsPage from './pages/ContractsPage';
 import PrivateRoute from './components/PrivateRoute';
@@ -39,7 +38,7 @@ import WorkerContractPage from './pages/WorkersPage';
 import ContractFormManagerPage from './pages/ContractsPage/ContractFormManagerPage';
 import ContractFormPreviewPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormPreviewPage';
 import ContractFormEditPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormEditPage';
-import EditProfilePage from './pages/ProfilePage/EditProfilePage';
+import Profile from './pages/ProfilePage/index';
 import UserProfilePage from './pages/ProfilePage/UserProfilePage';
 
 /**
@@ -89,7 +88,7 @@ const App: React.FC = () => {
           <UserProfilePage />
         </PrivateRoute>
         <PrivateRoute path="/profile-edit">
-          <EditProfilePage />
+          <Profile />
         </PrivateRoute>
         <PrivateRoute path="/tasks">
           <TasksPage />

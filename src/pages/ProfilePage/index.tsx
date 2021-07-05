@@ -34,8 +34,6 @@ const Profile: React.FC = () => {
   
   console.log('USER DATA INDEX', userData)
   
- 
-  
   const currentProfile: any = useSelector((state: IRootState) => state.profileForm);
 
   console.log('CURRENTPROFILE INDEX', currentProfile)
@@ -45,10 +43,10 @@ const Profile: React.FC = () => {
     dispatch(fetchProfileById(userData.profileId))
   }, [dispatch, userData.profileId])
   
+  //TODO: show UserProfilePage on path=/profile 
   return (
-    <Container className="relative">
-      <UserProfilePage/>    
-      <EditProfilePage/>
+    <Container className="relative"> 
+      <EditProfilePage currentProfile={currentProfile}/>
     </Container>
   );
 };
