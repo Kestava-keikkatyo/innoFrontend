@@ -34,14 +34,18 @@ export const login = (credentials: Credentials, role: roles, from: string) => {
     })
     try {
       const { data } = await userService.login(credentials, role)
+      const profile = await profileService.fetchProfileById(data.profileId)
       dispatch({
         type: LOGIN,
         data
       })
+      dispatch({type: SET_CURRENT_PROFILE, data: profile})
       saveUser(data)
+      
       console.log("user login data", data)
       history.push(from)
       dispatch(setAlert('login successful', severity.Success))
+     
     } catch (error) {
       dispatch({
         type: USER_FAILURE,

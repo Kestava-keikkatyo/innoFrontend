@@ -1,5 +1,5 @@
 
-import { EditProfileActionTypes } from "../types/state";
+import { EditProfileActionTypes, GET_ALL_PROFILES } from "../types/state";
 import { editProfile } from "../types/types";
 /*
 export const CHANGE_PROFILE_PIC = "CHANGE_PROFILE_PIC"
@@ -27,14 +27,16 @@ const initialState: editProfile = {
   instructions: "",
 };
 
-const profileReducer = (
-  state = initialState,
-  action: EditProfileActionTypes
+const profileReducer = (state = initialState, action: EditProfileActionTypes
 ) => {
   switch (action.type) {
     case SET_CURRENT_PROFILE:
       return action.data
-
+    case GET_ALL_PROFILES:
+        return {
+          ...state,
+          profiles: action.data
+        }
     case CHANGE_PROFILE_PIC:
       return {
         ...state,

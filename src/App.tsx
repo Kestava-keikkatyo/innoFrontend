@@ -1,46 +1,47 @@
-import React, { useEffect } from 'react';
-import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 
-import SnackbarNotification from './components/SnackbarNotification';
-import LandingPage from './pages/LandingPage';
-import LoginPage from './pages/LoginPage';
-import HomePage from './pages/HomePage';
-import ProfilePage from './pages/ProfilePage';
-import WorkersPage from './pages/WorkersPage';
-import ContractsPage from './pages/ContractsPage';
-import PrivateRoute from './components/PrivateRoute';
-import ProcessPage from './pages/ProcessPage';
-import TasksPage from './pages/TaskPage';
-import DocumentPage from './pages/DocumentPage';
-import FormsPage from './pages/FormsPage';
-import WorkerStatistics from './pages/WorkerStatistics';
-import { CssBaseline } from '@material-ui/core';
-import NewFormPage from './pages/FormsPage/NewFormPage';
-import EditFormPage from './pages/FormsPage/EditFormPage';
-import FormPreviewPage from './pages/FormPreviewPage';
-import { roles } from './types/types';
-import DatabankRoute from './components/DatabankRoute';
-import BestPractices from './pages/Databank/BestPractices';
-import JobLifeline from './pages/Databank/JobLifeline';
-import RoleResponsibilities from './pages/Databank/RoleResponsibilities';
-import Databank from './pages/Databank';
-import ReportPage from './pages/ReportPage';
-import Admin from './pages/AdminPage';
-import AdminRoute from './components/AdminRoute';
-import AdminDatabank from './pages/AdminPage/AdminDatabank';
-import Users from './pages/AdminPage/Users';
-import Agency from './pages/AdminPage/Agency';
-import UserCompany from './pages/AdminPage/UserCompany';
-import BusinessContractPage from './pages/BusinessContractsPage';
-import BusinessContractPreviewPage from './pages/BusinessContractPreviewPage';
-import BusinessContractFill from './pages/BusinessContractPreviewPage/BusinessContractFill';
-import BusinessContractEdit from './pages/BusinessContractPreviewPage/BusinessContractEdit';
-import WorkerContractPage from './pages/WorkersPage';
-import ContractFormManagerPage from './pages/ContractsPage/ContractFormManagerPage';
-import ContractFormPreviewPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormPreviewPage';
-import ContractFormEditPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormEditPage';
-import EditProfilePage from './pages/ProfilePage/EditProfilePage';
-import Profile from './pages/ProfilePage';
+import SnackbarNotification from "./components/SnackbarNotification";
+import LandingPage from "./pages/LandingPage";
+import LoginPage from "./pages/LoginPage";
+import HomePage from "./pages/HomePage";
+import WorkersPage from "./pages/WorkersPage";
+import ContractsPage from "./pages/ContractsPage";
+import PrivateRoute from "./components/PrivateRoute";
+import ProcessPage from "./pages/ProcessPage";
+import TasksPage from "./pages/TaskPage";
+import DocumentPage from "./pages/DocumentPage";
+import FormsPage from "./pages/FormsPage";
+import WorkerStatistics from "./pages/WorkerStatistics";
+import { CssBaseline } from "@material-ui/core";
+import NewFormPage from "./pages/FormsPage/NewFormPage";
+import EditFormPage from "./pages/FormsPage/EditFormPage";
+import FormPreviewPage from "./pages/FormPreviewPage";
+import { roles } from "./types/types";
+import DatabankRoute from "./components/DatabankRoute";
+import BestPractices from "./pages/Databank/BestPractices";
+import JobLifeline from "./pages/Databank/JobLifeline";
+import RoleResponsibilities from "./pages/Databank/RoleResponsibilities";
+import Databank from "./pages/Databank";
+import ReportPage from "./pages/ReportPage";
+import Admin from "./pages/AdminPage";
+import AdminRoute from "./components/AdminRoute";
+import AdminDatabank from "./pages/AdminPage/AdminDatabank";
+import Users from "./pages/AdminPage/Users";
+import Agency from "./pages/AdminPage/Agency";
+import UserCompany from "./pages/AdminPage/UserCompany";
+import BusinessContractPage from "./pages/BusinessContractsPage";
+import BusinessContractPreviewPage from "./pages/BusinessContractPreviewPage";
+import BusinessContractFill from "./pages/BusinessContractPreviewPage/BusinessContractFill";
+import BusinessContractEdit from "./pages/BusinessContractPreviewPage/BusinessContractEdit";
+import WorkerContractPage from "./pages/WorkersPage";
+import ContractFormManagerPage from "./pages/ContractsPage/ContractFormManagerPage";
+import ContractFormPreviewPage from "./pages/ContractsPage/ContractFormManagerPage/ContractFormPreviewPage";
+import ContractFormEditPage from "./pages/ContractsPage/ContractFormManagerPage/ContractFormEditPage";
+import Profile from "./pages/ProfilePage/index";
+import UserProfilePage from "./pages/ProfilePage/UserProfilePage";
+import ProfileSearch from "./pages/ProfilePage/ProfileList";
+import ProfileViewPage from "./pages/BusinessContractsPage/ProfileViewPage";
 
 /**
  * @component
@@ -86,13 +87,13 @@ const App: React.FC = () => {
           <Databank />
         </DatabankRoute>
         <PrivateRoute path="/profile">
-          <Profile />
+          <UserProfilePage />
         </PrivateRoute>
-        <PrivateRoute path="/profile">
-          <ProfilePage />
+        <PrivateRoute path="/profile-list">
+          <ProfileSearch />
         </PrivateRoute>
         <PrivateRoute path="/profile-edit">
-          <EditProfilePage />
+          <Profile />
         </PrivateRoute>
         <PrivateRoute path="/tasks">
           <TasksPage />
@@ -150,6 +151,12 @@ const App: React.FC = () => {
           roles={[roles.Business, roles.Agency]}
         >
           <BusinessContractEdit />
+        </PrivateRoute>
+        <PrivateRoute
+          path="/business-contracts/profile"
+          roles={[roles.Business, roles.Agency, roles.Worker]}
+        >
+          <ProfileViewPage />
         </PrivateRoute>
         <PrivateRoute path="/business-contracts" roles={[roles.Business]}>
           <BusinessContractPage />

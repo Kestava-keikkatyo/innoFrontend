@@ -35,6 +35,19 @@ const fetchProfileById = async (id: string) => {
     }
   }
 
+  const fetchProfiles = async (input: string) => {
+    try {
+      const res = await axios.get(
+        `${baseUrl}/profile?name=${input}`,
+        authHeader()
+      )
+      return res
+    } catch (error) {
+      return Promise.reject(error.response)
+    }
+  }
+  
+
 
 
 
@@ -43,4 +56,5 @@ export default {
     fetchProfileById,
     getProfile,
     createProfile,
+    fetchProfiles
 }

@@ -7,7 +7,7 @@ import {
   Typography,
   TextField,
 } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Spacing from '../../components/Spacing';
 import banner from '../../assets/form-banner.jpg';
 import { useHistory } from 'react-router-dom';
@@ -53,43 +53,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const EditProfilePage: React.FC = () => {
+export const EditProfilePage = (props: {currentProfile: any}) => {
+  const { currentProfile } = props
   const userData: any = useSelector((state: IRootState) => state.user.data);
-
-  // const [data, setData] = useState({
-  //   cover: {},
-  //   profilePicture: {},
-  //   userInformation: '',
-  //   contactInformation: '',
-  //   video: '',
-  //   instructions: '',
-  // });
-
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
+ 
+  console.log('CURRENT PROFILE EDIT PROFILE ', currentProfile)
 
-  const currentProfile: any = useSelector(
-    (state: IRootState) => state.profileForm
-  );
-  let [loading, setLoading] = useState(true);
-  const [data, setData] = useState(currentProfile);
-  React.useEffect(() => {
-    dispatch(fetchProfileById(userData.profileId));
-    setLoading(false);
-  }, [dispatch, userData.profileId, loading]);
+  const [data, setData] = useState(currentProfile)
+
+  console.log('CURRENT PROFILE DATA ', data)
+
+  useEffect(() => {
+    setData(currentProfile)
+  }, [currentProfile])
 
   const returnToProfile = () => {
     history.push('/profile');
   };
   //dispatch(updateForm(currentForm._id, currentForm))
-  const profileEdit = (e: any) => {
-    e.preventDefault();
+  const profileEdit = (e:any) => {
+    e.preventDefault()
+    console.log('i fire once')
     dispatch(updateProfile(data, userData.profileId));
-    history.push('/profile');
+    history.push('/profile')
   };
-
-  console.log('PROFIILI ', currentProfile);
 
   return (
     <Container className="relative">
@@ -129,7 +119,7 @@ const EditProfilePage: React.FC = () => {
               fullWidth
               margin="normal"
               value={data.userInformation}
-              onChange={(e) =>
+              onChange={e =>
                 setData({ ...data, userInformation: e.target.value })
               }
               InputLabelProps={{
@@ -157,25 +147,7 @@ const EditProfilePage: React.FC = () => {
           }}
         />
 
-        <Spacing m5 />
-        <div className={classes.contact}>
-          <Typography variant="h4"> Information / Video</Typography>
-        </div>
-
-        <TextField
-          id="standard-full-width"
-          name="video"
-          style={{ margin: 8 }}
-          placeholder="paste a youtube link here or upload your own video"
-          fullWidth
-          margin="normal"
-          value={data.video}
-          onChange={(e) => setData({ ...data, video: e.target.value })}
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <Spacing m5 />
+   
         <div className={classes.information}>
           <Typography variant="h4">Instructions</Typography>
         </div>
@@ -191,7 +163,7 @@ const EditProfilePage: React.FC = () => {
             multiline
             rows={10}
             value={data.instructions}
-            onChange={(e) => setData({ ...data, instructions: e.target.value })}
+            onChange={e => setData({ ...data, instructions: e.target.value })}
           />
           <Spacing m5 />
           <Button
@@ -209,3 +181,5 @@ const EditProfilePage: React.FC = () => {
 };
 
 export default EditProfilePage;
+
+

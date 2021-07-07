@@ -6,6 +6,7 @@ import {
   SET_CURRENT_PROFILE,
   CHANGE_VIDEO,
   CHANGE_INSTRUCTION,
+  GET_ALL_PROFILES,
 
 
 } from "../types/state";
@@ -56,10 +57,20 @@ export const createProfile = (profile: Object) => async (dispatch: any) => {
   }
 };
 
-export const fetchProfileById = (id: string) => async (dispatch: any) => {
+export const fetchProfileById = (id: string ) => async (dispatch: any) => {
   try {
     const data = await profileService.fetchProfileById(id)
-    dispatch({type: SET_CURRENT_PROFILE, data : data})
+    dispatch({type: SET_CURRENT_PROFILE, data})
+
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchProfiles = (input: string) => async (dispatch: any) => {
+  try {
+    const res = await profileService.fetchProfiles(input)
+    dispatch({type: GET_ALL_PROFILES, data: res.data})
 
   } catch (error) {
     console.log(error);
