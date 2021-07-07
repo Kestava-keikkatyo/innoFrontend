@@ -1,6 +1,6 @@
 import { Button, Grid, Typography } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import React from 'react'
+import React from 'react';
 import { useState } from 'react';
 import NewFeelingEntryModal from './NewFeelingEntryModal';
 
@@ -9,25 +9,35 @@ import NewFeelingEntryModal from './NewFeelingEntryModal';
  * Header for feel-o-meter statistics page.
  */
 const WorkerStatisticsButtonRow = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-    <Grid container className="worker-statistics-button-row">
-      <Grid item xs={6}>
-        <Typography variant="h4" className="text-secondary">Mood statistics</Typography>
+      <Grid
+        container
+        className="worker-statistics-button-row"
+        style={{ marginTop: 16 }}
+      >
+        <Grid item xs={6}>
+          <Typography variant="h4" className="text-secondary">
+            Mood statistics
+          </Typography>
+        </Grid>
+        <Grid item xs={6} className="worker-statistics-add-entry">
+          <div>
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <AddIcon /> New Entry
+            </Button>
+          </div>
+        </Grid>
       </Grid>
-      <Grid item xs={6} className="worker-statistics-add-entry">
-        <div>
-          <Button variant="outlined" color="primary" onClick={() => setIsOpen(!isOpen)} >
-            <AddIcon /> New Entry
-          </Button>
-        </div>
-      </Grid>
-    </Grid>
-    <NewFeelingEntryModal modalState={{isOpen, setIsOpen}} />
+      <NewFeelingEntryModal modalState={{ isOpen, setIsOpen }} />
     </>
   );
-}
+};
 
 export default WorkerStatisticsButtonRow;

@@ -24,6 +24,7 @@ const initialDataset = {
 const initialFeeling: Feeling = {
   value: 0,
   note: "",
+  fileUrl: "",
   isPrivate: false,
 }
 const initialState: FeelingState = {
@@ -54,12 +55,13 @@ const feelingReducer = (state: FeelingState = initialState, action: FeelingActio
         }
       }
     case ADD_FEELING:
+      console.log("action.data", action.data)
       return {
         ...state,
-        feelings: [
+        feelings: {
           ...state.feelings,
-          action.data
-        ],
+          ...action.data
+        },
         currentFeeling: initialFeeling
       }
     case CLEAR_CURRENT_FEELING:
@@ -70,10 +72,10 @@ const feelingReducer = (state: FeelingState = initialState, action: FeelingActio
     case UPDATE_FEELING_DATASET:
       let tempLabels: any = []
       let tempData: any = []
-      state.feelings.map((f: any) => {
+      /*state.feelings.map((f: any) => {
         tempLabels.push(formatDate(f.createdAt))
         return tempData.push(f.value)
-      })
+      })*/
       return {
         ...state,
         feelingDataSet: {

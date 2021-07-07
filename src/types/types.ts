@@ -54,11 +54,12 @@ export interface Credentials {
 export interface Feeling {
   value: 0 | 1 | 2 | 3,
   note: string,
+  fileUrl: string,
   isPrivate: boolean
 }
 
 export interface File{
-  file: {}
+  file: any
 }
 
 export enum questionTypes {

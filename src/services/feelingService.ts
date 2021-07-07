@@ -32,7 +32,7 @@ const getFeelings = async () => {
  * @param {Feeling} feeling new Feeling object
  */
 const postFeeling = async (feeling: Feeling) => {
-  return await axios.post(baseUrl, feeling, authHeader())
+  return await axios.post(`${baseUrl}/feelings`, feeling, authHeader())
 }
 
 export default {

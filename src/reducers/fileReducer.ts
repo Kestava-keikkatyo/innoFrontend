@@ -8,7 +8,7 @@
  import {File} from "../types/types"
 
  const initialFile: File = {
-    file:{}
+    file: null
  }
  const initialState: FileState = {
    currentFile: initialFile,
@@ -26,8 +26,7 @@
         return {
           ...state,
           currentFile: {
-            ...state.currentFile,
-            ...action.data
+            file: action.data
           }
         }
       default:

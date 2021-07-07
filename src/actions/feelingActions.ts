@@ -12,6 +12,7 @@ import { Feeling } from "../types/types"
  */
 export const fetchFeelings = () => async (dispatch: any) => {
   const res = await feelingService.getFeelings()
+  console.log("res feelings", res)
   dispatch({ type: FETCH_FEELINGS, data: res.data})
 }
 
@@ -41,6 +42,7 @@ export const updateDataSet = () => async (dispatch: any) => {
  */
 export const submitFeeling = (feeling: Feeling) => async (dispatch: any) => {
   const res = await feelingService.postFeeling(feeling)
+  console.log('###Feeling: res: ', res)
   if(res.status === 200)
     dispatch({ type: ADD_FEELING, data: res.data })
     console.log('Feeling: res.data: ', res.data)
