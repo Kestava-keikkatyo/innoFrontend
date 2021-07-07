@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../utils/store';
 import { fetchProfileById } from '../../actions/editProfileActions';
 import EditProfilePage from './EditProfilePage';
-import UserProfilePage from './UserProfilePage';
+import ProfileList from './ProfileList';
 
 
 const useStyles = makeStyles((theme) => ({

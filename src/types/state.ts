@@ -541,6 +541,13 @@ export type BusinssContractListActionTypes =
   export const UPDATE_CURRENT_PROFILE = "UPDATE_CURRENT_PROFILE"
   export const SET_CURRENT_PROFILE = "SET_CURRENT_PROFILE"
   export const POST_PROFILE = "POST_PROFILE"
+  export const GET_ALL_PROFILES = "GET_ALL_PROFILES"
+
+
+  interface GetAllProfiles {
+    type: typeof GET_ALL_PROFILES
+    data: any
+  }
 
   interface SetCurrentProfileAction {
     type: typeof SET_CURRENT_PROFILE
@@ -591,6 +598,7 @@ export type BusinssContractListActionTypes =
   | UpdateCurrentProfile
   | PostProfile
   | SetCurrentProfileAction
+  | GetAllProfiles
 
   export interface NotificationsState {
     notifications: {}
