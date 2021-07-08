@@ -72,7 +72,6 @@ interface Agency {
 
 export const AgencyCard = (prop: { agency: Agency }) => {
   const classes = useStyles();
-
   const { agency } = prop;
 
   console.log('### agency', agency);
@@ -94,6 +93,10 @@ export const AgencyCard = (prop: { agency: Agency }) => {
     });
   };
 
+  const moveToProfile = (profileId: string) => {
+    history.push('/business-contracts/profile');
+  };
+
   return (
     <Card className={classes.root}>
       <CardHeader
@@ -111,6 +114,7 @@ export const AgencyCard = (prop: { agency: Agency }) => {
         title={agency.name}
         subheader={agency.email}
       />
+      {console.log('HP-palvelut ', agency)}
 
       <CardContent className={classes.content}>
         <Grid container spacing={0}>
