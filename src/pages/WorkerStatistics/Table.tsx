@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Paper from '@material-ui/core/Paper';
 import { useDispatch, useSelector } from 'react-redux';
 import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
@@ -43,6 +43,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import { useHistory } from 'react-router-dom';
+import PreviewImageModal from './PreviewImageModal';
 
 /**
  * @component
@@ -52,6 +53,9 @@ import { useHistory } from 'react-router-dom';
 export default function CustomizedTables() {
   const classes = useStyles();
   const feelings = useSelector((state: any) => state.feeling?.feelings);
+
+  const [isPreviewImageOpen, setIsPreviewImageOpen] = useState(false);
+  const [imageSource, setImageSource] = useState('');
 
   console.log('feelings TAble', feelings);
 
@@ -120,6 +124,11 @@ export default function CustomizedTables() {
     }
   };
 
+  const handleImageClick = (src: string) => {
+    setIsPreviewImageOpen(!isPreviewImageOpen);
+    setImageSource(src);
+  };
+
   // Table view for desktop devices
   const tableView = () => {
     return (
@@ -147,11 +156,20 @@ export default function CustomizedTables() {
                     {moment(feel.createdAt).format('DD/MM/YYYY')}
                   </TableCell>
                   <TableCell padding="none" align="left">
-                    <img
-                      src={feel.fileUrl ? feel.fileUrl : imagePlaceholder}
-                      style={{ width: 50, height: 50, margin: 5 }}
-                      alt="image"
-                    />
+                    <>
+                      <img
+                        src={feel.fileUrl ? feel.fileUrl : imagePlaceholder}
+                        style={{
+                          width: 50,
+                          height: 50,
+                          margin: 5,
+                          cursor: 'pointer',
+                        }}
+                        alt="image"
+                        onClick={() => handleImageClick(feel.fileUrl)}
+                      />
+                      <PreviewImageModal />
+                    </>
                   </TableCell>
                 </StyledTableRow>
               ))}

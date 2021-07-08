@@ -1,66 +1,65 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardContent from "@material-ui/core/CardContent";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import { red } from "@material-ui/core/colors";
-import Button from "@material-ui/core/Button";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import { Grid } from "@material-ui/core";
+import React from 'react';
+import { makeStyles } from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import { red } from '@material-ui/core/colors';
+import Button from '@material-ui/core/Button';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { Grid } from '@material-ui/core';
 
-
-import CooperationInfoModal from "./CooperationInfoModal";
-
+import CooperationInfoModal from './CooperationInfoModal';
+import { useHistory } from 'react-router';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "100%",
-    height: "auto",
-    marginBottom: "2.5em",
-    display: "inline-block",
+    width: '100%',
+    height: 'auto',
+    marginBottom: '2.5em',
+    display: 'inline-block',
   },
   expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
+    transform: 'rotate(0deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
       duration: theme.transitions.duration.shortest,
     }),
   },
   expandOpen: {
-    transform: "rotate(180deg)",
+    transform: 'rotate(180deg)',
   },
   avatar: {
     backgroundColor: red[500],
   },
   text: {
-    textAlign: "center",
-    width: "20%",
-    display: "inline",
+    textAlign: 'center',
+    width: '20%',
+    display: 'inline',
   },
   header: {
-    paddingBottom: "0px",
+    paddingBottom: '0px',
   },
   gridButton: {
-    paddingTop: "1.125em",
-    textAlign: "center",
+    paddingTop: '1.125em',
+    textAlign: 'center',
   },
   gridText: {
-    textAlign: "center",
-    paddingTop: "1.125em",
-    paddingRight: "5em",
-    [theme.breakpoints.down("xs")]: {
+    textAlign: 'center',
+    paddingTop: '1.125em',
+    paddingRight: '5em',
+    [theme.breakpoints.down('xs')]: {
       paddingRight: 0,
     },
   },
   content: {
-    paddingTop: "0",
+    paddingTop: '0',
   },
   button: {
-    width: "80%",
-    marginTop: "0.3125em",
+    width: '80%',
+    marginTop: '0.3125em',
   },
 }));
 
@@ -68,12 +67,17 @@ interface Agency {
   businessContracts: [string];
   name: string;
   email: string;
+  profile: string;
 }
 
 export const AgencyCard = (prop: { agency: Agency }) => {
   const classes = useStyles();
 
   const { agency } = prop;
+
+  console.log('### agency', agency);
+
+  const history = useHistory();
 
   const [displayModal, setDisplayModal] = React.useState(false);
 
@@ -83,8 +87,11 @@ export const AgencyCard = (prop: { agency: Agency }) => {
 
   const contractId = agency.businessContracts[0];
 
-  const transferToAgencyPage = () => {
-    alert("HP-Yrityksen sivut aukeaa...");
+  const transferToAgencyPage = (profileId: any) => {
+    history.push({
+      pathname: '/business-contracts/profile',
+      state: { profileId: profileId },
+    });
   };
 
   return (
@@ -112,9 +119,9 @@ export const AgencyCard = (prop: { agency: Agency }) => {
               className={classes.button}
               variant="contained"
               color="primary"
-              onClick={transferToAgencyPage}
+              onClick={() => transferToAgencyPage(agency.profile)}
             >
-              Siirry yrityksen sivuille
+              Siirry yrityksen profiiliin
             </Button>
             <Button
               className={classes.button}
