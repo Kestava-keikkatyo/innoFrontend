@@ -14,6 +14,7 @@ import buisnessContractFormReducer from '../reducers/businessContractFormReducer
 import agencyReducer from '../reducers/agencyReducer'
 import profileReducer from '../reducers/profileReducer'
 import notificationsReducer from '../reducers/notificationsReducer'
+import feedBackReducer from '../reducers/feedBackReducer'
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -30,7 +31,8 @@ const reducer = combineReducers({
   businessContractForm: buisnessContractFormReducer,
   agencies: agencyReducer,
   profileForm: profileReducer,
-  notifications: notificationsReducer
+  notifications: notificationsReducer,
+  feedback: feedBackReducer
 })
 
 export type IRootState = ReturnType<typeof reducer>
