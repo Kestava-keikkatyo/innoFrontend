@@ -10,9 +10,11 @@ import { red } from "@material-ui/core/colors";
 import Button from "@material-ui/core/Button";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { Grid } from "@material-ui/core";
-
-
+import history from "../../utils/history";
+import { useDispatch } from "react-redux";
 import CooperationInfoModal from "./CooperationInfoModal";
+import { useHistory } from "react-router-dom";
+import { fetchProfileById } from "../../actions/editProfileActions";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -68,13 +70,14 @@ interface Agency {
   businessContracts: [string];
   name: string;
   email: string;
+  profileId: string;
 }
 
 export const AgencyCard = (prop: { agency: Agency }) => {
   const classes = useStyles();
-
+  const history = useHistory()
   const { agency } = prop;
-
+  const dispatch = useDispatch()
   const [displayModal, setDisplayModal] = React.useState(false);
 
   const handleOpen = () => {
@@ -86,6 +89,10 @@ export const AgencyCard = (prop: { agency: Agency }) => {
   const transferToAgencyPage = () => {
     alert("HP-Yrityksen sivut aukeaa...");
   };
+
+  const moveToProfile = (profileId: string) => {
+    history.push('/business-contracts/profile')
+  }
 
   return (
     <Card className={classes.root}>
@@ -104,6 +111,7 @@ export const AgencyCard = (prop: { agency: Agency }) => {
         title={agency.name}
         subheader={agency.email}
       />
+      {console.log('HP-palvelut ',agency)}
 
       <CardContent className={classes.content}>
         <Grid container spacing={0}>
@@ -112,7 +120,7 @@ export const AgencyCard = (prop: { agency: Agency }) => {
               className={classes.button}
               variant="contained"
               color="primary"
-              onClick={transferToAgencyPage}
+              onClick={() => moveToProfile(agency.profileId)}
             >
               Siirry yrityksen sivuille
             </Button>
