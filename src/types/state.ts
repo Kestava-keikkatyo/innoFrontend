@@ -638,15 +638,35 @@ interface ClearAllNotifications {
 export type NotificationsActions = FetchNotifications | PostNotifications | UpdateNotifications | ReadNotifications | ClearAllNotifications
 
 export const POST_FEEDBACK = "POST_FEEDBACK"
+export const RESET_FEEDBACK = "RESET_FEEDBACK"
+export const GET_USER_FEEDBACKS = "GET_USER_FEEDBACKS"
+export const GET_ALL_FEEDBACKS = "GET_ALL_FEEDBACKS"
+
 
 interface PostFeedBack {
   type: typeof POST_FEEDBACK
   data: any
 }
 
-export type FeedBackActions = PostFeedBack
+interface ResetFeedBack {
+  type: typeof RESET_FEEDBACK
+  data: any
+}
+
+interface GetUserFeedBacks {
+  type: typeof GET_USER_FEEDBACKS
+  data: any
+}
+
+interface GetAllFeedBacks {
+  type: typeof GET_ALL_FEEDBACKS
+  data: any
+}
+
+export type FeedBackActions = PostFeedBack | ResetFeedBack | GetUserFeedBacks | GetAllFeedBacks
 
 export interface FeedBackState {
-  feedBacks: [],
+  myFeedBacks: [],
+  allFeedBacks: [],
   feedBackSaved: boolean
 }
