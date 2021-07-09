@@ -1,7 +1,7 @@
-import {File, Feeling, Form, roles, severity } from "./types"
+import { File, Feeling, Form, roles, severity } from "./types"
 
 export interface AgencyState {
-    agencies: []
+  agencies: []
 }
 
 
@@ -217,7 +217,7 @@ interface SendBackBusinessContract {
 }
 
 export type BusinessContractActions = AddBusinessContractAction | AddBusinessContractWorkerBusinessAction | BusinessContractFetchAction | SendBackBusinessContract |
-UpdateBusinessSearchAction | RefuseBusinessContractAction | ActivateBusinessContract | DeclineBusinessCOntractAction | SendBusinessContract | AcceptBusinessContract
+  UpdateBusinessSearchAction | RefuseBusinessContractAction | ActivateBusinessContract | DeclineBusinessCOntractAction | SendBusinessContract | AcceptBusinessContract
 
 export interface WorkContractState {
   searchList: object[],
@@ -301,7 +301,7 @@ interface UpdateFeelingDatasetAction {
 }
 
 export type FeelingActionTypes = AddFeelingAction | FetchFeelingsAction | ClearCurrentFeelingAction |
-SetCurrentFeelingAction | UpdateFeelingDatasetAction
+  SetCurrentFeelingAction | UpdateFeelingDatasetAction
 
 export type FileActionTypes = SetCurrentFileAction
 
@@ -398,18 +398,18 @@ export type FormActionTypes =
   | SetQuestionsAction
   | ClearCurrentFormAction
 
-  export const FETCH_FORM_LIST = "FETCH_FORM_LIST"
-  export const ADD_TO_FORM_LIST = "ADD_TO_FORM_LIST"
+export const FETCH_FORM_LIST = "FETCH_FORM_LIST"
+export const ADD_TO_FORM_LIST = "ADD_TO_FORM_LIST"
 
-  interface FetchFormListAction {
-    type: typeof FETCH_FORM_LIST
-    data: any
-  }
+interface FetchFormListAction {
+  type: typeof FETCH_FORM_LIST
+  data: any
+}
 
-  interface AddToFormList {
-    type: typeof ADD_TO_FORM_LIST
-    data: Form
-  }
+interface AddToFormList {
+  type: typeof ADD_TO_FORM_LIST
+  data: Form
+}
 
 export type FormListActionTypes =
   | FetchFormListAction
@@ -512,18 +512,18 @@ export type BusinessContractFormActionTypes =
   | SetBusinessContractQuestionsAction
   | ClearCurrentBusinessContractFormAction
 
-  export const FETCH_BUSINESS_CONTRACT_LIST = "FETCH_BUSINESS_CONTRACT_LIST"
-  export const ADD_TO_BUSINESS_CONTRACT_LIST = "ADD_TO_BUSINESS_CONTRACT_LIST"
+export const FETCH_BUSINESS_CONTRACT_LIST = "FETCH_BUSINESS_CONTRACT_LIST"
+export const ADD_TO_BUSINESS_CONTRACT_LIST = "ADD_TO_BUSINESS_CONTRACT_LIST"
 
-  interface FetchBusinessContractListAction {
-    type: typeof FETCH_BUSINESS_CONTRACT_LIST
-    data: any
-  }
+interface FetchBusinessContractListAction {
+  type: typeof FETCH_BUSINESS_CONTRACT_LIST
+  data: any
+}
 
-  interface AddToBusinessContractList {
-    type: typeof ADD_TO_BUSINESS_CONTRACT_LIST
-    data: Form
-  }
+interface AddToBusinessContractList {
+  type: typeof ADD_TO_BUSINESS_CONTRACT_LIST
+  data: Form
+}
 
 export type BusinssContractListActionTypes =
   | FetchBusinessContractListAction
@@ -600,39 +600,53 @@ export type BusinssContractListActionTypes =
   | SetCurrentProfileAction
   | GetAllProfiles
 
-  export interface NotificationsState {
-    notifications: {}
-  }
+export interface NotificationsState {
+  notifications: {}
+}
 
-  export const FETCH_NOTIFICATIONS = "FETCH_NOTIFICATIONS"
-  export const POST_NOTIFICATIONS = "POST_NOTIFICATIONS"
-  export const UPDATE_NOTIFICATIONS = "UPDATE_NOTIFICATIONS"
-  export const READ_NOTIFICATIONS = "READ_NOTIFICATIONS"
-  export const CLEAR_ALL_NOTIFICATION = "CLEAR_ALL_NOTIFICATION"
+export const FETCH_NOTIFICATIONS = "FETCH_NOTIFICATIONS"
+export const POST_NOTIFICATIONS = "POST_NOTIFICATIONS"
+export const UPDATE_NOTIFICATIONS = "UPDATE_NOTIFICATIONS"
+export const READ_NOTIFICATIONS = "READ_NOTIFICATIONS"
+export const CLEAR_ALL_NOTIFICATION = "CLEAR_ALL_NOTIFICATION"
 
-  interface FetchNotifications {
-    type: typeof FETCH_NOTIFICATIONS
-    data: any
-  }
+interface FetchNotifications {
+  type: typeof FETCH_NOTIFICATIONS
+  data: any
+}
 
-  interface PostNotifications {
-    type: typeof POST_NOTIFICATIONS
-    data: any
-  }
+interface PostNotifications {
+  type: typeof POST_NOTIFICATIONS
+  data: any
+}
 
-  interface UpdateNotifications {
-    type: typeof UPDATE_NOTIFICATIONS
-    data: any
-  }
+interface UpdateNotifications {
+  type: typeof UPDATE_NOTIFICATIONS
+  data: any
+}
 
-  interface ReadNotifications {
-    type: typeof READ_NOTIFICATIONS
-    data: any
-  }
+interface ReadNotifications {
+  type: typeof READ_NOTIFICATIONS
+  data: any
+}
 
-  interface ClearAllNotifications {
-    type: typeof CLEAR_ALL_NOTIFICATION
-    data: any
-  }
+interface ClearAllNotifications {
+  type: typeof CLEAR_ALL_NOTIFICATION
+  data: any
+}
 
-  export type NotificationsActions = FetchNotifications | PostNotifications | UpdateNotifications | ReadNotifications | ClearAllNotifications
+export type NotificationsActions = FetchNotifications | PostNotifications | UpdateNotifications | ReadNotifications | ClearAllNotifications
+
+export const POST_FEEDBACK = "POST_FEEDBACK"
+
+interface PostFeedBack {
+  type: typeof POST_FEEDBACK
+  data: any
+}
+
+export type FeedBackActions = PostFeedBack
+
+export interface FeedBackState {
+  feedBacks: [],
+  feedBackSaved: boolean
+}
