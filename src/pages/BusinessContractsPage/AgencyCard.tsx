@@ -93,9 +93,7 @@ export const AgencyCard = (prop: { agency: Agency }) => {
     });
   };
 
-  const moveToProfile = (profileId: string) => {
-    history.push('/business-contracts/profile');
-  };
+
 
   return (
     <Card className={classes.root}>
