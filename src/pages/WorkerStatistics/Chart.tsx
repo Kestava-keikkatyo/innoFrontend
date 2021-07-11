@@ -35,7 +35,6 @@ const Chart = () => {
     getFeelingsValues();
   }, [feelings, dispatch]);
 
-  console.log('FeelingDataSet', feelingDataSet);
   console.log('feelings', feelings);
   console.log('feelingDataSet:', feelingDataSet);
 
@@ -52,8 +51,9 @@ const Chart = () => {
   ]);
 
   const getFeelingsValues = () => {
+
     const copyOfMoodCounts: any = [0, 0, 0, 0, 0];
-    feelings.docs.map((feel: any) => {
+    feelings.map((feel: any) => {
       switch (feel.value) {
         case 0:
           return copyOfMoodCounts[0]++;
@@ -75,6 +75,7 @@ const Chart = () => {
       }
     });
     setMoodCounts(copyOfMoodCounts);
+
   };
 
   const backgroundColors = [
@@ -300,7 +301,8 @@ const Chart = () => {
                         display: false, // hide yAxes's ticks
                       },
                       gridLines: {
-                        color: 'rgba(0, 0, 0, 0)', // hide yAxes's grid lines
+                        display: false,// hide yAxes's grid lines
+                        //color: 'rgba(0, 0, 0, 0)',
                       },
                     },
                   ],
@@ -311,7 +313,7 @@ const Chart = () => {
                         display: false,
                       },
                       gridLines: {
-                        color: 'rgba(0, 0, 0, 0)',
+                        display: false,
                       },
                     },
                   ],

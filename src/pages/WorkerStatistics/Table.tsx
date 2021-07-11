@@ -127,8 +127,8 @@ export default function CustomizedTables() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {feelings.docs &&
-              feelings.docs.map((feel: any) => (
+            {feelings &&
+              feelings.map((feel: any) => (
                 <StyledTableRow key={feel._id}>
                   <TableCell align="left">{getIcon(feel.value)}</TableCell>
                   <TableCell align="left">{feel.note}</TableCell>
