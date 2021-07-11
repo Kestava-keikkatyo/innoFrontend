@@ -74,8 +74,6 @@ export const AgencyCard = (prop: { agency: Agency }) => {
   const classes = useStyles();
   const { agency } = prop;
 
-  console.log('### agency', agency);
-
   const history = useHistory();
 
   const [displayModal, setDisplayModal] = React.useState(false);
@@ -88,7 +86,7 @@ export const AgencyCard = (prop: { agency: Agency }) => {
 
   const transferToAgencyPage = (profileId: any) => {
     history.push({
-      pathname: "profile-list/profile",
+      pathname: "profile-view",
       state: { profileId: profileId },
     });
   };
