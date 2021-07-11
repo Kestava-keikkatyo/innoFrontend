@@ -22,6 +22,7 @@ import logo from '../../assets/keikkakaveri_logo.png';
 import TranslateIcon from '@material-ui/icons/Translate';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
+import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 const LangMenuDropDown = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -118,6 +119,10 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           <Divider />
           <ListItem button component={Link} to="/tasks">
             <ListItemIcon>{<AssignmentIcon />}</ListItemIcon>
+            <ListItemText primary="Assignments" />
+          </ListItem>
+          <ListItem button component={Link} to="/profile-list">
+            <ListItemIcon>{<PeopleOutlineIcon />}</ListItemIcon>
             <ListItemText primary="Assignments" />
           </ListItem>
           <Divider />

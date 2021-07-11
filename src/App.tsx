@@ -40,8 +40,9 @@ import ContractFormPreviewPage from "./pages/ContractsPage/ContractFormManagerPa
 import ContractFormEditPage from "./pages/ContractsPage/ContractFormManagerPage/ContractFormEditPage";
 import Profile from "./pages/ProfilePage/index";
 import UserProfilePage from "./pages/ProfilePage/UserProfilePage";
-import ProfileSearch from "./pages/ProfilePage/ProfileList";
 import ProfileViewPage from "./pages/BusinessContractsPage/ProfileViewPage";
+import ProfileList from "./pages/ProfilePage/ProfileList";
+
 
 /**
  * @component
@@ -90,7 +91,10 @@ const App: React.FC = () => {
           <UserProfilePage />
         </PrivateRoute>
         <PrivateRoute path="/profile-list">
-          <ProfileSearch />
+          <ProfileList  />
+        </PrivateRoute>
+        <PrivateRoute path="/profile-view">
+          <ProfileViewPage />
         </PrivateRoute>
         <PrivateRoute path="/profile-edit">
           <Profile />
@@ -151,12 +155,6 @@ const App: React.FC = () => {
           roles={[roles.Business, roles.Agency]}
         >
           <BusinessContractEdit />
-        </PrivateRoute>
-        <PrivateRoute
-          path="/business-contracts/profile"
-          roles={[roles.Business, roles.Agency, roles.Worker]}
-        >
-          <ProfileViewPage />
         </PrivateRoute>
         <PrivateRoute path="/business-contracts" roles={[roles.Business]}>
           <BusinessContractPage />

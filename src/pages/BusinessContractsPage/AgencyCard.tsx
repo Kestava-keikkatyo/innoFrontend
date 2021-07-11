@@ -74,8 +74,6 @@ export const AgencyCard = (prop: { agency: Agency }) => {
   const classes = useStyles();
   const { agency } = prop;
 
-  console.log('### agency', agency);
-
   const history = useHistory();
 
   const [displayModal, setDisplayModal] = React.useState(false);
@@ -88,14 +86,12 @@ export const AgencyCard = (prop: { agency: Agency }) => {
 
   const transferToAgencyPage = (profileId: any) => {
     history.push({
-      pathname: '/business-contracts/profile',
+      pathname: "profile-view",
       state: { profileId: profileId },
     });
   };
 
-  const moveToProfile = (profileId: string) => {
-    history.push('/business-contracts/profile');
-  };
+
 
   return (
     <Card className={classes.root}>
@@ -114,8 +110,7 @@ export const AgencyCard = (prop: { agency: Agency }) => {
         title={agency.name}
         subheader={agency.email}
       />
-      {console.log('HP-palvelut ', agency)}
-
+      
       <CardContent className={classes.content}>
         <Grid container spacing={0}>
           <Grid className={classes.gridButton} item sm={4} xs={12}>
