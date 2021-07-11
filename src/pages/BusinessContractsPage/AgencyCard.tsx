@@ -88,7 +88,7 @@ export const AgencyCard = (prop: { agency: Agency }) => {
 
   const transferToAgencyPage = (profileId: any) => {
     history.push({
-      pathname: '/business-contracts/profile',
+      pathname: "profile-list/profile",
       state: { profileId: profileId },
     });
   };
@@ -112,8 +112,7 @@ export const AgencyCard = (prop: { agency: Agency }) => {
         title={agency.name}
         subheader={agency.email}
       />
-      {console.log('HP-palvelut ', agency)}
-
+      
       <CardContent className={classes.content}>
         <Grid container spacing={0}>
           <Grid className={classes.gridButton} item sm={4} xs={12}>
