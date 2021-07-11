@@ -72,10 +72,14 @@ const feelingReducer = (state: FeelingState = initialState, action: FeelingActio
     case UPDATE_FEELING_DATASET:
       let tempLabels: any = []
       let tempData: any = []
-      /*state.feelings.map((f: any) => {
+      console.log("€€€ state", state)
+      /*
+      state.feelings.map((f: any) => {
         tempLabels.push(formatDate(f.createdAt))
         return tempData.push(f.value)
-      })*/
+      })
+      */
+
       return {
         ...state,
         feelingDataSet: {
@@ -84,7 +88,7 @@ const feelingReducer = (state: FeelingState = initialState, action: FeelingActio
           datasets: [
             {
               ...state.feelingDataSet.datasets[0],
-              data: tempData
+              data: state.feelings
             }
           ]
         }

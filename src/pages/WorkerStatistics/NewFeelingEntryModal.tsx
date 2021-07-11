@@ -1,18 +1,9 @@
 import {
   Box,
-  Button,
-  Checkbox,
   Dialog,
-  DialogActions,
   DialogContent,
   DialogTitle,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
   IconButton,
-  Radio,
-  RadioGroup,
-  TextField,
   Typography,
 } from '@material-ui/core';
 import { Close as CloseIcon } from '@material-ui/icons';
@@ -20,7 +11,6 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAlert } from '../../actions/alertActions';
 import { submitFeeling, updateFeeling } from '../../actions/feelingActions';
-import Spacing from '../../components/Spacing';
 import fileService from '../../services/fileService';
 import { severity } from '../../types/types';
 import { IRootState } from '../../utils/store';

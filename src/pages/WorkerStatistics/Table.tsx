@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Paper from '@material-ui/core/Paper';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
 import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
 import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt';
@@ -9,6 +9,8 @@ import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfie
 import moment from 'moment';
 import imagePlaceholder from '../../assets/image-placeholder.png';
 
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
 import {
   TableContainer,
   Table,
@@ -16,33 +18,20 @@ import {
   TableRow,
   TableCell,
   TableBody,
-  IconButton,
   Typography,
-  Box,
-  InputBase,
-  Divider,
   withStyles,
   Theme,
   createStyles,
   makeStyles,
-  useTheme,
-  useMediaQuery,
-  Tooltip,
-  CardMedia,
+  Grid,
 } from '@material-ui/core';
 
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  AccordionActions,
 } from '@material-ui/core';
 
-import EditIcon from '@material-ui/icons/Edit';
-//import MoveToInboxIcon from '@material-ui/icons/MoveToInbox'
-import DeleteIcon from '@material-ui/icons/Delete';
-import SaveAltIcon from '@material-ui/icons/SaveAlt';
-import { useHistory } from 'react-router-dom';
 import PreviewImageModal from './PreviewImageModal';
 
 /**
@@ -54,17 +43,8 @@ export default function CustomizedTables() {
   const classes = useStyles();
   const feelings = useSelector((state: any) => state.feeling?.feelings);
 
-  const [isPreviewImageOpen, setIsPreviewImageOpen] = useState(false);
+  const [displayModal, setDisplayModal] = useState(false);
   const [imageSource, setImageSource] = useState('');
-
-  console.log('feelings TAble', feelings);
-
-  const dispatch = useDispatch();
-
-  const history = useHistory();
-
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('sm')); // sm: korkeintaan 960px
 
   // Table head styles
   const StyledTableCell = withStyles((theme: Theme) =>
@@ -124,9 +104,9 @@ export default function CustomizedTables() {
     }
   };
 
-  const handleImageClick = (src: string) => {
-    setIsPreviewImageOpen(!isPreviewImageOpen);
+  const openImageModal = (src: string) => {
     setImageSource(src);
+    setDisplayModal(true);
   };
 
   // Table view for desktop devices
@@ -165,10 +145,8 @@ export default function CustomizedTables() {
                           margin: 5,
                           cursor: 'pointer',
                         }}
-                        alt="image"
-                        onClick={() => handleImageClick(feel.fileUrl)}
+                        onClick={() => openImageModal(feel.fileUrl)}
                       />
-                      <PreviewImageModal />
                     </>
                   </TableCell>
                 </StyledTableRow>
@@ -180,36 +158,32 @@ export default function CustomizedTables() {
   };
 
   return (
-    <>
-      {/*<TableContainer component={Paper} className="table-container">
-        <Table className={classes.table} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>Date</StyledTableCell>
-              <StyledTableCell align="right">Rate</StyledTableCell>
-              <StyledTableCell align="right">Details</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {feelings.docs.map((feel: any, i: number) => (
-              <StyledTableRow key={i}>
-                <StyledTableCell component="th" scope="row">
-                  6.7.2021
-                </StyledTableCell>
-                <StyledTableCell align="right">{feel.value}</StyledTableCell>
-                <StyledTableCell align="right">{feel.note}</StyledTableCell>
-              </StyledTableRow>
-            ))}
-          </TableBody>
-        </Table>
-            </TableContainer>*/}
-      <br />
-      {tableView()}
-    </>
+    <div style={{ marginTop: 16 }}>
+      <Grid item xs={12}>
+        <Accordion className={classes.card} variant="outlined">
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography gutterBottom variant="h5">
+              Mood Details
+            </Typography>
+          </AccordionSummary>
+
+          <AccordionDetails>{tableView()}</AccordionDetails>
+        </Accordion>
+      </Grid>
+      <PreviewImageModal
+        displayModal={displayModal}
+        closeModal={() => setDisplayModal(false)}
+        imageSource={imageSource}
+      />
+    </div>
   );
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: 300,
   },
@@ -217,4 +191,21 @@ const useStyles = makeStyles({
     width: 30,
     height: 30,
   },
-});
+  card: {
+    margin: theme.spacing(2, 0),
+  },
+  accordion: {
+    width: '100%',
+    marginTop: 12,
+    border: '1px solid #E0E0E0',
+    borderRadius: 5,
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightBold,
+  },
+  description: {
+    fontSize: theme.typography.pxToRem(13),
+    color: '#6C6C6C',
+  },
+}));

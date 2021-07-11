@@ -30,7 +30,7 @@ const WorkerStatistics = () => {
       <WorkerStatisticsSummary />
       {feelings && feelings?.docs?.length > 0 ? (
         <>
-          {/*<Chart />*/}
+          <Chart />
           <Table />
         </>
       ) : null}
