@@ -21,12 +21,23 @@ const authHeader = () => {
  * @desc Back end call function that is used to post new feedback from user.
  * @param message - String message from user. 
  */
-const postFeedBack = async (message:String) => {
+const postFeedBack = async (message:String, heading:String) => {
   try {
-    return await axios.post(`${baseUrl}/feedback/post`,{message}, authHeader())
+    return await axios.post(`${baseUrl}/feedback/post`,{message, heading}, authHeader())
+  } catch (error) {
+    return Promise.reject(error.response)
+  }
+}
+/**
+ * @function
+ * @desc Back end call function that is used to get all logged in users feedbacks.
+ */
+const getUserFeedBacks = async () => {
+  try {
+    return await axios.get(`${baseUrl}/feedback/get`, authHeader())
   } catch (error) {
     return Promise.reject(error.response)
   }
 }
 
-export default {postFeedBack}
+export default {postFeedBack,getUserFeedBacks}
