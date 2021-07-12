@@ -28,9 +28,9 @@ const WorkerStatistics = () => {
     <Container className="worker-statistics">
       <WorkerStatisticsButtonRow />
       <WorkerStatisticsSummary />
-      {feelings && feelings?.docs?.length > 0 ? (
+      {feelings && feelings?.length > 0 ? (
         <>
-          {/*<Chart />*/}
+          <Chart />
           <Table />
         </>
       ) : null}

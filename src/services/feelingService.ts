@@ -1,3 +1,4 @@
+import { DoneWorkerContractsProps } from './../pages/WorkerContractPage/DoneWorkerContracts';
 /**
  * @module service/feeling
  * @desc Feeling requests to backend.
@@ -23,7 +24,22 @@ const authHeader = () => {
  * @desc Fetches all feelings avaible with current token.
  */
 const getFeelings = async () => {
-  return await axios.get(`${baseUrl}/feelings?page=1&limit=10`, authHeader())
+  let allData: any = []
+  let currentPage = 1
+
+  let res = await axios.get(`${baseUrl}/feelings?page=${currentPage}&limit=10`, authHeader())
+  console.log("feelingService:getFeelings: res", res)
+
+  for (currentPage; currentPage <= res.data.totalPages; currentPage++) {
+
+    res = await axios.get(`${baseUrl}/feelings?page=${currentPage}&limit=10`, authHeader())
+    let docs = res?.data?.docs
+    docs.map((doc: any) => allData.push(doc))
+  }
+
+  console.log("feelingService:getFeelings: all data", allData)
+  return allData
+
 }
 
 /**

@@ -7,18 +7,18 @@ import { Feeling } from "../types/types"
 import { formatDate } from "../utils/dateUtils"
 
 const initialDataset = {
-  labels: [ ],
+  labels: [],
   datasets: [
     {
-      label: 'Mood',
-      fill: false,
-      lineTension: 0.5,
-      backgroundColor: 'rgba(75,192,192,1)',
-      borderColor: 'rgba(0,0,0,1)',
-      borderWidth: 2,
-      data: [ ]
-    }
-  ]
+      label: '',
+      data: [],
+      backgroundColor: [],
+      borderColor: [],
+      borderWidth: 1,
+      //fill: false,
+      //lineTension: 0.5,
+    },
+  ],
 }
 
 const initialFeeling: Feeling = {
@@ -70,12 +70,17 @@ const feelingReducer = (state: FeelingState = initialState, action: FeelingActio
         currentFeeling: initialFeeling
       }
     case UPDATE_FEELING_DATASET:
+      console.log("feeling reducer: data: ", action.data)
       let tempLabels: any = []
       let tempData: any = []
-      /*state.feelings.map((f: any) => {
+      console.log("€€€ state", state)
+      /*
+      state.feelings.map((f: any) => {
         tempLabels.push(formatDate(f.createdAt))
         return tempData.push(f.value)
-      })*/
+      })
+      */
+
       return {
         ...state,
         feelingDataSet: {
@@ -84,7 +89,7 @@ const feelingReducer = (state: FeelingState = initialState, action: FeelingActio
           datasets: [
             {
               ...state.feelingDataSet.datasets[0],
-              data: tempData
+              data: state.feelings
             }
           ]
         }

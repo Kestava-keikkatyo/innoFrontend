@@ -18,11 +18,9 @@ import { IRootState } from '../../utils/store';
  * is shown in Doughnut charts.
  */
 const WorkerStatisticsSummary = () => {
-  const feelings = useSelector(
-    (state: IRootState) => state.feeling?.feelings?.docs
-  );
+  const feelings = useSelector((state: IRootState) => state.feeling?.feelings);
 
-  console.log('feelings.docs', feelings?.docs);
+  console.log('StatsSummary:feelings', feelings);
 
   if (!feelings) {
     return (

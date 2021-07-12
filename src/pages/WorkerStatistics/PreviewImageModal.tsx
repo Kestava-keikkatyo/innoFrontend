@@ -1,60 +1,50 @@
+import {
+  Box,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  IconButton,
+  Typography,
+} from '@material-ui/core';
+import { Close as CloseIcon } from '@material-ui/icons';
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
-
+import imagePlaceholder from '../../assets/image-placeholder.png';
+/**
+ * @component
+ * A modal panel, which shows mood image in bigger size.
+ * @param {*} props
+ * @param {} modalState contains a useState for modal handling, needs to be deconstructed.
+ */
 const PreviewImageModal: React.FC<any> = ({
   displayModal,
   closeModal,
   imageSource,
 }) => {
-  const [open, setOpen] = React.useState(false);
-  const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   return (
-    <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open responsive dialog
-      </Button>
-      <Dialog
-        fullScreen={fullScreen}
-        open={displayModal}
-        onClose={closeModal}
-        aria-labelledby="responsive-dialog-title"
-      >
-        <DialogTitle id="responsive-dialog-title">
-          {"Use Google's location service?"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Let Google help apps determine location. This means sending
-            anonymous location data to Google, even when no apps are running.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={closeModal} color="primary">
-            Disagree
-          </Button>
-          <Button onClick={closeModal} color="primary" autoFocus>
-            Agree
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
+    <Dialog
+      className="new-feeling-modal"
+      open={displayModal}
+      onClose={closeModal}
+      fullWidth
+      style={{ padding: 16 }}
+    >
+      <DialogTitle>
+        <Box display="flex" justifyContent="space-between" alignItems="center">
+          <Typography variant="h6">Image preview</Typography>
+          <IconButton onClick={closeModal}>
+            <CloseIcon />
+          </IconButton>
+        </Box>
+      </DialogTitle>
+      <DialogContent style={{ paddingBottom: 24, textAlign: 'center' }}>
+        <img
+          src={imageSource ? imageSource : imagePlaceholder}
+          style={{
+            maxWidth: 600,
+          }}
+        />
+      </DialogContent>
+    </Dialog>
   );
 };
 

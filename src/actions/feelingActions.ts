@@ -11,9 +11,9 @@ import { Feeling } from "../types/types"
  * @desc Fetches all the feelings.
  */
 export const fetchFeelings = () => async (dispatch: any) => {
-  const res = await feelingService.getFeelings()
-  console.log("res feelings", res)
-  dispatch({ type: FETCH_FEELINGS, data: res.data})
+  const data = await feelingService.getFeelings() // getFeelings returns array of all feelings
+  console.log("feelings data", data)
+  dispatch({ type: FETCH_FEELINGS, data: data})
 }
 
 /**
@@ -30,7 +30,9 @@ export const updateFeeling = (data: any) => async (dispatch: any) => {
  * @desc Updates the feelings dataset.
  */
 export const updateDataSet = () => async (dispatch: any) => {
-  dispatch({ type: UPDATE_FEELING_DATASET })
+  const data = await feelingService.getFeelings() // getFeelings returns array of all feelings
+  console.log("updateDataSet data:", data)
+  dispatch({ type: UPDATE_FEELING_DATASET, data: data })
 }
 
 /**
