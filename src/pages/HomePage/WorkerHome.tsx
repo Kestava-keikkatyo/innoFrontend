@@ -31,6 +31,7 @@ import { getUserFeedBacks, postFeedBack } from '../../actions/feedBackActions'
 import { useEffect } from 'react'
 import fileService from '../../services/fileService';
 import { RESET_FEEDBACK } from '../../types/state';
+import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -44,7 +45,17 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center"
   },
   accordion: {
-    display: "block"
+    display: "contents"
+  },
+  feedBackTextWaiting: {
+    color: "#ac9100"
+  },
+  feedBackTextDone: {
+    color: "green"
+  },
+  dividerWithMargin: {
+    marginTop: "5px",
+    marginBottom: "5px"
   }
 }))
 
@@ -95,7 +106,7 @@ const WorkerHome = () => {
   const handleClickLoading = () => {
     if (message.length > 0 && heading.length > 0) {
       setLoading((prevLoading) => !prevLoading)
-      dispatch(postFeedBack(message,heading))
+      dispatch(postFeedBack(message, heading))
     } else {
       setHelperText("Tarkista että kentät on täytetty!")
     }
@@ -117,13 +128,11 @@ const WorkerHome = () => {
 
   return (
     <Grid container>
-      <Grid item xs={12} md={6}>
-        <Spacing mr5>
+      <Grid item xs={12} md={6} style={{marginBottom: '3%'}}>
           <MoodForm handleSubmit={onHandleSubmit} />
-        </Spacing>
       </Grid>
-      <Grid item xs={12} md={6}>
-        <div className="report-container">
+      <Grid item xs={12} md={6} style={{marginBottom: '3%'}}>
+        <div className="report-container" style={{height: '100%'}}>
           <CardHeader
             action={
               <Button variant="outlined" color="primary">
@@ -145,8 +154,8 @@ const WorkerHome = () => {
           </CardContent>
         </div>
       </Grid>
-      <Grid item xs={12} md={6}>
-        <div className="report-container">
+      <Grid item xs={12} md={6} style={{marginBottom: '5%'}}>
+        <div className="report-container" style={{height: '100%'}}>
           <CardHeader
             title="Anna palautetta"
             subheader="Palaute lomake">
@@ -195,35 +204,40 @@ const WorkerHome = () => {
           </CardActions>
         </div>
       </Grid>
-      <Grid item xs={12} md={6}>
-        <div className="report-container">
+      <Grid item xs={12} md={6} style={{marginBottom: '5%'}}>
+        <div className="report-container" style={{ height: '100%' }}>
           <CardHeader
             title="Omat palautteet">
           </CardHeader>
           <CardContent>
-            {myFeedBacks ? myFeedBacks.map((feedback: { message: string, heading: string, reply: string }) => (
+            {myFeedBacks && myFeedBacks.length > 0 ? myFeedBacks.map((feedback: { message: string, heading: string, reply: string }) => (
               <Accordion>
                 <AccordionSummary
-                  style={{ display: "flow-root"}}
-                  classes={{content: classes.accordion}}
+                  style={{ display: "flex" }}
+                  classes={{ content: classes.accordion }}
                   expandIcon={<ExpandMoreIcon />}>
-                  <Typography style={{ wordWrap: "break-word" }}>Otsikko: {feedback.heading}</Typography>
-                  <Divider/>
-                  <Typography>{myFeedBacks.reply ? "Vastaus: "+myFeedBacks.reply : "Odottaa käsittelyä"}</Typography>
+                  <div style={{ width: "50%", flex: 'auto'}}>
+                    <Typography style={{ wordWrap: "break-word" }}>{feedback.heading}</Typography>
+                  </div>
+                  <div style={{ flex: 'auto'}}>
+                    <Typography className={feedback.reply ? classes.feedBackTextDone : classes.feedBackTextWaiting}>
+                      {feedback.reply ? "Vastattu" : "Odottaa"}
+                    </Typography>
+                  </div>
                 </AccordionSummary>
-                <AccordionDetails style={{ display: "flow-root"}}>
-                  <Divider/>
+                <AccordionDetails style={{ display: "block" }}>
+                  <Divider className={classes.dividerWithMargin}/>
                   <Typography>
                     Viesti:
                   </Typography>
-                  <Typography style={{ wordWrap: "break-word" }}>
+                  <Typography style={{ wordWrap: "break-word", width: '100%' }}>
                     {feedback.message}
                   </Typography>
-                  <Divider/>
-                  {myFeedBacks.reply ? <Typography>myFeedBacks.reply</Typography> : <></>}
+                  <Divider className={classes.dividerWithMargin}/>
+                  {feedback.reply ? <><Typography>Vastaus:</Typography><Typography style={{ wordWrap: "break-word", width: '100%' }}>{feedback.reply}</Typography></> : <></>}
                 </AccordionDetails>
               </Accordion>
-            )) : <></>}
+            )) : <Typography>Ei palautteita</Typography>}
           </CardContent>
           <CardActions>
 
