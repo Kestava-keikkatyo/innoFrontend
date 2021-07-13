@@ -10,12 +10,13 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
-    marginBottom: '2%',
+    marginBottom: '3%',
   },
   media: {
     height: 140,
   },
 });
+
 
 const JobCard: React.FC = () => {
   const classes = useStyles();

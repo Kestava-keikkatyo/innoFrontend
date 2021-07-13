@@ -49,6 +49,8 @@ const fields = [
     },
   ];
 
+ 
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -62,9 +64,9 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function MultilineTextFields() {
   const classes = useStyles();
-  const [location, setLocation] = React.useState('');
-  const [field, setField] = React.useState('');
-  const [experience, setExperience] = React.useState('')
+  const [location, setLocation] = React.useState('Helsinki');
+  const [field, setField] = React.useState('Palvelu');
+  const [experience, setExperience] = React.useState('Harjoittelija')
 
   const handleLocationChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLocation(event.target.value);
@@ -113,7 +115,7 @@ export default function MultilineTextFields() {
         <TextField
         id='experience'
         select
-        label='kokemus'
+        label='KOKEMUS'
         value={experience}
         onChange={handleExperinceChange}
         >

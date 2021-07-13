@@ -3,21 +3,20 @@ import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
-import Avatar from "@material-ui/core/Avatar";
-import { red } from "@material-ui/core/colors";
 import LimitJobSearch from "./LimitJobSearch";
 import Button from "@material-ui/core/Button";
 import JobCard from "./JobCard";
 import { Grid, Container } from "@material-ui/core";
+import JobsInsidence from "./JobsIncidence";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       maxWidth: 345,
-      marginTop: "5%",
-      marginLeft: "2%",
+      marginTop: "21.5%",
+      marginRight: "20%",
+      
     },
     media: {
       height: 0,
@@ -37,10 +36,13 @@ const useStyles = makeStyles((theme: Theme) =>
       float: "right",
     },
     jobCard: {
-    marginTop: "1.4%"
+    marginTop: "5%"
     },
-    search: {
-     
+    incidence: {
+     marginLeft: '76%',
+     [theme.breakpoints.down('sm')]: {
+       marginLeft:0
+     }
     }
   })
 );
@@ -52,13 +54,13 @@ const JobList: React.FC = () => {
 
   return (
     <Container>
-    <Grid container spacing={1}
-    
-    >
+      
+    <Grid container spacing={1}>
       <Grid item>
+        
         <Card className={classes.root}>
           <CardHeader title="Rajaa hakua" />
-          <CardContent className={classes.search}>
+          <CardContent>
             <LimitJobSearch />
           </CardContent>
           <Collapse in={expanded} timeout="auto" unmountOnExit></Collapse>
@@ -66,6 +68,10 @@ const JobList: React.FC = () => {
         </Card>
       </Grid>
       <Grid item className={classes.jobCard}>
+      <div className={classes.incidence}>
+      <JobsInsidence/>
+      </div>
+      <h3>Työpaikkoja löytyi 423 kappaletta</h3> 
         <JobCard />
         <JobCard />
         <JobCard />
