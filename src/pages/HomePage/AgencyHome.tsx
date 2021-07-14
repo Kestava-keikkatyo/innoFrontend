@@ -13,9 +13,14 @@ import {
   Grid,
 } from '@material-ui/core'
 
+import FeedBackForm from './FeedBackForm/index'
+
 const AgencyHome = () => {
   return (
     <Grid container>
+      <Grid item xs={12} md={6}>
+        {/* <Container variant="outlined"></Container> */}
+      </Grid>
       <Grid item xs={12} md={6}>
         <Card variant="outlined">
           <CardHeader
@@ -39,6 +44,7 @@ const AgencyHome = () => {
           </CardContent>
         </Card>
       </Grid>
+      <FeedBackForm/>
     </Grid>
   )
 }
