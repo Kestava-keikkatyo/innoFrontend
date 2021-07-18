@@ -23,6 +23,8 @@ import TranslateIcon from '@material-ui/icons/Translate';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
+import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
+
 const LangMenuDropDown = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -123,7 +125,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           </ListItem>
           <ListItem button component={Link} to="/profile-list">
             <ListItemIcon>{<PeopleOutlineIcon />}</ListItemIcon>
-            <ListItemText primary="Assignments" />
+            <ListItemText primary="Profiles" />
           </ListItem>
           <Divider />
 
@@ -191,7 +193,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
               <ListItemIcon>
                 <AssignmentTurnedInIcon />
               </ListItemIcon>
-              <ListItemText primary="sopimukset" />
+              <ListItemText primary="Contracts" />
             </ListItem>
           )}
           {role === roles.Worker && (
@@ -199,9 +201,18 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
               <ListItemIcon>
                 <LibraryBooksIcon />
               </ListItemIcon>
-              <ListItemText primary="yrityssopimukset" />
+              <ListItemText primary="Business Contracts" />
             </ListItem>
           )}
+          {role === roles.Worker && (
+            <ListItem button component={Link} to="/job-list">
+              <ListItemIcon>
+                <WorkOutlineIcon />
+              </ListItemIcon>
+              <ListItemText primary="Jobs" />
+            </ListItem>
+          )}
+          
         </List>
       </div>
 

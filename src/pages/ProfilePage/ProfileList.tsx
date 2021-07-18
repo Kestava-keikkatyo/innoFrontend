@@ -1,6 +1,6 @@
-import { Card } from '@material-ui/core';
+import { Card, InputBase } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchProfiles } from '../../actions/profileActions';
 import { IRootState } from '../../utils/store';
 import { makeStyles } from '@material-ui/core/styles';
@@ -8,10 +8,15 @@ import ProfileCard from './ProfileCard';
 
 const ProfileSearch: React.FC<any> = () => {
   const dispatch = useDispatch();
+  const [filter, setFilter] = useState('');
 
   const useStyles = makeStyles({
     root: {
       minWidth: 275,
+    },
+    search: {
+      marginLeft: '3%',
+      width: '40%',
     },
   });
 
@@ -25,8 +30,6 @@ const ProfileSearch: React.FC<any> = () => {
     dispatch(fetchProfiles('a'));
   }, [dispatch]);
 
-  //Tälle sivulle ei ole vielä keksitty käyttöä, mutta tätä voidaan varmaankin hyödyntää
-
   if (profiles === undefined) {
     return <div>no results</div>;
     {
@@ -34,9 +37,19 @@ const ProfileSearch: React.FC<any> = () => {
   } else
     return (
       <Card className={classes.root}>
-        {profiles.profile.map((profile: any) => (
-          <ProfileCard key={profile._id} profile={profile} />
-        ))}
+        <InputBase
+          className={classes.search}
+          placeholder="search..."
+          value={filter || ''}
+          onChange={(e: any) => setFilter(e.target.value)}
+        />
+        {profiles.profile
+          .filter((profile: any) =>
+            profile.userInformation.toLowerCase().includes(filter.toLowerCase())
+          )
+          .map((profile: any) => (
+            <ProfileCard key={profile._id} profile={profile} />
+          ))}
       </Card>
     );
 };

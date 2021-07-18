@@ -106,6 +106,7 @@ ColorlibStepIcon.propTypes = {
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
+    height: '100%'
   },
   button: {
     marginRight: theme.spacing(1),
@@ -117,6 +118,7 @@ const useStyles = makeStyles((theme) => ({
   instructions: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
+    textAlign: 'center'
   },
 }));
 
@@ -199,7 +201,7 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
             <div className={classes.instructions}>
               {getStepContent(activeStep)}
             </div>
-            <div style={{ marginTop: 24 }}>
+            <div style={{ marginTop: 24, textAlign: 'center' }}>
               <Button
                 disabled={activeStep === 0}
                 onClick={handleBack}

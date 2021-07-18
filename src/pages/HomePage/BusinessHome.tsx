@@ -12,6 +12,7 @@ import {
   Button,
   Grid,
 } from '@material-ui/core'
+import FeedBackForm from './FeedBackForm/index'
 
 const BusinessHome = () => {
   return (
@@ -42,6 +43,7 @@ const BusinessHome = () => {
           </CardContent>
         </Card>
       </Grid>
+      <FeedBackForm/>
     </Grid>
   )
 }
