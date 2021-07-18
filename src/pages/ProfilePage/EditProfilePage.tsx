@@ -6,6 +6,7 @@ import {
   makeStyles,
   Typography,
   TextField,
+  CardMedia,
 } from '@material-ui/core';
 import React from 'react';
 import Spacing from '../../components/Spacing';
@@ -64,6 +65,12 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: theme.spacing(1),
+  },
+  coverPhoto: {
+    height: 300,
+    [theme.breakpoints.down('sm')]: {
+      height: 200,
+    },
   },
 }));
 
@@ -153,28 +160,45 @@ export const EditProfilePage: React.FC<any> = () => {
   return (
     <Container className="relative">
       {/* ### HEADER ### */}
-      <Grid container direction="row" justify="space-between">
+      <Grid
+        container
+        direction="row"
+        justify="space-between"
+        style={{ marginTop: 10, marginBottom: 10 }}
+      >
         <Grid item xs={6}>
-          <Button color="primary" className={classes.button}>
-            <Link style={{ textDecoration: 'none' }} to="/profile">
+          <Button color="primary" variant="outlined" className={classes.button}>
+            <Link
+              style={{ textDecoration: 'none', color: '#eb5a00' }}
+              to="/profile"
+            >
               Return
             </Link>
           </Button>
         </Grid>
       </Grid>
       <form>
-        {/* ### Cover photo / banner ### */}
-        <img
-          src={
-            currentProfile.coverPhoto !== ''
-              ? currentProfile.coverPhoto
-              : banner
-          }
-          alt="Banner"
-          className="profile-banner"
-        />
+        {/* ### Cover photo / banner  ### */}
+        <Grid container justify="center" direction="row">
+          <Grid item xs={12}>
+            <CardMedia
+              className={classes.coverPhoto}
+              image={
+                currentProfile.coverPhoto !== ''
+                  ? currentProfile.coverPhoto
+                  : banner
+              }
+            />
+          </Grid>
+        </Grid>
         {/* ### Profile picture & name ### */}
-        <Grid container direction="row" justify="center" alignItems="flex-end">
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="flex-end"
+          style={{ marginBottom: 75 }}
+        >
           <Grid item xs={12} md={2} style={{ marginTop: -100 }}>
             <Avatar
               style={{ margin: 'auto' }}
@@ -210,7 +234,7 @@ export const EditProfilePage: React.FC<any> = () => {
         </Grid>
         <Spacing m5 />
         {/* ### Contact information ### */}
-        <Grid container>
+        <Grid container style={{ marginBottom: 75 }}>
           <Grid item xs={12}>
             <Typography variant="h5">Contact information</Typography>
           </Grid>
@@ -370,7 +394,7 @@ export const EditProfilePage: React.FC<any> = () => {
 
         <Spacing m5 />
         {/* ### Introduction video ### */}
-        <Grid container>
+        <Grid container style={{ marginBottom: 75 }}>
           <Grid item xs={12}>
             <Typography variant="h5">Introduction video</Typography>
           </Grid>
@@ -393,7 +417,7 @@ export const EditProfilePage: React.FC<any> = () => {
 
         <Spacing m5 />
         {/* ### Occupational Safety Rules ### */}
-        <Grid container>
+        <Grid container style={{ marginBottom: 75 }}>
           <Grid item xs={12}>
             <Typography variant="h5">Occupational Safety Rules</Typography>
           </Grid>
@@ -420,7 +444,7 @@ export const EditProfilePage: React.FC<any> = () => {
 
         <Spacing m5 />
         {/* ### Instructions ### */}
-        <Grid container>
+        <Grid container style={{ marginBottom: 75 }}>
           <Grid item xs={12}>
             <Typography variant="h5">Instructions</Typography>
           </Grid>
@@ -445,15 +469,16 @@ export const EditProfilePage: React.FC<any> = () => {
 
         <Spacing m5 />
         {/* ### Submit button ### */}
-        <Button
-          variant="contained"
-          type="submit"
-          color="secondary"
-          onClick={profileEdit}
-        >
-          Save changes and return
-        </Button>
-        <Spacing m5 />
+        <Grid container style={{ marginBottom: 75 }}>
+          <Button
+            variant="contained"
+            type="submit"
+            color="secondary"
+            onClick={profileEdit}
+          >
+            Save changes and return
+          </Button>
+        </Grid>
       </form>
     </Container>
   );

@@ -120,7 +120,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
   };
 
   const handleClickProfileSettings = () => {
-    history.push('/profile-edit');
+    history.push('/home');
   };
 
   return (

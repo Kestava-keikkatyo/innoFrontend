@@ -1,4 +1,10 @@
-import { Button, Container, List, makeStyles } from '@material-ui/core';
+import {
+  Button,
+  CardMedia,
+  Container,
+  List,
+  makeStyles,
+} from '@material-ui/core';
 import React from 'react';
 import EmailIcon from '@material-ui/icons/Email';
 import { useDispatch, useSelector } from 'react-redux';
@@ -35,6 +41,19 @@ const useStyles = makeStyles((theme) => ({
   typoBody2: {
     marginTop: 10,
   },
+  coverPhoto: {
+    height: 300,
+    [theme.breakpoints.down('sm')]: {
+      height: 200,
+    },
+  },
+  videoWrapper: {
+    display: 'flex',
+    maxWidth: '70%',
+    [theme.breakpoints.down('sm')]: {
+      maxWidth: '100%',
+    },
+  },
 }));
 
 const ProfilePage: React.FC = () => {
@@ -57,10 +76,18 @@ const ProfilePage: React.FC = () => {
   return (
     <Container style={{ marginTop: 10 }} className="relative">
       {/* ### HEADER ### */}
-      <Grid container direction="row" justify="space-between">
+      <Grid
+        container
+        direction="row"
+        justify="space-between"
+        style={{ marginTop: 10, marginBottom: 10 }}
+      >
         <Grid item xs={6}>
-          <Button color="primary" className={classes.button}>
-            <Link style={{ textDecoration: 'none' }} to="/home">
+          <Button color="primary" variant="outlined" className={classes.button}>
+            <Link
+              style={{ textDecoration: 'none', color: '#eb5a00' }}
+              to="/home"
+            >
               Return
             </Link>
           </Button>
@@ -84,15 +111,26 @@ const ProfilePage: React.FC = () => {
         </Grid>
       </Grid>
       {/* ### Cover photo / banner  ### */}
-      <img
-        src={
-          currentProfile.coverPhoto !== '' ? currentProfile.coverPhoto : banner
-        }
-        alt="Banner"
-        className="profile-banner"
-      />
+      <Grid container justify="center" direction="row">
+        <Grid item xs={12}>
+          <CardMedia
+            className={classes.coverPhoto}
+            image={
+              currentProfile.coverPhoto !== ''
+                ? currentProfile.coverPhoto
+                : banner
+            }
+          />
+        </Grid>
+      </Grid>
       {/* ### profile picture & name ### */}
-      <Grid container direction="row" justify="center" alignItems="flex-end">
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        alignItems="flex-end"
+        style={{ marginBottom: 75 }}
+      >
         <Grid item xs={12} md={2} style={{ marginTop: -100 }}>
           <Avatar
             style={{ margin: 'auto' }}
@@ -111,7 +149,7 @@ const ProfilePage: React.FC = () => {
       </Grid>
       <Spacing m5 />
       {/* ### Contact information ### */}
-      <Grid container>
+      <Grid container style={{ marginBottom: 75 }}>
         <Grid item xs={12}>
           <Typography variant="h5">Contact information</Typography>
         </Grid>
@@ -188,15 +226,15 @@ const ProfilePage: React.FC = () => {
       </Grid>
       <Spacing m5 />
       {/* ### Introduction video ### */}
-      <Grid container>
-        <Grid item xs={12}>
+      <Grid container style={{ marginBottom: 75 }}>
+        <Grid item xs={12} style={{ marginBottom: 40 }}>
           <Typography variant="h5">Introduction video</Typography>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} className={classes.videoWrapper}>
           {/*   https://www.npmjs.com/package/react-player   */}
           <ReactPlayer
-            //width="100%"
-            //height="600"
+            width="100%"
+            height="100%"
             url={
               currentProfile.video !== ''
                 ? currentProfile.video
@@ -208,7 +246,7 @@ const ProfilePage: React.FC = () => {
       </Grid>
       <Spacing m5 />
       {/* ### Occupational Safety Rules ### */}
-      <Grid container>
+      <Grid container style={{ marginBottom: 75 }}>
         <Grid item xs={12}>
           <Typography variant="h5">Occupational Safety Rules</Typography>
         </Grid>
@@ -240,7 +278,7 @@ const ProfilePage: React.FC = () => {
       </Grid>
       <Spacing m5 />
       {/* ### Instructions ### */}
-      <Grid container>
+      <Grid container style={{ marginBottom: 75 }}>
         <Grid item xs={12}>
           <Typography variant="h5">Instructions</Typography>
         </Grid>
