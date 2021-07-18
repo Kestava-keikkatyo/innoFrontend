@@ -4,28 +4,28 @@ import {
   Grid,
   makeStyles,
   Typography,
-} from "@material-ui/core";
-import React from "react";
-import Spacing from "../../components/Spacing";
-import banner from "../../assets/form-banner.jpg";
-import { useDispatch, useSelector } from "react-redux";
-import { IRootState } from "../../utils/store";
-import { fetchProfileById } from "../../actions/editProfileActions";
-import { useLocation } from "react-router-dom";
+} from '@material-ui/core';
+import React from 'react';
+import Spacing from '../../components/Spacing';
+import banner from '../../assets/form-banner.jpg';
+import { useDispatch, useSelector } from 'react-redux';
+import { IRootState } from '../../utils/store';
+import { fetchProfileById } from '../../actions/profileActions';
+import { useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
-    color: theme.palette.getContrastText("#eb5a00"),
-    backgroundColor: "#eb5a00",
+    color: theme.palette.getContrastText('#eb5a00'),
+    backgroundColor: '#eb5a00',
     width: theme.spacing(20),
     height: theme.spacing(20),
   },
   contact: {
-    display: "flex",
-    flexDirection: "row",
+    display: 'flex',
+    flexDirection: 'row',
   },
   contactButton: {
-    marginLeft: "1%",
+    marginLeft: '1%',
   },
 }));
 
@@ -37,16 +37,14 @@ const UserProfilePage: React.FC = () => {
 
   const profileId = location.state.profileId;
 
-  console.log("profileId", profileId);
+  console.log('profileId', profileId);
 
   //käyttäjän data nyt --> korvaa yrityksen datalla
   const userData: any = useSelector((state: IRootState) => state.user.data);
   const { agencies } = useSelector((state: IRootState) => state.agencies);
-  console.log("USER DATA INDEX", userData);
+  console.log('USER DATA INDEX', userData);
 
-  const currentProfile: any = useSelector(
-    (state: IRootState) => state.profileForm
-  );
+  const currentProfile: any = useSelector((state: IRootState) => state.profile);
 
   //let form:any = await formServices.fetchFormById(formId)
 
@@ -60,7 +58,7 @@ const UserProfilePage: React.FC = () => {
       <Grid container direction="row" justify="center" alignItems="flex-end">
         <Grid item xs={12} md={2} style={{ marginTop: -100 }}>
           <Avatar
-            style={{ margin: "auto" }}
+            style={{ margin: 'auto' }}
             className={classes.avatar}
             aria-label="recipe"
           >

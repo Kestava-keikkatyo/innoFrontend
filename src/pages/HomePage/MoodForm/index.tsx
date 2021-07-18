@@ -15,7 +15,7 @@ import { Container } from '@material-ui/core';
 import MoodStepOne from './MoodStepOne';
 import MoodStepTwo from './MoodStepTwo';
 import MoodStepThree from './MoodStepThree';
-import { setFile } from '../../../actions/fileActions';
+import { setFiles } from '../../../actions/fileActions';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router';
 
@@ -151,7 +151,7 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
 
   const handleReset = () => {
     setActiveStep(0);
-    dispatch(setFile(null));
+    dispatch(setFiles(null));
   };
 
   const handleFinnish = () => {

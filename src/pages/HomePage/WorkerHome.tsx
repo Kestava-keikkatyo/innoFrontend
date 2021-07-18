@@ -17,58 +17,60 @@ import {
   Typography,
   Accordion,
   AccordionDetails,
-  AccordionSummary
-} from '@material-ui/core'
-import MoodForm from './MoodForm'
-import Spacing from '../../components/Spacing'
-import SendIcon from '@material-ui/icons/Send'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import { submitFeeling, updateFeeling } from '../../actions/feelingActions'
-import { useDispatch, useSelector } from 'react-redux'
+  AccordionSummary,
+} from '@material-ui/core';
+import MoodForm from './MoodForm';
+import Spacing from '../../components/Spacing';
+import SendIcon from '@material-ui/icons/Send';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { submitFeeling, updateFeeling } from '../../actions/feelingActions';
+import { useDispatch, useSelector } from 'react-redux';
 import ReplayIcon from '@material-ui/icons/Replay';
-import { IRootState } from '../../utils/store'
-import { getUserFeedBacks, postFeedBack } from '../../actions/feedBackActions'
-import { useEffect } from 'react'
+import { IRootState } from '../../utils/store';
+import { getUserFeedBacks, postFeedBack } from '../../actions/feedBackActions';
+import { useEffect } from 'react';
 import fileService from '../../services/fileService';
 import { RESET_FEEDBACK } from '../../types/state';
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    backgroundColor: "#eb5a00",
-    "&:disabled": {
-      backgroundColor: "#ebc800"
+    backgroundColor: '#eb5a00',
+    '&:disabled': {
+      backgroundColor: '#ebc800',
     },
-    color: "white"
+    color: 'white',
   },
   sendingDiv: {
-    textAlign: "center"
+    textAlign: 'center',
   },
   accordion: {
-    display: "block"
-  }
-}))
+    display: 'block',
+  },
+}));
 
 const WorkerHome = () => {
   const dispatch = useDispatch();
 
-  const classes = useStyles()
+  const classes = useStyles();
 
   const currentFeeling: any = useSelector<IRootState>(
     (state) => state.feeling.currentFeeling
   );
 
-  let currentFile: any = useSelector<IRootState>(
-    (state) => state.file.currentFile
+  let currentFiles: any = useSelector<IRootState>(
+    (state) => state.files.currentFiles
   );
 
   const onHandleSubmit = async () => {
     console.log('### 1 currentFeeling:', currentFeeling);
-    console.log('### currentFile:', currentFile.file);
-    if (currentFile.file !== null) {
-      const res: any = await fileService.postFile(currentFile);
+    console.log('### currentFiles:', currentFiles);
+    if (currentFiles !== null) {
+      const res: any = await fileService.postFile(currentFiles);
+      console.log('onHandleSubmit res', res);
+
       const copyOfCurrentFeeling = {
         ...currentFeeling,
-        fileUrl: res.data?.fileUrl,
+        fileUrl: res.data?.fileUrls[0],
       };
 
       dispatch(updateFeeling(copyOfCurrentFeeling));
@@ -77,43 +79,43 @@ const WorkerHome = () => {
       dispatch(updateFeeling(currentFeeling));
       dispatch(submitFeeling(currentFeeling));
     }
-  }
-  let { feedBackSaved } = useSelector((state: IRootState) => state.feedback)
+  };
+  let { feedBackSaved } = useSelector((state: IRootState) => state.feedback);
 
-  const { myFeedBacks } = useSelector((state: IRootState) => state.feedback)
+  const { myFeedBacks } = useSelector((state: IRootState) => state.feedback);
 
-  const [loading, setLoading] = React.useState(false)
+  const [loading, setLoading] = React.useState(false);
 
-  const [isSent, setSent] = React.useState(false)
+  const [isSent, setSent] = React.useState(false);
 
-  const [message, setMessage] = React.useState("")
+  const [message, setMessage] = React.useState('');
 
-  const [heading, setHeading] = React.useState("")
+  const [heading, setHeading] = React.useState('');
 
-  const [helperText, setHelperText] = React.useState("")
+  const [helperText, setHelperText] = React.useState('');
 
   const handleClickLoading = () => {
     if (message.length > 0 && heading.length > 0) {
-      setLoading((prevLoading) => !prevLoading)
-      dispatch(postFeedBack(message,heading))
+      setLoading((prevLoading) => !prevLoading);
+      dispatch(postFeedBack(message, heading));
     } else {
-      setHelperText("Tarkista että kentät on täytetty!")
+      setHelperText('Tarkista että kentät on täytetty!');
     }
-  }
+  };
 
   const handleClearTextField = () => {
-    setMessage("")
-    setHeading("")
-  }
+    setMessage('');
+    setHeading('');
+  };
 
   useEffect(() => {
     if (feedBackSaved) {
-      setLoading((prevLoading) => !prevLoading)
-      setSent(true)
-      dispatch({ type: RESET_FEEDBACK })
+      setLoading((prevLoading) => !prevLoading);
+      setSent(true);
+      dispatch({ type: RESET_FEEDBACK });
     }
-    dispatch(getUserFeedBacks())
-  }, [dispatch, feedBackSaved])
+    dispatch(getUserFeedBacks());
+  }, [dispatch, feedBackSaved]);
 
   return (
     <Grid container>
@@ -149,21 +151,23 @@ const WorkerHome = () => {
         <div className="report-container">
           <CardHeader
             title="Anna palautetta"
-            subheader="Palaute lomake">
-          </CardHeader>
+            subheader="Palaute lomake"
+          ></CardHeader>
           <CardContent>
             <form noValidate autoComplete="off" hidden={loading}>
               <div>
                 <TextField
                   value={heading}
-                  label={"Otsikko"}
+                  label={'Otsikko'}
                   onChange={(e) => setHeading(e.target.value)}
                 />
                 <TextField
                   id="standard-multiline-static"
                   value={message}
                   helperText={helperText}
-                  label={isSent ? "Palaute lähetetty" : "Kirjoita palaute tähän:"}
+                  label={
+                    isSent ? 'Palaute lähetetty' : 'Kirjoita palaute tähän:'
+                  }
                   onChange={(e) => setMessage(e.target.value)}
                   multiline
                   rows={4}
@@ -197,37 +201,52 @@ const WorkerHome = () => {
       </Grid>
       <Grid item xs={12} md={6}>
         <div className="report-container">
-          <CardHeader
-            title="Omat palautteet">
-          </CardHeader>
+          <CardHeader title="Omat palautteet"></CardHeader>
           <CardContent>
-            {myFeedBacks ? myFeedBacks.map((feedback: { message: string, heading: string, reply: string }) => (
-              <Accordion>
-                <AccordionSummary
-                  style={{ display: "flow-root"}}
-                  classes={{content: classes.accordion}}
-                  expandIcon={<ExpandMoreIcon />}>
-                  <Typography style={{ wordWrap: "break-word" }}>Otsikko: {feedback.heading}</Typography>
-                  <Divider/>
-                  <Typography>{myFeedBacks.reply ? "Vastaus: "+myFeedBacks.reply : "Odottaa käsittelyä"}</Typography>
-                </AccordionSummary>
-                <AccordionDetails style={{ display: "flow-root"}}>
-                  <Divider/>
-                  <Typography>
-                    Viesti:
-                  </Typography>
-                  <Typography style={{ wordWrap: "break-word" }}>
-                    {feedback.message}
-                  </Typography>
-                  <Divider/>
-                  {myFeedBacks.reply ? <Typography>myFeedBacks.reply</Typography> : <></>}
-                </AccordionDetails>
-              </Accordion>
-            )) : <></>}
+            {myFeedBacks ? (
+              myFeedBacks.map(
+                (feedback: {
+                  message: string;
+                  heading: string;
+                  reply: string;
+                }) => (
+                  <Accordion>
+                    <AccordionSummary
+                      style={{ display: 'flow-root' }}
+                      classes={{ content: classes.accordion }}
+                      expandIcon={<ExpandMoreIcon />}
+                    >
+                      <Typography style={{ wordWrap: 'break-word' }}>
+                        Otsikko: {feedback.heading}
+                      </Typography>
+                      <Divider />
+                      <Typography>
+                        {myFeedBacks.reply
+                          ? 'Vastaus: ' + myFeedBacks.reply
+                          : 'Odottaa käsittelyä'}
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails style={{ display: 'flow-root' }}>
+                      <Divider />
+                      <Typography>Viesti:</Typography>
+                      <Typography style={{ wordWrap: 'break-word' }}>
+                        {feedback.message}
+                      </Typography>
+                      <Divider />
+                      {myFeedBacks.reply ? (
+                        <Typography>myFeedBacks.reply</Typography>
+                      ) : (
+                        <></>
+                      )}
+                    </AccordionDetails>
+                  </Accordion>
+                )
+              )
+            ) : (
+              <></>
+            )}
           </CardContent>
-          <CardActions>
-
-          </CardActions>
+          <CardActions></CardActions>
         </div>
       </Grid>
     </Grid>

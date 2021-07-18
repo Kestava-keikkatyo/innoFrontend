@@ -25,6 +25,10 @@ const getProfile = async (profile: Object) => {
     return res.data
 }
 
+/**
+ * @function
+ * @desc fetchProfileById
+ */
 const fetchProfileById = async (id: string) => {
     try {
      const res = await axios.get(`${baseUrl}/profile/${id}`, authHeader())
@@ -46,7 +50,7 @@ const fetchProfileById = async (id: string) => {
       return Promise.reject(error.response)
     }
   }
-  
+
 
 
 

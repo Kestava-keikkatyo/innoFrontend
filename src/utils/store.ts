@@ -27,10 +27,10 @@ const reducer = combineReducers({
   feeling: feelingReducer,
   form: formReducer,
   formList: formListReducer,
-  file: fileReducer,
+  files: fileReducer,
   businessContractForm: buisnessContractFormReducer,
   agencies: agencyReducer,
-  profileForm: profileReducer,
+  profile: profileReducer,
   notifications: notificationsReducer,
   feedback: feedBackReducer
 })

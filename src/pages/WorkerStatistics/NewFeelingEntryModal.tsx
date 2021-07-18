@@ -29,18 +29,18 @@ const NewFeelingEntryModal: React.FC<any> = ({ modalState }) => {
     (state) => state.feeling.currentFeeling
   );
 
-  let currentFile: any = useSelector<IRootState>(
-    (state) => state.file.currentFile
+  let currentFiles: any = useSelector<IRootState>(
+    (state) => state.files.currentFiles
   );
 
   const onHandleSubmit = async () => {
     console.log('### 1 currentFeeling:', currentFeeling);
-    console.log('### currentFile:', currentFile.file);
-    if (currentFile.file !== null) {
-      const res: any = await fileService.postFile(currentFile);
+    //console.log('### currentFile:', currentFile.file);
+    if (currentFiles !== null) {
+      const res: any = await fileService.postFile(currentFiles);
       const copyOfCurrentFeeling = {
         ...currentFeeling,
-        fileUrl: res.data?.fileUrl,
+        fileUrl: res.data?.fileUrls[0],
       };
 
       dispatch(updateFeeling(copyOfCurrentFeeling));

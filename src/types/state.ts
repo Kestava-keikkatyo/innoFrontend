@@ -1,4 +1,4 @@
-import { File, Feeling, Form, roles, severity } from "./types"
+import { File, Feeling, Form, roles, severity, Profile } from "./types"
 
 export interface AgencyState {
   agencies: []
@@ -259,7 +259,13 @@ export interface FeelingState {
 }
 
 export interface FileState {
-  currentFile: File
+  currentFiles: File,
+  fileUrls: any
+}
+
+export interface ProfileState {
+  currentProfile: Profile,
+  profiles: any
 }
 
 export const ADD_FEELING = 'ADD_FEELING'
@@ -268,10 +274,16 @@ export const CLEAR_CURRENT_FEELING = 'CLEAR_CURRENT_FEELING'
 export const SET_CURRENT_FEELING = 'SET_CURRENT_FEELING'
 export const UPDATE_FEELING_DATASET = 'UPDATE_FEELING_DATASET'
 
-export const SET_CURRENT_FILE = 'SET_CURRENT_FILE'
+export const SET_CURRENT_FILES = 'SET_CURRENT_FILES'
+export const ADD_FILE = 'ADD_FILE'
 
-export interface SetCurrentFileAction {
-  type: typeof SET_CURRENT_FILE
+export interface SetCurrentFilesAction {
+  type: typeof SET_CURRENT_FILES
+  data: any
+}
+
+export interface AddFileAction {
+  type: typeof ADD_FILE
   data: any
 }
 
@@ -303,7 +315,7 @@ interface UpdateFeelingDatasetAction {
 export type FeelingActionTypes = AddFeelingAction | FetchFeelingsAction | ClearCurrentFeelingAction |
   SetCurrentFeelingAction | UpdateFeelingDatasetAction
 
-export type FileActionTypes = SetCurrentFileAction
+export type FileActionTypes = SetCurrentFilesAction | AddFileAction
 
 export const SET_CURRENT_FORM = "SET_CURRENT_FORM"
 export const UPDATE_TITLE = "UPDATE_TITLE"
@@ -542,6 +554,7 @@ export type BusinssContractListActionTypes =
   export const SET_CURRENT_PROFILE = "SET_CURRENT_PROFILE"
   export const POST_PROFILE = "POST_PROFILE"
   export const GET_ALL_PROFILES = "GET_ALL_PROFILES"
+
 
 
   interface GetAllProfiles {
