@@ -10,47 +10,49 @@ import FileUploader from '../../components/FileUploader';
  * @desc Form editors header.
  */
 const NewFormHeader: React.FC = () => {
-  const currentForm = useSelector((state: any) => state.form)
-  const history = useHistory()
-  const { title } = currentForm
-  const dispatch = useDispatch()
+  const currentForm = useSelector((state: any) => state.form);
+  const history = useHistory();
+  const { title } = currentForm;
+  const dispatch = useDispatch();
 
   const handleSubmit = () => {
-    dispatch(submitForm(currentForm))
-    history.push("/forms")
-  }
+    dispatch(submitForm(currentForm));
+    history.push('/forms');
+  };
   return (
-    <Grid container direction="row"
-    justify="space-between">
+    <Grid container direction="row" justify="space-between">
       <Grid item xs={6}>
-        <Typography variant="h4" color="secondary" >
+        <Typography variant="h4" color="secondary">
           Create a new Form
         </Typography>
       </Grid>
-      <Grid item xs={6} >
+      <Grid item xs={6}>
         <Grid container direction="row-reverse">
-        <Button>
+          <Button>
             <Link to="/forms">Back</Link>
           </Button>
           <Button>
             <Link to="/forms/newform/preview">Preview</Link>
           </Button>
-          <Button onClick={handleSubmit} >
-            Submit
-          </Button>
-          <FileUploader accept="data:text/json" handleFile={(data: any) => dispatch(importFormByPath())}>
-            Import
-          </FileUploader>
-          <Button download={`${title}.json`}
+          <Button onClick={handleSubmit}>Submit</Button>
+          <FileUploader
+            name="Import"
+            accept="data:text/json"
+            handleFile={(data: any) => dispatch(importFormByPath())}
+          />
+
+          <Button
+            download={`${title}.json`}
             href={`data:text/json;charset=utf-8,${encodeURIComponent(
               JSON.stringify(currentForm)
-            )}`} >
+            )}`}
+          >
             Export
           </Button>
         </Grid>
       </Grid>
     </Grid>
-   );
-}
+  );
+};
 
 export default NewFormHeader;

@@ -14,7 +14,6 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  AccordionActions,
 } from '@material-ui/core';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -51,7 +50,6 @@ const Chart = () => {
   ]);
 
   const getFeelingsValues = () => {
-
     const copyOfMoodCounts: any = [0, 0, 0, 0, 0];
     feelings.map((feel: any) => {
       switch (feel.value) {
@@ -75,7 +73,6 @@ const Chart = () => {
       }
     });
     setMoodCounts(copyOfMoodCounts);
-
   };
 
   const backgroundColors = [
@@ -301,7 +298,7 @@ const Chart = () => {
                         display: false, // hide yAxes's ticks
                       },
                       gridLines: {
-                        display: false,// hide yAxes's grid lines
+                        display: false, // hide yAxes's grid lines
                         //color: 'rgba(0, 0, 0, 0)',
                       },
                     },

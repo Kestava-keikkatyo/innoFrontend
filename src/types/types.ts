@@ -59,7 +59,7 @@ export interface Feeling {
 }
 
 export interface File{
-  file: any
+  files: any[]
 }
 
 export enum questionTypes {
@@ -159,13 +159,19 @@ export interface BusinessContractForm {
   filled: boolean
 }
 
-export interface editProfile {
-  cover: Object
-  profilePicture: Object
-  userInformation: string
-  contactInformation: string
-  video: string
-  instructions: string
+export interface Profile {
+  name: string,
+  phone: string,
+  email: string,
+  streetAddress: string,
+  zipCode: string,
+  city: string
+  coverPhoto: string,
+  profilePicture: string,
+  video: string,
+  website: string,
+  instructions: any[],
+  occupationalSafetyRules: any[]
 }
 export interface Notifications {
   userId: string

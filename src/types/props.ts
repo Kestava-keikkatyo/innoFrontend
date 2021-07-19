@@ -58,24 +58,6 @@ export interface PrivateRouteProps {
 /**
  * @interface
  */
- export interface FileUploaderProps {
-  /**
-   * Function which is fired after file being uploaded.
-   */
-  handleFile: Function
-  /**
-   * String which contains acceptable datatypes.
-   */
-  accept?: string
-  /**
-   * Child components which are rendered inside button.
-   */
-  children: React.ReactNode
-}
-
-/**
- * @interface
- */
 export interface TopAppBarProps {
   /**
    * An event function. Handles the drawer toggling on small screen size.

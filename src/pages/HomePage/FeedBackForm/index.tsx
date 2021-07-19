@@ -68,6 +68,7 @@ const FeedBackForm = () => {
 
   const [currentPage, setCurrentPage] = React.useState(1)
 
+ 
   const handleClickLoading = () => {
     if (message.length > 0 && heading.length > 0) {
       setLoading((prevLoading) => !prevLoading)
@@ -87,9 +88,11 @@ const FeedBackForm = () => {
     if (currentPage > page) {
       setCurrentPage(page)
       setShowFeedBacks(showFeedBacks - 5)
-    } else {
+    } else if (currentPage < page) {
       setCurrentPage(page)
       setShowFeedBacks(showFeedBacks + 5)
+    } else {
+
     }
   }
 
@@ -182,7 +185,6 @@ const FeedBackForm = () => {
                     {feedback.message}
                   </Typography>
                   <Divider className={classes.dividerWithMargin} />
-                  {console.log(feedback)}
                   {feedback.reply ? <><Typography>Vastaus:</Typography><Typography style={{ wordWrap: "break-word", width: '100%' }}>{feedback.reply}</Typography></> : <></>}
                 </AccordionDetails>
               </Accordion>

@@ -10,34 +10,35 @@ import {
   CardHeader,
   Button,
   Grid,
-} from '@material-ui/core'
-import MoodForm from './MoodForm'
-import FeedBackForm from './FeedBackForm'
-import { submitFeeling, updateFeeling } from '../../actions/feelingActions'
-import { useDispatch, useSelector } from 'react-redux'
-import { IRootState } from '../../utils/store'
+} from '@material-ui/core';
+import MoodForm from './MoodForm';
+import FeedBackForm from './FeedBackForm';
+import { submitFeeling, updateFeeling } from '../../actions/feelingActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { IRootState } from '../../utils/store';
 import fileService from '../../services/fileService';
 
-
 const WorkerHome = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const currentFeeling: any = useSelector<IRootState>(
     (state) => state.feeling.currentFeeling
-  )
+  );
 
-  let currentFile: any = useSelector<IRootState>(
-    (state) => state.file.currentFile
-  )
+  let currentFiles: any = useSelector<IRootState>(
+    (state) => state.files.currentFiles
+  );
 
   const onHandleSubmit = async () => {
     console.log('### 1 currentFeeling:', currentFeeling);
-    console.log('### currentFile:', currentFile.file);
-    if (currentFile.file !== null) {
-      const res: any = await fileService.postFile(currentFile);
+    console.log('### currentFiles:', currentFiles);
+    if (currentFiles.files[0] !== null) {
+      const res: any = await fileService.postFile(currentFiles);
+      console.log('onHandleSubmit res', res);
+
       const copyOfCurrentFeeling = {
         ...currentFeeling,
-        fileUrl: res.data?.fileUrl,
+        fileUrl: res.data?.fileUrls[0],
       };
 
       dispatch(updateFeeling(copyOfCurrentFeeling));
@@ -46,15 +47,15 @@ const WorkerHome = () => {
       dispatch(updateFeeling(currentFeeling));
       dispatch(submitFeeling(currentFeeling));
     }
-  }
+  };
 
   return (
     <Grid container>
-      <Grid item xs={12} md={6} style={{marginBottom: '3%'}}>
-          <MoodForm handleSubmit={onHandleSubmit} />
+      <Grid item xs={12} md={6} style={{ marginBottom: '3%' }}>
+        <MoodForm handleSubmit={onHandleSubmit} />
       </Grid>
-      <Grid item xs={12} md={6} style={{marginBottom: '3%'}}>
-        <div className="report-container" style={{height: '100%'}}>
+      <Grid item xs={12} md={6} style={{ marginBottom: '3%' }}>
+        <div className="report-container" style={{ height: '100%' }}>
           <CardHeader
             action={
               <Button variant="outlined" color="primary">
@@ -76,7 +77,7 @@ const WorkerHome = () => {
           </CardContent>
         </div>
       </Grid>
-      <FeedBackForm/>
+      <FeedBackForm />
     </Grid>
   );
 };

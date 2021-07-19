@@ -4,14 +4,16 @@
  * @module reducer/file
  * @desc Redux file reducer
  */
- import { SET_CURRENT_FILE, FileState, FileActionTypes} from "../types/state"
+ import { SET_CURRENT_FILES,ADD_FILE, FileState, FileActionTypes} from "../types/state"
  import {File} from "../types/types"
 
- const initialFile: File = {
-    file: null
+ const initialFiles: File = {
+    files: [null,null,null]
+
  }
  const initialState: FileState = {
-   currentFile: initialFile,
+   currentFiles: initialFiles,
+   fileUrls: ['', '', '']
  }
 
  /**
@@ -22,17 +24,24 @@
   */
  const fileReducer = (state: FileState = initialState, action: FileActionTypes) => {
     switch (action.type) {
-      case SET_CURRENT_FILE:
+      case SET_CURRENT_FILES:
+       return {
+         ...state,
+         currentFiles:{
+           files: action.data
+         }
+       }
+      case ADD_FILE:
         return {
           ...state,
-          currentFile: {
-            file: action.data
+          currentFiles: {
+            ...state.currentFiles,
+            files:[...state.currentFiles.files, action.data]
           }
         }
       default:
         return state
     }
   }
-
 
  export default fileReducer
