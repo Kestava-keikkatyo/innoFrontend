@@ -65,9 +65,7 @@ const AddWorkTask = () => {
       </div>
       <div className={classes.terms}>
         <Typography className={classes.add}>Liitä käyttöehdot</Typography>
-        <FileUploader handleFile={() => ""} accept="">
-          <span>Lisää tiedosto</span>
-        </FileUploader>
+        <FileUploader accept="" name="Lisää tiedosto" />
       </div>
       <div className={classes.buttons}>
       <Button variant="contained" color="default" className={classes.preview}>Esikatsele</Button>
