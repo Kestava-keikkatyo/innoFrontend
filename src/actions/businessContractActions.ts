@@ -85,13 +85,30 @@ export const sendBusinessContract = (contractId:string, form?:string) => async (
 }
 /**
  * @function
- * @desc Function to accept businessContract that was accepted by Worker or Business.
+ * @desc Function to accept businessContract that was accepted by Business.
  * Must be Agency to use this.
  * @param {string} contractId BusinessContract Id
  * @param {string} userId Users Id
  * @param {string} form Form Id 
  */
-export const acceptBusinessContract = (contractId:string, userId:string,form?:string) => async (dispatch: any) => {
+export const acceptBusinessContractFromBusiness = (contractId:string, userId:string, form?:string) => async (dispatch: any) => {
+  const res = await contractsService.acceptBusinessContract(contractId,userId,form)
+  await notificationsService.updateNotifications(userId,"HP-Yritys hyväksyi asiakassopimuksen kanssasi.")
+  await contractsService.postWorkContract(userId)
+  if(res && res.status === 200)
+    dispatch({type: B_ACCEPT, data: res.data})
+    //tähän -> fetch kutsu 
+    //dispatch(fetch) 
+}
+/**
+ * @function
+ * @desc Function to accept businessContract that was accepted by Worker.
+ * Must be Agency to use this.
+ * @param {string} contractId BusinessContract Id
+ * @param {string} userId Users Id
+ * @param {string} form Form Id 
+ */
+ export const acceptBusinessContractFromWorker = (contractId:string, userId:string, form?:string) => async (dispatch: any) => {
   const res = await contractsService.acceptBusinessContract(contractId,userId,form)
   await notificationsService.updateNotifications(userId,"HP-Yritys hyväksyi asiakassopimuksen kanssasi.")
   if(res && res.status === 200)

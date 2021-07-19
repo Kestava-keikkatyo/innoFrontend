@@ -17,7 +17,7 @@ import {
 import { Close as CloseIcon } from '@material-ui/icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchBusinessContracts } from '../../actions/businessContractActions'
-import { addWorkContract } from '../../actions/workContractActions'
+import { postWorkContract } from '../../actions/workContractActions'
 import { IRootState } from '../../utils/store'
 
 /**
@@ -39,7 +39,7 @@ const WorkerModal: React.FC<any> = ({ modalState, workerData }) => {
 
   const submit = () => {
     // if ((business.typeof !== "object") || (workerData.typeof !== "object")) return
-    dispatch(addWorkContract(workerData, business))
+    dispatch(postWorkContract(business))
     closeModal()
   }
 
