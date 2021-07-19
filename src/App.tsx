@@ -43,6 +43,7 @@ import UserProfilePage from "./pages/ProfilePage/UserProfilePage";
 import ProfileViewPage from "./pages/BusinessContractsPage/ProfileViewPage";
 import ProfileList from "./pages/ProfilePage/ProfileList";
 import JobList from "./pages/JobPage";
+import WorkOverview from "./pages/WorkOverview";
 
 
 /**
@@ -189,6 +190,9 @@ const App: React.FC = () => {
           roles={[roles.Business, roles.Agency]}
         >
           <FormPreviewPage />
+        </PrivateRoute>
+        <PrivateRoute path="/work-overview" roles={[roles.Business, roles.Agency]}>
+          <WorkOverview />
         </PrivateRoute>
         <PrivateRoute path="/forms" roles={[roles.Business, roles.Agency]}>
           <FormsPage />
