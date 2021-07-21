@@ -3,7 +3,7 @@
  * @desc Redux file actions
  */
 import fileService from "../services/fileService"
- import { SET_CURRENT_FILES, ADD_FILE} from "../types/state"
+ import { SET_CURRENT_FILES} from "../types/state"
  //import {File} from "../types/types"
 
 

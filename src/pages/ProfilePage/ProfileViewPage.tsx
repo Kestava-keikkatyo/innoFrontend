@@ -8,9 +8,7 @@ import {
 import React from 'react';
 import EmailIcon from '@material-ui/icons/Email';
 import { useDispatch, useSelector } from 'react-redux';
-import { IRootState } from '../../utils/store';
 import { fetchProfileToBeViewed } from '../../actions/profileActions';
-import EditIcon from '@material-ui/icons/Edit';
 import PhoneIcon from '@material-ui/icons/Phone';
 import { Avatar, Grid, Typography } from '@material-ui/core';
 
