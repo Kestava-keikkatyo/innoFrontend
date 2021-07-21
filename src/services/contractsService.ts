@@ -149,15 +149,11 @@ const updateBusinessContract = async (id: string) => {
   }
 }
 
-const addWorkContract = async (
+const postWorkContract = async (
   businessId: string,
-  workerId: string,
-  validityPeriod = '2021-02-12'
 ) => {
   const body = {
     businessId,
-    workerId,
-    validityPeriod,
     processStatus: '0',
   }
   try {
@@ -238,7 +234,7 @@ export default {
   refuseBusinessContractById,
   fetchBusinessContracts,
   updateBusinessContract,
-  addWorkContract,
+  postWorkContract,
   fetchWorkContracts,
   deleteWorkContractById,
   sendBusinessContract,

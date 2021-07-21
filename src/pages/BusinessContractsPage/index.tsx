@@ -8,7 +8,7 @@ import BusinessIcon from "@material-ui/icons/Business";
 import SendIcon from "@material-ui/icons/Send";
 import AllInboxIcon from "@material-ui/icons/AllInbox";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
-import { Badge, Container, Tooltip, useMediaQuery } from "@material-ui/core";
+import { Badge, Container, Divider, Tooltip, useMediaQuery } from "@material-ui/core";
 import ListAccordionInBox from "./ListAccordionInBox";
 import ListAccordionWaiting from "./ListAccordionWaiting";
 import ListAccordionDone  from "./ListAccordionDone";
@@ -30,6 +30,7 @@ function TabPanel(props: TabPanelProps) {
 
   return (
     <div
+      style={{borderLeft:'1px solid #ccc',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}
       role="tabpanel"
       hidden={value !== index}
       id={`scrollable-force-tabpanel-${index}`}
@@ -109,12 +110,13 @@ const BusinessContractsPage = () => {
 
   return (
     <Container maxWidth="xl" className={classes.root}>
-        <AppBar position="static" color="default">
+      <Divider/>
+        <AppBar position="static" color="transparent">
           <Tabs
             value={value}
             onChange={handleChange}
             variant="fullWidth"
-            indicatorColor="primary"
+            indicatorColor="secondary"
             textColor="primary"
             aria-label="scrollable force tabs example"
           >
@@ -159,6 +161,7 @@ const BusinessContractsPage = () => {
             />
           </Tabs>
         </AppBar>
+        <Divider/>
         <TabPanel value={value} index={0}>
           <AgenciesList />
         </TabPanel>

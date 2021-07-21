@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 import {
   Dialog,
@@ -11,9 +11,9 @@ import {
   DialogActions,
   Checkbox,
   FormControlLabel,
-} from '@material-ui/core';
-import { Close as CloseIcon } from '@material-ui/icons';
-import { makeStyles } from '@material-ui/core/styles';
+} from "@material-ui/core";
+import { Close as CloseIcon } from "@material-ui/icons";
+import { makeStyles } from "@material-ui/core/styles";
 
 /**
  * @component
@@ -24,26 +24,23 @@ import { makeStyles } from '@material-ui/core/styles';
  * @param {contract} props.contract business contract.
  */
 
- const useStyles = makeStyles((theme) => ({
-    action:{
-        [theme.breakpoints.down('xs')]: {
-            display: 'flex',
-            flexDirection: 'column',
-          },
+const useStyles = makeStyles((theme) => ({
+  action: {
+    [theme.breakpoints.down("xs")]: {
+      display: "flex",
+      flexDirection: "column",
     },
-    x:{
-        [theme.breakpoints.down('xs')]: {
-            width: '43%',
-            marginTop: '3%'
-          },
-        }
-  }));
-  
-const JobModal: React.FC<any> = ({ displayModal, closeModal }) => {
-    const classes = useStyles();
+  },
+  enroll: {
+    [theme.breakpoints.down("xs")]: {
+      width: "43%",
+      marginTop: "3%",
+    },
+  },
+}));
 
-  
- 
+const JobModal: React.FC<any> = ({ displayModal, closeModal }) => {
+  const classes = useStyles();
 
   return (
     <Dialog open={displayModal} onClose={closeModal} fullWidth>
@@ -57,23 +54,21 @@ const JobModal: React.FC<any> = ({ displayModal, closeModal }) => {
       </DialogTitle>
 
       <DialogContent dividers>
-       
-          <>
-            <Typography color="textSecondary" variant="body1">
-              <b>Päivämäärä 12.8.2021</b> 
-            </Typography>
-            <Typography color="textSecondary" variant="body1">
-              <b>Kesto 8h</b>{' '}    
-            </Typography>
-            <Typography color="textSecondary" variant="body1">
-              <b>Osallistuja 2/3</b>{' '}
-            </Typography>
-          </>
-
+        <>
+          <Typography color="textSecondary" variant="body1">
+            <b>Päivämäärä 12.8.2021</b>
+          </Typography>
+          <Typography color="textSecondary" variant="body1">
+            <b>Kesto 8h</b>{" "}
+          </Typography>
+          <Typography color="textSecondary" variant="body1">
+            <b>Osallistuja 2/3</b>{" "}
+          </Typography>
+        </>
       </DialogContent>
- 
-      <DialogActions className={classes.action}>     
-      <FormControlLabel
+
+      <DialogActions className={classes.action}>
+        <FormControlLabel
           value="agree"
           control={<Checkbox color="secondary" />}
           label="Hyväksyn käyttöehdot"
@@ -81,12 +76,15 @@ const JobModal: React.FC<any> = ({ displayModal, closeModal }) => {
         <Button color="primary" variant="outlined" onClick={() => closeModal()}>
           Yrityksen sivut
         </Button>
-      <Button 
-      className={classes.x} color="primary" variant="outlined" onClick={() => closeModal()}>
+        <Button
+          className={classes.enroll}
+          color="primary"
+          variant="outlined"
+          onClick={() => closeModal()}
+        >
           Ilmottaudu
         </Button>
       </DialogActions>
-      
     </Dialog>
   );
 };

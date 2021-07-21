@@ -143,9 +143,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
     <AppBar
       position="fixed"
       elevation={0}
-      className={clsx(classes.appBar, {
-        [classes.appBarShift]: open,
-      })}
+      className={clsx(classes.appBar)}
     >
       <Toolbar className="toolbar" variant="dense">
         <IconButton
@@ -186,11 +184,11 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
             onClose={handleCloseNotifications}
             anchorOrigin={{
               vertical: 'bottom',
-              horizontal: 'center',
+              horizontal: 'right',
             }}
             transformOrigin={{
               vertical: 'top',
-              horizontal: 'center',
+              horizontal: 'right',
             }}
           >
             {notifications.unread_messages ? (
@@ -309,15 +307,17 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '-8px',
   },
   appBar: {
-    width: `calc(100% - ${64}px)`,
+    width: `calc(100% - ${51}px)`,
     backgroundColor: 'white',
     borderTop: '16px solid #EB5A00',
     zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
+    /**
+     * transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    [theme.breakpoints.down('lg')]: {
+     */
+    [theme.breakpoints.down('md')]: {
       width: `100vw`,
       // marginLeft: drawerWidth,
     },

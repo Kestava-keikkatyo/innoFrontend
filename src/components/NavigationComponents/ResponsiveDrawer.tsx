@@ -24,6 +24,7 @@ import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
+import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
 
 const LangMenuDropDown = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -141,13 +142,24 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
               <Divider />
             </>
           )}
-          {(role === roles.Agency || role === roles.Business) && (
+              {(role === roles.Agency || role === roles.Business) && (
             <>
               <ListItem button component={Link} to="/workers">
                 <ListItemIcon>
                   <PeopleAlt />
                 </ListItemIcon>
                 <ListItemText primary="Workers" />
+              </ListItem>
+              <Divider />
+            </>
+          )}
+          {(role === roles.Agency || role === roles.Business) && (
+            <>
+              <ListItem button component={Link} to="/work-overview">
+                <ListItemIcon>
+                  <SupervisedUserCircleIcon />
+                </ListItemIcon>
+                <ListItemText primary="Work Overview" />
               </ListItem>
               <Divider />
             </>

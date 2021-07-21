@@ -58,7 +58,7 @@ const WorkerContractPage = () => {
       <Card className={classes.card} variant="outlined">
         <CardContent>
           <Typography gutterBottom variant="h5" align="center">
-            Make workContract for Business that has BusinessContract with you.
+            Make WorkContract for Business that has BusinessContract with you.
           </Typography>
           <WorkerSearch />
           <Divider />
