@@ -8,7 +8,7 @@ import {
   TextField,
   CardMedia,
 } from '@material-ui/core';
-import React from 'react';
+import React, { useState } from 'react';
 import Spacing from '../../components/Spacing';
 import banner from '../../assets/form-banner.jpg';
 import { Link, useHistory } from 'react-router-dom';
@@ -19,6 +19,7 @@ import {
   setProfile,
   fetchProfileById,
 } from '../../actions/profileActions';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import FileUploader from '../../components/FileUploader';
 import fileService from '../../services/fileService';
@@ -27,7 +28,7 @@ import PublicIcon from '@material-ui/icons/Public';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PhoneIcon from '@material-ui/icons/Phone';
 import EmailIcon from '@material-ui/icons/Email';
-import { setAlert } from '../../actions/alertActions';
+import { clearAlert, setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
 
 export const EditProfilePage: React.FC<any> = () => {
@@ -43,6 +44,7 @@ export const EditProfilePage: React.FC<any> = () => {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
+  const [savingChanges, setSavingChanges] = useState(false);
 
   React.useEffect(() => {
     dispatch(fetchProfileById(userData.profileId));
@@ -50,7 +52,8 @@ export const EditProfilePage: React.FC<any> = () => {
 
   const submitProfile = async (e: any) => {
     e.preventDefault();
-    dispatch(setAlert('Saving changes...', severity.Info));
+    setSavingChanges(true);
+    dispatch(setAlert('Saving changes...', severity.Info, 10));
     console.log('current profile', currentProfile);
     console.log('profileEdit current files', currentFiles);
     // currentFiles = [0, 1, 2] = [picture, cover, video]
@@ -91,6 +94,8 @@ export const EditProfilePage: React.FC<any> = () => {
     console.log('file urls:  ', fileUrls);
     console.log('### 2 copyOfCurrentProfile:  ', copyOfCurrentProfile);
     dispatch(updateProfile(copyOfCurrentProfile, userData.profileId));
+    dispatch(clearAlert());
+    setSavingChanges(false);
     history.push('/profile');
   };
 
@@ -443,8 +448,9 @@ export const EditProfilePage: React.FC<any> = () => {
             type="submit"
             color="secondary"
             onClick={submitProfile}
+            style={{ minWidth: 200 }}
           >
-            Save changes and return
+            {savingChanges ? <CircularProgress size={24} /> : 'Save changes'}
           </Button>
         </Grid>
       </form>
