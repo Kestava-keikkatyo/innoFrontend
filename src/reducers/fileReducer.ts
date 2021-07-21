@@ -12,8 +12,7 @@
 
  }
  const initialState: FileState = {
-   currentFiles: initialFiles,
-   fileUrls: ['', '', '']
+   currentFiles: initialFiles
  }
 
  /**
@@ -31,14 +30,6 @@
            files: action.data
          }
        }
-      case ADD_FILE:
-        return {
-          ...state,
-          currentFiles: {
-            ...state.currentFiles,
-            files:[...state.currentFiles.files, action.data]
-          }
-        }
       default:
         return state
     }

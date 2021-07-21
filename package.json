@@ -38,6 +38,7 @@
     "i18next-xhr-backend": "^3.2.2",
     "jquery": "^3.6.0",
     "jsonwebtoken": "^8.5.1",
+    "material-ui-popup-state": "^1.8.4",
     "moment": "^2.29.1",
     "pdfmake": "^0.1.71",
     "prop-types": "^15.7.2",

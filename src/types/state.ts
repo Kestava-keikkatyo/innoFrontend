@@ -259,12 +259,12 @@ export interface FeelingState {
 }
 
 export interface FileState {
-  currentFiles: File,
-  fileUrls: any
+  currentFiles: File
 }
 
 export interface ProfileState {
   currentProfile: Profile,
+  profileToBeViewed: Profile,
   profiles: any
 }
 
@@ -543,15 +543,9 @@ export type BusinssContractListActionTypes =
 
   //Edit profile
 
-  //export const CLEAR_CURRENT_BUSINESS_CONTRACT_FORM = "CLEAR_CURRENT_BUSINESS_CONTRACT_FORM"
-
-  export const CHANGE_PROFILE_PIC = "CHANGE_PROFILE_PIC"
-  export const CHANGE_COVER_IMAGE = "CHANGE_COVER_IMAGE"
-  export const CHANGE_CONTACT_INFORMATION = "CHANGE_CONTACT_INFORMATION"
-  export const CHANGE_VIDEO = "CHANGE_VIDEO"
-  export const CHANGE_INSTRUCTION = "CHANGE_INSTRUCTION"
   export const UPDATE_CURRENT_PROFILE = "UPDATE_CURRENT_PROFILE"
   export const SET_CURRENT_PROFILE = "SET_CURRENT_PROFILE"
+  export const SET_PROFILE_TO_BE_VIEWED = "SET_PROFILE_TO_BE_VIEWED"
   export const POST_PROFILE = "POST_PROFILE"
   export const GET_ALL_PROFILES = "GET_ALL_PROFILES"
 
@@ -567,28 +561,8 @@ export type BusinssContractListActionTypes =
     data: any
   }
 
-  interface ChangeProfilePictureAction {
-    type: typeof CHANGE_PROFILE_PIC
-    data: any
-  }
-
-  interface ChangeCoverImageAction {
-    type: typeof CHANGE_COVER_IMAGE
-    data: any
-  }
-
-  interface ChangeContactInformationAction {
-    type: typeof CHANGE_CONTACT_INFORMATION
-    data: any
-  }
-
-  interface ChangeVideoAction {
-    type: typeof CHANGE_VIDEO
-    data: any
-  }
-
-  interface ChangeInstructionAction {
-    type: typeof CHANGE_INSTRUCTION
+  interface SetProfileToBeViewedAction {
+    type: typeof SET_PROFILE_TO_BE_VIEWED
     data: any
   }
 
@@ -602,15 +576,11 @@ export type BusinssContractListActionTypes =
     data: any
   }
 
-  export type EditProfileActionTypes =
-  | ChangeProfilePictureAction
-  | ChangeContactInformationAction
-  | ChangeCoverImageAction
-  | ChangeVideoAction
-  | ChangeInstructionAction
-  | UpdateCurrentProfile
+  export type ProfileActionTypes =
+  UpdateCurrentProfile
   | PostProfile
   | SetCurrentProfileAction
+  | SetProfileToBeViewedAction
   | GetAllProfiles
 
 export interface NotificationsState {

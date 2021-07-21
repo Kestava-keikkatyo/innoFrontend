@@ -1,7 +1,9 @@
+
 import profileService from "../services/profileService";
 import {
   SET_CURRENT_PROFILE,
   GET_ALL_PROFILES,
+  SET_PROFILE_TO_BE_VIEWED
 } from "../types/state";
 
 
@@ -48,9 +50,19 @@ export const fetchProfileById = (id: string ) => async (dispatch: any) => {
   }
 };
 
-export const fetchProfiles = (input: string) => async (dispatch: any) => {
+export const fetchProfileToBeViewed = (id: string ) => async (dispatch: any) => {
   try {
-    const res = await profileService.fetchProfiles(input)
+    const data = await profileService.fetchProfileById(id)
+    dispatch({type: SET_PROFILE_TO_BE_VIEWED, data: data})
+
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchProfiles = () => async (dispatch: any) => {
+  try {
+    const res = await profileService.fetchProfiles()
     dispatch({type: GET_ALL_PROFILES, data: res.data})
 
   } catch (error) {

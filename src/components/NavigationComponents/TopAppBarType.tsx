@@ -1,9 +1,12 @@
 import {
   AppBar,
+  Avatar,
   Badge,
+  Box,
+  Divider,
+  Grid,
   IconButton,
   makeStyles,
-  Menu,
   MenuItem,
   Popover,
   Toolbar,
@@ -11,7 +14,6 @@ import {
   useMediaQuery,
   useTheme,
 } from '@material-ui/core';
-import { AccountCircle } from '@material-ui/icons';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MenuIcon from '@material-ui/icons/Menu';
 import clsx from 'clsx';
@@ -24,9 +26,15 @@ import ActiveLastBreadcrumb from '../ActiveLastBreadcrumb';
 import { useHistory } from 'react-router-dom';
 import { fetchNotifications } from '../../actions/notificationsActions';
 import Notifications from './Notifications';
-
+import { fetchProfileById } from '../../actions/profileActions';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import SettingsIcon from '@material-ui/icons/Settings';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { bindTrigger, bindPopover } from 'material-ui-popup-state';
+import { usePopupState } from 'material-ui-popup-state/hooks';
+import { logout } from '../../actions/userActions';
 const drawerWidth = navConstants.DRAWER_WIDTH;
-
 /**
  * @component
  * @desc This will be probably deleted in future version.
@@ -78,28 +86,29 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
   const { notifications } = useSelector(
     (state: IRootState) => state.notifications
   );
-  const dispatch = useDispatch();
 
+  const currentProfile: any = useSelector(
+    (state: any) => state.profile.currentProfile
+  );
+
+  const dispatch = useDispatch();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open1 = Boolean(anchorEl);
+  // popupState for user popup menu
+  // https://www.npmjs.com/package/material-ui-popup-state
+  const popupState = usePopupState({
+    variant: 'popper',
+    popupId: 'userProfilePopper',
+  });
 
   useEffect(() => {
+    dispatch(fetchProfileById(data.profileId));
     dispatch(fetchNotifications());
     setInterval(() => {
       dispatch(fetchNotifications());
     }, 30000);
-  }, [dispatch]);
-
-  const handleMenu = (event: any) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  }, [dispatch, data.profileId]);
 
   const [anchorElNotifications, setAnchorElNotifications] =
     React.useState(null);
@@ -115,12 +124,19 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
 
   const history = useHistory();
 
-  const handleClickProfile = () => {
+  const handleProfileClick = () => {
+    popupState.close();
     history.push('/profile');
   };
 
-  const handleClickProfileSettings = () => {
-    history.push('/home');
+  const handleSettingsClick = () => {
+    popupState.close();
+    history.push('/settings');
+  };
+
+  const handleLogout = () => {
+    popupState.close();
+    dispatch(logout());
   };
 
   return (
@@ -144,9 +160,6 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
         {matches ? null : <ActiveLastBreadcrumb />}
         {/**Here comes the rest appbar stuff */}
         <div className="app-bar-container">
-          <Typography className={classes.text}>
-            {data.name || 'Loading'}
-          </Typography>
           {/**<img className={classes.logo} src={profileThumb} alt="logo" />*/}
           <Badge
             badgeContent={
@@ -189,33 +202,82 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
               <></>
             )}
           </Popover>
-          <IconButton
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleMenu}
-            color="primary"
-          >
-            <AccountCircle />
-          </IconButton>
-          <Menu
-            id="menu-appbar"
-            anchorEl={anchorEl}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            open={open1}
-            onClose={handleClose}
-          >
-            <MenuItem onClick={handleClickProfile}>Profiili</MenuItem>
-            <MenuItem onClick={handleClickProfileSettings}>Asetukset</MenuItem>
-          </Menu>
+          {/* User popup menu */}
+          <div>
+            <IconButton
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              color="primary"
+              className={classes.user}
+              {...bindTrigger(popupState)}
+            >
+              <Typography className={classes.username}>
+                {data.name || 'Loading'}
+              </Typography>
+              <Avatar
+                style={{ margin: 'auto' }}
+                className={classes.avatar}
+                src={currentProfile.profilePicture || ''}
+                alt="profilePicture"
+              />
+              <ExpandMoreIcon />
+            </IconButton>
+            <Popover
+              {...bindPopover(popupState)}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'center',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'center',
+              }}
+            >
+              <Box className={classes.userPopover}>
+                <Grid style={{ marginTop: 16 }}>
+                  <Avatar
+                    style={{ margin: 'auto' }}
+                    className={classes.popoverAvatar}
+                    src={currentProfile.profilePicture || ''}
+                    alt="profilePicture"
+                  />
+                  <Typography
+                    variant="body1"
+                    align="center"
+                    style={{ marginTop: 16 }}
+                  >
+                    {currentProfile.name}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    align="center"
+                    style={{ marginBottom: 16 }}
+                  >
+                    {currentProfile.email}
+                  </Typography>
+                </Grid>
+                <Divider />
+                <MenuItem
+                  onClick={handleProfileClick}
+                  style={{ marginTop: 10 }}
+                >
+                  <AccountCircleIcon
+                    style={{ fontSize: 24, marginRight: 10 }}
+                  />{' '}
+                  Profile
+                </MenuItem>
+                <MenuItem onClick={handleSettingsClick}>
+                  <SettingsIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
+                  Settings
+                </MenuItem>
+                <MenuItem onClick={handleLogout}>
+                  <ExitToAppIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
+                  Logout
+                </MenuItem>
+              </Box>
+            </Popover>
+          </div>
         </div>
       </Toolbar>
     </AppBar>
@@ -275,6 +337,32 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '1%',
     [theme.breakpoints.down('xs')]: {
       marginTop: '5%',
+    },
+  },
+  user: {
+    //border: '1px solid red',
+  },
+  avatar: {
+    color: theme.palette.getContrastText('#eb5a00'),
+    backgroundColor: '#eb5a00',
+    width: theme.spacing(4),
+    height: theme.spacing(4),
+  },
+  popoverAvatar: {
+    color: theme.palette.getContrastText('#eb5a00'),
+    backgroundColor: '#eb5a00',
+    width: theme.spacing(10),
+    height: theme.spacing(10),
+  },
+  userPopover: {
+    padding: 5,
+    width: 300,
+  },
+  username: {
+    color: 'black',
+    marginRight: 10,
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
     },
   },
 }));

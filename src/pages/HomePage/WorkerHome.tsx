@@ -33,12 +33,12 @@ const WorkerHome = () => {
     console.log('### 1 currentFeeling:', currentFeeling);
     console.log('### currentFiles:', currentFiles);
     if (currentFiles.files[0] !== null) {
-      const res: any = await fileService.postFile(currentFiles);
+      const res: any = await fileService.postFile(currentFiles.files[0]);
       console.log('onHandleSubmit res', res);
 
       const copyOfCurrentFeeling = {
         ...currentFeeling,
-        fileUrl: res.data?.fileUrls[0],
+        fileUrl: res.data.fileUrl,
       };
 
       dispatch(updateFeeling(copyOfCurrentFeeling));

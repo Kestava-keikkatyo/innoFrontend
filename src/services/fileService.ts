@@ -64,7 +64,7 @@
        typePartTwo: typePartTwo
      }
 
-     await axios.post(`${baseUrl}/uploads`, newFile, authHeader()).then(response => {
+     await axios.post(`${baseUrl}/uploads`, newFile, authHeader()).then(async response => {
        let returnData = response.data.data.returnData
        let signedReguest = returnData.signedRequest
        //let url = returnData.url
@@ -79,7 +79,7 @@
          }
        }
 
-        axios.put(signedReguest, fileUploaded, options).then(result => {
+        await axios.put(signedReguest, fileUploaded, options).then(result => {
          console.log("Response from s3: result: ", result)
        }).catch(error => {console.log(error)})
 
@@ -89,7 +89,7 @@
     }else{
       res.data.fileUrl = "TEST"
     }
-   return res
+    return res
 
 
   }

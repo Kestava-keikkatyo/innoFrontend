@@ -28,11 +28,7 @@ const MoodStepThree: React.FC<any> = () => {
         rows={4}
         variant="outlined"
       />
-      <FileUploader
-        name="Upload file"
-        handleFile={() => ''}
-        accept="image/*, video/*"
-      />
+      <FileUploader name="Upload file" handleFile={() => ''} accept="image/*" />
     </>
   );
 };

@@ -39,10 +39,11 @@ import ContractFormManagerPage from './pages/ContractsPage/ContractFormManagerPa
 import ContractFormPreviewPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormPreviewPage';
 import ContractFormEditPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormEditPage';
 import ProfilePage from './pages/ProfilePage';
-import ProfileViewPage from './pages/BusinessContractsPage/ProfileViewPage';
-import ProfileList from './pages/ProfilePage/ProfileList';
+import ProfileViewPage from './pages/ProfilePage/ProfileViewPage';
+import ProfilesPage from './pages/ProfilePage/ProfilesPage';
 import EditProfilePage from './pages/ProfilePage/EditProfilePage';
 import JobList from './pages/JobPage';
+import SettingsPage from './pages/SettingsPage';
 
 /**
  * @component
@@ -87,17 +88,20 @@ const App: React.FC = () => {
         <DatabankRoute path="/databank">
           <Databank />
         </DatabankRoute>
-        <PrivateRoute path="/profile">
-          <ProfilePage />
+        <PrivateRoute path="/settings">
+          <SettingsPage />
         </PrivateRoute>
-        <PrivateRoute path="/profile-list">
-          <ProfileList />
-        </PrivateRoute>
-        <PrivateRoute path="/profile-view">
+        <PrivateRoute path="/profiles/profile-view">
           <ProfileViewPage />
         </PrivateRoute>
-        <PrivateRoute path="/profile-edit">
+        <PrivateRoute path="/profiles">
+          <ProfilesPage />
+        </PrivateRoute>
+        <PrivateRoute path="/profile/edit-profile">
           <EditProfilePage />
+        </PrivateRoute>
+        <PrivateRoute path="/profile">
+          <ProfilePage />
         </PrivateRoute>
         <PrivateRoute path="/tasks">
           <TasksPage />

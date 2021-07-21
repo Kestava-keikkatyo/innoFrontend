@@ -9,36 +9,36 @@ import React from 'react';
 import EmailIcon from '@material-ui/icons/Email';
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../utils/store';
-import { fetchProfileById } from '../../actions/profileActions';
+import { fetchProfileToBeViewed } from '../../actions/profileActions';
 import EditIcon from '@material-ui/icons/Edit';
 import PhoneIcon from '@material-ui/icons/Phone';
 import { Avatar, Grid, Typography } from '@material-ui/core';
 
 import Spacing from '../../components/Spacing';
 import banner from '../../assets/form-banner.jpg';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import PublicIcon from '@material-ui/icons/Public';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import baseUrl from '../../utils/baseUrl';
 
-const ProfilePage: React.FC = () => {
-  const userData: any = useSelector((state: IRootState) => state.user.data);
+const ProfileViewPage: React.FC = () => {
+  const history = useHistory();
+  const location: any = useLocation();
 
-  const currentProfile: any = useSelector(
-    (state: IRootState) => state.profile.currentProfile
+  const profileId: any = location.state.profileId;
+
+  const profileToBeViewed = useSelector(
+    (state: any) => state.profile.profileToBeViewed
   );
 
   const classes = useStyles();
   const dispatch = useDispatch();
-  const history = useHistory();
-
-  console.log('CURRENTPROFILE: ProfilePage > index', currentProfile);
 
   React.useEffect(() => {
-    dispatch(fetchProfileById(userData.profileId));
-  }, [dispatch, userData.profileId]);
+    dispatch(fetchProfileToBeViewed(profileId));
+  }, [dispatch, profileId]);
 
   return (
     <Container style={{ marginTop: 10 }} className="relative">
@@ -54,33 +54,15 @@ const ProfilePage: React.FC = () => {
             color="primary"
             variant="outlined"
             className={classes.button}
-            onClick={() => history.push('/home')}
+            onClick={() => history.push('/profiles')}
           >
             <Link
               style={{ textDecoration: 'none', color: '#eb5a00' }}
-              to="/home"
+              to="/profiles"
             >
               Return
             </Link>
           </Button>
-        </Grid>
-        <Grid item xs={6}>
-          <Grid container direction="row-reverse">
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-              startIcon={<EditIcon />}
-              onClick={() => history.push('/profile/edit-profile')}
-            >
-              <Link
-                style={{ textDecoration: 'none', color: '#fff' }}
-                to="/profile/edit-profile"
-              >
-                Edit profile
-              </Link>
-            </Button>
-          </Grid>
         </Grid>
       </Grid>
       {/* ### Cover photo / banner  ### */}
@@ -89,8 +71,8 @@ const ProfilePage: React.FC = () => {
           <CardMedia
             className={classes.coverPhoto}
             image={
-              currentProfile.coverPhoto !== ''
-                ? currentProfile.coverPhoto
+              profileToBeViewed.coverPhoto !== ''
+                ? profileToBeViewed.coverPhoto
                 : banner
             }
           />
@@ -109,13 +91,13 @@ const ProfilePage: React.FC = () => {
             style={{ margin: 'auto' }}
             className={classes.avatar}
             aria-label="recipe"
-            src={currentProfile.profilePicture || ''}
+            src={profileToBeViewed.profilePicture || ''}
             alt="profilePicture"
           />
         </Grid>
         <Grid item xs={12} md={10}>
           <div className={classes.contact}>
-            <Typography variant="h6">{currentProfile.name}</Typography>
+            <Typography variant="h6">{profileToBeViewed.name}</Typography>
           </div>
           <Typography>status</Typography>
         </Grid>
@@ -140,13 +122,13 @@ const ProfilePage: React.FC = () => {
             Address
           </Typography>
           <Typography variant="body2" className={classes.typoBody2}>
-            {currentProfile.streetAddress}
+            {profileToBeViewed.streetAddress}
           </Typography>
           <Typography variant="body2" className={classes.typoBody2}>
-            {currentProfile.zipCode}
+            {profileToBeViewed.zipCode}
           </Typography>
           <Typography variant="body2" className={classes.typoBody2}>
-            {currentProfile.city}
+            {profileToBeViewed.city}
           </Typography>
 
           <Typography
@@ -161,7 +143,7 @@ const ProfilePage: React.FC = () => {
             Website
           </Typography>
           <Typography variant="body2" className={classes.typoBody2}>
-            {currentProfile.website || 'Not Found'}
+            {profileToBeViewed.website || 'Not Found'}
           </Typography>
         </Grid>
 
@@ -178,7 +160,7 @@ const ProfilePage: React.FC = () => {
             Email
           </Typography>
           <Typography variant="body2" className={classes.typoBody2}>
-            {currentProfile.email}
+            {profileToBeViewed.email}
           </Typography>
 
           <Typography
@@ -193,7 +175,7 @@ const ProfilePage: React.FC = () => {
             Phone
           </Typography>
           <Typography variant="body2" className={classes.typoBody2}>
-            {currentProfile.phone}
+            {profileToBeViewed.phone}
           </Typography>
         </Grid>
       </Grid>
@@ -209,8 +191,8 @@ const ProfilePage: React.FC = () => {
             width="100%"
             height="100%"
             url={
-              currentProfile.video !== ''
-                ? currentProfile.video
+              profileToBeViewed.video !== ''
+                ? profileToBeViewed.video
                 : `https://www.youtube.com/watch?v=UTLcTLs8dwk&ab_channel=Kest%C3%A4v%C3%A4Keikkaty%C3%B62021&enablejsapi=1&origin=${baseUrl}`
             }
             controls
@@ -226,7 +208,7 @@ const ProfilePage: React.FC = () => {
         </Grid>
         <Grid item xs={12} style={{ marginTop: 24 }}>
           <List>
-            {currentProfile?.occupationalSafetyRules?.map(
+            {profileToBeViewed?.occupationalSafetyRules?.map(
               (value: any, index: number) => (
                 <div key={index}>
                   {index === 0 ? (
@@ -258,21 +240,23 @@ const ProfilePage: React.FC = () => {
         </Grid>
         <Grid item xs={12} style={{ marginTop: 24 }}>
           <List>
-            {currentProfile?.instructions?.map((value: any, index: number) => (
-              <div key={index}>
-                <Typography variant="body2" className={classes.typoBody2}>
-                  <FiberManualRecordIcon
-                    style={{
-                      width: 16,
-                      height: 16,
-                      marginBottom: -3,
-                      color: '#eb5a02',
-                    }}
-                  />{' '}
-                  {value}
-                </Typography>
-              </div>
-            ))}
+            {profileToBeViewed?.instructions?.map(
+              (value: any, index: number) => (
+                <div key={index}>
+                  <Typography variant="body2" className={classes.typoBody2}>
+                    <FiberManualRecordIcon
+                      style={{
+                        width: 16,
+                        height: 16,
+                        marginBottom: -3,
+                        color: '#eb5a02',
+                      }}
+                    />{' '}
+                    {value}
+                  </Typography>
+                </div>
+              )
+            )}
           </List>
         </Grid>
       </Grid>
@@ -322,4 +306,4 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default ProfilePage;
+export default ProfileViewPage;

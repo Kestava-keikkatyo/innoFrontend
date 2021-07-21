@@ -27,52 +27,8 @@ import PublicIcon from '@material-ui/icons/Public';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PhoneIcon from '@material-ui/icons/Phone';
 import EmailIcon from '@material-ui/icons/Email';
-
-const useStyles = makeStyles((theme) => ({
-  avatar: {
-    color: theme.palette.getContrastText('#eb5a00'),
-    backgroundColor: '#eb5a00',
-    width: theme.spacing(20),
-    height: theme.spacing(20),
-  },
-  contact: {
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  contactButton: {
-    marginLeft: '1%',
-  },
-  information: {
-    display: 'flex',
-    alignItems: 'row',
-  },
-  cover: {
-    textAlign: 'center',
-    marginRight: '22%',
-    [theme.breakpoints.down('sm')]: {
-      marginRight: 0,
-    },
-  },
-  picture: {
-    textAlign: 'center',
-    [theme.breakpoints.down('sm')]: {
-      marginRight: 0,
-    },
-  },
-  root: {
-    color: '#f50057',
-    textAlign: 'center',
-  },
-  button: {
-    margin: theme.spacing(1),
-  },
-  coverPhoto: {
-    height: 300,
-    [theme.breakpoints.down('sm')]: {
-      height: 200,
-    },
-  },
-}));
+import { setAlert } from '../../actions/alertActions';
+import { severity } from '../../types/types';
 
 export const EditProfilePage: React.FC<any> = () => {
   const currentProfile: any = useSelector(
@@ -92,8 +48,9 @@ export const EditProfilePage: React.FC<any> = () => {
     dispatch(fetchProfileById(userData.profileId));
   }, [dispatch, userData.profileId]);
 
-  const profileEdit = async (e: any) => {
+  const submitProfile = async (e: any) => {
     e.preventDefault();
+    dispatch(setAlert('Saving changes...', severity.Info));
     console.log('current profile', currentProfile);
     console.log('profileEdit current files', currentFiles);
     // currentFiles = [0, 1, 2] = [picture, cover, video]
@@ -136,6 +93,7 @@ export const EditProfilePage: React.FC<any> = () => {
     dispatch(updateProfile(copyOfCurrentProfile, userData.profileId));
     history.push('/profile');
   };
+
   console.log('lopullinen current profile:  ', currentProfile);
 
   const handleInstructionsChange = (event: any, index: any) => {
@@ -167,7 +125,12 @@ export const EditProfilePage: React.FC<any> = () => {
         style={{ marginTop: 10, marginBottom: 10 }}
       >
         <Grid item xs={6}>
-          <Button color="primary" variant="outlined" className={classes.button}>
+          <Button
+            color="primary"
+            variant="outlined"
+            className={classes.button}
+            onClick={() => history.push('/profile')}
+          >
             <Link
               style={{ textDecoration: 'none', color: '#eb5a00' }}
               to="/profile"
@@ -398,10 +361,15 @@ export const EditProfilePage: React.FC<any> = () => {
           <Grid item xs={12}>
             <Typography variant="h5">Introduction video</Typography>
           </Grid>
-          <Grid item xs={12} style={{ marginTop: 24 }}>
+          <Grid
+            item
+            xs={12}
+            style={{ marginTop: 24 }}
+            className={classes.videoWrapper}
+          >
             <ReactPlayer
-              //width="100%"
-              //height="600"
+              width="100%"
+              height="100%"
               url={
                 currentProfile.video
                   ? currentProfile.video
@@ -474,7 +442,7 @@ export const EditProfilePage: React.FC<any> = () => {
             variant="contained"
             type="submit"
             color="secondary"
-            onClick={profileEdit}
+            onClick={submitProfile}
           >
             Save changes and return
           </Button>
@@ -483,5 +451,64 @@ export const EditProfilePage: React.FC<any> = () => {
     </Container>
   );
 };
+
+const useStyles = makeStyles((theme) => ({
+  avatar: {
+    color: theme.palette.getContrastText('#eb5a00'),
+    backgroundColor: '#eb5a00',
+    width: theme.spacing(20),
+    height: theme.spacing(20),
+  },
+  contact: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  contactButton: {
+    marginLeft: '1%',
+  },
+  information: {
+    display: 'flex',
+    alignItems: 'row',
+  },
+  cover: {
+    textAlign: 'center',
+    marginRight: '22%',
+    [theme.breakpoints.down('sm')]: {
+      marginRight: 0,
+    },
+  },
+  picture: {
+    textAlign: 'center',
+    [theme.breakpoints.down('sm')]: {
+      marginRight: 0,
+    },
+  },
+  root: {
+    color: '#f50057',
+    textAlign: 'center',
+  },
+  button: {
+    margin: theme.spacing(1),
+  },
+  coverPhoto: {
+    height: 300,
+    [theme.breakpoints.down('sm')]: {
+      height: 200,
+    },
+  },
+  videoWrapper: {
+    display: 'flex',
+    maxWidth: '70%',
+    minHeight: 450,
+    [theme.breakpoints.down('sm')]: {
+      maxWidth: '100%',
+      minHeight: 400,
+    },
+    [theme.breakpoints.down('xs')]: {
+      maxWidth: '100%',
+      minHeight: 300,
+    },
+  },
+}));
 
 export default EditProfilePage;
