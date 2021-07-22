@@ -1,109 +1,131 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
-import { Grid, CardContent, Typography, AccordionSummary, AccordionDetails, Button, Accordion } from '@material-ui/core'
-import { CardHeader, TextField, CircularProgress, CardActions, Divider, makeStyles } from '@material-ui/core'
-import Pagination from '@material-ui/lab/Pagination'
+import {
+  Grid,
+  CardContent,
+  Typography,
+  AccordionSummary,
+  AccordionDetails,
+  Button,
+  Accordion,
+} from '@material-ui/core';
+import {
+  CardHeader,
+  TextField,
+  CircularProgress,
+  CardActions,
+  Divider,
+  makeStyles,
+} from '@material-ui/core';
+import Pagination from '@material-ui/lab/Pagination';
 
-import { getUserFeedBacks, postFeedBack } from '../../../actions/feedBackActions'
-import { RESET_FEEDBACK } from '../../../types/state'
-import { IRootState } from '../../../utils/store'
+import {
+  getUserFeedBacks,
+  postFeedBack,
+} from '../../../actions/feedBackActions';
+import { RESET_FEEDBACK } from '../../../types/state';
+import { IRootState } from '../../../utils/store';
 
-import SendIcon from '@material-ui/icons/Send'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import ReplayIcon from '@material-ui/icons/Replay'
+import SendIcon from '@material-ui/icons/Send';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ReplayIcon from '@material-ui/icons/Replay';
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    backgroundColor: "#eb5a00",
-    "&:disabled": {
-      backgroundColor: "#ebc800"
+    backgroundColor: '#eb5a00',
+    '&:disabled': {
+      backgroundColor: '#ebc800',
     },
-    color: "white"
+    color: 'white',
   },
   sendingDiv: {
-    textAlign: "center"
+    textAlign: 'center',
   },
   accordion: {
-    display: "contents"
+    display: 'contents',
   },
   feedBackTextWaiting: {
-    color: "#ac9100"
+    color: '#ac9100',
   },
   feedBackTextDone: {
-    color: "green"
+    color: 'green',
   },
   dividerWithMargin: {
-    marginTop: "5px",
-    marginBottom: "5px"
+    marginTop: '5px',
+    marginBottom: '5px',
   },
   pagination: {
     display: 'flex',
-    justifyContent: 'center'
-  }
-}))
+    justifyContent: 'center',
+  },
+}));
 
 const FeedBackForm = () => {
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
+  const classes = useStyles();
 
-  const classes = useStyles()
+  const { myFeedBacks } = useSelector((state: IRootState) => state.feedback);
 
-  const { myFeedBacks } = useSelector((state: IRootState) => state.feedback)
+  let { feedBackSaved } = useSelector((state: IRootState) => state.feedback);
 
-  let { feedBackSaved } = useSelector((state: IRootState) => state.feedback)
+  const [message, setMessage] = React.useState('');
 
-  const [message, setMessage] = React.useState("")
+  const [heading, setHeading] = React.useState('');
 
-  const [heading, setHeading] = React.useState("")
+  const [loading, setLoading] = React.useState(false);
 
-  const [loading, setLoading] = React.useState(false)
+  const [isSent, setSent] = React.useState(false);
 
-  const [isSent, setSent] = React.useState(false)
+  const [helperText, setHelperText] = React.useState('');
 
-  const [helperText, setHelperText] = React.useState("")
+  const [showFeedBacks, setShowFeedBacks] = React.useState(0);
 
-  const [showFeedBacks, setShowFeedBacks] = React.useState(0)
+  const [currentPage, setCurrentPage] = React.useState(1);
 
-  const [currentPage, setCurrentPage] = React.useState(1)
-
- 
   const handleClickLoading = () => {
     if (message.length > 0 && heading.length > 0) {
-      setLoading((prevLoading) => !prevLoading)
-      dispatch(postFeedBack(message, heading))
+      setLoading((prevLoading) => !prevLoading);
+      dispatch(postFeedBack(message, heading));
     } else {
-      setHelperText("Tarkista että kentät on täytetty!")
+      setHelperText('Tarkista että kentät on täytetty!');
     }
-  }
+  };
 
   const handleClearTextField = () => {
-    setMessage("")
-    setHeading("")
-  }
+    setMessage('');
+    setHeading('');
+  };
 
   const handlePageChange = (event: object, page: number) => {
-    console.log('FeedBacks: ',showFeedBacks,' Current page: ',currentPage,'  Page: ',page)
+    console.log(
+      'FeedBacks: ',
+      showFeedBacks,
+      ' Current page: ',
+      currentPage,
+      '  Page: ',
+      page
+    );
     if (currentPage > page) {
-      setCurrentPage(page)
-      setShowFeedBacks(showFeedBacks - 5)
+      setCurrentPage(page);
+      setShowFeedBacks(showFeedBacks - 5);
     } else if (currentPage < page) {
-      setCurrentPage(page)
-      setShowFeedBacks(showFeedBacks + 5)
+      setCurrentPage(page);
+      setShowFeedBacks(showFeedBacks + 5);
     } else {
-
     }
-  }
+  };
 
   useEffect(() => {
     if (feedBackSaved) {
-      setLoading((prevLoading) => !prevLoading)
-      setSent(true)
-      dispatch({ type: RESET_FEEDBACK })
+      setLoading((prevLoading) => !prevLoading);
+      setSent(true);
+      dispatch({ type: RESET_FEEDBACK });
     }
-    dispatch(getUserFeedBacks())
-  }, [feedBackSaved])
+    dispatch(getUserFeedBacks());
+  }, [dispatch, feedBackSaved]);
 
   return (
     <>
@@ -111,23 +133,27 @@ const FeedBackForm = () => {
         <div className="report-container-v2-one" style={{ height: '100%' }}>
           <CardHeader
             title="Anna palautetta"
-            subheader="Palaute lomake">
-          </CardHeader>
+            subheader="Palaute lomake"
+          ></CardHeader>
           <CardContent>
             <form noValidate autoComplete="off" hidden={loading}>
               <div>
                 <TextField
                   value={heading}
-                  label={"Otsikko"}
-                  onChange={(e) => setHeading(e.target.value)} />
+                  label={'Otsikko'}
+                  onChange={(e) => setHeading(e.target.value)}
+                />
                 <TextField
                   id="standard-multiline-static"
                   value={message}
                   helperText={helperText}
-                  label={isSent ? "Palaute lähetetty" : "Kirjoita palaute tähän:"}
+                  label={
+                    isSent ? 'Palaute lähetetty' : 'Kirjoita palaute tähän:'
+                  }
                   onChange={(e) => setMessage(e.target.value)}
                   multiline
-                  rows={4} />
+                  rows={4}
+                />
               </div>
             </form>
             <div hidden={!loading} className={classes.sendingDiv}>
@@ -157,45 +183,84 @@ const FeedBackForm = () => {
       </Grid>
       <Grid item xs={12} md={6} style={{ marginBottom: '5%' }}>
         <div className="report-container-v2-two" style={{ height: '100%' }}>
-          <CardHeader
-            title="Omat palautteet">
-          </CardHeader>
+          <CardHeader title="Omat palautteet"></CardHeader>
           <CardContent>
-            {myFeedBacks && myFeedBacks.length > 0 ? myFeedBacks.slice(showFeedBacks,showFeedBacks+5).map((feedback: { _id:string, message: string; heading: string; reply: string; }) => (
-              <Accordion >
-                <AccordionSummary
-                  style={{ display: "flex" }}
-                  classes={{ content: classes.accordion }}
-                  expandIcon={<ExpandMoreIcon />}>
-                  <div style={{ width: "50%", flex: 'auto' }}>
-                    <Typography style={{ wordWrap: "break-word" }}>{feedback.heading}</Typography>
-                  </div>
-                  <div style={{ flex: 'auto' }}>
-                    <Typography className={feedback.reply ? classes.feedBackTextDone : classes.feedBackTextWaiting}>
-                      {feedback.reply ? "Vastattu" : "Odottaa"}
-                    </Typography>
-                  </div>
-                </AccordionSummary>
-                <AccordionDetails style={{ display: "block" }}>
-                  <Divider className={classes.dividerWithMargin} />
-                  <Typography>
-                    Viesti:
-                  </Typography>
-                  <Typography style={{ wordWrap: "break-word", width: '100%' }}>
-                    {feedback.message}
-                  </Typography>
-                  <Divider className={classes.dividerWithMargin} />
-                  {feedback.reply ? <><Typography>Vastaus:</Typography><Typography style={{ wordWrap: "break-word", width: '100%' }}>{feedback.reply}</Typography></> : <></>}
-                </AccordionDetails>
-              </Accordion>
-            )) : <Typography>Ei palautteita</Typography>}
+            {myFeedBacks && myFeedBacks.length > 0 ? (
+              myFeedBacks
+                .slice(showFeedBacks, showFeedBacks + 5)
+                .map(
+                  (feedback: {
+                    _id: string;
+                    message: string;
+                    heading: string;
+                    reply: string;
+                  }) => (
+                    <Accordion>
+                      <AccordionSummary
+                        style={{ display: 'flex' }}
+                        classes={{ content: classes.accordion }}
+                        expandIcon={<ExpandMoreIcon />}
+                      >
+                        <div style={{ width: '50%', flex: 'auto' }}>
+                          <Typography style={{ wordWrap: 'break-word' }}>
+                            {feedback.heading}
+                          </Typography>
+                        </div>
+                        <div style={{ flex: 'auto' }}>
+                          <Typography
+                            className={
+                              feedback.reply
+                                ? classes.feedBackTextDone
+                                : classes.feedBackTextWaiting
+                            }
+                          >
+                            {feedback.reply ? 'Vastattu' : 'Odottaa'}
+                          </Typography>
+                        </div>
+                      </AccordionSummary>
+                      <AccordionDetails style={{ display: 'block' }}>
+                        <Divider className={classes.dividerWithMargin} />
+                        <Typography>Viesti:</Typography>
+                        <Typography
+                          style={{ wordWrap: 'break-word', width: '100%' }}
+                        >
+                          {feedback.message}
+                        </Typography>
+                        <Divider className={classes.dividerWithMargin} />
+                        {feedback.reply ? (
+                          <>
+                            <Typography>Vastaus:</Typography>
+                            <Typography
+                              style={{ wordWrap: 'break-word', width: '100%' }}
+                            >
+                              {feedback.reply}
+                            </Typography>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                      </AccordionDetails>
+                    </Accordion>
+                  )
+                )
+            ) : (
+              <Typography>Ei palautteita</Typography>
+            )}
           </CardContent>
-          <CardActions classes={{root: classes.pagination}}>
-            {myFeedBacks && myFeedBacks.length > 0 ? <Pagination count={Math.ceil(myFeedBacks.length/5)} onChange={handlePageChange}/> : <></>}
+          <CardActions classes={{ root: classes.pagination }}>
+            {myFeedBacks && myFeedBacks.length > 0 ? (
+              <Pagination
+                count={Math.ceil(myFeedBacks.length / 5)}
+                onChange={handlePageChange}
+              />
+            ) : (
+              <></>
+            )}
           </CardActions>
         </div>
-      </Grid></>
-  )
-}
+      </Grid>
+    </>
+  );
+};
 
-export default FeedBackForm
+export default FeedBackForm;

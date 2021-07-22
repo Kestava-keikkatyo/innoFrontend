@@ -10,7 +10,7 @@ import {
 import { useDispatch } from "react-redux";
 import {
   declineBusinessContract,
-  acceptBusinessContract,
+  acceptBusinessContractFromWorker,
   sendBackBusinessContract,
 } from "../../actions/businessContractActions";
 import { setAlert } from "../../actions/alertActions";
@@ -43,7 +43,7 @@ const WorkerSendContracts = (props: { businessContract: BusinessContractObject[]
   const contracts = businessContract
 
   const acceptContract = (contractId: string, userId: string, formId: string) => {
-    dispatch(acceptBusinessContract(contractId, userId, formId))
+    dispatch(acceptBusinessContractFromWorker(contractId, userId, formId))
     dispatch(setAlert("Contract accepted.", severity.Info, 3))
   }
 

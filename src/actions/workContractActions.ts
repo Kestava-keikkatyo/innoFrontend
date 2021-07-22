@@ -39,12 +39,12 @@ export const deleteWorkContractById = (id: string) => async (dispatch: any) => {
 
 /**
  * @function
- * @desc Adds work contract between given Worker user and Business user.
- * @param {User} worker Worker user. 
+ * @desc Adds WorkContract document to database. Document is linked
+ * between Agency and Business. 
  * @param business Business user.
  */
-export const addWorkContract = (worker: User, business: any) => async (dispatch: any) => {
-  const res = await contractsService.addWorkContract(business.business._id, worker._id)
+export const postWorkContract = (business: any) => async (dispatch: any) => {
+  const res = await contractsService.postWorkContract(business.business._id)
   if(res && res.status === 200)
     dispatch({type: ADD_W_CONTRACT, data: res.data})
 }

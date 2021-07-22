@@ -4,7 +4,7 @@
  * @module reducer/file
  * @desc Redux file reducer
  */
- import { SET_CURRENT_FILES,ADD_FILE, FileState, FileActionTypes} from "../types/state"
+ import { SET_CURRENT_FILES, FileState, FileActionTypes} from "../types/state"
  import {File} from "../types/types"
 
  const initialFiles: File = {
@@ -12,8 +12,7 @@
 
  }
  const initialState: FileState = {
-   currentFiles: initialFiles,
-   fileUrls: ['', '', '']
+   currentFiles: initialFiles
  }
 
  /**
@@ -31,14 +30,6 @@
            files: action.data
          }
        }
-      case ADD_FILE:
-        return {
-          ...state,
-          currentFiles: {
-            ...state.currentFiles,
-            files:[...state.currentFiles.files, action.data]
-          }
-        }
       default:
         return state
     }

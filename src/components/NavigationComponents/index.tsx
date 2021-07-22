@@ -65,7 +65,7 @@ const AppNavigation = (props: { windowProp: any; children: ReactNode }) => {
               keepMounted: true, // Better open performance on mobile.
             }}
           >
-            <ResponsiveDrawer />
+            <ResponsiveDrawer isOpen={mobileOpen}/>
           </Drawer>
         </Hidden>
         <Hidden mdDown implementation="css">

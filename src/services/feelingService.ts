@@ -1,4 +1,3 @@
-import { DoneWorkerContractsProps } from './../pages/WorkerContractPage/DoneWorkerContracts';
 /**
  * @module service/feeling
  * @desc Feeling requests to backend.

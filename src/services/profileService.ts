@@ -39,12 +39,9 @@ const fetchProfileById = async (id: string) => {
     }
   }
 
-  const fetchProfiles = async (input: string) => {
+  const fetchProfiles = async () => {
     try {
-      const res = await axios.get(
-        `${baseUrl}/profile?name=${input}`,
-        authHeader()
-      )
+      const res = await axios.get(`${baseUrl}/profile`, authHeader())
       return res
     } catch (error) {
       return Promise.reject(error.response)

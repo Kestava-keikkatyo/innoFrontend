@@ -105,9 +105,7 @@ code {
 }
 
 .drawer-top {
-  background-color: #3f51b5;
-  border-top: #3f51b5 16px solid;
-  height: 64px !important;
+  border-top: #eb5a00 16px solid;
 }
 
 .text-secondary {

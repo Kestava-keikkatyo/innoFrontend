@@ -106,7 +106,7 @@ ColorlibStepIcon.propTypes = {
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    height: '100%'
+    height: '100%',
   },
   button: {
     marginRight: theme.spacing(1),
@@ -118,7 +118,7 @@ const useStyles = makeStyles((theme) => ({
   instructions: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
-    textAlign: 'center'
+    textAlign: 'center',
   },
 }));
 
@@ -153,7 +153,7 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
 
   const handleReset = () => {
     setActiveStep(0);
-    dispatch(setFiles(null));
+    dispatch(setFiles([null, null, null]));
   };
 
   const handleFinnish = () => {

@@ -3,7 +3,8 @@ import { Typography, Grid, makeStyles } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import {
   declineBusinessContract,
-  acceptBusinessContract,
+  acceptBusinessContractFromBusiness,
+  acceptBusinessContractFromWorker,
   sendBackBusinessContract,
 } from '../../actions/businessContractActions';
 import { setAlert } from '../../actions/alertActions';
@@ -71,14 +72,23 @@ const ContractsTable = (props: {
   const dispatch = useDispatch();
   const contracts = businessContract;
 
-  const acceptContract = (
+  const acceptContractFromBusiness = (
     contractId: string,
     userId: string,
     formId: string
   ) => {
-    dispatch(acceptBusinessContract(contractId, userId, formId));
-    dispatch(setAlert('Contract accepted.', severity.Info, 3));
+    dispatch(acceptBusinessContractFromBusiness(contractId, userId, formId));
+    dispatch(setAlert('Contract from Business accepted.', severity.Info, 3));
   };
+
+  const acceptContractFromWorker = (
+    contractId: string,
+    userId: string,
+    formId: string
+  ) => {
+    dispatch(acceptBusinessContractFromWorker(contractId, userId, formId));
+    dispatch(setAlert('Contract from Worker accepted.', severity.Info, 3));
+  }
 
   const declineContract = (contractId: string, userId: string) => {
     dispatch(declineBusinessContract(contractId, userId));
@@ -197,7 +207,7 @@ const ContractsTable = (props: {
                     <ContractsReceivedTable
                       contracts={contracts[0]?.requestContracts?.businesses}
                       contractId={businessContract[0]._id}
-                      acceptContract={acceptContract}
+                      acceptContract={acceptContractFromBusiness}
                       declineContract={declineContract}
                       sendBackContract={sendBackContract}
                     />
@@ -220,7 +230,7 @@ const ContractsTable = (props: {
                     <ContractsReceivedTable
                       contracts={contracts[0]?.requestContracts?.workers}
                       contractId={businessContract[0]._id}
-                      acceptContract={acceptContract}
+                      acceptContract={acceptContractFromWorker}
                       declineContract={declineContract}
                       sendBackContract={sendBackContract}
                     />

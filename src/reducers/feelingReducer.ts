@@ -4,7 +4,7 @@
  */
 import { ADD_FEELING, CLEAR_CURRENT_FEELING, FeelingActionTypes, FeelingState, FETCH_FEELINGS, SET_CURRENT_FEELING, UPDATE_FEELING_DATASET } from "../types/state"
 import { Feeling } from "../types/types"
-import { formatDate } from "../utils/dateUtils"
+//import { formatDate } from "../utils/dateUtils"
 
 const initialDataset = {
   labels: [],
@@ -72,7 +72,7 @@ const feelingReducer = (state: FeelingState = initialState, action: FeelingActio
     case UPDATE_FEELING_DATASET:
       console.log("feeling reducer: data: ", action.data)
       let tempLabels: any = []
-      let tempData: any = []
+      //let tempData: any = []
       console.log("€€€ state", state)
       /*
       state.feelings.map((f: any) => {

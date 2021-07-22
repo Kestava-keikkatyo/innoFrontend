@@ -124,7 +124,8 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
             <ListItemIcon>{<AssignmentIcon />}</ListItemIcon>
             <ListItemText primary="Assignments" />
           </ListItem>
-          <ListItem button component={Link} to="/profile-list">
+          <Divider />
+          <ListItem button component={Link} to="/profiles">
             <ListItemIcon>{<PeopleOutlineIcon />}</ListItemIcon>
             <ListItemText primary="Profiles" />
           </ListItem>
@@ -224,7 +225,6 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
               <ListItemText primary="Jobs" />
             </ListItem>
           )}
-          
         </List>
       </div>
 

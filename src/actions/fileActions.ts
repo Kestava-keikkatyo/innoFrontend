@@ -3,8 +3,8 @@
  * @desc Redux file actions
  */
 import fileService from "../services/fileService"
- import { SET_CURRENT_FILES, ADD_FILE} from "../types/state"
- import {File} from "../types/types"
+ import { SET_CURRENT_FILES} from "../types/state"
+ //import {File} from "../types/types"
 
 
  /**
@@ -23,8 +23,3 @@ import fileService from "../services/fileService"
    console.log("fileActions:setFiles:files:", files)
    dispatch({type: SET_CURRENT_FILES, data: files})
  }
-
- export const addFile = (file: any) => (dispatch:any) => {
-  console.log("fileActions:addFile:file:", file)
-  dispatch({type: ADD_FILE, data: file})
-}

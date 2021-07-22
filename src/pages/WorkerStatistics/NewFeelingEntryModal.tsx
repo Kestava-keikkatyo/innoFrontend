@@ -36,11 +36,11 @@ const NewFeelingEntryModal: React.FC<any> = ({ modalState }) => {
   const onHandleSubmit = async () => {
     console.log('### 1 currentFeeling:', currentFeeling);
     //console.log('### currentFile:', currentFile.file);
-    if (currentFiles !== null) {
-      const res: any = await fileService.postFile(currentFiles);
+    if (currentFiles.files[0] !== null) {
+      const res: any = await fileService.postFile(currentFiles.files[0]);
       const copyOfCurrentFeeling = {
         ...currentFeeling,
-        fileUrl: res.data?.fileUrls[0],
+        fileUrl: res.data.fileUrl,
       };
 
       dispatch(updateFeeling(copyOfCurrentFeeling));

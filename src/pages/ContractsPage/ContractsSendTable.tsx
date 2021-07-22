@@ -163,7 +163,7 @@ const ContractsSendTable = (prop: {
     ));
   };
 
-  if (!contracts.length)
+  if (!contracts)
     return (
       <Typography
         style={{ padding: '1rem' }}
