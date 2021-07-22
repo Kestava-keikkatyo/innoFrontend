@@ -1,7 +1,6 @@
 import { Button, makeStyles, Menu, MenuItem } from '@material-ui/core';
 import React from 'react';
 import Divider from '@material-ui/core/Divider';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -113,16 +112,6 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           <ListItem button component={Link} to="/home">
             <ListItemIcon>{<CalendarTodayIcon />}</ListItemIcon>
             <ListItemText primary="Schedule" />
-          </ListItem>
-          <Divider />
-          <ListItem button component={Link} to="/documents">
-            <ListItemIcon>{<InboxIcon />}</ListItemIcon>
-            <ListItemText primary="Documents" />
-          </ListItem>
-          <Divider />
-          <ListItem button component={Link} to="/tasks">
-            <ListItemIcon>{<AssignmentIcon />}</ListItemIcon>
-            <ListItemText primary="Assignments" />
           </ListItem>
           <Divider />
           <ListItem button component={Link} to="/profiles">
