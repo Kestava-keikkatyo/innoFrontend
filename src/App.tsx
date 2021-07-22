@@ -9,8 +9,6 @@ import WorkersPage from './pages/WorkersPage';
 import ContractsPage from './pages/ContractsPage';
 import PrivateRoute from './components/PrivateRoute';
 import ProcessPage from './pages/ProcessPage';
-import TasksPage from './pages/TaskPage';
-import DocumentPage from './pages/DocumentPage';
 import FormsPage from './pages/FormsPage';
 import WorkerStatistics from './pages/WorkerStatistics';
 import { CssBaseline } from '@material-ui/core';
@@ -104,12 +102,6 @@ const App: React.FC = () => {
         </PrivateRoute>
         <PrivateRoute path="/profile">
           <ProfilePage />
-        </PrivateRoute>
-        <PrivateRoute path="/tasks">
-          <TasksPage />
-        </PrivateRoute>
-        <PrivateRoute path="/documents">
-          <DocumentPage />
         </PrivateRoute>
         <PrivateRoute path="/process" roles={[roles.Worker]}>
           <ProcessPage />
