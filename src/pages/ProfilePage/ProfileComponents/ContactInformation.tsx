@@ -1,7 +1,7 @@
 import React from 'react';
 import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
-import { Grid, makeStyles, Typography } from '@material-ui/core';
+import { Grid, Link, makeStyles, Typography } from '@material-ui/core';
 import PublicIcon from '@material-ui/icons/Public';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
@@ -50,7 +50,9 @@ const ContactInformation: React.FC<any> = ({ profile }) => {
           Website
         </Typography>
         <Typography variant="body2" className={classes.typoBody2}>
-          {profile.website || 'Not Found'}
+          <Link target="_blank" color="inherit" href={profile.website}>
+            {profile.website}
+          </Link>
         </Typography>
       </Grid>
 

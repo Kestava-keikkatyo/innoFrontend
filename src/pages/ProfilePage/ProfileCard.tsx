@@ -1,71 +1,31 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
-import Button from '@material-ui/core/Button';
-import { Grid } from '@material-ui/core';
-import { useHistory } from 'react-router';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-    height: 'auto',
-    marginBottom: '2.5em',
-    display: 'inline-block',
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
-  avatar: {
-    backgroundColor: red[500],
-  },
-  text: {
-    textAlign: 'center',
-    width: '20%',
-    display: 'inline',
-  },
-  header: {
-    paddingBottom: '0px',
-  },
-  gridButton: {
-    paddingTop: '1.125em',
-    textAlign: 'center',
-  },
-  gridText: {
-    textAlign: 'center',
-    paddingTop: '1.125em',
-    paddingRight: '5em',
-    [theme.breakpoints.down('xs')]: {
-      paddingRight: 0,
-    },
-  },
-  content: {
-    paddingTop: '0',
-  },
-  button: {
-    width: '80%',
-    marginTop: '0.3125em',
-  },
-}));
-
-export const ProfileCard = (prop: { profile: any }) => {
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import EmailIcon from '@material-ui/icons/Email';
+import PhoneIcon from '@material-ui/icons/Phone';
+import { Button } from '@material-ui/core';
+import PublicIcon from '@material-ui/icons/Public';
+import { useHistory } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
+const ProfileCard: React.FC<any> = ({ profile }) => {
+  const [expanded, setExpanded] = React.useState(false);
   const classes = useStyles();
-  const { profile } = prop;
-
   const history = useHistory();
 
-  const transferToProfile = (profileId: any) => {
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
+
+  const handleSiirryProfiiliin = (profileId: any) => {
     history.push({
       pathname: '/profiles/profile-view',
       state: { profileId: profileId },
@@ -73,41 +33,136 @@ export const ProfileCard = (prop: { profile: any }) => {
   };
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} onClick={handleExpandClick}>
       <CardHeader
-        className={classes.header}
-        title={profile.name}
         avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            R
-          </Avatar>
+          <Avatar
+            aria-label="recipe"
+            className={classes.avatar}
+            src={profile.profilePicture}
+            alt="profilePicture"
+          />
         }
+        action={
+          <IconButton
+            className={clsx(classes.expand, {
+              [classes.expandOpen]: expanded,
+            })}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </IconButton>
+        }
+        title={profile.name}
+        subheader={profile.city}
       />
 
-      <CardContent className={classes.content}>
-        <Grid container spacing={0}>
-          <Grid className={classes.gridButton} item sm={4} xs={12}>
-            <Button
-              className={classes.button}
-              variant="contained"
-              color="primary"
-              onClick={() => transferToProfile(profile._id)}
-            >
-              Siirry profiiliin
-            </Button>
-          </Grid>
-          <Grid className={classes.gridText} item sm={8} xs={12}>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {profile.email}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {profile.phone}
-            </Typography>
-          </Grid>
-        </Grid>
-      </CardContent>
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <CardContent>
+          <Typography
+            variant="body2"
+            color="primary"
+            style={{ fontWeight: 500 }}
+          >
+            <EmailIcon
+              //fontSize="small"
+              style={{ marginBottom: -3, color: '#eb5a02', fontSize: 16 }}
+            />{' '}
+            Email
+          </Typography>
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            className={classes.typoBody2}
+          >
+            {profile.email}
+          </Typography>
+
+          <Typography
+            style={{ marginTop: 24, fontWeight: 500 }}
+            variant="body2"
+            color="primary"
+          >
+            <PhoneIcon
+              //fontSize="small"
+              style={{ marginBottom: -3, color: '#eb5a02', fontSize: 16 }}
+            />{' '}
+            Phone
+          </Typography>
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            className={classes.typoBody2}
+          >
+            {profile.phone}
+          </Typography>
+
+          <Typography
+            style={{ marginTop: 24, fontWeight: 500 }}
+            variant="body2"
+            color="primary"
+          >
+            <PublicIcon
+              //fontSize="small"
+              style={{ marginBottom: -3, color: '#eb5a02', fontSize: 16 }}
+            />{' '}
+            Website
+          </Typography>
+
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            className={classes.typoBody2}
+          >
+            <Link target="_blank" color="textSecondary" href={profile.website}>
+              {profile.website}
+            </Link>
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button
+            variant="outlined"
+            color="primary"
+            className={classes.button}
+            onClick={() => handleSiirryProfiiliin(profile._id)}
+          >
+            Siirry Profiiliin
+          </Button>
+        </CardActions>
+      </Collapse>
     </Card>
   );
 };
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      width: '100%',
+      marginBottom: 16,
+      border: '1px solid #E0E0E0',
+    },
+    expand: {
+      transform: 'rotate(0deg)',
+      marginLeft: 'auto',
+      transition: theme.transitions.create('transform', {
+        duration: theme.transitions.duration.shortest,
+      }),
+    },
+    expandOpen: {
+      transform: 'rotate(180deg)',
+    },
+    avatar: {
+      backgroundColor: '#eb5a02',
+    },
+    typoBody2: {
+      marginTop: 5,
+    },
+    button: {
+      margin: 8,
+    },
+  })
+);
 
 export default ProfileCard;

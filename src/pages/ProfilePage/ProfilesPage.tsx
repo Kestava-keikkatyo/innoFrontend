@@ -1,4 +1,4 @@
-import { Box, Card, Container, IconButton, InputBase } from '@material-ui/core';
+import { Box, Container, IconButton, InputBase } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import { fetchProfiles } from '../../actions/profileActions';
@@ -27,8 +27,8 @@ const ProfilesPage: React.FC<any> = () => {
   } else
     return (
       <Container maxWidth="lg" className={classes.root}>
-        <Box className={classes.box}>
-          <Box display="flex" alignItems="center" className={classes.search}>
+        <Box className={classes.ContainerBox}>
+          <Box display="flex" alignItems="center" className={classes.searchBox}>
             <InputBase
               placeholder="Search by name..."
               value={filter}
@@ -39,14 +39,16 @@ const ProfilesPage: React.FC<any> = () => {
             </IconButton>
           </Box>
 
-          {profiles &&
-            profiles
-              .filter((profile: any) =>
-                profile.name.toLowerCase().includes(filter.toLowerCase())
-              )
-              .map((profile: any) => (
-                <ProfileCard key={profile._id} profile={profile} />
-              ))}
+          <Box className={classes.profilesBox}>
+            {profiles &&
+              profiles
+                .filter((profile: any) =>
+                  profile.name.toLowerCase().includes(filter.toLowerCase())
+                )
+                .map((profile: any) => (
+                  <ProfileCard key={profile._id} profile={profile} />
+                ))}
+          </Box>
         </Box>
       </Container>
     );
@@ -57,13 +59,19 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     width: '100%',
     backgroundColor: theme.palette.background.paper,
+    //textAlign: 'center',
+    marginTop: 10,
   },
-  box: {
+  ContainerBox: {
     width: '100%',
     padding: 24,
   },
-  search: {
+  searchBox: {
     marginBottom: 24,
+  },
+  profilesBox: {
+    width: '100%',
+    //textAlign: 'center',
   },
 }));
 
