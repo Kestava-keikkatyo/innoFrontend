@@ -1,9 +1,11 @@
-import { Button, makeStyles, Theme, Typography } from "@material-ui/core";
+import { Button, Container, Grid, makeStyles, Paper, Theme, Typography } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 
 import React from "react";
 import { useHistory } from "react-router-dom";
 import FileUploader from "../../components/FileUploader";
+import AgencyGrid from "./AgencyGrid";
+import SituationPanel from "./SituationPanel";
 
 const useStyles = makeStyles((theme: Theme) => ({
   header: {
@@ -60,93 +62,55 @@ const AddWorkTask = () => {
   };
 
   return (
-    <div>
+    <Container>
+    <Grid container>
+      <Grid item md={6}>
+        <Paper>
       <form>
-        <h1 className={classes.header}> Lisää työkeikka</h1>
-        <div className={classes.header}>
+        <h1> Lisää työkeikka</h1>
+        <div>
           <FileUploader name="Lisää Firman logo tästä" accept="" />
         </div>
-        <Typography className={classes.info}>
+        <Typography >
           Kerro haettava positio / ilmoituksen otsikko
         </Typography>
-
+        
         <TextField
           type="text"
           variant="outlined"
           id="margin-none"
-          className={classes.textField}
           value={headline}
           onChange={(e) => setHeadline(e.target.value)}
         />
         {console.log(headline)}
-        <Typography className={classes.info}>Lisää väliotsikko</Typography>
+        <Typography >Lisää väliotsikko</Typography>
         <TextField
           type="text"
           variant="outlined"
           id="margin-none"
-          className={classes.textField}
           value={subheading}
           onChange={(e) => setSubheading(e.target.value)}
         />
-        <Typography className={classes.info}>Kerro tarkemmat tiedot</Typography>
+        <Typography >Kerro tarkemmat tiedot</Typography>
         <TextField
           type="text"
           variant="outlined"
           id="margin-none"
-          className={classes.textField}
           value={detailedInfo}
           onChange={(e) => setDetailedInfo(e.target.value)}
         />
 
-        <Typography className={classes.info}>Lisää lisätiedot</Typography>
+        <Typography >Lisää lisätiedot</Typography>
         <TextField
           type="text"
           id="margin-none"
           variant="outlined"
-          className={classes.textField}
           value={additionalDetails}
           onChange={(e) => setAdditionalDetails(e.target.value)}
         />
-        <Typography className={classes.info}>Puhelinnumero</Typography>
-        <TextField
-          type="text"
-          id="margin-none"
-          variant="outlined"
-          className={classes.textFieldSmall}
-          value={phonenumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
-        />
-
-        <Typography className={classes.info}>Sähköposti</Typography>
-        <TextField
-          type="text"
-          id="margin-none"
-          variant="outlined"
-          className={classes.textFieldSmall}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <Typography className={classes.info}>Postitoimipaikka</Typography>
-        <TextField
-          type="text"
-          id="margin-none"
-          variant="outlined"
-          className={classes.textFieldSmall}
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-        />
-        <Typography className={classes.info}>Postinumero</Typography>
-        <TextField
-          type="text"
-          id="margin-none"
-          variant="outlined"
-          className={classes.textFieldSmall}
-          value={postalCode}
-          onChange={(e) => setPostalCode(e.target.value)}
-        />
-
-        <div className={classes.buttons}>
+        <Typography >Valitse HP-yritys</Typography>
+        <AgencyGrid/>
+        <div>
           <Button
             variant="contained"
             color="default"
@@ -164,7 +128,15 @@ const AddWorkTask = () => {
           </Button>
         </div>
       </form>
-    </div>
+      </Paper>
+      </Grid>
+      <Grid item md={6}>
+        <Paper>
+        <SituationPanel/>
+      </Paper>
+      </Grid>
+    </Grid>
+    </Container>
   );
 };
 
