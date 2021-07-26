@@ -1,14 +1,15 @@
-import React from 'react';
-import { makeStyles, Theme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import SearchingWorkers from './SearchingWorkers';
-import CurrentlyWorking from './CurrentlyWorking';
-import WorkingContractEnded from './WorkingContractEnded';
-
+import React from "react";
+import { makeStyles, Theme } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import SearchingWorkers from "./SearchingWorkers";
+import CurrentlyWorking from "./CurrentlyWorking";
+import WorkingContractEnded from "./WorkingContractEnded";
+import { SearchIcon } from "@material-ui/data-grid";
+import { IconButton } from "@material-ui/core";
 interface TabPanelProps {
   children?: React.ReactNode;
   index: any;
@@ -38,25 +39,14 @@ function TabPanel(props: TabPanelProps) {
 function a11yProps(index: any) {
   return {
     id: `scrollable-auto-tab-${index}`,
-    'aria-controls': `scrollable-auto-tabpanel-${index}`,
+    "aria-controls": `scrollable-auto-tabpanel-${index}`,
   };
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    flexGrow: 1,
-    height: '100%',
-    width: '100%',
-    backgroundColor: theme.palette.background.paper,
-    textAlign: 'center',
-  },
-  panel: {
-    width: '33%',
-  },
-  search: {
-    display: 'flex',
-    justifyContent: 'center'
-  }
+  root: {},
+  panel: {},
+  search: {},
 }));
 
 const SituationPanel = () => {
@@ -69,6 +59,7 @@ const SituationPanel = () => {
 
   return (
     <div className={classes.root}>
+      <h1>Omat työntekijät</h1>
       <AppBar position="static" color="default">
         <Tabs
           value={value}
@@ -79,24 +70,49 @@ const SituationPanel = () => {
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          <Tab label="Haussa" {...a11yProps(0)} className={classes.panel}/>
-          <Tab label="Työsuhteessa" {...a11yProps(1)} className={classes.panel}/>
+          <Tab label="Haussa" {...a11yProps(0)} className={classes.panel} />
+          <Tab
+            label="Työsuhteessa"
+            {...a11yProps(1)}
+            className={classes.panel}
+          />
           <Tab label="Päättyneet" {...a11yProps(2)} className={classes.panel} />
         </Tabs>
       </AppBar>
       <div className={classes.search}>
-      <TabPanel  value={value} index={0} >
-        <SearchingWorkers/> 
-      </TabPanel>
-      <TabPanel value={value} index={1} >
-        <CurrentlyWorking/>
-      </TabPanel>
-      <TabPanel value={value} index={2} >
-        <WorkingContractEnded/>  
-      </TabPanel>
+        <TabPanel value={value} index={0}>
+          <IconButton>
+            <SearchIcon />
+          </IconButton>
+          <SearchingWorkers />
+          <SearchingWorkers />
+          <SearchingWorkers />
+          <SearchingWorkers />
+          <SearchingWorkers />
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <IconButton>
+            <SearchIcon />
+          </IconButton>
+          <SearchingWorkers />
+          <SearchingWorkers />
+          <SearchingWorkers />
+          <SearchingWorkers />
+          <SearchingWorkers />
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+          <IconButton>
+            <SearchIcon />
+          </IconButton>
+          <SearchingWorkers />
+          <SearchingWorkers />
+          <SearchingWorkers />
+          <SearchingWorkers />
+          <SearchingWorkers />
+        </TabPanel>
       </div>
     </div>
   );
-}
+};
 
-export default SituationPanel
+export default SituationPanel;
