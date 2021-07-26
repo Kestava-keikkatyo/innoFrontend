@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { me, updatePassword } from '../../actions/userActions';
-import PageLoading from '../../components/PageLoading';
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -18,7 +17,7 @@ import { Button, Grid } from '@material-ui/core';
  * @desc Component for changing worker/agency/business password.
  */
 const ChangePassword: React.FC<any> = () => {
-  const { data, ...user } = useSelector((state: any) => state.user);
+  const { data } = useSelector((state: any) => state.user);
   const classes = useStyles();
   const dispatch = useDispatch();
 
