@@ -142,7 +142,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
               <Divider />
             </>
           )}
-          {(role === roles.Agency || role === roles.Business) && (
+          {(role === roles.Business) && (
             <>
               <ListItem button component={Link} to="/work-overview">
                 <ListItemIcon>
