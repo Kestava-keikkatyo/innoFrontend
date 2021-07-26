@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { me, update } from '../../actions/userActions'
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { me, update } from '../../actions/userActions';
 
-import WorkerProfile from './WorkerProfile'
-import CompanyProfile from './CompanyProfile'
-import PasswordChange from './PasswordChange'
-import PageLoading from '../../components/PageLoading'
+import WorkerProfile from './WorkerProfile';
+import CompanyProfile from './CompanyProfile';
+import PageLoading from '../../components/PageLoading';
 
 import {
   Typography,
@@ -13,32 +12,31 @@ import {
   CardContent,
   Box,
   Button,
-  Container
-} from '@material-ui/core'
-import { roles } from '../../types/types'
+  Container,
+} from '@material-ui/core';
+import { roles } from '../../types/types';
 
 /**
+ * @depricated This component IS NOT in use
  * @component
  * @desc The main profile page component.
  * Container for WorkerProfile, CompanyProfile and PasswordChange components.
  */
 const ProfilePage = () => {
-  const [display, setDisplay] = useState(false)
-  const { data, ...user } = useSelector((state: any) => state.user)
-  const dispatch = useDispatch()
+  const [display, setDisplay] = useState(false);
+  const { data, ...user } = useSelector((state: any) => state.user);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(me(data.role))
-  }, [dispatch, data.role])
+    dispatch(me(data.role));
+  }, [dispatch, data.role]);
 
   const updateUser = (updateData: any) => {
-    dispatch(update(updateData, data.role))
-  }
+    dispatch(update(updateData, data.role));
+  };
 
   if (user.loading || !user.profile) {
-    return (
-      <PageLoading />
-    )
+    return <PageLoading />;
   }
 
   return (
@@ -61,25 +59,33 @@ const ProfilePage = () => {
         </Card>
       </Box>
       <Box paddingBottom={2}>
-        {data.role === roles.Worker &&
-          <WorkerProfile profile={user.profile} handleSubmit={updateUser} />}
-        {(data.role === roles.Agency ||
-          data.role === roles.Business) &&
-          <CompanyProfile profile={user.profile} handleSubmit={updateUser} />}
+        {data.role === roles.Worker && (
+          <WorkerProfile profile={user.profile} handleSubmit={updateUser} />
+        )}
+        {(data.role === roles.Agency || data.role === roles.Business) && (
+          <CompanyProfile profile={user.profile} handleSubmit={updateUser} />
+        )}
       </Box>
+      {/*
       <Box paddingBottom={2}>
-        {display ?
-          <PasswordChange handleSubmit={updateUser} hide={() => setDisplay(false)} /> :
+        {display ? (
+          <PasswordChange
+            handleSubmit={updateUser}
+            hide={() => setDisplay(false)}
+          />
+        ) : (
           <Button
             style={{ display: 'block', margin: '0 auto' }}
             variant="outlined"
-            onClick={() => setDisplay(prevDisplay => !prevDisplay)}>
+            onClick={() => setDisplay((prevDisplay) => !prevDisplay)}
+          >
             change password
           </Button>
-        }
+        )}
       </Box>
+        */}
     </Container>
-  )
-}
+  );
+};
 
-export default ProfilePage
+export default ProfilePage;
