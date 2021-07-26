@@ -171,7 +171,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
               aria-label="notifications"
               aria-controls="menu-appbar"
               aria-haspopup="true"
-              color="primary"
+              color="default"
               onClick={handleNotifications}
             >
               <NotificationsIcon />
@@ -184,7 +184,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
             onClose={handleCloseNotifications}
             anchorOrigin={{
               vertical: 'bottom',
-              horizontal: 'right',
+              horizontal: 'left',
             }}
             transformOrigin={{
               vertical: 'top',
