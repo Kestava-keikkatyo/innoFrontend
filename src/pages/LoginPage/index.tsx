@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
-import { CSSTransition, SwitchTransition } from 'react-transition-group'
-import { Link as RouterLink, useLocation } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { useTranslation } from 'react-i18next'
+import React, { useState } from 'react';
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
-import { login, signup } from '../../actions/userActions'
+import { login, signup } from '../../actions/userActions';
 
-import SignUpForm from './SignUpForm'
-import LogInForm from './LogInForm'
-import './landingPage.css'
+import SignUpForm from './SignUpForm';
+import LogInForm from './LogInForm';
+import './landingPage.css';
 
-import { Box, Button, Divider, Grid } from '@material-ui/core'
+import { Box, Button, Divider, Grid } from '@material-ui/core';
 
 /**
  * @component
@@ -18,68 +18,66 @@ import { Box, Button, Divider, Grid } from '@material-ui/core'
  * Container for LogInForm and SignUpForm.
  */
 const LoginPage = () => {
-  const [logInForm, setLogInForm] = useState<any>(false)
-  const location = useLocation()
-  const dispatch = useDispatch()
-  const { t } = useTranslation()
+  const [logInForm, setLogInForm] = useState<any>(false);
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const signupSubmit = ({ role, ...user }: any) => {
-    dispatch(signup(user, role))
-  }
+    dispatch(signup(user, role));
+  };
 
   const loginSubmit = ({ role, ...credentials }: any) => {
-    const { from }: any = location.state || { from: { pathname: '/home' } }
-    dispatch(login(credentials, role, from))
-  }
-  
+    const { from }: any = location.state || { from: { pathname: '/home' } };
+    dispatch(login(credentials, role, from));
+  };
+
   return (
     <Grid
       container
       justify="center"
       spacing={0}
       alignItems="center"
-      style={{ minHeight: 'calc(100vh - 64px)' }}>
-      <Box
-        display="flex"
-        flexDirection="column"
-        width="320px">
-        <SwitchTransition mode='out-in'>
+      style={{ minHeight: 'calc(100vh - 64px)' }}
+    >
+      <Box display="flex" flexDirection="column" width="320px">
+        <SwitchTransition mode="out-in">
           <CSSTransition
             key={logInForm}
             addEndListener={(node, done) => {
-              node.addEventListener('transitionend', done, false)
+              node.addEventListener('transitionend', done, false);
             }}
-            classNames='fade'>
+            classNames="fade"
+          >
             <Box paddingBottom={2}>
-              {logInForm ?
-                <SignUpForm handleSubmit={signupSubmit} /> :
+              {logInForm ? (
+                <SignUpForm handleSubmit={signupSubmit} />
+              ) : (
                 <LogInForm handleSubmit={loginSubmit} />
-              }
+              )}
             </Box>
           </CSSTransition>
         </SwitchTransition>
-        <Grid
-          style={{ textAlign: 'center' }}
-          container
-          alignItems="center">
+        <Grid style={{ textAlign: 'center' }} container alignItems="center">
           <Grid item xs style={{ padding: '0 1em' }}>
             <Button
               variant="outlined"
               color="secondary"
-              onClick={() => setLogInForm(!logInForm)}>
+              onClick={() => setLogInForm(!logInForm)}
+            >
               {logInForm ? t('log_in') : t('sign_up')}
             </Button>
           </Grid>
           <Divider flexItem orientation="vertical" />
           <Grid item xs style={{ padding: '0 1em' }}>
-            <Button component={RouterLink} to="/home">
+            <Button component={RouterLink} to="/">
               {t('main_page')}
             </Button>
           </Grid>
         </Grid>
       </Box>
     </Grid>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;

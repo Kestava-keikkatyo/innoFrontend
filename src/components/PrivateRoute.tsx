@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import React, { useEffect } from 'react';
+import { Route, Redirect } from 'react-router-dom';
 
-import { useDispatch, useSelector } from 'react-redux'
-import AppNavigation from './NavigationComponents'
-import { setBreadcrumb } from '../actions/breadcrumbActions'
-import pathConverter from '../utils/pathConverter'
-import { roles } from '../types/types'
-import { PrivateRouteProps } from '../types/props'
-import { IRootState } from '../utils/store'
+import { useDispatch, useSelector } from 'react-redux';
+import AppNavigation from './NavigationComponents';
+import { setBreadcrumb } from '../actions/breadcrumbActions';
+import pathConverter from '../utils/pathConverter';
+import { roles } from '../types/types';
+import { PrivateRouteProps } from '../types/props';
+import { IRootState } from '../utils/store';
 
 /**
  * @component
@@ -31,51 +31,56 @@ import { IRootState } from '../utils/store'
  *  </PrivateRoute>
  * </Switch>
  */
-const PrivateRoute: React.FC<PrivateRouteProps> = ({ roles, children, path, ...rest }) => {
-  const { loggedIn, data } = useSelector((state: IRootState) => state.user)
-  const dispatch = useDispatch()
+const PrivateRoute: React.FC<PrivateRouteProps> = ({
+  roles,
+  children,
+  path,
+  ...rest
+}) => {
+  const { loggedIn, data } = useSelector((state: IRootState) => state.user);
+  const dispatch = useDispatch();
 
-  useEffect( () => {
-    dispatch(setBreadcrumb(pathConverter(path)))
-  }, [dispatch, path])
+  useEffect(() => {
+    dispatch(setBreadcrumb(pathConverter(path)));
+  }, [dispatch, path]);
   return (
     <Route
       {...rest}
       path={path}
       render={({ location }) => {
         if (!loggedIn || !data) {
-          return <Redirect
-            to={{
-              pathname: '/login',
-              state: { from: location }
-            }}
-          />
+          return (
+            <Redirect
+              to={{
+                pathname: '/login',
+                state: { from: location },
+              }}
+            />
+          );
         }
-
-        /**
-         * @todo BrokenAccessControl: refactor this. need to validate role.
-         */
-        if (!data.role) {
-          return <Redirect
-            to={{
-              pathname: '/home',
-              state: { from: location }
-            }}
-          />
+        /*
+         Redirect the user to home page if he does not have
+        the right to access a specific route.
+        For example agency should not access '/buiness-contracts' route.
+        */
+        if (!roles?.includes(data.role)) {
+          return (
+            <Redirect
+              to={{
+                pathname: '/home',
+                state: { form: location },
+              }}
+            />
+          );
         }
-
-        return (
-          <AppNavigation>
-            {children}
-          </AppNavigation>
-        )
+        return <AppNavigation>{children}</AppNavigation>;
       }}
     />
-  )
-}
+  );
+};
 
 PrivateRoute.defaultProps = {
-  roles: [roles.Worker, roles.Business, roles.Agency]
-}
+  roles: [roles.Worker, roles.Business, roles.Agency],
+};
 
-export default PrivateRoute
+export default PrivateRoute;

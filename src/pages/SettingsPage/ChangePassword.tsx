@@ -8,7 +8,6 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Formik, Form } from 'formik';
-
 import { FormikTextField } from '../../components/FormField';
 import { Button, Grid } from '@material-ui/core';
 
@@ -63,7 +62,7 @@ const ChangePassword: React.FC<any> = () => {
               )
             ) {
               errors.newPassword =
-                'Password should be at least 6 characters, includes at least one uppercase and one number';
+                'Password should be at least 6 characters, including at least one uppercase and one number';
             }
             if (!values.confirmNewPassword) {
               errors.confirmNewPassword = requiredError;

@@ -195,7 +195,7 @@ const FeedBackForm = () => {
                     heading: string;
                     reply: string;
                   }) => (
-                    <Accordion>
+                    <Accordion key={feedback._id}>
                       <AccordionSummary
                         style={{ display: 'flex' }}
                         classes={{ content: classes.accordion }}
