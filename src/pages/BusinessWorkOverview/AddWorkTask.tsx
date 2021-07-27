@@ -1,9 +1,7 @@
 import { Button, Container, Grid, makeStyles, Paper, Theme, Typography } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-
 import React from "react";
 import { useHistory } from "react-router-dom";
-import FileUploader from "../../components/FileUploader";
 import AgencyGrid from "./AgencyGrid";
 import SituationPanel from "./SituationPanel";
 

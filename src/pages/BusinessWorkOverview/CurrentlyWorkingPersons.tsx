@@ -3,7 +3,7 @@ import { SearchIcon } from "@material-ui/data-grid";
 import React from "react";
 
 
-const CurrentlyWorking = () => {
+const CurrentlyWorkingPersons = () => {
  const names =  [
     "gilmore-torres",
     "gonzales",
@@ -36,4 +36,4 @@ const CurrentlyWorking = () => {
   )
 };
 
-export default CurrentlyWorking;
+export default CurrentlyWorkingPersons;

@@ -2,7 +2,7 @@ import { Box, InputBase, IconButton } from "@material-ui/core";
 import { SearchIcon } from "@material-ui/data-grid";
 import React from "react";
 
-const WorkingContractEnded = () => {
+const EarlierWorkedPersons = () => {
  const names =  [
     "Abbotsen",
     "Abbotson",
@@ -46,4 +46,4 @@ const WorkingContractEnded = () => {
   )
 };
 
-export default WorkingContractEnded;
+export default EarlierWorkedPersons;
