@@ -34,6 +34,15 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
     { value: 'business', label: t('business') }
   ]
 
+  const categoryOptions = [
+    { value: 'Rakennus, asennus ja huolto', label: t('Rakennus, asennus ja huolto') },
+    { value: 'IT- ja tietoliikenne', label: t('IT- ja tietoliikenne')},
+    { value: 'Koulutus- ja opetusala', label: t('Koulutus- ja opetusala')},
+    { value: 'Tekniikka', label: t('Tekniikka')},
+    { value: 'Lääketeollisuus- ja farmasia', label: t('Lääketeollisuus- ja farmasia')},
+    { value: 'Kiinteistö', label: t('Kiinteistö')}
+  ]
+
   return (
     <Card variant="outlined">
       <CardContent>
@@ -42,7 +51,7 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
         </Typography>
         <Formik
           initialValues={{
-            name: '', email: '', password: '', passwordConfirm: '', role: ''
+            name: '', email: '', password: '', passwordConfirm: '', role: '', category: ''
           }}
           validate={values => {
             const errors: any = {}
@@ -69,6 +78,9 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
             if (!values.role) {
               errors.role = requiredError
             }
+            if (values.role !== 'worker' && !values.category) {
+              errors.category = requiredError
+            }
             return errors
           }}
           // handleSubmit doesn't need password confirmation
@@ -76,7 +88,7 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
           onSubmit={({ passwordConfirm, ...rest }) => {
             handleSubmit(rest)
           }}>
-          {({ isValid, dirty }) => (
+          {({ isValid, dirty, values, setFieldValue }) => (
             <Form>
               <Box
                 display="flex"
@@ -115,6 +127,13 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
                   label={t('role')}
                   name="role"
                   options={roleOptions}
+                />
+                <FormikSelectField
+                  label={t('category')}
+                  name="category"
+                  options={categoryOptions}
+                  disabled={values.role === 'worker' ? true : false}
+                  setFieldValue={setFieldValue}
                 />
                 <Typography gutterBottom variant="body2" color="textSecondary">
                   {t('terms_of_use')}<Link

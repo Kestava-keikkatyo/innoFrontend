@@ -13,6 +13,7 @@ import {
   Radio,
   FormControlLabel
 } from '@material-ui/core'
+import { useEffect } from 'react'
 
 /**
  * @component
@@ -78,12 +79,19 @@ FormikTextField.propTypes = {
  *  </Form>
  * </Formik>
  */
-export const FormikSelectField: React.FC<any> = ({ options, label, ...props }) => {
+export const FormikSelectField: React.FC<any> = ({ options, label, disabled, setFieldValue, ...props }) => {
   const [field, meta] = useField(props)
   const errorText = meta.touched && meta.error ? meta.error : ''
 
+  useEffect(() => {
+    if (disabled) {
+      setFieldValue('category','')
+    }
+  },[disabled])
+
   return (
     <FormControl
+      disabled={disabled}
       style={{ minHeight: '5rem', minWidth: 120 }}
       error={!!errorText}>
       <InputLabel id={props._id || props.name}>{label}</InputLabel>
@@ -108,7 +116,8 @@ FormikSelectField.propTypes = {
       PropTypes.number
     ]).isRequired,
     label: PropTypes.string
-  })).isRequired
+  })).isRequired,
+  disabled: PropTypes.bool
 }
 
 /**
