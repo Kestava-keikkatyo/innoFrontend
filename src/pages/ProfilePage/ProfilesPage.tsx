@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import { fetchProfiles } from '../../actions/profileActions';
 import { IRootState } from '../../utils/store';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import ProfileCard from './ProfileCard';
 import { SearchIcon } from '@material-ui/data-grid';
 
 const ProfilesPage: React.FC<any> = () => {
   const dispatch = useDispatch();
   const [filter, setFilter] = useState('');
+  const theme = useTheme();
 
   const classes = useStyles();
 

@@ -5,9 +5,9 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import SearchingWorkers from "./SearchingWorkers";
-import CurrentlyWorking from "./CurrentlyWorking";
-import WorkingContractEnded from "./WorkingContractEnded";
+import RequestedWorkers from "./RequestedWorkers";
+import CurrentlyWorking from "./CurrentlyWorkingPersons";
+import EarlierWorkedPersons from "./EarlierWorkedPersons";
 import { SearchIcon } from "@material-ui/data-grid";
 import { IconButton } from "@material-ui/core";
 interface TabPanelProps {
@@ -84,31 +84,31 @@ const SituationPanel = () => {
           <IconButton>
             <SearchIcon />
           </IconButton>
-          <SearchingWorkers />
-          <SearchingWorkers />
-          <SearchingWorkers />
-          <SearchingWorkers />
-          <SearchingWorkers />
+          <RequestedWorkers />
+          <RequestedWorkers />
+          <RequestedWorkers />
+          <RequestedWorkers />
+          <RequestedWorkers />
         </TabPanel>
         <TabPanel value={value} index={1}>
           <IconButton>
             <SearchIcon />
           </IconButton>
-          <SearchingWorkers />
-          <SearchingWorkers />
-          <SearchingWorkers />
-          <SearchingWorkers />
-          <SearchingWorkers />
+          <RequestedWorkers />
+          <RequestedWorkers />
+          <RequestedWorkers />
+          <RequestedWorkers />
+          <RequestedWorkers />
         </TabPanel>
         <TabPanel value={value} index={2}>
           <IconButton>
             <SearchIcon />
           </IconButton>
-          <SearchingWorkers />
-          <SearchingWorkers />
-          <SearchingWorkers />
-          <SearchingWorkers />
-          <SearchingWorkers />
+          <RequestedWorkers />
+          <RequestedWorkers />
+          <RequestedWorkers />
+          <RequestedWorkers />
+          <RequestedWorkers />
         </TabPanel>
       </div>
     </div>

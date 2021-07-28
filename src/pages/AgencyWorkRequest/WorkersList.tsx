@@ -15,8 +15,7 @@ import PhoneIcon from "@material-ui/icons/Phone";
 import { Button } from "@material-ui/core";
 import PublicIcon from "@material-ui/icons/Public";
 import { useHistory } from "react-router-dom";
-import Link from "@material-ui/core/Link";
-const SearchingWorkers: React.FC<any> = ({ profile }) => {
+const WorkersList: React.FC<any> = ({ profile }) => {
   const [expanded, setExpanded] = React.useState(false);
   const classes = useStyles();
   const history = useHistory();
@@ -150,4 +149,4 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default SearchingWorkers;
+export default WorkersList;
