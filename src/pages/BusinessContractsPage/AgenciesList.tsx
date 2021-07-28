@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   InputBase,
@@ -7,23 +7,23 @@ import {
   Typography,
   makeStyles,
   Button,
-} from "@material-ui/core";
-import { Search as SearchIcon } from "@material-ui/icons";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAgencies } from "../../actions/agencyActions";
-import { IRootState } from "../../utils/store";
-import AgencyCard from "./AgencyCard";
+} from '@material-ui/core';
+import { Search as SearchIcon } from '@material-ui/icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAgencies } from '../../actions/allUsersActions';
+import { IRootState } from '../../utils/store';
+import AgencyCard from './AgencyCard';
 
 const useStyles = makeStyles((theme) => ({
   noResults: {
-    textAlign: "center",
+    textAlign: 'center',
   },
   buttonGroup: {
-    display: "flex",
-    justifyContent: "center",
+    display: 'flex',
+    justifyContent: 'center',
   },
   button: {
-    marginLeft: "0.5%",
+    marginLeft: '0.5%',
   },
 }));
 
@@ -35,11 +35,11 @@ const useStyles = makeStyles((theme) => ({
 const AgenciesList = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
-  const [input, setInput] = useState("");
-  const { agencies } = useSelector((state: IRootState) => state.agencies);
+  const [input, setInput] = useState('');
+  const { agencies } = useSelector((state: IRootState) => state.allUsers);
 
   useEffect(() => {
-    dispatch(fetchAgencies("j"));
+    dispatch(fetchAgencies(''));
   }, [dispatch]);
 
   const handleSubmit = (event: any) => {
@@ -62,39 +62,19 @@ const AgenciesList = () => {
           <Button variant="outlined" color="default">
             Rakennus, asennus ja huolto
           </Button>
-          <Button
-            variant="outlined"
-            color="default"
-            className={classes.button}
-          >
+          <Button variant="outlined" color="default" className={classes.button}>
             IT- ja tietoliikenne
           </Button>
-          <Button
-            variant="outlined"
-            color="default"
-            className={classes.button}
-          >
+          <Button variant="outlined" color="default" className={classes.button}>
             Koulutus- ja opetusala
           </Button>
-          <Button
-            variant="outlined"
-            color="default"
-            className={classes.button}
-          >
+          <Button variant="outlined" color="default" className={classes.button}>
             Tekniikka
           </Button>
-          <Button
-            variant="outlined"
-            color="default"
-            className={classes.button}
-          >
+          <Button variant="outlined" color="default" className={classes.button}>
             Lääketeollisuus- ja farmasia
           </Button>
-          <Button
-            variant="outlined"
-            color="default"
-            className={classes.button}
-          >
+          <Button variant="outlined" color="default" className={classes.button}>
             Kiinteistö
           </Button>
         </div>

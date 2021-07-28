@@ -1,17 +1,17 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { makeStyles, withStyles } from '@material-ui/core/styles'
-import clsx from 'clsx'
-import Stepper from '@material-ui/core/Stepper'
-import Step from '@material-ui/core/Step'
-import StepLabel from '@material-ui/core/StepLabel'
-import StepConnector from '@material-ui/core/StepConnector'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
-import ReportStepTwo from './ReportStepTwo'
-import ReportStepThree from './ReportStepThree'
-import ReportStepOne from './ReportStepOne'
-import { Container } from '@material-ui/core'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import clsx from 'clsx';
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
+import StepConnector from '@material-ui/core/StepConnector';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import ReportStepTwo from './ReportStepTwo';
+import ReportStepThree from './ReportStepThree';
+import ReportStepOne from './ReportStepOne';
+import { Container } from '@material-ui/core';
 
 const ColorlibConnector = withStyles({
   alternativeLabel: {
@@ -35,7 +35,7 @@ const ColorlibConnector = withStyles({
     backgroundColor: '#eaeaf0',
     borderRadius: 1,
   },
-})(StepConnector)
+})(StepConnector);
 
 const useColorlibStepIconStyles = makeStyles({
   root: {
@@ -58,17 +58,17 @@ const useColorlibStepIconStyles = makeStyles({
     backgroundImage:
       'linear-gradient( 136deg, rgb(255,150,55) 0%, rgb(242,113,33) 50%, rgb(233,64,87) 100%)',
   },
-})
+});
 
 const ColorlibStepIcon = (props: any) => {
-  const classes = useColorlibStepIconStyles()
-  const { active, completed } = props
+  const classes = useColorlibStepIconStyles();
+  const { active, completed } = props;
 
   const icons: any = {
     1: 1,
     2: 2,
     3: 3,
-  }
+  };
 
   return (
     <div
@@ -79,8 +79,8 @@ const ColorlibStepIcon = (props: any) => {
     >
       {icons[String(props.icon)]}
     </div>
-  )
-}
+  );
+};
 
 ColorlibStepIcon.propTypes = {
   /**
@@ -95,7 +95,7 @@ ColorlibStepIcon.propTypes = {
    * The label displayed in the step icon.
    */
   icon: PropTypes.node,
-}
+};
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -112,41 +112,41 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
   },
-}))
+}));
 
 const getSteps = () => {
-  return ['Report handler', 'When this happened', 'Fill in details']
-}
+  return ['Report handler', 'When this happened', 'Fill in details'];
+};
 
 const getStepContent = (step: any) => {
   switch (step) {
     case 0:
-      return <ReportStepOne />
+      return <ReportStepOne />;
     case 1:
-      return <ReportStepTwo />
+      return <ReportStepTwo />;
     case 2:
-      return <ReportStepThree />
+      return <ReportStepThree />;
     default:
-      return 'Unknown step'
+      return 'Unknown step';
   }
-}
+};
 
 const ReportForm = () => {
-  const classes = useStyles()
-  const [activeStep, setActiveStep] = React.useState(0)
-  const steps = getSteps()
+  const classes = useStyles();
+  const [activeStep, setActiveStep] = React.useState(0);
+  const steps = getSteps();
 
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1)
-  }
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
 
   const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1)
-  }
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
 
   const handleReset = () => {
-    setActiveStep(0)
-  }
+    setActiveStep(0);
+  };
 
   return (
     <div className={`report-container ${classes.root}`}>
@@ -176,7 +176,7 @@ const ReportForm = () => {
             <div className={classes.instructions}>
               {getStepContent(activeStep)}
             </div>
-            <div>
+            <div style={{ marginTop: 40, marginBottom: 10 }}>
               <Button
                 disabled={activeStep === 0}
                 onClick={handleBack}
@@ -196,7 +196,7 @@ const ReportForm = () => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ReportForm
+export default ReportForm;

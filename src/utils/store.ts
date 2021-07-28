@@ -11,7 +11,7 @@ import feelingReducer from '../reducers/feelingReducer'
 import formReducer from '../reducers/formReducer'
 import formListReducer from '../reducers/formListReducer'
 import buisnessContractFormReducer from '../reducers/businessContractFormReducer'
-import agencyReducer from '../reducers/agencyReducer'
+import allUsersReducer from '../reducers/allUsersReducer'
 import profileReducer from '../reducers/profileReducer'
 import notificationsReducer from '../reducers/notificationsReducer'
 import feedBackReducer from '../reducers/feedBackReducer'
@@ -29,7 +29,7 @@ const reducer = combineReducers({
   formList: formListReducer,
   files: fileReducer,
   businessContractForm: buisnessContractFormReducer,
-  agencies: agencyReducer,
+  allUsers: allUsersReducer,
   profile: profileReducer,
   notifications: notificationsReducer,
   feedback: feedBackReducer

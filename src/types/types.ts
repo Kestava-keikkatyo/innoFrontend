@@ -51,6 +51,18 @@ export interface Credentials {
   password: string
 }
 
+export interface Report {
+  workerName: string,
+  workerPhone: string,
+  workerEmail: string,
+  job: string,
+  buisnessAsHandler: string,
+  agencyAsHandler: string,
+  message: string,
+  date: Date,
+  fileUrl: string
+}
+
 export interface Feeling {
   value: 0 | 1 | 2 | 3,
   note: string,

@@ -1,19 +1,37 @@
 import { File, Feeling, Form, roles, severity, Profile } from "./types"
 
-export interface AgencyState {
-  agencies: []
+
+/**
+ * All users state & action types
+ */
+
+export interface AllUsersState {
+  agencies: [],
+  businesses: [],
+  workers: []
 }
 
+export const FETCH_ALL_AGENCIES = 'FETCH_ALL_AGENCIES'
+export const FETCH_ALL_BUSINESSES = 'FETCH_ALL_BUSINESSES'
+export const FETCH_ALL_WORKERS = 'FETCH_ALL_WORKERS'
 
-export const A_FETCH = 'AGENCY_FETCH'
-
-
-interface FetchAllAgencyCompanies {
-  type: typeof A_FETCH,
+interface FetchAllAgencies {
+  type: typeof FETCH_ALL_AGENCIES,
   data: any
 }
 
-export type AgencyActionTypes = FetchAllAgencyCompanies
+interface FetchAllBusinesses {
+  type: typeof FETCH_ALL_BUSINESSES,
+  data: any
+}
+
+interface FetchAllWorkers {
+  type: typeof FETCH_ALL_WORKERS,
+  data: any
+}
+
+export type AllUsersActionTypes = FetchAllAgencies | FetchAllBusinesses | FetchAllWorkers
+
 
 
 

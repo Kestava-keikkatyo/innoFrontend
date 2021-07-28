@@ -61,7 +61,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
         /*
          Redirect the user to home page if he does not have
         the right to access a specific route.
-        For example agency should not access '/buiness-contracts' route.
+        For example agency should not access '/work-overview' route.
         */
         if (!roles?.includes(data.role)) {
           return (
