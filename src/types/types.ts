@@ -59,7 +59,7 @@ export interface Report {
   buisnessAsHandler: string,
   agencyAsHandler: string,
   message: string,
-  date: Date,
+  date: string,
   fileUrl: string
 }
 

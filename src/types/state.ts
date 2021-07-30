@@ -1,4 +1,4 @@
-import { File, Feeling, Form, roles, severity, Profile } from "./types"
+import { File, Feeling, Form, roles, severity, Profile, Report } from "./types"
 
 
 /**
@@ -8,31 +8,61 @@ import { File, Feeling, Form, roles, severity, Profile } from "./types"
 export interface AllUsersState {
   agencies: [],
   businesses: [],
-  workers: []
+  workers: [],
+  agencyWorkers: []
 }
 
 export const FETCH_ALL_AGENCIES = 'FETCH_ALL_AGENCIES'
 export const FETCH_ALL_BUSINESSES = 'FETCH_ALL_BUSINESSES'
 export const FETCH_ALL_WORKERS = 'FETCH_ALL_WORKERS'
+export const FETCH_AGENCY_WORKERS = 'FETCH_AGENCY_WORKERS'
 
-interface FetchAllAgencies {
+interface FetchAllAgenciesAction {
   type: typeof FETCH_ALL_AGENCIES,
   data: any
 }
 
-interface FetchAllBusinesses {
+interface FetchAllBusinessesAction {
   type: typeof FETCH_ALL_BUSINESSES,
   data: any
 }
 
-interface FetchAllWorkers {
+interface FetchAllWorkersAction {
   type: typeof FETCH_ALL_WORKERS,
   data: any
 }
 
-export type AllUsersActionTypes = FetchAllAgencies | FetchAllBusinesses | FetchAllWorkers
+interface FetchAgencyWorkersAction {
+  type: typeof FETCH_AGENCY_WORKERS,
+  data: any
+}
+
+export type AllUsersActionTypes = FetchAllAgenciesAction | FetchAllBusinessesAction | FetchAllWorkersAction | FetchAgencyWorkersAction
 
 
+/**
+ * Report state & action types
+ */
+export interface ReportState {
+  currentReport: Report,
+  reports: [],
+}
+
+export const SET_CURRENT_REPORT = "SET_CURRENT_REPORT"
+export const FETCH_REPORTS = "FETCH_REPORTS"
+
+interface SetCurrentReportAction {
+  type: typeof SET_CURRENT_REPORT
+  data: any
+
+}
+
+interface FetchReportsAction {
+  type: typeof FETCH_REPORTS
+  data: any
+}
+
+export type ReportActionTypes = SetCurrentReportAction | FetchReportsAction
 
 
 export interface User {
@@ -559,42 +589,42 @@ export type BusinssContractListActionTypes =
   | FetchBusinessContractListAction
   | AddToBusinessContractList
 
-  //Edit profile
+//Edit profile
 
-  export const UPDATE_CURRENT_PROFILE = "UPDATE_CURRENT_PROFILE"
-  export const SET_CURRENT_PROFILE = "SET_CURRENT_PROFILE"
-  export const SET_PROFILE_TO_BE_VIEWED = "SET_PROFILE_TO_BE_VIEWED"
-  export const POST_PROFILE = "POST_PROFILE"
-  export const GET_ALL_PROFILES = "GET_ALL_PROFILES"
+export const UPDATE_CURRENT_PROFILE = "UPDATE_CURRENT_PROFILE"
+export const SET_CURRENT_PROFILE = "SET_CURRENT_PROFILE"
+export const SET_PROFILE_TO_BE_VIEWED = "SET_PROFILE_TO_BE_VIEWED"
+export const POST_PROFILE = "POST_PROFILE"
+export const GET_ALL_PROFILES = "GET_ALL_PROFILES"
 
 
 
-  interface GetAllProfiles {
-    type: typeof GET_ALL_PROFILES
-    data: any
-  }
+interface GetAllProfiles {
+  type: typeof GET_ALL_PROFILES
+  data: any
+}
 
-  interface SetCurrentProfileAction {
-    type: typeof SET_CURRENT_PROFILE
-    data: any
-  }
+interface SetCurrentProfileAction {
+  type: typeof SET_CURRENT_PROFILE
+  data: any
+}
 
-  interface SetProfileToBeViewedAction {
-    type: typeof SET_PROFILE_TO_BE_VIEWED
-    data: any
-  }
+interface SetProfileToBeViewedAction {
+  type: typeof SET_PROFILE_TO_BE_VIEWED
+  data: any
+}
 
-  interface UpdateCurrentProfile {
-    type: typeof SET_CURRENT_FORM
-    data: any
-  }
+interface UpdateCurrentProfile {
+  type: typeof SET_CURRENT_FORM
+  data: any
+}
 
-  interface PostProfile {
-    type: typeof POST_PROFILE
-    data: any
-  }
+interface PostProfile {
+  type: typeof POST_PROFILE
+  data: any
+}
 
-  export type ProfileActionTypes =
+export type ProfileActionTypes =
   UpdateCurrentProfile
   | PostProfile
   | SetCurrentProfileAction

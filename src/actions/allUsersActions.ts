@@ -1,4 +1,10 @@
-import { FETCH_ALL_AGENCIES, FETCH_ALL_BUSINESSES, FETCH_ALL_WORKERS } from '../types/state'
+
+import {
+  FETCH_ALL_AGENCIES,
+  FETCH_ALL_BUSINESSES,
+  FETCH_ALL_WORKERS,
+  FETCH_AGENCY_WORKERS
+} from '../types/state'
 import allUsersService from '../services/allUsersService'
 
 
@@ -31,11 +37,20 @@ export const fetchAllWorkers = () => async (dispatch: any) => {
 
 /**
  * @function
+ * @desc Fetches agency workers.
+ */
+export const fetchAgencyWorkers = () => async (dispatch: any) => {
+  const res = await allUsersService.getAgencyWorkers()
+  dispatch({ type: FETCH_AGENCY_WORKERS, data: res.data })
+}
+
+/**
+ * @function
  * @desc Fetches agencies by name.
  */
 export const fetchAgencies = (input: string) => async (dispatch: any) => {
-    const res = await allUsersService.searchAgencies(input)
-    dispatch({ type: FETCH_ALL_AGENCIES, data: res.data })
+  const res = await allUsersService.searchAgencies(input)
+  dispatch({ type: FETCH_ALL_AGENCIES, data: res.data })
 }
 
 /**
@@ -43,8 +58,8 @@ export const fetchAgencies = (input: string) => async (dispatch: any) => {
  * @desc Fetches buisnesses by name.
  */
 export const fetchBusinesses = (input: string) => async (dispatch: any) => {
-    const res = await allUsersService.searchBusinesses(input)
-    dispatch({ type: FETCH_ALL_BUSINESSES, data: res.data })
+  const res = await allUsersService.searchBusinesses(input)
+  dispatch({ type: FETCH_ALL_BUSINESSES, data: res.data })
 }
 
 /**
@@ -52,6 +67,6 @@ export const fetchBusinesses = (input: string) => async (dispatch: any) => {
  * @desc Fetches workers by name.
  */
 export const fetchWorkers = (input: string) => async (dispatch: any) => {
-    const res = await allUsersService.searchWorkers(input)
-    dispatch({ type: FETCH_ALL_WORKERS, data: res.data })
+  const res = await allUsersService.searchWorkers(input)
+  dispatch({ type: FETCH_ALL_WORKERS, data: res.data })
 }

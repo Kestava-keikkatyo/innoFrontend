@@ -24,7 +24,7 @@
  /**
   * @function
   * @desc
-  * @param {File} uploads Obejct contains files array
+  * @param {File} upload file object
   */
   const postFile = async (upload: File) => {
 

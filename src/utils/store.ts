@@ -15,7 +15,7 @@ import allUsersReducer from '../reducers/allUsersReducer'
 import profileReducer from '../reducers/profileReducer'
 import notificationsReducer from '../reducers/notificationsReducer'
 import feedBackReducer from '../reducers/feedBackReducer'
-
+import reportReducer from '../reducers/reportReducer'
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const reducer = combineReducers({
@@ -32,7 +32,8 @@ const reducer = combineReducers({
   allUsers: allUsersReducer,
   profile: profileReducer,
   notifications: notificationsReducer,
-  feedback: feedBackReducer
+  feedback: feedBackReducer,
+  report: reportReducer
 })
 
 export type IRootState = ReturnType<typeof reducer>

@@ -1,20 +1,12 @@
-import {
-  Typography,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  Box,
-  Grid,
-  InputBase,
-  IconButton,
-  Divider,
-} from '@material-ui/core';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
+import React from 'react';
+import { Box, InputBase, IconButton } from '@material-ui/core';
 import { SearchIcon } from '@material-ui/data-grid';
 
+/**
+ * @component
+ * @desc Search box component
+ * @param {any} props (placeholder, value and onChange) for InputBase element
+ */
 const SearchBox: React.FC<any> = ({ placeholder, value, onChange }) => {
   return (
     <Box
@@ -23,18 +15,16 @@ const SearchBox: React.FC<any> = ({ placeholder, value, onChange }) => {
       alignItems="center"
       flexWrap="wrap"
     >
-      <form>
-        <Box display="flex" alignItems="center">
-          <InputBase
-            placeholder={placeholder}
-            value={value}
-            onChange={onChange}
-          />
-          <IconButton>
-            <SearchIcon />
-          </IconButton>
-        </Box>
-      </form>
+      <Box display="flex" alignItems="center">
+        <InputBase
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+        />
+        <IconButton>
+          <SearchIcon />
+        </IconButton>
+      </Box>
     </Box>
   );
 };

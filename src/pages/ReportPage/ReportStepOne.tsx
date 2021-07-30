@@ -11,11 +11,15 @@ import {
   fetchAllAgencies,
   fetchAllBusinesses,
 } from '../../actions/allUsersActions';
+import { setReport } from '../../actions/reportActions';
 import SearchBox from '../../components/SearchBox';
 
 export interface ReportStepOneProps {}
 
 const ReportStepOne: React.FC<ReportStepOneProps> = () => {
+  const currentReport: any = useSelector(
+    (state: any) => state.report.currentReport
+  );
   const { agencies, businesses } = useSelector((state: any) => state.allUsers);
 
   const dispatch = useDispatch();
@@ -34,6 +38,18 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
 
   const handleFilterBusinesses = (event: any) => {
     setFilterBusinesses(event.target.value);
+  };
+
+  const handleSelectedBusiness = (event: any) => {
+    dispatch(
+      setReport({ ...currentReport, buisnessAsHandler: event.target.value })
+    );
+  };
+
+  const handleSelectedAgency = (event: any) => {
+    dispatch(
+      setReport({ ...currentReport, agencyAsHandler: event.target.value })
+    );
   };
 
   return (
@@ -59,6 +75,7 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
             id="demo-simple-select"
             defaultValue=""
             style={{ maxHeight: 50 }}
+            onChange={handleSelectedBusiness}
           >
             {businesses
               // Sort alphabetically
@@ -89,6 +106,7 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             defaultValue=""
+            onChange={handleSelectedAgency}
             style={{ maxHeight: 50 }}
           >
             {agencies
