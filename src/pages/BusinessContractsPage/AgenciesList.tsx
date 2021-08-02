@@ -4,12 +4,11 @@ import {
   InputBase,
   IconButton,
   FormControl,
-  Typography,
   makeStyles,
 } from "@material-ui/core";
 import { Search as SearchIcon } from "@material-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAgencies } from "../../actions/allUsersActions";
+import { fetchAgencies, fetchAllAgencies } from "../../actions/allUsersActions";
 import { IRootState } from "../../utils/store";
 import AgencyCard from "./AgencyCard";
 import { ToggleButton, ToggleButtonGroup } from "@material-ui/lab";
@@ -37,79 +36,84 @@ const AgenciesList = () => {
   const classes = useStyles();
   const [input, setInput] = useState('');
   const { agencies } = useSelector((state: IRootState) => state.allUsers);
+  const [allAgencies, setAllAgencies] = useState(agencies)
 
   useEffect(() => {
-    dispatch(fetchAgencies(''));
-  }, [dispatch]);
-
-  //This is used to make category search of Agencies.
-  const [alignment] = React.useState(['Rakennus, asennus ja huolto','IT- ja tietoliikenne','Koulutus- ja opetusala','Tekniikka','Lääketeollisuus- ja farmasia','Kiinteistö']);
+    dispatch(fetchAllAgencies());
+  }, []);
 
   const handleChange = (event: React.MouseEvent<HTMLElement>, value: string) => {
-    console.log(value)
+    event.preventDefault()
+    if (value === 'Kaikki') {
+      dispatch(fetchAllAgencies())
+      setAllAgencies([])
+    } else {
+      const result = agencies.filter((agency: any) => agency.category === value);
+      setAllAgencies(result)
+    }
   };
+
   //Iniates search query of Agencies
   const handleSubmit = (event: any) => {
     event.preventDefault();
     if (input.length > 0) {
       dispatch(fetchAgencies(input));
+      setAllAgencies(agencies)
     }
   };
-  //If there is no agencies found show no results
-  if (agencies.length < 1) {
-    return (
-      <div className={classes.noResults}>
-        <Typography>no results</Typography>
-      </div>
-    );
-  } else
-    return (
-      <div>
-        <ToggleButtonGroup value={alignment} exclusive onChange={handleChange}>
-          <ToggleButton value="1">
-            Rakennus, asennus ja huolto
-          </ToggleButton>
-          <ToggleButton value="2">
-            IT- ja tietoliikenne
-          </ToggleButton >
-          <ToggleButton value="3">
-            Koulutus- ja opetusala
-          </ToggleButton >
-          <ToggleButton value="4">
-            Tekniikka
-          </ToggleButton>
-          <ToggleButton value="5">
-            Lääketeollisuus- ja farmasia
-          </ToggleButton>
-          <ToggleButton value="6">
-            Kiinteistö
-          </ToggleButton>
-        </ToggleButtonGroup>
-        <Box
-          display="flex"
-          justifyContent="flex-end"
-          alignItems="center"
-          flexWrap="wrap"
-        >
-          <FormControl component="fieldset"></FormControl>
-          <form onSubmit={handleSubmit}>
-            <Box display="flex" alignItems="center">
-              <InputBase
-                placeholder="search with name"
-                value={input}
-                onChange={({ target }) => setInput(target.value)}
-              />
-              <IconButton type="submit">
-                <SearchIcon />
-              </IconButton>
-            </Box>
-          </form>
-        </Box>
-        {agencies.map((agency: any) => (
-          <AgencyCard key={agency._id} agency={agency} />
-        ))}
-      </div>
-    );
+
+  return (
+    <div>
+      <ToggleButtonGroup exclusive onChange={handleChange}>
+        <ToggleButton value="Kaikki">
+          Kaikki
+        </ToggleButton>
+        <ToggleButton value="Rakennus, asennus ja huolto">
+          Rakennus, asennus ja huolto
+        </ToggleButton>
+        <ToggleButton value="IT- ja tietoliikenne">
+          IT- ja tietoliikenne
+        </ToggleButton >
+        <ToggleButton value="Koulutus- ja opetusala">
+          Koulutus- ja opetusala
+        </ToggleButton >
+        <ToggleButton value="Tekniikka">
+          Tekniikka
+        </ToggleButton>
+        <ToggleButton value="Lääketeollisuus- ja farmasia">
+          Lääketeollisuus- ja farmasia
+        </ToggleButton>
+        <ToggleButton value="Kiinteistö">
+          Kiinteistö
+        </ToggleButton>
+      </ToggleButtonGroup>
+      <Box
+        display="flex"
+        justifyContent="flex-end"
+        alignItems="center"
+        flexWrap="wrap"
+      >
+        <FormControl component="fieldset"></FormControl>
+        <form onSubmit={handleSubmit}>
+          <Box display="flex" alignItems="center">
+            <InputBase
+              placeholder="search with name"
+              value={input}
+              onChange={({ target }) => setInput(target.value)}
+            />
+            <IconButton type="submit">
+              <SearchIcon />
+            </IconButton>
+          </Box>
+        </form>
+      </Box>
+      {allAgencies.length > 0 ? allAgencies.map((agency: any) => (
+        <AgencyCard key={agency._id} agency={agency} />
+      )):agencies.map((agency: any) => (
+        <AgencyCard key={agency._id} agency={agency} />
+      ))}
+    </div>
+  );
 };
 
 export default AgenciesList;
