@@ -6,8 +6,6 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import RequestedWorkers from "./RequestedWorkers";
-import CurrentlyWorking from "./CurrentlyWorkingPersons";
-import EarlierWorkedPersons from "./EarlierWorkedPersons";
 import { SearchIcon } from "@material-ui/data-grid";
 import { IconButton } from "@material-ui/core";
 interface TabPanelProps {

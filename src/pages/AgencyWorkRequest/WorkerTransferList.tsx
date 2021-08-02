@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     list: {
       width: 200,
-      height: 230,
+      height: '28.4em',
       backgroundColor: theme.palette.background.paper,
       overflow: "auto",
     },
@@ -129,7 +129,8 @@ const WorkerTransferList = () => {
                   inputProps={{ "aria-labelledby": labelId }}
                 />
               </ListItemIcon>
-              <ListItemText id={labelId} primary={`List item ${value + 1}`} />
+              {/* tähän tulee omien työntekijöiden lista*/}
+              <ListItemText id={labelId} primary={`Jarmo`} />
             </ListItem>
           );
         })}

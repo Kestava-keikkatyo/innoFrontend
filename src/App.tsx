@@ -45,6 +45,7 @@ import SettingsPage from './pages/SettingsPage';
 import WorkOverview from './pages/BusinessWorkOverview';
 import WorkInfo from './pages/BusinessWorkOverview/WorkInfo';
 import WorkRequest from './pages/AgencyWorkRequest';
+import WorkerJobs from './pages/WorkerWorkOverview';
 
 /**
  * @component
@@ -103,6 +104,9 @@ const App: React.FC = () => {
         </PrivateRoute>
         <PrivateRoute path="/profile">
           <ProfilePage />
+          </PrivateRoute>
+        <PrivateRoute path="/my-work" roles={[roles.Worker]}>
+          <WorkerJobs />
         </PrivateRoute>
         <PrivateRoute path="/process" roles={[roles.Worker]}>
           <ProcessPage />
