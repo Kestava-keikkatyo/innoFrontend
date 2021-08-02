@@ -8,16 +8,16 @@ import {
     ReportActionTypes,
     ReportState
 } from './../types/state';
-import {Report} from '../types/types'
+import { Report } from '../types/types'
 
-const initialReport: Report = {
+export const initialReport: Report = {
     workerName: "",
     workerPhone: "",
-    workerEmail:"",
-    job: "",
+    workerEmail: "",
+    workTitle: "",
     buisnessAsHandler: "",
     agencyAsHandler: "",
-    message: "",
+    details: "",
     date: "",
     fileUrl: ""
 }
@@ -41,7 +41,7 @@ const reportReducer = (state = initialState, action: ReportActionTypes) => {
                 ...state,
                 currentReport: action.data
             }
-        case FETCH_REPORTS:{
+        case FETCH_REPORTS: {
             return {
                 ...state,
                 reports: action.data

@@ -53,7 +53,7 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
   };
 
   return (
-    <Grid container style={{ marginTop: 24 }}>
+    <Grid container style={{ marginTop: 16 }}>
       <Grid item xs={12}>
         <Typography variant="h6">Select report handler</Typography>
         <Typography variant="body2" style={{ color: '#757575' }}>
@@ -63,7 +63,7 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
       </Grid>
       {/* Business grid */}
       <Grid item xs={12} style={{ marginTop: 32 }}>
-        <Typography style={{ fontWeight: 500 }}>Business</Typography>
+        <Typography>Business</Typography>
         <SearchBox
           placeholder={'Search by name...'}
           value={filterBusinesses}
@@ -95,7 +95,7 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
       </Grid>
       {/* Agency grid */}
       <Grid item xs={12} style={{ marginTop: 32 }}>
-        <Typography style={{ fontWeight: 500 }}>Agency</Typography>
+        <Typography>Agency</Typography>
         <SearchBox
           placeholder={'Search by name...'}
           value={filterAgencies}

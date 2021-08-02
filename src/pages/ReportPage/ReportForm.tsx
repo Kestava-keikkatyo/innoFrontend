@@ -12,6 +12,10 @@ import ReportStepTwo from './ReportStepTwo';
 import ReportStepThree from './ReportStepThree';
 import ReportStepOne from './ReportStepOne';
 import { Container } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+import { initialReport } from '../../reducers/reportReducer';
+import { setReport, submitReport } from '../../actions/reportActions';
+import fileService from '../../services/fileService';
 
 const ColorlibConnector = withStyles({
   alternativeLabel: {
@@ -135,6 +139,11 @@ const ReportForm = () => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
+  const dispatch = useDispatch();
+
+  const { currentProfile } = useSelector((state: any) => state.profile);
+  let { currentReport } = useSelector((state: any) => state.report);
+  const { currentFiles } = useSelector((state: any) => state.files);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -145,7 +154,33 @@ const ReportForm = () => {
   };
 
   const handleReset = () => {
+    dispatch(setReport(initialReport));
     setActiveStep(0);
+  };
+
+  const handleFinnish = async () => {
+    setActiveStep(steps.length);
+    currentReport = {
+      ...currentReport,
+      workerName: currentProfile.name,
+      workerEmail: currentProfile.email,
+      workerPhone: currentProfile.phone,
+    };
+
+    if (currentFiles.files[0] !== null) {
+      const res: any = await fileService.postFile(currentFiles.files[0]);
+
+      const copyOfCurrentReport = {
+        ...currentReport,
+        fileUrl: res.data.fileUrl,
+      };
+
+      dispatch(setReport(copyOfCurrentReport));
+      dispatch(submitReport(copyOfCurrentReport));
+    } else {
+      dispatch(setReport(currentReport));
+      dispatch(submitReport(currentReport));
+    }
   };
 
   return (
@@ -167,7 +202,11 @@ const ReportForm = () => {
             <Typography className={classes.instructions}>
               All steps completed - you&apos;re finished
             </Typography>
-            <Button onClick={handleReset} className={classes.button}>
+            <Button
+              onClick={handleReset}
+              variant="outlined"
+              className={classes.button}
+            >
               Reset
             </Button>
           </div>
@@ -178,19 +217,31 @@ const ReportForm = () => {
             </div>
             <div style={{ marginTop: 40, marginBottom: 10 }}>
               <Button
+                variant="outlined"
                 disabled={activeStep === 0}
                 onClick={handleBack}
                 className={classes.button}
               >
                 Back
               </Button>
-              <Button
-                variant="contained"
-                onClick={handleNext}
-                className={`${classes.button} ${classes.primary}`}
-              >
-                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-              </Button>
+
+              {activeStep === steps.length - 1 ? (
+                <Button
+                  variant="contained"
+                  onClick={handleFinnish}
+                  className={`${classes.button} ${classes.primary}`}
+                >
+                  Finish
+                </Button>
+              ) : (
+                <Button
+                  variant="contained"
+                  onClick={handleNext}
+                  className={`${classes.button} ${classes.primary}`}
+                >
+                  Next
+                </Button>
+              )}
             </div>
           </Container>
         )}
