@@ -141,7 +141,6 @@ const ReportForm = () => {
   const steps = getSteps();
   const dispatch = useDispatch();
 
-  const { currentProfile } = useSelector((state: any) => state.profile);
   let { currentReport } = useSelector((state: any) => state.report);
   const { currentFiles } = useSelector((state: any) => state.files);
 
@@ -160,12 +159,6 @@ const ReportForm = () => {
 
   const handleFinnish = async () => {
     setActiveStep(steps.length);
-    currentReport = {
-      ...currentReport,
-      workerName: currentProfile.name,
-      workerEmail: currentProfile.email,
-      workerPhone: currentProfile.phone,
-    };
 
     if (currentFiles.files[0] !== null) {
       const res: any = await fileService.postFile(currentFiles.files[0]);

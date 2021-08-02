@@ -52,11 +52,8 @@ export interface Credentials {
 }
 
 export interface Report {
-  workerName: string,
-  workerPhone: string,
-  workerEmail: string,
   workTitle: string,
-  buisnessAsHandler: string,
+  businessAsHandler: string,
   agencyAsHandler: string,
   details: string,
   date: string,
