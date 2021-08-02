@@ -8,9 +8,9 @@ import baseUrl from '../utils/baseUrl'
  * @desc Helper function for setting up request header.
  */
 const authHeader = () => {
-    return {
-        headers: { 'x-access-token': `${loadUser().token}`}
-    }
+  return {
+    headers: { 'x-access-token': `${loadUser().token}` }
+  }
 }
 
 /**
@@ -56,6 +56,23 @@ const getAllWorkers = async () => {
   try {
     const res = await axios.get(
       `${baseUrl}/workers/all`,
+      authHeader()
+    )
+    return res
+  } catch (error) {
+    return Promise.reject(error.response)
+  }
+}
+
+/**
+ * @function
+ * @desc Function for agency to get own workers.
+ * @returns Agency workers.
+ */
+const getAgencyWorkers = async () => {
+  try {
+    const res = await axios.get(
+      `${baseUrl}/agencies/myworkers`,
       authHeader()
     )
     return res
@@ -119,10 +136,11 @@ const searchWorkers = async (input: string) => {
 }
 
 export default {
-    getAllAgencies,
-    getAllBusinesses,
-    getAllWorkers,
-    searchAgencies,
-    searchBusinesses,
-    searchWorkers
+  getAllAgencies,
+  getAllBusinesses,
+  getAllWorkers,
+  getAgencyWorkers,
+  searchAgencies,
+  searchBusinesses,
+  searchWorkers
 }

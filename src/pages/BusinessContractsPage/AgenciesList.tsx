@@ -6,13 +6,13 @@ import {
   FormControl,
   Typography,
   makeStyles,
-  Button,
-} from '@material-ui/core';
-import { Search as SearchIcon } from '@material-ui/icons';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchAgencies } from '../../actions/allUsersActions';
-import { IRootState } from '../../utils/store';
-import AgencyCard from './AgencyCard';
+} from "@material-ui/core";
+import { Search as SearchIcon } from "@material-ui/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAgencies } from "../../actions/allUsersActions";
+import { IRootState } from "../../utils/store";
+import AgencyCard from "./AgencyCard";
+import { ToggleButton, ToggleButtonGroup } from "@material-ui/lab";
 
 const useStyles = makeStyles((theme) => ({
   noResults: {
@@ -42,13 +42,20 @@ const AgenciesList = () => {
     dispatch(fetchAgencies(''));
   }, [dispatch]);
 
+  //This is used to make category search of Agencies.
+  const [alignment] = React.useState(['Rakennus, asennus ja huolto','IT- ja tietoliikenne','Koulutus- ja opetusala','Tekniikka','Lääketeollisuus- ja farmasia','Kiinteistö']);
+
+  const handleChange = (event: React.MouseEvent<HTMLElement>, value: string) => {
+    console.log(value)
+  };
+  //Iniates search query of Agencies
   const handleSubmit = (event: any) => {
     event.preventDefault();
     if (input.length > 0) {
       dispatch(fetchAgencies(input));
     }
   };
-
+  //If there is no agencies found show no results
   if (agencies.length < 1) {
     return (
       <div className={classes.noResults}>
@@ -58,26 +65,26 @@ const AgenciesList = () => {
   } else
     return (
       <div>
-        <div className={classes.buttonGroup}>
-          <Button variant="outlined" color="default">
+        <ToggleButtonGroup value={alignment} exclusive onChange={handleChange}>
+          <ToggleButton value="1">
             Rakennus, asennus ja huolto
-          </Button>
-          <Button variant="outlined" color="default" className={classes.button}>
+          </ToggleButton>
+          <ToggleButton value="2">
             IT- ja tietoliikenne
-          </Button>
-          <Button variant="outlined" color="default" className={classes.button}>
+          </ToggleButton >
+          <ToggleButton value="3">
             Koulutus- ja opetusala
-          </Button>
-          <Button variant="outlined" color="default" className={classes.button}>
+          </ToggleButton >
+          <ToggleButton value="4">
             Tekniikka
-          </Button>
-          <Button variant="outlined" color="default" className={classes.button}>
+          </ToggleButton>
+          <ToggleButton value="5">
             Lääketeollisuus- ja farmasia
-          </Button>
-          <Button variant="outlined" color="default" className={classes.button}>
+          </ToggleButton>
+          <ToggleButton value="6">
             Kiinteistö
-          </Button>
-        </div>
+          </ToggleButton>
+        </ToggleButtonGroup>
         <Box
           display="flex"
           justifyContent="flex-end"

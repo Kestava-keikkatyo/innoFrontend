@@ -55,11 +55,11 @@ export interface Report {
   workerName: string,
   workerPhone: string,
   workerEmail: string,
-  job: string,
+  workTitle: string,
   buisnessAsHandler: string,
   agencyAsHandler: string,
-  message: string,
-  date: Date,
+  details: string,
+  date: string,
   fileUrl: string
 }
 
@@ -70,7 +70,7 @@ export interface Feeling {
   isPrivate: boolean
 }
 
-export interface File{
+export interface File {
   files: any[]
 }
 
@@ -105,7 +105,7 @@ export interface Question {
   optional: boolean
   options: string[]
   comment: string
-  answer:any
+  answer: any
   contactInfoAnswer: object
   checked: any
   optionValues: boolean[]

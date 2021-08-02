@@ -1,18 +1,46 @@
-import { TextField, Typography } from '@material-ui/core';
+import { Grid, TextField, Typography } from '@material-ui/core';
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import FileUploader from '../../components/FileUploader';
+import { setReport } from '../../actions/reportActions';
 
-export interface ReportStepThreeProps {
-  //addMessage(message: any): void;
-}
-
+/**
+ *
+ * @disc Report step three
+ */
 const ReportStepThree: React.FC<any> = () => {
+  const { currentReport } = useSelector((state: any) => state.report);
+
+  const dispatch = useDispatch();
+
+  const handleWorkTitle = (event: any) => {
+    dispatch(setReport({ ...currentReport, workTitle: event.target.value }));
+  };
+
+  const handleDetails = (event: any) => {
+    dispatch(setReport({ ...currentReport, details: event.target.value }));
+  };
+
   return (
-    <>
-      <Typography>Fill in Details</Typography>
-      <TextField multiline rows={4} variant="outlined" />
-      <FileUploader name="Upload file" handleFile={() => ''} />
-    </>
+    <Grid container style={{ marginTop: 16 }}>
+      <Grid item xs={12}>
+        <Typography variant="h6">Fill in details</Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <TextField label="Current work title" onChange={handleWorkTitle} />
+        <Typography style={{ marginTop: 24, fontWeight: 500 }}>
+          Details
+        </Typography>
+        <TextField
+          multiline
+          rows={4}
+          variant="outlined"
+          onChange={handleDetails}
+          style={{ marginTop: 8 }}
+        />
+        <FileUploader name="Upload file" accept="image/*, video/*" />
+      </Grid>
+    </Grid>
   );
 };
 

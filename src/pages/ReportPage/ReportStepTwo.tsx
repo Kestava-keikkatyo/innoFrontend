@@ -1,56 +1,71 @@
-import 'date-fns'
-import React from 'react'
-import Grid from '@material-ui/core/Grid'
-import DateFnsUtils from '@date-io/date-fns'
+import 'date-fns';
+import React, { useEffect } from 'react';
+import Grid from '@material-ui/core/Grid';
+import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
   KeyboardDatePicker,
-} from '@material-ui/pickers'
-import { Typography } from '@material-ui/core'
+} from '@material-ui/pickers';
+import { Typography } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+import { setReport } from '../../actions/reportActions';
 
 const ReportStepTwo = () => {
-  // The first commit of Material-UI
-  const [selectedDate, setSelectedDate] = React.useState(
-    new Date('2014-08-18T21:11:54')
-  )
+  const { currentReport } = useSelector((state: any) => state.report);
+  const [selectedDate, setSelectedDate] = React.useState(new Date()); // new Date() returns current date
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(
+      setReport({ ...currentReport, date: selectedDate.toLocaleString() })
+    );
+  }, [dispatch]);
 
   const handleDateChange = (date: any) => {
-    setSelectedDate(date)
-  }
+    console.log('Date', date);
+    setSelectedDate(date);
+    dispatch(setReport({ ...currentReport, date: date.toLocaleString() })); // convert date to the format: "30/07/2021, 19:28:40"
+  };
+
+  console.log('selectedDate', selectedDate);
 
   return (
-    <>
-      <Typography>When did this happen?</Typography>
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <Grid container justify="space-around">
-          <KeyboardDatePicker
-            disableToolbar
-            variant="inline"
-            format="MM/dd/yyyy"
-            margin="normal"
-            id="date-picker-inline"
-            label="Date picker inline"
-            value={selectedDate}
-            onChange={handleDateChange}
-            KeyboardButtonProps={{
-              'aria-label': 'change date',
-            }}
-          />
-          <KeyboardTimePicker
-            margin="normal"
-            id="time-picker"
-            label="Time picker"
-            value={selectedDate}
-            onChange={handleDateChange}
-            KeyboardButtonProps={{
-              'aria-label': 'change time',
-            }}
-          />
-        </Grid>
-      </MuiPickersUtilsProvider>
-    </>
-  )
-}
+    <Grid container style={{ marginTop: 16 }}>
+      <Grid item xs={12}>
+        <Typography variant="h6">When did this happen?</Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <Grid container justify="space-around">
+            <KeyboardDatePicker
+              disableToolbar
+              variant="inline"
+              format="MM/dd/yyyy"
+              margin="normal"
+              id="date-picker-inline"
+              label="Date picker inline"
+              value={selectedDate}
+              onChange={handleDateChange}
+              KeyboardButtonProps={{
+                'aria-label': 'change date',
+              }}
+            />
+            <KeyboardTimePicker
+              margin="normal"
+              id="time-picker"
+              label="Time picker"
+              value={selectedDate}
+              onChange={handleDateChange}
+              KeyboardButtonProps={{
+                'aria-label': 'change time',
+              }}
+            />
+          </Grid>
+        </MuiPickersUtilsProvider>
+      </Grid>
+    </Grid>
+  );
+};
 
-export default ReportStepTwo
+export default ReportStepTwo;

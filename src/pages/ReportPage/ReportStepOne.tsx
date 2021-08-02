@@ -11,11 +11,15 @@ import {
   fetchAllAgencies,
   fetchAllBusinesses,
 } from '../../actions/allUsersActions';
+import { setReport } from '../../actions/reportActions';
 import SearchBox from '../../components/SearchBox';
 
 export interface ReportStepOneProps {}
 
 const ReportStepOne: React.FC<ReportStepOneProps> = () => {
+  const currentReport: any = useSelector(
+    (state: any) => state.report.currentReport
+  );
   const { agencies, businesses } = useSelector((state: any) => state.allUsers);
 
   const dispatch = useDispatch();
@@ -36,8 +40,20 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
     setFilterBusinesses(event.target.value);
   };
 
+  const handleSelectedBusiness = (event: any) => {
+    dispatch(
+      setReport({ ...currentReport, buisnessAsHandler: event.target.value })
+    );
+  };
+
+  const handleSelectedAgency = (event: any) => {
+    dispatch(
+      setReport({ ...currentReport, agencyAsHandler: event.target.value })
+    );
+  };
+
   return (
-    <Grid container style={{ marginTop: 24 }}>
+    <Grid container style={{ marginTop: 16 }}>
       <Grid item xs={12}>
         <Typography variant="h6">Select report handler</Typography>
         <Typography variant="body2" style={{ color: '#757575' }}>
@@ -47,7 +63,7 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
       </Grid>
       {/* Business grid */}
       <Grid item xs={12} style={{ marginTop: 32 }}>
-        <Typography style={{ fontWeight: 500 }}>Business</Typography>
+        <Typography>Business</Typography>
         <SearchBox
           placeholder={'Search by name...'}
           value={filterBusinesses}
@@ -59,6 +75,7 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
             id="demo-simple-select"
             defaultValue=""
             style={{ maxHeight: 50 }}
+            onChange={handleSelectedBusiness}
           >
             {businesses
               // Sort alphabetically
@@ -78,7 +95,7 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
       </Grid>
       {/* Agency grid */}
       <Grid item xs={12} style={{ marginTop: 32 }}>
-        <Typography style={{ fontWeight: 500 }}>Agency</Typography>
+        <Typography>Agency</Typography>
         <SearchBox
           placeholder={'Search by name...'}
           value={filterAgencies}
@@ -89,6 +106,7 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             defaultValue=""
+            onChange={handleSelectedAgency}
             style={{ maxHeight: 50 }}
           >
             {agencies
