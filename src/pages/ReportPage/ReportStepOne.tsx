@@ -42,7 +42,7 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
 
   const handleSelectedBusiness = (event: any) => {
     dispatch(
-      setReport({ ...currentReport, buisnessAsHandler: event.target.value })
+      setReport({ ...currentReport, businessAsHandler: event.target.value })
     );
   };
 

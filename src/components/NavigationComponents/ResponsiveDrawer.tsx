@@ -133,7 +133,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
               <Divider />
             </>
           )}
-              {(role === roles.Agency || role === roles.Business) && (
+          {(role === roles.Agency || role === roles.Business) && (
             <>
               <ListItem button component={Link} to="/workers">
                 <ListItemIcon>
@@ -144,7 +144,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
               <Divider />
             </>
           )}
-          {(role === roles.Business) && (
+          {role === roles.Business && (
             <>
               <ListItem button component={Link} to="/work-overview">
                 <ListItemIcon>
@@ -177,64 +177,94 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
               <Divider />
             </>
           )}
-              {role === roles.Agency && (
+          {role === roles.Agency && (
             <>
               <ListItem button component={Link} to="/work-request">
                 <ListItemIcon>
-                  <WorkOutlineIcon/>
+                  <WorkOutlineIcon />
                 </ListItemIcon>
                 <ListItemText primary="Work request" />
               </ListItem>
               <Divider />
             </>
           )}
-          <ListItem button component={Link} to="/report">
-            <ListItemIcon>
-              <ErrorOutlineIcon />
-            </ListItemIcon>
-            <ListItemText primary="Report" />
-          </ListItem>
-          <Divider />
-          {role === roles.Worker && (
-            <ListItem button component={Link} to="/fiilismittari">
-              <ListItemIcon>
-                <MoodIcon />
-              </ListItemIcon>
-              <ListItemText primary="Mood" />
-            </ListItem>
+          {(role === roles.Agency || role === roles.Business) && (
+            <>
+              <ListItem button component={Link} to="/reports">
+                <ListItemIcon>
+                  <ErrorOutlineIcon />
+                </ListItemIcon>
+                <ListItemText primary="Reports" />
+              </ListItem>
+              <Divider />
+            </>
           )}
           {role === roles.Worker && (
-            <ListItem button component={Link} to="/sopimukset">
-              <ListItemIcon>
-                <AssignmentTurnedInIcon />
-              </ListItemIcon>
-              <ListItemText primary="Contracts" />
-            </ListItem>
+            <>
+              <ListItem button component={Link} to="/sopimukset">
+                <ListItemIcon>
+                  <AssignmentTurnedInIcon />
+                </ListItemIcon>
+                <ListItemText primary="Contracts" />
+              </ListItem>
+              <Divider />
+            </>
           )}
           {role === roles.Worker && (
-            <ListItem button component={Link} to="/business-contracts">
-              <ListItemIcon>
-                <LibraryBooksIcon />
-              </ListItemIcon>
-              <ListItemText primary="Business Contracts" />
-            </ListItem>
+            <>
+              <ListItem button component={Link} to="/business-contracts">
+                <ListItemIcon>
+                  <LibraryBooksIcon />
+                </ListItemIcon>
+                <ListItemText primary="Business Contracts" />
+              </ListItem>
+              <Divider />
+            </>
           )}
           {role === roles.Worker && (
-            <ListItem button component={Link} to="/my-work">
-              <ListItemIcon>
-                <FormatList />
-              </ListItemIcon>
-              <ListItemText primary="my work" />
-            </ListItem>
+            <>
+              <ListItem button component={Link} to="/my-work">
+                <ListItemIcon>
+                  <FormatList />
+                </ListItemIcon>
+                <ListItemText primary="my work" />
+              </ListItem>
+              <Divider />
+            </>
           )}
           {role === roles.Worker && (
-            <ListItem button component={Link} to="/job-list">
-              <ListItemIcon>
-                <WorkOutlineIcon />
-              </ListItemIcon>
-              <ListItemText primary="Jobs" />
-            </ListItem>
-          )}    
+            <>
+              <ListItem button component={Link} to="/job-list">
+                <ListItemIcon>
+                  <WorkOutlineIcon />
+                </ListItemIcon>
+                <ListItemText primary="Jobs" />
+              </ListItem>
+              <Divider />
+            </>
+          )}
+          {role === roles.Worker && (
+            <>
+              <ListItem button component={Link} to="/fiilismittari">
+                <ListItemIcon>
+                  <MoodIcon />
+                </ListItemIcon>
+                <ListItemText primary="Mood" />
+              </ListItem>
+              <Divider />
+            </>
+          )}
+          {role === roles.Worker && (
+            <>
+              <ListItem button component={Link} to="/report">
+                <ListItemIcon>
+                  <ErrorOutlineIcon />
+                </ListItemIcon>
+                <ListItemText primary="Report" />
+              </ListItem>
+              <Divider />
+            </>
+          )}
         </List>
       </div>
 
