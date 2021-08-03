@@ -22,6 +22,7 @@ import JobLifeline from './pages/Databank/JobLifeline';
 import RoleResponsibilities from './pages/Databank/RoleResponsibilities';
 import Databank from './pages/Databank';
 import ReportPage from './pages/ReportPage';
+import ReportsPage from './pages/ReportPage/ReportsPage';
 import Admin from './pages/AdminPage';
 import AdminRoute from './components/AdminRoute';
 import AdminDatabank from './pages/AdminPage/AdminDatabank';
@@ -104,7 +105,7 @@ const App: React.FC = () => {
         </PrivateRoute>
         <PrivateRoute path="/profile">
           <ProfilePage />
-          </PrivateRoute>
+        </PrivateRoute>
         <PrivateRoute path="/my-work" roles={[roles.Worker]}>
           <WorkerJobs />
         </PrivateRoute>
@@ -117,8 +118,11 @@ const App: React.FC = () => {
         <PrivateRoute path="/sopimukset" roles={[roles.Worker]}>
           <WorkerContractPage />
         </PrivateRoute>
-        <PrivateRoute path="/report">
+        <PrivateRoute path="/report" roles={[roles.Worker]}>
           <ReportPage />
+        </PrivateRoute>
+        <PrivateRoute path="/reports" roles={[roles.Business, roles.Agency]}>
+          <ReportsPage />
         </PrivateRoute>
         <PrivateRoute
           path="/contracts/contract-form-manager/contract-form-preview"
@@ -195,13 +199,13 @@ const App: React.FC = () => {
         <PrivateRoute path="/work-overview" roles={[roles.Business]}>
           <WorkOverview />
         </PrivateRoute>
-        <PrivateRoute
-          path="/work-request"
-          roles={[roles.Agency]}
-        >
+        <PrivateRoute path="/work-request" roles={[roles.Agency]}>
           <WorkRequest />
         </PrivateRoute>
-        <PrivateRoute path="/work-info" roles={[roles.Business, roles.Agency,roles.Worker]}>
+        <PrivateRoute
+          path="/work-info"
+          roles={[roles.Business, roles.Agency, roles.Worker]}
+        >
           <WorkInfo />
         </PrivateRoute>
         <PrivateRoute path="/forms" roles={[roles.Business, roles.Agency]}>
