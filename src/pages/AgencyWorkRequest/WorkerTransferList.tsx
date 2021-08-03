@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import List from "@material-ui/core/List";
@@ -10,7 +10,9 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
-
+import { fetchAgencyWorkers } from "../../actions/allUsersActions";
+import { useDispatch, useSelector } from "react-redux";
+import { IRootState } from '../../utils/store';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -43,11 +45,25 @@ function union(a: number[], b: number[]) {
   return [...a, ...not(b, a)];
 }
 
+
+
 const WorkerTransferList = () => {
+  
+  const dispatch = useDispatch();
+
+  const { agencyWorkers } = useSelector((state: IRootState) => state.allUsers);
+  const [myWorkers, setMyWorkers] = useState(agencyWorkers)
+  console.log('vuokratyöntekijät ',agencyWorkers)
+  useEffect(() => {
+    dispatch(fetchAgencyWorkers());
+    
+   
+  }, []);
+  console.log('työntekijät ',myWorkers)
   const classes = useStyles();
   const [checked, setChecked] = React.useState<number[]>([]);
   const [left, setLeft] = React.useState<number[]>([]);
-  const [right, setRight] = React.useState<number[]>([0, 1, 2, 3, 4, 5, 6, 7]);
+  const [right, setRight] = React.useState<number[]>([agencyWorkers.length]);
 
   const leftChecked = intersection(checked, left);
   const rightChecked = intersection(checked, right);
@@ -113,8 +129,9 @@ const WorkerTransferList = () => {
       <List className={classes.list} dense component="div" role="list">
         {items.map((value: number) => {
           const labelId = `transfer-list-all-item-${value}-label`;
-
-          return (
+          
+          return (   
+                    
             <ListItem
               key={value}
               role="listitem"
@@ -129,14 +146,18 @@ const WorkerTransferList = () => {
                   inputProps={{ "aria-labelledby": labelId }}
                 />
               </ListItemIcon>
-              {/* tähän tulee omien työntekijöiden lista*/}
-              <ListItemText id={labelId} primary={`Jarmo`} />
+              {/* tähän tulee omien työntekijöiden lista 
+              */}
+              <ListItemText id={labelId} primary={""} />
             </ListItem>
           );
         })}
         <ListItem />
+     
       </List>
+      
     </Card>
+    
   );
 
   return (
