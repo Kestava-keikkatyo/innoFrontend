@@ -4,19 +4,17 @@ import {
   Typography,
   makeStyles,
   useTheme,
-  Button,
 } from "@material-ui/core";
 import React from "react";
 import RequestInfo from "./AccordionDetails";
-import WorkerTransferList from "./WorkerTransferList";
 
-const JobRequest = () => {
+const JobRequest: React.FC<any> = () => {
   const classes = useStyles();
   const theme = useTheme();
   return (
     <Container>
       <Grid container>
-        <Grid item md={6}>
+        <Grid item md={12}>
           <Typography variant="h6" className={classes.request}>
             Valitse Pyyntö
           </Typography>
@@ -39,20 +37,7 @@ const JobRequest = () => {
             <RequestInfo />
           </div>
         </Grid>
-        <Grid item md={6}>
-          <Typography variant="h6">Valitse Työntekijät</Typography>
-
-          <div className={classes.request}>
-            <WorkerTransferList />
-          </div>
-        </Grid>
-        
       </Grid>
-      <Button 
-        variant="outlined"
-        color='primary'
-        className={classes.add}
-        >Lisää aktiivisiin työkeikkoihin</Button>
     </Container>
   );
 };
@@ -61,9 +46,7 @@ export default JobRequest;
 
 const useStyles = makeStyles((theme) => ({
   request: {
-    marginBottom: "2%",
+    marginBottom: "3%",
+    width: '100%'
   },
-  add: {
-      float: 'right'
-  }
 }));

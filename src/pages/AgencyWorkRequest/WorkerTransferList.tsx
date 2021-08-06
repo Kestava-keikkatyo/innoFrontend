@@ -1,74 +1,64 @@
-import React, { useEffect, useState } from 'react';
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import List from "@material-ui/core/List";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import Checkbox from "@material-ui/core/Checkbox";
-import Button from "@material-ui/core/Button";
-import Divider from "@material-ui/core/Divider";
-import { fetchAgencyWorkers } from "../../actions/allUsersActions";
+import React, { useEffect } from "react";
+import {
+  Grid,
+  List,
+  Card,
+  CardHeader,
+  ListItem,
+  ListItemText,
+  ListItemIcon,
+  Checkbox,
+  Button,
+  Divider,
+  makeStyles,
+  useTheme,
+  Theme,
+  createStyles,
+  IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@material-ui/core/";
 import { useDispatch, useSelector } from "react-redux";
-import { IRootState } from '../../utils/store';
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      margin: "auto",
-    },
-    cardHeader: {
-      padding: theme.spacing(1, 2),
-    },
-    list: {
-      width: 200,
-      height: '28.4em',
-      backgroundColor: theme.palette.background.paper,
-      overflow: "auto",
-    },
-    button: {
-      margin: theme.spacing(0.5, 0),
-    },
-  })
-);
+import allUsersService from "../../services/allUsersService";
+import { useMediaQuery } from "@material-ui/core";
+import { AddIcon } from "@material-ui/data-grid";
+import WorkerTableView from "./WorkerTableView";
 
-function not(a: number[], b: number[]) {
+function not(a: any[], b: any[]) {
   return a.filter((value) => b.indexOf(value) === -1);
 }
 
-function intersection(a: number[], b: number[]) {
+function intersection(a: any[], b: any[]) {
   return a.filter((value) => b.indexOf(value) !== -1);
 }
 
-function union(a: number[], b: number[]) {
+function union(a: any[], b: any[]) {
   return [...a, ...not(b, a)];
 }
 
-
-
-const WorkerTransferList = () => {
-  
-  const dispatch = useDispatch();
-
-  const { agencyWorkers } = useSelector((state: IRootState) => state.allUsers);
-  const [myWorkers, setMyWorkers] = useState(agencyWorkers)
-  console.log('vuokratyöntekijät ',agencyWorkers)
-  useEffect(() => {
-    dispatch(fetchAgencyWorkers());
-    
-   
-  }, []);
-  console.log('työntekijät ',myWorkers)
+const WorkerTransferList: React.FC<any> = () => {
   const classes = useStyles();
-  const [checked, setChecked] = React.useState<number[]>([]);
-  const [left, setLeft] = React.useState<number[]>([]);
-  const [right, setRight] = React.useState<number[]>([agencyWorkers.length]);
+  const theme = useTheme();
+  const dispatch = useDispatch();
+  const matches = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const [checked, setChecked] = React.useState<any[]>([]);
+  const { agencyWorkers } = useSelector((state: any) => state.allUsers);
+  const [left, setLeft] = React.useState<any>(agencyWorkers);
+  const [right, setRight] = React.useState<any>([]);
 
   const leftChecked = intersection(checked, left);
   const rightChecked = intersection(checked, right);
 
-  const handleToggle = (value: number) => () => {
+  useEffect(() => {
+    allUsersService.getAgencyWorkers().then((res: any) => setLeft(res.data));
+  }, [allUsersService]);
+
+  const handleToggle = (value: any) => () => {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
 
@@ -81,10 +71,9 @@ const WorkerTransferList = () => {
     setChecked(newChecked);
   };
 
-  const numberOfChecked = (items: number[]) =>
-    intersection(checked, items).length;
+  const numberOfChecked = (items: any[]) => intersection(checked, items).length;
 
-  const handleToggleAll = (items: number[]) => () => {
+  const handleToggleAll = (items: any[]) => () => {
     if (numberOfChecked(items) === items.length) {
       setChecked(not(checked, items));
     } else {
@@ -104,7 +93,9 @@ const WorkerTransferList = () => {
     setChecked(not(checked, rightChecked));
   };
 
-  const customList = (title: React.ReactNode, items: number[]) => (
+
+
+  const customList = (title: React.ReactNode, items: any[]) => (
     <Card>
       <CardHeader
         className={classes.cardHeader}
@@ -127,13 +118,12 @@ const WorkerTransferList = () => {
       />
       <Divider />
       <List className={classes.list} dense component="div" role="list">
-        {items.map((value: number) => {
-          const labelId = `transfer-list-all-item-${value}-label`;
-          
-          return (   
-                    
+        {items.map((value: any) => {
+          const labelId = `transfer-list-all-item-${value._id}-label`;
+
+          return (
             <ListItem
-              key={value}
+              key={value._id}
               role="listitem"
               button
               onClick={handleToggle(value)}
@@ -146,20 +136,20 @@ const WorkerTransferList = () => {
                   inputProps={{ "aria-labelledby": labelId }}
                 />
               </ListItemIcon>
-              {/* tähän tulee omien työntekijöiden lista 
-              */}
-              <ListItemText id={labelId} primary={""} />
+              <ListItemText id={labelId} primary={value.name} />
             </ListItem>
           );
         })}
         <ListItem />
-     
       </List>
-      
     </Card>
-    
   );
-
+  if(matches) 
+  return (
+    <div>
+      <WorkerTableView agencyWorkers={left}/>
+    </div>
+  )
   return (
     <Grid container spacing={2} alignItems="center" className={classes.root}>
       <Grid item>{customList("Choices", left)}</Grid>
@@ -189,7 +179,28 @@ const WorkerTransferList = () => {
       </Grid>
       <Grid item>{customList("Chosen", right)}</Grid>
     </Grid>
+    
   );
 };
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      margin: "auto",
+    },
+    cardHeader: {
+      padding: theme.spacing(1, 2),
+    },
+    list: {
+      width: 200,
+      height: 230,
+      backgroundColor: theme.palette.background.paper,
+      overflow: "auto",
+    },
+    button: {
+      margin: theme.spacing(0.5, 0),
+    },
+  })
+);
 
 export default WorkerTransferList;
