@@ -89,8 +89,8 @@ const WorkerJobs = () => {
       </TabPanel>
       <TabPanel value={value} index={1} dir={theme.direction}>
         <Typography style={{ paddingTop: "1rem" }} variant="h4"></Typography>
-      </TabPanel>
         <WorkRequest/>
+      </TabPanel>
       <TabPanel value={value} index={2} dir={theme.direction}></TabPanel>
     </Container>
   );
