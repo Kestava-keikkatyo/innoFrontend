@@ -1,9 +1,9 @@
 
 import {
-  FETCH_ALL_AGENCIES,
-  FETCH_ALL_BUSINESSES,
-  FETCH_ALL_WORKERS,
-  FETCH_AGENCY_WORKERS
+  SET_ALL_AGENCIES,
+  SET_ALL_BUSINESSES,
+  SET_ALL_WORKERS,
+  SET_AGENCY_WORKERS
 } from '../types/state'
 import allUsersService from '../services/allUsersService'
 
@@ -14,7 +14,7 @@ import allUsersService from '../services/allUsersService'
  */
 export const fetchAllAgencies = () => async (dispatch: any) => {
   const res = await allUsersService.getAllAgencies()
-  dispatch({ type: FETCH_ALL_AGENCIES, data: res.data })
+  dispatch({ type: SET_ALL_AGENCIES, data: res.data })
 }
 
 /**
@@ -23,7 +23,7 @@ export const fetchAllAgencies = () => async (dispatch: any) => {
  */
 export const fetchAllBusinesses = () => async (dispatch: any) => {
   const res = await allUsersService.getAllBusinesses()
-  dispatch({ type: FETCH_ALL_BUSINESSES, data: res.data })
+  dispatch({ type: SET_ALL_BUSINESSES, data: res.data })
 }
 
 /**
@@ -32,7 +32,7 @@ export const fetchAllBusinesses = () => async (dispatch: any) => {
  */
 export const fetchAllWorkers = () => async (dispatch: any) => {
   const res = await allUsersService.getAllWorkers()
-  dispatch({ type: FETCH_ALL_WORKERS, data: res.data })
+  dispatch({ type: SET_ALL_WORKERS, data: res.data })
 }
 
 /**
@@ -41,7 +41,7 @@ export const fetchAllWorkers = () => async (dispatch: any) => {
  */
 export const fetchAgencyWorkers = () => async (dispatch: any) => {
   const res = await allUsersService.getAgencyWorkers()
-  dispatch({ type: FETCH_AGENCY_WORKERS, data: res.data })
+  dispatch({ type: SET_AGENCY_WORKERS, data: res.data })
 }
 
 /**
@@ -50,7 +50,7 @@ export const fetchAgencyWorkers = () => async (dispatch: any) => {
  */
 export const fetchAgencies = (input: string) => async (dispatch: any) => {
   const res = await allUsersService.searchAgencies(input)
-  dispatch({ type: FETCH_ALL_AGENCIES, data: res.data })
+  dispatch({ type: SET_ALL_AGENCIES, data: res.data })
 }
 
 /**
@@ -59,7 +59,7 @@ export const fetchAgencies = (input: string) => async (dispatch: any) => {
  */
 export const fetchBusinesses = (input: string) => async (dispatch: any) => {
   const res = await allUsersService.searchBusinesses(input)
-  dispatch({ type: FETCH_ALL_BUSINESSES, data: res.data })
+  dispatch({ type: SET_ALL_BUSINESSES, data: res.data })
 }
 
 /**
@@ -68,5 +68,5 @@ export const fetchBusinesses = (input: string) => async (dispatch: any) => {
  */
 export const fetchWorkers = (input: string) => async (dispatch: any) => {
   const res = await allUsersService.searchWorkers(input)
-  dispatch({ type: FETCH_ALL_WORKERS, data: res.data })
+  dispatch({ type: SET_ALL_WORKERS, data: res.data })
 }

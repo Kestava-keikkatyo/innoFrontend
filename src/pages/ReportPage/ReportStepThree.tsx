@@ -17,6 +17,10 @@ const ReportStepThree: React.FC<any> = () => {
     dispatch(setReport({ ...currentReport, workTitle: event.target.value }));
   };
 
+  const handleReportTitle = (event: any) => {
+    dispatch(setReport({ ...currentReport, reportTitle: event.target.value }));
+  };
+
   const handleDetails = (event: any) => {
     dispatch(setReport({ ...currentReport, details: event.target.value }));
   };
@@ -27,9 +31,18 @@ const ReportStepThree: React.FC<any> = () => {
         <Typography variant="h6">Fill in details</Typography>
       </Grid>
       <Grid item xs={12}>
-        <TextField label="Current work title" onChange={handleWorkTitle} />
+        <TextField
+          label="Current work title"
+          onChange={handleWorkTitle}
+          style={{ marginTop: 8 }}
+        />
+      </Grid>
+      <Grid item xs={12} style={{ marginTop: 16 }}>
+        <TextField label="Report Title" onChange={handleReportTitle} />
+      </Grid>
+      <Grid item xs={12}>
         <Typography style={{ marginTop: 24, fontWeight: 500 }}>
-          Details
+          Report Details
         </Typography>
         <TextField
           multiline
