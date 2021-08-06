@@ -1,4 +1,10 @@
-import { Box, Container, IconButton, InputBase } from '@material-ui/core';
+import {
+  Box,
+  Container,
+  IconButton,
+  InputBase,
+  Typography,
+} from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import { fetchProfiles } from '../../actions/profileActions';
@@ -27,6 +33,11 @@ const ProfilesPage: React.FC<any> = () => {
   } else
     return (
       <Container maxWidth="lg" className={classes.root}>
+        <Box style={{ paddingTop: 10, paddingBottom: 10 }}>
+          <Typography variant="h4" color="primary">
+            Profiles
+          </Typography>
+        </Box>
         <Box className={classes.ContainerBox}>
           <Box display="flex" alignItems="center" className={classes.searchBox}>
             <InputBase
@@ -64,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
   },
   ContainerBox: {
     width: '100%',
-    padding: 24,
+    padding: 16,
   },
   searchBox: {
     marginBottom: 24,

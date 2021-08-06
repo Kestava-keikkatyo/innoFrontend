@@ -166,6 +166,7 @@ const ReportForm = () => {
       const copyOfCurrentReport = {
         ...currentReport,
         fileUrl: res.data.fileUrl,
+        fileType: res.data.fileType,
       };
 
       dispatch(setReport(copyOfCurrentReport));

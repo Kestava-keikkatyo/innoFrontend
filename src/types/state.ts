@@ -12,32 +12,32 @@ export interface AllUsersState {
   agencyWorkers: []
 }
 
-export const FETCH_ALL_AGENCIES = 'FETCH_ALL_AGENCIES'
-export const FETCH_ALL_BUSINESSES = 'FETCH_ALL_BUSINESSES'
-export const FETCH_ALL_WORKERS = 'FETCH_ALL_WORKERS'
-export const FETCH_AGENCY_WORKERS = 'FETCH_AGENCY_WORKERS'
+export const SET_ALL_AGENCIES = 'SET_ALL_AGENCIES'
+export const SET_ALL_BUSINESSES = 'SET_ALL_BUSINESSES'
+export const SET_ALL_WORKERS = 'SET_ALL_WORKERS'
+export const SET_AGENCY_WORKERS = 'SET_AGENCY_WORKERS'
 
-interface FetchAllAgenciesAction {
-  type: typeof FETCH_ALL_AGENCIES,
+interface SetAllAgenciesAction {
+  type: typeof SET_ALL_AGENCIES,
   data: any
 }
 
-interface FetchAllBusinessesAction {
-  type: typeof FETCH_ALL_BUSINESSES,
+interface SetAllBusinessesAction {
+  type: typeof SET_ALL_BUSINESSES,
   data: any
 }
 
-interface FetchAllWorkersAction {
-  type: typeof FETCH_ALL_WORKERS,
+interface SetAllWorkersAction {
+  type: typeof SET_ALL_WORKERS,
   data: any
 }
 
-interface FetchAgencyWorkersAction {
-  type: typeof FETCH_AGENCY_WORKERS,
+interface SetAgencyWorkersAction {
+  type: typeof SET_AGENCY_WORKERS,
   data: any
 }
 
-export type AllUsersActionTypes = FetchAllAgenciesAction | FetchAllBusinessesAction | FetchAllWorkersAction | FetchAgencyWorkersAction
+export type AllUsersActionTypes = SetAllAgenciesAction | SetAllBusinessesAction | SetAllWorkersAction | SetAgencyWorkersAction
 
 
 /**
@@ -49,7 +49,7 @@ export interface ReportState {
 }
 
 export const SET_CURRENT_REPORT = "SET_CURRENT_REPORT"
-export const FETCH_REPORTS = "FETCH_REPORTS"
+export const SET_REPORTS = "SET_REPORTS"
 
 interface SetCurrentReportAction {
   type: typeof SET_CURRENT_REPORT
@@ -57,12 +57,12 @@ interface SetCurrentReportAction {
 
 }
 
-interface FetchReportsAction {
-  type: typeof FETCH_REPORTS
+interface SetReportsAction {
+  type: typeof SET_REPORTS
   data: any
 }
 
-export type ReportActionTypes = SetCurrentReportAction | FetchReportsAction
+export type ReportActionTypes = SetCurrentReportAction | SetReportsAction
 
 
 export interface User {

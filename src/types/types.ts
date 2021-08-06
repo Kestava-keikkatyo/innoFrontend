@@ -53,11 +53,13 @@ export interface Credentials {
 
 export interface Report {
   workTitle: string,
-  businessAsHandler: string,
-  agencyAsHandler: string,
+  reportTitle: string,
   details: string,
   date: string,
-  fileUrl: string
+  businessAsHandler: string,
+  agencyAsHandler: string,
+  fileUrl: string,
+  fileType: string
 }
 
 export interface Feeling {
