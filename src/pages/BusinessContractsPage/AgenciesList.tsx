@@ -4,7 +4,6 @@ import {
   InputBase,
   IconButton,
   FormControl,
-  makeStyles,
 } from "@material-ui/core";
 import { Search as SearchIcon } from "@material-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,19 +12,6 @@ import { IRootState } from "../../utils/store";
 import AgencyCard from "./AgencyCard";
 import { ToggleButton, ToggleButtonGroup } from "@material-ui/lab";
 
-const useStyles = makeStyles((theme) => ({
-  noResults: {
-    textAlign: 'center',
-  },
-  buttonGroup: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  button: {
-    marginLeft: '0.5%',
-  },
-}));
-
 /**
  * @component
  * @desc
@@ -33,19 +19,19 @@ const useStyles = makeStyles((theme) => ({
  */
 const AgenciesList = () => {
   const dispatch = useDispatch();
-  const classes = useStyles();
   const [input, setInput] = useState('');
   const { agencies } = useSelector((state: IRootState) => state.allUsers);
   const [allAgencies, setAllAgencies] = useState(agencies)
+  const [alignment, setAlignment] = React.useState('Kaikki');
 
   useEffect(() => {
     dispatch(fetchAllAgencies());
-  }, []);
+  }, [dispatch]);
 
   const handleChange = (event: React.MouseEvent<HTMLElement>, value: string) => {
     event.preventDefault()
-    if (value === 'Kaikki') {
-      dispatch(fetchAllAgencies())
+    setAlignment(value)
+    if (alignment === 'Kaikki') {
       setAllAgencies([])
     } else {
       const result = agencies.filter((agency: any) => agency.category === value);
@@ -64,7 +50,7 @@ const AgenciesList = () => {
 
   return (
     <div>
-      <ToggleButtonGroup exclusive onChange={handleChange}>
+      <ToggleButtonGroup value={alignment} exclusive onChange={handleChange}>
         <ToggleButton value="Kaikki">
           Kaikki
         </ToggleButton>

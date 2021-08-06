@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 /**
+ * @deprecated
  * @component
  *
  * @desc

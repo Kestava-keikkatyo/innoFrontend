@@ -138,6 +138,7 @@ export default function CustomizedTables() {
                   <TableCell padding="none" align="left">
                     <>
                       <img
+                        alt="details"
                         src={feel.fileUrl ? feel.fileUrl : imagePlaceholder}
                         style={{
                           width: 50,

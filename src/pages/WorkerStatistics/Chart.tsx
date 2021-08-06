@@ -29,10 +29,6 @@ const Chart = () => {
     (state: any) => state.feeling
   );
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(updateDataSet());
-    getFeelingsValues();
-  }, [feelings, dispatch]);
 
   console.log('feelings', feelings);
   console.log('feelingDataSet:', feelingDataSet);
@@ -126,6 +122,11 @@ const Chart = () => {
         return null;
     }
   };
+
+  useEffect(() => {
+    dispatch(updateDataSet());
+    getFeelingsValues();
+  }, [feelings, dispatch]);
 
   console.log('moodCounts', moodCounts);
 

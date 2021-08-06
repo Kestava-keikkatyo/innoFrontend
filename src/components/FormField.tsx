@@ -87,7 +87,7 @@ export const FormikSelectField: React.FC<any> = ({ options, label, disabled, set
     if (disabled) {
       setFieldValue('category','')
     }
-  },[disabled])
+  },[disabled])  // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <FormControl
