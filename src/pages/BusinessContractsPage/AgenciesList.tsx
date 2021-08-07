@@ -4,6 +4,10 @@ import {
   InputBase,
   IconButton,
   FormControl,
+  useMediaQuery,
+  InputLabel,
+  Select,
+  MenuItem
 } from "@material-ui/core";
 import { Search as SearchIcon } from "@material-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +15,7 @@ import { fetchAgencies, fetchAllAgencies } from "../../actions/allUsersActions";
 import { IRootState } from "../../utils/store";
 import AgencyCard from "./AgencyCard";
 import { ToggleButton, ToggleButtonGroup } from "@material-ui/lab";
+import {  Theme, useTheme } from "@material-ui/core/styles";
 
 /**
  * @component
@@ -23,6 +28,9 @@ const AgenciesList = () => {
   const { agencies } = useSelector((state: IRootState) => state.allUsers);
   const [allAgencies, setAllAgencies] = useState(agencies)
   const [alignment, setAlignment] = React.useState('Kaikki');
+  const theme = useTheme()
+  const matches = useMediaQuery(theme.breakpoints.down('sm'));
+
 
   useEffect(() => {
     dispatch(fetchAllAgencies());
@@ -47,6 +55,53 @@ const AgenciesList = () => {
       setAllAgencies(agencies)
     }
   };
+
+  if(matches) {
+    return (
+      <div>
+        <FormControl
+        >
+        <InputLabel
+        
+        >
+        <Select
+          value={alignment}
+          onChange={handleChange}
+          >
+        <MenuItem value='Kaikki'>Kaikki</MenuItem>
+        <MenuItem value='IT- ja tietoliikenne'>IT- ja tietoliikenne</MenuItem>
+        </Select>
+        </InputLabel>
+        </FormControl>
+ 
+      <Box
+        display="flex"
+        justifyContent="flex-end"
+        alignItems="center"
+        flexWrap="wrap"
+      >
+        <FormControl component="fieldset"></FormControl>
+        <form onSubmit={handleSubmit}>
+          <Box display="flex" alignItems="center">
+            <InputBase
+              placeholder="search with name"
+              value={input}
+              onChange={({ target }) => setInput(target.value)}
+            />
+            <IconButton type="submit">
+              <SearchIcon />
+            </IconButton>
+          </Box>
+        </form>
+      </Box>
+      {allAgencies.length > 0 ? allAgencies.map((agency: any) => (
+        <AgencyCard key={agency._id} agency={agency} />
+      )):agencies.map((agency: any) => (
+        <AgencyCard key={agency._id} agency={agency} />
+      ))}
+    </div>
+    )
+  }
 
   return (
     <div>
