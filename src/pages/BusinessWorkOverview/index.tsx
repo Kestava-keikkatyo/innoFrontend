@@ -1,10 +1,19 @@
-import { Button, Container, Grid, makeStyles, Paper, Theme, Typography } from "@material-ui/core";
+import {
+  Button,
+  Container,
+  Grid,
+  IconButton,
+  InputBase,
+  makeStyles,
+  Paper,
+  Theme,
+  Typography,
+} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import React from "react";
 import { useHistory } from "react-router-dom";
 import AgencyGrid from "./AgencyGrid";
-import SituationPanel from "./SituationPanel";
-
+import { SearchIcon } from '@material-ui/data-grid'
 
 const BusinessWorkRequest = () => {
   const classes = useStyles();
@@ -13,157 +22,126 @@ const BusinessWorkRequest = () => {
   const [subheading, setSubheading] = React.useState("");
   const [detailedInfo, setDetailedInfo] = React.useState("");
   const [additionalDetails, setAdditionalDetails] = React.useState("");
-
+  const [filter, setFilter] = React.useState('');
   const history = useHistory();
 
   const handleSubmit = () => {
     alert("lisäsit työkeikan");
   };
 
-  const workInfo = () => {
-    history.push("/work-info");
-  };
-
   return (
-    <Container >
-    <Grid container>
-      <Grid item md={6}>
-        <Paper className={classes.paper}>
+    <Container className={classes.root}>
       <form>
-        <h1
-       
-        > Lähetä työkeikka pyyntö HP-yritykselle</h1>
-        <Typography 
-        className={classes.aText}
-        >Valitse HP-yritys</Typography>
-        <AgencyGrid/>
-        <Typography className={classes.text}>
-          Kerro haettava positio / ilmoituksen otsikko
-        </Typography>
-        
-        <TextField
-          className={classes.textField}
-          type="text"
-          variant="outlined"
-          id="margin-none"
-          value={headline}
-          onChange={(e) => setHeadline(e.target.value)}
-        />
-        <Typography
-        className={classes.text}
-        >Lisää väliotsikko</Typography>
-        <TextField
-          className={classes.textField}
-          type="text"
-          variant="outlined"
-          id="margin-none"
-          value={subheading}
-          onChange={(e) => setSubheading(e.target.value)}
-        />
-        <Typography
-        className={classes.text}
-        >Ehdota työntekijöitä</Typography>
-        <TextField
-          className={classes.textField}
-          type="text"
-          variant="outlined"
-          id="margin-none"
-          value={subheading}
-          onChange={(e) => setSubheading(e.target.value)}
-        />
-        <Typography 
-        className={classes.text}
-        >Kerro tarkemmat tiedot</Typography>
-        <TextField
-          className={classes.textField}
-          type="text"
-          multiline
-          rows={6}
-          variant="outlined"
-          id="margin-none"
-          value={detailedInfo}
-          onChange={(e) => setDetailedInfo(e.target.value)}
-        />
-
-        <Typography
-        className={classes.text}
-        >Lisää lisätiedot</Typography>
-        <TextField
-          className={classes.textField}
-          type="text"
-          multiline
-          rows={6}
-          id="margin-none"
-          variant="outlined"
-          value={additionalDetails}
-          onChange={(e) => setAdditionalDetails(e.target.value)}
-        />
-        
-        <div className={classes.buttons}>
+        <Grid container>
+          
+            
+            <h1> Lähetä työkeikka pyyntö HP-yritykselle</h1>
+            <Grid item md={12} sm={12} className={classes.flexbox}>
+            <Typography className={classes.choose}>Valitse HP-yritys</Typography>
+            <InputBase
+              placeholder="Etsi nimellä"
+            />
+            <IconButton type="submit">
+              <SearchIcon 
+              />
+            </IconButton>
+            </Grid>
+            <AgencyGrid />
+           
+          <Grid item md={12} sm={12}>
+            <Typography>
+              Kerro haettava positio / ilmoituksen otsikko
+            </Typography>
+            <TextField
+              className={classes.information}
+              type="text"
+              variant="outlined"
+              id="margin-none"
+              value={headline}
+              onChange={(e) => setHeadline(e.target.value)}
+            />
+            <Typography>Lisää väliotsikko</Typography>
+            <TextField
+              className={classes.information}
+              type="text"
+              variant="outlined"
+              id="margin-none"
+              value={subheading}
+              onChange={(e) => setSubheading(e.target.value)}
+            />
+            <Typography>Ehdota työntekijöitä</Typography>
+            <TextField
+              className={classes.information}
+              type="text"
+              variant="outlined"
+              id="margin-none"
+              value={subheading}
+              onChange={(e) => setSubheading(e.target.value)}
+            />
+            <Typography>Kerro tarkemmat tiedot</Typography>
+            <TextField
+              className={classes.information}
+              type="text"
+              multiline
+              rows={6}
+              variant="outlined"
+              id="margin-none"
+              value={detailedInfo}
+              onChange={(e) => setDetailedInfo(e.target.value)}
+            />
+          </Grid>
+        </Grid>
+        <Typography>Lisää lisätiedot</Typography>
+        <Grid item md={12}>
+          <TextField
+            className={classes.information}
+            type="text"
+            multiline
+            rows={6}
+            id="margin-none"
+            variant="outlined"
+            value={additionalDetails}
+            onChange={(e) => setAdditionalDetails(e.target.value)}
+          />
           <Button
-            className={classes.previewButton}
-            variant="contained"
-            color="default"
-            onClick={() => workInfo()}
-          >
-            Esikatsele
-          </Button>
-          <Button     
+            className={classes.button}
             type="submit"
             variant="contained"
             color="default"
             onClick={() => handleSubmit()}
           >
-            Lisää
+            Lähetä
           </Button>
-        </div>
+        </Grid>
       </form>
-      </Paper>
-      </Grid>
-      <Grid item md={6}>
-        <Paper>
-        <SituationPanel/>
-      </Paper>
-      </Grid>
-    </Grid>
     </Container>
   );
 };
 
-
 const useStyles = makeStyles((theme: Theme) => ({
-  header: {
-      textAlign: "center",
-    },  
-    textField: {
-    width: '90%'
-    },
-    text: {
-      marginTop: '3%'
-    },
-    buttons: {
-      display: "flex",
-      justifyContent: "flex-end",
-      marginBottom: "1%",
-      marginTop: '2%'
-    },
-    previewButton: {
-      marginRight: '3%'
-    },
-    textFieldSmall: {
-      marginLeft: "35%",
-      marginRight: "35%",
-      width: "30%",
-      display: "flex",
-      justifyContent: "center",
-    },
-    paper: {
-      marginRight: '5%'
-    },
-    aText:{
-      marginBottom: '2%',
-      marginLeft: '2%'
-    }
-  }));
+  root: {
+    display: "flex",
+    justifyItems: "center",
+  },
+  gridi: {
+    marginTop: "8%",
+  },
+  information: {
+    width: "50%",
+  },
+  button: {
+    marginTop: '9.3%',
+    marginLeft: '1%'
+  },
+  flexbox: {
+    display: 'flex',
+    justifyContent: 'start'
+  },
+  choose: {
+    marginTop: '1%',
+    marginRight: '2%'
+  },
+ 
+}));
 
 export default BusinessWorkRequest;
