@@ -15,7 +15,7 @@ import { fetchAgencies, fetchAllAgencies } from '../../actions/allUsersActions'
 import { IRootState } from '../../utils/store'
 import AgencyCard from './AgencyCard'
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab'
-import { Theme, useTheme } from '@material-ui/core/styles'
+import { Theme, useTheme, makeStyles } from '@material-ui/core/styles'
 
 /**
  * @component
@@ -30,6 +30,7 @@ const AgenciesList = () => {
   const [alignment, setAlignment] = React.useState('Kaikki')
   const theme = useTheme()
   const matches = useMediaQuery(theme.breakpoints.down('sm'))
+  const classes = useStyles();
 
   useEffect(() => {
     dispatch(fetchAllAgencies())
@@ -61,9 +62,9 @@ const AgenciesList = () => {
   if (matches) {
     return (
       <div>
-        <FormControl>
+        <FormControl >
           <InputLabel>
-            <Select
+            <Select 
               value={alignment}
               onChange={({ target }: any) => setAlignment(target.value)}
             >
@@ -163,5 +164,9 @@ const AgenciesList = () => {
     </div>
   )
 }
+
+const useStyles = makeStyles((theme: Theme) => ({
+  
+}));
 
 export default AgenciesList
