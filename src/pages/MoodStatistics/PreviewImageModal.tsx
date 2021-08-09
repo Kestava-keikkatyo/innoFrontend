@@ -40,7 +40,6 @@ const PreviewImageModal: React.FC<any> = ({
         <img
           alt="preview"
           src={imageSource ? imageSource : imagePlaceholder}
-          alt="workerStatsImage"
           style={{
             maxWidth: 600,
           }}
