@@ -39,6 +39,7 @@ const PreviewImageModal: React.FC<any> = ({
       <DialogContent style={{ paddingBottom: 24, textAlign: 'center' }}>
         <img
           src={imageSource ? imageSource : imagePlaceholder}
+          alt="workerStatsImage"
           style={{
             maxWidth: 600,
           }}

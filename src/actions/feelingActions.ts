@@ -1,9 +1,10 @@
+
 /**
  * @module actions/feeling
  * @desc Redux feeling actions
  */
 import feelingService from "../services/feelingService"
-import { ADD_FEELING, FETCH_FEELINGS, SET_CURRENT_FEELING, UPDATE_FEELING_DATASET } from "../types/state"
+import { ADD_FEELING, ADD_FEELINGS, FETCH_FEELINGS, SET_CURRENT_FEELING, UPDATE_FEELING_DATASET } from "../types/state"
 import { Feeling } from "../types/types"
 
 /**
@@ -13,7 +14,7 @@ import { Feeling } from "../types/types"
 export const fetchFeelings = () => async (dispatch: any) => {
   const data = await feelingService.getFeelings() // getFeelings returns array of all feelings
   console.log("feelings data", data)
-  dispatch({ type: FETCH_FEELINGS, data: data})
+  dispatch({ type: FETCH_FEELINGS, data: data })
 }
 
 /**
@@ -22,7 +23,15 @@ export const fetchFeelings = () => async (dispatch: any) => {
  *
  */
 export const updateFeeling = (data: any) => async (dispatch: any) => {
-  dispatch({ type: SET_CURRENT_FEELING, data})
+  dispatch({ type: SET_CURRENT_FEELING, data })
+}
+
+/**
+ * @function
+ * @desc Add feelings to the feelings list of agency feeling stats.
+ */
+export const addFeelings = (data: any) => async (dispatch: any) => {
+  dispatch({ type: ADD_FEELINGS, data: data })
 }
 
 /**
@@ -45,7 +54,7 @@ export const updateDataSet = () => async (dispatch: any) => {
 export const submitFeeling = (feeling: Feeling) => async (dispatch: any) => {
   const res = await feelingService.postFeeling(feeling)
   console.log('###Feeling: res: ', res)
-  if(res.status === 200)
+  if (res.status === 200)
     dispatch({ type: ADD_FEELING, data: res.data })
-    console.log('Feeling: res.data: ', res.data)
+  console.log('Feeling: res.data: ', res.data)
 }

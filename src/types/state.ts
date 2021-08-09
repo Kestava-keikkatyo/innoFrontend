@@ -317,6 +317,7 @@ export interface ProfileState {
 }
 
 export const ADD_FEELING = 'ADD_FEELING'
+export const ADD_FEELINGS = 'ADD_FEELINGS'
 export const FETCH_FEELINGS = 'FETCH_FEELINGS'
 export const CLEAR_CURRENT_FEELING = 'CLEAR_CURRENT_FEELING'
 export const SET_CURRENT_FEELING = 'SET_CURRENT_FEELING'
@@ -337,6 +338,11 @@ export interface AddFileAction {
 
 interface AddFeelingAction {
   type: typeof ADD_FEELING
+  data: any
+}
+
+interface AddFeelingsAction {
+  type: typeof ADD_FEELINGS
   data: any
 }
 
@@ -361,7 +367,7 @@ interface UpdateFeelingDatasetAction {
 }
 
 export type FeelingActionTypes = AddFeelingAction | FetchFeelingsAction | ClearCurrentFeelingAction |
-  SetCurrentFeelingAction | UpdateFeelingDatasetAction
+  SetCurrentFeelingAction | UpdateFeelingDatasetAction | AddFeelingsAction
 
 export type FileActionTypes = SetCurrentFilesAction | AddFileAction
 

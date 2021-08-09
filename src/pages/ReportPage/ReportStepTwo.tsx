@@ -1,5 +1,5 @@
 import 'date-fns';
-import React, { useEffect } from 'react';
+import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -15,12 +15,6 @@ const ReportStepTwo = () => {
   const { currentReport } = useSelector((state: any) => state.report);
   const [selectedDate, setSelectedDate] = React.useState(new Date()); // new Date() returns current date
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(
-      setReport({ ...currentReport, date: selectedDate.toLocaleString() })
-    );
-  }, [dispatch]);
 
   const handleDateChange = (date: any) => {
     console.log('Date', date);

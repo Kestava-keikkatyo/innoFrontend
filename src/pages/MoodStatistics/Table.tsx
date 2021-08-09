@@ -139,6 +139,7 @@ export default function CustomizedTables() {
                     <>
                       <img
                         src={feel.fileUrl ? feel.fileUrl : imagePlaceholder}
+                        alt="moodImage"
                         style={{
                           width: 50,
                           height: 50,

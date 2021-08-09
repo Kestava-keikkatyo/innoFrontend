@@ -18,6 +18,7 @@ import {
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 /**
+ * @deprecated ### NOT IN USE ###
  * @component
  * @desc
  * Displays Line and Pie  chart in statistics page.

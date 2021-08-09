@@ -10,7 +10,8 @@ import ContractsPage from './pages/ContractsPage';
 import PrivateRoute from './components/PrivateRoute';
 import ProcessPage from './pages/ProcessPage';
 import FormsPage from './pages/FormsPage';
-import WorkerStatistics from './pages/WorkerStatistics';
+import WorkerStatistics from './pages/MoodStatistics';
+import AgencyStatistics from './pages/MoodStatistics/AgencyStatistics';
 import { CssBaseline } from '@material-ui/core';
 import NewFormPage from './pages/FormsPage/NewFormPage';
 import EditFormPage from './pages/FormsPage/EditFormPage';
@@ -120,6 +121,9 @@ const App: React.FC = () => {
         </PrivateRoute>
         <PrivateRoute path="/report" roles={[roles.Worker]}>
           <ReportPage />
+        </PrivateRoute>
+        <PrivateRoute path="/mood-stats" roles={[roles.Agency]}>
+          <AgencyStatistics />
         </PrivateRoute>
         <PrivateRoute path="/reports" roles={[roles.Business, roles.Agency]}>
           <ReportsPage />
