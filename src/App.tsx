@@ -5,7 +5,6 @@ import SnackbarNotification from './components/SnackbarNotification';
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
-import WorkersPage from './pages/WorkersPage';
 import ContractsPage from './pages/ContractsPage';
 import PrivateRoute from './components/PrivateRoute';
 import ProcessPage from './pages/ProcessPage';
@@ -34,7 +33,6 @@ import BusinessContractPage from './pages/BusinessContractsPage';
 import BusinessContractPreviewPage from './pages/BusinessContractPreviewPage';
 import BusinessContractFill from './pages/BusinessContractPreviewPage/BusinessContractFill';
 import BusinessContractEdit from './pages/BusinessContractPreviewPage/BusinessContractEdit';
-import WorkerContractPage from './pages/WorkersPage';
 import ContractFormManagerPage from './pages/ContractsPage/ContractFormManagerPage';
 import ContractFormPreviewPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormPreviewPage';
 import ContractFormEditPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormEditPage';
@@ -44,7 +42,7 @@ import ProfilesPage from './pages/ProfilePage/ProfilesPage';
 import EditProfilePage from './pages/ProfilePage/EditProfilePage';
 import JobList from './pages/JobPage';
 import SettingsPage from './pages/SettingsPage';
-import WorkOverview from './pages/BusinessWorkOverview';
+import BusinessWorkRequest from './pages/BusinessWorkOverview';
 import WorkInfo from './pages/BusinessWorkOverview/WorkInfo';
 import WorkRequest from './pages/AgencyWorkRequest';
 import WorkerJobs from './pages/WorkerWorkOverview';
@@ -116,9 +114,6 @@ const App: React.FC = () => {
         <PrivateRoute path="/fiilismittari" roles={[roles.Worker]}>
           <WorkerStatistics />
         </PrivateRoute>
-        <PrivateRoute path="/sopimukset" roles={[roles.Worker]}>
-          <WorkerContractPage />
-        </PrivateRoute>
         <PrivateRoute path="/report" roles={[roles.Worker]}>
           <ReportPage />
         </PrivateRoute>
@@ -167,7 +162,7 @@ const App: React.FC = () => {
         >
           <BusinessContractEdit />
         </PrivateRoute>
-        <PrivateRoute path="/business-contracts" roles={[roles.Business]}>
+        <PrivateRoute path="/business-contracts" roles={[roles.Business, roles.Worker]}>
           <BusinessContractPage />
         </PrivateRoute>
         <PrivateRoute
@@ -201,7 +196,7 @@ const App: React.FC = () => {
           <FormPreviewPage />
         </PrivateRoute>
         <PrivateRoute path="/work-overview" roles={[roles.Business]}>
-          <WorkOverview />
+          <BusinessWorkRequest />
         </PrivateRoute>
         <PrivateRoute path="/work-request" roles={[roles.Agency]}>
           <WorkRequest />
@@ -214,9 +209,6 @@ const App: React.FC = () => {
         </PrivateRoute>
         <PrivateRoute path="/forms" roles={[roles.Business, roles.Agency]}>
           <FormsPage />
-        </PrivateRoute>
-        <PrivateRoute path="/workers" roles={[roles.Business, roles.Agency]}>
-          <WorkersPage />
         </PrivateRoute>
         <PrivateRoute path="/job-list" roles={[roles.Worker]}>
           <JobList />

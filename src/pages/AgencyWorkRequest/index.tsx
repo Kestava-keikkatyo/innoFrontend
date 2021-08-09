@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Container,
   Typography,
@@ -9,17 +9,17 @@ import {
   Tab,
   useTheme,
   Direction,
-} from '@material-ui/core';
-import GroupIcon from '@material-ui/icons/Group';
-import WorkIcon from '@material-ui/icons/Work';
-import BusinessIcon from '@material-ui/icons/Business';
+  Grid,
+  Button,
+} from "@material-ui/core";
+import GroupIcon from "@material-ui/icons/Group";
+import WorkIcon from "@material-ui/icons/Work";
+import BusinessIcon from "@material-ui/icons/Business";
 
-import {
-  Accordion,
-  AccordionDetails,
-} from '@material-ui/core';
+import { Accordion, AccordionDetails } from "@material-ui/core";
 
-import JobRequest from './JobRequest';
+import JobRequest from "./JobRequest";
+import WorkerTransferList from "./WorkerTransferList";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -46,13 +46,11 @@ const TabPanel = (props: TabPanelProps) => {
 const a11yProps = (index: any) => {
   return {
     id: `full-width-tab-${index}`,
-    'aria-controls': `full-width-tabpanel-${index}`,
+    "aria-controls": `full-width-tabpanel-${index}`,
   };
 };
 
-const ContractsPage = () => {
-
- 
+const ContractsPage: React.FC<any> = () => {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = useState(0);
@@ -60,7 +58,6 @@ const ContractsPage = () => {
     setValue(newValue);
   };
 
-  
   return (
     <Container maxWidth="lg" className={classes.root}>
       <AppBar position="static" color="default">
@@ -75,22 +72,22 @@ const ContractsPage = () => {
           <Tab
             onChange={handleChange}
             className={classes.tab}
-            label='Tarvittavat työkeikat'
+            label="Tarvittavat työkeikat"
             icon={<WorkIcon />}
             {...a11yProps(0)}
           />
           <Tab
             onChange={handleChange}
             className={classes.tab}
-            label='Aktiiviset työkeikat'
+            label="Aktiiviset työkeikat"
             icon={<BusinessIcon />}
             {...a11yProps(1)}
           />
           <Tab
             onChange={handleChange}
             className={classes.tab}
-            label='Päättyneet työkeikat'
-            icon={<GroupIcon/>}
+            label="Päättyneet työkeikat"
+            icon={<GroupIcon />}
             {...a11yProps(2)}
           />
         </Tabs>
@@ -98,18 +95,32 @@ const ContractsPage = () => {
 
       <TabPanel value={value} index={0} dir={theme.direction}>
         <Accordion className={classes.card} variant="outlined">
-          <AccordionDetails>
-          </AccordionDetails>
+          <AccordionDetails></AccordionDetails>
         </Accordion>
-        <JobRequest/>
+        <Container>
+          <Grid container>
+            <Grid item md={6} sm={12} xs={12}>
+              <JobRequest />
+            </Grid>
+            <Grid item md={6} sm={12} xs={12}>
+              <Typography variant="h6">Valitse Työntekijät</Typography>
+              <WorkerTransferList />
+            </Grid>
+            <Button
+              variant="outlined"
+              color="primary"
+              className={classes.button}
+            >
+              Lisää aktiivisiin työkeikkoihin
+            </Button>
+          </Grid>
+        </Container>
       </TabPanel>
       <TabPanel value={value} index={1} dir={theme.direction}>
-      <Typography style={{ paddingTop: '1rem' }} variant="h4">
-        </Typography>
+        <Typography style={{ paddingTop: "1rem" }} variant="h4"></Typography>
       </TabPanel>
 
-      <TabPanel value={value} index={2} dir={theme.direction}>
-      </TabPanel>
+      <TabPanel value={value} index={2} dir={theme.direction}></TabPanel>
     </Container>
   );
 };
@@ -122,9 +133,9 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 5,
   },
   accordion: {
-    width: '100%',
+    width: "100%",
     marginTop: 12,
-    border: '1px solid #E0E0E0',
+    border: "1px solid #E0E0E0",
     borderRadius: 5,
   },
   heading: {
@@ -133,15 +144,18 @@ const useStyles = makeStyles((theme) => ({
   },
   description: {
     fontSize: theme.typography.pxToRem(13),
-    color: '#6C6C6C',
+    color: "#6C6C6C",
   },
   root: {
     flexGrow: 1,
-    width: '100%',
+    width: "100%",
     backgroundColor: theme.palette.background.paper,
   },
   tab: {
-    minWidth: '33.33%',
-    maxWidth: '33.33%',
+    minWidth: "33.33%",
+    maxWidth: "33.33%",
+  },
+  button: {
+    marginTop: "5%",
   },
 }));

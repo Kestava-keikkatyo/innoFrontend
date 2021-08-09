@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 
-const RequestInfo = () => {
+const RequestInfo: React.FC<any> = () => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState<string | false>(false);
 

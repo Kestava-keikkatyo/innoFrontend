@@ -13,7 +13,6 @@ import CreateIcon from '@material-ui/icons/Create';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import { Container } from '@material-ui/core';
 import MoodStepOne from './MoodStepOne';
-import MoodStepTwo from './MoodStepTwo';
 import MoodStepThree from './MoodStepThree';
 import { setFiles } from '../../../actions/fileActions';
 import { useDispatch } from 'react-redux';

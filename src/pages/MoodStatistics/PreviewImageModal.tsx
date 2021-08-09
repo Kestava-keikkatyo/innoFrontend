@@ -38,6 +38,7 @@ const PreviewImageModal: React.FC<any> = ({
       </DialogTitle>
       <DialogContent style={{ paddingBottom: 24, textAlign: 'center' }}>
         <img
+          alt="preview"
           src={imageSource ? imageSource : imagePlaceholder}
           alt="workerStatsImage"
           style={{

@@ -11,7 +11,7 @@ import InsertDriveFile from '@material-ui/icons/InsertDriveFile';
 import MoodIcon from '@material-ui/icons/Mood';
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import { Contacts, Home, PeopleAlt, Security } from '@material-ui/icons';
+import { Contacts, Home, Security } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import { logout } from '../../actions/userActions';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,7 +20,6 @@ import { IRootState } from '../../utils/store';
 import logo from '../../assets/keikkakaveri_logo.png';
 
 import TranslateIcon from '@material-ui/icons/Translate';
-import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
@@ -133,17 +132,6 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
               <Divider />
             </>
           )}
-          {(role === roles.Agency || role === roles.Business) && (
-            <>
-              <ListItem button component={Link} to="/workers">
-                <ListItemIcon>
-                  <PeopleAlt />
-                </ListItemIcon>
-                <ListItemText primary="Workers" />
-              </ListItem>
-              <Divider />
-            </>
-          )}
           {role === roles.Business && (
             <>
               <ListItem button component={Link} to="/work-overview">
@@ -206,17 +194,6 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                   <ErrorOutlineIcon />
                 </ListItemIcon>
                 <ListItemText primary="Reports" />
-              </ListItem>
-              <Divider />
-            </>
-          )}
-          {role === roles.Worker && (
-            <>
-              <ListItem button component={Link} to="/sopimukset">
-                <ListItemIcon>
-                  <AssignmentTurnedInIcon />
-                </ListItemIcon>
-                <ListItemText primary="Contracts" />
               </ListItem>
               <Divider />
             </>
