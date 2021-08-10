@@ -2,7 +2,7 @@ import React from "react";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import { Button, List } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -24,10 +24,8 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const message = `Truncation should be conditionally applicable on this long line of text
- as this is a much longer line than what the container can support. `;
 
-const WorkInfo = () => {
+const WorkInfo:React.FC<any> = () => {
   const classes = useStyles();
 
   return (

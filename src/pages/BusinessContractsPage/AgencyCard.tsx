@@ -15,7 +15,7 @@ interface Agency {
   profile: string;
 }
 
-export const AgencyCards = (prop: { agency: Agency }) => {
+export const AgencyCards:React.FC<any> =  (prop: { agency: Agency }) => {
   const [expanded, setExpanded] = React.useState(false);
   const classes = useStyles();
 

@@ -14,18 +14,10 @@ import {
   useTheme,
   Theme,
   createStyles,
-  IconButton,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
 } from "@material-ui/core/";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import allUsersService from "../../services/allUsersService";
 import { useMediaQuery } from "@material-ui/core";
-import { AddIcon } from "@material-ui/data-grid";
 import WorkerTableView from "./WorkerTableView";
 
 function not(a: any[], b: any[]) {
@@ -43,7 +35,7 @@ function union(a: any[], b: any[]) {
 const WorkerTransferList: React.FC<any> = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const dispatch = useDispatch();
+  
   const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [checked, setChecked] = React.useState<any[]>([]);
@@ -56,7 +48,7 @@ const WorkerTransferList: React.FC<any> = () => {
 
   useEffect(() => {
     allUsersService.getAgencyWorkers().then((res: any) => setLeft(res.data));
-  }, [allUsersService]);
+  }, []);
 
   const handleToggle = (value: any) => () => {
     const currentIndex = checked.indexOf(value);

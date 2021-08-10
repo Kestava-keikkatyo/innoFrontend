@@ -6,8 +6,6 @@ import {
   RadioGroup,
 } from "@material-ui/core";
 import React from "react";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { useState } from "react";
 import WorkHistory from "./WorkHistory";
 import ActiveWorkTask from "./ActiveWorkTask";
 const WorkView: React.FC = () => {
@@ -16,8 +14,7 @@ const WorkView: React.FC = () => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue((event.target as HTMLInputElement).value);
   };
-  const [category,setCategory] = useState('active')
-  const classes = useStyles();
+  
   return (
     <div>
     <FormControl component="fieldset">
@@ -30,13 +27,7 @@ const WorkView: React.FC = () => {
   {value==='active' ? <ActiveWorkTask/> : <WorkHistory/>}
   </div>
   )
-
   }
 
-const useStyles = makeStyles((theme) => ({
-  headline: {
-    textAlign: "center",
-  },
-}));
 
 export default WorkView;

@@ -1,7 +1,7 @@
 import { Typography } from "@material-ui/core";
 import React from "react";
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-const WorkRequest = () => {
+import { makeStyles } from '@material-ui/core/styles';
+const WorkRequest:React.FC<any> = () => {
     const classes = useStyles();
   return (
     <div>
@@ -12,7 +12,7 @@ const WorkRequest = () => {
   );
 };
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     headline: {
      textAlign: 'center'
     }

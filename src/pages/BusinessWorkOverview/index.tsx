@@ -5,25 +5,21 @@ import {
   IconButton,
   InputBase,
   makeStyles,
-  Paper,
   Theme,
   Typography,
 } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import React from "react";
-import { useHistory } from "react-router-dom";
 import AgencyGrid from "./AgencyGrid";
 import { SearchIcon } from '@material-ui/data-grid'
 
-const BusinessWorkRequest = () => {
+const BusinessWorkRequest:React.FC<any> = () => {
   const classes = useStyles();
 
   const [headline, setHeadline] = React.useState("");
   const [subheading, setSubheading] = React.useState("");
   const [detailedInfo, setDetailedInfo] = React.useState("");
   const [additionalDetails, setAdditionalDetails] = React.useState("");
-  const [filter, setFilter] = React.useState('');
-  const history = useHistory();
 
   const handleSubmit = () => {
     alert("lisäsit työkeikan");

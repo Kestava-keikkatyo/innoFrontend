@@ -3,14 +3,14 @@ import {
   Grid,
   Typography,
   makeStyles,
-  useTheme,
 } from "@material-ui/core";
 import React from "react";
 import RequestInfo from "./AccordionDetails";
 
 const JobRequest: React.FC<any> = () => {
+ 
   const classes = useStyles();
-  const theme = useTheme();
+ 
   return (
     <Container>
       <Grid container>
@@ -44,7 +44,7 @@ const JobRequest: React.FC<any> = () => {
 
 export default JobRequest;
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   request: {
     marginBottom: "3%",
     width: '100%'
