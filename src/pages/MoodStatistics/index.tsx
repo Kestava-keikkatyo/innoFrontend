@@ -1,5 +1,6 @@
 import { Container } from '@material-ui/core';
-import Chart from './Chart';
+import LineChart from './LineChart';
+import PieChart from './PieChart';
 import Table from './Table';
 import WorkerStatisticsButtonRow from './WorkerStatisticsButtonRow';
 import WorkerStatisticsSummary from './WorkerStatisticsSummary';
@@ -10,8 +11,8 @@ import { fetchFeelings } from '../../actions/feelingActions';
 /**
  * @component
  * Renders Feel-o-meter page. Contains {@link Chart},
- * {@link NewFeelingEntryModal}, {@link Table}, {@link WorkerStatisticsButtonRow}, {@link WorkerStatistics}
- * and {@link Chart}
+ * {@link NewFeelingEntryModal}, {@link Table}, {@link WorkerStatisticsButtonRow}, {@link WorkerStatistics}, {@link LineChart}
+ * and {@link PieChart}
  */
 const WorkerStatistics = () => {
   const feelings = useSelector((state: any) => state.feeling?.feelings);
@@ -30,7 +31,8 @@ const WorkerStatistics = () => {
       <WorkerStatisticsSummary />
       {feelings && feelings?.length > 0 ? (
         <>
-          <Chart />
+          <LineChart />
+          <PieChart />
           <Table />
         </>
       ) : null}

@@ -160,6 +160,12 @@ const ReportForm = () => {
   const handleFinnish = async () => {
     setActiveStep(steps.length);
 
+    if (currentReport.date === '') {
+      dispatch(
+        setReport({ ...currentReport, date: new Date().toLocaleString() })
+      );
+    }
+
     if (currentFiles.files[0] !== null) {
       const res: any = await fileService.postFile(currentFiles.files[0]);
 

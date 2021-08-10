@@ -101,6 +101,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
     variant: 'popper',
     popupId: 'userProfilePopper',
   });
+  console.log('currentProfile', currentProfile);
 
   useEffect(() => {
     dispatch(fetchProfileById(data.profileId));
@@ -140,11 +141,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
   };
 
   return (
-    <AppBar
-      position="fixed"
-      elevation={0}
-      className={clsx(classes.appBar)}
-    >
+    <AppBar position="fixed" elevation={0} className={clsx(classes.appBar)}>
       <Toolbar className="toolbar" variant="dense">
         <IconButton
           color="inherit"

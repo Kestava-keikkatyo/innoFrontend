@@ -1,14 +1,8 @@
 import { Button, Grid, makeStyles, Typography } from '@material-ui/core';
 import React, { useEffect } from 'react';
-import {
-  // Bar,
-  Line,
-  Pie,
-  //defaults
-} from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateDataSet } from '../../actions/feelingActions';
-//import feelingService from '../../services/feelingService';
 
 import {
   Accordion,
@@ -20,15 +14,19 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 /**
  * @component
  * @desc
- * Displays Line and Pie  chart in statistics page.
+ * Displays Line chart in statistics page.
  * Line chart has a row of buttons on top of it.
  * @todo make buttons work.
  */
-const Chart = () => {
+const LineChart = () => {
   const { feelingDataSet, feelings } = useSelector(
     (state: any) => state.feeling
   );
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(updateDataSet());
+    getFeelingsValues();
+  }, [feelings, dispatch]);
 
   console.log('feelings', feelings);
   console.log('feelingDataSet:', feelingDataSet);
@@ -123,15 +121,10 @@ const Chart = () => {
     }
   };
 
-  useEffect(() => {
-    dispatch(updateDataSet());
-    getFeelingsValues();
-  }, [feelings, dispatch]);
-
   console.log('moodCounts', moodCounts);
 
   return (
-    <div className="worker-line-chart">
+    <div style={{ marginTop: 16 }}>
       <Grid item xs={12}>
         <Accordion className={classes.card} variant="outlined">
           <AccordionSummary
@@ -235,92 +228,6 @@ const Chart = () => {
           </AccordionDetails>
         </Accordion>
       </Grid>
-
-      <Grid item xs={12}>
-        <Accordion className={classes.card} variant="outlined">
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography gutterBottom variant="h5">
-              Overall Moods
-            </Typography>
-          </AccordionSummary>
-
-          <AccordionDetails>
-            <Pie
-              data={{
-                labels: [
-                  'Very Dissatisfied',
-                  'Dissatisfied',
-                  'Neutral',
-                  'Satisfied',
-                  'Very Satisfied',
-                ],
-                datasets: [
-                  {
-                    label: 'Mood Dataset',
-                    data: moodCounts,
-                    backgroundColor: backgroundColors,
-                    borderColor: borderColors,
-                    borderWidth: 1,
-                  },
-                ],
-              }}
-              width={500}
-              height={500}
-              options={{
-                responsive: true,
-                title: {
-                  display: true,
-                  text: 'Overall Moods',
-                  fontSize: 20,
-                },
-                legend: {
-                  display: true,
-                  position: 'bottom',
-                },
-                maintainAspectRatio: false,
-                layout: {
-                  padding: {
-                    top: 5,
-                    left: 15,
-                    right: 15,
-                    bottom: 15,
-                  },
-                },
-                scales: {
-                  yAxes: [
-                    {
-                      display: false, // hide yAxes
-                      ticks: {
-                        beginAtZero: true,
-                        display: false, // hide yAxes's ticks
-                      },
-                      gridLines: {
-                        display: false, // hide yAxes's grid lines
-                        //color: 'rgba(0, 0, 0, 0)',
-                      },
-                    },
-                  ],
-                  xAxes: [
-                    {
-                      display: false,
-                      ticks: {
-                        display: false,
-                      },
-                      gridLines: {
-                        display: false,
-                      },
-                    },
-                  ],
-                },
-              }}
-            />
-          </AccordionDetails>
-        </Accordion>
-      </Grid>
     </div>
   );
 };
@@ -352,4 +259,4 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default Chart;
+export default LineChart;
