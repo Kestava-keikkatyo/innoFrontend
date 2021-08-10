@@ -32,7 +32,7 @@ const AgenciesList = () => {
   const [input, setInput] = useState("")
   const { agencies } = useSelector((state: IRootState) => state.allUsers)
   //const [allAgencies, setAllAgencies] = useState(agencies)
- // const [filter, setFilter] = React.useState('');
+  const [filter, setFilter] = React.useState("")
   const [alignment, setAlignment] = React.useState("Kaikki")
   const theme = useTheme()
   const matches = useMediaQuery(theme.breakpoints.down("sm"))
@@ -54,6 +54,10 @@ const AgenciesList = () => {
       setAllAgencies(result)
     }
     */
+  }
+
+  const handleFilterchange = (event: any) => {
+    setFilter(event.target.value)
   }
 
   const handleMobileChange = (
@@ -120,23 +124,29 @@ const AgenciesList = () => {
         </ToggleButtonGroup>
       )}
       <Box className={classes.searchBar}>
-       
         <form onSubmit={handleSubmit}>
-            <InputBase
-              placeholder="search with name"
-              value={input}
-              onChange={({ target }) => setInput(target.value)}
-            />
-            <IconButton type="submit">
-              <SearchIcon />
-            </IconButton>
+          <InputBase
+            placeholder="search with name"
+            value={filter || ""}
+            onChange={(e: any) => setFilter(e.target.value)}
+          />
+          <IconButton type="submit">
+            <SearchIcon />
+          </IconButton>
         </form>
       </Box>
       {alignment === "Kaikki"
-        ? agencies.map((agency: any) => (
-            <AgencyCard key={agency._id} agency={agency} />
-          ))
+        ? agencies
+            .filter((agency: any) =>
+              agency.name.toLowerCase().includes(filter.toLowerCase())
+            )
+            .map((agency: any) => (
+              <AgencyCard key={agency._id} agency={agency} />
+            ))
         : agencies
+            .filter((agency: any) =>
+              agency.name.toLowerCase().includes(filter.toLowerCase())
+            )
             .filter((agency: any) => agency.category === alignment)
             .map((agency: any) => (
               <AgencyCard key={agency._id} agency={agency} />
@@ -148,13 +158,13 @@ const AgenciesList = () => {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     searchBar: {
-    display:"flex",
-    justifyContent:"flex-start",
-    alignItems:"center",
-    flexWrap:"wrap",
-    marginTop: '1%',
-    marginBottom: '1%',
-    marginLeft: '0.5%'
+      display: "flex",
+      justifyContent: "flex-start",
+      alignItems: "center",
+      flexWrap: "wrap",
+      marginTop: "1%",
+      marginBottom: "1%",
+      marginLeft: "0.5%"
     }
   })
 )
