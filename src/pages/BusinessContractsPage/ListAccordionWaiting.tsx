@@ -64,14 +64,14 @@ export const ListAccordionWaiting = (prop: { contracts: any[] }) => {
   // Preview business contract form
 
   const handleEsitteleLomaketta = (formId: any) => {
-    alert(formId);
+    //alert(formId);
     dispatch(getFormByIdAndSetBusinessContractForm(formId));
     history.push(`/business-contracts/business-contract-preview`);
   };
 
   // Print PDF
   const handleTulostaLomaketta = async (formId: any) => {
-    alert(formId);
+    //alert(formId);
     let form: any = await formServices.fetchFormById(formId);
     console.log('form ', form);
 
