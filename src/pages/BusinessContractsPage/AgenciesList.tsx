@@ -7,11 +7,13 @@ import {
   useMediaQuery,
   InputLabel,
   Select,
-  MenuItem
+  MenuItem,
+  Typography,
+  Grid
 } from "@material-ui/core"
 import { Search as SearchIcon } from "@material-ui/icons"
 import { useDispatch, useSelector } from "react-redux"
-import { fetchAgencies, fetchAllAgencies } from "../../actions/allUsersActions"
+import { fetchAllAgencies } from "../../actions/allUsersActions"
 import { IRootState } from "../../utils/store"
 import AgencyCard from "./AgencyCard"
 import { ToggleButton, ToggleButtonGroup } from "@material-ui/lab"
@@ -31,12 +33,11 @@ const AgenciesList = () => {
   const dispatch = useDispatch()
   const [input, setInput] = useState("")
   const { agencies } = useSelector((state: IRootState) => state.allUsers)
-  //const [allAgencies, setAllAgencies] = useState(agencies)
-  const [filter, setFilter] = React.useState("")
   const [alignment, setAlignment] = React.useState("Kaikki")
   const theme = useTheme()
   const matches = useMediaQuery(theme.breakpoints.down("sm"))
   const classes = useStyles()
+
   useEffect(() => {
     dispatch(fetchAllAgencies())
   }, [dispatch])
@@ -47,17 +48,6 @@ const AgenciesList = () => {
   ) => {
     event.preventDefault()
     setAlignment(value)
-    /*if (value === "Kaikki") {
-      setAllAgencies([])
-    } else {
-      const result = agencies.filter((agency: any) => agency.category === value)
-      setAllAgencies(result)
-    }
-    */
-  }
-
-  const handleFilterchange = (event: any) => {
-    setFilter(event.target.value)
   }
 
   const handleMobileChange = (
@@ -66,91 +56,109 @@ const AgenciesList = () => {
   ) => {
     event.preventDefault()
     setAlignment(event.target.value as string)
-    /*if (event.target.value === "Kaikki") {
-      setAllAgencies([])
-    } else {
-      const result = agencies.filter(
-        (agency: any) => agency.category === event.target.value
-      )
-      setAllAgencies(result)
+  }
+
+  const showAgencyCards = (type: string) => {
+    switch (type) {
+      case "Kaikki":
+        return (
+          agencies
+            .map((agency: any) => (
+              <AgencyCard key={agency._id} agency={agency} />
+            ))
+        )
+      case "Search":
+        const sResult = agencies.filter((agency: any) => agency.name === input)
+        if (sResult.length > 0) {
+          return (
+            sResult.map((agency: any) => (
+              <AgencyCard key={agency._id} agency={agency} />
+            ))
+          )
+        } else {
+          return (
+            <><Typography>No results</Typography></>
+          )
+        }
+      default:
+        const cResult = agencies.filter((agency: any) => agency.category === alignment)
+        if (cResult.length > 0) {
+          return (
+            cResult.map((agency: any) => (
+              <AgencyCard key={agency._id} agency={agency} />
+            ))
+          )
+        } else {
+          return (
+            <><Typography>No results</Typography></>
+          )
+        }
     }
-    */
   }
 
   //Iniates search query of Agencies
   const handleSubmit = (event: any) => {
     event.preventDefault()
-    if (input.length > 0) {
-      dispatch(fetchAgencies(input))
-      //setAllAgencies(agencies)
-    }
+    setAlignment("Search")
   }
   const fields = [
-    { field: "Kaikki", name: "Kaikki" },
-    {
-      field: "Rakennus, asennus ja huolto",
-      name: "Rakennus, asennus ja huolto"
-    },
-    { field: "IT- ja tietoliikenne", name: "IT- ja tietoliikenne" },
-    { field: "Koulutus- ja opetusala", name: "Koulutus- ja opetusala" },
-    {
-      field: "Lääketeollisuus- ja farmasia",
-      name: "Lääketeollisuus- ja farmasia"
-    },
-    { field: "Kiinteistö", name: "Kiinteistö" }
+    { field: "Kaikki" },
+    { field: "Rakennus, asennus ja huolto", },
+    { field: "IT- ja tietoliikenne" },
+    { field: "Koulutus- ja opetusala" },
+    { field: "Lääketeollisuus- ja farmasia" },
+    { field: "Kiinteistö" }
   ]
 
   return (
     <div>
-      {matches ? (
-        <FormControl>
-          <InputLabel>
-            <Select value={alignment} onChange={handleMobileChange}>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Box className={classes.searchBar}>
+            <form onSubmit={handleSubmit}>
+              <InputBase
+                placeholder="search with name"
+                value={input || ""}
+                onChange={(e: any) => setInput(e.target.value)}
+              />
+              <IconButton type="submit">
+                <SearchIcon />
+              </IconButton>
+            </form>
+          </Box>
+        </Grid>
+        <Grid item xs={12} md={2}>
+          {matches ? (
+            <FormControl style={{minWidth: "100%"}}>
+              <InputLabel>Category</InputLabel>
+              <Select autoWidth={true} value={alignment} onChange={handleMobileChange}>
+                {fields.map((f) => (
+                  <MenuItem key={f.field} value={f.field}>
+                    {f.field}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          ) : (
+            <ToggleButtonGroup 
+              classes={{root: classes.buttonGroupRoot }} 
+              className={classes.buttonGroup} 
+              value={alignment} exclusive 
+              onChange={handleChange} 
+              orientation="vertical">
               {fields.map((f) => (
-                <MenuItem key={f.field} value={f.name}>
-                  {f.name}
-                </MenuItem>
+                <ToggleButton key={f.field} value={f.field}>
+                  {f.field}
+                </ToggleButton>
               ))}
-            </Select>
-          </InputLabel>
-        </FormControl>
-      ) : (
-        <ToggleButtonGroup value={alignment} exclusive onChange={handleChange}>
-          {fields.map((f) => (
-            <ToggleButton key={f.field} value={f.name}>
-              {f.name}
-            </ToggleButton>
-          ))}
-        </ToggleButtonGroup>
-      )}
-      <Box className={classes.searchBar}>
-        <form onSubmit={handleSubmit}>
-          <InputBase
-            placeholder="search with name"
-            value={filter || ""}
-            onChange={(e: any) => setFilter(e.target.value)}
-          />
-          <IconButton type="submit">
-            <SearchIcon />
-          </IconButton>
-        </form>
-      </Box>
-      {alignment === "Kaikki"
-        ? agencies
-            .filter((agency: any) =>
-              agency.name.toLowerCase().includes(filter.toLowerCase())
-            )
-            .map((agency: any) => (
-              <AgencyCard key={agency._id} agency={agency} />
-            ))
-        : agencies
-            .filter((agency: any) =>
-              agency.name.toLowerCase().includes(filter.toLowerCase())
-            )
-            .filter((agency: any) => agency.category === alignment)
-            .map((agency: any) => (
-              <AgencyCard key={agency._id} agency={agency} />
-            ))}
+            </ToggleButtonGroup>
+          )}
+        </Grid>
+        <Grid item xs={12} md={10}>
+          {showAgencyCards(alignment)}
+        </Grid>
+      </Grid>
+      <div></div>
     </div>
   )
 }
@@ -165,6 +173,13 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: "1%",
       marginBottom: "1%",
       marginLeft: "0.5%"
+    },
+    buttonGroup: {
+      display: "inline-grid",
+      borderRadius: "0px"
+    },
+    buttonGroupRoot: {
+      borderRadius: "0px"
     }
   })
 )
