@@ -146,23 +146,26 @@ const App: React.FC = () => {
         </PrivateRoute>
         <PrivateRoute
           path="/business-contracts/business-contract-preview"
-          roles={[roles.Business, roles.Agency]}
+          roles={[roles.Business, roles.Agency, roles.Worker]}
         >
           <BusinessContractPreviewPage />
         </PrivateRoute>
         <PrivateRoute
           path="/business-contracts/business-contract-fill"
-          roles={[roles.Business, roles.Agency]}
+          roles={[roles.Business, roles.Agency, roles.Worker]}
         >
           <BusinessContractFill />
         </PrivateRoute>
         <PrivateRoute
           path="/business-contracts/business-contract-edit"
-          roles={[roles.Business, roles.Agency]}
+          roles={[roles.Business, roles.Agency, roles.Worker]}
         >
           <BusinessContractEdit />
         </PrivateRoute>
-        <PrivateRoute path="/business-contracts" roles={[roles.Business, roles.Worker]}>
+        <PrivateRoute
+          path="/business-contracts"
+          roles={[roles.Business, roles.Worker]}
+        >
           <BusinessContractPage />
         </PrivateRoute>
         <PrivateRoute
