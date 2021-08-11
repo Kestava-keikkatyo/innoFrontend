@@ -39,7 +39,10 @@ const LangMenuDropDown = () => {
     window.location.reload();
   };
 
-  const handleClose = () => {};
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <>
       <div className="drawer-top">
