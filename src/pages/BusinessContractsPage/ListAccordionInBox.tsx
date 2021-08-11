@@ -122,10 +122,10 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
       )
   }
 
-  const rejectContract = (contractId:any, formId:any) => {
+  const rejectContract = (agencyId:any, contractId:any, formId:any) => {
     dispatch(getFormById(formId))
     if (window.confirm(`Poistetaanko ${currentForm.title}`)) {
-      dispatch(refuseBusinessContractById(contractId));
+      dispatch(refuseBusinessContractById(agencyId,contractId));
     }
   }
 
@@ -199,7 +199,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
             <AccordionActions disableSpacing>
 
               <Tooltip title="Hylkää Sopimus" placement="top" arrow>
-                <IconButton onClick={() => rejectContract(contract._id, contract.pendingContracts.formId)}>
+                <IconButton onClick={() => rejectContract(contract.agency._id,contract._id, contract.pendingContracts.formId)}>
                   <CloseIcon />
                 </IconButton>
               </Tooltip>
