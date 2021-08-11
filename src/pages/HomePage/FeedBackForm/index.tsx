@@ -132,8 +132,8 @@ const FeedBackForm = () => {
       <Grid item xs={12} md={6} style={{ marginBottom: '5%' }}>
         <div className="report-container-v2-one" style={{ height: '100%' }}>
           <CardHeader
-            title="Anna palautetta"
-            subheader="Palaute lomake"
+            title="Palaute lomake"
+            subheader="Anna palautetta"
           ></CardHeader>
           <CardContent>
             <form noValidate autoComplete="off" hidden={loading}>

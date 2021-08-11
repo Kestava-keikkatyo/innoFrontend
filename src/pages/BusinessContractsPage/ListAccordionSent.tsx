@@ -51,9 +51,9 @@ export const ListAccordioSent = (prop: { contracts: any[] }) => {
 
   const dispatch = useDispatch()
 
-  const rejectContract = (contractId: any) => {
+  const rejectContract = (agencyId:any, contractId: any) => {
     if (window.confirm(`Poistetaanko sopimuspyyntö?`)) {
-      dispatch(refuseBusinessContractById(contractId));
+      dispatch(refuseBusinessContractById(agencyId,contractId));
     }
   }
 
@@ -97,7 +97,7 @@ export const ListAccordioSent = (prop: { contracts: any[] }) => {
             </AccordionDetails>
             <AccordionActions>
               <Tooltip title="Hylkää Sopimus" placement="top" arrow>
-                <IconButton onClick={() => rejectContract(contract._id)}>
+                <IconButton onClick={() => rejectContract(contract.agency._id,contract._id)}>
                   <CloseIcon />
                 </IconButton>
               </Tooltip>
