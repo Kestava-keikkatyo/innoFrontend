@@ -8,7 +8,7 @@ import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissa
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
 import moment from 'moment';
 import imagePlaceholder from '../../assets/image-placeholder.png';
-
+import { useTranslation } from 'react-i18next'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import {
@@ -42,7 +42,7 @@ import PreviewImageModal from './PreviewImageModal';
 export default function CustomizedTables() {
   const classes = useStyles();
   const feelings = useSelector((state: any) => state.feeling?.feelings);
-
+  const { t } = useTranslation()
   const [displayModal, setDisplayModal] = useState(false);
   const [imageSource, setImageSource] = useState('');
 
@@ -120,10 +120,10 @@ export default function CustomizedTables() {
         <Table aria-label="searched workers">
           <TableHead>
             <TableRow>
-              <StyledTableCell align="left">Mood</StyledTableCell>
-              <StyledTableCell align="left">Comment</StyledTableCell>
-              <StyledTableCell align="left">Date</StyledTableCell>
-              <StyledTableCell align="left">Image</StyledTableCell>
+              <StyledTableCell align="left">{t('mood')}</StyledTableCell>
+              <StyledTableCell align="left">{t('comment')}</StyledTableCell>
+              <StyledTableCell align="left">{t('date')}</StyledTableCell>
+              <StyledTableCell align="left">{t('image')}</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -168,7 +168,7 @@ export default function CustomizedTables() {
             id="panel1a-header"
           >
             <Typography gutterBottom variant="h5">
-              Mood Details
+              {t('mood_table')}
             </Typography>
           </AccordionSummary>
 

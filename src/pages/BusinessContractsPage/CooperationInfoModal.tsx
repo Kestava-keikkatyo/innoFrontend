@@ -36,13 +36,14 @@ const useStyles = makeStyles((theme) => ({
  * @param {Function} props.closeModal callback when closed.
  * @param {worker} props.workerData data of the added worker.
  */
-const CooperationInfoModal: React.FC<any> = ({ displayModal, closeModal, agency, contractId,forms }) => {
+const CooperationInfoModal: React.FC<any> = ({ displayModal, closeModal, agency, contractId }) => {
   const dispatch = useDispatch()
   const [form, setForm] = React.useState('');
   const classes = useStyles();
+  const agencyId = agency._id
 
   const addContract = () => {
-    dispatch(addBusinessContractWorkerBusiness(contractId));
+    dispatch(addBusinessContractWorkerBusiness(agencyId,contractId));
     dispatch(setAlert("Success: Invitation sent to worker", severity.Success))
     closeModal()
   }

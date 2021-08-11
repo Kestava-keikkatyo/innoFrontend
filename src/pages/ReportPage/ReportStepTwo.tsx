@@ -10,12 +10,12 @@ import {
 import { Typography } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { setReport } from '../../actions/reportActions';
-
+import { useTranslation } from 'react-i18next';
 const ReportStepTwo = () => {
   const { currentReport } = useSelector((state: any) => state.report);
   const [selectedDate, setSelectedDate] = React.useState(new Date()); // new Date() returns current date
   const dispatch = useDispatch();
-
+  const { t } = useTranslation()
   const handleDateChange = (date: any) => {
     console.log('Date', date);
     setSelectedDate(date);
@@ -27,7 +27,7 @@ const ReportStepTwo = () => {
   return (
     <Grid container style={{ marginTop: 16 }}>
       <Grid item xs={12}>
-        <Typography variant="h6">When did this happen?</Typography>
+        <Typography variant="h6">{t('happened')}</Typography>
       </Grid>
       <Grid item xs={12}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>

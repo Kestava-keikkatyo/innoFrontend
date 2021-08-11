@@ -25,12 +25,11 @@ const Notifications: React.FC<any> = (props: { notifications: any, handleCloseNo
     <Box className={classes.box}>
       <Typography className={classes.notificationsHeader}>Ilmoitukset</Typography>
       <Divider />
-      {sortedNotifications.length > 0 ? sortedNotifications.map((message: any) => {
-        console.log(message)
-        return (
-          <>
-            <List>
-              <ListItem>
+      <List>
+        {sortedNotifications.length > 0 ? sortedNotifications.map((message: any) => {
+          return (
+            <div key={message._id}>
+              <ListItem key={message._id}>
                 <ListItemText className={classes.listItemText}
                   primary={message.text}
                 />
@@ -40,20 +39,20 @@ const Notifications: React.FC<any> = (props: { notifications: any, handleCloseNo
                   </IconButton>
                 </ListItemSecondaryAction>
               </ListItem>
-            </List>
-            <Divider />
-          </>
-        )
-      }) : <><Typography className={classes.noNotifications}>Ei ilmoituksia...</Typography><Divider /></>}
+              <Divider />
+            </div>
+          )
+        }) : <><Typography className={classes.noNotifications}>Ei ilmoituksia...</Typography><Divider /></>}
+      </List>
       <MenuItem
         style={{ marginTop: 10 }}
         onClick={() => handleClearAllNotifications(sortedNotifications)}>
-        <ClearAllIcon style={{ fontSize: 24, marginRight: 10 }}/>
+        <ClearAllIcon style={{ fontSize: 24, marginRight: 10 }} />
         Empty all
       </MenuItem>
-      <MenuItem onClick={handleCloseAllNotifications} style={{marginBottom: 10}}>
-        <CloseIcon style={{ fontSize: 24, marginRight: 10 }}/>
-        Exit 
+      <MenuItem onClick={handleCloseAllNotifications} style={{ marginBottom: 10 }}>
+        <CloseIcon style={{ fontSize: 24, marginRight: 10 }} />
+        Exit
       </MenuItem>
     </Box>
   )

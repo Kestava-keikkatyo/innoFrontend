@@ -12,11 +12,12 @@ import { IRootState } from '../../utils/store';
 import { makeStyles } from '@material-ui/core/styles';
 import ProfileCard from './ProfileCard';
 import { SearchIcon } from '@material-ui/data-grid';
+import { useTranslation } from 'react-i18next';
 
 const ProfilesPage: React.FC<any> = () => {
   const dispatch = useDispatch();
   const [filter, setFilter] = useState('');
-
+  const { t } = useTranslation();
   const classes = useStyles();
 
   const { profiles } = useSelector((state: IRootState) => state.profile);
@@ -28,19 +29,19 @@ const ProfilesPage: React.FC<any> = () => {
   }, [dispatch]);
 
   if (!profiles) {
-    return <div>no results</div>;
+    return <div>{t('no_results')}</div>;
   } else
     return (
       <Container maxWidth="lg" className={classes.root}>
         <Box style={{ paddingTop: 10, paddingBottom: 10 }}>
           <Typography variant="h4" color="primary">
-            Profiles
+            {t('profiles')}
           </Typography>
         </Box>
         <Box className={classes.ContainerBox}>
           <Box display="flex" alignItems="center" className={classes.searchBox}>
             <InputBase
-              placeholder="Search by name..."
+              placeholder={t('search_by_name')}
               value={filter}
               onChange={(e: any) => setFilter(e.target.value)}
             />

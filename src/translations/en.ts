@@ -1,6 +1,8 @@
 export default {
   //home page
   information: 'Information',
+  how_do_you_feel_today: 'How do you feel today?',
+  home: 'Home',
   //login
   login_title: 'Log In',
   email_label: 'Email',
@@ -30,5 +32,9 @@ export default {
   log_in: 'Log in',
   sign_up: 'Sign up',
   main_page: 'Go to main page',
-  home: 'Home'
+  back: 'back',
+  next: 'next',
+  //Report step one
+  select_report: 'You can choose both Business and Agency or one of them as a report handler'
+  
 }

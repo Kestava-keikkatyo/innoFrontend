@@ -9,7 +9,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { updateDataSet } from '../../actions/feelingActions';
 //import feelingService from '../../services/feelingService';
-
+import { useTranslation } from 'react-i18next'
 import {
   Accordion,
   AccordionDetails,
@@ -26,6 +26,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
  * @todo make buttons work.
  */
 const Chart = () => {
+
+  const { t } = useTranslation()
+
   const { feelingDataSet, feelings } = useSelector(
     (state: any) => state.feeling
   );
@@ -141,7 +144,7 @@ const Chart = () => {
             id="panel1a-header"
           >
             <Typography gutterBottom variant="h5">
-              Mood History
+              {t('mood_history')}
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -245,7 +248,7 @@ const Chart = () => {
             id="panel1a-header"
           >
             <Typography gutterBottom variant="h5">
-              Overall Moods
+              {t('mood_overall')}
             </Typography>
           </AccordionSummary>
 
@@ -275,7 +278,7 @@ const Chart = () => {
                 responsive: true,
                 title: {
                   display: true,
-                  text: 'Overall Moods',
+                  text: t('mood_overall'),
                   fontSize: 20,
                 },
                 legend: {
