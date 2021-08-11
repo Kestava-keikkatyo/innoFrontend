@@ -33,9 +33,13 @@ const LangMenuDropDown = () => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const changeLanguage = (code: any) => {
     setAnchorEl(null);
+    localStorage.setItem('i18nextLng', code);
+    window.location.reload();
   };
+
+  const handleClose = () => {};
   return (
     <>
       <div className="drawer-top">
@@ -54,9 +58,9 @@ const LangMenuDropDown = () => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Suomi</MenuItem>
-        <MenuItem onClick={handleClose}>English</MenuItem>
-        <MenuItem onClick={handleClose}>Svenska</MenuItem>
+        <MenuItem onClick={() => changeLanguage('fi')}>Suomi</MenuItem>
+        <MenuItem onClick={() => changeLanguage('en')}>English</MenuItem>
+        <MenuItem onClick={() => changeLanguage('sv')}>Svenska</MenuItem>
       </Menu>
     </>
   );
