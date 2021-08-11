@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { useDispatch, useSelector } from 'react-redux';
 //import { updateDataSet } from '../../actions/feelingActions';
-
+import { useTranslation } from 'react-i18next'
 import {
   Accordion,
   AccordionDetails,
@@ -21,7 +21,7 @@ const PieChart = () => {
   );
   const dispatch = useDispatch();
   const classes = useStyles();
-
+  const { t } = useTranslation()
   const [moodCounts, setMoodCounts] = React.useState([0, 0, 0, 0, 0]);
 
   const backgroundColors = [
@@ -85,7 +85,7 @@ const PieChart = () => {
             id="panel1a-header"
           >
             <Typography gutterBottom variant="h5">
-              Overall Moods
+            {t('mood_overall')}
             </Typography>
           </AccordionSummary>
 
@@ -115,7 +115,7 @@ const PieChart = () => {
                 responsive: true,
                 title: {
                   display: true,
-                  text: 'Overall Moods',
+                  text: t('mood_overall'),
                   fontSize: 20,
                 },
                 legend: {

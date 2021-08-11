@@ -16,6 +16,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { initialReport } from '../../reducers/reportReducer';
 import { setReport, submitReport } from '../../actions/reportActions';
 import fileService from '../../services/fileService';
+import { useTranslation } from 'react-i18next'
+
+
 
 const ColorlibConnector = withStyles({
   alternativeLabel: {
@@ -118,9 +121,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const getSteps = () => {
-  return ['Report handler', 'When this happened', 'Fill in details'];
-};
+
 
 const getStepContent = (step: any) => {
   switch (step) {
@@ -138,8 +139,13 @@ const getStepContent = (step: any) => {
 const ReportForm = () => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
-  const steps = getSteps();
   const dispatch = useDispatch();
+  const { t } = useTranslation()
+  const getSteps = () => {
+    return [t('report_handler'), t('report_time'), t('report_details')];
+  };
+
+  const steps = getSteps();
 
   let { currentReport } = useSelector((state: any) => state.report);
   const { currentFiles } = useSelector((state: any) => state.files);
@@ -200,14 +206,14 @@ const ReportForm = () => {
         {activeStep === steps.length ? (
           <div>
             <Typography className={classes.instructions}>
-              All steps completed - you&apos;re finished
+              {t('steps_completed')}
             </Typography>
             <Button
               onClick={handleReset}
               variant="outlined"
               className={classes.button}
             >
-              Reset
+              {t('resetoi')}
             </Button>
           </div>
         ) : (
@@ -222,7 +228,7 @@ const ReportForm = () => {
                 onClick={handleBack}
                 className={classes.button}
               >
-                Back
+                {t('back')}
               </Button>
 
               {activeStep === steps.length - 1 ? (
@@ -231,7 +237,7 @@ const ReportForm = () => {
                   onClick={handleFinnish}
                   className={`${classes.button} ${classes.primary}`}
                 >
-                  Finish
+                  {t('finish')}
                 </Button>
               ) : (
                 <Button
@@ -239,7 +245,7 @@ const ReportForm = () => {
                   onClick={handleNext}
                   className={`${classes.button} ${classes.primary}`}
                 >
-                  Next
+                  {t('next')}
                 </Button>
               )}
             </div>

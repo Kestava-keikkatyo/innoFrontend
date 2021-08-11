@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateDataSet } from '../../actions/feelingActions';
+import { useTranslation } from 'react-i18next';
 
 import {
   Accordion,
@@ -27,7 +28,7 @@ const LineChart = () => {
     dispatch(updateDataSet());
     getFeelingsValues();
   }, [feelings, dispatch]);
-
+  const { t } = useTranslation()
   console.log('feelings', feelings);
   console.log('feelingDataSet:', feelingDataSet);
 
@@ -133,7 +134,7 @@ const LineChart = () => {
             id="panel1a-header"
           >
             <Typography gutterBottom variant="h5">
-              Mood History
+              {t('mood_history')}
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -177,7 +178,7 @@ const LineChart = () => {
                 labels: labels,
                 datasets: [
                   {
-                    label: 'Mood History',
+                    label: 'Mood history',
                     data: moodCounts,
                     backgroundColor: backgroundColors,
                     borderColor: borderColors,

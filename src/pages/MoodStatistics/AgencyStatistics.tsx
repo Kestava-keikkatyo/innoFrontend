@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { Box, Container } from '@material-ui/core';
-
+import { useTranslation } from 'react-i18next'
 import { useDispatch } from 'react-redux';
 import AgencyStatisticsSummary from './AgencyStatisticsSummary';
 import allUsersService from '../../services/allUsersService';
@@ -12,6 +12,8 @@ import PieChart from './PieChart';
 const AgencyStatistics = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
+
+  const { t } = useTranslation()
 
   useEffect(() => {
     allUsersService.getAgencyWorkers().then((res: any) => {
@@ -26,7 +28,7 @@ const AgencyStatistics = () => {
     <Container maxWidth="lg" className={classes.container}>
       <Box style={{ paddingTop: 10, paddingBottom: 10 }}>
         <Typography variant="h4" color="primary">
-          Mood Statistics
+          {t('mood_stats')}
         </Typography>
         <AgencyStatisticsSummary />
         <PieChart />

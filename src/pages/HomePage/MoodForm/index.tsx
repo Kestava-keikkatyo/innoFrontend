@@ -17,6 +17,7 @@ import MoodStepThree from './MoodStepThree';
 import { setFiles } from '../../../actions/fileActions';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router';
+import { useTranslation } from 'react-i18next';
 
 const ColorlibConnector = withStyles({
   alternativeLabel: {
@@ -121,15 +122,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const getSteps = () => {
-  return ['Your mood', 'Fill details', 'Send'];
-};
+
 
 const MoodForm: React.FC<any> = ({ handleSubmit }) => {
+  const { t } = useTranslation()
   const classes = useStyles();
+  const getSteps = () => {
+    return [t('your_mood'), t('fill_details'), t('submit')];
+  };
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
   const dispatch = useDispatch();
+
+  
 
   const getStepContent = (step: any) => {
     switch (step) {
@@ -141,6 +146,7 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
         return <></>;
     }
   };
+
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -172,7 +178,7 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
       }
     >
       <Typography variant="h4" align="center">
-        How do You feel today?
+        {t('how_do_you_feel_today')}
       </Typography>
       <Stepper
         alternativeLabel
@@ -206,7 +212,7 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
                 onClick={handleBack}
                 className={classes.button}
               >
-                Back
+                {t('back')}
               </Button>
 
               {activeStep === steps.length - 1 ? (
@@ -215,7 +221,7 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
                   onClick={handleFinnish}
                   className={`${classes.button} ${classes.primary}`}
                 >
-                  Finish
+                  {t('finish')}
                 </Button>
               ) : (
                 <Button
@@ -223,7 +229,7 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
                   onClick={handleNext}
                   className={`${classes.button} ${classes.primary}`}
                 >
-                  Next
+                  {t('next')}
                 </Button>
               )}
             </div>

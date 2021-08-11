@@ -1,4 +1,5 @@
 import React, { ReactNode, useEffect, useState } from "react"
+import { useTranslation } from 'react-i18next';
 import {
   Box,
   InputBase,
@@ -37,6 +38,7 @@ const AgenciesList = () => {
   const theme = useTheme()
   const matches = useMediaQuery(theme.breakpoints.down("sm"))
   const classes = useStyles()
+  const { t } = useTranslation()
 
   useEffect(() => {
     dispatch(fetchAllAgencies())
@@ -77,7 +79,7 @@ const AgenciesList = () => {
           )
         } else {
           return (
-            <><Typography>No results</Typography></>
+            <><Typography>{t('no_results')}</Typography></>
           )
         }
       default:
@@ -90,7 +92,7 @@ const AgenciesList = () => {
           )
         } else {
           return (
-            <><Typography>No results</Typography></>
+            <><Typography>{t('no_results')}</Typography></>
           )
         }
     }
@@ -117,7 +119,7 @@ const AgenciesList = () => {
           <Box className={classes.searchBar}>
             <form onSubmit={handleSubmit}>
               <InputBase
-                placeholder="search with name"
+                placeholder={t('search_by_name')}
                 value={input || ""}
                 onChange={(e: any) => setInput(e.target.value)}
               />

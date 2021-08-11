@@ -9,6 +9,7 @@ import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import LifelineCard from './LifelineCard'
 import lifeline from '../../assets/tietopankki/elinkaari.json'
+import { useTranslation } from 'react-i18next'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,6 +34,8 @@ function getSteps() {
 const getStepContent = (step: any) => <LifelineCard step={lifeline[step]} />
 
 const JobLifeline = () => {
+  
+  const { t } = useTranslation()
   const classes = useStyles()
   const [activeStep, setActiveStep] = React.useState(0)
   const steps = getSteps()
@@ -82,7 +85,7 @@ const JobLifeline = () => {
       </Stepper>
       {activeStep === steps.length && (
         <Paper square elevation={0} className={classes.resetContainer}>
-          <Typography>All steps completed - you&apos;re finished</Typography>
+          <Typography>{t('steps_completed')}</Typography>
           <Button onClick={handleReset} className={classes.button}>
             Reset
           </Button>

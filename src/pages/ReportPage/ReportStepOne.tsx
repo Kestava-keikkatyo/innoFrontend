@@ -13,7 +13,7 @@ import {
 } from '../../actions/allUsersActions';
 import { setReport } from '../../actions/reportActions';
 import SearchBox from '../../components/SearchBox';
-
+import { useTranslation } from 'react-i18next';
 export interface ReportStepOneProps {}
 
 const ReportStepOne: React.FC<ReportStepOneProps> = () => {
@@ -21,7 +21,7 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
     (state: any) => state.report.currentReport
   );
   const { agencies, businesses } = useSelector((state: any) => state.allUsers);
-
+  const { t } = useTranslation()
   const dispatch = useDispatch();
 
   const [filterAgencies, setFilterAgencies] = useState('');
@@ -55,17 +55,16 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
   return (
     <Grid container style={{ marginTop: 16 }}>
       <Grid item xs={12}>
-        <Typography variant="h6">Select report handler</Typography>
+        <Typography variant="h6"> {t('select_report_handler')}</Typography>
         <Typography variant="body2" style={{ color: '#757575' }}>
-          You can choose both Business and Agency or one of them as a report
-          handler
+         {t('select_report_helper_text')}
         </Typography>
       </Grid>
       {/* Business grid */}
       <Grid item xs={12} style={{ marginTop: 32 }}>
-        <Typography>Business</Typography>
+        <Typography>{t('business')}</Typography>
         <SearchBox
-          placeholder={'Search by name...'}
+          placeholder={t('search_by_name')}
           value={filterBusinesses}
           onChange={handleFilterBusinesses}
         />
@@ -95,9 +94,9 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
       </Grid>
       {/* Agency grid */}
       <Grid item xs={12} style={{ marginTop: 32 }}>
-        <Typography>Agency</Typography>
+        <Typography>{t('agency')}</Typography>
         <SearchBox
-          placeholder={'Search by name...'}
+          placeholder={t('search_by_name')}
           value={filterAgencies}
           onChange={handleFilterAgencies}
         />
