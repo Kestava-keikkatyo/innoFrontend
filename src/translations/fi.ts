@@ -158,8 +158,8 @@ export default {
  //FeedbackForm
  write_feedback_here: 'Kirjoita palautteesi tähän',
  feedback_sent: 'Palaute lähetetty',
- give_feedback: 'Anna palautettu',
- return_form: 'Lomake palautettu',
+ give_feedback: 'Anna palautetta',
+ return_form: 'Palautelomake',
  replied: 'Vastattu',
  wait: 'Odottaa',
  own_feedback: 'Omat palautteet',
