@@ -16,6 +16,7 @@ import {
   AccordionSummary,
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { useTranslation } from 'react-i18next';
 
 interface BusinessContractObject {
   _id: string;
@@ -44,6 +45,7 @@ const WorkerSendContracts = (props: {
   const { businessContract } = props;
   const classes = useStyles();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const contracts = businessContract;
 
   const acceptContractFromWorker = (
@@ -77,7 +79,7 @@ const WorkerSendContracts = (props: {
         align="center"
         className="text-secondary"
       >
-        No results
+        {t('no_results')}
       </Typography>
     );
   }
@@ -99,7 +101,7 @@ const WorkerSendContracts = (props: {
               id="panel1a-header"
             >
               <Typography gutterBottom variant="h5">
-                Työntekijältä saapuneet sopimukset
+                {t(' contracts_received_from_the_workers')}
               </Typography>
             </AccordionSummary>
 

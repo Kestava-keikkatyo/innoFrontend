@@ -25,7 +25,7 @@ import ContractsFromWorkers from './ContractsFromWorkers';
 import GroupIcon from '@material-ui/icons/Group';
 import WorkIcon from '@material-ui/icons/Work';
 import BusinessIcon from '@material-ui/icons/Business';
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
 
 import {
   Accordion,
@@ -88,7 +88,7 @@ const ContractsPage = () => {
   const [searchData, setSearchData] = useState(null);
   const [displayModal, setDisplayModal] = useState(false);
   const [value, setValue] = useState(0);
-const { t } = useTranslation()
+  const { t } = useTranslation();
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
   //to be switched to retrieve contracts
@@ -136,11 +136,11 @@ const { t } = useTranslation()
           />
           <Tab
             className={classes.tab}
-            label={matches ? '' : 'Käyttäjäyritykseltä saapuneet sopimukset'}
+            label={matches ? '' : 'Käyttäjäyrityksiltä saapuneet sopimukset'}
             icon={
               matches ? (
                 <Tooltip
-                  title="Käyttäjäyritykseltä saapuneet sopimukset"
+                  title="Käyttäjäyrityksiltä saapuneet sopimukset"
                   placement="top"
                   arrow
                 >
@@ -154,11 +154,11 @@ const { t } = useTranslation()
           />
           <Tab
             className={classes.tab}
-            label={matches ? '' : 'Työntekijältä saapuneet sopimukset'}
+            label={matches ? '' : 'Työntekijöiltä saapuneet sopimukset'}
             icon={
               matches ? (
                 <Tooltip
-                  title="Työntekijältä saapuneet sopimukset"
+                  title="Työntekijöiltä saapuneet sopimukset"
                   placement="top"
                   arrow
                 >
@@ -175,7 +175,7 @@ const { t } = useTranslation()
 
       <TabPanel value={value} index={0} dir={theme.direction}>
         <Typography style={{ paddingTop: '1rem' }} variant="h4">
-        {t('contracts')}
+          {t('contracts')}
         </Typography>
 
         <Accordion className={classes.card} variant="outlined">

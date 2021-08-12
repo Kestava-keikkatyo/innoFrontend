@@ -11,7 +11,7 @@ import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
 import ContractsReceivedTable from './ContractsReceivedTable';
 import ContractsSendTable from './ContractsSendTable';
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
 
 import {
   Accordion,
@@ -72,7 +72,7 @@ const ContractsTable = (props: {
   const classes = useStyles();
   const dispatch = useDispatch();
   const contracts = businessContract;
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   const acceptContractFromBusiness = (
     contractId: string,
@@ -90,7 +90,7 @@ const ContractsTable = (props: {
   ) => {
     dispatch(acceptBusinessContractFromWorker(contractId, userId, formId));
     dispatch(setAlert('Contract from Worker accepted.', severity.Info, 3));
-  }
+  };
 
   const declineContract = (contractId: string, userId: string) => {
     dispatch(declineBusinessContract(contractId, userId));
@@ -135,7 +135,7 @@ const ContractsTable = (props: {
                 id="panel1a-header"
               >
                 <Typography gutterBottom variant="h5">
-                {t("sent_contracts")}
+                  {t('sent_contracts')}
                 </Typography>
               </AccordionSummary>
 
@@ -147,7 +147,7 @@ const ContractsTable = (props: {
                     id="panel1a-header"
                   >
                     <Typography gutterBottom variant="h6">
-                      {t("business")}
+                      {t('businesses')}
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
@@ -168,7 +168,7 @@ const ContractsTable = (props: {
                     id="panel1a-header"
                   >
                     <Typography gutterBottom variant="h6">
-                    {t("worker")}
+                      {t('workers')}
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
@@ -190,7 +190,7 @@ const ContractsTable = (props: {
                 id="panel1a-header"
               >
                 <Typography gutterBottom variant="h5">
-                {t("done_contracts")}
+                  {t('done_contracts')}
                 </Typography>
               </AccordionSummary>
 
@@ -202,7 +202,7 @@ const ContractsTable = (props: {
                     id="panel1a-header"
                   >
                     <Typography gutterBottom variant="h6">
-                    {t("business")}
+                      {t('businesses')}
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
@@ -225,7 +225,7 @@ const ContractsTable = (props: {
                     id="panel1a-header"
                   >
                     <Typography gutterBottom variant="h6">
-                    {t("worker")}
+                      {t('workers')}
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
@@ -249,7 +249,7 @@ const ContractsTable = (props: {
                 id="panel1a-header"
               >
                 <Typography gutterBottom variant="h5">
-                {t("done_contracts")}
+                  {t('done_contracts')}
                 </Typography>
               </AccordionSummary>
 
@@ -261,7 +261,7 @@ const ContractsTable = (props: {
                     id="panel1a-header"
                   >
                     <Typography gutterBottom variant="h6">
-                    {t("business")}
+                      {t('businesses')}
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
@@ -282,7 +282,7 @@ const ContractsTable = (props: {
                     id="panel1a-header"
                   >
                     <Typography gutterBottom variant="h6">
-                    {t("worker")}
+                      {t('workers')}
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
