@@ -13,8 +13,8 @@ import { businessContractType } from '../types/types'
  * @desc Updates searchlist
  */
 export const updateSearchList = (input: string, searchType: businessContractType) => async (dispatch: any) => {
-    const res = await contractsService.searchUsers(input, searchType)
-    dispatch({ type: B_UPDATE, data: res.data })
+  const res = await contractsService.searchUsers(input, searchType)
+  dispatch({ type: B_UPDATE, data: res.data })
 }
 
 /**
@@ -34,13 +34,13 @@ export const fetchBusinessContracts = () => async (dispatch: any) => {
  * @param {string} userId - User Id
  * @param {string} id - BusinessContract Id.
  */
-export const refuseBusinessContractById = (userId:string,id: string) => async (dispatch: any) => {
+export const refuseBusinessContractById = (userId: string, id: string) => async (dispatch: any) => {
   //
   const res = await contractsService.refuseBusinessContractById(id)
   const r = await contractsService.fetchBusinessContracts()
- 
-  if(res.status === 200) {
-    await notificationsService.updateNotifications(userId,"Käyttäjä hylkäsi asiakassopimuksen kanssasi.")
+
+  if (res.status === 200) {
+    await notificationsService.updateNotifications(userId, "Käyttäjä hylkäsi asiakassopimuksen kanssasi.")
     dispatch({ type: B_DELETE, data: id })
     dispatch({ type: B_FETCH, data: r })
   }
@@ -53,11 +53,11 @@ export const refuseBusinessContractById = (userId:string,id: string) => async (d
  * @param {string} contractId BusinessContract id
  * @param {string} user Business or Worker id
  */
-export const addBusinessContract = (contractId:string, userId: string, form?:string) => async (dispatch: any) => {
-  const res = await contractsService.addBusinessContract(contractId,userId,form)
-  if(res && res.status === 200) {
-    await notificationsService.updateNotifications(userId,"HP-Yritys lähetti sinulle asiakassopimuspyynnön.")
-    dispatch({type: ADD_B_CONTRACT, data: res.data })
+export const addBusinessContract = (contractId: string, userId: string, form?: string) => async (dispatch: any) => {
+  const res = await contractsService.addBusinessContract(contractId, userId, form)
+  if (res && res.status === 200) {
+    await notificationsService.updateNotifications(userId, "HP-Yritys lähetti sinulle asiakassopimuspyynnön.")
+    dispatch({ type: ADD_B_CONTRACT, data: res.data })
   }
 }
 /**
@@ -65,14 +65,14 @@ export const addBusinessContract = (contractId:string, userId: string, form?:str
  * @desc Adds new business contract between logged in Worker/Business user and Agency user.
  * Must be Worker/Business to use this.
  * @param {string} agencyId Agency Id
- * @param {string} contractId BusinessContract id 
+ * @param {string} contractId BusinessContract id
  */
-export const addBusinessContractWorkerBusiness = (agencyId:string,contractId:string) => async (dispatch:any) => {
+export const addBusinessContractWorkerBusiness = (agencyId: string, contractId: string) => async (dispatch: any) => {
   const res = await contractsService.addBusinessContractWorkerBusiness(contractId)
   const r = await contractsService.fetchBusinessContracts()
   if (res && res.status === 200) {
-    await notificationsService.updateNotifications(agencyId,"Olet vastaanottanut asiakassopimus pyynnön käyttäjältä.")
-    dispatch({type: ADD_B_WB_CONTRACT, data: res.data})
+    await notificationsService.updateNotifications(agencyId, "Olet vastaanottanut asiakassopimus pyynnön käyttäjältä.")
+    dispatch({ type: ADD_B_WB_CONTRACT, data: res.data })
     dispatch({ type: B_FETCH, data: r })
   }
 }
@@ -82,14 +82,14 @@ export const addBusinessContractWorkerBusiness = (agencyId:string,contractId:str
  * Must be worker or business to use this.
  * @param {string} agencyId Agency Id
  * @param {string} contractId BusinessContract Id
- * @param {string} form Forms Id 
+ * @param {string} form Forms Id
  */
-export const sendBusinessContract = (agencyId:string,contractId:string, form?:string) => async (dispatch: any) => {
-  const res = await contractsService.sendBusinessContract(contractId,form)
+export const sendBusinessContract = (agencyId: string, contractId: string, form: string) => async (dispatch: any) => {
+  const res = await contractsService.sendBusinessContract(contractId, form)
   const r = await contractsService.fetchBusinessContracts()
-  if(res && res.status === 200) {
+  if (res && res.status === 200) {
     await notificationsService.updateNotifications(agencyId, "Asiakassopimus on lähetetty takaisin sinulle.")
-    dispatch({type: B_SEND, data: res.data })
+    dispatch({ type: B_SEND, data: res.data })
     dispatch({ type: B_FETCH, data: r })
   }
 }
@@ -99,14 +99,14 @@ export const sendBusinessContract = (agencyId:string,contractId:string, form?:st
  * Must be Agency to use this.
  * @param {string} contractId BusinessContract Id
  * @param {string} userId Users Id
- * @param {string} form Form Id 
+ * @param {string} form Form Id
  */
-export const acceptBusinessContractFromBusiness = (contractId:string, userId:string, form?:string) => async (dispatch: any) => {
-  const res = await contractsService.acceptBusinessContract(contractId,userId,form)
+export const acceptBusinessContractFromBusiness = (contractId: string, userId: string, form?: string) => async (dispatch: any) => {
+  const res = await contractsService.acceptBusinessContract(contractId, userId, form)
   await contractsService.postWorkContract(userId)
-  if(res && res.status === 200) {
-    await notificationsService.updateNotifications(userId,"HP-Yritys hyväksyi asiakassopimuksen kanssasi.")
-    dispatch({type: B_ACCEPT, data: res.data})
+  if (res && res.status === 200) {
+    await notificationsService.updateNotifications(userId, "HP-Yritys hyväksyi asiakassopimuksen kanssasi.")
+    dispatch({ type: B_ACCEPT, data: res.data })
   }
 }
 /**
@@ -115,13 +115,13 @@ export const acceptBusinessContractFromBusiness = (contractId:string, userId:str
  * Must be Agency to use this.
  * @param {string} contractId BusinessContract Id
  * @param {string} userId Users Id
- * @param {string} form Form Id 
+ * @param {string} form Form Id
  */
- export const acceptBusinessContractFromWorker = (contractId:string, userId:string, form?:string) => async (dispatch: any) => {
-  const res = await contractsService.acceptBusinessContract(contractId,userId,form)
-  if(res && res.status === 200) {
-    await notificationsService.updateNotifications(userId,"HP-Yritys hyväksyi asiakassopimuksen kanssasi.")
-    dispatch({type: B_ACCEPT, data: res.data})
+export const acceptBusinessContractFromWorker = (contractId: string, userId: string, form?: string) => async (dispatch: any) => {
+  const res = await contractsService.acceptBusinessContract(contractId, userId, form)
+  if (res && res.status === 200) {
+    await notificationsService.updateNotifications(userId, "HP-Yritys hyväksyi asiakassopimuksen kanssasi.")
+    dispatch({ type: B_ACCEPT, data: res.data })
   }
 }
 /**
@@ -132,7 +132,7 @@ export const acceptBusinessContractFromBusiness = (contractId:string, userId:str
  */
 export const activateBusinessContract = (id: string) => async (dispatch: any) => {
   const res = await contractsService.updateBusinessContract(id)
-  if( res.status === 200 )
+  if (res.status === 200)
     dispatch({ type: ACTIVATE_B_CONTRACT, data: id })
 }
 
@@ -143,25 +143,25 @@ export const activateBusinessContract = (id: string) => async (dispatch: any) =>
  * @param {string} contractId The id of BusinessContract.
  * @param {string} userId The id of Worker or Business.
  */
-export const declineBusinessContract = (contractId:string, userId:string) => async (dispatch:any) => {
-  const res = await contractsService.declineBusinessContract(contractId,userId)
+export const declineBusinessContract = (contractId: string, userId: string) => async (dispatch: any) => {
+  const res = await contractsService.declineBusinessContract(contractId, userId)
   if (res && res.status === 200) {
-    await notificationsService.updateNotifications(userId,"HP-Yritys hylkäsi asiakassopimuspyynnön kanssasi.")
-    dispatch({type: DECLINE_B_CONTRACT, data: res.data})
+    await notificationsService.updateNotifications(userId, "HP-Yritys hylkäsi asiakassopimuspyynnön kanssasi.")
+    dispatch({ type: DECLINE_B_CONTRACT, data: res.data })
   }
 }
 /**
  * @function
  * @description
  * Used by Agency to send back BusinessContract with Worker or Business.
- * @param {string} contractId The id of BusinessContract. 
+ * @param {string} contractId The id of BusinessContract.
  * @param {string} userId  The id of Worker or Business.
  * @param {string} formId The id of Form that was linked to Worker or Business.
  */
-export const sendBackBusinessContract = (contractId:string, userId:string, formId:string) => async (dispatch:any) => {
-  const res = await contractsService.sendBackBusinessContract(contractId,userId,formId)
+export const sendBackBusinessContract = (contractId: string, userId: string, formId: string) => async (dispatch: any) => {
+  const res = await contractsService.sendBackBusinessContract(contractId, userId, formId)
   if (res && res.status === 200) {
-    await notificationsService.updateNotifications(userId,"HP-Yritys lähetti asiakassopimuspyynnön takaisin.")
-    dispatch({type: SEND_BACK_B_CONTRACT , data: res.data})
+    await notificationsService.updateNotifications(userId, "HP-Yritys lähetti asiakassopimuspyynnön takaisin.")
+    dispatch({ type: SEND_BACK_B_CONTRACT, data: res.data })
   }
 }
