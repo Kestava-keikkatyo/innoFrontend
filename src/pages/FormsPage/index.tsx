@@ -20,7 +20,7 @@ import MyFormsTable from './MyFormsTable'
 import CommonFormsTable from './CommonFormsTable'
 import CommunityFormsTable from './CommunityFormsTable'
 
-
+import { useTranslation } from 'react-i18next'
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme: Theme) => ({
  */
 const FormsPage: React.FC = () => {
 
-
+  const { t } = useTranslation()
   const classes = useStyles();
   const [value, setValue] = React.useState('one');
 
@@ -113,9 +113,9 @@ const FormsPage: React.FC = () => {
       <div className={classes.root}>
         <AppBar color='default'  position="static">
           <Tabs value={value} onChange={handleChange} aria-label="wrapped label tabs example">
-            <Tab value="one" label="My Forms" wrapped {...a11yProps('one')} />
-            <Tab value="two" label="Common" {...a11yProps('two')} />
-            <Tab value="three" label="Community" {...a11yProps('three')} />
+            <Tab value="one" label={t("my_forms")} wrapped {...a11yProps('one')} />
+            <Tab value="two" label={t("common")} {...a11yProps('two')} />
+            <Tab value="three" label={t("community")} {...a11yProps('three')} />
           </Tabs>
         </AppBar>
         <TabPanel value={value} index="one">

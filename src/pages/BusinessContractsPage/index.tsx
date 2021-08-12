@@ -18,6 +18,7 @@ import { fetchBusinessContracts } from "../../actions/businessContractActions";
 import { IRootState } from "../../utils/store";
 import AgenciesList from "./AgenciesList";
 import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
+import { useTranslation } from 'react-i18next'
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -68,6 +69,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 const BusinessContractsPage = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+
+  const { t } = useTranslation()
 
   const theme = useTheme()
   const matches = useMediaQuery(theme.breakpoints.down('md'))
@@ -121,14 +124,14 @@ const BusinessContractsPage = () => {
             aria-label="scrollable force tabs example"
           >
             <Tab className={classes.tab}
-              label={matches ? " " : "Selaa HP-yrityksiä"}
+              label={matches ? " " : t("search_agencies")}
               icon={
                 matches ? <Tooltip title="Selaa HP-yrityksiä" placement="top" arrow><BusinessIcon/></Tooltip> : <BusinessIcon/>
               }
               {...a11yProps(0)}
             />
             <Tab className={classes.tab}
-              label={matches ? " " : "Lähetetyt sopimukset"}
+              label={matches ? " " : t("sent_contracts")}
               icon={
               <Badge badgeContent={sent.length} color="secondary">
                 {matches ? <Tooltip title="Lähetetyt sopimukset" placement="top" arrow><SendIcon/></Tooltip> : <SendIcon/>}
@@ -136,7 +139,7 @@ const BusinessContractsPage = () => {
               {...a11yProps(1)}
             />
             <Tab className={classes.tab}
-              label={matches ? " " : "Saapuneet sopimukset"}
+              label={matches ? " " : t("received_contracts")}
               icon={
               <Badge badgeContent={pending.length} color="secondary">
                 {matches ? <Tooltip title="Saapuneet sopimukset" placement="top" arrow><NotificationsActiveIcon/></Tooltip> : <NotificationsActiveIcon/>}
@@ -144,7 +147,7 @@ const BusinessContractsPage = () => {
               {...a11yProps(2)}
             />
             <Tab className={classes.tab}
-              label={matches ? " " : "Odottavat sopimukset"}
+              label={matches ? " " : t("waiting_contracts")}
               icon={
               <Badge badgeContent={waiting.length} color="secondary">
                 {matches ? <Tooltip title="Odottavat sopimukset" placement="top" arrow><HourglassEmptyIcon/></Tooltip> : <HourglassEmptyIcon/>}
@@ -152,7 +155,7 @@ const BusinessContractsPage = () => {
               {...a11yProps(3)}
             />
             <Tab className={classes.tab}
-              label={matches ? " " : "Valmiit sopimukset"}
+              label={matches ? " " : t("done_contracts")}
               icon={
               <Badge badgeContent={ready.length} color="secondary">
                 {matches ? <Tooltip title="Valmiit sopimukset" placement="top" arrow><AllInboxIcon/></Tooltip> : <AllInboxIcon/>}

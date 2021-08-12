@@ -9,6 +9,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setProfile } from '../../../actions/profileActions';
 import FileUploader from '../../../components/FileUploader';
+import { useTranslation } from 'react-i18next'
 /**
  * @component
  * @desc Renders profile picture and user name to be edited
@@ -18,7 +19,7 @@ import FileUploader from '../../../components/FileUploader';
 const EditProfilePictureAndName: React.FC<any> = ({ profile }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
-
+  const { t } = useTranslation()
   return (
     <Grid
       container
@@ -35,7 +36,7 @@ const EditProfilePictureAndName: React.FC<any> = ({ profile }) => {
           alt="profilePicture"
         />
         <div className={classes.picture}>
-          <FileUploader name="Change picture" accept="image/*" />
+          <FileUploader name={t("change_picture")} accept="image/*" />
         </div>
       </Grid>
       <Grid item xs={12} md={10}>

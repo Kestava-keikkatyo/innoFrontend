@@ -9,7 +9,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import fileService from '../../services/fileService';
 import { clearAlert, setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
-
+import { useTranslation } from 'react-i18next'
 import EditProfileHeader from './EditProfileComponents/EditProfileHeader';
 import EditCoverPhoto from './EditProfileComponents/EditCoverPhoto';
 import EditProfilePictureAndName from './EditProfileComponents/EditProfilePictureAndName';
@@ -23,6 +23,9 @@ import { setFiles } from '../../actions/fileActions';
  * @desc Edit profile page
  */
 export const EditProfilePage: React.FC<any> = () => {
+
+  const { t } = useTranslation()
+
   const currentProfile: any = useSelector(
     (state: IRootState) => state.profile.currentProfile
   );
@@ -123,7 +126,7 @@ export const EditProfilePage: React.FC<any> = () => {
             onClick={submitProfile}
             style={{ minWidth: 200 }}
           >
-            {savingChanges ? <CircularProgress size={24} /> : 'Save changes'}
+            {savingChanges ? <CircularProgress size={24} /> : t('save_changes')}
           </Button>
         </Grid>
       </form>

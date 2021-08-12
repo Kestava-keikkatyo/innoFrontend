@@ -10,7 +10,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Formik, Form } from 'formik';
 import { FormikTextField } from '../../components/FormField';
 import { Button, Grid } from '@material-ui/core';
-
+import { useTranslation } from 'react-i18next'
 /**
  * @component
  * @desc Component for changing worker/agency/business password.
@@ -19,6 +19,8 @@ const ChangePassword: React.FC<any> = () => {
   const { data } = useSelector((state: any) => state.user);
   const classes = useStyles();
   const dispatch = useDispatch();
+
+  const { t } = useTranslation()
 
   useEffect(() => {
     dispatch(me(data.role));
@@ -35,12 +37,11 @@ const ChangePassword: React.FC<any> = () => {
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography variant="h5">Change password</Typography>
+        <Typography variant="h5">{t('change_password')}</Typography>
       </AccordionSummary>
       <AccordionDetails>
         <Typography>
-          Enter your current password, the new password and then confirm the new
-          password
+          {t('password_instructions')}
         </Typography>
       </AccordionDetails>
       <AccordionDetails style={{ width: '100%' }}>
@@ -80,7 +81,7 @@ const ChangePassword: React.FC<any> = () => {
               <Grid container>
                 <Grid item xs={12}>
                   <FormikTextField
-                    label="Current password"
+                    label={t("current_password")}
                     name="currentPassword"
                     type="password"
                     placeholder="jarmo123"
@@ -89,7 +90,7 @@ const ChangePassword: React.FC<any> = () => {
                 </Grid>
                 <Grid item xs={12} sm={6} style={{ padding: '0 5px' }}>
                   <FormikTextField
-                    label="New password"
+                    label={t("new_password")}
                     name="newPassword"
                     type="password"
                     placeholder="jarmo123"
@@ -98,7 +99,7 @@ const ChangePassword: React.FC<any> = () => {
                 </Grid>
                 <Grid item xs={12} sm={6} style={{ padding: '0 5px' }}>
                   <FormikTextField
-                    label="Confirm new password"
+                    label={t("confirm_password")}
                     name="confirmNewPassword"
                     type="password"
                     placeholder="jarmo123"
@@ -118,7 +119,7 @@ const ChangePassword: React.FC<any> = () => {
                     color="primary"
                     style={{ width: '100%' }}
                   >
-                    Update password
+                    {t('update_password')}
                   </Button>
                 </Grid>
               </Grid>

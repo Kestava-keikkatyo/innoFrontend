@@ -3,7 +3,7 @@ import React from 'react';
 import EditIcon from '@material-ui/icons/Edit';
 import { Grid } from '@material-ui/core';
 import { Link, useHistory } from 'react-router-dom';
-
+import { useTranslation } from 'react-i18next'
 /**
  * @component
  * @desc Renders profile page header.
@@ -12,7 +12,7 @@ import { Link, useHistory } from 'react-router-dom';
 const ProfileHeader: React.FC<any> = () => {
   const classes = useStyles();
   const history = useHistory();
-
+  const { t } = useTranslation()
   return (
     <Grid
       container
@@ -28,7 +28,7 @@ const ProfileHeader: React.FC<any> = () => {
           onClick={() => history.push('/home')}
         >
           <Link style={{ textDecoration: 'none', color: '#eb5a00' }} to="/home">
-            Return
+          {t("return")}
           </Link>
         </Button>
       </Grid>
@@ -45,7 +45,7 @@ const ProfileHeader: React.FC<any> = () => {
               style={{ textDecoration: 'none', color: '#fff' }}
               to="/profile/edit-profile"
             >
-              Edit profile
+              {t("edit_profile")}
             </Link>
           </Button>
         </Grid>

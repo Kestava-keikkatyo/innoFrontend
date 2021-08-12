@@ -19,6 +19,7 @@ import { useSelector } from "react-redux";
 import allUsersService from "../../services/allUsersService";
 import { useMediaQuery } from "@material-ui/core";
 import WorkerTableView from "./WorkerTableView";
+import { useTranslation } from 'react-i18next'
 
 function not(a: any[], b: any[]) {
   return a.filter((value) => b.indexOf(value) === -1);
@@ -37,6 +38,8 @@ const WorkerTransferList: React.FC<any> = () => {
   const theme = useTheme();
   
   const matches = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const { t } = useTranslation()
 
   const [checked, setChecked] = React.useState<any[]>([]);
   const { agencyWorkers } = useSelector((state: any) => state.allUsers);
@@ -144,7 +147,7 @@ const WorkerTransferList: React.FC<any> = () => {
   )
   return (
     <Grid container spacing={2} alignItems="center" className={classes.root}>
-      <Grid item>{customList("Choices", left)}</Grid>
+      <Grid item>{customList(t("choices"), left)}</Grid>
       <Grid item>
         <Grid container direction="column" alignItems="center">
           <Button
@@ -169,7 +172,7 @@ const WorkerTransferList: React.FC<any> = () => {
           </Button>
         </Grid>
       </Grid>
-      <Grid item>{customList("Chosen", right)}</Grid>
+      <Grid item>{customList(t("chosen"), right)}</Grid>
     </Grid>
     
   );

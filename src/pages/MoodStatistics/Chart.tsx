@@ -188,7 +188,7 @@ const Chart = () => {
                 labels: labels,
                 datasets: [
                   {
-                    label: 'Mood History',
+                    label: t('mood_history'),
                     data: moodCounts,
                     backgroundColor: backgroundColors,
                     borderColor: borderColors,
@@ -202,7 +202,7 @@ const Chart = () => {
                 responsive: true,
                 title: {
                   display: true,
-                  text: 'Mood stats',
+                  text: t('mood_overall'),
                   fontSize: 20,
                 },
                 legend: {

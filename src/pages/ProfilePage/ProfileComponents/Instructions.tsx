@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, makeStyles, Typography, List } from '@material-ui/core';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import { useTranslation } from 'react-i18next'
 /**
  * @component
  * @desc Renders the instructions of user profile.
@@ -9,11 +10,11 @@ import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
  */
 const Instructions: React.FC<any> = ({ profile }) => {
   const classes = useStyles();
-
+  const { t } = useTranslation()
   return (
     <Grid container style={{ marginBottom: 75 }}>
       <Grid item xs={12}>
-        <Typography variant="h5">Instructions</Typography>
+        <Typography variant="h5">{t('instructions')}</Typography>
       </Grid>
       <Grid item xs={12} style={{ marginTop: 24 }}>
         <List>

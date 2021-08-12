@@ -11,6 +11,7 @@ import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
 import ContractsReceivedTable from './ContractsReceivedTable';
 import ContractsSendTable from './ContractsSendTable';
+import { useTranslation } from 'react-i18next'
 
 import {
   Accordion,
@@ -71,6 +72,7 @@ const ContractsTable = (props: {
   const classes = useStyles();
   const dispatch = useDispatch();
   const contracts = businessContract;
+  const { t } = useTranslation()
 
   const acceptContractFromBusiness = (
     contractId: string,
@@ -133,7 +135,7 @@ const ContractsTable = (props: {
                 id="panel1a-header"
               >
                 <Typography gutterBottom variant="h5">
-                  Lähetetyt sopimukset
+                {t("sent_contracts")}
                 </Typography>
               </AccordionSummary>
 
@@ -145,7 +147,7 @@ const ContractsTable = (props: {
                     id="panel1a-header"
                   >
                     <Typography gutterBottom variant="h6">
-                      Businesses
+                      {t("business")}
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
@@ -166,7 +168,7 @@ const ContractsTable = (props: {
                     id="panel1a-header"
                   >
                     <Typography gutterBottom variant="h6">
-                      Workers
+                    {t("worker")}
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
@@ -188,7 +190,7 @@ const ContractsTable = (props: {
                 id="panel1a-header"
               >
                 <Typography gutterBottom variant="h5">
-                  Saapuneet sopimukset
+                {t("done_contracts")}
                 </Typography>
               </AccordionSummary>
 
@@ -200,7 +202,7 @@ const ContractsTable = (props: {
                     id="panel1a-header"
                   >
                     <Typography gutterBottom variant="h6">
-                      Businesses
+                    {t("business")}
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
@@ -223,7 +225,7 @@ const ContractsTable = (props: {
                     id="panel1a-header"
                   >
                     <Typography gutterBottom variant="h6">
-                      Workers
+                    {t("worker")}
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
@@ -247,7 +249,7 @@ const ContractsTable = (props: {
                 id="panel1a-header"
               >
                 <Typography gutterBottom variant="h5">
-                  Valmiit sopimukset
+                {t("done_contracts")}
                 </Typography>
               </AccordionSummary>
 
@@ -259,7 +261,7 @@ const ContractsTable = (props: {
                     id="panel1a-header"
                   >
                     <Typography gutterBottom variant="h6">
-                      Businesses
+                    {t("business")}
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
@@ -280,7 +282,7 @@ const ContractsTable = (props: {
                     id="panel1a-header"
                   >
                     <Typography gutterBottom variant="h6">
-                      Workers
+                    {t("worker")}
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>

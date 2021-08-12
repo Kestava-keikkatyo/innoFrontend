@@ -42,6 +42,7 @@ import pdfFonts from 'pdfmake/build/vfs_fonts.js';
 import htmlToPdfmake from 'html-to-pdfmake';
 import Form from './Form';
 
+import { useTranslation } from 'react-i18next'
 import ReactDOMServer from 'react-dom/server';
 
 import { fetchFormList } from '../../actions/formListActions';
@@ -65,6 +66,8 @@ const CommonFormsTable: React.FC<any> = () => {
   const matches = useMediaQuery(theme.breakpoints.down('sm')); // sm: korkeintaan 960px
 
   const dispatch = useDispatch();
+
+  const { t } = useTranslation()
 
   const history = useHistory();
 
@@ -141,11 +144,11 @@ const CommonFormsTable: React.FC<any> = () => {
         <Table aria-label="searched workers">
           <TableHead>
             <TableRow>
-              <StyledTableCell align="left">Title</StyledTableCell>
-              <StyledTableCell align="left">Description</StyledTableCell>
-              <StyledTableCell align="left">Preview</StyledTableCell>
-              <StyledTableCell align="left">Copy to my Forms</StyledTableCell>
-              <StyledTableCell align="left">Download</StyledTableCell>
+              <StyledTableCell align="left">{t("title")}</StyledTableCell>
+              <StyledTableCell align="left">{t("description")}</StyledTableCell>
+              <StyledTableCell align="left">{t("preview")}</StyledTableCell>
+              <StyledTableCell align="left">{t("copy_to_my_forms")}</StyledTableCell>
+              <StyledTableCell align="left">{t("download")}</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>

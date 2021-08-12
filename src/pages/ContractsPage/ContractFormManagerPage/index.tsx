@@ -7,7 +7,7 @@ import { Button, Grid, Typography } from '@material-ui/core'
 
 import { makeStyles} from '@material-ui/core/styles';
 
-
+import { useTranslation } from 'react-i18next'
 
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -62,6 +62,8 @@ const ContractFormManagerPage: React.FC = () => {
   }, [formId, dispatch])
   */
 
+  const { t } = useTranslation()
+
   console.log("contract form manager: contract form: ", businessContractForm)
 
   const handlePreview = () => {
@@ -108,7 +110,7 @@ const ContractFormManagerPage: React.FC = () => {
             <Grid item xs={6} >
             <Grid container direction="row-reverse">
                 <Button>
-                <Link to="/contracts">Back</Link>
+                <Link to="/contracts">{t("back")}</Link>
                 </Button>
             </Grid>
             </Grid>
@@ -127,9 +129,9 @@ const ContractFormManagerPage: React.FC = () => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small" color="primary" onClick={handlePreview}>Preview</Button>
-                <Button size="small" color="primary"    onClick={handleEdit}>Edit</Button>
-                <Button size="small" color="primary" onClick={handleDownload}>Download PDF</Button>
+                <Button size="small" color="primary" onClick={handlePreview}>{t("preview")}</Button>
+                <Button size="small" color="primary"    onClick={handleEdit}>{t("edit")}</Button>
+                <Button size="small" color="primary" onClick={handleDownload}>{t("download_pdf")}</Button>
             </CardActions>
 
         </Card>

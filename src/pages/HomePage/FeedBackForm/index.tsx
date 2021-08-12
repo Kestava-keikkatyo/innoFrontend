@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next'
 
 import {
   Grid,
@@ -85,6 +86,8 @@ const FeedBackForm = () => {
 
   const [currentPage, setCurrentPage] = React.useState(1);
 
+  const { t } = useTranslation()
+
   const handleClickLoading = () => {
     if (message.length > 0 && heading.length > 0) {
       setLoading((prevLoading) => !prevLoading);
@@ -132,15 +135,15 @@ const FeedBackForm = () => {
       <Grid item xs={12} md={6} style={{ marginBottom: '5%' }}>
         <div className="report-container-v2-one" style={{ height: '100%' }}>
           <CardHeader
-            title="Palaute lomake"
-            subheader="Anna palautetta"
+            title={t("return_form")}
+            subheader={t("give_feedback")}
           ></CardHeader>
           <CardContent>
             <form noValidate autoComplete="off" hidden={loading}>
               <div>
                 <TextField
                   value={heading}
-                  label={'Otsikko'}
+                  label={t('headline')}
                   onChange={(e) => setHeading(e.target.value)}
                 />
                 <TextField
@@ -148,7 +151,7 @@ const FeedBackForm = () => {
                   value={message}
                   helperText={helperText}
                   label={
-                    isSent ? 'Palaute lähetetty' : 'Kirjoita palaute tähän:'
+                    isSent ? t('feedback_sent') : t('write_feedback_here:')
                   }
                   onChange={(e) => setMessage(e.target.value)}
                   multiline
@@ -167,7 +170,7 @@ const FeedBackForm = () => {
               endIcon={<ReplayIcon />}
               onClick={handleClearTextField}
             >
-              Tyhjennä
+              {t('reset')}
             </Button>
             <Button
               variant="contained"
@@ -176,14 +179,14 @@ const FeedBackForm = () => {
               onClick={handleClickLoading}
               endIcon={<SendIcon />}
             >
-              Lähetä
+              {t('send')}
             </Button>
           </CardActions>
         </div>
       </Grid>
       <Grid item xs={12} md={6} style={{ marginBottom: '5%' }}>
         <div className="report-container-v2-two" style={{ height: '100%' }}>
-          <CardHeader title="Omat palautteet"></CardHeader>
+          <CardHeader title={t("own_feedback")}></CardHeader>
           <CardContent>
             {myFeedBacks && myFeedBacks.length > 0 ? (
               myFeedBacks
@@ -214,7 +217,7 @@ const FeedBackForm = () => {
                                 : classes.feedBackTextWaiting
                             }
                           >
-                            {feedback.reply ? 'Vastattu' : 'Odottaa'}
+                            {feedback.reply ? t('replied') : t('wait')}
                           </Typography>
                         </div>
                       </AccordionSummary>

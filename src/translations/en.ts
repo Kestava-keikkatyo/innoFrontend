@@ -3,12 +3,14 @@ export default {
   information: 'Information',
   how_do_you_feel_today: 'How do you feel today?',
   home: 'Home',
+
   //login
   login_title: 'Log In',
   email_label: 'Email',
   password_label: 'Password',
   invalid_email_address: 'Invalid email address',
   required: 'Required',
+
   //signup
   name: 'Name',
   email: 'Email',
@@ -17,16 +19,19 @@ export default {
   user: 'User',
   terms_of_use: 'By registering, you agree to give your information to ',
   terms_agency: 'agencies',
+
   //error
   invalid_email: 'Invalid email address',
   field_required: 'Field is required',
   invalid_name: 'Invalid name',
   invalid_password: 'Password does not match',
+
   //option
   role: 'Role',
   worker: 'Worker',
   agency: 'Agency',
   business: 'Business',
+
   //Button
   submit: 'Submit',
   log_in: 'Log in',
@@ -34,7 +39,198 @@ export default {
   main_page: 'Go to main page',
   back: 'back',
   next: 'next',
+  finish: 'Send',
+  reset: 'Reset',
+  upload_file: 'Upload file',
+  entry: 'New entry',
+ 
+  //profile page
+  profiles: 'Profiles',
+  search_by_name: 'Search by name...',
+  no_results: 'No results',
+  search: 'Search...',
+ 
+  //Line chart
+  mood_history: 'Mood history',
+
+  //Pie chaert
+  mood_overall: 'Mood overall',
+  worst: 'Very Dissatisfied',
+  bad: 'Dissatisfied',
+  neutral: 'Neutral',
+  good: 'Satisfied',
+  excellent: 'Very Satisfied',
+
+  mood_table: 'Details',
+  mood: 'Feeling',
+  comment: 'Comment',
+  date: 'Date',
+  image: 'Image',
+ 
+  //Agencystaistics
+  mood_stats: 'Feeling stats',
+
+  //Report form
+  report_handler: 'Raports',
+  report_time: 'Report time',
+  report_details: 'Details',
+  steps_completed: 'Steps are completed - you are finished',
+  reports: 'Reports',
+
   //Report step one
-  select_report: 'You can choose both Business and Agency or one of them as a report handler'
+  select_report_handler: 'Select report handler',
+  select_report_helper_text: 'You can choose both Business and Agency or one of them as a report handler',
+  
+  //Report step two
+  happened: 'When did this happen?',
+
+  //Report step three
+  fill_details: 'Fill in details',
+  fill_work_title: 'Fill work title',
+  fill_report_title: 'Fill report title',
+  fill_report_details: 'Fill report details',
+
+  //Mood form
+  your_mood: 'Your mood',
+
+  //Mood step three
+  write_comment: 'Write a comment',
+  tell_feelings: 'Tell us about your feeling...',
+
+  //BusinessContractsPage
+  search_agencies: 'Search agencies',
+  sent_contracts: 'Sent contracts',
+  received_contracts: "Received contracts",
+  waiting_contracts: 'Waiting contracts',
+  done_contracts: 'Done contracts',
+
+  //Agencies list
+  all: 'All',
+  construction: 'Construction',
+  it: 'IT',
+  education: 'Education',
+  medicine: 'Pharmaceutical industry',
+  estate: 'Estate',
+  transfer_profile: 'Go to profile',
+
+  //Contact information
+  phone: 'phone',
+  website: 'website',
+  address: 'address',
+  contact_information: 'Contact information',
+
+  //feeling utils
+  cheer_one: "C'moon!", 
+  cheer_two: "Not Bad!", 
+  cheer_three: "Decent!", 
+  cheer_four: "Great!", 
+  cheer_five: "Excellent!",
+
+ //Feeling entryModal
+ feeling_entry: 'New Feeling Entry',
+
+ //AgencyStatisticsSummary
+ average: 'Average',
+ total: 'Total',
+
+ //WorkerStatisticsSummary,
+ current_mood: 'Current mood',
+ no_data: 'Oops! No data.',
+ no_entries: "If you see this, then you haven't probably added any entries yet.",
+ oops: 'oops',
+
+ //WorkerTransferList
+ choices: 'choices',
+ chosen: 'chosen',
+
+ //Contracts pages
+ neededWork: "Requested task",
+ activeWork: "Active task",
+ endedWork: "Ended task",
+
+ //ContractsPage
+ add_active: "Add to active work tasks",
+ add: 'Add',
+ make_contract: 'Make a contract',
+ contracts: 'Contracts',
+
+ //FeedbackForm
+ write_feedback_here: 'Write feedback here',
+ feedback_sent: 'Feedback sent',
+ give_feedback: 'Give feedback',
+ return_form: 'Feedback form',
+ replied: 'Replied',
+ wait: 'Wait',
+ own_feedback: 'Own feedbacks',
+ headline: 'Headline',
+
+ //ContractFormManagerPage
+ description: 'description',
+ preview: "Preview",
+ edit: "Edit",
+ download_pdf: "Download pdf",
+ download: 'Download',
+ copy_to_my_forms: 'Copy to my forms',
+
+ //MyFormsTable
+ delete: 'Delete',
+
+  //FormsPage
+  my_forms: "My forms",
+  common: "Common",
+  community: "Community",
+
+  //Agency
+  username: 'username',
+
+  //ContractsTable
+  type: 'Type',
+  status: 'Status',
+  accept: 'Accept',
+  info: 'Info',
+  send_back: 'Send back',
+  decline: 'Decline',
+  
+  //ResponsiveDrawer
+  databank: 'Databank',
+  schedule: 'Schedule',
+  work_overview: 'Work overview',
+  forms: 'Forms',
+  work_request: 'Work requests',
+  exit_application: 'Exit application',
+
+  //profilePage
+  edit_profile: 'Edit profile',
+  settings: 'settings',
+  profile: 'profile',
+  logout: 'logout',
+  return: 'Return',
+  introduction_video: 'Introduction video',
+  instructions: 'Instructions',
+  occupational: 'Occupational Safety Rules', 
+  change_picture: 'Change picture',
+  change_cover: 'Change cover',
+  save_changes: 'Save changes',
+
+  //ChangePassword
+  change_password: 'Change password',
+  update_password: 'Update password',
+  password_instructions: ' Enter your current password, the new password and then confirm the new password',
+  current_password: 'Current password',
+  new_password: 'New password',
+  confirm_password: 'Confirm new password',
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 }

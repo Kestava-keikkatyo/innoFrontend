@@ -5,11 +5,14 @@ import { Box, Container } from '@material-ui/core';
 import Report from './Report';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchReports } from '../../actions/reportActions';
+import { useTranslation } from 'react-i18next'
 
 const ReportsPage: React.FC<any> = () => {
+
   const reports: any = useSelector((state: any) => state.report.reports);
   const classes = useStyles();
   const dispatch = useDispatch();
+  const { t } = useTranslation()
 
   useEffect(() => {
     dispatch(fetchReports());
@@ -18,7 +21,7 @@ const ReportsPage: React.FC<any> = () => {
     <Container maxWidth="lg" className={classes.container}>
       <Box style={{ paddingTop: 10, paddingBottom: 10 }}>
         <Typography variant="h4" color="primary">
-          Reports
+          {t("reports")}
         </Typography>
       </Box>
       {reports.length ? (

@@ -47,7 +47,7 @@ import { SearchIcon } from '@material-ui/data-grid';
 //import MoveToInboxIcon from '@material-ui/icons/MoveToInbox'
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
+import { useTranslation } from 'react-i18next'
 /**
  * @component
  * @desc A table to get and search for my forms.
@@ -67,6 +67,8 @@ const CommunityFormsTable: React.FC<any> = () => {
   const dispatch = useDispatch();
 
   const history = useHistory();
+
+  const { t } = useTranslation()
 
   useEffect(() => {
     dispatch(fetchFormList());
@@ -132,10 +134,10 @@ const CommunityFormsTable: React.FC<any> = () => {
         <Table aria-label="searched workers">
           <TableHead>
             <TableRow>
-              <StyledTableCell align="left">Title</StyledTableCell>
-              <StyledTableCell align="left">Description</StyledTableCell>
-              <StyledTableCell align="left">Preview</StyledTableCell>
-              <StyledTableCell align="left">Download</StyledTableCell>
+              <StyledTableCell align="left">{t('title')}</StyledTableCell>
+              <StyledTableCell align="left">{t('description')}</StyledTableCell>
+              <StyledTableCell align="left">{t('preview')}</StyledTableCell>
+              <StyledTableCell align="left">{t('download')}</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>

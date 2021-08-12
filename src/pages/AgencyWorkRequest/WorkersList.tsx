@@ -15,21 +15,26 @@ import PhoneIcon from "@material-ui/icons/Phone";
 import { Button } from "@material-ui/core";
 import PublicIcon from "@material-ui/icons/Public";
 import { useHistory } from "react-router-dom";
+import { useTranslation } from 'react-i18next'
+
 const WorkersList: React.FC<any> = ({ profile }) => {
   const [expanded, setExpanded] = React.useState(false);
   const classes = useStyles();
   const history = useHistory();
 
+  const { t } = useTranslation()
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
+  /*
   const handleSiirryProfiiliin = (profileId: any) => {
     history.push({
       pathname: "/profiles/profile-view",
       state: { profileId: profileId },
     });
   };
+  */
 
   return (
     
@@ -70,9 +75,9 @@ const WorkersList: React.FC<any> = ({ profile }) => {
             color="textSecondary"
             className={classes.typoBody2}
           >
-            xaxaxa
+          
           </Typography>
-          xaxaxaxa
+      
           <Typography
             style={{ marginTop: 24, fontWeight: 500 }}
             variant="body2"
@@ -89,7 +94,7 @@ const WorkersList: React.FC<any> = ({ profile }) => {
             color="textSecondary"
             className={classes.typoBody2}
           >
-            xaxaxaxa
+           
           </Typography>
           <Typography
             style={{ marginTop: 24, fontWeight: 500 }}
@@ -100,19 +105,19 @@ const WorkersList: React.FC<any> = ({ profile }) => {
               //fontSize="small"
               style={{ marginBottom: -3, color: "#eb5a02", fontSize: 16 }}
             />{" "}
-            Website xaxaxaxa
+            Website 
           </Typography>
           <Typography
             variant="body2"
             color="textSecondary"
             className={classes.typoBody2}
           >
-            xaxaxaxa
+     
           </Typography>
         </CardContent>
         <CardActions>
           <Button variant="outlined" color="primary" className={classes.button}>
-            Siirry Profiiliin
+            {t('transfer_profile')}
           </Button>
         </CardActions>
       </Collapse>

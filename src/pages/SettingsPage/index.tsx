@@ -4,14 +4,14 @@ import { Button, Container, Grid } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import ChangePassword from './ChangePassword';
 import { Link, useHistory } from 'react-router-dom';
-
+import { useTranslation } from 'react-i18next'
 /**
  * @desc Renders setting page
  */
 const SettingsPage = () => {
   const classes = useStyles();
   const history = useHistory();
-
+  const { t } = useTranslation()
   return (
     <Container maxWidth="lg" className={classes.root}>
       <Grid
@@ -31,13 +31,13 @@ const SettingsPage = () => {
               style={{ textDecoration: 'none', color: '#eb5a00' }}
               to="/home"
             >
-              Back
+              {t('back')}
             </Link>
           </Button>
         </Grid>
       </Grid>
       <Typography style={{ paddingTop: '0.5rem' }} variant="h4">
-        Settings
+        {t('settings')}
       </Typography>
       <div style={{ marginTop: '1rem' }}>
         {/* ChangePassword component */}

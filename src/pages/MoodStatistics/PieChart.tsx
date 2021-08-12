@@ -93,11 +93,11 @@ const PieChart = () => {
             <Pie
               data={{
                 labels: [
-                  'Very Dissatisfied',
-                  'Dissatisfied',
-                  'Neutral',
-                  'Satisfied',
-                  'Very Satisfied',
+                  t('worst'),
+                  t('bad'),
+                  t('neutral'),
+                  t('good'),
+                  t('excellent'),
                 ],
                 datasets: [
                   {

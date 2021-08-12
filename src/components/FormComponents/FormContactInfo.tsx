@@ -10,6 +10,7 @@ import {
   TableBody
 } from "@material-ui/core"
 import React from "react"
+import { useTranslation } from 'react-i18next'
 
 /**
  * CustomFormInput cant be used as control?
@@ -18,6 +19,8 @@ import React from "react"
 const FormContactInfo: React.FC<any> = ({ question }) => {
   const { title } = question
 
+  const { t } = useTranslation()
+
   return (
     <>
       <Typography variant="h6">{title}</Typography>
@@ -25,15 +28,15 @@ const FormContactInfo: React.FC<any> = ({ question }) => {
         <TableBody>
           <TableRow>
             <TableCell>
-              <InputLabel>Name</InputLabel>
+              <InputLabel>{t("name")}</InputLabel>
               <Input />
             </TableCell>
             <TableCell>
-              <InputLabel>Phone</InputLabel>
+              <InputLabel>{t("phone")}</InputLabel>
               <Input />
             </TableCell>
             <TableCell>
-              <InputLabel>Email</InputLabel>
+              <InputLabel>{t("email")}</InputLabel>
               <Input />
             </TableCell>
           </TableRow>

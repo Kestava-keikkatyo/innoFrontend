@@ -15,7 +15,7 @@ import fileService from '../../services/fileService';
 import { severity } from '../../types/types';
 import { IRootState } from '../../utils/store';
 import MoodForm from '../HomePage/MoodForm';
-
+import { useTranslation } from 'react-i18next'
 /**
  * @component
  * A modal panel, which shows form for new feeling entry.
@@ -23,6 +23,7 @@ import MoodForm from '../HomePage/MoodForm';
  * @param {} modalState contains a useState for modal handling, needs to be deconstructed.
  */
 const NewFeelingEntryModal: React.FC<any> = ({ modalState }) => {
+  const { t } = useTranslation()
   const { isOpen, setIsOpen } = modalState;
   const dispatch = useDispatch();
   const currentFeeling: any = useSelector<IRootState>(
@@ -65,7 +66,7 @@ const NewFeelingEntryModal: React.FC<any> = ({ modalState }) => {
     >
       <DialogTitle>
         <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Typography variant="h6">New Feeling Entry</Typography>
+          <Typography variant="h6">{t('feeling_entry')}</Typography>
           <IconButton onClick={() => setIsOpen(false)}>
             <CloseIcon />
           </IconButton>

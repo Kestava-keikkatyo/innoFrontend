@@ -16,6 +16,8 @@ import GroupIcon from "@material-ui/icons/Group";
 import WorkIcon from "@material-ui/icons/Work";
 import BusinessIcon from "@material-ui/icons/Business";
 
+import { useTranslation } from 'react-i18next'
+
 import { Accordion, AccordionDetails } from "@material-ui/core";
 
 import JobRequest from "./JobRequest";
@@ -54,6 +56,7 @@ const ContractsPage: React.FC<any> = () => {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = useState(0);
+  const { t } = useTranslation()
   const handleChange = (event: any, newValue: any) => {
     setValue(newValue);
   };
@@ -72,21 +75,21 @@ const ContractsPage: React.FC<any> = () => {
           <Tab
             onChange={handleChange}
             className={classes.tab}
-            label="Tarvittavat työkeikat"
+            label={t("neededWork")}
             icon={<WorkIcon />}
             {...a11yProps(0)}
           />
           <Tab
             onChange={handleChange}
             className={classes.tab}
-            label="Aktiiviset työkeikat"
+            label={t("activeWork")}
             icon={<BusinessIcon />}
             {...a11yProps(1)}
           />
           <Tab
             onChange={handleChange}
             className={classes.tab}
-            label="Päättyneet työkeikat"
+            label={t("endedWork")}
             icon={<GroupIcon />}
             {...a11yProps(2)}
           />
@@ -111,7 +114,7 @@ const ContractsPage: React.FC<any> = () => {
               color="primary"
               className={classes.button}
             >
-              Lisää aktiivisiin työkeikkoihin
+              {t('add_active')}
             </Button>
           </Grid>
         </Container>

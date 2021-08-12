@@ -1,7 +1,9 @@
 import { Feeling } from "../types/types"
+import i18n from 'i18next';
 
 const colors = ["red", "orange", "yellow", "yellowgreen", "green"]
-const cheers = ["C'moon!", "Not Bad!", "Decent!", "Great!", "Excellent!"]
+const cheers = [i18n.t("cheer_one"), i18n.t("cheer_two"), i18n.t("cheer_three"), i18n.t("cheer_four"), i18n.t("cheer_five")]
+
 
 const calculateColor = (value: number, maxValue: number) => {
   const index = Math.round((value / maxValue) * 100)
@@ -19,6 +21,7 @@ const calculateColor = (value: number, maxValue: number) => {
       return "white";
 }
 
+//
 export const calculateCheer = (value: number, maxValue: number) => {
   const index = Math.round((value / maxValue) * 100)
     if (index < 20)

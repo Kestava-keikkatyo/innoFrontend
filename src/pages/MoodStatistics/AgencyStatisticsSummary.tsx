@@ -8,19 +8,19 @@ import {
   getTotalDataSet,
 } from '../../utils/feelingUtils';
 import { useSelector } from 'react-redux';
-
+import { useTranslation } from 'react-i18next'
 /**
  * @component
  */
 const AgencyStatisticsSummary: React.FC<any> = () => {
   const { feelings } = useSelector((state: any) => state.feeling);
   console.log('AgencyStatisticsSummary:feelings:', feelings);
-
+  const { t } = useTranslation()
   if (!feelings) {
     return (
       <div className="worker-statistics-summary">
         <Typography variant="h5" className="no-data-text">
-          Oops! No data.
+         {t('no_data')}
         </Typography>
       </div>
     );
@@ -39,7 +39,7 @@ const AgencyStatisticsSummary: React.FC<any> = () => {
             </Typography>
           </Hidden>
         </ProgressPieChart>
-        <Typography>Average</Typography>
+        <Typography>{t('average')}</Typography>
       </Grid>
       <Grid item xs={6}>
         <ProgressPieChart datasets={getTotalDataSet(feelings.length)}>
@@ -50,7 +50,7 @@ const AgencyStatisticsSummary: React.FC<any> = () => {
             </Typography>
           </Hidden>
         </ProgressPieChart>
-        <Typography>Total entries</Typography>
+        <Typography>{t('total')}</Typography>
       </Grid>
     </Grid>
   );
