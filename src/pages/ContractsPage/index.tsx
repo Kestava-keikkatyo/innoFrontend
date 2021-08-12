@@ -135,11 +135,11 @@ const ContractsPage = () => {
           />
           <Tab
             className={classes.tab}
-            label={matches ? '' : 'Yritykseltä saapuneet sopimukset'}
+            label={matches ? '' : 'Käyttäjäyritykseltä saapuneet sopimukset'}
             icon={
               matches ? (
                 <Tooltip
-                  title="Yritykseltä saapuneet sopimukset"
+                  title="Käyttäjäyritykseltä saapuneet sopimukset"
                   placement="top"
                   arrow
                 >

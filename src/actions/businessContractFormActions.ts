@@ -37,20 +37,17 @@ export const importFormByPath = () => async (dispatch: any) => {
  * @desc Replaces current businessContractForm with the data imported from file systems
  */
 export const getFormByIdAndSetBusinessContractForm = (id: string) => async (dispatch: any) => {
-  const data = await formServices.fetchFormById(id)
-  //data._id = ''
-  //data.createdAt = ''
-  //data.isPublic = false
-  dispatch({ type: SET_CURRENT_BUSINESS_CONTRACT_FORM, data })
+  const form = await formServices.fetchFormById(id)
+  dispatch({ type: SET_CURRENT_BUSINESS_CONTRACT_FORM, data: form })
 }
 
 /**
 * @function
 * @desc Replaces current businessContractForm with the data imported from file systems
 */
-export const SetBusinessContractForm = (form: BusinessContractForm) => async (dispatch: any) => {
+export const setBusinessContractForm = (form: BusinessContractForm) => async (dispatch: any) => {
 
-  dispatch({ type: SET_CURRENT_BUSINESS_CONTRACT_FORM, form })
+  dispatch({ type: SET_CURRENT_BUSINESS_CONTRACT_FORM, data: form })
 }
 
 /**

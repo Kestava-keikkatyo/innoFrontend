@@ -1,32 +1,25 @@
-import React from "react";
-import {
-  Typography,
-  Grid,
-  Card,
-  CardContent,
-  Divider,
-  makeStyles,
-} from "@material-ui/core";
-import { useDispatch } from "react-redux";
+import React from 'react';
+import { Typography, Grid, makeStyles } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
 import {
   declineBusinessContract,
   acceptBusinessContractFromBusiness,
   sendBackBusinessContract,
-} from "../../actions/businessContractActions";
-import { setAlert } from "../../actions/alertActions";
-import { severity } from "../../types/types";
-import ContractsReceivedTable from "./ContractsReceivedTable";
+} from '../../actions/businessContractActions';
+import { setAlert } from '../../actions/alertActions';
+import { severity } from '../../types/types';
+import ContractsReceivedTable from './ContractsReceivedTable';
 
-const useStyles = makeStyles((theme) => ({
-  card: {
-    margin: theme.spacing(2, 0),
-    width: "100%",
-  },
-}));
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+} from '@material-ui/core';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 interface BusinessContractObject {
   _id: string;
-  receivedContracts: {
+  requestContracts: {
     businesses: [];
     workers: [];
   };
@@ -34,6 +27,15 @@ interface BusinessContractObject {
     businesses: [];
     workers: [];
   };
+  pendingContracts: {
+    businesses: [];
+    workers: [];
+  };
+  receivedContracts: {
+    businesses: [];
+    workers: [];
+  };
+  agency: string;
 }
 
 const ContractsFromBusiness = (props: {
@@ -44,73 +46,84 @@ const ContractsFromBusiness = (props: {
   const dispatch = useDispatch();
   const contracts = businessContract;
 
-  const acceptContract = (
+  const acceptContractFromBusiness = (
     contractId: string,
     userId: string,
     formId: string
   ) => {
     dispatch(acceptBusinessContractFromBusiness(contractId, userId, formId));
-    dispatch(setAlert("Contract accepted.", severity.Info, 3));
+    dispatch(setAlert('Contract from Business accepted.', severity.Info, 3));
   };
 
   const declineContract = (contractId: string, userId: string) => {
     dispatch(declineBusinessContract(contractId, userId));
-    dispatch(setAlert("Contract declined.", severity.Info, 3));
+    dispatch(setAlert('Contract declined.', severity.Info, 3));
   };
-  
-  const sendBackContract = (contractId: string, userId: string, formId:string) => {
-    dispatch(sendBackBusinessContract(contractId,userId,formId))
-    dispatch(setAlert("Contract sended back.",severity.Info,3))
-  }
 
-  if (
-    contracts[0].receivedContracts.businesses === undefined ||
-    !contracts.length
-  )
+  const sendBackContract = (
+    contractId: string,
+    userId: string,
+    formId: string
+  ) => {
+    dispatch(sendBackBusinessContract(contractId, userId, formId));
+    dispatch(setAlert('Contract sended back.', severity.Info, 3));
+  };
+
+  if (!contracts[0]?.requestContracts?.businesses?.length) {
     return (
       <Typography
-        style={{ padding: "1rem" }}
-        variant="h6"
+        style={{ padding: '1rem' }}
+        variant="h5"
         align="center"
         className="text-secondary"
       >
-        no results
+        No results
       </Typography>
     );
-  else
-    return (
-      <>
-        <Grid
-          container
-          direction="column"
-          spacing={1}
-          justify="center"
-          alignItems="stretch"
-        >
-          <Grid item xs={12}>
-            <Card className={classes.card} variant="outlined">
-              <CardContent>
-                <Typography gutterBottom variant="h5">
-                  Saapuneet sopimukset
-                </Typography>
-                <Divider />
-                <Typography gutterBottom variant="h6">
-                  Businesses
-                </Typography>
-                <Divider />
-                <ContractsReceivedTable
-                  contracts={contracts[0].receivedContracts.businesses}
-                  contractId={businessContract[0]._id}
-                  acceptContract={acceptContract}
-                  declineContract={declineContract}
-                  sendBackContract={sendBackContract}
-                />
-              </CardContent>
-            </Card>
-          </Grid>
+  }
+
+  return (
+    <>
+      <Grid
+        container
+        direction="column"
+        spacing={1}
+        justify="center"
+        alignItems="stretch"
+      >
+        <Grid item xs={12}>
+          <Accordion className={classes.accordion} variant="outlined">
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Typography gutterBottom variant="h5">
+                Käyttäjäyritykseltä saapuneet sopimukset
+              </Typography>
+            </AccordionSummary>
+
+            <AccordionDetails>
+              <ContractsReceivedTable
+                contracts={contracts[0]?.requestContracts?.businesses}
+                contractId={businessContract[0]._id}
+                acceptContract={acceptContractFromBusiness}
+                declineContract={declineContract}
+                sendBackContract={sendBackContract}
+              />
+            </AccordionDetails>
+          </Accordion>
         </Grid>
-      </>
-    );
+      </Grid>
+    </>
+  );
 };
+
+const useStyles = makeStyles((theme) => ({
+  accordion: {
+    margin: theme.spacing(2, 0),
+    width: '100%',
+  },
+}));
 
 export default ContractsFromBusiness;
