@@ -34,6 +34,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import { usePopupState } from 'material-ui-popup-state/hooks';
 import { logout } from '../../actions/userActions';
+import { useTranslation } from 'react-i18next'
 const drawerWidth = navConstants.DRAWER_WIDTH;
 /**
  * @component
@@ -81,6 +82,7 @@ const drawerWidth = navConstants.DRAWER_WIDTH;
  * @todo refaktoroi tämä.
  */
 const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
+  const { t } = useTranslation()
   const classes = useStyles();
   const { data } = useSelector((state: IRootState) => state.user);
   const { notifications } = useSelector(
@@ -260,15 +262,15 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
                   <AccountCircleIcon
                     style={{ fontSize: 24, marginRight: 10 }}
                   />{' '}
-                  Profile
+                  {t("profile")}
                 </MenuItem>
                 <MenuItem onClick={handleSettingsClick}>
                   <SettingsIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
-                  Settings
+                  {t("settings")}
                 </MenuItem>
                 <MenuItem onClick={handleLogout}>
                   <ExitToAppIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
-                  Logout
+                  {t("logout")}
                 </MenuItem>
               </Box>
             </Popover>

@@ -10,14 +10,16 @@ import { SearchIcon } from '@material-ui/data-grid'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../assets/keikka-kaveri4.png'
-
+import { useTranslation } from 'react-i18next'
 export interface DatabankProps {
   path: string
   children: any
 }
 
 const DatabankRoute: React.FC<DatabankProps> = ({ path, children }) => {
+  
   const classes = useStyles()
+  const { t } = useTranslation()
 
   return (
     <div>
@@ -77,7 +79,7 @@ const DatabankRoute: React.FC<DatabankProps> = ({ path, children }) => {
                 <SearchIcon />
               </div>
               <InputBase
-                placeholder="Search…"
+                placeholder={t("search")}
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput,

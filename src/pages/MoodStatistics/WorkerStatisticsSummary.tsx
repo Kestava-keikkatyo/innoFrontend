@@ -9,6 +9,7 @@ import {
 } from '../../utils/feelingUtils';
 import { useSelector } from 'react-redux';
 import { IRootState } from '../../utils/store';
+import { useTranslation } from 'react-i18next'
 
 /**
  * @component
@@ -19,17 +20,17 @@ import { IRootState } from '../../utils/store';
  */
 const WorkerStatisticsSummary = () => {
   const feelings = useSelector((state: IRootState) => state.feeling?.feelings);
-
+  const { t } = useTranslation()
   console.log('StatsSummary:feelings', feelings);
 
   if (!feelings) {
     return (
       <div className="worker-statistics-summary">
         <Typography variant="h5" className="no-data-text">
-          Oops! No data.
+          {t('no_data')}
         </Typography>
         <Typography className="no-data-text">
-          If you see this, then you haven't probably added any entries yet.
+          {t('no_entries')}
         </Typography>
       </div>
     );
@@ -48,7 +49,7 @@ const WorkerStatisticsSummary = () => {
             </Typography>
           </Hidden>
         </ProgressPieChart>
-        <Typography>Average</Typography>
+        <Typography>{t('average')}</Typography>
       </Grid>
       <Grid item xs={4}>
         <ProgressPieChart
@@ -63,7 +64,7 @@ const WorkerStatisticsSummary = () => {
             </Typography>
           </Hidden>
         </ProgressPieChart>
-        <Typography>Current mood</Typography>
+        <Typography>{t('current_mood')}</Typography>
       </Grid>
       <Grid item xs={4}>
         <ProgressPieChart datasets={getTotalDataSet(feelings.length)}>
@@ -74,7 +75,7 @@ const WorkerStatisticsSummary = () => {
             </Typography>
           </Hidden>
         </ProgressPieChart>
-        <Typography>Total entries</Typography>
+        <Typography>{t('total')}</Typography>
       </Grid>
     </Grid>
   );

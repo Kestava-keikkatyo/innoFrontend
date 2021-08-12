@@ -16,6 +16,7 @@ import {
 import { setAlert } from "../../actions/alertActions";
 import { severity } from "../../types/types";
 import ContractsReceivedTable from "./ContractsReceivedTable"
+import { useTranslation } from 'react-i18next'
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -37,6 +38,8 @@ interface BusinessContractObject {
 }
 
 const WorkerSendContracts = (props: { businessContract: BusinessContractObject[] }) => {
+
+  const { t } = useTranslation()
   const { businessContract } = props 
   const classes = useStyles()
   const dispatch = useDispatch()
@@ -65,7 +68,7 @@ const WorkerSendContracts = (props: { businessContract: BusinessContractObject[]
         align="center"
         className="text-secondary"
       >
-        no results
+        {t('no_results')}
       </Typography>
     )
   else
@@ -82,13 +85,13 @@ const WorkerSendContracts = (props: { businessContract: BusinessContractObject[]
             <Card className={classes.card} variant="outlined">
               <CardContent>
                 <Typography gutterBottom variant="h5">
-                  Saapuneet sopimukset
+                {t('received_contracts')}
                 </Typography>
                 <Divider />
               </CardContent>
               <CardContent>
                 <Typography gutterBottom variant="h6">
-                  Workers
+                {t('worker')}
                 </Typography>
                 <Divider />
                 <ContractsReceivedTable

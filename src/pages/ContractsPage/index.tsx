@@ -25,6 +25,7 @@ import ContractsFromWorkers from './ContractsFromWorkers';
 import GroupIcon from '@material-ui/icons/Group';
 import WorkIcon from '@material-ui/icons/Work';
 import BusinessIcon from '@material-ui/icons/Business';
+import { useTranslation } from 'react-i18next'
 
 import {
   Accordion,
@@ -87,7 +88,7 @@ const ContractsPage = () => {
   const [searchData, setSearchData] = useState(null);
   const [displayModal, setDisplayModal] = useState(false);
   const [value, setValue] = useState(0);
-
+const { t } = useTranslation()
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
   //to be switched to retrieve contracts
@@ -174,7 +175,7 @@ const ContractsPage = () => {
 
       <TabPanel value={value} index={0} dir={theme.direction}>
         <Typography style={{ paddingTop: '1rem' }} variant="h4">
-          Contracts
+        {t('contracts')}
         </Typography>
 
         <Accordion className={classes.card} variant="outlined">
@@ -184,7 +185,7 @@ const ContractsPage = () => {
             id="panel1a-header"
           >
             <Typography gutterBottom variant="h5">
-              Tee Sopimus
+              {t('make_contract')}
             </Typography>
           </AccordionSummary>
 

@@ -20,7 +20,7 @@ import DoneIcon from '@material-ui/icons/Done';
 import ClearIcon from '@material-ui/icons/Clear';
 import InfoModal from './InfoModal';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-
+import { useTranslation } from 'react-i18next'
 import {
   Accordion,
   AccordionDetails,
@@ -42,6 +42,7 @@ const RCTable = (prop: {
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
   const [displayModal, setDisplayModal] = React.useState(false);
+  const { t } = useTranslation()
 
   const handleOpen = () => {
     setDisplayModal(true);
@@ -61,14 +62,14 @@ const RCTable = (prop: {
         <Table aria-label="searched workers">
           <TableHead>
             <TableRow>
-              <TableCell align="left">Name</TableCell>
-              <TableCell align="left">Email</TableCell>
-              <TableCell align="left">Type</TableCell>
-              <TableCell align="left">Status</TableCell>
-              <TableCell align="left">Accept</TableCell>
-              <TableCell align="left">Info</TableCell>
-              <TableCell align="left">Lähetä takaisin</TableCell>
-              <TableCell align="left">Decline</TableCell>
+              <TableCell align="left">{t("name")}</TableCell>
+              <TableCell align="left">{t("email")}</TableCell>
+              <TableCell align="left">{t("role")}</TableCell>
+              <TableCell align="left">{t("status")}</TableCell>
+              <TableCell align="left">{t("accept")}</TableCell>
+              <TableCell align="left">{t("info")}</TableCell>
+              <TableCell align="left">{t("send_back")}</TableCell>
+              <TableCell align="left">{t("decline")}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

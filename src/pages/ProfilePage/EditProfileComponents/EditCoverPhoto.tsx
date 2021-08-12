@@ -2,6 +2,7 @@ import React from 'react';
 import { CardMedia, Grid, makeStyles } from '@material-ui/core';
 import banner from '../../../assets/form-banner.jpg';
 import FileUploader from '../../../components/FileUploader';
+import { useTranslation } from 'react-i18next'
 /**
  * @component
  * @desc Renders profile's cover photo to be edited
@@ -10,7 +11,7 @@ import FileUploader from '../../../components/FileUploader';
  */
 const EditCoverPhoto: React.FC<any> = ({ profile }) => {
   const classes = useStyles();
-
+  const { t } = useTranslation()
   return (
     <Grid container justify="center" direction="row">
       <Grid item xs={12}>
@@ -19,7 +20,7 @@ const EditCoverPhoto: React.FC<any> = ({ profile }) => {
           image={profile.coverPhoto !== '' ? profile.coverPhoto : banner}
         />
         <div className={classes.cover}>
-          <FileUploader name="Change cover" accept="image/*" />
+          <FileUploader name={t("change_cover")} accept="image/*" />
         </div>
       </Grid>
     </Grid>

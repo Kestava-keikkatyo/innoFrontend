@@ -16,7 +16,7 @@ import {
   Theme,
 } from '@material-ui/core';
 import { Delete as DeleteIcon } from '@material-ui/icons';
-
+import { useTranslation } from 'react-i18next'
 import {
   Accordion,
   AccordionDetails,
@@ -35,6 +35,7 @@ const ContractsSendTable = (prop: {
   const theme = useTheme();
   const classes = useStyles();
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
+  const { t } = useTranslation()
 
   const tableView = () => {
     return (
@@ -42,11 +43,11 @@ const ContractsSendTable = (prop: {
         <Table aria-label="searched workers">
           <TableHead>
             <TableRow>
-              <TableCell align="left">Name</TableCell>
-              <TableCell align="left">Email</TableCell>
-              <TableCell align="left">Type</TableCell>
-              <TableCell align="left">Status</TableCell>
-              <TableCell align="left">Remove</TableCell>
+              <TableCell align="left">{t("name")}</TableCell>
+              <TableCell align="left">{t("email")}</TableCell>
+              <TableCell align="left">{t("role")}</TableCell>
+              <TableCell align="left">{t("status")}</TableCell>
+              <TableCell align="left">{t("delete")}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

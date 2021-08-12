@@ -11,7 +11,7 @@ import {
   FormControlLabel,
   Switch,
 } from '@material-ui/core';
-
+import { useTranslation } from 'react-i18next'
 /**
  * @depricated This component IS NOT in use
  * @component
@@ -22,7 +22,7 @@ import {
  */
 const CompanyProfile: React.FC<any> = ({ profile, handleSubmit }) => {
   const [edit, setEdit] = useState(true);
-
+  const { t } = useTranslation()
   return (
     <Card variant="outlined">
       <CardContent>
@@ -83,7 +83,7 @@ const CompanyProfile: React.FC<any> = ({ profile, handleSubmit }) => {
             <Form>
               <Box display="flex" flexDirection="column">
                 <FormikTextField
-                  label="Name"
+                  label={t("name")}
                   name="name"
                   type="text"
                   placeholder="Company Name"

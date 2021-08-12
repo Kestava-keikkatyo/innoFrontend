@@ -4,7 +4,7 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import { Grid, Link, makeStyles, Typography } from '@material-ui/core';
 import PublicIcon from '@material-ui/icons/Public';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-
+import { useTranslation } from 'react-i18next'
 /**
  * @component
  * @desc Renders contact information of user profile.
@@ -13,6 +13,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
  */
 const ContactInformation: React.FC<any> = ({ profile }) => {
   const classes = useStyles();
+  const { t } = useTranslation()
 
   return (
     <Grid container style={{ marginBottom: 75 }}>
@@ -26,7 +27,7 @@ const ContactInformation: React.FC<any> = ({ profile }) => {
             fontSize="small"
             style={{ marginBottom: -3, color: '#eb5a02' }}
           />{' '}
-          Address
+          {t('address')}
         </Typography>
         <Typography variant="body2" className={classes.typoBody2}>
           {profile.streetAddress}
@@ -47,7 +48,7 @@ const ContactInformation: React.FC<any> = ({ profile }) => {
             fontSize="small"
             style={{ marginBottom: -3, color: '#eb5a02' }}
           />{' '}
-          Website
+          {t('website')}
         </Typography>
         <Typography variant="body2" className={classes.typoBody2}>
           <Link target="_blank" color="inherit" href={profile.website}>
@@ -62,7 +63,7 @@ const ContactInformation: React.FC<any> = ({ profile }) => {
             fontSize="small"
             style={{ marginBottom: -3, color: '#eb5a02' }}
           />{' '}
-          Email
+          {t('email')}
         </Typography>
         <Typography variant="body2" className={classes.typoBody2}>
           {profile.email}
@@ -77,7 +78,7 @@ const ContactInformation: React.FC<any> = ({ profile }) => {
             fontSize="small"
             style={{ marginBottom: -3, color: '#eb5a02' }}
           />{' '}
-          Phone
+          {t('phone')}
         </Typography>
         <Typography variant="body2" className={classes.typoBody2}>
           {profile.phone}

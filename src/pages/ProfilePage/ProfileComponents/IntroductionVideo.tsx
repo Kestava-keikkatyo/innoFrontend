@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, makeStyles, Typography } from '@material-ui/core';
 import ReactPlayer from 'react-player';
 import baseUrl from '../../../utils/baseUrl';
-
+import { useTranslation } from 'react-i18next'
 /**
  * @component
  * @desc Renders the introduction video of user profile.
@@ -10,12 +10,13 @@ import baseUrl from '../../../utils/baseUrl';
  * NOTICE: profile prop refers to state.profile.currentProfile OR state.profile.profileToBeViewed
  */
 const IntroductionVideo: React.FC<any> = ({ profile }) => {
+  const { t } = useTranslation()
   const classes = useStyles();
 
   return (
     <Grid container style={{ marginBottom: 75 }}>
       <Grid item xs={12} style={{ marginBottom: 40 }}>
-        <Typography variant="h5">Introduction video</Typography>
+        <Typography variant="h5">{t('introduction_video')}</Typography>
       </Grid>
       <Grid item xs={12} className={classes.playerWrapper}>
         {/*   https://www.npmjs.com/package/react-player   */}

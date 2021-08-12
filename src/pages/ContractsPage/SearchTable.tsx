@@ -34,7 +34,7 @@ import { updateSearchList } from '../../actions/businessContractActions';
 import { useDispatch } from 'react-redux';
 import { roles } from '../../types/types';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
+import { useTranslation } from 'react-i18next'
 import {
   Accordion,
   AccordionDetails,
@@ -52,6 +52,7 @@ const INIT_SEARCH_TYPE = roles.Worker;
  * which passes workers data to parent component state.
  */
 const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
+  const { t } = useTranslation()
   const dispatch = useDispatch();
   const [searchType, setSearchType] = useState<any>(INIT_SEARCH_TYPE);
   const [filter, setFilter] = React.useState('');
@@ -86,9 +87,9 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
         <Table aria-label="searched workers">
           <TableHead>
             <TableRow>
-              <TableCell align="left">Name</TableCell>
-              <TableCell align="left">Email</TableCell>
-              <TableCell align="left">Add</TableCell>
+              <TableCell align="left">{t("name")}</TableCell>
+              <TableCell align="left">{t("email")}</TableCell>
+              <TableCell align="left">{t("add")}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -194,12 +195,12 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
           <FormControlLabel
             value={roles.Worker}
             control={<Radio />}
-            label="Worker"
+            label={t("worker")}
           />
           <FormControlLabel
             value={roles.Business}
             control={<Radio />}
-            label="Business"
+            label={t("business")}
           />
         </RadioGroup>
       </FormControl>
@@ -207,7 +208,7 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
       <form>
         <Box display="flex" alignItems="center">
           <InputBase
-            placeholder="search with name"
+            placeholder={t("search_by_name")}
             value={filter}
             onChange={handleFilterchange}
           />

@@ -104,12 +104,12 @@ const AgenciesList = () => {
     setAlignment("Search")
   }
   const fields = [
-    { field: "Kaikki" },
-    { field: "Rakennus, asennus ja huolto", },
-    { field: "IT- ja tietoliikenne" },
-    { field: "Koulutus- ja opetusala" },
-    { field: "Lääketeollisuus- ja farmasia" },
-    { field: "Kiinteistö" }
+    { field: t("all") },
+    { field: t("construction"), },
+    { field: t("it") },
+    { field: t("education") },
+    { field: t("medicine") },
+    { field: t("estate") }
   ]
 
   return (

@@ -178,7 +178,7 @@ const LineChart = () => {
                 labels: labels,
                 datasets: [
                   {
-                    label: 'Mood history',
+                    label: t('mood_history'),
                     data: moodCounts,
                     backgroundColor: backgroundColors,
                     borderColor: borderColors,
@@ -192,7 +192,7 @@ const LineChart = () => {
                 responsive: true,
                 title: {
                   display: true,
-                  text: 'Mood stats',
+                  text: t('mood_stats'),
                   fontSize: 20,
                 },
                 legend: {

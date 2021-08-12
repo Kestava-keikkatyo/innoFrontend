@@ -41,7 +41,7 @@ import pdfMake from 'pdfmake/build/pdfmake.js';
 import pdfFonts from 'pdfmake/build/vfs_fonts.js';
 import htmlToPdfmake from 'html-to-pdfmake'
 import Form from './Form'
-
+import { useTranslation } from 'react-i18next'
 import ReactDOMServer from "react-dom/server";
 import { setAlert } from '../../actions/alertActions'
 import { fetchFormList } from '../../actions/formListActions'
@@ -69,6 +69,7 @@ const MyFormsTable: React.FC<any> = () => {
   const theme = useTheme()
   const matches = useMediaQuery(theme.breakpoints.down('sm')) // sm: korkeintaan 960px
 
+  const { t } = useTranslation()
 
   useEffect(() => {
     dispatch(fetchFormList())
@@ -144,11 +145,11 @@ const MyFormsTable: React.FC<any> = () => {
       <Table aria-label="searched workers">
         <TableHead>
           <TableRow>
-            <StyledTableCell align="left">Title</StyledTableCell>
-            <StyledTableCell align="left">Description</StyledTableCell>
-            <StyledTableCell align="left">Edit</StyledTableCell>
-            <StyledTableCell align="left">Delete</StyledTableCell>
-            <StyledTableCell align="left">Download</StyledTableCell>
+            <StyledTableCell align="left">{t("title")}</StyledTableCell>
+            <StyledTableCell align="left">{t("description")}</StyledTableCell>
+            <StyledTableCell align="left">{t("edit")}</StyledTableCell>
+            <StyledTableCell align="left">{t("delete")}</StyledTableCell>
+            <StyledTableCell align="left">{t("download")}</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>

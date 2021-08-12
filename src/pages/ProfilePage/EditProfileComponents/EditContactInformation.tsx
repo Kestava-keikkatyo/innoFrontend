@@ -7,7 +7,7 @@ import PublicIcon from '@material-ui/icons/Public';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PhoneIcon from '@material-ui/icons/Phone';
 import EmailIcon from '@material-ui/icons/Email';
-
+import { useTranslation } from 'react-i18next'
 /**
  * @component
  * @desc Renders profile's contact information to be edited.
@@ -16,11 +16,11 @@ import EmailIcon from '@material-ui/icons/Email';
  */
 const EditContactInformation: React.FC<any> = ({ profile }) => {
   const dispatch = useDispatch();
-
+  const { t } = useTranslation()
   return (
     <Grid container style={{ marginBottom: 75 }}>
       <Grid item xs={12}>
-        <Typography variant="h5">Contact information</Typography>
+        <Typography variant="h5">{t('contact_information')}</Typography>
       </Grid>
 
       <Grid item xs={12} sm={6} style={{ marginTop: 24 }}>
@@ -29,7 +29,7 @@ const EditContactInformation: React.FC<any> = ({ profile }) => {
             fontSize="small"
             style={{ marginBottom: -3, color: '#eb5a02' }}
           />{' '}
-          Address
+          {t('address')}
         </Typography>
         <TextField
           id="standard-full-width"
@@ -91,7 +91,7 @@ const EditContactInformation: React.FC<any> = ({ profile }) => {
             fontSize="small"
             style={{ marginBottom: -3, color: '#eb5a02' }}
           />{' '}
-          Website
+          {t('website')}
         </Typography>
         <TextField
           id="standard-full-width"
@@ -119,7 +119,7 @@ const EditContactInformation: React.FC<any> = ({ profile }) => {
             fontSize="small"
             style={{ marginBottom: -3, color: '#eb5a02' }}
           />{' '}
-          Email
+          {t('email')}
         </Typography>
         <TextField
           id="standard-full-width"
@@ -144,7 +144,7 @@ const EditContactInformation: React.FC<any> = ({ profile }) => {
             fontSize="small"
             style={{ marginBottom: -3, color: '#eb5a02' }}
           />{' '}
-          Phone
+          {t('phone')}
         </Typography>
         <TextField
           id="standard-full-width"

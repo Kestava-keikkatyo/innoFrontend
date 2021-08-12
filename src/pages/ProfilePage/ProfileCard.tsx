@@ -16,6 +16,8 @@ import { Button } from '@material-ui/core';
 import PublicIcon from '@material-ui/icons/Public';
 import { useHistory } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
+import { useTranslation } from 'react-i18next'
+
 const ProfileCard: React.FC<any> = ({ profile }) => {
   const [expanded, setExpanded] = React.useState(false);
   const classes = useStyles();
@@ -24,6 +26,8 @@ const ProfileCard: React.FC<any> = ({ profile }) => {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const { t } = useTranslation()
 
   const handleSiirryProfiiliin = (profileId: any) => {
     history.push({
@@ -70,7 +74,7 @@ const ProfileCard: React.FC<any> = ({ profile }) => {
               //fontSize="small"
               style={{ marginBottom: -3, color: '#eb5a02', fontSize: 16 }}
             />{' '}
-            Email
+            {t('email')}
           </Typography>
           <Typography
             variant="body2"
@@ -89,7 +93,7 @@ const ProfileCard: React.FC<any> = ({ profile }) => {
               //fontSize="small"
               style={{ marginBottom: -3, color: '#eb5a02', fontSize: 16 }}
             />{' '}
-            Phone
+            {t('phone')}
           </Typography>
           <Typography
             variant="body2"
@@ -108,7 +112,7 @@ const ProfileCard: React.FC<any> = ({ profile }) => {
               //fontSize="small"
               style={{ marginBottom: -3, color: '#eb5a02', fontSize: 16 }}
             />{' '}
-            Website
+            {t('website')}
           </Typography>
 
           <Typography
@@ -128,7 +132,7 @@ const ProfileCard: React.FC<any> = ({ profile }) => {
             className={classes.button}
             onClick={() => handleSiirryProfiiliin(profile._id)}
           >
-            Siirry Profiiliin
+            {t('transfer_profile')}
           </Button>
         </CardActions>
       </Collapse>
