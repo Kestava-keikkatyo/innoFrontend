@@ -34,17 +34,18 @@ export const login = (credentials: Credentials, role: roles, from: string) => {
     });
     try {
       const { data } = await userService.login(credentials, role);
-      const profile = await profileService.fetchProfileById(data.profileId);
       dispatch({
         type: LOGIN,
         data,
       });
-      dispatch({ type: SET_CURRENT_PROFILE, data: profile });
       saveUser(data);
 
-      console.log('user login data', data);
       history.push(from);
       dispatch(setAlert('login successful', severity.Success));
+
+      const profile: any = await profileService.fetchProfileById(data.profileId);
+      dispatch({ type: SET_CURRENT_PROFILE, data: profile });
+
     } catch (error) {
       dispatch({
         type: USER_FAILURE,
@@ -77,15 +78,15 @@ export const signup = (user: SignUpUser, role: roles) => {
       if (data.role === 'agency') {
         try {
           const res = await contractsService.createBusinessContract();
-          console.log('#### res:', res);
         } catch (error) {
           statusHandler(dispatch, error);
         }
       }
+
       const profile = {
         name: 'Firstname Lastname',
         phone: '044 444 4444',
-        email: 'user@email.com',
+        email: data.email,
         streetAddress: 'Streetaddress A 12',
         zipCode: '00100',
         city: 'Helsinki',
@@ -108,16 +109,18 @@ export const signup = (user: SignUpUser, role: roles) => {
           'Olla poistamatta turva- tai suojalaitetta käytöstä',
         ],
       };
-      const profileResponse = await profileService.createProfile(profile);
-      dispatch({ type: SET_CURRENT_PROFILE, data: profileResponse });
-      console.log('profile res ', profileResponse);
+
+      history.push('/home');
+      dispatch(setAlert('signup successful', severity.Success));
 
       const notificationsResponse =
         await notificationsService.postNotifications();
       console.log('notifications res ', notificationsResponse.status);
 
-      history.push('/home');
-      dispatch(setAlert('signup successful', severity.Success));
+      const profileResponse = await profileService.createProfile(profile);
+      dispatch({ type: SET_CURRENT_PROFILE, data: profileResponse });
+      console.log('profile res ', profileResponse);
+
     } catch (error) {
       dispatch({
         type: USER_FAILURE,

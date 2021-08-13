@@ -4,15 +4,15 @@ import baseUrl from '../utils/baseUrl'
 
 
 const authHeader = () => {
-    return {
-      headers: { 'x-access-token': `${loadUser().token}` }
-    }
+  return {
+    headers: { 'x-access-token': `${loadUser().token}` }
   }
+}
 
 const updateProfile = async (profile: Object, profileId: any) => {
-    const res = await axios.put(`${baseUrl}/profile/${profileId}`, profile, authHeader())
-    console.log('res##',res)
-    return res.data
+  const res = await axios.put(`${baseUrl}/profile/${profileId}`, profile, authHeader())
+  console.log('res##', res)
+  return res.data
 }
 
 const createProfile = async (profile: Object) => {
@@ -21,8 +21,8 @@ const createProfile = async (profile: Object) => {
 }
 
 const getProfile = async (profile: Object) => {
-    const res = await axios.get(`${baseUrl}/profile`)
-    return res.data
+  const res = await axios.get(`${baseUrl}/profile`)
+  return res.data
 }
 
 /**
@@ -30,32 +30,32 @@ const getProfile = async (profile: Object) => {
  * @desc fetchProfileById
  */
 const fetchProfileById = async (id: string) => {
-    try {
-     const res = await axios.get(`${baseUrl}/profile/${id}`, authHeader())
-     return res.data
-    } catch (error) {
-     console.log(error);
-     return {}
-    }
+  try {
+    const res = await axios.get(`${baseUrl}/profile/${id}`, authHeader())
+    return res.data
+  } catch (error) {
+    console.log(error);
+    return Promise.reject(error.response)
   }
+}
 
-  const fetchProfiles = async () => {
-    try {
-      const res = await axios.get(`${baseUrl}/profile`, authHeader())
-      return res
-    } catch (error) {
-      return Promise.reject(error.response)
-    }
+const fetchProfiles = async () => {
+  try {
+    const res = await axios.get(`${baseUrl}/profile`, authHeader())
+    return res
+  } catch (error) {
+    return Promise.reject(error.response)
   }
+}
 
 
 
 
 
 export default {
-    updateProfile,
-    fetchProfileById,
-    getProfile,
-    createProfile,
-    fetchProfiles
+  updateProfile,
+  fetchProfileById,
+  getProfile,
+  createProfile,
+  fetchProfiles
 }

@@ -32,6 +32,8 @@ export default {
   agency: "Vuokrayritys",
   business: "Käyttäjäyritys",
   jobs: 'Työpaikat',
+  businesses: "Käyttäjäyritykset",
+  workers: "Työntekijät",
 
   //Button
   submit: "Lähetä",
@@ -109,6 +111,8 @@ export default {
   received_contracts: "Saapuneet sopimukset",
   waiting_contracts: "Odottavat sopimukset",
   done_contracts: "Valmiit sopimukset",
+  contracts_received_from_the_workers: "Työntekijöiltä saapuneet sopimukset",
+  contracts_received_from_businesses: "Käyttäjäyrityksiltä saapuneet sopimukset",
 
   //Agencies list
   all: "Kaikki",
@@ -155,37 +159,37 @@ export default {
   endedWork: "Päättyneet työkeikat",
 
   //ContractsPage
- add_active: "Lisää aktiivisiin työkeikkoihin",
- add: 'Lisää',
- make_contract: 'Tee sopimus',
- contracts: 'Sopimukset',
+  add_active: "Lisää aktiivisiin työkeikkoihin",
+  add: 'Lisää',
+  make_contract: 'Tee sopimus',
+  contracts: 'Sopimukset',
 
- //FeedbackForm
- write_feedback_here: 'Kirjoita palautteesi tähän',
- feedback_sent: 'Palaute lähetetty',
- give_feedback: 'Anna palautetta',
- return_form: 'Palautelomake',
- replied: 'Vastattu',
- wait: 'Odottaa',
- own_feedback: 'Omat palautteet',
- headline: 'Otsikko',
+  //FeedbackForm
+  write_feedback_here: 'Kirjoita palautteesi tähän',
+  feedback_sent: 'Palaute lähetetty',
+  give_feedback: 'Anna palautetta',
+  return_form: 'Palautelomake',
+  replied: 'Vastattu',
+  wait: 'Odottaa',
+  own_feedback: 'Omat palautteet',
+  headline: 'Otsikko',
 
- //ContractFormManagerPage
- description: 'Kuvaus',
- preview: "Esikatsele",
- edit: "Muokkaa",
- download_pdf: "Lataa pdf",
- download: 'Lataa',
- copy_to_my_forms: 'Kopioi minun lomakkaisiini',
- title: 'Otsikko',
- 
- //MyFormsTable
- delete: 'Poista',
+  //ContractFormManagerPage
+  description: 'Kuvaus',
+  preview: "Esikatsele",
+  edit: "Muokkaa",
+  download_pdf: "Lataa pdf",
+  download: 'Lataa',
+  copy_to_my_forms: 'Kopioi minun lomakkaisiini',
+  title: 'Otsikko',
 
- //FormsPage
- my_forms: "Lomakkeeni",
- common: "Yleiset",
- community: "Yhteisö",
+  //MyFormsTable
+  delete: 'Poista',
+
+  //FormsPage
+  my_forms: "Lomakkeeni",
+  common: "Yleiset",
+  community: "Yhteisö",
 
   //ContractsTable
   status: 'Tila',
@@ -193,7 +197,7 @@ export default {
   info: 'Info',
   send_back: 'Lähetä takaisin',
   decline: 'Hylkää',
-  
+
   //ResponsiveDrawer
   databank: 'Tietopankki',
   schedule: 'Aikataulut',
@@ -205,6 +209,7 @@ export default {
   my_work: 'Työni',
   remove: 'Poista',
  
+
   //profilePage
   edit_profile: 'Muokkaa profiilia',
   settings: 'Asetukset',

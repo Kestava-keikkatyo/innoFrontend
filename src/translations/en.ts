@@ -32,6 +32,8 @@ export default {
   agency: 'Agency',
   business: 'Business',
   jobs: 'Jobs',
+  businesses: "Businesses",
+  workers: "Workers",
 
   //Button
   submit: 'Submit',
@@ -47,12 +49,13 @@ export default {
   history: 'History',
   active: 'Active',
  
+
   //profile page
   profiles: 'Profiles',
   search_by_name: 'Search by name...',
   no_results: 'No results',
   search: 'Search...',
- 
+
   //Line chart
   mood_history: 'Mood history',
 
@@ -70,7 +73,7 @@ export default {
   comment: 'Comment',
   date: 'Date',
   image: 'Image',
- 
+
   //Agencystaistics
   mood_stats: 'Feeling stats',
 
@@ -85,7 +88,7 @@ export default {
   //Report step one
   select_report_handler: 'Select report handler',
   select_report_helper_text: 'You can choose both Business and Agency or one of them as a report handler',
-  
+
   //Report step two
   happened: 'When did this happen?',
 
@@ -108,6 +111,8 @@ export default {
   received_contracts: "Received contracts",
   waiting_contracts: 'Waiting contracts',
   done_contracts: 'Done contracts',
+  contracts_received_from_the_workers: "Contracts received from the workers",
+  contracts_received_from_businesses: "Käyttäjäyrityksiltä saapuneet sopimukset",
 
   //Agencies list
   all: 'All',
@@ -125,60 +130,60 @@ export default {
   contact_information: 'Contact information',
 
   //feeling utils
-  cheer_one: "C'moon!", 
-  cheer_two: "Not Bad!", 
-  cheer_three: "Decent!", 
-  cheer_four: "Great!", 
+  cheer_one: "C'moon!",
+  cheer_two: "Not Bad!",
+  cheer_three: "Decent!",
+  cheer_four: "Great!",
   cheer_five: "Excellent!",
 
- //Feeling entryModal
- feeling_entry: 'New Feeling Entry',
+  //Feeling entryModal
+  feeling_entry: 'New Feeling Entry',
 
- //AgencyStatisticsSummary
- average: 'Average',
- total: 'Total',
+  //AgencyStatisticsSummary
+  average: 'Average',
+  total: 'Total',
 
- //WorkerStatisticsSummary,
- current_mood: 'Current mood',
- no_data: 'Oops! No data.',
- no_entries: "If you see this, then you haven't probably added any entries yet.",
- oops: 'oops',
+  //WorkerStatisticsSummary,
+  current_mood: 'Current mood',
+  no_data: 'Oops! No data.',
+  no_entries: "If you see this, then you haven't probably added any entries yet.",
+  oops: 'oops',
 
- //WorkerTransferList
- choices: 'choices',
- chosen: 'chosen',
+  //WorkerTransferList
+  choices: 'choices',
+  chosen: 'chosen',
 
- //Contracts pages
- neededWork: "Requested task",
- activeWork: "Active task",
- endedWork: "Ended task",
+  //Contracts pages
+  neededWork: "Requested task",
+  activeWork: "Active task",
+  endedWork: "Ended task",
 
- //ContractsPage
- add_active: "Add to active work tasks",
- add: 'Add',
- make_contract: 'Make a contract',
- contracts: 'Contracts',
+  //ContractsPage
+  add_active: "Add to active work tasks",
+  add: 'Add',
+  make_contract: 'Make a contract',
+  contracts: 'Contracts',
 
- //FeedbackForm
- write_feedback_here: 'Write feedback here',
- feedback_sent: 'Feedback sent',
- give_feedback: 'Give feedback',
- return_form: 'Feedback form',
- replied: 'Replied',
- wait: 'Wait',
- own_feedback: 'Own feedbacks',
- headline: 'Headline',
+  //FeedbackForm
+  write_feedback_here: 'Write feedback here',
+  feedback_sent: 'Feedback sent',
+  give_feedback: 'Give feedback',
+  return_form: 'Feedback form',
+  replied: 'Replied',
+  wait: 'Wait',
+  own_feedback: 'Own feedbacks',
+  headline: 'Headline',
 
- //ContractFormManagerPage
- description: 'description',
- preview: "Preview",
- edit: "Edit",
- download_pdf: "Download pdf",
- download: 'Download',
- copy_to_my_forms: 'Copy to my forms',
+  //ContractFormManagerPage
+  description: 'description',
+  preview: "Preview",
+  edit: "Edit",
+  download_pdf: "Download pdf",
+  download: 'Download',
+  copy_to_my_forms: 'Copy to my forms',
 
- //MyFormsTable
- delete: 'Delete',
+  //MyFormsTable
+  delete: 'Delete',
 
   //FormsPage
   my_forms: "My forms",
@@ -195,7 +200,7 @@ export default {
   info: 'Info',
   send_back: 'Send back',
   decline: 'Decline',
-  
+
   //ResponsiveDrawer
   databank: 'Databank',
   schedule: 'Schedule',
@@ -215,7 +220,7 @@ export default {
   return: 'Return',
   introduction_video: 'Introduction video',
   instructions: 'Instructions',
-  occupational: 'Occupational Safety Rules', 
+  occupational: 'Occupational Safety Rules',
   change_picture: 'Change picture',
   change_cover: 'Change cover',
   save_changes: 'Save changes',
@@ -271,5 +276,5 @@ export default {
 
 
 
-  
+
 }

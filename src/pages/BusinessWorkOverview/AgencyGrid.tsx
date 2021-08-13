@@ -14,80 +14,42 @@ const useStyles = makeStyles({
   },
 });
 
-const AgencyGrid = () => {
+const AgencyGrid = (prop: { agencies: Array<Object> }) => {
+  const { agencies } = prop
   const classes = useStyles();
 
-  return (
-    <div className={classes.root}>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-label="Expand"
-          aria-controls="additional-actions1-content"
-          id="additional-actions1-header"
-        >
-          <FormControlLabel
-            aria-label="Acknowledge"
-            onClick={(event) => event.stopPropagation()}
-            onFocus={(event) => event.stopPropagation()}
-            control={<Checkbox />}
-            label="Yritys 1"
-          />
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography color="textSecondary">
-            The click event of the nested action will propagate up and expand the accordion unless
-            you explicitly stop it.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-label="Expand"
-          aria-controls="additional-actions2-content"
-          id="additional-actions2-header"
-        >
-          <FormControlLabel
-            aria-label="Acknowledge"
-            onClick={(event) => event.stopPropagation()}
-            onFocus={(event) => event.stopPropagation()}
-            control={<Checkbox />}
-            label="Yritys 2"
-          />
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography color="textSecondary">
-            The focus event of the nested action will propagate up and also focus the accordion
-            unless you explicitly stop it.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-label="Expand"
-          aria-controls="additional-actions3-content"
-          id="additional-actions3-header"
-        >
-          <FormControlLabel
-            aria-label="Acknowledge"
-            onClick={(event) => event.stopPropagation()}
-            onFocus={(event) => event.stopPropagation()}
-            control={<Checkbox />}
-            label="Yritys 3"
-          />
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography color="textSecondary">
-            If you forget to put an aria-label on the nested action, the label of the action will
-            also be included in the label of the parent button that controls the accordion
-            expansion.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-    </div>
-  );
+  if (!agencies) {
+    return <Typography>No result</Typography>
+  } else {
+    return (
+      <div className={classes.root}>
+        {agencies.map((object: any) => (
+          <Accordion key={object.agency._id}>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-label="Expand"
+              aria-controls="additional-actions1-content"
+              id="additional-actions1-header"
+            >
+              <FormControlLabel
+                aria-label="Acknowledge"
+                onClick={(event) => event.stopPropagation()}
+                onFocus={(event) => event.stopPropagation()}
+                control={<Checkbox />}
+                label={object.agency.name}
+              />
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography color="textSecondary">
+                The click event of the nested action will propagate up and expand the accordion unless
+                you explicitly stop it.
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+        ))}
+      </div>
+    );
+  }
 }
 
 export default AgencyGrid

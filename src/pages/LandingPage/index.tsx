@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import {
   useTheme,
   Button,
@@ -7,22 +7,40 @@ import {
   Toolbar,
   Typography,
   Grid,
-} from '@material-ui/core'
-import SwipeableViews from 'react-swipeable-views'
-import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons'
-import FooterPage from './FooterPage'
-import FirstLandingPage from './FirstLandingPage'
-import ContentLifeSpan from './ContentWorkLifeSpan'
-import ContentResponsibilities from './ContentResponsibilities'
-import { Link } from 'react-router-dom'
+} from '@material-ui/core';
+import SwipeableViews from 'react-swipeable-views';
+import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons';
+import FooterPage from './FooterPage';
+import FirstLandingPage from './FirstLandingPage';
+import ContentLifeSpan from './ContentWorkLifeSpan';
+import ContentResponsibilities from './ContentResponsibilities';
+import { Link } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 400,
+    flexGrow: 1,
+  },
+});
 
 const LandingPage = () => {
-  const theme = useTheme()
-  const [activeStep, setActiveStep] = useState(0)
+  const theme = useTheme();
+  const [activeStep, setActiveStep] = useState(0);
+
+  const classes = useStyles();
+
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
 
   const handleStepChange = (step: any) => {
-    setActiveStep(step)
-  }
+    setActiveStep(step);
+  };
   return (
     <div>
       <AppBar position="fixed" elevation={0} className="landing-appbar">
@@ -56,7 +74,12 @@ const LandingPage = () => {
         activeStep={activeStep}
         className="landing-stepper"
         nextButton={
-          <Button size="small" disabled={activeStep === 3}>
+          <Button
+            className="next-back-btns"
+            size="small"
+            onClick={handleNext}
+            disabled={activeStep === 3}
+          >
             {theme.direction === 'rtl' ? (
               <KeyboardArrowLeft />
             ) : (
@@ -65,7 +88,12 @@ const LandingPage = () => {
           </Button>
         }
         backButton={
-          <Button size="small" disabled={activeStep === 0}>
+          <Button
+            className="next-back-btns"
+            size="small"
+            onClick={handleBack}
+            disabled={activeStep === 0}
+          >
             {theme.direction === 'rtl' ? (
               <KeyboardArrowRight />
             ) : (
@@ -90,6 +118,6 @@ const LandingPage = () => {
         <FooterPage />
       </SwipeableViews>
     </div>
-  )
-}
-export default LandingPage
+  );
+};
+export default LandingPage;

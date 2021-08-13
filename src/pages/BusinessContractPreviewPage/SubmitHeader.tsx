@@ -29,7 +29,11 @@ const SubmitHeader: React.FC<any> = () => {
         history.location.state.contractId
       )
     );
-    history.push(`/business-contracts`);
+
+    history.push({
+      pathname: `/business-contracts`,
+      state: { isSubmitted: true },
+    });
   };
 
   return (
