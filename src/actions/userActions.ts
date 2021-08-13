@@ -78,7 +78,6 @@ export const signup = (user: SignUpUser, role: roles) => {
       if (data.role === 'agency') {
         try {
           const res = await contractsService.createBusinessContract();
-          console.log('#### res:', res);
         } catch (error) {
           statusHandler(dispatch, error);
         }
@@ -110,16 +109,18 @@ export const signup = (user: SignUpUser, role: roles) => {
           'Olla poistamatta turva- tai suojalaitetta käytöstä',
         ],
       };
-      const profileResponse = await profileService.createProfile(profile);
-      dispatch({ type: SET_CURRENT_PROFILE, data: profileResponse });
-      console.log('profile res ', profileResponse);
+
+      history.push('/home');
+      dispatch(setAlert('signup successful', severity.Success));
 
       const notificationsResponse =
         await notificationsService.postNotifications();
       console.log('notifications res ', notificationsResponse.status);
 
-      history.push('/home');
-      dispatch(setAlert('signup successful', severity.Success));
+      const profileResponse = await profileService.createProfile(profile);
+      dispatch({ type: SET_CURRENT_PROFILE, data: profileResponse });
+      console.log('profile res ', profileResponse);
+
     } catch (error) {
       dispatch({
         type: USER_FAILURE,
