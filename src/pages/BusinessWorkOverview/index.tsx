@@ -16,7 +16,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchBusinessContracts } from "../../actions/businessContractActions";
 import { IRootState } from "../../utils/store";
-import ProfileCard from "../ProfilePage/ProfileCard";
 
 const BusinessWorkRequest:React.FC<any> = () => {
   const classes = useStyles();
