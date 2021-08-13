@@ -82,10 +82,11 @@ export const signup = (user: SignUpUser, role: roles) => {
           statusHandler(dispatch, error);
         }
       }
+
       const profile = {
         name: 'Firstname Lastname',
         phone: '044 444 4444',
-        email: 'user@email.com',
+        email: data.email,
         streetAddress: 'Streetaddress A 12',
         zipCode: '00100',
         city: 'Helsinki',

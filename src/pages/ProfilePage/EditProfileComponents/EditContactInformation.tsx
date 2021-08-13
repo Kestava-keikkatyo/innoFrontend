@@ -7,7 +7,7 @@ import PublicIcon from '@material-ui/icons/Public';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PhoneIcon from '@material-ui/icons/Phone';
 import EmailIcon from '@material-ui/icons/Email';
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
 /**
  * @component
  * @desc Renders profile's contact information to be edited.
@@ -16,7 +16,7 @@ import { useTranslation } from 'react-i18next'
  */
 const EditContactInformation: React.FC<any> = ({ profile }) => {
   const dispatch = useDispatch();
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   return (
     <Grid container style={{ marginBottom: 75 }}>
       <Grid item xs={12}>
@@ -126,6 +126,7 @@ const EditContactInformation: React.FC<any> = ({ profile }) => {
           style={{ maxWidth: '97%', marginTop: 12 }}
           name="email"
           fullWidth
+          disabled // user email can not be changed
           value={profile.email || ''}
           onChange={(e) =>
             dispatch(setProfile({ ...profile, email: e.target.value }))
