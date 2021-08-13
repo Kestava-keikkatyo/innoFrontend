@@ -42,11 +42,11 @@ const Chart = () => {
   const [moodCounts, setMoodCounts] = React.useState([0, 0, 0, 0, 0]);
 
   const [labels, setLabels] = React.useState([
-    'Mon',
-    'Tue',
-    'Wed',
-    'Thu',
-    'Fri',
+    t('monday'),
+    t('tuesday'),
+    t('wednesday'),
+    t('thursday'),
+    t('friday'),
   ]);
 
   const getFeelingsValues = () => {
@@ -94,7 +94,7 @@ const Chart = () => {
   const handleClick = (period: string) => {
     switch (period) {
       case '1w':
-        return setLabels(['Mon', 'Tue', 'Wed', 'Thu', 'Fri']);
+        return setLabels([t('monday'), t('tuesday'), t('wednesday'), t('thursday'), t('friday')]);
       case '1m':
         return setLabels([
           '1th',
@@ -154,7 +154,7 @@ const Chart = () => {
               color="primary"
               size="small"
             >
-              1w
+               {t('week')}
             </Button>
             <Button
               onClick={() => handleClick('1m')}
@@ -162,7 +162,7 @@ const Chart = () => {
               color="primary"
               size="small"
             >
-              1m
+              {t('mm')}
             </Button>
             <Button
               onClick={() => handleClick('6m')}
@@ -170,7 +170,7 @@ const Chart = () => {
               color="primary"
               size="small"
             >
-              6m
+              {t('half_year')}
             </Button>
             <Button
               onClick={() => handleClick('1y')}
@@ -178,7 +178,7 @@ const Chart = () => {
               color="primary"
               size="small"
             >
-              1y
+              {t('year')}
             </Button>
           </AccordionDetails>
 

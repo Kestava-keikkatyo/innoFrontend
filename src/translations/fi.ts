@@ -31,6 +31,7 @@ export default {
   worker: "Työntekijä",
   agency: "Vuokrayritys",
   business: "Käyttäjäyritys",
+  jobs: 'Työpaikat',
 
   //Button
   submit: "Lähetä",
@@ -43,6 +44,8 @@ export default {
   reset: "resetoi",
   upload_file: "Liitä tiedosto",
   entry: "Lisää",
+  history: 'Historia',
+  active: 'Active',
 
   //profile page
   profiles: "Profiilit",
@@ -63,6 +66,7 @@ export default {
 
   mood_table: "Yksityiskohdat",
   mood: "Fiilis",
+  moods: 'Fiilikset',
   comment: "Kommentti",
   date: "Päivämäärä",
   image: "Kuva",
@@ -76,6 +80,7 @@ export default {
   report_details: "Lisätiedot",
   steps_completed: "Valmista",
   reports: 'Raportit',
+  report: 'Raportit',
 
   //Report step one
   select_report_handler: "Valitse raportin vastaanottaja",
@@ -196,6 +201,9 @@ export default {
   forms: 'Lomakkeet',
   work_request: "Työpyynnöt",
   exit_application: 'Poistu sovelluksesta',
+  business_contracts: 'Yrityssopimukset',
+  my_work: 'Työni',
+  remove: 'Poista',
  
   //profilePage
   edit_profile: 'Muokkaa profiilia',
@@ -217,6 +225,43 @@ export default {
   new_password: 'Uusi salasana',
   confirm_password: 'Toista uusi salasana',
   occupational: 'Työsuojelusäännöt',
+
+  //FeedbackForm
+  no_feedback: 'Ei palautteita',
+
+  //weekdays
+  monday: 'Ma',
+  tuesday: 'Ti',
+  wednesday: 'Ke',
+  thursday: 'To',
+  friday: 'Pe',
+
+  w: '1vk',
+  mm: '1kk',
+  half_year: '6kk',
+  year: '1v',
+
+  jan: 'Tammikuu',
+  feb: 'Helmikuu',
+  mar: 'Maaliskuu',
+  apr: 'Huhtikuu',
+  may: 'Toukokuu',
+  jun: 'Kesäkuu',
+  jul: 'Heinäkuu',
+  aug: 'Elokuu',
+  sep: 'Syyskuu',
+  oct: 'Lokakuu',
+  nov: 'Marraskuu',
+  dec: 'Joulukuu',
+
+  //ListAccordion
+  unfinished: 'Käsittelemätön',
+
+  //Form
+  form_title: 'Lomakkeen otsikko',
+  add_question: 'Lisää kysymys',
+  form_editor: 'Lomakkeen muokkaus',
+
 
 
   //import { useTranslation } from 'react-i18next'

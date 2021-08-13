@@ -238,7 +238,7 @@ const MyFormsTable: React.FC<any> = () => {
 
   if(!myForms.docs) return (
     <Typography style={{ padding: '1rem' }} variant="h6" align="center" className="text-secondary">
-      no results
+      {t("no_results")}
     </Typography>
   )
 

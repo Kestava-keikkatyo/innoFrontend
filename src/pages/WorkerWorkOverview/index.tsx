@@ -15,6 +15,7 @@ import AnnouncementIcon from "@material-ui/icons/Announcement";
 import { Accordion, AccordionDetails } from "@material-ui/core";
 import WorkView from "./WorkView";
 import WorkRequest from "./WorkRequest";
+import { useTranslation } from 'react-i18next'
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -46,6 +47,7 @@ const a11yProps = (index: any) => {
 };
 
 const WorkerJobs = () => {
+  const { t } = useTranslation()
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = useState(0);
@@ -67,14 +69,14 @@ const WorkerJobs = () => {
           <Tab
             onChange={handleChange}
             className={classes.tab}
-            label="Työkeikat"
+            label={t("jobs")}
             icon={<WorkIcon />}
             {...a11yProps(0)}
           />
           <Tab
             onChange={handleChange}
             className={classes.tab}
-            label="Keikkapyynnöt"
+            label={t("work_request")}
             icon={<AnnouncementIcon />}
             {...a11yProps(1)}
           />

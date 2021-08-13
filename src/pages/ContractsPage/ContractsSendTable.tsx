@@ -172,7 +172,7 @@ const ContractsSendTable = (prop: {
         align="center"
         className="text-secondary"
       >
-        no results
+        {t("no_results")}
       </Typography>
     );
   else return <>{matches ? accordionView() : tableView()}</>;

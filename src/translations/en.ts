@@ -31,6 +31,7 @@ export default {
   worker: 'Worker',
   agency: 'Agency',
   business: 'Business',
+  jobs: 'Jobs',
 
   //Button
   submit: 'Submit',
@@ -43,6 +44,8 @@ export default {
   reset: 'Reset',
   upload_file: 'Upload file',
   entry: 'New entry',
+  history: 'History',
+  active: 'Active',
  
   //profile page
   profiles: 'Profiles',
@@ -63,6 +66,7 @@ export default {
 
   mood_table: 'Details',
   mood: 'Feeling',
+  moods: 'Feelings',
   comment: 'Comment',
   date: 'Date',
   image: 'Image',
@@ -76,6 +80,7 @@ export default {
   report_details: 'Details',
   steps_completed: 'Steps are completed - you are finished',
   reports: 'Reports',
+  report: 'Report',
 
   //Report step one
   select_report_handler: 'Select report handler',
@@ -198,6 +203,9 @@ export default {
   forms: 'Forms',
   work_request: 'Work requests',
   exit_application: 'Exit application',
+  business_contracts: 'Business contracts',
+  my_work: 'My work',
+  remove: 'Remove',
 
   //profilePage
   edit_profile: 'Edit profile',
@@ -220,10 +228,41 @@ export default {
   new_password: 'New password',
   confirm_password: 'Confirm new password',
 
+  //FeedbackForm
+  no_feedback: 'Ei palautteita',
 
+  //weekdays
+  monday: 'Mo',
+  tuesday: 'Tu',
+  wednesday: 'We',
+  thursday: 'Thu',
+  friday: 'Fri',
 
+  w: '1W',
+  mm: '1M',
+  half_year: '6M',
+  year: '1Y',
 
+  jan: 'January',
+  feb: 'February',
+  mar: 'March',
+  apr: 'April',
+  may: 'May',
+  jun: 'June',
+  jul: 'July',
+  aug: 'August',
+  sep: 'September',
+  oct: 'October',
+  nov: 'November',
+  dec: 'December',
 
+  //ListAccordion
+  unfinished: 'Unfinished',
+
+   //Form
+   form_title: 'Form title',
+   add_question: 'Add question',
+   form_editor: 'Form editor',
 
 
 

@@ -17,7 +17,7 @@ import { useDispatch } from "react-redux";
 import { refuseBusinessContractById } from "../../actions/businessContractActions";
 import Tooltip from '@material-ui/core/Tooltip';
 import CloseIcon from '@material-ui/icons/Close';
-
+import { useTranslation } from 'react-i18next'
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
@@ -50,7 +50,7 @@ export const ListAccordioSent = (prop: { contracts: any[] }) => {
   const classes = useStyles()
 
   const dispatch = useDispatch()
-
+  const { t } = useTranslation()
   const rejectContract = (agencyId:any, contractId: any) => {
     if (window.confirm(`Poistetaanko sopimuspyyntö?`)) {
       dispatch(refuseBusinessContractById(agencyId,contractId));
@@ -59,7 +59,7 @@ export const ListAccordioSent = (prop: { contracts: any[] }) => {
 
   const { contracts } = prop
   if (contracts.length < 1) {
-    return <p>no results</p>;
+    return <p>{t("no_results")}</p>;
   } else
     return (
       <div className={classes.root}>

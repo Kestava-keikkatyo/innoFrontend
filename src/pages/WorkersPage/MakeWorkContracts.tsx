@@ -1,14 +1,15 @@
 import React from "react"
 import { Table, TableRow, TableContainer, TableCell, TableHead, TableBody, IconButton, Typography } from "@material-ui/core"
 import { AddIcon } from "@material-ui/data-grid"
+import { useTranslation } from 'react-i18next'
 
 const MakeWorkContracts:React.FC<{madeContracts:[],addWorker:Function}> = ({madeContracts,addWorker}) => {
   const contracts = madeContracts 
-  
+  const { t } = useTranslation()
   if (!contracts.length) {
       return (
         <Typography style={{ padding: '1rem' }} variant="h6" align="center" className="text-secondary">
-          no results
+          {t("no_results")}
         </Typography>
       )
   }

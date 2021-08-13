@@ -40,7 +40,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import CloseIcon from '@material-ui/icons/Close';
 import ListAltIcon from '@material-ui/icons/ListAlt';
-
+import { useTranslation } from 'react-i18next'
 import Tooltip from '@material-ui/core/Tooltip';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const ListAccordionInBox = (prop: { contracts: any[] }) => {
   const classes = useStyles();
-
+  const { t } = useTranslation()
   const theme = useTheme();
 
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
@@ -165,7 +165,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
   };
 
   if (contracts.length < 1) {
-    return <p>no results</p>;
+    return <p>{t("no_results")}</p>;
   } else
     return (
       <div className="listAccordion-div">
@@ -186,7 +186,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
               </div>
               <div className={classes.column}>
                 <Typography className={classes.color}>
-                  Käsittelemätön
+                  {t("unfinished")}
                 </Typography>
               </div>
             </AccordionSummary>
@@ -206,7 +206,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
                   color="primary"
                   variant="contained"
                 >
-                  Yrityksen Nettisivu
+                  {t("website")}
                 </Button>
               </div>
             </AccordionDetails>

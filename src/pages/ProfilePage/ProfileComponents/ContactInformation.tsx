@@ -18,7 +18,7 @@ const ContactInformation: React.FC<any> = ({ profile }) => {
   return (
     <Grid container style={{ marginBottom: 75 }}>
       <Grid item xs={12}>
-        <Typography variant="h5">Contact information</Typography>
+        <Typography variant="h5">{t('contact_information')}</Typography>
       </Grid>
 
       <Grid item xs={12} sm={6} style={{ marginTop: 24 }}>

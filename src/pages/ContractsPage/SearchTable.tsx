@@ -19,7 +19,6 @@ import { Add as AddIcon } from '@material-ui/icons';
 import { useSelector } from 'react-redux';
 import { IRootState } from '../../utils/store';
 import { useEffect, useState } from 'react';
-
 import {
   Box,
   InputBase,
@@ -171,7 +170,7 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
         align="center"
         className="text-secondary"
       >
-        no results
+        {t("no_results")}
       </Typography>
     );
 

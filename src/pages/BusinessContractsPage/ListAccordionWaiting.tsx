@@ -26,6 +26,7 @@ import ReactDOMServer from 'react-dom/server';
 import Form from '../FormsPage/Form';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
+import { useTranslation } from 'react-i18next'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -56,7 +57,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const ListAccordionWaiting = (prop: { contracts: any[] }) => {
   const classes = useStyles();
-
+  const { t } = useTranslation()
   const dispatch = useDispatch();
 
   const history = useHistory();
@@ -95,7 +96,7 @@ export const ListAccordionWaiting = (prop: { contracts: any[] }) => {
 
   const { contracts } = prop;
   if (contracts.length < 1) {
-    return <p>no results</p>;
+    return <p>{t("no_results")}</p>;
   } else
     return (
       <div className={classes.root}>
@@ -122,7 +123,7 @@ export const ListAccordionWaiting = (prop: { contracts: any[] }) => {
             <AccordionDetails>
               <div className={classes.info}>
                 <Typography style={{ margin: '10px 5px' }}>
-                  Email: {contract.agency.email}
+                  {t("email")}: {contract.agency.email}
                 </Typography>
                 <Divider />
                 <Typography style={{ margin: '10px 5px' }}>
@@ -135,7 +136,7 @@ export const ListAccordionWaiting = (prop: { contracts: any[] }) => {
                   color="primary"
                   variant="contained"
                 >
-                  Yrityksen Nettisivu
+                  {t("website")}
                 </Button>
               </div>
             </AccordionDetails>

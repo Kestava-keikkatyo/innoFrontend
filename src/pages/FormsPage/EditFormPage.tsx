@@ -16,7 +16,7 @@ import {
 import CustomFormInput from "./CustomFormInput"
 import EditFormHeader from "./EditFormHeader"
 import { Question } from "../../types/types"
-
+import { useTranslation } from 'react-i18next'
 /**
  * @todo move to constants
  */
@@ -56,7 +56,7 @@ const EditFormPage: React.FC = () => {
   const dispatch = useDispatch()
   const currentForm = useSelector((state: any) => state.form)
   const { title, description, questions } = currentForm
-
+  const { t } = useTranslation()
   const addForm = (event: any): void => {
     event.preventDefault()
     dispatch(submitForm(currentForm))
@@ -70,7 +70,7 @@ const EditFormPage: React.FC = () => {
     <EditFormHeader />
     <div className="create-form" >
       <CustomFormInput
-        label="Form Title"
+        label={t("form_title")}
         labelFontSize="large"
         placeholder="Your title..."
         type="text"
@@ -79,7 +79,7 @@ const EditFormPage: React.FC = () => {
         onChange={({ target }: any) => dispatch(setTitle(target.value))}
       />
       <CustomFormInput
-        label="Description"
+        label={t("description")}
         labelFontSize="large"
         placeholder="Your description..."
         type="text"
@@ -93,7 +93,7 @@ const EditFormPage: React.FC = () => {
         ))}
       </div>
       <Button onClick={() => dispatch(addQuestion(initialQuestion))}>
-        Add Question
+        {t("add_question")}
       </Button>
       </div>
     </form>

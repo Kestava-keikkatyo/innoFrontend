@@ -1,6 +1,6 @@
 import React from 'react';
 import { Avatar, Grid, makeStyles, Typography } from '@material-ui/core';
-
+import { useTranslation } from 'react-i18next'
 /**
  * @component
  * @desc Renders profile page picture and user's name
@@ -9,6 +9,7 @@ import { Avatar, Grid, makeStyles, Typography } from '@material-ui/core';
  */
 const ProfilePictureAndName: React.FC<any> = ({ profile }) => {
   const classes = useStyles();
+  const { t } = useTranslation()
 
   return (
     <Grid
@@ -31,7 +32,6 @@ const ProfilePictureAndName: React.FC<any> = ({ profile }) => {
         <div className={classes.contact}>
           <Typography variant="h6">{profile.name}</Typography>
         </div>
-        <Typography>status</Typography>
       </Grid>
     </Grid>
   );

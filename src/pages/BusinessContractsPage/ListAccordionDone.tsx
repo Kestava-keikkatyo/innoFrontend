@@ -23,7 +23,7 @@ import pdfFonts from 'pdfmake/build/vfs_fonts.js';
 import htmlToPdfmake from 'html-to-pdfmake';
 import ReactDOMServer from 'react-dom/server';
 import Form from '../FormsPage/Form';
-
+import { useTranslation } from 'react-i18next'
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const ListAccordionDone = (prop: { contracts: any[] }) => {
   const classes = useStyles();
-
+  const { t } = useTranslation()
   const history = useHistory();
 
   const dispatch = useDispatch();
@@ -92,7 +92,7 @@ export const ListAccordionDone = (prop: { contracts: any[] }) => {
 
   const { contracts } = prop;
   if (contracts.length < 1) {
-    return <p>no results</p>;
+    return <p>{t("no_results")}</p>;
   } else
     return (
       <div className={classes.root}>
@@ -109,7 +109,7 @@ export const ListAccordionDone = (prop: { contracts: any[] }) => {
               <div className={classes.column}>
                 <Typography className={classes.heading}>
                   {' '}
-                  Name: {contract.agency.name}
+                  {t("name")}: {contract.agency.name}
                 </Typography>
               </div>
               <div className={classes.column}>
@@ -132,7 +132,7 @@ export const ListAccordionDone = (prop: { contracts: any[] }) => {
                   color="primary"
                   variant="contained"
                 >
-                  Yrityksen Nettisivu
+                 {t("website")}
                 </Button>
               </div>
             </AccordionDetails>

@@ -4,6 +4,7 @@ import { AccordionDetails, AccordionSummary, Button, Card, CardContent, Checkbox
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ClearIcon from '@material-ui/icons/Clear';
+import { useTranslation } from 'react-i18next'
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -20,12 +21,13 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const ManageWorkContracts:React.FC<{workContracts:any}> = ({workContracts}) => {
+    const { t } = useTranslation()
     const contracts = workContracts
     const classes = useStyles()
     if (!contracts.length) {
       return (
         <Typography style={{ padding: '1rem' }} variant="h6" align="center" className="text-secondary">
-          no results
+         {t("no_results")}
         </Typography>
       )
     }

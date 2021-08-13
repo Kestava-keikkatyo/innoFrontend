@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { IRootState } from "../../utils/store";
-
+import { useTranslation } from 'react-i18next'
 
 /**
  * @component
@@ -22,7 +22,7 @@ const Users = () => {
   const { data } = useSelector((state: IRootState) => state.user);
   //const dispatch = useDispatch();
   const workers = data;
-
+  const { t } = useTranslation()
   /*
   useEffect(() => {
     if (!workers.length) dispatch(s);
@@ -37,7 +37,7 @@ const Users = () => {
         align="center"
         className="text-secondary"
       >
-        no results
+       {t("no_results")}
       </Typography>
     );
 
@@ -47,10 +47,10 @@ const Users = () => {
         <TableHead>
           <TableRow>
             <TableCell>id</TableCell>
-            <TableCell align="right">Käyttäjänimi</TableCell>
-            <TableCell align="right">Rooli</TableCell>
-            <TableCell align="right">Sähköposti</TableCell>
-            <TableCell align="right">Remove</TableCell>
+            <TableCell align="right">{t("username")}</TableCell>
+            <TableCell align="right">{t("role")}</TableCell>
+            <TableCell align="right">{t("email")}</TableCell>
+            <TableCell align="right">{t("remove")}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

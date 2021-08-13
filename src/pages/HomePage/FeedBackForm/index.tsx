@@ -247,7 +247,7 @@ const FeedBackForm = () => {
                   )
                 )
             ) : (
-              <Typography>Ei palautteita</Typography>
+              <Typography>{t('no_results')}</Typography>
             )}
           </CardContent>
           <CardActions classes={{ root: classes.pagination }}>

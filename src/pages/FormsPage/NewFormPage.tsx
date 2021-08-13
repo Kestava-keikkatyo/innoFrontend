@@ -16,7 +16,7 @@ import {
 import CustomFormInput from "./CustomFormInput"
 import NewFormHeader from "./NewFormHeader"
 import { Question } from "../../types/types"
-
+import { useTranslation } from 'react-i18next'
 /**
  * @todo move to constants
  */
@@ -56,6 +56,7 @@ const NewFormPage: React.FC = () => {
   const dispatch = useDispatch()
   const currentForm = useSelector((state: any) => state.form)
   const { title, description, questions } = currentForm
+  const { t } = useTranslation()
 
   const addForm = (event: any): void => {
     event.preventDefault()
@@ -70,7 +71,7 @@ const NewFormPage: React.FC = () => {
     <NewFormHeader />
     <div className="create-form" >
       <CustomFormInput
-        label="Form Title"
+        label={t("form_title")}
         labelFontSize="large"
         placeholder="Your title..."
         type="text"
@@ -79,7 +80,7 @@ const NewFormPage: React.FC = () => {
         onChange={({ target }: any) => dispatch(setTitle(target.value))}
       />
       <CustomFormInput
-        label="Description"
+        label={t("description")}
         labelFontSize="large"
         placeholder="Your description..."
         type="text"

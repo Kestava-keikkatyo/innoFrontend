@@ -68,7 +68,7 @@ const WorkersList: React.FC<any> = ({ profile }) => {
               //fontSize="small"
               style={{ marginBottom: -3, color: "#eb5a02", fontSize: 16 }}
             />{" "}
-            Email
+            {t("email")}
           </Typography>
           <Typography
             variant="body2"
@@ -87,7 +87,7 @@ const WorkersList: React.FC<any> = ({ profile }) => {
               //fontSize="small"
               style={{ marginBottom: -3, color: "#eb5a02", fontSize: 16 }}
             />{" "}
-            Phone
+           {t("phone")}
           </Typography>
           <Typography
             variant="body2"
@@ -105,7 +105,7 @@ const WorkersList: React.FC<any> = ({ profile }) => {
               //fontSize="small"
               style={{ marginBottom: -3, color: "#eb5a02", fontSize: 16 }}
             />{" "}
-            Website 
+            {t("website")}
           </Typography>
           <Typography
             variant="body2"

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { importFormByPath, updateForm } from '../../actions/formActions';
 import FileUploader from '../../components/FileUploader';
+import { useTranslation } from 'react-i18next'
 
 /**
  * @component
@@ -14,7 +15,8 @@ const EditFormHeader: React.FC = () => {
   const history = useHistory();
   const { title } = currentForm;
   const dispatch = useDispatch();
-
+  const { t } = useTranslation()
+  
   const handleSave = () => {
     dispatch(updateForm(currentForm._id, currentForm));
     history.push(`/forms`);
@@ -23,7 +25,7 @@ const EditFormHeader: React.FC = () => {
     <Grid container direction="row" justify="space-between">
       <Grid item xs={6}>
         <Typography variant="h4" color="secondary">
-          Form Editor
+          {t("form_editor")}
         </Typography>
       </Grid>
       <Grid item xs={6}>

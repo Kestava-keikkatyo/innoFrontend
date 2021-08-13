@@ -254,7 +254,7 @@ const CommonFormsTable: React.FC<any> = () => {
         align="center"
         className="text-secondary"
       >
-        no results
+       {t("no_results")}
       </Typography>
     );
 

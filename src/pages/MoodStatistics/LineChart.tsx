@@ -37,11 +37,11 @@ const LineChart = () => {
   const [moodCounts, setMoodCounts] = React.useState([0, 0, 0, 0, 0]);
 
   const [labels, setLabels] = React.useState([
-    'Mon',
-    'Tue',
-    'Wed',
-    'Thu',
-    'Fri',
+    t('monday'),
+    t('tuesday'),
+    t('wednesday'),
+    t('thursday'),
+    t('friday'),
   ]);
 
   const getFeelingsValues = () => {
@@ -89,7 +89,7 @@ const LineChart = () => {
   const handleClick = (period: string) => {
     switch (period) {
       case '1w':
-        return setLabels(['Mon', 'Tue', 'Wed', 'Thu', 'Fri']);
+        return setLabels([t('monday'), t('tuesday'), t('wednesday'), t('thursday'), t('friday')]);
       case '1m':
         return setLabels([
           '1th',
@@ -104,18 +104,18 @@ const LineChart = () => {
         return setLabels(['1', '2', '3', '4', '5', '6']);
       case '1y':
         return setLabels([
-          'Jan',
-          'Feb',
-          'Mar',
-          'Apr',
-          'May',
-          'Jun',
-          'jul',
-          'Aug',
-          'Sep',
-          'Oct',
-          'Nov',
-          'Dec',
+          t('jan'),
+          t('feb'),
+          t('mar'),
+          t('apr'),
+          t('may'),
+          t('jun'),
+          t('jul'),
+          t('aug'),
+          t('sep'),
+          t('oct'),
+          t('nov'),
+          t('dec'),
         ]);
       default:
         return null;
@@ -143,8 +143,8 @@ const LineChart = () => {
               variant="outlined"
               color="primary"
               size="small"
-            >
-              1w
+            >   
+              {t('w')}
             </Button>
             <Button
               onClick={() => handleClick('1m')}
@@ -152,7 +152,7 @@ const LineChart = () => {
               color="primary"
               size="small"
             >
-              1m
+              {t('mm')}
             </Button>
             <Button
               onClick={() => handleClick('6m')}
@@ -160,7 +160,7 @@ const LineChart = () => {
               color="primary"
               size="small"
             >
-              6m
+              {t('half_year')}
             </Button>
             <Button
               onClick={() => handleClick('1y')}
@@ -168,7 +168,7 @@ const LineChart = () => {
               color="primary"
               size="small"
             >
-              1y
+              {t('year')}
             </Button>
           </AccordionDetails>
 
