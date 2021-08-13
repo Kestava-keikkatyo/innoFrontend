@@ -32,7 +32,7 @@ import {
  */
 const AgenciesList = () => {
   const dispatch = useDispatch()
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState('')
   const { agencies } = useSelector((state: IRootState) => state.allUsers)
   const [alignment, setAlignment] = React.useState("Kaikki")
   const theme = useTheme()
@@ -60,6 +60,13 @@ const AgenciesList = () => {
     setAlignment(event.target.value as string)
   }
 
+  const handleQuerySearchChange = (
+    event: any
+  ) => {
+    setInput(event.target.value)
+    setAlignment("Search")
+  }
+
   const showAgencyCards = (type: string) => {
     switch (type) {
       case "Kaikki":
@@ -70,10 +77,10 @@ const AgenciesList = () => {
             ))
         )
       case "Search":
-        const sResult = agencies.filter((agency: any) => agency.name === input)
-        if (sResult.length > 0) {
+        const query = agencies.filter((agency: any) => agency.name.includes(input.toLowerCase()))
+        if (query.length > 0) {
           return (
-            sResult.map((agency: any) => (
+            query.map((agency: any) => (
               <AgencyCard key={agency._id} agency={agency} />
             ))
           )
@@ -83,10 +90,10 @@ const AgenciesList = () => {
           )
         }
       default:
-        const cResult = agencies.filter((agency: any) => agency.category === alignment)
-        if (cResult.length > 0) {
+        const result = agencies.filter((agency: any) => agency.category === alignment)
+        if (result.length > 0) {
           return (
-            cResult.map((agency: any) => (
+            result.map((agency: any) => (
               <AgencyCard key={agency._id} agency={agency} />
             ))
           )
@@ -98,18 +105,13 @@ const AgenciesList = () => {
     }
   }
 
-  //Iniates search query of Agencies
-  const handleSubmit = (event: any) => {
-    event.preventDefault()
-    setAlignment("Search")
-  }
   const fields = [
-    { field: t("all") },
-    { field: t("construction"), },
-    { field: t("it") },
-    { field: t("education") },
-    { field: t("medicine") },
-    { field: t("estate") }
+    { field: t("all"), category: "Kaikki" },
+    { field: t("construction"), category: "Rakennus, asennus ja huolto"},
+    { field: t("it"), category: "IT- ja tietoliikenne"},
+    { field: t("education"), category: "Koulutus- ja opetusala" },
+    { field: t("medicine"), category: "Lääketeollisuus- ja farmasia" },
+    { field: t("estate"), category: "Kiinteistö" }
   ]
 
   return (
@@ -117,16 +119,14 @@ const AgenciesList = () => {
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Box className={classes.searchBar}>
-            <form onSubmit={handleSubmit}>
               <InputBase
                 placeholder={t('search_by_name')}
-                value={input || ""}
-                onChange={(e: any) => setInput(e.target.value)}
+                value={input}
+                onChange={handleQuerySearchChange}
               />
               <IconButton type="submit">
                 <SearchIcon />
               </IconButton>
-            </form>
           </Box>
         </Grid>
         <Grid item xs={12} md={2}>
@@ -135,7 +135,7 @@ const AgenciesList = () => {
               <InputLabel>Category</InputLabel>
               <Select autoWidth={true} value={alignment} onChange={handleMobileChange}>
                 {fields.map((f) => (
-                  <MenuItem key={f.field} value={f.field}>
+                  <MenuItem key={f.field} value={f.category}>
                     {f.field}
                   </MenuItem>
                 ))}
@@ -149,7 +149,7 @@ const AgenciesList = () => {
               onChange={handleChange} 
               orientation="vertical">
               {fields.map((f) => (
-                <ToggleButton key={f.field} value={f.field}>
+                <ToggleButton key={f.field} value={f.category}>
                   {f.field}
                 </ToggleButton>
               ))}
@@ -160,7 +160,6 @@ const AgenciesList = () => {
           {showAgencyCards(alignment)}
         </Grid>
       </Grid>
-      <div></div>
     </div>
   )
 }

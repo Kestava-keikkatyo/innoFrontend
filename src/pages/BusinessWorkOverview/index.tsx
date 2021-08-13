@@ -12,25 +12,43 @@ import TextField from "@material-ui/core/TextField";
 import React from "react";
 import AgencyGrid from "./AgencyGrid";
 import { SearchIcon } from '@material-ui/data-grid'
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchBusinessContracts } from "../../actions/businessContractActions";
+import { IRootState } from "../../utils/store";
+import ProfileCard from "../ProfilePage/ProfileCard";
 
 const BusinessWorkRequest:React.FC<any> = () => {
   const classes = useStyles();
-
+  const dispatch = useDispatch();
   const [headline, setHeadline] = React.useState("");
   const [subheading, setSubheading] = React.useState("");
   const [detailedInfo, setDetailedInfo] = React.useState("");
   const [additionalDetails, setAdditionalDetails] = React.useState("");
+  const { businessContract } = useSelector((state: IRootState) => state.businessContracts);
+
+  useEffect(() => {
+    dispatch(fetchBusinessContracts())
+  },[dispatch])
 
   const handleSubmit = () => {
     alert("lisäsit työkeikan");
   };
 
+  const showAgenciesWithContract = () => {
+    const result = businessContract.filter((contract:any) => contract.madeContracts)
+    console.log(result)
+    if (result.length > 0) {
+      return result
+    } else {
+      return [] 
+    }
+  }
+
   return (
     <Container className={classes.root}>
       <form>
         <Grid container>
-          
-            
             <h1> Lähetä työkeikka pyyntö HP-yritykselle</h1>
             <Grid item md={12} sm={12} className={classes.flexbox}>
             <Typography className={classes.choose}>Valitse HP-yritys</Typography>
@@ -42,8 +60,7 @@ const BusinessWorkRequest:React.FC<any> = () => {
               />
             </IconButton>
             </Grid>
-            <AgencyGrid />
-           
+            <AgencyGrid agencies={showAgenciesWithContract()}/>
           <Grid item md={12} sm={12}>
             <Typography>
               Kerro haettava positio / ilmoituksen otsikko
