@@ -9,18 +9,18 @@ import {
   ListItem,
   ListItemText,
   Typography,
-} from '@material-ui/core'
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Spacing from '../../components/Spacing'
-import vastuualueet from '../../assets/tietopankki/vastuualueet.json'
+} from '@material-ui/core';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Spacing from '../../components/Spacing';
+import vastuualueet from '../../assets/tietopankki/vastuualueet.json';
 
 export interface ContentResponsibilitiesProps {}
 
 const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
   return (
     <Container>
-      <Spacing m5 p2 />
+      <Spacing m3 p2 />
       <Grid
         container
         direction="row"
@@ -32,7 +32,7 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
         </Grid>
         <Grid item>
           <Link to="/databank" style={{ textDecoration: 'none' }}>
-            <Button color="secondary" variant="contained">
+            <Button color="primary" variant="contained">
               Lue lisää vastuualueista
             </Button>
           </Link>
@@ -108,7 +108,7 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
         </Grid>
       </Grid>
     </Container>
-  )
-}
+  );
+};
 
-export default ContentResponsibilities
+export default ContentResponsibilities;

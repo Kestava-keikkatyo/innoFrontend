@@ -42,7 +42,11 @@
 }
 
 .landing-part2 {
-  background-color: #499437;
+  /*
+  background-color: #eb5a00;
+  border-radius: 5px !important;
+  border: 1px solid #eb5a00 !important;
+  */
   height: calc(100vh - 230px);
 }
 
@@ -71,15 +75,26 @@
   bottom: 20px;
   left: calc(50% - 112px);
   z-index: 1000;
-  background-color: #0000 !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  border-radius: 7px !important;
+}
+.next-back-btns {
+  color: #fff !important;
+}
+.next-back-btns:hover {
+  color: #eb5a00 !important;
+}
+.next-back-btns:disabled {
+  color: #757575 !important;
 }
 
 .MuiMobileStepper-dot {
-  background-color: #f5005777 !important;
+  background-color: #fff !important;
+  margin: 0 5px !important;
 }
 
 .MuiMobileStepper-dotActive {
-  background-color: rgb(110, 0, 110) !important;
+  background-color: #eb5a00 !important;
 }
 
 .bw-logo {
@@ -173,7 +188,7 @@
 }
 
 .landing-appbar {
-  background-color: #eb5a00aa !important;
+  background-color: #eb5a00 !important;
 }
 
 .landing-login {
@@ -186,7 +201,7 @@
   height: 10px;
   background: #499437;
   position: absolute;
-  /* left: calc(-50% + 20px); 
+  /* left: calc(-50% + 20px);
   right: calc(50% + 20px);
   top: 20%;
   flex: 1 1 auto;

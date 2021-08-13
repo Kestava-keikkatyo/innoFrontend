@@ -6,10 +6,10 @@ import {
   Container,
   Grid,
   Typography,
-} from '@material-ui/core'
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Spacing from '../../components/Spacing'
+} from '@material-ui/core';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Spacing from '../../components/Spacing';
 
 export interface ContentLifeSpanProps {}
 
@@ -28,12 +28,12 @@ const LifeSpanStep: React.FC<any> = ({ header, content, form }) => (
       </Typography>
     </CardActions>
   </Card>
-)
+);
 
 const ContentLifeSpan: React.FC<ContentLifeSpanProps> = () => {
   return (
     <Container>
-      <Spacing m5 p2 />
+      <Spacing m3 p2 />
       <Grid
         container
         direction="row"
@@ -45,7 +45,7 @@ const ContentLifeSpan: React.FC<ContentLifeSpanProps> = () => {
         </Grid>
         <Grid item>
           <Link to="/databank" style={{ textDecoration: 'none' }}>
-            <Button color="secondary" variant="contained">
+            <Button color="primary" variant="contained">
               Lue lisää elinkaaresta
             </Button>
           </Link>
@@ -134,7 +134,7 @@ const ContentLifeSpan: React.FC<ContentLifeSpanProps> = () => {
         </Grid> */}
       </Grid>
     </Container>
-  )
-}
+  );
+};
 
-export default ContentLifeSpan
+export default ContentLifeSpan;
