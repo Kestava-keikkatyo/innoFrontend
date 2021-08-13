@@ -90,7 +90,6 @@ const BusinessContractsPage = () => {
   }, [dispatch]);
 
   contracts.map((contract: any) => {
-    console.log(contract)
     if (contract.pendingContracts) {
       pending.push(contract)
     } else if (contract.requestContracts) {

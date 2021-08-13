@@ -48,3 +48,17 @@ export const postWorkContract = (business: any) => async (dispatch: any) => {
   if(res && res.status === 200)
     dispatch({type: ADD_W_CONTRACT, data: res.data})
 }
+
+/**
+ * @function
+ * @desc Used by Business to send WorkContract Job gig request to Agency. 
+ * @param contractId - WorkContractId between Business and Agency.
+ */
+export const postJobInWorkContract = (contractId:string) => async (dispatch:any) => {
+  const res = await contractsService.postJobInWorkContract(contractId)
+  if (res && res.status === 200) {
+    console.log("ok ",res)
+  } else {
+    console.log("not ok", res)
+  }
+}

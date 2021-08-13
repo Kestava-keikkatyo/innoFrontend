@@ -181,6 +181,19 @@ const deleteWorkContractById = async (contractId: string) => {
     authHeader()
   )
 }
+
+const postJobInWorkContract = async (contractId: string) => {
+  try {
+    return await axios.put(
+      `${baseUrl}/workcontracts/${contractId}/new`,
+      {},
+      authHeader()
+    )
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 // Create a business contract when a new agency sign up
 const createBusinessContract = async () => {
   try {
@@ -237,6 +250,7 @@ export default {
   postWorkContract,
   fetchWorkContracts,
   deleteWorkContractById,
+  postJobInWorkContract,
   sendBusinessContract,
   acceptBusinessContract,
   updateBusinessContractsForm,
