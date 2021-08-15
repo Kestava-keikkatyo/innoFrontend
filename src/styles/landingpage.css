@@ -75,7 +75,7 @@
   bottom: 20px;
   left: calc(50% - 112px);
   z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.5) !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
   border-radius: 7px !important;
 }
 .next-back-btns {
@@ -85,7 +85,7 @@
   color: #eb5a00 !important;
 }
 .next-back-btns:disabled {
-  color: #757575 !important;
+  color: #404040 !important;
 }
 
 .MuiMobileStepper-dot {
