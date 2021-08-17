@@ -48,7 +48,7 @@ export default {
   entry: 'New entry',
   history: 'History',
   active: 'Active',
- 
+
 
   //profile page
   profiles: 'Profiles',
@@ -223,6 +223,7 @@ export default {
   occupational: 'Occupational Safety Rules',
   change_picture: 'Change picture',
   change_cover: 'Change cover',
+  change_introduction_video: 'Change introduction video',
   save_changes: 'Save changes',
 
   //ChangePassword
@@ -264,10 +265,10 @@ export default {
   //ListAccordion
   unfinished: 'Unfinished',
 
-   //Form
-   form_title: 'Form title',
-   add_question: 'Add question',
-   form_editor: 'Form editor',
+  //Form
+  form_title: 'Form title',
+  add_question: 'Add question',
+  form_editor: 'Form editor',
 
 
 

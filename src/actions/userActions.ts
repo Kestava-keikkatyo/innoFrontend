@@ -78,6 +78,7 @@ export const signup = (user: SignUpUser, role: roles) => {
       if (data.role === 'agency') {
         try {
           const res = await contractsService.createBusinessContract();
+          console.log("res", res)
         } catch (error) {
           statusHandler(dispatch, error);
         }

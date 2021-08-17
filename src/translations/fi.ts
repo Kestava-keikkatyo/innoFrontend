@@ -208,7 +208,7 @@ export default {
   business_contracts: 'Yrityssopimukset',
   my_work: 'Työni',
   remove: 'Poista',
- 
+
 
   //profilePage
   edit_profile: 'Muokkaa profiilia',
@@ -216,10 +216,11 @@ export default {
   profile: 'Profiili',
   logout: 'Kirjaudu ulos',
   return: 'Palaa',
-  introduction_video: 'Johdantovideo',
+  introduction_video: 'Esittelyvideo',
   instructions: 'Ohjeet',
   change_picture: 'Vaihda kuva',
   change_cover: 'Vaihda kehys',
+  change_introduction_video: 'Vaihda esittelyvideo',
   save_changes: 'Tallenna muutokset',
 
   //ChangePassword

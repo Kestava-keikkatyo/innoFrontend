@@ -15,20 +15,10 @@ import FirstLandingPage from './FirstLandingPage';
 import ContentLifeSpan from './ContentWorkLifeSpan';
 import ContentResponsibilities from './ContentResponsibilities';
 import { Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 400,
-    flexGrow: 1,
-  },
-});
 
 const LandingPage = () => {
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
-
-  const classes = useStyles();
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);

@@ -58,11 +58,20 @@ const FileUploader: React.FC<FileUploaderProps> = ({
 
     let copyOfCurrentFiles = [...currentFiles.files];
 
-    if (name === 'Change picture') {
+    if (
+      name.toLowerCase() === 'change picture' ||
+      name.toLowerCase() === 'vaihda kuva'
+    ) {
       copyOfCurrentFiles[0] = file;
-    } else if (name === 'Change cover') {
+    } else if (
+      name.toLowerCase() === 'change cover' ||
+      name.toLowerCase() === 'vaihda kehys'
+    ) {
       copyOfCurrentFiles[1] = file;
-    } else if (name === 'Change introduction video') {
+    } else if (
+      name.toLowerCase() === 'change introduction video' ||
+      name.toLowerCase() === 'vaihda esittelyvideo'
+    ) {
       copyOfCurrentFiles[2] = file;
     } else {
       copyOfCurrentFiles = [file, null, null];

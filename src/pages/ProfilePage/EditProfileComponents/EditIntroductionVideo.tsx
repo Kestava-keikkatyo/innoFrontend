@@ -3,7 +3,7 @@ import React from 'react';
 import ReactPlayer from 'react-player';
 import FileUploader from '../../../components/FileUploader';
 import baseUrl from '../../../utils/baseUrl';
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
 
 /**
  * @component
@@ -13,12 +13,12 @@ import { useTranslation } from 'react-i18next'
  */
 const EditIntroductionVideo: React.FC<any> = ({ profile }) => {
   const classes = useStyles();
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <Grid container style={{ marginBottom: 75 }}>
       <Grid item xs={12} style={{ marginBottom: 40 }}>
-        <Typography variant="h5">{t("introduction_video")}</Typography>
+        <Typography variant="h5">{t('introduction_video')}</Typography>
       </Grid>
       <Grid item xs={12} className={classes.playerWrapper}>
         {/*   https://www.npmjs.com/package/react-player   */}
@@ -35,7 +35,7 @@ const EditIntroductionVideo: React.FC<any> = ({ profile }) => {
         />
       </Grid>
       <Grid item xs={12}>
-        <FileUploader name="Change introduction video" accept="video/*" />
+        <FileUploader name={t('change_introduction_video')} accept="video/*" />
       </Grid>
     </Grid>
   );
