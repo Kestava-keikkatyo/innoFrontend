@@ -182,11 +182,11 @@ const deleteWorkContractById = async (contractId: string) => {
   )
 }
 
-const postJobInWorkContract = async (contractId: string) => {
+const postJobInWorkContract = async (contractId: string, data:{}) => {
   try {
     return await axios.put(
       `${baseUrl}/workcontracts/${contractId}/new`,
-      {},
+      data,
       authHeader()
     )
   } catch (error) {

@@ -277,6 +277,7 @@ export const ADD_W_CONTRACT = 'ADD_WORK_CONTRACT'
 export const W_FETCH = 'FETCH_WORK_CONTRACTS'
 export const W_UPDATE = 'UPDATE_WORK_SEARCH'
 export const W_DELETE = 'DELETE_WORK_CONTRACT_BY_ID'
+export const W_JOB = 'PUT_WORK_CONTRACT_JOB'
 
 interface AddWorkContractAction {
   type: typeof ADD_W_CONTRACT
@@ -298,7 +299,12 @@ interface DeleteWorkContractAction {
   data: any
 }
 
-export type WorkContractActionTypes = AddWorkContractAction | FetchWorkContractAction | UpdateWorkContractAction | DeleteWorkContractAction
+interface PutWorkContractJobAction {
+  type: typeof W_JOB
+  data: any
+}
+
+export type WorkContractActionTypes = AddWorkContractAction | FetchWorkContractAction | UpdateWorkContractAction | DeleteWorkContractAction | PutWorkContractJobAction 
 
 export interface FeelingState {
   currentFeeling: Feeling,

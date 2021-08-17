@@ -1,29 +1,33 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
-import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Radio } from '@material-ui/core';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    width: '50%',
+    width: "100%",
   },
-});
+}));
 
-const AgencyGrid = (prop: { agencies: Array<Object> }) => {
-  const { agencies } = prop
+const AgencyGrid = (prop: { workContracts: Array<Object>, setSelectedAgency:Function }) => {
+  const { workContracts, setSelectedAgency } = prop
   const classes = useStyles();
 
-  if (!agencies) {
+  const handleSelect = (event:any, agencyId:string, contractId:string) => {
+    event.stopPropagation()
+    setSelectedAgency({ agencyId: agencyId, contractId: contractId})
+  }
+  if (!workContracts) {
     return <Typography>No result</Typography>
   } else {
     return (
       <div className={classes.root}>
-        {agencies.map((object: any) => (
+        {workContracts.map((object: any) => (
           <Accordion key={object.agency._id}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
@@ -33,9 +37,9 @@ const AgencyGrid = (prop: { agencies: Array<Object> }) => {
             >
               <FormControlLabel
                 aria-label="Acknowledge"
-                onClick={(event) => event.stopPropagation()}
+                onClick={(event) => handleSelect(event,object.agency._id,object._id)}
                 onFocus={(event) => event.stopPropagation()}
-                control={<Checkbox />}
+                control={<Radio/>}
                 label={object.agency.name}
               />
             </AccordionSummary>

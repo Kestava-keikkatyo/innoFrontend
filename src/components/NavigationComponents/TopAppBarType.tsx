@@ -103,7 +103,6 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
     variant: 'popper',
     popupId: 'userProfilePopper',
   });
-  console.log('currentProfile', currentProfile);
 
   useEffect(() => {
     dispatch(fetchProfileById(data.profileId));

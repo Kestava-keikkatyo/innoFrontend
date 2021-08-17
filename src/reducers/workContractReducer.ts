@@ -2,7 +2,7 @@
  * @module reducer/workContract
  * @desc Redux workContract reducer
  */
-import { ADD_W_CONTRACT, WorkContractState, WorkContractActionTypes, W_DELETE, W_FETCH, W_UPDATE } from "../types/state"
+import { ADD_W_CONTRACT, WorkContractState, WorkContractActionTypes, W_DELETE, W_FETCH, W_UPDATE, W_JOB } from "../types/state"
 
 const initialState: WorkContractState = {
   searchList: [],
@@ -39,6 +39,11 @@ const workContractReducer = (state: WorkContractState = initialState, action: Wo
         ...state,
         madeContracts: [...state.madeContracts, action.data]
       }
+    case W_JOB: 
+      return {
+        ...state,
+        workContracts: [action.data]
+      }  
     default:
       return state
   }

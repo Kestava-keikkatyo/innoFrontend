@@ -3,7 +3,8 @@
  * @desc Redux workContract actions
  */
 import contractsService from '../services/contractsService'
-import { ADD_W_CONTRACT, User, W_DELETE, W_FETCH, W_UPDATE } from '../types/state'
+import notificationsService from '../services/notificationsService'
+import { ADD_W_CONTRACT, W_DELETE, W_FETCH, W_UPDATE, W_JOB } from '../types/state'
 import { roles } from '../types/types'
 
 
@@ -51,14 +52,14 @@ export const postWorkContract = (business: any) => async (dispatch: any) => {
 
 /**
  * @function
- * @desc Used by Business to send WorkContract Job gig request to Agency. 
+ * @desc Used by Business to send WorkContract Job gig request to Agency.
+ * @param agencyId - Agency ID used to send notification to Agency. 
  * @param contractId - WorkContractId between Business and Agency.
+ * @param jobData - Contains header, information, startdate, enddate
  */
-export const postJobInWorkContract = (contractId:string) => async (dispatch:any) => {
-  const res = await contractsService.postJobInWorkContract(contractId)
-  if (res && res.status === 200) {
-    console.log("ok ",res)
-  } else {
-    console.log("not ok", res)
-  }
+export const postJobInWorkContract = (agencyId:string,contractId:string, jobData:{}) => async (dispatch:any) => {
+  const res = await contractsService.postJobInWorkContract(contractId, jobData)
+  if (res && res.status === 200)
+    dispatch({type: W_JOB, data: res.data})
+    await notificationsService.updateNotifications(agencyId, "Yritys lähetti työkeikka ilmoituksen.")
 }
