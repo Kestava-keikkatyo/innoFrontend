@@ -43,7 +43,7 @@ const Home = () => {
     }
   };
   return (
-    <Container>
+    <Container style={{ marginTop: 24 }}>
       <Typography variant="h4" color="primary">
         {t('home')}
       </Typography>

@@ -114,7 +114,7 @@ const ContractsTable = (props: {
         align="center"
         className="text-secondary"
       >
-       {t("no_results")}
+        {t('no_results')}
       </Typography>
     );
   else
@@ -190,7 +190,7 @@ const ContractsTable = (props: {
                 id="panel1a-header"
               >
                 <Typography gutterBottom variant="h5">
-                  {t('done_contracts')}
+                  {t('waiting_contracts')}
                 </Typography>
               </AccordionSummary>
 

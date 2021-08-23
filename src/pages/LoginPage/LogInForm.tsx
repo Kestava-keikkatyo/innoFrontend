@@ -1,12 +1,19 @@
-import React from 'react'
-import { Formik, Form } from 'formik'
-import PropTypes from 'prop-types'
-import { useTranslation } from 'react-i18next'
+import React from 'react';
+import { Formik, Form } from 'formik';
+import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
-import { FormikTextField, FormikRadioField } from '../../components/FormField'
+import { FormikTextField, FormikRadioField } from '../../components/FormField';
 
-import { Card, CardContent, Typography, Button, Box, CircularProgress } from '@material-ui/core'
-import { useSelector } from 'react-redux'
+import {
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  Box,
+  CircularProgress,
+} from '@material-ui/core';
+import { useSelector } from 'react-redux';
 
 /**
  * @component
@@ -16,14 +23,14 @@ import { useSelector } from 'react-redux'
  * @param {function} props.handleSubmit - Function for sending user credentials
  */
 const LogInForm: React.FC<any> = ({ handleSubmit }) => {
-  const { t } = useTranslation()
-  const { loading } = useSelector((state: any) => state.user)
+  const { t } = useTranslation();
+  const { loading } = useSelector((state: any) => state.user);
 
   const roleOptions = [
     { value: 'worker', label: t('worker') },
+    { value: 'business', label: t('business') },
     { value: 'agency', label: t('agency') },
-    { value: 'business', label: t('business') }
-  ]
+  ];
 
   return (
     <Card variant="outlined">
@@ -32,32 +39,35 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
           {t('log_in')}
         </Typography>
         <Formik
-          initialValues={{ email: 'jarmo@test.com', password: 'jarmo123', role: '' }}
-          validate={values => {
-            const errors: any = {}
-            const emailRegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
-            const requiredError = t('field_required')
+          initialValues={{
+            email: 'jarmo@test.com',
+            password: 'jarmo123',
+            role: '',
+          }}
+          validate={(values) => {
+            const errors: any = {};
+            const emailRegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+            const requiredError = t('field_required');
             if (!values.email) {
-              errors.email = requiredError
+              errors.email = requiredError;
             } else if (!emailRegExp.test(values.email)) {
-              errors.email = t('invalid_email_address')
+              errors.email = t('invalid_email_address');
             }
             if (!values.password) {
-              errors.password = requiredError
+              errors.password = requiredError;
             }
             if (!values.role) {
-              errors.role = requiredError
+              errors.role = requiredError;
             }
-            return errors
+            return errors;
           }}
           onSubmit={(values) => {
-            handleSubmit(values)
-          }}>
+            handleSubmit(values);
+          }}
+        >
           {({ isValid, dirty }) => (
             <Form>
-              <Box
-                display="flex"
-                flexDirection="column">
+              <Box display="flex" flexDirection="column">
                 <FormikRadioField
                   label={t('role')}
                   name="role"
@@ -79,8 +89,9 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
                   type="submit"
                   disabled={!dirty || !isValid || loading}
                   variant="contained"
-                  color="primary">
-                  {loading ? <CircularProgress size={24} /> : t('submit')}
+                  color="primary"
+                >
+                  {loading ? <CircularProgress size={24} /> : t('log_in')}
                 </Button>
               </Box>
             </Form>
@@ -88,11 +99,11 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
         </Formik>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
 LogInForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired
-}
+  handleSubmit: PropTypes.func.isRequired,
+};
 
-export default LogInForm
+export default LogInForm;

@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import { Formik, Form } from 'formik'
-import PropTypes from 'prop-types'
-import { useTranslation } from 'react-i18next'
+import React, { useState } from 'react';
+import { Formik, Form } from 'formik';
+import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
-import { FormikTextField, FormikSelectField } from '../../components/FormField'
-import SignUpModal from './SignUpModal'
+import { FormikTextField, FormikSelectField } from '../../components/FormField';
+import SignUpModal from './SignUpModal';
 
 import {
   Card,
@@ -13,9 +13,9 @@ import {
   Button,
   Box,
   CircularProgress,
-  Link
-} from '@material-ui/core'
-import { useSelector } from 'react-redux'
+  Link,
+} from '@material-ui/core';
+import { useSelector } from 'react-redux';
 
 /**
  * @component
@@ -24,24 +24,30 @@ import { useSelector } from 'react-redux'
  * @param {function} props.handleSubmit - Function for sending user credentials
  */
 const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
-  const [open, setOpen] = useState(false)
-  const { t } = useTranslation()
-  const { loading } = useSelector((state: any) => state.user)
+  const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
+  const { loading } = useSelector((state: any) => state.user);
 
   const roleOptions = [
     { value: 'worker', label: t('worker') },
     { value: 'agency', label: t('agency') },
-    { value: 'business', label: t('business') }
-  ]
+    { value: 'business', label: t('business') },
+  ];
 
   const categoryOptions = [
-    { value: 'Rakennus, asennus ja huolto', label: t('Rakennus, asennus ja huolto') },
-    { value: 'IT- ja tietoliikenne', label: t('IT- ja tietoliikenne')},
-    { value: 'Koulutus- ja opetusala', label: t('Koulutus- ja opetusala')},
-    { value: 'Tekniikka', label: t('Tekniikka')},
-    { value: 'Lääketeollisuus- ja farmasia', label: t('Lääketeollisuus- ja farmasia')},
-    { value: 'Kiinteistö', label: t('Kiinteistö')}
-  ]
+    {
+      value: 'Rakennus, asennus ja huolto',
+      label: t('Rakennus, asennus ja huolto'),
+    },
+    { value: 'IT- ja tietoliikenne', label: t('IT- ja tietoliikenne') },
+    { value: 'Koulutus- ja opetusala', label: t('Koulutus- ja opetusala') },
+    { value: 'Tekniikka', label: t('Tekniikka') },
+    {
+      value: 'Lääketeollisuus- ja farmasia',
+      label: t('Lääketeollisuus- ja farmasia'),
+    },
+    { value: 'Kiinteistö', label: t('Kiinteistö') },
+  ];
 
   return (
     <Card variant="outlined">
@@ -51,48 +57,52 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
         </Typography>
         <Formik
           initialValues={{
-            name: '', email: '', password: '', passwordConfirm: '', role: '', category: ''
+            name: '',
+            email: '',
+            password: '',
+            passwordConfirm: '',
+            role: '',
+            category: '',
           }}
-          validate={values => {
-            const errors: any = {}
-            const emailRegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
-            const requiredError = t('field_required')
+          validate={(values) => {
+            const errors: any = {};
+            const emailRegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+            const requiredError = t('field_required');
             if (!values.email) {
-              errors.email = requiredError
+              errors.email = requiredError;
             } else if (!emailRegExp.test(values.email)) {
-              errors.email = t('invalid_email_address')
+              errors.email = t('invalid_email_address');
             }
             if (!values.password) {
-              errors.password = requiredError
+              errors.password = requiredError;
             }
             if (!values.name) {
-              errors.name = requiredError
+              errors.name = requiredError;
             } else if (values.name.length < 3) {
-              errors.name = t('invalid_name')
+              errors.name = t('invalid_name');
             }
             if (!values.passwordConfirm) {
-              errors.passwordConfirm = requiredError
+              errors.passwordConfirm = requiredError;
             } else if (values.passwordConfirm !== values.password) {
-              errors.passwordConfirm = t('invalid_password')
+              errors.passwordConfirm = t('invalid_password');
             }
             if (!values.role) {
-              errors.role = requiredError
+              errors.role = requiredError;
             }
             if (values.role !== 'worker' && !values.category) {
-              errors.category = requiredError
+              errors.category = requiredError;
             }
-            return errors
+            return errors;
           }}
           // handleSubmit doesn't need password confirmation
           // eslint-disable-next-line no-unused-vars
           onSubmit={({ passwordConfirm, ...rest }) => {
-            handleSubmit(rest)
-          }}>
+            handleSubmit(rest);
+          }}
+        >
           {({ isValid, dirty, values, setFieldValue }) => (
             <Form>
-              <Box
-                display="flex"
-                flexDirection="column">
+              <Box display="flex" flexDirection="column">
                 <FormikTextField
                   label={t('name')}
                   name="name"
@@ -105,9 +115,7 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
                   type="text"
                   placeholder="test@test.com"
                 />
-                <Box
-                  display="flex"
-                  flexDirection="row">
+                <Box display="flex" flexDirection="row">
                   <Box paddingRight={1}>
                     <FormikTextField
                       label={t('password')}
@@ -136,10 +144,12 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
                   setFieldValue={setFieldValue}
                 />
                 <Typography gutterBottom variant="body2" color="textSecondary">
-                  {t('terms_of_use')}<Link
+                  {t('terms_of_use')}
+                  <Link
                     style={{ cursor: 'pointer' }}
                     variant="body2"
-                    onClick={() => setOpen(true)}>
+                    onClick={() => setOpen(true)}
+                  >
                     {t('terms_agency')}
                   </Link>
                 </Typography>
@@ -148,8 +158,9 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
                   type="submit"
                   disabled={!dirty || !isValid || loading}
                   variant="contained"
-                  color="primary">
-                  {loading ? <CircularProgress size={24} /> : t('submit')}
+                  color="primary"
+                >
+                  {loading ? <CircularProgress size={24} /> : t('sign_up')}
                 </Button>
               </Box>
             </Form>
@@ -157,11 +168,11 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
         </Formik>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
 SignUpForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired
-}
+  handleSubmit: PropTypes.func.isRequired,
+};
 
-export default SignUpForm
+export default SignUpForm;

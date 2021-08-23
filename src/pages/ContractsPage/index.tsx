@@ -239,6 +239,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     width: '100%',
     backgroundColor: theme.palette.background.paper,
+    marginTop: 10,
   },
   tab: {
     minWidth: '33.33%',

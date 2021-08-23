@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-import vastuualueet from '../../assets/tietopankki/vastuualueet.json'
+import vastuualueet from '../../assets/tietopankki/vastuualueet.json';
 import {
   Card,
   List,
@@ -11,9 +11,9 @@ import {
   CardHeader,
   Button,
   Grid,
-} from '@material-ui/core'
+} from '@material-ui/core';
 
-import FeedBackForm from './FeedBackForm/index'
+import FeedBackForm from './FeedBackForm/index';
 
 const AgencyHome = () => {
   return (
@@ -29,8 +29,8 @@ const AgencyHome = () => {
                 Lue lisää
               </Button>
             }
-            title="Vastuualue"
-            subheader="Vuokrayritys"
+            title="Henkilöstöpalveluyrityksen vastuu"
+            subheader=""
           />
           <CardContent>
             <List component="nav" aria-label="mailbox folders">
@@ -44,9 +44,9 @@ const AgencyHome = () => {
           </CardContent>
         </Card>
       </Grid>
-      <FeedBackForm/>
+      <FeedBackForm />
     </Grid>
-  )
-}
+  );
+};
 
-export default AgencyHome
+export default AgencyHome;

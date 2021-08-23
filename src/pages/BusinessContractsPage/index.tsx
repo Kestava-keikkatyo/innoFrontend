@@ -1,24 +1,30 @@
-import React, { useEffect } from "react";
-import { makeStyles, Theme, useTheme } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Box from "@material-ui/core/Box";
-import BusinessIcon from "@material-ui/icons/Business";
-import SendIcon from "@material-ui/icons/Send";
-import AllInboxIcon from "@material-ui/icons/AllInbox";
-import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
-import { Badge, Container, Divider, Tooltip, useMediaQuery } from "@material-ui/core";
-import ListAccordionInBox from "./ListAccordionInBox";
-import ListAccordionWaiting from "./ListAccordionWaiting";
-import ListAccordionDone  from "./ListAccordionDone";
-import ListAccordionSent from "./ListAccordionSent"
-import { useDispatch, useSelector } from "react-redux";
-import { fetchBusinessContracts } from "../../actions/businessContractActions";
-import { IRootState } from "../../utils/store";
-import AgenciesList from "./AgenciesList";
+import React, { useEffect } from 'react';
+import { makeStyles, Theme, useTheme } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Box from '@material-ui/core/Box';
+import BusinessIcon from '@material-ui/icons/Business';
+import SendIcon from '@material-ui/icons/Send';
+import AllInboxIcon from '@material-ui/icons/AllInbox';
+import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
+import {
+  Badge,
+  Container,
+  Divider,
+  Tooltip,
+  useMediaQuery,
+} from '@material-ui/core';
+import ListAccordionInBox from './ListAccordionInBox';
+import ListAccordionWaiting from './ListAccordionWaiting';
+import ListAccordionDone from './ListAccordionDone';
+import ListAccordionSent from './ListAccordionSent';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchBusinessContracts } from '../../actions/businessContractActions';
+import { IRootState } from '../../utils/store';
+import AgenciesList from './AgenciesList';
 import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -31,7 +37,11 @@ function TabPanel(props: TabPanelProps) {
 
   return (
     <div
-      style={{borderLeft:'1px solid #ccc',borderRight:'1px solid #ccc',borderBottom:'1px solid #ccc'}}
+      style={{
+        borderLeft: '1px solid #ccc',
+        borderRight: '1px solid #ccc',
+        borderBottom: '1px solid #ccc',
+      }}
       role="tabpanel"
       hidden={value !== index}
       id={`scrollable-force-tabpanel-${index}`}
@@ -46,64 +56,64 @@ function TabPanel(props: TabPanelProps) {
 function a11yProps(index: any) {
   return {
     id: `scrollable-force-tab-${index}`,
-    "aria-controls": `scrollable-force-tabpanel-${index}`,
+    'aria-controls': `scrollable-force-tabpanel-${index}`,
   };
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
-    width: "100%",
-    backgroundColor: theme.palette.background.paper
+    width: '100%',
+    backgroundColor: theme.palette.background.paper,
+    marginTop: 8,
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
   },
   tab: {
-    minWidth:"20%",
-    maxWidth: "20%"
-  }
+    minWidth: '20%',
+    maxWidth: '20%',
+  },
 }));
 
 const BusinessContractsPage = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
-  const theme = useTheme()
-  const matches = useMediaQuery(theme.breakpoints.down('md'))
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down('md'));
 
   const { businessContract } = useSelector(
     (state: IRootState) => state.businessContracts
   );
-  const dispatch = useDispatch()
-  const contracts = businessContract
-  const pending: any = []
-  const waiting: any = []
-  const ready: any = []
-  const sent: any = []
+  const dispatch = useDispatch();
+  const contracts = businessContract;
+  const pending: any = [];
+  const waiting: any = [];
+  const ready: any = [];
+  const sent: any = [];
 
   useEffect(() => {
-    dispatch(fetchBusinessContracts())
+    dispatch(fetchBusinessContracts());
   }, [dispatch]);
 
   contracts.map((contract: any) => {
     if (contract.pendingContracts) {
-      pending.push(contract)
+      pending.push(contract);
     } else if (contract.requestContracts) {
-      waiting.push(contract)
+      waiting.push(contract);
     } else if (contract.madeContracts) {
-      ready.push(contract)
+      ready.push(contract);
     } else if (contract.receivedContracts) {
-      sent.push(contract)
-      console.log(sent)
+      sent.push(contract);
+      console.log(sent);
     } else {
-
     }
     // an arrow function should return a value
-    return "";
+    return '';
   });
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
@@ -112,73 +122,112 @@ const BusinessContractsPage = () => {
 
   return (
     <Container maxWidth="xl" className={classes.root}>
-      <Divider/>
-        <AppBar position="static" color="transparent">
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            variant="fullWidth"
-            indicatorColor="secondary"
-            textColor="primary"
-            aria-label="scrollable force tabs example"
-          >
-            <Tab className={classes.tab}
-              label={matches ? " " : t("search_agencies")}
-              icon={
-                matches ? <Tooltip title="Selaa HP-yrityksiä" placement="top" arrow><BusinessIcon/></Tooltip> : <BusinessIcon/>
-              }
-              {...a11yProps(0)}
-            />
-            <Tab className={classes.tab}
-              label={matches ? " " : t("sent_contracts")}
-              icon={
+      <Divider />
+      <AppBar position="static" color="transparent">
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          variant="fullWidth"
+          indicatorColor="secondary"
+          textColor="primary"
+          aria-label="scrollable force tabs example"
+        >
+          <Tab
+            className={classes.tab}
+            label={matches ? ' ' : t('search_agencies')}
+            icon={
+              matches ? (
+                <Tooltip title="Selaa HP-yrityksiä" placement="top" arrow>
+                  <BusinessIcon />
+                </Tooltip>
+              ) : (
+                <BusinessIcon />
+              )
+            }
+            {...a11yProps(0)}
+          />
+          <Tab
+            className={classes.tab}
+            label={matches ? ' ' : t('sent_contracts')}
+            icon={
               <Badge badgeContent={sent.length} color="secondary">
-                {matches ? <Tooltip title="Lähetetyt sopimukset" placement="top" arrow><SendIcon/></Tooltip> : <SendIcon/>}
-              </Badge>}
-              {...a11yProps(1)}
-            />
-            <Tab className={classes.tab}
-              label={matches ? " " : t("received_contracts")}
-              icon={
+                {matches ? (
+                  <Tooltip title="Lähetetyt sopimukset" placement="top" arrow>
+                    <SendIcon />
+                  </Tooltip>
+                ) : (
+                  <SendIcon />
+                )}
+              </Badge>
+            }
+            {...a11yProps(1)}
+          />
+          <Tab
+            className={classes.tab}
+            label={matches ? ' ' : t('received_contracts')}
+            icon={
               <Badge badgeContent={pending.length} color="secondary">
-                {matches ? <Tooltip title="Saapuneet sopimukset" placement="top" arrow><NotificationsActiveIcon/></Tooltip> : <NotificationsActiveIcon/>}
-              </Badge>}
-              {...a11yProps(2)}
-            />
-            <Tab className={classes.tab}
-              label={matches ? " " : t("waiting_contracts")}
-              icon={
+                {matches ? (
+                  <Tooltip title="Saapuneet sopimukset" placement="top" arrow>
+                    <NotificationsActiveIcon />
+                  </Tooltip>
+                ) : (
+                  <NotificationsActiveIcon />
+                )}
+              </Badge>
+            }
+            {...a11yProps(2)}
+          />
+          <Tab
+            className={classes.tab}
+            label={matches ? ' ' : t('waiting_contracts')}
+            icon={
               <Badge badgeContent={waiting.length} color="secondary">
-                {matches ? <Tooltip title="Odottavat sopimukset" placement="top" arrow><HourglassEmptyIcon/></Tooltip> : <HourglassEmptyIcon/>}
-              </Badge>}
-              {...a11yProps(3)}
-            />
-            <Tab className={classes.tab}
-              label={matches ? " " : t("done_contracts")}
-              icon={
+                {matches ? (
+                  <Tooltip title="Odottavat sopimukset" placement="top" arrow>
+                    <HourglassEmptyIcon />
+                  </Tooltip>
+                ) : (
+                  <HourglassEmptyIcon />
+                )}
+              </Badge>
+            }
+            {...a11yProps(3)}
+          />
+          <Tab
+            className={classes.tab}
+            label={matches ? ' ' : t('done_contracts')}
+            icon={
               <Badge badgeContent={ready.length} color="secondary">
-                {matches ? <Tooltip title="Valmiit sopimukset" placement="top" arrow><AllInboxIcon/></Tooltip> : <AllInboxIcon/>}
-              </Badge>}
-              {...a11yProps(4)}
-            />
-          </Tabs>
-        </AppBar>
-        <Divider/>
-        <TabPanel value={value} index={0}>
-          <AgenciesList />
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          <ListAccordionSent contracts={sent}/>
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          <ListAccordionInBox contracts={pending} />
-        </TabPanel>
-        <TabPanel value={value} index={3}>
-          <ListAccordionWaiting contracts={waiting} />
-        </TabPanel>
-        <TabPanel value={value} index={4}>
-          <ListAccordionDone contracts={ready} />
-        </TabPanel>
+                {matches ? (
+                  <Tooltip title="Valmiit sopimukset" placement="top" arrow>
+                    <AllInboxIcon />
+                  </Tooltip>
+                ) : (
+                  <AllInboxIcon />
+                )}
+              </Badge>
+            }
+            {...a11yProps(4)}
+          />
+        </Tabs>
+      </AppBar>
+      <Divider />
+      <TabPanel value={value} index={0}>
+        <AgenciesList />
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        <ListAccordionSent contracts={sent} />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <ListAccordionInBox contracts={pending} />
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        <ListAccordionWaiting contracts={waiting} />
+      </TabPanel>
+      <TabPanel value={value} index={4}>
+        <ListAccordionDone contracts={ready} />
+      </TabPanel>
     </Container>
   );
 };

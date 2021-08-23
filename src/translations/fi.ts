@@ -29,7 +29,7 @@ export default {
   //option
   role: "Rooli",
   worker: "Työntekijä",
-  agency: "Vuokrayritys",
+  agency: "Henkilöstöpalveluyritys",
   business: "Käyttäjäyritys",
   jobs: 'Työpaikat',
   businesses: "Käyttäjäyritykset",

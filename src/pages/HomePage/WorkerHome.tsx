@@ -6,7 +6,6 @@ import {
   CardContent,
   ListItem,
   ListItemText,
-  Divider,
   CardHeader,
   Button,
   Grid,
@@ -62,12 +61,11 @@ const WorkerHome = () => {
                 Lue lisää
               </Button>
             }
-            title="Vastuualue"
-            subheader="Vuokrayritys"
+            title="Työntekijän vastuu"
+            subheader=""
           />
           <CardContent>
             <List component="nav" aria-label="mailbox folders">
-              <Divider />
               {vastuualueet.worker.map((e, i) => (
                 <ListItem key={i} divider>
                   <ListItemText primary={`${i + 1}. ${e.tip}`} />
