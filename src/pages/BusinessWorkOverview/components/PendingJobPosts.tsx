@@ -1,5 +1,6 @@
 import { AccordionSummary, Typography, AccordionDetails, Accordion, Divider, Theme, makeStyles } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { format } from 'date-fns';
 import React from 'react';
 import { useTranslation } from 'react-i18next'
 
@@ -16,6 +17,8 @@ const PendingJobPosts = (prop: { workContracts: Array<Object> }) => {
   const { workContracts } = prop
   const classes = useStyles()
   const { t } = useTranslation()
+
+
 
   return (
     <>
@@ -39,15 +42,15 @@ const PendingJobPosts = (prop: { workContracts: Array<Object> }) => {
               </div>
               <div className={classes.details}>
                 <Typography>
-                  {t('start_date')}: {job.validityPeriod.startDate}
+                  {t('start_date')}: {format(new Date(job.validityPeriod.startDate), 'dd.MM.yyyy')}
                 </Typography>
                 <Typography>
-                  {t('end_date')}: {job.validityPeriod.endDate}
+                  {t('end_date')}: {format(new Date(job.validityPeriod.endDate), 'dd.MM.yyyy')}
                 </Typography>
               </div>
               <div className={classes.details}>
                 <Typography>
-                  {t("created")}: {job.createdAt}
+                  {t("created")}: {format(new Date(job.createdAt), 'dd.MM.yyyy hh:mm')}
                 </Typography>
                 <Divider />
                 <Typography>
