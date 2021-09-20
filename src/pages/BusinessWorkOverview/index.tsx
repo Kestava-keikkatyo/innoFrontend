@@ -31,7 +31,7 @@ const BusinessWorkRequest: React.FC<any> = () => {
     startDate: "",
     endDate: "",
   })
-  const [slectedAgency, setSelectedAgency] = React.useState({
+  const [selectedAgency, setSelectedAgency] = React.useState({
     agencyId: "",
     contractId: ""
   });
@@ -43,8 +43,8 @@ const BusinessWorkRequest: React.FC<any> = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault()
-    console.log(slectedAgency, formData)
-    dispatch(postJobInWorkContract(slectedAgency.agencyId,slectedAgency.contractId, formData))
+    console.log(selectedAgency, formData)
+    dispatch(postJobInWorkContract(selectedAgency.agencyId,selectedAgency.contractId, formData))
     setFormData({
       headline: "",
       workerCount: "",
@@ -53,10 +53,9 @@ const BusinessWorkRequest: React.FC<any> = () => {
       endDate: "",
     })
   };
-
   const validateForm = () => {
     if
-      (slectedAgency.agencyId.length > 0 &&
+      (selectedAgency.agencyId.length > 0 &&
       formData.detailedInfo.length > 0 &&
       formData.endDate.length > 0 &&
       formData.headline.length > 0 &&
@@ -72,7 +71,7 @@ const BusinessWorkRequest: React.FC<any> = () => {
   return (
     <Container className="lg">
       <Grid container direction="row" justify="center" alignItems="stretch" spacing={3}>
-        <Grid item xs={12} md={6} className={classes.flexbox}>
+        <Grid item xs={12} md={6}>
           <form onSubmit={handleSubmit} >
             <h2> Lähetä työkeikka pyyntö HP-yritykselle</h2>
             <Typography className={classes.choose}>Valitse HP-yritys</Typography>
@@ -84,7 +83,7 @@ const BusinessWorkRequest: React.FC<any> = () => {
               />
             </IconButton>
             <AgencyGrid workContracts={workContracts} setSelectedAgency={setSelectedAgency} />
-            <Typography>
+            <Typography className={classes.field}>
               Kerro haettava positio / ilmoituksen otsikko
             </Typography>
             <TextField
@@ -96,13 +95,14 @@ const BusinessWorkRequest: React.FC<any> = () => {
               value={formData.headline}
               onChange={(e) => setFormData({ ...formData, headline: e.target.value })}
             />
-            <Typography>
-              Tarvittavia työntekijöitä
+            <Typography
+              className={classes.field}
+            >
+              Työntekijöiden lukumäärä
             </Typography>
             <TextField
-              className={classes.information}
               error={formData.workerCount.length > 0 ? false : true}
-              id="filled-number"
+              id="outlined-number"
               type="number"
               InputLabelProps={{
                 shrink: true,
@@ -110,8 +110,11 @@ const BusinessWorkRequest: React.FC<any> = () => {
               inputProps={{ min: 0 }}
               value={formData.workerCount}
               onChange={(e) => setFormData({ ...formData, workerCount: e.target.value })}
+              variant="standard"
             />
-            <Typography>Kerro tarkemmat tiedot</Typography>
+            <Typography className={classes.field}>
+              Lisätietoja
+            </Typography>
             <TextField
               className={classes.information}
               error={formData.detailedInfo.length > 0 ? false : true}
@@ -123,8 +126,9 @@ const BusinessWorkRequest: React.FC<any> = () => {
               value={formData.detailedInfo}
               onChange={(e) => setFormData({ ...formData, detailedInfo: e.target.value })}
             />
+            
             <TextField
-              className={classes.information}
+              className={classes.datesLeft}
               error={formData.startDate.length > 0 ? false : true}
               id="startDate"
               label="Start date"
@@ -136,7 +140,7 @@ const BusinessWorkRequest: React.FC<any> = () => {
               onChange={(e) => setFormData({ ...formData, startDate: e.target.value })}
             />
             <TextField
-              className={classes.information}
+              className={classes.datesRight}
               error={formData.endDate.length > 0 ? false : true}
               id="endDate"
               label="End date"
@@ -150,7 +154,7 @@ const BusinessWorkRequest: React.FC<any> = () => {
             <div>
               <Button
                 disabled={validateForm()}
-                className={classes.button}
+                className={classes.buttonRight}
                 type="submit"
                 variant="contained"
                 color="default"
@@ -172,11 +176,23 @@ const useStyles = makeStyles((theme: Theme) => ({
   information: {
     width: "100%"
   },
-  button: {
+  datesLeft: {
+    marginTop: "5%",
+    width: "46%",
+    marginRight: "4%"
+  },
+  datesRight: {
+    marginTop: "5%",
+    width: "46%",
+    marginLeft: "4%"
 
   },
-  flexbox: {
-
+  buttonRight: {
+    marginTop: "5%",
+    float: "right"
+  },
+  field: {
+    marginTop: "5%"
   },
   choose: {
 
