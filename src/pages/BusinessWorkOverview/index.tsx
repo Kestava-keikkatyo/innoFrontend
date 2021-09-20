@@ -73,10 +73,10 @@ const BusinessWorkRequest: React.FC<any> = () => {
       <Grid container direction="row" justify="center" alignItems="stretch" spacing={3}>
         <Grid item xs={12} md={6}>
           <form onSubmit={handleSubmit} >
-            <h2> Lähetä työkeikka pyyntö HP-yritykselle</h2>
-            <Typography className={classes.choose}>Valitse HP-yritys</Typography>
+            <h2>  {t("send_agency_contract")}</h2>
+            <Typography className={classes.choose}> {t("choose_agency")}</Typography>
             <InputBase
-              placeholder="Etsi nimellä"
+              placeholder={t("search_by_name")}
             />
             <IconButton type="submit">
               <SearchIcon
@@ -84,7 +84,7 @@ const BusinessWorkRequest: React.FC<any> = () => {
             </IconButton>
             <AgencyGrid workContracts={workContracts} setSelectedAgency={setSelectedAgency} />
             <Typography className={classes.field}>
-              Kerro haettava positio / ilmoituksen otsikko
+              {t("tell_position")}
             </Typography>
             <TextField
               className={classes.information}
@@ -98,7 +98,7 @@ const BusinessWorkRequest: React.FC<any> = () => {
             <Typography
               className={classes.field}
             >
-              Työntekijöiden lukumäärä
+              {t("worker_count")}
             </Typography>
             <TextField
               error={formData.workerCount.length > 0 ? false : true}
@@ -113,7 +113,7 @@ const BusinessWorkRequest: React.FC<any> = () => {
               variant="standard"
             />
             <Typography className={classes.field}>
-              Lisätietoja
+              {t('report_details')}
             </Typography>
             <TextField
               className={classes.information}
@@ -159,7 +159,7 @@ const BusinessWorkRequest: React.FC<any> = () => {
                 variant="contained"
                 color="default"
               >
-                Lähetä
+                {t('send')}
               </Button>
             </div>
           </form>

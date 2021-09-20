@@ -278,8 +278,21 @@ export default {
   enroll: 'Enroll ',
   relocation: 'relocation',
 
+  //jobmodal
+  send_agency_contract: ' Send work request to agency',
+  choose_agency: 'Choose agency',
+  tell_position: ' Tell headline / position',
+  worker_count: 'Worker count',
 
-
+  //PendingJobPosts
+  pending_jobs: 'Pending jobs',
+  work_task: 'Work task',
+  workers_count: 'Workers count',
+  start_date: 'Start date',
+  end_date: 'End date',
+  created: 'Created',
+  agency_status: 'Agency status',
+  business_status: 'Business status',
 
 
 
