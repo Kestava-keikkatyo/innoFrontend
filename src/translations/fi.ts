@@ -268,6 +268,13 @@ export default {
   add_question: 'Lisää kysymys',
   form_editor: 'Lomakkeen muokkaus',
 
+  //Joblist
+  limit_search: 'Rajaa hakua',
+  jobs_found: 'Työpaikkoja löytyi',
+  participants: 'Osallistujat',
+  company_sites: 'yrityksen nettisivut',
+  enroll: 'Osallistu',
+  relocation: 'Muuttoapu',
 
 
   //import { useTranslation } from 'react-i18next'

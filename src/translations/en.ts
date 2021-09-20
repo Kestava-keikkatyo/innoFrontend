@@ -270,6 +270,13 @@ export default {
   add_question: 'Add question',
   form_editor: 'Form editor',
 
+  //Joblist
+  limit_search: 'Limit search',
+  jobs_found: 'Jobs found',
+  participants: 'Participants',
+  company_sites: 'Company websites',
+  enroll: 'Enroll ',
+  relocation: 'relocation',
 
 
 

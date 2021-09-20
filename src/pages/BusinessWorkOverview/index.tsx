@@ -17,8 +17,11 @@ import { useEffect } from "react";
 import { IRootState } from "../../utils/store";
 import { fetchWorkContracts, postJobInWorkContract } from "../../actions/workContractActions";
 import PendingJobPosts from "./components/PendingJobPosts";
+import { useTranslation } from 'react-i18next'
 
 const BusinessWorkRequest: React.FC<any> = () => {
+  const { t } = useTranslation()
+
   const classes = useStyles();
   const dispatch = useDispatch();
   const [formData, setFormData] = React.useState({
