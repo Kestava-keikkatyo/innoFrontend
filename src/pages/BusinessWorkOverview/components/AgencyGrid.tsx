@@ -27,7 +27,9 @@ const AgencyGrid = (prop: { workContracts: Array<Object>, setSelectedAgency:Func
   } else {
     return (
       <div className={classes.root}>
-        {workContracts.map((object: any) => (
+        {workContracts.map((object: any) => {
+          // TODO: once database has description add it here
+          return (
           <Accordion key={object.agency._id}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
@@ -45,12 +47,11 @@ const AgencyGrid = (prop: { workContracts: Array<Object>, setSelectedAgency:Func
             </AccordionSummary>
             <AccordionDetails>
               <Typography color="textSecondary">
-                The click event of the nested action will propagate up and expand the accordion unless
-                you explicitly stop it.
+                HP-yrityksen kuvaus tulee tähän 
               </Typography>
             </AccordionDetails>
-          </Accordion>
-        ))}
+          </Accordion>)
+        })}
       </div>
     );
   }
