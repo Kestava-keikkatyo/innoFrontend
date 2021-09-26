@@ -8,9 +8,10 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers'
 import { Typography } from '@material-ui/core'
-
+import { useTranslation } from 'react-i18next'
 
 const MoodStepTwo = () =>{
+  const { t } = useTranslation()
 // The first commit of Material-UI
 const [selectedDate, setSelectedDate] = React.useState(
   new Date('2014-08-18T21:11:54')
@@ -22,7 +23,7 @@ const handleDateChange = (date: any) => {
 
 return (
   <>
-    <Typography>When did this happen?</Typography>
+    <Typography> {t("when_did_this_happen")}</Typography>
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Grid container justify="space-around">
         <KeyboardDatePicker

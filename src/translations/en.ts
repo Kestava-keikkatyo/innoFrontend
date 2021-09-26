@@ -290,11 +290,31 @@ export default {
   workers_count: 'Workers count',
   start_date: 'Start date',
   end_date: 'End date',
-  created: 'Created',
+  created: 'Created at',
   agency_status: 'Agency status',
   business_status: 'Business status',
 
+  //contractsFromBusiness
+  contracts_from_business: 'Contracts from business',
 
+  choose_request: 'Choose request',
+
+  business_website: 'Business website',
+
+  contract_form: 'Contract form',
+
+  delete_option: 'Delete option',
+  add_an_option: 'Add an option',
+
+  create_new_form: 'Create new form',
+  create_contract: 'Create contract',
+
+  when_did_this_happen: 'When did this happen?',
+
+  read_more: 'Read more',
+
+  fill_business_contract_form: 'Fill business contract form',
+  preview_business_contract_form: 'Preview business contract form',
 
 
 

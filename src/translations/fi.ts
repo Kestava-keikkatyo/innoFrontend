@@ -292,7 +292,26 @@ export default {
   agency_status: 'Vuokratyöfirman tila',
   business_status: 'Käyttäjäyrityksen tila',
 
+  //contractsFromBusiness
+  contracts_from_business: 'Käyttäjäyrityksiltä saapuneet sopimukset',
 
+  choose_request: 'Valitse pyyntö',
+  business_website: 'Yrityksen nettisivut',
+  contract_form: 'Sopimuslomake',
+
+  delete_option: 'Poista valinta',
+  add_an_option: 'Lisää valinta',
+
+  create_new_form: 'Tee uusi lomake',
+  create_contract: 'Tee sopimus',
+
+
+  when_did_this_happen: 'Milloin tämä tapahtui?',
+
+  read_more: 'Lue lisää',
+
+  fill_business_contract_form: 'Täytä käyttäjäyrityssopimus',
+  preview_business_contract_form: 'Esikatsele käyttäjäyrityssopimusta',
   //import { useTranslation } from 'react-i18next'
   //const { t } = useTranslation()
 }
