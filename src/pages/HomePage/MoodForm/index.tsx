@@ -198,7 +198,7 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
               All steps completed - you&apos;re finished
             </Typography>
             <Button onClick={handleReset} className={classes.button}>
-              Reset
+              {t('reset')}
             </Button>
           </div>
         ) : (

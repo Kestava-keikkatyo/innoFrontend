@@ -21,6 +21,7 @@ import { addBusinessContract } from '../../actions/businessContractActions';
 import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
 import { IRootState } from '../../utils/store';
+import { useTranslation } from 'react-i18next'
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -49,6 +50,8 @@ const WorkerAndBusinessModal: React.FC<any> = ({
   );
   const [form, setForm] = React.useState('');
   const classes = useStyles();
+
+  const { t } = useTranslation()
 
   const addContract = () => {
     if (
@@ -98,10 +101,10 @@ const WorkerAndBusinessModal: React.FC<any> = ({
       <DialogContent dividers>
         {workerOrBusinessData && (
           <Typography color="textSecondary" variant="body2">
-            id: {workerOrBusinessData._id} <br />
-            name: {workerOrBusinessData.name} <br />
-            created: {workerOrBusinessData.createdAt} <br />
-            email: {workerOrBusinessData.email}
+             {t("id")}: {workerOrBusinessData._id} <br />
+             {t("name")}: {workerOrBusinessData.name} <br />
+             {t("created")}: {workerOrBusinessData.createdAt} <br />
+             {t("email")}: {workerOrBusinessData.email}
           </Typography>
         )}
         <FormControl className={classes.formControl}>
@@ -119,7 +122,7 @@ const WorkerAndBusinessModal: React.FC<any> = ({
       <DialogActions></DialogActions>
       <DialogActions>
         <Button color="primary" variant="outlined" onClick={addContract}>
-          create contract
+        {t("create_contract")}
         </Button>
       </DialogActions>
     </Dialog>

@@ -6,9 +6,9 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import RequestInfo from "./AccordionDetails";
-
+import { useTranslation } from 'react-i18next'
 const JobRequest: React.FC<any> = () => {
- 
+  const { t } = useTranslation()
   const classes = useStyles();
  
   return (
@@ -16,7 +16,7 @@ const JobRequest: React.FC<any> = () => {
       <Grid container>
         <Grid item md={12}>
           <Typography variant="h6" className={classes.request}>
-            Valitse Pyyntö
+          {t("choose_request")}
           </Typography>
           <div className={classes.request}>
             <RequestInfo />
