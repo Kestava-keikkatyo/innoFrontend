@@ -7,7 +7,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Radio } from '@material-ui/core';
-
+import { useTranslation } from 'react-i18next'
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     width: "100%",
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 const AgencyGrid = (prop: { workContracts: any, setSelectedAgency:Function, searchInput: String }) => {
     const { workContracts, setSelectedAgency, searchInput } = prop
   const classes = useStyles();
-
+  const { t } = useTranslation()
   
   const handleSelect = (event:any, agencyId:string, contractId:string) => {
     event.stopPropagation()
@@ -50,7 +50,7 @@ const AgencyGrid = (prop: { workContracts: any, setSelectedAgency:Function, sear
             </AccordionSummary>
             <AccordionDetails>
               <Typography color="textSecondary">
-                HP-yrityksen kuvaus tulee tähän 
+              {t("agency_description_here")}
               </Typography>
             </AccordionDetails>
           </Accordion>)

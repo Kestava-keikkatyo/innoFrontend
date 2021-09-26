@@ -20,6 +20,7 @@ import { useDispatch } from "react-redux"
 import { addBusinessContractWorkerBusiness } from "../../actions/businessContractActions"
 import { setAlert } from "../../actions/alertActions"
 import { severity } from "../../types/types"
+import { useTranslation } from 'react-i18next'
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -41,6 +42,8 @@ const CooperationInfoModal: React.FC<any> = ({ displayModal, closeModal, agency,
   const [form, setForm] = React.useState('');
   const classes = useStyles();
   const agencyId = agency._id
+
+  const { t } = useTranslation()
 
   const addContract = () => {
     dispatch(addBusinessContractWorkerBusiness(agencyId,contractId));
@@ -87,11 +90,11 @@ const CooperationInfoModal: React.FC<any> = ({ displayModal, closeModal, agency,
       <DialogActions>
         <Button color="primary" variant="outlined"
           onClick={addContract}>
-          Lähetä sopimus
+          {t('send_contract')}
         </Button>
         <Button color="primary" variant="outlined"
           onClick={() => closeModal()}>
-          Sulje
+          {t('close')}
         </Button>
       </DialogActions>
     </Dialog>

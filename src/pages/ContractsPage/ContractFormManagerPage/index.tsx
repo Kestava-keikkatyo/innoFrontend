@@ -104,7 +104,7 @@ const ContractFormManagerPage: React.FC = () => {
             justify="space-between">
             <Grid item xs={6}>
             <Typography variant="h4" color="secondary" >
-                Contract Form Manager
+                {t("contract_form_manager")}
             </Typography>
             </Grid>
             <Grid item xs={6} >

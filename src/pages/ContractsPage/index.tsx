@@ -154,7 +154,7 @@ const ContractsPage = () => {
           />
           <Tab
             className={classes.tab}
-            label={matches ? '' : 'Työntekijöiltä saapuneet sopimukset'}
+            label={matches ? '' : t('contracts_received_from_the_workers')}
             icon={
               matches ? (
                 <Tooltip

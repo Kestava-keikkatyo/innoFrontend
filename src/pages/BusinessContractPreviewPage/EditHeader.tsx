@@ -4,12 +4,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
 import { submitEditedForm } from '../../actions/businessContractFormActions'
 import { IRootState } from '../../utils/store'
-
+import { useTranslation } from 'react-i18next'
 /**
  * @component
  * @desc A header for preview page.
  */
 const EditHeader: React.FC<any> = () => {
+
+  const { t } = useTranslation()
 
   const currentBusinssContractForm = useSelector((state: IRootState) => state.businessContractForm)
 
@@ -30,16 +32,16 @@ const EditHeader: React.FC<any> = () => {
       justify="space-between">
         <Grid item xs={6}>
           <Typography variant="h4" color="secondary" >
-            Edit Filled Business Contract
+        {t('edit_filled')}
           </Typography>
         </Grid>
         <Grid item xs={6} >
           <Grid container direction="row-reverse">
             <Button>
-              <Link to="/business-contracts">Back</Link>
+              <Link to="/business-contracts">{t("back")}</Link>
             </Button>
             <Button onClick={handleSave}>
-              Save
+              {t("save")}
             </Button>
           </Grid>
         </Grid>

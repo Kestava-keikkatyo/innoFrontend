@@ -6,7 +6,7 @@ export default {
 
   //login
   login_title: "Kirjaudu sisään",
-  email_label: "Sähköposti",
+    email_label: "Sähköposti",
   password_label: "Salasana",
   invalid_email_address: "Virheellinen sähköposti",
   required: "Puuttuu",
@@ -122,6 +122,7 @@ export default {
   medicine: "Lääketeollisuus- ja farmasia",
   estate: "Kiinteistö",
   transfer_profile: "Siirry profiiliin",
+  transfer_company_profile: 'Siirry yrityksen profiiliin',
 
   //Contact information
   phone: "Puhelin",
@@ -197,6 +198,7 @@ export default {
   info: 'Info',
   send_back: 'Lähetä takaisin',
   decline: 'Hylkää',
+  close:'sulje',
 
   //ResponsiveDrawer
   databank: 'Tietopankki',
@@ -272,7 +274,7 @@ export default {
   limit_search: 'Rajaa hakua',
   jobs_found: 'Työpaikkoja löytyi',
   participants: 'Osallistujat',
-  company_sites: 'yrityksen nettisivut',
+  company_sites: 'Yrityksen nettisivut',
   enroll: 'Osallistu',
   relocation: 'Muuttoapu',
 
@@ -312,6 +314,20 @@ export default {
 
   fill_business_contract_form: 'Täytä käyttäjäyrityssopimus',
   preview_business_contract_form: 'Esikatsele käyttäjäyrityssopimusta',
+
+  choose_workers: 'Choose workers',
+  agency_description_here: '  HP-yrityksen kuvaus tulee tähän',
+
+  edit_filled: 'Muokkaa täytettyä yrityssopimusta',
+
+  cooperation_send: 'Lähetä yhteistyökutsu',
+  send_contract: 'Lähetä sopimus',
+
+  edit_contract_form: 'Muokkaa yrityssopimusta',
+  contact_form_manager: 'Sopimus muokkaus',
+
+  form_preview: 'Esikatsele lomaketta',
+
   //import { useTranslation } from 'react-i18next'
   //const { t } = useTranslation()
 }

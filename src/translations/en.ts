@@ -122,6 +122,7 @@ export default {
   medicine: 'Pharmaceutical industry',
   estate: 'Estate',
   transfer_profile: 'Go to profile',
+  transfer_company_profile: 'Go to company profile',
 
   //Contact information
   phone: 'phone',
@@ -211,6 +212,7 @@ export default {
   business_contracts: 'Business contracts',
   my_work: 'My work',
   remove: 'Remove',
+  close: 'close',
 
   //profilePage
   edit_profile: 'Edit profile',
@@ -316,6 +318,18 @@ export default {
   fill_business_contract_form: 'Fill business contract form',
   preview_business_contract_form: 'Preview business contract form',
 
+  choose_workers: 'Valitse Työntekijät',
+  agency_description_here: 'agency_description_here',
+
+  edit_filled: 'Edit Filled Business Contract',
+
+  cooperation_send: 'Send cooperation request',
+  send_contract: 'Send contract',
+  
+  edit_contract_form: 'Edit Contract Form',
+  contact_form_manager: 'Contract form manager',
+
+  form_preview: 'Form preview',
 
 
 }
