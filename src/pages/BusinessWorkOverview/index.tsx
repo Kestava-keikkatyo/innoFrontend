@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-import React from "react";
+import React, { useState } from "react";
 import AgencyGrid from "./components/AgencyGrid";
 import { SearchIcon } from '@material-ui/data-grid'
 import { useDispatch, useSelector } from "react-redux";
@@ -21,6 +21,15 @@ import { useTranslation } from 'react-i18next'
 
 const BusinessWorkRequest: React.FC<any> = () => {
   const { t } = useTranslation()
+  
+  const [searchInput, setSearchInput] = useState("")
+
+  /*
+  const SearchField = ({ searchInput, setSearchInput, placeholder}) => {
+    return (
+      <></>
+    )
+  } */
 
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -68,6 +77,11 @@ const BusinessWorkRequest: React.FC<any> = () => {
     }
   }
 
+  const handleChange = (event: any) => {
+    event?.preventDefault()
+    setSearchInput(event?.target.value)
+  }
+
   return (
     <Container className="lg">
       <Grid container direction="row" justify="center" alignItems="stretch" spacing={3}>
@@ -77,12 +91,13 @@ const BusinessWorkRequest: React.FC<any> = () => {
             <Typography className={classes.choose}> {t("choose_agency")}</Typography>
             <InputBase
               placeholder={t("search_by_name")}
+              onChange={(event) => handleChange(event)}
             />
             <IconButton type="submit">
               <SearchIcon
               />
             </IconButton>
-            <AgencyGrid workContracts={workContracts} setSelectedAgency={setSelectedAgency} />
+            <AgencyGrid workContracts={workContracts} setSelectedAgency={setSelectedAgency} searchInput={searchInput}/>
             <Typography className={classes.field}>
               {t("tell_position")}
             </Typography>
