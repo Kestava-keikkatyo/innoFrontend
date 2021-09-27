@@ -19,6 +19,7 @@ import {
   AccordionSummary,
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { deleteBusinessContractForm } from '../../actions/businessContractFormActions';
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -92,8 +93,13 @@ const ContractsTable = (props: {
     dispatch(setAlert('Contract from Worker accepted.', severity.Info, 3));
   };
 
-  const declineContract = (contractId: string, userId: string) => {
+  const declineContract = (
+    contractId: string,
+    userId: string,
+    formId: string
+  ) => {
     dispatch(declineBusinessContract(contractId, userId));
+    dispatch(deleteBusinessContractForm(formId, userId));
     dispatch(setAlert('Contract declined.', severity.Info, 3));
   };
 

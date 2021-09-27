@@ -16,14 +16,14 @@ import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
-import { getFormByIdAndSetBusinessContractForm } from '../../actions/businessContractFormActions';
-import formServices from '../../services/formServices';
+import { getByIdAndSetBusinessContractForm } from '../../actions/businessContractFormActions';
+import businessContractFormService from '../../services/businessContractFormService';
 import pdfMake from 'pdfmake/build/pdfmake.js';
 import pdfFonts from 'pdfmake/build/vfs_fonts.js';
 import htmlToPdfmake from 'html-to-pdfmake';
 import ReactDOMServer from 'react-dom/server';
 import Form from '../FormsPage/Form';
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 
@@ -56,28 +56,31 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const ListAccordionDone = (prop: { contracts: any[] }) => {
   const classes = useStyles();
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const history = useHistory();
 
   const dispatch = useDispatch();
 
   // Preview buisness contract form
-  const handleEsitteleLomaketta = (formId: any) => {
-    dispatch(getFormByIdAndSetBusinessContractForm(formId));
+  const handleEsitteleLomaketta = (businessContractFormId: any) => {
+    dispatch(getByIdAndSetBusinessContractForm(businessContractFormId));
     history.push(`/business-contracts/business-contract-preview`);
   };
 
   // Print PDF
   const handleTulostaLomaketta = async (formId: any) => {
-    let form: any = await formServices.fetchFormById(formId);
-    console.log('form ', form);
+    let businessContractForm: any =
+      await businessContractFormService.fetchBusinessContractFormById(formId);
+    console.log('businessContractForm ', businessContractForm);
 
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
     // pdf content
     let content: any = [];
 
-    let html = ReactDOMServer.renderToString(<Form currentForm={form} />);
+    let html = ReactDOMServer.renderToString(
+      <Form currentForm={businessContractForm} />
+    );
     let htmlForm: any = htmlToPdfmake(html);
 
     content.push(htmlForm);
@@ -87,12 +90,12 @@ export const ListAccordionDone = (prop: { contracts: any[] }) => {
       content: content,
     };
 
-    pdfMake.createPdf(doc).download(form.title);
+    pdfMake.createPdf(doc).download(businessContractForm.title);
   };
 
   const { contracts } = prop;
   if (contracts.length < 1) {
-    return <p>{t("no_results")}</p>;
+    return <p>{t('no_results')}</p>;
   } else
     return (
       <div className={classes.root}>
@@ -109,7 +112,7 @@ export const ListAccordionDone = (prop: { contracts: any[] }) => {
               <div className={classes.column}>
                 <Typography className={classes.heading}>
                   {' '}
-                  {t("name")}: {contract.agency.name}
+                  {t('name')}: {contract.agency.name}
                 </Typography>
               </div>
               <div className={classes.column}>
@@ -132,7 +135,7 @@ export const ListAccordionDone = (prop: { contracts: any[] }) => {
                   color="primary"
                   variant="contained"
                 >
-                 {t("website")}
+                  {t('website')}
                 </Button>
               </div>
             </AccordionDetails>

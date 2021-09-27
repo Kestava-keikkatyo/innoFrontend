@@ -14,7 +14,7 @@ import { Close as CloseIcon } from '@material-ui/icons';
 import { useDispatch } from 'react-redux';
 
 import { useHistory } from 'react-router';
-import { getFormByIdAndSetBusinessContractForm } from '../../actions/businessContractFormActions';
+import { getByIdAndSetBusinessContractForm } from '../../actions/businessContractFormActions';
 
 /**
  * @component
@@ -36,7 +36,7 @@ const WorkerModal: React.FC<any> = ({ displayModal, closeModal, contract }) => {
   };
 
   const handleContractFormButton = () => {
-    dispatch(getFormByIdAndSetBusinessContractForm(contract.formId));
+    dispatch(getByIdAndSetBusinessContractForm(contract.formId));
     //history.push({pathname: `/contracts/contract-form-manager`,state: { formId: contract.formId}})
     history.push(`/contracts/contract-form-manager`);
   };

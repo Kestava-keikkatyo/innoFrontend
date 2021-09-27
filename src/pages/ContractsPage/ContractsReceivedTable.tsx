@@ -20,7 +20,7 @@ import DoneIcon from '@material-ui/icons/Done';
 import ClearIcon from '@material-ui/icons/Clear';
 import InfoModal from './InfoModal';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
 import {
   Accordion,
   AccordionDetails,
@@ -42,7 +42,7 @@ const RCTable = (prop: {
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
   const [displayModal, setDisplayModal] = React.useState(false);
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   const handleOpen = () => {
     setDisplayModal(true);
@@ -62,14 +62,14 @@ const RCTable = (prop: {
         <Table aria-label="searched workers">
           <TableHead>
             <TableRow>
-              <TableCell align="left">{t("name")}</TableCell>
-              <TableCell align="left">{t("email")}</TableCell>
-              <TableCell align="left">{t("role")}</TableCell>
-              <TableCell align="left">{t("status")}</TableCell>
-              <TableCell align="left">{t("accept")}</TableCell>
-              <TableCell align="left">{t("info")}</TableCell>
-              <TableCell align="left">{t("send_back")}</TableCell>
-              <TableCell align="left">{t("decline")}</TableCell>
+              <TableCell align="left">{t('name')}</TableCell>
+              <TableCell align="left">{t('email')}</TableCell>
+              <TableCell align="left">{t('role')}</TableCell>
+              <TableCell align="left">{t('status')}</TableCell>
+              <TableCell align="left">{t('accept')}</TableCell>
+              <TableCell align="left">{t('info')}</TableCell>
+              <TableCell align="left">{t('send_back')}</TableCell>
+              <TableCell align="left">{t('decline')}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -164,7 +164,8 @@ const RCTable = (prop: {
                         contractId,
                         contract.businessId
                           ? contract.businessId._id
-                          : contract.workerId._id
+                          : contract.workerId._id,
+                        contract.formId
                       )
                     }
                   >
@@ -275,7 +276,8 @@ const RCTable = (prop: {
                     contractId,
                     contract.businessId
                       ? contract.businessId._id
-                      : contract.workerId._id
+                      : contract.workerId._id,
+                    contract.formId
                   )
                 }
               >
@@ -296,7 +298,7 @@ const RCTable = (prop: {
         align="center"
         className="text-secondary"
       >
-        {t("no_results")}
+        {t('no_results')}
       </Typography>
     );
   else return <>{matches ? accordionView() : tableView()}</>;
