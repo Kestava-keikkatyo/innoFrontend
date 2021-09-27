@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Avatar, Button, Card, CardContent, CardHeader, Collapse, Grid, IconButton, Typography, CardActions } from '@material-ui/core';
-
+import { useTranslation } from 'react-i18next'
 import CooperationInfoModal from './CooperationInfoModal';
 import { red } from '@material-ui/core/colors';
 
@@ -18,7 +18,7 @@ interface Agency {
 export const AgencyCards:React.FC<any> =  (prop: { agency: Agency }) => {
   const [expanded, setExpanded] = React.useState(false);
   const classes = useStyles();
-
+  const { t } = useTranslation()
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -71,7 +71,7 @@ export const AgencyCards:React.FC<any> =  (prop: { agency: Agency }) => {
               variant="contained"
               color="primary"
             >
-              Siirry yrityksen profiiliin
+              {t('transfer_company_profile')}
             </Button>
             <Button
               variant="contained"
@@ -79,7 +79,7 @@ export const AgencyCards:React.FC<any> =  (prop: { agency: Agency }) => {
               type="button"
               onClick={handleCooperationOpen}
             >
-              Lähetä yhteistyökutsu
+              {t('cooperation_send')}
             </Button>
             </div>
             </CardActions>

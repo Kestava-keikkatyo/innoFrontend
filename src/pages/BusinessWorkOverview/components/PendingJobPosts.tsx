@@ -1,6 +1,8 @@
 import { AccordionSummary, Typography, AccordionDetails, Accordion, Divider, Theme, makeStyles } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { format } from 'date-fns';
 import React from 'react';
+import { useTranslation } from 'react-i18next'
 
 const useStyles = makeStyles((theme: Theme) => ({
   details: {
@@ -14,46 +16,49 @@ const useStyles = makeStyles((theme: Theme) => ({
 const PendingJobPosts = (prop: { workContracts: Array<Object> }) => {
   const { workContracts } = prop
   const classes = useStyles()
+  const { t } = useTranslation()
+
+
 
   return (
     <>
-      <h2>Käsittelyssä olevat työkeikat</h2>
+      <h2>{t("pending_jobs")}</h2>
       {workContracts.map((object:any) => (
         object.contracts.map((job:any) => (
           <Accordion key={job._id}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
             >
-              <Typography>Työkeikka: {job.headline}</Typography>
+              <Typography>{t("work_task")}: {job.headline}</Typography>
             </AccordionSummary>
             <AccordionDetails classes={{ root: classes.root }}>
               <div className={classes.details}>
                 <Typography color="textSecondary">
-                  Info: {job.detailedInfo}
+                  {t('info')}: {job.detailedInfo}
                 </Typography>
                 <Typography>
-                  Workers count: {job.workerCount}
-                </Typography>
-              </div>
-              <div className={classes.details}>
-                <Typography>
-                  Start date: {job.validityPeriod.startDate}
-                </Typography>
-                <Typography>
-                  End date: {job.validityPeriod.endDate}
+                  {t('workers_count')}: {job.workerCount}
                 </Typography>
               </div>
               <div className={classes.details}>
                 <Typography>
-                  Created: {job.createdAt}
+                  {t('start_date')}: {format(new Date(job.validityPeriod.startDate), 'dd.MM.yyyy')}
+                </Typography>
+                <Typography>
+                  {t('end_date')}: {format(new Date(job.validityPeriod.endDate), 'dd.MM.yyyy')}
+                </Typography>
+              </div>
+              <div className={classes.details}>
+                <Typography>
+                  {t("created")}: {format(new Date(job.createdAt), 'dd.MM.yyyy hh:mm')}
                 </Typography>
                 <Divider />
                 <Typography>
-                  Agency status: {job.acceptedAgency.toString()}
+                  {t('agency_status')}: {job.acceptedAgency.toString()}
                 </Typography>
                 <Divider />
                 <Typography>
-                  Business status: {job.acceptedBusiness.toString()}
+                  {t('business_status')}: {job.acceptedBusiness.toString()}
                 </Typography>
               </div>
             </AccordionDetails>

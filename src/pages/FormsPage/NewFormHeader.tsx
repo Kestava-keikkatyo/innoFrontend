@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { importFormByPath, submitForm } from '../../actions/formActions';
 import FileUploader from '../../components/FileUploader';
-
+import { useTranslation } from 'react-i18next'
 /**
  * @component
  * @desc Form editors header.
@@ -14,7 +14,7 @@ const NewFormHeader: React.FC = () => {
   const history = useHistory();
   const { title } = currentForm;
   const dispatch = useDispatch();
-
+  const { t } = useTranslation()
   const handleSubmit = () => {
     dispatch(submitForm(currentForm));
     history.push('/forms');
@@ -23,18 +23,18 @@ const NewFormHeader: React.FC = () => {
     <Grid container direction="row" justify="space-between">
       <Grid item xs={6}>
         <Typography variant="h4" color="secondary">
-          Create a new Form
+        {t("create_new_form")}
         </Typography>
       </Grid>
       <Grid item xs={6}>
         <Grid container direction="row-reverse">
           <Button>
-            <Link to="/forms">Back</Link>
+            <Link to="/forms"> {t("back")}</Link>
           </Button>
           <Button>
-            <Link to="/forms/newform/preview">Preview</Link>
+            <Link to="/forms/newform/preview"> {t("preview")}</Link>
           </Button>
-          <Button onClick={handleSubmit}>Submit</Button>
+          <Button onClick={handleSubmit}> {t("submit")}</Button>
           <FileUploader
             name="Import"
             accept="data:text/json"
@@ -47,7 +47,7 @@ const NewFormHeader: React.FC = () => {
               JSON.stringify(currentForm)
             )}`}
           >
-            Export
+             {t("export")}
           </Button>
         </Grid>
       </Grid>

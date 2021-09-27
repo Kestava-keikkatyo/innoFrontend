@@ -97,7 +97,7 @@ export const ListAccordioSent = (prop: { contracts: any[] }) => {
                   color="primary"
                   variant="contained"
                 >
-                  Yrityksen Nettisivu
+                  {t('company_sites')}
                 </Button>
               </div>
             </AccordionDetails>

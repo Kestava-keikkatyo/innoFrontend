@@ -10,18 +10,20 @@ import {
   } from "@material-ui/core/";
 import { AddIcon } from '@material-ui/data-grid';
 import ClearIcon from '@material-ui/icons/Clear';
+import { useTranslation } from 'react-i18next'
 
 const WorkerTableView: React.FC<any> = ({agencyWorkers}) => {
+  const { t } = useTranslation()
   console.log(agencyWorkers)
     return (
         <TableContainer>
           <Table aria-label="searched workers">
             <TableHead>
               <TableRow>
-                <TableCell align="right">name</TableCell>
-                <TableCell align="right">email</TableCell>
-                <TableCell align="right">add</TableCell>
-                <TableCell align="right">remove</TableCell>
+                <TableCell align="right">{t('name')}</TableCell>
+                <TableCell align="right">{t('email')}</TableCell>
+                <TableCell align="right">{t('add')}</TableCell>
+                <TableCell align="right">{t('remove')}</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

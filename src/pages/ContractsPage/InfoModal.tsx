@@ -12,6 +12,7 @@ import {
 } from '@material-ui/core';
 import { Close as CloseIcon } from '@material-ui/icons';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next'
 
 import { useHistory } from 'react-router';
 import { getByIdAndSetBusinessContractForm } from '../../actions/businessContractFormActions';
@@ -26,7 +27,7 @@ import { getByIdAndSetBusinessContractForm } from '../../actions/businessContrac
  */
 const WorkerModal: React.FC<any> = ({ displayModal, closeModal, contract }) => {
   const dispatch = useDispatch();
-
+  const { t } = useTranslation()
   const history = useHistory();
 
   console.log('infoModal: contract: ', contract);
@@ -86,14 +87,14 @@ const WorkerModal: React.FC<any> = ({ displayModal, closeModal, contract }) => {
           variant="outlined"
           onClick={handleContractFormButton}
         >
-          Contract Form
+          {t("contract_form")}
         </Button>
         <Button
           color="primary"
           variant="outlined"
           onClick={handleBusinessWebsiteButton}
         >
-          Business Website
+          {t("business_website")}
         </Button>
         <Button color="primary" variant="outlined" onClick={() => closeModal()}>
           Close

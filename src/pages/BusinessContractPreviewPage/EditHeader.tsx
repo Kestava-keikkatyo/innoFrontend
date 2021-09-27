@@ -1,5 +1,6 @@
-import { Button, Grid, Typography } from '@material-ui/core';
 import React from 'react';
+import { Button, Grid, Typography } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { updateBusinessContractForm } from '../../actions/businessContractFormActions';
@@ -14,6 +15,7 @@ const EditHeader: React.FC<any> = () => {
     (state: IRootState) => state.businessContractForm
   );
 
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const history = useHistory();
@@ -23,7 +25,6 @@ const EditHeader: React.FC<any> = () => {
       ...currentBusinssContractForm,
       filled: true,
     };
-
     dispatch(
       updateBusinessContractForm(
         copyOfCurrentBusinssContractForm._id,
@@ -37,15 +38,15 @@ const EditHeader: React.FC<any> = () => {
     <Grid container direction="row" justify="space-between">
       <Grid item xs={6}>
         <Typography variant="h4" color="secondary">
-          Fill or edit Business Contract
+          {t('edit_filled')}
         </Typography>
       </Grid>
       <Grid item xs={6}>
         <Grid container direction="row-reverse">
           <Button>
-            <Link to="/business-contracts">Back</Link>
+            <Link to="/business-contracts">{t('back')}</Link>
           </Button>
-          <Button onClick={handleSave}>Save</Button>
+          <Button onClick={handleSave}>{t('save')}</Button>
         </Grid>
       </Grid>
     </Grid>

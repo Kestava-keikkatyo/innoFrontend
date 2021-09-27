@@ -101,7 +101,7 @@ const ContractsFromBusiness = (props: {
               id="panel1a-header"
             >
               <Typography gutterBottom variant="h5">
-                {t('Käyttäjäyrityksiltä saapuneet sopimukset')}
+                {t('contracts_from_business')}
               </Typography>
             </AccordionSummary>
 

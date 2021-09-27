@@ -2,6 +2,7 @@ import { Button, Typography } from '@material-ui/core';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeOption, removeOptionValue, updateQuestion, updateQuestionOption } from '../../actions/formActions';
+import { useTranslation } from 'react-i18next'
 
 interface Props {
   index: number
@@ -16,7 +17,7 @@ interface Props {
 const AddOptionsModule: React.FC<Props> = ({ index }) => {
   const dispatch = useDispatch()
   const { questions } = useSelector((state: any) => state.form)
-
+  const { t } = useTranslation()
   console.log("questions[index].options",questions[index].options)
 
   const handleDelete = (questionIndex:number, optionIndex:number) => {
@@ -33,16 +34,16 @@ const AddOptionsModule: React.FC<Props> = ({ index }) => {
         }/>
       <Button color="secondary"
         onClick={() => handleDelete(index, i)}>
-        Delete option
+        {t("delete_option")}
       </Button>
     </div>
     )}
-    <Typography>Add an option</Typography>
+    <Typography>{t("add_an_option")}</Typography>
     <Button onClick={ () =>
       dispatch(
         updateQuestion(
         { ...questions[index], options: [...questions[index].options, ""], optionValues: [...questions[index].optionValues, false] }, index )
-      )} >add</Button>
+      )} >{t("add")}</Button>
     </>
    );
 }

@@ -14,7 +14,7 @@ import {
 } from "@material-ui/core";
 import { Close as CloseIcon } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
-
+import { useTranslation } from 'react-i18next'
 /**
  * @component
  * @desc A modal panel to connect worker user or business user with agency.
@@ -41,7 +41,8 @@ const useStyles = makeStyles((theme) => ({
 
 const JobModal: React.FC<any> = ({ displayModal, closeModal }) => {
   const classes = useStyles();
-
+  const { t } = useTranslation()
+  
   return (
     <Dialog open={displayModal} onClose={closeModal} fullWidth>
       <DialogTitle>
@@ -56,13 +57,13 @@ const JobModal: React.FC<any> = ({ displayModal, closeModal }) => {
       <DialogContent dividers>
         <>
           <Typography color="textSecondary" variant="body1">
-            <b>Päivämäärä 12.8.2021</b>
+            <b>{t("date")} 12.8.2021</b>
           </Typography>
           <Typography color="textSecondary" variant="body1">
-            <b>Kesto 8h</b>{" "}
+            <b>{t("duration")} 8h</b>{" "}
           </Typography>
           <Typography color="textSecondary" variant="body1">
-            <b>Osallistuja 2/3</b>{" "}
+            <b>{t("participants")} 2/3</b>{" "}
           </Typography>
         </>
       </DialogContent>
@@ -74,7 +75,7 @@ const JobModal: React.FC<any> = ({ displayModal, closeModal }) => {
           label="Hyväksyn käyttöehdot"
         />
         <Button color="primary" variant="outlined" onClick={() => closeModal()}>
-          Yrityksen sivut
+        {t("company_sites")}
         </Button>
         <Button
           className={classes.enroll}
@@ -82,7 +83,7 @@ const JobModal: React.FC<any> = ({ displayModal, closeModal }) => {
           variant="outlined"
           onClick={() => closeModal()}
         >
-          Ilmottaudu
+           {t("enroll")}
         </Button>
       </DialogActions>
     </Dialog>
