@@ -35,6 +35,8 @@ import { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import { usePopupState } from 'material-ui-popup-state/hooks';
 import { logout } from '../../actions/userActions';
 import { useTranslation } from 'react-i18next'
+import { roles } from '../../types/types';
+
 const drawerWidth = navConstants.DRAWER_WIDTH;
 /**
  * @component
@@ -81,10 +83,12 @@ const drawerWidth = navConstants.DRAWER_WIDTH;
  * Handles the drawer toggling on small screen size.
  * @todo refaktoroi tämä.
  */
+let userRole = ""   
 const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
   const { t } = useTranslation()
   const classes = useStyles();
   const { data } = useSelector((state: IRootState) => state.user);
+  
   const { notifications } = useSelector(
     (state: IRootState) => state.notifications
   );
@@ -92,7 +96,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
   const currentProfile: any = useSelector(
     (state: any) => state.profile.currentProfile
   );
-
+ 
   const dispatch = useDispatch();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
@@ -280,6 +284,8 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
   );
 };
 
+
+
 const useStyles = makeStyles((theme) => ({
   // appBar: {
   //   [theme.breakpoints.up('lg')]: {
@@ -307,7 +313,7 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     width: `calc(100% - ${51}px)`,
     backgroundColor: 'white',
-    borderTop: '16px solid #EB5A00',
+    borderTop: '16px solid #eb5a00',
     zIndex: theme.zIndex.drawer + 1,
     /**
      * transition: theme.transitions.create(['width', 'margin'], {
@@ -322,7 +328,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appBarShift: {
     backgroundColor: 'white',
-    borderTop: '16px solid #EB5A00',
+    borderTop: '16px solid #eb5a00',
     marginLeft: drawerWidth,
     width: `calc(100% - ${navConstants.DRAWER_WIDTH}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
@@ -364,5 +370,116 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+
+
+
+
+const { data } = useSelector((state: IRootState) => state.user);
+  const role = data.role
+  console.log(role.toString())
+  let rooli ="" 
+  rooli=role.toString()
+  if(rooli.includes('worker')==true){
+    userRole="worker"
+  } else if(rooli.includes('agency')){
+    userRole = "agency"
+  } else if(rooli.includes('business')){
+    userRole = "business"
+  }
+
+console.log(userRole)
+
+
+
+
+if(userRole === roles.Worker ){
+  const useStyles = makeStyles((theme) => ({
+    // appBar: {
+    //   [theme.breakpoints.up('lg')]: {
+    //     width: `calc(100% - ${drawerWidth}px)`,
+    //     marginLeft: drawerWidth,
+    //   },
+    //   backgroundColor: 'white',
+    //   borderTop: '16px solid #EB5A00'
+    // },
+    menuButton: {
+      // marginRight: theme.spacing(2),
+      // [theme.breakpoints.up('lg')]: {
+      //   display: 'none',
+      // },
+      color: 'black',
+    },
+    logo: {
+      width: 40,
+      height: 40,
+      padding: 0,
+      borderRadius: 20,
+      marginLeft: '1rem',
+      marginTop: '-8px',
+    },
+    appBar: {
+      width: `calc(100% - ${51}px)`,
+      backgroundColor: 'white',
+      borderTop: '16px solid #eb5a00',
+      zIndex: theme.zIndex.drawer + 1,
+      /**
+       * transition: theme.transitions.create(['width', 'margin'], {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+      }),
+       */
+    [theme.breakpoints.down('md')]: {
+        width: `100vw`,
+        // marginLeft: drawerWidth,
+      },
+    },
+    appBarShift: {
+      backgroundColor: 'white',
+      borderTop: '16px solid #2386CC',
+      marginLeft: drawerWidth,
+      width: `calc(100% - ${navConstants.DRAWER_WIDTH}px)`,
+      transition: theme.transitions.create(['width', 'margin'], {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.enteringScreen,
+      }),
+    },
+    text: {
+      color: 'black',
+      marginTop: '1%',
+      [theme.breakpoints.down('xs')]: {
+        marginTop: '5%',
+      },
+    },
+    user: {
+      //border: '1px solid red',
+    },
+    avatar: {
+      color: theme.palette.getContrastText('#2386CC'),
+      backgroundColor: '#2386CC',
+      width: theme.spacing(4),
+      height: theme.spacing(4),
+    },
+    popoverAvatar: {
+      color: theme.palette.getContrastText('#2386CC'),
+      backgroundColor: '#2386CC',
+      width: theme.spacing(10),
+      height: theme.spacing(10),
+    },
+    userPopover: {
+      padding: 5,
+      width: 300,
+    },
+    username: {
+      color: 'black',
+      marginRight: 10,
+      [theme.breakpoints.down('sm')]: {
+        display: 'none',
+      },
+    },
+  }));
+  
+}
+
+
 
 export default TopAppBar;

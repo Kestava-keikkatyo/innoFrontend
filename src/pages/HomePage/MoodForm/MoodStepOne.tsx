@@ -13,6 +13,22 @@ import { updateFeeling } from '../../../actions/feelingActions';
 const MoodStepOne: React.FC = () => {
   const useStyles = makeStyles({
     clickableIcon: {
+      color: '#2386CC',
+      '&:hover': {
+        color: '#444',
+      },
+      width: 50,
+      height: 50,
+    },
+    flexCenter: {
+      display: 'flex',
+      justifyContent: 'center',
+    },
+  });
+
+/*
+ const useStyles = makeStyles({
+    clickableIcon: {
       color: '#ccc',
       '&:hover': {
         color: '#444',
@@ -26,6 +42,10 @@ const MoodStepOne: React.FC = () => {
     },
   });
 
+
+
+
+*/
   const classes = useStyles();
 
   const dispatch: any = useDispatch();

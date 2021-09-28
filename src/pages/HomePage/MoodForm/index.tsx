@@ -102,7 +102,7 @@ ColorlibStepIcon.propTypes = {
    */
   icon: PropTypes.node,
 };
-
+/*
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -121,8 +121,25 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
 }));
-
-
+*/
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    height: '100%',
+  },
+  button: {
+    marginRight: theme.spacing(1),
+  },
+  primary: {
+    background: '#2386CC',
+    color: 'white',
+  },
+  instructions: {
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+    textAlign: 'center',
+  },
+}));
 
 const MoodForm: React.FC<any> = ({ handleSubmit }) => {
   const { t } = useTranslation()
