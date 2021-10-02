@@ -2,6 +2,7 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Button,
   FormControl,
   FormControlLabel,
   FormLabel,
@@ -26,7 +27,7 @@ const WorkView: React.FC<any> = ({ works }) => {
   return (
     <div>
       <FormControl component="fieldset">
-        <FormLabel component="legend">Valitse </FormLabel>
+        <FormLabel component="legend">{t("choose")} </FormLabel>
         <RadioGroup
           row
           aria-label="gender"
@@ -52,21 +53,30 @@ const WorkView: React.FC<any> = ({ works }) => {
       {works
         .filter((work: any) => work.status === value)
         .map((filteredWork: any) => (
-          <Accordion>
+          <Accordion className={classes.accordion}>
             <AccordionSummary
               aria-controls="panel1a-content"
               id="panel1a-header"
+              
             >
-              <Typography>{filteredWork.title}</Typography>
+               <Typography className={classes.accTitle}>{filteredWork.company_name} - {filteredWork.title} :</Typography>
+              <Typography >{filteredWork.startdate} - {filteredWork.enddate}</Typography>
+             
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                {filteredWork.startdate} - {filteredWork.enddate}
+                Päiviä jäljellä: X
                 {/*TODO: date-fns format duration of enddate --> time left*/}
               </Typography>
             </AccordionDetails>
             <AccordionDetails>
-              <Typography>{filteredWork.contact}</Typography>
+              <Typography> Yhteyshenkilö: {filteredWork.contact}</Typography>
+            </AccordionDetails>
+            <AccordionDetails>
+              <Button
+              variant="outlined"
+              color="primary"
+              >Sopimus</Button>
             </AccordionDetails>
           </Accordion>
         ))}
@@ -78,6 +88,12 @@ const useStyles = makeStyles(() => ({
   headline: {
     textAlign: "center",
   },
+  accordion: {
+    marginTop: '2%'
+  },
+  accTitle: {
+    fontWeight: 'bold',
+    marginRight: '1%'
+  },
 }));
-
 export default WorkView;

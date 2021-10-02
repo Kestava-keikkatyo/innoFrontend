@@ -30,7 +30,7 @@ const works = [
     enddate: "05/10/2021",
     status: "active",
     contract_id: "contract_id",
-    company_id: "company_id",
+    company_name: "Emminkäinen",
     title: "Nakkikioskinmyyjä",
     contact: "Erkki P. +358 12312312"
   },   {
@@ -38,7 +38,7 @@ const works = [
     enddate: "05/12/2021",
     status: "active",
     contract_id: "contract_id",
-    company_id: "company_id",
+    company_name: "Losti",
     title: "Kebabmyyjä",
     contact: "Erkki P. +358 12312312"
 
@@ -47,7 +47,7 @@ const works = [
     enddate: "05/10/2021",
     status: "done",
     contract_id: "contract_id",
-    company_id: "company_id",
+    company_name: "Biskars",
     title: "Historia Nakkikioskinmyyjä",
     contact: "Erkki P. +358 12312312"
   }
