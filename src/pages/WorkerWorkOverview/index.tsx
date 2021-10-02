@@ -24,6 +24,36 @@ interface TabPanelProps {
   dir: Direction;
 }
 
+const works = [
+  {
+    startdate: "03/10/2021",
+    enddate: "05/10/2021",
+    status: "active",
+    contract_id: "contract_id",
+    company_id: "company_id",
+    title: "Nakkikioskinmyyjä",
+    contact: "Erkki P. +358 12312312"
+  },   {
+    startdate: "03/12/2021",
+    enddate: "05/12/2021",
+    status: "active",
+    contract_id: "contract_id",
+    company_id: "company_id",
+    title: "Kebabmyyjä",
+    contact: "Erkki P. +358 12312312"
+
+  },   {
+    startdate: "03/10/2021",
+    enddate: "05/10/2021",
+    status: "done",
+    contract_id: "contract_id",
+    company_id: "company_id",
+    title: "Historia Nakkikioskinmyyjä",
+    contact: "Erkki P. +358 12312312"
+  }
+]
+
+
 const TabPanel = (props: TabPanelProps) => {
   const { children, value, index, ...other } = props;
   return (
@@ -84,10 +114,7 @@ const WorkerJobs = () => {
       </AppBar>
 
       <TabPanel value={value} index={0} dir={theme.direction}>
-        <WorkView />
-        <Accordion className={classes.card} variant="outlined">
-          <AccordionDetails></AccordionDetails>
-        </Accordion>
+        <WorkView works={works}/>
       </TabPanel>
       <TabPanel value={value} index={1} dir={theme.direction}>
         <Typography style={{ paddingTop: "1rem" }} variant="h4"></Typography>
