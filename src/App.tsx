@@ -46,6 +46,8 @@ import BusinessWorkRequest from './pages/BusinessWorkOverview';
 import WorkInfo from './pages/BusinessWorkOverview/WorkInfo';
 import WorkRequest from './pages/AgencyWorkRequest';
 import WorkerJobs from './pages/WorkerWorkOverview';
+import AdminLoginPage from './pages/AdminLoginPage';
+import AdminHome from './pages/AdminPage/AdminHome';
 
 /**
  * @component
@@ -69,6 +71,12 @@ const App: React.FC = () => {
         <AdminRoute path="/admin/users">
           <Users />
         </AdminRoute>
+        <Route path="/adminloginpage">
+          <AdminLoginPage />
+        </Route>
+        <Route path="/home">
+          <AdminHome />
+        </Route>
         <AdminRoute path="/admin/usercompany">
           <UserCompany />
         </AdminRoute>
