@@ -74,7 +74,7 @@ const App: React.FC = () => {
         <Route path="/adminloginpage">
           <AdminLoginPage />
         </Route>
-        <Route path="/home">
+        <Route path="/admin/home">
           <AdminHome />
         </Route>
         <AdminRoute path="/admin/usercompany">
