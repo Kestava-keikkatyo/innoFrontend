@@ -18,7 +18,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { roles } from '../../types/types';
 import { IRootState } from '../../utils/store';
 import logo from '../../assets/keikkakaveri_logo.png';
-
 import { useTranslation } from 'react-i18next'
 import TranslateIcon from '@material-ui/icons/Translate';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
@@ -171,6 +170,17 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                   <AssignmentIcon />
                 </ListItemIcon>
                 <ListItemText primary={t("business_contracts")}/>
+              </ListItem>
+              <Divider />
+            </>
+          )}
+            {role === roles.Agency && (
+            <>
+              <ListItem button component={Link} to="/create-job">
+                <ListItemIcon>
+                  <WorkOutlineIcon />
+                </ListItemIcon>
+                <ListItemText primary={t("create_job")} />
               </ListItem>
               <Divider />
             </>

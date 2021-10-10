@@ -328,6 +328,8 @@ export default {
 
   form_preview: 'Esikatsele lomaketta',
 
+  create_job:'Tee työilmoitus'
+
   //import { useTranslation } from 'react-i18next'
   //const { t } = useTranslation()
 }

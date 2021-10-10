@@ -331,5 +331,7 @@ export default {
 
   form_preview: 'Form preview',
 
+  create_job:'Create job'
+
 
 }
