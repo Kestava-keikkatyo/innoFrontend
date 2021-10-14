@@ -83,7 +83,7 @@ const drawerWidth = navConstants.DRAWER_WIDTH;
  * Handles the drawer toggling on small screen size.
  * @todo refaktoroi tämä.
  */
-let userRole = ""   
+
 const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
   const { t } = useTranslation()
   const classes = useStyles();
@@ -92,7 +92,8 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
   const { notifications } = useSelector(
     (state: IRootState) => state.notifications
   );
-
+  
+  
   const currentProfile: any = useSelector(
     (state: any) => state.profile.currentProfile
   );
@@ -144,6 +145,156 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
     popupState.close();
     dispatch(logout());
   };
+
+const appWorker= ( <AppBar position="fixed" elevation={0} className={clsx(classes.appWorker)}>
+<Toolbar className="toolbar" variant="dense">
+  <IconButton
+    color="inherit"
+    aria-label="open drawer"
+    edge="end"
+    onClick={handleDrawerToggle}
+    className={classes.menuButton}
+  >
+    <MenuIcon />
+  </IconButton>
+  {matches ? null : <ActiveLastBreadcrumb />}
+  {/**Here comes the rest appbar stuff */}
+  <div className="app-bar-container">
+    {/**<img className={classes.logo} src={profileThumb} alt="logo" />*/}
+    <Badge
+      badgeContent={
+        notifications.unread_messages
+          ? notifications.unread_messages.length
+          : 0
+      }
+      color="secondary"
+    >
+      <IconButton
+        aria-label="notifications"
+        aria-controls="menu-appbar"
+        aria-haspopup="true"
+        color="default"
+        onClick={handleNotifications}
+      >
+        <NotificationsIcon />
+      </IconButton>
+    </Badge>
+    <Popover
+      id="menu-appbar"
+      open={open2}
+      anchorEl={anchorElNotifications}
+      onClose={handleCloseNotifications}
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'left',
+      }}
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+    >
+      {notifications.unread_messages ? (
+        <Notifications
+          notifications={notifications.unread_messages}
+          handleCloseNotifications={handleCloseNotifications}
+        />
+      ) : (
+        <></>
+      )}
+    </Popover>
+    {/* User popup menu */}
+    <div>
+      <IconButton
+        aria-label="account of current user"
+        aria-controls="menu-appbar"
+        aria-haspopup="true"
+        color="primary"
+        className={classes.user}
+        {...bindTrigger(popupState)}
+      >
+        <Typography className={classes.username}>
+          {data.name || 'Loading'}
+        </Typography>
+        <Avatar
+          style={{ margin: 'auto' }}
+          className={classes.avatar}
+          src={currentProfile.profilePicture || ''}
+          alt="profilePicture"
+        />
+        <ExpandMoreIcon />
+      </IconButton>
+      <Popover
+        {...bindPopover(popupState)}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+      >
+        <Box className={classes.userPopover}>
+          <Grid style={{ marginTop: 16 }}>
+            <Avatar
+              style={{ margin: 'auto' }}
+              className={classes.popoverAvatar}
+              src={currentProfile.profilePicture || ''}
+              alt="profilePicture"
+            />
+            <Typography
+              variant="body1"
+              align="center"
+              style={{ marginTop: 16 }}
+            >
+              {currentProfile.name}
+            </Typography>
+            <Typography
+              variant="body2"
+              align="center"
+              style={{ marginBottom: 16 }}
+            >
+              {currentProfile.email}
+            </Typography>
+          </Grid>
+          <Divider />
+          <MenuItem
+            onClick={handleProfileClick}
+            style={{ marginTop: 10 }}
+          >
+            <AccountCircleIcon
+              style={{ fontSize: 24, marginRight: 10 }}
+            />{' '}
+            {t("profile")}
+          </MenuItem>
+          <MenuItem onClick={handleSettingsClick}>
+            <SettingsIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
+            {t("settings")}
+          </MenuItem>
+          <MenuItem onClick={handleLogout}>
+            <ExitToAppIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
+            {t("logout")}
+          </MenuItem>
+        </Box>
+      </Popover>
+    </div>
+  </div>
+</Toolbar>
+</AppBar>
+);
+
+if(data.role === "worker") {
+             return (
+                    <div>
+                      {appWorker} 
+                    </div>
+                    )
+                  }
+
+
+
+
+
 
   return (
     <AppBar position="fixed" elevation={0} className={clsx(classes.appBar)}>
@@ -310,6 +461,16 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '1rem',
     marginTop: '-8px',
   },
+  appWorker: {
+    borderTop: '16px solid #2386CC',
+    width: `calc(100% - ${51}px)`,
+    backgroundColor: 'white',
+   
+    zIndex: theme.zIndex.drawer + 1,
+  
+  },
+
+
   appBar: {
     width: `calc(100% - ${51}px)`,
     backgroundColor: 'white',
@@ -374,111 +535,11 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const { data } = useSelector((state: IRootState) => state.user);
-  const role = data.role
-  console.log(role.toString())
-  let rooli ="" 
-  rooli=role.toString()
-  if(rooli.includes('worker')==true){
-    userRole="worker"
-  } else if(rooli.includes('agency')){
-    userRole = "agency"
-  } else if(rooli.includes('business')){
-    userRole = "business"
-  }
-
-console.log(userRole)
 
 
 
-
-if(userRole === roles.Worker ){
-  const useStyles = makeStyles((theme) => ({
-    // appBar: {
-    //   [theme.breakpoints.up('lg')]: {
-    //     width: `calc(100% - ${drawerWidth}px)`,
-    //     marginLeft: drawerWidth,
-    //   },
-    //   backgroundColor: 'white',
-    //   borderTop: '16px solid #EB5A00'
-    // },
-    menuButton: {
-      // marginRight: theme.spacing(2),
-      // [theme.breakpoints.up('lg')]: {
-      //   display: 'none',
-      // },
-      color: 'black',
-    },
-    logo: {
-      width: 40,
-      height: 40,
-      padding: 0,
-      borderRadius: 20,
-      marginLeft: '1rem',
-      marginTop: '-8px',
-    },
-    appBar: {
-      width: `calc(100% - ${51}px)`,
-      backgroundColor: 'white',
-      borderTop: '16px solid #eb5a00',
-      zIndex: theme.zIndex.drawer + 1,
-      /**
-       * transition: theme.transitions.create(['width', 'margin'], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-       */
-    [theme.breakpoints.down('md')]: {
-        width: `100vw`,
-        // marginLeft: drawerWidth,
-      },
-    },
-    appBarShift: {
-      backgroundColor: 'white',
-      borderTop: '16px solid #2386CC',
-      marginLeft: drawerWidth,
-      width: `calc(100% - ${navConstants.DRAWER_WIDTH}px)`,
-      transition: theme.transitions.create(['width', 'margin'], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-    },
-    text: {
-      color: 'black',
-      marginTop: '1%',
-      [theme.breakpoints.down('xs')]: {
-        marginTop: '5%',
-      },
-    },
-    user: {
-      //border: '1px solid red',
-    },
-    avatar: {
-      color: theme.palette.getContrastText('#2386CC'),
-      backgroundColor: '#2386CC',
-      width: theme.spacing(4),
-      height: theme.spacing(4),
-    },
-    popoverAvatar: {
-      color: theme.palette.getContrastText('#2386CC'),
-      backgroundColor: '#2386CC',
-      width: theme.spacing(10),
-      height: theme.spacing(10),
-    },
-    userPopover: {
-      padding: 5,
-      width: 300,
-    },
-    username: {
-      color: 'black',
-      marginRight: 10,
-      [theme.breakpoints.down('sm')]: {
-        display: 'none',
-      },
-    },
-  }));
   
-}
+
 
 
 

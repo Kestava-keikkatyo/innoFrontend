@@ -11,15 +11,81 @@ import Typography from '@material-ui/core/Typography';
 import SendIcon from '@material-ui/icons/Send';
 import CreateIcon from '@material-ui/icons/Create';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
+
 import { Container } from '@material-ui/core';
 import MoodStepOne from './MoodStepOne';
 import MoodStepThree from './MoodStepThree';
 import { setFiles } from '../../../actions/fileActions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
 
+import { IRootState } from '../../../utils/store';
+import { roles } from '../../../types/types';
+
+
+//**************** KARIn ongelma */
+//vertailuarvo on mutta mistä saa käyttäjän roolin ?
+console.log(roles.Worker)
+const { data } = useSelector((state: IRootState) => state.user);
+
+console.log(data)
+
+
+    const ColorlibConnectorWorker = withStyles({
+
+
+    alternativeLabel: {
+      top: 22,
+    },
+    active: {
+      '& $line': {
+        backgroundImage:
+          'linear-gradient( 136deg, rgb(24,93,142) 0%, rgb(35,134,204) 50%, rgb(116,157,187) 100%)',
+      },
+    },
+    completed: {
+      '& $line': {
+        backgroundImage:
+          'linear-gradient( 136deg, rgb(24,93,142) 0%, rgb(35,134,204) 50%, rgb(116,157,187) 100%)',
+      },
+    },
+    line: {
+      height: 3,
+      border: 0,
+      backgroundColor: '#2386CC',
+      borderRadius: 1,
+    },
+  })(StepConnector);
+  
+  const useColorlibStepIconStylesWorker = makeStyles({
+    root: {
+      backgroundColor: '#ccc',
+      zIndex: 1,
+      color: '#fff',
+      width: 50,
+      height: 50,
+      display: 'flex',
+      borderRadius: '50%',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    active: {
+      backgroundImage:
+        'linear-gradient( 136deg, rgb(24,93,142) 0%, rgb(35,134,204) 50%, rgb(116,157,187) 100%)',
+      boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
+    },
+    completed: {
+      backgroundImage:
+        'linear-gradient( 136deg, rgb(24,93,142) 0%, rgb(35,134,204) 50%, rgb(116,157,187) 100%)',
+    },
+  });
+  
+
+
 const ColorlibConnector = withStyles({
+
+
   alternativeLabel: {
     top: 22,
   },
@@ -67,7 +133,7 @@ const useColorlibStepIconStyles = makeStyles({
 });
 
 const ColorlibStepIcon = (props: any) => {
-  const classes = useColorlibStepIconStyles();
+  const classes = useColorlibStepIconStylesWorker();
   const { active, completed } = props;
 
   const icons: any = {
@@ -102,27 +168,8 @@ ColorlibStepIcon.propTypes = {
    */
   icon: PropTypes.node,
 };
-/*
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-    height: '100%',
-  },
-  button: {
-    marginRight: theme.spacing(1),
-  },
-  primary: {
-    background: '#EB5A00',
-    color: 'white',
-  },
-  instructions: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-    textAlign: 'center',
-  },
-}));
-*/
-const useStyles = makeStyles((theme) => ({
+
+const useStylesWorker = makeStyles((theme) => ({
   root: {
     width: '100%',
     height: '100%',
@@ -141,9 +188,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    height: '100%',
+  },
+  button: {
+    marginRight: theme.spacing(1),
+  },
+  primary: {
+    background: '#eb5a00',
+    color: 'white',
+  },
+  instructions: {
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+    textAlign: 'center',
+  },
+}));
+
 const MoodForm: React.FC<any> = ({ handleSubmit }) => {
   const { t } = useTranslation()
-  const classes = useStyles();
+  //const { data } = useSelector((state: IRootState) => state.user);
+
+  const classes = useStylesWorker();
   const getSteps = () => {
     return [t('your_mood'), t('fill_details'), t('submit')];
   };

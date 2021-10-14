@@ -32,7 +32,11 @@ import { IRootState } from '../../../utils/store';
 import SendIcon from '@material-ui/icons/Send';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ReplayIcon from '@material-ui/icons/Replay';
-/*
+
+
+const { data } = useSelector((state: IRootState) => state.user);
+ 
+
 const useStyles = makeStyles((theme) => ({
   button: {
     backgroundColor: '#eb5a00',
@@ -62,40 +66,86 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
 }));
+
+/*
+const useStyles =() => {
+  if(data.role === "worker"){
+
+
+    const useStyles = makeStyles((theme) => ({
+      button: {
+        backgroundColor: '#2386CC',
+        '&:disabled': {
+          backgroundColor: '#2386CC',
+        },
+        color: 'white',
+      },
+      sendingDiv: {
+        textAlign: 'center',
+      },
+      accordion: {
+        display: 'contents',
+      },
+      feedBackTextWaiting: {
+        color: '#749DBB',
+      },
+      feedBackTextDone: {
+        color: 'green',
+      },
+      dividerWithMargin: {
+        marginTop: '5px',
+        marginBottom: '5px',
+      },
+      pagination: {
+        display: 'flex',
+        justifyContent: 'center',
+      },
+    }));
+    return useStyles
+  }  
+  
+  if(data.role === "agency"){
+  
+    const useStyles = makeStyles((theme) => ({
+      button: {
+        backgroundColor: '#eb5a00',
+        '&:disabled': {
+          backgroundColor: '#ebc800',
+        },
+        color: 'white',
+      },
+      sendingDiv: {
+        textAlign: 'center',
+      },
+      accordion: {
+        display: 'contents',
+      },
+      feedBackTextWaiting: {
+        color: '#ac9100',
+      },
+      feedBackTextDone: {
+        color: 'green',
+      },
+      dividerWithMargin: {
+        marginTop: '5px',
+        marginBottom: '5px',
+      },
+      pagination: {
+        display: 'flex',
+        justifyContent: 'center',
+      },
+    }));
+    return useStyles
+  }
+  
+}
 */
-const useStyles = makeStyles((theme) => ({
-  button: {
-    backgroundColor: '#2386CC',
-    '&:disabled': {
-      backgroundColor: '#2386CC',
-    },
-    color: 'white',
-  },
-  sendingDiv: {
-    textAlign: 'center',
-  },
-  accordion: {
-    display: 'contents',
-  },
-  feedBackTextWaiting: {
-    color: '#749DBB',
-  },
-  feedBackTextDone: {
-    color: 'green',
-  },
-  dividerWithMargin: {
-    marginTop: '5px',
-    marginBottom: '5px',
-  },
-  pagination: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-}));
 const FeedBackForm = () => {
   const dispatch = useDispatch();
 
+
   const classes = useStyles();
+  
 
   const { myFeedBacks } = useSelector((state: IRootState) => state.feedback);
 
