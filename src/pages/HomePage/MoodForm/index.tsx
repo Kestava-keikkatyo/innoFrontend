@@ -23,63 +23,6 @@ import { useTranslation } from 'react-i18next';
 import { IRootState } from '../../../utils/store';
 import { roles } from '../../../types/types';
 
-
-//**************** KARIn ongelma */
-//vertailuarvo on mutta mistä saa käyttäjän roolin ?
-console.log(roles.Worker)
-const { data } = useSelector((state: IRootState) => state.user);
-
-console.log(data)
-
-
-    const ColorlibConnectorWorker = withStyles({
-
-
-    alternativeLabel: {
-      top: 22,
-    },
-    active: {
-      '& $line': {
-        backgroundImage:
-          'linear-gradient( 136deg, rgb(24,93,142) 0%, rgb(35,134,204) 50%, rgb(116,157,187) 100%)',
-      },
-    },
-    completed: {
-      '& $line': {
-        backgroundImage:
-          'linear-gradient( 136deg, rgb(24,93,142) 0%, rgb(35,134,204) 50%, rgb(116,157,187) 100%)',
-      },
-    },
-    line: {
-      height: 3,
-      border: 0,
-      backgroundColor: '#2386CC',
-      borderRadius: 1,
-    },
-  })(StepConnector);
-  
-  const useColorlibStepIconStylesWorker = makeStyles({
-    root: {
-      backgroundColor: '#ccc',
-      zIndex: 1,
-      color: '#fff',
-      width: 50,
-      height: 50,
-      display: 'flex',
-      borderRadius: '50%',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    active: {
-      backgroundImage:
-        'linear-gradient( 136deg, rgb(24,93,142) 0%, rgb(35,134,204) 50%, rgb(116,157,187) 100%)',
-      boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
-    },
-    completed: {
-      backgroundImage:
-        'linear-gradient( 136deg, rgb(24,93,142) 0%, rgb(35,134,204) 50%, rgb(116,157,187) 100%)',
-    },
-  });
   
 
 
@@ -133,7 +76,7 @@ const useColorlibStepIconStyles = makeStyles({
 });
 
 const ColorlibStepIcon = (props: any) => {
-  const classes = useColorlibStepIconStylesWorker();
+  const classes = useColorlibStepIconStyles();
   const { active, completed } = props;
 
   const icons: any = {
@@ -169,24 +112,6 @@ ColorlibStepIcon.propTypes = {
   icon: PropTypes.node,
 };
 
-const useStylesWorker = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-    height: '100%',
-  },
-  button: {
-    marginRight: theme.spacing(1),
-  },
-  primary: {
-    background: '#2386CC',
-    color: 'white',
-  },
-  instructions: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-    textAlign: 'center',
-  },
-}));
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -211,7 +136,7 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
   const { t } = useTranslation()
   //const { data } = useSelector((state: IRootState) => state.user);
 
-  const classes = useStylesWorker();
+  const classes = useStyles();
   const getSteps = () => {
     return [t('your_mood'), t('fill_details'), t('submit')];
   };

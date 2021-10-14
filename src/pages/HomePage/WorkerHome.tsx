@@ -57,7 +57,7 @@ const WorkerHome = () => {
         <div className="report-container" style={{ height: '100%' }}>
           <CardHeader
             action={
-              <Button variant="outlined" color="primary">
+               <Button variant="outlined" color="primary">
                 Lue lisää
               </Button>
             }
