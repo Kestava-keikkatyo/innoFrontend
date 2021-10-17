@@ -439,7 +439,153 @@ if(data.role === "agency") {
        }
 
 
-
+       const appBusiness= ( <AppBar position="fixed" elevation={0} className={clsx(classes.appBusiness)}>
+       <Toolbar className="toolbar" variant="dense">
+         <IconButton
+           color="inherit"
+           aria-label="open drawer"
+           edge="end"
+           onClick={handleDrawerToggle}
+           className={classes.menuButton}
+         >
+           <MenuIcon />
+         </IconButton>
+         {matches ? null : <ActiveLastBreadcrumb />}
+         {/**Here comes the rest appbar stuff */}
+         <div className="app-bar-container">
+           {/**<img className={classes.logo} src={profileThumb} alt="logo" />*/}
+           <Badge
+             badgeContent={
+               notifications.unread_messages
+                 ? notifications.unread_messages.length
+                 : 0
+             }
+             color="secondary"
+             
+           >
+             <IconButton
+               aria-label="notifications"
+               aria-controls="menu-appbar"
+               aria-haspopup="true"
+               color="default"
+               onClick={handleNotifications}
+             >
+               <NotificationsIcon />
+             </IconButton>
+           </Badge>
+           <Popover
+             id="menu-appbar"
+             open={open2}
+             anchorEl={anchorElNotifications}
+             onClose={handleCloseNotifications}
+             anchorOrigin={{
+               vertical: 'bottom',
+               horizontal: 'left',
+             }}
+             transformOrigin={{
+               vertical: 'top',
+               horizontal: 'right',
+             }}
+           >
+             {notifications.unread_messages ? (
+               <Notifications
+                 notifications={notifications.unread_messages}
+                 handleCloseNotifications={handleCloseNotifications}
+               />
+             ) : (
+               <></>
+             )}
+           </Popover>
+           {/* User popup menu */}
+           <div>
+             <IconButton
+               aria-label="account of current user"
+               aria-controls="menu-appbar"
+               aria-haspopup="true"
+               color="primary"
+               className={classes.user}
+               {...bindTrigger(popupState)}
+             >
+               <Typography className={classes.username}>
+                 {data.name || 'Loading'}
+               </Typography>
+               <Avatar
+                 style={{ margin: 'auto' }}
+                 className={classes.avatarBusiness}
+                 src={currentProfile.profilePicture || ''}
+                 alt="profilePicture"
+               />
+               <ExpandMoreIcon />
+             </IconButton>
+             <Popover
+               {...bindPopover(popupState)}
+               anchorOrigin={{
+                 vertical: 'bottom',
+                 horizontal: 'center',
+               }}
+               transformOrigin={{
+                 vertical: 'top',
+                 horizontal: 'center',
+               }}
+             >
+               <Box className={classes.userPopover}>
+                 <Grid style={{ marginTop: 16 }}>
+                   <Avatar
+                     style={{ margin: 'auto' }}
+                     className={classes.popoverAvatarBusiness}
+                     src={currentProfile.profilePicture || ''}
+                     alt="profilePicture"
+                   />
+                   <Typography
+                     variant="body1"
+                     align="center"
+                     style={{ marginTop: 16 }}
+                   >
+                     {currentProfile.name}
+                   </Typography>
+                   <Typography
+                     variant="body2"
+                     align="center"
+                     style={{ marginBottom: 16 }}
+                   >
+                     {currentProfile.email}
+                   </Typography>
+                 </Grid>
+                 <Divider />
+                 <MenuItem
+                   onClick={handleProfileClick}
+                   style={{ marginTop: 10 }}
+                 >
+                   <AccountCircleIcon
+                     style={{ fontSize: 24, marginRight: 10 }}
+                   />{' '}
+                   {t("profile")}
+                 </MenuItem>
+                 <MenuItem onClick={handleSettingsClick}>
+                   <SettingsIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
+                   {t("settings")}
+                 </MenuItem>
+                 <MenuItem onClick={handleLogout}>
+                   <ExitToAppIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
+                   {t("logout")}
+                 </MenuItem>
+               </Box>
+             </Popover>
+           </div>
+         </div>
+       </Toolbar>
+       </AppBar>
+       );
+       
+       if(data.role === "business") {
+         return (
+                <div>
+                  {appBusiness} 
+                </div>
+                )
+              }
+       
+       
 
 
 
@@ -682,6 +828,15 @@ const useStyles = makeStyles((theme) => ({
     width: theme.spacing(4),
     height: theme.spacing(4),
   },
+
+  avatarBusiness: {
+    color: theme.palette.getContrastText('#eb5a00'),
+    backgroundColor: '#eb5a00',
+    width: theme.spacing(4),
+    height: theme.spacing(4),
+  },
+
+
   avatar: {
     color: theme.palette.getContrastText('#eb5a00'),
     backgroundColor: '#eb5a00',
@@ -700,6 +855,13 @@ const useStyles = makeStyles((theme) => ({
     width: theme.spacing(10),
     height: theme.spacing(10),
   },
+  popoverAvatarBusiness: {
+    color: theme.palette.getContrastText('#eb5a00'),
+     backgroundColor: '#eb5a00',
+    width: theme.spacing(10),
+    height: theme.spacing(10),
+  },
+
   popoverAvatar: {
     color: theme.palette.getContrastText('#eb5a00'),
      backgroundColor: '#eb5a00',
