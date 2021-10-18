@@ -81,12 +81,12 @@ const MoodStepOne: React.FC = () => {
   if(data.role === "worker") {
       return (
         <>
-          <Grid container className="mood-step-one-worker" justify="center">
+          <Grid container className="mood-step-one" justify="center">
             <Grid item className={classes.flexCenter} xs={2}>
               <SentimentVeryDissatisfiedIcon
                 onClick={() => updateMood(0)}
                 className={`${classes.clickableIcon} ${
-                  clicked[0] ? 'mood-icon-worker' : null
+                  clicked[0] ? 'mood-icon' : null
                 }`}
               />
             </Grid>
@@ -94,7 +94,7 @@ const MoodStepOne: React.FC = () => {
               <SentimentDissatisfiedIcon
                 onClick={() => updateMood(1)}
                 className={`${classes.clickableIcon} ${
-                  clicked[1] ? 'mood-icon-worker' : null
+                  clicked[1] ? 'mood-icon' : null
                 }`}
               />
             </Grid>
@@ -102,7 +102,7 @@ const MoodStepOne: React.FC = () => {
               <SentimentSatisfiedIcon
                 onClick={() => updateMood(2)}
                 className={`${classes.clickableIcon} ${
-                  clicked[2] ? 'mood-icon-worker' : null
+                  clicked[2] ? 'mood-icon' : null
                 }`}
               />
             </Grid>
@@ -110,7 +110,7 @@ const MoodStepOne: React.FC = () => {
               <SentimentSatisfiedAltIcon
                 onClick={() => updateMood(3)}
                 className={`${classes.clickableIcon} ${
-                  clicked[3] ? 'mood-icon-worker' : null
+                  clicked[3] ? 'mood-icon' : null
                 }`}
               />
             </Grid>
@@ -118,7 +118,7 @@ const MoodStepOne: React.FC = () => {
               <SentimentVerySatisfiedIcon
                 onClick={() => updateMood(4)}
                 className={`${classes.clickableIcon} ${
-                  clicked[4] ? 'mood-icon-worker' : null
+                  clicked[4] ? 'mood-icon' : null
                 }`}
               />
             </Grid>
