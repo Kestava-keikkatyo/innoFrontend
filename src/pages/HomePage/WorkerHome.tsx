@@ -16,10 +16,11 @@ import { submitFeeling, updateFeeling } from '../../actions/feelingActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../utils/store';
 import fileService from '../../services/fileService';
+import { useTranslation } from 'react-i18next'
 
 const WorkerHome = () => {
   const dispatch = useDispatch();
-
+  const { t } = useTranslation()
   const currentFeeling: any = useSelector<IRootState>(
     (state) => state.feeling.currentFeeling
   );
@@ -58,7 +59,7 @@ const WorkerHome = () => {
           <CardHeader
             action={
                <Button variant="outlined" color="primary">
-                Lue lisää
+                 {t("read_more")}
               </Button>
             }
             title="Työntekijän vastuu"
