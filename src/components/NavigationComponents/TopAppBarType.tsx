@@ -823,8 +823,8 @@ const useStyles = makeStyles((theme) => ({
   },
 
   avatarAgency: {
-    color: theme.palette.getContrastText('#0F5A0C'),
-    backgroundColor: '#0F5A0C',
+    color: theme.palette.getContrastText('#009E60'),
+    backgroundColor: '#009E60',
     width: theme.spacing(4),
     height: theme.spacing(4),
   },
@@ -850,8 +850,8 @@ const useStyles = makeStyles((theme) => ({
     height: theme.spacing(10),
   },
   popoverAvatarAgency: {
-    color: theme.palette.getContrastText('#0F5A0C'),
-    backgroundColor:'#0F5A0C',
+    color: theme.palette.getContrastText('#009E60'),
+    backgroundColor:'#009E60',
     width: theme.spacing(10),
     height: theme.spacing(10),
   },
