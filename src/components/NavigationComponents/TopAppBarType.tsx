@@ -207,7 +207,6 @@ const appWorker= ( <AppBar position="fixed" elevation={0} className={clsx(classe
       <IconButton
         aria-label="account of current user"
         aria-controls="menu-appbar"
-        aria-haspopup="true"
         color="primary"
         className={classes.user}
         {...bindTrigger(popupState)}
@@ -354,7 +353,6 @@ const appAgency= ( <AppBar position="fixed" elevation={0} className={clsx(classe
       <IconButton
         aria-label="account of current user"
         aria-controls="menu-appbar"
-        aria-haspopup="true"
         color="primary"
         className={classes.user}
         {...bindTrigger(popupState)}
@@ -501,7 +499,6 @@ if(data.role === "agency") {
              <IconButton
                aria-label="account of current user"
                aria-controls="menu-appbar"
-               aria-haspopup="true"
                color="primary"
                className={classes.user}
                {...bindTrigger(popupState)}
@@ -651,7 +648,6 @@ if(data.role === "agency") {
             <IconButton
               aria-label="account of current user"
               aria-controls="menu-appbar"
-              aria-haspopup="true"
               color="primary"
               className={classes.user}
               {...bindTrigger(popupState)}
