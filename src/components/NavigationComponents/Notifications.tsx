@@ -1,5 +1,5 @@
 import React from 'react'
-import { Divider, List, ListItem, IconButton, Box, Typography, ListItemText, ListItemSecondaryAction, makeStyles, MenuItem } from '@material-ui/core'
+import { Divider, List, ListItem, IconButton, Box, Typography, ListItemText, ListItemSecondaryAction, makeStyles, MenuItem, Button} from '@material-ui/core'
 import CheckIcon from '@material-ui/icons/Check';
 import ClearAllIcon from '@material-ui/icons/ClearAll';
 import CloseIcon from '@material-ui/icons/Close';
@@ -23,7 +23,11 @@ const Notifications: React.FC<any> = (props: { notifications: any, handleCloseNo
 
   return (
     <Box className={classes.box}>
-      <Typography className={classes.notificationsHeader}>Ilmoitukset</Typography>
+      <Typography className={classes.notificationsHeader}>Ilmoitukset
+        <Button onClick={handleCloseAllNotifications} style={{left:"32.5%", maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px',top:-11 }}>
+            <CloseIcon style={{ fontSize: 22 }} />
+          </Button>
+      </Typography>
       <Divider />
       <List>
         {sortedNotifications.length > 0 ? sortedNotifications.map((message: any) => {
@@ -49,10 +53,6 @@ const Notifications: React.FC<any> = (props: { notifications: any, handleCloseNo
         onClick={() => handleClearAllNotifications(sortedNotifications)}>
         <ClearAllIcon style={{ fontSize: 24, marginRight: 10 }} />
         Empty all
-      </MenuItem>
-      <MenuItem onClick={handleCloseAllNotifications} style={{ marginBottom: 10 }}>
-        <CloseIcon style={{ fontSize: 24, marginRight: 10 }} />
-        Exit
       </MenuItem>
     </Box>
   )

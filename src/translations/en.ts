@@ -270,12 +270,10 @@ export default {
   add_question: 'Add question',
   form_editor: 'Form editor',
 
-
-
-
-
-
-
-
+  finland: 'Finnish',
+  english: "English",
+  tyopoyta: "Desktop",
+  tietopankki: "Data Bank",
+  kirjaudu_sisaan:"Log in",
 
 }

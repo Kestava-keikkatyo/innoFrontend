@@ -15,10 +15,10 @@ const FirstLandingPage: React.FC<FirstLandingPageProps> = () => {
         <Typography variant="h3" className="text-center landing-header-offset">
           KEIKKAKAVERI
         </Typography>
-        <Typography variant="h5" className="text-center">
+        <Typography variant="h5" className="text-center" style={{fontSize:"178%"}}>
           Kun henkilöstö voi hyvin, työ sujuu.
         </Typography>
-        <Typography variant="body1">
+        <Typography variant="body1" className="text-center" style={{fontSize:"146%"}}>
           Keikkakaveri tarjoaa tietoa, koulutusta ja välineitä turvallisten ja
           terveellisten työolojen kehittämiseen ja ylläpitämiseen.
         </Typography>

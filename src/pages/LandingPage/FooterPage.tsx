@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core'
 import React from 'react'
 import Spacing from '../../components/Spacing'
-import logo from '../../assets/keikka-kaveri4.png'
+import logo from "../LandingPage/keikka-kaveri4.png";
 
 export interface FooterPageProps {}
 

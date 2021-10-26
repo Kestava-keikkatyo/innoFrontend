@@ -1,7 +1,7 @@
 .landing-banner {
   width: 100%;
   height: 100vh;
-  background: url('../assets/ttk.jpg');
+  background: url("../assets/ttk.jpg");
   background-size: cover;
   position: absolute;
   top: 0;
@@ -12,6 +12,7 @@
 
 .text-center {
   text-align: center;
+  height: 15%;
 }
 
 .text-card {
@@ -76,7 +77,9 @@
   left: calc(50% - 112px);
   z-index: 1000;
   background-color: rgba(0, 0, 0, 0.3) !important;
-  border-radius: 7px !important;
+  border-radius: 20px !important;
+  border-radius: 20px !important;
+  filter: contrast(100%);
 }
 .next-back-btns {
   color: #fff !important;
@@ -90,7 +93,9 @@
 
 .MuiMobileStepper-dot {
   background-color: #fff !important;
-  margin: 0 5px !important;
+  margin: 0 6px !important;
+  width: 10.5px !important;
+  height: 10.5px !important;
 }
 
 .MuiMobileStepper-dotActive {
@@ -148,12 +153,12 @@
 
 /*TODO: HANDLE THIS WARNING*/
 #partner-box {
-  margin: 10px 0;
-  -webkit-animation-name: move;
+  margin: 10px 2rem;
+  /* -webkit-animation-name: move;
   -webkit-animation-duration: 8s;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-direction: right;
-  -webkit-animation-timing-function: linear;
+  -webkit-animation-timing-function: linear; */
 }
 
 #partner-box:hover {
@@ -184,16 +189,32 @@
   color: #fff !important;
   text-decoration: none !important;
   font-weight: bolder !important;
-  padding-left: 2rem;
+  padding-left: 5rem;
+}
+.landing-nav-link2 {
+  color: #fff !important;
+  text-decoration: none !important;
+  font-weight: bolder !important;
+  padding-left: 0.5rem;
 }
 
 .landing-appbar {
   background-color: #eb5a00 !important;
+  height: 60px;
 }
 
 .landing-login {
   color: #fff !important;
   text-decoration: none !important;
+  font-weight: bolder !important;
+}
+
+.bw-logo2 {
+  position: absolute !important;
+  top: 0px !important;
+  left: 0px !important;
+  width: 110px !important;
+  filter: invert(1) grayscale(1) !important;
 }
 
 /* .lifespan-connector1 {

@@ -7,7 +7,6 @@ import TopAppBar from './TopAppBarType';
 import ResponsiveDrawer from './ResponsiveDrawer';
 import navConstants from '../../constants/navConstants';
 import clsx from 'clsx';
-
 // const drawerWidth = navConstants.DRAWER_WIDTH
 
 /**

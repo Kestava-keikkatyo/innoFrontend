@@ -268,8 +268,11 @@ export default {
   add_question: 'Lisää kysymys',
   form_editor: 'Lomakkeen muokkaus',
 
-
-
+  finland: 'Suomi',
+  english: "Englanti",
+  tyopoyta: "Työpöytä",
+  tietopankki:"Tietopankki",
+  kirjaudu_sisaan:"Kirjaudu sisään"
   //import { useTranslation } from 'react-i18next'
   //const { t } = useTranslation()
 }

@@ -27,9 +27,13 @@ import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
 import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
 import FormatList from '@material-ui/icons/FormatListBulleted';
 
+import fi1 from "../NavigationComponents/fi1.png";
+import us1 from "../NavigationComponents/us1.png";
+import sw1 from "../NavigationComponents/sw1.png";
+
 const LangMenuDropDown = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  const classes = useStyles();
   
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -56,16 +60,25 @@ const LangMenuDropDown = () => {
         </Button>
         {/* <Typography variant="body2">FI</Typography> */}
       </div>
-      <Menu
+      <Menu className={classes.list}
         id="forms-settings"
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={() => changeLanguage('fi')}>Suomi</MenuItem>
-        <MenuItem onClick={() => changeLanguage('en')}>English</MenuItem>
-        <MenuItem onClick={() => changeLanguage('sv')}>Svenska</MenuItem>
+        <MenuItem onClick={() => changeLanguage('fi')}>
+          Suomi
+          <img src={fi1} style={{position:"absolute",width:"30px", left:"6rem"}}/>
+        </MenuItem>
+        <MenuItem onClick={() => changeLanguage('en')}>
+          English
+          <img src={us1} style={{position:"absolute",width:"30px", left:"6rem"}}/>
+        </MenuItem>
+        {/* <MenuItem onClick={() => changeLanguage('sv')}>
+          Svenska
+          <img src={sw1} style={{position:"absolute",width:"30px", left:"6rem"}}/>
+        </MenuItem> */}
       </Menu>
     </>
   );
@@ -294,6 +307,13 @@ const useStyles = makeStyles((theme) => ({
   },
   nested: {
     paddingLeft: theme.spacing(4),
+  },
+  list: {
+    "& .MuiList-root":{
+      width: "130px !important",
+    },
+    top: "38px !important" , 
+    left: "30px !important", 
   },
 }));
 
