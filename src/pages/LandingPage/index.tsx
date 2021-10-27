@@ -108,7 +108,7 @@ const LandingPage = () => {
   //     console.log("nappi numero: ",activeStep," on painettu");
   //     setActiveStep(3);
   //   }
-  }
+  // }
   return (
     <div>
       <AppBar position="fixed" elevation={1} className="landing-appbar">
