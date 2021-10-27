@@ -85,7 +85,7 @@ export const signup = (user: SignUpUser, role: roles) => {
       }
 
       const profile = {
-        name: 'Firstname Lastname',
+        name: data.name,
         phone: '044 444 4444',
         email: data.email,
         streetAddress: 'Streetaddress A 12',
