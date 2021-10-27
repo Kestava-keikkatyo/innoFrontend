@@ -270,13 +270,11 @@ export default {
   add_question: 'Lisää kysymys',
   form_editor: 'Lomakkeen muokkaus',
 
-<<<<<<< HEAD
   finland: 'Suomi',
-  english: "Englanti",
-  tyopoyta: "Työpöytä",
-  tietopankki:"Tietopankki",
-  kirjaudu_sisaan:"Kirjaudu sisään"
-=======
+  english: 'Englanti',
+  tyopoyta: 'Työpöytä',
+  tietopankki:'Tietopankki',
+  kirjaudu_sisaan:'Kirjaudu sisään',
   //Joblist
   limit_search: 'Rajaa hakua',
   jobs_found: 'Työpaikkoja löytyi',
@@ -337,7 +335,6 @@ export default {
 
   create_job:'Tee työilmoitus'
 
->>>>>>> 02655e3a3e618414ce3f159d9b2be049093ef89c
   //import { useTranslation } from 'react-i18next'
   //const { t } = useTranslation()
 }

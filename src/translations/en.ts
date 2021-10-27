@@ -272,13 +272,11 @@ export default {
   add_question: 'Add question',
   form_editor: 'Form editor',
 
-<<<<<<< HEAD
   finland: 'Finnish',
   english: "English",
   tyopoyta: "Desktop",
   tietopankki: "Data Bank",
   kirjaudu_sisaan:"Log in",
-=======
   //Joblist
   limit_search: 'Limit search',
   jobs_found: 'Jobs found',
@@ -340,6 +338,5 @@ export default {
 
   create_job:'Create job'
 
->>>>>>> 02655e3a3e618414ce3f159d9b2be049093ef89c
 
 }
