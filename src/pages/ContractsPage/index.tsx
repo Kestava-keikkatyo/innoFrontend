@@ -26,6 +26,7 @@ import GroupIcon from '@material-ui/icons/Group';
 import WorkIcon from '@material-ui/icons/Work';
 import BusinessIcon from '@material-ui/icons/Business';
 import { useTranslation } from 'react-i18next';
+import { fetchFormList } from '../../actions/formListActions';
 
 import {
   Accordion,
@@ -95,6 +96,7 @@ const ContractsPage = () => {
   useEffect(() => {
     dispatch(me(data.role));
     dispatch(fetchBusinessContracts());
+    dispatch(fetchFormList());
   }, [dispatch, data.role]);
 
   const openModal = (workerOrBusiness: any) => {
@@ -154,7 +156,7 @@ const ContractsPage = () => {
           />
           <Tab
             className={classes.tab}
-            label={matches ? '' : 'Työntekijöiltä saapuneet sopimukset'}
+            label={matches ? '' : t('contracts_received_from_the_workers')}
             icon={
               matches ? (
                 <Tooltip
@@ -195,7 +197,6 @@ const ContractsPage = () => {
               displayModal={displayModal}
               closeModal={() => setDisplayModal(false)}
               workerOrBusinessData={searchData}
-              forms={user.profile.forms}
             />
           </AccordionDetails>
         </Accordion>

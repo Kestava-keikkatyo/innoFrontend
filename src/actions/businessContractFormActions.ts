@@ -19,6 +19,7 @@ import {
   SET_BUSINESS_CONTRACT_FILLED
 
 } from "../types/state"
+import businessContractFormService from "../services/businessContractFormService"
 import formServices from "../services/formServices"
 import contractsService from "../services/contractsService"
 import { convertForm } from "../utils/formUtils"
@@ -34,11 +35,11 @@ export const importFormByPath = () => async (dispatch: any) => {
 
 /**
  * @function
- * @desc Replaces current businessContractForm with the data imported from file systems
+ * @desc Get and set business contract form by id
  */
-export const getFormByIdAndSetBusinessContractForm = (id: string) => async (dispatch: any) => {
-  const form = await formServices.fetchFormById(id)
-  dispatch({ type: SET_CURRENT_BUSINESS_CONTRACT_FORM, data: form })
+export const getByIdAndSetBusinessContractForm = (id: string) => async (dispatch: any) => {
+  const businessContractForm: any = await businessContractFormService.fetchBusinessContractFormById(id)
+  dispatch({ type: SET_CURRENT_BUSINESS_CONTRACT_FORM, data: businessContractForm })
 }
 
 /**
@@ -207,25 +208,42 @@ export const submitForm = (form: any, contractId: string) => async (dispatch: an
 }
 
 
+/**
+ * @function
+ * @desc Creates business contract form
+ * @param {Form} form - The normal form
+ */
+export const createBusinessContractForm = (formId: any) => async (dispatch: any) => {
+
+  // Fetch the normal form then delete it's id property
+  const form: any = await formServices.fetchFormById(formId)
+  delete form._id
+
+  // Create business contract form which is a copy of the normal form
+  const businessContractForm: any = await businessContractFormService.postBusinessContractForm(convertForm(form))
+
+  dispatch({ type: SET_CURRENT_BUSINESS_CONTRACT_FORM, data: businessContractForm })
+
+  return businessContractForm
+
+}
+
+
 
 /**
  * @function
- * @desc Submits the updated form to storage.
- * @param {Form} form - Edited Form Object to be submitted.
- * @todo Service call backend.
+ * @desc Submits the updated business contract form to the storage.
+ * @param {BusinessContractForm} BusinessContractForm - Filled or edited business contract form object to be submitted.
  */
-export const submitEditedForm = (formId: any, form: BusinessContractForm) => async (dispatch: any) => {
-  if (form.title === "") {
-    dispatch(setAlert("Title is required", severity.Error))
-    return
-  }
-  console.log("submitEditedForm: formId ", formId);
-  console.log("submitEditedForm: FormObject ", form);
-  const res = await formServices.updateForm(formId, convertForm(form))
+export const updateBusinessContractForm = (businessContractFormId: any, businessContractForm: BusinessContractForm) => async () => {
+  await businessContractFormService.updateBusinessContractForm(businessContractFormId, convertForm(businessContractForm))
+}
 
-  const data = await formServices.fetchFormById(res?.data._id)
-  dispatch({ type: SET_CURRENT_BUSINESS_CONTRACT_FORM, data })
-
-  dispatch(addToFormList(form))
-
+/**
+ * @function
+ * @desc Deletes business contract form by id from the storage.
+ * @param {BusinessContractFormId} - Business contract form id to be deleted.
+ */
+export const deleteBusinessContractForm = (businessContractFormId: any, userId: any) => async () => {
+  await businessContractFormService.deleteBusinessContractForm(businessContractFormId, userId)
 }

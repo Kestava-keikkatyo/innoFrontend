@@ -21,6 +21,8 @@ import { addBusinessContract } from '../../actions/businessContractActions';
 import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
 import { IRootState } from '../../utils/store';
+import { createBusinessContractForm } from '../../actions/businessContractFormActions';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -41,16 +43,19 @@ const WorkerAndBusinessModal: React.FC<any> = ({
   displayModal,
   closeModal,
   workerOrBusinessData,
-  forms,
 }) => {
   const dispatch = useDispatch();
   const { businessContract } = useSelector(
     (state: IRootState) => state.businessContracts
   );
-  const [form, setForm] = React.useState('');
+  const myForms: any = useSelector((state: any) => state.formList.myForms);
+
+  const [formId, setFormId] = React.useState('');
   const classes = useStyles();
 
-  const addContract = () => {
+  const { t } = useTranslation();
+
+  const addContract = async () => {
     if (
       !businessContract.some(
         (value: any) =>
@@ -59,11 +64,14 @@ const WorkerAndBusinessModal: React.FC<any> = ({
           ) || value.requestContracts.workers.includes(workerOrBusinessData._id)
       )
     ) {
+      const businessContractForm: any = await dispatch(
+        createBusinessContractForm(formId)
+      );
       dispatch(
         addBusinessContract(
           businessContract[0]._id,
           workerOrBusinessData._id,
-          form
+          businessContractForm._id
         )
       );
       dispatch(
@@ -82,7 +90,7 @@ const WorkerAndBusinessModal: React.FC<any> = ({
 
   const handleChange = (event: any) => {
     console.log(event.target.value);
-    setForm(event.target.value);
+    setFormId(event.target.value);
   };
 
   return (
@@ -98,19 +106,21 @@ const WorkerAndBusinessModal: React.FC<any> = ({
       <DialogContent dividers>
         {workerOrBusinessData && (
           <Typography color="textSecondary" variant="body2">
-            id: {workerOrBusinessData._id} <br />
-            name: {workerOrBusinessData.name} <br />
-            created: {workerOrBusinessData.createdAt} <br />
-            email: {workerOrBusinessData.email}
+            {t('id')}: {workerOrBusinessData._id} <br />
+            {t('name')}: {workerOrBusinessData.name} <br />
+            {t('created')}: {workerOrBusinessData.createdAt} <br />
+            {t('email')}: {workerOrBusinessData.email}
           </Typography>
         )}
         <FormControl className={classes.formControl}>
           <InputLabel>Lomake</InputLabel>
-          <Select onChange={handleChange} value={form}>
-            <MenuItem value="">Select Non</MenuItem>
-            {forms.map((form: any) => (
-              <MenuItem key={form} value={form}>
-                {form}
+          <Select onChange={handleChange} value={formId}>
+            <MenuItem value="">Select...</MenuItem>
+            {myForms.docs.map((form: any) => (
+              <MenuItem key={form._id} value={form._id}>
+                {form.title.length > 50
+                  ? `${form.title.substring(0, 50)}...`
+                  : form.title}
               </MenuItem>
             ))}
           </Select>
@@ -119,7 +129,7 @@ const WorkerAndBusinessModal: React.FC<any> = ({
       <DialogActions></DialogActions>
       <DialogActions>
         <Button color="primary" variant="outlined" onClick={addContract}>
-          create contract
+          {t('create_contract')}
         </Button>
       </DialogActions>
     </Dialog>

@@ -8,7 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import JobModal from './JobModal';
 import { Button } from 'react-bootstrap';
-
+import { useTranslation } from 'react-i18next'
 
 const useStyles = makeStyles({
   root: {
@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 const JobCard: React.FC = () => {
   const classes = useStyles();
   const [displayModal, setDisplayModal] = React.useState(false);
-  
+  const { t } = useTranslation()
   const handleOpen = () => {
     setDisplayModal(true);
   };
@@ -54,7 +54,7 @@ const JobCard: React.FC = () => {
         <Button
         onClick={handleOpen}
         >
-          Tiedot
+           {t("information")}
         </Button>
           <JobModal
           displayModal={displayModal}

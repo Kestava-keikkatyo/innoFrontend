@@ -1,9 +1,21 @@
 import { compose } from "redux"
 
+export enum AdminActionType {
+  AGENCY_FETCH = "AGENCY_FETCH",
+  USERCOMPANY_FETCH = "USERCOMPANY_FETCH",
+  WORKERS_FETCH = "WORKERS_FETCH",
+  ADMINS_FETCH = "ADMINS_FETCH",
+  AGENCY_UPDATE = "AGENCY_UPDATE",
+  USERCOMPANY_UPDATE = "USERCOMPANY_UPDATE",
+  WORKER_UPDATE = "WORKER_UPDATE",
+  ADMIN_UPDATE = "ADMIN_UPDATE"
+}
+
 export enum roles {
   Worker = "worker",
   Agency = "agency",
   Business = "business",
+  Admin = "admin"
 }
 
 export type businessContractType = roles.Business | roles.Worker

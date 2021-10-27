@@ -6,7 +6,7 @@ export default {
 
   //login
   login_title: "Kirjaudu sisään",
-  email_label: "Sähköposti",
+    email_label: "Sähköposti",
   password_label: "Salasana",
   invalid_email_address: "Virheellinen sähköposti",
   required: "Puuttuu",
@@ -122,6 +122,7 @@ export default {
   medicine: "Lääketeollisuus- ja farmasia",
   estate: "Kiinteistö",
   transfer_profile: "Siirry profiiliin",
+  transfer_company_profile: 'Siirry yrityksen profiiliin',
 
   //Contact information
   phone: "Puhelin",
@@ -197,6 +198,7 @@ export default {
   info: 'Info',
   send_back: 'Lähetä takaisin',
   decline: 'Hylkää',
+  close:'sulje',
 
   //ResponsiveDrawer
   databank: 'Tietopankki',
@@ -268,11 +270,74 @@ export default {
   add_question: 'Lisää kysymys',
   form_editor: 'Lomakkeen muokkaus',
 
+<<<<<<< HEAD
   finland: 'Suomi',
   english: "Englanti",
   tyopoyta: "Työpöytä",
   tietopankki:"Tietopankki",
   kirjaudu_sisaan:"Kirjaudu sisään"
+=======
+  //Joblist
+  limit_search: 'Rajaa hakua',
+  jobs_found: 'Työpaikkoja löytyi',
+  participants: 'Osallistujat',
+  company_sites: 'Yrityksen nettisivut',
+  enroll: 'Osallistu',
+  relocation: 'Muuttoapu',
+
+  //jobmodal
+  send_agency_contract: ' Lähetä työkeikka pyyntö HP-yritykselle',
+  choose_agency: 'Valitse HP-yritys',
+  tell_position: ' Kerro haettava positio / ilmoituksen otsikko',
+  worker_count: 'Työntekijöiden lukumäärä',
+
+  //PendingJobPosts
+  pending_jobs: 'Käsittelyssä olevat työkeikat',
+  work_task: 'Työkeikka',
+  workers_count: 'Työntekijöiden määrä',
+  start_date: 'Aloitus päivämäärä',
+  end_date: 'Lopetus päivämäärä',
+  created: 'Tehty',
+  agency_status: 'Vuokratyöfirman tila',
+  business_status: 'Käyttäjäyrityksen tila',
+
+  //contractsFromBusiness
+  contracts_from_business: 'Käyttäjäyrityksiltä saapuneet sopimukset',
+
+  choose_request: 'Valitse pyyntö',
+  business_website: 'Yrityksen nettisivut',
+  contract_form: 'Sopimuslomake',
+
+  delete_option: 'Poista valinta',
+  add_an_option: 'Lisää valinta',
+
+  create_new_form: 'Tee uusi lomake',
+  create_contract: 'Tee sopimus',
+
+
+  when_did_this_happen: 'Milloin tämä tapahtui?',
+
+  read_more: 'Lue lisää',
+
+  fill_business_contract_form: 'Täytä käyttäjäyrityssopimus',
+  preview_business_contract_form: 'Esikatsele käyttäjäyrityssopimusta',
+
+  choose_workers: 'Choose workers',
+  agency_description_here: '  HP-yrityksen kuvaus tulee tähän',
+
+  edit_filled: 'Muokkaa täytettyä yrityssopimusta',
+
+  cooperation_send: 'Lähetä yhteistyökutsu',
+  send_contract: 'Lähetä sopimus',
+
+  edit_contract_form: 'Muokkaa yrityssopimusta',
+  contact_form_manager: 'Sopimus muokkaus',
+
+  form_preview: 'Esikatsele lomaketta',
+
+  create_job:'Tee työilmoitus'
+
+>>>>>>> 02655e3a3e618414ce3f159d9b2be049093ef89c
   //import { useTranslation } from 'react-i18next'
   //const { t } = useTranslation()
 }

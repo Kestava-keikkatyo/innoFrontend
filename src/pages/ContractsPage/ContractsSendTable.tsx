@@ -16,7 +16,7 @@ import {
   Theme,
 } from '@material-ui/core';
 import { Delete as DeleteIcon } from '@material-ui/icons';
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
 import {
   Accordion,
   AccordionDetails,
@@ -35,7 +35,7 @@ const ContractsSendTable = (prop: {
   const theme = useTheme();
   const classes = useStyles();
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   const tableView = () => {
     return (
@@ -43,11 +43,11 @@ const ContractsSendTable = (prop: {
         <Table aria-label="searched workers">
           <TableHead>
             <TableRow>
-              <TableCell align="left">{t("name")}</TableCell>
-              <TableCell align="left">{t("email")}</TableCell>
-              <TableCell align="left">{t("role")}</TableCell>
-              <TableCell align="left">{t("status")}</TableCell>
-              <TableCell align="left">{t("delete")}</TableCell>
+              <TableCell align="left">{t('name')}</TableCell>
+              <TableCell align="left">{t('email')}</TableCell>
+              <TableCell align="left">{t('role')}</TableCell>
+              <TableCell align="left">{t('status')}</TableCell>
+              <TableCell align="left">{t('delete')}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -86,7 +86,8 @@ const ContractsSendTable = (prop: {
                         contractId,
                         contract.businessId
                           ? contract.businessId._id
-                          : contract.workerId._id
+                          : contract.workerId._id,
+                        contract.formId
                       )
                     }
                   >
@@ -151,7 +152,8 @@ const ContractsSendTable = (prop: {
                     contractId,
                     contract.businessId
                       ? contract.businessId._id
-                      : contract.workerId._id
+                      : contract.workerId._id,
+                    contract.formId
                   )
                 }
               >
@@ -172,7 +174,7 @@ const ContractsSendTable = (prop: {
         align="center"
         className="text-secondary"
       >
-        {t("no_results")}
+        {t('no_results')}
       </Typography>
     );
   else return <>{matches ? accordionView() : tableView()}</>;

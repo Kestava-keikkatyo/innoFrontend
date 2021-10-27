@@ -3,7 +3,9 @@
  * @desc Redux user reducer
  */
  import { loadUser } from '../utils/storage'
- import { AdminActionTypes, AGENCY_FETCH, AGENCY_UPDATE,USERCOMPANY_FETCH, USERCOMPANY_UPDATE ,WORKERS_FETCH, WORKER_UPDATE } from '../types/state'
+ import { AdminAction } from '../types/state'
+import { AdminActionType } from '../types/types'
+
  
  const userData = loadUser()
  const initialState = { 
@@ -17,9 +19,9 @@
   * @param {Object} state - current state
   * @param {UserActionTypes} action - dispatched action
   */
- const adminReducer = (state = initialState, action: AdminActionTypes) => {
+ const adminReducer = (state = initialState, action: AdminAction) => {
    switch (action.type) {
-       case WORKERS_FETCH:
+       case AdminActionType.ADMINS_FETCH:
        return {
          ...state,
          data: state.data

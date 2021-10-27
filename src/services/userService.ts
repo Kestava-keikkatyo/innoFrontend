@@ -58,6 +58,8 @@ const login = async (credentials: Credentials, role: roles) => {
         return await axios.post(`${baseUrl}/login/agency`, credentials);
       case roles.Business:
         return await axios.post(`${baseUrl}/login/business`, credentials);
+      case roles.Admin:
+          return await axios.post(`${baseUrl}/login/admin`, credentials);
       default:
         // Unsuitable role selected return Promise.reject.
         return Promise.reject({ message: 'Unsuitable role selected' });

@@ -7,17 +7,19 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Radio } from '@material-ui/core';
-
+import { useTranslation } from 'react-i18next'
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     width: "100%",
   },
 }));
 
-const AgencyGrid = (prop: { workContracts: Array<Object>, setSelectedAgency:Function }) => {
-  const { workContracts, setSelectedAgency } = prop
+//const AgencyGrid = (prop: { workContracts: Array<Object>, setSelectedAgency:Function }) => {
+const AgencyGrid = (prop: { workContracts: any, setSelectedAgency:Function, searchInput: String }) => {
+    const { workContracts, setSelectedAgency, searchInput } = prop
   const classes = useStyles();
-
+  const { t } = useTranslation()
+  
   const handleSelect = (event:any, agencyId:string, contractId:string) => {
     event.stopPropagation()
     setSelectedAgency({ agencyId: agencyId, contractId: contractId})
@@ -25,9 +27,12 @@ const AgencyGrid = (prop: { workContracts: Array<Object>, setSelectedAgency:Func
   if (!workContracts) {
     return <Typography>No result</Typography>
   } else {
+
     return (
       <div className={classes.root}>
-        {workContracts.map((object: any) => (
+        {workContracts.filter((wc:any) => wc.agency.name.toLowerCase().includes(searchInput.toLowerCase())).map((object: any) => {
+          // TODO: once database has description add it here
+          return (
           <Accordion key={object.agency._id}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
@@ -45,12 +50,11 @@ const AgencyGrid = (prop: { workContracts: Array<Object>, setSelectedAgency:Func
             </AccordionSummary>
             <AccordionDetails>
               <Typography color="textSecondary">
-                The click event of the nested action will propagate up and expand the accordion unless
-                you explicitly stop it.
+              {t("agency_description_here")}
               </Typography>
             </AccordionDetails>
-          </Accordion>
-        ))}
+          </Accordion>)
+        })}
       </div>
     );
   }

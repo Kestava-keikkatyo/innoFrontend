@@ -11,7 +11,8 @@ const initialState: AllUsersState = {
   agencies: [],
   businesses: [],
   workers: [],
-  agencyWorkers: []
+  agencyWorkers: [],
+  admins: []
 }
 
 

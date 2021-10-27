@@ -1,4 +1,5 @@
 import { File, Feeling, Form, roles, severity, Profile, Report } from "./types"
+import { AdminActionType } from "./types"
 
 
 /**
@@ -9,13 +10,15 @@ export interface AllUsersState {
   agencies: [],
   businesses: [],
   workers: [],
-  agencyWorkers: []
+  agencyWorkers: [],
+  admins: []
 }
 
 export const SET_ALL_AGENCIES = 'SET_ALL_AGENCIES'
 export const SET_ALL_BUSINESSES = 'SET_ALL_BUSINESSES'
 export const SET_ALL_WORKERS = 'SET_ALL_WORKERS'
 export const SET_AGENCY_WORKERS = 'SET_AGENCY_WORKERS'
+export const SET_ALL_ADMINS = 'SET_ALL_ADMINS'
 
 interface SetAllAgenciesAction {
   type: typeof SET_ALL_AGENCIES,
@@ -37,7 +40,12 @@ interface SetAgencyWorkersAction {
   data: any
 }
 
-export type AllUsersActionTypes = SetAllAgenciesAction | SetAllBusinessesAction | SetAllWorkersAction | SetAgencyWorkersAction
+interface SetAllAdminsAction {
+  type: typeof SET_ALL_ADMINS,
+  data: any
+}
+
+export type AllUsersActionTypes = SetAllAgenciesAction | SetAllBusinessesAction | SetAllWorkersAction | SetAgencyWorkersAction | SetAllAdminsAction
 
 
 /**
@@ -69,7 +77,7 @@ export interface User {
   _id: string,
   name: string,
   email: string,
-  type: roles.Agency | roles.Business | roles.Business
+  type: roles.Agency | roles.Business | roles.Business | roles.Admin
 }
 
 export interface SignUpUser extends User {
@@ -80,44 +88,46 @@ export interface LoggedInUser extends User {
   token: string,
 }
 
-export const AGENCY_FETCH = 'AGENCY_FETCH'
-export const AGENCY_UPDATE = 'AGENCY_FETCH'
-export const USERCOMPANY_FETCH = 'USERCOMPANY_FETCH'
-export const USERCOMPANY_UPDATE = 'AGENCY_FETCH'
-export const WORKERS_FETCH = 'WORKERS_FETCH'
-export const WORKER_UPDATE = 'AGENCY_FETCH'
-
-
 interface FetchWorkers {
-  type: typeof WORKERS_FETCH
+  type: typeof AdminActionType.WORKERS_FETCH
   data: any
 }
 
 interface FetchUserCompanies {
-  type: typeof USERCOMPANY_FETCH
+  type: typeof AdminActionType.USERCOMPANY_FETCH
   data: any
 }
 
 interface FetchAgencyCompanies {
-  type: typeof USERCOMPANY_FETCH
+  type: typeof AdminActionType.USERCOMPANY_FETCH
   data: any
 }
 interface UpdateWorker {
-  type: typeof WORKER_UPDATE
+  type: typeof AdminActionType.WORKER_UPDATE
   data: any
 }
 interface UpdateAgency {
-  type: typeof AGENCY_UPDATE
+  type: typeof AdminActionType.AGENCY_UPDATE
   data: any
 }
 
 interface UpdateUserCompany {
-  type: typeof AGENCY_UPDATE
+  type: typeof AdminActionType.AGENCY_UPDATE
+  data: any
+}
+
+interface FetchAdmins {
+  type: typeof AdminActionType.ADMINS_FETCH
+  data: any
+}
+
+interface UpdateAdmin {
+  type: typeof AdminActionType.ADMIN_UPDATE
   data: any
 }
 
 
-export type AdminActionTypes = FetchAgencyCompanies | FetchUserCompanies | FetchWorkers | UpdateAgency | UpdateUserCompany | UpdateWorker
+export type AdminAction = FetchAgencyCompanies | FetchUserCompanies | FetchWorkers | UpdateAgency | UpdateUserCompany | UpdateWorker | FetchAdmins | UpdateAdmin
 
 export const LOGIN = 'USER_LOGIN'
 export const LOGOUT = 'USER_LOGOUT'

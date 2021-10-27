@@ -46,6 +46,9 @@ import BusinessWorkRequest from './pages/BusinessWorkOverview';
 import WorkInfo from './pages/BusinessWorkOverview/WorkInfo';
 import WorkRequest from './pages/AgencyWorkRequest';
 import WorkerJobs from './pages/WorkerWorkOverview';
+import AdminLoginPage from './pages/AdminLoginPage';
+import AdminHome from './pages/AdminPage/AdminHome';
+import AgencyWorkAdd from './pages/AgencyWorkAddPage';
 
 /**
  * @component
@@ -69,6 +72,12 @@ const App: React.FC = () => {
         <AdminRoute path="/admin/users">
           <Users />
         </AdminRoute>
+        <Route path="/adminloginpage">
+          <AdminLoginPage />
+        </Route>
+        <Route path="/admin/home">
+          <AdminHome />
+        </Route>
         <AdminRoute path="/admin/usercompany">
           <UserCompany />
         </AdminRoute>
@@ -119,6 +128,9 @@ const App: React.FC = () => {
         </PrivateRoute>
         <PrivateRoute path="/mood-stats" roles={[roles.Agency]}>
           <AgencyStatistics />
+        </PrivateRoute>
+        <PrivateRoute path="/create-job" roles={[roles.Agency]}>
+          <AgencyWorkAdd />
         </PrivateRoute>
         <PrivateRoute path="/reports" roles={[roles.Business, roles.Agency]}>
           <ReportsPage />
