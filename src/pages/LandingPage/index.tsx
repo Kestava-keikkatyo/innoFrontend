@@ -97,6 +97,18 @@ const LandingPage = () => {
   const handleStepChange = (step: any) => {
     setActiveStep(step);
   };
+  // const handleClick = () => {
+  //   if (activeStep === 0){
+  //     console.log("nappi numero: ",activeStep," on painettu");
+  //     setActiveStep(1);
+  //   }else if((activeStep === 1)){
+  //     console.log("nappi numero: ",activeStep," on painettu");
+  //     setActiveStep(2);
+  //   }else if((activeStep === 2)){
+  //     console.log("nappi numero: ",activeStep," on painettu");
+  //     setActiveStep(3);
+  //   }
+  }
   return (
     <div>
       <AppBar position="fixed" elevation={1} className="landing-appbar">
@@ -130,6 +142,7 @@ const LandingPage = () => {
         steps={4}
         position="static"
         activeStep={activeStep}
+        // onClick={handleClick}
         className="landing-stepper"
         nextButton={
           <Button
