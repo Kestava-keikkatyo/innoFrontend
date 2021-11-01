@@ -25,13 +25,13 @@ import { useSelector } from 'react-redux';
 const LogInForm: React.FC<any> = ({ handleSubmit }) => {
   const { t } = useTranslation();
   const { loading } = useSelector((state: any) => state.user);
-
+/*
   const roleOptions = [
     { value: 'worker', label: t('worker') },
     { value: 'business', label: t('business') },
     { value: 'agency', label: t('agency') },
   ];
-
+*/
   return (
     <Card variant="outlined">
       <CardContent>
@@ -56,9 +56,9 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
             if (!values.password) {
               errors.password = requiredError;
             }
-            if (!values.role) {
-              errors.role = requiredError;
-            }
+        /*    if (!values.role) {
+              errors.role = requiredError;1
+            }*/
             return errors;
           }}
           onSubmit={(values) => {
@@ -68,11 +68,11 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
           {({ isValid, dirty }) => (
             <Form>
               <Box display="flex" flexDirection="column">
-                <FormikRadioField
+               {/* <FormikRadioField
                   label={t('role')}
                   name="role"
                   options={roleOptions}
-                />
+               /> */}
                 <FormikTextField
                   label={t('email_label')}
                   name="email"

@@ -11,15 +11,24 @@ import Typography from '@material-ui/core/Typography';
 import SendIcon from '@material-ui/icons/Send';
 import CreateIcon from '@material-ui/icons/Create';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
+
 import { Container } from '@material-ui/core';
 import MoodStepOne from './MoodStepOne';
 import MoodStepThree from './MoodStepThree';
 import { setFiles } from '../../../actions/fileActions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
 
+import { IRootState } from '../../../utils/store';
+import { roles } from '../../../types/types';
+
+  
+
+
 const ColorlibConnector = withStyles({
+
+
   alternativeLabel: {
     top: 22,
   },
@@ -103,6 +112,7 @@ ColorlibStepIcon.propTypes = {
   icon: PropTypes.node,
 };
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -112,7 +122,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
   },
   primary: {
-    background: '#EB5A00',
+    background: '#eb5a00',
     color: 'white',
   },
   instructions: {
@@ -122,10 +132,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
 const MoodForm: React.FC<any> = ({ handleSubmit }) => {
   const { t } = useTranslation()
+  //const { data } = useSelector((state: IRootState) => state.user);
+
   const classes = useStyles();
   const getSteps = () => {
     return [t('your_mood'), t('fill_details'), t('submit')];

@@ -98,10 +98,32 @@ code {
 .drawer .color-primary,
 .MuiFab-primary {
   background-color: #eb5a00 !important;
+  
 }
+.drawer .color-primaryWorker,
+.MuiFab-primary-worker {
+  /*background-color: #eb5a00 !important;*/
+  background-color: #2386CC !important;
+}
+.drawer .color-primaryAgency,
+.MuiFab-primary-agency {
+  /*background-color: #eb5a00 !important;*/
+  background-color: #093807  !important;
+}
+
 
 .drawer-top {
   border-top: #eb5a00 16px solid;
+  }
+
+.drawer-top-worker {
+  
+  border-top: #2386CC 16px solid;
+}
+
+.drawer-top-agency {
+  
+  border-top:  #093807 16px solid;
 }
 
 .text-secondary {
@@ -362,11 +384,22 @@ nav * {
   padding: 0.5rem;
   color: white !important;
   background-color: #eb5a00;
+  
   border-radius: 2rem;
 }
+/*
+.translate-icon-worker {
+  padding: 0.5rem;
+  color: white !important;
+  background-color: #2386CC;
+  
+  border-radius: 2rem;
+}
+*/
 
 .MuiInput-underline:after {
   border-bottom: 2px solid #eb5a00 !important;
+  
 }
 
 .MuiFormLabel-root.Mui-focused,
@@ -374,12 +407,25 @@ nav * {
 .MuiButton-outlinedPrimary,
 .MuiRadio-colorPrimary.Mui-checked {
   color: #eb5a00 !important;
+  
 }
 
 .MuiButton-containedPrimary {
   background-color: #eb5a00 !important;
   color: white !important;
 }
+
+
+.MuiButton-containedPrimary-worker {
+  background-color:  #2386CC !important;
+  color: white !important;
+}
+
+
+
+
+
+
 
 .MuiButton-outlinedPrimary {
   border: 1px solid #eb5a0077 !important;
@@ -441,17 +487,33 @@ nav * {
 .mood-step-one svg:hover {
   color: white !important;
   background: rgb(255, 124, 0);
-  transition: 0.8s;
+    transition: 0.8s;
   box-shadow: 0 4px 10px 0 rgb(0 0 0 / 25%);
   background-image: linear-gradient(
     136deg,
+
+
     rgb(255, 150, 55) 0%,
     rgb(242, 113, 33) 50%,
     rgb(233, 64, 87) 100%
   );
   border-radius: 60px !important;
 }
-
+/*
+.mood-step-one-worker svg:hover {
+  color: white !important;
+  background: rgb(35, 134, 204);
+  transition: 0.8s;
+  box-shadow: 0 4px 10px 0 rgb(0 0 0 / 25%);
+  background-image: linear-gradient(
+    136deg,
+    rgb(116, 157, 187) 0%,
+    rgb(35, 134, 204) 50%,
+    rgb(24, 93, 142) 100%
+  );
+  border-radius: 60px !important;
+}
+*/
 .mood-icon {
   color: white !important;
   background: rgb(255, 124, 0);
@@ -462,9 +524,11 @@ nav * {
     rgb(255, 150, 55) 0%,
     rgb(242, 113, 33) 50%,
     rgb(233, 64, 87) 100%
+
   );
   border-radius: 60px !important;
 }
+
 
 .databank-top-container {
   height: 300px;

@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { roles } from '../../types/types';
 import { IRootState } from '../../utils/store';
 import logo from '../../assets/keikkakaveri_logo.png';
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
 import TranslateIcon from '@material-ui/icons/Translate';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
@@ -26,14 +26,14 @@ import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
 import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
 import FormatList from '@material-ui/icons/FormatListBulleted';
 
-import fi1 from "../NavigationComponents/fi1.png";
-import us1 from "../NavigationComponents/us1.png";
-import sw1 from "../NavigationComponents/sw1.png";
+import fi1 from '../NavigationComponents/fi1.png';
+import us1 from '../NavigationComponents/us1.png';
+import sw1 from '../NavigationComponents/sw1.png';
 
 const LangMenuDropDown = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const classes = useStyles();
-  
+
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
@@ -59,7 +59,8 @@ const LangMenuDropDown = () => {
         </Button>
         {/* <Typography variant="body2">FI</Typography> */}
       </div>
-      <Menu className={classes.list}
+      <Menu
+        className={classes.list}
         id="forms-settings"
         anchorEl={anchorEl}
         keepMounted
@@ -68,11 +69,17 @@ const LangMenuDropDown = () => {
       >
         <MenuItem onClick={() => changeLanguage('fi')}>
           Suomi
-          <img src={fi1} style={{position:"absolute",width:"30px", left:"6rem"}}/>
+          <img
+            src={fi1}
+            style={{ position: 'absolute', width: '30px', left: '6rem' }}
+          />
         </MenuItem>
         <MenuItem onClick={() => changeLanguage('en')}>
           English
-          <img src={us1} style={{position:"absolute",width:"30px", left:"6rem"}}/>
+          <img
+            src={us1}
+            style={{ position: 'absolute', width: '30px', left: '6rem' }}
+          />
         </MenuItem>
         {/* <MenuItem onClick={() => changeLanguage('sv')}>
           Svenska
@@ -93,7 +100,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const { data } = useSelector((state: IRootState) => state.user);
   const role = data.role;
 
@@ -124,22 +131,22 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
         <List className="overflow-container">
           <ListItem button component={Link} to="/home">
             <ListItemIcon>{<Home />}</ListItemIcon>
-            <ListItemText primary={t("home")} />
+            <ListItemText primary={t('home')} />
           </ListItem>
           <Divider />
           <ListItem button component={Link} to="/databank">
             <ListItemIcon>{<Security />}</ListItemIcon>
-            <ListItemText primary={t("databank")} />
+            <ListItemText primary={t('databank')} />
           </ListItem>
           <Divider />
           <ListItem button component={Link} to="/home">
             <ListItemIcon>{<CalendarTodayIcon />}</ListItemIcon>
-            <ListItemText primary={t("schedule")} />
+            <ListItemText primary={t('schedule')} />
           </ListItem>
           <Divider />
           <ListItem button component={Link} to="/profiles">
             <ListItemIcon>{<PeopleOutlineIcon />}</ListItemIcon>
-            <ListItemText primary={t("profiles")} />
+            <ListItemText primary={t('profiles')} />
           </ListItem>
           <Divider />
 
@@ -149,7 +156,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                 <ListItemIcon>
                   <Contacts />
                 </ListItemIcon>
-                <ListItemText primary={t("contracts")} />
+                <ListItemText primary={t('contracts')} />
               </ListItem>
               <Divider />
             </>
@@ -160,7 +167,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                 <ListItemIcon>
                   <SupervisedUserCircleIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("work_overview")} />
+                <ListItemText primary={t('work_overview')} />
               </ListItem>
               <Divider />
             </>
@@ -171,7 +178,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                 <ListItemIcon>
                   <InsertDriveFile />
                 </ListItemIcon>
-                <ListItemText primary={t("forms")} />
+                <ListItemText primary={t('forms')} />
               </ListItem>
               <Divider />
             </>
@@ -182,18 +189,18 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                 <ListItemIcon>
                   <AssignmentIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("business_contracts")}/>
+                <ListItemText primary={t('business_contracts')} />
               </ListItem>
               <Divider />
             </>
           )}
-            {role === roles.Agency && (
+          {role === roles.Agency && (
             <>
               <ListItem button component={Link} to="/create-job">
                 <ListItemIcon>
                   <WorkOutlineIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("create_job")} />
+                <ListItemText primary={t('create_job')} />
               </ListItem>
               <Divider />
             </>
@@ -204,7 +211,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                 <ListItemIcon>
                   <WorkOutlineIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("work_request")} />
+                <ListItemText primary={t('work_request')} />
               </ListItem>
               <Divider />
             </>
@@ -215,7 +222,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                 <ListItemIcon>
                   <MoodIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("mood_stats")} />
+                <ListItemText primary={t('mood_stats')} />
               </ListItem>
               <Divider />
             </>
@@ -226,7 +233,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                 <ListItemIcon>
                   <ErrorOutlineIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("reports")} />
+                <ListItemText primary={t('reports')} />
               </ListItem>
               <Divider />
             </>
@@ -237,7 +244,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                 <ListItemIcon>
                   <LibraryBooksIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("business_contracts")} />
+                <ListItemText primary={t('business_contracts')} />
               </ListItem>
               <Divider />
             </>
@@ -248,7 +255,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                 <ListItemIcon>
                   <FormatList />
                 </ListItemIcon>
-                <ListItemText primary={t("my_work")} />
+                <ListItemText primary={t('my_work')} />
               </ListItem>
               <Divider />
             </>
@@ -259,7 +266,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                 <ListItemIcon>
                   <WorkOutlineIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("jobs")} />
+                <ListItemText primary={t('jobs')} />
               </ListItem>
               <Divider />
             </>
@@ -270,7 +277,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                 <ListItemIcon>
                   <MoodIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("moods")} />
+                <ListItemText primary={t('moods')} />
               </ListItem>
               <Divider />
             </>
@@ -281,7 +288,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                 <ListItemIcon>
                   <ErrorOutlineIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("report")} />
+                <ListItemText primary={t('report')} />
               </ListItem>
               <Divider />
             </>
@@ -298,7 +305,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
         <ListItemIcon>
           <ExitToAppIcon />
         </ListItemIcon>
-        <ListItemText primary={t("exit_application")} />
+        <ListItemText primary={t('exit_application')} />
       </ListItem>
     </div>
   );
@@ -319,11 +326,11 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(4),
   },
   list: {
-    "& .MuiList-root":{
-      width: "130px !important",
+    '& .MuiList-root': {
+      width: '130px !important',
     },
-    top: "38px !important" , 
-    left: "30px !important", 
+    top: '38px !important',
+    left: '30px !important',
   },
 }));
 
