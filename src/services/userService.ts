@@ -49,9 +49,9 @@ const signup = async (user: User, role: roles) => {
  * @param {Credentials} credentials - user's credentials ({email: ..., password: ...})
  * @param {roles} role - account role
  */
-const login = async (credentials: Credentials, role: roles) => {
+const login = async (credentials: Credentials, /*role: roles*/) => {
   try {
-    switch (role) {
+   /* switch (role) {
       case roles.Worker:
         return await axios.post(`${baseUrl}/login/worker`, credentials);
       case roles.Agency:
@@ -61,7 +61,8 @@ const login = async (credentials: Credentials, role: roles) => {
       default:
         // Unsuitable role selected return Promise.reject.
         return Promise.reject({ message: 'Unsuitable role selected' });
-    }
+    }*/
+    return await axios.post("testi", credentials)
   } catch (error) {
     return Promise.reject(error.response);
   }

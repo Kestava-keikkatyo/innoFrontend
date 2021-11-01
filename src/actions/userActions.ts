@@ -24,16 +24,17 @@ import notificationsService from '../services/notificationsService';
  * Logs user in
  * @function
  * @param {Object} credentials - User's email and password
- * @param {string} role - User's role
+ *  @param {string} role - User's role
  * @param {Object} from - User redirection path
  */
-export const login = (credentials: Credentials, role: roles, from: string) => {
+enum myrole {role = "testi"}
+export const login = (credentials: Credentials/*, role: roles*/, from: string) => {
   return async (dispatch: any) => {
     dispatch({
       type: USER_REQUEST,
     });
     try {
-      const { data } = await userService.login(credentials, role);
+      const { data } = await userService.login(credentials/*,role*/);
       dispatch({
         type: LOGIN,
         data,
