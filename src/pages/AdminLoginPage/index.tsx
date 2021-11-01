@@ -4,7 +4,7 @@ import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import { login } from '../../actions/userActions';
+import { adminLogin } from '../../actions/userActions';
 
 import AdminLogInForm from './AdminLogInForm';
 import '../LoginPage/landingPage.css';
@@ -21,9 +21,9 @@ const AdminLoginPage = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  const loginSubmit = ({ role, ...credentials }: any) => {
+  const loginSubmit = ({ ...credentials }: any) => {
     const { from }: any = location.state || { from: { pathname: '/home' } };
-    dispatch(login(credentials, role, from));
+    dispatch(adminLogin(credentials, from));
   };
 
   return (
@@ -43,7 +43,7 @@ const AdminLoginPage = () => {
             classNames="fade"
           >
             <Box paddingBottom={2}>
-                <AdminLogInForm handleSubmit={loginSubmit} />
+              <AdminLogInForm handleSubmit={loginSubmit} />
             </Box>
           </CSSTransition>
         </SwitchTransition>

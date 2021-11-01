@@ -25,13 +25,15 @@ import { useSelector } from 'react-redux';
 const LogInForm: React.FC<any> = ({ handleSubmit }) => {
   const { t } = useTranslation();
   const { loading } = useSelector((state: any) => state.user);
-/*
+
+  /*
   const roleOptions = [
     { value: 'worker', label: t('worker') },
     { value: 'business', label: t('business') },
     { value: 'agency', label: t('agency') },
   ];
-*/
+  */
+
   return (
     <Card variant="outlined">
       <CardContent>
@@ -40,9 +42,8 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
         </Typography>
         <Formik
           initialValues={{
-            email: 'jarmo@test.com',
+            email: 'jarmo-agency@test.com',
             password: 'jarmo123',
-            role: '',
           }}
           validate={(values) => {
             const errors: any = {};
@@ -56,7 +57,7 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
             if (!values.password) {
               errors.password = requiredError;
             }
-        /*    if (!values.role) {
+            /*    if (!values.role) {
               errors.role = requiredError;1
             }*/
             return errors;
@@ -65,14 +66,16 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
             handleSubmit(values);
           }}
         >
-          {({ isValid, dirty }) => (
+          {({ isValid }) => (
             <Form>
               <Box display="flex" flexDirection="column">
-               {/* <FormikRadioField
+                {/*
+                <FormikRadioField
                   label={t('role')}
                   name="role"
                   options={roleOptions}
-               /> */}
+                />
+                */}
                 <FormikTextField
                   label={t('email_label')}
                   name="email"
@@ -87,7 +90,7 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
                 />
                 <Button
                   type="submit"
-                  disabled={!dirty || !isValid || loading}
+                  disabled={!isValid || loading}
                   variant="contained"
                   color="primary"
                 >

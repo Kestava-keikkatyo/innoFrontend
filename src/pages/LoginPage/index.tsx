@@ -27,9 +27,9 @@ const LoginPage = () => {
     dispatch(signup(user, role));
   };
 
-  const loginSubmit = ({ /*role,*/ ...credentials }: any) => {
+  const loginSubmit = ({ ...credentials }: any) => {
     const { from }: any = location.state || { from: { pathname: '/home' } };
-    dispatch(login(credentials, /*role,*/ from));
+    dispatch(login(credentials, from));
   };
 
   return (

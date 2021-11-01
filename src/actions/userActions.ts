@@ -27,14 +27,14 @@ import notificationsService from '../services/notificationsService';
  *  @param {string} role - User's role
  * @param {Object} from - User redirection path
  */
-enum myrole {role = "testi"}
-export const login = (credentials: Credentials/*, role: roles*/, from: string) => {
+enum myrole { role = "testi" }
+export const login = (credentials: Credentials, from: string) => {
   return async (dispatch: any) => {
     dispatch({
       type: USER_REQUEST,
     });
     try {
-      const { data } = await userService.login(credentials/*,role*/);
+      const { data } = await userService.login(credentials);
       dispatch({
         type: LOGIN,
         data,
@@ -46,6 +46,42 @@ export const login = (credentials: Credentials/*, role: roles*/, from: string) =
 
       const profile: any = await profileService.fetchProfileById(data.profileId);
       dispatch({ type: SET_CURRENT_PROFILE, data: profile });
+
+    } catch (error) {
+      dispatch({
+        type: USER_FAILURE,
+      });
+      dispatch(setAlert('login failed', severity.Error));
+    }
+  };
+};
+
+/**
+ * Logs Admin in
+ * @function
+ * @param {Object} credentials - Admin's email and password
+ * @param {Object} from - User redirection path
+ */
+export const adminLogin = (credentials: Credentials, from: string) => {
+  return async (dispatch: any) => {
+    dispatch({
+      type: USER_REQUEST,
+    });
+    try {
+      const { data } = await userService.adminLogin(credentials);
+      dispatch({
+        type: LOGIN,
+        data,
+      });
+      saveUser(data);
+
+      history.push(from);
+      dispatch(setAlert('login successful', severity.Success));
+
+
+      const profile: any = await profileService.fetchProfileById(data.profileId);
+      dispatch({ type: SET_CURRENT_PROFILE, data: profile });
+
 
     } catch (error) {
       dispatch({

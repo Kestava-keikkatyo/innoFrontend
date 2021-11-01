@@ -51,20 +51,20 @@ const signup = async (user: User, role: roles) => {
  */
 const login = async (credentials: Credentials, /*role: roles*/) => {
   try {
-   /* switch (role) {
-      case roles.Worker:
-        return await axios.post(`${baseUrl}/login/worker`, credentials);
-      case roles.Agency:
-        return await axios.post(`${baseUrl}/login/agency`, credentials);
-      case roles.Business:
-        return await axios.post(`${baseUrl}/login/business`, credentials);
-      case roles.Admin:
-          return await axios.post(`${baseUrl}/login/admin`, credentials);
-      default:
-        // Unsuitable role selected return Promise.reject.
-        return Promise.reject({ message: 'Unsuitable role selected' });
-    }*/
     return await axios.post(`${baseUrl}/login`, credentials)
+  } catch (error) {
+    return Promise.reject(error.response);
+  }
+};
+
+/**
+ * @function
+ * @desc Sends out login request for admins
+ * @param {Credentials} credentials - Admin's credentials ({email: ..., password: ...})
+ */
+const adminLogin = async (credentials: Credentials) => {
+  try {
+    return await axios.post(`${baseUrl}/login/admin`, credentials)
   } catch (error) {
     return Promise.reject(error.response);
   }
@@ -160,6 +160,7 @@ const updatePassword = async (updateData: object, role: roles) => {
 export default {
   signup,
   login,
+  adminLogin,
   me,
   update,
   updatePassword,
