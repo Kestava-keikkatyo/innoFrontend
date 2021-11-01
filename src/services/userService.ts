@@ -62,7 +62,7 @@ const login = async (credentials: Credentials, /*role: roles*/) => {
         // Unsuitable role selected return Promise.reject.
         return Promise.reject({ message: 'Unsuitable role selected' });
     }*/
-    return await axios.post("testi", credentials)
+    return await axios.post(`${baseUrl}/login`, credentials)
   } catch (error) {
     return Promise.reject(error.response);
   }

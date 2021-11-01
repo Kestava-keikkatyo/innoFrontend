@@ -57,7 +57,7 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
               errors.password = requiredError;
             }
         /*    if (!values.role) {
-              errors.role = requiredError;
+              errors.role = requiredError;1
             }*/
             return errors;
           }}
