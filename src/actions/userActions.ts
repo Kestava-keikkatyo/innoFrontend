@@ -163,7 +163,13 @@ export const signup = (user: SignUpUser, role: roles) => {
       dispatch({
         type: USER_FAILURE,
       });
-      dispatch(setAlert('signup failed', severity.Error));
+      dispatch(setAlert('signup failed: ' +  error.data.message, severity.Error));
+      
+      /*
+        if
+      
+
+      */
     }
   };
 };
