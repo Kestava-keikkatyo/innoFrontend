@@ -17,38 +17,23 @@ const ProfileHeader: React.FC<any> = () => {
     <Grid
       container
       direction="row"
-      justify="space-between"
       style={{ marginTop: 10, marginBottom: 10 }}
     >
-      <Grid item xs={6}>
+      <Grid container direction="row-reverse">
         <Button
+          variant="contained"
           color="primary"
-          variant="outlined"
           className={classes.button}
-          onClick={() => history.push('/home')}
+          startIcon={<EditIcon />}
+          onClick={() => history.push('/profile/edit-profile')}
         >
-          <Link style={{ textDecoration: 'none', color: '#eb5a00' }} to="/home">
-          {t("return")}
+          <Link
+            style={{ textDecoration: 'none', color: '#fff' }}
+            to="/profile/edit-profile"
+          >
+            {t("edit_profile")}
           </Link>
         </Button>
-      </Grid>
-      <Grid item xs={6}>
-        <Grid container direction="row-reverse">
-          <Button
-            variant="contained"
-            color="primary"
-            className={classes.button}
-            startIcon={<EditIcon />}
-            onClick={() => history.push('/profile/edit-profile')}
-          >
-            <Link
-              style={{ textDecoration: 'none', color: '#fff' }}
-              to="/profile/edit-profile"
-            >
-              {t("edit_profile")}
-            </Link>
-          </Button>
-        </Grid>
       </Grid>
     </Grid>
   );
