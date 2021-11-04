@@ -336,7 +336,7 @@ export default {
 
   form_preview: 'Form preview',
 
-  create_job:'Create job'
-
-
+  create_job:'Create job',
+  
+  choose: 'Choose', 
 }

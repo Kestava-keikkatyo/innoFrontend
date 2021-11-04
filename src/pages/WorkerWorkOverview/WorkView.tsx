@@ -27,7 +27,6 @@ const WorkView: React.FC<any> = ({ works }) => {
   return (
     <div>
       <FormControl component="fieldset">
-        <FormLabel component="legend">{t("choose")} </FormLabel>
         <RadioGroup
           row
           aria-label="gender"
@@ -57,18 +56,11 @@ const WorkView: React.FC<any> = ({ works }) => {
             <AccordionSummary
               aria-controls="panel1a-content"
               id="panel1a-header"
-              
             >
                <Typography className={classes.accTitle}>{filteredWork.company_name} - {filteredWork.title} :</Typography>
               <Typography >{filteredWork.startdate} - {filteredWork.enddate}</Typography>
              
             </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-                Päiviä jäljellä: X
-                {/*TODO: date-fns format duration of enddate --> time left*/}
-              </Typography>
-            </AccordionDetails>
             <AccordionDetails>
               <Typography> Yhteyshenkilö: {filteredWork.contact}</Typography>
             </AccordionDetails>

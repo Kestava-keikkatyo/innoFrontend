@@ -333,7 +333,9 @@ export default {
 
   form_preview: 'Esikatsele lomaketta',
 
-  create_job:'Tee työilmoitus'
+  create_job:'Tee työilmoitus',
+  
+  choose: 'Valitse'
 
   //import { useTranslation } from 'react-i18next'
   //const { t } = useTranslation()
