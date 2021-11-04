@@ -22,7 +22,7 @@ const AppNavigation = (props: { windowProp: any; children: ReactNode }) => {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const handleDrawer = () => {
     console.log(window.innerWidth);
