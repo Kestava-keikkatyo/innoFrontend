@@ -1,59 +1,62 @@
 import { File, Feeling, Form, roles, severity, Profile, Report } from "./types"
 import { AdminActionType } from "./types"
 
-
 /**
  * All users state & action types
  */
 
 export interface AllUsersState {
-  agencies: [],
-  businesses: [],
-  workers: [],
-  agencyWorkers: [],
+  agencies: []
+  businesses: []
+  workers: []
+  agencyWorkers: []
   admins: []
 }
 
-export const SET_ALL_AGENCIES = 'SET_ALL_AGENCIES'
-export const SET_ALL_BUSINESSES = 'SET_ALL_BUSINESSES'
-export const SET_ALL_WORKERS = 'SET_ALL_WORKERS'
-export const SET_AGENCY_WORKERS = 'SET_AGENCY_WORKERS'
-export const SET_ALL_ADMINS = 'SET_ALL_ADMINS'
+export const SET_ALL_AGENCIES = "SET_ALL_AGENCIES"
+export const SET_ALL_BUSINESSES = "SET_ALL_BUSINESSES"
+export const SET_ALL_WORKERS = "SET_ALL_WORKERS"
+export const SET_AGENCY_WORKERS = "SET_AGENCY_WORKERS"
+export const SET_ALL_ADMINS = "SET_ALL_ADMINS"
 
 interface SetAllAgenciesAction {
-  type: typeof SET_ALL_AGENCIES,
+  type: typeof SET_ALL_AGENCIES
   data: any
 }
 
 interface SetAllBusinessesAction {
-  type: typeof SET_ALL_BUSINESSES,
+  type: typeof SET_ALL_BUSINESSES
   data: any
 }
 
 interface SetAllWorkersAction {
-  type: typeof SET_ALL_WORKERS,
+  type: typeof SET_ALL_WORKERS
   data: any
 }
 
 interface SetAgencyWorkersAction {
-  type: typeof SET_AGENCY_WORKERS,
+  type: typeof SET_AGENCY_WORKERS
   data: any
 }
 
 interface SetAllAdminsAction {
-  type: typeof SET_ALL_ADMINS,
+  type: typeof SET_ALL_ADMINS
   data: any
 }
 
-export type AllUsersActionTypes = SetAllAgenciesAction | SetAllBusinessesAction | SetAllWorkersAction | SetAgencyWorkersAction | SetAllAdminsAction
-
+export type AllUsersActionTypes =
+  | SetAllAgenciesAction
+  | SetAllBusinessesAction
+  | SetAllWorkersAction
+  | SetAgencyWorkersAction
+  | SetAllAdminsAction
 
 /**
  * Report state & action types
  */
 export interface ReportState {
-  currentReport: Report,
-  reports: [],
+  currentReport: Report
+  reports: []
 }
 
 export const SET_CURRENT_REPORT = "SET_CURRENT_REPORT"
@@ -62,7 +65,6 @@ export const SET_REPORTS = "SET_REPORTS"
 interface SetCurrentReportAction {
   type: typeof SET_CURRENT_REPORT
   data: any
-
 }
 
 interface SetReportsAction {
@@ -72,11 +74,10 @@ interface SetReportsAction {
 
 export type ReportActionTypes = SetCurrentReportAction | SetReportsAction
 
-
 export interface User {
-  _id: string,
-  name: string,
-  email: string,
+  _id: string
+  name: string
+  email: string
   type: roles.Agency | roles.Business | roles.Business | roles.Admin
 }
 
@@ -85,7 +86,7 @@ export interface SignUpUser extends User {
 }
 
 export interface LoggedInUser extends User {
-  token: string,
+  token: string
 }
 
 interface FetchWorkers {
@@ -126,17 +127,21 @@ interface UpdateAdmin {
   data: any
 }
 
+export type AdminAction =
+  | FetchAgencyCompanies
+  | FetchUserCompanies
+  | FetchWorkers
+  | UpdateAgency
+  | UpdateUserCompany
+  | UpdateWorker
+  | FetchAdmins
+  | UpdateAdmin
 
-export type AdminAction = FetchAgencyCompanies | FetchUserCompanies | FetchWorkers | UpdateAgency | UpdateUserCompany | UpdateWorker | FetchAdmins | UpdateAdmin
-
-export const LOGIN = 'USER_LOGIN'
-export const LOGOUT = 'USER_LOGOUT'
-export const USER_REQUEST = 'USER_REQUEST'
-export const USER_FAILURE = 'USER_FAILURE'
-export const USER_PROFILE = 'USER_PROFILE'
-
-
-
+export const LOGIN = "USER_LOGIN"
+export const LOGOUT = "USER_LOGOUT"
+export const USER_REQUEST = "USER_REQUEST"
+export const USER_FAILURE = "USER_FAILURE"
+export const USER_PROFILE = "USER_PROFILE"
 
 interface UserProfileAction {
   type: typeof USER_PROFILE
@@ -163,16 +168,21 @@ interface LogoutAction {
   data: any
 }
 
-export type UserActionTypes = LoginAction | LogoutAction | UserProfileAction | UserRequestAction | UserFailureAction
+export type UserActionTypes =
+  | LoginAction
+  | LogoutAction
+  | UserProfileAction
+  | UserRequestAction
+  | UserFailureAction
 
 export interface AlertState {
-  severity: severity.Error | severity.Success | severity.Info | severity.Warning,
-  message: string,
+  severity: severity.Error | severity.Success | severity.Info | severity.Warning
+  message: string
   open: boolean
 }
 
-export const ALERT_CLEAR = 'ALERT_CLEAR'
-export const ALERT_SET = 'ALERT_SET'
+export const ALERT_CLEAR = "ALERT_CLEAR"
+export const ALERT_SET = "ALERT_SET"
 
 interface AlertClearAction {
   type: typeof ALERT_CLEAR
@@ -187,13 +197,13 @@ interface AlertSetAction {
 export type AlertActionTypes = AlertClearAction | AlertSetAction
 
 export interface BreadcrumbState {
-  severity: severity.Error | severity.Success | severity.Info | severity.Warning,
-  message: string,
+  severity: severity.Error | severity.Success | severity.Info | severity.Warning
+  message: string
   open: boolean
 }
 
-export const BREADCRUMB_ADD = 'BREADCRUMB_ADD'
-export const BREADCRUMB_SET = 'BREADCRUMB_SET'
+export const BREADCRUMB_ADD = "BREADCRUMB_ADD"
+export const BREADCRUMB_SET = "BREADCRUMB_SET"
 
 interface BreadcrumbAddAction {
   type: typeof BREADCRUMB_ADD
@@ -208,21 +218,21 @@ interface BreadcrumbSetAction {
 export type BreadcrumbActionTypes = BreadcrumbAddAction | BreadcrumbSetAction
 
 export interface BusinessContractState {
-  searchList: object[],
-  madeContracts: object[],
+  searchList: object[]
+  madeContracts: object[]
   businessContract: any
 }
 
-export const ADD_B_CONTRACT = 'ADD_BUSINESS_CONTRACT'
-export const ADD_B_WB_CONTRACT = 'ADD_BUSINESS_CONTRACT_WORKER_BUSINESS'
-export const B_FETCH = 'FETCH_BUSINESS_CONTRACTS'
-export const B_UPDATE = 'UPDATE_BUSINESS_SEARCH'
-export const B_DELETE = 'DELETE_BUSINESS_CONTRACT_BY_ID'
-export const ACTIVATE_B_CONTRACT = 'ACTIVATE_BUSINESS_CONTRACT'
-export const DECLINE_B_CONTRACT = 'DECLINE_BUSINESS_CONTRACT'
-export const B_SEND = 'SEND_BUSINESS_CONTRACT'
-export const B_ACCEPT = 'ACCEPT_BUSINESS_CONTRACT'
-export const SEND_BACK_B_CONTRACT = 'SEND_BACK_BUSINESS_CONTRACT'
+export const ADD_B_CONTRACT = "ADD_BUSINESS_CONTRACT"
+export const ADD_B_WB_CONTRACT = "ADD_BUSINESS_CONTRACT_WORKER_BUSINESS"
+export const B_FETCH = "FETCH_BUSINESS_CONTRACTS"
+export const B_UPDATE = "UPDATE_BUSINESS_SEARCH"
+export const B_DELETE = "DELETE_BUSINESS_CONTRACT_BY_ID"
+export const ACTIVATE_B_CONTRACT = "ACTIVATE_BUSINESS_CONTRACT"
+export const DECLINE_B_CONTRACT = "DECLINE_BUSINESS_CONTRACT"
+export const B_SEND = "SEND_BUSINESS_CONTRACT"
+export const B_ACCEPT = "ACCEPT_BUSINESS_CONTRACT"
+export const SEND_BACK_B_CONTRACT = "SEND_BACK_BUSINESS_CONTRACT"
 
 interface ActivateBusinessContract {
   type: typeof ACTIVATE_B_CONTRACT
@@ -270,24 +280,33 @@ interface AcceptBusinessContract {
 }
 
 interface SendBackBusinessContract {
-  type: typeof SEND_BACK_B_CONTRACT,
+  type: typeof SEND_BACK_B_CONTRACT
   data: any
 }
 
-export type BusinessContractActions = AddBusinessContractAction | AddBusinessContractWorkerBusinessAction | BusinessContractFetchAction | SendBackBusinessContract |
-  UpdateBusinessSearchAction | RefuseBusinessContractAction | ActivateBusinessContract | DeclineBusinessCOntractAction | SendBusinessContract | AcceptBusinessContract
+export type BusinessContractActions =
+  | AddBusinessContractAction
+  | AddBusinessContractWorkerBusinessAction
+  | BusinessContractFetchAction
+  | SendBackBusinessContract
+  | UpdateBusinessSearchAction
+  | RefuseBusinessContractAction
+  | ActivateBusinessContract
+  | DeclineBusinessCOntractAction
+  | SendBusinessContract
+  | AcceptBusinessContract
 
 export interface WorkContractState {
-  searchList: object[],
-  madeContracts: object[],
+  searchList: object[]
+  madeContracts: object[]
   workContracts: object[]
 }
 
-export const ADD_W_CONTRACT = 'ADD_WORK_CONTRACT'
-export const W_FETCH = 'FETCH_WORK_CONTRACTS'
-export const W_UPDATE = 'UPDATE_WORK_SEARCH'
-export const W_DELETE = 'DELETE_WORK_CONTRACT_BY_ID'
-export const W_JOB = 'PUT_WORK_CONTRACT_JOB'
+export const ADD_W_CONTRACT = "ADD_WORK_CONTRACT"
+export const W_FETCH = "FETCH_WORK_CONTRACTS"
+export const W_UPDATE = "UPDATE_WORK_SEARCH"
+export const W_DELETE = "DELETE_WORK_CONTRACT_BY_ID"
+export const W_JOB = "PUT_WORK_CONTRACT_JOB"
 
 interface AddWorkContractAction {
   type: typeof ADD_W_CONTRACT
@@ -314,11 +333,16 @@ interface PutWorkContractJobAction {
   data: any
 }
 
-export type WorkContractActionTypes = AddWorkContractAction | FetchWorkContractAction | UpdateWorkContractAction | DeleteWorkContractAction | PutWorkContractJobAction 
+export type WorkContractActionTypes =
+  | AddWorkContractAction
+  | FetchWorkContractAction
+  | UpdateWorkContractAction
+  | DeleteWorkContractAction
+  | PutWorkContractJobAction
 
 export interface FeelingState {
-  currentFeeling: Feeling,
-  feelingDataSet: any,
+  currentFeeling: Feeling
+  feelingDataSet: any
   feelings: Feeling[]
 }
 
@@ -327,20 +351,20 @@ export interface FileState {
 }
 
 export interface ProfileState {
-  currentProfile: Profile,
-  profileToBeViewed: Profile,
+  currentProfile: Profile
+  profileToBeViewed: Profile
   profiles: any
 }
 
-export const ADD_FEELING = 'ADD_FEELING'
-export const ADD_FEELINGS = 'ADD_FEELINGS'
-export const FETCH_FEELINGS = 'FETCH_FEELINGS'
-export const CLEAR_CURRENT_FEELING = 'CLEAR_CURRENT_FEELING'
-export const SET_CURRENT_FEELING = 'SET_CURRENT_FEELING'
-export const UPDATE_FEELING_DATASET = 'UPDATE_FEELING_DATASET'
+export const ADD_FEELING = "ADD_FEELING"
+export const ADD_FEELINGS = "ADD_FEELINGS"
+export const FETCH_FEELINGS = "FETCH_FEELINGS"
+export const CLEAR_CURRENT_FEELING = "CLEAR_CURRENT_FEELING"
+export const SET_CURRENT_FEELING = "SET_CURRENT_FEELING"
+export const UPDATE_FEELING_DATASET = "UPDATE_FEELING_DATASET"
 
-export const SET_CURRENT_FILES = 'SET_CURRENT_FILES'
-export const ADD_FILE = 'ADD_FILE'
+export const SET_CURRENT_FILES = "SET_CURRENT_FILES"
+export const ADD_FILE = "ADD_FILE"
 
 export interface SetCurrentFilesAction {
   type: typeof SET_CURRENT_FILES
@@ -382,8 +406,13 @@ interface UpdateFeelingDatasetAction {
   data: any
 }
 
-export type FeelingActionTypes = AddFeelingAction | FetchFeelingsAction | ClearCurrentFeelingAction |
-  SetCurrentFeelingAction | UpdateFeelingDatasetAction | AddFeelingsAction
+export type FeelingActionTypes =
+  | AddFeelingAction
+  | FetchFeelingsAction
+  | ClearCurrentFeelingAction
+  | SetCurrentFeelingAction
+  | UpdateFeelingDatasetAction
+  | AddFeelingsAction
 
 export type FileActionTypes = SetCurrentFilesAction | AddFileAction
 
@@ -493,26 +522,28 @@ interface AddToFormList {
   data: Form
 }
 
-export type FormListActionTypes =
-  | FetchFormListAction
-  | AddToFormList
-
+export type FormListActionTypes = FetchFormListAction | AddToFormList
 
 // BUSINESS CONTRACT FORM
-export const SET_CURRENT_BUSINESS_CONTRACT_FORM = "SET_CURRENT_BUSINESS_CONTRACT_FORM"
+export const SET_CURRENT_BUSINESS_CONTRACT_FORM =
+  "SET_CURRENT_BUSINESS_CONTRACT_FORM"
 export const UPDATE_BUSINESS_CONTRACT_TITLE = "UPDATE_BUSINESS_CONTRACT_TITLE"
 export const UPDATE_BUSINESS_CONTRACT_ANSWER = "UPDATE_BUSINESS_CONTRACT_ANSWER"
-export const SET_BUSINESS_CONTRACT_DESCRIPTION = "SET_BUSINESS_CONTRACT_DESCRIPTION"
+export const SET_BUSINESS_CONTRACT_DESCRIPTION =
+  "SET_BUSINESS_CONTRACT_DESCRIPTION"
 export const SET_BUSINESS_CONTRACT_FILLED = "SET_BUSINESS_CONTRACT_FILLED"
 export const SET_BUSINESS_CONTRACT_COMMON = "SET_BUSINESS_CONTRACT_COMMON"
 export const ADD_BUSINESS_CONTRACT_QUESTION = "ADD_BUSINESS_CONTRACT_QUESTION"
-export const UPDATE_BUSINESS_CONTRACT_QUESTION = "UPDATE_BUSINESS_CONTRACT_QUESTION"
-export const UPDATE_BUSINESS_CONTRACT_QUESTION_OPTION = "UPDATE_BUSINESS_CONTRACT_QUESTION_OPTION"
-export const REMOVE_BUSINESS_CONTRACT_QUESTION = "REMOVE_BUSINESS_CONTRACT_QUESTION"
+export const UPDATE_BUSINESS_CONTRACT_QUESTION =
+  "UPDATE_BUSINESS_CONTRACT_QUESTION"
+export const UPDATE_BUSINESS_CONTRACT_QUESTION_OPTION =
+  "UPDATE_BUSINESS_CONTRACT_QUESTION_OPTION"
+export const REMOVE_BUSINESS_CONTRACT_QUESTION =
+  "REMOVE_BUSINESS_CONTRACT_QUESTION"
 export const REMOVE_BUSINESS_CONTRACT_OPTION = "REMOVE_BUSINESS_CONTRACT_OPTION"
 export const SET_BUSINESS_CONTRACT_QUESTIONS = "SET_BUSINESS_CONTRACT_QUESTIONS"
-export const CLEAR_CURRENT_BUSINESS_CONTRACT_FORM = "CLEAR_CURRENT_BUSINESS_CONTRACT_FORM"
-
+export const CLEAR_CURRENT_BUSINESS_CONTRACT_FORM =
+  "CLEAR_CURRENT_BUSINESS_CONTRACT_FORM"
 
 interface SetCurrentBusinessContractFormAction {
   type: typeof SET_CURRENT_BUSINESS_CONTRACT_FORM
@@ -619,8 +650,6 @@ export const SET_PROFILE_TO_BE_VIEWED = "SET_PROFILE_TO_BE_VIEWED"
 export const POST_PROFILE = "POST_PROFILE"
 export const GET_ALL_PROFILES = "GET_ALL_PROFILES"
 
-
-
 interface GetAllProfiles {
   type: typeof GET_ALL_PROFILES
   data: any
@@ -647,7 +676,7 @@ interface PostProfile {
 }
 
 export type ProfileActionTypes =
-  UpdateCurrentProfile
+  | UpdateCurrentProfile
   | PostProfile
   | SetCurrentProfileAction
   | SetProfileToBeViewedAction
@@ -688,13 +717,17 @@ interface ClearAllNotifications {
   data: any
 }
 
-export type NotificationsActions = FetchNotifications | PostNotifications | UpdateNotifications | ReadNotifications | ClearAllNotifications
+export type NotificationsActions =
+  | FetchNotifications
+  | PostNotifications
+  | UpdateNotifications
+  | ReadNotifications
+  | ClearAllNotifications
 
 export const POST_FEEDBACK = "POST_FEEDBACK"
 export const RESET_FEEDBACK = "RESET_FEEDBACK"
 export const GET_USER_FEEDBACKS = "GET_USER_FEEDBACKS"
 export const GET_ALL_FEEDBACKS = "GET_ALL_FEEDBACKS"
-
 
 interface PostFeedBack {
   type: typeof POST_FEEDBACK
@@ -716,10 +749,23 @@ interface GetAllFeedBacks {
   data: any
 }
 
-export type FeedBackActions = PostFeedBack | ResetFeedBack | GetUserFeedBacks | GetAllFeedBacks
+export type FeedBackActions =
+  | PostFeedBack
+  | ResetFeedBack
+  | GetUserFeedBacks
+  | GetAllFeedBacks
 
 export interface FeedBackState {
-  myFeedBacks: [],
-  allFeedBacks: [],
+  myFeedBacks: []
+  allFeedBacks: []
   feedBackSaved: boolean
 }
+
+export const ADD_WORK_TASK = "ADD_WORK_TASK"
+
+interface AddWorkTask {
+  type: typeof ADD_WORK_TASK
+  data: any
+}
+
+export type WorkAddActions = AddWorkTask
