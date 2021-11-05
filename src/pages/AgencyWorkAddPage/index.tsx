@@ -2,50 +2,47 @@ import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { Button, TextField, Typography } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
-import { WorkAddActions } from "../../types/state"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { postWorkTask } from "../../actions/workAddAction"
 
 const AgencyWorkAdd: React.FC<any> = () => {
-  const [title, setTitle] = useState("")
-  const [details, setDetails] = useState("")
+  const currentProfile: any = useSelector(
+    (state: any) => state.profile.currentProfile
+  )
+
+  const [title, setTitle] = useState("My Cool Job Title")  
+  const [jobCategory, setJobCategory] = useState("My Awesome Job Category")
+  const [details, setDetails] = useState("None")
+  const [requirements, setRequirements] = useState("None")  
+  const [numberOfNeededWorkers, setNumberOfNeededWorkers] = useState(1)
+  const [startingDate, setStartingDate] = useState("2021-08-18T21:43:18.694+00:00")
+  const [endingDate, setEndingDate] = useState("2021-08-18T21:43:18.694+00:00")
+  const [applyingEndsAt, setApplyingEndsAt] = useState("2021-08-18T21:43:18.694+00:00")
+  
   const dispatch = useDispatch()
   const { t } = useTranslation()
   const classes = useStyles()
 
-  const x = {
-    _id: "604021e581a962681088565f",
-    agencyId: "604021e581a9626810885235",
-    jobTitle: "EXAMPLE TITTELI",
-    jobCategory: "EXAMPLE CATEGORY",
-    details: "Job vacancy details",
-    requirements: "Job vacancy requirements",
-    numberOfNeededWorkers: 20,
-    startingDate: "2021-08-18T21:43:18.694+00:00",
-    endingDate: "2021-08-18T21:43:18.694+00:00",
-    applyingEndsAt: "2021-08-18T21:43:18.694+00:00",
-    streetAddress: "Street address",
-    zipCode: 100,
-    city: "Helsinki",
-    createdAt: "2021-08-18T21:43:18.694+00:00",
-  }
-
-  /*
-    jobTitle: String,
-    jobCategory: String,
-    details: String,
-    requirements: String,
-    numberOfNeededWorkers: Number,
-    startingDate: Date,
-    endingDate: Date,
-    applyingEndsAt: Date,
-    zipCode: Number,
-    city: String,
-    createdAt: String
-    */
-
+  // TODO: date pickers for start&end&appyingEnd
   const addWork = (e: any) => {
-    dispatch(postWorkTask(x))
+    let workTask = {
+      _id: "604021e581a962681088565e",
+      agencyId: currentProfile._id,
+      jobTitle: title,
+      jobCategory: jobCategory,
+      details: details,
+      requirements: requirements,
+      numberOfNeededWorkers: numberOfNeededWorkers,
+      startingDate: startingDate,
+      endingDate: endingDate,
+      applyingEndsAt: applyingEndsAt,
+      streetAddress: currentProfile.streetAddress,
+      zipCode: currentProfile.zipCode,
+      city: currentProfile.city,
+      createdAt: "create new date"
+    }
+
+    dispatch(postWorkTask(workTask))
   }
 
   return (
