@@ -23,7 +23,6 @@ import RoleResponsibilities from './pages/Databank/RoleResponsibilities';
 import Databank from './pages/Databank';
 import ReportPage from './pages/ReportPage';
 import ReportsPage from './pages/ReportPage/ReportsPage';
-import Admin from './pages/AdminPage';
 import AdminRoute from './components/AdminRoute';
 import AdminDatabank from './pages/AdminPage/AdminDatabank';
 import Users from './pages/AdminPage/Users';
@@ -49,6 +48,9 @@ import WorkerJobs from './pages/WorkerWorkOverview';
 import AdminLoginPage from './pages/AdminLoginPage';
 import AdminHome from './pages/AdminPage/AdminHome';
 import AgencyWorkAdd from './pages/AgencyWorkAddPage';
+import ProfileList from './pages/AdminPage/ProfileList';
+import AllUsersList from './pages/AdminPage/AllUsersList';
+import User from './pages/AdminPage/user/User';
 
 /**
  * @component
@@ -66,18 +68,27 @@ const App: React.FC = () => {
         <Route exact path="/login">
           <LoginPage />
         </Route>
-        <AdminRoute path="/admin">
-          <Admin />
-        </AdminRoute>
         <AdminRoute path="/admin/users">
           <Users />
         </AdminRoute>
         <Route path="/adminloginpage">
           <AdminLoginPage />
         </Route>
-        <Route path="/admin/home">
+        <AdminRoute path="/admin/home">
           <AdminHome />
-        </Route>
+        </AdminRoute>
+        <AdminRoute path="/profiles">
+          <ProfilesPage />
+        </AdminRoute>
+        <AdminRoute path="/profileList">
+          <ProfileList />
+        </AdminRoute>
+        <AdminRoute path="/userList">
+          <AllUsersList />
+        </AdminRoute>
+        <AdminRoute path="/user/:profileId">
+          <User />
+        </AdminRoute>
         <AdminRoute path="/admin/usercompany">
           <UserCompany />
         </AdminRoute>
