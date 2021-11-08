@@ -77,9 +77,6 @@ const App: React.FC = () => {
         <AdminRoute path="/admin/home">
           <AdminHome />
         </AdminRoute>
-        <AdminRoute path="/profiles">
-          <ProfilesPage />
-        </AdminRoute>
         <AdminRoute path="/profileList">
           <ProfileList />
         </AdminRoute>
