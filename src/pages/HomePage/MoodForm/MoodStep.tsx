@@ -69,26 +69,10 @@ const useStyles = makeStyles({
           />
         </Grid>
         <Grid item className={classes.flexCenter} xs={2}>
-          <SentimentDissatisfiedIcon
-            onClick={() => updateMood(1)}
-            className={`${classes.clickableIcon} ${
-              clicked[1] ? 'mood-icon' : null
-            }`}
-          />
-        </Grid>
-        <Grid item className={classes.flexCenter} xs={2}>
           <SentimentSatisfiedIcon
             onClick={() => updateMood(2)}
             className={`${classes.clickableIcon} ${
               clicked[2] ? 'mood-icon' : null
-            }`}
-          />
-        </Grid>
-        <Grid item className={classes.flexCenter} xs={2}>
-          <SentimentSatisfiedAltIcon
-            onClick={() => updateMood(3)}
-            className={`${classes.clickableIcon} ${
-              clicked[3] ? 'mood-icon' : null
             }`}
           />
         </Grid>

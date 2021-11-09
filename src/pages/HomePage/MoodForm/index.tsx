@@ -145,31 +145,12 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
   const steps = getSteps();
   const dispatch = useDispatch();
 
-  
 
   const getStepContent = (step: any) => {
     switch (step) {
       case 0:
         return <MoodStep />;
-      case 1:
-        return <MoodStepThree />;
-      default:
-        return <></>;
     }
-  };
-
-
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleReset = () => {
-    setActiveStep(0);
-    dispatch(setFiles([null, null, null]));
   };
 
   const handleFinnish = () => {
@@ -191,17 +172,6 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
       <Typography variant="h4" align="center">
         {t('how_do_you_feel_today')}
       </Typography>
-      {/* <Stepper
-        alternativeLabel
-        activeStep={activeStep}
-        connector={<ColorlibConnector />}
-      >
-        {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
-          </Step>
-        ))}
-      </Stepper> */}
       <div>
           <Container maxWidth="md">
             <div className={classes.instructions}>
