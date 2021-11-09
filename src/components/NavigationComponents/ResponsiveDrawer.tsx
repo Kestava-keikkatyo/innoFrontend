@@ -30,65 +30,6 @@ import fi1 from '../NavigationComponents/fi1.png';
 import us1 from '../NavigationComponents/us1.png';
 import sw1 from '../NavigationComponents/sw1.png';
 
-const LangMenuDropDown = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const classes = useStyles();
-
-  const handleClick = (event: any) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const changeLanguage = (code: any) => {
-    setAnchorEl(null);
-    localStorage.setItem('i18nextLng', code);
-    window.location.reload();
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  return (
-    <>
-      <div className="drawer-top">
-        <Button onClick={handleClick} style={{ height: '48px' }}>
-          <TranslateIcon
-            style={{ fontSize: '36px' }}
-            className="translate-icon"
-          />
-        </Button>
-        {/* <Typography variant="body2">FI</Typography> */}
-      </div>
-      <Menu
-        className={classes.list}
-        id="forms-settings"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
-        <MenuItem onClick={() => changeLanguage('fi')}>
-          Suomi
-          <img
-            src={fi1}
-            style={{ position: 'absolute', width: '30px', left: '6rem' }}
-          />
-        </MenuItem>
-        <MenuItem onClick={() => changeLanguage('en')}>
-          English
-          <img
-            src={us1}
-            style={{ position: 'absolute', width: '30px', left: '6rem' }}
-          />
-        </MenuItem>
-        {/* <MenuItem onClick={() => changeLanguage('sv')}>
-          Svenska
-          <img src={sw1} style={{position:"absolute",width:"30px", left:"6rem"}}/>
-        </MenuItem> */}
-      </Menu>
-    </>
-  );
-};
 
 /**
  * @component
@@ -117,7 +58,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
   return (
     <div className="drawer">
       <div className="">
-        <LangMenuDropDown />
+
         {isOpen ? (
           <img className={classes.logo} src={logo} alt="logo" />
         ) : (

@@ -13,6 +13,7 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
+  Button,
 } from '@material-ui/core';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -36,6 +37,42 @@ import { usePopupState } from 'material-ui-popup-state/hooks';
 import { logout } from '../../actions/userActions';
 import { useTranslation } from 'react-i18next';
 import { roles } from '../../types/types';
+import fi1 from "../../components/NavigationComponents/fi1.png";
+import us1 from "../../components/NavigationComponents/us1.png";
+
+const LangMenuDropDown = () => {
+  // const [anchorEl, setAnchorEl] = React.useState(null);
+  // const classes = useStyles();
+  const { t } = useTranslation();
+
+  // const handleClick = (event: any) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
+
+  const changeLanguage = (code: any) => {
+    // setAnchorEl(null);
+    localStorage.setItem('i18nextLng', code);
+    window.location.reload();
+  };
+
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
+
+  return (
+    <>
+      <div className="drawer-top">
+        <Button style={{position:"absolute", left:"-7rem", top:"23%"}} onClick={() => changeLanguage('fi')}>
+          <img src={fi1} style={{width:"30px"}}/>
+        </Button>
+        <Button style={{position:"absolute", left:"-4rem", top:"23%"}} onClick={() => changeLanguage('en')}>
+          <img src={us1} style={{width:"30px"}}/>
+        </Button>
+      </div>
+    </>
+  );
+};
+
 
 const drawerWidth = navConstants.DRAWER_WIDTH;
 /**
@@ -178,6 +215,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
             >
               <NotificationsIcon />
             </IconButton>
+            <LangMenuDropDown />
           </Badge>
           <Popover
             id="menu-appbar"
@@ -319,6 +357,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
             >
               <NotificationsIcon />
             </IconButton>
+            <LangMenuDropDown />
           </Badge>
           <Popover
             id="menu-appbar"
@@ -464,6 +503,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
             >
               <NotificationsIcon />
             </IconButton>
+            <LangMenuDropDown />
           </Badge>
           <Popover
             id="menu-appbar"
@@ -605,6 +645,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
             >
               <NotificationsIcon />
             </IconButton>
+            <LangMenuDropDown />
           </Badge>
           <Popover
             id="menu-appbar"

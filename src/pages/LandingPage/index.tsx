@@ -7,9 +7,6 @@ import {
   Toolbar,
   Typography,
   Grid,
-  Menu,
-  MenuItem,
-  Fade,
   makeStyles
 } from '@material-ui/core';
 import SwipeableViews from 'react-swipeable-views';
@@ -27,63 +24,42 @@ import us1 from "../../components/NavigationComponents/us1.png";
 import sw1 from "../../components/NavigationComponents/sw1.png";
 
 const LangMenuDropDown = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const classes = useStyles();
+  // const [anchorEl, setAnchorEl] = React.useState(null);
+  // const classes = useStyles();
   const { t } = useTranslation();
 
-  const handleClick = (event: any) => {
-    setAnchorEl(event.currentTarget);
-  };
+  // const handleClick = (event: any) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
 
   const changeLanguage = (code: any) => {
-    setAnchorEl(null);
+    // setAnchorEl(null);
     localStorage.setItem('i18nextLng', code);
     window.location.reload();
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
 
   return (
     <>
-      <div className="drawer-top" style={{position:"absolute", right:"5rem", top:-5}}>
-        <Typography onClick={handleClick}>
-          <TranslateIcon
-            style={{position:"absolute",left:30, fontSize: '36px' }}
-            className="translate-icon"
-          />
-        </Typography>
+      <div className="drawer-top">
+        <Button style={{position:"absolute",padding:"fixed", left:"89.5%", top:"25%"}} onClick={() => changeLanguage('fi')}>
+          <img src={fi1} style={{width:"30px"}}/>
+        </Button>
+        <Button style={{position:"absolute", left:"87%", top:"25%"}} onClick={() => changeLanguage('en')}>
+          <img src={us1} style={{width:"30px"}}/>
+        </Button>
       </div>
-      <Menu className={classes.list}
-        id="forms-settings"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-        TransitionComponent={Fade}
-      >
-        <MenuItem onClick={() => changeLanguage('fi')}>
-          {t("finland")}
-          <img src={fi1} style={{position:"absolute",width:"30px", left:"6rem"}}/>
-        </MenuItem>
-        <MenuItem onClick={() => changeLanguage('en')}>
-          {t("english")}
-          <img src={us1} style={{position:"absolute",width:"30px", left:"6rem"}}/>
-        </MenuItem>
-        {/* <MenuItem onClick={() => changeLanguage('sv')}>
-          Svenska
-          <img src={sw1} style={{position:"absolute",width:"30px", left:"6rem"}}/>
-        </MenuItem> */}
-      </Menu>
     </>
   );
 };
 
+
 const LandingPage = () => {
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
-  const classes = useStyles();
   const { t } = useTranslation();
 
   const handleNext = () => {
@@ -97,18 +73,6 @@ const LandingPage = () => {
   const handleStepChange = (step: any) => {
     setActiveStep(step);
   };
-  // const handleClick = () => {
-  //   if (activeStep === 0){
-  //     console.log("nappi numero: ",activeStep," on painettu");
-  //     setActiveStep(1);
-  //   }else if((activeStep === 1)){
-  //     console.log("nappi numero: ",activeStep," on painettu");
-  //     setActiveStep(2);
-  //   }else if((activeStep === 2)){
-  //     console.log("nappi numero: ",activeStep," on painettu");
-  //     setActiveStep(3);
-  //   }
-  // }
   return (
     <div>
       <AppBar position="fixed" elevation={1} className="landing-appbar">
@@ -126,14 +90,11 @@ const LandingPage = () => {
               </Link>
             </Typography>
           </Grid>
-
+          <LangMenuDropDown />
           <Typography style={{ width: 100 }}>
-            <Typography>
-              <LangMenuDropDown />
-            </Typography>
-            <Link className="landing-login" to="/login">
-            {t("kirjaudu_sisaan")}
-            </Link>
+              <Link className="landing-login" to="/login">
+              {t("kirjaudu_sisaan")}
+              </Link>
           </Typography>
         </Toolbar>
       </AppBar>
