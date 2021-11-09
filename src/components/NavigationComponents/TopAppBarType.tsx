@@ -770,28 +770,28 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     width: 40,
     height: 40,
-    padding: 0,
+    padding: -20,
     borderRadius: 20,
     marginLeft: '1rem',
     marginTop: '-8px',
   },
   appWorker: {
     borderTop: '16px solid #2386CC',
-    width: `calc(100% - ${51}px)`,
+    width: `calc(100% - ${0}px)`,
     backgroundColor: 'white',
 
     zIndex: theme.zIndex.drawer + 1,
   },
   appAgency: {
     borderTop: '16px solid #009E60',
-    width: `calc(100% - ${51}px)`,
+    width: `calc(100% - ${0}px)`,
     backgroundColor: 'white',
 
     zIndex: theme.zIndex.drawer + 1,
   },
   appBusiness: {
     borderTop: '16px solid #eb5a00',
-    width: `calc(100% - ${51}px)`,
+    width: `calc(100% - ${0}px)`,
     backgroundColor: 'white',
 
     zIndex: theme.zIndex.drawer + 1,

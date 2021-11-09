@@ -57,7 +57,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
 
   return (
     <div className="drawer">
-      <div className="">
+      <div className="kuvake">
 
         {isOpen ? (
           <img className={classes.logo} src={logo} alt="logo" />
@@ -256,12 +256,12 @@ const useStyles = makeStyles((theme) => ({
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   logo: {
-    height: 130,
-    padding: 30,
-    paddingTop: 10,
+    height: 100,
+    padding: 0,
     display: 'block',
     marginLeft: 'auto',
     marginRight: 'auto',
+    marginBottom: '5%',
   },
   nested: {
     paddingLeft: theme.spacing(4),

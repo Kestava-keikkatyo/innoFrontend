@@ -1,15 +1,15 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -94,36 +94,35 @@ code {
 .drawer ul {
   margin-left: 1rem;
 }
+.kuvake img {
+  margin-top: 5rem !important;
+}
 
 .drawer .color-primary,
 .MuiFab-primary {
   background-color: #eb5a00 !important;
-  
 }
 .drawer .color-primaryWorker,
 .MuiFab-primary-worker {
   /*background-color: #eb5a00 !important;*/
-  background-color: #2386CC !important;
+  background-color: #2386cc !important;
 }
 .drawer .color-primaryAgency,
 .MuiFab-primary-agency {
   /*background-color: #eb5a00 !important;*/
-  background-color: #093807  !important;
+  background-color: #093807 !important;
 }
-
 
 .drawer-top {
   border-top: #eb5a00 16px solid;
-  }
+}
 
 .drawer-top-worker {
-  
-  border-top: #2386CC 16px solid;
+  border-top: #2386cc 16px solid;
 }
 
 .drawer-top-agency {
-  
-  border-top:  #093807 16px solid;
+  border-top: #093807 16px solid;
 }
 
 .text-secondary {
@@ -341,7 +340,7 @@ code {
 .form-banner {
   width: calc(100% - 48px);
   height: 250px;
-  background: url('assets/form-banner.jpg');
+  background: url("assets/form-banner.jpg");
   background-size: cover;
   position: absolute;
   top: 0;
@@ -384,7 +383,7 @@ nav * {
   padding: 0.5rem;
   color: white !important;
   background-color: #eb5a00;
-  
+
   border-radius: 2rem;
 }
 /*
@@ -399,7 +398,6 @@ nav * {
 
 .MuiInput-underline:after {
   border-bottom: 2px solid #eb5a00 !important;
-  
 }
 
 .MuiFormLabel-root.Mui-focused,
@@ -407,7 +405,6 @@ nav * {
 .MuiButton-outlinedPrimary,
 .MuiRadio-colorPrimary.Mui-checked {
   color: #eb5a00 !important;
-  
 }
 
 .MuiButton-containedPrimary {
@@ -415,17 +412,10 @@ nav * {
   color: white !important;
 }
 
-
 .MuiButton-containedPrimary-worker {
-  background-color:  #2386CC !important;
+  background-color: #2386cc !important;
   color: white !important;
 }
-
-
-
-
-
-
 
 .MuiButton-outlinedPrimary {
   border: 1px solid #eb5a0077 !important;
@@ -487,12 +477,10 @@ nav * {
 .mood-step-one svg:hover {
   color: white !important;
   background: rgb(255, 124, 0);
-    transition: 0.8s;
+  transition: 0.8s;
   box-shadow: 0 4px 10px 0 rgb(0 0 0 / 25%);
   background-image: linear-gradient(
     136deg,
-
-
     rgb(255, 150, 55) 0%,
     rgb(242, 113, 33) 50%,
     rgb(233, 64, 87) 100%
@@ -524,11 +512,9 @@ nav * {
     rgb(255, 150, 55) 0%,
     rgb(242, 113, 33) 50%,
     rgb(233, 64, 87) 100%
-
   );
   border-radius: 60px !important;
 }
-
 
 .databank-top-container {
   height: 300px;
