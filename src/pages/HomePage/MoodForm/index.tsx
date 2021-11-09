@@ -14,6 +14,7 @@ import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 
 import { Container } from '@material-ui/core';
 import MoodStepOne from './MoodStepOne';
+import MoodStep from './MoodStep';
 import MoodStepThree from './MoodStepThree';
 import { setFiles } from '../../../actions/fileActions';
 import { useDispatch, useSelector } from 'react-redux';
@@ -149,7 +150,7 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
   const getStepContent = (step: any) => {
     switch (step) {
       case 0:
-        return <MoodStepOne />;
+        return <MoodStep />;
       case 1:
         return <MoodStepThree />;
       default:
@@ -190,7 +191,7 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
       <Typography variant="h4" align="center">
         {t('how_do_you_feel_today')}
       </Typography>
-      <Stepper
+      {/* <Stepper
         alternativeLabel
         activeStep={activeStep}
         connector={<ColorlibConnector />}
@@ -200,32 +201,13 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
             <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
           </Step>
         ))}
-      </Stepper>
+      </Stepper> */}
       <div>
-        {activeStep === steps.length ? (
-          <div>
-            <Typography className={classes.instructions}>
-              All steps completed - you&apos;re finished
-            </Typography>
-            <Button onClick={handleReset} className={classes.button}>
-              {t('reset')}
-            </Button>
-          </div>
-        ) : (
           <Container maxWidth="md">
             <div className={classes.instructions}>
               {getStepContent(activeStep)}
             </div>
-            <div style={{ marginTop: 24, textAlign: 'center' }}>
-              <Button
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                className={classes.button}
-              >
-                {t('back')}
-              </Button>
-
-              {activeStep === steps.length - 1 ? (
+            <div style={{ marginTop: 24, textAlign: 'center' }}>              
                 <Button
                   variant="contained"
                   onClick={handleFinnish}
@@ -233,18 +215,8 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
                 >
                   {t('finish')}
                 </Button>
-              ) : (
-                <Button
-                  variant="contained"
-                  onClick={handleNext}
-                  className={`${classes.button} ${classes.primary}`}
-                >
-                  {t('next')}
-                </Button>
-              )}
             </div>
           </Container>
-        )}
       </div>
     </div>
   );
