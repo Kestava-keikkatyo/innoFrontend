@@ -2,7 +2,7 @@ export default {
   //home page
   information: 'Information',
   how_do_you_feel_today: 'How do you feel today?',
-  thank_you: "Feedback received!",
+  thank_you: "Feeling received!",
   home: 'Home',
   thank_you_for_feedback: "Thank you for your feedback!",
 
@@ -308,6 +308,15 @@ mood_category:"Mood Category",
   created: 'Created at',
   agency_status: 'Agency status',
   business_status: 'Business status',
+
+    //feedbackCategory
+    category0: 'Category',
+    description0: 'Description',
+    description1 : 'You have added a little bit of your feeling.',
+    description2 : 'You have added moderately of your feeling.',
+    description3 : 'Volume of your feelin is good',
+    description4 : 'Your mood is really good',
+    description5 : 'The feeling is very good',
 
   //contractsFromBusiness
   contracts_from_business: 'Contracts from business',

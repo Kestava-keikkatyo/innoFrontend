@@ -1,13 +1,5 @@
 import React, { useState } from 'react';
 import Paper from '@material-ui/core/Paper';
-import { useSelector } from 'react-redux';
-import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
-import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
-import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt';
-import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
-import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
-import moment from 'moment';
-import imagePlaceholder from '../../assets/image-placeholder.png';
 import { useTranslation } from 'react-i18next'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
@@ -32,7 +24,6 @@ import {
   AccordionSummary,
 } from '@material-ui/core';
 
-import PreviewImageModal from './PreviewImageModal';
 
 /**
  * @component
@@ -41,10 +32,7 @@ import PreviewImageModal from './PreviewImageModal';
  */
 export default function CustomizedTables() {
   const classes = useStyles();
-  const feelings = useSelector((state: any) => state.feeling?.feelings);
   const { t } = useTranslation()
-  const [displayModal, setDisplayModal] = useState(false);
-  const [imageSource, setImageSource] = useState('');
 
   // Table head styles
   const StyledTableCell = withStyles((theme: Theme) =>
@@ -55,63 +43,6 @@ export default function CustomizedTables() {
       },
     })
   )(TableCell);
-
-  // Table row styles
-  const StyledTableRow = withStyles((theme: Theme) =>
-    createStyles({
-      root: {
-        '&:nth-of-type(odd)': {
-          //backgroundColor: theme.palette.action.hover,
-        },
-      },
-    })
-  )(TableRow);
-
-  const getIcon = (value: number) => {
-    switch (value) {
-      case 0:
-        return (
-            <Typography
-            variant="body2"
-            align="center"
-            style={{ marginBottom: 16 }}
-          >
-            {t('cheer_one')}
-          </Typography>
-        );
-      case 1:
-        return (
-          <SentimentDissatisfiedIcon
-            className={`${'mood-icon'} ${classes.moodIcon}`}
-          />
-        );
-      case 2:
-        return (
-          <SentimentSatisfiedIcon
-            className={`${'mood-icon'} ${classes.moodIcon}`}
-          />
-        );
-      case 3:
-        return (
-          <SentimentSatisfiedAltIcon
-            className={`${'mood-icon'} ${classes.moodIcon}`}
-          />
-        );
-      case 4:
-        return (
-          <SentimentVerySatisfiedIcon
-            className={`${'mood-icon'} ${classes.moodIcon}`}
-          />
-        );
-      default:
-        return null;
-    }
-  };
-
-  const openImageModal = (src: string) => {
-    setImageSource(src);
-    setDisplayModal(true);
-  };
 
   // Table view for desktop devices
   const tableView = () => {
@@ -124,29 +55,29 @@ export default function CustomizedTables() {
         <Table aria-label="searched workers">
           <TableHead>
             <TableRow>
-              <StyledTableCell align="left">{t('category')}</StyledTableCell>
-              <StyledTableCell align="left">{t('description')}</StyledTableCell>
+              <StyledTableCell align="left">{t('category0')}</StyledTableCell>
+              <StyledTableCell align="left">{t('description0')}</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
                   <TableCell align="left">{ t('cheer_one')}</TableCell>
-                  <TableCell align="left">category 1</TableCell>
+                  <TableCell align="left">{t('description1')}</TableCell>
           </TableBody>
           <TableBody>
                   <TableCell align="left">{ t('cheer_two')}</TableCell>
-                  <TableCell align="left">category 1</TableCell>
+                  <TableCell align="left">{t('description2')}</TableCell>
           </TableBody>
           <TableBody>
                   <TableCell align="left">{ t('cheer_three')}</TableCell>
-                  <TableCell align="left">category 1</TableCell>
+                  <TableCell align="left">{t('description3')}</TableCell>
           </TableBody>
           <TableBody>
                   <TableCell align="left">{ t('cheer_four')}</TableCell>
-                  <TableCell align="left">category 1</TableCell>
+                  <TableCell align="left">{t('description4')}</TableCell>
           </TableBody>
           <TableBody>
                   <TableCell align="left">{ t('cheer_five')}</TableCell>
-                  <TableCell align="left">category 1</TableCell>
+                  <TableCell align="left">{t('description5')}</TableCell>
           </TableBody>
         </Table>
       </TableContainer>
@@ -170,11 +101,6 @@ export default function CustomizedTables() {
           <AccordionDetails>{tableView()}</AccordionDetails>
         </Accordion>
       </Grid>
-      <PreviewImageModal
-        displayModal={displayModal}
-        closeModal={() => setDisplayModal(false)}
-        imageSource={imageSource}
-      />
     </div>
   );
 }

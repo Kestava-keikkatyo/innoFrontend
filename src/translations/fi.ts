@@ -2,7 +2,7 @@ export default {
   //home page
   information: "Informaatio",
   how_do_you_feel_today: "Miten voit tänään?",
-  thank_you: "Palaute vastaanotettu!",
+  thank_you: "Fiilisi on vastaanotettu!",
   home: "Etusivu",
   thank_you_for_feedback: "Kiitos palautteestasi!",
   
@@ -310,6 +310,15 @@ export default {
   created: 'Tehty',
   agency_status: 'Vuokratyöfirman tila',
   business_status: 'Käyttäjäyrityksen tila',
+
+  //feedbackCategory
+  category0: 'Kategoriat',
+  description0: 'Kuvaus',
+  description1 : 'Olet lisäänyt vähän fiiliksistäsi.',
+  description2 : 'Olet lisäänyt kohtuullisesti fiiliksistäsi.',
+  description3 : 'Olet lisäänyt riittävästi fiiliksistäsi',
+  description4 : 'Fiiliksisi on tosi hyvä',
+  description5 : 'Fiiliksisi on erittäin hyvä',
 
   //contractsFromBusiness
   contracts_from_business: 'Käyttäjäyrityksiltä saapuneet sopimukset',
