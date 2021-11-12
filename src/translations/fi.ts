@@ -6,7 +6,7 @@ export default {
 
   //login
   login_title: "Kirjaudu sisään",
-    email_label: "Sähköposti",
+  email_label: "Sähköposti",
   password_label: "Salasana",
   invalid_email_address: "Virheellinen sähköposti",
   required: "Puuttuu",
@@ -31,7 +31,7 @@ export default {
   worker: "Työntekijä",
   agency: "Henkilöstöpalveluyritys",
   business: "Käyttäjäyritys",
-  jobs: 'Työpaikat',
+  jobs: "Työpaikat",
   businesses: "Käyttäjäyritykset",
   workers: "Työntekijät",
 
@@ -46,13 +46,13 @@ export default {
   reset: "resetoi",
   upload_file: "Liitä tiedosto",
   entry: "Lisää",
-  history: 'Historia',
-  active: 'Active',
+  history: "Historia",
+  active: "Active",
 
   //profile page
   profiles: "Profiilit",
   search_by_name: "Etsi nimellä...",
-  search: 'Etsi...',
+  search: "Etsi...",
   no_results: "Ei tuloksia",
 
   //Line chart
@@ -68,7 +68,7 @@ export default {
 
   mood_table: "Yksityiskohdat",
   mood: "Fiilis",
-  moods: 'Fiilikset',
+  moods: "Fiilikset",
   comment: "Kommentti",
   date: "Päivämäärä",
   image: "Kuva",
@@ -81,8 +81,8 @@ export default {
   report_time: "Tapahtuma-aika",
   report_details: "Lisätiedot",
   steps_completed: "Valmista",
-  reports: 'Raportit',
-  report: 'Raportit',
+  reports: "Raportit",
+  report: "Raportit",
 
   //Report step one
   select_report_handler: "Valitse raportin vastaanottaja",
@@ -112,7 +112,8 @@ export default {
   waiting_contracts: "Odottavat sopimukset",
   done_contracts: "Valmiit sopimukset",
   contracts_received_from_the_workers: "Työntekijöiltä saapuneet sopimukset",
-  contracts_received_from_businesses: "Käyttäjäyrityksiltä saapuneet sopimukset",
+  contracts_received_from_businesses:
+    "Käyttäjäyrityksiltä saapuneet sopimukset",
 
   //Agencies list
   all: "Kaikki",
@@ -122,13 +123,13 @@ export default {
   medicine: "Lääketeollisuus- ja farmasia",
   estate: "Kiinteistö",
   transfer_profile: "Siirry profiiliin",
-  transfer_company_profile: 'Siirry yrityksen profiiliin',
+  transfer_company_profile: "Siirry yrityksen profiiliin",
 
   //Contact information
   phone: "Puhelin",
   website: "Nettisivut",
   address: "Osoite",
-  contact_information: 'Yhteystiedot',
+  contact_information: "Yhteystiedot",
 
   //feeling utils
   cheer_one: "Tsemppiä!",
@@ -147,12 +148,13 @@ export default {
   //WorkerStatisticsSummary,
   current_mood: "Nykyinen fiilis",
   no_data: "Oho, ei dataa vielä",
-  no_entries: "Jos näet tämän, et ole vielä todennäköisesti kirjoittanu fiiliksiäsi",
+  no_entries:
+    "Jos näet tämän, et ole vielä todennäköisesti kirjoittanu fiiliksiäsi",
   oops: "oops",
 
   //WorkerTransferList
-  choices: 'Vaihtoehdot',
-  chosen: 'Valinnat',
+  choices: "Vaihtoehdot",
+  chosen: "Valinnat",
 
   //Contracts pages
   neededWork: "Tarvittavat työkeikat",
@@ -161,31 +163,31 @@ export default {
 
   //ContractsPage
   add_active: "Lisää aktiivisiin työkeikkoihin",
-  add: 'Lisää',
-  make_contract: 'Tee sopimus',
-  contracts: 'Sopimukset',
+  add: "Lisää",
+  make_contract: "Tee sopimus",
+  contracts: "Sopimukset",
 
   //FeedbackForm
-  write_feedback_here: 'Kirjoita palautteesi tähän',
-  feedback_sent: 'Palaute lähetetty',
-  give_feedback: 'Anna palautetta',
-  return_form: 'Palautelomake',
-  replied: 'Vastattu',
-  wait: 'Odottaa',
-  own_feedback: 'Omat palautteet',
-  headline: 'Otsikko',
+  write_feedback_here: "Kirjoita palautteesi tähän",
+  feedback_sent: "Palaute lähetetty",
+  give_feedback: "Anna palautetta",
+  return_form: "Palautelomake",
+  replied: "Vastattu",
+  wait: "Odottaa",
+  own_feedback: "Omat palautteet",
+  headline: "Otsikko",
 
   //ContractFormManagerPage
-  description: 'Kuvaus',
+  description: "Kuvaus",
   preview: "Esikatsele",
   edit: "Muokkaa",
   download_pdf: "Lataa pdf",
-  download: 'Lataa',
-  copy_to_my_forms: 'Kopioi minun lomakkaisiini',
-  title: 'Otsikko',
+  download: "Lataa",
+  copy_to_my_forms: "Kopioi minun lomakkaisiini",
+  title: "Otsikko",
 
   //MyFormsTable
-  delete: 'Poista',
+  delete: "Poista",
 
   //FormsPage
   my_forms: "Lomakkeeni",
@@ -193,150 +195,155 @@ export default {
   community: "Yhteisö",
 
   //ContractsTable
-  status: 'Tila',
-  accept: 'Hyväksy',
-  info: 'Info',
-  send_back: 'Lähetä takaisin',
-  decline: 'Hylkää',
-  close:'sulje',
+  status: "Tila",
+  accept: "Hyväksy",
+  info: "Info",
+  send_back: "Lähetä takaisin",
+  decline: "Hylkää",
+  close: "sulje",
 
   //ResponsiveDrawer
-  databank: 'Tietopankki',
-  schedule: 'Aikataulut',
-  work_overview: 'Työn katsaus',
-  forms: 'Lomakkeet',
+  databank: "Tietopankki",
+  schedule: "Aikataulut",
+  work_overview: "Työn katsaus",
+  forms: "Lomakkeet",
   work_request: "Työpyynnöt",
-  exit_application: 'Poistu sovelluksesta',
-  business_contracts: 'Yrityssopimukset',
-  my_work: 'Työni',
-  remove: 'Poista',
-
+  exit_application: "Poistu sovelluksesta",
+  business_contracts: "Yrityssopimukset",
+  my_work: "Työni",
+  remove: "Poista",
 
   //profilePage
-  edit_profile: 'Muokkaa profiilia',
-  settings: 'Asetukset',
-  profile: 'Profiili',
-  logout: 'Kirjaudu ulos',
-  return: 'Palaa',
-  introduction_video: 'Esittelyvideo',
-  instructions: 'Ohjeet',
-  change_picture: 'Vaihda kuva',
-  change_cover: 'Vaihda kehys',
-  change_introduction_video: 'Vaihda esittelyvideo',
-  save_changes: 'Tallenna muutokset',
+  edit_profile: "Muokkaa profiilia",
+  settings: "Asetukset",
+  profile: "Profiili",
+  logout: "Kirjaudu ulos",
+  return: "Palaa",
+  introduction_video: "Esittelyvideo",
+  instructions: "Ohjeet",
+  change_picture: "Vaihda kuva",
+  change_cover: "Vaihda kehys",
+  change_introduction_video: "Vaihda esittelyvideo",
+  save_changes: "Tallenna muutokset",
 
   //ChangePassword
-  change_password: 'Vaihda salasana',
-  update_password: 'Päivitä salasana',
-  password_instructions: 'Laita nykyinen salasanasi, uusi salasanasi ja sitten paina päivitä salasana.',
-  current_password: 'Nykyinen salasanasi',
-  new_password: 'Uusi salasana',
-  confirm_password: 'Toista uusi salasana',
-  occupational: 'Työsuojelusäännöt',
+  change_password: "Vaihda salasana",
+  update_password: "Päivitä salasana",
+  password_instructions:
+    "Laita nykyinen salasanasi, uusi salasanasi ja sitten paina päivitä salasana.",
+  current_password: "Nykyinen salasanasi",
+  new_password: "Uusi salasana",
+  confirm_password: "Toista uusi salasana",
+  occupational: "Työsuojelusäännöt",
 
   //FeedbackForm
-  no_feedback: 'Ei palautteita',
+  no_feedback: "Ei palautteita",
 
   //weekdays
-  monday: 'Ma',
-  tuesday: 'Ti',
-  wednesday: 'Ke',
-  thursday: 'To',
-  friday: 'Pe',
+  monday: "Ma",
+  tuesday: "Ti",
+  wednesday: "Ke",
+  thursday: "To",
+  friday: "Pe",
 
-  w: '1vk',
-  mm: '1kk',
-  half_year: '6kk',
-  year: '1v',
+  w: "1vk",
+  mm: "1kk",
+  half_year: "6kk",
+  year: "1v",
 
-  jan: 'Tammikuu',
-  feb: 'Helmikuu',
-  mar: 'Maaliskuu',
-  apr: 'Huhtikuu',
-  may: 'Toukokuu',
-  jun: 'Kesäkuu',
-  jul: 'Heinäkuu',
-  aug: 'Elokuu',
-  sep: 'Syyskuu',
-  oct: 'Lokakuu',
-  nov: 'Marraskuu',
-  dec: 'Joulukuu',
+  jan: "Tammikuu",
+  feb: "Helmikuu",
+  mar: "Maaliskuu",
+  apr: "Huhtikuu",
+  may: "Toukokuu",
+  jun: "Kesäkuu",
+  jul: "Heinäkuu",
+  aug: "Elokuu",
+  sep: "Syyskuu",
+  oct: "Lokakuu",
+  nov: "Marraskuu",
+  dec: "Joulukuu",
 
   //ListAccordion
-  unfinished: 'Käsittelemätön',
+  unfinished: "Käsittelemätön",
 
   //Form
-  form_title: 'Lomakkeen otsikko',
-  add_question: 'Lisää kysymys',
-  form_editor: 'Lomakkeen muokkaus',
+  form_title: "Lomakkeen otsikko",
+  add_question: "Lisää kysymys",
+  form_editor: "Lomakkeen muokkaus",
 
-  finland: 'Suomi',
-  english: 'Englanti',
-  tyopoyta: 'Työpöytä',
-  tietopankki:'Tietopankki',
-  kirjaudu_sisaan:'Kirjaudu sisään',
+  finland: "Suomi",
+  english: "Englanti",
+  tyopoyta: "Työpöytä",
+  tietopankki: "Tietopankki",
+  kirjaudu_sisaan: "Kirjaudu sisään",
   //Joblist
-  limit_search: 'Rajaa hakua',
-  jobs_found: 'Työpaikkoja löytyi',
-  participants: 'Osallistujat',
-  company_sites: 'Yrityksen nettisivut',
-  enroll: 'Osallistu',
-  relocation: 'Muuttoapu',
+  limit_search: "Rajaa hakua",
+  jobs_found: "Työpaikkoja löytyi",
+  participants: "Osallistujat",
+  company_sites: "Yrityksen nettisivut",
+  enroll: "Osallistu",
+  relocation: "Muuttoapu",
 
   //jobmodal
-  send_agency_contract: ' Lähetä työkeikka pyyntö HP-yritykselle',
-  choose_agency: 'Valitse HP-yritys',
-  tell_position: ' Kerro haettava positio / ilmoituksen otsikko',
-  worker_count: 'Työntekijöiden lukumäärä',
+  send_agency_contract: " Lähetä työkeikka pyyntö HP-yritykselle",
+  choose_agency: "Valitse HP-yritys",
+  tell_position: " Kerro haettava positio / ilmoituksen otsikko",
+  worker_count: "Työntekijöiden lukumäärä",
 
   //PendingJobPosts
-  pending_jobs: 'Käsittelyssä olevat työkeikat',
-  work_task: 'Työkeikka',
-  workers_count: 'Työntekijöiden määrä',
-  start_date: 'Aloitus päivämäärä',
-  end_date: 'Lopetus päivämäärä',
-  created: 'Tehty',
-  agency_status: 'Vuokratyöfirman tila',
-  business_status: 'Käyttäjäyrityksen tila',
+  pending_jobs: "Käsittelyssä olevat työkeikat",
+  work_task: "Työkeikka",
+  workers_count: "Työntekijöiden määrä",
+  start_date: "Aloitus päivämäärä",
+  end_date: "Lopetus päivämäärä",
+  created: "Tehty",
+  agency_status: "Vuokratyöfirman tila",
+  business_status: "Käyttäjäyrityksen tila",
 
   //contractsFromBusiness
-  contracts_from_business: 'Käyttäjäyrityksiltä saapuneet sopimukset',
+  contracts_from_business: "Käyttäjäyrityksiltä saapuneet sopimukset",
 
-  choose_request: 'Valitse pyyntö',
-  business_website: 'Yrityksen nettisivut',
-  contract_form: 'Sopimuslomake',
+  choose_request: "Valitse pyyntö",
+  business_website: "Yrityksen nettisivut",
+  contract_form: "Sopimuslomake",
 
-  delete_option: 'Poista valinta',
-  add_an_option: 'Lisää valinta',
+  delete_option: "Poista valinta",
+  add_an_option: "Lisää valinta",
 
-  create_new_form: 'Tee uusi lomake',
-  create_contract: 'Tee sopimus',
+  create_new_form: "Tee uusi lomake",
+  create_contract: "Tee sopimus",
 
+  when_did_this_happen: "Milloin tämä tapahtui?",
 
-  when_did_this_happen: 'Milloin tämä tapahtui?',
+  read_more: "Lue lisää",
 
-  read_more: 'Lue lisää',
+  fill_business_contract_form: "Täytä käyttäjäyrityssopimus",
+  preview_business_contract_form: "Esikatsele käyttäjäyrityssopimusta",
 
-  fill_business_contract_form: 'Täytä käyttäjäyrityssopimus',
-  preview_business_contract_form: 'Esikatsele käyttäjäyrityssopimusta',
+  choose_workers: "Choose workers",
+  agency_description_here: "  HP-yrityksen kuvaus tulee tähän",
 
-  choose_workers: 'Choose workers',
-  agency_description_here: '  HP-yrityksen kuvaus tulee tähän',
+  edit_filled: "Muokkaa täytettyä yrityssopimusta",
 
-  edit_filled: 'Muokkaa täytettyä yrityssopimusta',
+  cooperation_send: "Lähetä yhteistyökutsu",
+  send_contract: "Lähetä sopimus",
 
-  cooperation_send: 'Lähetä yhteistyökutsu',
-  send_contract: 'Lähetä sopimus',
+  edit_contract_form: "Muokkaa yrityssopimusta",
+  contact_form_manager: "Sopimus muokkaus",
 
-  edit_contract_form: 'Muokkaa yrityssopimusta',
-  contact_form_manager: 'Sopimus muokkaus',
+  form_preview: "Esikatsele lomaketta",
 
-  form_preview: 'Esikatsele lomaketta',
+  create_job: "Tee työilmoitus",
 
-  create_job:'Tee työilmoitus',
-  
-  choose: 'Valitse'
+  choose: "Valitse",
 
-  //import { useTranslation } from 'react-i18next'
-  //const { t } = useTranslation()
+  category: "Kategoria",
+  details: "Tarkennukset",
+  requirements: "Vaatimukset",
+  duration: "Kesto",
+  add_job: "Lisää työpaikka",
 }
+
+//import { useTranslation } from 'react-i18next'
+//const { t } = useTranslation()
