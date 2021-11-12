@@ -2,7 +2,9 @@ export default {
   //home page
   information: 'Information',
   how_do_you_feel_today: 'How do you feel today?',
+  thank_you: "Feedback received!",
   home: 'Home',
+  thank_you_for_feedback: "Thank you for your feedback!",
 
   //login
   login_title: 'Log In',

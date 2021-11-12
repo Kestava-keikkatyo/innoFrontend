@@ -2,8 +2,10 @@ export default {
   //home page
   information: "Informaatio",
   how_do_you_feel_today: "Miten voit tänään?",
+  thank_you: "Palaute vastaanotettu!",
   home: "Etusivu",
-
+  thank_you_for_feedback: "Kiitos palautteestasi!",
+  
   //login
   login_title: "Kirjaudu sisään",
     email_label: "Sähköposti",

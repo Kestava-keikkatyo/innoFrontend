@@ -62,7 +62,7 @@ const useStyles = makeStyles({
      <Typography variant="h4" align="center">
         {t('thank_you')}
       </Typography>
-      <h2>{t('Kiitos vastauksesta!')}</h2>
+      <h2>{t('thank_you_for_feedback')}</h2>
       
       </>
   );    
