@@ -1,4 +1,4 @@
-import { File, Feeling, Form, roles, severity, Profile, Report } from "./types"
+import { File, Feeling, Form, roles, severity, Profile, Report, Worker } from "./types"
 import { AdminActionType } from "./types"
 
 /**
@@ -6,11 +6,11 @@ import { AdminActionType } from "./types"
  */
 
 export interface AllUsersState {
-  agencies: []
-  businesses: []
-  workers: []
-  agencyWorkers: []
-  admins: []
+  agencies: User[],
+  businesses: User[],
+  workers: User[],
+  agencyWorkers: User[],
+  admins: User[]
 }
 
 export const SET_ALL_AGENCIES = "SET_ALL_AGENCIES"
@@ -18,6 +18,7 @@ export const SET_ALL_BUSINESSES = "SET_ALL_BUSINESSES"
 export const SET_ALL_WORKERS = "SET_ALL_WORKERS"
 export const SET_AGENCY_WORKERS = "SET_AGENCY_WORKERS"
 export const SET_ALL_ADMINS = "SET_ALL_ADMINS"
+export const USER_DELETED = "USER_DELETED"
 
 interface SetAllAgenciesAction {
   type: typeof SET_ALL_AGENCIES
@@ -44,12 +45,18 @@ interface SetAllAdminsAction {
   data: any
 }
 
+interface UserDeleted {
+  type: typeof USER_DELETED,
+  data: {id: string, userType: string}
+}
+
 export type AllUsersActionTypes =
   | SetAllAgenciesAction
   | SetAllBusinessesAction
   | SetAllWorkersAction
   | SetAgencyWorkersAction
   | SetAllAdminsAction
+  | UserDeleted
 
 /**
  * Report state & action types
@@ -94,13 +101,13 @@ interface FetchWorkers {
   data: any
 }
 
-interface FetchUserCompanies {
-  type: typeof AdminActionType.USERCOMPANY_FETCH
+interface FetchBusinesses {
+  type: typeof AdminActionType.BUSINESSES_FETCH
   data: any
 }
 
-interface FetchAgencyCompanies {
-  type: typeof AdminActionType.USERCOMPANY_FETCH
+interface FetchAgencies {
+  type: typeof AdminActionType.AGENCIES_FETCH
   data: any
 }
 interface UpdateWorker {
@@ -112,8 +119,8 @@ interface UpdateAgency {
   data: any
 }
 
-interface UpdateUserCompany {
-  type: typeof AdminActionType.AGENCY_UPDATE
+interface UpdateBusiness {
+  type: typeof AdminActionType.BUSINESS_UPDATE
   data: any
 }
 
@@ -128,11 +135,11 @@ interface UpdateAdmin {
 }
 
 export type AdminAction =
-  | FetchAgencyCompanies
-  | FetchUserCompanies
+  FetchAgencies
+  | FetchBusinesses
   | FetchWorkers
   | UpdateAgency
-  | UpdateUserCompany
+  | UpdateBusiness
   | UpdateWorker
   | FetchAdmins
   | UpdateAdmin

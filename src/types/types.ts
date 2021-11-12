@@ -1,14 +1,15 @@
 import { compose } from "redux"
 
 export enum AdminActionType {
-  AGENCY_FETCH = "AGENCY_FETCH",
-  USERCOMPANY_FETCH = "USERCOMPANY_FETCH",
+  AGENCIES_FETCH = "AGENCIES_FETCH",
+  BUSINESSES_FETCH = "BUSINESSES_FETCH",
   WORKERS_FETCH = "WORKERS_FETCH",
   ADMINS_FETCH = "ADMINS_FETCH",
   AGENCY_UPDATE = "AGENCY_UPDATE",
-  USERCOMPANY_UPDATE = "USERCOMPANY_UPDATE",
+  BUSINESS_UPDATE = "BUSINESS_UPDATE",
   WORKER_UPDATE = "WORKER_UPDATE",
-  ADMIN_UPDATE = "ADMIN_UPDATE"
+  ADMIN_UPDATE = "ADMIN_UPDATE",
+  DELETE_USER ="DELETE_USER",
 }
 
 export enum roles {
@@ -47,7 +48,16 @@ export interface BreadcrumbLink {
 export interface User {
   name: string
   email: string
-  type: roles.Agency | roles.Business | roles.Business
+  type: roles.Agency | roles.Worker | roles.Business | roles.Admin
+}
+
+export interface Worker {
+  name: string
+  email: string
+  userType: roles
+  active:boolean
+  profile: {}
+
 }
 
 export interface SignUpUser extends User {

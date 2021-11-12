@@ -1,7 +1,7 @@
 import { Container } from '@material-ui/core';
 import LineChart from './LineChart';
 import PieChart from './PieChart';
-import MoodCategory from './feedbackCategory';
+import FeedbackCategory from './feedbackCategory';
 import Table from './Table';
 import WorkerStatisticsButtonRow from './WorkerStatisticsButtonRow';
 import WorkerStatisticsSummary from './WorkerStatisticsSummary';
@@ -32,7 +32,7 @@ const WorkerStatistics = () => {
       <WorkerStatisticsSummary />
       {feelings && feelings?.length > 0 ? (
         <>
-          <MoodCategory />
+          <FeedbackCategory />
           <LineChart />
           <PieChart />
           <Table />

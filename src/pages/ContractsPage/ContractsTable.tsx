@@ -11,6 +11,7 @@ import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
 import ContractsReceivedTable from './ContractsReceivedTable';
 import ContractsSendTable from './ContractsSendTable';
+import ContractsMadeTable from './ContractsMadeTable';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -271,10 +272,9 @@ const ContractsTable = (props: {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <ContractsSendTable
+                    <ContractsMadeTable
                       contracts={contracts[0]?.madeContracts?.businesses}
                       contractId={businessContract[0]._id}
-                      declineContract={declineContract}
                     />
                   </AccordionDetails>
                 </Accordion>
@@ -292,10 +292,9 @@ const ContractsTable = (props: {
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <ContractsSendTable
+                    <ContractsMadeTable
                       contracts={contracts[0]?.madeContracts?.workers}
                       contractId={businessContract[0]._id}
-                      declineContract={declineContract}
                     />
                   </AccordionDetails>
                 </Accordion>

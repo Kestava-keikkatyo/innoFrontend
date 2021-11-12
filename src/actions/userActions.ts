@@ -41,7 +41,10 @@ export const login = (credentials: Credentials, from: string) => {
       });
       saveUser(data);
 
-      history.push(from);
+      if (from) {
+        history.push(from);
+      }
+      
       dispatch(setAlert('login successful', severity.Success));
 
       const profile: any = await profileService.fetchProfileById(data.profileId);
@@ -62,7 +65,7 @@ export const login = (credentials: Credentials, from: string) => {
  * @param {Object} credentials - Admin's email and password
  * @param {Object} from - User redirection path
  */
-export const adminLogin = (credentials: Credentials, from: string) => {
+ export const adminLogin = (credentials: Credentials, from: string) => {
   return async (dispatch: any) => {
     dispatch({
       type: USER_REQUEST,

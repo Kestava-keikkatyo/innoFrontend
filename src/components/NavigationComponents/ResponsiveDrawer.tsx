@@ -18,7 +18,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { roles } from '../../types/types';
 import { IRootState } from '../../utils/store';
 import logo from '../../assets/keikkakaveri_logo.png';
-import { useTranslation } from 'react-i18next';
+import GroupsIcon from '@material-ui/icons/Group';
+
+import { useTranslation } from 'react-i18next'
 import TranslateIcon from '@material-ui/icons/Translate';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
@@ -230,6 +232,28 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                   <ErrorOutlineIcon />
                 </ListItemIcon>
                 <ListItemText primary={t('report')} />
+              </ListItem>
+              <Divider />
+            </>
+          )}
+          {role === roles.Admin && (
+            <>
+              <ListItem button component={Link} to="/profileList">
+                <ListItemIcon>
+                  <GroupsIcon />
+                </ListItemIcon>
+                <ListItemText primary={t("Profile List")} />
+              </ListItem>
+              <Divider />
+            </>
+          )}
+          {role === roles.Admin && (
+            <>
+              <ListItem button component={Link} to="/userList">
+                <ListItemIcon>
+                  <GroupsIcon />
+                </ListItemIcon>
+                <ListItemText primary={t("User List")} />
               </ListItem>
               <Divider />
             </>
