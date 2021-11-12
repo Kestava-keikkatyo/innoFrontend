@@ -11,7 +11,7 @@ import { updateFeeling } from '../../../actions/feelingActions';
 import { useTranslation } from 'react-i18next';
 import FileUploader from '../../../components/FileUploader';
 
-const MoodStep: React.FC = () => {
+const MoodStepEnd: React.FC = () => {
 
 const { data } = useSelector((state: IRootState) => state.user);
 const { t } = useTranslation();
@@ -59,47 +59,13 @@ const useStyles = makeStyles({
 
   return (
     <>
-      <Typography variant="h4" align="center">
-        {t('how_do_you_feel_today')}
+     <Typography variant="h4" align="center">
+        {t('thank_you')}
       </Typography>
-
-      <Grid container className="mood-step-one" justify="center">
-        <Grid item className={classes.flexCenter} xs={2}>
-          <SentimentVeryDissatisfiedIcon
-            onClick={() => updateMood(0)}
-            className={`${classes.clickableIcon} ${
-              clicked[0] ? 'mood-icon' : null
-            }`}
-          />
-        </Grid>
-        <Grid item className={classes.flexCenter} xs={2}>
-          <SentimentSatisfiedIcon
-            onClick={() => updateMood(2)}
-            className={`${classes.clickableIcon} ${
-              clicked[2] ? 'mood-icon' : null
-            }`}
-          />
-        </Grid>
-        <Grid item className={classes.flexCenter} xs={2}>
-          <SentimentVerySatisfiedIcon
-            onClick={() => updateMood(4)}
-            className={`${classes.clickableIcon} ${
-              clicked[4] ? 'mood-icon' : null
-            }`}
-          />
-        </Grid>
-      </Grid>
-        <Typography>{t('Kirjoita kommentti')}</Typography>
-        <TextField
-            onChange={handleChange}
-            placeholder={t('tell_feelings')}
-            multiline
-            rows={4}
-            variant="outlined"
-        />
-        <FileUploader name={t('upload_file')} handleFile={() => ''} accept="image/*" />
-    </>
+      <h2>{t('Kiitos vastauksesta!')}</h2>
+      
+      </>
   );    
   
 }
-export default MoodStep;
+export default MoodStepEnd;

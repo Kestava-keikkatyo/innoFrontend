@@ -22,8 +22,7 @@ import { useTranslation } from 'react-i18next';
 
 import { IRootState } from '../../../utils/store';
 import { roles } from '../../../types/types';
-import MoodStep from './MoodStep';
-import MoodStepEnd from './MoodStepEnd';
+
   
 
 
@@ -150,9 +149,9 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
   const getStepContent = (step: any) => {
     switch (step) {
       case 0:
-        return <MoodStep />;
-      case 2:
-        return <MoodStepEnd />;
+        return <MoodStepOne />;
+      case 1:
+        return <MoodStepThree />;
       default:
         return <></>;
     }
@@ -160,12 +159,11 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
 
 
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 2);
-    
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
   const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 2);
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
   const handleReset = () => {
@@ -175,9 +173,7 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
 
   const handleFinnish = () => {
     handleSubmit();
-   // setActiveStep(steps.length);
-    setActiveStep((prevActiveStep) => prevActiveStep + 2);
-    
+    setActiveStep(steps.length);
   };
 
   const location = useLocation();
@@ -191,7 +187,7 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
           : undefined
       }
     >
-    {/*  <Typography variant="h4" align="center">
+      <Typography variant="h4" align="center">
         {t('how_do_you_feel_today')}
       </Typography>
       <Stepper
@@ -204,18 +200,16 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
             <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
           </Step>
         ))}
-        </Stepper> */}
+      </Stepper>
       <div>
         {activeStep === steps.length ? (
           <div>
-            <br/>
-
-        {/*    <Typography className={classes.instructions}>
+            <Typography className={classes.instructions}>
               All steps completed - you&apos;re finished
             </Typography>
             <Button onClick={handleReset} className={classes.button}>
               {t('reset')}
-            </Button> */}
+            </Button>
           </div>
         ) : (
           <Container maxWidth="md">
@@ -223,25 +217,29 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
               {getStepContent(activeStep)}
             </div>
             <div style={{ marginTop: 24, textAlign: 'center' }}>
-              {/*  <Button
+              <Button
                 disabled={activeStep === 0}
                 onClick={handleBack}
                 className={classes.button}
               >
                 {t('back')}
               </Button>
-            */}
-              {activeStep === steps.length - 1 ? (
-              <p> </p>
 
-              
-              ) : (
+              {activeStep === steps.length - 1 ? (
                 <Button
                   variant="contained"
                   onClick={handleFinnish}
                   className={`${classes.button} ${classes.primary}`}
                 >
                   {t('finish')}
+                </Button>
+              ) : (
+                <Button
+                  variant="contained"
+                  onClick={handleNext}
+                  className={`${classes.button} ${classes.primary}`}
+                >
+                  {t('next')}
                 </Button>
               )}
             </div>
@@ -253,17 +251,3 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
 };
 
 export default MoodForm;
-
-
-/*
-                <Button
-                  variant="contained"
-                  onClick={handleFinnish}
-                  className={`${classes.button} ${classes.primary}`}
-                >
-              {t('finish')}
-              </Button> 
-
-
-
-*/
