@@ -94,7 +94,7 @@ export default function CustomizedTables() {
             id="panel1a-header"
           >
             <Typography gutterBottom variant="h5">
-              {t('mood_category')}
+              {t('feedback_category')}
             </Typography>
           </AccordionSummary>
 

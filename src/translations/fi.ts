@@ -5,6 +5,7 @@ export default {
   thank_you: "Fiilisi on vastaanotettu!",
   home: "Etusivu",
   thank_you_for_feedback: "Kiitos palautteestasi!",
+  write_a_comment: "Kirjoita kommentti",
   
   //login
   login_title: "Kirjaudu sisään",
@@ -312,11 +313,12 @@ export default {
   business_status: 'Käyttäjäyrityksen tila',
 
   //feedbackCategory
+  feedback_category: 'Palautekategoria',
   category0: 'Kategoriat',
   description0: 'Kuvaus',
-  description1 : 'Olet lisäänyt vähän fiiliksistäsi.',
-  description2 : 'Olet lisäänyt kohtuullisesti fiiliksistäsi.',
-  description3 : 'Olet lisäänyt riittävästi fiiliksistäsi',
+  description1 : 'Olet lisännyt vähän fiiliksistäsi.',
+  description2 : 'Olet lisännyt kohtuullisesti fiiliksistäsi.',
+  description3 : 'Olet lisännyt riittävästi fiiliksistäsi',
   description4 : 'Fiiliksisi on tosi hyvä',
   description5 : 'Fiiliksisi on erittäin hyvä',
 

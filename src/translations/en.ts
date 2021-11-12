@@ -5,6 +5,7 @@ export default {
   thank_you: "Feeling received!",
   home: 'Home',
   thank_you_for_feedback: "Thank you for your feedback!",
+  write_a_comment:"Write a comment",
 
   //login
   login_title: 'Log In',
@@ -310,6 +311,7 @@ mood_category:"Mood Category",
   business_status: 'Business status',
 
     //feedbackCategory
+    feedback_category: 'Feedback category',
     category0: 'Category',
     description0: 'Description',
     description1 : 'You have added a little bit of your feeling.',

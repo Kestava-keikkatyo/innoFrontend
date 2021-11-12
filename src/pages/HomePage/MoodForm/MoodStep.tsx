@@ -89,7 +89,7 @@ const useStyles = makeStyles({
           />
         </Grid>
       </Grid>
-        <Typography>{t('Kirjoita kommentti')}</Typography>
+        <Typography>{t('write_a_comment')}</Typography>
         <TextField
             onChange={handleChange}
             placeholder={t('tell_feelings')}
