@@ -52,6 +52,9 @@ export default {
   active: 'Active',
 
 
+  //Mood index page
+  entry_mood: "Add mood",
+
   //profile page
   profiles: 'Profiles',
   search_by_name: 'Search by name...',
@@ -60,6 +63,9 @@ export default {
 
   //Line chart
   mood_history: 'Mood history',
+
+//mood_category
+mood_category:"Mood Category",
 
   //Pie chaert
   mood_overall: 'Mood overall',

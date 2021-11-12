@@ -51,6 +51,12 @@ export default {
   history: 'Historia',
   active: 'Active',
 
+
+  //Mood index page
+  entry_mood: "Lisää fiilis",
+
+
+
   //profile page
   profiles: "Profiilit",
   search_by_name: "Etsi nimellä...",
@@ -58,7 +64,11 @@ export default {
   no_results: "Ei tuloksia",
 
   //Line chart
-  mood_history: "Fiilis historia",
+  mood_history: "Fiilishistoria",
+
+
+  //mood_category
+  mood_category:"Fiiliskategoria",
 
   //Pie chaert
   mood_overall: "Kokonaiskatsaus",
@@ -76,7 +86,7 @@ export default {
   image: "Kuva",
 
   //Agencystaistics
-  mood_stats: "Fiilis tilastot",
+  mood_stats: "Fiilistilastot",
 
   //Report form
   report_handler: "Raportti",
@@ -143,8 +153,8 @@ export default {
   feeling_entry: "Lisää fiilis",
 
   //AgencyStatisticsSummary
-  average: "Keskiarvo",
-  total: "Yhteensä",
+  average: "Tilastollinen keskiarvo",
+  total: "Palautteiden määrä yhteensä",
 
   //WorkerStatisticsSummary,
   current_mood: "Nykyinen fiilis",

@@ -30,7 +30,7 @@ const WorkerStatisticsButtonRow = () => {
               color="primary"
               onClick={() => setIsOpen(!isOpen)}
             >
-              <AddIcon /> {t('entry')}
+              <AddIcon /> {t('entry_mood')}
             </Button>
           </div>
         </Grid>
