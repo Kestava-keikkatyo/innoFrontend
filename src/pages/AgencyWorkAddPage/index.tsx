@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
-import { Button, TextField, Typography } from "@material-ui/core"
+import { Button, Container, TextField, Typography } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import { useDispatch, useSelector } from "react-redux"
 import { postWorkTask } from "../../actions/workAddAction"
@@ -29,7 +29,7 @@ const AgencyWorkAdd: React.FC<any> = () => {
 
   // TODO: date pickers for start&end&appyingEnd
   const addWork = (e: any) => {
-    let workTask = {
+    const workTask = {
       _id: "604021e581a962681088565e",
       agencyId: currentProfile._id,
       jobTitle: title,
@@ -50,145 +50,155 @@ const AgencyWorkAdd: React.FC<any> = () => {
   }
 
   return (
-    <div className={classes.headline}>
-      <Typography variant="h5">{t("add_job ")}</Typography>
-      <div>
-        <form onSubmit={addWork}>
-          <Typography className={classes.description}>{t("title")}</Typography>
-          <TextField
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            fullWidth
-            id="standard-full-width"
-            style={{ maxWidth: "40%" }}
-            name="name"
-          />
-          <Typography className={classes.description}>
-            {t("category")}
-          </Typography>
-          <TextField
-            value={jobCategory}
-            onChange={(e) => setJobCategory(e.target.value)}
-            fullWidth
-            id="standard-full-width"
-            style={{ maxWidth: "40%" }}
-            name="name"
-          />
-          <Typography className={classes.description}>
-            {t("details")}
-          </Typography>
-          <TextField
-            value={details}
-            onChange={(e) => setDetails(e.target.value)}
-            fullWidth
-            style={{ maxWidth: "40%" }}
-            id="outlined-multiline-static"
-            multiline
-            variant="outlined"
-            rows={4}
-          />
-          <Typography className={classes.description}>
-            {t("requirements")}
-          </Typography>
-          <TextField
-            value={requirements}
-            onChange={(e) => setRequirements(e.target.value)}
-            fullWidth
-            style={{ maxWidth: "40%" }}
-            id="outlined-multiline-static"
-            multiline
-            variant="outlined"
-            rows={4}
-          />
-          <Typography className={classes.description}>
-            {t("worker_count")}
-          </Typography>
-          <TextField
-            id="outlined-number"
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            value={numberOfNeededWorkers}
-            inputProps={{ min: 0 }}
-            variant="standard"
-          />
-          <Typography className={classes.description}>
-            {t("duration")}
-          </Typography>
-          <TextField
-            className={classes.datesLeft}
-            id="startDate"
-            label="Start date"
-            type="date"
-            value={startingDate}
-            onChange={(e) => setStartingDate(e.target.value)}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-          <TextField
-            className={classes.datesMiddle}
-            id="endDate"
-            label="End date"
-            type="date"
-            value={endingDate}
-            onChange={(e) => setEndingDate(e.target.value)}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-          <TextField
-            className={classes.datesRight}
-            id="endDate"
-            label="Application ends"
-            type="date"
-            value={applyingEndsAt}
-            onChange={(e) => setApplyingEndsAt(e.target.value)}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-          <div className={classes.location}>
+    <Container>
+      <div className={classes.headline}>
+        <Typography variant="h5">{t("add_job")}</Typography>
+        <div>
+          <form onSubmit={addWork}>
+            <Typography className={classes.description}>
+              {t("title")}
+            </Typography>
             <TextField
-              className={classes.streetAddress}
-              label="Street address"
+              value={title}
               onChange={(e) => setTitle(e.target.value)}
               fullWidth
               id="standard-full-width"
               style={{ maxWidth: "40%" }}
               name="name"
             />
+            <Typography className={classes.description}>
+              {t("category")}
+            </Typography>
+            <TextField
+              value={jobCategory}
+              onChange={(e) => setJobCategory(e.target.value)}
+              fullWidth
+              id="standard-full-width"
+              style={{ maxWidth: "40%" }}
+              name="name"
+            />
+            <Typography className={classes.description}>
+              {t("details")}
+            </Typography>
+            <TextField
+              value={details}
+              onChange={(e) => setDetails(e.target.value)}
+              fullWidth
+              style={{ maxWidth: "40%" }}
+              id="outlined-multiline-static"
+              multiline
+              variant="outlined"
+              rows={4}
+            />
+            <Typography className={classes.description}>
+              {t("requirements")}
+            </Typography>
+            <TextField
+              value={requirements}
+              onChange={(e) => setRequirements(e.target.value)}
+              fullWidth
+              style={{ maxWidth: "40%" }}
+              id="outlined-multiline-static"
+              multiline
+              variant="outlined"
+              rows={4}
+            />
+            <Typography className={classes.description}>
+              {t("worker_count")}
+            </Typography>
+            <TextField
+              id="outlined-number"
+              type="number"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              value={numberOfNeededWorkers}
+              inputProps={{ min: 0 }}
+              variant="standard"
+              onChange={(e) =>
+                setNumberOfNeededWorkers(parseInt(e.target.value))
+              }
+            />
+            <Typography className={classes.description}>
+              {t("duration")}
+            </Typography>
+            <TextField
+              className={classes.datesLeft}
+              id="startDate"
+              label="Start date"
+              type="date"
+              value={startingDate}
+              onChange={(e) => setStartingDate(e.target.value)}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+            <TextField
+              className={classes.datesMiddle}
+              id="endDate"
+              label="End date"
+              type="date"
+              value={endingDate}
+              onChange={(e) => setEndingDate(e.target.value)}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+            <TextField
+              className={classes.datesRight}
+              id="endDate"
+              label="Application ends"
+              type="date"
+              value={applyingEndsAt}
+              onChange={(e) => setApplyingEndsAt(e.target.value)}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+            <div className={classes.location}>
+              <TextField
+                className={classes.streetAddress}
+                value={currentProfile.streetAddress}
+                label="Street address"
+                onChange={(e) => setTitle(e.target.value)}
+                fullWidth
+                id="standard-full-width"
+                style={{ maxWidth: "40%" }}
+                name="name"
+              />
 
-            <TextField
-              label="City"
-              className={classes.city}
-              onChange={(e) => setTitle(e.target.value)}
-              fullWidth
-              id="standard-full-width"
-              name="name"
-            />
-            <TextField
-              label="Zip code"
-              className={classes.zipCode}
-              onChange={(e) => setTitle(e.target.value)}
-              fullWidth
-              id="standard-full-width"
-              name="name"
-            />
+              <TextField
+                label="City"
+                value={currentProfile.city}
+                className={classes.city}
+                onChange={(e) => setTitle(e.target.value)}
+                fullWidth
+                id="standard-full-width"
+                name="name"
+              />
+              <TextField
+                value={currentProfile.zipCode}
+                label="Zip code"
+                className={classes.zipCode}
+                onChange={(e) => setTitle(e.target.value)}
+                fullWidth
+                id="standard-full-width"
+                name="name"
+              />
+            </div>
+          </form>
+          <div>
+            <Button
+              className={classes.button}
+              variant="outlined"
+              onClick={addWork}
+            >
+              {t("submit")}
+            </Button>
           </div>
-        </form>
-        <div>
-          <Button
-            className={classes.button}
-            variant="outlined"
-            onClick={addWork}
-          >
-            {t("submit")}
-          </Button>
         </div>
       </div>
-    </div>
+    </Container>
   )
 }
 
