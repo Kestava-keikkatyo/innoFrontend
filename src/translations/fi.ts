@@ -51,12 +51,15 @@ export default {
   entry: "Lisää",
   history: "Historia",
   active: "Active",
+<<<<<<< HEAD
 
 
   //Mood index page
   entry_mood: "Lisää fiilis",
 
 
+=======
+>>>>>>> fd2a8c4a120ad2ac4fe1ea9bc1175ead023c0f9b
 
   //profile page
   profiles: "Profiilit",
@@ -313,6 +316,7 @@ export default {
   created: "Tehty",
   agency_status: "Vuokratyöfirman tila",
   business_status: "Käyttäjäyrityksen tila",
+<<<<<<< HEAD
 
   //feedbackCategory
   feedback_category: 'Palautekategoria',
@@ -323,6 +327,8 @@ export default {
   description3 : 'Olet lisännyt riittävästi fiiliksistäsi',
   description4 : 'Fiiliksisi on tosi hyvä',
   description5 : 'Fiiliksisi on erittäin hyvä',
+=======
+>>>>>>> fd2a8c4a120ad2ac4fe1ea9bc1175ead023c0f9b
 
   //contractsFromBusiness
   contracts_from_business: "Käyttäjäyrityksiltä saapuneet sopimukset",
