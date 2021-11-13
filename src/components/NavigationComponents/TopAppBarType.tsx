@@ -14,36 +14,36 @@ import {
   useMediaQuery,
   useTheme,
   Button,
-} from '@material-ui/core';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import MenuIcon from '@material-ui/icons/Menu';
-import clsx from 'clsx';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import navConstants from '../../constants/navConstants';
-import { TopAppBarProps } from '../../types/props';
-import { IRootState } from '../../utils/store';
-import ActiveLastBreadcrumb from '../ActiveLastBreadcrumb';
-import { useHistory } from 'react-router-dom';
-import { fetchNotifications } from '../../actions/notificationsActions';
-import Notifications from './Notifications';
-import { fetchProfileById } from '../../actions/profileActions';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import SettingsIcon from '@material-ui/icons/Settings';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import { bindTrigger, bindPopover } from 'material-ui-popup-state';
-import { usePopupState } from 'material-ui-popup-state/hooks';
-import { logout } from '../../actions/userActions';
-import { useTranslation } from 'react-i18next';
-import { roles } from '../../types/types';
-import fi1 from "../../components/NavigationComponents/fi1.png";
-import us1 from "../../components/NavigationComponents/us1.png";
+} from "@material-ui/core"
+import NotificationsIcon from "@material-ui/icons/Notifications"
+import MenuIcon from "@material-ui/icons/Menu"
+import clsx from "clsx"
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import navConstants from "../../constants/navConstants"
+import { TopAppBarProps } from "../../types/props"
+import { IRootState } from "../../utils/store"
+import ActiveLastBreadcrumb from "../ActiveLastBreadcrumb"
+import { useHistory } from "react-router-dom"
+import { fetchNotifications } from "../../actions/notificationsActions"
+import Notifications from "./Notifications"
+import { fetchProfileById } from "../../actions/profileActions"
+import AccountCircleIcon from "@material-ui/icons/AccountCircle"
+import SettingsIcon from "@material-ui/icons/Settings"
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
+import ExitToAppIcon from "@material-ui/icons/ExitToApp"
+import { bindTrigger, bindPopover } from "material-ui-popup-state"
+import { usePopupState } from "material-ui-popup-state/hooks"
+import { logout } from "../../actions/userActions"
+import { useTranslation } from "react-i18next"
+import { roles } from "../../types/types"
+import fi1 from "../../components/NavigationComponents/fi1.png"
+import us1 from "../../components/NavigationComponents/us1.png"
 
 const LangMenuDropDown = () => {
   // const [anchorEl, setAnchorEl] = React.useState(null);
   // const classes = useStyles();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation()
 
   // const handleClick = (event: any) => {
   //   setAnchorEl(event.currentTarget);
@@ -51,9 +51,9 @@ const LangMenuDropDown = () => {
 
   const changeLanguage = (code: any) => {
     // setAnchorEl(null);
-    localStorage.setItem('i18nextLng', code);
-    window.location.reload();
-  };
+    localStorage.setItem("i18nextLng", code)
+    i18n.changeLanguage(code)
+  }
 
   // const handleClose = () => {
   //   setAnchorEl(null);
@@ -62,19 +62,24 @@ const LangMenuDropDown = () => {
   return (
     <>
       <div className="drawer-top">
-        <Button style={{position:"absolute", left:"-7rem", top:"23%"}} onClick={() => changeLanguage('fi')}>
-          <img src={fi1} style={{width:"30px"}}/>
+        <Button
+          style={{ position: "absolute", left: "-7rem", top: "23%" }}
+          onClick={() => changeLanguage("fi")}
+        >
+          <img src={fi1} style={{ width: "30px" }} />
         </Button>
-        <Button style={{position:"absolute", left:"-4rem", top:"23%"}} onClick={() => changeLanguage('en')}>
-          <img src={us1} style={{width:"30px"}}/>
+        <Button
+          style={{ position: "absolute", left: "-4rem", top: "23%" }}
+          onClick={() => changeLanguage("en")}
+        >
+          <img src={us1} style={{ width: "30px" }} />
         </Button>
       </div>
     </>
-  );
-};
+  )
+}
 
-
-const drawerWidth = navConstants.DRAWER_WIDTH;
+const drawerWidth = navConstants.DRAWER_WIDTH
 /**
  * @component
  * @desc This will be probably deleted in future version.
@@ -122,65 +127,68 @@ const drawerWidth = navConstants.DRAWER_WIDTH;
  */
 
 const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
-  const { t } = useTranslation();
-  const classes = useStyles();
-  const { data } = useSelector((state: IRootState) => state.user);
+  const { t } = useTranslation()
+  const classes = useStyles()
+  const { data } = useSelector((state: IRootState) => state.user)
 
   const { notifications } = useSelector(
     (state: IRootState) => state.notifications
-  );
+  )
 
-  const currentProfile: any = useSelector(
+  const currentProfil: any = useSelector(
     (state: any) => state.profile.currentProfile
-  );
+  )
+  const currentProfile: any = React.useMemo(
+    () => currentProfil,
+    [currentProfil]
+  )
 
-  const dispatch = useDispatch();
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('sm'));
+  const dispatch = useDispatch()
+  const theme = useTheme()
+  const matches = useMediaQuery(theme.breakpoints.down("sm"))
 
   // popupState for user popup menu
   // https://www.npmjs.com/package/material-ui-popup-state
   const popupState = usePopupState({
-    variant: 'popper',
-    popupId: 'userProfilePopper',
-  });
+    variant: "popper",
+    popupId: "userProfilePopper",
+  })
 
   useEffect(() => {
-    dispatch(fetchProfileById(data.profileId));
-    dispatch(fetchNotifications());
+    dispatch(fetchProfileById(data.profileId))
+    dispatch(fetchNotifications())
     setInterval(() => {
-      dispatch(fetchNotifications());
-    }, 30000);
-  }, [dispatch, data.profileId]);
+      dispatch(fetchNotifications())
+    }, 30000)
+  }, [dispatch, data.profileId])
 
-  const [anchorElNotifications, setAnchorElNotifications] =
-    React.useState(null);
-  const open2 = Boolean(anchorElNotifications);
+  const [anchorElNotifications, setAnchorElNotifications] = React.useState(null)
+  const open2 = Boolean(anchorElNotifications)
 
   const handleNotifications = (event: any) => {
-    setAnchorElNotifications(event.currentTarget);
-  };
+    setAnchorElNotifications(event.currentTarget)
+  }
 
   const handleCloseNotifications = () => {
-    setAnchorElNotifications(null);
-  };
+    setAnchorElNotifications(null)
+  }
 
-  const history = useHistory();
+  const history = useHistory()
 
   const handleProfileClick = () => {
-    popupState.close();
-    history.push('/profile');
-  };
+    popupState.close()
+    history.push("/profile")
+  }
 
   const handleSettingsClick = () => {
-    popupState.close();
-    history.push('/settings');
-  };
+    popupState.close()
+    history.push("/settings")
+  }
 
   const handleLogout = () => {
-    popupState.close();
-    dispatch(logout());
-  };
+    popupState.close()
+    dispatch(logout())
+  }
 
   const appWorker = (
     <AppBar position="fixed" elevation={0} className={clsx(classes.appWorker)}>
@@ -223,12 +231,12 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
             anchorEl={anchorElNotifications}
             onClose={handleCloseNotifications}
             anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
+              vertical: "bottom",
+              horizontal: "left",
             }}
             transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
+              vertical: "top",
+              horizontal: "right",
             }}
           >
             {notifications.unread_messages ? (
@@ -250,12 +258,12 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
               {...bindTrigger(popupState)}
             >
               <Typography className={classes.username}>
-                {data.name || 'Loading'}
+                {data.name || "Loading"}
               </Typography>
               <Avatar
-                style={{ margin: 'auto' }}
+                style={{ margin: "auto" }}
                 className={classes.avatarWorker}
-                src={currentProfile.profilePicture || ''}
+                src={currentProfile.profilePicture || ""}
                 alt="profilePicture"
               />
               <ExpandMoreIcon />
@@ -263,20 +271,20 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
             <Popover
               {...bindPopover(popupState)}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'center',
+                vertical: "bottom",
+                horizontal: "center",
               }}
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'center',
+                vertical: "top",
+                horizontal: "center",
               }}
             >
               <Box className={classes.userPopover}>
                 <Grid style={{ marginTop: 16 }}>
                   <Avatar
-                    style={{ margin: 'auto' }}
+                    style={{ margin: "auto" }}
                     className={classes.popoverAvatarWorker}
-                    src={currentProfile.profilePicture || ''}
+                    src={currentProfile.profilePicture || ""}
                     alt="profilePicture"
                   />
                   <Typography
@@ -301,16 +309,16 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
                 >
                   <AccountCircleIcon
                     style={{ fontSize: 24, marginRight: 10 }}
-                  />{' '}
-                  {t('profile')}
+                  />{" "}
+                  {t("profile")}
                 </MenuItem>
                 <MenuItem onClick={handleSettingsClick}>
-                  <SettingsIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
-                  {t('settings')}
+                  <SettingsIcon style={{ fontSize: 24, marginRight: 10 }} />{" "}
+                  {t("settings")}
                 </MenuItem>
                 <MenuItem onClick={handleLogout}>
-                  <ExitToAppIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
-                  {t('logout')}
+                  <ExitToAppIcon style={{ fontSize: 24, marginRight: 10 }} />{" "}
+                  {t("logout")}
                 </MenuItem>
               </Box>
             </Popover>
@@ -318,10 +326,10 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
         </div>
       </Toolbar>
     </AppBar>
-  );
+  )
 
-  if (data.role === 'worker') {
-    return <div>{appWorker}</div>;
+  if (data.role === "worker") {
+    return <div>{appWorker}</div>
   }
 
   const appAgency = (
@@ -365,12 +373,12 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
             anchorEl={anchorElNotifications}
             onClose={handleCloseNotifications}
             anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
+              vertical: "bottom",
+              horizontal: "left",
             }}
             transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
+              vertical: "top",
+              horizontal: "right",
             }}
           >
             {notifications.unread_messages ? (
@@ -392,12 +400,12 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
               {...bindTrigger(popupState)}
             >
               <Typography className={classes.username}>
-                {data.name || 'Loading'}
+                {data.name || "Loading"}
               </Typography>
               <Avatar
-                style={{ margin: 'auto' }}
+                style={{ margin: "auto" }}
                 className={classes.avatarAgency}
-                src={currentProfile.profilePicture || ''}
+                src={currentProfile.profilePicture || ""}
                 alt="profilePicture"
               />
               <ExpandMoreIcon />
@@ -405,20 +413,20 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
             <Popover
               {...bindPopover(popupState)}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'center',
+                vertical: "bottom",
+                horizontal: "center",
               }}
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'center',
+                vertical: "top",
+                horizontal: "center",
               }}
             >
               <Box className={classes.userPopover}>
                 <Grid style={{ marginTop: 16 }}>
                   <Avatar
-                    style={{ margin: 'auto' }}
+                    style={{ margin: "auto" }}
                     className={classes.popoverAvatarAgency}
-                    src={currentProfile.profilePicture || ''}
+                    src={currentProfile.profilePicture || ""}
                     alt="profilePicture"
                   />
                   <Typography
@@ -443,16 +451,16 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
                 >
                   <AccountCircleIcon
                     style={{ fontSize: 24, marginRight: 10 }}
-                  />{' '}
-                  {t('profile')}
+                  />{" "}
+                  {t("profile")}
                 </MenuItem>
                 <MenuItem onClick={handleSettingsClick}>
-                  <SettingsIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
-                  {t('settings')}
+                  <SettingsIcon style={{ fontSize: 24, marginRight: 10 }} />{" "}
+                  {t("settings")}
                 </MenuItem>
                 <MenuItem onClick={handleLogout}>
-                  <ExitToAppIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
-                  {t('logout')}
+                  <ExitToAppIcon style={{ fontSize: 24, marginRight: 10 }} />{" "}
+                  {t("logout")}
                 </MenuItem>
               </Box>
             </Popover>
@@ -460,10 +468,10 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
         </div>
       </Toolbar>
     </AppBar>
-  );
+  )
 
-  if (data.role === 'agency') {
-    return <div>{appAgency}</div>;
+  if (data.role === "agency") {
+    return <div>{appAgency}</div>
   }
 
   const appBusiness = (
@@ -511,12 +519,12 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
             anchorEl={anchorElNotifications}
             onClose={handleCloseNotifications}
             anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
+              vertical: "bottom",
+              horizontal: "left",
             }}
             transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
+              vertical: "top",
+              horizontal: "right",
             }}
           >
             {notifications.unread_messages ? (
@@ -538,12 +546,12 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
               {...bindTrigger(popupState)}
             >
               <Typography className={classes.username}>
-                {data.name || 'Loading'}
+                {data.name || "Loading"}
               </Typography>
               <Avatar
-                style={{ margin: 'auto' }}
+                style={{ margin: "auto" }}
                 className={classes.avatarBusiness}
-                src={currentProfile.profilePicture || ''}
+                src={currentProfile.profilePicture || ""}
                 alt="profilePicture"
               />
               <ExpandMoreIcon />
@@ -551,20 +559,20 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
             <Popover
               {...bindPopover(popupState)}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'center',
+                vertical: "bottom",
+                horizontal: "center",
               }}
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'center',
+                vertical: "top",
+                horizontal: "center",
               }}
             >
               <Box className={classes.userPopover}>
                 <Grid style={{ marginTop: 16 }}>
                   <Avatar
-                    style={{ margin: 'auto' }}
+                    style={{ margin: "auto" }}
                     className={classes.popoverAvatarBusiness}
-                    src={currentProfile.profilePicture || ''}
+                    src={currentProfile.profilePicture || ""}
                     alt="profilePicture"
                   />
                   <Typography
@@ -589,16 +597,16 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
                 >
                   <AccountCircleIcon
                     style={{ fontSize: 24, marginRight: 10 }}
-                  />{' '}
-                  {t('profile')}
+                  />{" "}
+                  {t("profile")}
                 </MenuItem>
                 <MenuItem onClick={handleSettingsClick}>
-                  <SettingsIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
-                  {t('settings')}
+                  <SettingsIcon style={{ fontSize: 24, marginRight: 10 }} />{" "}
+                  {t("settings")}
                 </MenuItem>
                 <MenuItem onClick={handleLogout}>
-                  <ExitToAppIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
-                  {t('logout')}
+                  <ExitToAppIcon style={{ fontSize: 24, marginRight: 10 }} />{" "}
+                  {t("logout")}
                 </MenuItem>
               </Box>
             </Popover>
@@ -606,10 +614,10 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
         </div>
       </Toolbar>
     </AppBar>
-  );
+  )
 
-  if (data.role === 'business') {
-    return <div>{appBusiness}</div>;
+  if (data.role === "business") {
+    return <div>{appBusiness}</div>
   }
 
   return (
@@ -653,12 +661,12 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
             anchorEl={anchorElNotifications}
             onClose={handleCloseNotifications}
             anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
+              vertical: "bottom",
+              horizontal: "left",
             }}
             transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
+              vertical: "top",
+              horizontal: "right",
             }}
           >
             {notifications.unread_messages ? (
@@ -680,12 +688,12 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
               {...bindTrigger(popupState)}
             >
               <Typography className={classes.username}>
-                {data.name || 'Loading'}
+                {data.name || "Loading"}
               </Typography>
               <Avatar
-                style={{ margin: 'auto' }}
+                style={{ margin: "auto" }}
                 className={classes.avatar}
-                src={currentProfile.profilePicture || ''}
+                src={currentProfile.profilePicture || ""}
                 alt="profilePicture"
               />
               <ExpandMoreIcon />
@@ -693,20 +701,20 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
             <Popover
               {...bindPopover(popupState)}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'center',
+                vertical: "bottom",
+                horizontal: "center",
               }}
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'center',
+                vertical: "top",
+                horizontal: "center",
               }}
             >
               <Box className={classes.userPopover}>
                 <Grid style={{ marginTop: 16 }}>
                   <Avatar
-                    style={{ margin: 'auto' }}
+                    style={{ margin: "auto" }}
                     className={classes.popoverAvatar}
-                    src={currentProfile.profilePicture || ''}
+                    src={currentProfile.profilePicture || ""}
                     alt="profilePicture"
                   />
                   <Typography
@@ -731,16 +739,16 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
                 >
                   <AccountCircleIcon
                     style={{ fontSize: 24, marginRight: 10 }}
-                  />{' '}
-                  {t('profile')}
+                  />{" "}
+                  {t("profile")}
                 </MenuItem>
                 <MenuItem onClick={handleSettingsClick}>
-                  <SettingsIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
-                  {t('settings')}
+                  <SettingsIcon style={{ fontSize: 24, marginRight: 10 }} />{" "}
+                  {t("settings")}
                 </MenuItem>
                 <MenuItem onClick={handleLogout}>
-                  <ExitToAppIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
-                  {t('logout')}
+                  <ExitToAppIcon style={{ fontSize: 24, marginRight: 10 }} />{" "}
+                  {t("logout")}
                 </MenuItem>
               </Box>
             </Popover>
@@ -748,8 +756,8 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
         </div>
       </Toolbar>
     </AppBar>
-  );
-};
+  )
+}
 
 const useStyles = makeStyles((theme) => ({
   // appBar: {
@@ -765,41 +773,41 @@ const useStyles = makeStyles((theme) => ({
     // [theme.breakpoints.up('lg')]: {
     //   display: 'none',
     // },
-    color: 'black',
+    color: "black",
   },
   logo: {
     width: 40,
     height: 40,
     padding: -20,
     borderRadius: 20,
-    marginLeft: '1rem',
-    marginTop: '-8px',
+    marginLeft: "1rem",
+    marginTop: "-8px",
   },
   appWorker: {
-    borderTop: '16px solid #2386CC',
+    borderTop: "16px solid #2386CC",
     width: `calc(100% - ${0}px)`,
-    backgroundColor: 'white',
+    backgroundColor: "white",
 
     zIndex: theme.zIndex.drawer + 1,
   },
   appAgency: {
-    borderTop: '16px solid #009E60',
+    borderTop: "16px solid #009E60",
     width: `calc(100% - ${0}px)`,
-    backgroundColor: 'white',
+    backgroundColor: "white",
 
     zIndex: theme.zIndex.drawer + 1,
   },
   appBusiness: {
-    borderTop: '16px solid #eb5a00',
+    borderTop: "16px solid #eb5a00",
     width: `calc(100% - ${0}px)`,
-    backgroundColor: 'white',
+    backgroundColor: "white",
 
     zIndex: theme.zIndex.drawer + 1,
   },
   appBar: {
     width: `calc(100% - ${51}px)`,
-    backgroundColor: 'white',
-    borderTop: '16px solid #eb5a00',
+    backgroundColor: "white",
+    borderTop: "16px solid #eb5a00",
     zIndex: theme.zIndex.drawer + 1,
     /**
      * transition: theme.transitions.create(['width', 'margin'], {
@@ -807,81 +815,81 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
      */
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down("md")]: {
       width: `100vw`,
       // marginLeft: drawerWidth,
     },
   },
   appBarShift: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     //borderTop: '16px solid #eb5a00',
-    borderTop: '16px solid #2386CC',
+    borderTop: "16px solid #2386CC",
     marginLeft: drawerWidth,
     width: `calc(100% - ${navConstants.DRAWER_WIDTH}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
+    transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
   text: {
-    color: 'black',
-    marginTop: '1%',
-    [theme.breakpoints.down('xs')]: {
-      marginTop: '5%',
+    color: "black",
+    marginTop: "1%",
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "5%",
     },
   },
   user: {
     //border: '1px solid red',
   },
   avatarWorker: {
-    color: theme.palette.getContrastText('#eb5a00'),
-    backgroundColor: '#2386CC',
+    color: theme.palette.getContrastText("#eb5a00"),
+    backgroundColor: "#2386CC",
     width: theme.spacing(4),
     height: theme.spacing(4),
   },
 
   avatarAgency: {
-    color: theme.palette.getContrastText('#009E60'),
-    backgroundColor: '#009E60',
+    color: theme.palette.getContrastText("#009E60"),
+    backgroundColor: "#009E60",
     width: theme.spacing(4),
     height: theme.spacing(4),
   },
 
   avatarBusiness: {
-    color: theme.palette.getContrastText('#eb5a00'),
-    backgroundColor: '#eb5a00',
+    color: theme.palette.getContrastText("#eb5a00"),
+    backgroundColor: "#eb5a00",
     width: theme.spacing(4),
     height: theme.spacing(4),
   },
 
   avatar: {
-    color: theme.palette.getContrastText('#eb5a00'),
-    backgroundColor: '#eb5a00',
+    color: theme.palette.getContrastText("#eb5a00"),
+    backgroundColor: "#eb5a00",
     width: theme.spacing(4),
     height: theme.spacing(4),
   },
   popoverAvatarWorker: {
-    color: theme.palette.getContrastText('#2386CC'),
-    backgroundColor: '#2386CC',
+    color: theme.palette.getContrastText("#2386CC"),
+    backgroundColor: "#2386CC",
     width: theme.spacing(10),
     height: theme.spacing(10),
   },
   popoverAvatarAgency: {
-    color: theme.palette.getContrastText('#009E60'),
-    backgroundColor: '#009E60',
+    color: theme.palette.getContrastText("#009E60"),
+    backgroundColor: "#009E60",
     width: theme.spacing(10),
     height: theme.spacing(10),
   },
   popoverAvatarBusiness: {
-    color: theme.palette.getContrastText('#eb5a00'),
-    backgroundColor: '#eb5a00',
+    color: theme.palette.getContrastText("#eb5a00"),
+    backgroundColor: "#eb5a00",
     width: theme.spacing(10),
     height: theme.spacing(10),
   },
 
   popoverAvatar: {
-    color: theme.palette.getContrastText('#eb5a00'),
-    backgroundColor: '#eb5a00',
+    color: theme.palette.getContrastText("#eb5a00"),
+    backgroundColor: "#eb5a00",
     width: theme.spacing(10),
     height: theme.spacing(10),
   },
@@ -890,12 +898,12 @@ const useStyles = makeStyles((theme) => ({
     width: 300,
   },
   username: {
-    color: 'black',
+    color: "black",
     marginRight: 10,
-    [theme.breakpoints.down('sm')]: {
-      display: 'none',
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
     },
   },
-}));
+}))
 
-export default TopAppBar;
+export default TopAppBar
