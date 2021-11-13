@@ -1,17 +1,11 @@
 export default {
   //home page
-<<<<<<< HEAD
-  information: 'Information',
-  how_do_you_feel_today: 'How do you feel today?',
-  thank_you: "Feeling received!",
-  home: 'Home',
-  thank_you_for_feedback: "Thank you for your feedback!",
-  write_a_comment:"Write a comment",
-=======
   information: "Information",
   how_do_you_feel_today: "How do you feel today?",
+  thank_you: "Feeling received!",
   home: "Home",
->>>>>>> fd2a8c4a120ad2ac4fe1ea9bc1175ead023c0f9b
+  thank_you_for_feedback: "Thank you for your feedback!",
+  write_a_comment: "Write a comment",
 
   //login
   login_title: "Log In",
@@ -57,12 +51,9 @@ export default {
   entry: "New entry",
   history: "History",
   active: "Active",
-<<<<<<< HEAD
 
   //Mood index page
   entry_mood: "Add mood",
-=======
->>>>>>> fd2a8c4a120ad2ac4fe1ea9bc1175ead023c0f9b
 
   //profile page
   profiles: "Profiles",
@@ -72,12 +63,9 @@ export default {
 
   //Line chart
   mood_history: "Mood history",
-<<<<<<< HEAD
 
-//mood_category
-mood_category:"Mood Category",
-=======
->>>>>>> fd2a8c4a120ad2ac4fe1ea9bc1175ead023c0f9b
+  //mood_category
+  mood_category: "Mood Category",
 
   //Pie chaert
   mood_overall: "Mood overall",
@@ -324,19 +312,16 @@ mood_category:"Mood Category",
   created: "Created at",
   agency_status: "Agency status",
   business_status: "Business status",
-<<<<<<< HEAD
 
-    //feedbackCategory
-    feedback_category: 'Feedback category',
-    category0: 'Category',
-    description0: 'Description',
-    description1 : 'You have added a little bit of your feeling.',
-    description2 : 'You have added moderately of your feeling.',
-    description3 : 'Volume of your feelin is good',
-    description4 : 'Your mood is really good',
-    description5 : 'The feeling is very good',
-=======
->>>>>>> fd2a8c4a120ad2ac4fe1ea9bc1175ead023c0f9b
+  //feedbackCategory
+  feedback_category: "Feedback category",
+  category0: "Category",
+  description0: "Description",
+  description1: "You have added a little bit of your feeling.",
+  description2: "You have added moderately of your feeling.",
+  description3: "Volume of your feelin is good",
+  description4: "Your mood is really good",
+  description5: "The feeling is very good",
 
   //contractsFromBusiness
   contracts_from_business: "Contracts from business",
