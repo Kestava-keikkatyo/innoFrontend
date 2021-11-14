@@ -179,7 +179,7 @@ export default {
   //FeedbackForm
   write_feedback_here: "Kirjoita palautteesi tähän",
   feedback_sent: "Palaute lähetetty",
-  give_feedback: "Anna palautetta",
+  give_feedback: "Tämä komponentti on väliaikainen, sitä käytetään vain sovelluskehityksen aikana. Tarkoituksena on saada palautetta ja kehitysideoita hanketiimiltä ja testaajilta, jotka otetaan huomioon sovelluskehityksessä.",
   return_form: "Palautelomake",
   replied: "Vastattu",
   wait: "Odottaa",

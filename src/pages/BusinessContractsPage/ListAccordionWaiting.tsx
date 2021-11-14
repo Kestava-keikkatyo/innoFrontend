@@ -110,7 +110,10 @@ export const ListAccordionWaiting = (prop: { contracts: any[] }) => {
               id="panel1a-header"
             >
               <div className={classes.logoColumn}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                <Avatar
+                  alt="Remy Sharp"
+                  src={contract.agency.profile.profilePicture}
+                />
               </div>
               <div className={classes.column}>
                 <Typography className={classes.heading}>

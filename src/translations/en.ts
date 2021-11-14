@@ -179,7 +179,7 @@ export default {
   //FeedbackForm
   write_feedback_here: "Write feedback here",
   feedback_sent: "Feedback sent",
-  give_feedback: "Give feedback",
+  give_feedback: "This component is temporary, it is only used during application development. The aim is to get feedback and development ideas from the project team and testers, which will be taken into account during application development.",
   return_form: "Feedback form",
   replied: "Replied",
   wait: "Wait",
