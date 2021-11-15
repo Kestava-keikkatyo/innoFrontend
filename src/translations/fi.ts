@@ -6,7 +6,7 @@ export default {
   home: "Etusivu",
   thank_you_for_feedback: "Kiitos palautteestasi!",
   write_a_comment: "Kirjoita kommentti",
-  
+
   //login
   login_title: "Kirjaudu sisään",
   email_label: "Sähköposti",
@@ -51,15 +51,9 @@ export default {
   entry: "Lisää",
   history: "Historia",
   active: "Active",
-<<<<<<< HEAD
-
 
   //Mood index page
   entry_mood: "Lisää fiilis",
-
-
-=======
->>>>>>> fd2a8c4a120ad2ac4fe1ea9bc1175ead023c0f9b
 
   //profile page
   profiles: "Profiilit",
@@ -70,9 +64,8 @@ export default {
   //Line chart
   mood_history: "Fiilishistoria",
 
-
   //mood_category
-  mood_category:"Fiiliskategoria",
+  mood_category: "Fiiliskategoria",
 
   //Pie chaert
   mood_overall: "Kokonaiskatsaus",
@@ -186,7 +179,7 @@ export default {
   //FeedbackForm
   write_feedback_here: "Kirjoita palautteesi tähän",
   feedback_sent: "Palaute lähetetty",
-  give_feedback: "Anna palautetta",
+  give_feedback: "Tämä komponentti on väliaikainen, sitä käytetään vain sovelluskehityksen aikana. Tarkoituksena on saada palautetta ja kehitysideoita hanketiimiltä ja testaajilta, jotka otetaan huomioon sovelluskehityksessä.",
   return_form: "Palautelomake",
   replied: "Vastattu",
   wait: "Odottaa",
@@ -316,19 +309,16 @@ export default {
   created: "Tehty",
   agency_status: "Vuokratyöfirman tila",
   business_status: "Käyttäjäyrityksen tila",
-<<<<<<< HEAD
 
   //feedbackCategory
-  feedback_category: 'Palautekategoria',
-  category0: 'Kategoriat',
-  description0: 'Kuvaus',
-  description1 : 'Olet lisännyt vähän fiiliksistäsi.',
-  description2 : 'Olet lisännyt kohtuullisesti fiiliksistäsi.',
-  description3 : 'Olet lisännyt riittävästi fiiliksistäsi',
-  description4 : 'Fiiliksisi on tosi hyvä',
-  description5 : 'Fiiliksisi on erittäin hyvä',
-=======
->>>>>>> fd2a8c4a120ad2ac4fe1ea9bc1175ead023c0f9b
+  feedback_category: "Palautekategoria",
+  category0: "Kategoriat",
+  description0: "Kuvaus",
+  description1: "Olet lisännyt vähän fiiliksistäsi.",
+  description2: "Olet lisännyt kohtuullisesti fiiliksistäsi.",
+  description3: "Olet lisännyt riittävästi fiiliksistäsi",
+  description4: "Fiiliksisi on tosi hyvä",
+  description5: "Fiiliksisi on erittäin hyvä",
 
   //contractsFromBusiness
   contracts_from_business: "Käyttäjäyrityksiltä saapuneet sopimukset",
