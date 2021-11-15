@@ -9,10 +9,8 @@ import {
   Button,
   IconButton,
   DialogActions,
-  Select,
   MenuItem,
-  FormControl,
-  InputLabel,
+  TextField,
   makeStyles,
 } from '@material-ui/core';
 import { Close as CloseIcon } from '@material-ui/icons';
@@ -25,9 +23,9 @@ import { createBusinessContractForm } from '../../actions/businessContractFormAc
 import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
+  selectDiv: {
+    marginTop: 16,
+    '& .MuiTextField-root': { m: 1, minWidth: '25ch' },
   },
 }));
 
@@ -50,40 +48,51 @@ const WorkerAndBusinessModal: React.FC<any> = ({
   );
   const myForms: any = useSelector((state: any) => state.formList.myForms);
 
-  const [formId, setFormId] = React.useState('');
+  const [formId, setFormId] = React.useState('None');
   const classes = useStyles();
 
   const { t } = useTranslation();
 
+  console.log('workerOrBusinessData', workerOrBusinessData);
+
   const addContract = async () => {
-    if (
-      !businessContract.some(
-        (value: any) =>
-          value.requestContracts.businesses.includes(
-            workerOrBusinessData._id
-          ) || value.requestContracts.workers.includes(workerOrBusinessData._id)
-      )
-    ) {
-      const businessContractForm: any = await dispatch(
-        createBusinessContractForm(formId)
-      );
-      dispatch(
-        addBusinessContract(
-          businessContract[0]._id,
-          workerOrBusinessData._id,
-          businessContractForm._id
-        )
-      );
-      dispatch(
-        setAlert('Success: Invitation sent to worker', severity.Success)
-      );
-    } else {
+    if (formId === 'None') {
       dispatch(
         setAlert(
-          'Failed: You already have contract with this worker.',
+          `Failed: Please choose a form. If you do not have yet, create one.`,
           severity.Error
         )
       );
+    } else {
+      if (
+        !workerOrBusinessData.businessContracts.includes(
+          businessContract[0]._id
+        )
+      ) {
+        const businessContractForm: any = await dispatch(
+          createBusinessContractForm(formId)
+        );
+        dispatch(
+          addBusinessContract(
+            businessContract[0]._id,
+            workerOrBusinessData._id,
+            businessContractForm._id
+          )
+        );
+        dispatch(
+          setAlert(
+            `Success: Contract request sent to ${workerOrBusinessData.name}`,
+            severity.Success
+          )
+        );
+      } else {
+        dispatch(
+          setAlert(
+            `Failed: You already have contract with ${workerOrBusinessData.name}.`,
+            severity.Error
+          )
+        );
+      }
     }
     closeModal();
   };
@@ -97,7 +106,7 @@ const WorkerAndBusinessModal: React.FC<any> = ({
     <Dialog open={displayModal} onClose={closeModal} fullWidth>
       <DialogTitle>
         <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Typography variant="h6">Add to your organization</Typography>
+          <Typography variant="h6">Create contract</Typography>
           <IconButton onClick={closeModal}>
             <CloseIcon />
           </IconButton>
@@ -105,17 +114,36 @@ const WorkerAndBusinessModal: React.FC<any> = ({
       </DialogTitle>
       <DialogContent dividers>
         {workerOrBusinessData && (
-          <Typography color="textSecondary" variant="body2">
-            {t('id')}: {workerOrBusinessData._id} <br />
-            {t('name')}: {workerOrBusinessData.name} <br />
-            {t('created')}: {workerOrBusinessData.createdAt} <br />
-            {t('email')}: {workerOrBusinessData.email}
-          </Typography>
+          <div>
+            <Typography variant="subtitle1">
+              {workerOrBusinessData.userType} info:
+            </Typography>
+            <Typography color="textSecondary" variant="body2">
+              {t('name')}: {workerOrBusinessData.name} <br />
+              {t('email')}: {workerOrBusinessData.email} <br />
+              {workerOrBusinessData.userType === 'Business' ? (
+                <>
+                  {t('category')}: {workerOrBusinessData.category} <br />
+                </>
+              ) : null}
+              {t('joined')}:{' '}
+              {new Date(workerOrBusinessData.createdAt).toLocaleDateString()}{' '}
+              <br />
+            </Typography>
+          </div>
         )}
-        <FormControl className={classes.formControl}>
-          <InputLabel>Lomake</InputLabel>
-          <Select onChange={handleChange} value={formId}>
-            <MenuItem value="">Select...</MenuItem>
+        <div className={classes.selectDiv}>
+          <Typography variant="subtitle1">Select contract form</Typography>
+          <TextField
+            id="standard-select-currency"
+            select
+            label="Selected form"
+            value={formId}
+            onChange={handleChange}
+            helperText=""
+            variant="standard"
+          >
+            <MenuItem value="None">None</MenuItem>
             {myForms.docs.map((form: any) => (
               <MenuItem key={form._id} value={form._id}>
                 {form.title.length > 50
@@ -123,11 +151,11 @@ const WorkerAndBusinessModal: React.FC<any> = ({
                   : form.title}
               </MenuItem>
             ))}
-          </Select>
-        </FormControl>
+          </TextField>
+        </div>
       </DialogContent>
       <DialogActions></DialogActions>
-      <DialogActions>
+      <DialogActions style={{ marginBottom: 10 }}>
         <Button color="primary" variant="outlined" onClick={addContract}>
           {t('create_contract')}
         </Button>

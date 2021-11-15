@@ -169,7 +169,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
   button: {
-    marginBottom: '1.5%',
+    marginBottom: '3%',
   },
 }));
 

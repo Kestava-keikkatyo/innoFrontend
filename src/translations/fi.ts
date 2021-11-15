@@ -307,6 +307,7 @@ export default {
   start_date: "Aloitus päivämäärä",
   end_date: "Lopetus päivämäärä",
   created: "Tehty",
+  joined: "Liittyi",
   agency_status: "Vuokratyöfirman tila",
   business_status: "Käyttäjäyrityksen tila",
 

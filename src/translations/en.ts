@@ -310,6 +310,7 @@ export default {
   start_date: "Start date",
   end_date: "End date",
   created: "Created at",
+  joined: "Joined at",
   agency_status: "Agency status",
   business_status: "Business status",
 

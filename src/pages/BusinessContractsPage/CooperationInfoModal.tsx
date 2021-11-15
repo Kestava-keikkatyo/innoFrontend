@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useEffect } from 'react';
 
+import TextField from '@mui/material/TextField';
 import {
   Dialog,
   DialogTitle,
@@ -9,23 +10,24 @@ import {
   Button,
   IconButton,
   DialogActions,
-  Select,
   MenuItem,
-  FormControl,
-  InputLabel,
   makeStyles,
-} from "@material-ui/core"
-import { Close as CloseIcon } from "@material-ui/icons"
-import { useDispatch } from "react-redux"
-import { addBusinessContractWorkerBusiness } from "../../actions/businessContractActions"
-import { setAlert } from "../../actions/alertActions"
-import { severity } from "../../types/types"
-import { useTranslation } from 'react-i18next'
+} from '@material-ui/core';
+import { Close as CloseIcon } from '@material-ui/icons';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  addBusinessContractWorkerBusiness,
+  fetchBusinessContracts,
+} from '../../actions/businessContractActions';
+import { setAlert } from '../../actions/alertActions';
+import { severity } from '../../types/types';
+import { useTranslation } from 'react-i18next';
+import { fetchFormList } from '../../actions/formListActions';
 
 const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
+  selectDiv: {
+    marginTop: 16,
+    '& .MuiTextField-root': { m: 1, minWidth: '25ch' },
   },
 }));
 
@@ -37,30 +39,60 @@ const useStyles = makeStyles((theme) => ({
  * @param {Function} props.closeModal callback when closed.
  * @param {worker} props.workerData data of the added worker.
  */
-const CooperationInfoModal: React.FC<any> = ({ displayModal, closeModal, agency, contractId }) => {
-  const dispatch = useDispatch()
-  const [form, setForm] = React.useState('');
+const CooperationInfoModal: React.FC<any> = ({
+  displayModal,
+  closeModal,
+  agency,
+  contractId,
+}) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
-  const agencyId = agency._id
+  const agencyId = agency._id;
+  const { t } = useTranslation();
 
-  const { t } = useTranslation()
+  const [formId, setFormId] = React.useState('None');
+  const myForms: any = useSelector((state: any) => state.formList.myForms);
+
+  const businessContracts: any = useSelector(
+    (state: any) => state.businessContracts.businessContract
+  );
+
+  useEffect(() => {
+    dispatch(fetchBusinessContracts());
+    dispatch(fetchFormList());
+  }, [dispatch]);
 
   const addContract = () => {
-    dispatch(addBusinessContractWorkerBusiness(agencyId,contractId));
-    dispatch(setAlert("Success: Invitation sent to worker", severity.Success))
-    closeModal()
-  }
+    const found = businessContracts.some((bc: any) => bc._id === contractId);
+    if (found) {
+      dispatch(
+        setAlert(
+          `Fail: You have already business contract with ${agency.name}`,
+          severity.Error
+        )
+      );
+    } else {
+      dispatch(addBusinessContractWorkerBusiness(agencyId, contractId));
+      dispatch(setAlert('Success: Invitation sent!', severity.Success));
+    }
+    closeModal();
+  };
 
-  const handleChange = (event:any) => {
-    console.log(event.target.value)
-    setForm(event.target.value);
-  }
+  const handleChange = (event: any) => {
+    console.log(event.target.value);
+    setFormId(event.target.value);
+  };
 
   return (
-    <Dialog open={displayModal} onClose={closeModal} fullWidth>
+    <Dialog
+      disableEnforceFocus
+      open={displayModal}
+      onClose={closeModal}
+      fullWidth
+    >
       <DialogTitle>
         <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Typography variant="h6">Add to your organization</Typography>
+          <Typography variant="h6">Send cooperation request</Typography>
           <IconButton onClick={closeModal}>
             <CloseIcon />
           </IconButton>
@@ -68,37 +100,49 @@ const CooperationInfoModal: React.FC<any> = ({ displayModal, closeModal, agency,
       </DialogTitle>
       <DialogContent dividers>
         {agency && (
-          <Typography color="textSecondary" variant="body2">
-            id: {agency._id} <br />
-            name: {agency.name} <br />
-            created: {agency.createdAt} <br />
-            email: {agency.email}
-          </Typography>
+          <div>
+            <Typography variant="subtitle1">Agency info:</Typography>
+            <Typography color="textSecondary" variant="body2">
+              Name: {agency.name} <br />
+              Email: {agency.email} <br />
+              Category: {agency.category} <br />
+            </Typography>
+          </div>
         )}
-        <FormControl className={classes.formControl}>
-          <InputLabel>Lomake</InputLabel>
-          <Select onChange={handleChange} value={form}>
-            <MenuItem value="1 ">Select Non</MenuItem>
-            <MenuItem value="2 ">Oletus sopimus</MenuItem>
-            <MenuItem value="3 ">Oma sopimus 1</MenuItem>
-            <MenuItem value="4 ">Oma sopimus 2</MenuItem>
-          </Select>
-        </FormControl>
+
+        <div className={classes.selectDiv}>
+          <Typography variant="subtitle1">Select contract form</Typography>
+          <TextField
+            id="standard-select-currency"
+            select
+            label="Selected form"
+            value={formId}
+            onChange={handleChange}
+            helperText=""
+            variant="standard"
+          >
+            <MenuItem value="None">None</MenuItem>
+            {myForms.docs.map((form: any) => (
+              <MenuItem key={form._id} value={form._id}>
+                {form.title.length > 50
+                  ? `${form.title.substring(0, 50)}...`
+                  : form.title}
+              </MenuItem>
+            ))}
+          </TextField>
+        </div>
       </DialogContent>
-      <DialogActions>
-      </DialogActions>
-      <DialogActions>
-        <Button color="primary" variant="outlined"
-          onClick={addContract}>
+      <DialogActions></DialogActions>
+      <DialogActions style={{ marginBottom: 10 }}>
+        <Button color="primary" variant="contained" onClick={addContract}>
           {t('send_contract')}
         </Button>
-        <Button color="primary" variant="outlined"
-          onClick={() => closeModal()}>
+        <Button color="primary" variant="outlined" onClick={() => closeModal()}>
           {t('close')}
         </Button>
       </DialogActions>
     </Dialog>
-  )
-}
+  );
+};
 
-export default CooperationInfoModal
+export default CooperationInfoModal;
