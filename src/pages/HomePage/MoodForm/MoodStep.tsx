@@ -63,12 +63,20 @@ const useStyles = makeStyles({
         {t('how_do_you_feel_today')}
       </Typography>
 
-      <Grid container className="mood-step-one" justify="center">
+      <Grid container className="mood-step-one" justify="center" style={{paddingTop: "5%"}}>
         <Grid item className={classes.flexCenter} xs={2}>
           <SentimentVeryDissatisfiedIcon
             onClick={() => updateMood(0)}
             className={`${classes.clickableIcon} ${
               clicked[0] ? 'mood-icon' : null
+            }`}
+          />
+        </Grid>
+        <Grid item className={classes.flexCenter} xs={2}>
+          <SentimentDissatisfiedIcon
+            onClick={() => updateMood(1)}
+            className={`${classes.clickableIcon} ${
+              clicked[1] ? 'mood-icon' : null
             }`}
           />
         </Grid>
@@ -81,6 +89,14 @@ const useStyles = makeStyles({
           />
         </Grid>
         <Grid item className={classes.flexCenter} xs={2}>
+          <SentimentSatisfiedAltIcon
+            onClick={() => updateMood(3)}
+            className={`${classes.clickableIcon} ${
+              clicked[3] ? 'mood-icon' : null
+            }`}
+          />
+        </Grid>
+        <Grid item className={classes.flexCenter} xs={2}>
           <SentimentVerySatisfiedIcon
             onClick={() => updateMood(4)}
             className={`${classes.clickableIcon} ${
@@ -89,7 +105,7 @@ const useStyles = makeStyles({
           />
         </Grid>
       </Grid>
-        <Typography>{t('write_a_comment')}</Typography>
+        <Typography style={{paddingTop: "5%"}}>{t('write_a_comment')}</Typography>
         <TextField
             onChange={handleChange}
             placeholder={t('tell_feelings')}
