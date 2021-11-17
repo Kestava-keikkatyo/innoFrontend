@@ -42,8 +42,8 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
         </Typography>
         <Formik
           initialValues={{
-            email: 'jarmo-agency@test.com',
-            password: 'jarmo123',
+            email: '',
+            password: '',
           }}
           validate={(values) => {
             const errors: any = {};
@@ -80,13 +80,13 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
                   label={t('email_label')}
                   name="email"
                   type="text"
-                  placeholder="jarmo@test.com"
+                  placeholder="user@mail.com"
                 />
                 <FormikTextField
                   label={t('password')}
                   name="password"
                   type="password"
-                  placeholder="jarmo123"
+                  placeholder="secret123"
                 />
                 <Button
                   type="submit"

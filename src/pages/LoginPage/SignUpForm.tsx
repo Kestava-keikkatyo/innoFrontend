@@ -107,13 +107,13 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
                   label={t('name')}
                   name="name"
                   type="text"
-                  placeholder="jarmo"
+                  placeholder="user"
                 />
                 <FormikTextField
                   label={t('email')}
                   name="email"
                   type="text"
-                  placeholder="test@test.com"
+                  placeholder="user@mail.com"
                 />
                 <Box display="flex" flexDirection="row">
                   <Box paddingRight={1}>
@@ -121,14 +121,14 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
                       label={t('password')}
                       name="password"
                       type="password"
-                      placeholder="jorma123"
+                      placeholder="secret123"
                     />
                   </Box>
                   <FormikTextField
                     label={t('confirm')}
                     name="passwordConfirm"
                     type="password"
-                    placeholder="jorma123"
+                    placeholder="secret123"
                   />
                 </Box>
                 <FormikSelectField
