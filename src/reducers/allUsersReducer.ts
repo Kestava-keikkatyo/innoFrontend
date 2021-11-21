@@ -6,6 +6,7 @@ import {
   AllUsersState,
   AllUsersActionTypes,
   USER_DELETED,
+  USER_DEACTIVATED,
 } from "../types/state"
 import { roles } from "../types/types"
 
@@ -19,6 +20,7 @@ const initialState: AllUsersState = {
 
 
 const allUsersReducer = (state: AllUsersState = initialState, action: AllUsersActionTypes) => {
+  let nextState = {...state};
   switch (action.type) {
     case SET_ALL_AGENCIES:
       return {
@@ -41,10 +43,6 @@ const allUsersReducer = (state: AllUsersState = initialState, action: AllUsersAc
         agencyWorkers: action.data
       }
     case USER_DELETED:
-      let nextState = {
-        ...state
-      };
-
       switch(action.data.userType.toLowerCase()){
         case roles.Worker: 
           nextState.workers = state.workers.filter(u => u._id !== action.data.id);
@@ -60,6 +58,57 @@ const allUsersReducer = (state: AllUsersState = initialState, action: AllUsersAc
           break;
       }
       return nextState
+    case USER_DEACTIVATED:
+      switch(action.data.userType.toLowerCase()){
+        case roles.Worker: 
+        nextState.workers = state.workers.map(u => {
+          if(u._id === action.data.id) {
+            const updatedItem = {
+              ...u,
+              active: false,
+            };
+            return updatedItem;
+          }
+          return u;
+        });
+        break;
+        case roles.Business:
+          nextState.businesses = state.businesses.map(u => {
+            if(u._id === action.data.id) {
+              const updatedItem = {
+                ...u,
+                active: false,
+              };
+              return updatedItem;
+            }
+            return u;
+          });
+          break;  
+        case roles.Agency: 
+        nextState.agencies = state.agencies.map(u => {
+          if(u._id === action.data.id) {
+            const updatedItem = {
+              ...u,
+              active: false,
+            };
+            return updatedItem;
+          }
+          return u;
+        });
+          break;
+        case roles.Admin: 
+        nextState.admins = state.admins.map(u => {
+          if(u._id === action.data.id) {
+            const updatedItem = {
+              ...u,
+              active: false,
+            };
+            return updatedItem;
+          }
+          return u;
+        });
+      }
+     return nextState  
     default:
       return state
   }

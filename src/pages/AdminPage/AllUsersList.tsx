@@ -7,8 +7,8 @@ import "./userList.css";
 import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { DeleteUserById } from "../../actions/adminActions"
-import { setAlert } from '../../actions/alertActions'
+import { DeactivateUserById, DeleteUserById } from "../../actions/adminActions";
+import { setAlert } from '../../actions/alertActions';
 
 const UserList: React.FC<any> = () => {
 
@@ -27,14 +27,16 @@ const UserList: React.FC<any> = () => {
     ...businesses,
     ...agencies
   ];
-  
-  const [data, setData] = useState(workers);
 
   const handleDelete = (id: string, userType: string) => {
-    setData(data.filter((item: any) => item.id !== id));
     console.log(id);
     dispatch(DeleteUserById(id, userType))
     dispatch(setAlert("User deleted successfully!"))
+  }
+
+  const handleDeactive = (id: string, userType: string) => {
+    dispatch(DeactivateUserById(id, userType))
+    dispatch(setAlert("User deactivated successfully!"))
   }
   
   const columns = [
@@ -68,6 +70,9 @@ const UserList: React.FC<any> = () => {
             <Link to={"/firstName/" + params.row.firstName}>
               <button className="userListEdit">Edit</button>
             </Link>
+            <button 
+             className="userListDeactive"
+             onClick={() => handleDeactive(params.row.id, params.row.userType)}>Deactive</button>
             <DeleteOutline
               className="userListDelete"
               onClick={() => handleDelete(params.row.id, params.row.userType)}

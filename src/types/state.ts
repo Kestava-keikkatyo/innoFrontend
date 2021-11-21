@@ -19,6 +19,7 @@ export const SET_ALL_WORKERS = "SET_ALL_WORKERS"
 export const SET_AGENCY_WORKERS = "SET_AGENCY_WORKERS"
 export const SET_ALL_ADMINS = "SET_ALL_ADMINS"
 export const USER_DELETED = "USER_DELETED"
+export const USER_DEACTIVATED = "USER_DEACTIVATED"
 
 interface SetAllAgenciesAction {
   type: typeof SET_ALL_AGENCIES
@@ -50,6 +51,11 @@ interface UserDeleted {
   data: {id: string, userType: string}
 }
 
+interface User_Deactivated {
+  type: typeof USER_DEACTIVATED,
+  data: {id: string, userType: string}
+}
+
 export type AllUsersActionTypes =
   | SetAllAgenciesAction
   | SetAllBusinessesAction
@@ -57,6 +63,7 @@ export type AllUsersActionTypes =
   | SetAgencyWorkersAction
   | SetAllAdminsAction
   | UserDeleted
+  | User_Deactivated
 
 /**
  * Report state & action types
@@ -85,6 +92,7 @@ export interface User {
   _id: string
   name: string
   email: string
+  active: boolean
   type: roles.Agency | roles.Business | roles.Business | roles.Admin
 }
 
