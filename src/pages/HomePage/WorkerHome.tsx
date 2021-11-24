@@ -22,6 +22,8 @@ import { useTranslation } from 'react-i18next';
 const WorkerHome = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+
   const currentFeeling: any = useSelector<IRootState>(
     (state) => state.feeling.currentFeeling
   );
@@ -74,10 +76,11 @@ const WorkerHome = () => {
                 </ListItem>
               ))}
             </List>
-         {/*   <Checkbox
-              label="Worker has read and understood"/>
-                
-         */}
+            <Checkbox
+               {...label}
+               defaultChecked
+               
+              />
           </CardContent>
         </div>
       </Grid>
