@@ -19,6 +19,7 @@ import {
 } from '../types/state';
 import { Credentials, roles, severity } from '../types/types';
 import notificationsService from '../services/notificationsService';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Logs user in
@@ -101,6 +102,7 @@ export const login = (credentials: Credentials, from: string) => {
  * @param {string} role - User's role
  */
 export const signup = (user: SignUpUser, role: roles) => {
+  //const { t } = useTranslation();
   return async (dispatch: any) => {
     dispatch({
       type: USER_REQUEST,
@@ -165,7 +167,7 @@ export const signup = (user: SignUpUser, role: roles) => {
       dispatch({
         type: USER_FAILURE,
       });
-      dispatch(setAlert('signup failed: ' +  error.data.message, severity.Error));
+      dispatch(setAlert('signup failed: email is already in use', severity.Error));
       
       /*
         if
