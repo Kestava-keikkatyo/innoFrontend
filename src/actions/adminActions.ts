@@ -3,7 +3,7 @@
  * @desc Redux admin actions
  */
 import adminService from '../services/adminService'
-import { USER_DELETED, USER_DEACTIVATED } from '../types/state';
+import { USER_DELETED, UPDATE_USER_STATUS } from '../types/state';
 
 
   /**
@@ -16,14 +16,14 @@ import { USER_DELETED, USER_DEACTIVATED } from '../types/state';
   console.log("deleted data", data)
 
 };
- 
+
 /**
  * @function
- * @desc Deactivate user by Id
+ * @desc Update user's status by Id
  */
- export const DeactivateUserById = (id: string, userType: string) => async (dispatch: any) => {
-  const data = await adminService.deactivateUser(id, userType)
-  dispatch({ type: USER_DEACTIVATED, data: {id, userType} })
+ export const updateUSerStatus = (id: string, userType: string, active: boolean) => async (dispatch: any) => {
+  const data = await adminService.setUserStatus(id, userType, active)
+  dispatch({ type: UPDATE_USER_STATUS, data: {id, userType, active} })
   console.log("deactivate data", data)
 
 };

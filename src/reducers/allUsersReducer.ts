@@ -6,7 +6,7 @@ import {
   AllUsersState,
   AllUsersActionTypes,
   USER_DELETED,
-  USER_DEACTIVATED,
+  UPDATE_USER_STATUS,
 } from "../types/state"
 import { roles } from "../types/types"
 
@@ -58,14 +58,14 @@ const allUsersReducer = (state: AllUsersState = initialState, action: AllUsersAc
           break;
       }
       return nextState
-    case USER_DEACTIVATED:
+    case UPDATE_USER_STATUS:
       switch(action.data.userType.toLowerCase()){
         case roles.Worker: 
         nextState.workers = state.workers.map(u => {
           if(u._id === action.data.id) {
             const updatedItem = {
               ...u,
-              active: false,
+              active: action.data.active,
             };
             return updatedItem;
           }
@@ -77,7 +77,7 @@ const allUsersReducer = (state: AllUsersState = initialState, action: AllUsersAc
             if(u._id === action.data.id) {
               const updatedItem = {
                 ...u,
-                active: false,
+                active: action.data.active,
               };
               return updatedItem;
             }
@@ -89,7 +89,7 @@ const allUsersReducer = (state: AllUsersState = initialState, action: AllUsersAc
           if(u._id === action.data.id) {
             const updatedItem = {
               ...u,
-              active: false,
+              active: action.data.active,
             };
             return updatedItem;
           }
@@ -101,7 +101,7 @@ const allUsersReducer = (state: AllUsersState = initialState, action: AllUsersAc
           if(u._id === action.data.id) {
             const updatedItem = {
               ...u,
-              active: false,
+              active: action.data.active,
             };
             return updatedItem;
           }

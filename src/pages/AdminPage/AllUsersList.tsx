@@ -6,8 +6,8 @@ import { fetchAllAgencies, fetchAllBusinesses, fetchAllWorkers } from '../../act
 import "./userList.css";
 import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { DeactivateUserById, DeleteUserById } from "../../actions/adminActions";
+import { useEffect } from 'react';
+import {updateUSerStatus, DeleteUserById } from "../../actions/adminActions";
 import { setAlert } from '../../actions/alertActions';
 
 const UserList: React.FC<any> = () => {
@@ -34,9 +34,11 @@ const UserList: React.FC<any> = () => {
     dispatch(setAlert("User deleted successfully!"))
   }
 
-  const handleDeactive = (id: string, userType: string) => {
-    dispatch(DeactivateUserById(id, userType))
-    dispatch(setAlert("User deactivated successfully!"))
+  const handleStatus = (id: string, userType: string, active: boolean) => {
+    dispatch(updateUSerStatus(id, userType, active))
+    if (active === false) {
+      dispatch(setAlert("User deactivated successfully!"))
+    } else dispatch(setAlert("User activated successfully!"))
   }
   
   const columns = [
@@ -48,36 +50,37 @@ const UserList: React.FC<any> = () => {
     { 
       field: "email", 
       headerName: "Email", 
-      width: 200 
+      width: 250 
     },
     { 
       field: "userType", 
       headerName: "User Type", 
-      width: 200 
+      width: 150 
     },
     {
       field: "active",
       headerName: "Status",
-      width: 200,
+      width: 150,
     },
     {
       field: "action",
       headerName: "Action",
-      width: 200,
+      width: 250,
       renderCell: (params: any) => {
         return (
           <>
-            <Link to={"/firstName/" + params.row.firstName}>
-              <button className="userListEdit">Edit</button>
-            </Link>
-            <button 
-             className="userListDeactive"
-             onClick={() => handleDeactive(params.row.id, params.row.userType)}>Deactive</button>
             <DeleteOutline
               className="userListDelete"
               onClick={() => handleDelete(params.row.id, params.row.userType)}
               
             />
+            <Link to={"/firstName/" + params.row.firstName}>
+              <button className="userListEdit">Edit</button>
+            </Link>
+            <button 
+             className="userListDeactive"
+             onClick={() => handleStatus(params.row.id, params.row.userType, !params.row.active)}>{params.row.active ? "Deactivate" : "Activate"}</button>
+            
           </>
         );
       },
@@ -89,6 +92,7 @@ const UserList: React.FC<any> = () => {
     <DataGrid
       getRowId={(row) => row._id}
       rows={rows}
+      disableSelectionOnClick
       columns={columns}
       pageSize={10}
       rowsPerPageOptions={[10]}

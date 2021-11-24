@@ -34,17 +34,16 @@
  * @param id
  * @returns
  */
- const deactivateUser = async (userId:string, userType: string) => {
+ const setUserStatus = async (userId:string, userType: string, active: boolean) => {
   try {
-    const res = await axios.patch(`${baseUrl}/admin/${userType.toLowerCase()}/${userId}`, {active: false}, authHeader())
-    console.log("deactivate res", res)
+    const res = await axios.patch(`${baseUrl}/admin/${userType.toLowerCase()}/${userId}`, {active}, authHeader())
+    console.log("activate res", res)
     return res
   } catch (error) {
     console.log(error);
   }
 }
-
  export default {
    deleteUser,
-   deactivateUser
+   setUserStatus
  }
