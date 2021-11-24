@@ -18,14 +18,14 @@ export default {
   name: "Nimi",
   email: "Sähköposti",
   password: "Salasana",
-  confirm: "Varmista salasana",
+  confirm: "Toista salasana",
   user: "Käyttäjä",
   terms_of_use: "Rekisteröitymällä hyväksyt tietojen lähetyksen ",
   terms_agency: "vuokrayrityksille",
 
   //error
   invalid_email: "Virheellinen sähköpostiosoite",
-  invalid_length: "salasanan pituus on oltava ainakin 3",
+  invalid_length: "pituus on oltava ainakin 3",
   field_required: "Pakollinen kenttä",
   invalid_name: "Virheellinen nimi",
   invalid_password: "Salasana ei täsmää",
