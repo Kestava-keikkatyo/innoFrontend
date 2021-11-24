@@ -1,4 +1,4 @@
-import { Button, makeStyles, Menu, MenuItem } from '@material-ui/core';
+import { makeStyles} from '@material-ui/core';
 import React from 'react';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
@@ -21,16 +21,16 @@ import logo from '../../assets/keikkakaveri_logo.png';
 import GroupsIcon from '@material-ui/icons/Group';
 
 import { useTranslation } from 'react-i18next'
-import TranslateIcon from '@material-ui/icons/Translate';
+// import TranslateIcon from '@material-ui/icons/Translate';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
 import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
 import FormatList from '@material-ui/icons/FormatListBulleted';
 
-import fi1 from '../NavigationComponents/fi1.png';
-import us1 from '../NavigationComponents/us1.png';
-import sw1 from '../NavigationComponents/sw1.png';
+// import fi1 from '../NavigationComponents/fi1.png';
+// import us1 from '../NavigationComponents/us1.png';
+// import sw1 from '../NavigationComponents/sw1.png';
 
 
 /**

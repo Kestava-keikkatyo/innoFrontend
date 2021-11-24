@@ -7,7 +7,6 @@ import {
   Toolbar,
   Typography,
   Grid,
-  makeStyles,
 } from '@material-ui/core';
 import SwipeableViews from 'react-swipeable-views';
 import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons';
@@ -16,17 +15,17 @@ import FirstLandingPage from './FirstLandingPage';
 import ContentLifeSpan from './ContentWorkLifeSpan';
 import ContentResponsibilities from './ContentResponsibilities';
 import { Link } from 'react-router-dom';
-import logo from '../LandingPage/keikka-kaveri4.png';
-import TranslateIcon from '@mui/icons-material/Translate';
+// import logo from '../LandingPage/keikka-kaveri4.png';
+// import TranslateIcon from '@mui/icons-material/Translate';
 import { useTranslation } from 'react-i18next';
 import fi1 from '../../components/NavigationComponents/fi1.png';
 import us1 from '../../components/NavigationComponents/us1.png';
-import sw1 from '../../components/NavigationComponents/sw1.png';
+// import sw1 from '../../components/NavigationComponents/sw1.png';
 
 const LangMenuDropDown = () => {
   // const [anchorEl, setAnchorEl] = React.useState(null);
   // const classes = useStyles();
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
   // const handleClick = (event: any) => {
   //   setAnchorEl(event.currentTarget);
@@ -168,14 +167,14 @@ const LandingPage = () => {
   );
 };
 
-const useStyles = makeStyles((theme) => ({
-  // necessary for content to be below app bar
-  list: {
-    '& .MuiList-root': {
-      width: '130px !important',
-    },
-    top: '39px !important',
-    left: '-40px !important',
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   // necessary for content to be below app bar
+//   list: {
+//     '& .MuiList-root': {
+//       width: '130px !important',
+//     },
+//     top: '39px !important',
+//     left: '-40px !important',
+//   },
+// }));
 export default LandingPage;

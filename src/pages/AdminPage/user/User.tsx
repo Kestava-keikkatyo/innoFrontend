@@ -12,8 +12,8 @@ import React from 'react';
 import { fetchProfileById } from '../../../actions/profileActions';
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../../utils/store";
-import FileUploader from '../../../components/FileUploader';
-import { useTranslation } from 'react-i18next'
+// import FileUploader from '../../../components/FileUploader';
+// import { useTranslation } from 'react-i18next'
 import {useRef, useState, useEffect  } from "react";
 
 type UserUrlParams = {
@@ -24,7 +24,7 @@ const User: React.FC<any> = () => {
   const { profileId } = useParams<UserUrlParams>();
   const profileData: any = useSelector((state: IRootState) => state.profile.currentProfile);
   const dispatch = useDispatch();
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   useEffect(() => {
     dispatch(fetchProfileById(profileId));
   }, [dispatch, profileData.profileId]);

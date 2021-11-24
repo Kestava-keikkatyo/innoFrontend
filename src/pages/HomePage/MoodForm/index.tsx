@@ -2,26 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
+// import Stepper from '@material-ui/core/Stepper';
+// import Step from '@material-ui/core/Step';
+// import StepLabel from '@material-ui/core/StepLabel';
 import StepConnector from '@material-ui/core/StepConnector';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 import SendIcon from '@material-ui/icons/Send';
 import CreateIcon from '@material-ui/icons/Create';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 
 import { Container } from '@material-ui/core';
-import MoodStepOne from './MoodStepOne';
-import MoodStepThree from './MoodStepThree';
-import { setFiles } from '../../../actions/fileActions';
-import { useDispatch, useSelector } from 'react-redux';
+// import MoodStepOne from './MoodStepOne';
+// import MoodStepThree from './MoodStepThree';
+// import { setFiles } from '../../../actions/fileActions';
+import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
 
-import { IRootState } from '../../../utils/store';
-import { roles } from '../../../types/types';
+// import { IRootState } from '../../../utils/store';
+// import { roles } from '../../../types/types';
 import MoodStep from './MoodStep';
 import MoodStepEnd from './MoodStepEnd';
   
@@ -143,7 +143,7 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
   };
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   
 
@@ -159,19 +159,18 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
   };
 
 
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 2);
-    
-  };
+  // const handleNext = () => {
+  //   setActiveStep((prevActiveStep) => prevActiveStep + 2);
+  // };
 
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 2);
-  };
+  // const handleBack = () => {
+  //   setActiveStep((prevActiveStep) => prevActiveStep - 2);
+  // };
 
-  const handleReset = () => {
-    setActiveStep(0);
-    dispatch(setFiles([null, null, null]));
-  };
+  // const handleReset = () => {
+  //   setActiveStep(0);
+  //   dispatch(setFiles([null, null, null]));
+  // };
 
   const handleFinnish = () => {
     handleSubmit();

@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
-import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
-import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt';
-import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
-import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
-import { Grid, makeStyles, TextField, Typography  } from '@material-ui/core';
-import { useDispatch, useSelector } from 'react-redux';
-import { IRootState } from '../../../utils/store';
-import { updateFeeling } from '../../../actions/feelingActions';
+import React from 'react';
+// import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
+// import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
+// import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt';
+// import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
+// import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
+import { makeStyles, Typography  } from '@material-ui/core';
+import { useDispatch} from 'react-redux';
+// import { IRootState } from '../../../utils/store';
+// import { updateFeeling } from '../../../actions/feelingActions';
 import { useTranslation } from 'react-i18next';
-import FileUploader from '../../../components/FileUploader';
+// import FileUploader from '../../../components/FileUploader';
 
 const MoodStepEnd: React.FC = () => {
 
-const { data } = useSelector((state: IRootState) => state.user);
+// const { data } = useSelector((state: IRootState) => state.user);
 const { t } = useTranslation();
 
 const useStyles = makeStyles({
@@ -31,9 +31,9 @@ const useStyles = makeStyles({
         },
 });
 
-  const classes = useStyles();
+  // const classes = useStyles();
 
-  const dispatch: any = useDispatch();
+  // const dispatch: any = useDispatch();
 
   let initialClickedValues = {
     0: false,
@@ -42,20 +42,20 @@ const useStyles = makeStyles({
     3: false,
     4: false,
   };
-  const [clicked, setClicked] = useState(initialClickedValues);
+  // const [clicked, setClicked] = useState(initialClickedValues);
 
-  const currentFeeling: any = useSelector<IRootState>(
-    (state) => state.feeling.currentFeeling
-  );
+  // const currentFeeling: any = useSelector<IRootState>(
+  //   (state) => state.feeling.currentFeeling
+  // );
 
-  const handleChange = (event: any) => {
-    dispatch(updateFeeling({ ...currentFeeling, note: event.target.value }));
-  };
+  // const handleChange = (event: any) => {
+  //   dispatch(updateFeeling({ ...currentFeeling, note: event.target.value }));
+  // };
 
-  const updateMood = (v: any) => {
-    setClicked({ ...initialClickedValues, [v]: true });
-    dispatch(updateFeeling({ ...currentFeeling, value: v }));
-  };
+  // const updateMood = (v: any) => {
+  //   setClicked({ ...initialClickedValues, [v]: true });
+  //   dispatch(updateFeeling({ ...currentFeeling, value: v }));
+  // };
 
   return (
     <>

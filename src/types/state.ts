@@ -1,4 +1,4 @@
-import { File, Feeling, Form, roles, severity, Profile, Report, Worker } from "./types"
+import { File, Feeling, Form, roles, severity, Profile, Report } from "./types"
 import { AdminActionType } from "./types"
 
 /**
