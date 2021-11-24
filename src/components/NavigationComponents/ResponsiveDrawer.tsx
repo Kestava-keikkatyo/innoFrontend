@@ -82,10 +82,10 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
             <ListItemText primary={t('databank')} />
           </ListItem>
           <Divider />
-          <ListItem button component={Link} to="/home">
+          {/* <ListItem button component={Link} to="/home">
             <ListItemIcon>{<CalendarTodayIcon />}</ListItemIcon>
             <ListItemText primary={t('schedule')} />
-          </ListItem>
+          </ListItem> */}
           <Divider />
           <ListItem button component={Link} to="/profiles">
             <ListItemIcon>{<PeopleOutlineIcon />}</ListItemIcon>
@@ -183,6 +183,11 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           )}
           {role === roles.Worker && (
             <>
+              <ListItem button component={Link} to="/home">
+                <ListItemIcon>{<CalendarTodayIcon />}</ListItemIcon>
+                <ListItemText primary={t('schedule')} />
+              </ListItem>
+              <Divider />
               <ListItem button component={Link} to="/business-contracts">
                 <ListItemIcon>
                   <LibraryBooksIcon />
