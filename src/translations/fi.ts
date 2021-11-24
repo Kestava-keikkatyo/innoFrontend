@@ -29,6 +29,7 @@ export default {
   field_required: "Pakollinen kenttä",
   invalid_name: "Virheellinen nimi",
   invalid_password: "Salasana ei täsmää",
+  email_already_used: "Sähköpostiosoite on jo käytössä",
 
   //option
   role: "Rooli",

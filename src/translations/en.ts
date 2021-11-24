@@ -29,6 +29,8 @@ export default {
   field_required: "Field is required",
   invalid_name: "Invalid name",
   invalid_password: "Password does not match",
+  email_already_used: "Email is already in use",
+
 
   //option
   role: "Role",
