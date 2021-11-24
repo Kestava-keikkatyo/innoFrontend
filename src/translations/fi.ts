@@ -25,6 +25,7 @@ export default {
 
   //error
   invalid_email: "Virheellinen sähköpostiosoite",
+  invalid_length: "salasanan pituus on oltava ainakin 3",
   field_required: "Pakollinen kenttä",
   invalid_name: "Virheellinen nimi",
   invalid_password: "Salasana ei täsmää",

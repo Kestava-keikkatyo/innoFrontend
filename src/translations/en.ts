@@ -25,6 +25,7 @@ export default {
 
   //error
   invalid_email: "Invalid email address",
+  invalid_length: "Length must be at least 3",
   field_required: "Field is required",
   invalid_name: "Invalid name",
   invalid_password: "Password does not match",
