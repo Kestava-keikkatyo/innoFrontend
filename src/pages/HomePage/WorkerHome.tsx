@@ -4,6 +4,7 @@ import vastuualueet from '../../assets/tietopankki/vastuualueet.json';
 import {
   List,
   CardContent,
+  Checkbox,
   ListItem,
   ListItemText,
   CardHeader,
@@ -57,11 +58,11 @@ const WorkerHome = () => {
       <Grid item xs={12} md={6} style={{ marginBottom: '3%' }}>
         <div className="report-container" style={{ height: '100%' }}>
           <CardHeader
-            action={
+           /* action={
               <Button variant="outlined" color="primary">
                 {t('read_more')}
-              </Button>
-            }
+              </Button> 
+            }*/
             title="Työntekijän vastuu"
             subheader=""
           />
@@ -73,6 +74,10 @@ const WorkerHome = () => {
                 </ListItem>
               ))}
             </List>
+         {/*   <Checkbox
+              label="Worker has read and understood"/>
+                
+         */}
           </CardContent>
         </div>
       </Grid>
