@@ -6,7 +6,7 @@ import {
   AppBar,
   Toolbar,
   Typography,
-  Grid,
+  Grid
 } from '@material-ui/core';
 import SwipeableViews from 'react-swipeable-views';
 import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons';
@@ -21,52 +21,12 @@ import { useTranslation } from 'react-i18next';
 import fi1 from '../../components/NavigationComponents/fi1.png';
 import us1 from '../../components/NavigationComponents/us1.png';
 // import sw1 from '../../components/NavigationComponents/sw1.png';
-
-const LangMenuDropDown = () => {
-  // const [anchorEl, setAnchorEl] = React.useState(null);
-  // const classes = useStyles();
-  // const { t } = useTranslation();
-
-  // const handleClick = (event: any) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
-
+const LandingPage = () => {
   const changeLanguage = (code: any) => {
     // setAnchorEl(null);
     localStorage.setItem('i18nextLng', code);
     window.location.reload();
   };
-
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  // };
-
-  return (
-    <>
-      <div className="drawer-top">
-        <Button
-          style={{
-            position: 'absolute',
-            padding: 'fixed',
-            left: '89.5%',
-            top: '25%',
-          }}
-          onClick={() => changeLanguage('fi')}
-        >
-          <img src={fi1} style={{ width: '30px' }} />
-        </Button>
-        <Button
-          style={{ position: 'absolute', left: '87%', top: '25%' }}
-          onClick={() => changeLanguage('en')}
-        >
-          <img src={us1} style={{ width: '30px' }} />
-        </Button>
-      </div>
-    </>
-  );
-};
-
-const LandingPage = () => {
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
   const { t } = useTranslation();
@@ -104,7 +64,20 @@ const LandingPage = () => {
               </Link>
             </Typography>
           </Grid>
-          <LangMenuDropDown />
+          <Typography>
+              <Button
+              style={{left: "-30%", marginTop:"20%"}}
+              onClick={() => changeLanguage('fi')}
+              >
+              <img src={fi1} style={{ width: '30px' }} />
+            </Button>
+            <Button
+              style={{left:"20%",marginTop:"-55%"}}
+              onClick={() => changeLanguage('en')}
+            >
+              <img src={us1} style={{ width: '30px' }} />
+            </Button>
+          </Typography>
           <Typography style={{ width: 100 }}>
             <Link className="landing-login" to="/login">
               {t('kirjaudu_sisaan')}
