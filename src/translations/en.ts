@@ -125,7 +125,7 @@ export default {
   done_contracts: "Done contracts",
   contracts_received_from_the_workers: "Contracts received from the workers",
   contracts_received_from_businesses:
-    "Käyttäjäyrityksiltä saapuneet sopimukset",
+    "Contracts received from the businesses",
 
   //Agencies list
   all: "All",
@@ -252,7 +252,7 @@ export default {
   confirm_password: "Confirm new password",
 
   //FeedbackForm
-  no_feedback: "Ei palautteita",
+  no_feedback: "No feedback.",
 
   //weekdays
   monday: "Mo",
@@ -320,12 +320,12 @@ export default {
   //feedbackCategory
   feedback_category: "Feedback category",
   category0: "Category",
-  description0: "Description",
-  description1: "You have added a little bit of your feeling.",
-  description2: "You have added moderately of your feeling.",
-  description3: "Volume of your feelin is good",
-  description4: "Your mood is really good",
-  description5: "The feeling is very good",
+  description0: "Description : based on the amount of mood feedback and the mood points",
+  description1: "According to our statistics you could use a little cheering.",
+  description2: "According to our statistics your mood is quite well.",
+  description3: "According to our statistics you are feeling well",
+  description4: "According to our statistics your mood is really good",
+  description5: "According to our statistics your mood is very good",
 
   //contractsFromBusiness
   contracts_from_business: "Contracts from business",
@@ -349,7 +349,7 @@ export default {
   fill_business_contract_form: "Fill business contract form",
   preview_business_contract_form: "Preview business contract form",
 
-  choose_workers: "Valitse Työntekijät",
+  choose_workers: "Choose the Workers",
   agency_description_here: "agency_description_here",
 
   edit_filled: "Edit Filled Business Contract",

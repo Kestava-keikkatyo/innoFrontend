@@ -78,6 +78,7 @@ const WorkerHome = () => {
             </List>
             <Checkbox
                {...label}
+               
                defaultChecked
                
               />

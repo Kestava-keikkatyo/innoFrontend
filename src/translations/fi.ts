@@ -315,13 +315,13 @@ export default {
 
   //feedbackCategory
   feedback_category: "Palautekategoria",
-  category0: "Kategoriat",
+  category0: "Kategoriat : annettujen palautteiden määrän ja tunnepisteiden perusteella",
   description0: "Kuvaus",
-  description1: "Olet lisännyt vähän fiiliksistäsi.",
-  description2: "Olet lisännyt kohtuullisesti fiiliksistäsi.",
-  description3: "Olet lisännyt riittävästi fiiliksistäsi",
-  description4: "Fiiliksisi on tosi hyvä",
-  description5: "Fiiliksisi on erittäin hyvä",
+  description1: "Tilastojemme mukaan tarvitset lisää piristystä!",
+  description2: "Tilastojemme mukaan voit suhteellisen hyvin.",
+  description3: "Tilastojemme mukaan voit hyvin.",
+  description4: "Tilastojemme mukaan voit todella hyvin.",
+  description5: "Tilastojemme mukaan voit on erittäin hyvin.",
 
   //contractsFromBusiness
   contracts_from_business: "Käyttäjäyrityksiltä saapuneet sopimukset",
