@@ -13,7 +13,7 @@ import FileUploader from '../../../components/FileUploader';
 
 const MoodStep: React.FC = () => {
 
-const { data } = useSelector((state: IRootState) => state.user);
+// const { data } = useSelector((state: IRootState) => state.user;
 const { t } = useTranslation();
 
 const useStyles = makeStyles({
@@ -110,7 +110,7 @@ const useStyles = makeStyles({
             onChange={handleChange}
             placeholder={t('tell_feelings')}
             multiline
-            rows={4}
+            rows={5}
             variant="outlined"
         />
         <FileUploader name={t('upload_file')} handleFile={() => ''} accept="image/*" />

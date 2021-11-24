@@ -12,7 +12,7 @@ import {
 } from "@material-ui/core";
 import WorkIcon from "@material-ui/icons/Work";
 import AnnouncementIcon from "@material-ui/icons/Announcement";
-import { Accordion, AccordionDetails } from "@material-ui/core";
+// import { Accordion, AccordionDetails } from "@material-ui/core";
 import WorkView from "./WorkView";
 import WorkRequest from "./WorkRequest";
 import { useTranslation } from 'react-i18next'

@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 
 import { adminLogin } from '../../actions/userActions';
 
 import AdminLogInForm from './AdminLogInForm';
 import '../LoginPage/landingPage.css';
 
-import { Box, Button, Divider, Grid } from '@material-ui/core';
+import { Box, Grid } from '@material-ui/core';
 
 /**
  * @component
@@ -19,7 +19,7 @@ import { Box, Button, Divider, Grid } from '@material-ui/core';
 const AdminLoginPage = () => {
   const location = useLocation();
   const dispatch = useDispatch();
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
   const loginSubmit = ({ ...credentials }: any) => {
     const { from }: any = location.state || { from: { pathname: '/home' } };

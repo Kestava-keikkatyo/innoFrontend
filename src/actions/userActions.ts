@@ -28,7 +28,6 @@ import { useTranslation } from 'react-i18next';
  *  @param {string} role - User's role
  * @param {Object} from - User redirection path
  */
-enum myrole { role = "testi" }
 export const login = (credentials: Credentials, from: string) => {
   return async (dispatch: any) => {
     dispatch({

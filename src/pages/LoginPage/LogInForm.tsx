@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
-import { FormikTextField, FormikRadioField } from '../../components/FormField';
+import { FormikTextField } from '../../components/FormField';
 
 import {
   Card,
