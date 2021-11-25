@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from "react"
 import {
   Grid,
   List,
@@ -14,81 +14,79 @@ import {
   useTheme,
   Theme,
   createStyles,
-} from "@material-ui/core/";
-import { useSelector } from "react-redux";
-import allUsersService from "../../services/allUsersService";
-import { useMediaQuery } from "@material-ui/core";
-import WorkerTableView from "./WorkerTableView";
-import { useTranslation } from 'react-i18next'
+} from "@material-ui/core/"
+import { useSelector } from "react-redux"
+import allUsersService from "../../services/allUsersService"
+import { useMediaQuery } from "@material-ui/core"
+import WorkerTableView from "./WorkerTableView"
+import { useTranslation } from "react-i18next"
 
 function not(a: any[], b: any[]) {
-  return a.filter((value) => b.indexOf(value) === -1);
+  return a.filter((value) => b.indexOf(value) === -1)
 }
 
 function intersection(a: any[], b: any[]) {
-  return a.filter((value) => b.indexOf(value) !== -1);
+  return a.filter((value) => b.indexOf(value) !== -1)
 }
 
 function union(a: any[], b: any[]) {
-  return [...a, ...not(b, a)];
+  return [...a, ...not(b, a)]
 }
 
 const WorkerTransferList: React.FC<any> = () => {
-  const classes = useStyles();
-  const theme = useTheme();
-  
-  const matches = useMediaQuery(theme.breakpoints.down("sm"));
+  const classes = useStyles()
+  const theme = useTheme()
+
+  const matches = useMediaQuery(theme.breakpoints.down("sm"))
 
   const { t } = useTranslation()
 
-  const [checked, setChecked] = React.useState<any[]>([]);
-  const { agencyWorkers } = useSelector((state: any) => state.allUsers);
-  const [left, setLeft] = React.useState<any>(agencyWorkers);
-  const [right, setRight] = React.useState<any>([]);
+  const [checked, setChecked] = React.useState<any[]>([])
+  const { agencyWorkers } = useSelector((state: any) => state.allUsers)
+  const [left, setLeft] = React.useState<any>(agencyWorkers)
+  const [right, setRight] = React.useState<any>([])
 
-  const leftChecked = intersection(checked, left);
-  const rightChecked = intersection(checked, right);
+  const leftChecked = intersection(checked, left)
+  const rightChecked = intersection(checked, right)
 
   useEffect(() => {
-    allUsersService.getAgencyWorkers().then((res: any) => setLeft(res.data));
-  }, []);
+    allUsersService.getAgencyWorkers().then((res: any) => setLeft(res.data))
+  }, [])
 
   const handleToggle = (value: any) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
+    const currentIndex = checked.indexOf(value)
+    const newChecked = [...checked]
 
     if (currentIndex === -1) {
-      newChecked.push(value);
+      newChecked.push(value)
     } else {
-      newChecked.splice(currentIndex, 1);
+      newChecked.splice(currentIndex, 1)
     }
 
-    setChecked(newChecked);
-  };
+    setChecked(newChecked)
+  }
 
-  const numberOfChecked = (items: any[]) => intersection(checked, items).length;
+  const numberOfChecked = (items: any[]) => intersection(checked, items).length
 
   const handleToggleAll = (items: any[]) => () => {
     if (numberOfChecked(items) === items.length) {
-      setChecked(not(checked, items));
+      setChecked(not(checked, items))
     } else {
-      setChecked(union(checked, items));
+      setChecked(union(checked, items))
     }
-  };
+  }
 
   const handleCheckedRight = () => {
-    setRight(right.concat(leftChecked));
-    setLeft(not(left, leftChecked));
-    setChecked(not(checked, leftChecked));
-  };
+    setRight(right.concat(leftChecked))
+    setLeft(not(left, leftChecked))
+    setChecked(not(checked, leftChecked))
+  }
 
   const handleCheckedLeft = () => {
-    setLeft(left.concat(rightChecked));
-    setRight(not(right, rightChecked));
-    setChecked(not(checked, rightChecked));
-  };
-
-
+    setLeft(left.concat(rightChecked))
+    setRight(not(right, rightChecked))
+    setChecked(not(checked, rightChecked))
+  }
 
   const customList = (title: React.ReactNode, items: any[]) => (
     <Card>
@@ -114,7 +112,7 @@ const WorkerTransferList: React.FC<any> = () => {
       <Divider />
       <List className={classes.list} dense component="div" role="list">
         {items.map((value: any) => {
-          const labelId = `transfer-list-all-item-${value._id}-label`;
+          const labelId = `transfer-list-all-item-${value._id}-label`
 
           return (
             <ListItem
@@ -133,18 +131,18 @@ const WorkerTransferList: React.FC<any> = () => {
               </ListItemIcon>
               <ListItemText id={labelId} primary={value.name} />
             </ListItem>
-          );
+          )
         })}
         <ListItem />
       </List>
     </Card>
-  );
-  if(matches) 
-  return (
-    <div>
-      <WorkerTableView agencyWorkers={left}/>
-    </div>
   )
+  if (matches)
+    return (
+      <div>
+        <WorkerTableView agencyWorkers={left} />
+      </div>
+    )
   return (
     <Grid container spacing={2} alignItems="center" className={classes.root}>
       <Grid item>{customList(t("choices"), left)}</Grid>
@@ -174,9 +172,8 @@ const WorkerTransferList: React.FC<any> = () => {
       </Grid>
       <Grid item>{customList(t("chosen"), right)}</Grid>
     </Grid>
-    
-  );
-};
+  )
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -196,6 +193,6 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(0.5, 0),
     },
   })
-);
+)
 
-export default WorkerTransferList;
+export default WorkerTransferList

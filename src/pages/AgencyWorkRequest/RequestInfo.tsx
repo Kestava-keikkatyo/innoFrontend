@@ -1,9 +1,14 @@
-import React from "react";
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import Accordion from "@material-ui/core/Accordion";
-import { AccordionDetails, AccordionSummary, Checkbox, FormControlLabel, Typography}  from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-
+import React from "react"
+import { makeStyles, Theme, createStyles } from "@material-ui/core/styles"
+import Accordion from "@material-ui/core/Accordion"
+import {
+  AccordionDetails,
+  AccordionSummary,
+  Checkbox,
+  FormControlLabel,
+  Typography,
+} from "@material-ui/core"
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -16,19 +21,16 @@ const useStyles = makeStyles((theme: Theme) =>
       flexShrink: 0,
     },
   })
-);
-
+)
 
 const RequestInfo: React.FC<any> = () => {
-  const classes = useStyles();
-  const [expanded, setExpanded] = React.useState<string | false>(false);
+  const classes = useStyles()
+  const [expanded, setExpanded] = React.useState<string | false>(false)
 
   const handleChange =
     (panel: string) => (event: React.ChangeEvent<{}>, isExpanded: boolean) => {
-      setExpanded(isExpanded ? panel : false);
-    };
-
-    
+      setExpanded(isExpanded ? panel : false)
+    }
 
   return (
     <div className={classes.root}>
@@ -41,15 +43,8 @@ const RequestInfo: React.FC<any> = () => {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <FormControlLabel
-            aria-label="Acknowledge"
-            onClick={(event) => event.stopPropagation()}
-            onFocus={(event) => event.stopPropagation()}
-            control={<Checkbox />}
-            label=""
-          />
           <Typography className={classes.heading}>Corsair</Typography>
-          
+
           <Typography>Siivooja yrityksellemme</Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -83,7 +78,7 @@ const RequestInfo: React.FC<any> = () => {
         </AccordionDetails>
       </Accordion>
     </div>
-  );
-};
+  )
+}
 
-export default RequestInfo;
+export default RequestInfo
