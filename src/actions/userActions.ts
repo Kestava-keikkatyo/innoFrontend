@@ -44,7 +44,7 @@ export const login = (credentials: Credentials, from: string) => {
       if (from) {
         history.push(from);
       }
-      
+
       dispatch(setAlert('login successful', severity.Success));
 
       const profile: any = await profileService.fetchProfileById(data.profileId);
@@ -65,7 +65,7 @@ export const login = (credentials: Credentials, from: string) => {
  * @param {Object} credentials - Admin's email and password
  * @param {Object} from - User redirection path
  */
- export const adminLogin = (credentials: Credentials, from: string) => {
+export const adminLogin = (credentials: Credentials, from: string) => {
   return async (dispatch: any) => {
     dispatch({
       type: USER_REQUEST,
@@ -127,7 +127,7 @@ export const signup = (user: SignUpUser, role: roles) => {
 
       const profile = {
         name: data.name,
-        phone: '044 444 4444',
+        phone: '000 000 0000',
         email: data.email,
         streetAddress: 'Streetaddress A 12',
         zipCode: '00100',
@@ -168,10 +168,10 @@ export const signup = (user: SignUpUser, role: roles) => {
         type: USER_FAILURE,
       });
       dispatch(setAlert('signup failed: email is already in use', severity.Error));
-      
+
       /*
         if
-      
+
 
       */
     }

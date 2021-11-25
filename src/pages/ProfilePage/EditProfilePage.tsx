@@ -9,7 +9,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import fileService from '../../services/fileService';
 import { clearAlert, setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
 import EditProfileHeader from './EditProfileComponents/EditProfileHeader';
 import EditCoverPhoto from './EditProfileComponents/EditCoverPhoto';
 import EditProfilePictureAndName from './EditProfileComponents/EditProfilePictureAndName';
@@ -23,8 +23,7 @@ import { setFiles } from '../../actions/fileActions';
  * @desc Edit profile page
  */
 export const EditProfilePage: React.FC<any> = () => {
-
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   const currentProfile: any = useSelector(
     (state: IRootState) => state.profile.currentProfile
@@ -97,7 +96,10 @@ export const EditProfilePage: React.FC<any> = () => {
 
   return (
     <Container className="relative">
-      <EditProfileHeader />
+      <EditProfileHeader
+        submitProfile={submitProfile}
+        savingChanges={savingChanges}
+      />
 
       <form>
         <EditCoverPhoto profile={currentProfile} />
@@ -122,7 +124,7 @@ export const EditProfilePage: React.FC<any> = () => {
           <Button
             variant="contained"
             type="submit"
-            color="secondary"
+            color="primary"
             onClick={submitProfile}
             style={{ minWidth: 200 }}
           >
