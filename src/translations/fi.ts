@@ -52,7 +52,7 @@ export default {
   upload_file: "Liitä tiedosto",
   entry: "Lisää",
   history: "Historia",
-  active: "Active",
+  active: "Aktiivisia",
 
   //Mood index page
   entry_mood: "Lisää fiilis",
@@ -366,9 +366,17 @@ export default {
   duration: "Kesto",
   add_job: "Lisää työpaikka",
 
+  //LimitJobSearch
   locations:"Sijanti",
   scope:"Tehtäväalue",
   experience:"Kokemus",
+
+  //WorkdView
+  contract:"Sopimus",
+  contacts:"Yhteyshenkilö",
+
+  //JobsIncidence
+  select_by_incidence: "Valitse ilmaantuvuuden mukaan",
 //cooperation info
   // agency_info: "Työnvälitysyhtiön tiedot",
 

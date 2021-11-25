@@ -373,14 +373,18 @@ export default {
   title: "Title",
   add_job: "Add job",
 
+  //WorkdView
+  contract:"Contract",
+  contacts:"Contact",
 
-
+  //LimitJobSearch
   locations:"Locations",
   scope:"Scope",
   experience:"Experience",
 
+  //JobsIncidence
+  select_by_incidence: "Select by incidence",
 
-  news:"News",
   //cooperation info modal
   send_cooperation_request: "Send co-operation request",
   agency_info: "Agency info",
