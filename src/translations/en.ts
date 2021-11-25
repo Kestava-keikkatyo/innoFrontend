@@ -255,9 +255,9 @@ export default {
   no_feedback: "No feedback.",
 
   //weekdays
-  monday: "Mo",
-  tuesday: "Tu",
-  wednesday: "We",
+  monday: "Mon",
+  tuesday: "Tue",
+  wednesday: "Wed",
   thursday: "Thu",
   friday: "Fri",
 
