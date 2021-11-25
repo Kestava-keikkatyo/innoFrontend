@@ -111,17 +111,17 @@ const CooperationInfoModal: React.FC<any> = ({
         )}
 
         <div className={classes.selectDiv}>
-          <Typography variant="subtitle1">Select contract form</Typography>
+          <Typography variant="subtitle1">{t('select_contract_form')}</Typography>
           <TextField
             id="standard-select-currency"
             select
-            label="Selected form"
+            label={t('selected_form')}
             value={formId}
             onChange={handleChange}
             helperText=""
             variant="standard"
           >
-            <MenuItem value="None">None</MenuItem>
+            <MenuItem value="None">{t('none')}</MenuItem>
             {myForms.docs.map((form: any) => (
               <MenuItem key={form._id} value={form._id}>
                 {form.title.length > 50

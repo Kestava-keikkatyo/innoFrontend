@@ -386,7 +386,9 @@ export default {
   agency_name: "Nimi",
   agency_category: "Katergoria",
   agency_email: "Sähköposti",
-
+  select_contract_form: "Valitse sopimuspohja",
+  selected_form: "Valittu pohja",
+  none: "Ei valittu",
 }
 
 
