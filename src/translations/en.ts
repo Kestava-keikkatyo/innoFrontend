@@ -379,5 +379,7 @@ export default {
   agency_name: "Name",
   agency_category: "Category",
   agency_email: "Email",
-
+  select_contract_form: "Select contract form",
+  selected_form: "Selected form",
+  none: "None"
 }
