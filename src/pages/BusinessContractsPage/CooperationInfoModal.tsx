@@ -57,23 +57,41 @@ const CooperationInfoModal: React.FC<any> = ({
     (state: any) => state.businessContracts.businessContract
   );
 
+  const userRole: any = useSelector((state: any) => state.user.data.role);
+
   useEffect(() => {
     dispatch(fetchBusinessContracts());
     dispatch(fetchFormList());
   }, [dispatch]);
 
   const addContract = () => {
-    const found = businessContracts.some((bc: any) => bc._id === contractId);
-    if (found) {
-      dispatch(
-        setAlert(
-          `Fail: You have already business contract with ${agency.name}`,
-          severity.Error
-        )
-      );
+    if (formId === 'None') {
+      userRole.toLowerCase() === 'business'
+        ? dispatch(
+            setAlert(
+              `Failed: Please choose a form. If you do not have yet, create one.`,
+              severity.Error
+            )
+          )
+        : dispatch(setAlert(`Failed: Please choose a form.`, severity.Error));
     } else {
-      dispatch(addBusinessContractWorkerBusiness(agencyId, contractId));
-      dispatch(setAlert('Success: Invitation sent!', severity.Success));
+      const found = businessContracts.some((bc: any) => bc._id === contractId);
+      if (found) {
+        dispatch(
+          setAlert(
+            `Fail: You have already business contract with ${agency.name}`,
+            severity.Error
+          )
+        );
+      } else {
+        dispatch(addBusinessContractWorkerBusiness(agencyId, contractId));
+        dispatch(
+          setAlert(
+            `Success:  Contract request sent to ${agency.name}`,
+            severity.Success
+          )
+        );
+      }
     }
     closeModal();
   };
@@ -103,15 +121,17 @@ const CooperationInfoModal: React.FC<any> = ({
           <div>
             <Typography variant="subtitle1">{t('agency_info')}:</Typography>
             <Typography color="textSecondary" variant="body2">
-            {t('agency_name')}: {agency.name} <br />
-            {t('agency_email')}: {agency.email} <br />
-            {t('agency_category')}: {agency.category} <br />
+              {t('agency_name')}: {agency.name} <br />
+              {t('agency_email')}: {agency.email} <br />
+              {t('agency_category')}: {agency.category} <br />
             </Typography>
           </div>
         )}
 
         <div className={classes.selectDiv}>
-          <Typography variant="subtitle1">{t('select_contract_form')}</Typography>
+          <Typography variant="subtitle1">
+            {t('select_contract_form')}
+          </Typography>
           <TextField
             id="standard-select-currency"
             select
@@ -122,13 +142,14 @@ const CooperationInfoModal: React.FC<any> = ({
             variant="standard"
           >
             <MenuItem value="None">{t('none')}</MenuItem>
-            {myForms.docs.map((form: any) => (
-              <MenuItem key={form._id} value={form._id}>
-                {form.title.length > 50
-                  ? `${form.title.substring(0, 50)}...`
-                  : form.title}
-              </MenuItem>
-            ))}
+            {myForms &&
+              myForms.docs.map((form: any) => (
+                <MenuItem key={form._id} value={form._id}>
+                  {form.title.length > 50
+                    ? `${form.title.substring(0, 50)}...`
+                    : form.title}
+                </MenuItem>
+              ))}
           </TextField>
         </div>
       </DialogContent>

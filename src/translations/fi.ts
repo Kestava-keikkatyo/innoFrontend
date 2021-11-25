@@ -7,7 +7,9 @@ export default {
   thank_you_for_feedback: "Kiitos palautteestasi!",
   write_a_comment: "Kirjoita kommentti",
   workers_responsibility: "Työntekijän vastuu",
-  responsibilities_read:"Työntekijä on lukenut ja ymmärtänyt vastuunsa",
+  worker_responsibilities_read:"Työntekijä on lukenut ja ymmärtänyt vastuunsa",
+  agency_responsibility: "Henkilöstöpalveluyrityksen vastuu",
+  agency_responsibilities_read:"Henkilöstöpalveluyritys on lukenut ja ymmärtänyt vastuunsa",
   saveButton: "Tallenna", 
 
   //login
@@ -360,7 +362,6 @@ export default {
   form_preview: "Esikatsele lomaketta",
 
   create_job: "Tee työilmoitus",
-
   choose: "Valitse",
 
   category: "Kategoria",
@@ -368,6 +369,12 @@ export default {
   requirements: "Vaatimukset",
   duration: "Kesto",
   add_job: "Lisää työpaikka",
+  job_start_date: "Työ alkaa",
+  job_end_date: "Työ päättyy",
+  application_ends: "Haku päättyy",
+  street_address: "Katuosoite",
+  city: "Kaupunki",
+  zip_code: "Postinumero",
 
   //LimitJobSearch
   locations:"Sijanti",
@@ -399,7 +406,7 @@ export default {
 //DatabankRoute
   homeButton:"Etusivu",
   articles: "Artikkelit",
-  job_lifespan: "Työn elinkaari",
+  work_lifespan: "Työn elinkaari",
   areas_of_responsibility: "Vastuualueet",
   good_practises: "Hyvät käytännöt",
 }

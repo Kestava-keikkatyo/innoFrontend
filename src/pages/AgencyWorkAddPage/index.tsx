@@ -126,7 +126,7 @@ const AgencyWorkAdd: React.FC<any> = () => {
             <TextField
               className={classes.datesLeft}
               id="startDate"
-              label="Start date"
+              label={t('job_start_date')}
               type="date"
               value={startingDate}
               onChange={(e) => setStartingDate(e.target.value)}
@@ -137,7 +137,7 @@ const AgencyWorkAdd: React.FC<any> = () => {
             <TextField
               className={classes.datesMiddle}
               id="endDate"
-              label="End date"
+              label={t('job_end_date')}
               type="date"
               value={endingDate}
               onChange={(e) => setEndingDate(e.target.value)}
@@ -148,7 +148,7 @@ const AgencyWorkAdd: React.FC<any> = () => {
             <TextField
               className={classes.datesRight}
               id="endDate"
-              label="Application ends"
+              label={t('application_ends')}
               type="date"
               value={applyingEndsAt}
               onChange={(e) => setApplyingEndsAt(e.target.value)}
@@ -160,7 +160,7 @@ const AgencyWorkAdd: React.FC<any> = () => {
               <TextField
                 className={classes.streetAddress}
                 value={currentProfile.streetAddress}
-                label="Street address"
+                label={t('street_address')}
                 onChange={(e) => setTitle(e.target.value)}
                 fullWidth
                 id="standard-full-width"
@@ -169,7 +169,7 @@ const AgencyWorkAdd: React.FC<any> = () => {
               />
 
               <TextField
-                label="City"
+                label={t('city')}
                 value={currentProfile.city}
                 className={classes.city}
                 onChange={(e) => setTitle(e.target.value)}
@@ -179,7 +179,7 @@ const AgencyWorkAdd: React.FC<any> = () => {
               />
               <TextField
                 value={currentProfile.zipCode}
-                label="Zip code"
+                label={t('zip_code')}
                 className={classes.zipCode}
                 onChange={(e) => setTitle(e.target.value)}
                 fullWidth

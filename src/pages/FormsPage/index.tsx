@@ -120,7 +120,7 @@ const FormsPage: React.FC = () => {
         </AppBar>
         <TabPanel value={value} index="one">
           <Typography  style={{ paddingTop: '1rem', paddingBottom: '1rem' }} variant="h4"  >
-            My Forms
+          {t("my_forms")}
           </Typography>
           <Card className={classes.card} variant="outlined">
             <CardContent >
