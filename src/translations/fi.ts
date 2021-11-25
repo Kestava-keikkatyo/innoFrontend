@@ -6,6 +6,9 @@ export default {
   home: "Etusivu",
   thank_you_for_feedback: "Kiitos palautteestasi!",
   write_a_comment: "Kirjoita kommentti",
+  workers_responsibility: "Työntekijän vastuu",
+  responsibilities_read:"Työntekijä on lukenut ja ymmärtänyt vastuunsa",
+  saveButton: "Tallenna", 
 
   //login
   login_title: "Kirjaudu sisään",
@@ -377,8 +380,6 @@ export default {
 
   //JobsIncidence
   select_by_incidence: "Valitse ilmaantuvuuden mukaan",
-//cooperation info
-  // agency_info: "Työnvälitysyhtiön tiedot",
 
 //cooperation info modal
   send_cooperation_request: "Lähetä yhteistyöpyyntö",

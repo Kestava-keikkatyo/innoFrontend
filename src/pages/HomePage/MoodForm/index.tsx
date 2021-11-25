@@ -240,7 +240,7 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
                   onClick={handleFinnish}
                   className={`${classes.button} ${classes.primary}`}
                 >
-                  {t('finish')}
+                  {t('saveButton')}
                 </Button>
               )}
             </div>

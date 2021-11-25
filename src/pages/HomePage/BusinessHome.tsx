@@ -23,11 +23,11 @@ const BusinessHome = () => {
       <Grid item xs={12} md={6}>
         <Card variant="outlined">
           <CardHeader
-            action={
+        /* action={
               <Button variant="outlined" color="primary">
-                Lue lisää
-              </Button>
-            }
+                {t('read_more')}
+              </Button> 
+            }*/
             title="Käyttäjäyrityksen vastuu"
             subheader=""
           />

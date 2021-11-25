@@ -6,6 +6,9 @@ export default {
   home: "Home",
   thank_you_for_feedback: "Thank you for your feedback!",
   write_a_comment: "Write a comment",
+  workers_responsibility: "Worker's responsibility",
+  responsibilities_read:"Worker has read and understood his/her responsibilites.",
+  saveButton: "Save",
 
   //login
   login_title: "Log In",

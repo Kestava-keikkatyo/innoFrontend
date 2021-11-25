@@ -5,6 +5,7 @@ import {
   List,
   CardContent,
   Checkbox,
+  FormControlLabel,
   ListItem,
   ListItemText,
   CardHeader,
@@ -20,7 +21,7 @@ import { useTranslation } from 'react-i18next';
 
 const WorkerHome = () => {
   const dispatch = useDispatch();
-  // const { t } = useTranslation();
+   const { t } = useTranslation();
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
   const currentFeeling: any = useSelector<IRootState>(
@@ -64,7 +65,7 @@ const WorkerHome = () => {
                 {t('read_more')}
               </Button> 
             }*/
-            title="Työntekijän vastuu"
+            title={t('workers_responsibility')}
             subheader=""
           />
           <CardContent>
@@ -75,12 +76,7 @@ const WorkerHome = () => {
                 </ListItem>
               ))}
             </List>
-            <Checkbox
-               {...label}
-               
-               defaultChecked
-               
-              />
+            <FormControlLabel control={<Checkbox defaultChecked style={{color:'#eb5a00'}} />} label={t('responsibilities_read')}/>
           </CardContent>
         </div>
       </Grid>
