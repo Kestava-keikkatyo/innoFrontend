@@ -230,9 +230,9 @@ export default {
 
   //profilePage
   edit_profile: "Edit profile",
-  settings: "settings",
-  profile: "profile",
-  logout: "logout",
+  settings: "Settings",
+  profile: "Profile",
+  logout: "Logout",
   return: "Return",
   introduction_video: "Introduction video",
   instructions: "Instructions",
