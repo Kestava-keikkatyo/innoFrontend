@@ -323,9 +323,9 @@ export default {
   description0: "Description : based on the amount of mood feedback and the mood points",
   description1: "According to our statistics you could use a little cheering.",
   description2: "According to our statistics your mood is quite well.",
-  description3: "According to our statistics you are feeling well",
-  description4: "According to our statistics your mood is really good",
-  description5: "According to our statistics your mood is very good",
+  description3: "According to our statistics you are feeling well.",
+  description4: "According to our statistics your mood is really good.",
+  description5: "According to our statistics your mood is very good.",
 
   //contractsFromBusiness
   contracts_from_business: "Contracts from business",

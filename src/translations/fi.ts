@@ -315,8 +315,8 @@ export default {
 
   //feedbackCategory
   feedback_category: "Palautekategoria",
-  category0: "Kategoriat : annettujen palautteiden määrän ja tunnepisteiden perusteella",
-  description0: "Kuvaus",
+  category0: "Kategoriat",
+  description0: "Kuvaus : annettujen palautteiden määrän ja tunnepisteiden perusteella",
   description1: "Tilastojemme mukaan tarvitset lisää piristystä!",
   description2: "Tilastojemme mukaan voit suhteellisen hyvin.",
   description3: "Tilastojemme mukaan voit hyvin.",
