@@ -367,7 +367,7 @@ export default {
   add_job: "Lisää työpaikka",
 
 //cooperation info
-  agency_info: "Työnvälitysyhtiön nimi"
+  agency_info: "Työnvälitysyhtiön tiedot"
 
 
 }
