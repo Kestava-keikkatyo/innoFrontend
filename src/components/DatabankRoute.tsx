@@ -35,7 +35,7 @@ const DatabankRoute: React.FC<DatabankProps> = ({ path, children }) => {
         <div className="databank-desktop-link">
           <Link to="/home" style={{ textDecoration: 'none' }}>
             <Button variant="contained" color="primary">
-              Työpöytä
+             {t('homeButton')}
             </Button>
           </Link>
         </div>
@@ -51,26 +51,26 @@ const DatabankRoute: React.FC<DatabankProps> = ({ path, children }) => {
           <Grid item>
             <Button color="inherit">
               <Link className="databank-nav-link" to="/databank">
-                Artikkelit
-              </Link>
+                {t('articles')}
+              </Link> {/*Artikkelit */} 
             </Button>
             <Button color="inherit">
               <Link className="databank-nav-link" to="/databank/lifeline">
-                Työn elinkaari
-              </Link>
+              {t('job_lifespan')}
+              </Link> {/*Työn elinkaari */}
             </Button>
             <Button color="inherit">
               <Link
                 className="databank-nav-link"
                 to="/databank/responsibilities"
               >
-                Vastuualueet
-              </Link>
+                {t('areas_of_responsibility')}
+              </Link> {/*Vastuualueet */}
             </Button>
             <Button color="inherit">
               <Link className="databank-nav-link" to="/databank/best-practices">
-                Hyvät käytännöt
-              </Link>
+              {t('good_practises')}
+              </Link> {/*Hyvät käytännöt */}
             </Button>
           </Grid>
           <Grid item>

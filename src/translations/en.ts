@@ -400,4 +400,10 @@ export default {
   no_notifications:"No notifications...",
   empty_notifications:"Empty all notifications",
 
+//DatabankRoute
+homeButton:"Home",
+articles: "Articles",
+job_lifespan: "Job\'s lifespan",
+areas_of_responsibility: "Areas of responsibility",
+good_practises: "Good practises",
 }
