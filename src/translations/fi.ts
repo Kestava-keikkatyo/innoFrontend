@@ -395,6 +395,12 @@ export default {
   no_notifications:"Ei ilmoituksia...",
   empty_notifications:"Tyhjennä kaikki ilmoitukset",
 
+//DatabankRoute
+  homeButton:"Etusivu",
+  articles: "Artikkelit",
+  job_lifespan: "Työn elinkaari",
+  areas_of_responsibility: "Vastuualueet",
+  good_practises: "Hyvät käytännöt",
 }
 
 
