@@ -92,7 +92,7 @@ const CooperationInfoModal: React.FC<any> = ({
     >
       <DialogTitle>
         <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Typography variant="h6">Send cooperation request</Typography>
+          <Typography variant="h6">{t('send_cooperation_request')}</Typography>
           <IconButton onClick={closeModal}>
             <CloseIcon />
           </IconButton>
@@ -101,11 +101,11 @@ const CooperationInfoModal: React.FC<any> = ({
       <DialogContent dividers>
         {agency && (
           <div>
-            <Typography variant="subtitle1">Agency info:</Typography>
+            <Typography variant="subtitle1">{t('agency_info')}:</Typography>
             <Typography color="textSecondary" variant="body2">
-              Name: {agency.name} <br />
-              Email: {agency.email} <br />
-              Category: {agency.category} <br />
+            {t('agency_name')}: {agency.name} <br />
+            {t('agency_email')}: {agency.email} <br />
+            {t('agency_category')}: {agency.category} <br />
             </Typography>
           </div>
         )}
