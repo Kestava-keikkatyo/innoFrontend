@@ -5,13 +5,14 @@ import ClearAllIcon from '@material-ui/icons/ClearAll';
 import CloseIcon from '@material-ui/icons/Close';
 import { useDispatch } from 'react-redux';
 import { clearAllNotifications } from '../../actions/notificationsActions';
+import { useTranslation } from 'react-i18next'
 
 const Notifications: React.FC<any> = (props: { notifications: any, handleCloseNotifications: Function }) => {
   const classes = useStyles()
   const dispatch = useDispatch()
   const { notifications, handleCloseNotifications } = props
   const sortedNotifications = notifications.reverse()
-
+  const { t } = useTranslation()
 
   const handleClearAllNotifications = (notifications: []) => {
     dispatch(clearAllNotifications(notifications))
@@ -23,7 +24,7 @@ const Notifications: React.FC<any> = (props: { notifications: any, handleCloseNo
 
   return (
     <Box className={classes.box}>
-      <Typography className={classes.notificationsHeader}>Ilmoitukset
+      <Typography className={classes.notificationsHeader}>{t('notifications')}
         <Button onClick={handleCloseAllNotifications} style={{left:"32.5%", maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px',top:-11 }}>
             <CloseIcon style={{ fontSize: 22 }} />
           </Button>
@@ -46,13 +47,13 @@ const Notifications: React.FC<any> = (props: { notifications: any, handleCloseNo
               <Divider />
             </div>
           )
-        }) : <><Typography className={classes.noNotifications}>Ei ilmoituksia...</Typography><Divider /></>}
+        }) : <><Typography className={classes.noNotifications}>{t('no_notifications')}</Typography><Divider /></>}
       </List>
       <MenuItem
         style={{ marginTop: 10 }}
         onClick={() => handleClearAllNotifications(sortedNotifications)}>
         <ClearAllIcon style={{ fontSize: 24, marginRight: 10 }} />
-        Empty all
+        {t('empty_notifications')}
       </MenuItem>
     </Box>
   )

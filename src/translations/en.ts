@@ -393,5 +393,11 @@ export default {
   agency_email: "Email",
   select_contract_form: "Select contract form",
   selected_form: "Selected form",
-  none: "None"
+  none: "None",
+
+  //Notifications
+  notifications:"Notifications",
+  no_notifications:"No notifications...",
+  empty_notifications:"Empty all notifications",
+
 }

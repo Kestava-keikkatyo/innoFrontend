@@ -389,7 +389,15 @@ export default {
   select_contract_form: "Valitse sopimuspohja",
   selected_form: "Valittu pohja",
   none: "Ei valittu",
+
+//Notifications
+  notifications:"Ilmoitukset",
+  no_notifications:"Ei ilmoituksia...",
+  empty_notifications:"Tyhjennä kaikki ilmoitukset",
+
 }
+
+
 
 
 
