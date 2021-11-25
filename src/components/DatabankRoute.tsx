@@ -56,7 +56,7 @@ const DatabankRoute: React.FC<DatabankProps> = ({ path, children }) => {
             </Button>
             <Button color="inherit">
               <Link className="databank-nav-link" to="/databank/lifeline">
-              {t('job_lifespan')}
+              {t('work_lifespan')}
               </Link> {/*Työn elinkaari */}
             </Button>
             <Button color="inherit">

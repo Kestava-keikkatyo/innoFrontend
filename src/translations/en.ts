@@ -7,7 +7,9 @@ export default {
   thank_you_for_feedback: "Thank you for your feedback!",
   write_a_comment: "Write a comment",
   workers_responsibility: "Worker's responsibility",
-  responsibilities_read:"Worker has read and understood his/her responsibilites.",
+  worker_responsibilities_read:"Worker has read and understood his/her responsibilities.",
+  agency_responsibility: "Agency's responsibility",
+  agency_responsibilities_read:"Agency has read and understood its responsibilities.",
   saveButton: "Save",
 
   //login
@@ -375,6 +377,12 @@ export default {
   duration: "Duration",
   title: "Title",
   add_job: "Add job",
+  job_start_date: "Start date",
+  job_end_date: "End date",
+  application_ends: "Application ends",
+  street_address: "Street address",
+  city: "City",
+  zip_code: "Zip code",
 
   //WorkdView
   contract:"Contract",
@@ -406,7 +414,7 @@ export default {
 //DatabankRoute
 homeButton:"Home",
 articles: "Articles",
-job_lifespan: "Job\'s lifespan",
+work_lifespan: "Work lifespan",
 areas_of_responsibility: "Areas of responsibility",
 good_practises: "Good practises",
 }
