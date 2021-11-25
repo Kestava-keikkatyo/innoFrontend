@@ -373,7 +373,8 @@ export default {
   title: "Title",
   add_job: "Add job",
 
-  //cooperation info
+  //cooperation info modal
+  send_cooperation_request: "Send co-operation request",
   agency_info: "Agency info",
   agency_name: "Name",
   agency_category: "Category",
