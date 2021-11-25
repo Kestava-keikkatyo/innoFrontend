@@ -372,4 +372,11 @@ export default {
   duration: "Duration",
   title: "Title",
   add_job: "Add job",
+
+  //cooperation info
+  agency_info: "Agency info",
+  agency_name: "Name",
+  agency_category: "Category",
+  agency_email: "Email",
+
 }
