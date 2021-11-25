@@ -230,9 +230,9 @@ export default {
 
   //profilePage
   edit_profile: "Edit profile",
-  settings: "settings",
-  profile: "profile",
-  logout: "logout",
+  settings: "Settings",
+  profile: "Profile",
+  logout: "Logout",
   return: "Return",
   introduction_video: "Introduction video",
   instructions: "Instructions",
@@ -255,9 +255,9 @@ export default {
   no_feedback: "No feedback.",
 
   //weekdays
-  monday: "Mo",
-  tuesday: "Tu",
-  wednesday: "We",
+  monday: "Mon",
+  tuesday: "Tue",
+  wednesday: "Wed",
   thursday: "Thu",
   friday: "Fri",
 
@@ -323,9 +323,9 @@ export default {
   description0: "Description : based on the amount of mood feedback and the mood points",
   description1: "According to our statistics you could use a little cheering.",
   description2: "According to our statistics your mood is quite well.",
-  description3: "According to our statistics you are feeling well",
-  description4: "According to our statistics your mood is really good",
-  description5: "According to our statistics your mood is very good",
+  description3: "According to our statistics you are feeling well.",
+  description4: "According to our statistics your mood is really good.",
+  description5: "According to our statistics your mood is very good.",
 
   //contractsFromBusiness
   contracts_from_business: "Contracts from business",
@@ -372,4 +372,32 @@ export default {
   duration: "Duration",
   title: "Title",
   add_job: "Add job",
+
+  //WorkdView
+  contract:"Contract",
+  contacts:"Contact",
+
+  //LimitJobSearch
+  locations:"Locations",
+  scope:"Scope",
+  experience:"Experience",
+
+  //JobsIncidence
+  select_by_incidence: "Select by incidence",
+
+  //cooperation info modal
+  send_cooperation_request: "Send co-operation request",
+  agency_info: "Agency info",
+  agency_name: "Name",
+  agency_category: "Category",
+  agency_email: "Email",
+  select_contract_form: "Select contract form",
+  selected_form: "Selected form",
+  none: "None",
+
+  //Notifications
+  notifications:"Notifications",
+  no_notifications:"No notifications...",
+  empty_notifications:"Empty all notifications",
+
 }

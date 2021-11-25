@@ -52,7 +52,7 @@ export default {
   upload_file: "Liitä tiedosto",
   entry: "Lisää",
   history: "Historia",
-  active: "Active",
+  active: "Aktiivisia",
 
   //Mood index page
   entry_mood: "Lisää fiilis",
@@ -315,8 +315,8 @@ export default {
 
   //feedbackCategory
   feedback_category: "Palautekategoria",
-  category0: "Kategoriat : annettujen palautteiden määrän ja tunnepisteiden perusteella",
-  description0: "Kuvaus",
+  category0: "Kategoriat",
+  description0: "Kuvaus : annettujen palautteiden määrän ja tunnepisteiden perusteella",
   description1: "Tilastojemme mukaan tarvitset lisää piristystä!",
   description2: "Tilastojemme mukaan voit suhteellisen hyvin.",
   description3: "Tilastojemme mukaan voit hyvin.",
@@ -343,7 +343,7 @@ export default {
   fill_business_contract_form: "Täytä käyttäjäyrityssopimus",
   preview_business_contract_form: "Esikatsele käyttäjäyrityssopimusta",
 
-  choose_workers: "Choose workers",
+  choose_workers: "Valitse työntekijät",
   agency_description_here: "  HP-yrityksen kuvaus tulee tähän",
 
   edit_filled: "Muokkaa täytettyä yrityssopimusta",
@@ -365,7 +365,41 @@ export default {
   requirements: "Vaatimukset",
   duration: "Kesto",
   add_job: "Lisää työpaikka",
+
+  //LimitJobSearch
+  locations:"Sijanti",
+  scope:"Tehtäväalue",
+  experience:"Kokemus",
+
+  //WorkdView
+  contract:"Sopimus",
+  contacts:"Yhteyshenkilö",
+
+  //JobsIncidence
+  select_by_incidence: "Valitse ilmaantuvuuden mukaan",
+//cooperation info
+  // agency_info: "Työnvälitysyhtiön tiedot",
+
+//cooperation info modal
+  send_cooperation_request: "Lähetä yhteistyöpyyntö",
+  agency_info: "HP-yrityksen tiedot",
+  agency_name: "Nimi",
+  agency_category: "Katergoria",
+  agency_email: "Sähköposti",
+  select_contract_form: "Valitse sopimuspohja",
+  selected_form: "Valittu pohja",
+  none: "Ei valittu",
+
+//Notifications
+  notifications:"Ilmoitukset",
+  no_notifications:"Ei ilmoituksia...",
+  empty_notifications:"Tyhjennä kaikki ilmoitukset",
+
 }
+
+
+
+
 
 //import { useTranslation } from 'react-i18next'
 //const { t } = useTranslation()

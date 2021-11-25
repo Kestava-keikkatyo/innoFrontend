@@ -2,6 +2,7 @@ import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import { useTranslation } from "react-i18next";
 
 const incidences = [
   {
@@ -32,6 +33,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const JobsInsidence = () =>  {
   const classes = useStyles();
   const [incidence, setByIncidence] = React.useState('Uusimmat');
+  const { t } = useTranslation();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setByIncidence(event.target.value);
@@ -45,7 +47,7 @@ const JobsInsidence = () =>  {
           select
           value={incidence}
           onChange={handleChange}
-          helperText="Valitse ilmaantuvuuden mukaan"
+          helperText={t('select_by_incidence')}
         >
           {incidences.map((option) => (
             <MenuItem key={option.value} value={option.value}>
