@@ -343,7 +343,7 @@ export default {
   fill_business_contract_form: "Täytä käyttäjäyrityssopimus",
   preview_business_contract_form: "Esikatsele käyttäjäyrityssopimusta",
 
-  choose_workers: "Choose workers",
+  choose_workers: "Valitse työntekijät",
   agency_description_here: "  HP-yrityksen kuvaus tulee tähän",
 
   edit_filled: "Muokkaa täytettyä yrityssopimusta",
@@ -365,7 +365,14 @@ export default {
   requirements: "Vaatimukset",
   duration: "Kesto",
   add_job: "Lisää työpaikka",
+
+//cooperation info
+  agency_info: "Työnvälitysyhtiön nimi"
+
+
 }
+
+
 
 //import { useTranslation } from 'react-i18next'
 //const { t } = useTranslation()
