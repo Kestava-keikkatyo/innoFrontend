@@ -8,7 +8,6 @@ import {
   ListItem,
   ListItemText,
   CardHeader,
-  Button,
   Grid,
 } from '@material-ui/core';
 import MoodForm from './MoodForm';
@@ -21,7 +20,7 @@ import { useTranslation } from 'react-i18next';
 
 const WorkerHome = () => {
   const dispatch = useDispatch();
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
   const currentFeeling: any = useSelector<IRootState>(

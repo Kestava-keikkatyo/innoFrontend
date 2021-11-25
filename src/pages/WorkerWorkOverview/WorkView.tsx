@@ -5,7 +5,6 @@ import {
   Button,
   FormControl,
   FormControlLabel,
-  FormLabel,
   Radio,
   RadioGroup,
   Typography,
@@ -62,13 +61,13 @@ const WorkView: React.FC<any> = ({ works }) => {
              
             </AccordionSummary>
             <AccordionDetails>
-              <Typography> Yhteyshenkilö: {filteredWork.contact}</Typography>
+              <Typography> {t('contacts')}: {filteredWork.contact}</Typography>
             </AccordionDetails>
             <AccordionDetails>
               <Button
               variant="outlined"
               color="primary"
-              >Sopimus</Button>
+              >{t('contract')}</Button>
             </AccordionDetails>
           </Accordion>
         ))}
