@@ -42,7 +42,7 @@ import pdfFonts from 'pdfmake/build/vfs_fonts.js';
 import htmlToPdfmake from 'html-to-pdfmake';
 import Form from './Form';
 
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
 import ReactDOMServer from 'react-dom/server';
 
 import { fetchFormList } from '../../actions/formListActions';
@@ -67,7 +67,7 @@ const CommonFormsTable: React.FC<any> = () => {
 
   const dispatch = useDispatch();
 
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   const history = useHistory();
 
@@ -120,8 +120,7 @@ const CommonFormsTable: React.FC<any> = () => {
   const StyledTableCell = withStyles((theme: Theme) =>
     createStyles({
       head: {
-        backgroundColor: '#CCCCCC',
-        color: '#212121',
+        color: '#EB5A02',
       },
     })
   )(TableCell);
@@ -144,11 +143,13 @@ const CommonFormsTable: React.FC<any> = () => {
         <Table aria-label="searched workers">
           <TableHead>
             <TableRow>
-              <StyledTableCell align="left">{t("title")}</StyledTableCell>
-              <StyledTableCell align="left">{t("description")}</StyledTableCell>
-              <StyledTableCell align="left">{t("preview")}</StyledTableCell>
-              <StyledTableCell align="left">{t("copy_to_my_forms")}</StyledTableCell>
-              <StyledTableCell align="left">{t("download")}</StyledTableCell>
+              <StyledTableCell align="left">{t('title')}</StyledTableCell>
+              <StyledTableCell align="left">{t('description')}</StyledTableCell>
+              <StyledTableCell align="left">{t('preview')}</StyledTableCell>
+              <StyledTableCell align="left">
+                {t('copy_to_my_forms')}
+              </StyledTableCell>
+              <StyledTableCell align="left">{t('download')}</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -254,7 +255,7 @@ const CommonFormsTable: React.FC<any> = () => {
         align="center"
         className="text-secondary"
       >
-       {t("no_results")}
+        {t('no_results')}
       </Typography>
     );
 

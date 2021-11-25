@@ -47,7 +47,7 @@ import { SearchIcon } from '@material-ui/data-grid';
 //import MoveToInboxIcon from '@material-ui/icons/MoveToInbox'
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
 /**
  * @component
  * @desc A table to get and search for my forms.
@@ -68,7 +68,7 @@ const CommunityFormsTable: React.FC<any> = () => {
 
   const history = useHistory();
 
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(fetchFormList());
@@ -110,8 +110,7 @@ const CommunityFormsTable: React.FC<any> = () => {
   const StyledTableCell = withStyles((theme: Theme) =>
     createStyles({
       head: {
-        backgroundColor: '#CCCCCC',
-        color: '#212121',
+        color: '#EB5A02',
       },
     })
   )(TableCell);
@@ -228,7 +227,7 @@ const CommunityFormsTable: React.FC<any> = () => {
         align="center"
         className="text-secondary"
       >
-        {t("no_results")}
+        {t('no_results')}
       </Typography>
     );
 
