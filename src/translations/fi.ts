@@ -366,6 +366,9 @@ export default {
   duration: "Kesto",
   add_job: "Lisää työpaikka",
 
+  locations:"Sijanti",
+  scope:"Tehtäväalue",
+  experience:"Kokemus",
 //cooperation info
   agency_info: "Työnvälitysyhtiön tiedot"
 

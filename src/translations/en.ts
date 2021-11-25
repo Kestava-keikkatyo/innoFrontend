@@ -372,4 +372,13 @@ export default {
   duration: "Duration",
   title: "Title",
   add_job: "Add job",
+
+
+
+  locations:"Locations",
+  scope:"Scope",
+  experience:"Experience",
+
+
+  news:"News",
 }

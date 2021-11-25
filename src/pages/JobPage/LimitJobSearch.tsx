@@ -2,7 +2,7 @@ import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-
+import { useTranslation } from 'react-i18next';
 
 const locations = [
   {
@@ -67,6 +67,7 @@ export default function MultilineTextFields() {
   const [location, setLocation] = React.useState('Helsinki');
   const [field, setField] = React.useState('Palvelu');
   const [experience, setExperience] = React.useState('Harjoittelija')
+  const { t } = useTranslation();
 
   const handleLocationChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLocation(event.target.value);
@@ -87,7 +88,7 @@ export default function MultilineTextFields() {
         <TextField
           id="location"
           select
-          label="SIJAINTI"
+          label={t('locations')}
           value={location}
           onChange={handleLocationChange}
          
@@ -101,7 +102,7 @@ export default function MultilineTextFields() {
         <TextField
           id="field"
           select
-          label="TEHTÄVÄALUE"
+          label={t('scope')}
           value={field}
           onChange={handleFieldChange}
          
@@ -115,7 +116,7 @@ export default function MultilineTextFields() {
         <TextField
         id='experience'
         select
-        label='KOKEMUS'
+        label={t('experience')}
         value={experience}
         onChange={handleExperinceChange}
         >
