@@ -44,6 +44,7 @@ const AgencyWorkAdd: React.FC<any> = () => {
       zipCode: currentProfile.zipCode,
       city: currentProfile.city,
       createdAt: "create new date",
+      relatedSubContractOfWorkContract: "604021e581a9626810885235",
     }
 
     dispatch(postWorkTask(workTask))

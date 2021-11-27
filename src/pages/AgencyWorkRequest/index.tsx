@@ -1,164 +1,205 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react"
+import { makeStyles, Theme, useTheme } from "@material-ui/core/styles"
+import AppBar from "@material-ui/core/AppBar"
+import Tabs from "@material-ui/core/Tabs"
+import Tab from "@material-ui/core/Tab"
+import Box from "@material-ui/core/Box"
+import BusinessIcon from "@material-ui/icons/Business"
+import SendIcon from "@material-ui/icons/Send"
+import AllInboxIcon from "@material-ui/icons/AllInbox"
+import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive"
 import {
+  Badge,
   Container,
-  Typography,
-  makeStyles,
-  Box,
-  Tabs,
-  AppBar,
-  Tab,
-  useTheme,
-  Direction,
-  Grid,
-  Button,
-} from "@material-ui/core";
-import GroupIcon from "@material-ui/icons/Group";
-import WorkIcon from "@material-ui/icons/Work";
-import BusinessIcon from "@material-ui/icons/Business";
+  Divider,
+  Tooltip,
+  useMediaQuery,
+} from "@material-ui/core"
 
-import { useTranslation } from 'react-i18next'
-
-import { Accordion, AccordionDetails } from "@material-ui/core";
-
-import JobRequest from "./JobRequest";
-import WorkerTransferList from "./WorkerTransferList";
+import { useDispatch, useSelector } from "react-redux"
+import { fetchBusinessContracts } from "../../actions/businessContractActions"
+import { IRootState } from "../../utils/store"
+import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty"
+import { useTranslation } from "react-i18next"
 
 interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-  dir: Direction;
+  children?: React.ReactNode
+  index: any
+  value: any
 }
 
-const TabPanel = (props: TabPanelProps) => {
-  const { children, value, index, ...other } = props;
+function TabPanel(props: TabPanelProps) {
+  const { children, value, index, ...other } = props
+
   return (
     <div
+      style={{
+        borderLeft: "1px solid #ccc",
+        borderRight: "1px solid #ccc",
+        borderBottom: "1px solid #ccc",
+      }}
       role="tabpanel"
       hidden={value !== index}
-      id={`full-width-tabpanel-${index}`}
-      aria-labelledby={`full-width-tab-${index}`}
+      id={`scrollable-force-tabpanel-${index}`}
+      aria-labelledby={`scrollable-force-tab-${index}`}
       {...other}
     >
       {value === index && <Box p={3}>{children}</Box>}
     </div>
-  );
-};
+  )
+}
 
-const a11yProps = (index: any) => {
+function a11yProps(index: any) {
   return {
-    id: `full-width-tab-${index}`,
-    "aria-controls": `full-width-tabpanel-${index}`,
-  };
-};
+    id: `scrollable-force-tab-${index}`,
+    "aria-controls": `scrollable-force-tabpanel-${index}`,
+  }
+}
 
-const ContractsPage: React.FC<any> = () => {
-  const classes = useStyles();
-  const theme = useTheme();
-  const [value, setValue] = useState(0);
-  const { t } = useTranslation()
-  const handleChange = (event: any, newValue: any) => {
-    setValue(newValue);
-  };
-
-  return (
-    <Container maxWidth="lg" className={classes.root}>
-      <AppBar position="static" color="default">
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          variant="fullWidth"
-          aria-label="full width tabs example"
-        >
-          <Tab
-            onChange={handleChange}
-            className={classes.tab}
-            label={t("neededWork")}
-            icon={<WorkIcon />}
-            {...a11yProps(0)}
-          />
-          <Tab
-            onChange={handleChange}
-            className={classes.tab}
-            label={t("activeWork")}
-            icon={<BusinessIcon />}
-            {...a11yProps(1)}
-          />
-          <Tab
-            onChange={handleChange}
-            className={classes.tab}
-            label={t("endedWork")}
-            icon={<GroupIcon />}
-            {...a11yProps(2)}
-          />
-        </Tabs>
-      </AppBar>
-
-      <TabPanel value={value} index={0} dir={theme.direction}>
-        <Accordion className={classes.card} variant="outlined">
-          <AccordionDetails></AccordionDetails>
-        </Accordion>
-        <Container>
-          <Grid container>
-            <Grid item md={6} sm={12} xs={12}>
-              <JobRequest />
-            </Grid>
-            <Grid item md={6} sm={12} xs={12}>
-              <Typography variant="h6">Valitse Työntekijät</Typography>
-              <WorkerTransferList />
-            </Grid>
-            <Button
-              variant="outlined"
-              color="primary"
-              className={classes.button}
-            >
-              {t('add_active')}
-            </Button>
-          </Grid>
-        </Container>
-      </TabPanel>
-      <TabPanel value={value} index={1} dir={theme.direction}>
-        <Typography style={{ paddingTop: "1rem" }} variant="h4"></Typography>
-      </TabPanel>
-
-      <TabPanel value={value} index={2} dir={theme.direction}></TabPanel>
-    </Container>
-  );
-};
-
-export default ContractsPage;
-
-const useStyles = makeStyles((theme) => ({
-  card: {
-    margin: theme.spacing(2, 0),
-    borderRadius: 5,
-  },
-  accordion: {
-    width: "100%",
-    marginTop: 12,
-    border: "1px solid #E0E0E0",
-    borderRadius: 5,
-  },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightBold,
-  },
-  description: {
-    fontSize: theme.typography.pxToRem(13),
-    color: "#6C6C6C",
-  },
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
     width: "100%",
     backgroundColor: theme.palette.background.paper,
+    marginTop: 8,
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
   },
   tab: {
-    minWidth: "33.33%",
-    maxWidth: "33.33%",
+    minWidth: "25%",
+    maxWidth: "25%",
   },
-  button: {
-    marginTop: "5%",
-  },
-}));
+}))
+
+const BusinessContractsPage = () => {
+  const classes = useStyles()
+  const [value, setValue] = React.useState(0)
+
+  const { t } = useTranslation()
+
+  const theme = useTheme()
+  const matches = useMediaQuery(theme.breakpoints.down("md"))
+
+  const { businessContract } = useSelector(
+    (state: IRootState) => state.businessContracts
+  )
+  const dispatch = useDispatch()
+  const contracts = businessContract
+  const pending: any = []
+  const waiting: any = []
+  const ready: any = []
+  const sent: any = []
+
+  useEffect(() => {
+    dispatch(fetchBusinessContracts())
+  }, [dispatch])
+
+  contracts.map((contract: any) => {
+    if (contract.pendingContracts) {
+      pending.push(contract)
+    } else if (contract.requestContracts) {
+      waiting.push(contract)
+    } else if (contract.madeContracts) {
+      ready.push(contract)
+    } else if (contract.receivedContracts) {
+      sent.push(contract)
+      console.log(sent)
+    } else {
+    }
+    // an arrow function should return a value
+    return ""
+  })
+
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+    setValue(newValue)
+  }
+
+  return (
+    <Container maxWidth="xl" className={classes.root}>
+      <Divider />
+      <AppBar position="static" color="transparent">
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          variant="fullWidth"
+          indicatorColor="secondary"
+          textColor="primary"
+          aria-label="scrollable force tabs example"
+        >
+          <Tab
+            className={classes.tab}
+            label={matches ? " " : "Saadut työsopimukset"}
+            icon={
+              <Badge badgeContent={sent.length} color="secondary">
+                {matches ? (
+                  <Tooltip title="Lähetetyt sopimukset" placement="top" arrow>
+                    <SendIcon />
+                  </Tooltip>
+                ) : (
+                  <SendIcon />
+                )}
+              </Badge>
+            }
+            {...a11yProps(1)}
+          />
+          <Tab
+            className={classes.tab}
+            label={matches ? " " : "Hyväksytyt työsopimukset"}
+            icon={
+              <Badge badgeContent={pending.length} color="secondary">
+                {matches ? (
+                  <Tooltip title="Saapuneet sopimukset" placement="top" arrow>
+                    <NotificationsActiveIcon />
+                  </Tooltip>
+                ) : (
+                  <NotificationsActiveIcon />
+                )}
+              </Badge>
+            }
+            {...a11yProps(2)}
+          />
+          <Tab
+            className={classes.tab}
+            label={matches ? " " : t("waiting_contracts")}
+            icon={
+              <Badge badgeContent={waiting.length} color="secondary">
+                {matches ? (
+                  <Tooltip title="Odottavat sopimukset" placement="top" arrow>
+                    <HourglassEmptyIcon />
+                  </Tooltip>
+                ) : (
+                  <HourglassEmptyIcon />
+                )}
+              </Badge>
+            }
+            {...a11yProps(3)}
+          />
+          <Tab
+            className={classes.tab}
+            label={matches ? " " : t("done_contracts")}
+            icon={
+              <Badge badgeContent={ready.length} color="secondary">
+                {matches ? (
+                  <Tooltip title="Valmiit sopimukset" placement="top" arrow>
+                    <AllInboxIcon />
+                  </Tooltip>
+                ) : (
+                  <AllInboxIcon />
+                )}
+              </Badge>
+            }
+            {...a11yProps(4)}
+          />
+        </Tabs>
+      </AppBar>
+      <Divider />
+      <TabPanel value={value} index={0}></TabPanel>
+      <TabPanel value={value} index={1}></TabPanel>
+      <TabPanel value={value} index={2}></TabPanel>
+      <TabPanel value={value} index={3}></TabPanel>
+    </Container>
+  )
+}
+export default BusinessContractsPage
