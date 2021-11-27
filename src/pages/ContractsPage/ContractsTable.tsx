@@ -56,6 +56,10 @@ interface BusinessContractObject {
     businesses: [];
     workers: [];
   };
+  receivedContracts: {
+    businesses: [];
+    workers: [];
+  };
 }
 
 /**
@@ -100,7 +104,9 @@ const ContractsTable = (props: {
     formId: string
   ) => {
     dispatch(declineBusinessContract(contractId, userId));
-    dispatch(deleteBusinessContractForm(formId, userId));
+    if (formId) {
+      dispatch(deleteBusinessContractForm(formId, userId));
+    }
     dispatch(setAlert('Contract declined.', severity.Info, 3));
   };
 

@@ -42,11 +42,11 @@ const searchUsers = async (input: string, searchType: businessContractType) => {
   }
 }
 
-const acceptBusinessContract = async (contractId:string, userId: string, form?:string) => {
+const acceptBusinessContract = async (contractId: string, userId: string, form?: string) => {
   try {
     return await axios.put(
       `${baseUrl}/businesscontracts/${contractId}/${userId}/accept`,
-      {form},
+      { form },
       authHeader()
     )
   } catch (error) {
@@ -62,11 +62,11 @@ const acceptBusinessContract = async (contractId:string, userId: string, form?:s
  * @param form - formid
  * @returns Backend response.
  */
-const addBusinessContract = async (contractId:string, userId: string, form?:string) => {
+const addBusinessContract = async (contractId: string, userId: string, form?: string) => {
   try {
     return await axios.put(
       `${baseUrl}/businesscontracts/${contractId}/${userId}/add`,
-      {form},
+      { form },
       authHeader()
     )
   } catch (error) {
@@ -77,23 +77,24 @@ const addBusinessContract = async (contractId:string, userId: string, form?:stri
  * @description Backend call function which is used when Worker or Business sends BusinessContract
  * request to Agency.
  * @param contractId
+ * @param formId
  * @return Backend response.
  */
-const addBusinessContractWorkerBusiness = async (contractId:string) => {
+const addBusinessContractWorkerBusiness = async (contractId: string, agencyId: string, formId: any) => {
   try {
-    return await axios.put(`${baseUrl}/businesscontracts/${contractId}/add`,
-    {},
-    authHeader())
+    return await axios.put(`${baseUrl}/businesscontracts/${contractId}/${agencyId}/add`,
+      { form: formId },
+      authHeader())
   } catch (error) {
     console.log(error)
   }
 }
 
-const sendBusinessContract = async (contractId:string, form?:string) => {
+const sendBusinessContract = async (contractId: string, form?: string) => {
   try {
     return await axios.put(
       `${baseUrl}/businesscontracts/send/${contractId}/`,
-      {form},
+      { form },
       authHeader()
     )
   } catch (error) {
@@ -101,7 +102,7 @@ const sendBusinessContract = async (contractId:string, form?:string) => {
   }
 }
 
-const declineBusinessContract = async (contractId:string, userId:string) => {
+const declineBusinessContract = async (contractId: string, userId: string) => {
   try {
     return await axios.put(
       `${baseUrl}/businesscontracts/${contractId}/${userId}/decline`,
@@ -182,7 +183,7 @@ const deleteWorkContractById = async (contractId: string) => {
   )
 }
 
-const postJobInWorkContract = async (contractId: string, data:{}) => {
+const postJobInWorkContract = async (contractId: string, data: {}) => {
   try {
     return await axios.put(
       `${baseUrl}/workcontracts/${contractId}/new`,
@@ -197,7 +198,7 @@ const postJobInWorkContract = async (contractId: string, data:{}) => {
 // Create a business contract when a new agency sign up
 const createBusinessContract = async () => {
   try {
-    return await axios.post(`${baseUrl}/businesscontracts/`,{}, authHeader())
+    return await axios.post(`${baseUrl}/businesscontracts/`, {}, authHeader())
   } catch (error) {
     console.log(error)
   }
@@ -209,11 +210,11 @@ const createBusinessContract = async () => {
  * which is inside of array of objects.
  * @param form New formId
  */
-const updateBusinessContractsForm = async (contractId:string,form:string) => {
+const updateBusinessContractsForm = async (contractId: string, form: string) => {
   try {
     return await axios.put(`${baseUrl}/businesscontracts/${contractId}/saveForm`,
-    {form},
-    authHeader())
+      { form },
+      authHeader())
   } catch (error) {
     console.log(error)
   }
@@ -228,11 +229,11 @@ const updateBusinessContractsForm = async (contractId:string,form:string) => {
  * @param userId Worker/Business ID
  * @param form Form ID
  */
-const sendBackBusinessContract = async (contractId:string, userId:string, form:string) => {
+const sendBackBusinessContract = async (contractId: string, userId: string, form: string) => {
   try {
     return await axios.put(`${baseUrl}/businesscontracts/${contractId}/${userId}/sendBack`,
-    {form},
-    authHeader())
+      { form },
+      authHeader())
   } catch (error) {
     console.log(error)
   }

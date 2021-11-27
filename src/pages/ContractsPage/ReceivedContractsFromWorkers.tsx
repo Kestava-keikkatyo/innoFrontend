@@ -2,13 +2,13 @@ import React from 'react';
 import { Typography, Grid, makeStyles } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import {
+  acceptBusinessContractFromWorker,
   declineBusinessContract,
-  acceptBusinessContractFromBusiness,
   sendBackBusinessContract,
 } from '../../actions/businessContractActions';
 import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
-import ContractsReceivedTable from './ContractsReceivedTable';
+import ContractsRequestedTable from './ContractsRequestedTable';
 
 import {
   Accordion,
@@ -40,22 +40,24 @@ interface BusinessContractObject {
   agency: string;
 }
 
-const ContractsFromBusiness = (props: {
+const ReceicedContractsFromWorkers = (props: {
   businessContract: BusinessContractObject[];
 }) => {
   const { businessContract } = props;
   const classes = useStyles();
   const dispatch = useDispatch();
-  const contracts = businessContract;
   const { t } = useTranslation();
+  const contracts = businessContract;
 
-  const acceptContractFromBusiness = (
+  console.log('contracts: workers', contracts);
+
+  const acceptContractFromWorker = (
     contractId: string,
     userId: string,
     formId: string
   ) => {
-    dispatch(acceptBusinessContractFromBusiness(contractId, userId, formId));
-    dispatch(setAlert('Contract from Business accepted.', severity.Info, 3));
+    dispatch(acceptBusinessContractFromWorker(contractId, userId, formId));
+    dispatch(setAlert('Contract from Worker accepted.', severity.Info, 3));
   };
 
   const declineContract = (contractId: string, userId: string, formId: any) => {
@@ -75,7 +77,7 @@ const ContractsFromBusiness = (props: {
     dispatch(setAlert('Contract sended back.', severity.Info, 3));
   };
 
-  if (!contracts[0]?.requestContracts?.businesses?.length) {
+  if (!contracts[0]?.receivedContracts?.workers?.length) {
     return (
       <Typography
         style={{ padding: '1rem' }}
@@ -105,16 +107,15 @@ const ContractsFromBusiness = (props: {
               id="panel1a-header"
             >
               <Typography gutterBottom variant="h5">
-                {t('contracts_from_business')}
+                {t(' contracts_received_from_the_workers')}
               </Typography>
             </AccordionSummary>
 
             <AccordionDetails>
-              <ContractsReceivedTable
-                contracts={contracts[0]?.requestContracts?.businesses}
+              <ContractsRequestedTable
+                contracts={contracts[0]?.receivedContracts?.workers}
                 contractId={businessContract[0]._id}
-                acceptContract={acceptContractFromBusiness}
-                declineContract={declineContract}
+                acceptContract={acceptContractFromWorker}
                 sendBackContract={sendBackContract}
               />
             </AccordionDetails>
@@ -132,4 +133,4 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default ContractsFromBusiness;
+export default ReceicedContractsFromWorkers;

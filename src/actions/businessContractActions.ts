@@ -66,9 +66,10 @@ export const addBusinessContract = (contractId: string, userId: string, form?: s
  * Must be Worker/Business to use this.
  * @param {string} agencyId Agency Id
  * @param {string} contractId BusinessContract id
+ * @param {string} formId businessContract form id
  */
-export const addBusinessContractWorkerBusiness = (agencyId: string, contractId: string) => async (dispatch: any) => {
-  const res = await contractsService.addBusinessContractWorkerBusiness(contractId)
+export const addBusinessContractWorkerBusiness = (contractId: string, agencyId: string, formId: any) => async (dispatch: any) => {
+  const res = await contractsService.addBusinessContractWorkerBusiness(contractId, agencyId, formId)
   const r = await contractsService.fetchBusinessContracts()
   if (res && res.status === 200) {
     await notificationsService.updateNotifications(agencyId, "Olet vastaanottanut asiakassopimus pyynnön käyttäjältä.")

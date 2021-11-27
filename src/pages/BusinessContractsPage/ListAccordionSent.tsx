@@ -14,10 +14,16 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import { useDispatch } from 'react-redux';
-import { refuseBusinessContractById } from '../../actions/businessContractActions';
+import {
+  declineBusinessContract,
+  refuseBusinessContractById,
+} from '../../actions/businessContractActions';
 import Tooltip from '@material-ui/core/Tooltip';
 import CloseIcon from '@material-ui/icons/Close';
 import { useTranslation } from 'react-i18next';
+import { deleteBusinessContractForm } from '../../actions/businessContractFormActions';
+import { severity } from '../../types/types';
+import { setAlert } from '../../actions/alertActions';
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
@@ -46,17 +52,31 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export const ListAccordioSent = (prop: { contracts: any[] }) => {
+  const { contracts } = prop;
   const classes = useStyles();
 
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const rejectContract = (agencyId: any, contractId: any) => {
+
+  const cancelContract = (contract: any) => {
     if (window.confirm(`Poistetaanko sopimuspyyntö?`)) {
-      dispatch(refuseBusinessContractById(agencyId, contractId));
+      dispatch(refuseBusinessContractById(contract.agency._id, contract._id));
+
+      if (contract.receivedContracts.formId) {
+        dispatch(
+          deleteBusinessContractForm(
+            contract.receivedContracts.formId,
+            contract.agency._id
+          )
+        );
+      }
+
+      dispatch(setAlert('Contract request canceled.', severity.Info, 3));
     }
   };
 
-  const { contracts } = prop;
+  console.log('business/worker: sent contracts', contracts);
+
   if (contracts.length < 1) {
     return <p>{t('no_results')}</p>;
   } else
@@ -106,11 +126,7 @@ export const ListAccordioSent = (prop: { contracts: any[] }) => {
             </AccordionDetails>
             <AccordionActions>
               <Tooltip title="Hylkää Sopimus" placement="top" arrow>
-                <IconButton
-                  onClick={() =>
-                    rejectContract(contract.agency._id, contract._id)
-                  }
-                >
+                <IconButton onClick={() => cancelContract(contract)}>
                   <CloseIcon />
                 </IconButton>
               </Tooltip>
