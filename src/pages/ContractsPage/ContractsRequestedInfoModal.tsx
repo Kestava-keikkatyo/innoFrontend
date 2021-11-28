@@ -73,6 +73,9 @@ const ContractsRequestedInfoModal: React.FC<any> = ({
   };
 
   const handleAcceptAndSendContract = () => {
+    alert('Not implemented yet');
+
+    /*
     if (!contract.formId && formId === 'None') {
       dispatch(
         setAlert(
@@ -89,6 +92,7 @@ const ContractsRequestedInfoModal: React.FC<any> = ({
       );
     }
     closeModal();
+    */
   };
   const handleChange = (event: any) => {
     console.log(event.target.value);
@@ -156,13 +160,14 @@ const ContractsRequestedInfoModal: React.FC<any> = ({
                         variant="standard"
                       >
                         <MenuItem value="None">None</MenuItem>
-                        {myForms.docs.map((form: any) => (
-                          <MenuItem key={form._id} value={form._id}>
-                            {form.title.length > 50
-                              ? `${form.title.substring(0, 50)}...`
-                              : form.title}
-                          </MenuItem>
-                        ))}
+                        {myForms &&
+                          myForms.docs.map((form: any) => (
+                            <MenuItem key={form._id} value={form._id}>
+                              {form.title.length > 50
+                                ? `${form.title.substring(0, 50)}...`
+                                : form.title}
+                            </MenuItem>
+                          ))}
                       </TextField>
                     </div>
                   </>

@@ -125,7 +125,7 @@ export const ListAccordioSent = (prop: { contracts: any[] }) => {
               </div>
             </AccordionDetails>
             <AccordionActions>
-              <Tooltip title="Hylkää Sopimus" placement="top" arrow>
+              <Tooltip title="Peruuta" placement="top" arrow>
                 <IconButton onClick={() => cancelContract(contract)}>
                   <CloseIcon />
                 </IconButton>
