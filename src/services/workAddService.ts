@@ -35,7 +35,7 @@ const postWorkTask = async (workTask: any) => {
  * @param businessContractFormId - Business contract form id
  * @returns Business contract form object
  */
-const fetchContracts = async () => {
+const fetchWorkContracts = async () => {
   try {
     const res: any = await axios.get(`${baseUrl}/workcontracts`, authHeader())
     return res.data
@@ -47,5 +47,5 @@ const fetchContracts = async () => {
 
 export default {
   postWorkTask,
-  fetchContracts,
+  fetchWorkContracts,
 }

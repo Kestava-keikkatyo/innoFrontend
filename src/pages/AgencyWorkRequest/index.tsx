@@ -22,7 +22,7 @@ import { IRootState } from "../../utils/store"
 import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty"
 import { useTranslation } from "react-i18next"
 import AcceptedGigRequest from "./AcceptedGigRequest"
-import { fetchContracts } from "../../actions/workAddAction"
+import { fetchWorkContracts } from "../../actions/workAddAction"
 import ReceivedRequest from "./ReceivedRequest"
 
 interface TabPanelProps {
@@ -85,13 +85,13 @@ const AgencyGigOverview = () => {
   const theme = useTheme()
   const matches = useMediaQuery(theme.breakpoints.down("md"))
 
-  const { workContracts } = useSelector(
+  const workContracts: any = useSelector(
     (state: IRootState) => state.workContracts
   )
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchContracts())
+    dispatch(fetchWorkContracts())
   }, [dispatch])
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
@@ -181,7 +181,8 @@ const AgencyGigOverview = () => {
       <TabPanel value={value} index={1}></TabPanel>
       <TabPanel value={value} index={2}></TabPanel>
       <TabPanel value={value} index={3}></TabPanel>
-      <ReceivedRequest contracts={workContracts} />
+      {console.log("workContracts ", workContracts)}
+      <ReceivedRequest workContracts={workContracts} />
     </Container>
   )
 }

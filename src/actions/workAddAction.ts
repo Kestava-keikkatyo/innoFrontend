@@ -4,7 +4,7 @@
  */
 
 import workAddService from "../services/workAddService"
-import { ADD_WORK_TASK, FETCH_GIGS } from "../types/state"
+import { ADD_WORK_TASK, W_FETCH } from "../types/state"
 
 export const postWorkTask = (workTask: any) => async (dispatch: any) => {
   const res = await workAddService.postWorkTask(workTask)
@@ -15,7 +15,8 @@ export const postWorkTask = (workTask: any) => async (dispatch: any) => {
  * @function
  * @desc searches for all work contracts
  */
-export const fetchContracts = () => async (dispatch: any) => {
-  const res = await workAddService.fetchContracts()
-  dispatch({ type: FETCH_GIGS, data: res })
+export const fetchWorkContracts = () => async (dispatch: any) => {
+  const res = await workAddService.fetchWorkContracts()
+  console.log("response ", res)
+  dispatch({ type: W_FETCH, data: res })
 }
