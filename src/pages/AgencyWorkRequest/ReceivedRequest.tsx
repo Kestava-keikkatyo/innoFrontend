@@ -12,17 +12,18 @@ const ReceivedRequest: React.FC<any> = ({ workContracts }) => {
   return (
     <div>
       {workContracts?.docs.map((workContract: any) => (
-        <Accordion key={workContract._id}>
-          <AccordionSummary>aaa</AccordionSummary>
-          <AccordionDetails>
-            {workContract?.contracts?.map((contract: any) => (
-              <div key={contract._id}>
+        <div key={workContract._id}>
+          {workContract?.contracts?.map((contract: any) => (
+            <Accordion key={contract._id}>
+              <AccordionSummary>{contract.headline}</AccordionSummary>
+              <AccordionDetails>
                 <p>worker count {contract.workerCount}</p>
+                <br />
                 <p>Gig details {contract.detailedInfo}</p>
-              </div>
-            ))}
-          </AccordionDetails>
-        </Accordion>
+              </AccordionDetails>
+            </Accordion>
+          ))}
+        </div>
       ))}
     </div>
   );
