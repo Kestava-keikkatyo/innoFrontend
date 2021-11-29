@@ -31,6 +31,21 @@ const postWorkTask = async (workTask: any) => {
   }
 }
 
+/**
+ * @param businessContractFormId - Business contract form id
+ * @returns Business contract form object
+ */
+const fetchContracts = async () => {
+  try {
+    const res: any = await axios.get(`${baseUrl}/workcontracts`, authHeader())
+    return res.data
+  } catch (error) {
+    console.log(error)
+    return {}
+  }
+}
+
 export default {
   postWorkTask,
+  fetchContracts,
 }

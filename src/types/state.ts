@@ -6,10 +6,10 @@ import { AdminActionType } from "./types"
  */
 
 export interface AllUsersState {
-  agencies: User[],
-  businesses: User[],
-  workers: User[],
-  agencyWorkers: User[],
+  agencies: User[]
+  businesses: User[]
+  workers: User[]
+  agencyWorkers: User[]
   admins: User[]
 }
 
@@ -47,13 +47,13 @@ interface SetAllAdminsAction {
 }
 
 interface UserDeleted {
-  type: typeof USER_DELETED,
-  data: {id: string, userType: string}
+  type: typeof USER_DELETED
+  data: { id: string; userType: string }
 }
 
 interface UserStatus_Updated {
-  type: typeof UPDATE_USER_STATUS,
-  data: {id: string, userType: string, active: boolean}
+  type: typeof UPDATE_USER_STATUS
+  data: { id: string; userType: string; active: boolean }
 }
 
 export type AllUsersActionTypes =
@@ -143,7 +143,7 @@ interface UpdateAdmin {
 }
 
 export type AdminAction =
-  FetchAgencies
+  | FetchAgencies
   | FetchBusinesses
   | FetchWorkers
   | UpdateAgency
@@ -777,10 +777,16 @@ export interface FeedBackState {
 }
 
 export const ADD_WORK_TASK = "ADD_WORK_TASK"
+export const FETCH_GIGS = "FETCH_GIGS"
 
 interface AddWorkTask {
   type: typeof ADD_WORK_TASK
   data: any
 }
 
-export type WorkAddActions = AddWorkTask
+interface FetchGigs {
+  type: typeof FETCH_GIGS
+  data: any
+}
+
+export type WorkAddActions = AddWorkTask | FetchGigs
