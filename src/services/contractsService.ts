@@ -82,7 +82,7 @@ const addBusinessContract = async (contractId: string, userId: string, form?: st
  */
 const addBusinessContractWorkerBusiness = async (contractId: string, agencyId: string, formId: any) => {
   try {
-    return await axios.put(`${baseUrl}/businesscontracts/${contractId}/${agencyId}/add`,
+    return await axios.put(`${baseUrl}/add/businesscontracts/${contractId}/${agencyId}`,
       { form: formId },
       authHeader())
   } catch (error) {
