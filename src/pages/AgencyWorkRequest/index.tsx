@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import { makeStyles, Theme, useTheme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import SendIcon from '@material-ui/icons/Send';
-import AllInboxIcon from '@material-ui/icons/AllInbox';
-import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
+import React, { useEffect } from "react"
+import { makeStyles, Theme, useTheme } from "@material-ui/core/styles"
+import AppBar from "@material-ui/core/AppBar"
+import SendIcon from "@material-ui/icons/Send"
+import AllInboxIcon from "@material-ui/icons/AllInbox"
+import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive"
 import {
   Accordion,
   AccordionDetails,
@@ -15,31 +15,31 @@ import {
   Tabs,
   Tooltip,
   useMediaQuery,
-} from '@material-ui/core';
+} from "@material-ui/core"
 
-import { useDispatch, useSelector } from 'react-redux';
-import { IRootState } from '../../utils/store';
-import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
-import { useTranslation } from 'react-i18next';
-import AcceptedGigRequest from './AcceptedGigRequest';
-import { fetchWorkContracts } from '../../actions/workAddAction';
-import ReceivedRequest from './ReceivedRequest';
+import { useDispatch, useSelector } from "react-redux"
+import { IRootState } from "../../utils/store"
+import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty"
+import { useTranslation } from "react-i18next"
+import AcceptedGigRequest from "./AcceptedGigRequest"
+import { fetchWorkContracts } from "../../actions/workAddAction"
+import ReceivedRequest from "./ReceivedRequest"
 
 interface TabPanelProps {
-  children?: React.ReactNode;
-  index: any;
-  value: any;
+  children?: React.ReactNode
+  index: any
+  value: any
 }
 
 function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, ...other } = props
 
   return (
     <div
       style={{
-        borderLeft: '1px solid #ccc',
-        borderRight: '1px solid #ccc',
-        borderBottom: '1px solid #ccc',
+        borderLeft: "1px solid #ccc",
+        borderRight: "1px solid #ccc",
+        borderBottom: "1px solid #ccc",
       }}
       role="tabpanel"
       hidden={value !== index}
@@ -49,20 +49,20 @@ function TabPanel(props: TabPanelProps) {
     >
       {value === index && <Box p={3}>{children}</Box>}
     </div>
-  );
+  )
 }
 
 function a11yProps(index: any) {
   return {
     id: `scrollable-force-tab-${index}`,
-    'aria-controls': `scrollable-force-tabpanel-${index}`,
-  };
+    "aria-controls": `scrollable-force-tabpanel-${index}`,
+  }
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
-    width: '100%',
+    width: "100%",
     backgroundColor: theme.palette.background.paper,
     marginTop: 8,
   },
@@ -71,34 +71,34 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontWeight: theme.typography.fontWeightRegular,
   },
   tab: {
-    minWidth: '25%',
-    maxWidth: '25%',
+    minWidth: "25%",
+    maxWidth: "25%",
   },
-}));
+}))
 
 const AgencyGigOverview = () => {
-  const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const classes = useStyles()
+  const [value, setValue] = React.useState(0)
 
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('md'));
+  const theme = useTheme()
+  const matches = useMediaQuery(theme.breakpoints.down("md"))
 
   const workContracts: any = useSelector(
     (state: IRootState) => state.workContracts
-  );
-  const dispatch = useDispatch();
+  )
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchWorkContracts());
-  }, [dispatch]);
+    dispatch(fetchWorkContracts())
+  }, [dispatch])
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    setValue(newValue);
-  };
+    setValue(newValue)
+  }
 
-  console.log('workContracts ', workContracts);
+  console.log("workContracts ", workContracts)
 
   return (
     <Container maxWidth="xl" className={classes.root}>
@@ -114,7 +114,7 @@ const AgencyGigOverview = () => {
         >
           <Tab
             className={classes.tab}
-            label={matches ? ' ' : 'Saadut työkeikkapyynnöt'}
+            label={matches ? " " : "Saadut työkeikkapyynnöt"}
             icon={
               <Badge color="secondary">
                 {matches ? (
@@ -146,7 +146,7 @@ const AgencyGigOverview = () => {
           />
           <Tab
             className={classes.tab}
-            label={matches ? ' ' : t('Aktiiviset työkeikat')}
+            label={matches ? " " : t("Aktiiviset työkeikat")}
             icon={
               <Badge color="secondary">
                 {matches ? (
@@ -162,7 +162,7 @@ const AgencyGigOverview = () => {
           />
           <Tab
             className={classes.tab}
-            label={matches ? ' ' : t('Päättyneet työkeikat')}
+            label={matches ? " " : t("Päättyneet työkeikat")}
             icon={
               <Badge color="secondary">
                 {matches ? (
@@ -185,6 +185,6 @@ const AgencyGigOverview = () => {
       <TabPanel value={value} index={3}></TabPanel>
       <ReceivedRequest workContracts={workContracts.workContracts} />
     </Container>
-  );
-};
-export default AgencyGigOverview;
+  )
+}
+export default AgencyGigOverview
