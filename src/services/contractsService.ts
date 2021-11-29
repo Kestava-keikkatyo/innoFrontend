@@ -95,7 +95,7 @@ const addBusinessContractWorkerBusiness = async (
 ) => {
   try {
     return await axios.put(
-      `${baseUrl}/add/businesscontracts/${contractId}/${agencyId}`,
+      `${baseUrl}/businesscontracts/add/${contractId}/${agencyId}`,
       { form: formId },
       authHeader()
     )
