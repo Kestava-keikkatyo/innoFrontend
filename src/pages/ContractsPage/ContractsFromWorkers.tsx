@@ -17,6 +17,7 @@ import {
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useTranslation } from 'react-i18next';
+import { deleteBusinessContractForm } from '../../actions/businessContractFormActions';
 
 interface BusinessContractObject {
   _id: string;
@@ -57,8 +58,11 @@ const WorkerSendContracts = (props: {
     dispatch(setAlert('Contract from Worker accepted.', severity.Info, 3));
   };
 
-  const declineContract = (contractId: string, userId: string) => {
+  const declineContract = (contractId: string, userId: string, formId: any) => {
     dispatch(declineBusinessContract(contractId, userId));
+    if (formId) {
+      dispatch(deleteBusinessContractForm(formId, userId));
+    }
     dispatch(setAlert('Contract declined.', severity.Info, 3));
   };
 

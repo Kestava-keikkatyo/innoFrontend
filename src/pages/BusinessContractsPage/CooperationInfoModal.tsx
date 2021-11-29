@@ -23,6 +23,7 @@ import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
 import { useTranslation } from 'react-i18next';
 import { fetchFormList } from '../../actions/formListActions';
+import { createBusinessContractForm } from '../../actions/businessContractFormActions';
 
 const useStyles = makeStyles((theme) => ({
   selectDiv: {
@@ -64,7 +65,8 @@ const CooperationInfoModal: React.FC<any> = ({
     dispatch(fetchFormList());
   }, [dispatch]);
 
-  const addContract = () => {
+  const addContract = async () => {
+    /*
     if (formId === 'None') {
       userRole.toLowerCase() === 'business'
         ? dispatch(
@@ -74,25 +76,39 @@ const CooperationInfoModal: React.FC<any> = ({
             )
           )
         : dispatch(setAlert(`Failed: Please choose a form.`, severity.Error));
+    }
+    */
+    const found = businessContracts.some((bc: any) => bc._id === contractId);
+    if (found) {
+      dispatch(
+        setAlert(
+          `Fail: You have already business contract with ${agency.name}`,
+          severity.Error
+        )
+      );
     } else {
-      const found = businessContracts.some((bc: any) => bc._id === contractId);
-      if (found) {
-        dispatch(
-          setAlert(
-            `Fail: You have already business contract with ${agency.name}`,
-            severity.Error
-          )
-        );
+      if (formId === 'None') {
+        dispatch(addBusinessContractWorkerBusiness(contractId, agencyId, ''));
       } else {
-        dispatch(addBusinessContractWorkerBusiness(agencyId, contractId));
+        const businessContractForm: any = await dispatch(
+          createBusinessContractForm(formId)
+        );
         dispatch(
-          setAlert(
-            `Success:  Contract request sent to ${agency.name}`,
-            severity.Success
+          addBusinessContractWorkerBusiness(
+            contractId,
+            agencyId,
+            businessContractForm._id
           )
         );
       }
+      dispatch(
+        setAlert(
+          `Success:  Contract request sent to ${agency.name}`,
+          severity.Success
+        )
+      );
     }
+
     closeModal();
   };
 

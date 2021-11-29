@@ -8,7 +8,7 @@ import {
 } from '../../actions/businessContractActions';
 import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
-import ContractsReceivedTable from './ContractsReceivedTable';
+import ContractsRequestedTable from './ContractsRequestedTable';
 
 import {
   Accordion,
@@ -17,7 +17,6 @@ import {
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useTranslation } from 'react-i18next';
-import { deleteBusinessContractForm } from '../../actions/businessContractFormActions';
 
 interface BusinessContractObject {
   _id: string;
@@ -40,7 +39,7 @@ interface BusinessContractObject {
   agency: string;
 }
 
-const ContractsFromBusiness = (props: {
+const ReceivedContractsFromBusinesses = (props: {
   businessContract: BusinessContractObject[];
 }) => {
   const { businessContract } = props;
@@ -49,6 +48,13 @@ const ContractsFromBusiness = (props: {
   const contracts = businessContract;
   const { t } = useTranslation();
 
+  console.log('contracts, Businesses', contracts);
+
+  console.log(
+    'contracts[0]?.receivedContracts?.businesses, Businesses',
+    contracts[0]?.receivedContracts?.businesses
+  );
+
   const acceptContractFromBusiness = (
     contractId: string,
     userId: string,
@@ -56,14 +62,6 @@ const ContractsFromBusiness = (props: {
   ) => {
     dispatch(acceptBusinessContractFromBusiness(contractId, userId, formId));
     dispatch(setAlert('Contract from Business accepted.', severity.Info, 3));
-  };
-
-  const declineContract = (contractId: string, userId: string, formId: any) => {
-    dispatch(declineBusinessContract(contractId, userId));
-    if (formId) {
-      dispatch(deleteBusinessContractForm(formId, userId));
-    }
-    dispatch(setAlert('Contract declined.', severity.Info, 3));
   };
 
   const sendBackContract = (
@@ -75,7 +73,7 @@ const ContractsFromBusiness = (props: {
     dispatch(setAlert('Contract sended back.', severity.Info, 3));
   };
 
-  if (!contracts[0]?.requestContracts?.businesses?.length) {
+  if (!contracts[0]?.receivedContracts?.businesses?.length) {
     return (
       <Typography
         style={{ padding: '1rem' }}
@@ -110,11 +108,10 @@ const ContractsFromBusiness = (props: {
             </AccordionSummary>
 
             <AccordionDetails>
-              <ContractsReceivedTable
-                contracts={contracts[0]?.requestContracts?.businesses}
+              <ContractsRequestedTable
+                contracts={contracts[0]?.receivedContracts?.businesses}
                 contractId={businessContract[0]._id}
                 acceptContract={acceptContractFromBusiness}
-                declineContract={declineContract}
                 sendBackContract={sendBackContract}
               />
             </AccordionDetails>
@@ -132,4 +129,4 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default ContractsFromBusiness;
+export default ReceivedContractsFromBusinesses;

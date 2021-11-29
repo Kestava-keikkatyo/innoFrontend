@@ -144,13 +144,14 @@ const WorkerAndBusinessModal: React.FC<any> = ({
             variant="standard"
           >
             <MenuItem value="None">None</MenuItem>
-            {myForms.docs.map((form: any) => (
-              <MenuItem key={form._id} value={form._id}>
-                {form.title.length > 50
-                  ? `${form.title.substring(0, 50)}...`
-                  : form.title}
-              </MenuItem>
-            ))}
+            {myForms &&
+              myForms.docs.map((form: any) => (
+                <MenuItem key={form._id} value={form._id}>
+                  {form.title.length > 50
+                    ? `${form.title.substring(0, 50)}...`
+                    : form.title}
+                </MenuItem>
+              ))}
           </TextField>
         </div>
       </DialogContent>

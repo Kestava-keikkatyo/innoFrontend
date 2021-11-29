@@ -35,6 +35,9 @@ import {
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import ReceivedContractsFromBusinesses from './ReceivedContractsFromBusinesses';
+import ReceivedContractsFromWorkers from './ReceivedContractsFromWorkers';
+
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -138,11 +141,12 @@ const ContractsPage = () => {
           />
           <Tab
             className={classes.tab}
-            label={matches ? '' : 'Käyttäjäyrityksiltä saapuneet sopimukset'}
+            label={matches ? '' : 'Saapuneet sopimukset'}
             icon={
               matches ? (
                 <Tooltip
-                  title="Käyttäjäyrityksiltä saapuneet sopimukset"
+                  //title="Käyttäjäyrityksiltä saapuneet sopimukset"
+                  title="Saapuneet sopimukset"
                   placement="top"
                   arrow
                 >
@@ -156,14 +160,10 @@ const ContractsPage = () => {
           />
           <Tab
             className={classes.tab}
-            label={matches ? '' : t('contracts_received_from_the_workers')}
+            label={matches ? '' : t('Sopimusten Pyynnöt')}
             icon={
               matches ? (
-                <Tooltip
-                  title="Työntekijöiltä saapuneet sopimukset"
-                  placement="top"
-                  arrow
-                >
+                <Tooltip title="Sopimusten Pyynnöt" placement="top" arrow>
                   <GroupIcon />
                 </Tooltip>
               ) : (
@@ -206,10 +206,12 @@ const ContractsPage = () => {
 
       <TabPanel value={value} index={1} dir={theme.direction}>
         <ContractsFromBusiness businessContract={businessContract} />
+        <ContractsFromWorkers businessContract={businessContract} />
       </TabPanel>
 
       <TabPanel value={value} index={2} dir={theme.direction}>
-        <ContractsFromWorkers businessContract={businessContract} />
+        <ReceivedContractsFromBusinesses businessContract={businessContract} />
+        <ReceivedContractsFromWorkers businessContract={businessContract} />
       </TabPanel>
     </Container>
   );
