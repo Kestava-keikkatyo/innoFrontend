@@ -10,6 +10,7 @@ import { roles } from '../../types/types';
 import BusinessHome from './BusinessHome';
 import AgencyHome from './AgencyHome';
 import { useTranslation } from 'react-i18next';
+import AdminHome from '../AdminPage/AdminHome';
 
 const Home = () => {
   const { data, ...user } = useSelector((state: any) => state.user);
@@ -32,6 +33,8 @@ const Home = () => {
 
   const getContent = () => {
     switch (data.role) {
+      case roles.Admin:
+        return <AdminHome />;
       case roles.Business:
         return <BusinessHome />;
       case roles.Agency:

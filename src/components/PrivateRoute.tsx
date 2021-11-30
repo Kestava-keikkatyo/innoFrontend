@@ -80,7 +80,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
 };
 
 PrivateRoute.defaultProps = {
-  roles: [roles.Worker, roles.Business, roles.Agency],
+  roles: [roles.Worker, roles.Business, roles.Agency, roles.Admin],
 };
 
 export default PrivateRoute;

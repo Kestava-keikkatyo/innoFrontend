@@ -84,6 +84,8 @@ const me = async (role: roles) => {
         return await axios.get(`${baseUrl}/agencies/me`, authHeader())
       case roles.Business:
         return await axios.get(`${baseUrl}/businesses/me`, authHeader())
+      case roles.Admin:
+        return await axios.get(`${baseUrl}/admin/me`, authHeader())
       default:
         // If user changes localstorages role value to something not mentioned above,
         // return status code 500 to logout user (handled in userActions.js statusHandler).
