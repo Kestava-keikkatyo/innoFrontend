@@ -24,10 +24,6 @@ import Databank from './pages/Databank';
 import ReportPage from './pages/ReportPage';
 import ReportsPage from './pages/ReportPage/ReportsPage';
 import AdminRoute from './components/AdminRoute';
-import AdminDatabank from './pages/AdminPage/AdminDatabank';
-import Users from './pages/AdminPage/Users';
-import Agency from './pages/AdminPage/Agency';
-import UserCompany from './pages/AdminPage/UserCompany';
 import BusinessContractPage from './pages/BusinessContractsPage';
 import BusinessContractPreviewPage from './pages/BusinessContractPreviewPage';
 import BusinessContractFill from './pages/BusinessContractPreviewPage/BusinessContractFill';
@@ -68,9 +64,6 @@ const App: React.FC = () => {
         <Route exact path="/login">
           <LoginPage />
         </Route>
-        <AdminRoute path="/admin/users">
-          <Users />
-        </AdminRoute>
         <Route path="/adminloginpage">
           <AdminLoginPage />
         </Route>
@@ -85,15 +78,6 @@ const App: React.FC = () => {
         </AdminRoute>
         <AdminRoute path="/user/:profileId">
           <User />
-        </AdminRoute>
-        <AdminRoute path="/admin/usercompany">
-          <UserCompany />
-        </AdminRoute>
-        <AdminRoute path="/admin/agency">
-          <Agency />
-        </AdminRoute>
-        <AdminRoute path="/admin/admindatabank">
-          <AdminDatabank />
         </AdminRoute>
         <DatabankRoute path="/databank/lifeline">
           <JobLifeline />
