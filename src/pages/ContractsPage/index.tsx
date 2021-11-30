@@ -127,7 +127,7 @@ const ContractsPage = () => {
         >
           <Tab
             className={classes.tab}
-            label={matches ? '' : 'Omat sopimukset'}
+            label={matches ? "" : t('own_contracts')}
             icon={
               matches ? (
                 <Tooltip title="Omat sopimukset" placement="top" arrow>
@@ -141,7 +141,7 @@ const ContractsPage = () => {
           />
           <Tab
             className={classes.tab}
-            label={matches ? '' : 'Saapuneet sopimukset'}
+            label={matches ? "" : t('arrived_contracts')}
             icon={
               matches ? (
                 <Tooltip
@@ -160,7 +160,7 @@ const ContractsPage = () => {
           />
           <Tab
             className={classes.tab}
-            label={matches ? '' : t('Sopimusten Pyynnöt')}
+            label={matches ? "" : t('requests_of_contracts')}
             icon={
               matches ? (
                 <Tooltip title="Sopimusten Pyynnöt" placement="top" arrow>

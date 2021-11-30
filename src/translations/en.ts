@@ -174,11 +174,16 @@ export default {
   chosen: "chosen",
 
   //Contracts pages
+  received_work_requests: "Received task requests",
+  accepted_work_requests: "Accepted task requests",
   neededWork: "Requested task",
-  activeWork: "Active task",
-  endedWork: "Ended task",
+  activeWork: "Active tasks",
+  endedWork: "Ended tasks",
 
   //ContractsPage
+  own_contracts: "Own contracts",
+  arrived_contracts: "Arrived contracts",
+  requests_of_contracts: "Requests of contracts",
   add_active: "Add to active work tasks",
   add: "Add",
   make_contract: "Make a contract",
@@ -209,6 +214,9 @@ export default {
   my_forms: "My forms",
   common: "Common",
   community: "Community",
+  common_forms: "Common forms",
+  community_forms: "Community forms",
+
 
   //Agency
   username: "username",
@@ -383,6 +391,7 @@ export default {
   street_address: "Street address",
   city: "City",
   zip_code: "Zip code",
+  add_job_button: "Add",
 
   //WorkdView
   contract:"Contract",

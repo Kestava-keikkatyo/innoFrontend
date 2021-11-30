@@ -165,7 +165,7 @@ export default {
   current_mood: "Nykyinen fiilis",
   no_data: "Oho, ei dataa vielä",
   no_entries:
-    "Jos näet tämän, et ole vielä todennäköisesti kirjoittanu fiiliksiäsi",
+    "Jos näet tämän, et ole vielä todennäköisesti kirjoittanut fiiliksiäsi",
   oops: "oops",
 
   //WorkerTransferList
@@ -173,11 +173,16 @@ export default {
   chosen: "Valinnat",
 
   //Contracts pages
+  received_work_requests: "Vastaanotetut työkeikkapyynnöt",
+  accepted_work_requests: "Hyväksytyt työkeikkapyynnöt",
   neededWork: "Tarvittavat työkeikat",
   activeWork: "Aktiiviset työkeikat",
   endedWork: "Päättyneet työkeikat",
-
+  
   //ContractsPage
+  own_contracts: "Omat sopimukset",
+  arrived_contracts: "Saapuneet sopimukset",
+  requests_of_contracts: "Sopimusten pyynnöt",
   add_active: "Lisää aktiivisiin työkeikkoihin",
   add: "Lisää",
   make_contract: "Tee sopimus",
@@ -199,7 +204,7 @@ export default {
   edit: "Muokkaa",
   download_pdf: "Lataa pdf",
   download: "Lataa",
-  copy_to_my_forms: "Kopioi minun lomakkaisiini",
+  copy_to_my_forms: "Kopioi minun lomakkeisiini",
   title: "Otsikko",
 
   //MyFormsTable
@@ -209,6 +214,8 @@ export default {
   my_forms: "Lomakkeeni",
   common: "Yleiset",
   community: "Yhteisö",
+  common_forms: "Yleiset lomakkeet",
+  community_forms: "Yhteisön lomakkeet",
 
   //ContractsTable
   status: "Tila",
@@ -375,6 +382,7 @@ export default {
   street_address: "Katuosoite",
   city: "Kaupunki",
   zip_code: "Postinumero",
+  add_job_button: "Lisää",
 
   //LimitJobSearch
   locations:"Sijanti",

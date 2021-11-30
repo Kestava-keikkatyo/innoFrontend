@@ -114,7 +114,7 @@ const AgencyGigOverview = () => {
         >
           <Tab
             className={classes.tab}
-            label={matches ? " " : "Saadut työkeikkapyynnöt"}
+            label={matches ? " " : t('received_work_requests')}
             icon={
               <Badge color="secondary">
                 {matches ? (
@@ -130,7 +130,7 @@ const AgencyGigOverview = () => {
           />
           <Tab
             className={classes.tab}
-            label="Hyväksytyt työkeikkapyynnöt"
+            label={t('accepted_work_requests')}
             icon={
               <Badge color="secondary">
                 {matches ? (
@@ -146,7 +146,7 @@ const AgencyGigOverview = () => {
           />
           <Tab
             className={classes.tab}
-            label={matches ? " " : t("Aktiiviset työkeikat")}
+            label={matches ? " " : t('activeWork')}
             icon={
               <Badge color="secondary">
                 {matches ? (
@@ -162,7 +162,7 @@ const AgencyGigOverview = () => {
           />
           <Tab
             className={classes.tab}
-            label={matches ? " " : t("Päättyneet työkeikat")}
+            label={matches ? " " : t('endedWork')}
             icon={
               <Badge color="secondary">
                 {matches ? (

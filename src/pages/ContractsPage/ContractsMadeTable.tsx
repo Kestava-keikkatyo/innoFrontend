@@ -79,7 +79,7 @@ const ContractsMadeTable = (prop: { contracts: []; contractId: string }) => {
               <TableCell align="left">{t('email')}</TableCell>
               <TableCell align="left">{t('role')}</TableCell>
               <TableCell align="left">{t('status')}</TableCell>
-              <TableCell align="left">Download</TableCell>
+              <TableCell align="left">{t('download')}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

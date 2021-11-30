@@ -130,7 +130,7 @@ const FormsPage: React.FC = () => {
         </TabPanel>
         <TabPanel value={value} index="two">
         <Typography  style={{ paddingTop: '1rem', paddingBottom: '1rem' }} variant="h4"  >
-            Common Forms
+        {t("common_forms")}
           </Typography>
           <Card className={classes.card} variant="outlined">
             <CardContent >
@@ -140,7 +140,7 @@ const FormsPage: React.FC = () => {
         </TabPanel>
         <TabPanel value={value} index="three">
         <Typography  style={{ paddingTop: '1rem', paddingBottom: '1rem' }} variant="h4"  >
-            Community Forms
+        {t("community_forms")}
           </Typography>
           <Card className={classes.card} variant="outlined">
             <CardContent >

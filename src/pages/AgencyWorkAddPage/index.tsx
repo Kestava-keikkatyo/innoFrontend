@@ -194,7 +194,7 @@ const AgencyWorkAdd: React.FC<any> = () => {
               variant="outlined"
               onClick={addWork}
             >
-              {t("submit")}
+              {t('add_job_button')}
             </Button>
           </div>
         </div>
