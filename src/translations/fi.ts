@@ -216,6 +216,7 @@ export default {
   community: "Yhteisö",
   common_forms: "Yleiset lomakkeet",
   community_forms: "Yhteisön lomakkeet",
+  search_by_title: "Etsi otsikon mukaan",
 
   //ContractsTable
   status: "Tila",

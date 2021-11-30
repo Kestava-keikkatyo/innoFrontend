@@ -242,7 +242,7 @@ const CommunityFormsTable: React.FC<any> = () => {
         <form>
           <Box display="flex" alignItems="center">
             <InputBase
-              placeholder="Search by title..."
+              placeholder={t('search_by_title')}
               value={filter}
               onChange={handleFilterchange}
             />

@@ -216,7 +216,7 @@ export default {
   community: "Community",
   common_forms: "Common forms",
   community_forms: "Community forms",
-
+  search_by_title: "Search by title",
 
   //Agency
   username: "username",
