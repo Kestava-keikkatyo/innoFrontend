@@ -8,6 +8,7 @@ import {
 import { Search as SearchIcon } from "@material-ui/icons"
 import { updatFormList } from "../../actions/formListActions"
 import { useDispatch } from "react-redux"
+import { useTranslation } from 'react-i18next';
 
 const INIT_SEARCH_TYPE = 'myforms'
 
@@ -20,6 +21,7 @@ const FormSearch = () => {
   const dispatch = useDispatch()
   const [input, setInput] = useState("")
 
+  const { t } = useTranslation();
 
 
   useEffect(() => {
@@ -44,7 +46,7 @@ const FormSearch = () => {
       <form onSubmit={handleSubmit}>
         <Box display="flex" alignItems="center">
           <InputBase
-            placeholder="search by title"
+            placeholder={t('search_by_title')}
             value={input}
             onChange={({ target }) => setInput(target.value)}
           />
