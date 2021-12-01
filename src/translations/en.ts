@@ -10,6 +10,8 @@ export default {
   worker_responsibilities_read:"Worker has read and understood his/her responsibilities.",
   agency_responsibility: "Agency's responsibility",
   agency_responsibilities_read:"Agency has read and understood its responsibilities.",
+  business_responsibility: "Business' responsibility",
+  business_responsibilities_read:"Business has read and understood its responsibilities.",
   saveButton: "Save",
 
   //login

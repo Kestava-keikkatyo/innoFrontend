@@ -7,14 +7,18 @@ import {
   CardContent,
   ListItem,
   ListItemText,
+  FormControlLabel,
+  Checkbox,
   Divider,
   CardHeader,
   Button,
   Grid,
 } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
 import FeedBackForm from './FeedBackForm/index';
 
 const BusinessHome = () => {
+  const { t } = useTranslation();
   return (
     <Grid container>
       <Grid item xs={12} md={6}>
@@ -28,7 +32,7 @@ const BusinessHome = () => {
                 {t('read_more')}
               </Button> 
             }*/
-            title="Käyttäjäyrityksen vastuu"
+            title={t('business_responsibility')}
             subheader=""
           />
           <CardContent>
@@ -40,6 +44,7 @@ const BusinessHome = () => {
                 </ListItem>
               ))}
             </List>
+            <FormControlLabel control={<Checkbox defaultChecked style={{color:'#eb5a00'}} />} label={t('business_responsibilities_read')}/>
           </CardContent>
         </Card>
       </Grid>

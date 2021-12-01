@@ -10,6 +10,8 @@ export default {
   worker_responsibilities_read:"Työntekijä on lukenut ja ymmärtänyt vastuunsa",
   agency_responsibility: "Henkilöstöpalveluyrityksen vastuu",
   agency_responsibilities_read:"Henkilöstöpalveluyritys on lukenut ja ymmärtänyt vastuunsa",
+  business_responsibility: "Käyttäjäyrityksen vastuu",
+  business_responsibilities_read:"Käyttäjäyritys on lukenut ja ymmärtänyt vastuunsa",
   saveButton: "Tallenna", 
 
   //login
