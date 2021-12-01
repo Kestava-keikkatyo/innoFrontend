@@ -48,6 +48,7 @@ export default {
   workers: "Työntekijät",
 
   //Button
+  send: "Lähetä",
   submit: "Lähetä",
   log_in: "Kirjaudu sisään",
   sign_up: "Rekisteröidy",

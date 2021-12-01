@@ -49,6 +49,7 @@ export default {
   workers: "Workers",
 
   //Button
+  send: "Send",
   submit: "Submit",
   log_in: "Log in",
   sign_up: "Sign up",

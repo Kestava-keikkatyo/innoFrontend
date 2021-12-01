@@ -146,7 +146,7 @@ const BusinessWorkRequest: React.FC<any> = () => {
               className={classes.datesLeft}
               error={formData.startDate.length > 0 ? false : true}
               id="startDate"
-              label="Start date"
+              label={t('start_date')}
               type="date"
               value={formData.startDate}
               InputLabelProps={{
@@ -158,7 +158,7 @@ const BusinessWorkRequest: React.FC<any> = () => {
               className={classes.datesRight}
               error={formData.endDate.length > 0 ? false : true}
               id="endDate"
-              label="End date"
+              label={t('end_date')}
               type="date"
               value={formData.endDate}
               InputLabelProps={{
