@@ -455,6 +455,8 @@ export default {
   scale_option_title_right:"scale option title right",
   right_title:"Right title",
   row_height:"row height",
+  is_answer_optional:"is answer optional",
+  expand:"Expand"
   
   
 
