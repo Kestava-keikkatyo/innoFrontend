@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateQuestion } from '../../actions/formActions';
 import { questionTypes } from '../../types/types';
 import CustomFormInput from './CustomFormInput';
+import { useTranslation } from 'react-i18next';
+
 
 interface Index {
   index: number
@@ -25,14 +27,15 @@ const ExpandedBodyModule: React.FC<Props> = ({ index, children }) => {
   const { questions } = useSelector((state: any) => state.form)
   const dispatch = useDispatch()
   const [hidden, setHidden] = useState(true)
+  const { t } = useTranslation();
 
  return(
   <>
   <div className={hidden ? classes.hidden: ''} style={{ width: "100%" }}>
     {children}
     <CustomFormInput
-      label="question sub title"
-      placeholder="Type subtitle here..."
+      label={t("question_sub_title")}
+      placeholder={t("type_subtitle_here")}
       type="text" name="sub-title"
       value={questions[index].subTitle}
       onChange={(e: any) => dispatch(
@@ -43,24 +46,25 @@ const ExpandedBodyModule: React.FC<Props> = ({ index, children }) => {
         />
         {/* TODO: tee tähän tilanhallinta */}
     <div>
-      <label>is answer optional</label>
+      <label>{t("is_answer_optional")}</label>
       <input type="checkbox"/>
     </div>
   </div>
   <Divider></Divider>
-  <Button color="secondary" onClick={() => setHidden(!hidden)} >Expand</Button>
+  <Button color="secondary" onClick={() => setHidden(!hidden)} >{t("expand")}</Button>
   </>
  )
 }
 
 const ExpandedTextModule: React.FC<Props> = ({ index, children }) => {
   const { questions } = useSelector((state: any) => state.form)
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const { t } = useTranslation();
   
   return(
     <ExpandedBodyModule index={index} >
       <CustomFormInput
-        label="Answer min len"
+        label={t("answer_min_len")}
         type="number" name="sub-title"
         value={questions[index].answerMinLength}
         onChange={(e: any) => dispatch(
@@ -68,7 +72,7 @@ const ExpandedTextModule: React.FC<Props> = ({ index, children }) => {
               { ...questions[index], answerMinLength: e.target.value }, index )
           )} />
       <CustomFormInput
-        label="Answer max len"
+        label={t("answer_max_len")}
           type="number" name="sub-title"
           value={questions[index].answerMaxLength}
           onChange={(e: any) => dispatch(
@@ -87,12 +91,13 @@ const ExpandedTextModule: React.FC<Props> = ({ index, children }) => {
  */
 const ExpandedHorizontalRadioModule: React.FC<Index> = ({ index }) => {
   const { questions } = useSelector((state: any) => state.form)
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   return(
     <ExpandedBodyModule index={index} >
       <CustomFormInput
-        label="Scale"
+        label={t("scale")}
         type="number" name="scale-val"
         value={questions[index].scale}
         onChange={(e: any) => dispatch(
@@ -104,8 +109,8 @@ const ExpandedHorizontalRadioModule: React.FC<Index> = ({ index }) => {
       <Grid container>
         <Grid item xs={4}>
         <CustomFormInput
-          label="scale option title left"
-          placeholder="Left title"
+          label={t("scale_option_title_left")}
+          placeholder={t("left_title")}
           type="text" name="scale-left"
           value={questions[index].scaleOptionTitleLeft}
           onChange={(e: any) => dispatch(
@@ -117,8 +122,8 @@ const ExpandedHorizontalRadioModule: React.FC<Index> = ({ index }) => {
         </Grid>
         <Grid item xs={4}>
         <CustomFormInput
-          label="scale option title center"
-          placeholder="Center title"
+          label={t("scale_option_title_center")}
+          placeholder={t("center_title")}
           type="text" name="scale-center"
             value={questions[index].scaleOptionTitleCenter}
             onChange={(e: any) => dispatch(
@@ -130,8 +135,8 @@ const ExpandedHorizontalRadioModule: React.FC<Index> = ({ index }) => {
         </Grid>
         <Grid item xs={4}>
         <CustomFormInput
-          label="scale option title right"
-          placeholder="Right title"
+          label={t("scale_option_title_right")}
+          placeholder={t("right_title")}
           type="text" name="scale-right"
             value={questions[index].scaleOptionTitleRight}
             onChange={(e: any) => dispatch(
@@ -158,12 +163,13 @@ const ExpandedCheckBoxModule: React.FC<Index> = ({ index }) => <ExpandedBodyModu
 
 const ExpandedTextAreaModule: React.FC<Index> = ({ index }) => {
   const { questions } = useSelector((state: any) => state.form)
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const { t } = useTranslation();
   
   return(
     <ExpandedTextModule index={index} >
       <CustomFormInput
-      label="row height"
+      label={t("row_height")}
       type="number" name="row-height"
       value={questions[index].rowHeight}
       onChange={(e: any) => dispatch(

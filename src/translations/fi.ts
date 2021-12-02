@@ -422,11 +422,30 @@ export default {
   work_lifespan: "Työn elinkaari",
   areas_of_responsibility: "Vastuualueet",
   good_practises: "Hyvät käytännöt",
+
+  //NewFormHeader
+  import: "Tuo",
+  export:"Vie",
+
+  //QuestionModule
+  question_type:"Kysymyksen tyyppi",
+  question_module:"Kysymys:",
+  your_question:"Kysymyksesi",
+
+  //ExpandableQuestionOptions
+  type_subtitle_here: "Kirjoita alaotsikko tähän...",
+  question_sub_title: "Kysymyksen alaotsikko",
+  answer_min_len:"Vastauksen min pituus",
+  answer_max_len:"Vastauksen max pituus",
+  scale:"Skaala",
+  scale_option_title_left:"Skaalaus-vaihtoehto: otsikko vasemmalle",
+  left_title:"Vasen otsikko",
+  scale_option_title_center:"Skaalaus-vaihtoehto: otsikko keskelle",
+  center_title:"Keski otsikko",
+  scale_option_title_right:"Skaalaus-vaihtoehto: otsikko oikealle",
+  right_title:"Oikea otsikko",
+  row_height:"Rivin korkeus",
+  is_answer_optional:"Vastaus on vapaehtoinen",
+  expand:"Laajenna",
 }
 
-
-
-
-
-//import { useTranslation } from 'react-i18next'
-//const { t } = useTranslation()

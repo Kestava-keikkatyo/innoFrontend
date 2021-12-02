@@ -14,11 +14,12 @@ const TypeDropDown: React.FC<{ index: number }> = ({ index }) => {
   const questions = useSelector(
     (state: any) => state.form.questions
   )
+  const { t } = useTranslation()
 
   
   return (
     <Spacing ph4 className="relative" style={{ width: "100%" }}>
-      <label className="absolute label-type">Question type</label>
+      <label className="absolute label-type">{t('question_type')}</label>
       <select
         className="customFormInput"
         value={questions[index].questionType}
@@ -61,7 +62,7 @@ const QuestionModule: React.FC<{ questionIndex: number }> = ({
           <CustomFormInput
             labelFontSize="large"
             label={`Question: ${questionIndex}`}
-            placeholder="Your question..."
+            placeholder={t('your_question')}
             type="text"
             name="question"
             value={questions[questionIndex].title}
