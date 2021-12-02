@@ -72,7 +72,7 @@ const JobModal: React.FC<any> = ({ displayModal, closeModal }) => {
         <FormControlLabel
           value="agree"
           control={<Checkbox color="secondary" />}
-          label="Hyväksyn käyttöehdot"
+          label={t('accept_terms')}
         />
         <Button color="primary" variant="outlined" onClick={() => closeModal()}>
         {t("company_sites")}

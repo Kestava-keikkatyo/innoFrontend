@@ -110,7 +110,8 @@ export default {
 
   //Report step two
   happened: "Milloin tämä tapahtui?",
-
+  date_picker_inline: "Päivämäärä",
+  time_picker: "Tapahtuma-aika",
   //Report step three
   fill_details: "Kirjoita lisätiedot",
   fill_work_title: "Tehtävänimike",
@@ -311,6 +312,7 @@ export default {
   company_sites: "Yrityksen nettisivut",
   enroll: "Osallistu",
   relocation: "Muuttoapu",
+  accept_terms: "Hyväksyn käyttöehdot",
 
   //jobmodal
   send_agency_contract: " Lähetä työkeikka pyyntö HP-yritykselle",
@@ -399,6 +401,9 @@ export default {
   contacts:"Yhteyshenkilö",
 
   //JobsIncidence
+  newest: "Uusimmat",
+  oldest: "Vanhimmat",
+  closing_soon:"Sulkeutuvat",
   select_by_incidence: "Valitse ilmaantuvuuden mukaan",
 
 //cooperation info modal
