@@ -431,14 +431,32 @@ export default {
   areas_of_responsibility: "Areas of responsibility",
   good_practises: "Good practises",
 
-<<<<<<< HEAD
   //NewFormHeader
   import: "Import",
   export:"Export",
-=======
+
+
+  //QuestionModule
+  question_type:"Question type",
+  question_module:"Question:",
+  your_question:"Your question",
+
+  //ExpandableQuestionOptions
+  type_subtitle_here: "Type subtitle here...",
+  question_sub_title: "Question sub title",
+  answer_min_len:"Answer min len",
+  answer_max_len:"Answer max len",
+  scale:"Scale",
+  scale_option_title_left:"scale option title left",
+  left_title:"Left title",
+  scale_option_title_center:"scale option title center",
+  center_title:"Center title",
+  scale_option_title_right:"scale option title right",
+  right_title:"Right title",
+  row_height:"row height",
+  
   
 
->>>>>>> 3ca6385ae570ef544922d3ac95609e81a35bd221
 }
 
 //

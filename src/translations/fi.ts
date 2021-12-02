@@ -426,11 +426,24 @@ export default {
   //NewFormHeader
   import: "Tuo",
   export:"Vie",
+
+  //QuestionModule
+  question_type:"Kysymyksen tyyppi",
+  question_module:"Kysymys:",
+  your_question:"Kysymyksesi",
+
+  //ExpandableQuestionOptions
+  type_subtitle_here: "Type subtitle here...",
+  question_sub_title: "Question sub title",
+  answer_min_len:"Answer min len",
+  answer_max_len:"Answer max len",
+  scale:"Scale",
+  scale_option_title_left:"scale option title left",
+  left_title:"Left title",
+  scale_option_title_center:"scale option title center",
+  center_title:"Center title",
+  scale_option_title_right:"scale option title right",
+  right_title:"Right title",
+  row_height:"row height",
 }
 
-
-
-
-
-//import { useTranslation } from 'react-i18next'
-//const { t } = useTranslation()

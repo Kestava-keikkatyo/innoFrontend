@@ -73,7 +73,7 @@ const NewFormPage: React.FC = () => {
       <CustomFormInput
         label={t("form_title")}
         labelFontSize="large"
-        placeholder="Your title..."
+        placeholder={t("your_title")}
         type="text"
         name="title"
         value={title}
@@ -82,7 +82,7 @@ const NewFormPage: React.FC = () => {
       <CustomFormInput
         label={t("description")}
         labelFontSize="large"
-        placeholder="Your description..."
+        placeholder={t("your_description")}
         type="text"
         name="title"
         value={description}
