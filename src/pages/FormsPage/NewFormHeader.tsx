@@ -36,7 +36,7 @@ const NewFormHeader: React.FC = () => {
           </Button>
           <Button onClick={handleSubmit}> {t("submit")}</Button>
           <FileUploader
-            name="Import"
+            name={t('import')}
             accept="data:text/json"
             handleFile={(data: any) => dispatch(importFormByPath())}
           />

@@ -94,7 +94,7 @@ const NewFormPage: React.FC = () => {
         ))}
       </div>
       <Button onClick={() => dispatch(addQuestion(initialQuestion))}>
-        Add Question
+      {t("add_question")}
       </Button>
       </div>
     </form>

@@ -421,6 +421,10 @@ export default {
   work_lifespan: "Työn elinkaari",
   areas_of_responsibility: "Vastuualueet",
   good_practises: "Hyvät käytännöt",
+
+  //NewFormHeader
+  import: "Tuo",
+  export:"Vie",
 }
 
 

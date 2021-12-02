@@ -423,10 +423,14 @@ export default {
   no_notifications:"No notifications...",
   empty_notifications:"Empty all notifications",
 
-//DatabankRoute
-homeButton:"Home",
-articles: "Articles",
-work_lifespan: "Work lifespan",
-areas_of_responsibility: "Areas of responsibility",
-good_practises: "Good practises",
+  //DatabankRoute
+  homeButton:"Home",
+  articles: "Articles",
+  work_lifespan: "Work lifespan",
+  areas_of_responsibility: "Areas of responsibility",
+  good_practises: "Good practises",
+
+  //NewFormHeader
+  import: "Import",
+  export:"Export",
 }
