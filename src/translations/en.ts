@@ -146,9 +146,9 @@ export default {
   transfer_company_profile: "Go to company profile",
 
   //Contact information
-  phone: "phone",
-  website: "website",
-  address: "address",
+  phone: "Phone",
+  website: "Website",
+  address: "Address",
   contact_information: "Contact information",
 
   //feeling utils
