@@ -31,6 +31,7 @@ const AgencyStatistics = () => {
           {t('mood_stats')}
         </Typography>
         <AgencyStatisticsSummary />
+        <FeedbackCategory />
         <PieChart />
       </Box>
     </Container>
