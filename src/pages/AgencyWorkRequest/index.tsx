@@ -1,12 +1,7 @@
 import React, { useEffect } from "react"
 import { makeStyles, Theme, useTheme } from "@material-ui/core/styles"
 import AppBar from "@material-ui/core/AppBar"
-import SendIcon from "@material-ui/icons/Send"
-import AllInboxIcon from "@material-ui/icons/AllInbox"
-import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive"
 import {
-  Accordion,
-  AccordionDetails,
   Badge,
   Box,
   Container,
@@ -21,10 +16,12 @@ import { useDispatch, useSelector } from "react-redux"
 import { IRootState } from "../../utils/store"
 import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty"
 import { useTranslation } from "react-i18next"
-import AcceptedGigRequest from "./AcceptedGigRequest"
 import { fetchWorkContracts } from "../../actions/workAddAction"
 import ReceivedRequest from "./ReceivedRequest"
-
+import CallReceivedIcon from "@mui/icons-material/CallReceived"
+import CheckIcon from "@mui/icons-material/Check"
+import TimelapseIcon from "@mui/icons-material/Timelapse"
+import DarkModeIcon from "@mui/icons-material/DarkMode"
 interface TabPanelProps {
   children?: React.ReactNode
   index: any
@@ -114,15 +111,15 @@ const AgencyGigOverview = () => {
         >
           <Tab
             className={classes.tab}
-            label={matches ? " " : t('received_work_requests')}
+            label={matches ? " " : t("received_work_requests")}
             icon={
               <Badge color="secondary">
                 {matches ? (
                   <Tooltip title="Lähetetyt sopimukset" placement="top" arrow>
-                    <SendIcon />
+                    <CallReceivedIcon />
                   </Tooltip>
                 ) : (
-                  <SendIcon />
+                  <CallReceivedIcon />
                 )}
               </Badge>
             }
@@ -130,15 +127,15 @@ const AgencyGigOverview = () => {
           />
           <Tab
             className={classes.tab}
-            label={t('accepted_work_requests')}
+            label={t("accepted_work_requests")}
             icon={
               <Badge color="secondary">
                 {matches ? (
                   <Tooltip title="Saapuneet sopimukset" placement="top" arrow>
-                    <NotificationsActiveIcon />
+                    <CheckIcon />
                   </Tooltip>
                 ) : (
-                  <NotificationsActiveIcon />
+                  <CheckIcon />
                 )}
               </Badge>
             }
@@ -146,15 +143,15 @@ const AgencyGigOverview = () => {
           />
           <Tab
             className={classes.tab}
-            label={matches ? " " : t('activeWork')}
+            label={matches ? " " : t("activeWork")}
             icon={
               <Badge color="secondary">
                 {matches ? (
                   <Tooltip title="Odottavat sopimukset" placement="top" arrow>
-                    <HourglassEmptyIcon />
+                    <TimelapseIcon />
                   </Tooltip>
                 ) : (
-                  <HourglassEmptyIcon />
+                  <TimelapseIcon />
                 )}
               </Badge>
             }
@@ -162,15 +159,15 @@ const AgencyGigOverview = () => {
           />
           <Tab
             className={classes.tab}
-            label={matches ? " " : t('endedWork')}
+            label={matches ? " " : t("endedWork")}
             icon={
               <Badge color="secondary">
                 {matches ? (
                   <Tooltip title="Päättyneet työkeikat" placement="top" arrow>
-                    <AllInboxIcon />
+                    <DarkModeIcon />
                   </Tooltip>
                 ) : (
-                  <AllInboxIcon />
+                  <DarkModeIcon />
                 )}
               </Badge>
             }

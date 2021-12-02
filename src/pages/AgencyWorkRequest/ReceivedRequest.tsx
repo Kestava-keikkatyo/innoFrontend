@@ -5,6 +5,27 @@ import AccordionSummary from "@mui/material/AccordionSummary"
 import Typography from "@mui/material/Typography"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import { format } from "date-fns"
+import {
+  AccordionActions,
+  IconButton,
+  makeStyles,
+  Theme,
+  Tooltip,
+  Divider,
+} from "@material-ui/core"
+import GigModal from "./GigModal"
+import AddReactionIcon from "@mui/icons-material/AddReaction"
+import { useTranslation } from "react-i18next"
+
+const useStyles = makeStyles((theme: Theme) => ({
+  divider: {
+    width: "45%",
+    marginBottom: "1%",
+  },
+  accordion: {
+    marginBottom: "1%",
+  },
+}))
 
 const ReceivedRequest: React.FC<any> = ({ workContracts }) => {
   /*
@@ -21,22 +42,25 @@ const ReceivedRequest: React.FC<any> = ({ workContracts }) => {
 */
 
   const [expanded, setExpanded] = React.useState<string | false>(false)
-
+  const classes = useStyles()
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false)
     }
+  const [displayModal, setDisplayModal] = React.useState(false)
+  const handleCooperationOpen = () => {
+    setDisplayModal(true)
+  }
+
+  const { t } = useTranslation()
+
   if (workContracts.docs === undefined) return <div> no results </div>
   return (
     <div>
       {workContracts?.docs.map((workContract: any) => (
         <div key={workContract._id}>
           {workContract?.contracts?.map((contract: any) => (
-            <Accordion
-              key={contract._id}
-              expanded={expanded === "panel1"}
-              onChange={handleChange("panel1")}
-            >
+            <Accordion key={contract._id} className={classes.accordion}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1bh-content"
@@ -59,12 +83,25 @@ const ReceivedRequest: React.FC<any> = ({ workContracts }) => {
                 </Typography>
               </AccordionSummary>
               <AccordionDetails>
+                <Divider className={classes.divider} />
                 <Typography>Kuvaus: {contract.detailedInfo}</Typography>
                 <Typography>
                   Tarvittavien työntekijöiden määrä: {contract.workerCount}{" "}
                   kappaletta
                 </Typography>
               </AccordionDetails>
+              <AccordionActions>
+                <Tooltip title="Valitse työntekijät" placement="top" arrow>
+                  <IconButton onClick={handleCooperationOpen}>
+                    <AddReactionIcon />
+                  </IconButton>
+                </Tooltip>
+              </AccordionActions>
+
+              <GigModal
+                displayModal={displayModal}
+                closeModal={() => setDisplayModal(false)}
+              />
             </Accordion>
           ))}
         </div>
