@@ -203,7 +203,7 @@ export default {
   headline: "Headline",
 
   //ContractFormManagerPage
-  description: "description",
+  description: "Description",
   preview: "Preview",
   edit: "Edit",
   download_pdf: "Download pdf",
@@ -377,7 +377,8 @@ export default {
   contact_form_manager: "Contract form manager",
 
   form_preview: "Form preview",
-
+  your_title: "Title",
+  your_description: "Description",
   create_job: "Create job",
 
   choose: "Choose",
@@ -423,10 +424,15 @@ export default {
   no_notifications:"No notifications...",
   empty_notifications:"Empty all notifications",
 
-//DatabankRoute
-homeButton:"Home",
-articles: "Articles",
-work_lifespan: "Work lifespan",
-areas_of_responsibility: "Areas of responsibility",
-good_practises: "Good practises",
+  //DatabankRoute
+  homeButton:"Home",
+  articles: "Articles",
+  work_lifespan: "Work lifespan",
+  areas_of_responsibility: "Areas of responsibility",
+  good_practises: "Good practises",
+
+  
+
 }
+
+//

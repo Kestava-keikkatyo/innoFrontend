@@ -371,7 +371,8 @@ export default {
   contact_form_manager: "Sopimus muokkaus",
 
   form_preview: "Esikatsele lomaketta",
-
+  your_title: "Otsikko",
+  your_description: "Kuvaus",
   create_job: "Tee työilmoitus",
   choose: "Valitse",
 
