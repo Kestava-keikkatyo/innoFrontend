@@ -146,9 +146,9 @@ export default {
   transfer_company_profile: "Go to company profile",
 
   //Contact information
-  phone: "phone",
-  website: "website",
-  address: "address",
+  phone: "Phone",
+  website: "Website",
+  address: "Address",
   contact_information: "Contact information",
 
   //feeling utils
@@ -203,7 +203,7 @@ export default {
   headline: "Headline",
 
   //ContractFormManagerPage
-  description: "description",
+  description: "Description",
   preview: "Preview",
   edit: "Edit",
   download_pdf: "Download pdf",
@@ -377,7 +377,8 @@ export default {
   contact_form_manager: "Contract form manager",
 
   form_preview: "Form preview",
-
+  your_title: "Title",
+  your_description: "Description",
   create_job: "Create job",
 
   choose: "Choose",
@@ -430,7 +431,14 @@ export default {
   areas_of_responsibility: "Areas of responsibility",
   good_practises: "Good practises",
 
+<<<<<<< HEAD
   //NewFormHeader
   import: "Import",
   export:"Export",
+=======
+  
+
+>>>>>>> 3ca6385ae570ef544922d3ac95609e81a35bd221
 }
+
+//
