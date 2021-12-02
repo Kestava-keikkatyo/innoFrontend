@@ -445,5 +445,7 @@ export default {
   scale_option_title_right:"Skaalaus-vaihtoehto: otsikko oikealle",
   right_title:"Oikea otsikko",
   row_height:"Rivin korkeus",
+  is_answer_optional:"Vastaus on vapaehtoinen",
+  expand:"Laajenna",
 }
 
