@@ -413,7 +413,7 @@ export default {
   //JobsIncidence
   newest: "Uusimmat",
   oldest: "Vanhimmat",
-  closing_soon:"Sulkeutuvat",
+  closing_soon: "Sulkeutuvat",
   select_by_incidence: "Valitse ilmaantuvuuden mukaan",
 
   //cooperation info modal
@@ -462,8 +462,6 @@ export default {
   row_height: "Rivin korkeus",
   is_answer_optional: "Vastaus on vapaehtoinen",
   expand: "Laajenna",
-  newest: "Uusimmat",
-  oldest: "Vanhimmat",
   closing: "Sulkeutuvat",
   services: "Palvelut",
   care: "Hoitoala",
