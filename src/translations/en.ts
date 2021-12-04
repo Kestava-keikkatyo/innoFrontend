@@ -7,11 +7,14 @@ export default {
   thank_you_for_feedback: "Thank you for your feedback!",
   write_a_comment: "Write a comment",
   workers_responsibility: "Worker's responsibility",
-  worker_responsibilities_read:"Worker has read and understood his/her responsibilities.",
+  worker_responsibilities_read:
+    "Worker has read and understood his/her responsibilities.",
   agency_responsibility: "Agency's responsibility",
-  agency_responsibilities_read:"Agency has read and understood its responsibilities.",
+  agency_responsibilities_read:
+    "Agency has read and understood its responsibilities.",
   business_responsibility: "Business' responsibility",
-  business_responsibilities_read:"Business has read and understood its responsibilities.",
+  business_responsibilities_read:
+    "Business has read and understood its responsibilities.",
   saveButton: "Save",
 
   //login
@@ -20,6 +23,9 @@ export default {
   password_label: "Password",
   invalid_email_address: "Invalid email address",
   required: "Required",
+  logged_out: "Logged out",
+  login_failed: "Login failed",
+  login_success: "Login success",
 
   //signup
   name: "Name",
@@ -29,7 +35,7 @@ export default {
   user: "User",
   terms_of_use: "By registering, you agree to give your information to ",
   terms_agency: "agencies",
-  
+  signup_successful: "Signup successful",
 
   //error
   invalid_email: "Invalid email address",
@@ -38,7 +44,7 @@ export default {
   invalid_name: "Invalid name",
   invalid_password: "Password does not match",
   email_already_used: "Email is already in use",
-
+  invalid_token: "Invalid token",
 
   //option
   role: "Role",
@@ -133,8 +139,7 @@ export default {
   waiting_contracts: "Waiting contracts",
   done_contracts: "Done contracts",
   contracts_received_from_the_workers: "Contracts received from the workers",
-  contracts_received_from_businesses:
-    "Contracts received from the businesses",
+  contracts_received_from_businesses: "Contracts received from the businesses",
 
   //Agencies list
   all: "All",
@@ -196,7 +201,8 @@ export default {
   //FeedbackForm
   write_feedback_here: "Write feedback here",
   feedback_sent: "Feedback sent",
-  give_feedback: "This component is temporary, it is only used during application development. The aim is to get feedback and development ideas from the project team and testers, which will be taken into account during application development.",
+  give_feedback:
+    "This component is temporary, it is only used during application development. The aim is to get feedback and development ideas from the project team and testers, which will be taken into account during application development.",
   return_form: "Feedback form",
   replied: "Replied",
   wait: "Wait",
@@ -267,6 +273,7 @@ export default {
   current_password: "Current password",
   new_password: "New password",
   confirm_password: "Confirm new password",
+  password_update_succesful: "Password updated successfully!",
 
   //FeedbackForm
   no_feedback: "No feedback.",
@@ -337,7 +344,8 @@ export default {
   //feedbackCategory
   feedback_category: "Feedback category",
   category0: "Category",
-  description0: "Description : based on the amount of mood feedback and the mood points",
+  description0:
+    "Description : based on the amount of mood feedback and the mood points",
   description1: "According to our statistics you could use a little cheering.",
   description2: "According to our statistics your mood is quite well.",
   description3: "According to our statistics you are feeling well.",
@@ -399,13 +407,13 @@ export default {
   add_job_button: "Add",
 
   //WorkdView
-  contract:"Contract",
-  contacts:"Contact",
+  contract: "Contract",
+  contacts: "Contact",
 
   //LimitJobSearch
-  locations:"Locations",
-  scope:"Scope",
-  experience:"Experience",
+  locations: "Locations",
+  scope: "Scope",
+  experience: "Experience",
 
   //JobsIncidence
   select_by_incidence: "Select by incidence",
@@ -421,12 +429,12 @@ export default {
   none: "None",
 
   //Notifications
-  notifications:"Notifications",
-  no_notifications:"No notifications...",
-  empty_notifications:"Empty all notifications",
+  notifications: "Notifications",
+  no_notifications: "No notifications...",
+  empty_notifications: "Empty all notifications",
 
   //DatabankRoute
-  homeButton:"Home",
+  homeButton: "Home",
   articles: "Articles",
   work_lifespan: "Work lifespan",
   areas_of_responsibility: "Areas of responsibility",
@@ -434,32 +442,39 @@ export default {
 
   //NewFormHeader
   import: "Import",
-  export:"Export",
-
+  export: "Export",
 
   //QuestionModule
-  question_type:"Question type",
-  question_module:"Question:",
-  your_question:"Your question",
+  question_type: "Question type",
+  question_module: "Question:",
+  your_question: "Your question",
 
   //ExpandableQuestionOptions
   type_subtitle_here: "Type subtitle here...",
   question_sub_title: "Question sub title",
-  answer_min_len:"Answer min len",
-  answer_max_len:"Answer max len",
-  scale:"Scale",
-  scale_option_title_left:"scale option title left",
-  left_title:"Left title",
-  scale_option_title_center:"scale option title center",
-  center_title:"Center title",
-  scale_option_title_right:"scale option title right",
-  right_title:"Right title",
-  row_height:"row height",
-  is_answer_optional:"is answer optional",
-  expand:"Expand"
-  
-  
+  answer_min_len: "Answer min len",
+  answer_max_len: "Answer max len",
+  scale: "Scale",
+  scale_option_title_left: "scale option title left",
+  left_title: "Left title",
+  scale_option_title_center: "scale option title center",
+  center_title: "Center title",
+  scale_option_title_right: "scale option title right",
+  right_title: "Right title",
+  row_height: "row height",
+  is_answer_optional: "is answer optional",
+  expand: "Expand",
+  newest: "Newest",
+  oldest: "Oldest",
+  closing: "Closing",
+  services: "Services",
+  care: "Care",
+  marketing_sales: "Marketing and sales",
+  trainee: "Trainee",
+  experienced: "Experienced",
+  professional: "Professional",
 
+  user_information_updated: "User information updated",
 }
 
 //
