@@ -118,6 +118,8 @@ export default {
 
   //Report step two
   happened: "When did this happen?",
+  date_picker_inline: "Date",
+  time_picker: "Time",
 
   //Report step three
   fill_details: "Fill in details",
@@ -323,6 +325,7 @@ export default {
   company_sites: "Company websites",
   enroll: "Enroll ",
   relocation: "relocation",
+  accept_terms: "I accept the terms",
 
   //jobmodal
   send_agency_contract: " Send work request to agency",
@@ -416,6 +419,9 @@ export default {
   experience: "Experience",
 
   //JobsIncidence
+  newest: "Newest",
+  oldest: "Oldest",
+  closing_soon: "Closing soon",
   select_by_incidence: "Select by incidence",
 
   //cooperation info modal
@@ -464,8 +470,6 @@ export default {
   row_height: "row height",
   is_answer_optional: "is answer optional",
   expand: "Expand",
-  newest: "Newest",
-  oldest: "Oldest",
   closing: "Closing",
   services: "Services",
   care: "Care",

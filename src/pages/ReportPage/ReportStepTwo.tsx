@@ -38,7 +38,7 @@ const ReportStepTwo = () => {
               format="MM/dd/yyyy"
               margin="normal"
               id="date-picker-inline"
-              label="Date picker inline"
+              label={t('date_picker_inline')}
               value={selectedDate}
               onChange={handleDateChange}
               KeyboardButtonProps={{
@@ -48,7 +48,7 @@ const ReportStepTwo = () => {
             <KeyboardTimePicker
               margin="normal"
               id="time-picker"
-              label="Time picker"
+              label={t('time_picker')}
               value={selectedDate}
               onChange={handleDateChange}
               KeyboardButtonProps={{
