@@ -92,5 +92,11 @@
       "tip": "Teen tarvittaessa turvallisuusilmoituksen esim. läheltä piti-tilanteesta",
       "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
     }
+  ],
+  "testi": [
+    {
+      "tip": "Huolehdin omasta ja työkavereiden työhyvinvoinnista ja -turvallisuudesta",
+      "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
+    }
   ]
 }

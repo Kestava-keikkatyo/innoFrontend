@@ -239,6 +239,7 @@ export default {
   business_contracts: "Yrityssopimukset",
   my_work: "Työni",
   remove: "Poista",
+  faq:"UKK",
 
   //profilePage
   edit_profile: "Muokkaa profiilia",
@@ -445,5 +446,6 @@ export default {
   scale_option_title_right:"scale option title right",
   right_title:"Right title",
   row_height:"row height",
+
 }
 

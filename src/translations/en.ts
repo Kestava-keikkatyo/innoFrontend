@@ -243,6 +243,7 @@ export default {
   my_work: "My work",
   remove: "Remove",
   close: "close",
+  faq: "FAQ",
 
   //profilePage
   edit_profile: "Edit profile",
