@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { makeStyles, Theme, useTheme } from "@material-ui/core/styles"
 import AppBar from "@material-ui/core/AppBar"
 import {
@@ -14,7 +14,7 @@ import {
 
 import { useDispatch, useSelector } from "react-redux"
 import { IRootState } from "../../utils/store"
-import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty"
+import allUsersService from '../../services/allUsersService';
 import { useTranslation } from "react-i18next"
 import { fetchWorkContracts } from "../../actions/workAddAction"
 import ReceivedRequest from "./ReceivedRequest"
@@ -76,6 +76,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 const AgencyGigOverview = () => {
   const classes = useStyles()
   const [value, setValue] = React.useState(0)
+  const [agencyWorkers, setAgencyWorkers] = useState([])
 
   const { t } = useTranslation()
 
@@ -85,11 +86,22 @@ const AgencyGigOverview = () => {
   const workContracts: any = useSelector(
     (state: IRootState) => state.workContracts
   )
+
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchWorkContracts())
   }, [dispatch])
+
+
+  useEffect(() => {
+    allUsersService.getAgencyWorkers().then((res: any) => {
+      const agencyWorkers = res.data;
+      setAgencyWorkers(agencyWorkers)
+    });
+  }, [dispatch]);
+
+
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue)
@@ -180,7 +192,7 @@ const AgencyGigOverview = () => {
       <TabPanel value={value} index={1}></TabPanel>
       <TabPanel value={value} index={2}></TabPanel>
       <TabPanel value={value} index={3}></TabPanel>
-      <ReceivedRequest workContracts={workContracts.workContracts} />
+      <ReceivedRequest workContracts={workContracts.workContracts} agencyWorkers={agencyWorkers}/>
     </Container>
   )
 }
