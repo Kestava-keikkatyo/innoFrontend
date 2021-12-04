@@ -25,7 +25,7 @@ export default {
   invalid_token: "Väärä token",
   logged_out: "Kirjauduttu ulos",
   login_failed: "Kirjautuminen epäonnistui",
-  login_success: "Kirjauduttu onnistuneesti",
+  login_successful: "Kirjauduttu onnistuneesti",
 
   //signup
   name: "Nimi",

@@ -25,7 +25,7 @@ export default {
   required: "Required",
   logged_out: "Logged out",
   login_failed: "Login failed",
-  login_success: "Login success",
+  login_successful: "Login success",
 
   //signup
   name: "Name",
