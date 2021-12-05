@@ -15,6 +15,7 @@ import {
 } from "@material-ui/core"
 import { Close as CloseIcon } from "@material-ui/icons"
 import { useTranslation } from "react-i18next"
+import WorkerTransferList from "./WorkerTransferList"
 
 const useStyles = makeStyles((theme) => ({
   selectDiv: {
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
  * @param {Function} props.closeModal callback when closed.
  * @param {worker} props.workerData data of the added worker.
  */
-const GigModal: React.FC<any> = ({ displayModal, closeModal }) => {
+const GigModal: React.FC<any> = ({ displayModal, closeModal, workContract }) => {
   const classes = useStyles()
   const { t } = useTranslation()
 
@@ -50,19 +51,7 @@ const GigModal: React.FC<any> = ({ displayModal, closeModal }) => {
           </IconButton>
         </Box>
       </DialogTitle>
-      <DialogContent dividers>
-        <div className={classes.selectDiv}>
-          <Typography variant="subtitle1">{t("workers")}</Typography>
-          <TextField
-            id="select-workers"
-            select
-            helperText={t("choose_workers")}
-            variant="standard"
-          >
-            <MenuItem value="None">{t("none")}</MenuItem>
-          </TextField>
-        </div>
-      </DialogContent>
+      <WorkerTransferList workContract={workContract} />
       <DialogActions style={{ marginBottom: 10 }}>
         <Button
           color="primary"

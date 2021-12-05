@@ -14,7 +14,9 @@ import { useTranslation } from 'react-i18next'
 
 const WorkerTableView: React.FC<any> = ({agencyWorkers}) => {
   const { t } = useTranslation()
+
   console.log(agencyWorkers)
+  
     return (
         <TableContainer>
           <Table aria-label="searched workers">

@@ -41,10 +41,6 @@ const ReceivedRequest: React.FC<any> = ({ workContracts, agencyWorkers }) => {
     _id: "61a4b125f3f5e15910e4c04e"
 */
 
-  console.log('my workers')
-  console.log(agencyWorkers)
-
-
   const [expanded, setExpanded] = React.useState<string | false>(false)
   const classes = useStyles()
   const handleChange =
@@ -105,6 +101,7 @@ const ReceivedRequest: React.FC<any> = ({ workContracts, agencyWorkers }) => {
               <GigModal
                 displayModal={displayModal}
                 closeModal={() => setDisplayModal(false)}
+                workContract={workContract}
               />
             </Accordion>
           ))}

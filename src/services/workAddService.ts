@@ -31,6 +31,18 @@ const postWorkTask = async (workTask: any) => {
   }
 }
 
+// TODO
+const requestWorkerToGig = async (contractId: any, contractsId: any) => {
+  try {
+    const res: any = await axios.put(`${baseUrl}/workcontracts/${contractId}/${contractsId}/add`, authHeader())
+    return res.data
+  } catch (error) {
+    console.log(error)
+    return {}
+  }
+}
+
+
 /**
  * @param businessContractFormId - Business contract form id
  * @returns Business contract form object
