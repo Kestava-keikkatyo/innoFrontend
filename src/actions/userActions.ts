@@ -2,12 +2,12 @@
  * @module userActions
  * @desc Redux user actions
  */
-import userService from '../services/userService';
-import profileService from '../services/profileService';
-import contractsService from '../services/contractsService';
-import { saveUser, logoutUser } from '../utils/storage';
-import history from '../utils/history';
-import { setAlert } from './alertActions';
+import userService from "../services/userService"
+import profileService from "../services/profileService"
+import contractsService from "../services/contractsService"
+import { saveUser, logoutUser } from "../utils/storage"
+import history from "../utils/history"
+import { setAlert } from "./alertActions"
 import {
   LOGIN,
   LOGOUT,
@@ -16,10 +16,11 @@ import {
   USER_REQUEST,
   SignUpUser,
   SET_CURRENT_PROFILE,
-} from '../types/state';
-import { Credentials, roles, severity } from '../types/types';
-import notificationsService from '../services/notificationsService';
-import { useTranslation } from 'react-i18next';
+} from "../types/state"
+import { Credentials, roles, severity } from "../types/types"
+import notificationsService from "../services/notificationsService"
+import { useTranslation } from "react-i18next"
+import i18next from "i18next"
 
 /**
  * Logs user in
@@ -32,32 +33,31 @@ export const login = (credentials: Credentials, from: string) => {
   return async (dispatch: any) => {
     dispatch({
       type: USER_REQUEST,
-    });
+    })
     try {
-      const { data } = await userService.login(credentials);
+      const { data } = await userService.login(credentials)
       dispatch({
         type: LOGIN,
         data,
-      });
-      saveUser(data);
+      })
+      saveUser(data)
 
       if (from) {
-        history.push(from);
+        history.push(from)
       }
 
-      dispatch(setAlert('login successful', severity.Success));
+      dispatch(setAlert(i18next.t("login_successful"), severity.Success))
 
-      const profile: any = await profileService.fetchProfileById(data.profileId);
-      dispatch({ type: SET_CURRENT_PROFILE, data: profile });
-
+      const profile: any = await profileService.fetchProfileById(data.profileId)
+      dispatch({ type: SET_CURRENT_PROFILE, data: profile })
     } catch (error) {
       dispatch({
         type: USER_FAILURE,
-      });
-      dispatch(setAlert('login failed', severity.Error));
+      })
+      dispatch(setAlert(i18next.t("login_failed"), severity.Error))
     }
-  };
-};
+  }
+}
 
 /**
  * Logs Admin in
@@ -69,31 +69,28 @@ export const adminLogin = (credentials: Credentials, from: string) => {
   return async (dispatch: any) => {
     dispatch({
       type: USER_REQUEST,
-    });
+    })
     try {
-      const { data } = await userService.adminLogin(credentials);
+      const { data } = await userService.adminLogin(credentials)
       dispatch({
         type: LOGIN,
         data,
-      });
-      saveUser(data);
+      })
+      saveUser(data)
 
-      history.push(from);
-      dispatch(setAlert('login successful', severity.Success));
+      history.push(from)
+      dispatch(setAlert(i18next.t("login_successful"), severity.Success))
 
-
-      const profile: any = await profileService.fetchProfileById(data.profileId);
-      dispatch({ type: SET_CURRENT_PROFILE, data: profile });
-
-
+      const profile: any = await profileService.fetchProfileById(data.profileId)
+      dispatch({ type: SET_CURRENT_PROFILE, data: profile })
     } catch (error) {
       dispatch({
         type: USER_FAILURE,
-      });
-      dispatch(setAlert('login failed', severity.Error));
+      })
+      dispatch(setAlert(i18next.t("login_failed"), severity.Error))
     }
-  };
-};
+  }
+}
 
 /**
  * Signs user up
@@ -106,68 +103,67 @@ export const signup = (user: SignUpUser, role: roles) => {
   return async (dispatch: any) => {
     dispatch({
       type: USER_REQUEST,
-    });
+    })
     try {
-      const { data } = await userService.signup(user, role);
+      const { data } = await userService.signup(user, role)
       dispatch({
         type: LOGIN,
         data,
-      });
-      saveUser(data);
+      })
+      saveUser(data)
 
       // if the signed up user is an agency, create a business contract for it
-      if (data.role === 'agency') {
+      if (data.role === "agency") {
         try {
-          const res = await contractsService.createBusinessContract();
+          const res = await contractsService.createBusinessContract()
           console.log("res", res)
         } catch (error) {
-          statusHandler(dispatch, error);
+          statusHandler(dispatch, error)
         }
       }
 
       const profile = {
         name: data.name,
-        phone: '000 000 0000',
+        phone: "000 000 0000",
         email: data.email,
-        streetAddress: 'Streetaddress A 12',
-        zipCode: '00100',
-        city: 'Helsinki',
-        coverPhoto: '',
-        profilePicture: '',
-        video: '',
-        website: 'https://www.google.com',
+        streetAddress: "Streetaddress A 12",
+        zipCode: "00100",
+        city: "Helsinki",
+        coverPhoto: "",
+        profilePicture: "",
+        video: "",
+        website: "https://www.google.com",
         instructions: [
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
           "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
         ],
         occupationalSafetyRules: [
-          'Työturvallisuuslain mukaan työntekijän velvollisuuksina on',
-          'Noudattaa työnantajan antamia ohjeita ja määräyksiä,',
-          'Huolehtia omasta ja muiden työntekijöiden turvallisuudesta käytettävissä olevin keinoin',
-          'Olla kohdistamatta häirintää tai epäasiallista kohtelua muihin työntekijöihin',
-          'Käyttää ja hoitaa työssä tarvittavia henkilönsuojaimia ja apuvälineitä',
-          'Viipymättä ilmoittaa viasta tai puutteesta (omalle esimiehelle tai työsuojeluvaltuutetulle), jos se voi aiheuttaa joko omalle tai työnkaverin turvallisuudelle/terveydelle haittaa tai vaaraa',
-          'Korjata edellä mainittu havaitsemansa vika, mikäli oma kokemus tai ammattitaito riittää',
-          'Olla poistamatta turva- tai suojalaitetta käytöstä',
+          "Työturvallisuuslain mukaan työntekijän velvollisuuksina on",
+          "Noudattaa työnantajan antamia ohjeita ja määräyksiä,",
+          "Huolehtia omasta ja muiden työntekijöiden turvallisuudesta käytettävissä olevin keinoin",
+          "Olla kohdistamatta häirintää tai epäasiallista kohtelua muihin työntekijöihin",
+          "Käyttää ja hoitaa työssä tarvittavia henkilönsuojaimia ja apuvälineitä",
+          "Viipymättä ilmoittaa viasta tai puutteesta (omalle esimiehelle tai työsuojeluvaltuutetulle), jos se voi aiheuttaa joko omalle tai työnkaverin turvallisuudelle/terveydelle haittaa tai vaaraa",
+          "Korjata edellä mainittu havaitsemansa vika, mikäli oma kokemus tai ammattitaito riittää",
+          "Olla poistamatta turva- tai suojalaitetta käytöstä",
         ],
-      };
+      }
 
-      history.push('/home');
-      dispatch(setAlert('signup successful', severity.Success));
+      history.push("/home")
+      dispatch(setAlert("signup_successful", severity.Success))
 
       const notificationsResponse =
-        await notificationsService.postNotifications();
-      console.log('notifications res ', notificationsResponse.status);
+        await notificationsService.postNotifications()
+      console.log("notifications res ", notificationsResponse.status)
 
-      const profileResponse = await profileService.createProfile(profile);
-      dispatch({ type: SET_CURRENT_PROFILE, data: profileResponse });
-      console.log('profile res ', profileResponse);
-
+      const profileResponse = await profileService.createProfile(profile)
+      dispatch({ type: SET_CURRENT_PROFILE, data: profileResponse })
+      console.log("profile res ", profileResponse)
     } catch (error) {
       dispatch({
         type: USER_FAILURE,
-      });
-      dispatch(setAlert('signup failed: email is already in use', severity.Error));
+      })
+      dispatch(setAlert(i18next.t("email_already_used"), severity.Error))
 
       /*
         if
@@ -175,8 +171,8 @@ export const signup = (user: SignUpUser, role: roles) => {
 
       */
     }
-  };
-};
+  }
+}
 
 /**
  * Logs user out
@@ -184,12 +180,12 @@ export const signup = (user: SignUpUser, role: roles) => {
  */
 export const logout = () => {
   return async (dispatch: any) => {
-    logoutUser();
-    dispatch({ type: LOGOUT });
-    history.push('/');
-    dispatch(setAlert('user logged out'));
-  };
-};
+    logoutUser()
+    dispatch({ type: LOGOUT })
+    history.push("/")
+    dispatch(setAlert(i18next.t("logged_out")))
+  }
+}
 
 /**
  * Gets user profile information using user's role and token
@@ -199,20 +195,20 @@ export const logout = () => {
 export const me = (role: roles) => async (dispatch: any) => {
   dispatch({
     type: USER_REQUEST,
-  });
+  })
   try {
     //TODO: PURKKAMALLIRATKAISU
     // Kirjautuessa sisään setItem ei ehdi päivittää loggedInnoAppUseria
-    if (!localStorage.getItem('loggedInnoAppUser')) return;
-    const { data } = await userService.me(role);
+    if (!localStorage.getItem("loggedInnoAppUser")) return
+    const { data } = await userService.me(role)
     dispatch({
       type: USER_PROFILE,
       data,
-    });
+    })
   } catch (error) {
-    statusHandler(dispatch, error);
+    statusHandler(dispatch, error)
   }
-};
+}
 
 /**
  * Updates user profile information
@@ -224,19 +220,19 @@ export const update =
   (updateData: any, role: roles) => async (dispatch: any) => {
     dispatch({
       type: USER_REQUEST,
-    });
+    })
     try {
-      const { data: profile } = await userService.update(updateData, role);
+      const { data: profile } = await userService.update(updateData, role)
       dispatch({
         type: USER_PROFILE,
         profile,
-      });
-      dispatch(setAlert('User information updated'));
+      })
+      dispatch(setAlert(i18next.t("user_information_updated")))
     } catch (error) {
-      console.log('update error');
-      statusHandler(dispatch, error);
+      console.log("update error")
+      statusHandler(dispatch, error)
     }
-  };
+  }
 
 /**
  * Updates user password
@@ -248,20 +244,22 @@ export const update =
 export const updatePassword =
   (updateData: any, role: roles) => async (dispatch: any) => {
     try {
-      const res: any = await userService.updatePassword(updateData, role);
+      const res: any = await userService.updatePassword(updateData, role)
       if (res.status === 200) {
-        dispatch(setAlert('Password updated successfully!', severity.Success));
-        window.location.reload();
+        dispatch(
+          setAlert(i18next.t("password_update_succesful"), severity.Success)
+        )
+        window.location.reload()
       } else {
-        dispatch(setAlert(res.data.message, severity.Error));
+        dispatch(setAlert(res.data.message, severity.Error))
       }
     } catch (error) {
-      console.log('UpdatePassword error');
-      statusHandler(dispatch, error);
+      console.log("UpdatePassword error")
+      statusHandler(dispatch, error)
     }
-  };
+  }
 
-/**
+/** invalid_token
  * Logs out user if token or role is wrong
  * @function
  * @param {function} dispatch - dispatch function
@@ -271,9 +269,9 @@ export const updatePassword =
 const statusHandler = (dispatch: Function, response: any) => {
   if (!response || response.status === 401 || response.status === 500) {
     // logoutUser()
-    dispatch({ type: USER_FAILURE });
-    dispatch(setAlert('invalid token', severity.Error));
+    dispatch({ type: USER_FAILURE })
+    dispatch(setAlert(i18next.t("invalid_token"), severity.Error))
   } else {
-    window.location.reload();
+    window.location.reload()
   }
-};
+}

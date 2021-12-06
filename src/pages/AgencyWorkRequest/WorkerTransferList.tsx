@@ -33,7 +33,11 @@ function union(a: any[], b: any[]) {
   return [...a, ...not(b, a)]
 }
 
-const WorkerTransferList: React.FC<any> = () => {
+const WorkerTransferList: React.FC<any> = ({ workContract }) => {
+
+  console.log('current contract')
+  console.log(workContract)
+
   const classes = useStyles()
   const theme = useTheme()
 

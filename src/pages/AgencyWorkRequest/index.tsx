@@ -1,12 +1,7 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { makeStyles, Theme, useTheme } from "@material-ui/core/styles"
 import AppBar from "@material-ui/core/AppBar"
-import SendIcon from "@material-ui/icons/Send"
-import AllInboxIcon from "@material-ui/icons/AllInbox"
-import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive"
 import {
-  Accordion,
-  AccordionDetails,
   Badge,
   Box,
   Container,
@@ -19,12 +14,14 @@ import {
 
 import { useDispatch, useSelector } from "react-redux"
 import { IRootState } from "../../utils/store"
-import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty"
+import allUsersService from '../../services/allUsersService';
 import { useTranslation } from "react-i18next"
-import AcceptedGigRequest from "./AcceptedGigRequest"
 import { fetchWorkContracts } from "../../actions/workAddAction"
 import ReceivedRequest from "./ReceivedRequest"
-
+import CallReceivedIcon from "@mui/icons-material/CallReceived"
+import CheckIcon from "@mui/icons-material/Check"
+import TimelapseIcon from "@mui/icons-material/Timelapse"
+import DarkModeIcon from "@mui/icons-material/DarkMode"
 interface TabPanelProps {
   children?: React.ReactNode
   index: any
@@ -79,6 +76,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 const AgencyGigOverview = () => {
   const classes = useStyles()
   const [value, setValue] = React.useState(0)
+  const [agencyWorkers, setAgencyWorkers] = useState([])
 
   const { t } = useTranslation()
 
@@ -88,11 +86,22 @@ const AgencyGigOverview = () => {
   const workContracts: any = useSelector(
     (state: IRootState) => state.workContracts
   )
+
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchWorkContracts())
   }, [dispatch])
+
+
+  useEffect(() => {
+    allUsersService.getAgencyWorkers().then((res: any) => {
+      const agencyWorkers = res.data;
+      setAgencyWorkers(agencyWorkers)
+    });
+  }, [dispatch]);
+
+
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue)
@@ -114,15 +123,15 @@ const AgencyGigOverview = () => {
         >
           <Tab
             className={classes.tab}
-            label={matches ? " " : t('received_work_requests')}
+            label={matches ? " " : t("received_work_requests")}
             icon={
               <Badge color="secondary">
                 {matches ? (
                   <Tooltip title="Lähetetyt sopimukset" placement="top" arrow>
-                    <SendIcon />
+                    <CallReceivedIcon />
                   </Tooltip>
                 ) : (
-                  <SendIcon />
+                  <CallReceivedIcon />
                 )}
               </Badge>
             }
@@ -130,15 +139,15 @@ const AgencyGigOverview = () => {
           />
           <Tab
             className={classes.tab}
-            label={t('accepted_work_requests')}
+            label={t("accepted_work_requests")}
             icon={
               <Badge color="secondary">
                 {matches ? (
                   <Tooltip title="Saapuneet sopimukset" placement="top" arrow>
-                    <NotificationsActiveIcon />
+                    <CheckIcon />
                   </Tooltip>
                 ) : (
-                  <NotificationsActiveIcon />
+                  <CheckIcon />
                 )}
               </Badge>
             }
@@ -146,15 +155,15 @@ const AgencyGigOverview = () => {
           />
           <Tab
             className={classes.tab}
-            label={matches ? " " : t('activeWork')}
+            label={matches ? " " : t("activeWork")}
             icon={
               <Badge color="secondary">
                 {matches ? (
                   <Tooltip title="Odottavat sopimukset" placement="top" arrow>
-                    <HourglassEmptyIcon />
+                    <TimelapseIcon />
                   </Tooltip>
                 ) : (
-                  <HourglassEmptyIcon />
+                  <TimelapseIcon />
                 )}
               </Badge>
             }
@@ -162,15 +171,15 @@ const AgencyGigOverview = () => {
           />
           <Tab
             className={classes.tab}
-            label={matches ? " " : t('endedWork')}
+            label={matches ? " " : t("endedWork")}
             icon={
               <Badge color="secondary">
                 {matches ? (
                   <Tooltip title="Päättyneet työkeikat" placement="top" arrow>
-                    <AllInboxIcon />
+                    <DarkModeIcon />
                   </Tooltip>
                 ) : (
-                  <AllInboxIcon />
+                  <DarkModeIcon />
                 )}
               </Badge>
             }
@@ -183,7 +192,7 @@ const AgencyGigOverview = () => {
       <TabPanel value={value} index={1}></TabPanel>
       <TabPanel value={value} index={2}></TabPanel>
       <TabPanel value={value} index={3}></TabPanel>
-      <ReceivedRequest workContracts={workContracts.workContracts} />
+      <ReceivedRequest workContracts={workContracts.workContracts} agencyWorkers={agencyWorkers}/>
     </Container>
   )
 }

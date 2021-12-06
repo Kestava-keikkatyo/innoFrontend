@@ -7,12 +7,14 @@ export default {
   thank_you_for_feedback: "Kiitos palautteestasi!",
   write_a_comment: "Kirjoita kommentti",
   workers_responsibility: "Työntekijän vastuu",
-  worker_responsibilities_read:"Työntekijä on lukenut ja ymmärtänyt vastuunsa",
+  worker_responsibilities_read: "Työntekijä on lukenut ja ymmärtänyt vastuunsa",
   agency_responsibility: "Henkilöstöpalveluyrityksen vastuu",
-  agency_responsibilities_read:"Henkilöstöpalveluyritys on lukenut ja ymmärtänyt vastuunsa",
+  agency_responsibilities_read:
+    "Henkilöstöpalveluyritys on lukenut ja ymmärtänyt vastuunsa",
   business_responsibility: "Käyttäjäyrityksen vastuu",
-  business_responsibilities_read:"Käyttäjäyritys on lukenut ja ymmärtänyt vastuunsa",
-  saveButton: "Tallenna", 
+  business_responsibilities_read:
+    "Käyttäjäyritys on lukenut ja ymmärtänyt vastuunsa",
+  saveButton: "Tallenna",
 
   //login
   login_title: "Kirjaudu sisään",
@@ -20,6 +22,10 @@ export default {
   password_label: "Salasana",
   invalid_email_address: "Virheellinen sähköposti",
   required: "Puuttuu",
+  invalid_token: "Väärä token",
+  logged_out: "Kirjauduttu ulos",
+  login_failed: "Kirjautuminen epäonnistui",
+  login_successful: "Kirjauduttu onnistuneesti",
 
   //signup
   name: "Nimi",
@@ -29,6 +35,7 @@ export default {
   user: "Käyttäjä",
   terms_of_use: "Rekisteröitymällä hyväksyt tietojen lähetyksen ",
   terms_agency: "vuokrayrityksille",
+  signup_successful: "Rekistöröityminen onnistui",
 
   //error
   invalid_email: "Virheellinen sähköpostiosoite",
@@ -110,7 +117,8 @@ export default {
 
   //Report step two
   happened: "Milloin tämä tapahtui?",
-
+  date_picker_inline: "Päivämäärä",
+  time_picker: "Tapahtuma-aika",
   //Report step three
   fill_details: "Kirjoita lisätiedot",
   fill_work_title: "Tehtävänimike",
@@ -181,7 +189,7 @@ export default {
   neededWork: "Tarvittavat työkeikat",
   activeWork: "Aktiiviset työkeikat",
   endedWork: "Päättyneet työkeikat",
-  
+
   //ContractsPage
   own_contracts: "Omat sopimukset",
   arrived_contracts: "Saapuneet sopimukset",
@@ -194,7 +202,8 @@ export default {
   //FeedbackForm
   write_feedback_here: "Kirjoita palautteesi tähän",
   feedback_sent: "Palaute lähetetty",
-  give_feedback: "Tämä komponentti on väliaikainen, sitä käytetään vain sovelluskehityksen aikana. Tarkoituksena on saada palautetta ja kehitysideoita hanketiimiltä ja testaajilta, jotka otetaan huomioon sovelluskehityksessä.",
+  give_feedback:
+    "Tämä komponentti on väliaikainen, sitä käytetään vain sovelluskehityksen aikana. Tarkoituksena on saada palautetta ja kehitysideoita hanketiimiltä ja testaajilta, jotka otetaan huomioon sovelluskehityksessä.",
   return_form: "Palautelomake",
   replied: "Vastattu",
   wait: "Odottaa",
@@ -263,6 +272,7 @@ export default {
   new_password: "Uusi salasana",
   confirm_password: "Toista uusi salasana",
   occupational: "Työsuojelusäännöt",
+  password_update_succesful: "Salasanan päivittäminen onnistui",
 
   //FeedbackForm
   no_feedback: "Ei palautteita",
@@ -312,6 +322,7 @@ export default {
   company_sites: "Yrityksen nettisivut",
   enroll: "Osallistu",
   relocation: "Muuttoapu",
+  accept_terms: "Hyväksyn käyttöehdot",
 
   //jobmodal
   send_agency_contract: " Lähetä työkeikka pyyntö HP-yritykselle",
@@ -333,7 +344,8 @@ export default {
   //feedbackCategory
   feedback_category: "Palautekategoria",
   category0: "Kategoriat",
-  description0: "Kuvaus : annettujen palautteiden määrän ja tunnepisteiden perusteella",
+  description0:
+    "Kuvaus : annettujen palautteiden määrän ja tunnepisteiden perusteella",
   description1: "Tilastojemme mukaan tarvitset lisää piristystä!",
   description2: "Tilastojemme mukaan voit suhteellisen hyvin.",
   description3: "Tilastojemme mukaan voit hyvin.",
@@ -391,18 +403,21 @@ export default {
   add_job_button: "Lisää",
 
   //LimitJobSearch
-  locations:"Sijanti",
-  scope:"Tehtäväalue",
-  experience:"Kokemus",
+  locations: "Sijanti",
+  scope: "Tehtäväalue",
+  experience: "Kokemus",
 
   //WorkdView
-  contract:"Sopimus",
-  contacts:"Yhteyshenkilö",
+  contract: "Sopimus",
+  contacts: "Yhteyshenkilö",
 
   //JobsIncidence
+  newest: "Uusimmat",
+  oldest: "Vanhimmat",
+  closing_soon: "Sulkeutuvat",
   select_by_incidence: "Valitse ilmaantuvuuden mukaan",
 
-//cooperation info modal
+  //cooperation info modal
   send_cooperation_request: "Lähetä yhteistyöpyyntö",
   agency_info: "HP-yrityksen tiedot",
   agency_name: "Nimi",
@@ -412,13 +427,13 @@ export default {
   selected_form: "Valittu pohja",
   none: "Ei valittu",
 
-//Notifications
-  notifications:"Ilmoitukset",
-  no_notifications:"Ei ilmoituksia...",
-  empty_notifications:"Tyhjennä kaikki ilmoitukset",
+  //Notifications
+  notifications: "Ilmoitukset",
+  no_notifications: "Ei ilmoituksia...",
+  empty_notifications: "Tyhjennä kaikki ilmoitukset",
 
-//DatabankRoute
-  homeButton:"Etusivu",
+  //DatabankRoute
+  homeButton: "Etusivu",
   articles: "Artikkelit",
   work_lifespan: "Työn elinkaari",
   areas_of_responsibility: "Vastuualueet",
@@ -426,14 +441,15 @@ export default {
 
   //NewFormHeader
   import: "Tuo",
-  export:"Vie",
+  export: "Vie",
 
   //QuestionModule
-  question_type:"Kysymyksen tyyppi",
-  question_module:"Kysymys:",
-  your_question:"Kysymyksesi",
+  question_type: "Kysymyksen tyyppi",
+  question_module: "Kysymys:",
+  your_question: "Kysymyksesi",
 
   //ExpandableQuestionOptions
+<<<<<<< HEAD
   type_subtitle_here: "Type subtitle here...",
   question_sub_title: "Question sub title",
   answer_min_len:"Answer min len",
@@ -447,5 +463,28 @@ export default {
   right_title:"Right title",
   row_height:"row height",
 
+=======
+  type_subtitle_here: "Kirjoita alaotsikko tähän...",
+  question_sub_title: "Kysymyksen alaotsikko",
+  answer_min_len: "Vastauksen min pituus",
+  answer_max_len: "Vastauksen max pituus",
+  scale: "Skaala",
+  scale_option_title_left: "Skaalaus-vaihtoehto: otsikko vasemmalle",
+  left_title: "Vasen otsikko",
+  scale_option_title_center: "Skaalaus-vaihtoehto: otsikko keskelle",
+  center_title: "Keski otsikko",
+  scale_option_title_right: "Skaalaus-vaihtoehto: otsikko oikealle",
+  right_title: "Oikea otsikko",
+  row_height: "Rivin korkeus",
+  is_answer_optional: "Vastaus on vapaehtoinen",
+  expand: "Laajenna",
+  closing: "Sulkeutuvat",
+  services: "Palvelut",
+  care: "Hoitoala",
+  marketing_sales: "Myynti ja markkinointi",
+  trainee: "Harjoittelija",
+  experienced: "Kokenut",
+  professional: "Ammattilainen",
+  user_information_updated: "Käyttäjän tiedot päivitetty",
+>>>>>>> 0925c95794b552b8d3750976a75bf193d3663828
 }
-

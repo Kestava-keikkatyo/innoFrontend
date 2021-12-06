@@ -46,12 +46,12 @@ const ExpandedBodyModule: React.FC<Props> = ({ index, children }) => {
         />
         {/* TODO: tee tähän tilanhallinta */}
     <div>
-      <label>is answer optional</label>
+      <label>{t("is_answer_optional")}</label>
       <input type="checkbox"/>
     </div>
   </div>
   <Divider></Divider>
-  <Button color="secondary" onClick={() => setHidden(!hidden)} >Expand</Button>
+  <Button color="secondary" onClick={() => setHidden(!hidden)} >{t("expand")}</Button>
   </>
  )
 }
