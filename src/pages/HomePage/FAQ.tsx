@@ -100,45 +100,37 @@ export default function CustomizedTables() {
     </div>
   );*/
 
-  // TESTI II : Drop down valikko, yhdellä kysymyksellä?
+  // TESTI II : Accordion-lista, FAQ-JSON kysymyksillä?
   return (
     <div style={{ marginTop: 16 }}>
       <Grid item xs={12}>
       <List component="nav" aria-label="mailbox folders">
         <Divider />
+        {/*
+          Tulostaa FAQ-JSONin Accordion-listana
+       */}
+        {faq.agency.map((e, i) => (
         <ListItem>
         <Accordion className={classes.card} variant="outlined">
-       {/*
-          EI ONNISTU KOKO LISTA: JSX elementti valittaa parentin puutteesta.
-
-
-       {faq.agency.map((e, i) => ( */}
+       
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-        {/*{faq.agency.map((e, i) => ( 
+       
            
-            <Typography gutterBottom variant="h5">
-              {`${e.tip}`}
-            </Typography>
-        ))} */}
-        
-           
-           <Typography gutterBottom variant="h5">
-             {`${faq.agency[0].tip}`} 
-           {/*{`${e.tip}`} */}
+           <Typography gutterBottom variant="h5"> 
+           {`${e.tip}`} 
            </Typography>
                     
           </AccordionSummary>
     
          
-        {/* <AccordionDetails>{`${e.details}`}</AccordionDetails> */}
-          <AccordionDetails>{`${faq.agency[0].details}`}</AccordionDetails> 
-        {/*))} */}
-    </Accordion>
+         <AccordionDetails>{`${e.details}`}</AccordionDetails>
+        </Accordion>
          </ListItem>
+         ))} 
       </List>
       </Grid>
     </div>
