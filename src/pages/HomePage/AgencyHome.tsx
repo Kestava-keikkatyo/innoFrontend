@@ -1,6 +1,7 @@
 import React from 'react';
 
 import vastuualueet from '../../assets/tietopankki/vastuualueet.json';
+import faq from '../../assets/tietopankki/faq.json';
 import {
   Card,
   List,
@@ -14,7 +15,8 @@ import {
   Button,
   Grid,
 } from '@material-ui/core';
-
+import { useSelector } from 'react-redux';
+import Faq from './FAQ';
 import FeedBackForm from './FeedBackForm/index';
 import { useTranslation } from 'react-i18next';
 
@@ -29,11 +31,13 @@ const AgencyHome = () => {
             subheader=""
           />
           <CardContent>
-          <List component="nav" aria-label="mailbox folders">
+{/*          <List component="nav" aria-label="mailbox folders">
               <Divider />
-              {vastuualueet.testi.map((e, i) => (
+              {faq.agency.map((e, i) => (
                 <ListItem key={i} divider>
-                  <ListItemText primary={`${i + 1}. ${e.tip}`} />
+                  <ListItemText primary={`${e.tip} `} />
+                  <br/>
+                  <ListItemText secondary={` - ${e.details}`} />
                 </ListItem>
               ))}
             </List>
@@ -43,7 +47,9 @@ const AgencyHome = () => {
                 {t('read_more')}
               </Button> 
             }
-          />
+          /> */}
+          <Faq />
+
           </CardContent>
         </Card>
       </Grid>
@@ -70,5 +76,7 @@ const AgencyHome = () => {
     </Grid>
   );
 };
+
+
 
 export default AgencyHome;

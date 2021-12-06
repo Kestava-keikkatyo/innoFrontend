@@ -449,21 +449,6 @@ export default {
   your_question: "Kysymyksesi",
 
   //ExpandableQuestionOptions
-<<<<<<< HEAD
-  type_subtitle_here: "Type subtitle here...",
-  question_sub_title: "Question sub title",
-  answer_min_len:"Answer min len",
-  answer_max_len:"Answer max len",
-  scale:"Scale",
-  scale_option_title_left:"scale option title left",
-  left_title:"Left title",
-  scale_option_title_center:"scale option title center",
-  center_title:"Center title",
-  scale_option_title_right:"scale option title right",
-  right_title:"Right title",
-  row_height:"row height",
-
-=======
   type_subtitle_here: "Kirjoita alaotsikko tähän...",
   question_sub_title: "Kysymyksen alaotsikko",
   answer_min_len: "Vastauksen min pituus",
@@ -486,5 +471,4 @@ export default {
   experienced: "Kokenut",
   professional: "Ammattilainen",
   user_information_updated: "Käyttäjän tiedot päivitetty",
->>>>>>> 0925c95794b552b8d3750976a75bf193d3663828
 }

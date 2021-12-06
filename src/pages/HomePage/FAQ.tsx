@@ -3,6 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import { useTranslation } from 'react-i18next'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import vastuualueet from '../../assets/tietopankki/vastuualueet.json';
+import faq from '../../assets/tietopankki/faq.json';
 
 import {
   TableContainer,
@@ -55,7 +56,18 @@ export default function CustomizedTables() {
       <List component="nav" aria-label="mailbox folders">
         <Divider />
         <ListItem>
-        {vastuualueet.testi.map((e, i) => (
+
+ {/*  Alkuperäinen
+
+       {vastuualueet.agency.map((e, i) => (
+                <ListItem key={i} divider>
+                  <ListItemText primary={`${i + 1}. ${e.tip}`} />
+                </ListItem>
+              ))} */}
+
+              {/*  Testi I : FAQ:n tuonti JSONista*/}
+
+              {faq.agency.map((e, i) => (
                 <ListItem key={i} divider>
                   <ListItemText primary={`${i + 1}. ${e.tip}`} />
                 </ListItem>
@@ -65,7 +77,8 @@ export default function CustomizedTables() {
     );
   };
 
-  return (
+  //Alkuperäinen
+ /* return (
     <div style={{ marginTop: 16 }}>
       <Grid item xs={12}>
         <Accordion className={classes.card} variant="outlined">
@@ -74,13 +87,51 @@ export default function CustomizedTables() {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
+            
             <Typography gutterBottom variant="h5">
               {t('feedback_category')}
             </Typography>
           </AccordionSummary>
 
           <AccordionDetails>{tableView()}</AccordionDetails>
+  </Accordion>
+
+      </Grid>
+    </div>
+  );*/
+
+  // TESTI II : Accordion-lista, FAQ-JSON kysymyksillä?
+  return (
+    <div style={{ marginTop: 16 }}>
+      <Grid item xs={12}>
+      <List component="nav" aria-label="mailbox folders">
+        <Divider />
+        {/*
+          Tulostaa FAQ-JSONin Accordion-listana
+       */}
+        {faq.agency.map((e, i) => (
+        <ListItem>
+        <Accordion className={classes.card} variant="outlined">
+       
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+       
+           
+           <Typography gutterBottom variant="h5"> 
+           {`${e.tip}`} 
+           </Typography>
+                    
+          </AccordionSummary>
+    
+         
+         <AccordionDetails>{`${e.details}`}</AccordionDetails>
         </Accordion>
+         </ListItem>
+         ))} 
+      </List>
       </Grid>
     </div>
   );
