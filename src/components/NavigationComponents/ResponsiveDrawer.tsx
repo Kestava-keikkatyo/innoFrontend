@@ -239,7 +239,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                 <ListItemText primary={t('report')} />
               </ListItem>
               <Divider />
-              <ListItem button component={Link} to="/home">
+              <ListItem button component={Link} to="/faq">
                 <LiveHelpSharpIcon>
                   <ErrorOutlineIcon />
                 </LiveHelpSharpIcon>
