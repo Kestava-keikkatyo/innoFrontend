@@ -15,7 +15,7 @@ import {
 } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import FeedBackForm from './FeedBackForm/index';
-import Faq from './FAQ';
+import Faq from './FAQBoxBusiness';
 
 const BusinessHome = () => {
   const { t } = useTranslation();

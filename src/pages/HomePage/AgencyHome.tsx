@@ -16,7 +16,7 @@ import {
   Grid,
 } from '@material-ui/core';
 import { useSelector } from 'react-redux';
-import Faq from './FAQ';
+import Faq from './FAQBoxAgency';
 import FeedBackForm from './FeedBackForm/index';
 import { useTranslation } from 'react-i18next';
 
