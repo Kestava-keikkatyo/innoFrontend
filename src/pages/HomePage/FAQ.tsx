@@ -50,55 +50,33 @@ export default function CustomizedTables() {
     })
   )(TableCell);
 
-  // Table view for desktop devices
-  const tableView = () => {
-    return (
-      <List component="nav" aria-label="mailbox folders">
-        <Divider />
-        <ListItem>
+//   // Table view for desktop devices
+//   const tableView = () => {
+//     return (
+//       <List component="nav" aria-label="mailbox folders">
+//         <Divider />
+//         <ListItem>
 
- {/*  Alkuperäinen
+//  {/*  Alkuperäinen
 
-       {vastuualueet.agency.map((e, i) => (
-                <ListItem key={i} divider>
-                  <ListItemText primary={`${i + 1}. ${e.tip}`} />
-                </ListItem>
-              ))} */}
+//        {vastuualueet.agency.map((e, i) => (
+//                 <ListItem key={i} divider>
+//                   <ListItemText primary={`${i + 1}. ${e.tip}`} />
+//                 </ListItem>
+//               ))} */}
 
-              {/*  Testi I : FAQ:n tuonti JSONista*/}
+//               {/*  Testi I : FAQ:n tuonti JSONista*/}
 
-              {faq.agency.map((e, i) => (
-                <ListItem key={i} divider>
-                  <ListItemText primary={`${i + 1}. ${e.tip}`} />
-                </ListItem>
-              ))}
-        </ListItem>
-      </List>
-    );
-  };
+//               {faq.agency.map((e, i) => (
+//                 <ListItem key={i} divider>
+//                   <ListItemText primary={`${i + 1}. ${e.tip}`} />
+//                 </ListItem>
+//               ))}
+//         </ListItem>
+//       </List>
+//     );
+//   };
 
-  //Alkuperäinen
- /* return (
-    <div style={{ marginTop: 16 }}>
-      <Grid item xs={12}>
-        <Accordion className={classes.card} variant="outlined">
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            
-            <Typography gutterBottom variant="h5">
-              {t('feedback_category')}
-            </Typography>
-          </AccordionSummary>
-
-          <AccordionDetails>{tableView()}</AccordionDetails>
-  </Accordion>
-
-      </Grid>
-    </div>
-  );*/
 
   // TESTI II : Accordion-lista, FAQ-JSON kysymyksillä?
   return (
