@@ -24,7 +24,7 @@ const FAQBusiness = () => {
   const { t } = useTranslation();
   return (
     <Grid container>
-    <Grid item xs={12} md={6} style={{ marginTop: '1%' }}>
+    <Grid item xs={12} md={10} style={{ marginTop: '1%' }}>
       <Card variant="outlined">
           <CardHeader
             title="FAQ"
