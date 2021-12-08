@@ -16,6 +16,8 @@ export default {
   business_responsibilities_read:
     "Business has read and understood its responsibilities.",
   saveButton: "Save",
+  faq: "FAQ",
+
 
   //login
   login_title: "Log In",
@@ -252,7 +254,6 @@ export default {
   my_work: "My work",
   remove: "Remove",
   close: "close",
-  faq: "FAQ",
 
   //profilePage
   edit_profile: "Edit profile",
@@ -480,6 +481,10 @@ export default {
   professional: "Professional",
 
   user_information_updated: "User information updated",
+
+    //FAQ
+    show_less:"Show less",
+    show_more: "Show more",
 }
 
 //

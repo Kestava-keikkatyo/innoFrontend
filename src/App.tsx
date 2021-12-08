@@ -47,6 +47,7 @@ import AgencyWorkAdd from './pages/AgencyWorkAddPage';
 import ProfileList from './pages/AdminPage/ProfileList';
 import AllUsersList from './pages/AdminPage/AllUsersList';
 import User from './pages/AdminPage/user/User';
+import FAQIndex from './pages/FAQPage/index';
 
 /**
  * @component
@@ -126,6 +127,9 @@ const App: React.FC = () => {
         </PrivateRoute>
         <PrivateRoute path="/reports" roles={[roles.Business, roles.Agency]}>
           <ReportsPage />
+        </PrivateRoute>
+        <PrivateRoute path="/faq" roles={[roles.Worker]}>
+          <FAQIndex />
         </PrivateRoute>
         <PrivateRoute
           path="/contracts/contract-form-manager/contract-form-preview"

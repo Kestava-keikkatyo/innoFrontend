@@ -27,29 +27,11 @@ const AgencyHome = () => {
     <Grid item xs={12} md={6} style={{ marginTop: '1%' }}>
       <Card variant="outlined">
           <CardHeader
-            title="FAQ"
+            title={t("faq")}
             subheader=""
           />
           <CardContent>
-{/*          <List component="nav" aria-label="mailbox folders">
-              <Divider />
-              {faq.agency.map((e, i) => (
-                <ListItem key={i} divider>
-                  <ListItemText primary={`${e.tip} `} />
-                  <br/>
-                  <ListItemText secondary={` - ${e.details}`} />
-                </ListItem>
-              ))}
-            </List>
-            <CardHeader
-            action={
-              <Button variant="outlined" color="primary">
-                {t('read_more')}
-              </Button> 
-            }
-          /> */}
           <Faq />
-
           </CardContent>
         </Card>
       </Grid>

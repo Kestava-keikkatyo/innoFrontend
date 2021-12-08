@@ -12,7 +12,7 @@ import FAQAgency from './FAQAgency';
 import { useTranslation } from 'react-i18next';
 import AdminHome from '../AdminPage/AdminHome';
 
-const faq = () => {
+const FAQIndex = () => {
   const { data, ...user } = useSelector((state: any) => state.user);
 
   const dispatch = useDispatch();
@@ -48,12 +48,11 @@ const faq = () => {
   return (
     <Container style={{ marginTop: 24 }}>
       <Typography variant="h4" color="primary">
-       {/* {t('home')} */}
-        FAQ
+        {t('faq')}
       </Typography>
       {getContent()}
     </Container>
   );
 };
 
-export default faq;
+export default FAQIndex;

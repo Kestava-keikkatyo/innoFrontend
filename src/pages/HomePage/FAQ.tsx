@@ -1,27 +1,19 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
 import { useTranslation } from 'react-i18next'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import vastuualueet from '../../assets/tietopankki/vastuualueet.json';
 import faq from '../../assets/tietopankki/faq.json';
 
 import {
-  TableContainer,
-  Table,
-  TableHead,
-  TableRow,
   TableCell,
-  TableBody,
   Typography,
   withStyles,
-  ListItemText,
   Theme,
   createStyles,
   makeStyles,
   Grid,
   List,
   ListItem,
-  Divider,
+  Button,
 } from '@material-ui/core';
 
 import {
@@ -39,7 +31,7 @@ import {
 export default function CustomizedTables() {
   const classes = useStyles();
   const { t } = useTranslation()
-
+  const [expanded, setExpanded] = React.useState(true);
   // Table head styles
   const StyledTableCell = withStyles((theme: Theme) =>
     createStyles({
@@ -50,66 +42,61 @@ export default function CustomizedTables() {
     })
   )(TableCell);
 
-//   // Table view for desktop devices
-//   const tableView = () => {
-//     return (
-//       <List component="nav" aria-label="mailbox folders">
-//         <Divider />
-//         <ListItem>
-
-//  {/*  Alkuperäinen
-
-//        {vastuualueet.agency.map((e, i) => (
-//                 <ListItem key={i} divider>
-//                   <ListItemText primary={`${i + 1}. ${e.tip}`} />
-//                 </ListItem>
-//               ))} */}
-
-//               {/*  Testi I : FAQ:n tuonti JSONista*/}
-
-//               {faq.agency.map((e, i) => (
-//                 <ListItem key={i} divider>
-//                   <ListItemText primary={`${i + 1}. ${e.tip}`} />
-//                 </ListItem>
-//               ))}
-//         </ListItem>
-//       </List>
-//     );
-//   };
-
-
-  // TESTI II : Accordion-lista, FAQ-JSON kysymyksillä?
-  return (
+  if(!expanded){
+    return (
     <div style={{ marginTop: 16 }}>
       <Grid item xs={12}>
       <List component="nav" aria-label="mailbox folders">
-        <Divider />
         {/*
           Tulostaa FAQ-JSONin Accordion-listana
        */}
         {faq.agency.map((e, i) => (
         <ListItem>
         <Accordion className={classes.card} variant="outlined">
-       
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-       
-           
            <Typography gutterBottom variant="h5"> 
            {`${e.tip}`} 
-           </Typography>
-                    
+           </Typography>           
           </AccordionSummary>
-    
-         
          <AccordionDetails>{`${e.details}`}</AccordionDetails>
         </Accordion>
          </ListItem>
          ))} 
       </List>
+      <Button onClick={()=>setExpanded(true)}>{t('show_less')}</Button>
+      </Grid>
+    </div>
+    );
+  }
+  return (
+    <div style={{ marginTop: 16 }}>
+      <Grid item xs={12}>
+      <List component="nav" aria-label="mailbox folders">
+        {/*
+          Tulostaa FAQ-JSONin Accordion-listana
+       */}
+        {faq.agency.slice(0,4).map((e, i) => (
+        <ListItem>
+        <Accordion className={classes.card} variant="outlined">
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+           <Typography gutterBottom variant="h5"> 
+           {`${e.tip}`} 
+           </Typography>
+          </AccordionSummary>
+         <AccordionDetails>{`${e.details}`}</AccordionDetails>
+        </Accordion>
+         </ListItem>
+         ))} 
+      </List>
+      <Button onClick={()=>setExpanded(false)}>{t('show_more')}</Button>
       </Grid>
     </div>
   );

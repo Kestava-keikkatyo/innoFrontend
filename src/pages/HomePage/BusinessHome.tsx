@@ -15,12 +15,24 @@ import {
 } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import FeedBackForm from './FeedBackForm/index';
+import Faq from './FAQ';
 
 const BusinessHome = () => {
   const { t } = useTranslation();
   
   return (
     <Grid container>
+          <Grid item xs={12} md={6} style={{ marginTop: '1%' }}>
+      <Card variant="outlined">
+          <CardHeader
+            title={t("faq")}
+            subheader=""
+          />
+          <CardContent>
+          <Faq />
+          </CardContent>
+        </Card>
+      </Grid>
       <Grid item xs={12} md={6} style={{ marginTop: '1%' }}>
         <Card variant="outlined">
           <CardHeader

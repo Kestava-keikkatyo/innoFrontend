@@ -471,4 +471,9 @@ export default {
   experienced: "Kokenut",
   professional: "Ammattilainen",
   user_information_updated: "Käyttäjän tiedot päivitetty",
+
+
+  //FAQ
+  show_less:"Näytä vähemmän",
+  show_more: "Näytä enemmän",
 }

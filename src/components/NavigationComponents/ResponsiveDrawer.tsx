@@ -27,7 +27,7 @@ import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
 import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
 import FormatList from '@material-ui/icons/FormatListBulleted';
-import LiveHelpSharpIcon from '@mui/icons-material/LiveHelpSharp';
+import LiveHelpIcon from '@mui/icons-material/LiveHelpOutlined';
 // import fi1 from '../NavigationComponents/fi1.png';
 // import us1 from '../NavigationComponents/us1.png';
 // import sw1 from '../NavigationComponents/sw1.png';
@@ -240,9 +240,9 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
               </ListItem>
               <Divider />
               <ListItem button component={Link} to="/faq">
-                <LiveHelpSharpIcon>
-                  <ErrorOutlineIcon />
-                </LiveHelpSharpIcon>
+                <ListItemIcon>
+                  <LiveHelpIcon />
+                </ListItemIcon>
                 <ListItemText primary={t('faq')} />
               </ListItem>
               <Divider />
