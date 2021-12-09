@@ -118,7 +118,7 @@ const ContractsRequestedTable = (prop: {
                     closeModal={() => setDisplayModal(false)}
                     contractId={contractId}
                     contract={contract}
-                    acceptAndSendContract={sendBackContract}
+                    sendBackContract={sendBackContract}
                   />
                 </TableCell>
                 {/*

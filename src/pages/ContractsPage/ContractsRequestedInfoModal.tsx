@@ -16,16 +16,13 @@ import {
 import { Close as CloseIcon } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-
+import { createBusinessContractForm } from '../../actions/businessContractFormActions';
 import { useHistory } from 'react-router';
 import {
   deleteBusinessContractForm,
   getByIdAndSetBusinessContractForm,
 } from '../../actions/businessContractFormActions';
-import {
-  addBusinessContract,
-  declineBusinessContract,
-} from '../../actions/businessContractActions';
+import { declineBusinessContract } from '../../actions/businessContractActions';
 import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
 
@@ -36,13 +33,14 @@ import { severity } from '../../types/types';
  * @param {Function} props.displayModal callback function when opened.
  * @param {Function} props.closeModal callback when closed.
  * @param {contract} props.contract business contract.
+ * @param {Function} props.sendBackContract business contract.
  */
 const ContractsRequestedInfoModal: React.FC<any> = ({
   displayModal,
   closeModal,
   contractId,
   contract,
-  acceptAndSendContract,
+  sendBackContract,
 }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -51,8 +49,6 @@ const ContractsRequestedInfoModal: React.FC<any> = ({
   const myForms: any = useSelector((state: any) => state.formList.myForms);
 
   const [formId, setFormId] = React.useState('None');
-
-  console.log('infoModal: contract: ', contract);
 
   const declineContract = (contractId: string, userId: string, formId: any) => {
     dispatch(declineBusinessContract(contractId, userId));
@@ -72,27 +68,30 @@ const ContractsRequestedInfoModal: React.FC<any> = ({
     history.push(`/contracts/contract-form-manager`);
   };
 
-  const handleAcceptAndSendContract = () => {
-    alert('Not implemented yet');
-
-    /*
-    if (!contract.formId && formId === 'None') {
-      dispatch(
-        setAlert(
-          'The contract form is not attached, or you have not selected a contract form',
-          severity.Error,
-          3
-        )
-      );
+  const handleAcceptAndSendBackContract = async (
+    contractId: string,
+    userId: string,
+    attachedFormId: any
+  ) => {
+    if (attachedFormId) {
+      closeModal();
+      return sendBackContract(contractId, userId, attachedFormId);
     } else {
-      acceptAndSendContract(
-        contractId,
-        contract.businessId ? contract.businessId._id : contract.workerId._id,
-        contract.formId ? contract.formId : formId
-      );
+      if (formId === 'None') {
+        dispatch(
+          setAlert(
+            `Failed: Please choose a form. If you do not have yet, create one.`,
+            severity.Error
+          )
+        );
+      } else {
+        const businessContractForm: any = await dispatch(
+          createBusinessContractForm(formId)
+        );
+        closeModal();
+        return sendBackContract(contractId, userId, businessContractForm._id);
+      }
     }
-    closeModal();
-    */
   };
   const handleChange = (event: any) => {
     console.log(event.target.value);
@@ -182,7 +181,15 @@ const ContractsRequestedInfoModal: React.FC<any> = ({
         <Button
           color="primary"
           variant="contained"
-          onClick={handleAcceptAndSendContract}
+          onClick={() =>
+            handleAcceptAndSendBackContract(
+              contractId,
+              contract.businessId
+                ? contract.businessId._id
+                : contract.workerId._id,
+              contract.formId
+            )
+          }
         >
           Accept and send contract
         </Button>
