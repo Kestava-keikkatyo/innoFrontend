@@ -485,6 +485,10 @@ export default {
     //FAQ
     show_less:"Show less",
     show_more: "Show more",
+
+    //landingPage
+  slogan: "When the personnel feels well, the work flows.",
+  intro: "Keikkakaveri provides information, training and equipment for developing and maintaining safe and healthy working conditions.",
 }
 
 //

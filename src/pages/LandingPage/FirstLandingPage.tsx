@@ -4,10 +4,12 @@ import eu from '../../assets/partners/eu.png'
 import kkk from '../../assets/partners/kestavakeikkatyo.png'
 import vipuvoima from '../../assets/partners/vipuvoimaa.jpg'
 import ttk from '../../assets/partners/ttk.png'
+import { useTranslation } from 'react-i18next';
 
 export interface FirstLandingPageProps {}
 
 const FirstLandingPage: React.FC<FirstLandingPageProps> = () => {
+  const { t } = useTranslation();
   return (
     <Container>
       <div className="landing-banner" />
@@ -16,11 +18,11 @@ const FirstLandingPage: React.FC<FirstLandingPageProps> = () => {
           KEIKKAKAVERI
         </Typography>
         <Typography variant="h5" className="text-center" style={{fontSize:"178%"}}>
-          Kun henkilöstö voi hyvin, työ sujuu.
+          {t('slogan')}
+          
         </Typography>
         <Typography variant="body1" className="text-center" style={{fontSize:"146%"}}>
-          Keikkakaveri tarjoaa tietoa, koulutusta ja välineitä turvallisten ja
-          terveellisten työolojen kehittämiseen ja ylläpitämiseen.
+        {t('intro')}
         </Typography>
       </div>
       <div id="partner-container" className="landing-bg-dark">
