@@ -472,8 +472,11 @@ export default {
   professional: "Ammattilainen",
   user_information_updated: "Käyttäjän tiedot päivitetty",
 
-
   //FAQ
   show_less:"Näytä vähemmän",
   show_more: "Näytä enemmän",
+
+  //landingPage
+  slogan: "Kun henkilöstö voi hyvin, työ sujuu.",
+  intro: "Keikkakaveri tarjoaa tietoa, koulutusta ja välineitä turvallisten ja terveellisten työolojen kehittämiseen ja ylläpitämiseen.",
 }
