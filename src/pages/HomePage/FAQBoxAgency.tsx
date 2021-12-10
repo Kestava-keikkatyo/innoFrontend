@@ -58,7 +58,7 @@ export default function CustomizedTables() {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-           <Typography gutterBottom variant="h5"> 
+           <Typography gutterBottom variant="h6"> 
            {`${e.tip}`} 
            </Typography>           
           </AccordionSummary>
@@ -83,15 +83,16 @@ export default function CustomizedTables() {
         <ListItem>
         <Accordion className={classes.card} variant="outlined">
           <AccordionSummary
+            className={classes.accordionSummary}
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-           <Typography gutterBottom variant="h5"> 
+           <Typography gutterBottom variant="h6"> 
            {`${e.tip}`} 
            </Typography>
           </AccordionSummary>
-         <AccordionDetails>{`${e.details}`}</AccordionDetails>
+         <AccordionDetails className={classes.accordionDetails}>{`${e.details}`}</AccordionDetails>
         </Accordion>
          </ListItem>
          ))} 
@@ -103,16 +104,22 @@ export default function CustomizedTables() {
 }
 
 const useStyles = makeStyles((theme) => ({
+  accordionDetails:{
+    width: '100%',
+  },
+  accordionSummary:{
+    width: '100%',
+  },
   card: {
     margin: theme.spacing(2, 0),
   },
   accordion: {
     width: '100%',
-    marginTop: 12,
+    marginTop: 1,
     border: '1px solid #E0E0E0',
     borderRadius: 5,
   },
   list:{
-    margin: '5%'
+    margin: '5%',
   }
 }));

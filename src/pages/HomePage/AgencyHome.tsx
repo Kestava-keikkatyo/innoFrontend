@@ -24,24 +24,24 @@ const AgencyHome = () => {
   const { t } = useTranslation();
   return (
     <Grid container>
-    <Grid item xs={12} md={6} style={{ marginTop: '1%' }}>
+    <Grid item xs={12} md={6} style={{ marginTop: '1%'}}>
       <Card variant="outlined">
           <CardHeader
             title={t("faq")}
             subheader=""
           />
-          <CardContent>
+          <CardContent style={{minHeight:'580px'}}>
           <Faq />
           </CardContent>
         </Card>
       </Grid>
-      <Grid item xs={12} md={6} style={{ marginTop: '1%' }}>
+      <Grid item xs={12} md={6} style={{ marginTop: '1%'}}>
         <Card variant="outlined">
           <CardHeader
             title={t('agency_responsibility')}
             subheader=""
           />
-          <CardContent>
+          <CardContent style={{height:'580px'}}>
             <List component="nav" aria-label="mailbox folders">
               <Divider />
               {vastuualueet.agency.map((e, i) => (

@@ -28,7 +28,7 @@ const BusinessHome = () => {
             title={t("faq")}
             subheader=""
           />
-          <CardContent>
+          <CardContent style={{minHeight:'580px'}}>
           <Faq />
           </CardContent>
         </Card>
@@ -39,7 +39,7 @@ const BusinessHome = () => {
             title={t('business_responsibility')}
             subheader=""
           />
-          <CardContent>
+          <CardContent style={{height:'580px'}}>
             <List component="nav" aria-label="mailbox folders">
               <Divider />
               {vastuualueet.business.map((e, i) => (

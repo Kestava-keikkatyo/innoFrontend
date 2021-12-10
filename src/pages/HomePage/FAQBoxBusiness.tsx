@@ -58,7 +58,7 @@ export default function CustomizedTables() {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-           <Typography gutterBottom variant="h5"> 
+           <Typography gutterBottom variant="h6"> 
            {`${e.tip}`} 
            </Typography>           
           </AccordionSummary>
@@ -79,7 +79,7 @@ export default function CustomizedTables() {
         {/*
           Tulostaa FAQ-JSONin Accordion-listana
        */}
-        {faq.business.slice(0,4).map((e, i) => (
+        {faq.business.slice(0,3).map((e, i) => (
         <ListItem>
         <Accordion className={classes.card} variant="outlined">
           <AccordionSummary
@@ -87,7 +87,7 @@ export default function CustomizedTables() {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-           <Typography gutterBottom variant="h5"> 
+           <Typography gutterBottom variant="h6"> 
            {`${e.tip}`} 
            </Typography>
           </AccordionSummary>
@@ -113,6 +113,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 5,
   },
   list:{
-    margin: '5%'
+    margin: '5% 0'
   }
 }));
