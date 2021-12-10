@@ -30,7 +30,7 @@ const AgencyHome = () => {
             title={t("faq")}
             subheader=""
           />
-          <CardContent style={{minHeight:'580px'}}>
+          <CardContent style={{height:'68.6vh'}}>
           <Faq />
           </CardContent>
         </Card>
@@ -41,7 +41,7 @@ const AgencyHome = () => {
             title={t('agency_responsibility')}
             subheader=""
           />
-          <CardContent style={{height:'580px'}}>
+          <CardContent style={{height:'68.6vh'}}>
             <List component="nav" aria-label="mailbox folders">
               <Divider />
               {vastuualueet.agency.map((e, i) => (
