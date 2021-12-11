@@ -4,7 +4,7 @@
  */
 
 import workAddService from "../services/workAddService"
-import { ADD_WORK_TASK, W_FETCH } from "../types/state"
+import { ADD_WORK_TASK, W_FETCH, ACCEPT_WORKERS } from "../types/state"
 
 export const postWorkTask = (workTask: any) => async (dispatch: any) => {
   const res = await workAddService.postWorkTask(workTask)
@@ -17,6 +17,12 @@ export const postWorkTask = (workTask: any) => async (dispatch: any) => {
  */
 export const fetchWorkContracts = () => async (dispatch: any) => {
   const res = await workAddService.fetchWorkContracts()
-  console.log("response ", res)
   dispatch({ type: W_FETCH, data: res })
+}
+
+
+export const acceptWorkersToGig = (contractId: any, contractsId: any, workersId: []) => async (dispatch: any) => {
+  const res = await workAddService.addWorkersToGig(contractId, contractsId, workersId)
+  console.log("response ", res)
+  dispatch({ type: ACCEPT_WORKERS, data: res })
 }

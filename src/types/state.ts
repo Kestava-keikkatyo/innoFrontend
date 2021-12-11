@@ -778,6 +778,7 @@ export interface FeedBackState {
 
 export const ADD_WORK_TASK = "ADD_WORK_TASK"
 export const FETCH_GIGS = "FETCH_GIGS"
+export const ACCEPT_WORKERS = "ACCEPT_WORKERS"
 
 interface AddWorkTask {
   type: typeof ADD_WORK_TASK
@@ -789,4 +790,9 @@ interface FetchGigs {
   data: any
 }
 
-export type WorkAddActions = AddWorkTask | FetchGigs
+interface AcceptWorkers {
+  type: typeof ACCEPT_WORKERS
+  data: any
+}
+
+export type WorkAddActions = AddWorkTask | FetchGigs | AcceptWorkers

@@ -31,6 +31,18 @@ const postWorkTask = async (workTask: any) => {
   }
 }
 
+const addWorkersToGig = async (contractId: any, contractsId: any, workersId: []) => {
+  try {
+    const res: any = await axios.put(
+      `${baseUrl}/workcontracts/${contractId}/${contractsId}/acceptWorkers`, 
+      {workersArray: workersId},
+      authHeader())
+    return res.data
+  } catch (error) {
+    console.log(error)
+    return {}
+  }
+}
 // TODO
 const requestWorkerToGig = async (contractId: any, contractsId: any) => {
   try {
@@ -60,4 +72,5 @@ const fetchWorkContracts = async () => {
 export default {
   postWorkTask,
   fetchWorkContracts,
+  addWorkersToGig
 }
