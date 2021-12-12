@@ -1,5 +1,5 @@
 import React from 'react'
-import { useField } from 'formik'
+import { ErrorMessage, Field, useField } from 'formik'
 import PropTypes from 'prop-types'
 import {
   TextField,
@@ -14,6 +14,7 @@ import {
   FormControlLabel
 } from '@material-ui/core'
 import { useEffect } from 'react'
+import './FormikField.css'
 
 /**
  * @component
@@ -180,3 +181,29 @@ FormikRadioField.propTypes = {
     label: PropTypes.string
   })).isRequired
 }
+
+interface FormikFieldProps {
+  name: string;
+  label: string;
+  type?: string;
+  required?: boolean;
+}
+
+const FormikField: React.FC<FormikFieldProps> = ({ name, label, type = "text", required = false}) => {
+  return (
+    <div className="FormikField">
+      <Field
+        required={required}
+        autoComplete="off"
+        as={TextField}
+        label={label}
+        name={name}
+        fullWidth
+        type={type}
+        helperText={<ErrorMessage name={name} />}
+      />
+    </div>
+  );
+};
+
+export default FormikField;

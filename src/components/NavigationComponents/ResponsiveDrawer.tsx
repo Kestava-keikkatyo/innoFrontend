@@ -11,7 +11,7 @@ import InsertDriveFile from '@material-ui/icons/InsertDriveFile';
 import MoodIcon from '@material-ui/icons/Mood';
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import { Contacts, Home, Security } from '@material-ui/icons';
+import { Contacts, Home, PersonAdd, Security } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import { logout } from '../../actions/userActions';
 import { useDispatch, useSelector } from 'react-redux';
@@ -266,6 +266,17 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                   <GroupsIcon />
                 </ListItemIcon>
                 <ListItemText primary={t("User List")} />
+              </ListItem>
+              <Divider />
+            </>
+          )}
+          {role === roles.Admin && (
+            <>
+              <ListItem button component={Link} to="/createUser">
+                <ListItemIcon>
+                  <PersonAdd />
+                </ListItemIcon>
+                <ListItemText primary={t("Create User")} />
               </ListItem>
               <Divider />
             </>

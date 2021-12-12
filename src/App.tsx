@@ -48,6 +48,7 @@ import ProfileList from './pages/AdminPage/ProfileList';
 import AllUsersList from './pages/AdminPage/AllUsersList';
 import User from './pages/AdminPage/user/User';
 import FAQIndex from './pages/FAQPage/index';
+import CreateUser from './pages/AdminPage/CreateUser';
 
 /**
  * @component
@@ -71,15 +72,18 @@ const App: React.FC = () => {
         <AdminRoute path="/admin/home">
           <AdminHome />
         </AdminRoute>
-        <AdminRoute path="/profileList">
+        <PrivateRoute path="/profileList">
           <ProfileList />
-        </AdminRoute>
-        <AdminRoute path="/userList">
+        </PrivateRoute>
+        <PrivateRoute path="/userList">
           <AllUsersList />
-        </AdminRoute>
-        <AdminRoute path="/user/:profileId">
+        </PrivateRoute>
+        <PrivateRoute path="/user/:profileId">
           <User />
-        </AdminRoute>
+        </PrivateRoute>
+        <PrivateRoute path="/createUser">
+          <CreateUser />
+        </PrivateRoute>
         <DatabankRoute path="/databank/lifeline">
           <JobLifeline />
         </DatabankRoute>
