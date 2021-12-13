@@ -1,7 +1,7 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import faq from '../../assets/tietopankki/faq.json';
+import React from "react"
+import { useTranslation } from "react-i18next"
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
+import faq from "../../assets/tietopankki/faq.json"
 
 import {
   TableCell,
@@ -13,22 +13,23 @@ import {
   Grid,
   List,
   ListItem,
-} from '@material-ui/core';
+  Card,
+  CardContent,
+} from "@material-ui/core"
 
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-} from '@material-ui/core';
-
+} from "@material-ui/core"
 
 /**
  * @component
  * @desc Custom table component in worker feel-o-meter
  * page. Displays workers feeling entry history.
  */
-export default function CustomizedTables() {
-  const classes = useStyles();
+const FAQComponentWorker = () => {
+  const classes = useStyles()
   const { t } = useTranslation()
 
   // Table head styles
@@ -36,50 +37,57 @@ export default function CustomizedTables() {
     createStyles({
       head: {
         backgroundColor: theme.palette.common.white,
-        color: '#eb5a02',
+        color: "#eb5a02",
       },
     })
-  )(TableCell);
+  )(TableCell)
   return (
-    <div style={{ marginTop: 16 }}>
-      <Grid item xs={12}>
-      <List component="nav" aria-label="mailbox folders">
-        {/*
+    <Grid>
+      <Card>
+        <CardContent>
+          <List component="nav" aria-label="mailbox folders">
+            {/*
           Tulostaa FAQ-JSONin Accordion-listana
        */}
-        {faq.worker.map((e, i) => (
-        <ListItem>
-        <Accordion className={classes.card} variant="outlined">
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >    
-           <Typography gutterBottom variant="h5"> 
-           {`${e.tip}`} 
-           </Typography>
-          </AccordionSummary>
-         <AccordionDetails>{`${e.details}`}</AccordionDetails>
-        </Accordion>
-         </ListItem>
-         ))} 
-      </List>
-      </Grid>
-    </div>
-  );
+            {faq.worker.map((e, i) => (
+              <ListItem>
+                <Accordion className={classes.card} variant="outlined">
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                  >
+                    <Typography
+                      className={classes.text}
+                    >{`${e.tip}`}</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>{`${e.details}`}</AccordionDetails>
+                </Accordion>
+              </ListItem>
+            ))}
+          </List>
+        </CardContent>
+      </Card>
+    </Grid>
+  )
 }
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    margin: theme.spacing(2, 0),
+    margin: theme.spacing(0.5, 0),
   },
   accordion: {
-    width: '100%',
+    width: "100%",
     marginTop: 12,
-    border: '1px solid #E0E0E0',
+    border: "1px solid #E0E0E0",
     borderRadius: 5,
   },
-  list:{
-    margin: '5%'
-  }
-}));
+  list: {
+    margin: "5%",
+  },
+  text: {
+    color: "#000000DE",
+  },
+}))
+
+export default FAQComponentWorker

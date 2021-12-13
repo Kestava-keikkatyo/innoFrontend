@@ -1,36 +1,36 @@
-import React from 'react';
-import Paper from '@material-ui/core/Paper';
-import { useTranslation } from 'react-i18next'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import vastuualueet from '../../assets/tietopankki/vastuualueet.json';
-import faq from '../../assets/tietopankki/faq.json';
+import React from "react"
+import Paper from "@material-ui/core/Paper"
+import { useTranslation } from "react-i18next"
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
+import vastuualueet from "../../assets/tietopankki/vastuualueet.json"
+import faq from "../../assets/tietopankki/faq.json"
 
 import {
   TableCell,
-  Typography,
   withStyles,
   Theme,
   createStyles,
   makeStyles,
   Grid,
   List,
-  ListItem,
-} from '@material-ui/core';
-
-import {
+  Card,
+  CardContent,
   Accordion,
   AccordionDetails,
-  AccordionSummary,
-} from '@material-ui/core';
+  ListItem,
+  Typography,
+} from "@material-ui/core"
 
+import { AccordionSummary } from "@material-ui/core"
+import FAQComponentWorker from "./FAQComponentWorker"
 
 /**
  * @component
  * @desc Custom table component in worker feel-o-meter
  * page. Displays workers feeling entry history.
  */
-export default function CustomizedTables() {
-  const classes = useStyles();
+const FAQComponentAgency = () => {
+  const classes = useStyles()
   const { t } = useTranslation()
 
   // Table head styles
@@ -38,39 +38,40 @@ export default function CustomizedTables() {
     createStyles({
       head: {
         backgroundColor: theme.palette.common.white,
-        color: '#eb5a02',
+        color: "#eb5a02",
       },
     })
-  )(TableCell);
+  )(TableCell)
 
   return (
-    <div style={{ marginTop: 16 }}>
-      <Grid item xs={12}>
-      <List component="nav" aria-label="mailbox folders">
-        {/*
+    <Grid>
+      <Card>
+        <CardContent>
+          <List component="nav" aria-label="mailbox folders">
+            {/*
           Tulostaa FAQ-JSONin Accordion-listana
        */}
-        {faq.agency.map((e, i) => (
-        <ListItem>
-        <Accordion className={classes.card} variant="outlined">
-       
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-           <Typography gutterBottom variant="h5"> 
-           {`${e.tip}`} 
-           </Typography>         
-          </AccordionSummary>
-         <AccordionDetails>{`${e.details}`}</AccordionDetails>
-        </Accordion>
-         </ListItem>
-         ))} 
-      </List>
-      </Grid>
-    </div>
-  );
+            {faq.agency.map((e, i) => (
+              <ListItem>
+                <Accordion className={classes.card} variant="outlined">
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                  >
+                    <Typography gutterBottom variant="h5">
+                      {`${e.tip}`}
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>{`${e.details}`}</AccordionDetails>
+                </Accordion>
+              </ListItem>
+            ))}
+          </List>
+        </CardContent>
+      </Card>
+    </Grid>
+  )
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -78,12 +79,14 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(2, 0),
   },
   accordion: {
-    width: '100%',
+    width: "100%",
     marginTop: 12,
-    border: '1px solid #E0E0E0',
+    border: "1px solid #E0E0E0",
     borderRadius: 5,
   },
-  list:{
-    margin: '5%'
-  }
-}));
+  list: {
+    margin: "5%",
+  },
+}))
+
+export default FAQComponentAgency

@@ -1,54 +1,54 @@
-import React, { useEffect } from 'react';
-import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
+import React, { useEffect } from "react"
+import { Switch, Route, Redirect, useLocation } from "react-router-dom"
 
-import SnackbarNotification from './components/SnackbarNotification';
-import LandingPage from './pages/LandingPage';
-import LoginPage from './pages/LoginPage';
-import HomePage from './pages/HomePage';
-import ContractsPage from './pages/ContractsPage';
-import PrivateRoute from './components/PrivateRoute';
-import ProcessPage from './pages/ProcessPage';
-import FormsPage from './pages/FormsPage';
-import WorkerStatistics from './pages/MoodStatistics';
-import AgencyStatistics from './pages/MoodStatistics/AgencyStatistics';
-import { CssBaseline } from '@material-ui/core';
-import NewFormPage from './pages/FormsPage/NewFormPage';
-import EditFormPage from './pages/FormsPage/EditFormPage';
-import FormPreviewPage from './pages/FormPreviewPage';
-import { roles } from './types/types';
-import DatabankRoute from './components/DatabankRoute';
-import BestPractices from './pages/Databank/BestPractices';
-import JobLifeline from './pages/Databank/JobLifeline';
-import RoleResponsibilities from './pages/Databank/RoleResponsibilities';
-import Databank from './pages/Databank';
-import ReportPage from './pages/ReportPage';
-import ReportsPage from './pages/ReportPage/ReportsPage';
-import AdminRoute from './components/AdminRoute';
-import BusinessContractPage from './pages/BusinessContractsPage';
-import BusinessContractPreviewPage from './pages/BusinessContractPreviewPage';
-import BusinessContractFill from './pages/BusinessContractPreviewPage/BusinessContractFill';
-import BusinessContractEdit from './pages/BusinessContractPreviewPage/BusinessContractEdit';
-import ContractFormManagerPage from './pages/ContractsPage/ContractFormManagerPage';
-import ContractFormPreviewPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormPreviewPage';
-import ContractFormEditPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormEditPage';
-import ProfilePage from './pages/ProfilePage';
-import ProfileViewPage from './pages/ProfilePage/ProfileViewPage';
-import ProfilesPage from './pages/ProfilePage/ProfilesPage';
-import EditProfilePage from './pages/ProfilePage/EditProfilePage';
-import JobList from './pages/JobPage';
-import SettingsPage from './pages/SettingsPage';
-import BusinessWorkRequest from './pages/BusinessWorkOverview';
-import WorkInfo from './pages/BusinessWorkOverview/WorkInfo';
-import WorkRequest from './pages/AgencyWorkRequest';
-import WorkerJobs from './pages/WorkerWorkOverview';
-import AdminLoginPage from './pages/AdminLoginPage';
-import AdminHome from './pages/AdminPage/AdminHome';
-import AgencyWorkAdd from './pages/AgencyWorkAddPage';
-import ProfileList from './pages/AdminPage/ProfileList';
-import AllUsersList from './pages/AdminPage/AllUsersList';
-import User from './pages/AdminPage/user/User';
-import FAQIndex from './pages/FAQPage/index';
-import CreateUser from './pages/AdminPage/CreateUser';
+import SnackbarNotification from "./components/SnackbarNotification"
+import LandingPage from "./pages/LandingPage"
+import LoginPage from "./pages/LoginPage"
+import HomePage from "./pages/HomePage"
+import ContractsPage from "./pages/ContractsPage"
+import PrivateRoute from "./components/PrivateRoute"
+import ProcessPage from "./pages/ProcessPage"
+import FormsPage from "./pages/FormsPage"
+import WorkerStatistics from "./pages/MoodStatistics"
+import AgencyStatistics from "./pages/MoodStatistics/AgencyStatistics"
+import { CssBaseline } from "@material-ui/core"
+import NewFormPage from "./pages/FormsPage/NewFormPage"
+import EditFormPage from "./pages/FormsPage/EditFormPage"
+import FormPreviewPage from "./pages/FormPreviewPage"
+import { roles } from "./types/types"
+import DatabankRoute from "./components/DatabankRoute"
+import BestPractices from "./pages/Databank/BestPractices"
+import JobLifeline from "./pages/Databank/JobLifeline"
+import RoleResponsibilities from "./pages/Databank/RoleResponsibilities"
+import Databank from "./pages/Databank"
+import ReportPage from "./pages/ReportPage"
+import ReportsPage from "./pages/ReportPage/ReportsPage"
+import AdminRoute from "./components/AdminRoute"
+import BusinessContractPage from "./pages/BusinessContractsPage"
+import BusinessContractPreviewPage from "./pages/BusinessContractPreviewPage"
+import BusinessContractFill from "./pages/BusinessContractPreviewPage/BusinessContractFill"
+import BusinessContractEdit from "./pages/BusinessContractPreviewPage/BusinessContractEdit"
+import ContractFormManagerPage from "./pages/ContractsPage/ContractFormManagerPage"
+import ContractFormPreviewPage from "./pages/ContractsPage/ContractFormManagerPage/ContractFormPreviewPage"
+import ContractFormEditPage from "./pages/ContractsPage/ContractFormManagerPage/ContractFormEditPage"
+import ProfilePage from "./pages/ProfilePage"
+import ProfileViewPage from "./pages/ProfilePage/ProfileViewPage"
+import ProfilesPage from "./pages/ProfilePage/ProfilesPage"
+import EditProfilePage from "./pages/ProfilePage/EditProfilePage"
+import JobList from "./pages/JobPage"
+import SettingsPage from "./pages/SettingsPage"
+import BusinessWorkRequest from "./pages/BusinessWorkOverview"
+import WorkInfo from "./pages/BusinessWorkOverview/WorkInfo"
+import WorkRequest from "./pages/GigRequest"
+import WorkerJobs from "./pages/WorkerWorkOverview"
+import AdminLoginPage from "./pages/AdminLoginPage"
+import AdminHome from "./pages/AdminPage/AdminHome"
+import AgencyWorkAdd from "./pages/AgencyWorkAddPage"
+import ProfileList from "./pages/AdminPage/ProfileList"
+import AllUsersList from "./pages/AdminPage/AllUsersList"
+import User from "./pages/AdminPage/user/User"
+import FAQIndex from "./pages/FAQPage/index"
+import CreateUser from "./pages/AdminPage/CreateUser"
 
 /**
  * @component
@@ -237,16 +237,16 @@ const App: React.FC = () => {
         <Redirect from="*" to="/login" />
       </Switch>
     </>
-  );
-};
+  )
+}
 
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname } = useLocation()
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-};
+    window.scrollTo(0, 0)
+  }, [pathname])
+  return null
+}
 
-export default App;
+export default App

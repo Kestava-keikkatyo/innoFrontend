@@ -55,12 +55,15 @@ export default function CustomizedTables() {
                   aria-controls="panel1a-content"
                   id="panel1a-header"
                 >
-                  <Typography gutterBottom variant="h6">
+                  <Typography className={classes.text} gutterBottom>
                     {`${e.tip}`}
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography variant="subtitle1">{`${e.details}`}</Typography>
+                  <Typography
+                    className={classes.text}
+                    variant="subtitle1"
+                  >{`${e.details}`}</Typography>
                 </AccordionDetails>
               </Accordion>
             </ListItem>
@@ -92,5 +95,8 @@ const useStyles = makeStyles((theme) => ({
   grid: {
     overflowY: "scroll",
     height: "60vh",
+  },
+  text: {
+    color: "#000000DE",
   },
 }))
