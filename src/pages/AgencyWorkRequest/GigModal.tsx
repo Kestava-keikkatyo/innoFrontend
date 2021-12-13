@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect } from 'react';
 
 import {
   Dialog,
@@ -20,33 +20,33 @@ import {
   ListItemText,
   useMediaQuery,
   useTheme,
-} from "@material-ui/core"
-import { Close as CloseIcon } from "@material-ui/icons"
-import { useTranslation } from "react-i18next"
-import { useDispatch, useSelector } from "react-redux"
-import allUsersService from "../../services/allUsersService"
-import workAddService from "../../services/workAddService"
-import { acceptWorkersToGig } from "../../actions/workAddAction"
+} from '@material-ui/core';
+import { Close as CloseIcon } from '@material-ui/icons';
+import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import allUsersService from '../../services/allUsersService';
+import workAddService from '../../services/workAddService';
+import { acceptWorkersToGig } from '../../actions/workAddAction';
 
 function not(a: any[], b: any[]) {
-  return a.filter((value) => b.indexOf(value) === -1)
+  return a.filter((value) => b.indexOf(value) === -1);
 }
 
 function intersection(a: any[], b: any[]) {
-  return a.filter((value) => b.indexOf(value) !== -1)
+  return a.filter((value) => b.indexOf(value) !== -1);
 }
 
 function union(a: any[], b: any[]) {
-  return [...a, ...not(b, a)]
+  return [...a, ...not(b, a)];
 }
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: "auto",
+    margin: 'auto',
   },
   selectDiv: {
     marginTop: 16,
-    "& .MuiTextField-root": { m: 1, minWidth: "25ch" },
+    '& .MuiTextField-root': { m: 1, minWidth: '25ch' },
   },
   cardHeader: {
     padding: theme.spacing(1, 2),
@@ -55,12 +55,12 @@ const useStyles = makeStyles((theme) => ({
     width: 200,
     height: 230,
     backgroundColor: theme.palette.background.paper,
-    overflow: "auto",
+    overflow: 'auto',
   },
   button: {
     margin: theme.spacing(0.5, 0),
   },
-}))
+}));
 
 /**
  * @component
@@ -76,59 +76,63 @@ const GigModal: React.FC<any> = ({
   workContractId,
   contract,
 }) => {
-  const { t } = useTranslation()
-  const classes = useStyles()
-  const theme = useTheme()
-  const matches = useMediaQuery(theme.breakpoints.down("sm"))
-  const [checked, setChecked] = React.useState<any[]>([])
-  const { agencyWorkers } = useSelector((state: any) => state.allUsers)
-  const [left, setLeft] = React.useState<any>(agencyWorkers)
-  const [right, setRight] = React.useState<any>([])
-  const leftChecked = intersection(checked, left)
-  const rightChecked = intersection(checked, right)
-  const dispatch = useDispatch()
+  const { t } = useTranslation();
+  const classes = useStyles();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down('sm'));
+  const [checked, setChecked] = React.useState<any[]>([]);
+  const { agencyWorkers } = useSelector((state: any) => state.allUsers);
+  const [left, setLeft] = React.useState<any>(agencyWorkers);
+  const [right, setRight] = React.useState<any>([]);
+  const leftChecked = intersection(checked, left);
+  const rightChecked = intersection(checked, right);
+  const dispatch = useDispatch();
 
-  console.log("soppari: ", workContractId)
+  console.log('soppari: ', workContractId);
+
+  React.useEffect(() => {
+    allUsersService.getAgencyWorkers().then((res: any) => setLeft(res.data));
+  }, []);
 
   const handleToggle = (value: any) => () => {
-    const currentIndex = checked.indexOf(value)
-    const newChecked = [...checked]
+    const currentIndex = checked.indexOf(value);
+    const newChecked = [...checked];
 
     if (currentIndex === -1) {
-      newChecked.push(value)
+      newChecked.push(value);
     } else {
-      newChecked.splice(currentIndex, 1)
+      newChecked.splice(currentIndex, 1);
     }
 
-    setChecked(newChecked)
-  }
+    setChecked(newChecked);
+  };
 
-  const numberOfChecked = (items: any[]) => intersection(checked, items).length
+  const numberOfChecked = (items: any[]) => intersection(checked, items).length;
 
   const handleToggleAll = (items: any[]) => () => {
     if (numberOfChecked(items) === items.length) {
-      setChecked(not(checked, items))
+      setChecked(not(checked, items));
     } else {
-      setChecked(union(checked, items))
+      setChecked(union(checked, items));
     }
-  }
+  };
 
   const handleCheckedRight = () => {
-    setRight(right.concat(leftChecked))
-    setLeft(not(left, leftChecked))
-    setChecked(not(checked, leftChecked))
-  }
+    setRight(right.concat(leftChecked));
+    setLeft(not(left, leftChecked));
+    setChecked(not(checked, leftChecked));
+  };
 
   const handleCheckedLeft = () => {
-    setLeft(left.concat(rightChecked))
-    setRight(not(right, rightChecked))
-    setChecked(not(checked, rightChecked))
-  }
+    setLeft(left.concat(rightChecked));
+    setRight(not(right, rightChecked));
+    setChecked(not(checked, rightChecked));
+  };
 
   const handleSave = () => {
-    const selectedWorkers = right.map((worker: any) => worker._id)
-    dispatch(acceptWorkersToGig(workContractId, contract._id, selectedWorkers))
-  }
+    const selectedWorkers = right.map((worker: any) => worker._id);
+    dispatch(acceptWorkersToGig(workContractId, contract._id, selectedWorkers));
+  };
 
   const customList = (title: React.ReactNode, items: any[]) => (
     <Card>
@@ -145,7 +149,7 @@ const GigModal: React.FC<any> = ({
               numberOfChecked(items) !== 0
             }
             disabled={items.length === 0}
-            inputProps={{ "aria-label": "all items selected" }}
+            inputProps={{ 'aria-label': 'all items selected' }}
           />
         }
         title={title}
@@ -154,7 +158,7 @@ const GigModal: React.FC<any> = ({
       <Divider />
       <List className={classes.list} dense component="div" role="list">
         {items.map((value: any) => {
-          const labelId = `transfer-list-all-item-${value._id}-label`
+          const labelId = `transfer-list-all-item-${value._id}-label`;
 
           return (
             <ListItem
@@ -168,18 +172,18 @@ const GigModal: React.FC<any> = ({
                   checked={checked.indexOf(value) !== -1}
                   tabIndex={-1}
                   disableRipple
-                  inputProps={{ "aria-labelledby": labelId }}
+                  inputProps={{ 'aria-labelledby': labelId }}
                 />
               </ListItemIcon>
               <ListItemText id={labelId} primary={value.name} />
             </ListItem>
-          )
+          );
         })}
         <ListItem />
       </List>
     </Card>
-  )
-  console.log("workContract", workContractId)
+  );
+  console.log('workContract', workContractId);
 
   return (
     <Dialog
@@ -190,14 +194,14 @@ const GigModal: React.FC<any> = ({
     >
       <DialogTitle>
         <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Typography variant="h6">{t("choose_workers")}</Typography>
+          <Typography variant="h6">{t('choose_workers')}</Typography>
           <IconButton onClick={closeModal}>
             <CloseIcon />
           </IconButton>
         </Box>
       </DialogTitle>
       <Grid container spacing={2} alignItems="center" className={classes.root}>
-        <Grid item>{customList(t("choices"), left)}</Grid>
+        <Grid item>{customList(t('choices'), left)}</Grid>
         <Grid item>
           <Grid container direction="column" alignItems="center">
             <Button
@@ -222,7 +226,7 @@ const GigModal: React.FC<any> = ({
             </Button>
           </Grid>
         </Grid>
-        <Grid item>{customList(t("chosen"), right)}</Grid>
+        <Grid item>{customList(t('chosen'), right)}</Grid>
       </Grid>
       )
       <DialogActions style={{ marginBottom: 10 }}>
@@ -231,14 +235,14 @@ const GigModal: React.FC<any> = ({
           variant="contained"
           onClick={() => handleSave()}
         >
-          {t("saveButton")}
+          {t('saveButton')}
         </Button>
         <Button color="primary" variant="outlined" onClick={() => closeModal()}>
-          {t("close")}
+          {t('close')}
         </Button>
       </DialogActions>
     </Dialog>
-  )
-}
+  );
+};
 
-export default GigModal
+export default GigModal;

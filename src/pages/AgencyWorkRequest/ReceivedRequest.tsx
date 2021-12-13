@@ -1,10 +1,10 @@
-import * as React from "react"
-import Accordion from "@mui/material/Accordion"
-import AccordionDetails from "@mui/material/AccordionDetails"
-import AccordionSummary from "@mui/material/AccordionSummary"
-import Typography from "@mui/material/Typography"
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
-import { format } from "date-fns"
+import * as React from 'react';
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { format } from 'date-fns';
 import {
   AccordionActions,
   IconButton,
@@ -12,21 +12,21 @@ import {
   Theme,
   Tooltip,
   Divider,
-} from "@material-ui/core"
-import GigModal from "./GigModal"
-import AddReactionIcon from "@mui/icons-material/AddReaction"
-import { useTranslation } from "react-i18next"
-import allUsersService from "../../services/allUsersService"
+} from '@material-ui/core';
+import GigModal from './GigModal';
+import AddReactionIcon from '@mui/icons-material/AddReaction';
+import { useTranslation } from 'react-i18next';
+import allUsersService from '../../services/allUsersService';
 
 const useStyles = makeStyles((theme: Theme) => ({
   divider: {
-    width: "45%",
-    marginBottom: "1%",
+    width: '45%',
+    marginBottom: '1%',
   },
   accordion: {
-    marginBottom: "1%",
+    marginBottom: '1%',
   },
-}))
+}));
 
 const ReceivedRequest: React.FC<any> = ({ workContracts, agencyWorkers }) => {
   /*
@@ -42,50 +42,45 @@ const ReceivedRequest: React.FC<any> = ({ workContracts, agencyWorkers }) => {
     _id: "61a4b125f3f5e15910e4c04e"
 */
 
-  const [expanded, setExpanded] = React.useState<string | false>(false)
-  const classes = useStyles()
+  const [expanded, setExpanded] = React.useState<string | false>(false);
+  const classes = useStyles();
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
-      setExpanded(isExpanded ? panel : false)
-    }
-  const [displayModal, setDisplayModal] = React.useState(false)
+      setExpanded(isExpanded ? panel : false);
+    };
+  const [displayModal, setDisplayModal] = React.useState(false);
   const handleCooperationOpen = () => {
-    setDisplayModal(true)
-  }
-  /*
-  React.useEffect(() => {
-    allUsersService.getAgencyWorkers().then((res: any) => setLeft(res.data))
-  }, [])
-  */
+    setDisplayModal(true);
+  };
 
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
-  if (workContracts.docs === undefined) return <div> no results </div>
+  if (workContracts.docs === undefined) return <div> no results </div>;
   return (
     <div>
       {workContracts?.docs.map((workContract: any) => (
         <div key={workContract._id}>
           {workContract?.contracts?.map((contract: any) => (
-            <div>
-              <Accordion key={contract._id} className={classes.accordion}>
+            <div key={contract._id}>
+              <Accordion className={classes.accordion}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1bh-content"
                   id="panel1bh-header"
                 >
-                  <Typography sx={{ width: "33%", flexShrink: 0 }}>
+                  <Typography sx={{ width: '33%', flexShrink: 0 }}>
                     {contract.headline}
                   </Typography>
-                  <Typography sx={{ color: "text.secondary" }}>
-                    Ajalle:{" "}
+                  <Typography sx={{ color: 'text.secondary' }}>
+                    Ajalle:{' '}
                     {format(
                       new Date(contract.validityPeriod.startDate),
-                      "dd.MM.yyyy"
-                    )}{" "}
-                    -{" "}
+                      'dd.MM.yyyy'
+                    )}{' '}
+                    -{' '}
                     {format(
                       new Date(contract.validityPeriod.endDate),
-                      "dd.MM.yyyy"
+                      'dd.MM.yyyy'
                     )}
                   </Typography>
                 </AccordionSummary>
@@ -93,7 +88,7 @@ const ReceivedRequest: React.FC<any> = ({ workContracts, agencyWorkers }) => {
                   <Divider className={classes.divider} />
                   <Typography>Kuvaus: {contract.detailedInfo}</Typography>
                   <Typography>
-                    Tarvittavien työntekijöiden määrä: {contract.workerCount}{" "}
+                    Tarvittavien työntekijöiden määrä: {contract.workerCount}{' '}
                     kappaletta
                   </Typography>
                 </AccordionDetails>
@@ -116,7 +111,7 @@ const ReceivedRequest: React.FC<any> = ({ workContracts, agencyWorkers }) => {
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default ReceivedRequest
+export default ReceivedRequest;
