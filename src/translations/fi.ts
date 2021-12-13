@@ -248,7 +248,7 @@ export default {
   business_contracts: "Yrityssopimukset",
   my_work: "Työni",
   remove: "Poista",
-  faq:"UKK",
+  faq: "Usein kysytyt kysymykset",
 
   //profilePage
   edit_profile: "Muokkaa profiilia",
@@ -473,10 +473,11 @@ export default {
   user_information_updated: "Käyttäjän tiedot päivitetty",
 
   //FAQ
-  show_less:"Näytä vähemmän",
+  show_less: "Näytä vähemmän",
   show_more: "Näytä enemmän",
 
   //landingPage
   slogan: "Kun henkilöstö voi hyvin, työ sujuu.",
-  intro: "Keikkakaveri tarjoaa tietoa, koulutusta ja välineitä turvallisten ja terveellisten työolojen kehittämiseen ja ylläpitämiseen.",
+  intro:
+    "Keikkakaveri tarjoaa tietoa, koulutusta ja välineitä turvallisten ja terveellisten työolojen kehittämiseen ja ylläpitämiseen.",
 }

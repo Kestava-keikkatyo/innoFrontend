@@ -16,8 +16,7 @@ export default {
   business_responsibilities_read:
     "Business has read and understood its responsibilities.",
   saveButton: "Save",
-  faq: "FAQ",
-
+  faq: "Frequently asked questions",
 
   //login
   login_title: "Log In",
@@ -482,13 +481,14 @@ export default {
 
   user_information_updated: "User information updated",
 
-    //FAQ
-    show_less:"Show less",
-    show_more: "Show more",
+  //FAQ
+  show_less: "Show less",
+  show_more: "Show more",
 
-    //landingPage
+  //landingPage
   slogan: "When the personnel feels well, the work flows.",
-  intro: "Keikkakaveri provides information, training and equipment for developing and maintaining safe and healthy working conditions.",
+  intro:
+    "Keikkakaveri provides information, training and equipment for developing and maintaining safe and healthy working conditions.",
 }
 
 //

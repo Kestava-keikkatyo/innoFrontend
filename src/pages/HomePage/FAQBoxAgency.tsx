@@ -1,7 +1,7 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import faq from '../../assets/tietopankki/faq.json';
+import React from "react"
+import { useTranslation } from "react-i18next"
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
+import faq from "../../assets/tietopankki/faq.json"
 
 import {
   TableCell,
@@ -14,13 +14,13 @@ import {
   List,
   ListItem,
   Button,
-} from '@material-ui/core';
+} from "@material-ui/core"
 
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-} from '@material-ui/core';
+} from "@material-ui/core"
 
 /**
  * @component
@@ -28,61 +28,29 @@ import {
  * page. Displays workers feeling entry history.
  */
 export default function CustomizedTables() {
-  const classes = useStyles();
-  const { t } = useTranslation();
-  const [expanded, setExpanded] = React.useState(true);
+  const classes = useStyles()
+  const { t } = useTranslation()
+  const [expanded, setExpanded] = React.useState(true)
   // Table head styles
   const StyledTableCell = withStyles((theme: Theme) =>
     createStyles({
       head: {
         backgroundColor: theme.palette.common.white,
-        color: '#eb5a02',
+        color: "#eb5a02",
       },
     })
-  )(TableCell);
-
-  if (!expanded) {
-    return (
-      <div style={{ marginTop: 16 }}>
-        <Grid item xs={12}>
-          <List component="nav" aria-label="mailbox folders">
-            {/*
-          Tulostaa FAQ-JSONin Accordion-listana
-       */}
-            {faq.agency.map((e, i) => (
-              <ListItem key={e.id}>
-                <Accordion className={classes.card} variant="outlined">
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                  >
-                    <Typography gutterBottom variant="h6">
-                      {`${e.tip}`}
-                    </Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>{`${e.details}`}</AccordionDetails>
-                </Accordion>
-              </ListItem>
-            ))}
-          </List>
-          <Button onClick={() => setExpanded(true)}>{t('show_less')}</Button>
-        </Grid>
-      </div>
-    );
-  }
+  )(TableCell)
   return (
-    <div style={{ marginTop: 16 }}>
-      <Grid item xs={12}>
+    <div>
+      <Grid item xs={12} className={classes.grid}>
         <List component="nav" aria-label="mailbox folders">
           {/*
           Tulostaa FAQ-JSONin Accordion-listana
        */}
-          {faq.agency.slice(0, 4).map((e, i) => (
+          {faq.agency.map((e, i) => (
             <ListItem key={e.id}>
               <Accordion className={classes.card} variant="outlined">
                 <AccordionSummary
-                  className={classes.accordionSummary}
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1a-content"
                   id="panel1a-header"
@@ -91,36 +59,38 @@ export default function CustomizedTables() {
                     {`${e.tip}`}
                   </Typography>
                 </AccordionSummary>
-                <AccordionDetails
-                  className={classes.accordionDetails}
-                >{`${e.details}`}</AccordionDetails>
+                <AccordionDetails>
+                  <Typography variant="subtitle1">{`${e.details}`}</Typography>
+                </AccordionDetails>
               </Accordion>
             </ListItem>
           ))}
         </List>
-        <Button onClick={() => setExpanded(false)}>{t('show_more')}</Button>
       </Grid>
     </div>
-  );
+  )
 }
 
 const useStyles = makeStyles((theme) => ({
   accordionDetails: {
-    width: '100%',
+    width: "100%",
   },
   accordionSummary: {
-    width: '100%',
+    width: "100%",
   },
   card: {
-    margin: theme.spacing(2, 0),
+    margin: theme.spacing(0.5, 0),
+    width: "100%",
   },
   accordion: {
-    width: '100%',
-    marginTop: 1,
-    border: '1px solid #E0E0E0',
-    borderRadius: 5,
+    width: "100%",
+    border: "1px solid #E0E0E0",
   },
   list: {
-    margin: '5%',
+    margin: "5%",
   },
-}));
+  grid: {
+    overflowY: "scroll",
+    height: "60vh",
+  },
+}))
