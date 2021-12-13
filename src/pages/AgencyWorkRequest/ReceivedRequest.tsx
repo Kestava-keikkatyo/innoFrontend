@@ -16,6 +16,7 @@ import {
 import GigModal from "./GigModal"
 import AddReactionIcon from "@mui/icons-material/AddReaction"
 import { useTranslation } from "react-i18next"
+import allUsersService from "../../services/allUsersService"
 
 const useStyles = makeStyles((theme: Theme) => ({
   divider: {
@@ -51,6 +52,11 @@ const ReceivedRequest: React.FC<any> = ({ workContracts, agencyWorkers }) => {
   const handleCooperationOpen = () => {
     setDisplayModal(true)
   }
+  /*
+  React.useEffect(() => {
+    allUsersService.getAgencyWorkers().then((res: any) => setLeft(res.data))
+  }, [])
+  */
 
   const { t } = useTranslation()
 
@@ -60,50 +66,52 @@ const ReceivedRequest: React.FC<any> = ({ workContracts, agencyWorkers }) => {
       {workContracts?.docs.map((workContract: any) => (
         <div key={workContract._id}>
           {workContract?.contracts?.map((contract: any) => (
-            <Accordion key={contract._id} className={classes.accordion}>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1bh-content"
-                id="panel1bh-header"
-              >
-                <Typography sx={{ width: "33%", flexShrink: 0 }}>
-                  {contract.headline}
-                </Typography>
-                <Typography sx={{ color: "text.secondary" }}>
-                  Ajalle:{" "}
-                  {format(
-                    new Date(contract.validityPeriod.startDate),
-                    "dd.MM.yyyy"
-                  )}{" "}
-                  -{" "}
-                  {format(
-                    new Date(contract.validityPeriod.endDate),
-                    "dd.MM.yyyy"
-                  )}
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Divider className={classes.divider} />
-                <Typography>Kuvaus: {contract.detailedInfo}</Typography>
-                <Typography>
-                  Tarvittavien työntekijöiden määrä: {contract.workerCount}{" "}
-                  kappaletta
-                </Typography>
-              </AccordionDetails>
-              <AccordionActions>
-                <Tooltip title="Valitse työntekijät" placement="top" arrow>
-                  <IconButton onClick={handleCooperationOpen}>
-                    <AddReactionIcon />
-                  </IconButton>
-                </Tooltip>
-              </AccordionActions>
-
+            <div>
+              <Accordion key={contract._id} className={classes.accordion}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1bh-content"
+                  id="panel1bh-header"
+                >
+                  <Typography sx={{ width: "33%", flexShrink: 0 }}>
+                    {contract.headline}
+                  </Typography>
+                  <Typography sx={{ color: "text.secondary" }}>
+                    Ajalle:{" "}
+                    {format(
+                      new Date(contract.validityPeriod.startDate),
+                      "dd.MM.yyyy"
+                    )}{" "}
+                    -{" "}
+                    {format(
+                      new Date(contract.validityPeriod.endDate),
+                      "dd.MM.yyyy"
+                    )}
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Divider className={classes.divider} />
+                  <Typography>Kuvaus: {contract.detailedInfo}</Typography>
+                  <Typography>
+                    Tarvittavien työntekijöiden määrä: {contract.workerCount}{" "}
+                    kappaletta
+                  </Typography>
+                </AccordionDetails>
+                <AccordionActions>
+                  <Tooltip title="Valitse työntekijät" placement="top" arrow>
+                    <IconButton onClick={() => setDisplayModal(true)}>
+                      <AddReactionIcon />
+                    </IconButton>
+                  </Tooltip>
+                </AccordionActions>
+              </Accordion>
               <GigModal
                 displayModal={displayModal}
                 closeModal={() => setDisplayModal(false)}
-                workContract={workContract}
+                workContractId="{workContract._id}"
+                contract="{contract}"
               />
-            </Accordion>
+            </div>
           ))}
         </div>
       ))}

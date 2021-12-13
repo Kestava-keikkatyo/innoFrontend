@@ -28,7 +28,6 @@ import allUsersService from "../../services/allUsersService"
 import workAddService from "../../services/workAddService"
 import { acceptWorkersToGig } from "../../actions/workAddAction"
 
-
 function not(a: any[], b: any[]) {
   return a.filter((value) => b.indexOf(value) === -1)
 }
@@ -40,7 +39,6 @@ function intersection(a: any[], b: any[]) {
 function union(a: any[], b: any[]) {
   return [...a, ...not(b, a)]
 }
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -72,7 +70,12 @@ const useStyles = makeStyles((theme) => ({
  * @param {Function} props.closeModal callback when closed.
  * @param {worker} props.workerData data of the added worker.
  */
-const GigModal: React.FC<any> = ({ displayModal, closeModal, workContract }) => {
+const GigModal: React.FC<any> = ({
+  displayModal,
+  closeModal,
+  workContractId,
+  contract,
+}) => {
   const { t } = useTranslation()
   const classes = useStyles()
   const theme = useTheme()
@@ -84,13 +87,8 @@ const GigModal: React.FC<any> = ({ displayModal, closeModal, workContract }) => 
   const leftChecked = intersection(checked, left)
   const rightChecked = intersection(checked, right)
   const dispatch = useDispatch()
-  
-  console.log('soppari: ', workContract)
 
-
-  useEffect(() => {
-    allUsersService.getAgencyWorkers().then((res: any) => setLeft(res.data))
-  }, [])
+  console.log("soppari: ", workContractId)
 
   const handleToggle = (value: any) => () => {
     const currentIndex = checked.indexOf(value)
@@ -129,7 +127,7 @@ const GigModal: React.FC<any> = ({ displayModal, closeModal, workContract }) => 
 
   const handleSave = () => {
     const selectedWorkers = right.map((worker: any) => worker._id)
-    dispatch(acceptWorkersToGig(workContract._id, workContract.contracts[0]._id, selectedWorkers))
+    dispatch(acceptWorkersToGig(workContractId, contract._id, selectedWorkers))
   }
 
   const customList = (title: React.ReactNode, items: any[]) => (
@@ -181,7 +179,7 @@ const GigModal: React.FC<any> = ({ displayModal, closeModal, workContract }) => 
       </List>
     </Card>
   )
-
+  console.log("workContract", workContractId)
 
   return (
     <Dialog
@@ -199,34 +197,34 @@ const GigModal: React.FC<any> = ({ displayModal, closeModal, workContract }) => 
         </Box>
       </DialogTitle>
       <Grid container spacing={2} alignItems="center" className={classes.root}>
-      <Grid item>{customList(t("choices"), left)}</Grid>
-      <Grid item>
-        <Grid container direction="column" alignItems="center">
-          <Button
-            variant="outlined"
-            size="small"
-            className={classes.button}
-            onClick={handleCheckedRight}
-            disabled={leftChecked.length === 0}
-            aria-label="move selected right"
-          >
-            &gt;
-          </Button>
-          <Button
-            variant="outlined"
-            size="small"
-            className={classes.button}
-            onClick={handleCheckedLeft}
-            disabled={rightChecked.length === 0}
-            aria-label="move selected left"
-          >
-            &lt;
-          </Button>
+        <Grid item>{customList(t("choices"), left)}</Grid>
+        <Grid item>
+          <Grid container direction="column" alignItems="center">
+            <Button
+              variant="outlined"
+              size="small"
+              className={classes.button}
+              onClick={handleCheckedRight}
+              disabled={leftChecked.length === 0}
+              aria-label="move selected right"
+            >
+              &gt;
+            </Button>
+            <Button
+              variant="outlined"
+              size="small"
+              className={classes.button}
+              onClick={handleCheckedLeft}
+              disabled={rightChecked.length === 0}
+              aria-label="move selected left"
+            >
+              &lt;
+            </Button>
+          </Grid>
         </Grid>
+        <Grid item>{customList(t("chosen"), right)}</Grid>
       </Grid>
-      <Grid item>{customList(t("chosen"), right)}</Grid>
-    </Grid>
-  )
+      )
       <DialogActions style={{ marginBottom: 10 }}>
         <Button
           color="primary"

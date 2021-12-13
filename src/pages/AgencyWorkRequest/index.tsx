@@ -14,7 +14,7 @@ import {
 
 import { useDispatch, useSelector } from "react-redux"
 import { IRootState } from "../../utils/store"
-import allUsersService from '../../services/allUsersService';
+import allUsersService from "../../services/allUsersService"
 import { useTranslation } from "react-i18next"
 import { fetchWorkContracts } from "../../actions/workAddAction"
 import ReceivedRequest from "./ReceivedRequest"
@@ -93,15 +93,12 @@ const AgencyGigOverview = () => {
     dispatch(fetchWorkContracts())
   }, [dispatch])
 
-
   useEffect(() => {
     allUsersService.getAgencyWorkers().then((res: any) => {
-      const agencyWorkers = res.data;
+      const agencyWorkers = res.data
       setAgencyWorkers(agencyWorkers)
-    });
-  }, [dispatch]);
-
-
+    })
+  }, [dispatch])
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue)
@@ -188,11 +185,23 @@ const AgencyGigOverview = () => {
         </Tabs>
       </AppBar>
       <Divider />
-      <TabPanel value={value} index={0}></TabPanel>
-      <TabPanel value={value} index={1}></TabPanel>
-      <TabPanel value={value} index={2}></TabPanel>
-      <TabPanel value={value} index={3}></TabPanel>
-      <ReceivedRequest workContracts={workContracts.workContracts} agencyWorkers={agencyWorkers}/>
+      <TabPanel value={value} index={0}>
+        {" "}
+        <ReceivedRequest
+          workContracts={workContracts.workContracts}
+          agencyWorkers={agencyWorkers}
+        />
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        {" "}
+        aaaaa
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        bbbbb
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        ccccccc
+      </TabPanel>
     </Container>
   )
 }
