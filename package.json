@@ -56,6 +56,7 @@
     "react-swipeable-views-utils": "^0.14.0-alpha.0",
     "react-transition-group": "^4.4.1",
     "react-uuid": "^1.0.2",
+    "recharts": "^2.1.8",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "yup": "^0.29.3"

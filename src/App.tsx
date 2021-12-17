@@ -49,6 +49,12 @@ import AllUsersList from "./pages/AdminPage/AllUsersList"
 import User from "./pages/AdminPage/user/User"
 import FAQIndex from "./pages/FAQPage/index"
 import CreateUser from "./pages/AdminPage/CreateUser"
+import ReportList from "./pages/AdminPage/ReportList"
+import FeedbackList from "./pages/AdminPage/FeedbackList"
+import FeedbackDetails from "./pages/AdminPage/FeedbackDetails"
+import FeelingList from "./pages/AdminPage/FeeligList"
+import ReportDetails from "./pages/AdminPage/ReportDetails"
+import FeelingDetails from "./pages/AdminPage/FeelingDetails"
 
 /**
  * @component
@@ -83,6 +89,24 @@ const App: React.FC = () => {
         </PrivateRoute>
         <PrivateRoute path="/createUser">
           <CreateUser />
+        </PrivateRoute>
+        <PrivateRoute path="/reportList">
+          <ReportList />
+        </PrivateRoute>
+        <PrivateRoute path="/feedbackList">
+          <FeedbackList />
+        </PrivateRoute>
+        <PrivateRoute path="/feelingList">
+          <FeelingList />
+        </PrivateRoute>
+        <PrivateRoute path="/reportDetails/:reportId">
+          <ReportDetails />
+        </PrivateRoute>
+        <PrivateRoute path="/feedBackDetails/:feedbackId">
+          <FeedbackDetails />
+        </PrivateRoute>
+        <PrivateRoute path="/feelingDetails/:workerId">
+          <FeelingDetails />
         </PrivateRoute>
         <DatabankRoute path="/databank/lifeline">
           <JobLifeline />
