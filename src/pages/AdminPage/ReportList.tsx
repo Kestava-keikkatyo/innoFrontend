@@ -5,7 +5,7 @@ import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { makeStyles } from "@material-ui/core";
-import { fetchReports } from "../../actions/reportActions";
+import { fetchAllReports } from "../../actions/reportActions";
 
 const ReportList: React.FC<any> = () => {
     const classes = useStyles();
@@ -13,7 +13,7 @@ const ReportList: React.FC<any> = () => {
     
     const { reports } = useSelector((state: IRootState) => state.report || []);
     useEffect(() => {
-        dispatch(fetchReports());
+        dispatch(fetchAllReports());
     }, [dispatch]);
     
     let rows = [];

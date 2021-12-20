@@ -1,4 +1,13 @@
-import { File, Feeling, Form, roles, severity, Profile, Report } from "./types";
+import {
+  File,
+  Feeling,
+  Form,
+  roles,
+  severity,
+  Profile,
+  Report,
+  Feedback,
+} from "./types";
 import { AdminActionType } from "./types";
 
 /**
@@ -761,6 +770,12 @@ export const POST_FEEDBACK = "POST_FEEDBACK";
 export const RESET_FEEDBACK = "RESET_FEEDBACK";
 export const GET_USER_FEEDBACKS = "GET_USER_FEEDBACKS";
 export const GET_ALL_FEEDBACKS = "GET_ALL_FEEDBACKS";
+export const SET_CURRENT_FEEDBACK = "SET_CURRENT_FEEDBACK";
+
+interface CurrentFeedBack {
+  type: typeof SET_CURRENT_FEEDBACK;
+  data: any;
+}
 
 interface PostFeedBack {
   type: typeof POST_FEEDBACK;
@@ -786,12 +801,14 @@ export type FeedBackActions =
   | PostFeedBack
   | ResetFeedBack
   | GetUserFeedBacks
-  | GetAllFeedBacks;
+  | GetAllFeedBacks
+  | CurrentFeedBack;
 
 export interface FeedBackState {
   myFeedBacks: [];
   allFeedBacks: [];
   feedBackSaved: boolean;
+  currentFeedback: Feedback;
 }
 
 export const ADD_WORK_TASK = "ADD_WORK_TASK";

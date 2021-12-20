@@ -94,7 +94,6 @@ const useStyles = makeStyles(() => ({
         fontSize: '24px',
         fontWeight: 600
     }
-
-  }));
+}));
 
 export default FeelingDetails;

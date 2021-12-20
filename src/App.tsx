@@ -102,7 +102,7 @@ const App: React.FC = () => {
         <PrivateRoute path="/reportDetails/:reportId">
           <ReportDetails />
         </PrivateRoute>
-        <PrivateRoute path="/feedBackDetails/:feedbackId">
+        <PrivateRoute path="/feedbackDetails/:feedbackId">
           <FeedbackDetails />
         </PrivateRoute>
         <PrivateRoute path="/feelingDetails/:workerId">

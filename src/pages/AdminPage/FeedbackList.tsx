@@ -5,7 +5,7 @@ import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { makeStyles } from "@material-ui/core";
-import { getUserFeedBacks } from "../../actions/feedBackActions";
+import { fetchAllFeedbacks } from "../../actions/feedBackActions";
 
 const FeedbackList = () => {
     const classes = useStyles();
@@ -13,7 +13,7 @@ const FeedbackList = () => {
     
     const { allFeedBacks } = useSelector((state: IRootState) => state.feedback || []);
     useEffect(() => {
-        dispatch(getUserFeedBacks());
+        dispatch(fetchAllFeedbacks());
     }, [dispatch]);
     
     let rows = [];
@@ -30,7 +30,7 @@ const FeedbackList = () => {
             width: 200 
         },
         {
-            field: "title",
+            field: "heading",
             headerName: "Title",
             width: 200,
         },
@@ -46,7 +46,7 @@ const FeedbackList = () => {
             renderCell: (params: any) => {
                 return (
                     <>
-                <Link to={"/feedBackDetails/" + params.row.id}>
+                <Link to={"/feedbackDetails/" + params.row.id}>
                     <span className={classes.details}>Details</span>
                 </Link>
                 </>
