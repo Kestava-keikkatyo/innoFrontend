@@ -11,7 +11,7 @@ import { fetchProfiles } from '../../actions/profileActions';
 import { IRootState } from '../../utils/store';
 import { makeStyles } from '@material-ui/core/styles';
 import ProfileCard from './ProfileCard';
-import { SearchIcon } from '@material-ui/data-grid';
+import { Search } from '@material-ui/icons';
 import { useTranslation } from 'react-i18next';
 
 const ProfilesPage: React.FC<any> = () => {
@@ -46,7 +46,7 @@ const ProfilesPage: React.FC<any> = () => {
               onChange={(e: any) => setFilter(e.target.value)}
             />
             <IconButton>
-              <SearchIcon />
+              <Search />
             </IconButton>
           </Box>
 

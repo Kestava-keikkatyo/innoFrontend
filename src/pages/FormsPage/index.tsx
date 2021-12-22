@@ -9,7 +9,7 @@ import {
   Grid,
   Theme,
 } from '@material-ui/core'
-import { AddIcon } from '@material-ui/data-grid'
+import { Add } from '@material-ui/icons'
 import { fetchFormList } from '../../actions/formListActions'
 import Spacing from '../../components/Spacing'
 import { useDispatch } from 'react-redux'
@@ -105,7 +105,7 @@ const FormsPage: React.FC = () => {
       <div className="new-form-btn">
         <Link to="/forms/newform">
           <Fab size="medium" color="primary" aria-label="add">
-            <AddIcon />
+            <Add />
           </Fab>
         </Link>
       </div>

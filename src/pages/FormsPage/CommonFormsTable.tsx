@@ -46,7 +46,7 @@ import { useTranslation } from 'react-i18next';
 import ReactDOMServer from 'react-dom/server';
 
 import { fetchFormList } from '../../actions/formListActions';
-import { SearchIcon } from '@material-ui/data-grid';
+import { Search } from '@material-ui/icons';
 //import MoveToInboxIcon from '@material-ui/icons/MoveToInbox'
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -275,7 +275,7 @@ const CommonFormsTable: React.FC<any> = () => {
               onChange={handleFilterchange}
             />
             <IconButton>
-              <SearchIcon />
+              <Search />
             </IconButton>
           </Box>
         </form>

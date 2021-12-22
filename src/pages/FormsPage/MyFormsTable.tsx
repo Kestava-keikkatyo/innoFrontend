@@ -45,7 +45,7 @@ import { useTranslation } from 'react-i18next';
 import ReactDOMServer from 'react-dom/server';
 import { setAlert } from '../../actions/alertActions';
 import { fetchFormList } from '../../actions/formListActions';
-import { SearchIcon } from '@material-ui/data-grid';
+import { Search } from '@material-ui/icons';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 /**
@@ -266,7 +266,7 @@ const MyFormsTable: React.FC<any> = () => {
               onChange={handleFilterchange}
             />
             <IconButton>
-              <SearchIcon />
+              <Search />
             </IconButton>
           </Box>
         </form>

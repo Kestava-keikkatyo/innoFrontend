@@ -1,5 +1,5 @@
 import { Box, InputBase, IconButton } from "@material-ui/core";
-import { SearchIcon } from "@material-ui/data-grid";
+import { Search } from '@material-ui/icons';
 import React from "react";
 
 
@@ -25,7 +25,7 @@ const CurrentlyWorkingPersons = () => {
             
             />
             <IconButton>
-              <SearchIcon />
+              <Search />
             </IconButton>
             </Box>
         {names.map(n => 

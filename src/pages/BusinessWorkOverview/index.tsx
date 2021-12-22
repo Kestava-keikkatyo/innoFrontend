@@ -11,7 +11,7 @@ import {
 import TextField from "@material-ui/core/TextField";
 import React, { useState } from "react";
 import AgencyGrid from "./components/AgencyGrid";
-import { SearchIcon } from '@material-ui/data-grid'
+import { Search } from '@material-ui/icons'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { IRootState } from "../../utils/store";
@@ -94,7 +94,7 @@ const BusinessWorkRequest: React.FC<any> = () => {
               onChange={(event) => handleChange(event)}
             />
             <IconButton type="submit">
-              <SearchIcon
+              <Search
               />
             </IconButton>
             <AgencyGrid workContracts={workContracts} setSelectedAgency={setSelectedAgency} searchInput={searchInput}/>

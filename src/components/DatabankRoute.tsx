@@ -6,7 +6,7 @@ import {
   InputBase,
   makeStyles,
 } from '@material-ui/core'
-import { SearchIcon } from '@material-ui/data-grid'
+import { Search } from '@material-ui/icons'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../assets/keikka-kaveri4.png'
@@ -76,7 +76,7 @@ const DatabankRoute: React.FC<DatabankProps> = ({ path, children }) => {
           <Grid item>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
-                <SearchIcon />
+                <Search />
               </div>
               <InputBase
                 placeholder={t("search")}

@@ -57,7 +57,7 @@ const FooterPage: React.FC<FooterPageProps> = () => {
       container
       direction="column"
       alignItems="stretch"
-      justify="flex-start"
+      justifyContent="flex-start"
       className="landing-part4"
     >
       <Grid item xs={12} className="landing-part41 bg-white">

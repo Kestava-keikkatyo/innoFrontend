@@ -8,7 +8,7 @@ import {
     TableHead,
     TableRow,
   } from "@material-ui/core/";
-import { AddIcon } from '@material-ui/data-grid';
+import { Add } from '@material-ui/icons';
 import ClearIcon from '@material-ui/icons/Clear';
 import { useTranslation } from 'react-i18next'
 
@@ -39,7 +39,7 @@ const WorkerTableView: React.FC<any> = ({agencyWorkers}) => {
                       color="secondary"
                       onClick={() => console.log("clicked")}
                     >
-                      <AddIcon />
+                      <Add />
                     </IconButton>
                   </TableCell>
                   <TableCell padding="none" align="right">
