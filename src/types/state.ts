@@ -7,8 +7,9 @@ import {
   Profile,
   Report,
   Feedback,
+  Job,
 } from "./types";
-import { AdminActionType } from "./types";
+import { AdminActionType, JobsAction } from "./types";
 
 /**
  * All users state & action types
@@ -167,6 +168,27 @@ export type AdminAction =
   | UpdateWorker
   | FetchAdmins
   | UpdateAdmin;
+
+interface JobsSuccessAction {
+  type: typeof JobsAction.GETALLJOBS_SUCCESS;
+  data: any;
+}
+
+interface JobsFailureAction {
+  error: any;
+  type: typeof JobsAction.GETALLJOBS_FAILURE;
+  data: any;
+}
+
+export type JobsActionTypes = JobsSuccessAction | JobsFailureAction;
+
+/**
+ * Job state & action types
+ */
+export interface JobState {
+  currentJob: Job;
+  jobs: [];
+}
 
 export const LOGIN = "USER_LOGIN";
 export const LOGOUT = "USER_LOGOUT";

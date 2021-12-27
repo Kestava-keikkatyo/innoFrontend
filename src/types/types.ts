@@ -12,6 +12,11 @@ export enum AdminActionType {
   DELETE_USER = "DELETE_USER",
 }
 
+export enum JobsAction {
+  GETALLJOBS_SUCCESS = "JOBS_GETALL_SUCCESS",
+  GETALLJOBS_FAILURE = "JOBS_GETALL_FAILURE",
+}
+
 export enum roles {
   Worker = "worker",
   Agency = "agency",
@@ -81,6 +86,13 @@ export interface Report {
   agencyAsHandler: string;
   fileUrl: string;
   fileType: string;
+}
+
+export interface Job {
+  jobTitle: string;
+  jobCategory: string;
+  details: string;
+  requirements: string;
 }
 
 export interface Feedback {
