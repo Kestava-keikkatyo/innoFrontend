@@ -47,7 +47,7 @@ const NewJobList = () => {
             renderCell: (params: any) => {
                 return (
                     <>
-                <Link to={"/jobDetails/" + params.row.id}>
+                <Link to={"/jobDetails/" + params.id}>
                     <span className={classes.details}>Details</span>
                 </Link>
                 </>

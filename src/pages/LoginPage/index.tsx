@@ -35,7 +35,7 @@ const LoginPage = () => {
   return (
     <Grid
       container
-      justify="center"
+      justifyContent="center"
       spacing={0}
       alignItems="center"
       style={{ minHeight: 'calc(100vh - 64px)' }}

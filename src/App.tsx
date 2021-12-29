@@ -112,9 +112,9 @@ const App: React.FC = () => {
         </PrivateRoute>
         <PrivateRoute path="/newJobList">
           <NewJobList />
-          <PrivateRoute path="/jobDetails/:jobId">
-          <JobDetails />
         </PrivateRoute>
+        <PrivateRoute path="/jobDetails/:jobId">
+          <JobDetails />
         </PrivateRoute>
         <DatabankRoute path="/databank/lifeline">
           <JobLifeline />

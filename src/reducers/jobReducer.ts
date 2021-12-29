@@ -2,8 +2,14 @@
  * @module reducer/job
  * @desc Redux job reducer
  */
-import { JobState, JobsActionTypes } from "./../types/state";
-import { JobsAction, Job } from "../types/types";
+import {
+  JobState,
+  JobActions,
+  GETALLJOBS_SUCCESS,
+  SET_CURRENT_JOB,
+  GETALLJOBS_FAILURE,
+} from "./../types/state";
+import { Job } from "../types/types";
 
 export const initialJob: Job = {
   jobTitle: "",
@@ -23,19 +29,25 @@ const initialState: JobState = {
  * @param {Object} state - current state
  * @param {Object} action - dispatched action
  */
-const jobReducer = (state = initialState, action: JobsActionTypes) => {
+const jobReducer = (state = initialState, action: JobActions) => {
   switch (action.type) {
-    case JobsAction.GETALLJOBS_SUCCESS: {
+    case GETALLJOBS_SUCCESS: {
       return {
         ...state,
         jobs: action.data,
       };
     }
-    case JobsAction.GETALLJOBS_FAILURE: {
+    case GETALLJOBS_FAILURE: {
       return {
-        error: action.error,
+        ...state,
+        fetchError: action.data,
       };
     }
+    case SET_CURRENT_JOB:
+      return {
+        ...state,
+        currentJob: action.data,
+      };
     default:
       return state;
   }

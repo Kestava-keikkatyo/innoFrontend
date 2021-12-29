@@ -12,11 +12,6 @@ export enum AdminActionType {
   DELETE_USER = "DELETE_USER",
 }
 
-export enum JobsAction {
-  GETALLJOBS_SUCCESS = "JOBS_GETALL_SUCCESS",
-  GETALLJOBS_FAILURE = "JOBS_GETALL_FAILURE",
-}
-
 export enum roles {
   Worker = "worker",
   Agency = "agency",

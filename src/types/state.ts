@@ -9,7 +9,7 @@ import {
   Feedback,
   Job,
 } from "./types";
-import { AdminActionType, JobsAction } from "./types";
+import { AdminActionType } from "./types";
 
 /**
  * All users state & action types
@@ -169,18 +169,9 @@ export type AdminAction =
   | FetchAdmins
   | UpdateAdmin;
 
-interface JobsSuccessAction {
-  type: typeof JobsAction.GETALLJOBS_SUCCESS;
-  data: any;
-}
-
-interface JobsFailureAction {
-  error: any;
-  type: typeof JobsAction.GETALLJOBS_FAILURE;
-  data: any;
-}
-
-export type JobsActionTypes = JobsSuccessAction | JobsFailureAction;
+export const GETALLJOBS_SUCCESS = "JOBS_GETALL_SUCCESS";
+export const GETALLJOBS_FAILURE = "JOBS_GETALL_FAILURE";
+export const SET_CURRENT_JOB = "SET_CURRENT_JOB";
 
 /**
  * Job state & action types
@@ -189,6 +180,23 @@ export interface JobState {
   currentJob: Job;
   jobs: [];
 }
+
+interface JobsSuccess {
+  type: typeof GETALLJOBS_SUCCESS;
+  data: any;
+}
+
+interface JobsFailure {
+  type: typeof GETALLJOBS_FAILURE;
+  data: any;
+}
+
+interface CurrentJob {
+  type: typeof SET_CURRENT_JOB;
+  data: any;
+}
+
+export type JobActions = JobsSuccess | CurrentJob | JobsFailure;
 
 export const LOGIN = "USER_LOGIN";
 export const LOGOUT = "USER_LOGOUT";

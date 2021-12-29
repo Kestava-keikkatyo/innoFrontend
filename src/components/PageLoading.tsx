@@ -18,7 +18,7 @@ const PageLoading: React.FC = () => {
   return (
     <Grid
       container
-      justify="center"
+      justifyContent="center"
       spacing={0}
       alignItems="center"
       style={{ minHeight: '100vh' }}>

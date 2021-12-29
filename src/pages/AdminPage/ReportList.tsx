@@ -49,9 +49,10 @@ const ReportList: React.FC<any> = () => {
             headerName: "Read more",
             width: 200,
             renderCell: (params: any) => {
+                console.log(params);
                 return (
                     <>
-                <Link to={"/reportDetails/" + params.row.id}>
+                <Link to={"/reportDetails/" + params.id}>
                     <span className={classes.details}>Details</span>
                 </Link>
                 </>
