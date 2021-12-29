@@ -1,8 +1,6 @@
 import {
     LocationSearching,
-    MailOutline,
     PermIdentity,
-    PhoneAndroid,
   } from "@material-ui/icons";
 import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core';
@@ -13,12 +11,12 @@ import { fetchJobById } from "../../actions/jobActions";
 import { fetchAllAgencies } from "../../actions/allUsersActions";
 
 
-type UserUrlParams = {
+type JobUrlParams = {
     jobId: string
 }
 const JobDetails: React.FC<any> = () =>  {
    
-    const { jobId } = useParams<UserUrlParams>();
+    const { jobId } = useParams<JobUrlParams>();
     const jobData: any = useSelector((state: IRootState) => state.job.currentJob);
     const {agencies} = useSelector((state: IRootState) => state.allUsers || []);
     const dispatch = useDispatch();
@@ -36,43 +34,43 @@ const JobDetails: React.FC<any> = () =>  {
         <div className={classes.jobContainer}>
             <div className={classes.jobShow}>
                 <span className={classes.jobShowTitle}>Supplier</span>
-                <div className={classes.userShowInfo}>
+                <div className={classes.jobShowInfo}>
                     <PermIdentity className={classes.jobShowIcon} />
                     <span className={classes.jobShowInfoTitle}>{ jobData.agencyId }</span>
                 </div>
                 <span className={classes.jobShowTitle}>Details</span>
-                <div className={classes.userShowInfo}>
+                <div className={classes.jobShowInfo}>
                     <span className={classes.jobShowTitle}>Title</span>
                     <span className={classes.jobShowInfoTitle}>{ jobData.jobTitle }</span>
                 </div>
-                <div className={classes.userShowInfo}>
+                <div className={classes.jobShowInfo}>
                     <span className={classes.jobShowTitle}>Category</span>
                     <span className={classes.jobShowInfoTitle}>{ jobData.jobCategory }</span>
                 </div>
-                <div className={classes.userShowInfo}>
+                <div className={classes.jobShowInfo}>
                     <span className={classes.jobShowTitle}>Job Type</span>
                     <span className={classes.jobShowInfoTitle}> Full time</span>
                 </div>
-                <div className={classes.userShowInfo}>
+                <div className={classes.jobShowInfo}>
                     <span className={classes.jobShowTitle}>Posted at</span>
                     <span className={classes.jobShowInfoTitle}> { jobData.createdAt }</span>
                 </div>
-                <div className={classes.userShowInfo}>
+                <div className={classes.jobShowInfo}>
                     <span className={classes.jobShowTitle}>Available until</span>
                     <span className={classes.jobShowInfoTitle}> { jobData.applyingEndsAt }</span>
                 </div>
-                <div className={classes.userShowInfo}>
+                <div className={classes.jobShowInfo}>
                     <LocationSearching className={classes.jobShowIcon} />
                     { [ jobData.streetAddress, jobData.zipCode, jobData.city ].join(', ') }
                 </div>
                 <span className={classes.jobShowTitle}>Requirements and Responsibilities</span>
-                <div className={classes.userShowInfo}>
+                <div className={classes.jobShowInfo}>
                     <span className={classes.details}>{ jobData.requirements }</span>
                 </div>
             </div>
             <div className={classes.jobDescription}>
             <span className={classes.jobShowTitle}>Full Job Description</span>
-            <div className={classes.userShowInfo}>
+            <div className={classes.jobShowInfo}>
                 <span className={classes.details}>{ jobData.details }</span>
             </div>
             </div>
@@ -116,7 +114,7 @@ const useStyles = makeStyles(() => ({
         fontWeight: 600,
         color: 'rgb(175, 170, 170)'
     },
-    userShowInfo: {
+    jobShowInfo: {
         display: 'flex',
         alignItems: 'center',
         margin: '20px 0px',
