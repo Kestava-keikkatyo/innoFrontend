@@ -29,6 +29,15 @@ const fetchAllJobs = async () => {
 
 /**
  * @function
+ * @desc Fetches all jobs avaible with current token.
+ */
+const fetchAllJobsForAgency = async () => {
+  const res = await axios.get(`${baseUrl}/jobvacancies/mine`, authHeader());
+  return res;
+};
+
+/**
+ * @function
  * @desc fetchJobById
  */
 const fetchJobById = async (id: string) => {
@@ -47,4 +56,5 @@ const fetchJobById = async (id: string) => {
 export default {
   fetchAllJobs,
   fetchJobById,
+  fetchAllJobsForAgency,
 };
