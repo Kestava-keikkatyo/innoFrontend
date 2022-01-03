@@ -84,6 +84,7 @@ export interface Report {
 }
 
 export interface Job {
+  _id: string;
   jobTitle: string;
   jobCategory: string;
   details: string;

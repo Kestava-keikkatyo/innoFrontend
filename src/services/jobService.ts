@@ -3,8 +3,6 @@
  * @desc Worker requests to backend.
  */
 import axios from "axios";
-import { is } from "date-fns/locale";
-import { object } from "prop-types";
 import baseUrl from "../utils/baseUrl";
 import { loadUser } from "../utils/storage";
 
@@ -53,8 +51,26 @@ const fetchJobById = async (id: string) => {
   }
 };
 
+/**
+ * @param id
+ * @returns
+ */
+const deleteJob = async (jobId: string) => {
+  try {
+    const res = await axios.delete(
+      `${baseUrl}/jobvacancies/mine/${jobId}`,
+      authHeader()
+    );
+    console.log("delete res", res);
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export default {
   fetchAllJobs,
   fetchJobById,
   fetchAllJobsForAgency,
+  deleteJob,
 };

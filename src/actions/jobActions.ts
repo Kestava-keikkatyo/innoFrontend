@@ -2,6 +2,8 @@ import jobService from "../services/jobService";
 import {
   GETALLJOBS_FAILURE,
   GETALLJOBS_SUCCESS,
+  JOB_DELETED_FAILURE,
+  JOB_DELETED_SUCCESS,
   SET_CURRENT_JOB,
 } from "../types/state";
 
@@ -42,5 +44,19 @@ export const fetchJobById = (id: string) => async (dispatch: any) => {
     dispatch({ type: SET_CURRENT_JOB, data: data });
   } catch (error) {
     console.log(error);
+  }
+};
+
+/**
+ * @function
+ * @desc Delete job by Id
+ */
+export const DeleteJobById = (id: string) => async (dispatch: any) => {
+  try {
+    const data = await jobService.deleteJob(id);
+    dispatch({ type: JOB_DELETED_SUCCESS, data: { id } });
+    console.log("deleted data", data);
+  } catch (error) {
+    dispatch({ type: JOB_DELETED_FAILURE, data: error && error.message });
   }
 };

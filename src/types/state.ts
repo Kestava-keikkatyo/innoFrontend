@@ -172,13 +172,15 @@ export type AdminAction =
 export const GETALLJOBS_SUCCESS = "JOBS_GETALL_SUCCESS";
 export const GETALLJOBS_FAILURE = "JOBS_GETALL_FAILURE";
 export const SET_CURRENT_JOB = "SET_CURRENT_JOB";
+export const JOB_DELETED_SUCCESS = "JOB_DELETED_SUCCESS";
+export const JOB_DELETED_FAILURE = "JOB_DELETED_FAILURE";
 
 /**
  * Job state & action types
  */
 export interface JobState {
   currentJob: Job;
-  jobs: [];
+  jobs: Job[];
 }
 
 interface JobsSuccess {
@@ -196,7 +198,22 @@ interface CurrentJob {
   data: any;
 }
 
-export type JobActions = JobsSuccess | CurrentJob | JobsFailure;
+interface JobDeletedSuccess {
+  type: typeof JOB_DELETED_SUCCESS;
+  data: { id: string };
+}
+
+interface JobDeletedFailure {
+  type: typeof JOB_DELETED_FAILURE;
+  data: { id: string };
+}
+
+export type JobActions =
+  | JobsSuccess
+  | CurrentJob
+  | JobsFailure
+  | JobDeletedSuccess
+  | JobDeletedFailure;
 
 export const LOGIN = "USER_LOGIN";
 export const LOGOUT = "USER_LOGOUT";

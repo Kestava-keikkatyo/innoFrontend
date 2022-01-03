@@ -63,7 +63,7 @@ const useStyles = makeStyles({
         {t('how_do_you_feel_today')}
       </Typography>
 
-      <Grid container className="mood-step-one" justify="center" style={{paddingTop: "5%"}}>
+      <Grid container className="mood-step-one" justifyContent="center" style={{paddingTop: "5%"}}>
         <Grid item className={classes.flexCenter} xs={2}>
           <SentimentVeryDissatisfiedIcon
             onClick={() => updateMood(0)}

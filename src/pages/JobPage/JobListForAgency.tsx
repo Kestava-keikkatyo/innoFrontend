@@ -6,8 +6,8 @@ import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { makeStyles } from "@material-ui/core";
-import { fetchAllJobsForAgency } from "../../actions/jobActions";
-//import { setAlert } from '../../actions/alertActions';
+import { DeleteJobById, fetchAllJobsForAgency } from "../../actions/jobActions";
+import { setAlert } from '../../actions/alertActions';
 
 const JobListForAgency: React.FC<any> = () => {
 
@@ -23,11 +23,11 @@ const JobListForAgency: React.FC<any> = () => {
   let rows = [];
   rows = jobs;
 
-  /*const handleDelete = (id: string) => {
+  const handleDelete = (id: string) => {
     console.log(id);
     dispatch(DeleteJobById(id))
     dispatch(setAlert("Job was deleted successfully!"))
-  }*/
+  }
   
   const columns = [
     {
@@ -62,7 +62,7 @@ const JobListForAgency: React.FC<any> = () => {
             </Link>
             <DeleteOutline
               className="userListDelete"
-              //onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.id)}
               
             />
             </>
