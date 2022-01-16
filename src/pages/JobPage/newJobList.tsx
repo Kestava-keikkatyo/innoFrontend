@@ -34,6 +34,10 @@ const NewJobList = () => {
             field: "agencyId",
             headerName: "Supplier",
             width: 250,
+            renderCell: (params: any) => {
+                console.log(params.row);
+                return <>{params.row.agencyId.name}</>;
+            }
         },
         {
             field: "createdAt",
