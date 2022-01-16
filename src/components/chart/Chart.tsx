@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core';
 const useStyles = makeStyles(() => ({
   chart: {
     margin: '20px',
-    padding: '20px',
+    padding: '30px',
     webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
     boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)'
   },
