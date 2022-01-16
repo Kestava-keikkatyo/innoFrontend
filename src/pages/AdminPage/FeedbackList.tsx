@@ -46,7 +46,7 @@ const FeedbackList = () => {
             renderCell: (params: any) => {
                 return (
                     <>
-                <Link to={"/feedbackDetails/" + params.row.id}>
+                <Link to={"/feedbackDetails/" + params.id}>
                     <span className={classes.details}>Details</span>
                 </Link>
                 </>

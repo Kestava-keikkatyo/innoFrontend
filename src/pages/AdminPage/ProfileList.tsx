@@ -57,7 +57,7 @@ const ProfileList: React.FC<any> = () => {
       renderCell: (params: any) => {
         return (
           <>
-            <Link to={"/user/" + params.row.id}>
+            <Link to={"/user/" + params.id}>
               <button className="userListEdit">Edit</button>
             </Link>
             <DeleteOutline
