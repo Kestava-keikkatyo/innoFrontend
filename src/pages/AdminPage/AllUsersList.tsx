@@ -71,7 +71,7 @@ const UserList: React.FC<any> = () => {
           <>
             <DeleteOutline
               className="userListDelete"
-              onClick={() => handleDelete(params.row.id, params.row.userType)}
+              onClick={() => handleDelete(params.id, params.row.userType)}
               
             />
             <Link to={"/firstName/" + params.row.firstName}>
@@ -79,7 +79,7 @@ const UserList: React.FC<any> = () => {
             </Link>
             <button 
              className="userListDeactive"
-             onClick={() => handleStatus(params.row.id, params.row.userType, !params.row.active)}>{params.row.active ? "Deactivate" : "Activate"}</button>
+             onClick={() => handleStatus(params.id, params.row.userType, !params.row.active)}>{params.row.active ? "Deactivate" : "Activate"}</button>
             
           </>
         );
