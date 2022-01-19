@@ -187,9 +187,10 @@ interface FormikFieldProps {
   label: string;
   type?: string;
   required?: boolean;
+  multiline?: boolean;
 }
 
-const FormikField: React.FC<FormikFieldProps> = ({ name, label, type = "text", required = false}) => {
+const FormikField: React.FC<FormikFieldProps> = ({ name, label, type = "text", required = false, multiline = false}) => {
   return (
     <div className="FormikField">
       <Field
@@ -200,6 +201,8 @@ const FormikField: React.FC<FormikFieldProps> = ({ name, label, type = "text", r
         name={name}
         fullWidth
         type={type}
+        rows={5}
+        multiline={multiline}
         helperText={<ErrorMessage name={name} />}
       />
     </div>
