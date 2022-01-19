@@ -68,9 +68,50 @@ const deleteJob = async (jobId: string) => {
   }
 };
 
+/**
+ * @function
+ * @desc sends out create job request.
+ * @param {Job} job - Basic job information.
+ */
+const createJob = async (
+  category: string,
+  title: string,
+  jobType: string,
+  salary: string,
+  location: {
+    street: string;
+    zipCode: string;
+    city: string;
+  },
+  requirements: string,
+  desirableSkills: string,
+  benefits: string,
+  details: string
+) => {
+  try {
+    return await axios.post(
+      `${baseUrl}/job`,
+      {
+        category,
+        title,
+        jobType,
+        salary,
+        location,
+        requirements,
+        desirableSkills,
+        benefits,
+        details,
+      },
+      authHeader()
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
 export default {
   fetchAllJobs,
   fetchJobById,
   fetchAllJobsForAgency,
   deleteJob,
+  createJob,
 };
