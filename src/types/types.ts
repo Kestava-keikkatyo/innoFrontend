@@ -85,10 +85,19 @@ export interface Report {
 
 export interface Job {
   _id: string;
-  jobTitle: string;
-  jobCategory: string;
-  details: string;
+  title: string;
+  category: string;
+  jobType: string;
+  salary: string;
+  location: {
+    street: string;
+    zipCode: string;
+    city: string;
+  };
   requirements: string;
+  desirableSkills: string;
+  benefits: string;
+  details: string;
 }
 
 export interface Feedback {
