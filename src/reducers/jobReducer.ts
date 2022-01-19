@@ -10,15 +10,26 @@ import {
   GETALLJOBS_FAILURE,
   JOB_DELETED_SUCCESS,
   JOB_DELETED_FAILURE,
+  JOB_CREATED_SUCCESS,
+  JOB_CREATED_FAILURE,
 } from "./../types/state";
 import { Job } from "../types/types";
 
 export const initialJob: Job = {
   _id: "",
-  jobTitle: "",
-  jobCategory: "",
+  title: "",
+  category: "",
+  jobType: "",
+  salary: "",
+  location: {
+    street: "",
+    zipCode: "",
+    city: "",
+  },
   details: "",
   requirements: "",
+  desirableSkills: "",
+  benefits: "",
 };
 
 const initialState: JobState = {
@@ -62,6 +73,12 @@ const jobReducer = (state = initialState, action: JobActions) => {
       return {
         ...state,
         fetchError: action.data,
+      };
+    }
+    case JOB_CREATED_SUCCESS: {
+      return {
+        ...state,
+        jobs: [...state.jobs, action.data],
       };
     }
     default:
