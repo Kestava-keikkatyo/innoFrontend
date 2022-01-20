@@ -2,9 +2,7 @@ import {
     LocationSearching,
     MailOutline,
     PermIdentity,
-    PhoneAndroid,
-    Publish,
-    Cancel
+    PhoneAndroid
   } from "@material-ui/icons";
 import { Link, useParams } from "react-router-dom";
 import "./user.css";
@@ -12,9 +10,10 @@ import React from 'react';
 import { fetchProfileById } from '../../../actions/profileActions';
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../../utils/store";
-// import FileUploader from '../../../components/FileUploader';
 // import { useTranslation } from 'react-i18next'
-import {useRef, useState, useEffect  } from "react";
+import {useEffect  } from "react";
+import ImageUploader from "../../../components/ImageUploader";
+
 
 type UserUrlParams = {
     profileId: string
@@ -28,23 +27,6 @@ const User: React.FC<any> = () => {
   useEffect(() => {
     dispatch(fetchProfileById(profileId));
   }, [dispatch, profileData.profileId]);
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const [image, setImage] = useState<File>();
-  const [preview, setPreview] = useState<string>();
-  useEffect(() => {
-    if (image) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreview(reader.result as string);
-      };
-      reader.readAsDataURL(image);
-    } else {
-      setPreview(undefined)
-      if (fileInputRef !== null && fileInputRef.current !== null) {
-        fileInputRef.current.value = '';  
-      }
-    }
-  }, [image]);
   
   return (
   <div className="user">
@@ -57,14 +39,7 @@ const User: React.FC<any> = () => {
     <div className="userContainer">
       <div className="userShow">
         <div className="userShowTop">
-          <img
-          src={ preview || profileData.profilePicture }
-          alt=""
-          className="userShowImg"
-          onClick={(event) => { 
-            event.preventDefault(); 
-            if (fileInputRef !== null && fileInputRef.current !== null) fileInputRef.current.click(); }} 
-          />
+          <ImageUploader picture={profileData.profilePicture} />
           <div className="userShowTopTitle">
             <span className="userShowUsername">{ profileData.name }</span>
             <span className="userShowUserTitle">Role</span>
@@ -148,33 +123,6 @@ const User: React.FC<any> = () => {
                 className="userUpdateInput"
               />
             </div>
-         </div>
-         <div className="userUpdateRight">
-           <div className="userUpdateUpload">
-              {preview ? (
-              <><img className="userUpdateImg" src={preview} alt={"preview"} />
-              <Cancel className="userUpdateIcon" onClick={(event) => {
-                setImage(undefined);
-                    } } /></>
-              ) : (
-              <Publish className="userUpdateIcon" onClick={(event) => { 
-                event.preventDefault(); 
-                if (fileInputRef !== null && fileInputRef.current !== null) fileInputRef.current.click(); }} 
-              /> )}
-            <input type="file" id="file"
-            style={{ display: "none" }}
-            accept="image/*"
-            onChange={(event: any) => {
-              const file = event.target.files[0];
-              if (file && file.type.substr(0, 5) === "image") {
-                setImage(file);
-              } else {
-                setImage(undefined);
-              }
-            }}
-            ref={fileInputRef} />
-           </div>
-          <button className="userUpdateButton">Update</button>
          </div>
         </form>
       </div>
