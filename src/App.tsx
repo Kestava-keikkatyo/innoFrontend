@@ -59,6 +59,7 @@ import NewJobList from "./pages/JobPage/newJobList"
 import JobDetails from "./pages/JobPage/JobDetails"
 import JobListForAgency from "./pages/JobPage/JobListForAgency"
 import JobVacancyUpdate from "./pages/JobPage/JobVacancyUpdate"
+import CreateJobForAgency from "./pages/JobPage/CreateJobForAgency"
 
 /**
  * @component
@@ -123,6 +124,9 @@ const App: React.FC = () => {
         </PrivateRoute>
         <PrivateRoute path="/jobVacancyUpdate" roles={[roles.Agency]}>
           <JobVacancyUpdate />
+        </PrivateRoute>
+        <PrivateRoute path="/createJobForAgency">
+          <CreateJobForAgency />
         </PrivateRoute>
         <DatabankRoute path="/databank/lifeline">
           <JobLifeline />
