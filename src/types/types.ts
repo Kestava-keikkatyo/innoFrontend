@@ -84,7 +84,7 @@ export interface Report {
 }
 
 export interface Job {
-  _id: string;
+  _id?: string;
   title: string;
   category: string;
   jobType: string;
@@ -93,6 +93,11 @@ export interface Job {
     street: string;
     zipCode: string;
     city: string;
+  };
+  duration: {
+    startDate: Date | null;
+    endDate: Date | null;
+    lastApplicationDate: Date | null;
   };
   requirements: string;
   desirableSkills: string;

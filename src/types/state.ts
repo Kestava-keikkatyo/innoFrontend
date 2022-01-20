@@ -174,6 +174,7 @@ export const GETALLJOBS_FAILURE = "JOBS_GETALL_FAILURE";
 export const SET_CURRENT_JOB = "SET_CURRENT_JOB";
 export const JOB_DELETED_SUCCESS = "JOB_DELETED_SUCCESS";
 export const JOB_DELETED_FAILURE = "JOB_DELETED_FAILURE";
+export const JOB_CREATED_REQUEST = "JOB_CREATED_REQUEST";
 export const JOB_CREATED_SUCCESS = "JOB_CREATED_SUCCESS";
 export const JOB_CREATED_FAILURE = "JOB_CREATED_FAILURE";
 
@@ -181,7 +182,8 @@ export const JOB_CREATED_FAILURE = "JOB_CREATED_FAILURE";
  * Job state & action types
  */
 export interface JobState {
-  currentJob: Job;
+  currentJob: Job | undefined;
+  loading: boolean;
   jobs: Job[];
 }
 
@@ -210,6 +212,11 @@ interface JobDeletedFailure {
   data: { id: string };
 }
 
+interface JobCreatedRequest {
+  type: typeof JOB_CREATED_REQUEST;
+  data: Job;
+}
+
 interface JobCreatedSuccess {
   type: typeof JOB_CREATED_SUCCESS;
   data: Job;
@@ -225,6 +232,7 @@ export type JobActions =
   | JobsFailure
   | JobDeletedSuccess
   | JobDeletedFailure
+  | JobCreatedRequest
   | JobCreatedSuccess
   | JobCreatedFailure;
 

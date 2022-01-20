@@ -3,6 +3,7 @@
  * @desc Worker requests to backend.
  */
 import axios from "axios";
+import { Job } from "../types/types";
 import baseUrl from "../utils/baseUrl";
 import { loadUser } from "../utils/storage";
 
@@ -73,40 +74,8 @@ const deleteJob = async (jobId: string) => {
  * @desc sends out create job request.
  * @param {Job} job - Basic job information.
  */
-const createJob = async (
-  category: string,
-  title: string,
-  jobType: string,
-  salary: string,
-  location: {
-    street: string;
-    zipCode: string;
-    city: string;
-  },
-  requirements: string,
-  desirableSkills: string,
-  benefits: string,
-  details: string
-) => {
-  try {
-    return await axios.post(
-      `${baseUrl}/job`,
-      {
-        category,
-        title,
-        jobType,
-        salary,
-        location,
-        requirements,
-        desirableSkills,
-        benefits,
-        details,
-      },
-      authHeader()
-    );
-  } catch (error) {
-    console.log(error);
-  }
+const createJob = async (job: Job) => {
+  return await axios.post(`${baseUrl}/job`, job, authHeader());
 };
 export default {
   fetchAllJobs,
