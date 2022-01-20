@@ -1,5 +1,5 @@
 import React from 'react'
-import { ErrorMessage, Field, useField } from 'formik'
+import { ErrorMessage, Field, FormikProps, useField } from 'formik'
 import PropTypes from 'prop-types'
 import {
   TextField,
@@ -15,6 +15,8 @@ import {
 } from '@material-ui/core'
 import { useEffect } from 'react'
 import './FormikField.css'
+import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
+import DateFnsUtils from '@date-io/date-fns'
 
 /**
  * @component
@@ -182,15 +184,50 @@ FormikRadioField.propTypes = {
   })).isRequired
 }
 
+interface DatePickerFieldProps {
+  name: string;
+  label: string;
+  value?: Date;
+  required?: boolean;
+}
+
+
+const findPropValue = (props: any, key: string) => {
+  key.split(".").forEach(selectorPart => props = props[selectorPart])
+  return props;
+}
+
+export const DatePickerField: React.FC<DatePickerFieldProps & FormikProps<any>> = ({label, name, required, values, setFieldValue}) => {
+  return (
+    <>
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <KeyboardDatePicker
+          id="date-picker-dialog"
+          label={label}
+          name={name}
+          required={required}
+          defaultValue={null}
+          inputVariant="outlined"
+          format="dd.MM.yyyy"
+          value={findPropValue(values, name)}
+          onChange={value => setFieldValue(name, value)}
+          KeyboardButtonProps={{
+            "aria-label": "change date"
+          }}
+        />
+      </MuiPickersUtilsProvider>
+    </>
+  )
+}
+
 interface FormikFieldProps {
   name: string;
   label: string;
   type?: string;
   required?: boolean;
-  multiline?: boolean;
 }
 
-const FormikField: React.FC<FormikFieldProps> = ({ name, label, type = "text", required = false, multiline = false}) => {
+const FormikField: React.FC<FormikFieldProps> = ({ name, label, type = "text", required = false}) => {
   return (
     <div className="FormikField">
       <Field
@@ -201,8 +238,6 @@ const FormikField: React.FC<FormikFieldProps> = ({ name, label, type = "text", r
         name={name}
         fullWidth
         type={type}
-        rows={5}
-        multiline={multiline}
         helperText={<ErrorMessage name={name} />}
       />
     </div>
