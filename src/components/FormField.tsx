@@ -191,12 +191,6 @@ interface DatePickerFieldProps {
   required?: boolean;
 }
 
-
-const findPropValue = (props: any, key: string) => {
-  key.split(".").forEach(selectorPart => props = props[selectorPart])
-  return props;
-}
-
 export const DatePickerField: React.FC<DatePickerFieldProps & FormikProps<any>> = ({label, name, required, values, setFieldValue}) => {
   return (
     <>
@@ -206,10 +200,10 @@ export const DatePickerField: React.FC<DatePickerFieldProps & FormikProps<any>> 
           label={label}
           name={name}
           required={required}
-          defaultValue={null}
+          //defaultValue={null}
           inputVariant="outlined"
           format="dd.MM.yyyy"
-          value={findPropValue(values, name)}
+          value={values[name]}
           onChange={value => setFieldValue(name, value)}
           KeyboardButtonProps={{
             "aria-label": "change date"
