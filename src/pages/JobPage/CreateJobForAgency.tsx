@@ -14,16 +14,12 @@ const initialValues: Job = {
   title: "",
   jobType: "",
   salary: "",
-  location: {
-    street: "",
-    zipCode: "",
-    city: ""
-  },
-  duration: {
-    startDate: null,
-    endDate: null,
-    lastApplicationDate: null
-  },
+  street: "",
+  zipCode: "",
+  city: "",
+  startDate: null,
+  endDate: null,
+  applicationLastDate: null,
   requirements: "",
   desirableSkills: "",
   benefits: "",
@@ -39,16 +35,12 @@ const CreateJobSchema = Yup.object().shape({
   .required("Category is required!"),
   jobType: Yup.string().required('JobType is required'),
   salary: Yup.number().typeError('You must specify a number').min(0, 'Min value 0.'),
-  location: Yup.object({
-    street: Yup.string(),
-    zipCode: Yup.string(),
-    city: Yup.string()
-  }),
-  duration: Yup.object().shape({
-    startDate: Yup.date().nullable(),
-    endDate: Yup.date().nullable(),
-    lastApplicationDate: Yup.date().nullable()
-  }),
+  street: Yup.string(),
+  zipCode: Yup.string(),
+  city: Yup.string(),
+  startDate: Yup.date().nullable(),
+  endDate: Yup.date().nullable(),
+  applicationLastDate: Yup.date().nullable(),
   requirements: Yup.string().min(2, "Requirements should be three letters at least!"),
   desirableSkills: Yup.string(),
   benefits: Yup.string(),
@@ -83,19 +75,18 @@ const CreateJobForAgency: React.FC<any> = () => {
                 <FormikField name="category" label="Category" required />
                 <FormikField name="jobType" label="Job Type" required />
                 <FormikField name="salary" label="Salary" required />
-                <FormikField name="location.street" label="street" />
-                <FormikField name="location.zipCode" label="zipCode" />
-                <FormikField name="location.city" label="city" />
-
-                <DatePickerField name="duration.startDate" label="Start date" {...props} />
-                <DatePickerField name="duration.endDate" label="End date" {...props} />
-                <DatePickerField name="duration.lastApplicationDate" label="Last application date" {...props} />
+                <FormikField name="street" label="street" />
+                <FormikField name="zipCode" label="zipCode" />
+                <FormikField name="city" label="city" />
+                <DatePickerField name="startDate" label="Start date" {...props} />
+                <DatePickerField name="endDate" label="End date" {...props} />
+                <DatePickerField name="applicationLastDate" label="Last application date" {...props} />
               </div>
               <div>
                 <FormikField name="requirements" label="Requirements" required />
                 <FormikField name="details" label="details" required />
                 <FormikField name="benefits" label="Benefits" />
-                <FormikField name="desirableSkills" label=" DesirableSkills" />
+                <FormikField name="desirableSkills" label="DesirableSkills" />
               </div>
               {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="primary" className={classes.button}>Create</Button>}
             </Form>

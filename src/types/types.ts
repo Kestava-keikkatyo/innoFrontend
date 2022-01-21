@@ -89,16 +89,12 @@ export interface Job {
   category: string;
   jobType: string;
   salary: string;
-  location: {
-    street: string;
-    zipCode: string;
-    city: string;
-  };
-  duration: {
-    startDate: Date | null;
-    endDate: Date | null;
-    lastApplicationDate: Date | null;
-  };
+  street: string;
+  zipCode: string;
+  city: string;
+  startDate: Date | null;
+  endDate: Date | null;
+  applicationLastDate: Date | null;
   requirements: string;
   desirableSkills: string;
   benefits: string;
