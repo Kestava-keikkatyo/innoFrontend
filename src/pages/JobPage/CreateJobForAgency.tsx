@@ -4,10 +4,10 @@ import * as Yup from "yup";
 import { Form, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import FormikField, { DatePickerField } from '../../components/FormField';
-import { setAlert } from '../../actions/alertActions';
 import { createJob } from '../../actions/jobActions';
 import { Job } from '../../types/types';
 import { IRootState } from '../../utils/store';
+import { useTranslation } from "react-i18next"
 
 const initialValues: Job = {
   category: "",
@@ -48,6 +48,7 @@ const CreateJobSchema = Yup.object().shape({
 });
 
 const CreateJobForAgency: React.FC<any> = () => {
+  const { t } = useTranslation()
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -59,7 +60,7 @@ const CreateJobForAgency: React.FC<any> = () => {
   return (
     <div className={classes.newJob}>
       <div className={classes.jobTitleContainer}>
-              <Typography className={classes.title} variant="h4">Add new job</Typography>
+              <Typography className={classes.title} variant="h4">{t('add_new_job')}</Typography>
       </div>
       <div className={classes.jobContainer}>
         <Formik
@@ -71,24 +72,24 @@ const CreateJobForAgency: React.FC<any> = () => {
             return (
             <Form>
               <div className={classes.jobContainerTop}>
-                <FormikField name="title" label="Title" required />
-                <FormikField name="category" label="Category" required />
-                <FormikField name="jobType" label="Job Type" required />
-                <FormikField name="salary" label="Salary" required />
-                <FormikField name="street" label="street" />
-                <FormikField name="zipCode" label="zipCode" />
-                <FormikField name="city" label="city" />
-                <DatePickerField name="applicationLastDate" label="Last application date" {...props} />
-                <DatePickerField name="startDate" label="Start date" {...props} />
-                <DatePickerField name="endDate" label="End date" {...props} />
+                <FormikField name="title" label={t('job_title')} required />
+                <FormikField name="category" label={t('job_category')} required />
+                <FormikField name="jobType" label={t('job_type')} required />
+                <FormikField name="salary" label={t('job_salary')} required />
+                <FormikField name="street" label={t('job_street')} />
+                <FormikField name="zipCode" label={t('job_zipCode')} />
+                <FormikField name="city" label={t('job_city')} />
+                <DatePickerField name="applicationLastDate" label={t('job_applicationLastDate')} {...props} />
+                <DatePickerField name="startDate" label={t('job_startDate')} {...props} />
+                <DatePickerField name="endDate" label={t('job_endDate')} {...props} />
               </div>
               <div>
-                <FormikField name="requirements" label="Requirements" required multiline />
-                <FormikField name="desirableSkills" label="DesirableSkills" multiline />
-                <FormikField name="benefits" label="Benefits" multiline />
-                <FormikField name="details" label="details" multiline />
+                <FormikField name="requirements" label={t('job_requirements')} required multiline />
+                <FormikField name="desirableSkills" label={t('job_desirableSkills')} multiline />
+                <FormikField name="benefits" label={t('job_benefits')} multiline />
+                <FormikField name="details" label={t('job_details')} multiline />
               </div>
-              {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="primary" className={classes.button}>Create</Button>}
+              {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="primary" className={classes.button}>{t('create')}</Button>}
             </Form>
             );
           }}

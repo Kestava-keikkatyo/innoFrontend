@@ -70,6 +70,7 @@ export default {
   entry: "New entry",
   history: "History",
   active: "Active",
+  create: "Create",
 
   //Mood index page
   entry_mood: "Add mood",
@@ -489,6 +490,23 @@ export default {
   slogan: "When the personnel feels well, the work flows.",
   intro:
     "Keikkakaveri provides information, training and equipment for developing and maintaining safe and healthy working conditions.",
-}
+
+  //CreateJobForAgency
+  add_new_job: "Add new job",
+  job_title: "Title",
+  job_category: "Category",
+  job_type: "Job type",
+  job_salary: "Salary",
+  job_street: "Street",
+  job_zipCode: "Zip code",
+  job_city: "City",
+  job_applicationLastDate: "Application last date",
+  job_startDate: "Start date",
+  job_endDate: " End date",
+  job_requirements: "Requirements",
+  job_desirableSkills: "Desirable skills",
+  job_benefits: "Benefits",
+  job_details: "Details",
+};
 
 //

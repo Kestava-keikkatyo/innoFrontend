@@ -68,6 +68,7 @@ export default {
   entry: "Lisää",
   history: "Historia",
   active: "Aktiivisia",
+  create: "Luo",
 
   //Mood index page
   entry_mood: "Lisää fiilis",
@@ -480,4 +481,21 @@ export default {
   slogan: "Kun henkilöstö voi hyvin, työ sujuu.",
   intro:
     "Keikkakaveri tarjoaa tietoa, koulutusta ja välineitä turvallisten ja terveellisten työolojen kehittämiseen ja ylläpitämiseen.",
-}
+
+  //CreateJobForAgency
+  add_new_job: "Lisää uusi työpaikka",
+  job_title: "Otsikko",
+  job_category: "Kategoria",
+  job_type: "Työn tyyppi",
+  job_salary: "Palkka",
+  job_street: "Katu",
+  job_zipCode: "Postinumero",
+  job_city: "Kaupunki",
+  job_applicationLastDate: "Hakemuksen viimeinen päivämäärä",
+  job_startDate: "Aloituspäivämäärä",
+  job_endDate: "Päättymispäivämäärä",
+  job_requirements: "Vaatimukset",
+  job_desirableSkills: "Halutut taidot",
+  job_benefits: "Edut",
+  job_details: "Lisätiedot",
+};
