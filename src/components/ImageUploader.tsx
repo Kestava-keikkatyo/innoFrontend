@@ -1,3 +1,4 @@
+import { Avatar, makeStyles } from '@material-ui/core';
 import { Cancel } from '@material-ui/icons';
 import React, { useEffect, useRef, useState } from 'react';
 
@@ -15,6 +16,7 @@ import React, { useEffect, useRef, useState } from 'react';
 const ImageUploader: React.FC<ImageUploaderProps> = ({
     picture
   }) => {
+    const classes = useStyles();
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [image, setImage] = useState<File>();
     const [preview, setPreview] = useState<string>();
@@ -35,17 +37,17 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
 
     return (
         <>
-            <img
+            <Avatar
             src={ preview || picture }
             alt=""
-            className="userShowImg"
+            className={classes.userShowImg}
             onClick={(event) => { 
             event.preventDefault(); 
             if (fileInputRef !== null && fileInputRef.current !== null) fileInputRef.current.click(); }} 
             />
 
             {preview ? (
-                <Cancel className="userUpdateIcon" onClick={(event) => {
+                <Cancel className={classes.imageCancel} onClick={(event) => {
                 setImage(undefined);
                     } } />
                 ) : null}
@@ -65,4 +67,16 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
     );
 };
 
+const useStyles = makeStyles(() => ({
+  userShowImg: {
+    width: '130px',
+    height: '130px',
+    borderRadius: '50%',
+    objectFit: 'cover',
+    cursor: 'pointer'
+  },
+  imageCancel: {
+    cursor: 'pointer'
+}
+}));
 export default ImageUploader;
