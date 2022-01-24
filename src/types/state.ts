@@ -30,7 +30,9 @@ export const SET_AGENCY_WORKERS = "SET_AGENCY_WORKERS";
 export const SET_ALL_ADMINS = "SET_ALL_ADMINS";
 export const USER_DELETED = "USER_DELETED";
 export const UPDATE_USER_STATUS = "UPDATE_USER_STATUS";
-export const USER_CREATED = "USER_CREATED";
+export const USER_CREATED_REQUEST = "USER_CREATED_REQUEST";
+export const USER_CREATED_SUCCESS = "USER_CREATED_SUCCESS";
+export const USER_CREATED_FAILURE = "USER_CREATED_FAILURE";
 
 interface SetAllAgenciesAction {
   type: typeof SET_ALL_AGENCIES;
@@ -67,8 +69,18 @@ interface UserStatus_Updated {
   data: { id: string; userType: string; active: boolean };
 }
 
-interface UserCreated {
-  type: typeof USER_CREATED;
+interface UserCreatedRequest {
+  type: typeof USER_CREATED_REQUEST;
+  data: User;
+}
+
+interface UserCreatedSuccess {
+  type: typeof USER_CREATED_SUCCESS;
+  data: User;
+}
+
+interface UserCreatedFailure {
+  type: typeof USER_CREATED_FAILURE;
   data: User;
 }
 
@@ -80,7 +92,9 @@ export type AllUsersActionTypes =
   | SetAllAdminsAction
   | UserDeleted
   | UserStatus_Updated
-  | UserCreated;
+  | UserCreatedRequest
+  | UserCreatedSuccess
+  | UserCreatedFailure;
 
 /**
  * Report state & action types

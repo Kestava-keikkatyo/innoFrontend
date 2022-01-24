@@ -7,7 +7,7 @@ import {
   AllUsersActionTypes,
   USER_DELETED,
   UPDATE_USER_STATUS,
-  USER_CREATED,
+  USER_CREATED_SUCCESS,
 } from "../types/state";
 import { roles } from "../types/types";
 
@@ -120,7 +120,7 @@ const allUsersReducer = (
           });
       }
       return nextState;
-    case USER_CREATED:
+    case USER_CREATED_SUCCESS:
       switch (action.data.type) {
         case roles.Worker:
           nextState.workers = [...state.workers, action.data];

@@ -3,7 +3,11 @@
  * @desc Redux admin actions
  */
 import adminService from "../services/adminService";
-import { USER_DELETED, UPDATE_USER_STATUS, USER_CREATED } from "../types/state";
+import {
+  USER_DELETED,
+  UPDATE_USER_STATUS,
+  USER_CREATED_SUCCESS,
+} from "../types/state";
 
 /**
  * @function
@@ -37,7 +41,7 @@ export const createAdmin =
   (name: string, email: string, password: string) => async (dispatch: any) => {
     const data = await adminService.createUser(name, email, "admin", password);
     dispatch({
-      type: USER_CREATED,
+      type: USER_CREATED_SUCCESS,
       data: { name, email, userType: "admin", password },
     });
     console.log("Created user", data);
