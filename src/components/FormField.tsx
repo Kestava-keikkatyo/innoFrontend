@@ -200,7 +200,7 @@ export const DatePickerField: React.FC<DatePickerFieldProps & FormikProps<any>> 
           label={label}
           name={name}
           required={required}
-          //defaultValue={null}
+          fullWidth
           inputVariant="outlined"
           format="dd.MM.yyyy"
           value={values[name]}
@@ -208,6 +208,7 @@ export const DatePickerField: React.FC<DatePickerFieldProps & FormikProps<any>> 
           KeyboardButtonProps={{
             "aria-label": "change date"
           }}
+          style={{ minHeight: '4rem'}}
         />
       </MuiPickersUtilsProvider>
     </>
@@ -219,9 +220,10 @@ interface FormikFieldProps {
   label: string;
   type?: string;
   required?: boolean;
+  multiline?: boolean;
 }
 
-const FormikField: React.FC<FormikFieldProps> = ({ name, label, type = "text", required = false}) => {
+const FormikField: React.FC<FormikFieldProps> = ({ name, label, type = "text", required = false, multiline = false}) => {
   return (
     <div className="FormikField">
       <Field
@@ -232,6 +234,8 @@ const FormikField: React.FC<FormikFieldProps> = ({ name, label, type = "text", r
         name={name}
         fullWidth
         type={type}
+        rows={2}
+        multiline={multiline}
         helperText={<ErrorMessage name={name} />}
       />
     </div>

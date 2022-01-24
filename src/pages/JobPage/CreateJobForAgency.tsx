@@ -78,15 +78,15 @@ const CreateJobForAgency: React.FC<any> = () => {
                 <FormikField name="street" label="street" />
                 <FormikField name="zipCode" label="zipCode" />
                 <FormikField name="city" label="city" />
+                <DatePickerField name="applicationLastDate" label="Last application date" {...props} />
                 <DatePickerField name="startDate" label="Start date" {...props} />
                 <DatePickerField name="endDate" label="End date" {...props} />
-                <DatePickerField name="applicationLastDate" label="Last application date" {...props} />
               </div>
               <div>
-                <FormikField name="requirements" label="Requirements" required />
-                <FormikField name="details" label="details" required />
-                <FormikField name="benefits" label="Benefits" />
-                <FormikField name="desirableSkills" label="DesirableSkills" />
+                <FormikField name="requirements" label="Requirements" required multiline />
+                <FormikField name="desirableSkills" label="DesirableSkills" multiline />
+                <FormikField name="benefits" label="Benefits" multiline />
+                <FormikField name="details" label="details" multiline />
               </div>
               {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="primary" className={classes.button}>Create</Button>}
             </Form>
