@@ -1,11 +1,12 @@
 import React from 'react';
-import { Avatar, Button, makeStyles, Typography } from "@material-ui/core";
+import { Button, makeStyles, Typography } from "@material-ui/core";
 import * as Yup from "yup";
 import { Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { createAdmin } from '../../actions/adminActions';
 import FormikField from '../../components/FormField';
 import { setAlert } from '../../actions/alertActions';
+import ImageUploader from '../../components/ImageUploader';
 
 const useStyles = makeStyles((theme) => ({
     newUser: {
@@ -93,17 +94,13 @@ const NewUser: React.FC<any> = () => {
                       return (
                       <Form>
                           <div className={classes.userAccountTop}>
-                              <Avatar
-                              src="https://i.pinimg.com/236x/08/cc/3a/08cc3a6dab2ed34d52d71e2ce77a19ab.jpg"
-                              alt=""
-                              className={classes.userUploadImg}
-                              />
-                            </div>
-                            <FormikField name="name" label="Name" required />
-                            <FormikField name="email" label="Email" required />
-                            <FormikField name="password" label="Password" type="password" required />
-                            <FormikField name="confirmPassword" label="Confirm Password" type="password" required />
-                            <Button type="submit" variant="contained" color="primary" className={classes.button}>Create</Button>
+                          <ImageUploader />
+                          </div>
+                          <FormikField name="name" label="Name" required />
+                          <FormikField name="email" label="Email" required />
+                          <FormikField name="password" label="Password" type="password" required />
+                          <FormikField name="confirmPassword" label="Confirm Password" type="password" required />
+                          <Button type="submit" variant="contained" color="primary" className={classes.button}>Create</Button>
                         </Form>
                     );
                 }}
