@@ -18,12 +18,16 @@ import { useTranslation } from 'react-i18next';
 import CooperationInfoModal from './CooperationInfoModal';
 import { red } from '@material-ui/core/colors';
 import { useHistory } from 'react-router';
+import { setAlert } from "../../actions/alertActions"
+import { severity } from '../../types/types';
+import { useDispatch } from 'react-redux';
 
 const AgencyCard: React.FC<any> = ({ agency }) => {
   const [expanded, setExpanded] = React.useState(false);
   const classes = useStyles();
   const { t } = useTranslation();
   const history = useHistory();
+  const dispatch = useDispatch();
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -34,15 +38,20 @@ const AgencyCard: React.FC<any> = ({ agency }) => {
     setDisplayModal(true);
   };
 
-  const handleSiirryProfiiliin = (profileId: any) => {
-    history.push({
-      pathname: '/profiles/profile-view',
-      state: { profileId: profileId },
-    });
+  const handleSiirryProfiiliin = (agency: any) => {
+    if (!agency.profile){
+      dispatch(setAlert("Agency profile is missing!", severity.Error));
+      return;
+    } else {
+      history.push({
+        pathname: '/profiles/profile-view',
+        state: { profileId: agency.profile._id },
+      });
+    }
   };
 
   const contractId = agency.businessContracts[0];
-
+  const profilePic = agency.profile ? agency.profile.profilePicture : ''
   return (
     <div>
       <Card className={classes.root} onClick={handleExpandClick}>
@@ -51,7 +60,7 @@ const AgencyCard: React.FC<any> = ({ agency }) => {
             <Avatar
               aria-label="recipe"
               className={classes.avatar}
-              src={agency.profile.profilePicture}
+              src={profilePic}
               alt="profilePicture"
             />
           }
@@ -89,7 +98,7 @@ const AgencyCard: React.FC<any> = ({ agency }) => {
                     <Button
                       variant="contained"
                       color="default"
-                      onClick={() => handleSiirryProfiiliin(agency.profile._id)}
+                      onClick={() => handleSiirryProfiiliin(agency)}
                     >
                       {t('transfer_company_profile')}
                     </Button>
