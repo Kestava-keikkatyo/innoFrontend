@@ -507,6 +507,8 @@ export default {
   job_desirableSkills: "Desirable skills",
   job_benefits: "Benefits",
   job_details: "Details",
+  job_created_successfully: "Job created successfully!",
+  failed_to_create_the_job: "Failed to create the job!",
 };
 
 //

@@ -498,4 +498,6 @@ export default {
   job_desirableSkills: "Halutut taidot",
   job_benefits: "Edut",
   job_details: "Lisätiedot",
+  job_created_successfully: "Työ luotiin onnistuneesti!",
+  failed_to_create_the_job: "Työn luominen epäonnistui!",
 };
