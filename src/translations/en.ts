@@ -509,6 +509,21 @@ export default {
   job_details: "Details",
   job_created_successfully: "Job created successfully!",
   failed_to_create_the_job: "Failed to create the job!",
+
+  //CreateUser
+  add_new_admin: "Add new admin",
+  create_user_name: "Name",
+  create_user_email: "Email",
+  create_user_password: "Password",
+  create_user_confirm_password: "Confirm Password",
+  user_created_successfully: "User created successfully!",
+  name_should_be_three_letters_at_least:
+    "Name should be three letters at least!",
+  name_is_required: "Name is required!",
+  not_valid_email: "Not valid email!",
+  email_is_required: "Email is required!",
+  password_is_required: "Password is required!",
+  passwords_must_match: "Passwords must match!",
 };
 
 //

@@ -500,4 +500,19 @@ export default {
   job_details: "Lisätiedot",
   job_created_successfully: "Työ luotiin onnistuneesti!",
   failed_to_create_the_job: "Työn luominen epäonnistui!",
+
+  //CreateUser
+  add_new_admin: "Lisää uusi järjestelmänvalvoja",
+  create_user_name: "Nimi",
+  create_user_email: "Sähköposti",
+  create_user_password: "Salasana",
+  create_user_confirm_password: "Vahvista salasana",
+  user_created_successfully: "Käyttäjä luotiin onnistuneesti!",
+  name_should_be_three_letters_at_least:
+    "Nimessä tulee olla vähintään kolme kirjainta!",
+  name_is_required: "Nimi on syötettävä!",
+  not_valid_email: "Virheellinen sähköposti!",
+  email_is_required: "Sähköposti on syötettävä!",
+  password_is_required: "Salasana on syötettävä!",
+  passwords_must_match: "Salasanojen täytyy täsmätä!",
 };
