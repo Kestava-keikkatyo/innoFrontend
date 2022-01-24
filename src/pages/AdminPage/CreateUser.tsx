@@ -7,6 +7,73 @@ import { createAdmin } from '../../actions/adminActions';
 import FormikField from '../../components/FormField';
 import { setAlert } from '../../actions/alertActions';
 import ImageUploader from '../../components/ImageUploader';
+import { useTranslation } from "react-i18next"
+import i18next from "i18next"
+
+interface FormValues {
+    name: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+  }
+
+const initialValues: FormValues = {
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
+};
+
+const CreateUserSchema = Yup.object().shape({
+    name: Yup.string()
+    .min(2, i18next.t("name_should_be_three_letters_at_least"))
+    .required(i18next.t("name_is_required")),
+    email: Yup.string().email(i18next.t("not_valid_email")).required(i18next.t("email_is_required")),
+    password: Yup.string().required(i18next.t("password_is_required")),
+    confirmPassword: Yup.string()
+     .oneOf([Yup.ref('password'), undefined], i18next.t("passwords_must_match"))
+});
+
+const NewUser: React.FC<any> = () => {
+
+    const { t } = useTranslation()
+    const classes = useStyles();
+    const dispatch = useDispatch();
+    
+    const handleSubmit = (values: FormValues) => {
+        dispatch(createAdmin(values.name, values.email, values.password));
+        dispatch(setAlert(i18next.t("user_created_successfully")));
+      };
+      return (
+      <div className={classes.newUser}>
+          <div className={classes.userTitleContainer}>
+              <Typography className={classes.title} variant="h4">{t('add_new_admin')}</Typography>
+          </div>
+          <div className={classes.userAccount}>
+              <Formik
+              initialValues={initialValues}
+              onSubmit={handleSubmit}
+              validationSchema={CreateUserSchema}
+              >
+                  {() => {
+                      return (
+                      <Form>
+                          <div className={classes.userAccountTop}>
+                          <ImageUploader />
+                          </div>
+                          <FormikField name="name" label={t('create_user_name')} required />
+                          <FormikField name="email" label={t('create_user_email')} required />
+                          <FormikField name="password" label={t('create_user_password')} type="password" required />
+                          <FormikField name="confirmPassword" label={t('create_user_confirm_password')} type="password" required />
+                          <Button type="submit" variant="contained" color="primary" className={classes.button}>{t('create')}</Button>
+                        </Form>
+                    );
+                }}
+                </Formik>
+          </div>
+        </div>
+    );
+}
 
 const useStyles = makeStyles((theme) => ({
     newUser: {
@@ -44,71 +111,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
     }
-  }));
-
-interface FormValues {
-    name: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-  }
-
-const initialValues: FormValues = {
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: ""
-};
-
-const CreateUserSchema = Yup.object().shape({
-    name: Yup.string()
-    .min(2, "Name should be three letters at least!")
-    .required("Name is required"),
-    email: Yup.string().email("Not a valid email").required('Email is required'),
-    password: Yup.string().required('Password is required'),
-    confirmPassword: Yup.string()
-     .oneOf([Yup.ref('password'), undefined], 'Passwords must match')
-});
-
-const NewUser: React.FC<any> = () => {
-
-    const classes = useStyles();
-    const dispatch = useDispatch();
-    
-    const handleSubmit = (values: FormValues) => {
-        dispatch(createAdmin(values.name, values.email, values.password));
-        dispatch(setAlert("User created successfully!"));
-      };
-      return (
-      <div className={classes.newUser}>
-          <div className={classes.userTitleContainer}>
-              <Typography className={classes.title} variant="h4">Add new admin</Typography>
-          </div>
-          <div className={classes.userAccount}>
-              <Formik
-              initialValues={initialValues}
-              onSubmit={handleSubmit}
-              validationSchema={CreateUserSchema}
-              >
-                  {({ dirty, isValid }) => {
-                      return (
-                      <Form>
-                          <div className={classes.userAccountTop}>
-                          <ImageUploader />
-                          </div>
-                          <FormikField name="name" label="Name" required />
-                          <FormikField name="email" label="Email" required />
-                          <FormikField name="password" label="Password" type="password" required />
-                          <FormikField name="confirmPassword" label="Confirm Password" type="password" required />
-                          <Button type="submit" variant="contained" color="primary" className={classes.button}>Create</Button>
-                        </Form>
-                    );
-                }}
-                </Formik>
-          </div>
-        </div>
-    );
-}
+}));
 
 export default NewUser;
 
