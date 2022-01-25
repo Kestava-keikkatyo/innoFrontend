@@ -31,24 +31,28 @@ const JobListForAgency: React.FC<any> = () => {
   
   const columns = [
     {
-        field: "jobTitle",
+        field: "title",
         headerName: "Title",
         width: 200,
     },
     { 
-        field: "jobCategory", 
+        field: "category", 
         headerName: "Category", 
         width: 200 
     },
     {
-        field: "agencyId",
-        headerName: "Supplier",
-        width: 250,
-    },
+      field: "agency",
+      headerName: "Supplier",
+      width: 200,
+      renderCell: (params: any) => {
+          console.log(params.row);
+          return <>{params.row.agency.name}</>;
+      }
+  },
     {
         field: "createdAt",
         headerName: "Release Date",
-        width: 200,
+        width: 250,
     },
     {
         field: "action",
