@@ -1,5 +1,4 @@
 import React from "react";
-import JobList from "./JobList";
 
 const Jobs = () => {
 
@@ -7,7 +6,7 @@ const Jobs = () => {
   return (
 
   <div>
-    <JobList />
+   
   </div>
   )
 };
