@@ -5,14 +5,17 @@
 import {
   JobState,
   JobActions,
-  GETALLJOBS_SUCCESS,
-  SET_CURRENT_JOB,
-  GETALLJOBS_FAILURE,
+  JOB_GETALL_FAILURE,
   JOB_DELETED_SUCCESS,
   JOB_DELETED_FAILURE,
   JOB_CREATED_SUCCESS,
   JOB_CREATED_FAILURE,
   JOB_CREATED_REQUEST,
+  JOB_CURRENT_SUCCESS,
+  JOB_CURRENT_FAILURE,
+  JOB_CURRENT_REQUEST,
+  JOB_GETALL_SUCCESS,
+  JOB_GETALL_REQUEST,
 } from "./../types/state";
 import { Job } from "../types/types";
 
@@ -30,22 +33,45 @@ const initialState: JobState = {
  */
 const jobReducer = (state = initialState, action: JobActions) => {
   switch (action.type) {
-    case GETALLJOBS_SUCCESS: {
+    case JOB_GETALL_REQUEST: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+    case JOB_GETALL_SUCCESS: {
       return {
         ...state,
         jobs: action.data,
+        loading: false,
       };
     }
-    case GETALLJOBS_FAILURE: {
+    case JOB_GETALL_FAILURE: {
       return {
         ...state,
         fetchError: action.data,
+        loading: false,
       };
     }
-    case SET_CURRENT_JOB: {
+    case JOB_CURRENT_REQUEST: {
       return {
         ...state,
         currentJob: action.data,
+        loading: true,
+      };
+    }
+    case JOB_CURRENT_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        currentJob: action.data,
+      };
+    }
+    case JOB_CURRENT_FAILURE: {
+      return {
+        ...state,
+        loading: false,
+        fetchError: action.data,
       };
     }
     case JOB_DELETED_SUCCESS: {

@@ -22,7 +22,7 @@ const authHeader = () => {
  * @desc Fetches all jobs avaible with current token.
  */
 const fetchAllJobs = async () => {
-  const res = await axios.get(`${baseUrl}/jobvacancies/`, authHeader());
+  const res = await axios.get(`${baseUrl}/job/allJobsForWorker`, authHeader());
   return res;
 };
 
@@ -31,7 +31,7 @@ const fetchAllJobs = async () => {
  * @desc Fetches all jobs avaible with current token.
  */
 const fetchAllJobsForAgency = async () => {
-  const res = await axios.get(`${baseUrl}/jobvacancies/mine`, authHeader());
+  const res = await axios.get(`${baseUrl}/job/allJobsForAgency`, authHeader());
   return res;
 };
 
@@ -40,16 +40,11 @@ const fetchAllJobsForAgency = async () => {
  * @desc fetchJobById
  */
 const fetchJobById = async (id: string) => {
-  try {
-    const res = await axios.get(
-      `${baseUrl}/jobvacancies/job/${id}`,
-      authHeader()
-    );
-    return res.data;
-  } catch (error) {
-    console.log(error);
-    return Promise.reject(error.response);
-  }
+  const res = await axios.get(
+    `${baseUrl}/job/jobForWorker/${id}`,
+    authHeader()
+  );
+  return res;
 };
 
 /**
@@ -59,7 +54,7 @@ const fetchJobById = async (id: string) => {
 const deleteJob = async (jobId: string) => {
   try {
     const res = await axios.delete(
-      `${baseUrl}/jobvacancies/mine/${jobId}`,
+      `${baseUrl}/job/jobDeleteForAgency/${jobId}`,
       authHeader()
     );
     console.log("delete res", res);

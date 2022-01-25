@@ -1,13 +1,15 @@
 import jobService from "../services/jobService";
 import {
-  GETALLJOBS_FAILURE,
-  GETALLJOBS_SUCCESS,
   JOB_CREATED_FAILURE,
   JOB_CREATED_REQUEST,
   JOB_CREATED_SUCCESS,
+  JOB_CURRENT_REQUEST,
+  JOB_CURRENT_SUCCESS,
   JOB_DELETED_FAILURE,
   JOB_DELETED_SUCCESS,
-  SET_CURRENT_JOB,
+  JOB_GETALL_FAILURE,
+  JOB_GETALL_REQUEST,
+  JOB_GETALL_SUCCESS,
 } from "../types/state";
 import { Job, severity } from "../types/types";
 import { setAlert } from "./alertActions";
@@ -18,10 +20,13 @@ import { setAlert } from "./alertActions";
  */
 export const fetchAllJobs = () => async (dispatch: any) => {
   try {
+    dispatch({
+      type: JOB_GETALL_REQUEST,
+    });
     const res = await jobService.fetchAllJobs();
-    dispatch({ type: GETALLJOBS_SUCCESS, data: res.data });
+    dispatch({ type: JOB_GETALL_SUCCESS, data: res.data });
   } catch (error) {
-    dispatch({ type: GETALLJOBS_FAILURE, data: error && error.message });
+    dispatch({ type: JOB_GETALL_FAILURE, data: error && error.message });
   }
 };
 
@@ -32,9 +37,9 @@ export const fetchAllJobs = () => async (dispatch: any) => {
 export const fetchAllJobsForAgency = () => async (dispatch: any) => {
   try {
     const res = await jobService.fetchAllJobsForAgency();
-    dispatch({ type: GETALLJOBS_SUCCESS, data: res.data });
+    dispatch({ type: JOB_GETALL_SUCCESS, data: res.data });
   } catch (error) {
-    dispatch({ type: GETALLJOBS_FAILURE, data: error && error.message });
+    dispatch({ type: JOB_GETALL_FAILURE, data: error && error.message });
   }
 };
 
@@ -44,11 +49,17 @@ export const fetchAllJobsForAgency = () => async (dispatch: any) => {
  */
 export const fetchJobById = (id: string) => async (dispatch: any) => {
   try {
-    const data = await jobService.fetchJobById(id);
-    console.log("job's data", data);
-    dispatch({ type: SET_CURRENT_JOB, data: data });
+    dispatch({
+      type: JOB_CURRENT_REQUEST,
+    });
+    const res = await jobService.fetchJobById(id);
+    dispatch({ type: JOB_CURRENT_SUCCESS, data: res.data });
   } catch (error) {
-    console.log(error);
+    dispatch({
+      type: JOB_CREATED_FAILURE,
+      data: error,
+    });
+    dispatch(setAlert("Failed to fetch the job: " + error, severity.Error, 15));
   }
 };
 
