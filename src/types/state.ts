@@ -134,9 +134,13 @@ export interface LoggedInUser extends User {
   token: string;
 }
 
-export const GETALLJOBS_SUCCESS = "JOBS_GETALL_SUCCESS";
-export const GETALLJOBS_FAILURE = "JOBS_GETALL_FAILURE";
-export const SET_CURRENT_JOB = "SET_CURRENT_JOB";
+export const JOB_GETALL_REQUEST = "JOB_GETALL_REQUEST";
+export const JOB_GETALL_SUCCESS = "JOB_GETALL_SUCCESS";
+export const JOB_GETALL_FAILURE = "JOB_GETALL_FAILURE";
+export const JOB_CURRENT_REQUEST = "JOB_CURRENT_REQUEST";
+export const JOB_CURRENT_SUCCESS = "JOB_CURRENT_SUCCESS";
+export const JOB_CURRENT_FAILURE = "JOB_CURRENT_FAILURE";
+export const JOB_DELETED_REQUEST = "JOB_DELETED_REQUEST";
 export const JOB_DELETED_SUCCESS = "JOB_DELETED_SUCCESS";
 export const JOB_DELETED_FAILURE = "JOB_DELETED_FAILURE";
 export const JOB_CREATED_REQUEST = "JOB_CREATED_REQUEST";
@@ -152,19 +156,39 @@ export interface JobState {
   jobs: Job[];
 }
 
-interface JobsSuccess {
-  type: typeof GETALLJOBS_SUCCESS;
+interface JobGetAllRequest {
+  type: typeof JOB_GETALL_REQUEST;
   data: any;
 }
 
-interface JobsFailure {
-  type: typeof GETALLJOBS_FAILURE;
+interface JobGetAllSuccess {
+  type: typeof JOB_GETALL_SUCCESS;
   data: any;
 }
 
-interface CurrentJob {
-  type: typeof SET_CURRENT_JOB;
+interface JobGetAllFailure {
+  type: typeof JOB_GETALL_FAILURE;
   data: any;
+}
+
+interface JobCurrentRequest {
+  type: typeof JOB_CURRENT_REQUEST;
+  data: any;
+}
+
+interface JobCurrentSuccess {
+  type: typeof JOB_CURRENT_SUCCESS;
+  data: any;
+}
+
+interface JobCurrentFailure {
+  type: typeof JOB_CURRENT_FAILURE;
+  data: any;
+}
+
+interface JobDeletedRequest {
+  type: typeof JOB_DELETED_REQUEST;
+  data: { id: string };
 }
 
 interface JobDeletedSuccess {
@@ -192,9 +216,13 @@ interface JobCreatedFailure {
   data: Job;
 }
 export type JobActions =
-  | JobsSuccess
-  | CurrentJob
-  | JobsFailure
+  | JobGetAllRequest
+  | JobGetAllSuccess
+  | JobGetAllFailure
+  | JobCurrentRequest
+  | JobCurrentSuccess
+  | JobCurrentFailure
+  | JobDeletedRequest
   | JobDeletedSuccess
   | JobDeletedFailure
   | JobCreatedRequest
