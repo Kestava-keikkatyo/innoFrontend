@@ -6,37 +6,47 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { makeStyles } from "@material-ui/core";
 import { fetchAllJobs } from "../../actions/jobActions";
+import PageLoading from "../../components/PageLoading";
 
 
 const NewJobList = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
     
-    const { jobs } = useSelector((state: IRootState) => state.job || []);
     useEffect(() => {
         dispatch(fetchAllJobs());
     }, [dispatch]);
     
+    const { jobs, loading } = useSelector((state: IRootState) => state.job || []);
+    console.log('DEBUG', jobs, loading)
+
+    if (loading) return <PageLoading />
+
     let rows = [];
     rows = jobs;
     const columns = [
         {
-            field: "jobTitle",
+            field: "title",
             headerName: "Title",
             width: 200,
         },
         { 
-            field: "jobCategory", 
+            field: "category", 
             headerName: "Category", 
             width: 200 
         },
         {
-            field: "agencyId",
+            field: "city",
+            headerName: "City",
+            width: 200,
+        },
+        {
+            field: "agency",
             headerName: "Supplier",
-            width: 250,
+            width: 200,
             renderCell: (params: any) => {
                 console.log(params.row);
-                return <>{params.row.agencyId.name}</>;
+                return <>{params.row.agency.name}</>;
             }
         },
         {
@@ -51,7 +61,7 @@ const NewJobList = () => {
             renderCell: (params: any) => {
                 return (
                     <>
-                <Link to={"/jobDetails/" + params.id}>
+                <Link to={"/job-details/" + params.id}>
                     <span className={classes.details}>Details</span>
                 </Link>
                 </>
