@@ -3,13 +3,12 @@ import {
     PermIdentity,
   } from "@material-ui/icons";
 import React, { useEffect } from 'react';
-import { makeStyles } from '@material-ui/core';
+import { Box, makeStyles } from '@material-ui/core';
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../utils/store";
 import { fetchJobById } from "../../actions/jobActions";
-import { fetchAllAgencies } from "../../actions/allUsersActions";
-
+import PageLoading from "../../components/PageLoading";
 
 type JobUrlParams = {
     jobId: string
@@ -18,13 +17,15 @@ const JobDetails: React.FC<any> = () =>  {
    
     const { jobId } = useParams<JobUrlParams>();
     const jobData: any = useSelector((state: IRootState) => state.job.currentJob);
-    const {agencies} = useSelector((state: IRootState) => state.allUsers || []);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchJobById(jobId));
-        dispatch(fetchAllAgencies());
-    }, [dispatch, jobData.jobId]);
+    }, [dispatch, jobId]);
     const classes = useStyles();
+
+    if(!jobData) return (
+        <PageLoading />
+    );
 
     return (
     <div className={classes.job}>
@@ -36,20 +37,20 @@ const JobDetails: React.FC<any> = () =>  {
                 <span className={classes.jobShowTitle}>Supplier</span>
                 <div className={classes.jobShowInfo}>
                     <PermIdentity className={classes.jobShowIcon} />
-                    <span className={classes.jobShowInfoTitle}>{ jobData.agencyId }</span>
+                    <span className={classes.jobShowInfoTitle}>{ jobData.agency.name }</span>
                 </div>
                 <span className={classes.jobShowTitle}>Details</span>
                 <div className={classes.jobShowInfo}>
                     <span className={classes.jobShowTitle}>Title</span>
-                    <span className={classes.jobShowInfoTitle}>{ jobData.jobTitle }</span>
+                    <span className={classes.jobShowInfoTitle}>{ jobData.title }</span>
                 </div>
                 <div className={classes.jobShowInfo}>
                     <span className={classes.jobShowTitle}>Category</span>
-                    <span className={classes.jobShowInfoTitle}>{ jobData.jobCategory }</span>
+                    <span className={classes.jobShowInfoTitle}>{ jobData.category }</span>
                 </div>
                 <div className={classes.jobShowInfo}>
                     <span className={classes.jobShowTitle}>Job Type</span>
-                    <span className={classes.jobShowInfoTitle}> Full time</span>
+                    <span className={classes.jobShowInfoTitle}>{ jobData.jobType }</span>
                 </div>
                 <div className={classes.jobShowInfo}>
                     <span className={classes.jobShowTitle}>Posted at</span>
@@ -57,7 +58,7 @@ const JobDetails: React.FC<any> = () =>  {
                 </div>
                 <div className={classes.jobShowInfo}>
                     <span className={classes.jobShowTitle}>Available until</span>
-                    <span className={classes.jobShowInfoTitle}> { jobData.applyingEndsAt }</span>
+                    <span className={classes.jobShowInfoTitle}> { jobData.applicationLastDate }</span>
                 </div>
                 <div className={classes.jobShowInfo}>
                     <LocationSearching className={classes.jobShowIcon} />
