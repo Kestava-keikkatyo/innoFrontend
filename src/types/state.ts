@@ -9,7 +9,6 @@ import {
   Feedback,
   Job,
 } from "./types";
-import { AdminActionType } from "./types";
 
 /**
  * All users state & action types
@@ -134,54 +133,6 @@ export interface SignUpUser extends User {
 export interface LoggedInUser extends User {
   token: string;
 }
-
-interface FetchWorkers {
-  type: typeof AdminActionType.WORKERS_FETCH;
-  data: any;
-}
-
-interface FetchBusinesses {
-  type: typeof AdminActionType.BUSINESSES_FETCH;
-  data: any;
-}
-
-interface FetchAgencies {
-  type: typeof AdminActionType.AGENCIES_FETCH;
-  data: any;
-}
-interface UpdateWorker {
-  type: typeof AdminActionType.WORKER_UPDATE;
-  data: any;
-}
-interface UpdateAgency {
-  type: typeof AdminActionType.AGENCY_UPDATE;
-  data: any;
-}
-
-interface UpdateBusiness {
-  type: typeof AdminActionType.BUSINESS_UPDATE;
-  data: any;
-}
-
-interface FetchAdmins {
-  type: typeof AdminActionType.ADMINS_FETCH;
-  data: any;
-}
-
-interface UpdateAdmin {
-  type: typeof AdminActionType.ADMIN_UPDATE;
-  data: any;
-}
-
-export type AdminAction =
-  | FetchAgencies
-  | FetchBusinesses
-  | FetchWorkers
-  | UpdateAgency
-  | UpdateBusiness
-  | UpdateWorker
-  | FetchAdmins
-  | UpdateAdmin;
 
 export const GETALLJOBS_SUCCESS = "JOBS_GETALL_SUCCESS";
 export const GETALLJOBS_FAILURE = "JOBS_GETALL_FAILURE";

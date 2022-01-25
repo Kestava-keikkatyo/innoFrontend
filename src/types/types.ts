@@ -1,17 +1,5 @@
 import { compose } from "redux";
 
-export enum AdminActionType {
-  AGENCIES_FETCH = "AGENCIES_FETCH",
-  BUSINESSES_FETCH = "BUSINESSES_FETCH",
-  WORKERS_FETCH = "WORKERS_FETCH",
-  ADMINS_FETCH = "ADMINS_FETCH",
-  AGENCY_UPDATE = "AGENCY_UPDATE",
-  BUSINESS_UPDATE = "BUSINESS_UPDATE",
-  WORKER_UPDATE = "WORKER_UPDATE",
-  ADMIN_UPDATE = "ADMIN_UPDATE",
-  DELETE_USER = "DELETE_USER",
-}
-
 export enum roles {
   Worker = "worker",
   Agency = "agency",
