@@ -208,7 +208,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           )}
           {role === roles.Worker && (
             <>
-              <ListItem button component={Link} to="/job-list">
+              <ListItem button component={Link} to="/jobs">
                 <ListItemIcon>
                   <WorkOutlineIcon />
                 </ListItemIcon>

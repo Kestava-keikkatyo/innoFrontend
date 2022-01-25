@@ -113,10 +113,10 @@ const App: React.FC = () => {
         <PrivateRoute path="/feelingDetails/:workerId">
           <FeelingDetails />
         </PrivateRoute>
-        <PrivateRoute path="/newJobList">
+        <PrivateRoute path="/jobs">
           <NewJobList />
         </PrivateRoute>
-        <PrivateRoute path="/jobDetails/:jobId">
+        <PrivateRoute path="/job-details/:jobId">
           <JobDetails />
         </PrivateRoute>
         <PrivateRoute path="/jobListForAgency" roles={[roles.Agency]}>
@@ -269,7 +269,7 @@ const App: React.FC = () => {
         <PrivateRoute path="/forms" roles={[roles.Business, roles.Agency]}>
           <FormsPage />
         </PrivateRoute>
-        <PrivateRoute path="/job-list" roles={[roles.Worker]}>
+        <PrivateRoute path="/jobs" roles={[roles.Worker]}>
           <JobList />
         </PrivateRoute>
         <PrivateRoute path="/home">
