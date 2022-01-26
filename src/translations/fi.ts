@@ -507,6 +507,8 @@ export default {
   job_available_until: "Viimeinen päivämäärä",
   job_read_more: "Lue lisää",
   job_release_date: "Julkaisupäivä",
+  job_update: "Päivitä",
+  job_action: "Toiminta",
   requirements_and_responsibilities: "Vaatimukset ja vastuut",
   full_job_description: "Täydellinen kuvaus",
 

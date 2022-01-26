@@ -8,9 +8,12 @@ import { useEffect } from 'react';
 import { makeStyles } from "@material-ui/core";
 import { DeleteJobById, fetchAllJobsForAgency } from "../../actions/jobActions";
 import { setAlert } from '../../actions/alertActions';
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 
 const JobListForAgency: React.FC<any> = () => {
 
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const classes = useStyles();
 
@@ -32,17 +35,17 @@ const JobListForAgency: React.FC<any> = () => {
   const columns = [
     {
         field: "title",
-        headerName: "Title",
+        headerName: (i18next.t("job_title")),
         width: 200,
     },
     { 
         field: "category", 
-        headerName: "Category", 
+        headerName: (i18next.t("job_category")), 
         width: 200 
     },
     {
       field: "agency",
-      headerName: "Supplier",
+      headerName: (i18next.t("job_supplier")),
       width: 200,
       renderCell: (params: any) => {
           console.log(params.row);
@@ -51,18 +54,18 @@ const JobListForAgency: React.FC<any> = () => {
   },
     {
         field: "createdAt",
-        headerName: "Release Date",
+        headerName: (i18next.t("job_release_date")),
         width: 250,
     },
     {
         field: "action",
-        headerName: "Action",
+        headerName: (i18next.t("job_action")),
         width: 200,
         renderCell: (params: any) => {
             return (
                 <>
             <Link to={"/job/update"}>
-                <span className={classes.update}>Update</span>
+                <span className={classes.update}>{t('job_update')}</span>
             </Link>
             <DeleteOutline
               className="userListDelete"

@@ -516,6 +516,8 @@ export default {
   job_available_until: "Available untill",
   job_read_more: "Read more",
   job_release_date: "Release Date",
+  job_update: "Update",
+  job_action: "Action",
   requirements_and_responsibilities: "Requirements and Responsibilities",
   full_job_description: "Full description",
 
