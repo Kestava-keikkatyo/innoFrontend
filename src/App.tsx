@@ -125,7 +125,7 @@ const App: React.FC = () => {
         <PrivateRoute path="/jobVacancyUpdate" roles={[roles.Agency]}>
           <JobVacancyUpdate />
         </PrivateRoute>
-        <PrivateRoute path="/createJobForAgency">
+        <PrivateRoute path="/create-job" roles={[roles.Agency]}>
           <CreateJobForAgency />
         </PrivateRoute>
         <DatabankRoute path="/databank/lifeline">
@@ -169,9 +169,6 @@ const App: React.FC = () => {
         </PrivateRoute>
         <PrivateRoute path="/mood-stats" roles={[roles.Agency]}>
           <AgencyStatistics />
-        </PrivateRoute>
-        <PrivateRoute path="/create-job" roles={[roles.Agency]}>
-          <AgencyWorkAdd />
         </PrivateRoute>
         <PrivateRoute path="/reports" roles={[roles.Business, roles.Agency]}>
           <ReportsPage />
