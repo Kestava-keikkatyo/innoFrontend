@@ -39,18 +39,26 @@ const JobDetails: React.FC<any> = () =>  {
                     <PermIdentity className={classes.jobShowIcon} />
                     <span className={classes.jobShowInfoTitle}>{ jobData.agency.name }</span>
                 </div>
-                <span className={classes.jobShowTitle}>Details</span>
-                <div className={classes.jobShowInfo}>
-                    <span className={classes.jobShowTitle}>Title</span>
-                    <span className={classes.jobShowInfoTitle}>{ jobData.title }</span>
-                </div>
+                <span className={classes.jobShowTitle}>Specifics</span>
                 <div className={classes.jobShowInfo}>
                     <span className={classes.jobShowTitle}>Category</span>
                     <span className={classes.jobShowInfoTitle}>{ jobData.category }</span>
                 </div>
                 <div className={classes.jobShowInfo}>
+                    <span className={classes.jobShowTitle}>Title</span>
+                    <span className={classes.jobShowInfoTitle}>{ jobData.title }</span>
+                </div>
+                <div className={classes.jobShowInfo}>
+                    <LocationSearching className={classes.jobShowIcon} />
+                    { [ jobData.street, jobData.zipCode, jobData.city ].join(', ') }
+                </div>
+                <div className={classes.jobShowInfo}>
                     <span className={classes.jobShowTitle}>Job Type</span>
                     <span className={classes.jobShowInfoTitle}>{ jobData.jobType }</span>
+                </div>
+                <div className={classes.jobShowInfo}>
+                    <span className={classes.jobShowTitle}>Salary</span>
+                    <span className={classes.jobShowInfoTitle}>{ jobData.salary }</span>
                 </div>
                 <div className={classes.jobShowInfo}>
                     <span className={classes.jobShowTitle}>Posted at</span>
@@ -60,20 +68,24 @@ const JobDetails: React.FC<any> = () =>  {
                     <span className={classes.jobShowTitle}>Available until</span>
                     <span className={classes.jobShowInfoTitle}> { jobData.applicationLastDate }</span>
                 </div>
-                <div className={classes.jobShowInfo}>
-                    <LocationSearching className={classes.jobShowIcon} />
-                    { [ jobData.streetAddress, jobData.zipCode, jobData.city ].join(', ') }
-                </div>
+            </div>
+            <div className={classes.jobDescription}>
                 <span className={classes.jobShowTitle}>Requirements and Responsibilities</span>
                 <div className={classes.jobShowInfo}>
                     <span className={classes.details}>{ jobData.requirements }</span>
                 </div>
-            </div>
-            <div className={classes.jobDescription}>
-            <span className={classes.jobShowTitle}>Full Job Description</span>
-            <div className={classes.jobShowInfo}>
-                <span className={classes.details}>{ jobData.details }</span>
-            </div>
+                <span className={classes.jobShowTitle}>Desirable skills</span>
+                <div className={classes.jobShowInfo}>
+                    <span className={classes.details}>{ jobData.desirableSkills }</span>
+                </div>
+                <span className={classes.jobShowTitle}>Benefits</span>
+                <div className={classes.jobShowInfo}>
+                    <span className={classes.details}>{ jobData.benefits }</span>
+                </div>
+                <span className={classes.jobShowTitle}>Full Job Description</span>
+                <div className={classes.jobShowInfo}>
+                    <span className={classes.details}>{ jobData.details }</span>
+                </div>
             </div>
         </div>
     </div> 
