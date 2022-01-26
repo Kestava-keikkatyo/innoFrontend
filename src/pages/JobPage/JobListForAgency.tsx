@@ -61,7 +61,7 @@ const JobListForAgency: React.FC<any> = () => {
         renderCell: (params: any) => {
             return (
                 <>
-            <Link to={"/jobVacancyUpdate"}>
+            <Link to={"/job/update"}>
                 <span className={classes.update}>Update</span>
             </Link>
             <DeleteOutline

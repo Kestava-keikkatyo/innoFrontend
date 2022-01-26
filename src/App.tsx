@@ -57,7 +57,7 @@ import FeelingDetails from "./pages/AdminPage/FeelingDetails"
 import NewJobList from "./pages/JobPage/newJobList"
 import JobDetails from "./pages/JobPage/JobDetails"
 import JobListForAgency from "./pages/JobPage/JobListForAgency"
-import JobVacancyUpdate from "./pages/JobPage/JobVacancyUpdate"
+import JobUpdate from "./pages/JobPage/JobUpdate"
 import CreateJobForAgency from "./pages/JobPage/CreateJobForAgency"
 
 /**
@@ -121,8 +121,8 @@ const App: React.FC = () => {
         <PrivateRoute path="/jobListForAgency" roles={[roles.Agency]}>
           <JobListForAgency />
         </PrivateRoute>
-        <PrivateRoute path="/jobVacancyUpdate" roles={[roles.Agency]}>
-          <JobVacancyUpdate />
+        <PrivateRoute path="/job/update" roles={[roles.Agency]}>
+          <JobUpdate />
         </PrivateRoute>
         <PrivateRoute path="/create-job" roles={[roles.Agency]}>
           <CreateJobForAgency />
