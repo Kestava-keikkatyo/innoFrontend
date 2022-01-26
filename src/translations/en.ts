@@ -509,6 +509,13 @@ export default {
   job_details: "Details",
   job_created_successfully: "Job created successfully!",
   failed_to_create_the_job: "Failed to create the job!",
+  job_details_title: "Job Details",
+  job_supplier: "Supplier",
+  job_specifics: "Specifics",
+  job_posted_at: "Posted at",
+  job_available_until: "Available untill",
+  requirements_and_responsibilities: "Requirements and Responsibilities",
+  full_job_description: "Full description",
 
   //CreateUser
   add_new_admin: "Add new admin",

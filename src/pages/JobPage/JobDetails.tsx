@@ -9,12 +9,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../utils/store";
 import { fetchJobById } from "../../actions/jobActions";
 import PageLoading from "../../components/PageLoading";
+import { useTranslation } from "react-i18next"
 
 type JobUrlParams = {
     jobId: string
 }
 const JobDetails: React.FC<any> = () =>  {
    
+    const { t } = useTranslation()
     const { jobId } = useParams<JobUrlParams>();
     const jobData: any = useSelector((state: IRootState) => state.job.currentJob);
     const dispatch = useDispatch();
@@ -30,22 +32,22 @@ const JobDetails: React.FC<any> = () =>  {
     return (
     <div className={classes.job}>
         <div className={classes.jobTitleContainer}>
-            <h1 className={classes.jobTitle}>Job Details</h1>
+            <h1 className={classes.jobTitle}>{t('job_details_title')}</h1>
         </div>
         <div className={classes.jobContainer}>
             <div className={classes.jobShow}>
-                <span className={classes.jobShowTitle}>Supplier</span>
+                <span className={classes.jobTitle}>{t('job_supplier')}</span>
                 <div className={classes.jobShowInfo}>
                     <PermIdentity className={classes.jobShowIcon} />
                     <span className={classes.jobShowInfoTitle}>{ jobData.agency.name }</span>
                 </div>
-                <span className={classes.jobShowTitle}>Specifics</span>
+                <span className={classes.jobTitle}>{t('job_specifics')}</span>
                 <div className={classes.jobShowInfo}>
-                    <span className={classes.jobShowTitle}>Category</span>
+                    <span className={classes.jobShowTitle}>{t('job_category')}</span>
                     <span className={classes.jobShowInfoTitle}>{ jobData.category }</span>
                 </div>
                 <div className={classes.jobShowInfo}>
-                    <span className={classes.jobShowTitle}>Title</span>
+                    <span className={classes.jobShowTitle}>{t('job_title')}</span>
                     <span className={classes.jobShowInfoTitle}>{ jobData.title }</span>
                 </div>
                 <div className={classes.jobShowInfo}>
@@ -53,36 +55,36 @@ const JobDetails: React.FC<any> = () =>  {
                     { [ jobData.street, jobData.zipCode, jobData.city ].join(', ') }
                 </div>
                 <div className={classes.jobShowInfo}>
-                    <span className={classes.jobShowTitle}>Job Type</span>
+                    <span className={classes.jobShowTitle}>{t('job_type')}</span>
                     <span className={classes.jobShowInfoTitle}>{ jobData.jobType }</span>
                 </div>
                 <div className={classes.jobShowInfo}>
-                    <span className={classes.jobShowTitle}>Salary</span>
+                    <span className={classes.jobShowTitle}>{t('job_salary')}</span>
                     <span className={classes.jobShowInfoTitle}>{ jobData.salary }</span>
                 </div>
                 <div className={classes.jobShowInfo}>
-                    <span className={classes.jobShowTitle}>Posted at</span>
+                    <span className={classes.jobShowTitle}>{t('job_posted_at')}</span>
                     <span className={classes.jobShowInfoTitle}> { jobData.createdAt }</span>
                 </div>
                 <div className={classes.jobShowInfo}>
-                    <span className={classes.jobShowTitle}>Available until</span>
+                    <span className={classes.jobShowTitle}>{t('job_available_until')}</span>
                     <span className={classes.jobShowInfoTitle}> { jobData.applicationLastDate }</span>
                 </div>
             </div>
             <div className={classes.jobDescription}>
-                <span className={classes.jobShowTitle}>Requirements and Responsibilities</span>
+                <span className={classes.jobShowTitle}>{t('requirements_and_responsibilities')}</span>
                 <div className={classes.jobShowInfo}>
                     <span className={classes.details}>{ jobData.requirements }</span>
                 </div>
-                <span className={classes.jobShowTitle}>Desirable skills</span>
+                <span className={classes.jobShowTitle}>{t('job_desirableSkills')}</span>
                 <div className={classes.jobShowInfo}>
                     <span className={classes.details}>{ jobData.desirableSkills }</span>
                 </div>
-                <span className={classes.jobShowTitle}>Benefits</span>
+                <span className={classes.jobShowTitle}>{t('job_benefits')}</span>
                 <div className={classes.jobShowInfo}>
                     <span className={classes.details}>{ jobData.benefits }</span>
                 </div>
-                <span className={classes.jobShowTitle}>Full Job Description</span>
+                <span className={classes.jobShowTitle}>{t('full_job_description')}</span>
                 <div className={classes.jobShowInfo}>
                     <span className={classes.details}>{ jobData.details }</span>
                 </div>
@@ -116,7 +118,9 @@ const useStyles = makeStyles(() => ({
         marginLeft: '20px'
     },
     jobTitle: {
-
+        fontSize: '18px',
+        fontWeight: 600,
+        color: '#747474'
     },
     jobContainer: {
         display: 'flex',
@@ -125,7 +129,7 @@ const useStyles = makeStyles(() => ({
     jobShowTitle: {
         fontSize: '14px',
         fontWeight: 600,
-        color: 'rgb(175, 170, 170)'
+        color: '#AFAAAA'
     },
     jobShowInfo: {
         display: 'flex',

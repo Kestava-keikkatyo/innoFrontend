@@ -500,6 +500,13 @@ export default {
   job_details: "Lisätiedot",
   job_created_successfully: "Työ luotiin onnistuneesti!",
   failed_to_create_the_job: "Työn luominen epäonnistui!",
+  job_details_title: "Työn tiedot",
+  job_supplier: "Toimittaja",
+  job_specifics: "Yksityiskohdat",
+  job_posted_at: "Julkaistu",
+  job_available_until: "Viimeinen päivämäärä",
+  requirements_and_responsibilities: "Vaatimukset ja vastuut",
+  full_job_description: "Täydellinen kuvaus",
 
   //CreateUser
   add_new_admin: "Lisää uusi järjestelmänvalvoja",
