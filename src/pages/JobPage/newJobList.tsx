@@ -7,9 +7,13 @@ import { useEffect } from 'react';
 import { makeStyles } from "@material-ui/core";
 import { fetchAllJobs } from "../../actions/jobActions";
 import PageLoading from "../../components/PageLoading";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next"
 
 
-const NewJobList = () => {
+const NewJobList: React.FC<any> = () => {
+
+    const { t } = useTranslation()
     const classes = useStyles();
     const dispatch = useDispatch();
     
@@ -27,22 +31,22 @@ const NewJobList = () => {
     const columns = [
         {
             field: "title",
-            headerName: "Title",
+            headerName: (i18next.t("job_title")),
             width: 200,
         },
         { 
             field: "category", 
-            headerName: "Category", 
+            headerName: (i18next.t("job_category")), 
             width: 200 
         },
         {
             field: "city",
-            headerName: "City",
+            headerName: (i18next.t("job_city")),
             width: 200,
         },
         {
             field: "agency",
-            headerName: "Supplier",
+            headerName: (i18next.t("job_supplier")),
             width: 200,
             renderCell: (params: any) => {
                 console.log(params.row);
@@ -51,18 +55,18 @@ const NewJobList = () => {
         },
         {
             field: "createdAt",
-            headerName: "Release Date",
+            headerName: (i18next.t("job_release_date")),
             width: 200,
         },
         {
             field: "action",
-            headerName: "Read more",
+            headerName: (i18next.t("job_read_more")),
             width: 200,
             renderCell: (params: any) => {
                 return (
                     <>
                 <Link to={"/job-details/" + params.id}>
-                    <span className={classes.details}>Details</span>
+                    <span className={classes.details}>{t('job_details')}</span>
                 </Link>
                 </>
                 );

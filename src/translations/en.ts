@@ -514,6 +514,8 @@ export default {
   job_specifics: "Specifics",
   job_posted_at: "Posted at",
   job_available_until: "Available untill",
+  job_read_more: "Read more",
+  job_release_date: "Release Date",
   requirements_and_responsibilities: "Requirements and Responsibilities",
   full_job_description: "Full description",
 
