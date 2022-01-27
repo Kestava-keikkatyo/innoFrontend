@@ -10,7 +10,7 @@ import { roles } from '../../types/types';
 import BusinessHome from './BusinessHome';
 import AgencyHome from './AgencyHome';
 import { useTranslation } from 'react-i18next';
-import AdminHome from '../AdminPage/AdminHome';
+import AdminHome from './AdminHome';
 
 const Home = () => {
   const { data, ...user } = useSelector((state: any) => state.user);
