@@ -155,7 +155,6 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
   })
 
   useEffect(() => {
-    dispatch(fetchProfileById(data.profileId))
     dispatch(fetchNotifications())
     setInterval(() => {
       dispatch(fetchNotifications())

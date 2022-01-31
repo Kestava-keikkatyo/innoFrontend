@@ -2,12 +2,12 @@
  * @module service/user
  * @desc User requests to backend.
  */
-import axios from "axios"
-import { Credentials, roles } from "../types/types"
-import { User } from "../types/state"
-import { loadUser } from "../utils/storage"
+import axios from "axios";
+import { Credentials, roles } from "../types/types";
+import { User } from "../types/state";
+import { loadUser } from "../utils/storage";
 
-import baseUrl from "../utils/baseUrl"
+import baseUrl from "../utils/baseUrl";
 
 /**
  * helper function for setting up request header
@@ -16,8 +16,8 @@ import baseUrl from "../utils/baseUrl"
 const authHeader = () => {
   return {
     headers: { "x-access-token": `${loadUser().token}` },
-  }
-}
+  };
+};
 
 /**
  * @function
@@ -25,23 +25,13 @@ const authHeader = () => {
  * @param {User} user - Basic user information.
  * @param {roles} role - Account role to be created (worker, agency, business).
  */
-const signup = async (user: User, role: roles) => {
+const register = async (user: User) => {
   try {
-    switch (role) {
-      case roles.Worker:
-        return await axios.post(`${baseUrl}/workers`, user)
-      case roles.Agency:
-        return await axios.post(`${baseUrl}/agencies`, user)
-      case roles.Business:
-        return await axios.post(`${baseUrl}/businesses`, user)
-      default:
-        // Unsuitable role selected return Promise.reject.
-        return Promise.reject({ message: "Unsuitable role selected" })
-    }
+    return await axios.post(`${baseUrl}/authentication/register`, user);
   } catch (error) {
-    return Promise.reject(error.response)
+    return Promise.reject(error.response);
   }
-}
+};
 
 /**
  * @function
@@ -49,13 +39,13 @@ const signup = async (user: User, role: roles) => {
  * @param {Credentials} credentials - user's credentials ({email: ..., password: ...})
  * @param {roles} role - account role
  */
-const login = async (credentials: Credentials /*role: roles*/) => {
+const signin = async (credentials: Credentials) => {
   try {
-    return await axios.post(`${baseUrl}/login`, credentials)
+    return await axios.post(`${baseUrl}/authentication/signin`, credentials);
   } catch (error) {
-    return Promise.reject(error.response)
+    return Promise.reject(error.response);
   }
-}
+};
 
 /**
  * @function
@@ -64,37 +54,24 @@ const login = async (credentials: Credentials /*role: roles*/) => {
  */
 const adminLogin = async (credentials: Credentials) => {
   try {
-    return await axios.post(`${baseUrl}/login/admin`, credentials)
+    return await axios.post(`${baseUrl}/login/admin`, credentials);
   } catch (error) {
-    return Promise.reject(error.response)
+    return Promise.reject(error.response);
   }
-}
+};
 
 /**
  * @function
  * @desc Sends out me request that gets user profile information.
  * @param {roles} role - Account role.
  */
-const me = async (role: roles) => {
+const me = async () => {
   try {
-    switch (role) {
-      case roles.Worker:
-        return await axios.get(`${baseUrl}/workers/me`, authHeader())
-      case roles.Agency:
-        return await axios.get(`${baseUrl}/agencies/me`, authHeader())
-      case roles.Business:
-        return await axios.get(`${baseUrl}/businesses/me`, authHeader())
-      case roles.Admin:
-        return await axios.get(`${baseUrl}/admin/me`, authHeader())
-      default:
-        // If user changes localstorages role value to something not mentioned above,
-        // return status code 500 to logout user (handled in userActions.js statusHandler).
-        return Promise.reject({ status: 500 })
-    }
+    return await axios.get(`${baseUrl}/user/me`, authHeader());
   } catch (error) {
-    return Promise.reject(error.response)
+    return Promise.reject(error.response);
   }
-}
+};
 
 /**
  * @function
@@ -102,68 +79,37 @@ const me = async (role: roles) => {
  * @param {User} updateData - profile values to be updated
  * @param {roles} role - account role
  */
-const update = async (updateData: User, role: roles) => {
+const update = async (updateData: User) => {
   try {
-    switch (role) {
-      case roles.Worker:
-        return await axios.put(`${baseUrl}/workers`, updateData, authHeader())
-      case roles.Agency:
-        return await axios.put(`${baseUrl}/agencies`, updateData, authHeader())
-      case roles.Business:
-        return await axios.put(
-          `${baseUrl}/businesses`,
-          updateData,
-          authHeader()
-        )
-      default:
-        return Promise.reject({ status: 500 })
-    }
+    return await axios.put(`${baseUrl}/user/me`, updateData, authHeader());
   } catch (error) {
-    return Promise.reject(error.response)
+    return Promise.reject(error.response);
   }
-}
+};
 
 /**
  * @function
  * @desc Sends out password update request
  * @param {object} updateData - This object has two properties: currentPassword and
  * and newPassword
- * @param {roles} role - account role
  */
-const updatePassword = async (updateData: object, role: roles) => {
+const changePassword = async (updateData: object) => {
   try {
-    switch (role) {
-      case roles.Worker:
-        return await axios.put(
-          `${baseUrl}/workers/update-password`,
-          updateData,
-          authHeader()
-        )
-      case roles.Agency:
-        return await axios.put(
-          `${baseUrl}/agencies/update-password`,
-          updateData,
-          authHeader()
-        )
-      case roles.Business:
-        return await axios.put(
-          `${baseUrl}/businesses/update-password`,
-          updateData,
-          authHeader()
-        )
-      default:
-        return Promise.reject({ status: 500 })
-    }
+    return await axios.put(
+      `${baseUrl}/authentication/changePassword`,
+      updateData,
+      authHeader()
+    );
   } catch (error) {
-    return error.response
+    return error.response;
   }
-}
+};
 
 export default {
-  signup,
-  login,
+  register,
+  signin,
   adminLogin,
   me,
   update,
-  updatePassword,
-}
+  changePassword,
+};
