@@ -3,13 +3,14 @@ import {
     PermIdentity,
   } from "@material-ui/icons";
 import React, { useEffect } from 'react';
-import { Box, makeStyles } from '@material-ui/core';
+import { Link, makeStyles } from '@material-ui/core';
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../utils/store";
 import { fetchJobById } from "../../actions/jobActions";
 import PageLoading from "../../components/PageLoading";
-import { useTranslation } from "react-i18next"
+import { useTranslation } from "react-i18next";
+import Typography from '@mui/material/Typography';
 
 type JobUrlParams = {
     jobId: string
@@ -32,7 +33,12 @@ const JobDetails: React.FC<any> = () =>  {
     return (
     <div className={classes.job}>
         <div className={classes.jobTitleContainer}>
-            <h1 className={classes.jobTitle}>{t('job_details_title')}</h1>
+            <Typography className={classes.jobTitle} variant="h4">{t('job_details_title')}</Typography>
+        </div>
+        <div>
+            <Link href="#" color='primary' underline="hover">
+                <span className={classes.apply}>Click here if you want to apply to this job!</span>
+            </Link>
         </div>
         <div className={classes.jobContainer}>
             <div className={classes.jobShow}>
@@ -134,17 +140,24 @@ const useStyles = makeStyles(() => ({
     jobShowInfo: {
         display: 'flex',
         alignItems: 'center',
-        margin: '20px 0px',
+        margin: '5px 0px 30px 10px',
         color: '#444'
     },
     jobShowIcon: {
         fontSize: '16px !important',
+        marginRight: '5px',
     },
     jobShowInfoTitle: {
-        marginLeft: '10px'
+        marginLeft: '10px',
+        marginTop: '5px',
     },
     details: {
-        fontSize: '15px'
+        fontSize: '15px',
+        paddingTop: '0px'
+    },
+    apply: {
+        marginLeft: '800px',
+        fontSize: '17px',
     }
 }));
 
