@@ -1,6 +1,5 @@
 import React, { useEffect } from "react"
 import { Switch, Route, Redirect, useLocation } from "react-router-dom"
-
 import SnackbarNotification from "./components/SnackbarNotification"
 import LandingPage from "./pages/LandingPage"
 import LoginPage from "./pages/LoginPage"
@@ -41,7 +40,6 @@ import BusinessWorkRequest from "./pages/BusinessWorkOverview"
 import WorkInfo from "./pages/BusinessWorkOverview/WorkInfo"
 import WorkRequest from "./pages/GigRequest"
 import WorkerJobs from "./pages/WorkerWorkOverview"
-import AdminLoginPage from "./pages/AdminLoginPage"
 import AdminHome from "./pages/HomePage/AdminHome"
 import ProfileList from "./pages/AdminPage/ProfileList"
 import AllUsersList from "./pages/AdminPage/AllUsersList"
@@ -75,9 +73,6 @@ const App: React.FC = () => {
       <Switch>
         <Route exact path="/login">
           <LoginPage />
-        </Route>
-        <Route path="/adminloginpage">
-          <AdminLoginPage />
         </Route>
         <AdminRoute path="/admin/home">
           <AdminHome />

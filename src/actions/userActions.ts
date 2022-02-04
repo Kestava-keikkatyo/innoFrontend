@@ -3,8 +3,6 @@
  * @desc Redux user actions
  */
 import userService from "../services/userService";
-import profileService from "../services/profileService";
-import contractsService from "../services/contractsService";
 import { saveUser, logoutUser } from "../utils/storage";
 import history from "../utils/history";
 import { setAlert } from "./alertActions";
@@ -15,9 +13,8 @@ import {
   USER_PROFILE,
   USER_REQUEST,
   SignUpUser,
-  SET_CURRENT_PROFILE,
 } from "../types/state";
-import { Credentials, roles, severity } from "../types/types";
+import { Credentials, severity } from "../types/types";
 import i18next from "i18next";
 
 /**
@@ -45,41 +42,6 @@ export const login = (credentials: Credentials, from: string) => {
       }
 
       dispatch(setAlert(i18next.t("login_successful"), severity.Success));
-    } catch (error) {
-      dispatch({
-        type: USER_FAILURE,
-      });
-      dispatch(setAlert(i18next.t("login_failed"), severity.Error));
-    }
-  };
-};
-
-/**
- * Logs Admin in
- * @function
- * @param {Object} credentials - Admin's email and password
- * @param {Object} from - User redirection path
- */
-export const adminLogin = (credentials: Credentials, from: string) => {
-  return async (dispatch: any) => {
-    dispatch({
-      type: USER_REQUEST,
-    });
-    try {
-      const { data } = await userService.adminLogin(credentials);
-      dispatch({
-        type: LOGIN,
-        data,
-      });
-      saveUser(data);
-
-      history.push(from);
-      dispatch(setAlert(i18next.t("login_successful"), severity.Success));
-
-      const profile: any = await profileService.fetchProfileById(
-        data.profileId
-      );
-      dispatch({ type: SET_CURRENT_PROFILE, data: profile });
     } catch (error) {
       dispatch({
         type: USER_FAILURE,
