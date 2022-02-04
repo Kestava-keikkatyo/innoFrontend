@@ -1,6 +1,6 @@
 import { LoggedInUser } from "../types/state"
-import jwt from 'jsonwebtoken';
-//import jwt_decode from 'jwt-decode';
+//import jwt from 'jsonwebtoken';
+import jwt_decode from 'jwt-decode';
 
 /**
  * Stores, loads and removes user's information (email, name, token and role) from localStorage
@@ -49,8 +49,8 @@ export const getUserId = () => {
     return null;
   }
   // decoded token
-  const decodedToken: any = jwt.decode(token)
-  //const decodedToken: any = jwt_decode(token)
+  //const decodedToken: any = jwt.decode(token)
+  const decodedToken: any = jwt_decode(token)
   return decodedToken.id
 }
 
