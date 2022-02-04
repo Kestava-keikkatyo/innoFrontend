@@ -45,12 +45,12 @@ const NewJobList: React.FC<any> = () => {
             width: 200,
         },
         {
-            field: "agency",
+            field: "user",
             headerName: (i18next.t("job_supplier")),
             width: 200,
             renderCell: (params: any) => {
                 console.log(params.row);
-                return <>{params.row.agency.name}</>;
+                return <>{params.row.user.name}</>;
             }
         },
         {
