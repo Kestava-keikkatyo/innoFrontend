@@ -31,7 +31,6 @@ import ContractFormPreviewPage from "./pages/ContractsPage/ContractFormManagerPa
 import ContractFormEditPage from "./pages/ContractsPage/ContractFormManagerPage/ContractFormEditPage"
 import ProfilePage from "./pages/ProfilePage"
 import ProfileViewPage from "./pages/ProfilePage/ProfileViewPage"
-import ProfilesPage from "./pages/ProfilePage/ProfilesPage"
 import EditProfilePage from "./pages/ProfilePage/EditProfilePage"
 import JobList from "./pages/JobPage"
 import SettingsPage from "./pages/SettingsPage"
@@ -39,7 +38,6 @@ import BusinessWorkRequest from "./pages/BusinessWorkOverview"
 import WorkInfo from "./pages/BusinessWorkOverview/WorkInfo"
 import WorkRequest from "./pages/GigRequest"
 import WorkerJobs from "./pages/WorkerWorkOverview"
-import AdminHome from "./pages/HomePage/AdminHome"
 import ProfileList from "./pages/AdminPage/ProfileList"
 import AllUsersList from "./pages/AdminPage/AllUsersList"
 import User from "./pages/AdminPage/user/User"
@@ -135,9 +133,6 @@ const App: React.FC = () => {
         </PrivateRoute>
         <PrivateRoute path="/profiles/profile-view">
           <ProfileViewPage />
-        </PrivateRoute>
-        <PrivateRoute path="/profiles">
-          <ProfilesPage />
         </PrivateRoute>
         <PrivateRoute path="/profile/edit-profile">
           <EditProfilePage />
