@@ -23,7 +23,7 @@ const authHeader = () => {
 const postFeedBack = async (message: String, heading: String) => {
   try {
     return await axios.post(
-      `${baseUrl}/feedback/post`,
+      `${baseUrl}/feedback/`,
       { message, heading },
       authHeader()
     );
