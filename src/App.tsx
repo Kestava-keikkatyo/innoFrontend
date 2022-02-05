@@ -22,7 +22,6 @@ import RoleResponsibilities from "./pages/Databank/RoleResponsibilities"
 import Databank from "./pages/Databank"
 import ReportPage from "./pages/ReportPage"
 import ReportsPage from "./pages/ReportPage/ReportsPage"
-import AdminRoute from "./components/AdminRoute"
 import BusinessContractPage from "./pages/BusinessContractsPage"
 import BusinessContractPreviewPage from "./pages/BusinessContractPreviewPage"
 import BusinessContractFill from "./pages/BusinessContractPreviewPage/BusinessContractFill"
@@ -74,9 +73,6 @@ const App: React.FC = () => {
         <Route exact path="/login">
           <LoginPage />
         </Route>
-        <AdminRoute path="/admin/home">
-          <AdminHome />
-        </AdminRoute>
         <PrivateRoute path="/profileList">
           <ProfileList />
         </PrivateRoute>
