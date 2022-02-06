@@ -16,6 +16,7 @@ import {
   Link,
 } from '@material-ui/core';
 import { useSelector } from 'react-redux';
+import { roles } from '../../types/types';
 
 /**
  * @component
@@ -29,9 +30,9 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
   const { loading } = useSelector((state: any) => state.user);
 
   const roleOptions = [
-    { value: 'worker', label: t('worker') },
-    { value: 'agency', label: t('agency') },
-    { value: 'business', label: t('business') },
+    { value: roles.Worker, label: t('worker') },
+    { value: roles.Agency, label: t('agency') },
+    { value: roles.Business, label: t('business') },
   ];
 
   const categoryOptions = [
@@ -92,7 +93,7 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
             if (!values.role) {
               errors.role = requiredError;
             }
-            if (values.role !== 'worker' && !values.category) {
+            if (values.role !== roles.Worker && !values.category) {
               errors.category = requiredError;
             }
             return errors;
@@ -143,7 +144,7 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
                   label={t('category')}
                   name="category"
                   options={categoryOptions}
-                  disabled={values.role === 'worker' ? true : false}
+                  disabled={values.role === roles.Worker ? true : false}
                   setFieldValue={setFieldValue}
                 />
                 <Typography gutterBottom variant="body2" color="textSecondary">
