@@ -54,6 +54,9 @@ import JobDetails from "./pages/JobPage/JobDetails"
 import JobListForAgency from "./pages/JobPage/JobListForAgency"
 import JobUpdate from "./pages/JobPage/JobUpdate"
 import CreateJobForAgency from "./pages/JobPage/CreateJobForAgency"
+import SendFeedback from "./pages/FeedbackPage/SendFeedback"
+import Feedbacks from "./pages/FeedbackPage/Feedbacks"
+import Details from "./pages/FeedbackPage/Details"
 
 /**
  * @component
@@ -115,6 +118,15 @@ const App: React.FC = () => {
         </PrivateRoute>
         <PrivateRoute path="/create-job" roles={[roles.Agency]}>
           <CreateJobForAgency />
+        </PrivateRoute>
+        <PrivateRoute path="/send-feedback" roles={[roles.Business, roles.Agency, roles.Worker]}>
+          <SendFeedback />
+        </PrivateRoute>
+        <PrivateRoute path="/feedbacks" roles={[roles.Business, roles.Agency, roles.Worker]}>
+          <Feedbacks />
+        </PrivateRoute>
+        <PrivateRoute path="/feedback-details/:feedbackId" roles={[roles.Business, roles.Agency, roles.Worker]}>
+          <Details />
         </PrivateRoute>
         <DatabankRoute path="/databank/lifeline">
           <JobLifeline />
