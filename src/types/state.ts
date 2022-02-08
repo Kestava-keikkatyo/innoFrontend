@@ -8,6 +8,7 @@ import {
   Report,
   Feedback,
   Job,
+  feedbackType,
 } from "./types";
 
 /**
@@ -133,6 +134,70 @@ export interface SignUpUser extends User {
 export interface LoggedInUser extends User {
   token: string;
 }
+
+/**
+ * Job state & action types
+ */
+export interface FeedbackState {
+  currentFeedback: Feedback | undefined;
+  loading: boolean;
+  feedbacks: Feedback[];
+}
+interface FeedbackSendRequest {
+  type: typeof feedbackType.FEEDBACK_SEND_REQUEST;
+  data: any;
+}
+
+interface FeedbackSendSuccess {
+  type: typeof feedbackType.FEEDBACK_SEND_SUCCESS;
+  data: any;
+}
+
+interface FeedbackSendFailure {
+  type: typeof feedbackType.FEEDBACK_SEND_FAILURE;
+  data: any;
+}
+
+interface FeedbackGetAllRequest {
+  type: typeof feedbackType.FEEDBACK_GETALL_REQUEST;
+  data: any;
+}
+
+interface FeedbackGetAllSuccess {
+  type: typeof feedbackType.FEEDBACK_GETALL_SUCCESS;
+  data: any;
+}
+
+interface FeedbackGetAllFailure {
+  type: typeof feedbackType.FEEDBACK_GETALL_FAILURE;
+  data: any;
+}
+
+interface FeedbackCurrentRequest {
+  type: typeof feedbackType.FEEDBACK_CURRENT_REQUEST;
+  data: any;
+}
+
+interface FeedbackCurrentSuccess {
+  type: typeof feedbackType.FEEDBACK_CURRENT_SUCCESS;
+  data: any;
+}
+
+interface FeedbackCurrentFailure {
+  type: typeof feedbackType.FEEDBACK_CURRENT_FAILURE;
+  data: any;
+}
+
+export type FeedbackAction =
+  | FeedbackSendRequest
+  | FeedbackSendSuccess
+  | FeedbackSendFailure
+  | FeedbackGetAllRequest
+  | FeedbackGetAllSuccess
+  | FeedbackGetAllFailure
+  | FeedbackCurrentRequest
+  | FeedbackCurrentSuccess
+  | FeedbackCurrentFailure;
 
 export const JOB_GETALL_REQUEST = "JOB_GETALL_REQUEST";
 export const JOB_GETALL_SUCCESS = "JOB_GETALL_SUCCESS";
