@@ -26,7 +26,7 @@
     "@mui/material": "^5.4.0",
     "@mui/styles": "^5.3.0",
     "@mui/x-data-grid": "^5.2.1",
-    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "@types/node": "^17.0.14",
@@ -94,7 +94,7 @@
   "devDependencies": {
     "@types/deep-freeze": "^0.1.2",
     "@types/html-to-pdfmake": "^2.1.0",
-    "@types/jest": "^26.0.24",
+    "@types/jest": "^27.4.0",
     "@types/jquery": "^3.5.10",
     "@types/material-ui": "^0.21.12",
     "@types/pdfmake": "^0.1.19",
@@ -110,7 +110,7 @@
     "better-docs": "^2.3.2",
     "deep-freeze": "0.0.1",
     "eslint": "^8.8.0",
-    "eslint-plugin-jest": "^24.7.0",
+    "eslint-plugin-jest": "^26.1.0",
     "jsdoc": "^3.6.7",
     "redux-mock-store": "^1.5.4",
     "typescript": "^4.5.5"
