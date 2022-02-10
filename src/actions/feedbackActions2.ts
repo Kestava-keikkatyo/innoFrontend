@@ -75,10 +75,10 @@ export const createFeedback = (feedback: Feedback) => async (dispatch: any) => {
       data: feedback,
     });
 
-    const data = await feedbackService2.createFeedback(feedback);
+    const { data } = await feedbackService2.createFeedback(feedback);
     dispatch({
       type: feedbackType.FEEDBACK_SEND_SUCCESS,
-      data: feedback,
+      data,
     });
     dispatch(setAlert("Feedback sent successfully!"));
     console.log("sent feedback", data);
