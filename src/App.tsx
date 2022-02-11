@@ -1,6 +1,5 @@
 import React, { useEffect } from "react"
 import { Switch, Route, Redirect, useLocation } from "react-router-dom"
-
 import SnackbarNotification from "./components/SnackbarNotification"
 import LandingPage from "./pages/LandingPage"
 import LoginPage from "./pages/LoginPage"
@@ -23,7 +22,6 @@ import RoleResponsibilities from "./pages/Databank/RoleResponsibilities"
 import Databank from "./pages/Databank"
 import ReportPage from "./pages/ReportPage"
 import ReportsPage from "./pages/ReportPage/ReportsPage"
-import AdminRoute from "./components/AdminRoute"
 import BusinessContractPage from "./pages/BusinessContractsPage"
 import BusinessContractPreviewPage from "./pages/BusinessContractPreviewPage"
 import BusinessContractFill from "./pages/BusinessContractPreviewPage/BusinessContractFill"
@@ -33,7 +31,6 @@ import ContractFormPreviewPage from "./pages/ContractsPage/ContractFormManagerPa
 import ContractFormEditPage from "./pages/ContractsPage/ContractFormManagerPage/ContractFormEditPage"
 import ProfilePage from "./pages/ProfilePage"
 import ProfileViewPage from "./pages/ProfilePage/ProfileViewPage"
-import ProfilesPage from "./pages/ProfilePage/ProfilesPage"
 import EditProfilePage from "./pages/ProfilePage/EditProfilePage"
 import JobList from "./pages/JobPage"
 import SettingsPage from "./pages/SettingsPage"
@@ -41,8 +38,6 @@ import BusinessWorkRequest from "./pages/BusinessWorkOverview"
 import WorkInfo from "./pages/BusinessWorkOverview/WorkInfo"
 import WorkRequest from "./pages/GigRequest"
 import WorkerJobs from "./pages/WorkerWorkOverview"
-import AdminLoginPage from "./pages/AdminLoginPage"
-import AdminHome from "./pages/HomePage/AdminHome"
 import ProfileList from "./pages/AdminPage/ProfileList"
 import AllUsersList from "./pages/AdminPage/AllUsersList"
 import User from "./pages/AdminPage/user/User"
@@ -59,6 +54,9 @@ import JobDetails from "./pages/JobPage/JobDetails"
 import JobListForAgency from "./pages/JobPage/JobListForAgency"
 import JobUpdate from "./pages/JobPage/JobUpdate"
 import CreateJobForAgency from "./pages/JobPage/CreateJobForAgency"
+import SendFeedback from "./pages/FeedbackPage/SendFeedback"
+import Feedbacks from "./pages/FeedbackPage/Feedbacks"
+import Details from "./pages/FeedbackPage/Details"
 
 /**
  * @component
@@ -76,12 +74,6 @@ const App: React.FC = () => {
         <Route exact path="/login">
           <LoginPage />
         </Route>
-        <Route path="/adminloginpage">
-          <AdminLoginPage />
-        </Route>
-        <AdminRoute path="/admin/home">
-          <AdminHome />
-        </AdminRoute>
         <PrivateRoute path="/profileList">
           <ProfileList />
         </PrivateRoute>
@@ -127,6 +119,15 @@ const App: React.FC = () => {
         <PrivateRoute path="/create-job" roles={[roles.Agency]}>
           <CreateJobForAgency />
         </PrivateRoute>
+        <PrivateRoute path="/send-feedback" roles={[roles.Business, roles.Agency, roles.Worker]}>
+          <SendFeedback />
+        </PrivateRoute>
+        <PrivateRoute path="/feedbacks" roles={[roles.Business, roles.Agency, roles.Worker]}>
+          <Feedbacks />
+        </PrivateRoute>
+        <PrivateRoute path="/feedback-details/:feedbackId" roles={[roles.Business, roles.Agency, roles.Worker]}>
+          <Details />
+        </PrivateRoute>
         <DatabankRoute path="/databank/lifeline">
           <JobLifeline />
         </DatabankRoute>
@@ -144,9 +145,6 @@ const App: React.FC = () => {
         </PrivateRoute>
         <PrivateRoute path="/profiles/profile-view">
           <ProfileViewPage />
-        </PrivateRoute>
-        <PrivateRoute path="/profiles">
-          <ProfilesPage />
         </PrivateRoute>
         <PrivateRoute path="/profile/edit-profile">
           <EditProfilePage />

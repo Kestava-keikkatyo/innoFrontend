@@ -23,11 +23,11 @@ const UpdateProfileInformation = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(me(data.role))
+    dispatch(me())
   }, [dispatch, data.role])
 
   const updateUser = (updateData: any) => {
-    dispatch(update(updateData, data.role))
+    dispatch(update(updateData))
   }
 
   if (user.loading || !user.profile) {

@@ -71,7 +71,7 @@ const FeedBackForm = () => {
   const classes = useStyles();
   
 
-  const { myFeedBacks } = useSelector((state: IRootState) => state.feedback);
+  const { myFeedBacks } = useSelector((state: IRootState) => state.feedback || []);
 
   let { feedBackSaved } = useSelector((state: IRootState) => state.feedback);
 

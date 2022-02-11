@@ -24,7 +24,7 @@ const LoginPage = () => {
   const { t } = useTranslation();
 
   const signupSubmit = ({ role, ...user }: any) => {
-    dispatch(signup(user, role));
+    dispatch(signup({...user, userType: role}));
   };
 
   const loginSubmit = ({ ...credentials }: any) => {

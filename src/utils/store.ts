@@ -16,6 +16,7 @@ import notificationsReducer from "../reducers/notificationsReducer";
 import feedBackReducer from "../reducers/feedBackReducer";
 import reportReducer from "../reducers/reportReducer";
 import jobReducer from "../reducers/jobReducer";
+import feedbackReducer2 from "../reducers/FeedbackReducer2";
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const reducer = combineReducers({
@@ -35,6 +36,7 @@ const reducer = combineReducers({
   feedback: feedBackReducer,
   report: reportReducer,
   job: jobReducer,
+  feedback2: feedbackReducer2,
 });
 
 export type IRootState = ReturnType<typeof reducer>;

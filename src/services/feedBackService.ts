@@ -23,7 +23,7 @@ const authHeader = () => {
 const postFeedBack = async (message: String, heading: String) => {
   try {
     return await axios.post(
-      `${baseUrl}/feedback/post`,
+      `${baseUrl}/feedback/`,
       { message, heading },
       authHeader()
     );
@@ -37,7 +37,7 @@ const postFeedBack = async (message: String, heading: String) => {
  */
 const getUserFeedBacks = async () => {
   try {
-    return await axios.get(`${baseUrl}/feedback/get`, authHeader());
+    return await axios.get(`${baseUrl}/feedback/allMyFeedbacks`, authHeader());
   } catch (error) {
     return Promise.reject(error.response);
   }

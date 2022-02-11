@@ -22,7 +22,7 @@ const FAQIndex = () => {
   // Should be switched out when there is actual data to be retrieved
   useEffect(() => {
     if (data.role) {
-      dispatch(me(data.role))
+      dispatch(me())
     }
   }, [dispatch, data.role])
 

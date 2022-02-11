@@ -97,7 +97,7 @@ const ContractsPage = () => {
 
   //to be switched to retrieve contracts
   useEffect(() => {
-    dispatch(me(data.role));
+    dispatch(me());
     dispatch(fetchBusinessContracts());
     dispatch(fetchFormList());
   }, [dispatch, data.role]);

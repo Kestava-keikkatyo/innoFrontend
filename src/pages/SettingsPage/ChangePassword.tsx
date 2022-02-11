@@ -23,11 +23,11 @@ const ChangePassword: React.FC<any> = () => {
   const { t } = useTranslation()
 
   useEffect(() => {
-    dispatch(me(data.role));
+    dispatch(me());
   }, [dispatch, data.role]);
 
   const handleSubmit = (updateData: any) => {
-    dispatch(updatePassword(updateData, data.role));
+    dispatch(updatePassword(updateData));
   };
 
   return (
