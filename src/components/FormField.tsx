@@ -15,8 +15,9 @@ import {
 } from '@mui/material'
 import { useEffect } from 'react'
 import './FormikField.css'
-import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
-import DateFnsUtils from '@date-io/date-fns'
+import DatePicker from '@mui/lab/DatePicker'
+import LocalizationProvider from '@mui/lab/LocalizationProvider'
+import AdapterDateFns from '@mui/lab/AdapterDateFns'
 
 /**
  * @component
@@ -194,23 +195,27 @@ interface DatePickerFieldProps {
 export const DatePickerField: React.FC<DatePickerFieldProps & FormikProps<any>> = ({label, name, required, values, setFieldValue}) => {
   return (
     <>
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <KeyboardDatePicker
-          id="date-picker-dialog"
-          label={label}
-          name={name}
-          required={required}
-          fullWidth
-          inputVariant="outlined"
-          format="dd.MM.yyyy"
+      <LocalizationProvider dateAdapter={AdapterDateFns} >
+        <DatePicker 
+          renderInput = {props => 
+            <TextField 
+              id="date-picker-dialog" 
+              label={label} 
+              name={name}
+              required={required}
+              fullWidth
+              style={{ minHeight: '4rem'}}
+            /> 
+          }
+          inputFormat="dd.MM.yyyy"
           value={values[name]}
           onChange={value => setFieldValue(name, value)}
-          KeyboardButtonProps={{
+          OpenPickerButtonProps={{
             "aria-label": "change date"
           }}
-          style={{ minHeight: '4rem'}}
+          
         />
-      </MuiPickersUtilsProvider>
+      </LocalizationProvider>
     </>
   )
 }

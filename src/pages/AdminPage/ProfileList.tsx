@@ -1,4 +1,4 @@
-import { DataGrid } from "@material-ui/data-grid";
+import { DataGrid } from '@mui/x-data-grid';
 import * as React from 'react';
 import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
