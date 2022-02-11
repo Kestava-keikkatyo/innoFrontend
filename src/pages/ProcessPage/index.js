@@ -4,7 +4,7 @@ import ProcessPage from './ProcessPage'
 
 import {
   Container,
-} from '@material-ui/core'
+} from '@mui/material'
 
 const HomeProcess = () => {
 

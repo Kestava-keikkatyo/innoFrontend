@@ -11,19 +11,17 @@ import {
   MenuItem,
   Typography,
   Grid,
-} from '@material-ui/core';
-import { Search as SearchIcon } from '@material-ui/icons';
+} from '@mui/material';
+import { Search as SearchIcon } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllAgencies } from '../../actions/allUsersActions';
 import { IRootState } from '../../utils/store';
 import AgencyCard from './AgencyCard';
-import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
-import {
-  makeStyles,
-  useTheme,
-  Theme,
-  createStyles,
-} from '@material-ui/core/styles';
+import { ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { useTheme, Theme } from '@mui/material/styles';
+
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
 
 /**
  * @component
@@ -36,7 +34,7 @@ const AgenciesList = () => {
   const { agencies } = useSelector((state: IRootState) => state.allUsers);
   const [alignment, setAlignment] = React.useState('Kaikki');
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('sm'));
+  const matches = useMediaQuery(theme.breakpoints.down('md'));
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -123,7 +121,7 @@ const AgenciesList = () => {
               value={input}
               onChange={handleQuerySearchChange}
             />
-            <IconButton type="submit">
+            <IconButton type="submit" size="large">
               <SearchIcon />
             </IconButton>
           </Box>

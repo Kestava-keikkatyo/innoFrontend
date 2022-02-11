@@ -12,7 +12,7 @@ import {
   Divider,
   CardHeader,
   Grid,
-} from '@material-ui/core';
+} from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import FeedBackForm from './FeedBackForm/index';
 import Faq from './FAQBoxBusiness';

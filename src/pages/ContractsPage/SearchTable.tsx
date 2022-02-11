@@ -11,11 +11,11 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
-  makeStyles,
-  createStyles,
   Theme,
-} from '@material-ui/core';
-import { Add as AddIcon } from '@material-ui/icons';
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
+import { Add as AddIcon } from '@mui/icons-material';
 import { useSelector } from 'react-redux';
 import { IRootState } from '../../utils/store';
 import { useEffect, useState } from 'react';
@@ -27,19 +27,19 @@ import {
   FormControlLabel,
   Radio,
   Tooltip,
-} from '@material-ui/core';
-import { Search as SearchIcon } from '@material-ui/icons';
+} from '@mui/material';
+import { Search as SearchIcon } from '@mui/icons-material';
 import { updateSearchList } from '../../actions/businessContractActions';
 import { useDispatch } from 'react-redux';
 import { roles } from '../../types/types';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useTranslation } from 'react-i18next'
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
   AccordionActions,
-} from '@material-ui/core';
+} from '@mui/material';
 
 const INIT_SEARCH_TYPE = roles.Worker;
 
@@ -56,7 +56,7 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
   const [searchType, setSearchType] = useState<any>(INIT_SEARCH_TYPE);
   const [filter, setFilter] = React.useState('');
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('sm'));
+  const matches = useMediaQuery(theme.breakpoints.down('md'));
   const classes = useStyles();
 
   useEffect(() => {
@@ -113,7 +113,7 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
                       aria-label="add to organization"
                       color="secondary"
                       onClick={() => addWorkerOrBusiness(workerOrBusiness)}
-                    >
+                      size="large">
                       <AddIcon />
                     </IconButton>
                   </TableCell>
@@ -150,9 +150,7 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
             </AccordionDetails>
             <AccordionActions>
               <Tooltip title="Add worker" placement="top" arrow>
-                <IconButton
-                  onClick={() => addWorkerOrBusiness(workerOrBusiness)}
-                >
+                <IconButton onClick={() => addWorkerOrBusiness(workerOrBusiness)} size="large">
                   <AddIcon />
                 </IconButton>
               </Tooltip>
@@ -211,7 +209,7 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
             value={filter}
             onChange={handleFilterchange}
           />
-          <IconButton type="submit">
+          <IconButton type="submit" size="large">
             <SearchIcon />
           </IconButton>
         </Box>

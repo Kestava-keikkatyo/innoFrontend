@@ -6,7 +6,6 @@ import {
   Divider,
   Grid,
   IconButton,
-  makeStyles,
   MenuItem,
   Popover,
   Toolbar,
@@ -14,9 +13,10 @@ import {
   useMediaQuery,
   useTheme,
   Button,
-} from "@material-ui/core"
-import NotificationsIcon from "@material-ui/icons/Notifications"
-import MenuIcon from "@material-ui/icons/Menu"
+} from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
+import NotificationsIcon from "@mui/icons-material/Notifications"
+import MenuIcon from "@mui/icons-material/Menu"
 import clsx from "clsx"
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
@@ -28,10 +28,10 @@ import { useHistory } from "react-router-dom"
 import { fetchNotifications } from "../../actions/notificationsActions"
 import Notifications from "./Notifications"
 import { fetchProfileById } from "../../actions/profileActions"
-import AccountCircleIcon from "@material-ui/icons/AccountCircle"
-import SettingsIcon from "@material-ui/icons/Settings"
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
-import ExitToAppIcon from "@material-ui/icons/ExitToApp"
+import AccountCircleIcon from "@mui/icons-material/AccountCircle"
+import SettingsIcon from "@mui/icons-material/Settings"
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import ExitToAppIcon from "@mui/icons-material/ExitToApp"
 import { bindTrigger, bindPopover } from "material-ui-popup-state"
 import { usePopupState } from "material-ui-popup-state/hooks"
 import { logout } from "../../actions/userActions"
@@ -145,7 +145,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
 
   const dispatch = useDispatch()
   const theme = useTheme()
-  const matches = useMediaQuery(theme.breakpoints.down("sm"))
+  const matches = useMediaQuery(theme.breakpoints.down('md'))
 
   // popupState for user popup menu
   // https://www.npmjs.com/package/material-ui-popup-state
@@ -198,7 +198,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
           edge="end"
           onClick={handleDrawerToggle}
           className={classes.menuButton}
-        >
+          size="large">
           <MenuIcon />
         </IconButton>
         {matches ? null : <ActiveLastBreadcrumb />}
@@ -219,7 +219,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
               aria-haspopup="true"
               color="default"
               onClick={handleNotifications}
-            >
+              size="large">
               <NotificationsIcon />
             </IconButton>
             <LangMenuDropDown />
@@ -255,7 +255,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
               color="primary"
               className={classes.user}
               {...bindTrigger(popupState)}
-            >
+              size="large">
               <Typography className={classes.username}>
                 {data.name || "Loading"}
               </Typography>
@@ -340,7 +340,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
           edge="end"
           onClick={handleDrawerToggle}
           className={classes.menuButton}
-        >
+          size="large">
           <MenuIcon />
         </IconButton>
         {matches ? null : <ActiveLastBreadcrumb />}
@@ -361,7 +361,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
               aria-haspopup="true"
               color="default"
               onClick={handleNotifications}
-            >
+              size="large">
               <NotificationsIcon />
             </IconButton>
             <LangMenuDropDown />
@@ -397,7 +397,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
               color="primary"
               className={classes.user}
               {...bindTrigger(popupState)}
-            >
+              size="large">
               <Typography className={classes.username}>
                 {data.name || "Loading"}
               </Typography>
@@ -486,7 +486,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
           edge="end"
           onClick={handleDrawerToggle}
           className={classes.menuButton}
-        >
+          size="large">
           <MenuIcon />
         </IconButton>
         {matches ? null : <ActiveLastBreadcrumb />}
@@ -507,7 +507,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
               aria-haspopup="true"
               color="default"
               onClick={handleNotifications}
-            >
+              size="large">
               <NotificationsIcon />
             </IconButton>
             <LangMenuDropDown />
@@ -543,7 +543,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
               color="primary"
               className={classes.user}
               {...bindTrigger(popupState)}
-            >
+              size="large">
               <Typography className={classes.username}>
                 {data.name || "Loading"}
               </Typography>
@@ -628,7 +628,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
           edge="end"
           onClick={handleDrawerToggle}
           className={classes.menuButton}
-        >
+          size="large">
           <MenuIcon />
         </IconButton>
         {matches ? null : <ActiveLastBreadcrumb />}
@@ -649,7 +649,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
               aria-haspopup="true"
               color="default"
               onClick={handleNotifications}
-            >
+              size="large">
               <NotificationsIcon />
             </IconButton>
             <LangMenuDropDown />
@@ -685,7 +685,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
               color="primary"
               className={classes.user}
               {...bindTrigger(popupState)}
-            >
+              size="large">
               <Typography className={classes.username}>
                 {data.name || "Loading"}
               </Typography>
@@ -755,7 +755,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
         </div>
       </Toolbar>
     </AppBar>
-  )
+  );
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -814,7 +814,7 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
      */
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down('lg')]: {
       width: `100vw`,
       // marginLeft: drawerWidth,
     },
@@ -833,7 +833,7 @@ const useStyles = makeStyles((theme) => ({
   text: {
     color: "black",
     marginTop: "1%",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down('sm')]: {
       marginTop: "5%",
     },
   },
@@ -899,7 +899,7 @@ const useStyles = makeStyles((theme) => ({
   username: {
     color: "black",
     marginRight: 10,
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('md')]: {
       display: "none",
     },
   },

@@ -11,25 +11,25 @@ import {
   useMediaQuery,
   useTheme,
   Tooltip,
-  makeStyles,
-  createStyles,
   Theme,
-} from '@material-ui/core';
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
 import { useTranslation } from 'react-i18next';
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
   AccordionActions,
-} from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+} from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import pdfMake from 'pdfmake/build/pdfmake';
 import ReactDOMServer from 'react-dom/server';
 import Form from '../FormsPage/Form';
 import htmlToPdfmake from 'html-to-pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts.js';
-import SaveAltIcon from '@material-ui/icons/SaveAlt';
+import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import businessContractFormService from '../../services/businessContractFormService';
 
 const ContractsMadeTable = (prop: { contracts: []; contractId: string }) => {
@@ -40,7 +40,7 @@ const ContractsMadeTable = (prop: { contracts: []; contractId: string }) => {
 
   const theme = useTheme();
   const classes = useStyles();
-  const matches = useMediaQuery(theme.breakpoints.down('sm'));
+  const matches = useMediaQuery(theme.breakpoints.down('md'));
   const { t } = useTranslation();
 
   // Print PDF
@@ -114,7 +114,7 @@ const ContractsMadeTable = (prop: { contracts: []; contractId: string }) => {
                     aria-label="Download"
                     color="secondary"
                     onClick={() => handleDownload(contract.formId)}
-                  >
+                    size="large">
                     <SaveAltIcon />
                   </IconButton>
                 </TableCell>
@@ -172,7 +172,7 @@ const ContractsMadeTable = (prop: { contracts: []; contractId: string }) => {
                 aria-label="download"
                 color="secondary"
                 onClick={() => handleDownload(contract.formId)}
-              >
+                size="large">
                 <SaveAltIcon />
               </IconButton>
             </Tooltip>

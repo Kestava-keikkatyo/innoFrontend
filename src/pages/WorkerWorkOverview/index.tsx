@@ -1,18 +1,9 @@
 import React, { useState } from "react";
-import {
-  Container,
-  Typography,
-  makeStyles,
-  Box,
-  Tabs,
-  AppBar,
-  Tab,
-  useTheme,
-  Direction,
-} from "@material-ui/core";
-import WorkIcon from "@material-ui/icons/Work";
-import AnnouncementIcon from "@material-ui/icons/Announcement";
-// import { Accordion, AccordionDetails } from "@material-ui/core";
+import { Container, Typography, Box, Tabs, AppBar, Tab, useTheme, Direction } from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
+import WorkIcon from "@mui/icons-material/Work";
+import AnnouncementIcon from "@mui/icons-material/Announcement";
+// import { Accordion, AccordionDetails } from "@mui/material";
 import WorkView from "./WorkView";
 import WorkRequest from "./WorkRequest";
 import { useTranslation } from 'react-i18next'

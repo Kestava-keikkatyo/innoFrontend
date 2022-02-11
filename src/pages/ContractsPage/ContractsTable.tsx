@@ -1,5 +1,6 @@
 import React from 'react';
-import { Typography, Grid, makeStyles } from '@material-ui/core';
+import { Typography, Grid } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import { useDispatch } from 'react-redux';
 import {
   declineBusinessContract,
@@ -18,8 +19,8 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-} from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+} from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { deleteBusinessContractForm } from '../../actions/businessContractFormActions';
 
 const useStyles = makeStyles((theme) => ({
@@ -131,185 +132,183 @@ const ContractsTable = (props: {
       </Typography>
     );
   else
-    return (
-      <>
-        <Grid
-          container
-          direction="column"
-          spacing={1}
-          justify="center"
-          alignItems="stretch"
-        >
-          <Grid item xs={12}>
-            <Accordion className={classes.card} variant="outlined">
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
-                <Typography gutterBottom variant="h5">
-                  {t('sent_contracts')}
-                </Typography>
-              </AccordionSummary>
+    return <>
+      <Grid
+        container
+        direction="column"
+        spacing={1}
+        justifyContent="center"
+        alignItems="stretch"
+      >
+        <Grid item xs={12}>
+          <Accordion className={classes.card} variant="outlined">
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Typography gutterBottom variant="h5">
+                {t('sent_contracts')}
+              </Typography>
+            </AccordionSummary>
 
-              <AccordionDetails>
-                <Accordion className={classes.accordion} variant="outlined">
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                  >
-                    <Typography gutterBottom variant="h6">
-                      {t('businesses')}
-                    </Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <ContractsSendTable
-                      contracts={contracts[0]?.pendingContracts?.businesses}
-                      contractId={businessContract[0]._id}
-                      declineContract={declineContract}
-                    />
-                  </AccordionDetails>
-                </Accordion>
-              </AccordionDetails>
+            <AccordionDetails>
+              <Accordion className={classes.accordion} variant="outlined">
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography gutterBottom variant="h6">
+                    {t('businesses')}
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <ContractsSendTable
+                    contracts={contracts[0]?.pendingContracts?.businesses}
+                    contractId={businessContract[0]._id}
+                    declineContract={declineContract}
+                  />
+                </AccordionDetails>
+              </Accordion>
+            </AccordionDetails>
 
-              <AccordionDetails>
-                <Accordion className={classes.accordion} variant="outlined">
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                  >
-                    <Typography gutterBottom variant="h6">
-                      {t('workers')}
-                    </Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <ContractsSendTable
-                      contracts={contracts[0]?.pendingContracts?.workers}
-                      contractId={businessContract[0]._id}
-                      declineContract={declineContract}
-                    />
-                  </AccordionDetails>
-                </Accordion>
-              </AccordionDetails>
-            </Accordion>
-          </Grid>
-          <Grid item xs={12}>
-            <Accordion className={classes.card} variant="outlined">
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
-                <Typography gutterBottom variant="h5">
-                  {t('waiting_contracts')}
-                </Typography>
-              </AccordionSummary>
-
-              <AccordionDetails>
-                <Accordion className={classes.accordion} variant="outlined">
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                  >
-                    <Typography gutterBottom variant="h6">
-                      {t('businesses')}
-                    </Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <ContractsReceivedTable
-                      contracts={contracts[0]?.requestContracts?.businesses}
-                      contractId={businessContract[0]._id}
-                      acceptContract={acceptContractFromBusiness}
-                      declineContract={declineContract}
-                      sendBackContract={sendBackContract}
-                    />
-                  </AccordionDetails>
-                </Accordion>
-              </AccordionDetails>
-
-              <AccordionDetails>
-                <Accordion className={classes.accordion} variant="outlined">
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                  >
-                    <Typography gutterBottom variant="h6">
-                      {t('workers')}
-                    </Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <ContractsReceivedTable
-                      contracts={contracts[0]?.requestContracts?.workers}
-                      contractId={businessContract[0]._id}
-                      acceptContract={acceptContractFromWorker}
-                      declineContract={declineContract}
-                      sendBackContract={sendBackContract}
-                    />
-                  </AccordionDetails>
-                </Accordion>
-              </AccordionDetails>
-            </Accordion>
-          </Grid>
-          <Grid item xs={12}>
-            <Accordion className={classes.card} variant="outlined">
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
-                <Typography gutterBottom variant="h5">
-                  {t('done_contracts')}
-                </Typography>
-              </AccordionSummary>
-
-              <AccordionDetails>
-                <Accordion className={classes.accordion} variant="outlined">
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                  >
-                    <Typography gutterBottom variant="h6">
-                      {t('businesses')}
-                    </Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <ContractsMadeTable
-                      contracts={contracts[0]?.madeContracts?.businesses}
-                      contractId={businessContract[0]._id}
-                    />
-                  </AccordionDetails>
-                </Accordion>
-              </AccordionDetails>
-
-              <AccordionDetails>
-                <Accordion className={classes.accordion} variant="outlined">
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                  >
-                    <Typography gutterBottom variant="h6">
-                      {t('workers')}
-                    </Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <ContractsMadeTable
-                      contracts={contracts[0]?.madeContracts?.workers}
-                      contractId={businessContract[0]._id}
-                    />
-                  </AccordionDetails>
-                </Accordion>
-              </AccordionDetails>
-            </Accordion>
-          </Grid>
+            <AccordionDetails>
+              <Accordion className={classes.accordion} variant="outlined">
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography gutterBottom variant="h6">
+                    {t('workers')}
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <ContractsSendTable
+                    contracts={contracts[0]?.pendingContracts?.workers}
+                    contractId={businessContract[0]._id}
+                    declineContract={declineContract}
+                  />
+                </AccordionDetails>
+              </Accordion>
+            </AccordionDetails>
+          </Accordion>
         </Grid>
-      </>
-    );
+        <Grid item xs={12}>
+          <Accordion className={classes.card} variant="outlined">
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Typography gutterBottom variant="h5">
+                {t('waiting_contracts')}
+              </Typography>
+            </AccordionSummary>
+
+            <AccordionDetails>
+              <Accordion className={classes.accordion} variant="outlined">
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography gutterBottom variant="h6">
+                    {t('businesses')}
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <ContractsReceivedTable
+                    contracts={contracts[0]?.requestContracts?.businesses}
+                    contractId={businessContract[0]._id}
+                    acceptContract={acceptContractFromBusiness}
+                    declineContract={declineContract}
+                    sendBackContract={sendBackContract}
+                  />
+                </AccordionDetails>
+              </Accordion>
+            </AccordionDetails>
+
+            <AccordionDetails>
+              <Accordion className={classes.accordion} variant="outlined">
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography gutterBottom variant="h6">
+                    {t('workers')}
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <ContractsReceivedTable
+                    contracts={contracts[0]?.requestContracts?.workers}
+                    contractId={businessContract[0]._id}
+                    acceptContract={acceptContractFromWorker}
+                    declineContract={declineContract}
+                    sendBackContract={sendBackContract}
+                  />
+                </AccordionDetails>
+              </Accordion>
+            </AccordionDetails>
+          </Accordion>
+        </Grid>
+        <Grid item xs={12}>
+          <Accordion className={classes.card} variant="outlined">
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Typography gutterBottom variant="h5">
+                {t('done_contracts')}
+              </Typography>
+            </AccordionSummary>
+
+            <AccordionDetails>
+              <Accordion className={classes.accordion} variant="outlined">
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography gutterBottom variant="h6">
+                    {t('businesses')}
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <ContractsMadeTable
+                    contracts={contracts[0]?.madeContracts?.businesses}
+                    contractId={businessContract[0]._id}
+                  />
+                </AccordionDetails>
+              </Accordion>
+            </AccordionDetails>
+
+            <AccordionDetails>
+              <Accordion className={classes.accordion} variant="outlined">
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography gutterBottom variant="h6">
+                    {t('workers')}
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <ContractsMadeTable
+                    contracts={contracts[0]?.madeContracts?.workers}
+                    contractId={businessContract[0]._id}
+                  />
+                </AccordionDetails>
+              </Accordion>
+            </AccordionDetails>
+          </Accordion>
+        </Grid>
+      </Grid>
+    </>;
 };
 
 export default ContractsTable;

@@ -1,4 +1,4 @@
-import { Button, Typography } from '@material-ui/core';
+import { Button, Typography } from '@mui/material';
 import React, { useState } from 'react';
 //import { FileUploaderProps } from '../types/props';
 import { useDispatch, useSelector } from 'react-redux';

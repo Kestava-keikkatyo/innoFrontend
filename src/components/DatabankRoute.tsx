@@ -1,12 +1,6 @@
-import {
-  Button,
-  Container,
-  fade,
-  Grid,
-  InputBase,
-  makeStyles,
-} from '@material-ui/core'
-import { Search } from '@material-ui/icons'
+import { Button, Container, alpha, Grid, InputBase } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import { Search } from '@mui/icons-material'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../assets/keikka-kaveri4.png'
@@ -44,7 +38,7 @@ const DatabankRoute: React.FC<DatabankProps> = ({ path, children }) => {
         <Grid
           container
           direction="row"
-          justify="space-between"
+          justifyContent="space-between"
           alignItems="center"
           className="databank-nav"
         >
@@ -95,16 +89,16 @@ const DatabankRoute: React.FC<DatabankProps> = ({ path, children }) => {
         {children}
       </Container>
     </div>
-  )
+  );
 }
 
 const useStyles = makeStyles((theme) => ({
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
     '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
     marginLeft: 0,
     width: '100%',
@@ -128,7 +122,7 @@ const useStyles = makeStyles((theme) => ({
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('sm')]: {

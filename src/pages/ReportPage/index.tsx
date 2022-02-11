@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, Typography } from '@material-ui/core';
+import { Container, Typography } from '@mui/material';
 import ReportForm from '../ReportPage/ReportForm';
 
 const ReportPage = () => {

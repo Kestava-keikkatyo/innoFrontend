@@ -1,13 +1,13 @@
 import 'date-fns';
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
+import Grid from '@mui/material/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { setReport } from '../../actions/reportActions';
 import { useTranslation } from 'react-i18next';
@@ -31,7 +31,7 @@ const ReportStepTwo = () => {
       </Grid>
       <Grid item xs={12}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <Grid container justify="space-around">
+          <Grid container justifyContent="space-around">
             <KeyboardDatePicker
               disableToolbar
               variant="inline"

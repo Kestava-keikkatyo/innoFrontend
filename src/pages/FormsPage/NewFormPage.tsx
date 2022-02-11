@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import {
   Button,
   Container,
-} from "@material-ui/core"
+} from "@mui/material"
 
 import {
   setTitle,

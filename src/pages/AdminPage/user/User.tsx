@@ -3,7 +3,7 @@ import {
     MailOutline,
     PermIdentity,
     PhoneAndroid
-  } from "@material-ui/icons";
+  } from "@mui/icons-material";
 import { useParams } from "react-router-dom";
 import React from 'react';
 import { fetchProfileById } from '../../../actions/profileActions';
@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../../utils/store";
 import {useEffect  } from "react";
 import ImageUploader from "../../../components/ImageUploader";
-import { makeStyles } from "@material-ui/core";
+import makeStyles from '@mui/styles/makeStyles';
 
 
 type UserUrlParams = {

@@ -8,14 +8,15 @@ import {
   Container,
   Checkbox,
   Typography,
-  makeStyles,
   useTheme,
   MobileStepper,
-  Button
-} from '@material-ui/core'
+  Button,
+} from '@mui/material';
 
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
+import makeStyles from '@mui/styles/makeStyles';
+
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft'
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight'
 
 
 const ProcessPage = () => {

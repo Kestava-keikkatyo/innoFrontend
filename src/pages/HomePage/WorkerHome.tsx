@@ -10,7 +10,7 @@ import {
   ListItemText,
   CardHeader,
   Grid,
-} from '@material-ui/core';
+} from '@mui/material';
 import MoodForm from './MoodForm';
 import FeedBackForm from './FeedBackForm';
 import { submitFeeling, updateFeeling } from '../../actions/feelingActions';

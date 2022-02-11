@@ -1,5 +1,5 @@
-import { Button, Grid, Typography } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
+import { Button, Grid, Typography } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
 import React from 'react';
 import { useState } from 'react';
 import NewFeelingEntryModal from './NewFeelingEntryModal';

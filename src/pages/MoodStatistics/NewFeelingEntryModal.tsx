@@ -5,8 +5,8 @@ import {
   DialogTitle,
   IconButton,
   Typography,
-} from '@material-ui/core';
-import { Close as CloseIcon } from '@material-ui/icons';
+} from '@mui/material';
+import { Close as CloseIcon } from '@mui/icons-material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAlert } from '../../actions/alertActions';
@@ -67,7 +67,7 @@ const NewFeelingEntryModal: React.FC<any> = ({ modalState }) => {
       <DialogTitle>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Typography variant="h6">{t('feeling_entry')}</Typography>
-          <IconButton onClick={() => setIsOpen(false)}>
+          <IconButton onClick={() => setIsOpen(false)} size="large">
             <CloseIcon />
           </IconButton>
         </Box>

@@ -1,4 +1,4 @@
-import { Grid, Typography, TextField } from '@material-ui/core';
+import { Grid, Typography, TextField } from '@mui/material';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setProfile } from '../../../actions/profileActions';

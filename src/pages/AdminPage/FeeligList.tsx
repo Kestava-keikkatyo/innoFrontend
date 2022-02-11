@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { makeStyles } from "@material-ui/core";
+import makeStyles from '@mui/styles/makeStyles';
 import { fetchFeelings } from "../../actions/feelingActions";
 
 

@@ -1,4 +1,4 @@
-import { Accordion, AccordionDetails } from "@material-ui/core"
+import { Accordion, AccordionDetails } from "@mui/material"
 import React from "react"
 
 const ActiveGig: React.FC<any> = () => {

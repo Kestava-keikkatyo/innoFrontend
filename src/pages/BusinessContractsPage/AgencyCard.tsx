@@ -1,7 +1,7 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 import clsx from 'clsx';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
   Avatar,
   Button,
@@ -13,10 +13,10 @@ import {
   IconButton,
   Typography,
   CardActions,
-} from '@material-ui/core';
+} from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import CooperationInfoModal from './CooperationInfoModal';
-import { red } from '@material-ui/core/colors';
+import { red } from '@mui/material/colors';
 import { useHistory } from 'react-router';
 import { setAlert } from "../../actions/alertActions"
 import { severity } from '../../types/types';
@@ -72,7 +72,7 @@ const AgencyCard: React.FC<any> = ({ agency }) => {
               onClick={handleExpandClick}
               aria-expanded={expanded}
               aria-label="show more"
-            >
+              size="large">
               <ExpandMoreIcon />
             </IconButton>
           }
@@ -95,11 +95,7 @@ const AgencyCard: React.FC<any> = ({ agency }) => {
                     >
                       {t('cooperation_send')}
                     </Button>
-                    <Button
-                      variant="contained"
-                      color="default"
-                      onClick={() => handleSiirryProfiiliin(agency)}
-                    >
+                    <Button variant="contained" onClick={() => handleSiirryProfiiliin(agency)}>
                       {t('transfer_company_profile')}
                     </Button>
                   </div>
@@ -165,7 +161,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     paddingTop: '1.4em',
     paddingRight: '5em',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       paddingRight: 0,
     },
   },

@@ -14,7 +14,7 @@ import {
   CardHeader,
   Button,
   Grid,
-} from '@material-ui/core';
+} from '@mui/material';
 import { useSelector } from 'react-redux';
 import Faq from './FAQBoxAgency';
 import FeedBackForm from './FeedBackForm/index';

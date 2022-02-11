@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import Paper from '@material-ui/core/Paper';
+import Paper from '@mui/material/Paper';
 import { useSelector } from 'react-redux';
-import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
-import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
-import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt';
-import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
-import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
+import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied';
+import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
+import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 import moment from 'moment';
 import imagePlaceholder from '../../assets/image-placeholder.png';
 import { useTranslation } from 'react-i18next'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import {
   TableContainer,
@@ -19,18 +19,19 @@ import {
   TableCell,
   TableBody,
   Typography,
-  withStyles,
   Theme,
-  createStyles,
-  makeStyles,
   Grid,
-} from '@material-ui/core';
+} from '@mui/material';
+
+import withStyles from '@mui/styles/withStyles';
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-} from '@material-ui/core';
+} from '@mui/material';
 
 import PreviewImageModal from './PreviewImageModal';
 

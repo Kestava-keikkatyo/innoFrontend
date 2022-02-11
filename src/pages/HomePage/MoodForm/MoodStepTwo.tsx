@@ -1,13 +1,13 @@
 import 'date-fns'
 import React from 'react'
-import Grid from '@material-ui/core/Grid'
+import Grid from '@mui/material/Grid'
 import DateFnsUtils from '@date-io/date-fns'
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from '@material-ui/pickers'
-import { Typography } from '@material-ui/core'
+import { Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
 const MoodStepTwo = () =>{
@@ -21,38 +21,36 @@ const handleDateChange = (date: any) => {
   setSelectedDate(date)
 }
 
-return (
-  <>
-    <Typography> {t("when_did_this_happen")}</Typography>
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <Grid container justify="space-around">
-        <KeyboardDatePicker
-          disableToolbar
-          variant="inline"
-          format="MM/dd/yyyy"
-          margin="normal"
-          id="date-picker-inline"
-          label="Date picker inline"
-          value={selectedDate}
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            'aria-label': 'change date',
-          }}
-        />
-        <KeyboardTimePicker
-          margin="normal"
-          id="time-picker"
-          label="Time picker"
-          value={selectedDate}
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            'aria-label': 'change time',
-          }}
-        />
-      </Grid>
-    </MuiPickersUtilsProvider>
-  </>
-)
+return <>
+  <Typography> {t("when_did_this_happen")}</Typography>
+  <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    <Grid container justifyContent="space-around">
+      <KeyboardDatePicker
+        disableToolbar
+        variant="inline"
+        format="MM/dd/yyyy"
+        margin="normal"
+        id="date-picker-inline"
+        label="Date picker inline"
+        value={selectedDate}
+        onChange={handleDateChange}
+        KeyboardButtonProps={{
+          'aria-label': 'change date',
+        }}
+      />
+      <KeyboardTimePicker
+        margin="normal"
+        id="time-picker"
+        label="Time picker"
+        value={selectedDate}
+        onChange={handleDateChange}
+        KeyboardButtonProps={{
+          'aria-label': 'change time',
+        }}
+      />
+    </Grid>
+  </MuiPickersUtilsProvider>
+</>;
 
 }
 export default MoodStepTwo

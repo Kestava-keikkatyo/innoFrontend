@@ -12,7 +12,7 @@ import {
   Button,
   Box,
   CircularProgress,
-} from '@material-ui/core';
+} from '@mui/material';
 import { useSelector } from 'react-redux';
 
 /**

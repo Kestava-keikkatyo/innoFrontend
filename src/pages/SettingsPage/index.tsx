@@ -1,7 +1,8 @@
 import React from 'react';
-import { makeStyles, Theme } from '@material-ui/core/styles';
-import { Button, Container, Grid } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
+import { Theme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import { Button, Container, Grid } from '@mui/material';
+import Typography from '@mui/material/Typography';
 import ChangePassword from './ChangePassword';
 import { Link, useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next'
@@ -17,7 +18,7 @@ const SettingsPage = () => {
       <Grid
         container
         direction="row"
-        justify="space-between"
+        justifyContent="space-between"
         style={{ marginTop: 10, marginBottom: 10 }}
       >
         <Grid item xs={6}>

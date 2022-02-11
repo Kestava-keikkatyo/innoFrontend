@@ -14,8 +14,8 @@ import {
   FormControlLabel,
   Switch,
   IconButton,
-} from '@material-ui/core';
-import { Delete as DeleteIcon, Add as AddIcon } from '@material-ui/icons';
+} from '@mui/material';
+import { Delete as DeleteIcon, Add as AddIcon } from '@mui/icons-material';
 
 /**
  * @component
@@ -105,7 +105,7 @@ const WorkerProfile: React.FC<any> = ({ profile, handleSubmit }) => {
                           disabled={edit || !!errors.licenses}
                           color="secondary"
                           onClick={() => arrayHelpers.push('')}
-                        >
+                          size="large">
                           <AddIcon />
                         </IconButton>
                       </Box>
@@ -123,10 +123,7 @@ const WorkerProfile: React.FC<any> = ({ profile, handleSubmit }) => {
                             disabled={edit}
                             fullWidth
                           />
-                          <IconButton
-                            disabled={edit}
-                            onClick={() => arrayHelpers.remove(i)}
-                          >
+                          <IconButton disabled={edit} onClick={() => arrayHelpers.remove(i)} size="large">
                             <DeleteIcon />
                           </IconButton>
                         </Box>

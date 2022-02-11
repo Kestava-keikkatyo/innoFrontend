@@ -1,5 +1,5 @@
-import { Box, InputBase, IconButton } from "@material-ui/core";
-import { Search } from '@material-ui/icons';
+import { Box, InputBase, IconButton } from "@mui/material";
+import { Search } from '@mui/icons-material';
 import React from "react";
 
 
@@ -24,7 +24,7 @@ const CurrentlyWorkingPersons = () => {
               value={filter}
             
             />
-            <IconButton>
+            <IconButton size="large">
               <Search />
             </IconButton>
             </Box>
@@ -33,7 +33,7 @@ const CurrentlyWorkingPersons = () => {
 
         )}
     </div>
-  )
+  );
 };
 
 export default CurrentlyWorkingPersons;

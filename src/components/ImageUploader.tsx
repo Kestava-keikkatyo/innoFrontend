@@ -1,17 +1,18 @@
-import { Avatar, makeStyles } from '@material-ui/core';
-import { Cancel } from '@material-ui/icons';
+import { Avatar } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import { Cancel } from '@mui/icons-material';
 import React, { useEffect, useRef, useState } from 'react';
 
 
 /**
  * @interface
  */
- export interface ImageUploaderProps {
-    /**
-     * Existing profile picture
-     */
-    picture?: any;
-  }
+export interface ImageUploaderProps {
+   /**
+    * Existing profile picture
+    */
+   picture?: any;
+ }
 
 const ImageUploader: React.FC<ImageUploaderProps> = ({
     picture

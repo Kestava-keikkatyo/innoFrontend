@@ -3,9 +3,9 @@ import {
     MailOutline,
     PermIdentity,
     PhoneAndroid,
-  } from "@material-ui/icons";
+  } from "@mui/icons-material";
 import React, { useEffect } from 'react';
-import { makeStyles } from '@material-ui/core';
+import makeStyles from '@mui/styles/makeStyles';
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../utils/store";

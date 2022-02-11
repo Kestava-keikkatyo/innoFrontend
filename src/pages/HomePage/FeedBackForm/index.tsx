@@ -11,16 +11,10 @@ import {
   AccordionDetails,
   Button,
   Accordion,
-} from '@material-ui/core';
-import {
-  CardHeader,
-  TextField,
-  CircularProgress,
-  CardActions,
-  Divider,
-  makeStyles,
-} from '@material-ui/core';
-import Pagination from '@material-ui/lab/Pagination';
+} from '@mui/material';
+import { CardHeader, TextField, CircularProgress, CardActions, Divider } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import Pagination from '@mui/material/Pagination';
 
 import {
   getUserFeedBacks,
@@ -29,9 +23,9 @@ import {
 import { RESET_FEEDBACK } from '../../../types/state';
 import { IRootState } from '../../../utils/store';
 
-import SendIcon from '@material-ui/icons/Send';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ReplayIcon from '@material-ui/icons/Replay';
+import SendIcon from '@mui/icons-material/Send';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ReplayIcon from '@mui/icons-material/Replay';
 
 
 

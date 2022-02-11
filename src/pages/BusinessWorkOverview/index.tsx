@@ -1,17 +1,9 @@
-import {
-  Button,
-  Container,
-  Grid,
-  IconButton,
-  InputBase,
-  makeStyles,
-  Theme,
-  Typography,
-} from "@material-ui/core";
-import TextField from "@material-ui/core/TextField";
+import { Button, Container, Grid, IconButton, InputBase, Theme, Typography } from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
+import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
 import AgencyGrid from "./components/AgencyGrid";
-import { Search } from '@material-ui/icons'
+import { Search } from '@mui/icons-material'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { IRootState } from "../../utils/store";
@@ -84,7 +76,7 @@ const BusinessWorkRequest: React.FC<any> = () => {
 
   return (
     <Container className="lg">
-      <Grid container direction="row" justify="center" alignItems="stretch" spacing={3}>
+      <Grid container direction="row" justifyContent="center" alignItems="stretch" spacing={3}>
         <Grid item xs={12} md={6}>
           <form onSubmit={handleSubmit} >
             <h2>  {t("send_agency_contract")}</h2>
@@ -93,7 +85,7 @@ const BusinessWorkRequest: React.FC<any> = () => {
               placeholder={t("search_by_name")}
               onChange={(event) => handleChange(event)}
             />
-            <IconButton type="submit">
+            <IconButton type="submit" size="large">
               <Search
               />
             </IconButton>
@@ -171,9 +163,7 @@ const BusinessWorkRequest: React.FC<any> = () => {
                 disabled={validateForm()}
                 className={classes.buttonRight}
                 type="submit"
-                variant="contained"
-                color="default"
-              >
+                variant="contained">
                 {t('send')}
               </Button>
             </div>

@@ -1,4 +1,4 @@
-import { Container } from '@material-ui/core';
+import { Container } from '@mui/material';
 import LineChart from './LineChart';
 import PieChart from './PieChart';
 import FeedbackCategory from './feedbackCategory';

@@ -1,11 +1,11 @@
 import { DataGrid } from "@material-ui/data-grid";
 import * as React from 'react';
-import { DeleteOutline } from "@material-ui/icons";
+import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { makeStyles } from "@material-ui/core";
+import makeStyles from '@mui/styles/makeStyles';
 import { DeleteJobById, fetchAllJobsForAgency } from "../../actions/jobActions";
 import { setAlert } from '../../actions/alertActions';
 import { useTranslation } from "react-i18next";

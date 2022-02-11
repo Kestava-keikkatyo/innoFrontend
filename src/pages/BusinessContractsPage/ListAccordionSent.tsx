@@ -1,25 +1,25 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  makeStyles,
   Theme,
   Divider,
   AccordionActions,
   IconButton,
-} from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Button from '@material-ui/core/Button';
-import Avatar from '@material-ui/core/Avatar';
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
 import { useDispatch } from 'react-redux';
 import {
   declineBusinessContract,
   refuseBusinessContractById,
 } from '../../actions/businessContractActions';
-import Tooltip from '@material-ui/core/Tooltip';
-import CloseIcon from '@material-ui/icons/Close';
+import Tooltip from '@mui/material/Tooltip';
+import CloseIcon from '@mui/icons-material/Close';
 import { useTranslation } from 'react-i18next';
 import { deleteBusinessContractForm } from '../../actions/businessContractFormActions';
 import { severity } from '../../types/types';
@@ -126,7 +126,7 @@ export const ListAccordioSent = (prop: { contracts: any[] }) => {
             </AccordionDetails>
             <AccordionActions>
               <Tooltip title="Peruuta" placement="top" arrow>
-                <IconButton onClick={() => cancelContract(contract)}>
+                <IconButton onClick={() => cancelContract(contract)} size="large">
                   <CloseIcon />
                 </IconButton>
               </Tooltip>

@@ -4,14 +4,14 @@ import {
   IconButton,
   InputBase,
   Typography,
-} from '@material-ui/core';
+} from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import { fetchProfiles } from '../../actions/profileActions';
 import { IRootState } from '../../utils/store';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 import ProfileCard from './ProfileCard';
-import { Search } from '@material-ui/icons';
+import { Search } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 
 const ProfilesPage: React.FC<any> = () => {
@@ -45,7 +45,7 @@ const ProfilesPage: React.FC<any> = () => {
               value={filter}
               onChange={(e: any) => setFilter(e.target.value)}
             />
-            <IconButton>
+            <IconButton size="large">
               <Search />
             </IconButton>
           </Box>

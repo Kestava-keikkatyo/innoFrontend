@@ -1,12 +1,12 @@
-import { Grid, Typography, TextField } from '@material-ui/core';
+import { Grid, Typography, TextField } from '@mui/material';
 import React from 'react';
 
 import { useDispatch } from 'react-redux';
 import { setProfile } from '../../../actions/profileActions';
-import PublicIcon from '@material-ui/icons/Public';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import PhoneIcon from '@material-ui/icons/Phone';
-import EmailIcon from '@material-ui/icons/Email';
+import PublicIcon from '@mui/icons-material/Public';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import PhoneIcon from '@mui/icons-material/Phone';
+import EmailIcon from '@mui/icons-material/Email';
 import { useTranslation } from 'react-i18next';
 /**
  * @component

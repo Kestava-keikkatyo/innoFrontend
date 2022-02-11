@@ -5,7 +5,7 @@ import { me } from '../../actions/userActions';
 import WorkerHome from './WorkerHome';
 import PageLoading from '../../components/PageLoading';
 
-import { Container, Typography } from '@material-ui/core';
+import { Container, Typography } from '@mui/material';
 import { roles } from '../../types/types';
 import BusinessHome from './BusinessHome';
 import AgencyHome from './AgencyHome';

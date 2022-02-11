@@ -4,8 +4,8 @@ import {
   Box,
   InputBase,
   IconButton,
-} from '@material-ui/core'
-import { Search as SearchIcon } from '@material-ui/icons'
+} from '@mui/material'
+import { Search as SearchIcon } from '@mui/icons-material'
 import { updateSearchList } from '../../actions/workContractActions'
 import { useDispatch } from 'react-redux'
 
@@ -42,13 +42,13 @@ const WorkerSearch = () => {
             value={input}
             onChange={({ target }) => setInput(target.value)}
           />
-          <IconButton type="submit">
+          <IconButton type="submit" size="large">
             <SearchIcon />
           </IconButton>
         </Box>
       </form>
     </Box>
-  )
+  );
 }
 
 export default WorkerSearch

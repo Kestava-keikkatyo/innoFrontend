@@ -5,8 +5,8 @@ import {
   DialogTitle,
   IconButton,
   Typography,
-} from '@material-ui/core';
-import { Close as CloseIcon } from '@material-ui/icons';
+} from '@mui/material';
+import { Close as CloseIcon } from '@mui/icons-material';
 import React from 'react';
 import imagePlaceholder from '../../assets/image-placeholder.png';
 /**
@@ -31,7 +31,7 @@ const PreviewImageModal: React.FC<any> = ({
       <DialogTitle>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Typography variant="h6">Image preview</Typography>
-          <IconButton onClick={closeModal}>
+          <IconButton onClick={closeModal} size="large">
             <CloseIcon />
           </IconButton>
         </Box>

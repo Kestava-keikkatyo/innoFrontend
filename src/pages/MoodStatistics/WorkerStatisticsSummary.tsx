@@ -1,4 +1,4 @@
-import { Grid, Hidden, Typography } from '@material-ui/core';
+import { Grid, Hidden, Typography } from '@mui/material';
 import ProgressPieChart from '../../components/ProgressPieChart';
 import React from 'react';
 import {
@@ -43,7 +43,7 @@ const WorkerStatisticsSummary = () => {
           <Typography variant="h5">
             {averageFeeling(feelings).toString()}
           </Typography>
-          <Hidden xsDown>
+          <Hidden smDown>
             <Typography variant="h6">
               {calculateCheer(averageFeeling(feelings), 4)}
             </Typography>
@@ -58,7 +58,7 @@ const WorkerStatisticsSummary = () => {
           <Typography variant="h5">
             {feelings[feelings.length - 1]?.value}
           </Typography>
-          <Hidden xsDown>
+          <Hidden smDown>
             <Typography variant="h6">
               {calculateCheer(feelings[feelings.length - 1]?.value, 4)}
             </Typography>
@@ -69,7 +69,7 @@ const WorkerStatisticsSummary = () => {
       <Grid item xs={4}>
         <ProgressPieChart datasets={getTotalDataSet(feelings.length)}>
           <Typography variant="h5">{feelings.length}</Typography>
-          <Hidden xsDown>
+          <Hidden smDown>
             <Typography variant="h6">
               {calculateCheer(feelings.length, 100)}
             </Typography>

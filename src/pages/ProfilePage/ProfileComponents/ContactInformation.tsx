@@ -1,9 +1,10 @@
 import React from 'react';
-import EmailIcon from '@material-ui/icons/Email';
-import PhoneIcon from '@material-ui/icons/Phone';
-import { Grid, Link, makeStyles, Typography } from '@material-ui/core';
-import PublicIcon from '@material-ui/icons/Public';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import EmailIcon from '@mui/icons-material/Email';
+import PhoneIcon from '@mui/icons-material/Phone';
+import { Grid, Link, Typography } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import PublicIcon from '@mui/icons-material/Public';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { useTranslation } from 'react-i18next'
 /**
  * @component
@@ -51,7 +52,7 @@ const ContactInformation: React.FC<any> = ({ profile }) => {
           {t('website')}
         </Typography>
         <Typography variant="body2" className={classes.typoBody2}>
-          <Link target="_blank" color="inherit" href={profile.website}>
+          <Link target="_blank" color="inherit" href={profile.website} underline="hover">
             {profile.website}
           </Link>
         </Typography>

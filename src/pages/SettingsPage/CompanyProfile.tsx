@@ -10,7 +10,7 @@ import {
   Box,
   FormControlLabel,
   Switch,
-} from '@material-ui/core';
+} from '@mui/material';
 import { useTranslation } from 'react-i18next'
 /**
  * @depricated This component IS NOT in use

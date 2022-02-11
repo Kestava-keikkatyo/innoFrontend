@@ -1,6 +1,7 @@
 import React from 'react';
-import { Grid, makeStyles, Typography, List } from '@material-ui/core';
-import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import { Grid, Typography, List } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { useTranslation } from 'react-i18next'
 /**
  * @component

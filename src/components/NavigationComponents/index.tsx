@@ -1,8 +1,9 @@
 import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import Drawer from '@mui/material/Drawer';
+import Hidden from '@mui/material/Hidden';
+import { useTheme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
 import TopAppBar from './TopAppBarType';
 import ResponsiveDrawer from './ResponsiveDrawer';
 import navConstants from '../../constants/navConstants';
@@ -67,7 +68,7 @@ const AppNavigation = (props: { windowProp: any; children: ReactNode }) => {
             <ResponsiveDrawer isOpen={mobileOpen}/>
           </Drawer>
         </Hidden>
-        <Hidden mdDown implementation="css">
+        <Hidden lgDown implementation="css">
           <Drawer
             className={clsx(classes.drawer, {
               [classes.drawerOpen]: open,
@@ -119,7 +120,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     paddingRight: 0,
     marginLeft: '0%',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       marginLeft: 'auto',
     },
   },

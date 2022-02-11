@@ -1,4 +1,4 @@
-import { Container, Typography } from '@material-ui/core'
+import { Container, Typography } from '@mui/material'
 import React from 'react'
 import eu from '../../assets/partners/eu.png'
 import kkk from '../../assets/partners/kestavakeikkatyo.png'

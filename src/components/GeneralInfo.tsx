@@ -1,25 +1,27 @@
 import React from 'react';
 
-import { Link, makeStyles } from '@material-ui/core';
+import { Link } from '@mui/material';
+
+import makeStyles from '@mui/styles/makeStyles';
 
 const GeneralInfo: React.FC<any> = () => {
   const classes = useStyles();
   return (
     <div className={classes.generalInfo}>
       <div className={classes.item}>
-        <Link className={classes.title} href="/reportList">Reports</Link>  
+        <Link className={classes.title} href="/reportList" underline="hover">Reports</Link>  
         <div className={classes.container}>
           <span className={classes.latestUpdate}>Last updated</span>
         </div>
      </div>
      <div className={classes.item}>
-     <Link className={classes.title} href="/feedbackList">Feedback</Link>
+     <Link className={classes.title} href="/feedbackList" underline="hover">Feedback</Link>
       <div className={classes.container}>
         <span className={classes.latestUpdate}>Last updated</span>
       </div>
      </div>
      <div className={classes.item}>
-     <Link className={classes.title} href="/feelingList">Feelings</Link>
+     <Link className={classes.title} href="/feelingList" underline="hover">Feelings</Link>
        <div className={classes.container}>
          <span className={classes.latestUpdate}>Last updated</span>
        </div>

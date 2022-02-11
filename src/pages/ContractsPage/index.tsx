@@ -9,7 +9,6 @@ import WorkerAndBusinessModal from './WorkerAndBusinessModal';
 import {
   Container,
   Typography,
-  makeStyles,
   Box,
   Tabs,
   AppBar,
@@ -18,13 +17,14 @@ import {
   Direction,
   Tooltip,
   useMediaQuery,
-} from '@material-ui/core';
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import ContractsFromBusiness from './ContractsFromBusiness';
 import { IRootState } from '../../utils/store';
 import ContractsFromWorkers from './ContractsFromWorkers';
-import GroupIcon from '@material-ui/icons/Group';
-import WorkIcon from '@material-ui/icons/Work';
-import BusinessIcon from '@material-ui/icons/Business';
+import GroupIcon from '@mui/icons-material/Group';
+import WorkIcon from '@mui/icons-material/Work';
+import BusinessIcon from '@mui/icons-material/Business';
 import { useTranslation } from 'react-i18next';
 import { fetchFormList } from '../../actions/formListActions';
 
@@ -32,8 +32,8 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-} from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+} from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import ReceivedContractsFromBusinesses from './ReceivedContractsFromBusinesses';
 import ReceivedContractsFromWorkers from './ReceivedContractsFromWorkers';
@@ -93,7 +93,7 @@ const ContractsPage = () => {
   const [displayModal, setDisplayModal] = useState(false);
   const [value, setValue] = useState(0);
   const { t } = useTranslation();
-  const matches = useMediaQuery(theme.breakpoints.down('sm'));
+  const matches = useMediaQuery(theme.breakpoints.down('md'));
 
   //to be switched to retrieve contracts
   useEffect(() => {

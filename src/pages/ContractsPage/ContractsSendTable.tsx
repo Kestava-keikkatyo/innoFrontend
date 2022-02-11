@@ -11,19 +11,19 @@ import {
   useMediaQuery,
   useTheme,
   Tooltip,
-  makeStyles,
-  createStyles,
   Theme,
-} from '@material-ui/core';
-import { Delete as DeleteIcon } from '@material-ui/icons';
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
+import { Delete as DeleteIcon } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
   AccordionActions,
-} from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+} from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const ContractsSendTable = (prop: {
   contracts: [];
@@ -34,7 +34,7 @@ const ContractsSendTable = (prop: {
 
   const theme = useTheme();
   const classes = useStyles();
-  const matches = useMediaQuery(theme.breakpoints.down('sm'));
+  const matches = useMediaQuery(theme.breakpoints.down('md'));
   const { t } = useTranslation();
 
   const tableView = () => {
@@ -90,7 +90,7 @@ const ContractsSendTable = (prop: {
                         contract.formId
                       )
                     }
-                  >
+                    size="large">
                     <DeleteIcon />
                   </IconButton>
                 </TableCell>
@@ -156,7 +156,7 @@ const ContractsSendTable = (prop: {
                     contract.formId
                   )
                 }
-              >
+                size="large">
                 <DeleteIcon />
               </IconButton>
             </Tooltip>

@@ -1,8 +1,9 @@
-import { Grid, Button, makeStyles } from '@material-ui/core';
+import { Grid, Button } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 import { useTranslation } from 'react-i18next';
 /**
  * @component
@@ -17,7 +18,7 @@ const EditProfileHeader: React.FC<any> = ({ submitProfile, savingChanges }) => {
     <Grid
       container
       direction="row"
-      justify="space-between"
+      justifyContent="space-between"
       style={{ marginTop: 20, marginBottom: 10 }}
     >
       <Grid item xs={6}>

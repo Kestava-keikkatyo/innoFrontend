@@ -1,4 +1,4 @@
-import { Checkbox, FormControl, FormControlLabel, Typography } from '@material-ui/core'
+import { Checkbox, FormControl, FormControlLabel, Typography } from '@mui/material'
 import React from 'react'
 import { FormComponentProps } from '../../types/props';
 

@@ -8,7 +8,7 @@ import {
   TableCell,
   TableRow,
   TableBody
-} from "@material-ui/core"
+} from "@mui/material"
 import React from "react"
 import { useTranslation } from 'react-i18next'
 

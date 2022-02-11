@@ -1,17 +1,17 @@
-import { Container } from '@material-ui/core'
+import { Container } from '@mui/material'
 import React from 'react'
 
 import { useSelector } from 'react-redux'
 
-import { Button, Grid, Typography } from '@material-ui/core'
+import { Button, Grid, Typography } from '@mui/material'
 
-import { makeStyles} from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { useTranslation } from 'react-i18next'
 
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
 import { Link, useHistory} from 'react-router-dom'
 import pdfMake from 'pdfmake/build/pdfmake'
 import ReactDOMServer from 'react-dom/server'
@@ -99,47 +99,47 @@ const ContractFormManagerPage: React.FC = () => {
   }
 
   return (
-    <Container>
-        <Grid container direction="row"
-            justify="space-between">
-            <Grid item xs={6}>
-            <Typography variant="h4" color="secondary" >
-                {t("contract_form_manager")}
-            </Typography>
-            </Grid>
-            <Grid item xs={6} >
-            <Grid container direction="row-reverse">
-                <Button>
-                <Link to="/contracts">{t("back")}</Link>
-                </Button>
-            </Grid>
-            </Grid>
-        </Grid>
+      <Container>
+          <Grid container direction="row"
+              justifyContent="space-between">
+              <Grid item xs={6}>
+              <Typography variant="h4" color="secondary" >
+                  {t("contract_form_manager")}
+              </Typography>
+              </Grid>
+              <Grid item xs={6} >
+              <Grid container direction="row-reverse">
+                  <Button>
+                  <Link to="/contracts">{t("back")}</Link>
+                  </Button>
+              </Grid>
+              </Grid>
+          </Grid>
 
-        <Card className="contract-form-card">
-            <CardContent>
-                <Typography variant="h5" component="h2">
-                    {businessContractForm.title}
-                </Typography>
-                <Typography className={classes.pos} color="textSecondary">
-                    {businessContractForm.description}
-                </Typography>
-                <Typography variant="body2" component="p">
-                    {businessContractForm.description}
-                </Typography>
-            </CardContent>
-            <CardActions>
-                <Button size="small" color="primary" onClick={handlePreview}>{t("preview")}</Button>
-                <Button size="small" color="primary"    onClick={handleEdit}>{t("edit")}</Button>
-                <Button size="small" color="primary" onClick={handleDownload}>{t("download_pdf")}</Button>
-            </CardActions>
+          <Card className="contract-form-card">
+              <CardContent>
+                  <Typography variant="h5" component="h2">
+                      {businessContractForm.title}
+                  </Typography>
+                  <Typography className={classes.pos} color="textSecondary">
+                      {businessContractForm.description}
+                  </Typography>
+                  <Typography variant="body2" component="p">
+                      {businessContractForm.description}
+                  </Typography>
+              </CardContent>
+              <CardActions>
+                  <Button size="small" color="primary" onClick={handlePreview}>{t("preview")}</Button>
+                  <Button size="small" color="primary"    onClick={handleEdit}>{t("edit")}</Button>
+                  <Button size="small" color="primary" onClick={handleDownload}>{t("download_pdf")}</Button>
+              </CardActions>
 
-        </Card>
+          </Card>
 
 
 
-    </Container>
-  )
+      </Container>
+  );
 }
 
 

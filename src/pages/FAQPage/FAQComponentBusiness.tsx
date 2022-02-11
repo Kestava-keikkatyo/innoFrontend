@@ -1,28 +1,29 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import faq from "../../assets/tietopankki/faq.json"
 
 import {
   TableCell,
   Typography,
-  withStyles,
   Theme,
-  createStyles,
-  makeStyles,
   Grid,
   List,
   ListItem,
   Divider,
   Card,
   CardContent,
-} from "@material-ui/core"
+} from "@mui/material";
+
+import withStyles from '@mui/styles/withStyles';
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-} from "@material-ui/core"
+} from "@mui/material"
 
 /**
  * @component

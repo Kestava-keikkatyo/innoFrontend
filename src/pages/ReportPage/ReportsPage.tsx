@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import { Box, Container } from '@material-ui/core';
+import { Theme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
+import Typography from '@mui/material/Typography';
+import { Box, Container } from '@mui/material';
 import Report from './Report';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchReports } from '../../actions/reportActions';

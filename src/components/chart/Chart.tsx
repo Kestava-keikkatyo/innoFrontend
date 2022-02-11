@@ -8,7 +8,7 @@ import {
     Legend,
     ResponsiveContainer,
   } from "recharts";
-import { makeStyles } from '@material-ui/core';
+import makeStyles from '@mui/styles/makeStyles';
 const useStyles = makeStyles(() => ({
   chart: {
     margin: '20px',

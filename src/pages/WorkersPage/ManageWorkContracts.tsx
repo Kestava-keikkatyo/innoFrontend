@@ -1,9 +1,25 @@
 import React from "react"
-import Accordion from '@material-ui/core/Accordion';
-import { AccordionDetails, AccordionSummary, Button, Card, CardContent, Checkbox, Divider, Grid, List, ListItem, ListItemIcon, ListItemText, makeStyles, Paper, Typography } from "@material-ui/core";
-import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ClearIcon from '@material-ui/icons/Clear';
+import Accordion from '@mui/material/Accordion';
+import {
+  AccordionDetails,
+  AccordionSummary,
+  Button,
+  Card,
+  CardContent,
+  Checkbox,
+  Divider,
+  Grid,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Paper,
+  Typography,
+} from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
+import DoneOutlineIcon from '@mui/icons-material/DoneOutline';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ClearIcon from '@mui/icons-material/Clear';
 import { useTranslation } from 'react-i18next'
 
 const useStyles = makeStyles((theme) => ({
@@ -115,83 +131,81 @@ const WorkContractsTable:React.FC<{contracts:any}> = ({contracts}) => {
       </List>
     </Paper>
   )
-  return (
-    <>
-    <Grid container spacing={1} justify="center" alignItems="stretch">
-      <Grid item xs={12} md={6}>
-        <Card className={classes.card} variant="outlined">
-          <CardContent>
-            <Typography gutterBottom variant="h5">
-              Accepted Workers
-            </Typography>
-          </CardContent>
-          <CardContent>
-            <Typography gutterBottom variant="h6">
-              Workers
-            </Typography>
-            <Divider />
-            {customList(left)}
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <Card className={classes.card} variant="outlined">
-          <CardContent>
-            <Typography gutterBottom variant="h5">
-              Requested Workers
-            </Typography>
-          </CardContent>
-          <CardContent>
-            <Typography gutterBottom variant="h6">
-              Workers
-            </Typography>
-            <Divider />
-            {customList(right)}
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <Card className={classes.card} variant="outlined">
-          <CardContent>
-            <Typography gutterBottom variant="h5">
-              Accepted status:
-            </Typography>
-            <Divider/>
-          </CardContent>
-          <CardContent>
-            <Typography gutterBottom variant="h6">
-              Business:{acceptedStatus(job.acceptedBusiness)}
-            </Typography>
-            <Typography gutterBottom variant="h6">
-              Agency:{acceptedStatus(job.acceptedAgency)}
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <Card className={classes.card} variant="outlined">
-          <CardContent>
-            <Button
-              variant="contained"
-              color="primary"
-              endIcon={<DoneOutlineIcon>Accept</DoneOutlineIcon>}
-            >Accept
-            </Button>
-          </CardContent>
-          <Divider/>
-          <CardContent>
-            <Button
-              variant="contained"
-              color="primary"
-              endIcon={<ClearIcon>Decline</ClearIcon>}
-            >Decline
-            </Button>
-          </CardContent>
-        </Card>
-      </Grid>
+  return <>
+  <Grid container spacing={1} justifyContent="center" alignItems="stretch">
+    <Grid item xs={12} md={6}>
+      <Card className={classes.card} variant="outlined">
+        <CardContent>
+          <Typography gutterBottom variant="h5">
+            Accepted Workers
+          </Typography>
+        </CardContent>
+        <CardContent>
+          <Typography gutterBottom variant="h6">
+            Workers
+          </Typography>
+          <Divider />
+          {customList(left)}
+        </CardContent>
+      </Card>
     </Grid>
-    </>
-  )
+    <Grid item xs={12} md={6}>
+      <Card className={classes.card} variant="outlined">
+        <CardContent>
+          <Typography gutterBottom variant="h5">
+            Requested Workers
+          </Typography>
+        </CardContent>
+        <CardContent>
+          <Typography gutterBottom variant="h6">
+            Workers
+          </Typography>
+          <Divider />
+          {customList(right)}
+        </CardContent>
+      </Card>
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <Card className={classes.card} variant="outlined">
+        <CardContent>
+          <Typography gutterBottom variant="h5">
+            Accepted status:
+          </Typography>
+          <Divider/>
+        </CardContent>
+        <CardContent>
+          <Typography gutterBottom variant="h6">
+            Business:{acceptedStatus(job.acceptedBusiness)}
+          </Typography>
+          <Typography gutterBottom variant="h6">
+            Agency:{acceptedStatus(job.acceptedAgency)}
+          </Typography>
+        </CardContent>
+      </Card>
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <Card className={classes.card} variant="outlined">
+        <CardContent>
+          <Button
+            variant="contained"
+            color="primary"
+            endIcon={<DoneOutlineIcon>Accept</DoneOutlineIcon>}
+          >Accept
+          </Button>
+        </CardContent>
+        <Divider/>
+        <CardContent>
+          <Button
+            variant="contained"
+            color="primary"
+            endIcon={<ClearIcon>Decline</ClearIcon>}
+          >Decline
+          </Button>
+        </CardContent>
+      </Card>
+    </Grid>
+  </Grid>
+  </>;
 }
 
 export default ManageWorkContracts

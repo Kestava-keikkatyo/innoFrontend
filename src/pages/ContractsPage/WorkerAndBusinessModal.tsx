@@ -11,9 +11,9 @@ import {
   DialogActions,
   MenuItem,
   TextField,
-  makeStyles,
-} from '@material-ui/core';
-import { Close as CloseIcon } from '@material-ui/icons';
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import { Close as CloseIcon } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBusinessContract } from '../../actions/businessContractActions';
 import { setAlert } from '../../actions/alertActions';
@@ -107,7 +107,7 @@ const WorkerAndBusinessModal: React.FC<any> = ({
       <DialogTitle>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Typography variant="h6">Create contract</Typography>
-          <IconButton onClick={closeModal}>
+          <IconButton onClick={closeModal} size="large">
             <CloseIcon />
           </IconButton>
         </Box>

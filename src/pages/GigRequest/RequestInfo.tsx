@@ -1,14 +1,16 @@
 import React from "react"
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles"
-import Accordion from "@material-ui/core/Accordion"
+import { Theme } from "@mui/material/styles";
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
+import Accordion from "@mui/material/Accordion"
 import {
   AccordionDetails,
   AccordionSummary,
   Checkbox,
   FormControlLabel,
   Typography,
-} from "@material-ui/core"
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
+} from "@mui/material"
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

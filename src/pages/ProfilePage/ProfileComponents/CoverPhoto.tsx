@@ -1,5 +1,6 @@
 import React from 'react';
-import { CardMedia, Grid, makeStyles } from '@material-ui/core';
+import { CardMedia, Grid } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import banner from '../../../assets/form-banner.jpg';
 
 /**
@@ -12,7 +13,7 @@ const CoverPhoto: React.FC<any> = ({ profile }) => {
   const classes = useStyles();
 
   return (
-    <Grid container justify="center" direction="row">
+    <Grid container justifyContent="center" direction="row">
       <Grid item xs={12}>
         <CardMedia
           className={classes.coverPhoto}
@@ -26,7 +27,7 @@ const CoverPhoto: React.FC<any> = ({ profile }) => {
 const useStyles = makeStyles((theme) => ({
   coverPhoto: {
     height: 300,
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       height: 200,
     },
   },

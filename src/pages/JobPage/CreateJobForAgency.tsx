@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, CircularProgress, makeStyles, Typography } from "@material-ui/core";
+import { Button, CircularProgress, Typography } from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
 import * as Yup from "yup";
 import { Form, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";

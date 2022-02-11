@@ -1,6 +1,6 @@
 import { DataGrid } from "@material-ui/data-grid";
 import * as React from 'react';
-import { DeleteOutline } from "@material-ui/icons";
+import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { fetchAllAgencies, fetchAllBusinesses, fetchAllWorkers } from '../../actions/allUsersActions';
 import "./userList.css";

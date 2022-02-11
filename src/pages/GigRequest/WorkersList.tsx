@@ -1,19 +1,21 @@
 import React from "react";
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+import { Theme } from "@mui/material/styles";
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
 import clsx from "clsx";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import EmailIcon from "@material-ui/icons/Email";
-import PhoneIcon from "@material-ui/icons/Phone";
-import { Button } from "@material-ui/core";
-import PublicIcon from "@material-ui/icons/Public";
+import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
+import CardContent from "@mui/material/CardContent";
+import CardActions from "@mui/material/CardActions";
+import Collapse from "@mui/material/Collapse";
+import Avatar from "@mui/material/Avatar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import EmailIcon from "@mui/icons-material/Email";
+import PhoneIcon from "@mui/icons-material/Phone";
+import { Button } from "@mui/material";
+import PublicIcon from "@mui/icons-material/Public";
 import { useHistory } from "react-router-dom";
 import { useTranslation } from 'react-i18next'
 
@@ -37,7 +39,6 @@ const WorkersList: React.FC<any> = ({ profile }) => {
   */
 
   return (
-    
     <Card className={classes.root} onClick={handleExpandClick}>
       <CardHeader
         avatar={<Avatar aria-label="recipe" className={classes.avatar} />}
@@ -49,7 +50,7 @@ const WorkersList: React.FC<any> = ({ profile }) => {
             onClick={handleExpandClick}
             aria-expanded={expanded}
             aria-label="show more"
-          >
+            size="large">
             <ExpandMoreIcon />
           </IconButton>
         }

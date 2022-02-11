@@ -1,4 +1,4 @@
-import { Button, Grid, Typography } from '@material-ui/core'
+import { Button, Grid, Typography } from '@mui/material'
 import React from 'react'
 //import {useDispatch, useSelector } from 'react-redux'
 import { Link} from 'react-router-dom'
@@ -13,7 +13,7 @@ const PreviewHeader: React.FC<any> = () => {
   const { t } = useTranslation()
   return (
     <Grid container direction="row"
-      justify="space-between">
+      justifyContent="space-between">
         <Grid item xs={6}>
           <Typography variant="h4" color="secondary" >
             {t('preview')}
@@ -27,7 +27,7 @@ const PreviewHeader: React.FC<any> = () => {
           </Grid>
         </Grid>
       </Grid>
-  )
+  );
 }
 
 export default PreviewHeader

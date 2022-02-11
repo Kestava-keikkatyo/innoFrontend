@@ -8,13 +8,15 @@ import {
   Tabs,
   Grid,
   Theme,
-} from '@material-ui/core'
-import { Add } from '@material-ui/icons'
+} from '@mui/material'
+import { Add } from '@mui/icons-material'
 import { fetchFormList } from '../../actions/formListActions'
 import Spacing from '../../components/Spacing'
 import { useDispatch } from 'react-redux'
 
-import {Card, CardContent, makeStyles, Box, AppBar } from '@material-ui/core'
+import { Card, CardContent, Box, AppBar } from '@mui/material';
+
+import makeStyles from '@mui/styles/makeStyles';
 
 import MyFormsTable from './MyFormsTable'
 import CommonFormsTable from './CommonFormsTable'
@@ -96,7 +98,7 @@ const FormsPage: React.FC = () => {
       <Grid
         container
         direction="row"
-        justify="space-evenly"
+        justifyContent="space-evenly"
         alignItems="flex-end"
         className="form-search-container"
         style={{ height: '200px', paddingBottom: '50px' }}
@@ -154,7 +156,7 @@ const FormsPage: React.FC = () => {
       <Spacing m5 />
 
     </Container>
-  )
+  );
 }
 
 export default FormsPage
