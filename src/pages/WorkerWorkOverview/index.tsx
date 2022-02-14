@@ -72,7 +72,7 @@ const WorkerJobs = () => {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = useState(0);
-  const handleChange = (event: any, newValue: any) => {
+  const handleChange = (event: React.SyntheticEvent, newValue: any): void => {
     setValue(newValue);
   };
 
@@ -88,14 +88,12 @@ const WorkerJobs = () => {
           aria-label="full width tabs example"
         >
           <Tab
-            onChange={handleChange}
             className={classes.tab}
             label={t("jobs")}
             icon={<WorkIcon />}
             {...a11yProps(0)}
           />
           <Tab
-            onChange={handleChange}
             className={classes.tab}
             label={t("work_request")}
             icon={<AnnouncementIcon />}

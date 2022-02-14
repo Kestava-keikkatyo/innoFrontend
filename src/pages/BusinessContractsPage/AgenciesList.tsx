@@ -11,6 +11,7 @@ import {
   MenuItem,
   Typography,
   Grid,
+  SelectChangeEvent,
 } from '@mui/material';
 import { Search as SearchIcon } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
@@ -51,7 +52,7 @@ const AgenciesList = () => {
   };
 
   const handleMobileChange = (
-    event: React.ChangeEvent<{ value: unknown }>,
+    event: SelectChangeEvent<{ value: unknown }>,
     child: ReactNode
   ) => {
     event.preventDefault();
@@ -132,7 +133,7 @@ const AgenciesList = () => {
               <InputLabel>Category</InputLabel>
               <Select
                 autoWidth={true}
-                value={alignment}
+                value={alignment as any}
                 onChange={handleMobileChange}
               >
                 {fields.map((f) => (

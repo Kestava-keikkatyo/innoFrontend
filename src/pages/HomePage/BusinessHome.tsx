@@ -48,7 +48,7 @@ const BusinessHome = () => {
                 </ListItem>
               ))}
             </List>
-            <FormControlLabel control={<Checkbox defaultChecked style={{color:'#eb5a00'}} />} label={t('business_responsibilities_read')}/>
+            <FormControlLabel control={<Checkbox defaultChecked style={{color:'#eb5a00'}} />} label={t<string>('business_responsibilities_read')}/>
           </CardContent>
         </Card>
       </Grid>

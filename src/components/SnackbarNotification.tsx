@@ -20,7 +20,7 @@ const SnackbarNotification: React.FC = () => {
   const alert = useSelector((state: IRootState) => state.alert)
   const dispatch = useDispatch()
   
-  const handleSnackbarClose = (_: React.SyntheticEvent<any, Event>, reason?: SnackbarCloseReason) => {
+  const handleSnackbarClose = (_: React.SyntheticEvent<any> | Event, reason?: SnackbarCloseReason) => {
     if (reason !== 'clickaway') {
       dispatch(clearAlert())
     }

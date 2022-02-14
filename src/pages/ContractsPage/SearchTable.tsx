@@ -192,12 +192,12 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
           <FormControlLabel
             value={roles.Worker}
             control={<Radio />}
-            label={t("worker")}
+            label={t<string>("worker")}
           />
           <FormControlLabel
             value={roles.Business}
             control={<Radio />}
-            label={t("business")}
+            label={t<string>("business")}
           />
         </RadioGroup>
       </FormControl>

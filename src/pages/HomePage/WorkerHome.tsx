@@ -76,7 +76,7 @@ const WorkerHome = () => {
                 </ListItem>
               ))}
             </List>
-            <FormControlLabel control={<Checkbox defaultChecked style={{color:'#eb5a00'}} />} label={t('worker_responsibilities_read')}/>
+            <FormControlLabel control={<Checkbox defaultChecked style={{color:'#eb5a00'}} />} label={t<string>('worker_responsibilities_read')}/>
           </CardContent>
         </div>
       </Grid>

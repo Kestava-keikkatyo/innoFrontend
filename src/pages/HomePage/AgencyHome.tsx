@@ -50,7 +50,7 @@ const AgencyHome = () => {
                 </ListItem>
               ))}
             </List>
-            <FormControlLabel control={<Checkbox defaultChecked style={{color:'#eb5a00'}} />} label={t('agency_responsibilities_read')}/>
+            <FormControlLabel control={<Checkbox defaultChecked style={{color:'#eb5a00'}} />} label={t<string>('agency_responsibilities_read')}/>
           </CardContent>
         </Card>
       </Grid>

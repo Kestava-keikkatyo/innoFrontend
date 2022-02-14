@@ -36,12 +36,12 @@ const WorkView: React.FC<any> = ({ works }) => {
           <FormControlLabel
             value="active"
             control={<Radio />}
-            label={t("active")}
+            label={t<string>("active")}
           />
           <FormControlLabel
             value="done"
             control={<Radio />}
-            label={t("history")}
+            label={t<string>("history")}
           />
         </RadioGroup>
       </FormControl>
