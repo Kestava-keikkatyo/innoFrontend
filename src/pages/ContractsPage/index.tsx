@@ -111,7 +111,7 @@ const ContractsPage = () => {
     setValue(newValue);
   };
 
-  if (user.loading || !user.profile) {
+  if (user.loading) {
     return <PageLoading />;
   }
   return (
