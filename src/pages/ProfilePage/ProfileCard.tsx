@@ -18,7 +18,7 @@ import { useHistory } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 import { useTranslation } from 'react-i18next'
 
-const ProfileCard: React.FC<any> = ({ profile }) => {
+const ProfileCard: React.FC<any> = ({ profile, isActive }) => {
   const [expanded, setExpanded] = React.useState(false);
   const classes = useStyles();
   const history = useHistory();
@@ -35,6 +35,10 @@ const ProfileCard: React.FC<any> = ({ profile }) => {
       state: { profileId: profileId },
     });
   };
+
+  if (!isActive) {
+    return null
+  }
 
   return (
     <Card className={classes.root} onClick={handleExpandClick}>
@@ -138,6 +142,8 @@ const ProfileCard: React.FC<any> = ({ profile }) => {
       </Collapse>
     </Card>
   );
+// }
+// else return
 };
 
 const useStyles = makeStyles((theme: Theme) =>

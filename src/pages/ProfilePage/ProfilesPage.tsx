@@ -4,6 +4,10 @@ import {
   IconButton,
   InputBase,
   Typography,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem
 } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
@@ -17,6 +21,7 @@ import { useTranslation } from 'react-i18next';
 const ProfilesPage: React.FC<any> = () => {
   const dispatch = useDispatch();
   const [filter, setFilter] = useState('');
+  const [profilesToView, setProfilesToView] = useState(10)
   const { t } = useTranslation();
   const classes = useStyles();
 
@@ -50,14 +55,31 @@ const ProfilesPage: React.FC<any> = () => {
             </IconButton>
           </Box>
 
+          <Box display="flex" alignItems="center" className={classes.pageSelectionBox}>
+            <FormControl fullWidth>
+              <InputLabel id="profiles-to-view-select-label">Näytä</InputLabel>
+              <Select
+                labelId="profiles-to-view-select-label"
+                id="profiles-to-view-select"
+                value={profilesToView}
+                label="Profiles to view"
+                onChange={(e: any) => setProfilesToView(e.target.value)}
+              >
+                <MenuItem value={10}>10</MenuItem>
+                <MenuItem value={20}>20</MenuItem>
+                <MenuItem value={30}>30</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
+
           <Box className={classes.profilesBox}>
             {profiles &&
               profiles
                 .filter((profile: any) =>
                   profile.name.toLowerCase().includes(filter.toLowerCase())
                 )
-                .map((profile: any) => (
-                  <ProfileCard key={profile._id} profile={profile} />
+                .map((profile: any, index: any) => (
+                    <ProfileCard key={profile._id} profile={profile} isActive={(index<profilesToView?true:false)} />
                 ))}
           </Box>
         </Box>
@@ -78,6 +100,9 @@ const useStyles = makeStyles((theme) => ({
     padding: 16,
   },
   searchBox: {
+    marginBottom: 24,
+  },
+  pageSelectionBox: {
     marginBottom: 24,
   },
   profilesBox: {
