@@ -25,13 +25,13 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined"
 import { useTranslation } from "react-i18next"
 // import TranslateIcon from '@material-ui/icons/Translate';
 import LibraryBooksOutlinedIcon from "@mui/icons-material/LibraryBooksOutlined"
-import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline"
 import WorkOutlineIcon from "@material-ui/icons/WorkOutline"
 import SupervisorAccountOutlinedIcon from "@mui/icons-material/SupervisorAccountOutlined"
 import FormatList from "@material-ui/icons/FormatListBulleted"
 import LiveHelpIcon from "@mui/icons-material/LiveHelpOutlined"
 import AssignmentTurnedInOutlinedIcon from "@mui/icons-material/AssignmentTurnedInOutlined"
 import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
+import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
 // import fi1 from '../NavigationComponents/fi1.png';
 // import us1 from '../NavigationComponents/us1.png';
 // import sw1 from '../NavigationComponents/sw1.png';
@@ -159,6 +159,17 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                   <MoodIcon />
                 </ListItemIcon>
                 <ListItemText primary={t("mood_stats")} />
+              </ListItem>
+              <Divider />
+            </>
+          )}
+          {(role === roles.Agency || role === roles.Business) && (
+            <>
+              <ListItem button component={Link} to="/workers/all">
+                <ListItemIcon>
+                  <GroupOutlinedIcon />
+                </ListItemIcon>
+                <ListItemText primary={t("workers")} />
               </ListItem>
               <Divider />
             </>
