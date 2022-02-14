@@ -5,19 +5,20 @@ import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { makeStyles } from "@material-ui/core";
-import { fetchAllFeedbacks } from "../../actions/feedBackActions";
+import { fetchAllFeedbacksForAdmin } from "../../actions/feedbackActions";
+
 
 const FeedbackList = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
     
-    const { allFeedBacks } = useSelector((state: IRootState) => state.feedback || []);
+    const { feedbacks } = useSelector((state: IRootState) => state.feedback || []);
     useEffect(() => {
-        dispatch(fetchAllFeedbacks());
+        dispatch(fetchAllFeedbacksForAdmin());
     }, [dispatch]);
     
     let rows = [];
-    rows = allFeedBacks;
+    rows = feedbacks;
     const columns = [
         {
             field: "name",

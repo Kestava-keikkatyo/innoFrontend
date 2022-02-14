@@ -31,6 +31,7 @@ import SupervisorAccountOutlinedIcon from "@mui/icons-material/SupervisorAccount
 import FormatList from "@material-ui/icons/FormatListBulleted"
 import LiveHelpIcon from "@mui/icons-material/LiveHelpOutlined"
 import AssignmentTurnedInOutlinedIcon from "@mui/icons-material/AssignmentTurnedInOutlined"
+import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
 // import fi1 from '../NavigationComponents/fi1.png';
 // import us1 from '../NavigationComponents/us1.png';
 // import sw1 from '../NavigationComponents/sw1.png';
@@ -236,6 +237,17 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                   <LiveHelpIcon />
                 </ListItemIcon>
                 <ListItemText primary={t("faq")} />
+              </ListItem>
+              <Divider />
+            </>
+          )}
+          {(role === roles.Agency || role === roles.Business || role === roles.Worker) && (
+            <>
+              <ListItem button component={Link} to="/feedback-page">
+                <ListItemIcon>
+                  <FeedbackOutlinedIcon />
+                </ListItemIcon>
+                <ListItemText primary={t("Feedback")} />
               </ListItem>
               <Divider />
             </>

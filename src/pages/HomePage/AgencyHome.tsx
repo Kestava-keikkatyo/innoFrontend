@@ -17,7 +17,6 @@ import {
 } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import Faq from './FAQBoxAgency';
-import FeedBackForm from './FeedBackForm/index';
 import { useTranslation } from 'react-i18next';
 
 const AgencyHome = () => {
@@ -54,7 +53,6 @@ const AgencyHome = () => {
           </CardContent>
         </Card>
       </Grid>
-      <FeedBackForm />
     </Grid>
   );
 };

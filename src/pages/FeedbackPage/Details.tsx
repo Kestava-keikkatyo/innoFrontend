@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../utils/store";
 import PageLoading from "../../components/PageLoading";
 import Typography from '@mui/material/Typography';
-import { fetchFeedbackById } from "../../actions/feedbackActions2";
+import { fetchFeedbackById } from "../../actions/feedbackActions";
 import { Link } from 'react-router-dom';
 
 type FeedbackUrlParams = {
@@ -14,7 +14,7 @@ type FeedbackUrlParams = {
 const Details: React.FC<any> = () =>  {
    
     const { feedbackId } = useParams<FeedbackUrlParams>();
-    const feedbackData: any = useSelector((state: IRootState) => state.feedback2.currentFeedback);
+    const feedbackData: any = useSelector((state: IRootState) => state.feedback.currentFeedback);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchFeedbackById(feedbackId));
