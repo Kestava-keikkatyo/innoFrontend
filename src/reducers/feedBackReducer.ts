@@ -17,7 +17,7 @@ const initialState: FeedbackState = {
  * @param {Object} state - current state
  * @param {Object} action - dispatched action
  */
-const feedbackReducer2 = (state = initialState, action: FeedbackAction) => {
+const feedbackReducer = (state = initialState, action: FeedbackAction) => {
   switch (action.type) {
     case feedbackType.FEEDBACK_GETALL_REQUEST: {
       return {
@@ -85,4 +85,4 @@ const feedbackReducer2 = (state = initialState, action: FeedbackAction) => {
       return state;
   }
 };
-export default feedbackReducer2;
+export default feedbackReducer;
