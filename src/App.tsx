@@ -49,7 +49,7 @@ import FeedbackDetails from "./pages/AdminPage/FeedbackDetails"
 import FeelingList from "./pages/AdminPage/FeeligList"
 import ReportDetails from "./pages/AdminPage/ReportDetails"
 import FeelingDetails from "./pages/AdminPage/FeelingDetails"
-import NewJobList from "./pages/JobPage/newJobList"
+import Jobs from "./pages/JobPage/Jobs"
 import JobDetails from "./pages/JobPage/JobDetails"
 import JobListForAgency from "./pages/JobPage/JobListForAgency"
 import JobUpdate from "./pages/JobPage/JobUpdate"
@@ -60,6 +60,7 @@ import Details from "./pages/FeedbackPage/Details"
 import FeedbackPage from "./pages/FeedbackPage"
 import Workers from "./pages/Profile/Workers"
 import WorkerProfile from "./pages/Profile/WorkerProfile"
+import CompanyJobPage from "./pages/JobPage"
 
 /**
  * @component
@@ -108,7 +109,7 @@ const App: React.FC = () => {
           <FeelingDetails />
         </PrivateRoute>
         <PrivateRoute path="/jobs">
-          <NewJobList />
+          <Jobs />
         </PrivateRoute>
         <PrivateRoute path="/job-details/:jobId">
           <JobDetails />
@@ -121,6 +122,9 @@ const App: React.FC = () => {
         </PrivateRoute>
         <PrivateRoute path="/create-job" roles={[roles.Agency]}>
           <CreateJobForAgency />
+        </PrivateRoute>
+        <PrivateRoute path="/job-page" roles={[roles.Business, roles.Agency]}>
+          <CompanyJobPage />
         </PrivateRoute>
         <PrivateRoute path="/send-feedback" roles={[roles.Business, roles.Agency, roles.Worker]}>
           <SendFeedback />

@@ -132,11 +132,11 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           )}
           {role === roles.Agency && (
             <>
-              <ListItem button component={Link} to="/create-job">
+              <ListItem button component={Link} to="/job-page">
                 <ListItemIcon>
                   <AssignmentTurnedInOutlinedIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("create_job")} />
+                <ListItemText primary={t("jobs")} />
               </ListItem>
               <Divider />
             </>
