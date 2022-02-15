@@ -11,7 +11,7 @@ import { setAlert } from '../../actions/alertActions';
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 
-const JobListForAgency: React.FC<any> = () => {
+const CreatedJobs: React.FC<any> = () => {
 
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -113,4 +113,4 @@ const useStyles = makeStyles(() => ({
 }
 }));
 
-export default JobListForAgency;
+export default CreatedJobs;

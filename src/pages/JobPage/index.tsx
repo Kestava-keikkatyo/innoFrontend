@@ -6,8 +6,8 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Container } from '@material-ui/core';
-import JobListForAgency from './JobListForAgency';
 import CreateJob from './CreateJob';
+import CreatedJobs from './CreatedJobs';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -64,7 +64,7 @@ const CompanyJobPage = () => {
       <CreateJob />
     </TabPanel>
     <TabPanel value={value} index={1}>
-      <JobListForAgency />
+      <CreatedJobs />
     </TabPanel>
   </Container>
   );
