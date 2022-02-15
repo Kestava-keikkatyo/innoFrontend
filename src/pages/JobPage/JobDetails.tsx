@@ -26,7 +26,7 @@ const JobDetails: React.FC<any> = () =>  {
     }, [dispatch, jobId]);
     const classes = useStyles();
 
-    if(!jobData) return (
+    if(!jobData || jobId !== jobData._id) return (
         <PageLoading />
     );
 
