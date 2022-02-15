@@ -47,7 +47,7 @@ const CreateJobSchema = Yup.object().shape({
   details: Yup.string(),
 });
 
-const CreateJobForAgency: React.FC<any> = () => {
+const CreateJob: React.FC<any> = () => {
   const { t } = useTranslation()
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -128,6 +128,6 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default CreateJobForAgency;
+export default CreateJob;
 
 
