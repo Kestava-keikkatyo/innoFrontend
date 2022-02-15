@@ -10,7 +10,6 @@ import PageLoading from "../../components/PageLoading";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next"
 
-
 const Jobs: React.FC<any> = () => {
 
     const { t } = useTranslation()
@@ -22,7 +21,6 @@ const Jobs: React.FC<any> = () => {
     }, [dispatch]);
     
     const { jobs, loading } = useSelector((state: IRootState) => state.job || []);
-    console.log('DEBUG', jobs, loading)
 
     if (loading) return <PageLoading />
 
