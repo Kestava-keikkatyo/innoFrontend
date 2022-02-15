@@ -3,7 +3,7 @@
  * @desc Redux feedback reducer
  */
 import { feedbackType } from "../types/types";
-import { FeedbackState, FeedbackAction } from "./../types/state";
+import { FeedbackState, FeedbackAction } from "../types/state";
 
 const initialState: FeedbackState = {
   currentFeedback: undefined,
@@ -13,11 +13,11 @@ const initialState: FeedbackState = {
 
 /**
  * @function
- * @desc feedback reducer that controls feedback state
+ * @desc feedback reducer that controls feedback states
  * @param {Object} state - current state
  * @param {Object} action - dispatched action
  */
-const feedbackReducer = (state = initialState, action: FeedbackAction) => {
+const feedBackReducer = (state = initialState, action: FeedbackAction) => {
   switch (action.type) {
     case feedbackType.FEEDBACK_GETALL_REQUEST: {
       return {
@@ -85,4 +85,5 @@ const feedbackReducer = (state = initialState, action: FeedbackAction) => {
       return state;
   }
 };
-export default feedbackReducer;
+export default feedBackReducer;
+// comment

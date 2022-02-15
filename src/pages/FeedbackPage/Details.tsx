@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../utils/store";
 import PageLoading from "../../components/PageLoading";
 import Typography from '@mui/material/Typography';
-import { fetchFeedbackById } from "../../actions/feedbackActions";
+import { fetchFeedbackById } from "../../actions/feedBackActions";
 import { Link } from 'react-router-dom';
 
 type FeedbackUrlParams = {

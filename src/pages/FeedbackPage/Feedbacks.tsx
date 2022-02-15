@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../utils/store';
 import { Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core';
-import { fetchAllMyFeedbacks } from "../../actions/feedbackActions";
+import { fetchAllMyFeedbacks } from "../../actions/feedBackActions";
 
 const Feedbacks: React.FC<any> = () => {
     const dispatch = useDispatch();

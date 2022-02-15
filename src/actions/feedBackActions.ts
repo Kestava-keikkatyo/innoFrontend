@@ -1,4 +1,4 @@
-import feedbackService from "../services/feedbackService";
+import feedBackService from "../services/feedBackService";
 import { Feedback, feedbackType, severity } from "../types/types";
 import { setAlert } from "./alertActions";
 
@@ -11,7 +11,7 @@ export const fetchAllMyFeedbacks = () => async (dispatch: any) => {
     dispatch({
       type: feedbackType.FEEDBACK_GETALL_REQUEST,
     });
-    const res = await feedbackService.fetchAllMyFeedbacks();
+    const res = await feedBackService.fetchAllMyFeedbacks();
     dispatch({ type: feedbackType.FEEDBACK_GETALL_SUCCESS, data: res.data });
   } catch (error) {
     dispatch({
@@ -30,7 +30,7 @@ export const fetchAllFeedbacksForAdmin = () => async (dispatch: any) => {
     dispatch({
       type: feedbackType.FEEDBACK_GETALL_REQUEST,
     });
-    const res = await feedbackService.fetchAllFeedbacksForAdmin();
+    const res = await feedBackService.fetchAllFeedbacksForAdmin();
     dispatch({ type: feedbackType.FEEDBACK_GETALL_SUCCESS, data: res.data });
   } catch (error) {
     dispatch({
@@ -49,7 +49,7 @@ export const fetchFeedbackById = (id: string) => async (dispatch: any) => {
     dispatch({
       type: feedbackType.FEEDBACK_CURRENT_REQUEST,
     });
-    const res = await feedbackService.fetchFeedbackById(id);
+    const res = await feedBackService.fetchFeedbackById(id);
     dispatch({ type: feedbackType.FEEDBACK_CURRENT_SUCCESS, data: res.data });
   } catch (error) {
     dispatch({
@@ -75,7 +75,7 @@ export const createFeedback = (feedback: Feedback) => async (dispatch: any) => {
       data: feedback,
     });
 
-    const { data } = await feedbackService.createFeedback(feedback);
+    const { data } = await feedBackService.createFeedback(feedback);
     dispatch({
       type: feedbackType.FEEDBACK_SEND_SUCCESS,
       data,

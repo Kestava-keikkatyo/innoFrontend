@@ -5,7 +5,8 @@ import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { makeStyles } from "@material-ui/core";
-import { fetchAllFeedbacksForAdmin } from "../../actions/feedbackActions";
+import { fetchAllFeedbacksForAdmin } from "../../actions/feedBackActions";
+
 
 
 const FeedbackList = () => {

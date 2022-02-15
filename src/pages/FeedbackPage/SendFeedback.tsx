@@ -6,7 +6,7 @@ import { Button, CircularProgress, makeStyles, Typography } from '@material-ui/c
 import { Form, Formik } from 'formik';
 import FormikField from '../../components/FormField';
 import { IRootState } from '../../utils/store';
-import { createFeedback } from '../../actions/feedbackActions';
+import { createFeedback } from '../../actions/feedBackActions';
 
 const initialValues: Feedback = {
     heading: "",

@@ -15,8 +15,9 @@ import profileReducer from "../reducers/profileReducer";
 import notificationsReducer from "../reducers/notificationsReducer";
 import reportReducer from "../reducers/reportReducer";
 import jobReducer from "../reducers/jobReducer";
-import feedbackReducer from "../reducers/FeedbackReducer";
 import usersReducer from "../reducers/usersReducer";
+import feedBackReducer from "../reducers/feedBackReducer";
+
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const reducer = combineReducers({
@@ -35,7 +36,7 @@ const reducer = combineReducers({
   notifications: notificationsReducer,
   report: reportReducer,
   job: jobReducer,
-  feedback: feedbackReducer,
+  feedback: feedBackReducer,
   users: usersReducer,
 });
 
