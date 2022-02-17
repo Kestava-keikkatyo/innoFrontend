@@ -1,6 +1,6 @@
 import React from "react"
-import { Table, TableRow, TableContainer, TableCell, TableHead, TableBody, IconButton, Typography } from "@material-ui/core"
-import { Add } from '@material-ui/icons'
+import { Table, TableRow, TableContainer, TableCell, TableHead, TableBody, IconButton, Typography } from "@mui/material"
+import { Add } from '@mui/icons-material'
 import { useTranslation } from 'react-i18next'
 
 const MakeWorkContracts:React.FC<{madeContracts:[],addWorker:Function}> = ({madeContracts,addWorker}) => {
@@ -35,7 +35,8 @@ const MakeWorkContracts:React.FC<{madeContracts:[],addWorker:Function}> = ({made
                 <IconButton
                   aria-label="add to organization"
                   color="secondary"
-                  onClick={() => addWorker(worker)}>
+                  onClick={() => addWorker(worker)}
+                  size="large">
                   <Add />
                 </IconButton>
               </TableCell>
@@ -44,7 +45,7 @@ const MakeWorkContracts:React.FC<{madeContracts:[],addWorker:Function}> = ({made
         </TableBody>
       </Table>
     </TableContainer>
-  )
+  );
 
 }
 

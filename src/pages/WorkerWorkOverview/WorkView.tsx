@@ -8,8 +8,8 @@ import {
   Radio,
   RadioGroup,
   Typography,
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+} from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
 
 import React from "react";
 import { useTranslation } from "react-i18next";
@@ -36,12 +36,12 @@ const WorkView: React.FC<any> = ({ works }) => {
           <FormControlLabel
             value="active"
             control={<Radio />}
-            label={t("active")}
+            label={t<string>("active")}
           />
           <FormControlLabel
             value="done"
             control={<Radio />}
-            label={t("history")}
+            label={t<string>("history")}
           />
         </RadioGroup>
       </FormControl>

@@ -12,24 +12,24 @@ import {
   Box,
   InputBase,
   Divider,
-  withStyles,
   Theme,
-  createStyles,
   useTheme,
   useMediaQuery,
-  makeStyles,
   Tooltip,
-} from '@material-ui/core';
+} from '@mui/material';
+import withStyles from '@mui/styles/withStyles';
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 import { useSelector } from 'react-redux';
-//import MoveToInboxIcon from '@material-ui/icons/MoveToInbox'
-import VisibilityIcon from '@material-ui/icons/Visibility';
+//import MoveToInboxIcon from '@mui/icons-material/MoveToInbox'
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
   AccordionActions,
-} from '@material-ui/core';
+} from '@mui/material';
 
 import { useDispatch } from 'react-redux';
 import { getFormById } from '../../actions/formActions';
@@ -43,10 +43,10 @@ import Form from './Form';
 import ReactDOMServer from 'react-dom/server';
 
 import { fetchFormList } from '../../actions/formListActions';
-import { Search } from '@material-ui/icons';
-//import MoveToInboxIcon from '@material-ui/icons/MoveToInbox'
-import SaveAltIcon from '@material-ui/icons/SaveAlt';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Search } from '@mui/icons-material';
+//import MoveToInboxIcon from '@mui/icons-material/MoveToInbox'
+import SaveAltIcon from '@mui/icons-material/SaveAlt';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useTranslation } from 'react-i18next';
 /**
  * @component
@@ -62,7 +62,7 @@ const CommunityFormsTable: React.FC<any> = () => {
   const classes = useStyles();
 
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('sm')); // sm: korkeintaan 960px
+  const matches = useMediaQuery(theme.breakpoints.down('md')); // sm: korkeintaan 960px
 
   const dispatch = useDispatch();
 
@@ -154,16 +154,13 @@ const CommunityFormsTable: React.FC<any> = () => {
                       <IconButton
                         aria-label="add to favorites"
                         onClick={() => handlePreview(form._id)}
-                      >
+                        size="large">
                         <VisibilityIcon />
                       </IconButton>
                     </TableCell>
 
                     <TableCell padding="none" style={{ paddingLeft: 24 }}>
-                      <IconButton
-                        aria-label="share"
-                        onClick={() => handleDownload(form._id)}
-                      >
+                      <IconButton aria-label="share" onClick={() => handleDownload(form._id)} size="large">
                         <SaveAltIcon />
                       </IconButton>
                     </TableCell>
@@ -177,46 +174,44 @@ const CommunityFormsTable: React.FC<any> = () => {
 
   // Accordion view for mobile devices
   const accordionView = () => {
-    return (
-      communityForms.docs &&
-      communityForms.docs
-        .filter((form: any) =>
-          form.title.toLowerCase().includes(filter.toLowerCase())
-        )
-        .map((form: any) => (
-          <div key={form._id} className={classes.accordionDiv}>
-            <Accordion>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
-                <Typography className={classes.heading}>
-                  {form.title}
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography className={classes.description}>
-                  {form.description}
-                </Typography>
-              </AccordionDetails>
-              <AccordionActions>
-                <Tooltip title="Preview form" placement="top" arrow>
-                  <IconButton onClick={() => handlePreview(form._id)}>
-                    <VisibilityIcon />
-                  </IconButton>
-                </Tooltip>
+    return communityForms.docs &&
+    communityForms.docs
+      .filter((form: any) =>
+        form.title.toLowerCase().includes(filter.toLowerCase())
+      )
+      .map((form: any) => (
+        <div key={form._id} className={classes.accordionDiv}>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Typography className={classes.heading}>
+                {form.title}
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography className={classes.description}>
+                {form.description}
+              </Typography>
+            </AccordionDetails>
+            <AccordionActions>
+              <Tooltip title="Preview form" placement="top" arrow>
+                <IconButton onClick={() => handlePreview(form._id)} size="large">
+                  <VisibilityIcon />
+                </IconButton>
+              </Tooltip>
 
-                <Tooltip title="Download pdf" placement="top" arrow>
-                  <IconButton onClick={() => handleDownload(form._id)}>
-                    <SaveAltIcon />
-                  </IconButton>
-                </Tooltip>
-              </AccordionActions>
-            </Accordion>
-          </div>
-        ))
-    );
+              <Tooltip title="Download pdf" placement="top" arrow>
+                <IconButton onClick={() => handleDownload(form._id)} size="large">
+                  <SaveAltIcon />
+                </IconButton>
+              </Tooltip>
+            </AccordionActions>
+          </Accordion>
+        </div>
+      ));
   };
 
   if (!communityForms.docs)
@@ -246,7 +241,7 @@ const CommunityFormsTable: React.FC<any> = () => {
               value={filter}
               onChange={handleFilterchange}
             />
-            <IconButton>
+            <IconButton size="large">
               <Search />
             </IconButton>
           </Box>

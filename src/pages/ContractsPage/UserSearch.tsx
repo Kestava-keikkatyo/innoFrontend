@@ -8,8 +8,8 @@ import {
   RadioGroup,
   FormControlLabel,
   Radio,
-} from '@material-ui/core';
-import { Search as SearchIcon } from '@material-ui/icons';
+} from '@mui/material';
+import { Search as SearchIcon } from '@mui/icons-material';
 import { updateSearchList } from '../../actions/businessContractActions';
 import { useDispatch } from 'react-redux';
 import { roles } from '../../types/types';
@@ -78,7 +78,7 @@ const UserSearch = () => {
             value={input}
             onChange={({ target }) => setInput(target.value)}
           />
-          <IconButton type="submit">
+          <IconButton type="submit" size="large">
             <SearchIcon />
           </IconButton>
         </Box>

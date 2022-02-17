@@ -10,7 +10,7 @@ import SignUpForm from './SignUpForm';
 import LogInForm from './LogInForm';
 import './landingPage.css';
 
-import { Box, Button, Divider, Grid } from '@material-ui/core';
+import { Box, Button, Divider, Grid } from '@mui/material';
 
 /**
  * @component

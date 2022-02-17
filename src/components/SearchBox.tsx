@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, InputBase, IconButton } from '@material-ui/core';
-import { Search } from '@material-ui/icons';
+import { Box, InputBase, IconButton } from '@mui/material';
+import { Search } from '@mui/icons-material';
 
 /**
  * @component
@@ -21,7 +21,7 @@ const SearchBox: React.FC<any> = ({ placeholder, value, onChange }) => {
           value={value}
           onChange={onChange}
         />
-        <IconButton>
+        <IconButton size="large">
           <Search />
         </IconButton>
       </Box>

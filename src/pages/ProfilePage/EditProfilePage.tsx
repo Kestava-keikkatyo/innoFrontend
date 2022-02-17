@@ -1,11 +1,11 @@
-import { Button, Container, Grid } from '@material-ui/core';
+import { Button, Container, Grid } from '@mui/material';
 import React, { useState } from 'react';
 import Spacing from '../../components/Spacing';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../utils/store';
 import { updateProfile, fetchProfileById } from '../../actions/profileActions';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 import fileService from '../../services/fileService';
 import { clearAlert, setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';

@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import WorkerSearch from './WorkerSearch'
-import {
-  Card,
-  Container,
-  Divider,
-  CardContent,
-  Typography,
-  makeStyles
-} from '@material-ui/core'
+import { Card, Container, Divider, CardContent, Typography } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import { useDispatch, useSelector } from 'react-redux'
 import { IRootState } from '../../utils/store';
 import { fetchWorkContracts } from '../../actions/workContractActions';

@@ -1,18 +1,18 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  makeStyles,
   Theme,
   Divider,
   AccordionActions,
   IconButton,
   Button,
-} from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Avatar from '@material-ui/core/Avatar';
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Avatar from '@mui/material/Avatar';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import {
@@ -33,14 +33,14 @@ import pdfFonts from 'pdfmake/build/vfs_fonts.js';
 import htmlToPdfmake from 'html-to-pdfmake';
 import ReactDOMServer from 'react-dom/server';
 import Form from '../FormsPage/Form';
-import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
-import SendIcon from '@material-ui/icons/Send';
-import EditIcon from '@material-ui/icons/Edit';
-import SaveAltIcon from '@material-ui/icons/SaveAlt';
-import CloseIcon from '@material-ui/icons/Close';
+import SendIcon from '@mui/icons-material/Send';
+import EditIcon from '@mui/icons-material/Edit';
+import SaveAltIcon from '@mui/icons-material/SaveAlt';
+import CloseIcon from '@mui/icons-material/Close';
 import { useTranslation } from 'react-i18next';
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from '@mui/material/Tooltip';
 
 export const ListAccordionInBox = (prop: { contracts: any[] }) => {
   const classes = useStyles();
@@ -179,7 +179,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
                       contract.pendingContracts.formId
                     )
                   }
-                >
+                  size="large">
                   <CloseIcon />
                 </IconButton>
               </Tooltip>
@@ -189,7 +189,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
                   onClick={() =>
                     handleEsitteleLomaketta(contract.pendingContracts.formId)
                   }
-                >
+                  size="large">
                   <VisibilityIcon />
                 </IconButton>
               </Tooltip>
@@ -205,7 +205,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
                       contract.pendingContracts.formId
                     )
                   }
-                >
+                  size="large">
                   <EditIcon />
                 </IconButton>
               </Tooltip>
@@ -215,7 +215,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
                   onClick={() =>
                     handleTulostaLomaketta(contract.pendingContracts.formId)
                   }
-                >
+                  size="large">
                   <SaveAltIcon />
                 </IconButton>
               </Tooltip>
@@ -226,7 +226,7 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
                   onClick={() =>
                     loadAndSendContract(contract.agency._id, contract._id)
                   }
-                >
+                  size="large">
                   <SendIcon />
                 </IconButton>
               </Tooltip>

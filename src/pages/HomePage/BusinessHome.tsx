@@ -12,7 +12,7 @@ import {
   Divider,
   CardHeader,
   Grid,
-} from '@material-ui/core';
+} from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import Faq from './FAQBoxBusiness';
 
@@ -47,7 +47,7 @@ const BusinessHome = () => {
                 </ListItem>
               ))}
             </List>
-            <FormControlLabel control={<Checkbox defaultChecked style={{color:'#eb5a00'}} />} label={t('business_responsibilities_read')}/>
+            <FormControlLabel control={<Checkbox defaultChecked style={{color:'#eb5a00'}} />} label={t<string>('business_responsibilities_read')}/>
           </CardContent>
         </Card>
       </Grid>

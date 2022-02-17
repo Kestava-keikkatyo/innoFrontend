@@ -1,12 +1,9 @@
 import {
-  createStyles,
-  //FormControl,
-  //FormControlLabel,
-  makeStyles,
-  TextField,
-  Theme,
-  //Typography,
-} from "@material-ui/core"
+TextField, //Typography,
+Theme
+} from "@mui/material";
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 import React from "react"
 
 const FormDatepicker: React.FC<any> = ({ question }) => {

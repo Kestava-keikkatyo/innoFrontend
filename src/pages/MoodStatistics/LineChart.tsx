@@ -1,4 +1,5 @@
-import { Button, Grid, makeStyles, Typography } from '@material-ui/core';
+import { Button, Grid, Typography } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import React, { useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,9 +10,9 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-} from '@material-ui/core';
+} from '@mui/material';
 
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 /**
  * @component
  * @desc

@@ -1,4 +1,4 @@
-import { Checkbox, FormControl, FormControlLabel, Typography } from '@material-ui/core'
+import { Checkbox, FormControl, FormControlLabel, Typography } from '@mui/material'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { updateQuestion } from '../../actions/businessContractFormActions';

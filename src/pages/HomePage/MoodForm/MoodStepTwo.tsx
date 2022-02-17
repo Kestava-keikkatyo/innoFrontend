@@ -1,13 +1,13 @@
 import 'date-fns'
 import React from 'react'
-import Grid from '@material-ui/core/Grid'
-import DateFnsUtils from '@date-io/date-fns'
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from '@material-ui/pickers'
-import { Typography } from '@material-ui/core'
+import Grid from '@mui/material/Grid'
+import { TextField } from '@mui/material'
+import DatePicker from '@mui/lab/DatePicker'
+import TimePicker from '@mui/lab/TimePicker'
+import LocalizationProvider from '@mui/lab/LocalizationProvider'
+import AdapterDateFns from '@mui/lab/AdapterDateFns'
+
+import { Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
 const MoodStepTwo = () =>{
@@ -21,38 +21,51 @@ const handleDateChange = (date: any) => {
   setSelectedDate(date)
 }
 
-return (
-  <>
-    <Typography> {t("when_did_this_happen")}</Typography>
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <Grid container justify="space-around">
-        <KeyboardDatePicker
-          disableToolbar
-          variant="inline"
-          format="MM/dd/yyyy"
-          margin="normal"
+return <>
+  <Typography> {t("when_did_this_happen")}</Typography>
+  <LocalizationProvider dateAdapter={AdapterDateFns} >
+    <Grid container justifyContent="space-around">
+      <DatePicker 
+        renderInput = {props => 
+        <TextField 
           id="date-picker-inline"
-          label="Date picker inline"
-          value={selectedDate}
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            'aria-label': 'change date',
-          }}
-        />
-        <KeyboardTimePicker
+          label="Date picker inline" 
           margin="normal"
-          id="time-picker"
-          label="Time picker"
-          value={selectedDate}
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            'aria-label': 'change time',
-          }}
-        />
-      </Grid>
-    </MuiPickersUtilsProvider>
-  </>
-)
+          
+          fullWidth
+          style={{ minHeight: '4rem'}}
+        /> 
+        }
+        inputFormat="dd.MM.yyyy"
+        showToolbar={false}
+        value={selectedDate}
+        onChange={handleDateChange}
+        OpenPickerButtonProps={{
+          "aria-label": "change date"
+        }}
+        
+      />
+     
+      <TimePicker
+        renderInput = {props => 
+          <TextField 
+            id="time-picker"
+            label="Time picker"
+            margin="normal"
+            
+            fullWidth
+            style={{ minHeight: '4rem'}}
+          /> 
+        }
+        value={selectedDate}
+        onChange={handleDateChange}
+        OpenPickerButtonProps={{
+          'aria-label': 'change time',
+        }}
+      />
+    </Grid>
+  </LocalizationProvider>
+</>;
 
 }
 export default MoodStepTwo

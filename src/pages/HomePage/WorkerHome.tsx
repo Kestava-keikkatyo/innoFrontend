@@ -10,7 +10,7 @@ import {
   ListItemText,
   CardHeader,
   Grid,
-} from '@material-ui/core';
+} from '@mui/material';
 import MoodForm from './MoodForm';
 import { submitFeeling, updateFeeling } from '../../actions/feelingActions';
 import { useDispatch, useSelector } from 'react-redux';
@@ -75,7 +75,7 @@ const WorkerHome = () => {
                 </ListItem>
               ))}
             </List>
-            <FormControlLabel control={<Checkbox defaultChecked style={{color:'#eb5a00'}} />} label={t('worker_responsibilities_read')}/>
+            <FormControlLabel control={<Checkbox defaultChecked style={{color:'#eb5a00'}} />} label={t<string>('worker_responsibilities_read')}/>
           </CardContent>
         </div>
       </Grid>

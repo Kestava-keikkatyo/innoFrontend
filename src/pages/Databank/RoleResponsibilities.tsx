@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import MobileStepper from '@material-ui/core/MobileStepper'
-import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
+import { useTheme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import MobileStepper from '@mui/material/MobileStepper'
+import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft'
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight'
 import SwipeableViews from 'react-swipeable-views'
-import { Grid } from '@material-ui/core'
+import { Grid } from '@mui/material'
 import responsibilities from '../../assets/tietopankki/vastuualueet.json'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
 import { roles } from '../../types/types'
@@ -136,7 +137,7 @@ const RoleResponsibilities: React.SFC<RoleResponsibilitiesProps> = () => {
         <Grid
           container
           direction="column"
-          justify="center"
+          justifyContent="center"
           alignItems="stretch"
           style={{ paddingLeft: 8 }}
         >
@@ -163,17 +164,15 @@ const RoleResponsibilities: React.SFC<RoleResponsibilitiesProps> = () => {
           <Grid item md={12} xs={4}>
             <Button
               variant="contained"
-              color="default"
               style={{ height: 100, width: '100%' }}
-              onClick={() => handleSwitch(roles.Business)}
-            >
+              onClick={() => handleSwitch(roles.Business)}>
               Käyttäjä yritys
             </Button>
           </Grid>
         </Grid>
       </Grid>
     </Grid>
-  )
+  );
 }
 
 export default RoleResponsibilities

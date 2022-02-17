@@ -9,7 +9,7 @@ import {
   Card,
   Box,
   Container
-} from '@material-ui/core'
+} from '@mui/material'
 import { roles } from '../../types/types'
 
 /**

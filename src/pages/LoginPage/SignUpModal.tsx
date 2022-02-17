@@ -8,8 +8,8 @@ import {
   Box,
   Typography,
   IconButton
-} from '@material-ui/core'
-import { Close as CloseIcon } from '@material-ui/icons'
+} from '@mui/material'
+import { Close as CloseIcon } from '@mui/icons-material'
 
 /**
  * @component
@@ -26,7 +26,7 @@ const SignUpModal: React.FC<any> = ({ open, handleClose }) => {
           <Typography variant="h6">
             Sign Up modal
           </Typography>
-          <IconButton onClick={handleClose}>
+          <IconButton onClick={handleClose} size="large">
             <CloseIcon />
           </IconButton>
         </Box>
@@ -42,7 +42,7 @@ const SignUpModal: React.FC<any> = ({ open, handleClose }) => {
         </Typography>
       </DialogContent>
     </Dialog>
-  )
+  );
 }
 
 SignUpModal.propTypes = {

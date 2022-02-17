@@ -1,5 +1,6 @@
 import React from 'react';
-import { Avatar, Grid, makeStyles, Typography } from '@material-ui/core';
+import { Avatar, Grid, Typography } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 /**
  * @component
  * @desc Renders profile page picture and user's name
@@ -13,7 +14,7 @@ const ProfilePictureAndName: React.FC<any> = ({ profile }) => {
     <Grid
       container
       direction="row"
-      justify="center"
+      justifyContent="center"
       alignItems="flex-end"
       style={{ marginBottom: 75 }}
     >

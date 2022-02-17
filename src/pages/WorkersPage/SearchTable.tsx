@@ -8,8 +8,8 @@ import {
   TableCell,
   TableBody,
   IconButton
-} from '@material-ui/core'
-import { Add as AddIcon } from '@material-ui/icons'
+} from '@mui/material'
+import { Add as AddIcon } from '@mui/icons-material'
 import { useSelector } from 'react-redux'
 import { IRootState } from '../../utils/store'
 import { useTranslation } from 'react-i18next'
@@ -44,7 +44,8 @@ const SearchTable: React.FC<{addWorker: Function}> = ({ addWorker }) => {
                 <IconButton
                   aria-label="add to organization"
                   color="secondary"
-                  onClick={() => addWorker(worker)}>
+                  onClick={() => addWorker(worker)}
+                  size="large">
                   <AddIcon />
                 </IconButton>
               </TableCell>
@@ -53,7 +54,7 @@ const SearchTable: React.FC<{addWorker: Function}> = ({ addWorker }) => {
         </TableBody>
       </Table>
     </TableContainer>
-  )
+  );
 }
 
 export default SearchTable

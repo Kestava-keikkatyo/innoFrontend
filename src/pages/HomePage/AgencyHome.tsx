@@ -14,7 +14,7 @@ import {
   CardHeader,
   Button,
   Grid,
-} from '@material-ui/core';
+} from '@mui/material';
 import { useSelector } from 'react-redux';
 import Faq from './FAQBoxAgency';
 import { useTranslation } from 'react-i18next';
@@ -49,7 +49,7 @@ const AgencyHome = () => {
                 </ListItem>
               ))}
             </List>
-            <FormControlLabel control={<Checkbox defaultChecked style={{color:'#eb5a00'}} />} label={t('agency_responsibilities_read')}/>
+            <FormControlLabel control={<Checkbox defaultChecked style={{color:'#eb5a00'}} />} label={t<string>('agency_responsibilities_read')}/>
           </CardContent>
         </Card>
       </Grid>

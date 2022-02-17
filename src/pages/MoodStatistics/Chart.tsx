@@ -1,4 +1,5 @@
-import { Button, Grid, makeStyles, Typography } from '@material-ui/core';
+import { Button, Grid, Typography } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import React, { useEffect } from 'react';
 import {
   // Bar,
@@ -14,9 +15,9 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-} from '@material-ui/core';
+} from '@mui/material';
 
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 /**
  * @deprecated ### NOT IN USE ###
  * @component

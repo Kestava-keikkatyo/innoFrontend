@@ -1,7 +1,7 @@
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { removeQuestion, updateQuestion } from "../../actions/formActions"
-import { Button, Grid } from "@material-ui/core"
+import { Button, Grid } from "@mui/material"
 import formConstants from "../../constants/formConstants"
 import ExpandableQuestionModule from "./ExpandableQuestionOptions"
 import AddOptionsModule from "./AddOptionsModule"
@@ -55,51 +55,49 @@ const QuestionModule: React.FC<{ questionIndex: number }> = ({
     (state: any) => state.form.questions
   )
 
-  return (
-    <>
-      <Grid container>
-        <Grid item xs={8}>
-          <CustomFormInput
-            labelFontSize="large"
-            label={`Question: ${questionIndex}`}
-            placeholder={t('your_question')}
-            type="text"
-            name="question"
-            value={questions[questionIndex].title}
-            onChange={(e: any) =>
-              dispatch(
-                updateQuestion(
-                  { ...questions[questionIndex], title: e.target.value },
-                  questionIndex
-                )
+  return <>
+    <Grid container>
+      <Grid item xs={8}>
+        <CustomFormInput
+          labelFontSize="large"
+          label={`Question: ${questionIndex}`}
+          placeholder={t('your_question')}
+          type="text"
+          name="question"
+          value={questions[questionIndex].title}
+          onChange={(e: any) =>
+            dispatch(
+              updateQuestion(
+                { ...questions[questionIndex], title: e.target.value },
+                questionIndex
               )
-            }
-          />
-        </Grid>
-        <Grid item xs={4}>
-          <Grid
-            style={{ paddingTop: 4 }}
-            container
-            direction="column"
-            justify="flex-end"
-            alignItems="flex-end"
-          >
-            <Button
-              style={{ color: "red" }}
-              onClick={() => dispatch(removeQuestion(questionIndex))}
-            >
-               {t("remove")}
-            </Button>
-            <TypeDropDown index={questionIndex} />
-          </Grid>
-        </Grid>
-        {questions[questionIndex].questionType?.includes("group") && (
-          <AddOptionsModule index={questionIndex} />
-        )}
-        <ExpandableQuestionModule index={questionIndex} />
+            )
+          }
+        />
       </Grid>
-    </>
-  )
+      <Grid item xs={4}>
+        <Grid
+          style={{ paddingTop: 4 }}
+          container
+          direction="column"
+          justifyContent="flex-end"
+          alignItems="flex-end"
+        >
+          <Button
+            style={{ color: "red" }}
+            onClick={() => dispatch(removeQuestion(questionIndex))}
+          >
+             {t("remove")}
+          </Button>
+          <TypeDropDown index={questionIndex} />
+        </Grid>
+      </Grid>
+      {questions[questionIndex].questionType?.includes("group") && (
+        <AddOptionsModule index={questionIndex} />
+      )}
+      <ExpandableQuestionModule index={questionIndex} />
+    </Grid>
+  </>;
 }
 
 export default QuestionModule

@@ -1,4 +1,5 @@
-import { Button, Divider, Grid, makeStyles } from '@material-ui/core';
+import { Button, Divider, Grid } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import React, { ReactNode, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateQuestion } from '../../actions/formActions';
@@ -203,7 +204,7 @@ const ExpandableQuestionModule: React.FC<Index> = ({ index }) => {
       return <></>
   }
 }
- 
+
 const useStyles = makeStyles(() => ({
   hidden: {
     display: 'none'

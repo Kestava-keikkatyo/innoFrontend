@@ -1,4 +1,4 @@
-import { Container } from '@material-ui/core'
+import { Container } from '@mui/material'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import FormCheckBox from '../../components/FormComponents/FormCheckBox'

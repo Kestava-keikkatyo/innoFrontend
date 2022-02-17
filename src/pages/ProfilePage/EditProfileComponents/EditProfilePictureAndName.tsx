@@ -1,10 +1,5 @@
-import {
-  Grid,
-  Typography,
-  TextField,
-  makeStyles,
-  Avatar,
-} from '@material-ui/core';
+import { Grid, Typography, TextField, Avatar } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setProfile } from '../../../actions/profileActions';
@@ -24,7 +19,7 @@ const EditProfilePictureAndName: React.FC<any> = ({ profile }) => {
     <Grid
       container
       direction="row"
-      justify="center"
+      justifyContent="center"
       alignItems="flex-end"
       style={{ marginBottom: 75 }}
     >
@@ -68,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
   },
   picture: {
     textAlign: 'center',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       marginRight: 0,
     },
   },

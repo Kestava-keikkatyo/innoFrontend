@@ -1,9 +1,9 @@
-import { DataGrid } from '@material-ui/data-grid';
+import { DataGrid } from '@mui/x-data-grid';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../utils/store';
 import { Link } from "react-router-dom";
-import { makeStyles } from '@material-ui/core';
+import makeStyles from '@mui/styles/makeStyles';
 import { fetchAllMyFeedbacks } from "../../actions/feedBackActions";
 
 const Feedbacks: React.FC<any> = () => {

@@ -14,7 +14,7 @@ import {
   Box,
   CircularProgress,
   Link,
-} from '@material-ui/core';
+} from '@mui/material';
 import { useSelector } from 'react-redux';
 import { roles } from '../../types/types';
 
@@ -153,7 +153,7 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
                     style={{ cursor: 'pointer' }}
                     variant="body2"
                     onClick={() => setOpen(true)}
-                  >
+                    underline="hover">
                     {t('terms_agency')}
                   </Link>
                 </Typography>

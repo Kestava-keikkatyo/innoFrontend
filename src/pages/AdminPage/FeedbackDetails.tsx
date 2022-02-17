@@ -1,8 +1,8 @@
 import {
     MailOutline,
     PermIdentity,
-  } from "@material-ui/icons";
-import { makeStyles } from '@material-ui/core';
+  } from "@mui/icons-material";
+import makeStyles from '@mui/styles/makeStyles';
 import React, { useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";

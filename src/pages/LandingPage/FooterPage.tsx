@@ -9,7 +9,7 @@ import {
   CardActions,
   Button,
   Divider,
-} from '@material-ui/core'
+} from '@mui/material'
 import React from 'react'
 import Spacing from '../../components/Spacing'
 import logo from "../LandingPage/keikka-kaveri4.png";

@@ -5,14 +5,8 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { format } from 'date-fns';
-import {
-  AccordionActions,
-  IconButton,
-  makeStyles,
-  Theme,
-  Tooltip,
-  Divider,
-} from '@material-ui/core';
+import { AccordionActions, IconButton, Theme, Tooltip, Divider } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import GigModal from './GigModal';
 import AddReactionIcon from '@mui/icons-material/AddReaction';
 import { useTranslation } from 'react-i18next';
@@ -94,7 +88,7 @@ const ReceivedRequest: React.FC<any> = ({ workContracts, agencyWorkers }) => {
                 </AccordionDetails>
                 <AccordionActions>
                   <Tooltip title="Valitse työntekijät" placement="top" arrow>
-                    <IconButton onClick={() => setDisplayModal(true)}>
+                    <IconButton onClick={() => setDisplayModal(true)} size="large">
                       <AddReactionIcon />
                     </IconButton>
                   </Tooltip>

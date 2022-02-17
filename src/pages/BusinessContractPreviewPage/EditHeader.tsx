@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Grid, Typography } from '@material-ui/core';
+import { Button, Grid, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
@@ -35,7 +35,7 @@ const EditHeader: React.FC<any> = () => {
   };
 
   return (
-    <Grid container direction="row" justify="space-between">
+    <Grid container direction="row" justifyContent="space-between">
       <Grid item xs={6}>
         <Typography variant="h4" color="secondary">
           {t('edit_filled')}

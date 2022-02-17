@@ -1,11 +1,12 @@
-import { DataGrid } from "@material-ui/data-grid";
+import { DataGrid } from '@mui/x-data-grid';
 import * as React from 'react';
 import { Link } from "react-router-dom";
 import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchAllWorkers } from "../../actions/usersActions";
-import { makeStyles, Typography } from "@material-ui/core";
+import makeStyles from '@mui/styles/makeStyles';
+import Typography from '@mui/material/Typography';
 
 const Workers: React.FC<any> = () => {
     const classes = useStyles();

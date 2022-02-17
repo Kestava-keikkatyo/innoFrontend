@@ -9,8 +9,8 @@ import {
   Button,
   IconButton,
   DialogActions,
-} from '@material-ui/core';
-import { Close as CloseIcon } from '@material-ui/icons';
+} from '@mui/material';
+import { Close as CloseIcon } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next'
 
@@ -47,7 +47,7 @@ const WorkerModal: React.FC<any> = ({ displayModal, closeModal, contract }) => {
       <DialogTitle>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Typography variant="h6">Info</Typography>
-          <IconButton onClick={closeModal}>
+          <IconButton onClick={closeModal} size="large">
             <CloseIcon />
           </IconButton>
         </Box>

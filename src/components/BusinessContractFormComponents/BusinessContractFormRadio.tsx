@@ -1,4 +1,4 @@
-import { FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, Radio, Typography } from '@material-ui/core';
+import { FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, Radio, Typography } from '@mui/material';
 import React from 'react';
 import { FormComponentProps } from '../../types/props';
 

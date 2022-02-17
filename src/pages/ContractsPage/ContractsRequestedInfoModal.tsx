@@ -10,10 +10,10 @@ import {
   IconButton,
   DialogActions,
   TextField,
-  makeStyles,
   MenuItem,
-} from '@material-ui/core';
-import { Close as CloseIcon } from '@material-ui/icons';
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import { Close as CloseIcon } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { createBusinessContractForm } from '../../actions/businessContractFormActions';
@@ -103,7 +103,7 @@ const ContractsRequestedInfoModal: React.FC<any> = ({
       <DialogTitle>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Typography variant="h6">Processing contract request</Typography>
-          <IconButton onClick={closeModal}>
+          <IconButton onClick={closeModal} size="large">
             <CloseIcon />
           </IconButton>
         </Box>

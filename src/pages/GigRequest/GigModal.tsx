@@ -8,7 +8,6 @@ import {
   Button,
   IconButton,
   DialogActions,
-  makeStyles,
   Card,
   CardHeader,
   Checkbox,
@@ -20,8 +19,9 @@ import {
   ListItemText,
   useMediaQuery,
   useTheme,
-} from '@material-ui/core';
-import { Close as CloseIcon } from '@material-ui/icons';
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import { Close as CloseIcon } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import allUsersService from '../../services/allUsersService';
@@ -79,7 +79,7 @@ const GigModal: React.FC<any> = ({
   const { t } = useTranslation();
   const classes = useStyles();
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('sm'));
+  const matches = useMediaQuery(theme.breakpoints.down('md'));
   const [checked, setChecked] = React.useState<any[]>([]);
   const { agencyWorkers } = useSelector((state: any) => state.allUsers);
   const [left, setLeft] = React.useState<any>(agencyWorkers);
@@ -195,7 +195,7 @@ const GigModal: React.FC<any> = ({
       <DialogTitle>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Typography variant="h6">{t('choose_workers')}</Typography>
-          <IconButton onClick={closeModal}>
+          <IconButton onClick={closeModal} size="large">
             <CloseIcon />
           </IconButton>
         </Box>

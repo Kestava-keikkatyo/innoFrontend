@@ -1,8 +1,10 @@
 import React from "react";
-import Paper from "@material-ui/core/Paper";
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import { Button } from "@material-ui/core";
+import Paper from "@mui/material/Paper";
+import { Theme } from "@mui/material/styles";
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
+import Typography from "@mui/material/Typography";
+import { Button } from "@mui/material";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -14,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     paper: {
       width: "40%",
-      margin: `${theme.spacing(1)}px auto`,
+      margin: `${theme.spacing(1)} auto`,
       padding: theme.spacing(2),
  
     },

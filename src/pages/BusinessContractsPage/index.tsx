@@ -1,20 +1,21 @@
 import React, { useEffect } from 'react';
-import { makeStyles, Theme, useTheme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Box from '@material-ui/core/Box';
-import BusinessIcon from '@material-ui/icons/Business';
-import SendIcon from '@material-ui/icons/Send';
-import AllInboxIcon from '@material-ui/icons/AllInbox';
-import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
+import { Theme, useTheme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import AppBar from '@mui/material/AppBar';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
+import BusinessIcon from '@mui/icons-material/Business';
+import SendIcon from '@mui/icons-material/Send';
+import AllInboxIcon from '@mui/icons-material/AllInbox';
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import {
   Badge,
   Container,
   Divider,
   Tooltip,
   useMediaQuery,
-} from '@material-ui/core';
+} from '@mui/material';
 import ListAccordionInBox from './ListAccordionInBox';
 import ListAccordionWaiting from './ListAccordionWaiting';
 import ListAccordionDone from './ListAccordionDone';
@@ -23,7 +24,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchBusinessContracts } from '../../actions/businessContractActions';
 import { IRootState } from '../../utils/store';
 import AgenciesList from './AgenciesList';
-import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
+import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import { useTranslation } from 'react-i18next';
 
 interface TabPanelProps {
@@ -84,7 +85,7 @@ const BusinessContractsPage = () => {
   const { t } = useTranslation();
 
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('md'));
+  const matches = useMediaQuery(theme.breakpoints.down('lg'));
 
   const { businessContract } = useSelector(
     (state: IRootState) => state.businessContracts

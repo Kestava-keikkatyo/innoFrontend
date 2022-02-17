@@ -1,7 +1,8 @@
-import { Button, makeStyles } from '@material-ui/core';
+import { Button } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import React from 'react';
-import EditIcon from '@material-ui/icons/Edit';
-import { Grid } from '@material-ui/core';
+import EditIcon from '@mui/icons-material/Edit';
+import { Grid } from '@mui/material';
 import { Link, useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next'
 /**

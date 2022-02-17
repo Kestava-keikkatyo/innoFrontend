@@ -13,8 +13,8 @@ import {
   Select,
   MenuItem,
   FormControl
-} from '@material-ui/core'
-import { Close as CloseIcon } from '@material-ui/icons'
+} from '@mui/material'
+import { Close as CloseIcon } from '@mui/icons-material'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchBusinessContracts } from '../../actions/businessContractActions'
 import { postWorkContract } from '../../actions/workContractActions'
@@ -52,7 +52,7 @@ const WorkerModal: React.FC<any> = ({ modalState, workerData }) => {
           <Typography variant="h6">
             Add to organization
           </Typography>
-          <IconButton onClick={closeModal}>
+          <IconButton onClick={closeModal} size="large">
             <CloseIcon />
           </IconButton>
         </Box>
@@ -87,7 +87,7 @@ const WorkerModal: React.FC<any> = ({ modalState, workerData }) => {
         </Button>
       </DialogActions>
     </Dialog>
-  )
+  );
 }
 
 export default WorkerModal

@@ -1,18 +1,9 @@
 import React, { useState } from "react";
-import {
-  Container,
-  Typography,
-  makeStyles,
-  Box,
-  Tabs,
-  AppBar,
-  Tab,
-  useTheme,
-  Direction,
-} from "@material-ui/core";
-import WorkIcon from "@material-ui/icons/Work";
-import AnnouncementIcon from "@material-ui/icons/Announcement";
-// import { Accordion, AccordionDetails } from "@material-ui/core";
+import { Container, Typography, Box, Tabs, AppBar, Tab, useTheme, Direction } from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
+import WorkIcon from "@mui/icons-material/Work";
+import AnnouncementIcon from "@mui/icons-material/Announcement";
+// import { Accordion, AccordionDetails } from "@mui/material";
 import WorkView from "./WorkView";
 import WorkRequest from "./WorkRequest";
 import { useTranslation } from 'react-i18next'
@@ -81,7 +72,7 @@ const WorkerJobs = () => {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = useState(0);
-  const handleChange = (event: any, newValue: any) => {
+  const handleChange = (event: React.SyntheticEvent, newValue: any): void => {
     setValue(newValue);
   };
 
@@ -97,14 +88,12 @@ const WorkerJobs = () => {
           aria-label="full width tabs example"
         >
           <Tab
-            onChange={handleChange}
             className={classes.tab}
             label={t("jobs")}
             icon={<WorkIcon />}
             {...a11yProps(0)}
           />
           <Tab
-            onChange={handleChange}
             className={classes.tab}
             label={t("work_request")}
             icon={<AnnouncementIcon />}

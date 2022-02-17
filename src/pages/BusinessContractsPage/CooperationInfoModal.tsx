@@ -11,9 +11,9 @@ import {
   IconButton,
   DialogActions,
   MenuItem,
-  makeStyles,
-} from '@material-ui/core';
-import { Close as CloseIcon } from '@material-ui/icons';
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import { Close as CloseIcon } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addBusinessContractWorkerBusiness,
@@ -127,7 +127,7 @@ const CooperationInfoModal: React.FC<any> = ({
       <DialogTitle>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Typography variant="h6">{t('send_cooperation_request')}</Typography>
-          <IconButton onClick={closeModal}>
+          <IconButton onClick={closeModal} size="large">
             <CloseIcon />
           </IconButton>
         </Box>

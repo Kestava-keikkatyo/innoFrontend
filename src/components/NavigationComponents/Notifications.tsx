@@ -1,8 +1,20 @@
 import React from 'react'
-import { Divider, List, ListItem, IconButton, Box, Typography, ListItemText, ListItemSecondaryAction, makeStyles, MenuItem, Button} from '@material-ui/core'
-import CheckIcon from '@material-ui/icons/Check';
-import ClearAllIcon from '@material-ui/icons/ClearAll';
-import CloseIcon from '@material-ui/icons/Close';
+import {
+  Divider,
+  List,
+  ListItem,
+  IconButton,
+  Box,
+  Typography,
+  ListItemText,
+  ListItemSecondaryAction,
+  MenuItem,
+  Button,
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import CheckIcon from '@mui/icons-material/Check';
+import ClearAllIcon from '@mui/icons-material/ClearAll';
+import CloseIcon from '@mui/icons-material/Close';
 import { useDispatch } from 'react-redux';
 import { clearAllNotifications } from '../../actions/notificationsActions';
 import { useTranslation } from 'react-i18next'
@@ -39,14 +51,14 @@ const Notifications: React.FC<any> = (props: { notifications: any, handleCloseNo
                   primary={message.text}
                 />
                 <ListItemSecondaryAction>
-                  <IconButton edge="end" aria-label="check">
+                  <IconButton edge="end" aria-label="check" size="large">
                     <CheckIcon />
                   </IconButton>
                 </ListItemSecondaryAction>
               </ListItem>
               <Divider />
             </div>
-          )
+          );
         }) : <><Typography className={classes.noNotifications}>{t('no_notifications')}</Typography><Divider /></>}
       </List>
       <MenuItem
@@ -56,7 +68,7 @@ const Notifications: React.FC<any> = (props: { notifications: any, handleCloseNo
         {t('empty_notifications')}
       </MenuItem>
     </Box>
-  )
+  );
 }
 
 const useStyles = makeStyles((theme) => ({

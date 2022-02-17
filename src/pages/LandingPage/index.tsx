@@ -7,9 +7,9 @@ import {
   Toolbar,
   Typography,
   Grid
-} from '@material-ui/core';
+} from '@mui/material';
 import SwipeableViews from 'react-swipeable-views';
-import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons';
+import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material';
 import FooterPage from './FooterPage';
 import FirstLandingPage from './FirstLandingPage';
 import ContentLifeSpan from './ContentWorkLifeSpan';

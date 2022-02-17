@@ -13,7 +13,7 @@ import {
   Box,
   Button,
   Container,
-} from '@material-ui/core';
+} from '@mui/material';
 import { roles } from '../../types/types';
 
 /**

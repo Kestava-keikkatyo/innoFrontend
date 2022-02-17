@@ -1,19 +1,19 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  makeStyles,
   Theme,
   Divider,
   AccordionActions,
   Tooltip,
   IconButton,
-} from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Button from '@material-ui/core/Button';
-import Avatar from '@material-ui/core/Avatar';
+} from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { getByIdAndSetBusinessContractForm } from '../../actions/businessContractFormActions';
@@ -24,8 +24,8 @@ import htmlToPdfmake from 'html-to-pdfmake';
 import ReactDOMServer from 'react-dom/server';
 import Form from '../FormsPage/Form';
 import { useTranslation } from 'react-i18next';
-import VisibilityIcon from '@material-ui/icons/Visibility';
-import SaveAltIcon from '@material-ui/icons/SaveAlt';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import SaveAltIcon from '@mui/icons-material/SaveAlt';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -149,7 +149,7 @@ export const ListAccordionDone = (prop: { contracts: any[] }) => {
                   onClick={() =>
                     handleEsitteleLomaketta(contract.madeContracts.formId)
                   }
-                >
+                  size="large">
                   <VisibilityIcon />
                 </IconButton>
               </Tooltip>
@@ -159,7 +159,7 @@ export const ListAccordionDone = (prop: { contracts: any[] }) => {
                   onClick={() =>
                     handleTulostaLomaketta(contract.madeContracts.formId)
                   }
-                >
+                  size="large">
                   <SaveAltIcon />
                 </IconButton>
               </Tooltip>

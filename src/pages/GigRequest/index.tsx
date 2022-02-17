@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
-import { makeStyles, Theme, useTheme } from "@material-ui/core/styles"
-import AppBar from "@material-ui/core/AppBar"
+import { Theme, useTheme } from "@mui/material/styles";
+import makeStyles from '@mui/styles/makeStyles';
+import AppBar from "@mui/material/AppBar"
 import {
   Badge,
   Box,
@@ -10,7 +11,7 @@ import {
   Tabs,
   Tooltip,
   useMediaQuery,
-} from "@material-ui/core"
+} from "@mui/material"
 
 import { useDispatch, useSelector } from "react-redux"
 import { IRootState } from "../../utils/store"
@@ -81,7 +82,7 @@ const AgencyGigOverview = () => {
   const { t } = useTranslation()
 
   const theme = useTheme()
-  const matches = useMediaQuery(theme.breakpoints.down("md"))
+  const matches = useMediaQuery(theme.breakpoints.down('lg'))
 
   const workContracts: any = useSelector(
     (state: IRootState) => state.workContracts

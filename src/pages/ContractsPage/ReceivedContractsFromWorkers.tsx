@@ -1,5 +1,6 @@
 import React from 'react';
-import { Typography, Grid, makeStyles } from '@material-ui/core';
+import { Typography, Grid } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import { useDispatch } from 'react-redux';
 import {
   acceptBusinessContractFromWorker,
@@ -14,8 +15,8 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-} from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+} from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useTranslation } from 'react-i18next';
 import { deleteBusinessContractForm } from '../../actions/businessContractFormActions';
 
@@ -90,40 +91,38 @@ const ReceicedContractsFromWorkers = (props: {
     );
   }
 
-  return (
-    <>
-      <Grid
-        container
-        direction="column"
-        spacing={1}
-        justify="center"
-        alignItems="stretch"
-      >
-        <Grid item xs={12}>
-          <Accordion className={classes.accordion} variant="outlined">
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              <Typography gutterBottom variant="h5">
-                {t(' contracts_received_from_the_workers')}
-              </Typography>
-            </AccordionSummary>
+  return <>
+    <Grid
+      container
+      direction="column"
+      spacing={1}
+      justifyContent="center"
+      alignItems="stretch"
+    >
+      <Grid item xs={12}>
+        <Accordion className={classes.accordion} variant="outlined">
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography gutterBottom variant="h5">
+              {t(' contracts_received_from_the_workers')}
+            </Typography>
+          </AccordionSummary>
 
-            <AccordionDetails>
-              <ContractsRequestedTable
-                contracts={contracts[0]?.receivedContracts?.workers}
-                contractId={businessContract[0]._id}
-                acceptContract={acceptContractFromWorker}
-                sendBackContract={sendBackContract}
-              />
-            </AccordionDetails>
-          </Accordion>
-        </Grid>
+          <AccordionDetails>
+            <ContractsRequestedTable
+              contracts={contracts[0]?.receivedContracts?.workers}
+              contractId={businessContract[0]._id}
+              acceptContract={acceptContractFromWorker}
+              sendBackContract={sendBackContract}
+            />
+          </AccordionDetails>
+        </Accordion>
       </Grid>
-    </>
-  );
+    </Grid>
+  </>;
 };
 
 const useStyles = makeStyles((theme) => ({

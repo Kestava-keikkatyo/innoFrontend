@@ -1,5 +1,6 @@
 import React from 'react';
-import { Grid, makeStyles, Typography } from '@material-ui/core';
+import { Grid, Typography } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import ReactPlayer from 'react-player';
 import baseUrl from '../../../utils/baseUrl';
 import { useTranslation } from 'react-i18next'

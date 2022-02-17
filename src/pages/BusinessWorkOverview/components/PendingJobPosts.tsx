@@ -1,5 +1,6 @@
-import { AccordionSummary, Typography, AccordionDetails, Accordion, Divider, Theme, makeStyles } from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { AccordionSummary, Typography, AccordionDetails, Accordion, Divider, Theme } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { format } from 'date-fns';
 import React from 'react';
 import { useTranslation } from 'react-i18next'

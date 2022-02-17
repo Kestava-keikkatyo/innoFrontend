@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import withStyles from '@mui/styles/withStyles';
 import clsx from 'clsx';
-// import Stepper from '@material-ui/core/Stepper';
-// import Step from '@material-ui/core/Step';
-// import StepLabel from '@material-ui/core/StepLabel';
-import StepConnector from '@material-ui/core/StepConnector';
-import Button from '@material-ui/core/Button';
-// import Typography from '@material-ui/core/Typography';
-import SendIcon from '@material-ui/icons/Send';
-import CreateIcon from '@material-ui/icons/Create';
-import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
+// import Stepper from '@mui/material/Stepper';
+// import Step from '@mui/material/Step';
+// import StepLabel from '@mui/material/StepLabel';
+import StepConnector from '@mui/material/StepConnector';
+import Button from '@mui/material/Button';
+// import Typography from '@mui/material/Typography';
+import SendIcon from '@mui/icons-material/Send';
+import CreateIcon from '@mui/icons-material/Create';
+import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 
-import { Container } from '@material-ui/core';
+import { Container } from '@mui/material';
 // import MoodStepOne from './MoodStepOne';
 // import MoodStepThree from './MoodStepThree';
 // import { setFiles } from '../../../actions/fileActions';
@@ -24,7 +25,7 @@ import { useTranslation } from 'react-i18next';
 // import { roles } from '../../../types/types';
 import MoodStep from './MoodStep';
 import MoodStepEnd from './MoodStepEnd';
-  
+
 
 
 const ColorlibConnector = withStyles({

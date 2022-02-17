@@ -8,26 +8,26 @@ import {
   TableRow,
   TableBody,
   IconButton,
-  createStyles,
-  makeStyles,
   Theme,
   useMediaQuery,
   useTheme,
   Tooltip,
-} from '@material-ui/core';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import DoneIcon from '@material-ui/icons/Done';
-import ClearIcon from '@material-ui/icons/Clear';
+} from '@mui/material';
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import DoneIcon from '@mui/icons-material/Done';
+import ClearIcon from '@mui/icons-material/Clear';
 import ContractsRequestedInfoModal from './ContractsRequestedInfoModal';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useTranslation } from 'react-i18next';
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
   AccordionActions,
-} from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+} from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { declineBusinessContract } from '../../actions/businessContractActions';
 import { severity } from '../../types/types';
 import { setAlert } from '../../actions/alertActions';
@@ -51,7 +51,7 @@ const ContractsRequestedTable = (prop: {
   const dispatch = useDispatch();
 
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('sm'));
+  const matches = useMediaQuery(theme.breakpoints.down('md'));
 
   const [displayModal, setDisplayModal] = React.useState(false);
   const { t } = useTranslation();
@@ -110,7 +110,7 @@ const ContractsRequestedTable = (prop: {
                   align="left"
                   style={{ paddingLeft: 5 }}
                 >
-                  <IconButton type="button" onClick={handleOpen}>
+                  <IconButton type="button" onClick={handleOpen} size="large">
                     <NotificationsIcon className={classes.buttonProperties} />
                   </IconButton>
                   <ContractsRequestedInfoModal
@@ -215,7 +215,7 @@ const ContractsRequestedTable = (prop: {
 
           <AccordionActions>
             <Tooltip title="Info" placement="top" arrow>
-              <IconButton type="button" onClick={handleOpen}>
+              <IconButton type="button" onClick={handleOpen} size="large">
                 <NotificationsIcon className={classes.buttonProperties} />
               </IconButton>
             </Tooltip>
@@ -237,7 +237,7 @@ const ContractsRequestedTable = (prop: {
                     contract.formId
                   )
                 }
-              >
+                size="large">
                 <ArrowBackIcon />
               </IconButton>
             </Tooltip>
@@ -255,7 +255,7 @@ const ContractsRequestedTable = (prop: {
                     contract.formId
                   )
                 }
-              >
+                size="large">
                 <ClearIcon />
               </IconButton>
             </Tooltip>

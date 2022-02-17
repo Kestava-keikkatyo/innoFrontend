@@ -1,12 +1,14 @@
 import React from 'react';
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-//import Link from '@material-ui/core/Link';
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+//import Link from '@mui/material/Link';
 import { useSelector } from 'react-redux';
 import { BreadcrumbLink } from '../types/types';
 import { IRootState } from '../utils/store';
 import { Link } from 'react-router-dom';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import { Theme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import createStyles from '@mui/styles/createStyles';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 /**
  * @component
