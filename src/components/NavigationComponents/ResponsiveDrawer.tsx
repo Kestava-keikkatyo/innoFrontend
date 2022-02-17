@@ -25,12 +25,13 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined"
 import { useTranslation } from "react-i18next"
 // import TranslateIcon from '@mui/icons-material/Translate';
 import LibraryBooksOutlinedIcon from "@mui/icons-material/LibraryBooksOutlined"
-import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline"
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline"
 import SupervisorAccountOutlinedIcon from "@mui/icons-material/SupervisorAccountOutlined"
 import FormatList from "@mui/icons-material/FormatListBulleted"
 import LiveHelpIcon from "@mui/icons-material/LiveHelpOutlined"
 import AssignmentTurnedInOutlinedIcon from "@mui/icons-material/AssignmentTurnedInOutlined"
+import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
+import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
 // import fi1 from '../NavigationComponents/fi1.png';
 // import us1 from '../NavigationComponents/us1.png';
 // import sw1 from '../NavigationComponents/sw1.png';
@@ -131,11 +132,11 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           )}
           {role === roles.Agency && (
             <>
-              <ListItem button component={Link} to="/create-job">
+              <ListItem button component={Link} to="/job-page">
                 <ListItemIcon>
                   <AssignmentTurnedInOutlinedIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("create_job")} />
+                <ListItemText primary={t("jobs")} />
               </ListItem>
               <Divider />
             </>
@@ -158,6 +159,17 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                   <MoodIcon />
                 </ListItemIcon>
                 <ListItemText primary={t("mood_stats")} />
+              </ListItem>
+              <Divider />
+            </>
+          )}
+          {(role === roles.Agency || role === roles.Business) && (
+            <>
+              <ListItem button component={Link} to="/workers/all">
+                <ListItemIcon>
+                  <GroupOutlinedIcon />
+                </ListItemIcon>
+                <ListItemText primary={t("workers")} />
               </ListItem>
               <Divider />
             </>
@@ -236,6 +248,17 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                   <LiveHelpIcon />
                 </ListItemIcon>
                 <ListItemText primary={t("faq")} />
+              </ListItem>
+              <Divider />
+            </>
+          )}
+          {(role === roles.Agency || role === roles.Business || role === roles.Worker) && (
+            <>
+              <ListItem button component={Link} to="/feedback-page">
+                <ListItemIcon>
+                  <FeedbackOutlinedIcon />
+                </ListItemIcon>
+                <ListItemText primary={t("Feedback")} />
               </ListItem>
               <Divider />
             </>

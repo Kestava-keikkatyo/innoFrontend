@@ -12,7 +12,6 @@ import {
   Grid,
 } from '@mui/material';
 import MoodForm from './MoodForm';
-import FeedBackForm from './FeedBackForm';
 import { submitFeeling, updateFeeling } from '../../actions/feelingActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../utils/store';
@@ -80,7 +79,6 @@ const WorkerHome = () => {
           </CardContent>
         </div>
       </Grid>
-      <FeedBackForm />
     </Grid>
   );
 };

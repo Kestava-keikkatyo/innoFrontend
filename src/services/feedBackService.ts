@@ -1,10 +1,11 @@
 /**
  * @module service/feedback
- * @desc FeedBack requests to backend.
+ * @desc Feedback requests to backend.
  */
 import axios from "axios";
-import { loadUser } from "../utils/storage";
+import { Feedback } from "../types/types";
 import baseUrl from "../utils/baseUrl";
+import { loadUser } from "../utils/storage";
 
 /**
  * @function
@@ -15,63 +16,49 @@ const authHeader = () => {
     headers: { "x-access-token": `${loadUser().token}` },
   };
 };
-/**
- * @function
- * @desc Back end call function that is used to post new feedback from user.
- * @param message - String message from user.
- */
-const postFeedBack = async (message: String, heading: String) => {
-  try {
-    return await axios.post(
-      `${baseUrl}/feedback/`,
-      { message, heading },
-      authHeader()
-    );
-  } catch (error) {
-    return Promise.reject(error.response);
-  }
-};
-/**
- * @function
- * @desc Back end call function that is used to get all logged in users feedbacks.
- */
-const getUserFeedBacks = async () => {
-  try {
-    return await axios.get(`${baseUrl}/feedback/allMyFeedbacks`, authHeader());
-  } catch (error) {
-    return Promise.reject(error.response);
-  }
-};
 
-const fetchAllFeedbacks = async () => {
-  try {
-    const res = await axios.get(`${baseUrl}/admin/allFeedbacks`, authHeader());
-    return res;
-  } catch (error) {
-    return Promise.reject(error.response);
-  }
+/**
+ * @function
+ * @desc create feedback request.
+ * @param {Feedback} feedback - Basic feedback information.
+ */
+const createFeedback = async (feedback: Feedback) => {
+  return await axios.post(`${baseUrl}/feedback`, feedback, authHeader());
 };
 
 /**
  * @function
- * @desc fetchReportById
+ * @desc Fetches all feedbacks with current token.
+ */
+const fetchAllMyFeedbacks = async () => {
+  const res = await axios.get(
+    `${baseUrl}/feedback/allMyFeedbacks`,
+    authHeader()
+  );
+  return res;
+};
+
+/**
+ * @function
+ * @desc Fetches all feedbacks with current token.
+ */
+const fetchAllFeedbacksForAdmin = async () => {
+  const res = await axios.get(`${baseUrl}/feedback/allFeedbacks`, authHeader());
+  return res;
+};
+
+/**
+ * @function
+ * @desc fetchFeedbackById
  */
 const fetchFeedbackById = async (id: string) => {
-  try {
-    const res = await axios.get(
-      `${baseUrl}/admin/feedback/${id}`,
-      authHeader()
-    );
-    return res.data;
-  } catch (error) {
-    console.log(error);
-    return Promise.reject(error.response);
-  }
+  const res = await axios.get(`${baseUrl}/feedback/${id}`, authHeader());
+  return res;
 };
 
 export default {
-  postFeedBack,
-  getUserFeedBacks,
-  fetchAllFeedbacks,
+  createFeedback,
+  fetchAllMyFeedbacks,
+  fetchAllFeedbacksForAdmin,
   fetchFeedbackById,
 };

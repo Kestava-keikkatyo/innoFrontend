@@ -13,10 +13,11 @@ import buisnessContractFormReducer from "../reducers/businessContractFormReducer
 import allUsersReducer from "../reducers/allUsersReducer";
 import profileReducer from "../reducers/profileReducer";
 import notificationsReducer from "../reducers/notificationsReducer";
-import feedBackReducer from "../reducers/feedBackReducer";
 import reportReducer from "../reducers/reportReducer";
 import jobReducer from "../reducers/jobReducer";
-import feedbackReducer2 from "../reducers/FeedbackReducer2";
+import usersReducer from "../reducers/usersReducer";
+import feedBackReducer from "../reducers/feedBackReducer";
+
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const reducer = combineReducers({
@@ -33,10 +34,10 @@ const reducer = combineReducers({
   allUsers: allUsersReducer,
   profile: profileReducer,
   notifications: notificationsReducer,
-  feedback: feedBackReducer,
   report: reportReducer,
   job: jobReducer,
-  feedback2: feedbackReducer2,
+  feedback: feedBackReducer,
+  users: usersReducer,
 });
 
 export type IRootState = ReturnType<typeof reducer>;

@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../utils/store';
 import { Link } from "react-router-dom";
 import makeStyles from '@mui/styles/makeStyles';
-import { fetchAllMyFeedbacks } from "../../actions/feedbackActions2";
+import { fetchAllMyFeedbacks } from "../../actions/feedBackActions";
 
 const Feedbacks: React.FC<any> = () => {
     const dispatch = useDispatch();
   const classes = useStyles();
 
-  const { feedbacks } = useSelector((state: IRootState) => state.feedback2 || []);
+  const { feedbacks } = useSelector((state: IRootState) => state.feedback || []);
 
   useEffect(() => {
     dispatch(fetchAllMyFeedbacks());
@@ -18,6 +18,7 @@ const Feedbacks: React.FC<any> = () => {
 
   let rows = [];
   rows = feedbacks;
+  console.log('feedbacks:', feedbacks);
   
   const columns = [
     {

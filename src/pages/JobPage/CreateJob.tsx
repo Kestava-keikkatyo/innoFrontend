@@ -48,7 +48,7 @@ const CreateJobSchema = Yup.object().shape({
   details: Yup.string(),
 });
 
-const CreateJobForAgency: React.FC<any> = () => {
+const CreateJob: React.FC<any> = () => {
   const { t } = useTranslation()
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -61,7 +61,7 @@ const CreateJobForAgency: React.FC<any> = () => {
   return (
     <div className={classes.newJob}>
       <div className={classes.jobTitleContainer}>
-              <Typography className={classes.title} variant="h4">{t('add_new_job')}</Typography>
+              <Typography color="primary" className={classes.title} variant="h5">{t('add_new_job')}</Typography>
       </div>
       <div className={classes.jobContainer}>
         <Formik
@@ -109,7 +109,6 @@ const useStyles = makeStyles((theme) => ({
     left: theme.spacing(0),
   },
   title: {
-    color: '#996699',
     marginTop: '5px',
     marginBottom: '15px',
   },
@@ -130,6 +129,6 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default CreateJobForAgency;
+export default CreateJob;
 
 

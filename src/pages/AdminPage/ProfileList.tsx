@@ -2,24 +2,24 @@ import { DataGrid } from '@mui/x-data-grid';
 import * as React from 'react';
 import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import { fetchProfiles } from '../../actions/profileActions';
 import "./userList.css";
 import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { fetchAllUsers } from "../../actions/usersActions";
 
 const ProfileList: React.FC<any> = () => {
 
   const dispatch = useDispatch();
 
-  const { profiles } = useSelector((state: IRootState) => state.profile || []);
+  const { users } = useSelector((state: IRootState) => state.users || []);
   
   useEffect(() => {
-    dispatch(fetchProfiles());
+    dispatch(fetchAllUsers());
   }, [dispatch]);
 
   let rows = [];
-  rows = profiles;
+  rows = users;
   
   const columns = [
     {
@@ -45,10 +45,15 @@ const ProfileList: React.FC<any> = () => {
       headerName: "City", 
       width: 200 
     },
+    { 
+      field: "userType", 
+      headerName: "User Type", 
+      width: 150 
+    },
     {
-      field: "status",
+      field: "active",
       headerName: "Status",
-      width: 200,
+      width: 150,
     },
     {
       field: "action",

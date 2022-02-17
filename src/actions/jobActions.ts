@@ -90,10 +90,10 @@ export const createJob = (job: Job) => async (dispatch: any) => {
       data: job,
     });
 
-    const data = await jobService.createJob(job);
+    const { data } = await jobService.createJob(job);
     dispatch({
       type: JOB_CREATED_SUCCESS,
-      data: job,
+      data,
     });
     dispatch(setAlert("Job created successfully!"));
     console.log("Created job", data);

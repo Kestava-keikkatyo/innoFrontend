@@ -14,7 +14,6 @@ import {
   Grid,
 } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import FeedBackForm from './FeedBackForm/index';
 import Faq from './FAQBoxBusiness';
 
 const BusinessHome = () => {
@@ -52,7 +51,6 @@ const BusinessHome = () => {
           </CardContent>
         </Card>
       </Grid>
-      <FeedBackForm />
     </Grid>
   );
 };

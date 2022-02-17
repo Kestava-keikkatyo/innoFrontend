@@ -5,13 +5,13 @@ import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import makeStyles from '@mui/styles/makeStyles';
+import Typography from '@mui/material/Typography';
 import { fetchAllJobs } from "../../actions/jobActions";
 import PageLoading from "../../components/PageLoading";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next"
 
-
-const NewJobList: React.FC<any> = () => {
+const Jobs: React.FC<any> = () => {
 
     const { t } = useTranslation()
     const classes = useStyles();
@@ -22,7 +22,6 @@ const NewJobList: React.FC<any> = () => {
     }, [dispatch]);
     
     const { jobs, loading } = useSelector((state: IRootState) => state.job || []);
-    console.log('DEBUG', jobs, loading)
 
     if (loading) return <PageLoading />
 
@@ -76,16 +75,19 @@ const NewJobList: React.FC<any> = () => {
     
     return (
         <div style={{ height: 700, width: '100%' }}>
-        <DataGrid
-        getRowId={(row) => row._id}
-        rows={rows}
-        disableSelectionOnClick
-        columns={columns}
-        pageSize={10}
-        rowsPerPageOptions={[10]}
-        checkboxSelection
-      />
-    </div>
+            <div className={classes.title}>
+                <Typography color="primary" align="center" className={classes.title} variant="h5">Job ads</Typography>
+            </div>
+            <DataGrid
+            getRowId={(row) => row._id}
+            rows={rows}
+            disableSelectionOnClick
+            columns={columns}
+            pageSize={10}
+            rowsPerPageOptions={[10]}
+            checkboxSelection
+            />
+        </div>
     );
 };
 
@@ -94,7 +96,11 @@ const useStyles = makeStyles(() => ({
         width: '100%',
         display: 'flex',
         color: 'green',
-      }
+    },
+    title: {
+        marginTop: '25px',
+        marginBottom: '15px',
+    },
 }));
 
-export default NewJobList;
+export default Jobs;

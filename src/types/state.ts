@@ -9,8 +9,49 @@ import {
   Feedback,
   Job,
   feedbackType,
+  usersType,
 } from "./types";
 
+export interface UsersState {
+  currentUser: User | undefined;
+  loading: boolean;
+  users: User[];
+}
+
+interface UserGetAllRequest {
+  type: typeof usersType.USER_GETALL_REQUEST;
+  data: any;
+}
+interface UserGetAllSuccess {
+  type: typeof usersType.USER_GETALL_SUCCESS;
+  data: any;
+}
+
+interface UserGetAllFailure {
+  type: typeof usersType.USER_GETALL_FAILURE;
+  data: any;
+}
+interface UserCurrentRequest {
+  type: typeof usersType.USER_CURRENT_REQUEST;
+  data: any;
+}
+
+interface UserCurrentSuccess {
+  type: typeof usersType.USER_CURRENT_SUCCESS;
+  data: any;
+}
+
+interface UserCurrentFailure {
+  type: typeof usersType.USER_CURRENT_FAILURE;
+  data: any;
+}
+export type UsersAction =
+  | UserGetAllRequest
+  | UserGetAllSuccess
+  | UserGetAllFailure
+  | UserCurrentRequest
+  | UserCurrentSuccess
+  | UserCurrentFailure;
 /**
  * All users state & action types
  */

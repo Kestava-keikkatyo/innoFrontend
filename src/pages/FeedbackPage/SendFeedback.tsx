@@ -7,7 +7,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import { Form, Formik } from 'formik';
 import FormikField from '../../components/FormField';
 import { IRootState } from '../../utils/store';
-import { createFeedback } from '../../actions/feedbackActions2';
+import { createFeedback } from '../../actions/feedBackActions';
 
 const initialValues: Feedback = {
     heading: "",
@@ -26,7 +26,7 @@ const SendFeedbackSchema = Yup.object().shape({
 const SendFeedback: React.FC<any> = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
-    const isLoading = useSelector((state: IRootState) => state.feedback2.loading)
+    const isLoading = useSelector((state: IRootState) => state.feedback.loading)
     
     const handleSubmit = (feedback: Feedback) => {
         dispatch(createFeedback(feedback));
@@ -35,7 +35,7 @@ const SendFeedback: React.FC<any> = () => {
     return (
         <div className={classes.newFeedback}>
       <div className={classes.feedbackTitleContainer}>
-              <Typography color="primary" className={classes.title} variant="h4">Send feedback</Typography>
+        <Typography color="primary" className={classes.title} variant="h4">Send feedback</Typography>
       </div>
       <div className={classes.feedbackContainer}>
         <Formik

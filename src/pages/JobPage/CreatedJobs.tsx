@@ -6,12 +6,13 @@ import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import makeStyles from '@mui/styles/makeStyles';
+import Typography from '@mui/material/Typography';
 import { DeleteJobById, fetchAllJobsForAgency } from "../../actions/jobActions";
 import { setAlert } from '../../actions/alertActions';
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 
-const JobListForAgency: React.FC<any> = () => {
+const CreatedJobs: React.FC<any> = () => {
 
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -49,7 +50,7 @@ const JobListForAgency: React.FC<any> = () => {
       width: 200,
       renderCell: (params: any) => {
           console.log(params.row);
-          return <>{params.row.agency.name}</>;
+          return <>{params.row.user.name}</>;
       }
   },
     {
@@ -80,6 +81,9 @@ const JobListForAgency: React.FC<any> = () => {
   
   return (
     <div style={{ height: 700, width: '100%' }}>
+      <div>
+        <Typography className={classes.title} color="primary" align="center" variant="h5">Your job ads</Typography>
+      </div>
       <DataGrid
         getRowId={(row) => row._id}
         rows={rows}
@@ -93,16 +97,21 @@ const JobListForAgency: React.FC<any> = () => {
   );
 }
 const useStyles = makeStyles(() => ({
-    update: {
-        width: '100%',
-        display: 'flex',
-        marginRight: '20px',
-        color: 'green',
-      },
-      userListDelete: {
-        color: 'red',
-        marginRight: '20px',
-        cursor: 'pointer'
-      }
+  update: {
+    width: '100%',
+    display: 'flex',
+    marginRight: '20px',
+    color: 'green',
+  },
+  userListDelete: {
+    color: 'red',
+    marginRight: '20px',
+    cursor: 'pointer'
+  },
+  title: {
+    marginTop: '25px',
+    marginBottom: '15px',
+}
 }));
-export default JobListForAgency;
+
+export default CreatedJobs;

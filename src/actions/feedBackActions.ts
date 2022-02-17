@@ -1,42 +1,92 @@
-/**
- * @module actions/notificationsActions
- * @desc Redux Notifications actions
- */
 import feedBackService from "../services/feedBackService";
-import {
-  GET_ALL_FEEDBACKS,
-  GET_USER_FEEDBACKS,
-  POST_FEEDBACK,
-  SET_CURRENT_FEEDBACK,
-} from "../types/state";
+import { Feedback, feedbackType, severity } from "../types/types";
+import { setAlert } from "./alertActions";
 
-export const postFeedBack =
-  (message: String, heading: String) => async (dispatch: any) => {
-    const res = await feedBackService.postFeedBack(message, heading);
-    if (res.status === 200) dispatch({ type: POST_FEEDBACK, data: res.data });
-  };
-
-export const getUserFeedBacks = () => async (dispatch: any) => {
-  const res = await feedBackService.getUserFeedBacks();
-  if (res.status === 200)
-    dispatch({ type: GET_USER_FEEDBACKS, data: res.data });
-};
-
-export const fetchAllFeedbacks = () => async (dispatch: any) => {
+/**
+ * @function
+ * @desc Fetches all user's feedbacks.
+ */
+export const fetchAllMyFeedbacks = () => async (dispatch: any) => {
   try {
-    const res = await feedBackService.fetchAllFeedbacks();
-    dispatch({ type: GET_ALL_FEEDBACKS, data: res.data });
+    dispatch({
+      type: feedbackType.FEEDBACK_GETALL_REQUEST,
+    });
+    const res = await feedBackService.fetchAllMyFeedbacks();
+    dispatch({ type: feedbackType.FEEDBACK_GETALL_SUCCESS, data: res.data });
   } catch (error) {
-    console.log(error);
+    dispatch({
+      type: feedbackType.FEEDBACK_GETALL_FAILURE,
+      data: error && error.message,
+    });
   }
 };
 
+/**
+ * @function
+ * @desc Fetches all feedbacks for admin.
+ */
+export const fetchAllFeedbacksForAdmin = () => async (dispatch: any) => {
+  try {
+    dispatch({
+      type: feedbackType.FEEDBACK_GETALL_REQUEST,
+    });
+    const res = await feedBackService.fetchAllFeedbacksForAdmin();
+    dispatch({ type: feedbackType.FEEDBACK_GETALL_SUCCESS, data: res.data });
+  } catch (error) {
+    dispatch({
+      type: feedbackType.FEEDBACK_GETALL_FAILURE,
+      data: error && error.message,
+    });
+  }
+};
+
+/**
+ * @function
+ * @desc Fetches feedback by Id.
+ */
 export const fetchFeedbackById = (id: string) => async (dispatch: any) => {
   try {
-    const data = await feedBackService.fetchFeedbackById(id);
-    console.log("report's data", data);
-    dispatch({ type: SET_CURRENT_FEEDBACK, data: data });
+    dispatch({
+      type: feedbackType.FEEDBACK_CURRENT_REQUEST,
+    });
+    const res = await feedBackService.fetchFeedbackById(id);
+    dispatch({ type: feedbackType.FEEDBACK_CURRENT_SUCCESS, data: res.data });
   } catch (error) {
-    console.log(error);
+    dispatch({
+      type: feedbackType.FEEDBACK_CURRENT_FAILURE,
+      data: error,
+    });
+    dispatch(
+      setAlert("Failed to fetch the feedback: " + error, severity.Error, 15)
+    );
+  }
+};
+
+/**
+ * Send feedback
+ * @function
+ * @param {Object} feedback - Basic feedback information (heading, message)
+ * @param {string} role - user
+ */
+export const createFeedback = (feedback: Feedback) => async (dispatch: any) => {
+  try {
+    dispatch({
+      type: feedbackType.FEEDBACK_SEND_REQUEST,
+      data: feedback,
+    });
+
+    const { data } = await feedBackService.createFeedback(feedback);
+    dispatch({
+      type: feedbackType.FEEDBACK_SEND_SUCCESS,
+      data,
+    });
+    dispatch(setAlert("Feedback sent successfully!"));
+    console.log("sent feedback", data);
+  } catch (e) {
+    dispatch({
+      type: feedbackType.FEEDBACK_SEND_FAILURE,
+      data: e,
+    });
+    dispatch(setAlert("Failed to send feedback: " + e, severity.Error, 15));
   }
 };
