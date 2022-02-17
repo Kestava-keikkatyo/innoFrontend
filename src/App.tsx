@@ -62,236 +62,253 @@ import Workers from "./pages/Profile/Workers"
 import WorkerProfile from "./pages/Profile/WorkerProfile"
 import CompanyJobPage from "./pages/JobPage"
 
+import { ThemeProvider, Theme, StyledEngineProvider, createTheme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+declare module '@mui/styles/defaultTheme' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface DefaultTheme extends Theme {}
+}
+
 /**
  * @component
  * App component, main react component which acts as a container for all the other components.
  */
 const App: React.FC = () => {
 
-  
+  const theme = createTheme()
+
+  const useStyles = makeStyles((theme) => {
+    root: {
+      // some CSS that access to theme
+    }
+  })
 
   // extra toolbar prevents content from going underneath appbar.
   return (
     <>
-      <ScrollToTop />
-      <CssBaseline />
-      <SnackbarNotification />
-      <Switch>
-        <Route exact path="/login">
-          <LoginPage />
-        </Route>
-        <PrivateRoute path="/profileList">
-          <ProfileList />
-        </PrivateRoute>
-        <PrivateRoute path="/userList">
-          <AllUsersList />
-        </PrivateRoute>
-        <PrivateRoute path="/user/:profileId">
-          <User />
-        </PrivateRoute>
-        <PrivateRoute path="/createUser">
-          <CreateUser />
-        </PrivateRoute>
-        <PrivateRoute path="/reportList">
-          <ReportList />
-        </PrivateRoute>
-        <PrivateRoute path="/feedbackList">
-          <FeedbackList />
-        </PrivateRoute>
-        <PrivateRoute path="/feelingList">
-          <FeelingList />
-        </PrivateRoute>
-        <PrivateRoute path="/reportDetails/:reportId">
-          <ReportDetails />
-        </PrivateRoute>
-        <PrivateRoute path="/feedbackDetails/:feedbackId">
-          <FeedbackDetails />
-        </PrivateRoute>
-        <PrivateRoute path="/feelingDetails/:workerId">
-          <FeelingDetails />
-        </PrivateRoute>
-        <PrivateRoute path="/jobs">
-          <Jobs />
-        </PrivateRoute>
-        <PrivateRoute path="/job-details/:jobId">
-          <JobDetails />
-        </PrivateRoute>
-        <PrivateRoute path="/jobListForAgency" roles={[roles.Agency]}>
-          <CreatedJobs />
-        </PrivateRoute>
-        <PrivateRoute path="/job/update" roles={[roles.Agency]}>
-          <JobUpdate />
-        </PrivateRoute>
-        <PrivateRoute path="/job/create" roles={[roles.Agency]}>
-          <CreateJob />
-        </PrivateRoute>
-        <PrivateRoute path="/job-page" roles={[roles.Business, roles.Agency]}>
-          <CompanyJobPage />
-        </PrivateRoute>
-        <PrivateRoute path="/send-feedback" roles={[roles.Business, roles.Agency, roles.Worker]}>
-          <SendFeedback />
-        </PrivateRoute>
-        <PrivateRoute path="/feedbacks" roles={[roles.Business, roles.Agency, roles.Worker]}>
-          <Feedbacks />
-        </PrivateRoute>
-        <PrivateRoute path="/feedback-details/:feedbackId" roles={[roles.Business, roles.Agency, roles.Worker]}>
-          <Details />
-        </PrivateRoute>
-        <PrivateRoute path="/feedback-page" roles={[roles.Business, roles.Agency, roles.Worker]}>
-          <FeedbackPage />
-        </PrivateRoute>
-        <PrivateRoute path="/workers/all" roles={[roles.Business, roles.Agency]}>
-          <Workers />
-        </PrivateRoute>
-        <PrivateRoute path="/worker/profile" roles={[roles.Business, roles.Agency]}>
-          <WorkerProfile />
-        </PrivateRoute>
-        <DatabankRoute path="/databank/lifeline">
-          <JobLifeline />
-        </DatabankRoute>
-        <DatabankRoute path="/databank/responsibilities">
-          <RoleResponsibilities />
-        </DatabankRoute>
-        <DatabankRoute path="/databank/best-practices">
-          <BestPractices />
-        </DatabankRoute>
-        <DatabankRoute path="/databank">
-          <Databank />
-        </DatabankRoute>
-        <PrivateRoute path="/settings">
-          <SettingsPage />
-        </PrivateRoute>
-        <PrivateRoute path="/profiles/profile-view">
-          <ProfileViewPage />
-        </PrivateRoute>
-        <PrivateRoute path="/profile/edit-profile">
-          <EditProfilePage />
-        </PrivateRoute>
-        <PrivateRoute path="/profile">
-          <ProfilePage />
-        </PrivateRoute>
-        <PrivateRoute path="/my-work" roles={[roles.Worker]}>
-          <WorkerJobs />
-        </PrivateRoute>
-        <PrivateRoute path="/process" roles={[roles.Worker]}>
-          <ProcessPage />
-        </PrivateRoute>
-        <PrivateRoute path="/fiilismittari" roles={[roles.Worker]}>
-          <WorkerStatistics />
-        </PrivateRoute>
-        <PrivateRoute path="/report" roles={[roles.Worker]}>
-          <ReportPage />
-        </PrivateRoute>
-        <PrivateRoute path="/mood-stats" roles={[roles.Agency]}>
-          <AgencyStatistics />
-        </PrivateRoute>
-        <PrivateRoute path="/reports" roles={[roles.Business, roles.Agency]}>
-          <ReportsPage />
-        </PrivateRoute>
-        <PrivateRoute path="/faq" roles={[roles.Worker]}>
-          <FAQIndex />
-        </PrivateRoute>
-        <PrivateRoute
-          path="/contracts/contract-form-manager/contract-form-preview"
-          roles={[roles.Agency]}
-        >
-          <ContractFormPreviewPage />
-        </PrivateRoute>
-        <PrivateRoute
-          path="/contracts/contract-form-manager/contract-form-edit"
-          roles={[roles.Agency]}
-        >
-          <ContractFormEditPage />
-        </PrivateRoute>
-        <PrivateRoute
-          path="/contracts/contract-form-manager"
-          roles={[roles.Agency]}
-        >
-          <ContractFormManagerPage />
-        </PrivateRoute>
-        <PrivateRoute path="/contracts" roles={[roles.Agency]}>
-          <ContractsPage />
-        </PrivateRoute>
-        <PrivateRoute
-          path="/business-contracts/business-contract-preview"
-          roles={[roles.Business, roles.Agency, roles.Worker]}
-        >
-          <BusinessContractPreviewPage />
-        </PrivateRoute>
-        <PrivateRoute
-          path="/business-contracts/business-contract-fill"
-          roles={[roles.Business, roles.Agency, roles.Worker]}
-        >
-          <BusinessContractFill />
-        </PrivateRoute>
-        <PrivateRoute
-          path="/business-contracts/business-contract-edit"
-          roles={[roles.Business, roles.Agency, roles.Worker]}
-        >
-          <BusinessContractEdit />
-        </PrivateRoute>
-        <PrivateRoute
-          path="/business-contracts"
-          roles={[roles.Business, roles.Worker]}
-        >
-          <BusinessContractPage />
-        </PrivateRoute>
-        <PrivateRoute
-          path="/forms/newform/preview"
-          roles={[roles.Business, roles.Agency]}
-        >
-          <FormPreviewPage />
-        </PrivateRoute>
-        <PrivateRoute
-          path="/forms/edit-form/preview"
-          roles={[roles.Business, roles.Agency]}
-        >
-          <FormPreviewPage />
-        </PrivateRoute>
-        <PrivateRoute
-          path="/forms/newform"
-          roles={[roles.Business, roles.Agency]}
-        >
-          <NewFormPage />
-        </PrivateRoute>
-        <PrivateRoute
-          path="/forms/edit-form"
-          roles={[roles.Business, roles.Agency]}
-        >
-          <EditFormPage />
-        </PrivateRoute>
-        <PrivateRoute
-          path="/forms/preview"
-          roles={[roles.Business, roles.Agency]}
-        >
-          <FormPreviewPage />
-        </PrivateRoute>
-        <PrivateRoute path="/work-overview" roles={[roles.Business]}>
-          <BusinessWorkRequest />
-        </PrivateRoute>
-        <PrivateRoute path="/work-request" roles={[roles.Agency]}>
-          <WorkRequest />
-        </PrivateRoute>
-        <PrivateRoute
-          path="/work-info"
-          roles={[roles.Business, roles.Agency, roles.Worker]}
-        >
-          <WorkInfo />
-        </PrivateRoute>
-        <PrivateRoute path="/forms" roles={[roles.Business, roles.Agency]}>
-          <FormsPage />
-        </PrivateRoute>
-        <PrivateRoute path="/jobs" roles={[roles.Worker]}>
-          <JobList />
-        </PrivateRoute>
-        <PrivateRoute path="/home">
-          <HomePage />
-        </PrivateRoute>
-        <Route path="/">
-          <LandingPage />
-        </Route>
-        <Redirect from="*" to="/login" />
-      </Switch>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <ScrollToTop />
+          <CssBaseline />
+          <SnackbarNotification />
+          <Switch>
+            <Route exact path="/login">
+              <LoginPage />
+            </Route>
+            <PrivateRoute path="/profileList">
+              <ProfileList />
+            </PrivateRoute>
+            <PrivateRoute path="/userList">
+              <AllUsersList />
+            </PrivateRoute>
+            <PrivateRoute path="/user/:profileId">
+              <User />
+            </PrivateRoute>
+            <PrivateRoute path="/createUser">
+              <CreateUser />
+            </PrivateRoute>
+            <PrivateRoute path="/reportList">
+              <ReportList />
+            </PrivateRoute>
+            <PrivateRoute path="/feedbackList">
+              <FeedbackList />
+            </PrivateRoute>
+            <PrivateRoute path="/feelingList">
+              <FeelingList />
+            </PrivateRoute>
+            <PrivateRoute path="/reportDetails/:reportId">
+              <ReportDetails />
+            </PrivateRoute>
+            <PrivateRoute path="/feedbackDetails/:feedbackId">
+              <FeedbackDetails />
+            </PrivateRoute>
+            <PrivateRoute path="/feelingDetails/:workerId">
+              <FeelingDetails />
+            </PrivateRoute>
+            <PrivateRoute path="/jobs">
+              <Jobs />
+            </PrivateRoute>
+            <PrivateRoute path="/job-details/:jobId">
+              <JobDetails />
+            </PrivateRoute>
+            <PrivateRoute path="/jobListForAgency" roles={[roles.Agency]}>
+              <CreatedJobs />
+            </PrivateRoute>
+            <PrivateRoute path="/job/update" roles={[roles.Agency]}>
+              <JobUpdate />
+            </PrivateRoute>
+            <PrivateRoute path="/job/create" roles={[roles.Agency]}>
+              <CreateJob />
+            </PrivateRoute>
+            <PrivateRoute path="/job-page" roles={[roles.Business, roles.Agency]}>
+              <CompanyJobPage />
+            </PrivateRoute>
+            <PrivateRoute path="/send-feedback" roles={[roles.Business, roles.Agency, roles.Worker]}>
+              <SendFeedback />
+            </PrivateRoute>
+            <PrivateRoute path="/feedbacks" roles={[roles.Business, roles.Agency, roles.Worker]}>
+              <Feedbacks />
+            </PrivateRoute>
+            <PrivateRoute path="/feedback-details/:feedbackId" roles={[roles.Business, roles.Agency, roles.Worker]}>
+              <Details />
+            </PrivateRoute>
+            <PrivateRoute path="/feedback-page" roles={[roles.Business, roles.Agency, roles.Worker]}>
+              <FeedbackPage />
+            </PrivateRoute>
+            <PrivateRoute path="/workers/all" roles={[roles.Business, roles.Agency]}>
+              <Workers />
+            </PrivateRoute>
+            <PrivateRoute path="/worker/profile" roles={[roles.Business, roles.Agency]}>
+              <WorkerProfile />
+            </PrivateRoute>
+            <DatabankRoute path="/databank/lifeline">
+              <JobLifeline />
+            </DatabankRoute>
+            <DatabankRoute path="/databank/responsibilities">
+              <RoleResponsibilities />
+            </DatabankRoute>
+            <DatabankRoute path="/databank/best-practices">
+              <BestPractices />
+            </DatabankRoute>
+            <DatabankRoute path="/databank">
+              <Databank />
+            </DatabankRoute>
+            <PrivateRoute path="/settings">
+              <SettingsPage />
+            </PrivateRoute>
+            <PrivateRoute path="/profiles/profile-view">
+              <ProfileViewPage />
+            </PrivateRoute>
+            <PrivateRoute path="/profile/edit-profile">
+              <EditProfilePage />
+            </PrivateRoute>
+            <PrivateRoute path="/profile">
+              <ProfilePage />
+            </PrivateRoute>
+            <PrivateRoute path="/my-work" roles={[roles.Worker]}>
+              <WorkerJobs />
+            </PrivateRoute>
+            <PrivateRoute path="/process" roles={[roles.Worker]}>
+              <ProcessPage />
+            </PrivateRoute>
+            <PrivateRoute path="/fiilismittari" roles={[roles.Worker]}>
+              <WorkerStatistics />
+            </PrivateRoute>
+            <PrivateRoute path="/report" roles={[roles.Worker]}>
+              <ReportPage />
+            </PrivateRoute>
+            <PrivateRoute path="/mood-stats" roles={[roles.Agency]}>
+              <AgencyStatistics />
+            </PrivateRoute>
+            <PrivateRoute path="/reports" roles={[roles.Business, roles.Agency]}>
+              <ReportsPage />
+            </PrivateRoute>
+            <PrivateRoute path="/faq" roles={[roles.Worker]}>
+              <FAQIndex />
+            </PrivateRoute>
+            <PrivateRoute
+              path="/contracts/contract-form-manager/contract-form-preview"
+              roles={[roles.Agency]}
+            >
+              <ContractFormPreviewPage />
+            </PrivateRoute>
+            <PrivateRoute
+              path="/contracts/contract-form-manager/contract-form-edit"
+              roles={[roles.Agency]}
+            >
+              <ContractFormEditPage />
+            </PrivateRoute>
+            <PrivateRoute
+              path="/contracts/contract-form-manager"
+              roles={[roles.Agency]}
+            >
+              <ContractFormManagerPage />
+            </PrivateRoute>
+            <PrivateRoute path="/contracts" roles={[roles.Agency]}>
+              <ContractsPage />
+            </PrivateRoute>
+            <PrivateRoute
+              path="/business-contracts/business-contract-preview"
+              roles={[roles.Business, roles.Agency, roles.Worker]}
+            >
+              <BusinessContractPreviewPage />
+            </PrivateRoute>
+            <PrivateRoute
+              path="/business-contracts/business-contract-fill"
+              roles={[roles.Business, roles.Agency, roles.Worker]}
+            >
+              <BusinessContractFill />
+            </PrivateRoute>
+            <PrivateRoute
+              path="/business-contracts/business-contract-edit"
+              roles={[roles.Business, roles.Agency, roles.Worker]}
+            >
+              <BusinessContractEdit />
+            </PrivateRoute>
+            <PrivateRoute
+              path="/business-contracts"
+              roles={[roles.Business, roles.Worker]}
+            >
+              <BusinessContractPage />
+            </PrivateRoute>
+            <PrivateRoute
+              path="/forms/newform/preview"
+              roles={[roles.Business, roles.Agency]}
+            >
+              <FormPreviewPage />
+            </PrivateRoute>
+            <PrivateRoute
+              path="/forms/edit-form/preview"
+              roles={[roles.Business, roles.Agency]}
+            >
+              <FormPreviewPage />
+            </PrivateRoute>
+            <PrivateRoute
+              path="/forms/newform"
+              roles={[roles.Business, roles.Agency]}
+            >
+              <NewFormPage />
+            </PrivateRoute>
+            <PrivateRoute
+              path="/forms/edit-form"
+              roles={[roles.Business, roles.Agency]}
+            >
+              <EditFormPage />
+            </PrivateRoute>
+            <PrivateRoute
+              path="/forms/preview"
+              roles={[roles.Business, roles.Agency]}
+            >
+              <FormPreviewPage />
+            </PrivateRoute>
+            <PrivateRoute path="/work-overview" roles={[roles.Business]}>
+              <BusinessWorkRequest />
+            </PrivateRoute>
+            <PrivateRoute path="/work-request" roles={[roles.Agency]}>
+              <WorkRequest />
+            </PrivateRoute>
+            <PrivateRoute
+              path="/work-info"
+              roles={[roles.Business, roles.Agency, roles.Worker]}
+            >
+              <WorkInfo />
+            </PrivateRoute>
+            <PrivateRoute path="/forms" roles={[roles.Business, roles.Agency]}>
+              <FormsPage />
+            </PrivateRoute>
+            <PrivateRoute path="/jobs" roles={[roles.Worker]}>
+              <JobList />
+            </PrivateRoute>
+            <PrivateRoute path="/home">
+              <HomePage />
+            </PrivateRoute>
+            <Route path="/">
+              <LandingPage />
+            </Route>
+            <Redirect from="*" to="/login" />
+          </Switch>
+        </ThemeProvider>
+      </StyledEngineProvider>
     </>
   )
 }

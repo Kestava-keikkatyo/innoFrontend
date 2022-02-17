@@ -5,7 +5,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { Container } from '@material-ui/core';
+import { Container } from '@mui/material';
 import SendFeedback from './SendFeedback';
 import Feedbacks from './Feedbacks';
 
