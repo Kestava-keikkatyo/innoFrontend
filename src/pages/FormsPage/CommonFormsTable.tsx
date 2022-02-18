@@ -75,6 +75,8 @@ const CommonFormsTable: React.FC<any> = () => {
     dispatch(fetchFormList());
   }, [dispatch]);
 
+  console.log(commonForms);
+
   // handle user input in the search field
   const handleFilterchange = (event: any) => {
     setFilter(event.target.value);
@@ -153,8 +155,8 @@ const CommonFormsTable: React.FC<any> = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {commonForms.docs &&
-              commonForms.docs
+            {commonForms &&
+              commonForms
                 .filter((form: any) =>
                   form.title.toLowerCase().includes(filter.toLowerCase())
                 )
@@ -239,7 +241,7 @@ const CommonFormsTable: React.FC<any> = () => {
       ));
   };
 
-  if (!commonForms.docs)
+  if (!commonForms)
     return (
       <Typography
         style={{ padding: '1rem' }}
