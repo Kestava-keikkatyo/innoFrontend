@@ -37,9 +37,9 @@ const ReportStepTwo = () => {
                 id="date-picker-inline"
                 label={t('date_picker_inline')}
                 margin="normal"
-                
                 fullWidth
                 style={{ minHeight: '4rem'}}
+                {...props}
               /> 
               }
               inputFormat="dd.MM.yyyy"
@@ -57,11 +57,12 @@ const ReportStepTwo = () => {
                   id="time-picker"
                   label={t('time_picker')}
                   margin="normal"
-                  
                   fullWidth
                   style={{ minHeight: '4rem'}}
+                  {...props}
                 /> 
               }
+              ampm={false}
               value={selectedDate}
               onChange={handleDateChange}
               OpenPickerButtonProps={{

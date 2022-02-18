@@ -34,6 +34,7 @@ return <>
           
           fullWidth
           style={{ minHeight: '4rem'}}
+          {...props}
         /> 
         }
         inputFormat="dd.MM.yyyy"
@@ -55,8 +56,10 @@ return <>
             
             fullWidth
             style={{ minHeight: '4rem'}}
+            {...props}
           /> 
         }
+        ampm={false}
         value={selectedDate}
         onChange={handleDateChange}
         OpenPickerButtonProps={{

@@ -205,8 +205,10 @@ export const DatePickerField: React.FC<DatePickerFieldProps & FormikProps<any>> 
               required={required}
               fullWidth
               style={{ minHeight: '4rem'}}
+              {...props}
             /> 
           }
+          label={label} 
           inputFormat="dd.MM.yyyy"
           value={values[name]}
           onChange={value => setFieldValue(name, value)}
