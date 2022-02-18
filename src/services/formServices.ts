@@ -22,7 +22,8 @@
   */
  const fetchMyFormList = async () => {
    try{
-    const res = await axios.get(`${baseUrl}/form2/common`, authHeader())
+    const res = await axios.get(`${baseUrl}/form2/`, authHeader())
+       console.log(res.data);
     return res.data
    } catch(error){
     console.log(error);

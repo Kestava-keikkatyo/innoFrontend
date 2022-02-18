@@ -140,8 +140,8 @@ const CommunityFormsTable: React.FC<any> = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {communityForms.docs &&
-              communityForms.docs
+            {communityForms &&
+              communityForms
                 .filter((form: any) =>
                   form.title.toLowerCase().includes(filter.toLowerCase())
                 )
@@ -214,7 +214,7 @@ const CommunityFormsTable: React.FC<any> = () => {
       ));
   };
 
-  if (!communityForms.docs)
+  if (!communityForms)
     return (
       <Typography
         style={{ padding: '1rem' }}
