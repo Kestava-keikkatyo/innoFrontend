@@ -3,7 +3,6 @@
  * @desc Users requests to backend.
  */
 import axios from "axios";
-import { User } from "../types/types";
 import baseUrl from "../utils/baseUrl";
 import { loadUser } from "../utils/storage";
 
@@ -31,10 +30,7 @@ const fetchAllUsers = async () => {
  * @desc fetchUserById
  */
 const fetchUserById = async (id: string) => {
-  const res = await axios.get(
-    `${baseUrl}/user/userForAdmin/${id}`,
-    authHeader()
-  );
+  const res = await axios.get(`${baseUrl}/user/any/${id}`, authHeader());
   return res;
 };
 
@@ -65,9 +61,19 @@ const fetchAllWorkers = async () => {
   return res;
 };
 
+/**
+ * @function
+ * @desc fetchUserById
+ */
+const showMyProfile = async (id: string) => {
+  const res = await axios.get(`${baseUrl}/me/`, authHeader());
+  return res;
+};
+
 export default {
   fetchAllUsers,
   fetchUserById,
   deleteUser,
   fetchAllWorkers,
+  showMyProfile,
 };

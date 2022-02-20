@@ -78,3 +78,25 @@ export const fetchAllWorkers = () => async (dispatch: any) => {
     });
   }
 };
+
+/**
+ * @function
+ * @desc Fetches user's profile.
+ */
+export const showMyProfile = (id: string) => async (dispatch: any) => {
+  try {
+    dispatch({
+      type: usersType.USER_CURRENT_REQUEST,
+    });
+    const res = await usersService.showMyProfile(id);
+    dispatch({ type: usersType.USER_CURRENT_SUCCESS, data: res.data });
+  } catch (error) {
+    dispatch({
+      type: usersType.USER_CURRENT_FAILURE,
+      data: error,
+    });
+    dispatch(
+      setAlert("Failed to fetch user's profile: " + error, severity.Error, 15)
+    );
+  }
+};

@@ -53,7 +53,7 @@ const Workers: React.FC<any> = () => {
             renderCell: (params: any) => {
               return (
                 <>
-                  <Link to={"/worker/profile"}>Profile</Link>
+                  <Link to={"/workers/" + params.id}>Profile</Link>
                 </>
               );
             },

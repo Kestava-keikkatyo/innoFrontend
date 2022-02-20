@@ -29,7 +29,6 @@ import BusinessContractEdit from "./pages/BusinessContractPreviewPage/BusinessCo
 import ContractFormManagerPage from "./pages/ContractsPage/ContractFormManagerPage"
 import ContractFormPreviewPage from "./pages/ContractsPage/ContractFormManagerPage/ContractFormPreviewPage"
 import ContractFormEditPage from "./pages/ContractsPage/ContractFormManagerPage/ContractFormEditPage"
-import ProfilePage from "./pages/ProfilePage"
 import ProfileViewPage from "./pages/ProfilePage/ProfileViewPage"
 import EditProfilePage from "./pages/ProfilePage/EditProfilePage"
 import JobList from "./pages/JobPage"
@@ -59,11 +58,10 @@ import Feedbacks from "./pages/FeedbackPage/Feedbacks"
 import Details from "./pages/FeedbackPage/Details"
 import FeedbackPage from "./pages/FeedbackPage"
 import Workers from "./pages/Profile/Workers"
-import WorkerProfile from "./pages/Profile/WorkerProfile"
 import CompanyJobPage from "./pages/JobPage"
-
 import { ThemeProvider, Theme, StyledEngineProvider, createTheme } from '@mui/material/styles';
 import makeStyles from '@mui/styles/makeStyles';
+import UserProfile from "./pages/Profile/User"
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface DefaultTheme extends Theme {}
@@ -158,8 +156,8 @@ const App: React.FC = () => {
             <PrivateRoute path="/workers/all" roles={[roles.Business, roles.Agency]}>
               <Workers />
             </PrivateRoute>
-            <PrivateRoute path="/worker/profile" roles={[roles.Business, roles.Agency]}>
-              <WorkerProfile />
+            <PrivateRoute path="/workers/:userId" roles={[roles.Business, roles.Agency]}>
+              <UserProfile />
             </PrivateRoute>
             <DatabankRoute path="/databank/lifeline">
               <JobLifeline />
@@ -183,7 +181,7 @@ const App: React.FC = () => {
               <EditProfilePage />
             </PrivateRoute>
             <PrivateRoute path="/profile">
-              <ProfilePage />
+              <UserProfile myProfile />
             </PrivateRoute>
             <PrivateRoute path="/my-work" roles={[roles.Worker]}>
               <WorkerJobs />
