@@ -75,8 +75,6 @@ const CommonFormsTable: React.FC<any> = () => {
     dispatch(fetchFormList());
   }, [dispatch]);
 
-  console.log(commonForms);
-
   // handle user input in the search field
   const handleFilterchange = (event: any) => {
     setFilter(event.target.value);

@@ -144,8 +144,8 @@ const MyFormsTable: React.FC<any> = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {myForms.docs &&
-              myForms.docs
+            {myForms &&
+              myForms
                 .filter((form: any) =>
                   form.title.toLowerCase().includes(filter.toLowerCase())
                 )
@@ -184,8 +184,8 @@ const MyFormsTable: React.FC<any> = () => {
 
   // Accordion view for mobile devices
   const accordionView = () => {
-    return myForms.docs &&
-    myForms.docs
+    return myForms &&
+    myForms
       .filter((form: any) =>
         form.title.toLowerCase().includes(filter.toLowerCase())
       )
@@ -230,7 +230,7 @@ const MyFormsTable: React.FC<any> = () => {
       ));
   };
 
-  if (!myForms.docs)
+  if (!myForms)
     return (
       <Typography
         style={{ padding: '1rem' }}

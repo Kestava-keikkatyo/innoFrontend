@@ -22,8 +22,7 @@
   */
  const fetchMyFormList = async () => {
    try{
-    const res = await axios.get(`${baseUrl}/form2/`, authHeader())
-       console.log(res.data);
+    const res = await axios.get(`${baseUrl}/form2/myForm`, authHeader())
     return res.data
    } catch(error){
     console.log(error);
@@ -53,7 +52,7 @@ const fetchCommonFormList = async () => {
 
 const fetchFormById = async (id: string) => {
   try {
-   const res = await axios.get(`${baseUrl}/form2/${id}`, authHeader())
+   const res = await axios.get(`${baseUrl}/form2/myForm/${id}`, authHeader())
    return res.data
   } catch (error) {
    console.log(error);
