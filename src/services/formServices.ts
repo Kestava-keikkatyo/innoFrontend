@@ -32,7 +32,7 @@
 
  const fetchCommunityFormList = async () => {
    try {
-    const res = await axios.get(`${baseUrl}/form2/common`, authHeader())
+    const res = await axios.get(`${baseUrl}/form2/public`, authHeader())
     return res.data
    } catch (error) {
     console.log(error);

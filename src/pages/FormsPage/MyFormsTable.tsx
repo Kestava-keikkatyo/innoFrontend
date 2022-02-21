@@ -53,7 +53,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
  * @desc A table to get and search for my forms.
  */
 const MyFormsTable: React.FC<any> = () => {
-  const myForms: any = useSelector((state: any) => state.formList.myForms);
+  const myForms : any = useSelector((state: any) => state.formList.myForms);
+  //const myForm = myForms.toArray();
+  //console.log(myForm);
 
   const [filter, setFilter] = React.useState('');
 

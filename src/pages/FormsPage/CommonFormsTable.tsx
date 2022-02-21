@@ -89,6 +89,7 @@ const CommonFormsTable: React.FC<any> = () => {
     const form: any = await formServices.fetchFormById(formId);
     form._id = '';
     form.common = false;
+    form.isPublic = false;
     dispatch(submitForm(form));
     dispatch(setAlert('Form copied successfully!'));
     history.push('/forms');

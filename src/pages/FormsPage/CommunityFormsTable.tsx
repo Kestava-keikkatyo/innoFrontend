@@ -174,8 +174,8 @@ const CommunityFormsTable: React.FC<any> = () => {
 
   // Accordion view for mobile devices
   const accordionView = () => {
-    return communityForms.docs &&
-    communityForms.docs
+    return communityForms &&
+    communityForms
       .filter((form: any) =>
         form.title.toLowerCase().includes(filter.toLowerCase())
       )
