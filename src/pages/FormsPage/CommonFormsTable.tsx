@@ -153,8 +153,8 @@ const CommonFormsTable: React.FC<any> = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {commonForms.docs &&
-              commonForms.docs
+            {commonForms &&
+              commonForms
                 .filter((form: any) =>
                   form.title.toLowerCase().includes(filter.toLowerCase())
                 )
@@ -239,7 +239,7 @@ const CommonFormsTable: React.FC<any> = () => {
       ));
   };
 
-  if (!commonForms.docs)
+  if (!commonForms)
     return (
       <Typography
         style={{ padding: '1rem' }}

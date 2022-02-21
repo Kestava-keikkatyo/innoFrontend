@@ -14,6 +14,7 @@ export const fetchFormList = () => async (dispatch: any) => {
   const data1 = await formServices.fetchMyFormList()
   const data2 = await formServices.fetchCommunityFormList()
   const data3 = await formServices.fetchCommonFormList()
+
   dispatch({
     type: FETCH_FORM_LIST,
     data: { myForms: data1, communityForms: data2, commonForms: data3 },

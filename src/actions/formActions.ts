@@ -193,7 +193,7 @@ export const submitForm = (form: Form) => async (dispatch: any) => {
     dispatch(setAlert("Title is required", severity.Error))
     return
   }
-  const res = await formServices.postForm(convertForm(form))
+  const res = await formServices.postForm(form)
   console.log(res);
 
   dispatch(addToFormList(form))

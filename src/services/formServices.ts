@@ -22,7 +22,7 @@
   */
  const fetchMyFormList = async () => {
    try{
-    const res = await axios.get(`${baseUrl}/forms/me?page=1&limit=10`, authHeader())
+    const res = await axios.get(`${baseUrl}/form2/myForm`, authHeader())
     return res.data
    } catch(error){
     console.log(error);
@@ -32,7 +32,7 @@
 
  const fetchCommunityFormList = async () => {
    try {
-    const res = await axios.get(`${baseUrl}/forms?page=1&limit=10`, authHeader())
+    const res = await axios.get(`${baseUrl}/form2/common`, authHeader())
     return res.data
    } catch (error) {
     console.log(error);
@@ -42,7 +42,7 @@
 
 const fetchCommonFormList = async () => {
   try {
-   const res = await axios.get(`${baseUrl}/forms/common?page=1&limit=10`, authHeader())
+   const res = await axios.get(`${baseUrl}/form2/common`, authHeader())
    return res.data
   } catch (error) {
    console.log(error);
@@ -52,7 +52,7 @@ const fetchCommonFormList = async () => {
 
 const fetchFormById = async (id: string) => {
   try {
-   const res = await axios.get(`${baseUrl}/forms/${id}`, authHeader())
+   const res = await axios.get(`${baseUrl}/form2/myForm/${id}`, authHeader())
    return res.data
   } catch (error) {
    console.log(error);
@@ -68,7 +68,7 @@ const fetchFormById = async (id: string) => {
 const postForm = async (form: any) => {
   try {
     console.log("formServices:form: ", form);
-    const res = await axios.post(`${baseUrl}/forms`, form, authHeader())
+    const res = await axios.post(`${baseUrl}/form2/`, form, authHeader())
     return res
   } catch (error) {
     console.log(error);
@@ -84,7 +84,7 @@ const postForm = async (form: any) => {
   try {
     console.log("formService:updateForm: formId ", formId);
     console.log("formService:updateForm: FormObject ", form);
-    const res = await axios.put(`${baseUrl}/forms/${formId}`, form, authHeader())
+    const res = await axios.put(`${baseUrl}/form2/${formId}`, form, authHeader())
     return res
   } catch (error) {
     console.log(error);
@@ -97,7 +97,7 @@ const postForm = async (form: any) => {
  */
  const deleteForm = async (formId:any) => {
   try {
-    const res = await axios.delete(`${baseUrl}/forms/${formId}`, authHeader())
+    const res = await axios.delete(`${baseUrl}/form2/${formId}`, authHeader())
     console.log("delete res", res)
     return res
   } catch (error) {
