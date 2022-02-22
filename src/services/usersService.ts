@@ -70,10 +70,21 @@ const showMyProfile = async (id: string) => {
   return res;
 };
 
+/**
+ * @function
+ * @desc Gets all agencies.
+ * @returns all agencies.
+ */
+const fetchAllAgencies = async () => {
+  const res = await axios.get(`${baseUrl}/user/agencies`, authHeader());
+  return res;
+};
+
 export default {
   fetchAllUsers,
   fetchUserById,
   deleteUser,
   fetchAllWorkers,
   showMyProfile,
+  fetchAllAgencies,
 };

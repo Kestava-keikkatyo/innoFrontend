@@ -81,6 +81,25 @@ export const fetchAllWorkers = () => async (dispatch: any) => {
 
 /**
  * @function
+ * @desc Fetches all agencies.
+ */
+export const fetchAllAgencies = () => async (dispatch: any) => {
+  try {
+    dispatch({
+      type: usersType.USER_GETALL_REQUEST,
+    });
+    const res = await usersService.fetchAllAgencies();
+    dispatch({ type: usersType.USER_GETALL_SUCCESS, data: res.data });
+  } catch (error) {
+    dispatch({
+      type: usersType.USER_GETALL_FAILURE,
+      data: error && error.message,
+    });
+  }
+};
+
+/**
+ * @function
  * @desc Fetches user's profile.
  */
 export const showMyProfile = (id: string) => async (dispatch: any) => {
