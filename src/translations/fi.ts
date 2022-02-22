@@ -512,6 +512,7 @@ export default {
   job_action: "Toiminta",
   requirements_and_responsibilities: "Vaatimukset ja vastuut",
   full_job_description: "Täydellinen kuvaus",
+  job_ads: "Työpaikkailmoitukset",
 
   //CreateUser
   add_new_admin: "Lisää uusi järjestelmänvalvoja",

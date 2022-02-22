@@ -521,6 +521,7 @@ export default {
   job_action: "Action",
   requirements_and_responsibilities: "Requirements and Responsibilities",
   full_job_description: "Full description",
+  job_ads: "Job ads",
 
   //CreateUser
   add_new_admin: "Add new admin",
