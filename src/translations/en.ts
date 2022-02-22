@@ -546,4 +546,10 @@ export default {
   list_action: "Action",
   list_profile: "Profile",
   list_category: "Category",
+
+  //User profile
+  user_profile: "Profile",
+  user_account_details: "Account Details",
+  user_contact_details: "Contact Details",
+  user_licenses: "Licenses",
 };

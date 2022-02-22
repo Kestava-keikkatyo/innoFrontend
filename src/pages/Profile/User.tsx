@@ -11,6 +11,7 @@ import { LocationSearching, MailOutline, PermIdentity, PhoneAndroid } from '@mui
 import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOutlined';
 import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined';
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
+import { useTranslation } from "react-i18next";
 
 type UserUrlParams = {
   userId: string
@@ -25,6 +26,7 @@ const UserProfile: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
   let profileId : string = myProfile ? myUserId : userId;
 
   const profileData: any = useSelector((state: IRootState) => state.users.currentUser);
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchUserById(profileId));
@@ -37,7 +39,7 @@ const UserProfile: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
   return (
   <div className={classes.user}>
     <div className={classes.userTitleContainer}>
-    <Typography color="secondary" className={classes.userTitle} variant="h4"> Profile</Typography>
+    <Typography color="secondary" className={classes.userTitle} variant="h4">{t('user_profile')}</Typography>
     </div>
     <div className={classes.userContainer}>
       <div className={classes.userShow}>
@@ -50,7 +52,7 @@ const UserProfile: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
             />
         </div>
         <div className={classes.userShowBottom}>
-          <span className={classes.userShowTitle}>Account Details</span>
+          <span className={classes.userShowTitle}>{t('user_account_details')}</span>
           <div className={classes.userShowInfo}>
             <PermIdentity className={classes.userShowIcon} />
             <span className={classes.userShowInfoTitle}>{ profileData.name }</span>
@@ -65,7 +67,7 @@ const UserProfile: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
             <span className={classes.userShowInfoTitle}> {profileData.category }</span>
           </div>
           : null}
-          <span className={classes.userShowTitle}>Contact Details</span>
+          <span className={classes.userShowTitle}>{t('user_contact_details')}</span>
           <div className={classes.userShowInfo}>
             <PhoneAndroid className={classes.userShowIcon} />
             <span className={classes.userShowInfoTitle}>{ profileData.phoneNumber }</span>
@@ -88,7 +90,7 @@ const UserProfile: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
           : null}
           { profileData.userType === 'worker' ? 
           <div className={classes.userShowInfo}>
-            <span className={classes.userShowTitle}>Licenses</span> 
+            <span className={classes.userShowTitle}>{t('user_licenses')}</span> 
             <span className={classes.userShowInfoTitle}>{ profileData.licenses }</span>
           </div>
           : null}

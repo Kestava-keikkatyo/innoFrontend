@@ -537,4 +537,10 @@ export default {
   list_action: "Toiminta",
   list_profile: "Profiili",
   list_category: "Kategoria",
+
+  //User profile
+  user_profile: "Profiili",
+  user_account_details: "Tilin Tiedot",
+  user_contact_details: "Yhteystiedot",
+  user_licenses: "Lisenssit",
 };
