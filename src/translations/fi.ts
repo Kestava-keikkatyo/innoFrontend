@@ -547,4 +547,15 @@ export default {
   user_account_details: "Tilin Tiedot",
   user_contact_details: "Yhteystiedot",
   user_licenses: "Lisenssit",
+
+  //user feedback
+  send_new_feedback: "Lähetä uutta palautetta",
+  your_feedbacks: "Sinun palautteesi",
+  send_feedback: "Lähetä palautetta",
+  feedback_title: "Otsikko",
+  feedback_message: "Viesti",
+  feedback_recipient: "Recipient",
+  sending_date: "Lähetyspäivämäärä",
+  feedback_action: "Toiminta",
+  feedback_details: "Lisätiedot",
 };

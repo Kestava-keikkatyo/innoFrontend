@@ -8,6 +8,7 @@ import { Form, Formik } from 'formik';
 import FormikField from '../../components/FormField';
 import { IRootState } from '../../utils/store';
 import { createFeedback } from '../../actions/feedBackActions';
+import { useTranslation } from "react-i18next";
 
 const initialValues: Feedback = {
     heading: "",
@@ -24,18 +25,19 @@ const SendFeedbackSchema = Yup.object().shape({
   });
 
 const SendFeedback: React.FC<any> = () => {
-    const classes = useStyles();
-    const dispatch = useDispatch();
-    const isLoading = useSelector((state: IRootState) => state.feedback.loading)
+  const { t } = useTranslation();
+  const classes = useStyles();
+  const dispatch = useDispatch();
+  const isLoading = useSelector((state: IRootState) => state.feedback.loading)
     
-    const handleSubmit = (feedback: Feedback) => {
-        dispatch(createFeedback(feedback));
-    };
-
-    return (
-        <div className={classes.newFeedback}>
+  const handleSubmit = (feedback: Feedback) => {
+    dispatch(createFeedback(feedback));
+  };
+  
+  return (
+    <div className={classes.newFeedback}>
       <div className={classes.feedbackTitleContainer}>
-        <Typography color="primary" className={classes.title} variant="h4">Send feedback</Typography>
+        <Typography color="primary" className={classes.title} variant="h4">{t('send_feedback')}</Typography>
       </div>
       <div className={classes.feedbackContainer}>
         <Formik
@@ -47,12 +49,12 @@ const SendFeedback: React.FC<any> = () => {
             return (
             <Form>
                 <div className={classes.feedbackContainerTop}>
-                    <FormikField name="heading" label="Title" required />
+                    <FormikField name="heading" label={t('feedback_title')} required />
                 </div>
                 <div className={classes.feedbackContainerButtom}>
-                    <FormikField name="message" label="Message" required multiline />
+                    <FormikField name="message" label={t('feedback_message')} required multiline />
                 </div>
-                {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="primary" className={classes.button}>Send</Button>}
+                {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="primary" className={classes.button}>{t('send')}</Button>}
             </Form>
             );
           }}
@@ -63,34 +65,35 @@ const SendFeedback: React.FC<any> = () => {
 }
 
 const useStyles = makeStyles((theme) => ({
-    newFeedback: {
-        flex: '4',
-        padding: '20px',
-    },
-    button: {
-        left: theme.spacing(0),
-    },
-    title: {
-        marginTop: '5px',
-        marginBottom: '15px',
-    },
-    feedbackTitleContainer: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-    },
-    feedbackContainer: {
-        flex: '1',
-        padding: '20px',
-        width: '600px',
-        webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
-        boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)'
-    },
-      feedbackContainerTop: {
-        marginBottom: '40px',
-    },
-      feedbackContainerButtom: {
-        marginBottom: '30px',
-    }
-  }));
+  newFeedback: {
+    flex: '4',
+    padding: '20px',
+  },
+  button: {
+    left: theme.spacing(0),
+  },
+  title: {
+    marginTop: '5px',
+    marginBottom: '15px',
+  },
+  feedbackTitleContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  feedbackContainer: {
+    flex: '1',
+    padding: '20px',
+    width: '600px',
+    webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
+    boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)'
+  },
+  feedbackContainerTop: {
+    marginBottom: '40px',
+  },
+  feedbackContainerButtom: {
+    marginBottom: '30px',
+  }
+}));
+
 export default SendFeedback;

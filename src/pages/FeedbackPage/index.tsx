@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import { Container } from '@mui/material';
 import SendFeedback from './SendFeedback';
 import Feedbacks from './Feedbacks';
+import { useTranslation } from "react-i18next";
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -44,7 +45,8 @@ function TabPanel(props: TabPanelProps) {
   
 
 const FeedbackPage: React.FC<any> = () => {
-    const theme = useTheme();
+  const { t } = useTranslation();
+  const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
@@ -61,8 +63,8 @@ const FeedbackPage: React.FC<any> = () => {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab label="Send new feedback" {...a11yProps(0)} />
-          <Tab label="Your feedbacks" {...a11yProps(1)} />
+          <Tab label={t('send_new_feedback')} {...a11yProps(0)} />
+          <Tab label={t('your_feedbacks')} {...a11yProps(1)} />
         </Tabs>
       </AppBar>
         <TabPanel value={value} index={0}>

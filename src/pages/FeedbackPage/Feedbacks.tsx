@@ -5,11 +5,14 @@ import { IRootState } from '../../utils/store';
 import { Link } from "react-router-dom";
 import makeStyles from '@mui/styles/makeStyles';
 import { fetchAllMyFeedbacks } from "../../actions/feedBackActions";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 
 const Feedbacks: React.FC<any> = () => {
-    const dispatch = useDispatch();
-  const classes = useStyles();
 
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const classes = useStyles();
   const { feedbacks } = useSelector((state: IRootState) => state.feedback || []);
 
   useEffect(() => {
@@ -22,32 +25,32 @@ const Feedbacks: React.FC<any> = () => {
   
   const columns = [
     {
-        field: "heading",
-        headerName: "Title",
-        width: 250,
+      field: "heading",
+      headerName: (i18next.t("feedback_title")),
+      width: 250,
     },
     { 
-        field: "recipient", 
-        headerName: "Recipient",
-        width: 250 
+      field: "recipient", 
+      headerName: (i18next.t("feedback_recipient")),
+      width: 250 
     },
     {
-        field: "createdAt",
-        headerName: "Sending date",
-        width: 250,
+      field: "createdAt",
+      headerName: (i18next.t("sending_date")),
+      width: 250,
     },
     {
-        field: "action",
-        headerName: "Action",
-        width: 250,
-        renderCell: (params: any) => {
-          return (
-              <>
+      field: "action",
+      headerName: (i18next.t("feedback_action")),
+      width: 250,
+      renderCell: (params: any) => {
+        return (
+          <>
           <Link to={"/feedback-details/" + params.id}>
-              <span>Details</span>
+            <span>{t('feedback_details')}</span>
           </Link>
           </>
-          );
+        );
       }
     },
   ];
@@ -66,16 +69,17 @@ const Feedbacks: React.FC<any> = () => {
     );
 }
 const useStyles = makeStyles(() => ({
-    update: {
-        width: '100%',
-        display: 'flex',
-        marginRight: '20px',
-        color: 'green',
-      },
-      userListDelete: {
-        color: 'red',
-        marginRight: '20px',
-        cursor: 'pointer'
-      }
+  update: {
+    width: '100%',
+    display: 'flex',
+    marginRight: '20px',
+    color: 'green',
+  },
+  userListDelete: {
+    color: 'red',
+    marginRight: '20px',
+    cursor: 'pointer'
+  }
 }));
+
 export default Feedbacks;

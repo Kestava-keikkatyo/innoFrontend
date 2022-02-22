@@ -556,4 +556,15 @@ export default {
   user_account_details: "Account Details",
   user_contact_details: "Contact Details",
   user_licenses: "Licenses",
+
+  //user feedback
+  send_new_feedback: "Send new feedback",
+  your_feedbacks: "Your feedbacks",
+  send_feedback: "Send feedback",
+  feedback_title: "Title",
+  feedback_message: "Message",
+  feedback_recipient: "Recipient",
+  sending_date: "Sending date",
+  feedback_action: "Action",
+  feedback_details: "details",
 };
