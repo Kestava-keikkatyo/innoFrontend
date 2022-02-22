@@ -254,6 +254,7 @@ export default {
   my_work: "My work",
   remove: "Remove",
   close: "close",
+  feedback: "Feedback",
 
   //profilePage
   edit_profile: "Edit profile",

@@ -250,6 +250,7 @@ export default {
   my_work: "Työni",
   remove: "Poista",
   faq: "Usein kysytyt kysymykset",
+  feedback: "Palaute",
 
   //profilePage
   edit_profile: "Muokkaa profiilia",

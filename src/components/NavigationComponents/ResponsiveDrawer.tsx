@@ -169,7 +169,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                 <ListItemIcon>
                   <GroupOutlinedIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("workers")} />
+                <ListItemText primary={t("list_title_workers")} />
               </ListItem>
               <Divider />
             </>
@@ -180,7 +180,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                 <ListItemIcon>
                   <GroupOutlinedIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("agencies")} />
+                <ListItemText primary={t("list_title_agencies")} />
               </ListItem>
               <Divider />
             </>
@@ -269,7 +269,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
                 <ListItemIcon>
                   <FeedbackOutlinedIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("Feedback")} />
+                <ListItemText primary={t("feedback")} />
               </ListItem>
               <Divider />
             </>
