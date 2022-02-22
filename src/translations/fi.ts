@@ -526,4 +526,15 @@ export default {
   email_is_required: "Sähköposti on syötettävä!",
   password_is_required: "Salasana on syötettävä!",
   passwords_must_match: "Salasanojen täytyy täsmätä!",
+
+  //List
+  list_title_workers: "Työntekijät",
+  list_title_agencies: "Vuokrayritykset",
+  list_name: "Nimi",
+  list_email: "Sähköposti",
+  list_city: "Kaupunki",
+  list_position: "Positio",
+  list_action: "Toiminta",
+  list_profile: "Profiili",
+  list_category: "Kategoria",
 };

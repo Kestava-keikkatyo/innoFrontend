@@ -535,6 +535,15 @@ export default {
   email_is_required: "Email is required!",
   password_is_required: "Password is required!",
   passwords_must_match: "Passwords must match!",
-};
 
-//
+  //List
+  list_title_workers: "Workers",
+  list_title_agencies: "Agencies",
+  list_name: "Name",
+  list_email: "Email",
+  list_city: "City",
+  list_position: "Position",
+  list_action: "Action",
+  list_profile: "Profile",
+  list_category: "Category",
+};
