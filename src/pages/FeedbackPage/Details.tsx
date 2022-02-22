@@ -8,12 +8,14 @@ import PageLoading from "../../components/PageLoading";
 import Typography from '@mui/material/Typography';
 import { fetchFeedbackById } from "../../actions/feedBackActions";
 import { Link } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
 
 type FeedbackUrlParams = {
     feedbackId: string
 }
 const Details: React.FC<any> = () =>  {
    
+    const { t } = useTranslation();
     const { feedbackId } = useParams<FeedbackUrlParams>();
     const feedbackData: any = useSelector((state: IRootState) => state.feedback.currentFeedback);
     const dispatch = useDispatch();
@@ -29,28 +31,28 @@ const Details: React.FC<any> = () =>  {
     return (
     <div className={classes.feedback}>
         <div className={classes.feedbackTitleContainer}>
-            <Typography color="secondary" className={classes.feedbackTitle} variant="h4">Feedback details</Typography>
+            <Typography color="secondary" className={classes.feedbackTitle} variant="h4">{t('feedback_title_details')}</Typography>
         </div>
         <div>
-        <Button className={classes.back} color="secondary" component={Link} to="/feedback-page">BACK</Button>
+        <Button className={classes.back} color="secondary" component={Link} to="/feedback-page">{t('back')}</Button>
         </div>
         <div className={classes.feedbackContainer}>
             <div className={classes.feedbackShow}>
                 <div className={classes.feedbackShowInfo}>
-                    <span className={classes.feedbackShowTitle}>Title</span>
+                    <span className={classes.feedbackShowTitle}>{t('feedback_title')}</span>
                     <span className={classes.feedbackShowInfoTitle}> { feedbackData.heading }</span>
                 </div>
                 <div className={classes.feedbackShowInfo}>
-                    <span className={classes.feedbackShowTitle}>Sending date</span>
+                    <span className={classes.feedbackShowTitle}>{t('sending_date')}</span>
                     <span className={classes.feedbackShowInfoTitle}> { feedbackData.createdAt }</span>
                 </div>
                 <div className={classes.feedbackShowInfo}>
-                    <span className={classes.feedbackShowTitle}>Recipient</span>
+                    <span className={classes.feedbackShowTitle}>{t('feedback_recipient')}</span>
                     <span className={classes.feedbackShowInfoTitle}>{ feedbackData.recipient }</span>
                 </div>
             </div>
             <div className={classes.feedbackDescription}>
-                <span className={classes.feedbackShowTitle}>Message</span>
+                <span className={classes.feedbackShowTitle}>{t('feedback_message')}</span>
                 <div className={classes.feedbackShowInfo}>
                     <span className={classes.details}>{ feedbackData.message }</span>
                 </div>

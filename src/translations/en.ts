@@ -567,4 +567,5 @@ export default {
   sending_date: "Sending date",
   feedback_action: "Action",
   feedback_details: "details",
+  feedback_title_details: "Feedback details",
 };

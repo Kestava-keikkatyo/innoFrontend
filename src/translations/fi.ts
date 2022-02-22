@@ -554,8 +554,9 @@ export default {
   send_feedback: "Lähetä palautetta",
   feedback_title: "Otsikko",
   feedback_message: "Viesti",
-  feedback_recipient: "Recipient",
+  feedback_recipient: "Vastaanottaja",
   sending_date: "Lähetyspäivämäärä",
   feedback_action: "Toiminta",
   feedback_details: "Lisätiedot",
+  feedback_title_details: "Palautteen tiedot",
 };
