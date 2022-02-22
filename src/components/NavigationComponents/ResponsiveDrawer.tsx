@@ -174,6 +174,17 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
               <Divider />
             </>
           )}
+          {(roles.Business) && (
+            <>
+              <ListItem button component={Link} to="/agencies/all">
+                <ListItemIcon>
+                  <GroupOutlinedIcon />
+                </ListItemIcon>
+                <ListItemText primary={t("agencies")} />
+              </ListItem>
+              <Divider />
+            </>
+          )}
           {(role === roles.Agency || role === roles.Business) && (
             <>
               <ListItem button component={Link} to="/reports">

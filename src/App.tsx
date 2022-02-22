@@ -62,6 +62,7 @@ import CompanyJobPage from "./pages/JobPage"
 import { ThemeProvider, Theme, StyledEngineProvider, createTheme } from '@mui/material/styles';
 import makeStyles from '@mui/styles/makeStyles';
 import UserProfile from "./pages/Profile/User"
+import Agencies from "./pages/Profile/Agencies"
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface DefaultTheme extends Theme {}
@@ -157,6 +158,12 @@ const App: React.FC = () => {
               <Workers />
             </PrivateRoute>
             <PrivateRoute path="/workers/:userId" roles={[roles.Business, roles.Agency]}>
+              <UserProfile />
+            </PrivateRoute>
+            <PrivateRoute path="/agencies/all" roles={[roles.Business]}>
+              <Agencies />
+            </PrivateRoute>
+            <PrivateRoute path="/agencies/:userId" roles={[roles.Business]}>
               <UserProfile />
             </PrivateRoute>
             <DatabankRoute path="/databank/lifeline">
