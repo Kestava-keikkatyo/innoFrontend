@@ -7,8 +7,11 @@ import { useEffect } from 'react';
 import { fetchAllAgencies } from "../../actions/usersActions";
 import makeStyles from '@mui/styles/makeStyles';
 import Typography from '@mui/material/Typography';
+import { useTranslation } from "react-i18next"
+import i18next from "i18next"
 
 const Agencies: React.FC<any> = () => {
+  const { t } = useTranslation();
   const classes = useStyles();
   const dispatch = useDispatch();
   const { users } = useSelector((state: IRootState) => state.users || []);
@@ -20,7 +23,7 @@ const Agencies: React.FC<any> = () => {
   const columns = [
     {
       field: "name",
-      headerName: "Agency",
+      headerName: (i18next.t("list_name")),
       width: 250,
       renderCell: (params: any) => {
         return (
@@ -33,32 +36,32 @@ const Agencies: React.FC<any> = () => {
     },
     {
       field: "category", 
-      headerName: "Category", 
+      headerName: (i18next.t("list_category")),
       width: 150 
     },
     {
       field: "email", 
-      headerName: "Email", 
+      headerName: (i18next.t("list_email")), 
       width: 200 
     },
     {
       field: "city", 
-      headerName: "City", 
+      headerName: (i18next.t("list_city")), 
       width: 200 
     },
     {
       field: "userType", 
-      headerName: "Position", 
+      headerName: (i18next.t("list_position")), 
       width: 150 
     },
     {
       field: "action",
-      headerName: "Action",
+      headerName: (i18next.t("list_action")),
       width: 200,
       renderCell: (params: any) => {
         return (
         <>
-        <Link to={"/agencies/" + params.id}>Profile</Link>
+        <Link to={"/agencies/" + params.id}>{t('list_profile')}</Link>
         </>
         );
       },
@@ -67,7 +70,7 @@ const Agencies: React.FC<any> = () => {
   return (
     <div style={{ height: 700, width: '100%' }}>
       <div>
-        <Typography className={classes.title} color="primary" align="center" variant="h5">Agencies</Typography>
+        <Typography className={classes.title} color="primary" align="center" variant="h5">{t('list_title_agencies')}</Typography>
         </div>
         <DataGrid
         getRowId={(row) => row._id}
