@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Company: React.FC<any> = () => {
+const Application: React.FC<any> = () => {
     return (
         <div>
             This page is for job application 
@@ -8,4 +8,4 @@ const Company: React.FC<any> = () => {
     );
 }
 
-export default Company;
+export default Application;

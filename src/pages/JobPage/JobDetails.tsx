@@ -3,7 +3,7 @@ import {
     PermIdentity,
   } from "@mui/icons-material";
 import React, { useEffect } from 'react';
-import { Link } from '@mui/material';
+//import { Link } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +12,8 @@ import { fetchJobById } from "../../actions/jobActions";
 import PageLoading from "../../components/PageLoading";
 import { useTranslation } from "react-i18next";
 import Typography from '@mui/material/Typography';
+import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 type JobUrlParams = {
     jobId: string
@@ -34,12 +36,11 @@ const JobDetails: React.FC<any> = () =>  {
     return (
     <div className={classes.job}>
         <div className={classes.jobTitleContainer}>
-            <Typography className={classes.jobTitle} variant="h4">{t('job_details_title')}</Typography>
+            <Typography className={classes.jobTitle} color="primary" variant="h4">{t('job_details_title')}</Typography>
         </div>
         <div>
-            <Link href="#" color='primary' underline="hover">
-                <span className={classes.apply}>{t('click_here_if_you_want_to_apply_to_this_job')}</span>
-            </Link>
+            <Button className={classes.button} color="secondary" component={Link} to="/job/application">{t('job_apply')}</Button>
+            <Button className={classes.button} color="secondary" component={Link} to="/jobs">{t('back')}</Button>
         </div>
         <div className={classes.jobContainer}>
             <div className={classes.jobShow}>
@@ -125,9 +126,6 @@ const useStyles = makeStyles(() => ({
         marginLeft: '20px'
     },
     jobTitle: {
-        fontSize: '18px',
-        fontWeight: 600,
-        color: '#747474'
     },
     jobContainer: {
         display: 'flex',
@@ -156,9 +154,9 @@ const useStyles = makeStyles(() => ({
         fontSize: '15px',
         paddingTop: '0px'
     },
-    apply: {
-        marginLeft: '800px',
-        fontSize: '17px',
+    button: {
+        marginLeft: '410px',
+        fontSize: '15px',
     }
 }));
 

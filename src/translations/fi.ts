@@ -513,8 +513,7 @@ export default {
   requirements_and_responsibilities: "Vaatimukset ja vastuut",
   full_job_description: "Täydellinen kuvaus",
   job_ads: "Työpaikkailmoitukset",
-  click_here_if_you_want_to_apply_to_this_job:
-    "Klikkaa tästä, jos haluat hakea tähän työhön!",
+  job_apply: "Hae nyt",
 
   //CreateUser
   add_new_admin: "Lisää uusi järjestelmänvalvoja",

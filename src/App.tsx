@@ -63,6 +63,7 @@ import { ThemeProvider, Theme, StyledEngineProvider, createTheme } from '@mui/ma
 import makeStyles from '@mui/styles/makeStyles';
 import UserProfile from "./pages/Profile/User"
 import Agencies from "./pages/Profile/Agencies"
+import Application from "./pages/JobPage/Application"
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface DefaultTheme extends Theme {}
@@ -129,6 +130,9 @@ const App: React.FC = () => {
             </PrivateRoute>
             <PrivateRoute path="/job-details/:jobId">
               <JobDetails />
+            </PrivateRoute>
+            <PrivateRoute path="/job/application">
+              <Application />
             </PrivateRoute>
             <PrivateRoute path="/jobListForAgency" roles={[roles.Agency]}>
               <CreatedJobs />
