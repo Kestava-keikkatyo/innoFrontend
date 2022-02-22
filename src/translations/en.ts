@@ -522,6 +522,8 @@ export default {
   requirements_and_responsibilities: "Requirements and Responsibilities",
   full_job_description: "Full description",
   job_ads: "Job ads",
+  click_here_if_you_want_to_apply_to_this_job:
+    "Click here if you want to apply to this job!",
 
   //CreateUser
   add_new_admin: "Add new admin",

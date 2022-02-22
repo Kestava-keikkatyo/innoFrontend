@@ -38,7 +38,7 @@ const JobDetails: React.FC<any> = () =>  {
         </div>
         <div>
             <Link href="#" color='primary' underline="hover">
-                <span className={classes.apply}>Click here if you want to apply to this job!</span>
+                <span className={classes.apply}>{t('click_here_if_you_want_to_apply_to_this_job')}</span>
             </Link>
         </div>
         <div className={classes.jobContainer}>
