@@ -53,9 +53,8 @@ import { useTranslation } from 'react-i18next';
  * @desc A table to get and search for my forms.
  */
 const CommunityFormsTable: React.FC<any> = () => {
-  const communityForms = useSelector(
-    (state: any) => state.formList.communityForms
-  );
+  const forms = useSelector((state: any) => state.formList.communityForms);
+  const communityForms : any[] = Array.from(forms);
 
   const [filter, setFilter] = React.useState('');
 
