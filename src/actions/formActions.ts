@@ -194,7 +194,6 @@ export const submitForm = (form: Form) => async (dispatch: any) => {
     return
   }
   const res = await formServices.postForm(form)
-  console.log(res);
 
   dispatch(addToFormList(form))
   dispatch(fetchFormList())

@@ -56,7 +56,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
  * @desc A table to get and search for my forms.
  */
 const CommonFormsTable: React.FC<any> = () => {
-  const commonForms = useSelector((state: any) => state.formList.commonForms);
+  const forms = useSelector((state: any) => state.formList.commonForms);
+  const commonForms : any[] = Array.from(forms);
 
   const [filter, setFilter] = React.useState('');
 
@@ -89,6 +90,7 @@ const CommonFormsTable: React.FC<any> = () => {
     const form: any = await formServices.fetchFormById(formId);
     form._id = '';
     form.common = false;
+    form.isPublic = false;
     dispatch(submitForm(form));
     dispatch(setAlert('Form copied successfully!'));
     history.push('/forms');
@@ -193,8 +195,8 @@ const CommonFormsTable: React.FC<any> = () => {
 
   // Accordion view for mobile devices
   const accordionView = () => {
-    return commonForms.docs &&
-    commonForms.docs
+    return commonForms &&
+    commonForms
       .filter((form: any) =>
         form.title.toLowerCase().includes(filter.toLowerCase())
       )
