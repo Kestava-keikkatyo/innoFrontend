@@ -45,13 +45,31 @@ interface UserCurrentFailure {
   type: typeof usersType.USER_CURRENT_FAILURE;
   data: any;
 }
+
+interface UserUpdateRequest {
+  type: typeof usersType.USER_UPDATE_REQUEST;
+  data: any;
+}
+
+interface UserUpdateSuccess {
+  type: typeof usersType.USER_UPDATE_SUCCESS;
+  data: any;
+}
+
+interface UserUpdateFailure {
+  type: typeof usersType.USER_UPDATE_FAILURE;
+  data: any;
+}
 export type UsersAction =
   | UserGetAllRequest
   | UserGetAllSuccess
   | UserGetAllFailure
   | UserCurrentRequest
   | UserCurrentSuccess
-  | UserCurrentFailure;
+  | UserCurrentFailure
+  | UserUpdateRequest
+  | UserUpdateSuccess
+  | UserUpdateFailure;
 /**
  * All users state & action types
  */

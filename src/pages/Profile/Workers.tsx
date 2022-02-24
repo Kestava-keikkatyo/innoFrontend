@@ -56,7 +56,7 @@ const Workers: React.FC<any> = () => {
       renderCell: (params: any) => {
       return (
       <>
-      <Link to={"/workers/" + params.id}>{t('list_profile')}</Link>
+      <Link to={"/workers/profile/" + params.id}>{t('list_profile')}</Link>
       </>
       );
     },

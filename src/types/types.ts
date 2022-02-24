@@ -69,10 +69,20 @@ export interface BreadcrumbLink {
   link: string;
 }
 
-export interface User {
-  _id?: string;
+export interface UserInformation {
   name: string;
   email: string;
+  city?: string;
+  street?: string;
+  zipCode?: string;
+  phoneNumber?: string;
+  website?: string;
+  licenses?: string;
+  profilePicture?: string;
+}
+
+export interface User extends UserInformation {
+  _id?: string;
   userType: roles.Agency | roles.Worker | roles.Business | roles.Admin;
   active: boolean;
 }

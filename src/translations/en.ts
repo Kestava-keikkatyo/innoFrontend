@@ -71,6 +71,8 @@ export default {
   history: "History",
   active: "Active",
   create: "Create",
+  button_update: "update",
+  button_edit: "edit",
 
   //Mood index page
   entry_mood: "Add mood",
@@ -555,6 +557,16 @@ export default {
   user_account_details: "Account Details",
   user_contact_details: "Contact Details",
   user_licenses: "Licenses",
+  user_edit_profile: "Edit profile",
+  user_name: "Name",
+  user_email: "Email",
+  user_city: "City",
+  user_zipCode: "Zip code",
+  user_street: "Street",
+  user_phone_number: "Phone number",
+  user_website: "Website",
+  user_category: "Category",
+  user_updated_successfully: "User was updated successfully!",
 
   //user feedback
   send_new_feedback: "Send new feedback",

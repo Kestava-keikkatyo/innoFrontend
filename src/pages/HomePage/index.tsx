@@ -15,17 +15,7 @@ import AdminHome from './AdminHome';
 const Home = () => {
   const { data, ...user } = useSelector((state: any) => state.user);
 
-  const dispatch = useDispatch();
   const { t } = useTranslation();
-
-  // Can be used as a user validation (validates token and user role)
-  // Run if user has a role
-  // Should be switched out when there is actual data to be retrieved
-  useEffect(() => {
-    if (data.role) {
-      dispatch(me());
-    }
-  }, [dispatch, data.role]);
 
   if (user.loading) {
     return <PageLoading />;

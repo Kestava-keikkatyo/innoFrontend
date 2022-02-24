@@ -61,7 +61,7 @@ const Agencies: React.FC<any> = () => {
       renderCell: (params: any) => {
         return (
         <>
-        <Link to={"/agencies/" + params.id}>{t('list_profile')}</Link>
+        <Link to={"/agencies/profile/" + params.id}>{t('list_profile')}</Link>
         </>
         );
       },

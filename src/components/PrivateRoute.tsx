@@ -8,6 +8,7 @@ import pathConverter from '../utils/pathConverter';
 import { roles } from '../types/types';
 import { PrivateRouteProps } from '../types/props';
 import { IRootState } from '../utils/store';
+import { me } from '../actions/userActions';
 
 /**
  * @component
@@ -39,6 +40,15 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
 }) => {
   const { loggedIn, data } = useSelector((state: IRootState) => state.user);
   const dispatch = useDispatch();
+
+  // Can be used as a user validation (validates token and user role)
+  // Run if user has a role
+  // Should be switched out when there is actual data to be retrieved
+  useEffect(() => {
+    if (data.role) {
+      dispatch(me());
+    }
+  }, [dispatch, data.role]);
 
   useEffect(() => {
     dispatch(setBreadcrumb(pathConverter(path)));

@@ -10,6 +10,7 @@ export default (path: string) => {
   nameList = nameList.filter((e: string) => e !== "");
   let p = "";
   nameList.forEach((e: string) => {
+    if (e.startsWith(":")) return;
     p = p + "/" + e;
     list.push({
       name: capitalizeFirstLetter(e),

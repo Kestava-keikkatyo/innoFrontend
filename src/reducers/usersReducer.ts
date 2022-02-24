@@ -60,6 +60,27 @@ const usersReducer = (state = initialState, action: UsersAction) => {
         fetchError: action.data,
       };
     }
+    case usersType.USER_UPDATE_REQUEST: {
+      return {
+        ...state,
+        currentUser: action.data,
+        loading: true,
+      };
+    }
+    case usersType.USER_UPDATE_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        currentUser: action.data,
+      };
+    }
+    case usersType.USER_UPDATE_FAILURE: {
+      return {
+        ...state,
+        loading: false,
+        fetchError: action.data,
+      };
+    }
     default:
       return state;
   }

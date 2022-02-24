@@ -165,7 +165,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           )}
           {(role === roles.Agency || role === roles.Business) && (
             <>
-              <ListItem button component={Link} to="/workers/all">
+              <ListItem button component={Link} to="/workers">
                 <ListItemIcon>
                   <GroupOutlinedIcon />
                 </ListItemIcon>
@@ -176,7 +176,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           )}
           {(role === roles.Business) && (
             <>
-              <ListItem button component={Link} to="/agencies/all">
+              <ListItem button component={Link} to="/agencies">
                 <ListItemIcon>
                   <GroupOutlinedIcon />
                 </ListItemIcon>

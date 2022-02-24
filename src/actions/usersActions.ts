@@ -1,6 +1,8 @@
 import usersService from "../services/usersService";
-import { severity, usersType } from "../types/types";
+import { severity, UserInformation, usersType } from "../types/types";
 import { setAlert } from "./alertActions";
+import history from "../utils/history";
+import fileService from "../services/fileService";
 
 /**
  * @function
@@ -119,3 +121,44 @@ export const showMyProfile = (id: string) => async (dispatch: any) => {
     );
   }
 };
+
+/**
+ * @function
+ * @desc update user.
+ */
+export const updateUser =
+  (
+    userId: string,
+    userInformation: UserInformation,
+    profilePhoto?: File,
+    myProfile?: boolean
+  ) =>
+  async (dispatch: any) => {
+    try {
+      dispatch({
+        type: usersType.USER_UPDATE_REQUEST,
+      });
+      console.log("stop here");
+      if (profilePhoto) {
+        const res = await fileService.postFile(profilePhoto as any);
+        userInformation.profilePicture = res.data.fileUrl;
+      } else if (profilePhoto === null) {
+        userInformation.profilePicture = "";
+      }
+
+      const res = await usersService.updateUser(userId, userInformation);
+      dispatch({ type: usersType.USER_UPDATE_SUCCESS, data: res.data });
+
+      if (myProfile) {
+        history.push("/profile");
+      } else {
+        history.push("/users");
+      }
+    } catch (error) {
+      dispatch({
+        type: usersType.USER_UPDATE_FAILURE,
+        data: error,
+      });
+      dispatch(setAlert("Failed to update user: " + error, severity.Error, 15));
+    }
+  };

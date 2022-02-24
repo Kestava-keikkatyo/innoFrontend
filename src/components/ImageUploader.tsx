@@ -2,6 +2,7 @@ import { Avatar } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { Cancel } from '@mui/icons-material';
 import React, { useEffect, useRef, useState } from 'react';
+import { FormikProps } from 'formik';
 
 
 /**
@@ -12,15 +13,19 @@ export interface ImageUploaderProps {
     * Existing profile picture
     */
    picture?: any;
+   name?: string;
+   onChange?: Function;
  }
 
 const ImageUploader: React.FC<ImageUploaderProps> = ({
-    picture
+    picture,
+    name,
+    onChange
   }) => {
     const classes = useStyles();
     const fileInputRef = useRef<HTMLInputElement>(null);
-    const [image, setImage] = useState<File>();
-    const [preview, setPreview] = useState<string>();
+    const [image, setImage] = useState<File | null>();
+    const [preview, setPreview] = useState<string>(picture);
     useEffect(() => {
       if (image) {
         const reader = new FileReader();
@@ -28,18 +33,23 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
           setPreview(reader.result as string);
         };
         reader.readAsDataURL(image);
-      } else {
-        setPreview(undefined)
+      } else if (image === null) {
+        setPreview('')
         if (fileInputRef !== null && fileInputRef.current !== null) {
           fileInputRef.current.value = '';  
         }
       }
+
+      if (onChange) {
+        onChange(image);
+      }
+
     }, [image]);
 
     return (
         <>
             <Avatar
-            src={ preview || picture }
+            src={ preview }
             alt=""
             className={classes.userShowImg}
             onClick={(event) => { 
@@ -49,13 +59,14 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
 
             {preview ? (
                 <Cancel className={classes.imageCancel} onClick={(event) => {
-                setImage(undefined);
+                setImage(null);
                     } } />
                 ) : null}
 
             
             <input type="file" id="file"
             style={{ display: "none" }}
+            name={name}
             accept="image/*"
             onChange={(event: any) => {
                 const file = event.target.files[0];

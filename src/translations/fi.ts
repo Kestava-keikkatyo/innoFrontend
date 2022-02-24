@@ -69,6 +69,8 @@ export default {
   history: "Historia",
   active: "Aktiivisia",
   create: "Luo",
+  button_update: "päivitä",
+  button_edit: "muokata",
 
   //Mood index page
   entry_mood: "Lisää fiilis",
@@ -546,6 +548,16 @@ export default {
   user_account_details: "Tilin Tiedot",
   user_contact_details: "Yhteystiedot",
   user_licenses: "Lisenssit",
+  user_edit_profile: "Muokata profiilia",
+  user_name: "Nimi",
+  user_email: "Sähköposti",
+  user_city: "Kaupunki",
+  user_zipCode: "Postinumero",
+  user_street: "Katu",
+  user_phone_number: "Puhelinnumero",
+  user_website: "Verkkosivusto",
+  user_category: "Kategoria",
+  user_updated_successfully: "Käyttäjän päivitys onnistui!",
 
   //user feedback
   send_new_feedback: "Lähetä uutta palautetta",

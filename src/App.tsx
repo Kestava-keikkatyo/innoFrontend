@@ -64,6 +64,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import UserProfile from "./pages/Profile/User"
 import Agencies from "./pages/Profile/Agencies"
 import Application from "./pages/JobPage/Application"
+import UserUpdate from "./pages/Profile/UserUpdate"
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface DefaultTheme extends Theme {}
@@ -158,17 +159,17 @@ const App: React.FC = () => {
             <PrivateRoute path="/feedback-page" roles={[roles.Business, roles.Agency, roles.Worker]}>
               <FeedbackPage />
             </PrivateRoute>
-            <PrivateRoute path="/workers/all" roles={[roles.Business, roles.Agency]}>
+            <PrivateRoute path="/workers/profile/:userId" roles={[roles.Business, roles.Agency]}>
+              <UserProfile />
+            </PrivateRoute>
+            <PrivateRoute path="/workers" roles={[roles.Business, roles.Agency]}>
               <Workers />
             </PrivateRoute>
-            <PrivateRoute path="/workers/:userId" roles={[roles.Business, roles.Agency]}>
+            <PrivateRoute path="/agencies/profile/:userId" roles={[roles.Business]}>
               <UserProfile />
             </PrivateRoute>
-            <PrivateRoute path="/agencies/all" roles={[roles.Business]}>
+            <PrivateRoute path="/agencies" roles={[roles.Business]}>
               <Agencies />
-            </PrivateRoute>
-            <PrivateRoute path="/agencies/:userId" roles={[roles.Business]}>
-              <UserProfile />
             </PrivateRoute>
             <DatabankRoute path="/databank/lifeline">
               <JobLifeline />
@@ -188,8 +189,12 @@ const App: React.FC = () => {
             <PrivateRoute path="/profiles/profile-view">
               <ProfileViewPage />
             </PrivateRoute>
+            /** Old user profile */
             <PrivateRoute path="/profile/edit-profile">
               <EditProfilePage />
+            </PrivateRoute>
+            <PrivateRoute path="/profile/edit">
+              <UserUpdate myProfile />
             </PrivateRoute>
             <PrivateRoute path="/profile">
               <UserProfile myProfile />

@@ -3,6 +3,7 @@
  * @desc Users requests to backend.
  */
 import axios from "axios";
+import { User, UserInformation } from "../types/types";
 import baseUrl from "../utils/baseUrl";
 import { loadUser } from "../utils/storage";
 
@@ -80,6 +81,15 @@ const fetchAllAgencies = async () => {
   return res;
 };
 
+/**
+ * @param id
+ * @returns
+ */
+const updateUser = async (userId: string, user: UserInformation) => {
+  const res = await axios.put(`${baseUrl}/user/${userId}`, user, authHeader());
+  return res.data;
+};
+
 export default {
   fetchAllUsers,
   fetchUserById,
@@ -87,4 +97,5 @@ export default {
   fetchAllWorkers,
   showMyProfile,
   fetchAllAgencies,
+  updateUser,
 };

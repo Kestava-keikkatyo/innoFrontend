@@ -136,7 +136,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
   )
 
   const currentProfil: any = useSelector(
-    (state: any) => state.profile.currentProfile
+    (state: any) => state.user.data
   )
   const currentProfile: any = React.useMemo(
     () => currentProfil,
@@ -804,7 +804,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: theme.zIndex.drawer + 1,
   },
   appBar: {
-    width: `calc(100% - ${51}px)`,
+    width: `calc(100% - ${0}px)`,
     backgroundColor: "white",
     borderTop: "16px solid #eb5a00",
     zIndex: theme.zIndex.drawer + 1,

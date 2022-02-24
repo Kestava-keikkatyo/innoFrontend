@@ -12,6 +12,9 @@ import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOu
 import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined';
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import { useTranslation } from "react-i18next";
+import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { roles } from '../../types/types';
 
 type UserUrlParams = {
   userId: string
@@ -39,10 +42,13 @@ const UserProfile: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
   return (
   <div className={classes.user}>
     <div className={classes.userTitleContainer}>
-    <Typography color="secondary" className={classes.userTitle} variant="h4">{t('user_profile')}</Typography>
+      <Typography color="secondary" className={classes.userTitle} variant="h4">{t('user_profile')}</Typography>
     </div>
     <div className={classes.userContainer}>
       <div className={classes.userShow}>
+      { myProfile ?
+        <Button className={classes.back} color="secondary" component={Link} to="/profile/edit">{t('button_edit')}</Button>
+        : null}
         <div className={classes.userShowTop}>
             <Avatar 
             className={classes.avatar}
@@ -61,7 +67,7 @@ const UserProfile: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
             <WorkspacePremiumOutlinedIcon className={classes.userShowIcon} />
             <span className={classes.userShowInfoTitle}>{ profileData.userType }</span>
           </div>
-          { (profileData.userType === 'agency'||profileData.userType === 'business') ?
+          { (profileData.userType === roles.Agency||profileData.userType === roles.Business) ?
           <div className={classes.userShowInfo}>
             <CategoryOutlinedIcon className={classes.userShowIcon} />
             <span className={classes.userShowInfoTitle}> {profileData.category }</span>
@@ -82,13 +88,13 @@ const UserProfile: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
               { [profileData.street, profileData.zipCode, profileData.city].join(', ') }
             </span>
           </div>
-          { (profileData.userType === 'agency'||profileData.userType === 'business') ?
+          { (profileData.userType === roles.Agency||profileData.userType === roles.Business) ?
           <div className={classes.userShowInfo}>
             <LanguageOutlinedIcon className={classes.userShowIcon} />
             <span className={classes.userShowInfoTitle}> {profileData.website }</span>
           </div>
           : null}
-          { profileData.userType === 'worker' ? 
+          { profileData.userType === roles.Worker ? 
           <div className={classes.userShowInfo}>
             <span className={classes.userShowTitle}>{t('user_licenses')}</span> 
             <span className={classes.userShowInfoTitle}>{ profileData.licenses }</span>
@@ -151,6 +157,10 @@ const useStyles = makeStyles((theme: any) => ({
     width: theme.spacing(15),
     height: theme.spacing(15),
   },
+  back: {
+    marginLeft: '1000px',
+    fontSize: '17px',
+  }
 }));
 
 export default UserProfile;
