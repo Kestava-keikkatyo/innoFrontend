@@ -145,7 +145,8 @@ const WorkerAndBusinessModal: React.FC<any> = ({
           >
             <MenuItem value="None">None</MenuItem>
             {myForms &&
-              myForms.docs.map((form: any) => (
+              // myForms.docs.map((form: any) => (
+              myForms.map((form: any) => (
                 <MenuItem key={form._id} value={form._id}>
                   {form.title.length > 50
                     ? `${form.title.substring(0, 50)}...`
