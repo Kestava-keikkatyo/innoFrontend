@@ -17,6 +17,7 @@ import CustomFormInput from "./CustomFormInput"
 import EditFormHeader from "./EditFormHeader"
 import { Question } from "../../types/types"
 import { useTranslation } from 'react-i18next'
+import { convertFormQuestionsToArray } from '../../utils/formUtils'
 /**
  * @todo move to constants
  */
@@ -63,7 +64,7 @@ const EditFormPage: React.FC = () => {
   }
 
   console.log(currentForm);
-
+  const sortedQuestionsArray = convertFormQuestionsToArray(questions)
   return (
   <Container>
     <form onSubmit={addForm}>
@@ -88,7 +89,7 @@ const EditFormPage: React.FC = () => {
         onChange={({ target }: any) => dispatch(setDescription(target.value))}
       />
       <div>
-        {questions.map((_: Question, i: number) => (
+        {sortedQuestionsArray.map((_: Question, i: number) => (
           <QuestionModule key={i} questionIndex={i} />
         ))}
       </div>

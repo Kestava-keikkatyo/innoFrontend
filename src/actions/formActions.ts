@@ -19,6 +19,7 @@ import {
   REMOVE_OPTION,
   SET_QUESTIONS,
   REMOVE_OPTION_VALUE,
+  CLEAR_CURRENT_FORM,
 } from "../types/state"
 import formServices from "../services/formServices"
 import { convertForm } from "../utils/formUtils"
@@ -233,4 +234,7 @@ export const submitForm = (form: Form) => async (dispatch: any) => {
 
 }
 
+export const clearForm = () => async (dispatch: any) => {
+  dispatch({type: CLEAR_CURRENT_FORM})
+}
 

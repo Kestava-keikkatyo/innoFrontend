@@ -30,7 +30,7 @@ const FormTimepicker: React.FC<any> = ({ question }) => {
           <form className={classes.container} noValidate>
               <TextField
                   id="time"
-                  label={question.time}
+                  label={question.title}
                   type="time"
                   className={classes.textField}
                   InputLabelProps={{

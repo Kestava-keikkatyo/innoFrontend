@@ -69,7 +69,26 @@ const initialQuestions = {
   timepicker: [],
 }
 */
-
+export const convertFormQuestionsToArray = (questions: any) => {
+  if(Array.isArray(questions)){
+    return questions
+  } else {
+    let questionList: any[] = []
+    if (questions) { 
+      for (const [questionType, questionArray] of Object.entries(questions)) {
+        (questionArray as any[]).map(q=> {
+          let newQ = { 
+            ...q, 
+            questionType: questionType
+          }
+          questionList.push(newQ)
+        })
+      }
+    }
+    questionList.sort((first, second) => first.ordering - second.ordering)
+    return questionList.concat([]) //Return a new array
+  }
+}
 export const convertForm = (form: Form): any => {
   let questions = {
     comment: [],

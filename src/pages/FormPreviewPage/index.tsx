@@ -16,6 +16,7 @@ import { Question, questionTypes, severity } from '../../types/types'
 import FormContactInfo from '../../components/FormComponents/FormContactInfo'
 import FormTimepicker from '../../components/FormComponents/FormTimepicker'
 import FormDatepicker from '../../components/FormComponents/FormDatepicker'
+import { convertFormQuestionsToArray } from '../../utils/formUtils'
 
 /**
  * @component
@@ -26,7 +27,13 @@ import FormDatepicker from '../../components/FormComponents/FormDatepicker'
 const FormPreviewPage: React.FC = () => {
   const { title, description, questions } = useSelector((state: any) => state.form)
   const dispatch = useDispatch()
+  
+  const sortedQuestionsArray = convertFormQuestionsToArray(questions)
 
+  console.log('Sorted: ', sortedQuestionsArray)
+  console.log('Title: ', title)
+  console.log('Desc: ', description) 
+  
   return (
     <Container>
       <FormPreviewHeader />
@@ -35,35 +42,36 @@ const FormPreviewPage: React.FC = () => {
           title={title}
           description={description}
         />
-        {questions.map((q: Question, k: number) => {
-          switch (q.questionType) {
-            case questionTypes.Text:
-              return <FormText key={k} question={q} />
-            case questionTypes.Textarea:
-              return <FormTextArea key={k} question={q} />
-            case questionTypes.CheckBox:
-              return <FormCheckBox key={k} question={q} />
-            case questionTypes.CheckboxGroup:
-              return <FormCheckBoxGroup key={k} question={q} />
-            case questionTypes.RadiobuttonGroup:
-              return <FormRadio key={k} question={q} />
-            case questionTypes.RadiobuttonGroupHorizontal:
-              return <FormRadioGroup key={k} question={q} />
-            case questionTypes.Comment:
-              return <FormComment key={k} question={q} />
-            case questionTypes.Datepicker:
-              return <FormDatepicker key={k} question={q} />
-            case questionTypes.Timepicker:
-              return <FormTimepicker key={k} question={q} />
-            case questionTypes.ContactInformation:
-              return <FormContactInfo key={k} question={q} />
-            default:
-              dispatch(
-                setAlert("Cannot read question of type: " + q.questionType, severity.Error)
-              )
-              return <></>
-          }
-        })}
+        {sortedQuestionsArray.map((q: Question, k: number) => {
+            switch (q.questionType) {
+              case questionTypes.Text:
+                return <FormText key={k} question={q} />
+              case questionTypes.Textarea:
+                return <FormTextArea key={k} question={q} />
+              case questionTypes.CheckBox:
+                return <FormCheckBox key={k} question={q} />
+              case questionTypes.CheckboxGroup:
+                return <FormCheckBoxGroup key={k} question={q} />
+              case questionTypes.RadiobuttonGroup:
+                return <FormRadio key={k} question={q} />
+              case questionTypes.RadiobuttonGroupHorizontal:
+                return <FormRadioGroup key={k} question={q} />
+              case questionTypes.Comment:
+                return <FormComment key={k} question={q} />
+              case questionTypes.Datepicker:
+                return <FormDatepicker key={k} question={q} />
+              case questionTypes.Timepicker:
+                return <FormTimepicker key={k} question={q} />
+              case questionTypes.ContactInformation:
+                return <FormContactInfo key={k} question={q} />
+              default:
+                dispatch(
+                  setAlert("Cannot read question of type: " + q.questionType, severity.Error)
+                )
+                return <></>
+            }
+          })
+        }
       </div>
     </Container>
   )

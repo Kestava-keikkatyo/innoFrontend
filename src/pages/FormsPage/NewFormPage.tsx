@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import QuestionModule from "./QuestionModule"
 import { useDispatch, useSelector } from "react-redux"
 
@@ -12,11 +12,13 @@ import {
   addQuestion,
   setDescription,
   submitForm,
+  clearForm,
 } from "../../actions/formActions"
 import CustomFormInput from "./CustomFormInput"
 import NewFormHeader from "./NewFormHeader"
 import { Question } from "../../types/types"
 import { useTranslation } from 'react-i18next'
+import { convertFormQuestionsToArray } from '../../utils/formUtils'
 /**
  * @todo move to constants
  */
@@ -57,14 +59,19 @@ const NewFormPage: React.FC = () => {
   const currentForm = useSelector((state: any) => state.form)
   const { title, description, questions } = currentForm
   const { t } = useTranslation()
-
+  console.log('state.form: ', currentForm)
+  useEffect(() => {
+    console.log('Clear Effect')
+    dispatch(clearForm())
+  },[])
+  
   const addForm = (event: any): void => {
     event.preventDefault()
     dispatch(submitForm(currentForm))
   }
 
   console.log(currentForm);
-
+  const sortedQuestionsArray = convertFormQuestionsToArray(questions)
   return (
   <Container>
     <form onSubmit={addForm}>
@@ -89,7 +96,7 @@ const NewFormPage: React.FC = () => {
         onChange={({ target }: any) => dispatch(setDescription(target.value))}
       />
       <div>
-        {questions.map((_: Question, i: number) => (
+        {sortedQuestionsArray.map((_: Question, i: number) => (
           <QuestionModule key={i} questionIndex={i} />
         ))}
       </div>
