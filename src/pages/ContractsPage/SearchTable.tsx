@@ -60,7 +60,7 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
   const classes = useStyles();
 
   useEffect(() => {
-    dispatch(updateSearchList('', INIT_SEARCH_TYPE));
+    dispatch(updateSearchList('a', INIT_SEARCH_TYPE));
   }, [dispatch]);
 
   // handle user input in the search field

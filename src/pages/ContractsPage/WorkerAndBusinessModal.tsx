@@ -46,9 +46,10 @@ const WorkerAndBusinessModal: React.FC<any> = ({
   const { businessContract } = useSelector(
     (state: IRootState) => state.businessContracts
   );
-  const myForms: any = useSelector((state: any) => state.formList.myForms);
+  const forms: any = useSelector((state: any) => state.formList.myForms);
+  const myForms : any[] = Array.from(forms);
 
-  const [formId, setFormId] = React.useState('None');
+  const [formId, setFormId] = React.useState('');
   const classes = useStyles();
 
   const { t } = useTranslation();
