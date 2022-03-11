@@ -28,10 +28,10 @@ const searchUsers = async (input: string, searchType: businessContractType) => {
   try {
     switch (searchType) {
       case "worker":
-        return await axios.get(`${baseUrl}/workers?name=${input}`, authHeader())
+        return await axios.get(`${baseUrl}/user/workers?name=${input}`, authHeader())
       case "business":
         return await axios.get(
-          `${baseUrl}/businesses?name=${input}`,
+          `${baseUrl}/user/businesses?name=${input}`,
           authHeader()
         )
       default:
