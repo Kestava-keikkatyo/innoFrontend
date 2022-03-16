@@ -71,7 +71,7 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
   // handle radio button change
   const handleChange = (event: any) => {
     setSearchType(event.target.value);
-    dispatch(updateSearchList('', event.target.value));
+    dispatch(updateSearchList('a', event.target.value));
   };
 
   const { searchList } = useSelector(
