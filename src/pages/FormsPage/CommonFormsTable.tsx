@@ -37,13 +37,9 @@ import { useDispatch } from 'react-redux';
 import { getFormById, submitForm } from '../../actions/formActions';
 import { useHistory } from 'react-router';
 import formServices from '../../services/formServices';
-import pdfMake from 'pdfmake/build/pdfmake.js';
-import pdfFonts from 'pdfmake/build/vfs_fonts.js';
-import htmlToPdfmake from 'html-to-pdfmake';
-import Form from './Form';
 
 import { useTranslation } from 'react-i18next';
-import ReactDOMServer from 'react-dom/server';
+
 
 import { fetchFormList } from '../../actions/formListActions';
 import { Search } from '@mui/icons-material';
@@ -55,7 +51,7 @@ import { convertFormQuestionsToArray } from '../../utils/formUtils'
  * @component
  * @desc A table to get and search for my forms.
  */
-const CommonFormsTable: React.FC<any> = () => {
+const CommonFormsTable: React.FC<any> = ({handleDownload}) => {
   const forms = useSelector((state: any) => state.formList.commonForms);
   const commonForms : any[] = Array.from(forms);
 
@@ -98,27 +94,6 @@ const CommonFormsTable: React.FC<any> = () => {
     history.push('/forms');
   };
 
-  const handleDownload = async (formId: any) => {
-    let form: any = await formServices.fetchFormById(formId);
-    console.log('form ', form);
-
-    pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
-    // pdf content
-    let content: any = [];
-
-    let html = ReactDOMServer.renderToString(<Form currentForm={form} />);
-    let htmlForm: any = htmlToPdfmake(html);
-
-    content.push(htmlForm);
-
-    // pdf document
-    var doc = {
-      content: content,
-    };
-
-    pdfMake.createPdf(doc).download(form.title);
-  };
 
   // Table head styles
   const StyledTableCell = withStyles((theme: Theme) =>

@@ -36,13 +36,7 @@ import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import { useDispatch } from 'react-redux';
 import { DeleteFormById, getFormById } from '../../actions/formActions';
 import { useHistory } from 'react-router';
-import formServices from '../../services/formServices';
-import pdfMake from 'pdfmake/build/pdfmake.js';
-import pdfFonts from 'pdfmake/build/vfs_fonts.js';
-import htmlToPdfmake from 'html-to-pdfmake';
-import Form from './Form';
 import { useTranslation } from 'react-i18next';
-import ReactDOMServer from 'react-dom/server';
 import { setAlert } from '../../actions/alertActions';
 import { fetchFormList } from '../../actions/formListActions';
 import { Search } from '@mui/icons-material';
@@ -52,7 +46,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
  * @component
  * @desc A table to get and search for my forms.
  */
-const MyFormsTable: React.FC<any> = () => {
+const MyFormsTable: React.FC<any> = ({handleDownload}) => {
   let forms = useSelector((state: any) => state.formList.myForms);
   const myForms: any[] = Array.from(forms);
 
@@ -88,27 +82,6 @@ const MyFormsTable: React.FC<any> = () => {
     dispatch(setAlert('Form deleted successfully!'));
   };
 
-  const handleDownload = async (formId: any) => {
-    let form: any = await formServices.fetchFormById(formId);
-    console.log('form ', form);
-
-    pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
-    // pdf content
-    let content: any = [];
-
-    let html = ReactDOMServer.renderToString(<Form currentForm={form} />);
-    let htmlForm: any = htmlToPdfmake(html);
-
-    content.push(htmlForm);
-
-    // pdf document
-    var doc = {
-      content: content,
-    };
-
-    pdfMake.createPdf(doc).download(form.title);
-  };
 
   // Table head styles
   const StyledTableCell = withStyles((theme: Theme) =>
