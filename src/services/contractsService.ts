@@ -67,14 +67,17 @@ const acceptBusinessContract = async (
  * @returns Backend response.
  */
 const addBusinessContract = async (
-  contractId: string,
-  userId: string,
-  form?: string
+  targetId: string,
+  formId: string
 ) => {
   try {
-    return await axios.put(
-      `${baseUrl}/businesscontracts/${contractId}/${userId}/add`,
-      { form },
+    return await axios.post(
+      `${baseUrl}/agreement/`,
+      {
+        "target": targetId,
+        "form2": formId,
+        "status": "pending"
+      },
       authHeader()
     )
   } catch (error) {

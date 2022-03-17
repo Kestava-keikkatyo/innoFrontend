@@ -65,35 +65,18 @@ const WorkerAndBusinessModal: React.FC<any> = ({
         )
       );
     } else {
-      if (
-        !workerOrBusinessData.businessContracts.includes(
-          businessContract[0]._id
+      dispatch(
+        addBusinessContract(
+          workerOrBusinessData._id,
+          formId
         )
-      ) {
-        const businessContractForm: any = await dispatch(
-          createBusinessContractForm(formId)
-        );
-        dispatch(
-          addBusinessContract(
-            businessContract[0]._id,
-            workerOrBusinessData._id,
-            businessContractForm._id
-          )
-        );
-        dispatch(
-          setAlert(
-            `Success: Contract request sent to ${workerOrBusinessData.name}`,
-            severity.Success
-          )
-        );
-      } else {
-        dispatch(
-          setAlert(
-            `Failed: You already have contract with ${workerOrBusinessData.name}.`,
-            severity.Error
-          )
-        );
-      }
+      );
+      dispatch(
+        setAlert(
+          `Success: Contract request sent to ${workerOrBusinessData.name}`,
+          severity.Success
+        )
+      );
     }
     closeModal();
   };

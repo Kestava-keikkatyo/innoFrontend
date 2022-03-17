@@ -53,10 +53,10 @@ export const refuseBusinessContractById = (userId: string, id: string) => async 
  * @param {string} contractId BusinessContract id
  * @param {string} user Business or Worker id
  */
-export const addBusinessContract = (contractId: string, userId: string, form?: string) => async (dispatch: any) => {
-  const res = await contractsService.addBusinessContract(contractId, userId, form)
+export const addBusinessContract = (targetId: string, formId: string) => async (dispatch: any) => {
+  const res = await contractsService.addBusinessContract(targetId, formId)
   if (res && res.status === 200) {
-    await notificationsService.updateNotifications(userId, "HP-Yritys lähetti sinulle asiakassopimuspyynnön.")
+    await notificationsService.updateNotifications(targetId, "HP-Yritys lähetti sinulle asiakassopimuspyynnön.")
     dispatch({ type: ADD_B_CONTRACT, data: res.data })
   }
 }
