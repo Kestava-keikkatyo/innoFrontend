@@ -50,7 +50,7 @@ import { Search } from '@mui/icons-material';
 //import MoveToInboxIcon from '@mui/icons-material/MoveToInbox'
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
+import { convertFormQuestionsToArray } from '../../utils/formUtils'
 /**
  * @component
  * @desc A table to get and search for my forms.
@@ -91,6 +91,8 @@ const CommonFormsTable: React.FC<any> = () => {
     form._id = '';
     form.common = false;
     form.isPublic = false;
+    //form.questions = convertFormQuestionsToArray(form.questions[0]) //Converting Form from old questionformat
+    //console.log('form in handlecopy: ', form)
     dispatch(submitForm(form));
     dispatch(setAlert('Form copied successfully!'));
     history.push('/forms');

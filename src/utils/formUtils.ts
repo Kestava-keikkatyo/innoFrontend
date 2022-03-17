@@ -69,7 +69,43 @@ const initialQuestions = {
   timepicker: [],
 }
 */
+//Convert form questions from old format (object containing arrays) to new format (array containing objects)
+export const convertFormQuestionsToArray = (questions: any) => {
+  if(Array.isArray(questions)){
+    return questions
+  } else {
+    let questionList: any[] = []
+    if (questions) { 
+      for (const [questionType, questionArray] of Object.entries(questions)) {
+        (questionArray as any[]).map(q=> {
+          let newQ = { 
+            ...q, 
+            questionType: questionType
+          }
 
+          //Check if required fields exist and if not, inject default value
+          if(!newQ.hasOwnProperty('answerMaxLength')) {newQ.answerMaxLength = 1000}
+          if(!newQ.hasOwnProperty('answerMinLength')) {newQ.answerMinLength = 0}
+          if(!newQ.hasOwnProperty('checked')) {newQ.checked = false}
+          if(!newQ.hasOwnProperty('contactInfoAnswer')) {newQ.contactInfoAnswer = {name: '', phone: '', email: ''}}
+          if(!newQ.hasOwnProperty('optionValues')) {newQ.optionValues = []}
+          if(!newQ.hasOwnProperty('optional')) {newQ.optional = false}
+          if(!newQ.hasOwnProperty('options')) {newQ.options = []}
+          if(!newQ.hasOwnProperty('rows')) {newQ.rows = 4}
+          if(!newQ.hasOwnProperty('scale')) {newQ.scale = 5}
+          if(!newQ.hasOwnProperty('scaleOptionTitleCenter')) {newQ.scaleOptionTitleCenter = ""}
+          if(!newQ.hasOwnProperty('scaleOptionTitleLeft')) {newQ.scaleOptionTitleLeft = ""}
+          if(!newQ.hasOwnProperty('scaleOptionTitleRight')) {newQ.scaleOptionTitleRight = ""}
+          if(!newQ.hasOwnProperty('subTitle')) {newQ.subTitle = ""}
+
+          questionList.push(newQ)
+        })
+      }
+    }
+    questionList.sort((first, second) => first.ordering - second.ordering)
+    return questionList.concat([]) //Return a new array
+  }
+}
 export const convertForm = (form: Form): any => {
   let questions = {
     comment: [],
