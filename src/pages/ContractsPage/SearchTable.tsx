@@ -7,6 +7,7 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  TablePagination,
   IconButton,
   Typography,
   useMediaQuery,
@@ -40,6 +41,7 @@ import {
   AccordionSummary,
   AccordionActions,
 } from '@mui/material';
+import ContentFlag from 'material-ui/svg-icons/content/flag';
 
 const INIT_SEARCH_TYPE = roles.Worker;
 
@@ -55,6 +57,8 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
   const dispatch = useDispatch();
   const [searchType, setSearchType] = useState<any>(INIT_SEARCH_TYPE);
   const [filter, setFilter] = React.useState('');
+  const [page, setPage] = React.useState(0)
+  const [rowsPerPage, setRowsPerPage] = React.useState(5)
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('md'));
   const classes = useStyles();
@@ -74,6 +78,15 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
     dispatch(updateSearchList('a', event.target.value));
   };
 
+  const handleChangePage = (event: any, newPage: number) => {
+    setPage(newPage)
+  }
+
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  }
+
   const { searchList } = useSelector(
     (state: IRootState) => state.businessContracts
   );
@@ -82,6 +95,7 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
   // Table view for desktop devices
   const tableView = () => {
     return (
+      <div className={classes.tableDiv}>
       <TableContainer>
         <Table aria-label="searched workers">
           <TableHead>
@@ -98,6 +112,7 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
                   .toLowerCase()
                   .includes(filter.toLowerCase())
               )
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((workerOrBusiness: any) => (
                 <TableRow key={workerOrBusiness._id}>
                   <TableCell component="th" scope="row" align="left">
@@ -122,6 +137,16 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
           </TableBody>
         </Table>
       </TableContainer>
+      <TablePagination
+      rowsPerPageOptions={[5, 10, 25]}
+      component="div"
+      count={workersOrBusinesses.length}
+      rowsPerPage={rowsPerPage}
+      page={page}
+      onPageChange={handleChangePage}
+      onRowsPerPageChange={handleChangeRowsPerPage}
+      />
+      </div>
     );
   };
 
@@ -235,6 +260,9 @@ const useStyles = makeStyles((theme: Theme) =>
       fontSize: theme.typography.pxToRem(13),
       color: '#6C6C6C',
     },
+    tableDiv: {
+      width: '100%'
+    }
   })
 );
 
