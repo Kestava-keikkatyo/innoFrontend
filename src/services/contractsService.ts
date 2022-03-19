@@ -146,7 +146,7 @@ const refuseBusinessContractById = async (contractId: string) => {
 const fetchBusinessContracts = async () => {
   try {
     const res = await axios.get(
-      `${baseUrl}/businesscontracts?page=1&limit=10`,
+      `${baseUrl}/agreement?page=1&limit=10`,
       authHeader()
     )
     return res.data.docs
