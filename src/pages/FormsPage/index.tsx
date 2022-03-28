@@ -24,6 +24,14 @@ import CommunityFormsTable from './CommunityFormsTable'
 
 import { useTranslation } from 'react-i18next'
 
+import formServices from '../../services/formServices';
+import pdfMake from 'pdfmake/build/pdfmake.js';
+import pdfFonts from 'pdfmake/build/vfs_fonts.js';
+import htmlToPdfmake from 'html-to-pdfmake';
+import Form from './Form';
+import ReactDOMServer from 'react-dom/server';
+import { jsPDF } from "jspdf";
+
 interface TabPanelProps {
   children?: React.ReactNode;
   index: any;
@@ -83,6 +91,61 @@ const FormsPage: React.FC = () => {
     setValue(newValue);
   };
 
+  const handleDownload = async (formId: any) => {
+    let form: any = await formServices.fetchFormById(formId);
+    console.log('handleDownload - form: ', form);
+    /*
+    pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+    // pdf content
+    let content: any = [];
+
+    let html = ReactDOMServer.renderToString(<Form currentForm={form} />);
+    let htmlForm: any = htmlToPdfmake(html);
+    console.log('handleDownload - html: ', html);
+    console.log('handleDownload - htmlForm: ', htmlForm);
+
+    content.push(htmlForm);
+
+    // pdf document
+    var doc = {
+      content: content,
+    };
+
+    pdfMake.createPdf(doc).download(form.title);
+    */
+    let doc = new jsPDF({
+      orientation: 'p',
+      unit: 'px',
+      format: 'a4',
+      hotfixes: ['px_scaling'],
+    });
+    
+    let pdfMargin = [30,30,30,30] //[top, right, bottom, left]
+    let contentWidth = doc.internal.pageSize.getWidth() - pdfMargin[1] - pdfMargin[3]
+    let html = ReactDOMServer.renderToString(<div style={{width: `${contentWidth}px`}} ><Form currentForm={form} /></div>)
+    
+   
+    console.log('pagewidth: ',doc.internal.pageSize.getWidth())
+
+    await doc.html(html, {
+      autoPaging: true,
+      margin: pdfMargin,
+      //x: 30,
+      //y: 30,
+      html2canvas: {
+        //scale: 0.3,
+        //width: doc.internal.pageSize.getWidth(),
+        //windowWidth: doc.internal.pageSize.getWidth(),
+        
+      },
+      
+    });
+    console.log('save')
+    
+    doc.save(form.title ? `${form.title}.pdf` : "UnknownForm.pdf" );
+  };
+
   //add communityForms
   //const { myForms } = useSelector((state: any) => state.formList)
   const dispatch = useDispatch()
@@ -126,7 +189,7 @@ const FormsPage: React.FC = () => {
           </Typography>
           <Card className={classes.card} variant="outlined">
             <CardContent >
-              <MyFormsTable/>
+              <MyFormsTable handleDownload={handleDownload}/>
             </CardContent>
           </Card>
         </TabPanel>
@@ -136,7 +199,7 @@ const FormsPage: React.FC = () => {
           </Typography>
           <Card className={classes.card} variant="outlined">
             <CardContent >
-              <CommonFormsTable/>
+              <CommonFormsTable handleDownload={handleDownload}/>
             </CardContent>
           </Card>
         </TabPanel>
@@ -146,7 +209,7 @@ const FormsPage: React.FC = () => {
           </Typography>
           <Card className={classes.card} variant="outlined">
             <CardContent >
-              <CommunityFormsTable/>
+              <CommunityFormsTable handleDownload={handleDownload}/>
             </CardContent>
           </Card>
         </TabPanel>

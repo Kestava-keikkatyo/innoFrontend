@@ -14,7 +14,7 @@ const FormTextArea: React.FC<FormComponentProps> = ({ question }) => {
     <>
       <Typography variant="h6" >{ title }</Typography>
       <Typography variant="body1" >{subTitle}</Typography>
-      <TextField multiline rows={rows} variant="outlined"/>
+      <TextField multiline rows={rows} variant="outlined" style={{ width: '90%' }}/>
     </>
    )
 }
