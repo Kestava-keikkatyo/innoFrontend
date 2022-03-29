@@ -34,6 +34,7 @@
     "formik": "^2.2.9",
     "history": "^4.10.1",
     "html-to-pdfmake": "^2.3.7",
+    "html2pdf.js": "^0.9.3",
     "i18next": "^19.9.2",
     "i18next-browser-languagedetector": "^6.1.2",
     "i18next-xhr-backend": "^3.2.2",

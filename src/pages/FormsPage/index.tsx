@@ -31,6 +31,8 @@ import htmlToPdfmake from 'html-to-pdfmake';
 import Form from './Form';
 import ReactDOMServer from 'react-dom/server';
 import { jsPDF } from "jspdf";
+//@ts-ignore @TODO fix this ts-ignore
+import * as html2pdf from 'html2pdf.js';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -93,8 +95,9 @@ const FormsPage: React.FC = () => {
 
   const handleDownload = async (formId: any) => {
     let form: any = await formServices.fetchFormById(formId);
-    console.log('handleDownload - form: ', form);
+    //console.log('handleDownload - form: ', form);
     /*
+    //OLD IMPLEMENTATION (Before 2022)
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
     // pdf content
@@ -114,6 +117,8 @@ const FormsPage: React.FC = () => {
 
     pdfMake.createPdf(doc).download(form.title);
     */
+    /*
+    //THIS HAS PROBLEMS SPLITTING ELEMENTS ON PAGE-BREAK
     let doc = new jsPDF({
       orientation: 'p',
       unit: 'px',
@@ -125,7 +130,6 @@ const FormsPage: React.FC = () => {
     let contentWidth = doc.internal.pageSize.getWidth() - pdfMargin[1] - pdfMargin[3]
     let html = ReactDOMServer.renderToString(<div style={{width: `${contentWidth}px`}} ><Form currentForm={form} /></div>)
     
-   
     console.log('pagewidth: ',doc.internal.pageSize.getWidth())
 
     await doc.html(html, {
@@ -144,6 +148,35 @@ const FormsPage: React.FC = () => {
     console.log('save')
     
     doc.save(form.title ? `${form.title}.pdf` : "UnknownForm.pdf" );
+    */
+    
+    let content = ReactDOMServer.renderToString(<Form currentForm={form} />)
+
+    //Set options for html2pdf conversion
+    let options = {
+      margin: [96,96,96,96], //[top, right, bottom, left]
+      filename: form.title ? `${form.title}.pdf` : "UnknownForm.pdf",
+      image: { type: 'jpeg', quality: 0.90 },
+      html2canvas: { 
+        scale: 2,
+        logging: false,
+      },
+      pagebreak: { avoid: '.avoid_pagebreak' },
+      jsPDF: {
+        orientation: 'p',
+        unit: 'px',
+        format: 'a4',
+        hotfixes: ['px_scaling'],
+      },
+    }
+
+    //create the PDF
+    html2pdf()
+      .set(options)
+      .from(content)
+      .save()
+    
+    
   };
 
   //add communityForms
