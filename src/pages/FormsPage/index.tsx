@@ -175,8 +175,6 @@ const FormsPage: React.FC = () => {
       .set(options)
       .from(content)
       .save()
-    
-    
   };
 
   //add communityForms
@@ -190,13 +188,13 @@ const FormsPage: React.FC = () => {
   /* <div className="form-banner-filter"> */
   return (
     <Container className="relative">
-      <div className="form-banner" style={{ height: '200px'}} />
+      <div className="form-banner hide-on-mobile" style={{ height: '200px'}} />
       <Grid
         container
         direction="row"
         justifyContent="space-evenly"
         alignItems="flex-end"
-        className="form-search-container"
+        className="form-search-container hide-on-mobile"
         style={{ height: '200px', paddingBottom: '50px' }}
       >
       </Grid>
