@@ -339,7 +339,6 @@ code {
 
 .form-banner {
   width: calc(100% - 48px);
-  height: 250px;
   background: url("assets/form-banner.jpg");
   background-size: cover;
   background-position: center center;
@@ -681,10 +680,4 @@ nav * {
   padding: 5px 10px 5px 10px;
   border-radius: 3px;
   /* box-shadow: 10px 0 50px rgba(0, 0, 0, 0.5); */
-}
-
-@media (max-width: 600px) {
-  .hide-on-mobile {
-    display: none
-  }
 }

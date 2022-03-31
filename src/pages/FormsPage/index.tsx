@@ -52,8 +52,13 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
-          <div>{children}</div>
+        <Box sx={{
+          padding: {
+            xs: '20px 0px',
+            sm: '40px 20px'
+          }
+        }}>
+          {children}
         </Box>
       )}
     </div>
@@ -188,14 +193,30 @@ const FormsPage: React.FC = () => {
   /* <div className="form-banner-filter"> */
   return (
     <Container className="relative">
-      <div className="form-banner hide-on-mobile" style={{ height: '200px'}} />
+      <Box 
+        className="form-banner" 
+        sx={{ 
+          height: '200px',
+          display: {
+            xs: 'none',
+            sm: 'flex',
+          }
+        }} 
+      />
+      
       <Grid
         container
         direction="row"
         justifyContent="space-evenly"
         alignItems="flex-end"
-        className="form-search-container hide-on-mobile"
-        style={{ height: '200px', paddingBottom: '50px' }}
+        className="form-search-container"
+        sx={{ 
+          height: '200px',
+          display: {
+            xs: 'none',
+            sm: 'flex',
+          }
+        }} 
       >
       </Grid>
       <div className="new-form-btn">
