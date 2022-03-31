@@ -1,5 +1,4 @@
-
-import { minHeight } from '@mui/system'
+import { useTranslation } from 'react-i18next';
 import React from 'react'
 
 
@@ -7,7 +6,7 @@ import React from 'react'
  * @component
  */
 const Form: React.FC<any> = ({currentForm}) => {
-
+    const { t } = useTranslation();
     // pdf styles
     let commonFont = {
         fontFamily: "Arial, Helvetica, sans-serif",
@@ -218,9 +217,9 @@ const Form: React.FC<any> = ({currentForm}) => {
                                 <table key={q._id}>
                                     <thead style={{...styles.title, textAlign: 'left'}}>
                                         <tr>
-                                        <th>Name</th>
-                                        <th>Phone</th>
-                                        <th>Email</th>
+                                        <th>{t('name')}</th>
+                                        <th>{t('phone')}</th>
+                                        <th>{t('email')}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
