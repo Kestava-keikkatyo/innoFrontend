@@ -42,7 +42,7 @@ import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
  * There is actually two drawers which are rendered at at different time.
  * One for mobile view one for web view.
  */
-const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
+const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
   const classes = useStyles()
   const dispatch = useDispatch()
 
@@ -56,9 +56,9 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
    * [Drawer]{@link module:components/Drawer}.
    * @function
    */
-  // const handleClick = () => {
-  //   setOpen(!open)
-  // }
+   const handleClick = () => {
+     if(isMobile) { setOpen(false) }    
+   }
 
   return (
     <div className="drawer">
@@ -74,14 +74,14 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
 
       <div className="content-wrapper">
         <List className="overflow-container">
-          <ListItem button component={Link} to="/home">
+          <ListItem button component={Link} to="/home" onClick={handleClick}>
             <ListItemIcon>{<HomeOutlinedIcon />}</ListItemIcon>
             <ListItemText primary={t("home")} />
           </ListItem>
           <Divider />
           {(role === roles.Agency || role === roles.Business) && (
             <>
-              <ListItem button component={Link} to="/forms">
+              <ListItem button component={Link} to="/forms" onClick={handleClick}>
                 <ListItemIcon>
                   <InsertDriveFileOutlinedIcon />
                 </ListItemIcon>
@@ -92,7 +92,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           )}
           {role === roles.Agency && (
             <>
-              <ListItem button component={Link} to="/contracts">
+              <ListItem button component={Link} to="/contracts" onClick={handleClick}>
                 <ListItemIcon>
                   <ContactsOutlinedIcon />
                 </ListItemIcon>
@@ -109,7 +109,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
 
           {role === roles.Business && (
             <>
-              <ListItem button component={Link} to="/work-overview">
+              <ListItem button component={Link} to="/work-overview" onClick={handleClick}>
                 <ListItemIcon>
                   <SupervisorAccountOutlinedIcon />
                 </ListItemIcon>
@@ -121,7 +121,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
 
           {role === roles.Business && (
             <>
-              <ListItem button component={Link} to="/business-contracts">
+              <ListItem button component={Link} to="/business-contracts" onClick={handleClick}>
                 <ListItemIcon>
                   <AssignmentOutlinedIcon />
                 </ListItemIcon>
@@ -132,7 +132,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           )}
           {role === roles.Agency && (
             <>
-              <ListItem button component={Link} to="/job-page">
+              <ListItem button component={Link} to="/job-page" onClick={handleClick}>
                 <ListItemIcon>
                   <AssignmentTurnedInOutlinedIcon />
                 </ListItemIcon>
@@ -143,7 +143,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           )}
           {role === roles.Agency && (
             <>
-              <ListItem button component={Link} to="/work-request">
+              <ListItem button component={Link} to="/work-request" onClick={handleClick}>
                 <ListItemIcon>
                   <WorkOutlineIcon />
                 </ListItemIcon>
@@ -154,7 +154,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           )}
           {role === roles.Agency && (
             <>
-              <ListItem button component={Link} to="/mood-stats">
+              <ListItem button component={Link} to="/mood-stats" onClick={handleClick}>
                 <ListItemIcon>
                   <MoodIcon />
                 </ListItemIcon>
@@ -165,7 +165,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           )}
           {(role === roles.Agency || role === roles.Business) && (
             <>
-              <ListItem button component={Link} to="/workers">
+              <ListItem button component={Link} to="/workers" onClick={handleClick}>
                 <ListItemIcon>
                   <GroupOutlinedIcon />
                 </ListItemIcon>
@@ -176,7 +176,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           )}
           {(role === roles.Business) && (
             <>
-              <ListItem button component={Link} to="/agencies">
+              <ListItem button component={Link} to="/agencies" onClick={handleClick}>
                 <ListItemIcon>
                   <GroupOutlinedIcon />
                 </ListItemIcon>
@@ -187,7 +187,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           )}
           {(role === roles.Agency || role === roles.Business) && (
             <>
-              <ListItem button component={Link} to="/reports">
+              <ListItem button component={Link} to="/reports" onClick={handleClick}>
                 <ListItemIcon>
                   <ErrorOutlineIcon />
                 </ListItemIcon>
@@ -198,12 +198,12 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           )}
           {role === roles.Worker && (
             <>
-              <ListItem button component={Link} to="/home">
+              <ListItem button component={Link} to="/home" onClick={handleClick}>
                 <ListItemIcon>{<CalendarTodayIcon />}</ListItemIcon>
                 <ListItemText primary={t("schedule")} />
               </ListItem>
               <Divider />
-              <ListItem button component={Link} to="/business-contracts">
+              <ListItem button component={Link} to="/business-contracts" onClick={handleClick}>
                 <ListItemIcon>
                   <LibraryBooksOutlinedIcon />
                 </ListItemIcon>
@@ -214,7 +214,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           )}
           {role === roles.Worker && (
             <>
-              <ListItem button component={Link} to="/my-work">
+              <ListItem button component={Link} to="/my-work" onClick={handleClick}>
                 <ListItemIcon>
                   <FormatList />
                 </ListItemIcon>
@@ -225,7 +225,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           )}
           {role === roles.Worker && (
             <>
-              <ListItem button component={Link} to="/jobs">
+              <ListItem button component={Link} to="/jobs" onClick={handleClick}>
                 <ListItemIcon>
                   <WorkOutlineIcon />
                 </ListItemIcon>
@@ -236,7 +236,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           )}
           {role === roles.Worker && (
             <>
-              <ListItem button component={Link} to="/fiilismittari">
+              <ListItem button component={Link} to="/fiilismittari" onClick={handleClick}>
                 <ListItemIcon>
                   <MoodIcon />
                 </ListItemIcon>
@@ -247,14 +247,14 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           )}
           {role === roles.Worker && (
             <>
-              <ListItem button component={Link} to="/report">
+              <ListItem button component={Link} to="/report" onClick={handleClick}>
                 <ListItemIcon>
                   <ErrorOutlineIcon />
                 </ListItemIcon>
                 <ListItemText primary={t("report")} />
               </ListItem>
               <Divider />
-              <ListItem button component={Link} to="/faq">
+              <ListItem button component={Link} to="/faq" onClick={handleClick}>
                 <ListItemIcon>
                   <LiveHelpIcon />
                 </ListItemIcon>
@@ -265,7 +265,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           )}
           {(role === roles.Agency || role === roles.Business || role === roles.Worker) && (
             <>
-              <ListItem button component={Link} to="/feedback-page">
+              <ListItem button component={Link} to="/feedback-page" onClick={handleClick}>
                 <ListItemIcon>
                   <FeedbackOutlinedIcon />
                 </ListItemIcon>
@@ -276,7 +276,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           )}
           {role === roles.Admin && (
             <>
-              <ListItem button component={Link} to="/profileList">
+              <ListItem button component={Link} to="/profileList" onClick={handleClick}>
                 <ListItemIcon>
                   <GroupsIcon />
                 </ListItemIcon>
@@ -287,7 +287,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           )}
           {role === roles.Admin && (
             <>
-              <ListItem button component={Link} to="/userList">
+              <ListItem button component={Link} to="/userList" onClick={handleClick}>
                 <ListItemIcon>
                   <GroupsIcon />
                 </ListItemIcon>
@@ -298,7 +298,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
           )}
           {role === roles.Admin && (
             <>
-              <ListItem button component={Link} to="/createUser">
+              <ListItem button component={Link} to="/createUser" onClick={handleClick}>
                 <ListItemIcon>
                   <PersonAdd />
                 </ListItemIcon>
@@ -307,7 +307,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isOpen }) => {
               <Divider />
             </>
           )}
-          <ListItem button component={Link} to="/databank">
+          <ListItem button component={Link} to="/databank" onClick={handleClick}>
             <ListItemIcon>{<Security />}</ListItemIcon>
             <ListItemText primary={t("databank")} />
           </ListItem>

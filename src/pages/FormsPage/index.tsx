@@ -24,6 +24,16 @@ import CommunityFormsTable from './CommunityFormsTable'
 
 import { useTranslation } from 'react-i18next'
 
+import formServices from '../../services/formServices';
+import pdfMake from 'pdfmake/build/pdfmake.js';
+import pdfFonts from 'pdfmake/build/vfs_fonts.js';
+import htmlToPdfmake from 'html-to-pdfmake';
+import Form from './Form';
+import ReactDOMServer from 'react-dom/server';
+import { jsPDF } from "jspdf";
+//@ts-ignore @TODO fix this ts-ignore
+import * as html2pdf from 'html2pdf.js';
+
 interface TabPanelProps {
   children?: React.ReactNode;
   index: any;
@@ -42,8 +52,13 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
-          <div>{children}</div>
+        <Box sx={{
+          padding: {
+            xs: '20px 0px',
+            sm: '40px 20px'
+          }
+        }}>
+          {children}
         </Box>
       )}
     </div>
@@ -83,6 +98,90 @@ const FormsPage: React.FC = () => {
     setValue(newValue);
   };
 
+  const handleDownload = async (formId: any) => {
+    let form: any = await formServices.fetchFormById(formId);
+    //console.log('handleDownload - form: ', form);
+    /*
+    //OLD IMPLEMENTATION (Before 2022)
+    pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+    // pdf content
+    let content: any = [];
+
+    let html = ReactDOMServer.renderToString(<Form currentForm={form} />);
+    let htmlForm: any = htmlToPdfmake(html);
+    console.log('handleDownload - html: ', html);
+    console.log('handleDownload - htmlForm: ', htmlForm);
+
+    content.push(htmlForm);
+
+    // pdf document
+    var doc = {
+      content: content,
+    };
+
+    pdfMake.createPdf(doc).download(form.title);
+    */
+    /*
+    //THIS HAS PROBLEMS SPLITTING ELEMENTS ON PAGE-BREAK
+    let doc = new jsPDF({
+      orientation: 'p',
+      unit: 'px',
+      format: 'a4',
+      hotfixes: ['px_scaling'],
+    });
+    
+    let pdfMargin = [30,30,30,30] //[top, right, bottom, left]
+    let contentWidth = doc.internal.pageSize.getWidth() - pdfMargin[1] - pdfMargin[3]
+    let html = ReactDOMServer.renderToString(<div style={{width: `${contentWidth}px`}} ><Form currentForm={form} /></div>)
+    
+    console.log('pagewidth: ',doc.internal.pageSize.getWidth())
+
+    await doc.html(html, {
+      autoPaging: true,
+      margin: pdfMargin,
+      //x: 30,
+      //y: 30,
+      html2canvas: {
+        //scale: 0.3,
+        //width: doc.internal.pageSize.getWidth(),
+        //windowWidth: doc.internal.pageSize.getWidth(),
+        
+      },
+      
+    });
+    console.log('save')
+    
+    doc.save(form.title ? `${form.title}.pdf` : "UnknownForm.pdf" );
+    */
+    
+    let content = ReactDOMServer.renderToString(<Form currentForm={form} />)
+
+    //Set options for html2pdf conversion
+    let options = {
+      margin: [96,96,96,96], //[top, right, bottom, left]
+      filename: form.title ? `${form.title}.pdf` : "UnknownForm.pdf",
+      image: { type: 'jpeg', quality: 0.90 },
+      html2canvas: { 
+        scale: 2,
+        logging: false,
+      },
+      pagebreak: { avoid: '.avoid_pagebreak' },
+      jsPDF: {
+        orientation: 'p',
+        unit: 'px',
+        format: 'a4',
+        hotfixes: ['px_scaling'],
+      },
+    }
+
+    //create the PDF
+    html2pdf()
+      .set(options)
+      .from(content)
+      .save()
+  };
+
   //add communityForms
   //const { myForms } = useSelector((state: any) => state.formList)
   const dispatch = useDispatch()
@@ -94,14 +193,30 @@ const FormsPage: React.FC = () => {
   /* <div className="form-banner-filter"> */
   return (
     <Container className="relative">
-      <div className="form-banner" style={{ height: '200px'}} />
+      <Box 
+        className="form-banner" 
+        sx={{ 
+          height: '200px',
+          display: {
+            xs: 'none',
+            sm: 'flex',
+          }
+        }} 
+      />
+      
       <Grid
         container
         direction="row"
         justifyContent="space-evenly"
         alignItems="flex-end"
         className="form-search-container"
-        style={{ height: '200px', paddingBottom: '50px' }}
+        sx={{ 
+          height: '200px',
+          display: {
+            xs: 'none',
+            sm: 'flex',
+          }
+        }} 
       >
       </Grid>
       <div className="new-form-btn">
@@ -126,7 +241,7 @@ const FormsPage: React.FC = () => {
           </Typography>
           <Card className={classes.card} variant="outlined">
             <CardContent >
-              <MyFormsTable/>
+              <MyFormsTable handleDownload={handleDownload}/>
             </CardContent>
           </Card>
         </TabPanel>
@@ -136,7 +251,7 @@ const FormsPage: React.FC = () => {
           </Typography>
           <Card className={classes.card} variant="outlined">
             <CardContent >
-              <CommonFormsTable/>
+              <CommonFormsTable handleDownload={handleDownload}/>
             </CardContent>
           </Card>
         </TabPanel>
@@ -146,7 +261,7 @@ const FormsPage: React.FC = () => {
           </Typography>
           <Card className={classes.card} variant="outlined">
             <CardContent >
-              <CommunityFormsTable/>
+              <CommunityFormsTable handleDownload={handleDownload}/>
             </CardContent>
           </Card>
         </TabPanel>

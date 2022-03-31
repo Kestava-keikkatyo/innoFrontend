@@ -228,9 +228,11 @@ interface FormikFieldProps {
   type?: string;
   required?: boolean;
   multiline?: boolean;
+  maxRows?: number;
+  minRows?: number;
 }
 
-const FormikField: React.FC<FormikFieldProps> = ({ name, label, type = "text", required = false, multiline = false}) => {
+const FormikField: React.FC<FormikFieldProps> = ({ name, label, type = "text", required = false, multiline = false, maxRows=null, minRows=2}) => {
   return (
     <div className="FormikField">
       <Field
@@ -241,7 +243,8 @@ const FormikField: React.FC<FormikFieldProps> = ({ name, label, type = "text", r
         name={name}
         fullWidth
         type={type}
-        rows={2}
+        maxRows={maxRows}
+        minRows={minRows}
         multiline={multiline}
         helperText={<ErrorMessage name={name} />}
       />
