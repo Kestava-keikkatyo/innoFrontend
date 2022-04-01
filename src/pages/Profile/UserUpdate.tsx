@@ -129,7 +129,7 @@ const useStyles = makeStyles((theme) => ({
     userAccount: {
         flex: '1',
         padding: '20px',
-        width: '600px',
+        width: '100%',
         webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
         boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)'
     },

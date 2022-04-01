@@ -70,7 +70,7 @@ export default {
   active: "Aktiivisia",
   create: "Luo",
   button_update: "päivitä",
-  button_edit: "muokata",
+  button_edit: "muokkaa",
 
   //Mood index page
   entry_mood: "Lisää fiilis",
