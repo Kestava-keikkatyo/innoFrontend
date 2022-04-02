@@ -40,15 +40,9 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
     setFilterBusinesses(event.target.value);
   };
 
-  const handleSelectedBusiness = (event: any) => {
+  const handleSelected = (event: any) => {
     dispatch(
-      setReport({ ...currentReport, businessAsHandler: event.target.value })
-    );
-  };
-
-  const handleSelectedAgency = (event: any) => {
-    dispatch(
-      setReport({ ...currentReport, agencyAsHandler: event.target.value })
+      setReport({ ...currentReport, receiver: event.target.value })
     );
   };
 
@@ -74,7 +68,7 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
             id="demo-simple-select"
             defaultValue=""
             style={{ maxHeight: 50 }}
-            onChange={handleSelectedBusiness}
+            onChange={handleSelected}
           >
             {businesses
               // Sort alphabetically
@@ -105,7 +99,7 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             defaultValue=""
-            onChange={handleSelectedAgency}
+            onChange={handleSelected}
             style={{ maxHeight: 50 }}
           >
             {agencies
