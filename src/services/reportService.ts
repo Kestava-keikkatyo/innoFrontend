@@ -19,11 +19,11 @@ const authHeader = () => {
 
 /**
  * @function
- * @desc Fetches all reports avaible with current token.
+ * @desc Fetches all reports available with current token.
  */
 const getReports = async () => {
   try {
-    return await axios.get(`${baseUrl}/report`, authHeader());
+    return await axios.get(`${baseUrl}/report/receivedReports`, authHeader());
   } catch (error) {
     return Promise.reject(error.response);
   }
