@@ -20,6 +20,7 @@ export const initialReport: Report = {
     name: "",
     email: "",
     phoneNumber: "",
+    status: "",
 }
 
 const initialState: ReportState = {

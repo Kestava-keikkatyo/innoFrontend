@@ -118,6 +118,7 @@ export interface Report {
   name: string;
   email: string;
   phoneNumber: string;
+  status: string;
 }
 
 export interface Job {

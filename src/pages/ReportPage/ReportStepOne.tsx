@@ -56,6 +56,19 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
       </Grid>
       {/* Business grid */}
       <Grid item xs={12} style={{ marginTop: 32 }}>
+        <table>
+          <tr>
+            <td>
+              <input type="radio" id="agency"/>
+              <label htmlFor="agency">Ageny</label>
+            </td>
+            <td>
+              <input type="radio" id="business"/>
+              <label htmlFor="business">Business</label>
+            </td>
+          </tr>
+        </table>
+        <br/>
         <Typography>{t('business')}</Typography>
         <SearchBox
           placeholder={t('search_by_name')}

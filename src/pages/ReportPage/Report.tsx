@@ -31,7 +31,7 @@ const Report: React.FC<any> = ({ report }) => {
           </div>
           <div className={classes.column}>
             <Typography className={classes.secondaryHeading}>
-              {report.date}
+              {report.date} | {report.status}
             </Typography>
           </div>
         </AccordionSummary>
