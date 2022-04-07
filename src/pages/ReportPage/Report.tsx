@@ -26,7 +26,7 @@ const Report: React.FC<any> = ({ report }) => {
         >
           <div className={classes.column}>
             <Typography className={classes.heading}>
-              {report.reportTitle}
+              {report.title}
             </Typography>
           </div>
           <div className={classes.column}>
@@ -39,10 +39,10 @@ const Report: React.FC<any> = ({ report }) => {
           <div className={classes.column} style={{ marginRight: 16 }}>
             <div>
               <Typography variant="body1" className={classes.body1}>
-                Work title
+                 Title
               </Typography>
               <Typography variant="body2" className={classes.body2}>
-                {report.workTitle}
+                {report.title}
               </Typography>
             </div>
             <div style={{ marginTop: 16 }}>
@@ -50,13 +50,13 @@ const Report: React.FC<any> = ({ report }) => {
                 Worker Info
               </Typography>
               <Typography variant="body2" className={classes.body2}>
-                {report.workerName}
+                {report.user.name}
               </Typography>
               <Typography variant="body2" className={classes.body2}>
-                {report.workerEmail}
+                {report.user.email}
               </Typography>
               <Typography variant="body2" className={classes.body2}>
-                {report.workerPhone}
+                {report.user.phoneNumber}
               </Typography>
             </div>
             <div>

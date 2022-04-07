@@ -16,7 +16,10 @@ export const initialReport: Report = {
     receiver: "",
     date: "",
     fileUrl: "",
-    fileType: ""
+    fileType: "",
+    name: "",
+    email: "",
+    phoneNumber: "",
 }
 
 const initialState: ReportState = {

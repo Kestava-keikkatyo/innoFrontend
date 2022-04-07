@@ -115,6 +115,9 @@ export interface Report {
   receiver: string;
   fileUrl: string;
   fileType: string;
+  name: string;
+  email: string;
+  phoneNumber: string;
 }
 
 export interface Job {
