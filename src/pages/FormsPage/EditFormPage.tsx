@@ -62,7 +62,7 @@ const EditFormPage: React.FC = () => {
     dispatch(submitForm(currentForm))
   }
 
-  console.log(currentForm);
+  const quest : any[] = Array.from(questions);
 
   return (
   <Container>
@@ -88,7 +88,7 @@ const EditFormPage: React.FC = () => {
         onChange={({ target }: any) => dispatch(setDescription(target.value))}
       />
       <div>
-        {questions.map((_: Question, i: number) => (
+        {quest.map((_: Question, i: number) => (
           <QuestionModule key={i} questionIndex={i} />
         ))}
       </div>

@@ -13,12 +13,8 @@ const ReportStepThree: React.FC<any> = () => {
   const { t } = useTranslation()
   const dispatch = useDispatch();
 
-  const handleWorkTitle = (event: any) => {
-    dispatch(setReport({ ...currentReport, workTitle: event.target.value }));
-  };
-
-  const handleReportTitle = (event: any) => {
-    dispatch(setReport({ ...currentReport, reportTitle: event.target.value }));
+  const handleTitle = (event: any) => {
+    dispatch(setReport({ ...currentReport, title: event.target.value }));
   };
 
   const handleDetails = (event: any) => {
@@ -30,15 +26,8 @@ const ReportStepThree: React.FC<any> = () => {
       <Grid item xs={12}>
         <Typography variant="h6">{t('fill_details')}</Typography>
       </Grid>
-      <Grid item xs={12}>
-        <TextField
-          label={t('fill_work_title')}
-          onChange={handleWorkTitle}
-          style={{ marginTop: 8 }}
-        />
-      </Grid>
       <Grid item xs={12} style={{ marginTop: 16 }}>
-        <TextField label={t('fill_report_title')} onChange={handleReportTitle} />
+        <TextField label={t('fill_report_title')} onChange={handleTitle} />
       </Grid>
       <Grid item xs={12}>
         <Typography style={{ marginTop: 24, fontWeight: 500 }}>
