@@ -11,6 +11,7 @@ import { createFeedback } from '../../actions/feedBackActions';
 import { useTranslation } from "react-i18next";
 
 const initialValues: Feedback = {
+    value: 2,
     heading: "",
     message: "",
 };
@@ -29,11 +30,11 @@ const SendFeedback: React.FC<any> = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const isLoading = useSelector((state: IRootState) => state.feedback.loading)
-    
+
   const handleSubmit = (feedback: Feedback) => {
     dispatch(createFeedback(feedback));
   };
-  
+
   return (
     <div className={classes.newFeedback}>
       <div className={classes.feedbackTitleContainer}>

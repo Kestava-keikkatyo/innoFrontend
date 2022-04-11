@@ -140,6 +140,7 @@ export interface Job {
 }
 
 export interface Feedback {
+  value: 0 | 1 | 2 | 3;
   heading: string;
   message: string;
 }

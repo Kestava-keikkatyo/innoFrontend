@@ -60,7 +60,7 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
           <tr>
             <td>
               <input type="radio" id="agency"/>
-              <label htmlFor="agency">Ageny</label>
+              <label htmlFor="agency">Agency</label>
             </td>
             <td>
               <input type="radio" id="business"/>
@@ -132,5 +132,4 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
     </Grid>
   );
 };
-
 export default ReportStepOne;
