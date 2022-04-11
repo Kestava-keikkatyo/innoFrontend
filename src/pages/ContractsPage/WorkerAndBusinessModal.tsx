@@ -46,9 +46,10 @@ const WorkerAndBusinessModal: React.FC<any> = ({
   const { businessContract } = useSelector(
     (state: IRootState) => state.businessContracts
   );
-  const myForms: any = useSelector((state: any) => state.formList.myForms);
+  const forms: any = useSelector((state: any) => state.formList.myForms);
+  const myForms : any[] = Array.from(forms);
 
-  const [formId, setFormId] = React.useState('None');
+  const [formId, setFormId] = React.useState('');
   const classes = useStyles();
 
   const { t } = useTranslation();
@@ -64,35 +65,18 @@ const WorkerAndBusinessModal: React.FC<any> = ({
         )
       );
     } else {
-      if (
-        !workerOrBusinessData.businessContracts.includes(
-          businessContract[0]._id
+      dispatch(
+        addBusinessContract(
+          workerOrBusinessData._id,
+          formId
         )
-      ) {
-        const businessContractForm: any = await dispatch(
-          createBusinessContractForm(formId)
-        );
-        dispatch(
-          addBusinessContract(
-            businessContract[0]._id,
-            workerOrBusinessData._id,
-            businessContractForm._id
-          )
-        );
-        dispatch(
-          setAlert(
-            `Success: Contract request sent to ${workerOrBusinessData.name}`,
-            severity.Success
-          )
-        );
-      } else {
-        dispatch(
-          setAlert(
-            `Failed: You already have contract with ${workerOrBusinessData.name}.`,
-            severity.Error
-          )
-        );
-      }
+      );
+      dispatch(
+        setAlert(
+          `Success: Contract request sent to ${workerOrBusinessData.name}`,
+          severity.Success
+        )
+      );
     }
     closeModal();
   };
