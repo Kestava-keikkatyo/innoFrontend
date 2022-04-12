@@ -40,15 +40,9 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
     setFilterBusinesses(event.target.value);
   };
 
-  const handleSelectedBusiness = (event: any) => {
+  const handleSelected = (event: any) => {
     dispatch(
-      setReport({ ...currentReport, businessAsHandler: event.target.value })
-    );
-  };
-
-  const handleSelectedAgency = (event: any) => {
-    dispatch(
-      setReport({ ...currentReport, agencyAsHandler: event.target.value })
+      setReport({ ...currentReport, receiver: event.target.value })
     );
   };
 
@@ -62,6 +56,19 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
       </Grid>
       {/* Business grid */}
       <Grid item xs={12} style={{ marginTop: 32 }}>
+        <table>
+          <tr>
+            <td>
+              <input type="radio" id="agency"/>
+              <label htmlFor="agency">Ageny</label>
+            </td>
+            <td>
+              <input type="radio" id="business"/>
+              <label htmlFor="business">Business</label>
+            </td>
+          </tr>
+        </table>
+        <br/>
         <Typography>{t('business')}</Typography>
         <SearchBox
           placeholder={t('search_by_name')}
@@ -74,7 +81,7 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
             id="demo-simple-select"
             defaultValue=""
             style={{ maxHeight: 50 }}
-            onChange={handleSelectedBusiness}
+            onChange={handleSelected}
           >
             {businesses
               // Sort alphabetically
@@ -105,7 +112,7 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             defaultValue=""
-            onChange={handleSelectedAgency}
+            onChange={handleSelected}
             style={{ maxHeight: 50 }}
           >
             {agencies
