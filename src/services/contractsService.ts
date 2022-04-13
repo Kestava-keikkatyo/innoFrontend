@@ -84,6 +84,17 @@ const addBusinessContract = async (
     console.log(error)
   }
 }
+
+const getOwnContracts = async () => {
+  try {
+    return await axios.get(
+        `${baseUrl}/agreement/all`,
+        authHeader()
+    )
+  } catch (error) {
+    console.log(error)
+  }
+}
 /**
  * @description Backend call function which is used when Worker or Business sends BusinessContract
  * request to Agency.
@@ -282,4 +293,5 @@ export default {
   acceptBusinessContract,
   updateBusinessContractsForm,
   sendBackBusinessContract,
+  getOwnContracts,
 }
