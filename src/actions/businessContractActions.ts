@@ -30,6 +30,17 @@ export const fetchBusinessContracts = () => async (dispatch: any) => {
 
 /**
  * @function
+ * @description
+ * Retrieves BusinessContracts from database.
+ * This can be used by every user type Worker, Business and Agency.
+ */
+export const fetchAllContracts = () => async (dispatch: any) => {
+  const res = await contractsService.getOwnContracts()
+  dispatch({ type: B_FETCH, data: res })
+}
+
+/**
+ * @function
  * @desc Deletes a business contract by id.
  * @param {string} userId - User Id
  * @param {string} id - BusinessContract Id.

@@ -9,6 +9,7 @@ import FormikField from '../../components/FormField';
 import { IRootState } from '../../utils/store';
 import { createFeedback } from '../../actions/feedBackActions';
 import { useTranslation } from "react-i18next";
+import contractsService from "../../services/contractsService";
 
 const initialValues: Feedback = {
     value: 2,
