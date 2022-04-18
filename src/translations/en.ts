@@ -108,7 +108,7 @@ export default {
   mood_stats: "Feeling stats",
 
   //Report form
-  report_handler: "Raports",
+  report_handler: "Reports",
   report_time: "Report time",
   report_details: "Details",
   steps_completed: "Steps are completed - you are finished",
@@ -130,6 +130,16 @@ export default {
   fill_work_title: "Fill work title",
   fill_report_title: "Fill report title",
   fill_report_details: "Fill report details",
+
+  //Reports page
+  reports_not_found: "No reports found",
+  report_title: 'Report title',
+  report_worker_info: 'Worker info',
+  report_answer_button: 'Reply',
+  
+  //ReportReply page
+  report_reply_title: 'Reply to report:',
+  report_reply_answer: 'Reply:',
 
   //Mood form
   your_mood: "Your mood",

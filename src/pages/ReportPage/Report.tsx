@@ -9,12 +9,26 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { CardMedia, Grid } from '@mui/material';
+import { Button, CardMedia, Grid } from '@mui/material';
 import banner from '../../assets/form-banner.jpg';
 import ReactPlayer from 'react-player';
-
+import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { setReport } from '../../actions/reportActions'
 const Report: React.FC<any> = ({ report }) => {
   const classes = useStyles();
+  const { t } = useTranslation()
+  const history = useHistory()
+  const dispatch = useDispatch()
+  //console.log('report.date: ', report.date)
+  const localizedDate = report.date ? (new Date(report.date)).toLocaleString() : null;
+
+  const handleAnswer = (reportId: any) => {
+    console.log('Vastaa: ',reportId)
+    dispatch(setReport(report))
+    history.push(`/reports/answer`);
+  }
 
   return (
     <div className={classes.root}>
@@ -31,7 +45,7 @@ const Report: React.FC<any> = ({ report }) => {
           </div>
           <div className={classes.column}>
             <Typography className={classes.secondaryHeading}>
-              {report.date} | {report.status}
+              {localizedDate} | {report.status}
             </Typography>
           </div>
         </AccordionSummary>
@@ -39,7 +53,7 @@ const Report: React.FC<any> = ({ report }) => {
           <div className={classes.column} style={{ marginRight: 16 }}>
             <div>
               <Typography variant="body1" className={classes.body1}>
-                 Title
+                 {t('report_title')}
               </Typography>
               <Typography variant="body2" className={classes.body2}>
                 {report.title}
@@ -47,7 +61,7 @@ const Report: React.FC<any> = ({ report }) => {
             </div>
             <div style={{ marginTop: 16 }}>
               <Typography variant="body1" className={classes.body1}>
-                Worker Info
+                {t('report_worker_info')}
               </Typography>
               <Typography variant="body2" className={classes.body2}>
                 {report.user.name}
@@ -61,7 +75,7 @@ const Report: React.FC<any> = ({ report }) => {
             </div>
             <div>
               <Typography variant="body1" className={classes.body1}>
-                Report Details
+                {t('report_details')}
               </Typography>
               <Typography variant="body2" className={classes.body2}>
                 {report.details}
@@ -73,7 +87,9 @@ const Report: React.FC<any> = ({ report }) => {
               <CardMedia
                 className={classes.media}
                 image={report.fileUrl ? report.fileUrl : banner}
-                title="Paella dish"
+                sx={{
+                  marginTop: '2em'
+                }}
               />
             )}
             {report.fileType === 'video' && (
@@ -89,6 +105,17 @@ const Report: React.FC<any> = ({ report }) => {
               </Grid>
             )}
           </div>
+          <Button
+            variant="contained"
+            onClick={() => handleAnswer(report._id)}
+            sx = {{
+              marginTop: '1em',
+              background: '#EB5A00',
+              color: 'white',
+            }}
+          >
+            {t('report_answer_button')}
+          </Button>
         </AccordionDetails>
       </Accordion>
     </div>

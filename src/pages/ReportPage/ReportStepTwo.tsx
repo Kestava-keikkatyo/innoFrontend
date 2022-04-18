@@ -10,16 +10,23 @@ import { Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { setReport } from '../../actions/reportActions';
 import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react'
+
 const ReportStepTwo = () => {
   const { currentReport } = useSelector((state: any) => state.report);
   const [selectedDate, setSelectedDate] = React.useState(new Date()); // new Date() returns current date
   const dispatch = useDispatch();
   const { t } = useTranslation()
   const handleDateChange = (date: any) => {
-    console.log('Date', date);
+    console.log('handleDateChange: ', date);
     setSelectedDate(date);
-    dispatch(setReport({ ...currentReport, date: date.toLocaleString() })); // convert date to the format: "30/07/2021, 19:28:40"
+    dispatch(setReport({ ...currentReport, date: date })); 
   };
+
+  useEffect(() => {
+    console.log('ReportStepTwo effect')
+    dispatch(setReport({ ...currentReport, date: Date() })); 
+  }, [])
 
   console.log('selectedDate', selectedDate);
 

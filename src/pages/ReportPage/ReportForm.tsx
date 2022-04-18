@@ -165,6 +165,8 @@ const ReportForm = () => {
   };
 
   const handleFinnish = async () => {
+    console.log('currentReport: ', currentReport)
+    
     setActiveStep(steps.length);
 
     if (currentReport.date === '') {

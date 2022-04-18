@@ -31,7 +31,7 @@ const ReportsPage: React.FC<any> = () => {
           <Report key={report._id} report={report} />
         ))
       ) : (
-        <div>No reports found</div>
+        <div>{t('reports_not_found')}</div>
       )}
     </Container>
   );

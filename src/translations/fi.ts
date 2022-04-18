@@ -111,7 +111,7 @@ export default {
   report_details: "Lisätiedot",
   steps_completed: "Valmista",
   reports: "Raportit",
-  report: "Raportit",
+  report: "Raportti",
 
   //Report step one
   select_report_handler: "Valitse raportin vastaanottaja",
@@ -127,6 +127,16 @@ export default {
   fill_work_title: "Tehtävänimike",
   fill_report_title: "Raportin otsikko",
   fill_report_details: "Raportin yksityiskohdat",
+
+  //Reports page
+  reports_not_found: "Raportteja ei löytynyt",
+  report_title: 'Otsikko',
+  report_worker_info: 'Työntekijän tiedot',
+  report_answer_button: 'Vastaa',
+
+  //ReportReply page
+  report_reply_title: 'Vastaus raporttiin:',
+  report_reply_answer: 'Vastaus:',
 
   //Mood form
   your_mood: "Fiiliksesi",
