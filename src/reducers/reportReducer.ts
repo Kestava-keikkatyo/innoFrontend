@@ -14,6 +14,7 @@ export const initialReport: Report = {
     title: "",
     details: "",
     receiver: "",
+    user: "",
     date: "",
     fileUrl: "",
     fileType: "",

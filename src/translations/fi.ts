@@ -135,8 +135,11 @@ export default {
   report_answer_button: 'Vastaa',
 
   //ReportReply page
-  report_reply_title: 'Vastaus raporttiin:',
-  report_reply_answer: 'Vastaus:',
+  report_reply_title: 'Vastaus raporttiin',
+  report_reply_answer: 'Vastaus',
+  report_reply_send: 'Lähetä',
+  report_reply_sent_notification: 'Vastaus lähetetty',
+  report_reply_reply_missing: 'Vastaus puuttuu!',
 
   //Mood form
   your_mood: "Fiiliksesi",

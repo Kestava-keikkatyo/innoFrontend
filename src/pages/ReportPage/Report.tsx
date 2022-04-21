@@ -9,7 +9,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Button, CardMedia, Grid } from '@mui/material';
+import { Box, Button, CardMedia, Grid } from '@mui/material';
 import banner from '../../assets/form-banner.jpg';
 import ReactPlayer from 'react-player';
 import { useTranslation } from 'react-i18next';
@@ -21,7 +21,6 @@ const Report: React.FC<any> = ({ report }) => {
   const { t } = useTranslation()
   const history = useHistory()
   const dispatch = useDispatch()
-  //console.log('report.date: ', report.date)
   const localizedDate = report.date ? (new Date(report.date)).toLocaleString() : null;
 
   const handleAnswer = (reportId: any) => {
@@ -44,8 +43,13 @@ const Report: React.FC<any> = ({ report }) => {
             </Typography>
           </div>
           <div className={classes.column}>
-            <Typography className={classes.secondaryHeading}>
-              {localizedDate} | {report.status}
+            <Typography display='inline' sx={{color: 'text.secondary', whiteSpace: 'pre'}}>{localizedDate} | </Typography>
+            <Typography 
+              display='inline'
+              sx={
+                report.status==='pending' ? {color: 'warning.main'}: {color: 'success.main'}
+            }> 
+              {report.status}
             </Typography>
           </div>
         </AccordionSummary>
@@ -77,14 +81,15 @@ const Report: React.FC<any> = ({ report }) => {
               <Typography variant="body1" className={classes.body1}>
                 {t('report_details')}
               </Typography>
-              <Typography variant="body2" className={classes.body2}>
+              <Typography paragraph variant="body2" className={classes.body2} sx={{whiteSpace: 'pre-wrap'}}>
                 {report.details}
               </Typography>
             </div>
           </div>
-          <div className={classes.column}>
+          <Box className={classes.column} sx={{paddingBottom: '2em'}}>
             {report.fileType === 'image' && (
               <CardMedia
+                component='img'
                 className={classes.media}
                 image={report.fileUrl ? report.fileUrl : banner}
                 sx={{
@@ -104,7 +109,11 @@ const Report: React.FC<any> = ({ report }) => {
                 />
               </Grid>
             )}
-          </div>
+          </Box>
+          
+          {/*Jos raporttin ei ole vielä vastattu (status = pending), näytettän vastausnappi. Muutoin vastaus. */}
+          {report.status === 'pending' ? 
+          (
           <Button
             variant="contained"
             onClick={() => handleAnswer(report._id)}
@@ -116,6 +125,23 @@ const Report: React.FC<any> = ({ report }) => {
           >
             {t('report_answer_button')}
           </Button>
+          ) : (
+            report.reply ? 
+              <Box 
+                sx={{
+                  borderTop: 1,
+                  borderColor: 'grey.500'
+              }}>
+                <Typography variant="body1" className={classes.body1}>
+                  {t('report_reply_answer')}
+                </Typography>
+                <Typography variant="body2" className={classes.body2} sx={{whiteSpace: 'pre-wrap'}}>
+                  { report.reply }
+                </Typography>
+              </Box>
+              : 
+              <Box sx={{color: 'error.main'}}>{t('report_reply_reply_missing')}</Box>
+          )}
         </AccordionDetails>
       </Accordion>
     </div>
@@ -142,9 +168,9 @@ const useStyles = makeStyles((theme: Theme) =>
       width: 20,
     },
     media: {
-      height: 0,
+      //height: 0,
       //border: '1px solid red',
-      paddingTop: '56.25%', // 16:9
+      //paddingTop: '56.25%', // 16:9
       borderRadius: 5,
     },
     playerWrapper: {

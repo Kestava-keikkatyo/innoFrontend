@@ -40,6 +40,18 @@ const postReport = async (report: Report) => {
 
 /**
  * @function
+ * @desc Sets the reply for a report.
+ * @param {string} id
+ * @param {string} reply
+ */
+ const replyReport = async (id: string, reply: string) => {
+  console.log('reportService: replyReport: reply: ', reply)
+   
+  return await axios.put(`${baseUrl}/report/reply/${id}`, {reply: reply}, authHeader());
+};
+
+/**
+ * @function
  * @desc fetchReportById
  */
 const fetchReportById = async (id: string) => {
@@ -63,6 +75,7 @@ const fetchAllReports = async () => {
 export default {
   getReports,
   postReport,
+  replyReport,
   fetchReportById,
   fetchAllReports,
 };

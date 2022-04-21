@@ -113,6 +113,7 @@ export interface Report {
   details: string;
   date: string;
   receiver: string;
+  user: string;
   fileUrl: string;
   fileType: string;
   name: string;

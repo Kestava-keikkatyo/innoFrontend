@@ -136,10 +136,13 @@ export default {
   report_title: 'Report title',
   report_worker_info: 'Worker info',
   report_answer_button: 'Reply',
-  
+
   //ReportReply page
-  report_reply_title: 'Reply to report:',
-  report_reply_answer: 'Reply:',
+  report_reply_title: 'Reply to report',
+  report_reply_answer: 'Reply',
+  report_reply_send: 'Send',
+  report_reply_sent_notification: 'Reply sent',
+  report_reply_reply_missing: 'Reply missing!',
 
   //Mood form
   your_mood: "Your mood",

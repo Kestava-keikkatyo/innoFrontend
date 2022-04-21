@@ -33,6 +33,18 @@ export const submitReport = (report: Report) => async (dispatch: any) => {
   return res.data;
 };
 
+/**
+ * @function
+ * @desc This function sets reply for a report
+ * @param {string} id
+ * @param {string} reply
+ */
+ export const replyReport = (id: string, reply: string) => async (dispatch: any) => {
+  const res = await reportService.replyReport(id, reply);
+  console.log('Action: replyReport response: ',res)  
+  return res.data;
+};
+
 export const fetchReportById = (id: string) => async (dispatch: any) => {
   try {
     const data = await reportService.fetchReportById(id);

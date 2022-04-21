@@ -18,7 +18,7 @@ import { initialReport } from '../../reducers/reportReducer';
 import { setReport, submitReport } from '../../actions/reportActions';
 import fileService from '../../services/fileService';
 import { useTranslation } from 'react-i18next'
-
+import { setFiles } from '../../actions/fileActions';
 
 
 const ColorlibConnector = withStyles({
@@ -177,7 +177,7 @@ const ReportForm = () => {
 
     if (currentFiles.files[0] !== null) {
       const res: any = await fileService.postFile(currentFiles.files[0]);
-
+      dispatch(setFiles([null, null, null])); //Tyhjennä tiedostolista lähetyksen jälkeen
       const copyOfCurrentReport = {
         ...currentReport,
         fileUrl: res.data.fileUrl,
