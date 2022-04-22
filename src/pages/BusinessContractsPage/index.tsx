@@ -21,7 +21,10 @@ import ListAccordionWaiting from './ListAccordionWaiting';
 import ListAccordionDone from './ListAccordionDone';
 import ListAccordionSent from './ListAccordionSent';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchBusinessContracts } from '../../actions/businessContractActions';
+import { 
+  fetchBusinessContracts, 
+  fetchBusinessContractsAsTarget
+} from '../../actions/businessContractActions';
 import { IRootState } from '../../utils/store';
 import AgenciesList from './AgenciesList';
 import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
@@ -98,15 +101,19 @@ const BusinessContractsPage = () => {
   const sent: any = [];
 
   useEffect(() => {
-    dispatch(fetchBusinessContracts());
+    dispatch(fetchBusinessContractsAsTarget());
+    // dispatch(fetchBusinessContracts());
   }, [dispatch]);
+  console.log({businessContract})
 
   contracts.map((contract: any) => {
-    if (contract.pendingContracts) {
+    console.log({contract})
+    // if (contract.pendingContracts) {
+    if (contract.status === "pending") {
       pending.push(contract);
     } else if (contract.requestContracts) {
       waiting.push(contract);
-    } else if (contract.madeContracts) {
+    } else if (contract.status === "signed") {
       ready.push(contract);
     } else if (contract.receivedContracts) {
       sent.push(contract);

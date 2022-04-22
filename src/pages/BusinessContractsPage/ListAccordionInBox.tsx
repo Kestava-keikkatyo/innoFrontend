@@ -33,6 +33,7 @@ import pdfFonts from 'pdfmake/build/vfs_fonts.js';
 import htmlToPdfmake from 'html-to-pdfmake';
 import ReactDOMServer from 'react-dom/server';
 import Form from '../FormsPage/Form';
+import { getFormById } from '../../actions/formActions';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 
 import SendIcon from '@mui/icons-material/Send';
@@ -54,9 +55,13 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
     (state: IRootState) => state.businessContractForm
   );
 
-  const handleEsitteleLomaketta = (businessContractFormId: any) => {
-    dispatch(getByIdAndSetBusinessContractForm(businessContractFormId));
-    history.push(`/business-contracts/business-contract-preview`);
+  // const handleEsitteleLomaketta = (businessContractFormId: any) => {
+  const handleEsitteleLomaketta = (formId: any) => {
+    // dispatch(getByIdAndSetBusinessContractForm(businessContractFormId));
+    // history.push(`/business-contracts/business-contract-preview`);
+    dispatch(getFormById(formId));
+    history.push({ pathname: '/forms/preview' });
+
   };
 
   const handleTäytäTaiMuokkaaLomaketta = async (
@@ -82,13 +87,18 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
     }
   };
 
-  const loadAndSendContract = (agencyId: any, contractId: any) => {
+  const loadAndSendContract = (contractId: any) => {
+    let status = "signed"
     dispatch(
       sendBusinessContract(
-        agencyId,
         contractId,
-        currentBusinessContractForm._id
+        status
       )
+      // sendBusinessContract(
+      //   agencyId,
+      //   contractId,
+      //   currentBusinessContractForm._id
+      // )
     );
     dispatch(setAlert('Business contract form sent!', severity.Success));
   };
@@ -132,14 +142,15 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
               id="panel1a-header"
             >
               <div className={classes.logoColumn}>
-                <Avatar
+                {/* <Avatar
                   alt="Remy Sharp"
                   src={contract.agency.profile.profilePicture}
-                />
+                /> */}
               </div>
               <div className={classes.column}>
                 <Typography className={classes.heading}>
-                  {contract.agency.name}
+                  {/* {contract.agency.name} */}
+                  {contract.creator.name}
                 </Typography>
               </div>
               <div className={classes.column}>
@@ -151,7 +162,8 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
             <AccordionDetails>
               <div className={classes.info}>
                 <Typography style={{ margin: '10px 5px' }}>
-                  Email: {contract.agency.email}
+                  {/* Email: {contract.agency.email} */}
+                  Email: contract.agency.email
                 </Typography>
                 <Divider />
                 <Typography style={{ margin: '10px 5px' }}>
@@ -187,7 +199,8 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
               <Tooltip title="Esikatsele Lomakettä" placement="top" arrow>
                 <IconButton
                   onClick={() =>
-                    handleEsitteleLomaketta(contract.pendingContracts.formId)
+                    // handleEsitteleLomaketta(contract.pendingContracts.formId)
+                    handleEsitteleLomaketta(contract.form2)
                   }
                   size="large">
                   <VisibilityIcon />
@@ -224,7 +237,9 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
                 <IconButton
                   style={{ color: '#eb5a00' }}
                   onClick={() =>
-                    loadAndSendContract(contract.agency._id, contract._id)
+                    // loadAndSendContract(contract.agency._id, contract._id)
+                    // loadAndSendContract(contract.creator._id, contract.form2)
+                    loadAndSendContract(contract._id)
                   }
                   size="large">
                   <SendIcon />

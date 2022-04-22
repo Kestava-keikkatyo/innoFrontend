@@ -30,6 +30,16 @@ export const fetchBusinessContracts = () => async (dispatch: any) => {
 
 /**
  * @function
+ * @description
+ * Retrieves BusinessContracts where user is the target from database.
+ */
+export const fetchBusinessContractsAsTarget = () => async (dispatch: any) => {
+  const res = await contractsService.fetchBusinessContractsAsTarget()
+  dispatch({ type: B_FETCH, data: res })
+}
+
+/**
+ * @function
  * @desc Deletes a business contract by id.
  * @param {string} userId - User Id
  * @param {string} id - BusinessContract Id.
@@ -85,11 +95,15 @@ export const addBusinessContractWorkerBusiness = (contractId: string, agencyId: 
  * @param {string} contractId BusinessContract Id
  * @param {string} form Forms Id
  */
-export const sendBusinessContract = (agencyId: string, contractId: string, form: string) => async (dispatch: any) => {
-  const res = await contractsService.sendBusinessContract(contractId, form)
-  const r = await contractsService.fetchBusinessContracts()
+// export const sendBusinessContract = (agencyId: string, contractId: string, form: string, status: string) => async (dispatch: any) => {
+export const sendBusinessContract = (contractId: string, status: string) => async (dispatch: any) => {
+  // const res = await contractsService.sendBusinessContract(contractId, form)
+  const res = await contractsService.signAgreement(contractId, status)
+  // const r = await contractsService.fetchBusinessContracts()
+  const r = await contractsService.fetchBusinessContractsAsTarget()
   if (res && res.status === 200) {
-    await notificationsService.updateNotifications(agencyId, "Asiakassopimus on lähetetty takaisin sinulle.")
+    // await notificationsService.updateNotifications(agencyId, "Asiakassopimus on lähetetty takaisin sinulle.")
+    console.log({res})
     dispatch({ type: B_SEND, data: res.data })
     dispatch({ type: B_FETCH, data: r })
   }

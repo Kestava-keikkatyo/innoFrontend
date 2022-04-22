@@ -155,6 +155,34 @@ const fetchBusinessContracts = async () => {
   }
 }
 
+const fetchBusinessContractsAsTarget = async () => {
+  try {
+    const res = await axios.get(
+      `${baseUrl}/agreement/target`,
+      authHeader()
+    )
+    return res.data
+  } catch (error) {
+    return Promise.reject(error.response)
+  }
+}
+
+const signAgreement = async (id: string, status: string) => {
+  try {
+    console.log({status})
+    console.log(authHeader().headers)
+    const res = await axios.put(
+      `${baseUrl}/agreement/sign/${id}/${status}`,
+      {},
+      authHeader()
+    )
+    console.log({res})
+    return res.data
+  } catch (error) {
+    return Promise.reject(error.response)
+  }
+}
+
 const updateBusinessContract = async (id: string) => {
   try {
     return await axios.put(
@@ -273,6 +301,8 @@ export default {
   declineBusinessContract,
   refuseBusinessContractById,
   fetchBusinessContracts,
+  fetchBusinessContractsAsTarget,
+  signAgreement,
   updateBusinessContract,
   postWorkContract,
   fetchWorkContracts,
