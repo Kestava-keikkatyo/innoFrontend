@@ -291,7 +291,7 @@ const App: React.FC = () => {
             </PrivateRoute>
             <PrivateRoute
               path="/forms/preview"
-              roles={[roles.Business, roles.Agency]}
+              roles={[roles.Business, roles.Agency, roles.Worker]}
             >
               <FormPreviewPage />
             </PrivateRoute>
