@@ -21,7 +21,8 @@ const authHeader = () => {
 const getAllAgencies = async () => {
   try {
     const res = await axios.get(
-      `${baseUrl}/agencies/all`,
+      // `${baseUrl}/agencies/all`,
+      `${baseUrl}/user/getByUserType/agency/name=a`,
       authHeader()
     )
     return res

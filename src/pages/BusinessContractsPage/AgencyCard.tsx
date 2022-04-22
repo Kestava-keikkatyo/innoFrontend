@@ -32,6 +32,8 @@ const AgencyCard: React.FC<any> = ({ agency }) => {
     setExpanded(!expanded);
   };
 
+  // console.log({agency})
+
   const [displayModal, setDisplayModal] = React.useState(false);
 
   const handleCooperationOpen = () => {
@@ -50,20 +52,21 @@ const AgencyCard: React.FC<any> = ({ agency }) => {
     }
   };
 
-  const contractId = agency.businessContracts[0];
-  const profilePic = agency.profile ? agency.profile.profilePicture : ''
+  // const contractId = agency.businessContracts[0];
+  const contractId = 0
+  // const profilePic = agency.profile ? agency.profile.profilePicture : ''
   return (
     <div>
       <Card className={classes.root} onClick={handleExpandClick}>
         <CardHeader
-          avatar={
-            <Avatar
-              aria-label="recipe"
-              className={classes.avatar}
-              src={profilePic}
-              alt="profilePicture"
-            />
-          }
+          // avatar={
+          //   <Avatar
+          //     aria-label="recipe"
+          //     className={classes.avatar}
+          //     src={profilePic}
+          //     alt="profilePicture"
+          //   />
+          // }
           action={
             <IconButton
               className={clsx(classes.expand, {
@@ -115,12 +118,12 @@ const AgencyCard: React.FC<any> = ({ agency }) => {
           </CardContent>
         </Collapse>
       </Card>
-      <CooperationInfoModal
+      {/* <CooperationInfoModal
         displayModal={displayModal}
         agency={agency}
         contractId={contractId}
         closeModal={() => setDisplayModal(false)}
-      />
+      /> */}
     </div>
   );
 };
