@@ -97,24 +97,20 @@ const BusinessContractsPage = () => {
   const contracts = businessContract;
   const pending: any = [];
   const waiting: any = [];
-  const ready: any = [];
+  const signed: any = [];
   const sent: any = [];
 
   useEffect(() => {
     dispatch(fetchBusinessContractsAsTarget());
-    // dispatch(fetchBusinessContracts());
   }, [dispatch]);
-  console.log({businessContract})
 
   contracts.map((contract: any) => {
-    console.log({contract})
-    // if (contract.pendingContracts) {
     if (contract.status === "pending") {
       pending.push(contract);
     } else if (contract.requestContracts) {
       waiting.push(contract);
     } else if (contract.status === "signed") {
-      ready.push(contract);
+      signed.push(contract);
     } else if (contract.receivedContracts) {
       sent.push(contract);
       console.log(sent);
@@ -206,7 +202,7 @@ const BusinessContractsPage = () => {
             className={classes.tab}
             label={matches ? ' ' : t('done_contracts')}
             icon={
-              <Badge badgeContent={ready.length} color="secondary">
+              <Badge badgeContent={signed.length} color="secondary">
                 {matches ? (
                   <Tooltip title="Valmiit sopimukset" placement="top" arrow>
                     <AllInboxIcon />
@@ -234,7 +230,7 @@ const BusinessContractsPage = () => {
         <ListAccordionWaiting contracts={waiting} />
       </TabPanel>
       <TabPanel value={value} index={4}>
-        <ListAccordionDone contracts={ready} />
+        <ListAccordionDone contracts={signed} />
       </TabPanel>
     </Container>
   );
