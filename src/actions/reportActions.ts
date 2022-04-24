@@ -16,11 +16,26 @@ export const setReport = (report: Report) => async (dispatch: any) => {
 
 /**
  * @function
- * @desc Fetches all reports.
+ * @desc Fetches all reports available to user.
  */
 export const fetchReports = () => async (dispatch: any) => {
   const res = await reportService.getReports();
   dispatch({ type: SET_REPORTS, data: res.data });
+};
+
+/**
+ * @function
+ * @desc Fetches users own reports.
+ */
+ export const getMyReports = () => async (dispatch: any) => {
+  try{
+    const res = await reportService.getMyReports();
+    dispatch({ type: SET_REPORTS, data: res.data });
+  } catch (error){
+    console.log('Error getting own reports: ', error)
+    dispatch({ type: SET_REPORTS, data: []});
+  }
+  
 };
 
 /**
@@ -62,4 +77,8 @@ export const fetchAllReports = () => async (dispatch: any) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const clearReports = () => async (dispatch: any) => { 
+  dispatch({ type: SET_REPORTS, data: [] });
 };

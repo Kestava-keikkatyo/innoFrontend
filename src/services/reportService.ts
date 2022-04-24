@@ -31,6 +31,18 @@ const getReports = async () => {
 
 /**
  * @function
+ * @desc Fetches users own reports.
+ */
+ const getMyReports = async () => {
+  try {
+    return await axios.get(`${baseUrl}/report/myReports`, authHeader());
+  } catch (error) {
+    return Promise.reject(error.response);
+  }
+};
+
+/**
+ * @function
  * @desc Posts new report to the route.
  * @param {Report} report new Report object
  */
@@ -74,6 +86,7 @@ const fetchAllReports = async () => {
 };
 export default {
   getReports,
+  getMyReports,
   postReport,
   replyReport,
   fetchReportById,

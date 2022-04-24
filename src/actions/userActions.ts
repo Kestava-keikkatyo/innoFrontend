@@ -16,6 +16,7 @@ import {
 } from "../types/state";
 import { Credentials, severity } from "../types/types";
 import i18next from "i18next";
+import { clearReports } from "./reportActions";
 
 /**
  * Logs user in
@@ -89,6 +90,7 @@ export const signup = (user: SignUpUser) => {
 export const logout = () => {
   return async (dispatch: any) => {
     logoutUser();
+    dispatch(clearReports())
     dispatch({ type: LOGOUT });
     history.push("/");
     dispatch(setAlert(i18next.t("logged_out")));

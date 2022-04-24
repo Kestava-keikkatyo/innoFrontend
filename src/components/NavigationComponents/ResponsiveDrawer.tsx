@@ -247,11 +247,11 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
           )}
           {role === roles.Worker && (
             <>
-              <ListItem button component={Link} to="/report" onClick={handleClick}>
+              <ListItem button component={Link} to="/reports" onClick={handleClick}>
                 <ListItemIcon>
                   <ErrorOutlineIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("report")} />
+                <ListItemText primary={t("reports")} />
               </ListItem>
               <Divider />
               <ListItem button component={Link} to="/faq" onClick={handleClick}>

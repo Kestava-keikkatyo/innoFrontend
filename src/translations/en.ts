@@ -132,10 +132,13 @@ export default {
   fill_report_details: "Fill report details",
 
   //Reports page
-  reports_not_found: "No reports found",
+  reports_not_found: "No reports found.",
+  reports_you_have_no_reports: 'You have not made any reports.',
   report_title: 'Report title',
   report_worker_info: 'Worker info',
   report_answer_button: 'Reply',
+  report_status_pending: 'Waiting for reply',
+  report_status_replied: 'Replied',
 
   //ReportReply page
   report_reply_title: 'Reply to report',

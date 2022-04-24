@@ -3,35 +3,64 @@ import { Theme } from '@mui/material/styles';
 import makeStyles from '@mui/styles/makeStyles';
 import createStyles from '@mui/styles/createStyles';
 import Typography from '@mui/material/Typography';
-import { Box, Container } from '@mui/material';
+import { Box, Container, Fab, Grid } from '@mui/material';
 import Report from './Report';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchReports } from '../../actions/reportActions';
+import { fetchReports, getMyReports } from '../../actions/reportActions';
 import { useTranslation } from 'react-i18next'
+import { Link, useHistory } from 'react-router-dom';
+import { Add } from '@mui/icons-material';
+import { roles } from "../../types/types"
 
 const ReportsPage: React.FC<any> = () => {
-
+  const user: any = useSelector((state: any) => state.user);  
   const reports: any = useSelector((state: any) => state.report.reports);
   const classes = useStyles();
   const dispatch = useDispatch();
   const { t } = useTranslation()
+  const history = useHistory();
 
   useEffect(() => {
-    dispatch(fetchReports());
+    //TODO hae omat raportit jos worker
+    if (user.data.role === roles.Worker){
+      dispatch(getMyReports());
+    } else {
+      dispatch(fetchReports());
+    }
+    
   }, [dispatch]);
+
+  const handleNewReport = () => {
+    history.push('/report')
+  }
+
   return (
     <Container maxWidth="lg" className={classes.container}>
-      <Box style={{ paddingTop: 10, paddingBottom: 10 }}>
-        <Typography variant="h4" color="primary">
-          {t("reports")}
-        </Typography>
-      </Box>
+      <Grid 
+      container
+      sx= {{ paddingTop: '1em', paddingBottom: '1em' }}
+      >
+        <Box sx={{ paddingRight: '2em' }}>
+          <Typography variant="h4" color="primary">
+            {t("reports")}
+          </Typography>
+        </Box>
+        {user.data.role === roles.Worker ? (
+          <Fab size="medium" color="primary" aria-label="add" onClick={handleNewReport}>
+            <Add />
+          </Fab>    
+        ) : ('') }
+      </Grid>
       {reports.length ? (
         reports.map((report: any) => (
           <Report key={report._id} report={report} />
         ))
       ) : (
-        <div>{t('reports_not_found')}</div>
+        user.data.role === roles.Worker ? (
+          <Typography>{t('reports_you_have_no_reports')}</Typography>          
+        ) : (
+        <Typography>{t('reports_not_found')}</Typography>
+        )
       )}
     </Container>
   );

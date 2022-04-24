@@ -14,21 +14,25 @@ import banner from '../../assets/form-banner.jpg';
 import ReactPlayer from 'react-player';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setReport } from '../../actions/reportActions'
+import { roles } from "../../types/types"
+
 const Report: React.FC<any> = ({ report }) => {
   const classes = useStyles();
   const { t } = useTranslation()
   const history = useHistory()
   const dispatch = useDispatch()
+  const role: any = useSelector((state: any) => state.user.data.role);  
+  
   const localizedDate = report.date ? (new Date(report.date)).toLocaleString() : null;
 
   const handleAnswer = (reportId: any) => {
-    console.log('Vastaa: ',reportId)
     dispatch(setReport(report))
     history.push(`/reports/answer`);
   }
-
+  console.log('report: ', report)
+  const statusColor = report.status==='pending' ? 'warning.main' : 'success.main'
   return (
     <div className={classes.root}>
       <Accordion>
@@ -36,22 +40,26 @@ const Report: React.FC<any> = ({ report }) => {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1c-content"
           id="panel1c-header"
-        >
-          <div className={classes.column}>
-            <Typography className={classes.heading}>
-              {report.title}
-            </Typography>
-          </div>
-          <div className={classes.column}>
-            <Typography display='inline' sx={{color: 'text.secondary', whiteSpace: 'pre'}}>{localizedDate} | </Typography>
-            <Typography 
-              display='inline'
-              sx={
-                report.status==='pending' ? {color: 'warning.main'}: {color: 'success.main'}
-            }> 
-              {report.status}
-            </Typography>
-          </div>
+      >
+          <Typography sx={{ width: '33%'}}>
+            {report.title}
+          </Typography>
+        
+          <Typography 
+            display='inline' 
+            sx={{color: 'text.secondary', width: '33%'}}
+          >
+            {localizedDate}
+          </Typography>
+          <Typography 
+            display='inline'
+            sx={{color: statusColor, width: '33%'}}
+          > 
+            {report.status === 'pending' ?
+              t('report_status_pending') :
+              t('report_status_replied')}
+          </Typography>
+        
         </AccordionSummary>
         <AccordionDetails className={classes.details}>
           <div className={classes.column} style={{ marginRight: 16 }}>
@@ -86,6 +94,7 @@ const Report: React.FC<any> = ({ report }) => {
               </Typography>
             </div>
           </div>
+          {report.fileType !== '' ?
           <Box className={classes.column} sx={{paddingBottom: '2em'}}>
             {report.fileType === 'image' && (
               <CardMedia
@@ -93,7 +102,8 @@ const Report: React.FC<any> = ({ report }) => {
                 className={classes.media}
                 image={report.fileUrl ? report.fileUrl : banner}
                 sx={{
-                  marginTop: '2em'
+                  marginTop: '2em',
+                  border: 1,
                 }}
               />
             )}
@@ -110,9 +120,10 @@ const Report: React.FC<any> = ({ report }) => {
               </Grid>
             )}
           </Box>
+          : '' }
           
-          {/*Jos raporttin ei ole vielä vastattu (status = pending), näytettän vastausnappi. Muutoin vastaus. */}
-          {report.status === 'pending' ? 
+          {/*Jos user on Agency tai Business ja raporttin ei ole vielä vastattu (status = pending), näytettän vastausnappi. Muutoin vastaus. */}
+          {report.status === 'pending' && (role === roles.Agency || role === roles.Business ) ? 
           (
           <Button
             variant="contained"
@@ -139,8 +150,7 @@ const Report: React.FC<any> = ({ report }) => {
                   { report.reply }
                 </Typography>
               </Box>
-              : 
-              <Box sx={{color: 'error.main'}}>{t('report_reply_reply_missing')}</Box>
+              : ''
           )}
         </AccordionDetails>
       </Accordion>

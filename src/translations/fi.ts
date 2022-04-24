@@ -129,10 +129,13 @@ export default {
   fill_report_details: "Raportin yksityiskohdat",
 
   //Reports page
-  reports_not_found: "Raportteja ei löytynyt",
+  reports_not_found: "Raportteja ei löytynyt.",
+  reports_you_have_no_reports: 'Et ole tehnyt yhtään raporttia.',
   report_title: 'Otsikko',
   report_worker_info: 'Työntekijän tiedot',
   report_answer_button: 'Vastaa',
+  report_status_pending: 'Odotetaan vastausta',
+  report_status_replied: 'Vastattu',
 
   //ReportReply page
   report_reply_title: 'Vastaus raporttiin',
