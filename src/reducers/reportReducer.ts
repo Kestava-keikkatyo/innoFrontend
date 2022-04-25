@@ -13,7 +13,8 @@ import { Report } from '../types/types'
 export const initialReport: Report = {
     title: "",
     details: "",
-    receiver: "",
+    agency: "",
+    business: "",
     user: "",
     date: "",
     fileUrl: "",

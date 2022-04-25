@@ -32,7 +32,32 @@ const Report: React.FC<any> = ({ report }) => {
     history.push(`/reports/answer`);
   }
   console.log('report: ', report)
+
+
   const statusColor = report.status==='pending' ? 'warning.main' : 'success.main'
+  /*
+  Määritetään statusviesti joka kuvaa onko raporttiin 
+  vastattu, 
+  vastattu osittain(kahdesta vastaanottajasta toinen vastannut) 
+  vai odottaako se vastausta.
+  */
+  let statusMessage = ""
+  if (report.status ==='pending') {
+    //Kukaan ei ole vastannut raporttiin
+    statusMessage = t('report_status_pending')
+  } else if (report.agency !== "" && report.business !== ""){
+    //Raportilla on kaksi vastaanottajaa
+    if (report.agencyReply && report.businessReply) {
+      //Molemmat vastaanottajat ovat vastanneet
+      statusMessage = t('report_status_replied')
+    } else {
+      //Vain toinen vastaanottaja on vastannut
+      statusMessage = t('report_status_partially_replied')
+    }
+  } else {
+    //Raportilla on vain yksi vastaanottaja ja tämä on vastannut
+    statusMessage = t('report_status_replied')
+  }
   return (
     <div className={classes.root}>
       <Accordion>
@@ -55,9 +80,7 @@ const Report: React.FC<any> = ({ report }) => {
             display='inline'
             sx={{color: statusColor, width: '33%'}}
           > 
-            {report.status === 'pending' ?
-              t('report_status_pending') :
-              t('report_status_replied')}
+            {statusMessage}
           </Typography>
         
         </AccordionSummary>
@@ -71,20 +94,59 @@ const Report: React.FC<any> = ({ report }) => {
                 {report.title}
               </Typography>
             </div>
-            <div style={{ marginTop: 16 }}>
-              <Typography variant="body1" className={classes.body1}>
-                {t('report_worker_info')}
-              </Typography>
-              <Typography variant="body2" className={classes.body2}>
-                {report.user.name}
-              </Typography>
-              <Typography variant="body2" className={classes.body2}>
-                {report.user.email}
-              </Typography>
-              <Typography variant="body2" className={classes.body2}>
-                {report.user.phoneNumber}
-              </Typography>
-            </div>
+            {role === 'worker' ? 
+              /*Workerille näytetään raportin vastaanottajan/vastaanottajien tiedot. */
+              <div style={{ marginTop: 16 }}>
+                <Typography variant="body1" className={classes.body1}>
+                  {(report.agency !== "" && report.business !== "") 
+                  ? t('report_receiver_info_plural')
+                  : t('report_receiver_info')}
+                </Typography>
+
+                {(report.agency !== "" ) && 
+                <Box>
+                  <Typography display='inline' variant="body2" className={classes.body2}>
+                    {t('agency')}: {" "}
+                  </Typography>
+                  <Typography 
+                    display='inline'
+                    sx={{color: 'secondary.main'}}
+                  > 
+                    {report.agency.name}
+                  </Typography>
+                </Box>}
+
+                {(report.business !== "" ) &&
+                <Box>
+                  <Typography display='inline' variant="body2" className={classes.body2}>
+                    {t('business')}: {" "}
+                  </Typography>
+                  <Typography 
+                    display='inline'
+                    sx={{color: 'secondary.main'}}
+                  > 
+                    {report.business.name}
+                  </Typography>
+                </Box>}
+
+              </div>
+            :
+              /*Agenctylle ja Businekselle näytetään raportin kirjoittajan tiedot.  */
+              <div style={{ marginTop: 16 }}>
+                <Typography variant="body1" className={classes.body1}>
+                  {t('report_worker_info')}
+                </Typography>
+                <Typography variant="body2" className={classes.body2}>
+                  {report.user.name}
+                </Typography>
+                <Typography variant="body2" className={classes.body2}>
+                  {report.user.email}
+                </Typography>
+                <Typography variant="body2" className={classes.body2}>
+                  {report.user.phoneNumber}
+                </Typography>
+              </div>
+            }
             <div>
               <Typography variant="body1" className={classes.body1}>
                 {t('report_details')}
@@ -122,9 +184,54 @@ const Report: React.FC<any> = ({ report }) => {
           </Box>
           : '' }
           
-          {/*Jos user on Agency tai Business ja raporttin ei ole vielä vastattu (status = pending), näytettän vastausnappi. Muutoin vastaus. */}
-          {report.status === 'pending' && (role === roles.Agency || role === roles.Business ) ? 
-          (
+          {report.agencyReply && //Näytetään agencyn vastaus jos semmoinen on
+            <Box 
+              sx={{
+                borderTop: 1,
+                borderColor: 'grey.500',
+                paddingTop: '1em',
+              }}
+            >
+              <Typography display='inline' variant="body1" className={classes.body1}>
+                {t('report_reply_answer')} {t('report_from_agency')}: {' '}
+              </Typography>
+              <Typography 
+                display='inline'
+                sx={{color: 'secondary.main'}}
+              > 
+                {report.agency.name}
+              </Typography>
+              <Typography variant="body2" className={classes.body2} sx={{whiteSpace: 'pre-wrap', marginBottom: '1em'}}>
+                { report.agencyReply }
+              </Typography>
+            </Box>
+            }
+
+          {report.businessReply && //Näytetään busineksen vastaus jos semmoinen on
+            <Box 
+              sx={{
+                borderTop: 1,
+                borderColor: 'grey.500',
+                paddingTop: '1em',
+              }}
+            >
+              <Typography display='inline' variant="body1" className={classes.body1}>
+                {t('report_reply_answer')} {t('report_from_business')}: {' '}
+              </Typography>
+              <Typography 
+                display='inline'
+                sx={{color: 'secondary.main'}}
+              > 
+                {report.business.name}
+              </Typography>
+              <Typography variant="body2" className={classes.body2} sx={{whiteSpace: 'pre-wrap', marginBottom: '1em'}}>
+                { report.businessReply }
+              </Typography>
+            </Box>
+            }
+
+          {/*Jos user on Agency tai Business, näytettän vastausnappi, jos tämä ei ole vielä vastannut raporttiin,. */}
+          {((!report.agencyReply && role === roles.Agency) || (!report.businessReply && role === roles.Business )) && 
           <Button
             variant="contained"
             onClick={() => handleAnswer(report._id)}
@@ -136,22 +243,8 @@ const Report: React.FC<any> = ({ report }) => {
           >
             {t('report_answer_button')}
           </Button>
-          ) : (
-            report.reply ? 
-              <Box 
-                sx={{
-                  borderTop: 1,
-                  borderColor: 'grey.500'
-              }}>
-                <Typography variant="body1" className={classes.body1}>
-                  {t('report_reply_answer')}
-                </Typography>
-                <Typography variant="body2" className={classes.body2} sx={{whiteSpace: 'pre-wrap'}}>
-                  { report.reply }
-                </Typography>
-              </Box>
-              : ''
-          )}
+          }
+          
         </AccordionDetails>
       </Accordion>
     </div>

@@ -117,9 +117,8 @@ export default {
 
   //Report step one
   select_report_handler: "Select report handler",
-  select_report_helper_text:
-    "You can choose both Business and Agency or one of them as a report handler",
-
+  select_report_helper_text:"You can choose both Business and Agency or one of them as a report handler",
+  select_report_handler_clear: "Clear",
   //Report step two
   happened: "When did this happen?",
   date_picker_inline: "Date",
@@ -136,9 +135,14 @@ export default {
   reports_you_have_no_reports: 'You have not made any reports.',
   report_title: 'Report title',
   report_worker_info: 'Worker info',
+  report_receiver_info: 'Recipient info',
+  report_receiver_info_plural: 'Recipient info',
   report_answer_button: 'Reply',
   report_status_pending: 'Waiting for reply',
   report_status_replied: 'Replied',
+  report_status_partially_replied: "Partially replied",
+  report_from_agency: 'from Agency',
+  report_from_business: 'from Business',
 
   //ReportReply page
   report_reply_title: 'Reply to report',

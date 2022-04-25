@@ -40,9 +40,14 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
     setFilterBusinesses(event.target.value);
   };
 
-  const handleSelected = (event: any) => {
+  const handleSelectedAgency = (event: any) => {
     dispatch(
-      setReport({ ...currentReport, receiver: event.target.value })
+      setReport({ ...currentReport, agency: event.target.value })
+    );
+  };
+  const handleSelectedBusiness = (event: any) => {
+    dispatch(
+      setReport({ ...currentReport, business: event.target.value })
     );
   };
 
@@ -56,21 +61,6 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
       </Grid>
       {/* Business grid */}
       <Grid item xs={12} style={{ marginTop: 32 }}>
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <input type="radio" id="agency"/>
-                <label htmlFor="agency">{t('agency')}</label>
-              </td>
-              <td>
-                <input type="radio" id="business"/>
-                <label htmlFor="business">{t('business')}</label>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <br/>
         <Typography>{t('business')}</Typography>
         <SearchBox
           placeholder={t('search_by_name')}
@@ -83,8 +73,11 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
             id="demo-simple-select"
             defaultValue=""
             style={{ maxHeight: 50 }}
-            onChange={handleSelected}
+            onChange={handleSelectedBusiness}
           >
+            <MenuItem value="">
+              <em>{t('select_report_handler_clear')}</em>
+            </MenuItem>
             {businesses
               // Sort alphabetically
               .sort((a: any, b: any) => a.name.localeCompare(b.name))
@@ -114,9 +107,12 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             defaultValue=""
-            onChange={handleSelected}
+            onChange={handleSelectedAgency}
             style={{ maxHeight: 50 }}
           >
+            <MenuItem value="">
+              <em>{t('select_report_handler_clear')}</em>
+            </MenuItem>
             {agencies
               // Sort alphabetically
               .sort((a: any, b: any) => a.name.localeCompare(b.name))

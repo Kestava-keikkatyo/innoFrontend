@@ -115,9 +115,8 @@ export default {
 
   //Report step one
   select_report_handler: "Valitse raportin vastaanottaja",
-  select_report_helper_text:
-    "Voit valita HP-yrityksen tai käyttäjäyrityksen vastaanottamaan raportin.",
-
+  select_report_helper_text: "Voit valita HP-yrityksen ja/tai käyttäjäyrityksen vastaanottamaan raportin.",
+  select_report_handler_clear: "Tyhjennä",
   //Report step two
   happened: "Milloin tämä tapahtui?",
   date_picker_inline: "Päivämäärä",
@@ -133,9 +132,14 @@ export default {
   reports_you_have_no_reports: 'Et ole tehnyt yhtään raporttia.',
   report_title: 'Otsikko',
   report_worker_info: 'Työntekijän tiedot',
+  report_receiver_info: 'Vastaanottajan tiedot',
+  report_receiver_info_plural: 'Vastaanottajien tiedot',
   report_answer_button: 'Vastaa',
   report_status_pending: 'Odotetaan vastausta',
   report_status_replied: 'Vastattu',
+  report_status_partially_replied: "Vastattu osittain",
+  report_from_agency: 'henkilöstöpalveluyritykseltä',
+  report_from_business: 'käyttäjäyritykseltä',
 
   //ReportReply page
   report_reply_title: 'Vastaus raporttiin',
