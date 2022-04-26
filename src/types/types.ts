@@ -112,8 +112,8 @@ export interface Report {
   title: string;
   details: string;
   date: string;
-  agency: string;
-  business: string;
+  agency: string | null;
+  business: string | null;
   user: string;
   fileUrl: string;
   fileType: string;
