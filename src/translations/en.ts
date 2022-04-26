@@ -7,8 +7,7 @@ export default {
   thank_you_for_feedback: "Thank you for your feedback!",
   write_a_comment: "Write a comment",
   workers_responsibility: "Worker's responsibility",
-  worker_responsibilities_read:
-    "Worker has read and understood his/her responsibilities.",
+  worker_responsibilities_read: "Worker has read and understood his/her responsibilities.",
   agency_responsibility: "Agency's responsibility",
   agency_responsibilities_read:
     "Agency has read and understood its responsibilities.",
@@ -24,6 +23,7 @@ export default {
   password_label: "Password",
   invalid_email_address: "Invalid email address",
   required: "Required",
+  invalid_token: "Invalid token",
   logged_out: "Logged out",
   login_failed: "Login failed",
   login_successful: "Login success",
@@ -45,7 +45,6 @@ export default {
   invalid_name: "Invalid name",
   invalid_password: "Password does not match",
   email_already_used: "Email is already in use",
-  invalid_token: "Invalid token",
 
   //option
   role: "Role",
@@ -114,6 +113,10 @@ export default {
   steps_completed: "Steps are completed - you are finished",
   reports: "Reports",
   report: "Report",
+  report_no_recipient: "You need to select report handler.",
+  report_title_required: "Report title is required",
+  report_details_required: "Report details are required",
+  report_new_report: 'New Report',
 
   //Report step one
   select_report_handler: "Select report handler",
@@ -148,8 +151,9 @@ export default {
   report_reply_title: 'Reply to report',
   report_reply_answer: 'Reply',
   report_reply_send: 'Send',
-  report_reply_sent_notification: 'Reply sent',
+  report_reply_sent_alert: 'Reply sent',
   report_reply_reply_missing: 'Reply missing!',
+  report_reply_you_have_new_reply_in_report: 'You have a new reply in report:',
 
   //Mood form
   your_mood: "Your mood",

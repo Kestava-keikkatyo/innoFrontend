@@ -26,6 +26,8 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
 
   const [filterAgencies, setFilterAgencies] = useState('');
   const [filterBusinesses, setFilterBusinesses] = useState('');
+  const [selectedBusiness, setSelectedBusiness] = useState(currentReport.business ? currentReport.business : "")
+  const [selectedAgency, setSelectedAgency] = useState(currentReport.agency ? currentReport.agency : "")
 
   useEffect(() => {
     dispatch(fetchAllAgencies());
@@ -41,13 +43,19 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
   };
 
   const handleSelectedAgency = (event: any) => {
+    setSelectedAgency(event.target.value)
+    //Mui Select does not accept null for empty value. So we need to use "" but send null to store when clearing selection. 
+    const valueForDB = event.target.value === "" ? null : event.target.value 
     dispatch(
-      setReport({ ...currentReport, agency: event.target.value })
+      setReport({ ...currentReport, agency: valueForDB })
     );
   };
   const handleSelectedBusiness = (event: any) => {
+    setSelectedBusiness(event.target.value)
+    //Mui Select does not accept null for empty value. So we need to use "" but send null to store when clearing selection. 
+    const valueForDB = event.target.value === "" ? null : event.target.value 
     dispatch(
-      setReport({ ...currentReport, business: event.target.value })
+      setReport({ ...currentReport, business: valueForDB })
     );
   };
 
@@ -71,7 +79,7 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            defaultValue=""
+            value={selectedBusiness}
             style={{ maxHeight: 50 }}
             onChange={handleSelectedBusiness}
           >
@@ -106,7 +114,7 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            defaultValue=""
+            value={selectedAgency}
             onChange={handleSelectedAgency}
             style={{ maxHeight: 50 }}
           >

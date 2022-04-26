@@ -45,7 +45,7 @@ const Report: React.FC<any> = ({ report }) => {
   if (report.status ==='pending') {
     //Kukaan ei ole vastannut raporttiin
     statusMessage = t('report_status_pending')
-  } else if (report.agency !== "" && report.business !== ""){
+  } else if (report.agency && report.business){
     //Raportilla on kaksi vastaanottajaa
     if (report.agencyReply && report.businessReply) {
       //Molemmat vastaanottajat ovat vastanneet
@@ -94,16 +94,16 @@ const Report: React.FC<any> = ({ report }) => {
                 {report.title}
               </Typography>
             </div>
-            {role === 'worker' ? 
-              /*Workerille näytetään raportin vastaanottajan/vastaanottajien tiedot. */
+            
+              {/*Näytetään raportin vastaanottajan/vastaanottajien tiedot. */}
               <div style={{ marginTop: 16 }}>
                 <Typography variant="body1" className={classes.body1}>
-                  {(report.agency !== "" && report.business !== "") 
+                  {(report.agency && report.business) 
                   ? t('report_receiver_info_plural')
                   : t('report_receiver_info')}
                 </Typography>
 
-                {(report.agency !== "" ) && 
+                {(report.agency) && 
                 <Box>
                   <Typography display='inline' variant="body2" className={classes.body2}>
                     {t('agency')}: {" "}
@@ -116,7 +116,7 @@ const Report: React.FC<any> = ({ report }) => {
                   </Typography>
                 </Box>}
 
-                {(report.business !== "" ) &&
+                {(report.business) &&
                 <Box>
                   <Typography display='inline' variant="body2" className={classes.body2}>
                     {t('business')}: {" "}
@@ -130,23 +130,23 @@ const Report: React.FC<any> = ({ report }) => {
                 </Box>}
 
               </div>
-            :
-              /*Agenctylle ja Businekselle näytetään raportin kirjoittajan tiedot.  */
-              <div style={{ marginTop: 16 }}>
-                <Typography variant="body1" className={classes.body1}>
-                  {t('report_worker_info')}
-                </Typography>
-                <Typography variant="body2" className={classes.body2}>
-                  {report.user.name}
-                </Typography>
-                <Typography variant="body2" className={classes.body2}>
-                  {report.user.email}
-                </Typography>
-                <Typography variant="body2" className={classes.body2}>
-                  {report.user.phoneNumber}
-                </Typography>
-              </div>
-            }
+              {/*Agenctylle ja Businekselle näytetään raportin kirjoittajan tiedot.  */}
+              {(role === roles.Agency || role === roles.Business ) &&
+                <div style={{ marginTop: 16 }}>
+                  <Typography variant="body1" className={classes.body1}>
+                    {t('report_worker_info')}
+                  </Typography>
+                  <Typography variant="body2" className={classes.body2}>
+                    {report.user.name}
+                  </Typography>
+                  <Typography variant="body2" className={classes.body2}>
+                    {report.user.email}
+                  </Typography>
+                  <Typography variant="body2" className={classes.body2}>
+                    {report.user.phoneNumber}
+                  </Typography>
+                </div>
+                }
             <div>
               <Typography variant="body1" className={classes.body1}>
                 {t('report_details')}

@@ -6,6 +6,7 @@ import { Link, useHistory } from 'react-router-dom'
 import ReactPlayer from 'react-player';
 import { replyReport } from '../../actions/reportActions'
 import { setAlert } from '../../actions/alertActions'
+import { updateNotifications } from '../../actions/notificationsActions'
 
 const ReportReplyPage = () => {
   const report = useSelector((state:any) => state.report.currentReport)
@@ -18,9 +19,10 @@ const ReportReplyPage = () => {
   const handleAnswer = () => {
     console.log('Vastaus...')
     dispatch(replyReport(report._id, reply))
+    dispatch(updateNotifications(report.user._id, `${t('report_reply_you_have_new_reply_in_report')} ${report.title}`))
     setReply("")
     history.push('/reports')
-    dispatch(setAlert(t('report_reply_sent_notification')));
+    dispatch(setAlert(t('report_reply_sent_alert')));
   }
   return (
     <Container>

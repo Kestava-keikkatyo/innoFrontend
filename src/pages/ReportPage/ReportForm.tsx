@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import makeStyles from '@mui/styles/makeStyles';
 import withStyles from '@mui/styles/withStyles';
@@ -19,7 +19,8 @@ import { setReport, submitReport } from '../../actions/reportActions';
 import fileService from '../../services/fileService';
 import { useTranslation } from 'react-i18next'
 import { setFiles } from '../../actions/fileActions';
-
+import { setAlert } from '../../actions/alertActions'
+import { severity } from '../../types/types'
 
 const ColorlibConnector = withStyles({
   alternativeLabel: {
@@ -124,22 +125,11 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const getStepContent = (step: any) => {
-  switch (step) {
-    case 0:
-      return <ReportStepOne />;
-    case 1:
-      return <ReportStepTwo />;
-    case 2:
-      return <ReportStepThree />;
-    default:
-      return 'Unknown step';
-  }
-};
 
 const ReportForm = () => {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
+  const [stepThreeError, setStepThreeError] = useState(false)
   const dispatch = useDispatch();
   const { t } = useTranslation()
   const getSteps = () => {
@@ -151,45 +141,70 @@ const ReportForm = () => {
   let { currentReport } = useSelector((state: any) => state.report);
   const { currentFiles } = useSelector((state: any) => state.files);
 
+  const getStepContent = (step: any) => {
+    switch (step) {
+      case 0:
+        return <ReportStepOne />;
+      case 1:
+        return <ReportStepTwo />;
+      case 2:
+        return <ReportStepThree stepThreeError={stepThreeError} />;
+      default:
+        return 'Unknown step';
+    }
+  };
+
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    if (activeStep === 0 && !currentReport.agency && !currentReport.business) {
+      dispatch(setAlert(t('report_no_recipient'), severity.Warning))
+    } else {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    }
   };
 
   const handleBack = () => {
+    if (activeStep=== 2) {
+      setStepThreeError(false)
+    }
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
   const handleReset = () => {
     dispatch(setReport(initialReport));
+    dispatch(setFiles([null, null, null]))
     setActiveStep(0);
+    setStepThreeError(false)
   };
 
   const handleFinnish = async () => {
-    console.log('currentReport: ', currentReport)
-    
-    setActiveStep(steps.length);
-
-    if (currentReport.date === '') {
-      dispatch(
-        setReport({ ...currentReport, date: new Date().toLocaleString() })
-      );
-    }
-
-    if (currentFiles.files[0] !== null) {
-      const res: any = await fileService.postFile(currentFiles.files[0]);
-      dispatch(setFiles([null, null, null])); //Tyhjennä tiedostolista lähetyksen jälkeen
-      const copyOfCurrentReport = {
-        ...currentReport,
-        fileUrl: res.data.fileUrl,
-        fileType: res.data.fileType,
-      };
-
-      dispatch(setReport(copyOfCurrentReport));
-      dispatch(submitReport(copyOfCurrentReport));
+    if (currentReport.title === "" || currentReport.details === "") {
+      //Jos otsikko tai yksityiskohdat puuttuu, asetetaan ReportStepThree error-tilaan ja keskeytetään handleFinnish
+      setStepThreeError(true)
+      return
     } else {
-      dispatch(setReport(currentReport));
-      dispatch(submitReport(currentReport));
-    }
+      setActiveStep(steps.length);
+      if (currentReport.date === '') {
+        dispatch(
+          setReport({ ...currentReport, date: new Date().toLocaleString() })
+        );
+      }
+
+      if (currentFiles.files[0] !== null) {
+        const res: any = await fileService.postFile(currentFiles.files[0]);
+        dispatch(setFiles([null, null, null])); //Tyhjennä tiedostolista lähetyksen jälkeen
+        const copyOfCurrentReport = {
+          ...currentReport,
+          fileUrl: res.data.fileUrl,
+          fileType: res.data.fileType,
+        };
+
+        dispatch(submitReport(copyOfCurrentReport));
+      } else {
+        dispatch(submitReport(currentReport));
+      }
+      dispatch(setReport(initialReport));
+      setStepThreeError(false)
+    }   
   };
 
   return (
@@ -216,7 +231,7 @@ const ReportForm = () => {
               variant="outlined"
               className={classes.button}
             >
-              {t('resetoi')}
+              {t('report_new_report')}
             </Button>
           </div>
         ) : (

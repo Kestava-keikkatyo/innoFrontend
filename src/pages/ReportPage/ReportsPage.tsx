@@ -6,11 +6,13 @@ import Typography from '@mui/material/Typography';
 import { Box, Container, Fab, Grid } from '@mui/material';
 import Report from './Report';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchReports, getMyReports } from '../../actions/reportActions';
+import { fetchReports, getMyReports, setReport } from '../../actions/reportActions';
 import { useTranslation } from 'react-i18next'
 import { Link, useHistory } from 'react-router-dom';
 import { Add } from '@mui/icons-material';
 import { roles } from "../../types/types"
+import { setFiles } from '../../actions/fileActions';
+import { initialReport } from '../../reducers/reportReducer';
 
 const ReportsPage: React.FC<any> = () => {
   const user: any = useSelector((state: any) => state.user);  
@@ -31,6 +33,8 @@ const ReportsPage: React.FC<any> = () => {
   }, [dispatch]);
 
   const handleNewReport = () => {
+    dispatch(setReport(initialReport));
+    dispatch(setFiles([null, null, null]))
     history.push('/report')
   }
 

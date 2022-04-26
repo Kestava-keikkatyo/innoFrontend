@@ -14,21 +14,19 @@ import { useEffect } from 'react'
 
 const ReportStepTwo = () => {
   const { currentReport } = useSelector((state: any) => state.report);
-  const [selectedDate, setSelectedDate] = React.useState(new Date()); // new Date() returns current date
+  const [selectedDate, setSelectedDate] = React.useState(currentReport.date === "" ? new Date() : currentReport.date); // new Date() returns current date
   const dispatch = useDispatch();
   const { t } = useTranslation()
   const handleDateChange = (date: any) => {
-    console.log('handleDateChange: ', date);
     setSelectedDate(date);
     dispatch(setReport({ ...currentReport, date: date })); 
   };
 
   useEffect(() => {
-    console.log('ReportStepTwo effect')
-    dispatch(setReport({ ...currentReport, date: Date() })); 
+    if (currentReport.date === "") {
+      dispatch(setReport({ ...currentReport, date: selectedDate })); 
+    }
   }, [])
-
-  console.log('selectedDate', selectedDate);
 
   return (
     <Grid container style={{ marginTop: 16 }}>
@@ -50,6 +48,7 @@ const ReportStepTwo = () => {
               /> 
               }
               inputFormat="dd.MM.yyyy"
+              mask="__.__.____"
               showToolbar={false}
               value={selectedDate}
               onChange={handleDateChange}

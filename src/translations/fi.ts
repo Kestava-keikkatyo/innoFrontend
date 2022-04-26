@@ -15,6 +15,7 @@ export default {
   business_responsibilities_read:
     "Käyttäjäyritys on lukenut ja ymmärtänyt vastuunsa",
   saveButton: "Tallenna",
+  faq: "Usein kysytyt kysymykset",
 
   //login
   login_title: "Kirjaudu sisään",
@@ -22,7 +23,7 @@ export default {
   password_label: "Salasana",
   invalid_email_address: "Virheellinen sähköposti",
   required: "Puuttuu",
-  invalid_token: "Väärä token",
+  invalid_token: "Virheellinen token",
   logged_out: "Kirjauduttu ulos",
   login_failed: "Kirjautuminen epäonnistui",
   login_successful: "Kirjauduttu onnistuneesti",
@@ -112,6 +113,10 @@ export default {
   steps_completed: "Valmista",
   reports: "Raportit",
   report: "Raportti",
+  report_no_recipient: "Sinun täytyy valita raportin vastaanottaja.",
+  report_title_required: "Otsikko on pakollinen.",
+  report_details_required: "Raportin yksityiskohdat ovat pakolliset.",
+  report_new_report: 'Uusi raportti',
 
   //Report step one
   select_report_handler: "Valitse raportin vastaanottaja",
@@ -145,8 +150,9 @@ export default {
   report_reply_title: 'Vastaus raporttiin',
   report_reply_answer: 'Vastaus',
   report_reply_send: 'Lähetä',
-  report_reply_sent_notification: 'Vastaus lähetetty',
+  report_reply_sent_alert: 'Vastaus lähetetty',
   report_reply_reply_missing: 'Vastaus puuttuu!',
+  report_reply_you_have_new_reply_in_report: 'Sinulle on uusi vastaus raportissa:',
 
   //Mood form
   your_mood: "Fiiliksesi",
@@ -271,7 +277,6 @@ export default {
   business_contracts: "Yrityssopimukset",
   my_work: "Työni",
   remove: "Poista",
-  faq: "Usein kysytyt kysymykset",
   feedback: "Palaute",
 
   //profilePage
