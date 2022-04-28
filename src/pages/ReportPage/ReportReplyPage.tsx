@@ -8,6 +8,9 @@ import { replyReport } from '../../actions/reportActions'
 import { setAlert } from '../../actions/alertActions'
 import { updateNotifications } from '../../actions/notificationsActions'
 
+/*
+  With ReportReplyPage, business and agency users can reply to a workers report.
+*/
 const ReportReplyPage = () => {
   const report = useSelector((state:any) => state.report.currentReport)
   const { t } = useTranslation()

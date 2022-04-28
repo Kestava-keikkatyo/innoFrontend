@@ -64,7 +64,7 @@ export const submitReport = (report: Report) => async (dispatch: any) => {
  * @function
  * @desc This function sets arcived status for a report
  * @param {string} id
- * @param {string} archived
+ * @param {string} archived Note: sent as a string
  */
  export const archiveReport = (id: string, archived: string) => async (dispatch: any) => {
   const res = await reportService.archiveReport(id, archived);
