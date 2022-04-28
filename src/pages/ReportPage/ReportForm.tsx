@@ -21,6 +21,8 @@ import { useTranslation } from 'react-i18next'
 import { setFiles } from '../../actions/fileActions';
 import { setAlert } from '../../actions/alertActions'
 import { severity } from '../../types/types'
+import { LoadingButton } from '@mui/lab';
+import SendIcon from '@mui/icons-material/Send';
 
 const ColorlibConnector = withStyles({
   alternativeLabel: {
@@ -130,6 +132,7 @@ const ReportForm = () => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
   const [stepThreeError, setStepThreeError] = useState(false)
+  const [loading, setLoading] = useState(false)
   const dispatch = useDispatch();
   const { t } = useTranslation()
   const getSteps = () => {
@@ -182,7 +185,11 @@ const ReportForm = () => {
       setStepThreeError(true)
       return
     } else {
-      setActiveStep(steps.length);
+      /*
+        Show loading-status in send button and disable the button until handlefinnish is complete.
+        This could take a while when large images or videos are uploaded.
+      */
+      setLoading(true) 
       if (currentReport.date === '') {
         dispatch(
           setReport({ ...currentReport, date: new Date().toLocaleString() })
@@ -204,6 +211,8 @@ const ReportForm = () => {
       }
       dispatch(setReport(initialReport));
       setStepThreeError(false)
+      setActiveStep(steps.length);
+      setLoading(false)
     }   
   };
 
@@ -250,13 +259,16 @@ const ReportForm = () => {
               </Button>
 
               {activeStep === steps.length - 1 ? (
-                <Button
+                <LoadingButton
+                  loading={loading}
+                  loadingPosition='end'
                   variant="contained"
+                  endIcon={<SendIcon />}
                   onClick={handleFinnish}
                   className={`${classes.button} ${classes.primary}`}
                 >
                   {t('finish')}
-                </Button>
+                </LoadingButton>
               ) : (
                 <Button
                   variant="contained"
