@@ -14,7 +14,7 @@ const ReportReplyPage = () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const [reply, setReply] = useState("")
-  console.log('current report: ', report)
+  //console.log('current report: ', report)
 
   const handleAnswer = () => {
     console.log('Vastaus...')

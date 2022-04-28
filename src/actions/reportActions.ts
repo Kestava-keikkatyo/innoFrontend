@@ -60,6 +60,17 @@ export const submitReport = (report: Report) => async (dispatch: any) => {
   return res.data;
 };
 
+/**
+ * @function
+ * @desc This function sets arcived status for a report
+ * @param {string} id
+ * @param {string} archived
+ */
+ export const archiveReport = (id: string, archived: string) => async (dispatch: any) => {
+  const res = await reportService.archiveReport(id, archived);
+  return res.data;
+};
+
 export const fetchReportById = (id: string) => async (dispatch: any) => {
   try {
     const data = await reportService.fetchReportById(id);

@@ -64,6 +64,16 @@ const postReport = async (report: Report) => {
 
 /**
  * @function
+ * @desc Sets the archived status for a report.
+ * @param {string} id
+ * @param {string} archived
+ */
+ const archiveReport = async (id: string, archived: string) => {
+  return await axios.put(`${baseUrl}/report/archive/${id}/${archived}`,{},  authHeader());
+};
+
+/**
+ * @function
  * @desc fetchReportById
  */
 const fetchReportById = async (id: string) => {
@@ -89,6 +99,7 @@ export default {
   getMyReports,
   postReport,
   replyReport,
+  archiveReport,
   fetchReportById,
   fetchAllReports,
 };

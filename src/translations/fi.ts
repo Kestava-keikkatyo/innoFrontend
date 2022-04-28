@@ -145,6 +145,17 @@ export default {
   report_status_partially_replied: "Vastattu osittain",
   report_from_agency: 'henkilöstöpalveluyritykseltä',
   report_from_business: 'käyttäjäyritykseltä',
+  report_display_all: 'Kaikki',
+  report_display_archived: 'Arkistoidut',
+  report_display_not_archived: 'Ei arkistoidut',
+  report_display_label: 'Näytä',
+  report_is_archived: 'Arkistoitu',
+  report_is_archived_alert: 'Raportti arkistoitu',
+  report_is_unarchived_alert: 'Raportti palautettu arkistosta',
+  report_archive: 'Arkistoi',
+  report_unarchive: 'Palauta arkistosta',
+  report_time_reported: 'Raportoitu',
+  report_time_happened: 'Tapahtunut',
 
   //ReportReply page
   report_reply_title: 'Vastaus raporttiin',

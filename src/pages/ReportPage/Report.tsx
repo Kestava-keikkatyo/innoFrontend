@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Theme } from '@mui/material/styles';
 
 import createStyles from '@mui/styles/createStyles';
@@ -15,8 +15,11 @@ import ReactPlayer from 'react-player';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { setReport } from '../../actions/reportActions'
-import { roles } from "../../types/types"
+import { setReport, archiveReport, getMyReports, fetchReports } from '../../actions/reportActions'
+import { roles, severity } from "../../types/types"
+import ArchiveIcon from '@mui/icons-material/Archive';
+import UnarchiveIcon from '@mui/icons-material/Unarchive';
+import { setAlert } from '../../actions/alertActions';
 
 const Report: React.FC<any> = ({ report }) => {
   const classes = useStyles();
@@ -24,22 +27,55 @@ const Report: React.FC<any> = ({ report }) => {
   const history = useHistory()
   const dispatch = useDispatch()
   const role: any = useSelector((state: any) => state.user.data.role);  
+
+  //console.log('Report: ', report)
   
+
+  //Raportissa arkistointistatus eri kentissä riippuen käyttäjän roolista. Valitaan oikea kentän nimi roolin mukaan.
+  let archivedRole = ""
+  switch(role){
+    case roles.Worker:
+      archivedRole = 'workerArchived'
+    break;
+    case roles.Agency:
+      archivedRole = 'agencyArchived'
+    break;
+    case roles.Business:
+      archivedRole = 'businessArchived'
+    break;
+  }
+
   const localizedDate = report.date ? (new Date(report.date)).toLocaleString() : null;
 
-  const handleAnswer = (reportId: any) => {
+  const handleAnswer = () => {
     dispatch(setReport(report))
     history.push(`/reports/answer`);
   }
-  console.log('report: ', report)
 
+  const handleArchive = async () => {
+    await dispatch(archiveReport(report._id, 'true'))
+    if (role === roles.Worker){
+      dispatch(getMyReports());
+    } else {
+      dispatch(fetchReports());
+    }
+    dispatch(setAlert(t('report_is_archived_alert'), severity.Success))
+  }
+  const handleUnarchive = async () => {
+    await dispatch(archiveReport(report._id, 'false'))
+    if (role === roles.Worker){
+      dispatch(getMyReports());
+    } else {
+      dispatch(fetchReports());
+    }
+    dispatch(setAlert(t('report_is_unarchived_alert'), severity.Success))
+  }
 
-  const statusColor = report.status==='pending' ? 'warning.main' : 'success.main'
   /*
-  Määritetään statusviesti joka kuvaa onko raporttiin 
-  vastattu, 
-  vastattu osittain(kahdesta vastaanottajasta toinen vastannut) 
-  vai odottaako se vastausta.
+  Määritetään statusviesti joka kuvaa onko raporttiin:
+  -vastattu, 
+  -vastattu osittain(kahdesta vastaanottajasta toinen vastannut) 
+  -vai odottaako se vastausta.
   */
   let statusMessage = ""
   if (report.status ==='pending') {
@@ -58,6 +94,19 @@ const Report: React.FC<any> = ({ report }) => {
     //Raportilla on vain yksi vastaanottaja ja tämä on vastannut
     statusMessage = t('report_status_replied')
   }
+  if (report[archivedRole] === 'true') {
+    //Raportti on arkistoitu
+  }
+
+  //Arkistoidun raportin AccodionSummaryn tyylitys
+  const archivedSummaryStyling = (report[archivedRole] === 'true') ? 
+    {
+      fontStyle: 'italic',
+      backgroundColor: 'grey.300',
+    } 
+  : {} 
+  const statusColor = report.status==='pending' ? 'warning.main' : 'success.main'
+
   return (
     <div className={classes.root}>
       <Accordion>
@@ -65,6 +114,9 @@ const Report: React.FC<any> = ({ report }) => {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1c-content"
           id="panel1c-header"
+          sx={{
+            ...archivedSummaryStyling,
+          }}
       >
           <Typography sx={{ width: '33%'}}>
             {report.title}
@@ -76,16 +128,53 @@ const Report: React.FC<any> = ({ report }) => {
           >
             {localizedDate}
           </Typography>
-          <Typography 
-            display='inline'
-            sx={{color: statusColor, width: '33%'}}
-          > 
-            {statusMessage}
-          </Typography>
+          <Box sx={{width: '33%'}}>
+            <Typography 
+              display='inline'
+              sx={{color: statusColor}}
+            > 
+              {statusMessage}
+            </Typography>
+            <Typography 
+              display='inline'
+            > 
+              {report[archivedRole] === 'true' && 
+                ` | ${t('report_is_archived')}`
+              }
+            </Typography>
+          </Box>
         
         </AccordionSummary>
-        <AccordionDetails className={classes.details}>
-          <div className={classes.column} style={{ marginRight: 16 }}>
+        <AccordionDetails className={classes.details} >
+          <Box className={classes.column}  sx={{borderTop: 1, borderColor: 'grey.500'}}>
+            {
+              (report[archivedRole] === 'true') ?
+              <Button 
+                variant='outlined' 
+                color='secondary' 
+                startIcon={<UnarchiveIcon />} 
+                onClick= {handleUnarchive}
+                sx={{
+                  float: 'right', 
+                  marginTop: '16px'
+                }}
+              >
+                {t('report_unarchive')}
+              </Button>
+              :
+              <Button 
+                variant='outlined' 
+                color='secondary' 
+                startIcon={<ArchiveIcon />} 
+                onClick= {handleArchive}
+                sx={{
+                  float: 'right', 
+                  marginTop: '16px'
+                }}
+              >
+                {t('report_archive')}
+              </Button>
+            }   
             <div>
               <Typography variant="body1" className={classes.body1}>
                  {t('report_title')}
@@ -94,59 +183,75 @@ const Report: React.FC<any> = ({ report }) => {
                 {report.title}
               </Typography>
             </div>
+          
+            {/*Näytetään raportin vastaanottajan/vastaanottajien tiedot. */}
+            <div style={{ marginTop: 16 }}>
+              <Typography variant="body1" className={classes.body1}>
+                {(report.agency && report.business) 
+                ? t('report_receiver_info_plural')
+                : t('report_receiver_info')}
+              </Typography>
+
+              {(report.agency) && 
+              <Box>
+                <Typography display='inline' variant="body2" className={classes.body2}>
+                  {t('agency')}: {" "}
+                </Typography>
+                <Typography 
+                  display='inline'
+                  sx={{color: 'secondary.main'}}
+                > 
+                  {report.agency.name}
+                </Typography>
+              </Box>}
+
+              {(report.business) &&
+              <Box>
+                <Typography display='inline' variant="body2" className={classes.body2}>
+                  {t('business')}: {" "}
+                </Typography>
+                <Typography 
+                  display='inline'
+                  sx={{color: 'secondary.main'}}
+                > 
+                  {report.business.name}
+                </Typography>
+              </Box>}
+            </div>
             
-              {/*Näytetään raportin vastaanottajan/vastaanottajien tiedot. */}
+            {/*Agenctylle ja Businekselle näytetään raportin kirjoittajan tiedot.  */}
+            {(role === roles.Agency || role === roles.Business ) &&
               <div style={{ marginTop: 16 }}>
                 <Typography variant="body1" className={classes.body1}>
-                  {(report.agency && report.business) 
-                  ? t('report_receiver_info_plural')
-                  : t('report_receiver_info')}
+                  {t('report_worker_info')}
                 </Typography>
-
-                {(report.agency) && 
-                <Box>
-                  <Typography display='inline' variant="body2" className={classes.body2}>
-                    {t('agency')}: {" "}
-                  </Typography>
-                  <Typography 
-                    display='inline'
-                    sx={{color: 'secondary.main'}}
-                  > 
-                    {report.agency.name}
-                  </Typography>
-                </Box>}
-
-                {(report.business) &&
-                <Box>
-                  <Typography display='inline' variant="body2" className={classes.body2}>
-                    {t('business')}: {" "}
-                  </Typography>
-                  <Typography 
-                    display='inline'
-                    sx={{color: 'secondary.main'}}
-                  > 
-                    {report.business.name}
-                  </Typography>
-                </Box>}
-
+                <Typography variant="body2" className={classes.body2}>
+                  {report.user.name}
+                </Typography>
+                <Typography variant="body2" className={classes.body2}>
+                  {report.user.email}
+                </Typography>
+                <Typography variant="body2" className={classes.body2}>
+                  {report.user.phoneNumber}
+                </Typography>
               </div>
-              {/*Agenctylle ja Businekselle näytetään raportin kirjoittajan tiedot.  */}
-              {(role === roles.Agency || role === roles.Business ) &&
-                <div style={{ marginTop: 16 }}>
-                  <Typography variant="body1" className={classes.body1}>
-                    {t('report_worker_info')}
-                  </Typography>
-                  <Typography variant="body2" className={classes.body2}>
-                    {report.user.name}
-                  </Typography>
-                  <Typography variant="body2" className={classes.body2}>
-                    {report.user.email}
-                  </Typography>
-                  <Typography variant="body2" className={classes.body2}>
-                    {report.user.phoneNumber}
-                  </Typography>
-                </div>
-                }
+            }
+
+            <div>
+              <Typography variant="body1" className={classes.body1}>
+                {t('report_time_reported')}
+              </Typography>
+              <Typography paragraph variant="body2" className={classes.body2}>
+                {new Date(report.createdAt).toLocaleString()}
+              </Typography>
+              <Typography variant="body1" className={classes.body1}>
+                {t('report_time_happened')}
+              </Typography>
+              <Typography paragraph variant="body2" className={classes.body2}>
+                {new Date(report.date).toLocaleString()}
+              </Typography>
+            </div>
+
             <div>
               <Typography variant="body1" className={classes.body1}>
                 {t('report_details')}
@@ -155,8 +260,8 @@ const Report: React.FC<any> = ({ report }) => {
                 {report.details}
               </Typography>
             </div>
-          </div>
-          {report.fileType !== '' ?
+          </Box>
+          {report.fileType !== '' &&
           <Box className={classes.column} sx={{paddingBottom: '2em'}}>
             {report.fileType === 'image' && (
               <CardMedia
@@ -182,7 +287,7 @@ const Report: React.FC<any> = ({ report }) => {
               </Grid>
             )}
           </Box>
-          : '' }
+          }
           
           {report.agencyReply && //Näytetään agencyn vastaus jos semmoinen on
             <Box 
@@ -234,7 +339,7 @@ const Report: React.FC<any> = ({ report }) => {
           {((!report.agencyReply && role === roles.Agency) || (!report.businessReply && role === roles.Business )) && 
           <Button
             variant="contained"
-            onClick={() => handleAnswer(report._id)}
+            onClick={() => handleAnswer()}
             sx = {{
               marginTop: '1em',
               background: '#EB5A00',

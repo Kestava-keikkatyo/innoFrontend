@@ -23,6 +23,9 @@ export const initialReport: Report = {
     email: "",
     phoneNumber: "",
     status: "",
+    businessArchived: 'false',
+    agencyArchived: 'false',
+    workerArchived: 'false',
 }
 
 const initialState: ReportState = {
