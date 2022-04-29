@@ -24,32 +24,42 @@ const ReportStepThree: React.FC<any> = ({stepThreeError}) => {
     setDetails(event.target.value)
     dispatch(setReport({ ...currentReport, details: event.target.value }));
   };
+
+  /**If stepThreeError status is true and title is empty, set error props
+   * to title Textfield. Error status is set in ReportForm if user tries 
+   * to submit report without title or details.*/
   const titleErrorProps = (stepThreeError && title === "") 
   ? { error: true, helperText: t('report_title_required') }
   : { error: false, helperText: "" }
 
+  /**If stepThreeError status is true and details is empty, set error props
+   * to details Textfield. Error status is set in ReportForm if user tries 
+   * to submit report without title or details.*/
   const detailsErrorProps = (stepThreeError && details === "") 
   ? { error: true, helperText: t('report_details_required') }
   : { error: false, helperText: "" }
+
   return (
     <Grid container style={{ marginTop: 16 }}>
+      {/**Title */}
       <Grid item xs={12}>
         <Typography variant="h6">{t('fill_details')}</Typography>
       </Grid>
+
+      {/**Report title Textfield */}
       <Grid item xs={12} style={{ marginTop: 16 }}>
         <TextField 
           label={t('fill_report_title')} 
           value={title}
           onChange={handleTitle} 
+          /**If error state is set true and title is empty, 
+            show Textfield in error state and show helper text.*/
           {...titleErrorProps}
         />
       </Grid>
+
+      {/**Report details Textfield */}
       <Grid item xs={12}>
-        {/*
-        <Typography style={{ marginTop: 24, fontWeight: 500 }}>
-        {t('fill_report_details')}
-        </Typography>
-        */}
         <TextField
           label={t('fill_report_details')} 
           multiline
@@ -58,8 +68,12 @@ const ReportStepThree: React.FC<any> = ({stepThreeError}) => {
           value={details}
           onChange={handleDetails}
           style={{ marginTop: 8 }}
+          /**If error state is set true and details is empty, 
+            show Textfield in error state and show helper text.*/
           {...detailsErrorProps}
         />
+
+        {/**File uploader for uploading images or video to report */}
         <FileUploader name={t('upload_file')} accept="image/*, video/*" />
       </Grid>
     </Grid>

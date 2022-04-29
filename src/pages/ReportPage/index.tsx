@@ -9,22 +9,29 @@ import { initialReport } from '../../reducers/reportReducer';
 import { useDispatch } from 'react-redux';
 import { setFiles } from '../../actions/fileActions';
 
+/*
+TODO: Rename report pages filenames. ReportsPage is now main page,
+and ReportPage in index.tsx is used only when writing a new report.
+*/
 const ReportPage = () => {
   const { t } = useTranslation()
   const history = useHistory()
   const dispatch = useDispatch()
   const handleBack = () => {
+    //Clear current report when moving back to reports list.
     dispatch(setReport(initialReport));
     dispatch(setFiles([null, null, null]))
     history.push('/reports')
   }
   return (
     <Container style={{ marginTop: 20 }}>
+      {/**Title when writing a new report */}
       <Typography variant="h4" color="primary">
         {t('report')}
       </Typography>
-      <Button 
-        variant='outlined' 
+      {/**Back button takes back to reports page */}
+      <Button
+        variant='outlined'
         onClick={handleBack}
         sx={{
           color: 'primary',
@@ -33,6 +40,7 @@ const ReportPage = () => {
       >
         {t('back')}
       </Button>
+      {/**Actual new report form */}
       <ReportForm />
     </Container>
   );

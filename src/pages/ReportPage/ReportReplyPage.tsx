@@ -17,11 +17,11 @@ const ReportReplyPage = () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const [reply, setReply] = useState("")
-  //console.log('current report: ', report)
 
   const handleAnswer = () => {
-    console.log('Vastaus...')
+    //Post report reply to database
     dispatch(replyReport(report._id, reply))
+    //TODO: nofitication not yet working.
     dispatch(updateNotifications(report.user._id, `${t('report_reply_you_have_new_reply_in_report')} ${report.title}`))
     setReply("")
     history.push('/reports')
@@ -29,7 +29,7 @@ const ReportReplyPage = () => {
   }
   return (
     <Container>
-      
+      {/**Report replypage title */}
       <Typography variant='h4' color="primary" sx={{paddingTop: 10, paddingBottom: 3}}>
         {t('report_reply_title')}
       </Typography>
@@ -39,9 +39,9 @@ const ReportReplyPage = () => {
         border: 1,
         borderColor: 'grey.500',
         borderRadius: 1,
-
         }}
       >
+        {/**Back button takes back to reports list */}
         <Button 
           variant='outlined' 
           onClick={() => history.push('/reports')}
@@ -52,6 +52,7 @@ const ReportReplyPage = () => {
         >
           {t('back')}
         </Button>
+        {/**Title of the report */}
         <Typography 
           variant='h6' 
           sx={{
@@ -63,10 +64,12 @@ const ReportReplyPage = () => {
           {report.title}
         </Typography>
 
+        {/**Details of the report */}
         <Typography  variant='body1'>
           {report.details}
         </Typography>
       
+        {/**Report writers information. */}
         <Box sx={{paddingTop: '1em'}}>
           <Typography variant="body1" sx={{color: '#eb5a00' }}>
             {t('report_worker_info')}
@@ -82,7 +85,7 @@ const ReportReplyPage = () => {
           </Typography>
         </Box>
         
-
+        {/**If there is an image or video attached to report, we show it here. */}
         {report.fileType === 'image' && (
           <CardMedia
             image={report.fileUrl ? report.fileUrl : ""}
@@ -98,6 +101,10 @@ const ReportReplyPage = () => {
           item 
           sx={{
             position: 'relative',
+            /*
+            TODO: Should video aspect ratio be derived from 
+            actual video and not forced to 16:9?
+            */
             paddingTop: '56.25%' /* Percentage ratio for 16:9  720 / 1280 = 0.5625 */,
           }}>
             {/*   https://www.npmjs.com/package/react-player   */}
@@ -109,7 +116,8 @@ const ReportReplyPage = () => {
             />
           </Grid>
         )}
-         
+
+        {/**Reply answer title */}
         <Typography 
           variant='h6' 
           sx={{
@@ -120,6 +128,7 @@ const ReportReplyPage = () => {
         >
           {t('report_reply_answer')}
         </Typography>
+        {/**Textfield for entering reply to report */}
         <TextField 
           multiline 
           minRows='4' 
@@ -128,6 +137,7 @@ const ReportReplyPage = () => {
           value = {reply}
           onChange = {({ target }) => setReply(target.value)}
         />
+        {/**Send button */}
         <Button
             variant="contained"
             onClick={handleAnswer}

@@ -12,11 +12,14 @@ import { setReport } from '../../actions/reportActions';
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react'
 
+/**Second step (page) of the new report form. */
 const ReportStepTwo = () => {
   const { currentReport } = useSelector((state: any) => state.report);
-  const [selectedDate, setSelectedDate] = React.useState(currentReport.date === "" ? new Date() : currentReport.date); // new Date() returns current date
+  /**If current report is missing a date, select current date. */
+  const [selectedDate, setSelectedDate] = React.useState(currentReport.date === "" ? new Date() : currentReport.date);
   const dispatch = useDispatch();
   const { t } = useTranslation()
+
   const handleDateChange = (date: any) => {
     setSelectedDate(date);
     dispatch(setReport({ ...currentReport, date: date })); 
@@ -36,6 +39,7 @@ const ReportStepTwo = () => {
       <Grid item xs={12}>
         <LocalizationProvider dateAdapter={AdapterDateFns} >
           <Grid container justifyContent="space-around">
+            {/**Date picker for selecting date for the event. */}
             <DatePicker 
               renderInput = {props => 
               <TextField 
@@ -57,6 +61,7 @@ const ReportStepTwo = () => {
               }}
               
             />
+            {/**Time picker for selecting time for the event. */}
             <TimePicker
               renderInput = {props => 
                 <TextField 

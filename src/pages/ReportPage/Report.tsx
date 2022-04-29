@@ -32,7 +32,7 @@ const Report: React.FC<any> = ({ report }) => {
   const role: any = useSelector((state: any) => state.user.data.role);  
 
   /*
-  Report has archived-status in different fields depending on the user role.
+  Report has archived-status stored in different fields depending on the user role.
   Here we select the correct field name.
   */
   let archivedRole = ""

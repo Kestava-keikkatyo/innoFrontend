@@ -117,6 +117,7 @@ export default {
   report_title_required: "Otsikko on pakollinen.",
   report_details_required: "Raportin yksityiskohdat ovat pakolliset.",
   report_new_report: 'Uusi raportti',
+  report_back_to_reports: 'Takaisin raportteihin',
 
   //Report step one
   select_report_handler: "Valitse raportin vastaanottaja",

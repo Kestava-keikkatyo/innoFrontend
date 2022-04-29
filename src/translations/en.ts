@@ -117,6 +117,7 @@ export default {
   report_title_required: "Report title is required",
   report_details_required: "Report details are required",
   report_new_report: 'New Report',
+  report_back_to_reports: 'Back to reports',
 
   //Report step one
   select_report_handler: "Select report handler",

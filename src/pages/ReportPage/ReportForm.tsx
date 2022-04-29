@@ -132,11 +132,11 @@ const ReportForm = () => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
 
-  /*ReportStepThree is a child component but finish-button is located 
+  /*ReportStepThree is a child component in ReportForm but finish-button is located 
     in this ReportForm-component so we keep step three error -state here
     to use with finish-button. (Step three error means that either report 
-      title or details was missing when user tried to submit the report. 
-      Then we show error and helper text.)
+    title or details was missing when user tried to submit the report. 
+    Then we show error and helper text.)
   */
   const [stepThreeError, setStepThreeError] = useState(false) 
 
@@ -166,7 +166,9 @@ const ReportForm = () => {
   };
 
   const handleNext = () => {
-    //If there is no recipients selected for the report, we show an alert and won't move to the next step. 
+    /*If there is no recipients selected for the report, we show an alert 
+    and won't move to the next step. 
+    */
     if (activeStep === 0 && !currentReport.agency && !currentReport.business) {
       dispatch(setAlert(t('report_no_recipient'), severity.Warning))
     } else {
@@ -209,8 +211,9 @@ const ReportForm = () => {
       }
 
       if (currentFiles.files[0] !== null) {
+        //If there is any files attached to report, send them to DB now.
         const res: any = await fileService.postFile(currentFiles.files[0]);
-        dispatch(setFiles([null, null, null])); //Tyhjennä tiedostolista lähetyksen jälkeen
+        dispatch(setFiles([null, null, null])); //Clear filelist after sending.
         const copyOfCurrentReport = {
           ...currentReport,
           fileUrl: res.data.fileUrl,
@@ -278,7 +281,7 @@ const ReportForm = () => {
                 /**Finish button. When clicking, handleFinnish sets 
                  * buttons loading status to true, disabling it until
                  * handleFinnish is finished. This coult take a while
-                 * if uploading large images or videos
+                 * if uploading large images or videos.
                  * */
                 <LoadingButton
                   loading={loading}
