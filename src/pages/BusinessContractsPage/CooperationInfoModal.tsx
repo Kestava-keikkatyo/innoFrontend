@@ -146,9 +146,10 @@ const CooperationInfoModal: React.FC<any> = ({
 
         <div className={classes.selectDiv}>
           <Typography variant="subtitle1">
-            {t('select_contract_form')}
+            {/* {t('select_contract_form')} */}
+            Tähän vapaa tekstikenttä.
           </Typography>
-          <TextField
+          {/* <TextField
             id="standard-select-currency"
             select
             label={t('selected_form')}
@@ -166,7 +167,7 @@ const CooperationInfoModal: React.FC<any> = ({
                     : form.title}
                 </MenuItem>
               ))}
-          </TextField>
+          </TextField> */}
         </div>
       </DialogContent>
       <DialogActions></DialogActions>
