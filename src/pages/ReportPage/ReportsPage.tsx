@@ -44,10 +44,10 @@ const ReportsPage: React.FC<any> = () => {
     history.push('/report')
   }
   const compareFnByDateCreated = (reportA :any, reportB :any) => {
-    return new Date(reportA.createdAt).getTime() - new Date(reportB.createdAt).getTime()
+    return new Date(reportB.createdAt).getTime() - new Date(reportA.createdAt).getTime()
   }
   const compareFnByDateHappened = (reportA :any, reportB :any) => {
-    return new Date(reportA.date).getTime() - new Date(reportB.date).getTime()
+    return new Date(reportB.date).getTime() - new Date(reportA.date).getTime()
   }
   const getFilteredReports = () => {
     let archivedRole = ""
