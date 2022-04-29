@@ -16,11 +16,26 @@ export const setReport = (report: Report) => async (dispatch: any) => {
 
 /**
  * @function
- * @desc Fetches all reports.
+ * @desc Fetches all reports available to user.
  */
 export const fetchReports = () => async (dispatch: any) => {
   const res = await reportService.getReports();
   dispatch({ type: SET_REPORTS, data: res.data });
+};
+
+/**
+ * @function
+ * @desc Fetches users own reports.
+ */
+ export const getMyReports = () => async (dispatch: any) => {
+  try{
+    const res = await reportService.getMyReports();
+    dispatch({ type: SET_REPORTS, data: res.data });
+  } catch (error){
+    console.log('Error getting own reports: ', error)
+    dispatch({ type: SET_REPORTS, data: []});
+  }
+  
 };
 
 /**
@@ -30,6 +45,29 @@ export const fetchReports = () => async (dispatch: any) => {
  */
 export const submitReport = (report: Report) => async (dispatch: any) => {
   const res = await reportService.postReport(report);
+  return res.data;
+};
+
+/**
+ * @function
+ * @desc This function sets reply for a report
+ * @param {string} id
+ * @param {string} reply
+ */
+ export const replyReport = (id: string, reply: string) => async (dispatch: any) => {
+  const res = await reportService.replyReport(id, reply);
+  console.log('Action: replyReport response: ',res)  
+  return res.data;
+};
+
+/**
+ * @function
+ * @desc This function sets arcived status for a report
+ * @param {string} id
+ * @param {string} archived Note: sent as a string
+ */
+ export const archiveReport = (id: string, archived: string) => async (dispatch: any) => {
+  const res = await reportService.archiveReport(id, archived);
   return res.data;
 };
 
@@ -50,4 +88,8 @@ export const fetchAllReports = () => async (dispatch: any) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const clearReports = () => async (dispatch: any) => { 
+  dispatch({ type: SET_REPORTS, data: [] });
 };

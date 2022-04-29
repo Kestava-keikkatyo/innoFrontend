@@ -7,8 +7,7 @@ export default {
   thank_you_for_feedback: "Thank you for your feedback!",
   write_a_comment: "Write a comment",
   workers_responsibility: "Worker's responsibility",
-  worker_responsibilities_read:
-    "Worker has read and understood his/her responsibilities.",
+  worker_responsibilities_read: "Worker has read and understood his/her responsibilities.",
   agency_responsibility: "Agency's responsibility",
   agency_responsibilities_read:
     "Agency has read and understood its responsibilities.",
@@ -24,6 +23,7 @@ export default {
   password_label: "Password",
   invalid_email_address: "Invalid email address",
   required: "Required",
+  invalid_token: "Invalid token",
   logged_out: "Logged out",
   login_failed: "Login failed",
   login_successful: "Login success",
@@ -45,7 +45,6 @@ export default {
   invalid_name: "Invalid name",
   invalid_password: "Password does not match",
   email_already_used: "Email is already in use",
-  invalid_token: "Invalid token",
 
   //option
   role: "Role",
@@ -108,18 +107,21 @@ export default {
   mood_stats: "Feeling stats",
 
   //Report form
-  report_handler: "Raports",
+  report_handler: "Reports",
   report_time: "Report time",
   report_details: "Details",
   steps_completed: "Steps are completed - you are finished",
   reports: "Reports",
   report: "Report",
+  report_no_recipient: "You need to select report handler.",
+  report_title_required: "Report title is required",
+  report_details_required: "Report details are required",
+  report_new_report: 'New Report',
 
   //Report step one
   select_report_handler: "Select report handler",
-  select_report_helper_text:
-    "You can choose both Business and Agency or one of them as a report handler",
-
+  select_report_helper_text:"You can choose both Business and Agency or one of them as a report handler",
+  select_report_handler_clear: "Clear",
   //Report step two
   happened: "When did this happen?",
   date_picker_inline: "Date",
@@ -130,6 +132,39 @@ export default {
   fill_work_title: "Fill work title",
   fill_report_title: "Fill report title",
   fill_report_details: "Fill report details",
+
+  //Reports page
+  reports_not_found: "No reports found.",
+  reports_you_have_no_reports: 'You have not made any reports.',
+  report_title: 'Report title',
+  report_worker_info: 'Worker info',
+  report_receiver_info: 'Recipient info',
+  report_receiver_info_plural: 'Recipients info',
+  report_answer_button: 'Reply',
+  report_status_pending: 'Waiting for reply',
+  report_status_replied: 'Replied',
+  report_status_partially_replied: "Partially replied",
+  report_from_agency: 'from Agency',
+  report_from_business: 'from Business',
+  report_display_all: 'All',
+  report_display_archived: 'Archived',
+  report_display_not_archived: 'Not archived',
+  report_display_label: 'Display',
+  report_is_archived: 'Archived',
+  report_is_archived_alert: 'Report archived',
+  report_is_unarchived_alert: 'Report unarchived',
+  report_archive: 'Archive',
+  report_unarchive: 'Unarchive',
+  report_time_reported: 'Time when reported',
+  report_time_happened: 'Time when happened',
+
+  //ReportReply page
+  report_reply_title: 'Reply to report',
+  report_reply_answer: 'Reply',
+  report_reply_send: 'Send',
+  report_reply_sent_alert: 'Reply sent',
+  report_reply_reply_missing: 'Reply missing!',
+  report_reply_you_have_new_reply_in_report: 'You have a new reply in report:',
 
   //Mood form
   your_mood: "Your mood",

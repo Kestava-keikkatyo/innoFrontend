@@ -13,7 +13,9 @@ import { Report } from '../types/types'
 export const initialReport: Report = {
     title: "",
     details: "",
-    receiver: "",
+    agency: null,
+    business: null,
+    user: "",
     date: "",
     fileUrl: "",
     fileType: "",
@@ -21,6 +23,9 @@ export const initialReport: Report = {
     email: "",
     phoneNumber: "",
     status: "",
+    businessArchived: 'false',
+    agencyArchived: 'false',
+    workerArchived: 'false',
 }
 
 const initialState: ReportState = {

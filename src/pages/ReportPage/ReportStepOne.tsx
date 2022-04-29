@@ -26,6 +26,8 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
 
   const [filterAgencies, setFilterAgencies] = useState('');
   const [filterBusinesses, setFilterBusinesses] = useState('');
+  const [selectedBusiness, setSelectedBusiness] = useState(currentReport.business ? currentReport.business : "")
+  const [selectedAgency, setSelectedAgency] = useState(currentReport.agency ? currentReport.agency : "")
 
   useEffect(() => {
     dispatch(fetchAllAgencies());
@@ -40,9 +42,20 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
     setFilterBusinesses(event.target.value);
   };
 
-  const handleSelected = (event: any) => {
+  const handleSelectedAgency = (event: any) => {
+    setSelectedAgency(event.target.value)
+    //Mui Select does not accept null for empty value. So we need to use "" but send null to store when clearing selection. 
+    const valueForDB = event.target.value === "" ? null : event.target.value 
     dispatch(
-      setReport({ ...currentReport, receiver: event.target.value })
+      setReport({ ...currentReport, agency: valueForDB })
+    );
+  };
+  const handleSelectedBusiness = (event: any) => {
+    setSelectedBusiness(event.target.value)
+    //Mui Select does not accept null for empty value. So we need to use "" but send null to store when clearing selection. 
+    const valueForDB = event.target.value === "" ? null : event.target.value 
+    dispatch(
+      setReport({ ...currentReport, business: valueForDB })
     );
   };
 
@@ -56,19 +69,6 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
       </Grid>
       {/* Business grid */}
       <Grid item xs={12} style={{ marginTop: 32 }}>
-        <table>
-          <tr>
-            <td>
-              <input type="radio" id="agency"/>
-              <label htmlFor="agency">Ageny</label>
-            </td>
-            <td>
-              <input type="radio" id="business"/>
-              <label htmlFor="business">Business</label>
-            </td>
-          </tr>
-        </table>
-        <br/>
         <Typography>{t('business')}</Typography>
         <SearchBox
           placeholder={t('search_by_name')}
@@ -79,10 +79,13 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            defaultValue=""
+            value={selectedBusiness}
             style={{ maxHeight: 50 }}
-            onChange={handleSelected}
+            onChange={handleSelectedBusiness}
           >
+            <MenuItem value="">
+              <em>{t('select_report_handler_clear')}</em>
+            </MenuItem>
             {businesses
               // Sort alphabetically
               .sort((a: any, b: any) => a.name.localeCompare(b.name))
@@ -111,10 +114,13 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            defaultValue=""
-            onChange={handleSelected}
+            value={selectedAgency}
+            onChange={handleSelectedAgency}
             style={{ maxHeight: 50 }}
           >
+            <MenuItem value="">
+              <em>{t('select_report_handler_clear')}</em>
+            </MenuItem>
             {agencies
               // Sort alphabetically
               .sort((a: any, b: any) => a.name.localeCompare(b.name))

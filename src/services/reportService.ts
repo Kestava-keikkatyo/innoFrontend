@@ -31,11 +31,45 @@ const getReports = async () => {
 
 /**
  * @function
+ * @desc Fetches users own reports.
+ */
+ const getMyReports = async () => {
+  try {
+    return await axios.get(`${baseUrl}/report/myReports`, authHeader());
+  } catch (error) {
+    return Promise.reject(error.response);
+  }
+};
+
+/**
+ * @function
  * @desc Posts new report to the route.
  * @param {Report} report new Report object
  */
 const postReport = async (report: Report) => {
   return await axios.post(`${baseUrl}/report`, report, authHeader());
+};
+
+/**
+ * @function
+ * @desc Sets the reply for a report.
+ * @param {string} id
+ * @param {string} reply
+ */
+ const replyReport = async (id: string, reply: string) => {
+  console.log('reportService: replyReport: reply: ', reply)
+   
+  return await axios.put(`${baseUrl}/report/reply/${id}`, {reply: reply}, authHeader());
+};
+
+/**
+ * @function
+ * @desc Sets the archived status for a report.
+ * @param {string} id
+ * @param {string} archived Note: sent as a string
+ */
+ const archiveReport = async (id: string, archived: string) => {
+  return await axios.put(`${baseUrl}/report/archive/${id}/${archived}`,{},  authHeader());
 };
 
 /**
@@ -62,7 +96,10 @@ const fetchAllReports = async () => {
 };
 export default {
   getReports,
+  getMyReports,
   postReport,
+  replyReport,
+  archiveReport,
   fetchReportById,
   fetchAllReports,
 };

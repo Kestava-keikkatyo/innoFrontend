@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import makeStyles from '@mui/styles/makeStyles';
 import withStyles from '@mui/styles/withStyles';
@@ -18,8 +18,11 @@ import { initialReport } from '../../reducers/reportReducer';
 import { setReport, submitReport } from '../../actions/reportActions';
 import fileService from '../../services/fileService';
 import { useTranslation } from 'react-i18next'
-
-
+import { setFiles } from '../../actions/fileActions';
+import { setAlert } from '../../actions/alertActions'
+import { severity } from '../../types/types'
+import { LoadingButton } from '@mui/lab';
+import SendIcon from '@mui/icons-material/Send';
 
 const ColorlibConnector = withStyles({
   alternativeLabel: {
@@ -124,22 +127,20 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const getStepContent = (step: any) => {
-  switch (step) {
-    case 0:
-      return <ReportStepOne />;
-    case 1:
-      return <ReportStepTwo />;
-    case 2:
-      return <ReportStepThree />;
-    default:
-      return 'Unknown step';
-  }
-};
 
 const ReportForm = () => {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
+
+  /*ReportStepThree is a child component but finish-button is located 
+    in this ReportForm-component so we keep step three error -state here
+    to use with finish-button. (Step three error means that either report 
+      title or details was missing when user tried to submit the report. 
+      Then we show error and helper text.)
+  */
+  const [stepThreeError, setStepThreeError] = useState(false) 
+
+  const [loading, setLoading] = useState(false)
   const dispatch = useDispatch();
   const { t } = useTranslation()
   const getSteps = () => {
@@ -148,46 +149,84 @@ const ReportForm = () => {
 
   const steps = getSteps();
 
-  let { currentReport } = useSelector((state: any) => state.report);
+  const { currentReport } = useSelector((state: any) => state.report);
   const { currentFiles } = useSelector((state: any) => state.files);
 
+  const getStepContent = (step: any) => {
+    switch (step) {
+      case 0:
+        return <ReportStepOne />;
+      case 1:
+        return <ReportStepTwo />;
+      case 2:
+        return <ReportStepThree stepThreeError={stepThreeError} />;
+      default:
+        return 'Unknown step';
+    }
+  };
+
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    //If there is no recipients selected for the report, we show an alert and won't move to the next step. 
+    if (activeStep === 0 && !currentReport.agency && !currentReport.business) {
+      dispatch(setAlert(t('report_no_recipient'), severity.Warning))
+    } else {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    }
   };
 
   const handleBack = () => {
+    //If moving back from step three, clear possible error in step three.
+    if (activeStep=== 2) {
+      setStepThreeError(false)
+    }
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
   const handleReset = () => {
+    //Reset here essentially means that we clear the report and move to make a new one.
     dispatch(setReport(initialReport));
+    dispatch(setFiles([null, null, null]))
     setActiveStep(0);
+    setStepThreeError(false)
   };
 
   const handleFinnish = async () => {
-    setActiveStep(steps.length);
-
-    if (currentReport.date === '') {
-      dispatch(
-        setReport({ ...currentReport, date: new Date().toLocaleString() })
-      );
-    }
-
-    if (currentFiles.files[0] !== null) {
-      const res: any = await fileService.postFile(currentFiles.files[0]);
-
-      const copyOfCurrentReport = {
-        ...currentReport,
-        fileUrl: res.data.fileUrl,
-        fileType: res.data.fileType,
-      };
-
-      dispatch(setReport(copyOfCurrentReport));
-      dispatch(submitReport(copyOfCurrentReport));
+    if (currentReport.title === "" || currentReport.details === "") {
+      //If title or details is missing, set step three to error state and exit handleFinnish.
+      setStepThreeError(true)
+      return
     } else {
-      dispatch(setReport(currentReport));
-      dispatch(submitReport(currentReport));
-    }
+      /*
+        Show loading-status in send button and disable the button until handlefinnish is complete.
+        This could take a while when large images or videos are uploaded.
+      */
+      setLoading(true) 
+      if (currentReport.date === '') {
+        //If date when the event happened is missing, set current date.
+        dispatch(
+          setReport({ ...currentReport, date: new Date().toLocaleString() })
+        );
+      }
+
+      if (currentFiles.files[0] !== null) {
+        const res: any = await fileService.postFile(currentFiles.files[0]);
+        dispatch(setFiles([null, null, null])); //Tyhjennä tiedostolista lähetyksen jälkeen
+        const copyOfCurrentReport = {
+          ...currentReport,
+          fileUrl: res.data.fileUrl,
+          fileType: res.data.fileType,
+        };
+
+        dispatch(submitReport(copyOfCurrentReport));
+      } else {
+        dispatch(submitReport(currentReport));
+      }
+      //Clear report in redux-store, clear step three error and finish-button loading-state and move to last step.
+      dispatch(setReport(initialReport));
+      setStepThreeError(false)
+      setActiveStep(steps.length);
+      setLoading(false)
+    }   
   };
 
   return (
@@ -205,6 +244,7 @@ const ReportForm = () => {
       </Stepper>
       <div>
         {activeStep === steps.length ? (
+          //If we are in the last step, show reset/new-report -button.
           <div>
             <Typography className={classes.instructions}>
               {t('steps_completed')}
@@ -214,15 +254,17 @@ const ReportForm = () => {
               variant="outlined"
               className={classes.button}
             >
-              {t('resetoi')}
+              {t('report_new_report')}
             </Button>
           </div>
         ) : (
+          //If the current step is not last, show back button and next or finish -button.
           <Container maxWidth="md">
             <div className={classes.instructions}>
               {getStepContent(activeStep)}
             </div>
             <div style={{ marginTop: 40, marginBottom: 10 }}>
+              {/**Back button */}
               <Button
                 variant="outlined"
                 disabled={activeStep === 0}
@@ -233,14 +275,23 @@ const ReportForm = () => {
               </Button>
 
               {activeStep === steps.length - 1 ? (
-                <Button
+                /**Finish button. When clicking, handleFinnish sets 
+                 * buttons loading status to true, disabling it until
+                 * handleFinnish is finished. This coult take a while
+                 * if uploading large images or videos
+                 * */
+                <LoadingButton
+                  loading={loading}
+                  loadingPosition='end'
                   variant="contained"
+                  endIcon={<SendIcon />}
                   onClick={handleFinnish}
                   className={`${classes.button} ${classes.primary}`}
                 >
                   {t('finish')}
-                </Button>
+                </LoadingButton>
               ) : (
+                /**Next button */
                 <Button
                   variant="contained"
                   onClick={handleNext}
