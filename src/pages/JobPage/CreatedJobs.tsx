@@ -237,7 +237,7 @@ const CreatedJobs: React.FC<any> = () => {
   return (
     <>
     <div>
-      <Typography className={classes.title} color="primary" align="center" variant="h5">Your job ads</Typography>
+      <Typography className={classes.title} color="primary" align="center" variant="h5">{t('job_your_job_ads')}</Typography>
     </div>
     {isMobile ? mobileView() : tableView()}
     </>

@@ -566,6 +566,7 @@ export default {
   full_job_description: "Full description",
   job_ads: "Job ads",
   job_apply: "Apply now",
+  job_your_job_ads: 'Your job ads',
 
   //CreateUser
   add_new_admin: "Add new admin",

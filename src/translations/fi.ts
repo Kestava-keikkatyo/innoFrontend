@@ -559,6 +559,7 @@ export default {
   full_job_description: "Täydellinen kuvaus",
   job_ads: "Työpaikkailmoitukset",
   job_apply: "Hae nyt",
+  job_your_job_ads: 'Työpaikkailmoituksesi',
 
   //CreateUser
   add_new_admin: "Lisää uusi järjestelmänvalvoja",
