@@ -76,8 +76,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontWeight: theme.typography.fontWeightRegular,
   },
   tab: {
-    minWidth: '20%',
-    maxWidth: '20%',
+    // minWidth: '20%',
+    // maxWidth: '20%',
+    minWidth: '25%',
+    maxWidth: '25%',
   },
 }));
 
@@ -100,6 +102,10 @@ const BusinessContractsPage = () => {
   const signed: any = [];
   const sent: any = [];
 
+  const requested: any = []
+  const fromAgencies: any = []
+  const archived: any = []
+
   useEffect(() => {
     dispatch(fetchBusinessContractsAsTarget());
   }, [dispatch]);
@@ -107,10 +113,12 @@ const BusinessContractsPage = () => {
   contracts.map((contract: any) => {
     if (contract.status === "pending") {
       pending.push(contract);
+      fromAgencies.push(contract)
     } else if (contract.requestContracts) {
       waiting.push(contract);
     } else if (contract.status === "signed") {
       signed.push(contract);
+      fromAgencies.push(contract)
     } else if (contract.receivedContracts) {
       sent.push(contract);
       console.log(sent);
@@ -152,11 +160,13 @@ const BusinessContractsPage = () => {
           />
           <Tab
             className={classes.tab}
-            label={matches ? ' ' : t('sent_contracts')}
+            // label={matches ? ' ' : t('sent_contracts')}
+            label={matches ? ' ' : 'requested_contracts'}
             icon={
               <Badge badgeContent={sent.length} color="secondary">
                 {matches ? (
-                  <Tooltip title="Lähetetyt sopimukset" placement="top" arrow>
+                  // <Tooltip title="Lähetetyt sopimukset" placement="top" arrow>
+                  <Tooltip title="Pyydetyt sopimukset" placement="top" arrow>
                     <SendIcon />
                   </Tooltip>
                 ) : (
@@ -168,11 +178,13 @@ const BusinessContractsPage = () => {
           />
           <Tab
             className={classes.tab}
-            label={matches ? ' ' : t('received_contracts')}
+            label={matches ? ' ' : 'received_contracts'}
             icon={
+              // <Badge badgeContent={pending.length} color="secondary">
               <Badge badgeContent={pending.length} color="secondary">
                 {matches ? (
-                  <Tooltip title="Saapuneet sopimukset" placement="top" arrow>
+                  // <Tooltip title="Saapuneet sopimukset" placement="top" arrow>
+                  <Tooltip title="Vastaanotetut sopimukset" placement="top" arrow>
                     <NotificationsActiveIcon />
                   </Tooltip>
                 ) : (
@@ -182,8 +194,9 @@ const BusinessContractsPage = () => {
             }
             {...a11yProps(2)}
           />
-          <Tab
+          {/* <Tab
             className={classes.tab}
+            label={matches ? ' ' : t('waiting_contracts')}
             label={matches ? ' ' : t('waiting_contracts')}
             icon={
               <Badge badgeContent={waiting.length} color="secondary">
@@ -197,14 +210,15 @@ const BusinessContractsPage = () => {
               </Badge>
             }
             {...a11yProps(3)}
-          />
+          /> */}
           <Tab
             className={classes.tab}
-            label={matches ? ' ' : t('done_contracts')}
+            // label={matches ? ' ' : t('done_contracts')}
+            label={matches ? ' ' : 'archived_contracts'}
             icon={
-              <Badge badgeContent={signed.length} color="secondary">
+              <Badge badgeContent={archived.length} color="secondary">
                 {matches ? (
-                  <Tooltip title="Valmiit sopimukset" placement="top" arrow>
+                  <Tooltip title="Arkistoidut sopimukset" placement="top" arrow>
                     <AllInboxIcon />
                   </Tooltip>
                 ) : (
@@ -212,7 +226,8 @@ const BusinessContractsPage = () => {
                 )}
               </Badge>
             }
-            {...a11yProps(4)}
+            // {...a11yProps(4)}
+            {...a11yProps(3)}
           />
         </Tabs>
       </AppBar>
@@ -221,17 +236,22 @@ const BusinessContractsPage = () => {
         <AgenciesList />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <ListAccordionSent contracts={sent} />
+        {/* <ListAccordionSent contracts={sent} /> */}
+        <ListAccordionSent contracts={requested} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <ListAccordionInBox contracts={pending} />
+        {/* <ListAccordionInBox contracts={pending} /> */}
+        <ListAccordionInBox contracts={fromAgencies} />
       </TabPanel>
       <TabPanel value={value} index={3}>
+        <ListAccordionWaiting contracts={archived} />
+      </TabPanel>
+      {/* <TabPanel value={value} index={3}>
         <ListAccordionWaiting contracts={waiting} />
-      </TabPanel>
-      <TabPanel value={value} index={4}>
+      </TabPanel> */}
+      {/* <TabPanel value={value} index={4}>
         <ListAccordionDone contracts={signed} />
-      </TabPanel>
+      </TabPanel> */}
     </Container>
   );
 };
