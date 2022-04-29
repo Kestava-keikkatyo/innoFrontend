@@ -38,7 +38,7 @@ const ReportPage = () => {
           marginTop: '1em'
         }}
       >
-        {t('back')}
+        {t('report_back_to_reports')}
       </Button>
       {/**Actual new report form */}
       <ReportForm />
