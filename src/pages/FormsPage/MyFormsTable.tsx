@@ -196,7 +196,7 @@ const MyFormsTable: React.FC<any> = ({handleDownload}) => {
               </Typography>
             </AccordionDetails>
             <AccordionActions>
-              <Tooltip title="Edit form" placement="top" arrow>
+              <Tooltip title={t('form_tooltip_preview') as string} placement="top" arrow>
                 <IconButton
                   aria-label="preview"
                   onClick={() => handlePreview(form._id)}
@@ -205,19 +205,19 @@ const MyFormsTable: React.FC<any> = ({handleDownload}) => {
                 </IconButton>
               </Tooltip>
            
-              <Tooltip title="Edit form" placement="top" arrow>
+              <Tooltip title={t('form_tooltip_edit') as string} placement="top" arrow>
                 <IconButton onClick={() => handleEdit(form._id)} size="large">
                   <EditIcon />
                 </IconButton>
               </Tooltip>
 
-              <Tooltip title="Delete form" placement="top" arrow>
+              <Tooltip title={t('form_tooltip_delete') as string} placement="top" arrow>
                 <IconButton onClick={() => handleDelete(form._id)} size="large">
                   <DeleteIcon />
                 </IconButton>
               </Tooltip>
 
-              <Tooltip title="Download pdf" placement="top" arrow>
+              <Tooltip title={t('form_tooltip_download') as string} placement="top" arrow>
                 <IconButton onClick={() => handleDownload(form._id)} size="large">
                   <SaveAltIcon />
                 </IconButton>

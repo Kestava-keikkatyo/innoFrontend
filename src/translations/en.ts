@@ -353,6 +353,11 @@ export default {
   form_title: "Form title",
   add_question: "Add question",
   form_editor: "Form editor",
+  form_tooltip_preview: 'Preview form',
+  form_tooltip_edit: 'Edit form',
+  form_tooltip_delete: 'Delete form',
+  form_tooltip_download: 'Download form',
+  form_tooltip_copy: 'Copy to my forms',
 
   finland: "Finnish",
   english: "English",

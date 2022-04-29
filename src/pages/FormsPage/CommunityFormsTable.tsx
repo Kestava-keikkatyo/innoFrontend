@@ -168,13 +168,13 @@ const CommunityFormsTable: React.FC<any> = ({handleDownload}) => {
               </Typography>
             </AccordionDetails>
             <AccordionActions>
-              <Tooltip title="Preview form" placement="top" arrow>
+              <Tooltip title={t('form_tooltip_preview') as string} placement="top" arrow>
                 <IconButton onClick={() => handlePreview(form._id)} size="large">
                   <VisibilityIcon />
                 </IconButton>
               </Tooltip>
 
-              <Tooltip title="Download pdf" placement="top" arrow>
+              <Tooltip title={t('form_tooltip_download') as string} placement="top" arrow>
                 <IconButton onClick={() => handleDownload(form._id)} size="large">
                   <SaveAltIcon />
                 </IconButton>

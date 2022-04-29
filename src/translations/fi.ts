@@ -356,6 +356,12 @@ export default {
   tyopoyta: "Työpöytä",
   tietopankki: "Tietopankki",
   kirjaudu_sisaan: "Kirjaudu sisään",
+  form_tooltip_preview: 'Esikatsele lomaketta',
+  form_tooltip_edit: 'Muokkaa lomaketta',
+  form_tooltip_delete: 'Poista lomake',
+  form_tooltip_download: 'Lataa lomake',
+  form_tooltip_copy: 'Kopioi omiin lomakkeisiin',
+
   //Joblist
   limit_search: "Rajaa hakua",
   jobs_found: "Työpaikkoja löytyi",
