@@ -339,9 +339,9 @@ code {
 
 .form-banner {
   width: calc(100% - 48px);
-  height: 250px;
   background: url("assets/form-banner.jpg");
   background-size: cover;
+  background-position: center center;
   position: absolute;
   top: 0;
   left: 24px;

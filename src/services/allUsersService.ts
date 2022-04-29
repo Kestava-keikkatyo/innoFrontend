@@ -21,7 +21,6 @@ const authHeader = () => {
 const getAllAgencies = async () => {
   try {
     const res = await axios.get(
-      // `${baseUrl}/agencies/all`,
       `${baseUrl}/user/getByUserType/agency/name=a`,
       authHeader()
     )
@@ -39,7 +38,7 @@ const getAllAgencies = async () => {
 const getAllBusinesses = async () => {
   try {
     const res = await axios.get(
-      `${baseUrl}/businesses/all`,
+      `${baseUrl}/user/getByUserType/business/name=a`,
       authHeader()
     )
     return res
@@ -56,7 +55,7 @@ const getAllBusinesses = async () => {
 const getAllWorkers = async () => {
   try {
     const res = await axios.get(
-      `${baseUrl}/workers/all`,
+      `${baseUrl}/user/getByUserType/worker/name=a`,
       authHeader()
     )
     return res
@@ -91,7 +90,7 @@ const getAgencyWorkers = async () => {
 const searchAgencies = async (input: string) => {
   try {
     const res = await axios.get(
-      `${baseUrl}/agencies?name=${input}`,
+      `${baseUrl}/user/getByUserType/agencies/name=${input}`,
       authHeader()
     )
     return res
@@ -109,7 +108,7 @@ const searchAgencies = async (input: string) => {
 const searchBusinesses = async (input: string) => {
   try {
     const res = await axios.get(
-      `${baseUrl}/businesses?name=${input}`,
+      `${baseUrl}/user/getByUserType/businesses/name=${input}`,
       authHeader()
     )
     return res
@@ -127,7 +126,7 @@ const searchBusinesses = async (input: string) => {
 const searchWorkers = async (input: string) => {
   try {
     const res = await axios.get(
-      `${baseUrl}/workers?name=${input}`,
+      `${baseUrl}/user/getByUserType/workers/name=${input}`,
       authHeader()
     )
     return res

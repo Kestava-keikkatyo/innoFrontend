@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Theme } from '@mui/material/styles';
 
 import createStyles from '@mui/styles/createStyles';
@@ -9,12 +9,117 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { CardMedia, Grid } from '@mui/material';
+import { Box, Button, CardMedia, Grid } from '@mui/material';
 import banner from '../../assets/form-banner.jpg';
 import ReactPlayer from 'react-player';
+import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { setReport, archiveReport, getMyReports, fetchReports } from '../../actions/reportActions'
+import { roles, severity } from "../../types/types"
+import ArchiveIcon from '@mui/icons-material/Archive';
+import UnarchiveIcon from '@mui/icons-material/Unarchive';
+import { setAlert } from '../../actions/alertActions';
 
+/*
+  Report component represents one report in a list of reports (http://localhost:3000/reports)
+*/
 const Report: React.FC<any> = ({ report }) => {
   const classes = useStyles();
+  const { t } = useTranslation()
+  const history = useHistory()
+  const dispatch = useDispatch()
+  const role: any = useSelector((state: any) => state.user.data.role);  
+
+  /*
+  Report has archived-status stored in different fields depending on the user role.
+  Here we select the correct field name.
+  */
+  let archivedRole = ""
+  switch(role){
+    case roles.Worker:
+      archivedRole = 'workerArchived'
+    break;
+    case roles.Agency:
+      archivedRole = 'agencyArchived'
+    break;
+    case roles.Business:
+      archivedRole = 'businessArchived'
+    break;
+  }
+
+  const handleAnswer = () => {
+    //Reply to report. Redirect to reply-page
+    dispatch(setReport(report))
+    history.push(`/reports/answer`);
+  }
+
+  const handleArchive = async () => {
+    //Archiving report
+    await dispatch(archiveReport(report._id, 'true'))
+    /*
+    After archiving, load the reports again. Worker gets their own sent reports 
+    and other get reports sent to them.
+    */
+    if (role === roles.Worker){
+      dispatch(getMyReports());
+    } else {
+      dispatch(fetchReports());
+    }
+    dispatch(setAlert(t('report_is_archived_alert'), severity.Success))
+  }
+
+  const handleUnarchive = async () => {
+    //Unarchiving report
+    await dispatch(archiveReport(report._id, 'false'))
+    /*
+    After archiving, load the reports again. Worker gets their own sent reports 
+    and other get reports sent to them.
+    */
+    if (role === roles.Worker){
+      dispatch(getMyReports());
+    } else {
+      dispatch(fetchReports());
+    }
+    dispatch(setAlert(t('report_is_unarchived_alert'), severity.Success))
+  }
+
+  /*
+  Määritetään statusviesti joka kuvaa onko raporttiin:
+  -vastattu, 
+  -vastattu osittain(kahdesta vastaanottajasta toinen vastannut) 
+  -vai odottaako se vastausta.
+  */
+  let statusMessage = ""
+  if (report.status ==='pending') {
+    //Kukaan ei ole vastannut raporttiin
+    statusMessage = t('report_status_pending')
+  } else if (report.agency && report.business){
+    //Raportilla on kaksi vastaanottajaa
+    if (report.agencyReply && report.businessReply) {
+      //Molemmat vastaanottajat ovat vastanneet
+      statusMessage = t('report_status_replied')
+    } else {
+      //Vain toinen vastaanottaja on vastannut
+      statusMessage = t('report_status_partially_replied')
+    }
+  } else {
+    //Raportilla on vain yksi vastaanottaja ja tämä on vastannut
+    statusMessage = t('report_status_replied')
+  }
+
+  //Styling of archived reports AccordionSummary
+  const archivedSummaryStyling = (report[archivedRole] === 'true') ? 
+    {
+      fontStyle: 'italic',
+      backgroundColor: 'grey.300',
+    } 
+  : {} 
+  //Set reply-status color in AccordionSummary according to report.status
+  const statusColor = report.status==='pending' ? 'warning.main' : 'success.main'
+
+  //Localize the date (date when the event happened) for AccordionSummary
+  const localizedDate = report.date ? (new Date(report.date)).toLocaleString() : null;
 
   return (
     <div className={classes.root}>
@@ -23,57 +128,183 @@ const Report: React.FC<any> = ({ report }) => {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1c-content"
           id="panel1c-header"
-        >
-          <div className={classes.column}>
-            <Typography className={classes.heading}>
-              {report.reportTitle}
+          sx={{
+            ...archivedSummaryStyling,
+          }}
+      >
+          {/**Title */}
+          <Typography sx={{ width: '33%'}}>
+            {report.title}
+          </Typography>
+        
+          {/**Date */}
+          <Typography 
+            display='inline' 
+            sx={{color: 'text.secondary', width: '33%'}}
+          >
+            {localizedDate}
+          </Typography>
+
+          {/**Status (Reply-status and archived-status if archived) */}
+          <Box sx={{width: '33%'}}>
+            {/**Reply-status*/}
+            <Typography 
+              display='inline'
+              sx={{color: statusColor}}
+            > 
+              {statusMessage}
             </Typography>
-          </div>
-          <div className={classes.column}>
-            <Typography className={classes.secondaryHeading}>
-              {report.date}
+
+            {/**Archived-status*/}
+            {report[archivedRole] === 'true' && 
+            <Typography display='inline'> 
+              {` | ${t('report_is_archived')}`}
             </Typography>
-          </div>
+            }
+          </Box>
+        
         </AccordionSummary>
-        <AccordionDetails className={classes.details}>
-          <div className={classes.column} style={{ marginRight: 16 }}>
+        
+        {/**Details open when clicked */}
+        <AccordionDetails className={classes.details} >
+          <Box className={classes.column}  sx={{borderTop: 1, borderColor: 'grey.500'}}>
+
+            {/**Archive/Unarchive button according to archive-status*/}
+            {(report[archivedRole] === 'true') ?
+              /**UnArchiveButton */
+              <Button 
+                variant='outlined' 
+                color='secondary' 
+                startIcon={<UnarchiveIcon />} 
+                onClick= {handleUnarchive}
+                sx={{
+                  float: 'right', 
+                  marginTop: '16px'
+                }}
+              >
+                {t('report_unarchive')}
+              </Button>
+              :
+              /**ArchiveButton */
+              <Button 
+                variant='outlined' 
+                color='secondary' 
+                startIcon={<ArchiveIcon />} 
+                onClick= {handleArchive}
+                sx={{
+                  float: 'right', 
+                  marginTop: '16px'
+                }}
+              >
+                {t('report_archive')}
+              </Button>
+            }   
+            {/**Report Title */}
             <div>
               <Typography variant="body1" className={classes.body1}>
-                Work title
+                 {t('report_title')}
               </Typography>
               <Typography variant="body2" className={classes.body2}>
-                {report.workTitle}
+                {report.title}
               </Typography>
             </div>
+          
+            {/*Reports recipient(s) information*/}
             <div style={{ marginTop: 16 }}>
+              {/**Recipients info title. In plural if there is both business and agency as a recipient. */}
               <Typography variant="body1" className={classes.body1}>
-                Worker Info
+                {(report.agency && report.business) 
+                ? t('report_receiver_info_plural')
+                : t('report_receiver_info')}
               </Typography>
-              <Typography variant="body2" className={classes.body2}>
-                {report.workerName}
-              </Typography>
-              <Typography variant="body2" className={classes.body2}>
-                {report.workerEmail}
-              </Typography>
-              <Typography variant="body2" className={classes.body2}>
-                {report.workerPhone}
-              </Typography>
+
+              {(report.agency) && 
+              /**Agency recipient info */
+              <Box>
+                <Typography display='inline' variant="body2" className={classes.body2}>
+                  {t('agency')}: {" "}
+                </Typography>
+                <Typography 
+                  display='inline'
+                  sx={{color: 'secondary.main'}}
+                > 
+                  {report.agency.name}
+                </Typography>
+              </Box>}
+
+              {(report.business) &&
+              /**Business recipient info */
+              <Box>
+                <Typography display='inline' variant="body2" className={classes.body2}>
+                  {t('business')}: {" "}
+                </Typography>
+                <Typography 
+                  display='inline'
+                  sx={{color: 'secondary.main'}}
+                > 
+                  {report.business.name}
+                </Typography>
+              </Box>}
             </div>
+            
+            {/*Agency and business get shown the reporters info   */}
+            {(role === roles.Agency || role === roles.Business ) &&
+              <div style={{ marginTop: 16 }}>
+                <Typography variant="body1" className={classes.body1}>
+                  {t('report_worker_info')}
+                </Typography>
+                <Typography variant="body2" className={classes.body2}>
+                  {report.user.name}
+                </Typography>
+                <Typography variant="body2" className={classes.body2}>
+                  {report.user.email}
+                </Typography>
+                <Typography variant="body2" className={classes.body2}>
+                  {report.user.phoneNumber}
+                </Typography>
+              </div>
+            }
+
+            {/**Time when reported and when happened in localized dates and time */}
             <div>
               <Typography variant="body1" className={classes.body1}>
-                Report Details
+                {t('report_time_reported')}
               </Typography>
-              <Typography variant="body2" className={classes.body2}>
+              <Typography paragraph variant="body2" className={classes.body2}>
+                {new Date(report.createdAt).toLocaleString()}
+              </Typography>
+              <Typography variant="body1" className={classes.body1}>
+                {t('report_time_happened')}
+              </Typography>
+              <Typography paragraph variant="body2" className={classes.body2}>
+                {new Date(report.date).toLocaleString()}
+              </Typography>
+            </div>
+
+            {/**The actual report details. */}
+            <div>
+              <Typography variant="body1" className={classes.body1}>
+                {t('report_details')}
+              </Typography>
+
+              {/**whiteSpace: 'pre-wrap' to preserve whitespace styling from the original report. */}
+              <Typography paragraph variant="body2" className={classes.body2} sx={{whiteSpace: 'pre-wrap'}}>
                 {report.details}
               </Typography>
             </div>
-          </div>
-          <div className={classes.column}>
+          </Box>
+          {report.fileType !== '' &&
+          /**If there is a file associated with the report, show that here. Image or video. */
+          <Box className={classes.column} sx={{paddingBottom: '2em'}}>
             {report.fileType === 'image' && (
               <CardMedia
+                component='img'
                 className={classes.media}
                 image={report.fileUrl ? report.fileUrl : banner}
-                title="Paella dish"
+                sx={{
+                  marginTop: '2em',
+                  border: 1,
+                }}
               />
             )}
             {report.fileType === 'video' && (
@@ -88,7 +319,78 @@ const Report: React.FC<any> = ({ report }) => {
                 />
               </Grid>
             )}
-          </div>
+          </Box>
+          }
+          
+          {report.agencyReply && 
+            /**Show agencys reply if it exists */
+            <Box 
+              sx={{
+                borderTop: 1,
+                borderColor: 'grey.500',
+                paddingTop: '1em',
+              }}
+            >
+              {/**Reply title with agency name*/}
+              <Typography display='inline' variant="body1" className={classes.body1}>
+                {t('report_reply_answer')} {t('report_from_agency')}: {' '}
+              </Typography>
+              <Typography 
+                display='inline'
+                sx={{color: 'secondary.main'}}
+              > 
+                {report.agency.name}
+              </Typography>
+              {/**Reply */}
+              <Typography variant="body2" className={classes.body2} sx={{whiteSpace: 'pre-wrap', marginBottom: '1em'}}>
+                { report.agencyReply }
+              </Typography>
+            </Box>
+            }
+
+          {report.businessReply && 
+            /**Show businesses reply if it exists*/
+            <Box 
+              sx={{
+                borderTop: 1,
+                borderColor: 'grey.500',
+                paddingTop: '1em',
+              }}
+            >
+              {/**Reply title with business name*/}
+              <Typography display='inline' variant="body1" className={classes.body1}>
+                {t('report_reply_answer')} {t('report_from_business')}: {' '}
+              </Typography>
+              <Typography 
+                display='inline'
+                sx={{color: 'secondary.main'}}
+              > 
+                {report.business.name}
+              </Typography>
+              {/**Reply */}
+              <Typography variant="body2" className={classes.body2} sx={{whiteSpace: 'pre-wrap', marginBottom: '1em'}}>
+                { report.businessReply }
+              </Typography>
+            </Box>
+            }
+
+          {/*
+            For agency and business users, if they have not replied to the report, show reply button.
+          */}
+          {((!report.agencyReply && role === roles.Agency) || (!report.businessReply && role === roles.Business )) && 
+          <Button
+            variant="contained"
+            onClick={() => handleAnswer()}
+            sx = {{
+              marginTop: '1em',
+              background: '#EB5A00',
+              color: 'white',
+            }}
+          >
+            {t('report_answer_button')}
+          </Button>
+          }
+          
         </AccordionDetails>
       </Accordion>
     </div>
@@ -115,9 +417,9 @@ const useStyles = makeStyles((theme: Theme) =>
       width: 20,
     },
     media: {
-      height: 0,
+      //height: 0,
       //border: '1px solid red',
-      paddingTop: '56.25%', // 16:9
+      //paddingTop: '56.25%', // 16:9
       borderRadius: 5,
     },
     playerWrapper: {

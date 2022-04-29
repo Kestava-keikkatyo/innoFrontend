@@ -65,7 +65,7 @@ const AppNavigation = (props: { windowProp: any; children: ReactNode }) => {
               keepMounted: true, // Better open performance on mobile.
             }}
           >
-            <ResponsiveDrawer isOpen={mobileOpen}/>
+            <ResponsiveDrawer isMobile={true} isOpen={mobileOpen} setOpen={setMobileOpen}/>
           </Drawer>
         </Hidden>
         <Hidden lgDown implementation="css">
@@ -83,13 +83,14 @@ const AppNavigation = (props: { windowProp: any; children: ReactNode }) => {
             variant="permanent"
             open
           >
-            <ResponsiveDrawer isOpen={open} />
+            <ResponsiveDrawer isMobile={false} isOpen={open}/>
           </Drawer>
         </Hidden>
       </nav>
 
       <div className={classes.content}>
-        <div className={classes.toolbar} />
+        {/*Extra toolbar to prevent content from going under top nav bar*/}
+        <div className={classes.toolbar} style={{height:`${85}px`}}/>
         {children}
       </div>
     </div>

@@ -176,7 +176,7 @@ export const setCommon = (common: boolean) => async (dispatch: any) => {
  * @todo Service call backend.
  */
 export const submitForm = (form: Form) => async (dispatch: any) => {
-  console.log("formActions:form ", form);
+  //console.log("formActions:form ", form);
   if (form.title === "") {
     dispatch(setAlert("Title is required", severity.Error));
     return;

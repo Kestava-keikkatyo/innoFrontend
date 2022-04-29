@@ -12,7 +12,7 @@ import {
   MenuItem,
   TextField,
 } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from "@mui/styles/makeStyles";
 import { Close as CloseIcon } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBusinessContract } from '../../actions/businessContractActions';

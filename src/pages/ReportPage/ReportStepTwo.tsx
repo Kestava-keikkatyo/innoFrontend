@@ -10,18 +10,26 @@ import { Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { setReport } from '../../actions/reportActions';
 import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react'
+
+/**Second step (page) of the new report form. */
 const ReportStepTwo = () => {
   const { currentReport } = useSelector((state: any) => state.report);
-  const [selectedDate, setSelectedDate] = React.useState(new Date()); // new Date() returns current date
+  /**If current report is missing a date, select current date. */
+  const [selectedDate, setSelectedDate] = React.useState(currentReport.date === "" ? new Date() : currentReport.date);
   const dispatch = useDispatch();
   const { t } = useTranslation()
+
   const handleDateChange = (date: any) => {
-    console.log('Date', date);
     setSelectedDate(date);
-    dispatch(setReport({ ...currentReport, date: date.toLocaleString() })); // convert date to the format: "30/07/2021, 19:28:40"
+    dispatch(setReport({ ...currentReport, date: date })); 
   };
 
-  console.log('selectedDate', selectedDate);
+  useEffect(() => {
+    if (currentReport.date === "") {
+      dispatch(setReport({ ...currentReport, date: selectedDate })); 
+    }
+  }, [])
 
   return (
     <Grid container style={{ marginTop: 16 }}>
@@ -31,6 +39,7 @@ const ReportStepTwo = () => {
       <Grid item xs={12}>
         <LocalizationProvider dateAdapter={AdapterDateFns} >
           <Grid container justifyContent="space-around">
+            {/**Date picker for selecting date for the event. */}
             <DatePicker 
               renderInput = {props => 
               <TextField 
@@ -43,6 +52,7 @@ const ReportStepTwo = () => {
               /> 
               }
               inputFormat="dd.MM.yyyy"
+              mask="__.__.____"
               showToolbar={false}
               value={selectedDate}
               onChange={handleDateChange}
@@ -51,6 +61,7 @@ const ReportStepTwo = () => {
               }}
               
             />
+            {/**Time picker for selecting time for the event. */}
             <TimePicker
               renderInput = {props => 
                 <TextField 

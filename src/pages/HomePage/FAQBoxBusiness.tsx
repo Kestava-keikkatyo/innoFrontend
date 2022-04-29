@@ -42,7 +42,7 @@ export default function CustomizedTables() {
           Tulostaa FAQ-JSONin Accordion-listana
        */}
           {faq.business.map((e, i) => (
-            <ListItem>
+            <ListItem key={e.tip}>
               <Accordion className={classes.card} variant="outlined">
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}

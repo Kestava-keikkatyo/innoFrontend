@@ -11,14 +11,21 @@ import {
 import { Report } from '../types/types'
 
 export const initialReport: Report = {
-    workTitle: "",
-    reportTitle: "",
+    title: "",
     details: "",
+    agency: null,
+    business: null,
+    user: "",
     date: "",
-    businessAsHandler: "",
-    agencyAsHandler: "",
     fileUrl: "",
-    fileType: ""
+    fileType: "",
+    name: "",
+    email: "",
+    phoneNumber: "",
+    status: "",
+    businessArchived: 'false',
+    agencyArchived: 'false',
+    workerArchived: 'false',
 }
 
 const initialState: ReportState = {

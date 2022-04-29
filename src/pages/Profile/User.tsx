@@ -47,7 +47,7 @@ const UserProfile: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
     <div className={classes.userContainer}>
       <div className={classes.userShow}>
       { myProfile ?
-        <Button className={classes.back} color="secondary" component={Link} to="/profile/edit">{t('button_edit')}</Button>
+        <Button className={classes.edit} color="secondary" component={Link} to="/profile/edit">{t('button_edit')}</Button>
         : null}
         <div className={classes.userShowTop}>
             <Avatar 
@@ -121,7 +121,7 @@ const useStyles = makeStyles((theme: any) => ({
   userContainer: {
     display: 'flex',
     marginTop: '20px',
-    width: '600px',
+    width: '100%',
   },
   userShow: {
     flex: '1',
@@ -157,9 +157,9 @@ const useStyles = makeStyles((theme: any) => ({
     width: theme.spacing(15),
     height: theme.spacing(15),
   },
-  back: {
-    marginLeft: '1000px',
+  edit: {
     fontSize: '17px',
+    float: 'right',
   }
 }));
 

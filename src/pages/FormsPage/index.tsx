@@ -24,6 +24,16 @@ import CommunityFormsTable from './CommunityFormsTable'
 
 import { useTranslation } from 'react-i18next'
 
+import formServices from '../../services/formServices';
+import pdfMake from 'pdfmake/build/pdfmake.js';
+import pdfFonts from 'pdfmake/build/vfs_fonts.js';
+import htmlToPdfmake from 'html-to-pdfmake';
+import Form from './Form';
+import ReactDOMServer from 'react-dom/server';
+import { jsPDF } from "jspdf";
+//@ts-ignore @TODO fix this ts-ignore
+import * as html2pdf from 'html2pdf.js';
+
 interface TabPanelProps {
   children?: React.ReactNode;
   index: any;
@@ -42,8 +52,13 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
-          <div>{children}</div>
+        <Box sx={{
+          padding: {
+            xs: '20px 0px',
+            sm: '40px 20px'
+          }
+        }}>
+          {children}
         </Box>
       )}
     </div>
@@ -83,6 +98,36 @@ const FormsPage: React.FC = () => {
     setValue(newValue);
   };
 
+  const handleDownload = async (formId: any) => {
+    let form: any = await formServices.fetchFormById(formId);
+    
+    let content = ReactDOMServer.renderToString(<Form currentForm={form} />)
+
+    //Set options for html2pdf conversion
+    let options = {
+      margin: [96,96,96,96], //[top, right, bottom, left]
+      filename: form.title ? `${form.title}.pdf` : "UnknownForm.pdf",
+      image: { type: 'jpeg', quality: 0.90 },
+      html2canvas: { 
+        scale: 2,
+        logging: false,
+      },
+      pagebreak: { avoid: '.avoid_pagebreak' },
+      jsPDF: {
+        orientation: 'p',
+        unit: 'px',
+        format: 'a4',
+        hotfixes: ['px_scaling'],
+      },
+    }
+
+    //create the PDF
+    html2pdf()
+      .set(options)
+      .from(content)
+      .save()
+  };
+
   //add communityForms
   //const { myForms } = useSelector((state: any) => state.formList)
   const dispatch = useDispatch()
@@ -94,14 +139,30 @@ const FormsPage: React.FC = () => {
   /* <div className="form-banner-filter"> */
   return (
     <Container className="relative">
-      <div className="form-banner" style={{ height: '200px'}} />
+      <Box 
+        className="form-banner" 
+        sx={{ 
+          height: '200px',
+          display: {
+            xs: 'none',
+            sm: 'flex',
+          }
+        }} 
+      />
+      
       <Grid
         container
         direction="row"
         justifyContent="space-evenly"
         alignItems="flex-end"
         className="form-search-container"
-        style={{ height: '200px', paddingBottom: '50px' }}
+        sx={{ 
+          height: '200px',
+          display: {
+            xs: 'none',
+            sm: 'flex',
+          }
+        }} 
       >
       </Grid>
       <div className="new-form-btn">
@@ -126,7 +187,7 @@ const FormsPage: React.FC = () => {
           </Typography>
           <Card className={classes.card} variant="outlined">
             <CardContent >
-              <MyFormsTable/>
+              <MyFormsTable handleDownload={handleDownload}/>
             </CardContent>
           </Card>
         </TabPanel>
@@ -136,7 +197,7 @@ const FormsPage: React.FC = () => {
           </Typography>
           <Card className={classes.card} variant="outlined">
             <CardContent >
-              <CommonFormsTable/>
+              <CommonFormsTable handleDownload={handleDownload}/>
             </CardContent>
           </Card>
         </TabPanel>
@@ -146,7 +207,7 @@ const FormsPage: React.FC = () => {
           </Typography>
           <Card className={classes.card} variant="outlined">
             <CardContent >
-              <CommunityFormsTable/>
+              <CommunityFormsTable handleDownload={handleDownload}/>
             </CardContent>
           </Card>
         </TabPanel>

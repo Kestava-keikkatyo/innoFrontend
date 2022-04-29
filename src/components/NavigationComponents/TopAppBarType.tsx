@@ -18,7 +18,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import NotificationsIcon from "@mui/icons-material/Notifications"
 import MenuIcon from "@mui/icons-material/Menu"
 import clsx from "clsx"
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import navConstants from "../../constants/navConstants"
 import { TopAppBarProps } from "../../types/props"
@@ -153,12 +153,20 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle, open }) => {
     variant: "popper",
     popupId: "userProfilePopper",
   })
+  const [timers, setTimers] = useState<any[]>([]) 
 
   useEffect(() => {
     dispatch(fetchNotifications())
-    setInterval(() => {
+    console.log('Timers', timers)
+    timers.forEach(timer => {
+      console.log('Cleared timer: ',timer)
+      clearInterval(timer)
+    })
+    setTimers([])
+    const newInterval = setInterval(() => {
       dispatch(fetchNotifications())
     }, 30000)
+    setTimers(new Array(newInterval))
   }, [dispatch, data.profileId])
 
   const [anchorElNotifications, setAnchorElNotifications] = React.useState(null)

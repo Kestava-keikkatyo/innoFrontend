@@ -65,6 +65,7 @@ import UserProfile from "./pages/Profile/User"
 import Agencies from "./pages/Profile/Agencies"
 import Application from "./pages/JobPage/Application"
 import UserUpdate from "./pages/Profile/UserUpdate"
+import ReportReplyPage from "./pages/ReportPage/ReportReplyPage"
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface DefaultTheme extends Theme {}
@@ -214,7 +215,10 @@ const App: React.FC = () => {
             <PrivateRoute path="/mood-stats" roles={[roles.Agency]}>
               <AgencyStatistics />
             </PrivateRoute>
-            <PrivateRoute path="/reports" roles={[roles.Business, roles.Agency]}>
+            <PrivateRoute path="/reports/answer" roles={[roles.Business, roles.Agency]}>
+              <ReportReplyPage />
+            </PrivateRoute>
+            <PrivateRoute path="/reports" roles={[roles.Business, roles.Agency, roles.Worker]}>
               <ReportsPage />
             </PrivateRoute>
             <PrivateRoute path="/faq" roles={[roles.Worker]}>

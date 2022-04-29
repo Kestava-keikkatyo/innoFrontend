@@ -109,14 +109,21 @@ export interface Credentials {
 }
 
 export interface Report {
-  workTitle: string;
-  reportTitle: string;
+  title: string;
   details: string;
   date: string;
-  businessAsHandler: string;
-  agencyAsHandler: string;
+  agency: string | null;
+  business: string | null;
+  user: string;
   fileUrl: string;
   fileType: string;
+  name: string;
+  email: string;
+  phoneNumber: string;
+  status: string;
+  businessArchived: string,
+  agencyArchived: string,
+  workerArchived: string,
 }
 
 export interface Job {

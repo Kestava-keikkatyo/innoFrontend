@@ -15,6 +15,7 @@ export default {
   business_responsibilities_read:
     "Käyttäjäyritys on lukenut ja ymmärtänyt vastuunsa",
   saveButton: "Tallenna",
+  faq: "Usein kysytyt kysymykset",
 
   //login
   login_title: "Kirjaudu sisään",
@@ -22,7 +23,7 @@ export default {
   password_label: "Salasana",
   invalid_email_address: "Virheellinen sähköposti",
   required: "Puuttuu",
-  invalid_token: "Väärä token",
+  invalid_token: "Virheellinen token",
   logged_out: "Kirjauduttu ulos",
   login_failed: "Kirjautuminen epäonnistui",
   login_successful: "Kirjauduttu onnistuneesti",
@@ -70,7 +71,7 @@ export default {
   active: "Aktiivisia",
   create: "Luo",
   button_update: "päivitä",
-  button_edit: "muokata",
+  button_edit: "muokkaa",
 
   //Mood index page
   entry_mood: "Lisää fiilis",
@@ -111,13 +112,17 @@ export default {
   report_details: "Lisätiedot",
   steps_completed: "Valmista",
   reports: "Raportit",
-  report: "Raportit",
+  report: "Raportti",
+  report_no_recipient: "Sinun täytyy valita raportin vastaanottaja.",
+  report_title_required: "Otsikko on pakollinen.",
+  report_details_required: "Raportin yksityiskohdat ovat pakolliset.",
+  report_new_report: 'Uusi raportti',
+  report_back_to_reports: 'Takaisin raportteihin',
 
   //Report step one
   select_report_handler: "Valitse raportin vastaanottaja",
-  select_report_helper_text:
-    "Voit valita HP-yrityksen tai käyttäjäyrityksen vastaanottamaan raportin.",
-
+  select_report_helper_text: "Voit valita HP-yrityksen ja/tai käyttäjäyrityksen vastaanottamaan raportin.",
+  select_report_handler_clear: "Tyhjennä",
   //Report step two
   happened: "Milloin tämä tapahtui?",
   date_picker_inline: "Päivämäärä",
@@ -127,6 +132,39 @@ export default {
   fill_work_title: "Tehtävänimike",
   fill_report_title: "Raportin otsikko",
   fill_report_details: "Raportin yksityiskohdat",
+
+  //Reports page
+  reports_not_found: "Raportteja ei löytynyt.",
+  reports_you_have_no_reports: 'Et ole tehnyt yhtään raporttia.',
+  report_title: 'Otsikko',
+  report_worker_info: 'Työntekijän tiedot',
+  report_receiver_info: 'Vastaanottajan tiedot',
+  report_receiver_info_plural: 'Vastaanottajien tiedot',
+  report_answer_button: 'Vastaa',
+  report_status_pending: 'Odotetaan vastausta',
+  report_status_replied: 'Vastattu',
+  report_status_partially_replied: "Vastattu osittain",
+  report_from_agency: 'henkilöstöpalveluyritykseltä',
+  report_from_business: 'käyttäjäyritykseltä',
+  report_display_all: 'Kaikki',
+  report_display_archived: 'Arkistoidut',
+  report_display_not_archived: 'Ei arkistoidut',
+  report_display_label: 'Näytä',
+  report_is_archived: 'Arkistoitu',
+  report_is_archived_alert: 'Raportti arkistoitu',
+  report_is_unarchived_alert: 'Raportti palautettu arkistosta',
+  report_archive: 'Arkistoi',
+  report_unarchive: 'Palauta arkistosta',
+  report_time_reported: 'Raportoitu',
+  report_time_happened: 'Tapahtunut',
+
+  //ReportReply page
+  report_reply_title: 'Vastaus raporttiin',
+  report_reply_answer: 'Vastaus',
+  report_reply_send: 'Lähetä',
+  report_reply_sent_alert: 'Vastaus lähetetty',
+  report_reply_reply_missing: 'Vastaus puuttuu!',
+  report_reply_you_have_new_reply_in_report: 'Sinulle on uusi vastaus raportissa:',
 
   //Mood form
   your_mood: "Fiiliksesi",
@@ -252,7 +290,6 @@ export default {
   business_contracts: "Yrityssopimukset",
   my_work: "Työni",
   remove: "Poista",
-  faq: "Usein kysytyt kysymykset",
   feedback: "Palaute",
 
   //profilePage

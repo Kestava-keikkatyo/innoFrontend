@@ -36,23 +36,17 @@ import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import { useDispatch } from 'react-redux';
 import { DeleteFormById, getFormById } from '../../actions/formActions';
 import { useHistory } from 'react-router';
-import formServices from '../../services/formServices';
-import pdfMake from 'pdfmake/build/pdfmake.js';
-import pdfFonts from 'pdfmake/build/vfs_fonts.js';
-import htmlToPdfmake from 'html-to-pdfmake';
-import Form from './Form';
 import { useTranslation } from 'react-i18next';
-import ReactDOMServer from 'react-dom/server';
 import { setAlert } from '../../actions/alertActions';
 import { fetchFormList } from '../../actions/formListActions';
 import { Search } from '@mui/icons-material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
+import VisibilityIcon from '@mui/icons-material/Visibility';
 /**
  * @component
  * @desc A table to get and search for my forms.
  */
-const MyFormsTable: React.FC<any> = () => {
+const MyFormsTable: React.FC<any> = ({handleDownload}) => {
   let forms = useSelector((state: any) => state.formList.myForms);
   const myForms: any[] = Array.from(forms);
 
@@ -88,27 +82,11 @@ const MyFormsTable: React.FC<any> = () => {
     dispatch(setAlert('Form deleted successfully!'));
   };
 
-  const handleDownload = async (formId: any) => {
-    let form: any = await formServices.fetchFormById(formId);
-    console.log('form ', form);
-
-    pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
-    // pdf content
-    let content: any = [];
-
-    let html = ReactDOMServer.renderToString(<Form currentForm={form} />);
-    let htmlForm: any = htmlToPdfmake(html);
-
-    content.push(htmlForm);
-
-    // pdf document
-    var doc = {
-      content: content,
-    };
-
-    pdfMake.createPdf(doc).download(form.title);
+  const handlePreview = (formId: any) => {
+    dispatch(getFormById(formId));
+    history.push({ pathname: '/forms/preview' });
   };
+
 
   // Table head styles
   const StyledTableCell = withStyles((theme: Theme) =>
@@ -139,6 +117,7 @@ const MyFormsTable: React.FC<any> = () => {
             <TableRow>
               <StyledTableCell align="left">{t('title')}</StyledTableCell>
               <StyledTableCell align="left">{t('description')}</StyledTableCell>
+              <StyledTableCell align="left">{t('preview')}</StyledTableCell>
               <StyledTableCell align="left">{t('edit')}</StyledTableCell>
               <StyledTableCell align="left">{t('delete')}</StyledTableCell>
               <StyledTableCell align="left">{t('download')}</StyledTableCell>
@@ -154,6 +133,15 @@ const MyFormsTable: React.FC<any> = () => {
                   <StyledTableRow key={form._id}>
                     <TableCell align="left">{form.title}</TableCell>
                     <TableCell align="left">{form.description}</TableCell>
+
+                    <TableCell padding="none" style={{ paddingLeft: 16 }}>
+                      <IconButton
+                        aria-label="preview"
+                        onClick={() => handlePreview(form._id)}
+                        size="large">
+                          <VisibilityIcon />
+                      </IconButton>
+                    </TableCell>
 
                     <TableCell padding="none" align="center">
                       <IconButton
@@ -209,6 +197,15 @@ const MyFormsTable: React.FC<any> = () => {
             </AccordionDetails>
             <AccordionActions>
               <Tooltip title="Edit form" placement="top" arrow>
+                <IconButton
+                  aria-label="preview"
+                  onClick={() => handlePreview(form._id)}
+                  size="large">
+                    <VisibilityIcon />
+                </IconButton>
+              </Tooltip>
+           
+              <Tooltip title="Edit form" placement="top" arrow>
                 <IconButton onClick={() => handleEdit(form._id)} size="large">
                   <EditIcon />
                 </IconButton>
@@ -254,7 +251,7 @@ const MyFormsTable: React.FC<any> = () => {
         <form>
           <Box display="flex" alignItems="center">
             <InputBase
-              placeholder="Search by title..."
+              placeholder={t('search_by_title')}
               value={filter}
               onChange={handleFilterchange}
             />
