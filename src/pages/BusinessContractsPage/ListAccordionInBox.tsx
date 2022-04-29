@@ -9,6 +9,9 @@ import {
   AccordionActions,
   IconButton,
   Button,
+  ToggleButtonGroup,
+  ToggleButton,
+  FormControl,
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -50,6 +53,22 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
   const { t } = useTranslation();
 
   const { contracts } = prop;
+
+  const pending: any = []
+  const signed: any = []
+  contracts.map((contract: any) => {
+    switch(contract.status) {
+      case 'pending':
+        pending.push(contract);
+        break
+      case 'signed':
+        signed.push(contract);
+        break
+      default:
+        break
+    }
+    return '';
+  });
 
   const currentBusinessContractForm: any = useSelector(
     (state: IRootState) => state.businessContractForm
@@ -129,125 +148,176 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
     pdfMake.createPdf(doc).download(businessContractForm.title);
   };
 
+  const [filter, setFilter] = React.useState('all')
+  const handleChange = (event: React.MouseEvent<HTMLElement>, value: string) => {
+    event.preventDefault()
+    setFilter(value)
+  }
+
+  const showContracts = (type: string) => {
+    switch(type) {
+      case 'all':
+        return (
+          <div>all</div>
+        )
+      case 'pending':
+        return (
+          <div>pending</div>
+        )
+      case 'signed':
+        return (
+          <div>signed</div>
+        )
+      default:
+        return (
+          <div></div>
+        )
+    }
+  }
+
+  const contractTypes = [
+    {type: 'all', category: 'all'},
+    {type: 'pending', category: 'pending'},
+    {type: 'signed', category: 'signed'}
+  ]
+
   if (contracts.length < 1) {
     return <p>{t('no_results')}</p>;
   } else
     return (
-      <div className="listAccordion-div">
-        {contracts.map((contract: any) => (
-          <Accordion key={contract._id}>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              <div className={classes.logoColumn}>
-                {/* <Avatar
-                  alt="Remy Sharp"
-                  src={contract.agency.profile.profilePicture}
-                /> */}
-              </div>
-              <div className={classes.column}>
-                <Typography className={classes.heading}>
-                  {/* {contract.agency.name} */}
-                  {contract.creator.name}
-                </Typography>
-              </div>
-              <div className={classes.column}>
-                <Typography className={classes.color}>
-                  {t('unfinished')}
-                </Typography>
-              </div>
-            </AccordionSummary>
-            <AccordionDetails>
-              <div className={classes.info}>
-                <Typography style={{ margin: '10px 5px' }}>
-                  {/* Email: {contract.agency.email} */}
-                  Email: contract.agency.email
-                </Typography>
-                <Divider />
-                <Typography style={{ margin: '10px 5px' }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                  eget.
-                </Typography>
-                <Button
-                  style={{ margin: '5px' }}
-                  color="primary"
-                  variant="contained"
-                >
-                  {t('website')}
-                </Button>
-              </div>
-            </AccordionDetails>
-
-            <AccordionActions disableSpacing>
-              <Tooltip title="Hylkää Sopimus" placement="top" arrow>
-                <IconButton
-                  onClick={() =>
-                    rejectContract(
-                      contract.agency._id,
-                      contract._id,
-                      contract.pendingContracts.formId
-                    )
-                  }
-                  size="large">
-                  <CloseIcon />
-                </IconButton>
-              </Tooltip>
-
-              <Tooltip title="Esikatsele Lomakettä" placement="top" arrow>
-                <IconButton
-                  onClick={() =>
-                    // handleEsitteleLomaketta(contract.pendingContracts.formId)
-                    handleEsitteleLomaketta(contract.form2)
-                  }
-                  size="large">
-                  <VisibilityIcon />
-                </IconButton>
-              </Tooltip>
-
-              <Tooltip
-                title="Täytä tai muokkaa lomaketta"
-                placement="top"
-                arrow
+      <div>
+        <div>
+          <ToggleButtonGroup 
+            classes={{ root: classes.buttonGroupRoot }}
+            className={classes.buttonGroup}
+            value={filter} 
+            exclusive 
+            onChange={handleChange}
+            orientation='horizontal'
+          >
+            {contractTypes.map(filter => (
+              <ToggleButton key={filter.type} value={filter.category}>{filter.type}</ToggleButton>
+            ))}
+          </ToggleButtonGroup>
+          <div>{showContracts(filter)}</div>
+        </div>
+        <div className="listAccordion-div">
+          {contracts.map((contract: any) => (
+            <Accordion key={contract._id}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
               >
-                <IconButton
-                  onClick={() =>
-                    handleTäytäTaiMuokkaaLomaketta(
-                      contract.pendingContracts.formId
-                    )
-                  }
-                  size="large">
-                  <EditIcon />
-                </IconButton>
-              </Tooltip>
+                <div className={classes.logoColumn}>
+                  {/* <Avatar
+                    alt="Remy Sharp"
+                    src={contract.agency.profile.profilePicture}
+                  /> */}
+                </div>
+                <div className={classes.column}>
+                  <Typography className={classes.heading}>
+                    {/* {contract.agency.name} */}
+                    {contract.creator.name}
+                  </Typography>
+                </div>
+                <div className={classes.column}>
+                  <Typography className={classes.color}>
+                    {/* {t('unfinished')} */}
+                    {contract.status}
+                  </Typography>
+                </div>
+              </AccordionSummary>
+              <AccordionDetails>
+                <div className={classes.info}>
+                  <Typography style={{ margin: '10px 5px' }}>
+                    {/* Email: {contract.agency.email} */}
+                    Email: contract.agency.email
+                  </Typography>
+                  <Divider />
+                  <Typography style={{ margin: '10px 5px' }}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+                    eget.
+                  </Typography>
+                  <Button
+                    style={{ margin: '5px' }}
+                    color="primary"
+                    variant="contained"
+                  >
+                    {t('website')}
+                  </Button>
+                </div>
+              </AccordionDetails>
 
-              <Tooltip title="Tulosta pdf" placement="top" arrow>
-                <IconButton
-                  onClick={() =>
-                    handleTulostaLomaketta(contract.pendingContracts.formId)
-                  }
-                  size="large">
-                  <SaveAltIcon />
-                </IconButton>
-              </Tooltip>
+              <AccordionActions disableSpacing>
+                <Tooltip title="Hylkää Sopimus" placement="top" arrow>
+                  <IconButton
+                    onClick={() =>
+                      rejectContract(
+                        contract.agency._id,
+                        contract._id,
+                        contract.pendingContracts.formId
+                      )
+                    }
+                    size="large">
+                    <CloseIcon />
+                  </IconButton>
+                </Tooltip>
 
-              <Tooltip title="Lähetä Sopimus" placement="top" arrow>
-                <IconButton
-                  style={{ color: '#eb5a00' }}
-                  onClick={() =>
-                    // loadAndSendContract(contract.agency._id, contract._id)
-                    // loadAndSendContract(contract.creator._id, contract.form2)
-                    loadAndSendContract(contract._id)
-                  }
-                  size="large">
-                  <SendIcon />
-                </IconButton>
-              </Tooltip>
-            </AccordionActions>
-          </Accordion>
-        ))}
+                <Tooltip title="Esikatsele Lomakettä" placement="top" arrow>
+                  <IconButton
+                    onClick={() =>
+                      // handleEsitteleLomaketta(contract.pendingContracts.formId)
+                      handleEsitteleLomaketta(contract.form2)
+                    }
+                    size="large">
+                    <VisibilityIcon />
+                  </IconButton>
+                </Tooltip>
+
+                <Tooltip
+                  title="Täytä tai muokkaa lomaketta"
+                  placement="top"
+                  arrow
+                >
+                  <IconButton
+                    onClick={() =>
+                      handleTäytäTaiMuokkaaLomaketta(
+                        contract.pendingContracts.formId
+                      )
+                    }
+                    size="large">
+                    <EditIcon />
+                  </IconButton>
+                </Tooltip>
+
+                <Tooltip title="Tulosta pdf" placement="top" arrow>
+                  <IconButton
+                    onClick={() =>
+                      handleTulostaLomaketta(contract.pendingContracts.formId)
+                    }
+                    size="large">
+                    <SaveAltIcon />
+                  </IconButton>
+                </Tooltip>
+
+                <Tooltip title="Lähetä Sopimus" placement="top" arrow>
+                  <IconButton
+                    style={{ color: '#eb5a00' }}
+                    onClick={() =>
+                      // loadAndSendContract(contract.agency._id, contract._id)
+                      // loadAndSendContract(contract.creator._id, contract.form2)
+                      loadAndSendContract(contract._id)
+                    }
+                    size="large">
+                    <SendIcon />
+                  </IconButton>
+                </Tooltip>
+              </AccordionActions>
+            </Accordion>
+          ))}
+        </div>
       </div>
     );
 };
@@ -276,6 +346,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   info: {
     display: 'column',
     width: '30rem',
+  },
+  buttonGroup: {
+    display: 'flex',
+    borderRadius: '0px',
+  },
+  buttonGroupRoot: {
+    borderRadius: '0px',
   },
 }));
 
