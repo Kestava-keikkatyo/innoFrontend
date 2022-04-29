@@ -199,6 +199,7 @@ const CommunityFormsTable: React.FC<any> = ({handleDownload}) => {
 
   return (
     <div>
+      {/**Search box */}
       <Box
         display="flex"
         justifyContent="flex-start"
@@ -219,6 +220,7 @@ const CommunityFormsTable: React.FC<any> = ({handleDownload}) => {
         </form>
       </Box>
       <Divider />
+      {/**Strangely named check for displaying accordionview on narrow displays (mobile).*/}
       {matches ? accordionView() : tableView()}
     </div>
   );

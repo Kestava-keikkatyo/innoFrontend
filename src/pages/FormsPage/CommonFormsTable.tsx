@@ -87,8 +87,6 @@ const CommonFormsTable: React.FC<any> = ({handleDownload}) => {
     form._id = '';
     form.common = false;
     form.isPublic = false;
-    //form.questions = convertFormQuestionsToArray(form.questions[0]) //Converting Form from old questionformat
-    //console.log('form in handlecopy: ', form)
     dispatch(submitForm(form));
     dispatch(setAlert('Form copied successfully!'));
     history.push('/forms');
@@ -232,6 +230,7 @@ const CommonFormsTable: React.FC<any> = ({handleDownload}) => {
 
   return (
     <div>
+      {/**Search box */}
       <Box
         display="flex"
         justifyContent="flex-start"
@@ -252,6 +251,7 @@ const CommonFormsTable: React.FC<any> = ({handleDownload}) => {
         </form>
       </Box>
       <Divider />
+      {/**Strangely named check for displaying accordionview on narrow displays (mobile).*/}
       {matches ? accordionView() : tableView()}
     </div>
   );
