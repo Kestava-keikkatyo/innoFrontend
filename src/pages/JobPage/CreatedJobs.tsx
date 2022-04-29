@@ -12,23 +12,11 @@ import {
   useMediaQuery, 
   useTheme,
   Table,
-  TableContainer,
   TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  Paper,
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  AccordionActions,
-  IconButton,
   Box,
   TablePagination,
   
 } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import EditIcon from '@mui/icons-material/Edit';
 
 import { DeleteJobById, fetchAllJobsForAgency } from "../../actions/jobActions";
 import { setAlert } from '../../actions/alertActions';
@@ -42,17 +30,23 @@ const CreatedJobs: React.FC<any> = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  /**Determines if device is "mobile" according to display width. 
+   * Mobileview is shown to devices with narrow display */
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const { jobs } = useSelector((state: IRootState) => state.job || []);
   
+  /**Page number in mobileview */
   const [mobilePage, setMobilePage] = useState(0)
+  /**Rows per page in mobileview */
   const rowsPerPage = 10
   useEffect(() => {
     dispatch(fetchAllJobsForAgency());
   }, [dispatch]);
 
   const rows = jobs.map( (job: any) => {
+    /**Format date created to a format with only date. */
     let formattedDate = job.createdAt.slice(0,10)
     job = {
       ...job, 
@@ -60,7 +54,7 @@ const CreatedJobs: React.FC<any> = () => {
     }
     return job
   })
-  console.log('rows: ', rows)
+  
   
   const handleDelete = (id: string) => {
     console.log(id);
@@ -68,6 +62,7 @@ const CreatedJobs: React.FC<any> = () => {
     dispatch(setAlert("Job was deleted successfully!"))
   }
 
+  /**Changes page in mobileview */
   const handleMobilePageChange = (event: unknown, newPage: number) => {
     setMobilePage(newPage)
   }
@@ -77,6 +72,9 @@ const CreatedJobs: React.FC<any> = () => {
         field: "title",
         headerName: (i18next.t("job_title")),
         flex: 2,
+        /**Render tooltip displaying the title on mouse hover or 
+         * long press. Usable when title is so long it doesn't fit 
+         * in assigned space. */
         renderCell: (params: any) => {
           return (
             <Tooltip title={params.row.title}>
@@ -91,6 +89,9 @@ const CreatedJobs: React.FC<any> = () => {
         field: "category", 
         headerName: (i18next.t("job_category")), 
         flex: 2,
+        /**Render tooltip displaying the category on mouse hover or 
+         * long press. Usable when category is so long it doesn't fit 
+         * in assigned space. */
         renderCell: (params: any) => {
           return (
             <Tooltip title={params.row.category}>
@@ -105,8 +106,10 @@ const CreatedJobs: React.FC<any> = () => {
       field: "agency",
       headerName: (i18next.t("job_supplier")),
       flex: 2,
+      /**Render tooltip displaying the user name on mouse hover or 
+       * long press. Usable when user name is so long it doesn't fit 
+       * in assigned space. */
       renderCell: (params: any) => {
-        //console.log(params.row);
         return (
           <Tooltip title={params.row.user.name}>
             <Typography>
@@ -127,22 +130,24 @@ const CreatedJobs: React.FC<any> = () => {
         headerName: (i18next.t("job_action")),
         width: 100,
         renderCell: (params: any) => {
-            return (
-                <>
-            <Link to={"/job/update"}>
+          return (
+            <>
+               {/**Link to update job ad. (Not implemented at the moment.) */}
+              <Link to={"/job/update"}>
                 <span className={classes.update}>{t('job_update')}</span>
-            </Link>
-            <DeleteOutline
-              className="userListDelete"
-              onClick={() => handleDelete(params.id)}
-              
-            />
+              </Link>
+              {/**Delete button */}
+              <DeleteOutline
+                className="userListDelete"
+                onClick={() => handleDelete(params.id)}
+              />
             </>
-            );
+          );
         }
     },
   ];
-  console.log('Jobs: ', jobs)
+  
+  /**Desktopview */
   const tableView = () => {
     return (
       <div style={{ height: 650, width: '100%' }}>
@@ -164,8 +169,7 @@ const CreatedJobs: React.FC<any> = () => {
     )
   }
 
-
-  // Pitäiskö olla collapsible table?
+  /**Mobileview */
   const mobileView = () => {
     return (
       <>
@@ -178,67 +182,36 @@ const CreatedJobs: React.FC<any> = () => {
         }}>
           <Table>
             <TableBody>
+              {/**Show only 'rowsPerPage' rows in one page. 
+               * Slice correct rows according to page */}
               {rows
               .slice(mobilePage * rowsPerPage, mobilePage * rowsPerPage + rowsPerPage )
               .map((row: any) => (
+                /**Accordion-like collapsible row in table */
                 <CollapsibleRow key={row._id} row={row}></CollapsibleRow>
-                /*
-                <Box key={row._id} sx={{
-                  width: '100%',
-                  marginTop: '12px',
-                  border: '1px solid #E0E0E0',
-                  borderRadius: 5,
-                }}>
-                  <Accordion>
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1a-content"
-                      id="panel1a-header"
-                    >
-                      <Typography>
-                        {row.title}
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      <Typography>
-                        {row.category}
-                      </Typography>
-                    </AccordionDetails>
-                    <AccordionActions>
-                      <Tooltip title='edit' placement="top" arrow>
-                        <IconButton
-                          aria-label="preview"
-                          onClick={() => console.log('click-edit')
-                          }
-                          size="large">
-                            <EditIcon />
-                        </IconButton>
-                      </Tooltip>
-                    </AccordionActions>
-                  </Accordion>
-                </Box>
-                */
               ))}
             </TableBody>
           </Table>
+          {/**Pagination options at bottom of page. */}
           <TablePagination
-          rowsPerPageOptions = {[10]}
-          component='div'
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={mobilePage}
-          onPageChange={handleMobilePageChange}
+            rowsPerPageOptions = {[rowsPerPage]}
+            component='div'
+            count={rows.length}
+            rowsPerPage={rowsPerPage}
+            page={mobilePage}
+            onPageChange={handleMobilePageChange}
           />
         </Box>
-        
       </>
     )
   }
   return (
     <>
     <div>
+      {/**Title */}
       <Typography className={classes.title} color="primary" align="center" variant="h5">{t('job_your_job_ads')}</Typography>
     </div>
+    {/**Job ads list depending on device width ('mobile' or not). */}
     {isMobile ? mobileView() : tableView()}
     </>
   );
