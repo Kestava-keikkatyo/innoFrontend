@@ -134,11 +134,18 @@ const ReportForm = () => {
 
   /*ReportStepThree is a child component in ReportForm but finish-button is located 
     in this ReportForm-component so we keep step three error -state here
-    to use with finish-button. (Step three error means that either report 
-    title or details was missing when user tried to submit the report. 
-    Then we show error and helper text.)
+    to use with finish-button. 
+    (Step three error means that either report title or details was missing 
+    when user tried to submit the report. Then we show error and helper text.)
   */
   const [stepThreeError, setStepThreeError] = useState(false) 
+
+  /*ReportStepTwo is a child component in ReportForm but next-button is located 
+    in this ReportForm-component so we keep step two error -state here
+    to use with next-button. ReportStepTwo-component handles setting the error state.
+    (Step two error means that either date or time -field is invalid.)
+  */
+  const [stepTwoError, setStepTwoError] = useState(false) 
 
   const [loading, setLoading] = useState(false)
   const dispatch = useDispatch();
@@ -157,7 +164,7 @@ const ReportForm = () => {
       case 0:
         return <ReportStepOne />;
       case 1:
-        return <ReportStepTwo />;
+        return <ReportStepTwo setStepTwoError={setStepTwoError}/>;
       case 2:
         return <ReportStepThree stepThreeError={stepThreeError} />;
       default:
@@ -171,6 +178,11 @@ const ReportForm = () => {
     */
     if (activeStep === 0 && !currentReport.agency && !currentReport.business) {
       dispatch(setAlert(t('report_no_recipient'), severity.Warning))
+    } else if (activeStep === 1 && stepTwoError === true){
+      /**If ReportStepTwo-component is in error state (invalid date or time),
+       * prevent moving to next step and show warning message.
+       */
+      dispatch(setAlert(t('report_invalid_date_alert'), severity.Warning))
     } else {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     }

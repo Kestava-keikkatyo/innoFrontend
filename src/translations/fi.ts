@@ -127,6 +127,8 @@ export default {
   happened: "Milloin tämä tapahtui?",
   date_picker_inline: "Päivämäärä",
   time_picker: "Tapahtuma-aika",
+  report_invalid_date_alert: 'Tarkasta päivämäärä ja aika',
+
   //Report step three
   fill_details: "Kirjoita lisätiedot",
   fill_work_title: "Tehtävänimike",

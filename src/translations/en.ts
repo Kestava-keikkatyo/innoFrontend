@@ -127,6 +127,7 @@ export default {
   happened: "When did this happen?",
   date_picker_inline: "Date",
   time_picker: "Time",
+  report_invalid_date_alert: 'Please check date and time.',
 
   //Report step three
   fill_details: "Fill in details",
