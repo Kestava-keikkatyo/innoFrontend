@@ -127,6 +127,8 @@ export default {
   happened: "Milloin tämä tapahtui?",
   date_picker_inline: "Päivämäärä",
   time_picker: "Tapahtuma-aika",
+  report_invalid_date_alert: 'Tarkasta päivämäärä ja aika',
+
   //Report step three
   fill_details: "Kirjoita lisätiedot",
   fill_work_title: "Tehtävänimike",
@@ -357,6 +359,12 @@ export default {
   tyopoyta: "Työpöytä",
   tietopankki: "Tietopankki",
   kirjaudu_sisaan: "Kirjaudu sisään",
+  form_tooltip_preview: 'Esikatsele lomaketta',
+  form_tooltip_edit: 'Muokkaa lomaketta',
+  form_tooltip_delete: 'Poista lomake',
+  form_tooltip_download: 'Lataa lomake',
+  form_tooltip_copy: 'Kopioi omiin lomakkeisiin',
+
   //Joblist
   limit_search: "Rajaa hakua",
   jobs_found: "Työpaikkoja löytyi",
@@ -554,6 +562,7 @@ export default {
   full_job_description: "Täydellinen kuvaus",
   job_ads: "Työpaikkailmoitukset",
   job_apply: "Hae nyt",
+  job_your_job_ads: 'Työpaikkailmoituksesi',
 
   //CreateUser
   add_new_admin: "Lisää uusi järjestelmänvalvoja",

@@ -168,13 +168,13 @@ const CommunityFormsTable: React.FC<any> = ({handleDownload}) => {
               </Typography>
             </AccordionDetails>
             <AccordionActions>
-              <Tooltip title="Preview form" placement="top" arrow>
+              <Tooltip title={t('form_tooltip_preview') as string} placement="top" arrow>
                 <IconButton onClick={() => handlePreview(form._id)} size="large">
                   <VisibilityIcon />
                 </IconButton>
               </Tooltip>
 
-              <Tooltip title="Download pdf" placement="top" arrow>
+              <Tooltip title={t('form_tooltip_download') as string} placement="top" arrow>
                 <IconButton onClick={() => handleDownload(form._id)} size="large">
                   <SaveAltIcon />
                 </IconButton>
@@ -199,6 +199,7 @@ const CommunityFormsTable: React.FC<any> = ({handleDownload}) => {
 
   return (
     <div>
+      {/**Search box */}
       <Box
         display="flex"
         justifyContent="flex-start"
@@ -219,6 +220,7 @@ const CommunityFormsTable: React.FC<any> = ({handleDownload}) => {
         </form>
       </Box>
       <Divider />
+      {/**Strangely named check for displaying accordionview on narrow displays (mobile).*/}
       {matches ? accordionView() : tableView()}
     </div>
   );

@@ -25,12 +25,8 @@ import CommunityFormsTable from './CommunityFormsTable'
 import { useTranslation } from 'react-i18next'
 
 import formServices from '../../services/formServices';
-import pdfMake from 'pdfmake/build/pdfmake.js';
-import pdfFonts from 'pdfmake/build/vfs_fonts.js';
-import htmlToPdfmake from 'html-to-pdfmake';
 import Form from './Form';
 import ReactDOMServer from 'react-dom/server';
-import { jsPDF } from "jspdf";
 //@ts-ignore @TODO fix this ts-ignore
 import * as html2pdf from 'html2pdf.js';
 
@@ -99,8 +95,11 @@ const FormsPage: React.FC = () => {
   };
 
   const handleDownload = async (formId: any) => {
+    /**Get form data from database. */
     let form: any = await formServices.fetchFormById(formId);
     
+    /**Generate Form-component from form data. Form-component is used 
+     * specifically for PDF-conversion. Then render Form-component to string for html2pdf. */
     let content = ReactDOMServer.renderToString(<Form currentForm={form} />)
 
     //Set options for html2pdf conversion
@@ -112,7 +111,10 @@ const FormsPage: React.FC = () => {
         scale: 2,
         logging: false,
       },
-      pagebreak: { avoid: '.avoid_pagebreak' },
+      /**Avoids page-break that splits elements with class name .avoid_pagebreak,
+       * which is included in every question-element in Form-component.
+       */
+      pagebreak: { avoid: '.avoid_pagebreak' }, 
       jsPDF: {
         orientation: 'p',
         unit: 'px',
@@ -121,7 +123,7 @@ const FormsPage: React.FC = () => {
       },
     }
 
-    //create the PDF
+    //Create the PDF from string content with selected options.
     html2pdf()
       .set(options)
       .from(content)
@@ -144,12 +146,15 @@ const FormsPage: React.FC = () => {
         sx={{ 
           height: '200px',
           display: {
-            xs: 'none',
+            xs: 'none', //Hide banner picture in extra small displays. (Cell phones)
             sm: 'flex',
           }
         }} 
       />
       
+      {/**This grid is still needed to avoid bannerpicture from getting
+       * squashed to top under nav bar.
+       */}
       <Grid
         container
         direction="row"
@@ -165,6 +170,7 @@ const FormsPage: React.FC = () => {
         }} 
       >
       </Grid>
+      {/**Link to new form... form. */}
       <div className="new-form-btn">
         <Link to="/forms/newform">
           <Fab size="medium" color="primary" aria-label="add">

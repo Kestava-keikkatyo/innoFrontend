@@ -7,19 +7,24 @@ import { useTranslation } from 'react-i18next';
 
 
 //TODO: Add delete and edit buttons
+/**CollapsibleRow is used in CreatedJobs -page in mobilevied. It represents 
+ * one job ad in a table and can be opened for more info.
+ */
 const CollapsibleRow = ({row}: any) => {
   const [open, setOpen] = useState(false)
   const { t } = useTranslation()
   return (
     <>
-      {/*Title row*/}
+      {/*Header row*/}
       <TableRow 
+        /**Clicking anywhere on the row opens the row. */
         onClick={() => setOpen(!open)}
         sx={{
           borderBottom: 'none',
           display: 'flex',
         }}
       >
+        {/**Title */}
         <TableCell 
           padding='normal'
           sx={{
@@ -31,6 +36,8 @@ const CollapsibleRow = ({row}: any) => {
             {row.title}
           </Typography>
         </TableCell>
+
+        {/**Open/close icon */}
         <TableCell 
           sx={{
             padding: '0',
@@ -47,6 +54,7 @@ const CollapsibleRow = ({row}: any) => {
               padding: '16px 16px 0 0',
             }}
           >
+            {/**Show correct icon depending on open state. */}
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
@@ -54,6 +62,7 @@ const CollapsibleRow = ({row}: any) => {
 
       {/*Details row */}
       <TableRow 
+        /**Clicking anywhere on the job ad closes it. */
         onClick={() => setOpen(!open)}
         sx={{
           borderBottom: '1px solid #E0E0E0',
@@ -65,11 +74,13 @@ const CollapsibleRow = ({row}: any) => {
             border: 'none'
           }}
         >
+          {/**Collapsible part of the job ad content*/}
           <Collapse in={open} unmountOnExit>
             <Box sx={{
               color: '#6C6C6C',
               padding: '0 16px 16px 16px',
             }}>
+              {/**Job ad info */}
               <Typography>
                 {`${t('job_release_date')}: ${row.createdAt}`}
               </Typography>

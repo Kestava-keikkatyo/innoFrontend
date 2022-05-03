@@ -127,6 +127,7 @@ export default {
   happened: "When did this happen?",
   date_picker_inline: "Date",
   time_picker: "Time",
+  report_invalid_date_alert: 'Please check date and time.',
 
   //Report step three
   fill_details: "Fill in details",
@@ -354,6 +355,11 @@ export default {
   form_title: "Form title",
   add_question: "Add question",
   form_editor: "Form editor",
+  form_tooltip_preview: 'Preview form',
+  form_tooltip_edit: 'Edit form',
+  form_tooltip_delete: 'Delete form',
+  form_tooltip_download: 'Download form',
+  form_tooltip_copy: 'Copy to my forms',
 
   finland: "Finnish",
   english: "English",
@@ -562,6 +568,7 @@ export default {
   full_job_description: "Full description",
   job_ads: "Job ads",
   job_apply: "Apply now",
+  job_your_job_ads: 'Your job ads',
 
   //CreateUser
   add_new_admin: "Add new admin",

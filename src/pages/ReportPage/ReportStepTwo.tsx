@@ -13,23 +13,72 @@ import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react'
 
 /**Second step (page) of the new report form. */
-const ReportStepTwo = () => {
+const ReportStepTwo = ({setStepTwoError}:any) => {
   const { currentReport } = useSelector((state: any) => state.report);
+  
   /**If current report is missing a date, select current date. */
   const [selectedDate, setSelectedDate] = React.useState(currentReport.date === "" ? new Date() : currentReport.date);
+  
+  /**We need to keep different states for date input field 
+   * and time input field to be able to check for errors.*/
+  const [inputDate, setInputDate] = React.useState(currentReport.date === "" ? new Date() : currentReport.date);
+  const [inputTime, setInputTime] = React.useState(currentReport.date === "" ? new Date() : currentReport.date);
+
   const dispatch = useDispatch();
   const { t } = useTranslation()
 
   const handleDateChange = (date: any) => {
-    setSelectedDate(date);
-    dispatch(setReport({ ...currentReport, date: date })); 
+    /**If date in input field is empty, stop here. */
+    if (date === null)
+      return
+    let tempDate = new Date(selectedDate)
+    tempDate.setDate(date.getDate())
+    tempDate.setMonth(date.getMonth())
+    tempDate.setFullYear(date.getFullYear())
+    setInputDate(tempDate);
+
+    
+    if (tempDate.toString() !== 'Invalid Date') {
+      /**Only if date in inputfield was valid, set it as selected date */
+      setSelectedDate(tempDate);
+      dispatch(setReport({ ...currentReport, date: tempDate })); 
+    }
+
+    /**If either inputfield (time or date) is invalid, set stepTwoError state true. 
+     * Used in ReportForm.
+     */
+    if (tempDate.toString() === 'Invalid Date' || inputTime.toString() === 'Invalid Date'){
+      setStepTwoError(true)
+    } else {
+      setStepTwoError(false)
+    }
   };
 
-  useEffect(() => {
-    if (currentReport.date === "") {
-      dispatch(setReport({ ...currentReport, date: selectedDate })); 
+  const handleTimeChange = (date: any) => {
+    /**If time in input field is empty, stop here. */
+    if (date === null)
+      return
+    let tempDate = new Date(selectedDate)
+    tempDate.setHours(date.getHours())
+    tempDate.setMinutes(date.getMinutes())
+    tempDate.setSeconds(0)
+    setInputTime(tempDate);
+    if (tempDate.toString() !== 'Invalid Date') {
+      /**Only if time in inputfield was valid, set it as selected date */
+      setSelectedDate(tempDate);
+      dispatch(setReport({ ...currentReport, date: tempDate })); 
     }
-  }, [])
+
+    /**If either inputfield (time or date) is invalid, set stepTwoError state true. 
+     * Used in ReportForm.
+     */
+    if (tempDate.toString() === 'Invalid Date' || inputDate.toString() === 'Invalid Date'){
+      setStepTwoError(true)
+    } else {
+      setStepTwoError(false)
+    }
+  };
+
 
   return (
     <Grid container style={{ marginTop: 16 }}>
@@ -54,7 +103,7 @@ const ReportStepTwo = () => {
               inputFormat="dd.MM.yyyy"
               mask="__.__.____"
               showToolbar={false}
-              value={selectedDate}
+              value={inputDate}
               onChange={handleDateChange}
               OpenPickerButtonProps={{
                 "aria-label": "change date"
@@ -74,8 +123,8 @@ const ReportStepTwo = () => {
                 /> 
               }
               ampm={false}
-              value={selectedDate}
-              onChange={handleDateChange}
+              value={inputTime}
+              onChange={handleTimeChange}
               OpenPickerButtonProps={{
                 'aria-label': 'change time',
               }}
