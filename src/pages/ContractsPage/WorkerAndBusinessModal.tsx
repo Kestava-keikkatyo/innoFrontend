@@ -68,7 +68,8 @@ const WorkerAndBusinessModal: React.FC<any> = ({
       dispatch(
         addBusinessContract(
           workerOrBusinessData._id,
-          formId
+          formId,
+          "contract"
         )
       );
       dispatch(
