@@ -83,6 +83,7 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
   const { t } = useTranslation();
   const [page, setPage] = React.useState(0)
   const [rowsPerPage, setRowsPerPage] = React.useState(5)
+  console.log({contracts})
 
   const acceptContractFromBusiness = (
     contractId: string,
@@ -132,8 +133,8 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
     setPage(0);
   }
 
-  const temp = () => {
-    console.log('action')
+  const temp = (contract: any) => {
+    console.log('action', contract)
   }
 
   // Table view for desktop devices
@@ -151,7 +152,8 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {businessContract
+            {/* {businessContract */}
+            {contracts
             // {contractsTest
               // .filter((workerOrBusiness: any) =>
               //   workerOrBusiness.name
@@ -165,7 +167,8 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
                     {contract.status}
                   </TableCell>
                   <TableCell align="left">{contract.target.name}</TableCell>
-                  <TableCell align="left">{contract.form2.title}</TableCell>
+                  <TableCell align="left">{contract.form2 ? contract.form2[0].title : ''}</TableCell>
+                  {/* <TableCell align="left">contract.form2.title</TableCell> */}
                   <TableCell
                     padding="none"
                     align="left"
@@ -174,7 +177,7 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
                     <IconButton
                       aria-label="add to organization"
                       color="secondary"
-                      onClick={() => temp()}
+                      onClick={() => temp(contract)}
                       size="large">
                       <AddIcon />
                     </IconButton>
