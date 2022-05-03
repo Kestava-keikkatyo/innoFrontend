@@ -45,6 +45,7 @@ import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import CloseIcon from '@mui/icons-material/Close';
 import { useTranslation } from 'react-i18next';
 import Tooltip from '@mui/material/Tooltip';
+import ContractAccordion from './ContractsAccordion';
 
 export const ListAccordionInBox = (prop: { contracts: any[] }) => {
   const classes = useStyles();
@@ -74,79 +75,70 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
     (state: IRootState) => state.businessContractForm
   );
 
-  // const handleEsitteleLomaketta = (businessContractFormId: any) => {
-  const handleEsitteleLomaketta = (formId: any) => {
-    // dispatch(getByIdAndSetBusinessContractForm(businessContractFormId));
-    // history.push(`/business-contracts/business-contract-preview`);
-    dispatch(getFormById(formId));
-    history.push({ pathname: '/forms/preview' });
+  // const handleTäytäTaiMuokkaaLomaketta = async (
+  //   businessContractFormId: any
+  // ) => {
+  //   const businessContractForm: any =
+  //     await businessContractFormService.fetchBusinessContractFormById(
+  //       businessContractFormId
+  //     );
+  //   dispatch(setBusinessContractForm(businessContractForm));
+  //   history.push({ pathname: `/business-contracts/business-contract-edit` });
+  // };
 
-  };
+  // const rejectContract = (
+  //   agencyId: any,
+  //   contractId: any,
+  //   businessContractFormId: any
+  // ) => {
+  //   dispatch(getByIdAndSetBusinessContractForm(businessContractFormId));
+  //   if (window.confirm(`Poistetaanko ${currentBusinessContractForm.title}`)) {
+  //     dispatch(refuseBusinessContractById(agencyId, contractId));
+  //     dispatch(deleteBusinessContractForm(businessContractFormId, agencyId));
+  //   }
+  // };
 
-  const handleTäytäTaiMuokkaaLomaketta = async (
-    businessContractFormId: any
-  ) => {
-    const businessContractForm: any =
-      await businessContractFormService.fetchBusinessContractFormById(
-        businessContractFormId
-      );
-    dispatch(setBusinessContractForm(businessContractForm));
-    history.push({ pathname: `/business-contracts/business-contract-edit` });
-  };
+  // const loadAndSendContract = (contractId: any) => {
+  //   let status = "signed"
+  //   dispatch(
+  //     sendBusinessContract(
+  //       contractId,
+  //       status
+  //     )
+  //     // sendBusinessContract(
+  //     //   agencyId,
+  //     //   contractId,
+  //     //   currentBusinessContractForm._id
+  //     // )
+  //   );
+  //   dispatch(setAlert('Business contract form sent!', severity.Success));
+  // };
 
-  const rejectContract = (
-    agencyId: any,
-    contractId: any,
-    businessContractFormId: any
-  ) => {
-    dispatch(getByIdAndSetBusinessContractForm(businessContractFormId));
-    if (window.confirm(`Poistetaanko ${currentBusinessContractForm.title}`)) {
-      dispatch(refuseBusinessContractById(agencyId, contractId));
-      dispatch(deleteBusinessContractForm(businessContractFormId, agencyId));
-    }
-  };
+  // // Print PDF
+  // const handleTulostaLomaketta = async (formId: any) => {
+  //   let businessContractForm: any =
+  //     await businessContractFormService.fetchBusinessContractFormById(formId);
+  //   console.log('businessContractForm ', businessContractForm);
 
-  const loadAndSendContract = (contractId: any) => {
-    let status = "signed"
-    dispatch(
-      sendBusinessContract(
-        contractId,
-        status
-      )
-      // sendBusinessContract(
-      //   agencyId,
-      //   contractId,
-      //   currentBusinessContractForm._id
-      // )
-    );
-    dispatch(setAlert('Business contract form sent!', severity.Success));
-  };
+  //   pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-  // Print PDF
-  const handleTulostaLomaketta = async (formId: any) => {
-    let businessContractForm: any =
-      await businessContractFormService.fetchBusinessContractFormById(formId);
-    console.log('businessContractForm ', businessContractForm);
+  //   // pdf content
+  //   let content: any = [];
 
-    pdfMake.vfs = pdfFonts.pdfMake.vfs;
+  //   let html = ReactDOMServer.renderToString(
+  //     <Form currentForm={businessContractForm} />
+  //   );
+  //   let htmlForm: any = htmlToPdfmake(html);
 
-    // pdf content
-    let content: any = [];
+  //   content.push(htmlForm);
 
-    let html = ReactDOMServer.renderToString(
-      <Form currentForm={businessContractForm} />
-    );
-    let htmlForm: any = htmlToPdfmake(html);
+  //   // pdf document
+  //   var doc = {
+  //     content: content,
+  //   };
 
-    content.push(htmlForm);
-
-    // pdf document
-    var doc = {
-      content: content,
-    };
-
-    pdfMake.createPdf(doc).download(businessContractForm.title);
-  };
+  //   pdfMake.createPdf(doc).download(businessContractForm.title);
+  // };
 
   const [filter, setFilter] = React.useState('all')
   const handleChange = (event: React.MouseEvent<HTMLElement>, value: string) => {
@@ -157,28 +149,23 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
   const showContracts = (type: string) => {
     switch(type) {
       case 'all':
-        return (
-          <div>all</div>
-        )
-      case 'pending':
-        return (
-          <div>pending</div>
-        )
-      case 'signed':
-        return (
-          <div>signed</div>
-        )
+        return contracts.map((contract: any) => (
+          <ContractAccordion key={contract._id} contract={contract} />
+      ))
       default:
-        return (
-          <div></div>
-        )
+        return contracts.filter((contract) => {
+          return contract.status === type
+        })
+        .map((contract: any) => (
+          <ContractAccordion key={contract._id} contract={contract} />
+      ))
     }
   }
 
-  const contractTypes = [
-    {type: 'all', category: 'all'},
-    {type: 'pending', category: 'pending'},
-    {type: 'signed', category: 'signed'}
+  const contractStatuses = [
+    {status: 'all'},
+    {status: 'pending'},
+    {status: 'signed'}
   ]
 
   if (contracts.length < 1) {
@@ -195,128 +182,11 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
             onChange={handleChange}
             orientation='horizontal'
           >
-            {contractTypes.map(filter => (
-              <ToggleButton key={filter.type} value={filter.category}>{filter.type}</ToggleButton>
+            {contractStatuses.map(filter => (
+              <ToggleButton key={filter.status} value={filter.status}>{filter.status}</ToggleButton>
             ))}
           </ToggleButtonGroup>
           <div>{showContracts(filter)}</div>
-        </div>
-        <div className="listAccordion-div">
-          {contracts.map((contract: any) => (
-            <Accordion key={contract._id}>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
-                <div className={classes.logoColumn}>
-                  {/* <Avatar
-                    alt="Remy Sharp"
-                    src={contract.agency.profile.profilePicture}
-                  /> */}
-                </div>
-                <div className={classes.column}>
-                  <Typography className={classes.heading}>
-                    {/* {contract.agency.name} */}
-                    {contract.creator.name}
-                  </Typography>
-                </div>
-                <div className={classes.column}>
-                  <Typography className={classes.color}>
-                    {/* {t('unfinished')} */}
-                    {contract.status}
-                  </Typography>
-                </div>
-              </AccordionSummary>
-              <AccordionDetails>
-                <div className={classes.info}>
-                  <Typography style={{ margin: '10px 5px' }}>
-                    {/* Email: {contract.agency.email} */}
-                    Email: contract.agency.email
-                  </Typography>
-                  <Divider />
-                  <Typography style={{ margin: '10px 5px' }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                    eget.
-                  </Typography>
-                  <Button
-                    style={{ margin: '5px' }}
-                    color="primary"
-                    variant="contained"
-                  >
-                    {t('website')}
-                  </Button>
-                </div>
-              </AccordionDetails>
-
-              <AccordionActions disableSpacing>
-                <Tooltip title="Hylkää Sopimus" placement="top" arrow>
-                  <IconButton
-                    onClick={() =>
-                      rejectContract(
-                        contract.agency._id,
-                        contract._id,
-                        contract.pendingContracts.formId
-                      )
-                    }
-                    size="large">
-                    <CloseIcon />
-                  </IconButton>
-                </Tooltip>
-
-                <Tooltip title="Esikatsele Lomakettä" placement="top" arrow>
-                  <IconButton
-                    onClick={() =>
-                      // handleEsitteleLomaketta(contract.pendingContracts.formId)
-                      handleEsitteleLomaketta(contract.form2)
-                    }
-                    size="large">
-                    <VisibilityIcon />
-                  </IconButton>
-                </Tooltip>
-
-                <Tooltip
-                  title="Täytä tai muokkaa lomaketta"
-                  placement="top"
-                  arrow
-                >
-                  <IconButton
-                    onClick={() =>
-                      handleTäytäTaiMuokkaaLomaketta(
-                        contract.pendingContracts.formId
-                      )
-                    }
-                    size="large">
-                    <EditIcon />
-                  </IconButton>
-                </Tooltip>
-
-                <Tooltip title="Tulosta pdf" placement="top" arrow>
-                  <IconButton
-                    onClick={() =>
-                      handleTulostaLomaketta(contract.pendingContracts.formId)
-                    }
-                    size="large">
-                    <SaveAltIcon />
-                  </IconButton>
-                </Tooltip>
-
-                <Tooltip title="Lähetä Sopimus" placement="top" arrow>
-                  <IconButton
-                    style={{ color: '#eb5a00' }}
-                    onClick={() =>
-                      // loadAndSendContract(contract.agency._id, contract._id)
-                      // loadAndSendContract(contract.creator._id, contract.form2)
-                      loadAndSendContract(contract._id)
-                    }
-                    size="large">
-                    <SendIcon />
-                  </IconButton>
-                </Tooltip>
-              </AccordionActions>
-            </Accordion>
-          ))}
         </div>
       </div>
     );

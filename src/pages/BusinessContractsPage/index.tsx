@@ -76,8 +76,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontWeight: theme.typography.fontWeightRegular,
   },
   tab: {
-    // minWidth: '20%',
-    // maxWidth: '20%',
     minWidth: '25%',
     maxWidth: '25%',
   },
@@ -114,14 +112,11 @@ const BusinessContractsPage = () => {
     if (contract.status === "pending") {
       pending.push(contract);
       fromAgencies.push(contract)
-    } else if (contract.requestContracts) {
-      waiting.push(contract);
+    } else if (contract.status === "request") {
+      requested.push(contract);
     } else if (contract.status === "signed") {
       signed.push(contract);
       fromAgencies.push(contract)
-    } else if (contract.receivedContracts) {
-      sent.push(contract);
-      console.log(sent);
     } else {
     }
     // an arrow function should return a value
