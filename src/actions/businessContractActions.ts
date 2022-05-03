@@ -63,8 +63,8 @@ export const refuseBusinessContractById = (userId: string, id: string) => async 
  * @param {string} contractId BusinessContract id
  * @param {string} user Business or Worker id
  */
-export const addBusinessContract = (targetId: string, formId: string) => async (dispatch: any) => {
-  const res = await contractsService.addBusinessContract(targetId, formId)
+export const addBusinessContract = (targetId: string, formId: string, type: string) => async (dispatch: any) => {
+  const res = await contractsService.addBusinessContract(targetId, formId, type)
   if (res && res.status === 200) {
     await notificationsService.updateNotifications(targetId, "HP-Yritys lähetti sinulle asiakassopimuspyynnön.")
     dispatch({ type: ADD_B_CONTRACT, data: res.data })
@@ -95,15 +95,11 @@ export const addBusinessContractWorkerBusiness = (contractId: string, agencyId: 
  * @param {string} contractId BusinessContract Id
  * @param {string} form Forms Id
  */
-// export const sendBusinessContract = (agencyId: string, contractId: string, form: string, status: string) => async (dispatch: any) => {
 export const sendBusinessContract = (contractId: string, status: string) => async (dispatch: any) => {
-  // const res = await contractsService.sendBusinessContract(contractId, form)
   const res = await contractsService.signAgreement(contractId, status)
-  // const r = await contractsService.fetchBusinessContracts()
   const r = await contractsService.fetchBusinessContractsAsTarget()
   if (res && res.status === 200) {
     // await notificationsService.updateNotifications(agencyId, "Asiakassopimus on lähetetty takaisin sinulle.")
-    console.log({res})
     dispatch({ type: B_SEND, data: res.data })
     dispatch({ type: B_FETCH, data: r })
   }

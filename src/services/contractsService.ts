@@ -68,7 +68,8 @@ const acceptBusinessContract = async (
  */
 const addBusinessContract = async (
   targetId: string,
-  formId: string
+  formId: string,
+  type: string
 ) => {
   try {
     return await axios.post(
@@ -76,7 +77,8 @@ const addBusinessContract = async (
       {
         "target": targetId,
         "form2": formId,
-        "status": "pending"
+        "status": "pending",
+        "type": type
       },
       authHeader()
     )
@@ -151,7 +153,7 @@ const fetchBusinessContracts = async () => {
     )
     return res.data
   } catch (error) {
-    return Promise.reject(error.response)
+    return {docs: []}
   }
 }
 
@@ -160,23 +162,20 @@ const fetchBusinessContractsAsTarget = async () => {
     const res = await axios.get(
       `${baseUrl}/agreement/target`,
       authHeader()
-    )
-    return res.data
-  } catch (error) {
-    return Promise.reject(error.response)
+      )
+      return res.data
+    } catch (error) {
+    return {docs: []}
   }
 }
 
 const signAgreement = async (id: string, status: string) => {
   try {
-    console.log({status})
-    console.log(authHeader().headers)
     const res = await axios.put(
       `${baseUrl}/agreement/sign/${id}/${status}`,
       {},
       authHeader()
     )
-    console.log({res})
     return res.data
   } catch (error) {
     return Promise.reject(error.response)
