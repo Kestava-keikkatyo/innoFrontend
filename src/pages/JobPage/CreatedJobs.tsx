@@ -188,7 +188,7 @@ const CreatedJobs: React.FC<any> = () => {
               .slice(mobilePage * rowsPerPage, mobilePage * rowsPerPage + rowsPerPage )
               .map((row: any) => (
                 /**Accordion-like collapsible row in table */
-                <CollapsibleRow key={row._id} row={row}></CollapsibleRow>
+                <CollapsibleRow key={row._id} row={row} handleDelete={handleDelete}></CollapsibleRow>
               ))}
             </TableBody>
           </Table>

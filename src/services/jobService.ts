@@ -54,7 +54,7 @@ const fetchJobById = async (id: string) => {
 const deleteJob = async (jobId: string) => {
   try {
     const res = await axios.delete(
-      `${baseUrl}/job/jobDeleteForAgency/${jobId}`,
+      `${baseUrl}/job/jobDelete/${jobId}`,
       authHeader()
     );
     console.log("delete res", res);

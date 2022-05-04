@@ -4,13 +4,15 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import React from 'react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next';
+import { DeleteOutline } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 
 //TODO: Add delete and edit buttons
 /**CollapsibleRow is used in CreatedJobs -page in mobilevied. It represents 
  * one job ad in a table and can be opened for more info.
  */
-const CollapsibleRow = ({row}: any) => {
+const CollapsibleRow = ({row, handleDelete}: any) => {
   const [open, setOpen] = useState(false)
   const { t } = useTranslation()
   return (
@@ -87,9 +89,34 @@ const CollapsibleRow = ({row}: any) => {
               <Typography>
                 {`${t('job_category')}: ${row.category}`}
               </Typography>
+              {/**Delete button */}
+              <DeleteOutline 
+                sx={{
+                  color: 'red', 
+                  float: 'right',
+                  marginRight: '16px', 
+                  marginBottom: '16px',
+                }}
+                onClick={() => handleDelete(row._id)}
+              />
+              {/**Link to update job ad. (Not implemented at the moment.) */}
+              <Link 
+                to={"/job/update"} 
+                style={{
+                  float: 'right', 
+                  paddingTop: '2px',
+                  marginRight: '16px', 
+                  marginBottom: '16px',
+                  color: 'green',
+                }}
+              >
+                <span>{t('job_update')}</span>
+              </Link>
               <Typography>
                 {`${t('job_supplier')}: ${row.user.name}`}
               </Typography>
+              
+              
             </Box>
           </Collapse>
         </TableCell>

@@ -210,6 +210,7 @@ export const DatePickerField: React.FC<DatePickerFieldProps & FormikProps<any>> 
           }
           label={label} 
           inputFormat="dd.MM.yyyy"
+          mask="__.__.____"
           value={values[name]}
           onChange={value => setFieldValue(name, value)}
           OpenPickerButtonProps={{
