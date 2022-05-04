@@ -128,6 +128,8 @@ export default {
   date_picker_inline: "Päivämäärä",
   time_picker: "Tapahtuma-aika",
   report_invalid_date_alert: 'Tarkasta päivämäärä ja aika',
+  report_date_cannot_be_in_future: 'Päivämäärä ei voi olla tulevaisuudessa',
+  report_time_cannot_be_in_future: 'Kellonaika ei voi olla tulevaisuudessa',
 
   //Report step three
   fill_details: "Kirjoita lisätiedot",

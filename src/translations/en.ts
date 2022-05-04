@@ -128,6 +128,8 @@ export default {
   date_picker_inline: "Date",
   time_picker: "Time",
   report_invalid_date_alert: 'Please check date and time.',
+  report_date_cannot_be_in_future: 'Date cannot be set in future',
+  report_time_cannot_be_in_future: 'Time cannot be set in future',
 
   //Report step three
   fill_details: "Fill in details",
