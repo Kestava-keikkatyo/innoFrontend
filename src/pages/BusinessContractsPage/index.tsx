@@ -108,20 +108,22 @@ const BusinessContractsPage = () => {
     dispatch(fetchBusinessContractsAsTarget());
   }, [dispatch]);
 
-  contracts.map((contract: any) => {
-    if (contract.status === "pending") {
-      pending.push(contract);
-      fromAgencies.push(contract)
-    } else if (contract.status === "request") {
-      requested.push(contract);
-    } else if (contract.status === "signed") {
-      signed.push(contract);
-      fromAgencies.push(contract)
-    } else {
-    }
-    // an arrow function should return a value
-    return '';
-  });
+  if(contracts.length){
+    contracts.map((contract: any) => {
+      if (contract.status === "pending") {
+        pending.push(contract);
+        fromAgencies.push(contract)
+      } else if (contract.status === "request") {
+        requested.push(contract);
+      } else if (contract.status === "signed") {
+        signed.push(contract);
+        fromAgencies.push(contract)
+      } else {
+      }
+      // an arrow function should return a value
+      return '';
+    });
+  }
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
