@@ -1,5 +1,5 @@
 import 'date-fns';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import DatePicker from '@mui/lab/DatePicker'
 import TimePicker from '@mui/lab/TimePicker'
@@ -27,7 +27,16 @@ const ReportStepTwo = ({setStepTwoError}:any) => {
   const [timeErrorHelper, setTimeErrorHelper] = React.useState('');
   const dispatch = useDispatch();
   const { t } = useTranslation()
-
+  
+  useEffect(() => {
+    if (currentReport.date === ""){
+      if (selectedDate.toString() !== 'Invalid Date') {
+        dispatch(setReport({ ...currentReport, date: selectedDate }))
+      } else {
+        dispatch(setReport({ ...currentReport, date: new Date() }))
+      }
+    } 
+  }, [])
   const handleDateChange = (date: any) => {
     /**If date in input field is empty, stop here. */
     if (date === null)
