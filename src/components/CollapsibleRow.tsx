@@ -7,8 +7,6 @@ import { useTranslation } from 'react-i18next';
 import { DeleteOutline } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
-
-//TODO: Add delete and edit buttons
 /**CollapsibleRow is used in CreatedJobs -page in mobilevied. It represents 
  * one job ad in a table and can be opened for more info.
  */
