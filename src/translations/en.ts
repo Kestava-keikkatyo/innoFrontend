@@ -242,6 +242,7 @@ export default {
   add: "Add",
   make_contract: "Make a contract",
   contracts: "Contracts",
+  contracts_overview: "Contracts overview",
 
   //FeedbackForm
   write_feedback_here: "Write feedback here",

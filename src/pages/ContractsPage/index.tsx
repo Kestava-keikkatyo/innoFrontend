@@ -101,7 +101,7 @@ const ContractsPage = () => {
     dispatch(fetchBusinessContracts());
     dispatch(fetchFormList());
   }, [dispatch, data.role]);
-
+  
   const openModal = (workerOrBusiness: any) => {
     setSearchData(workerOrBusiness);
     setDisplayModal(true);
@@ -176,10 +176,6 @@ const ContractsPage = () => {
       </AppBar>
 
       <TabPanel value={value} index={0} dir={theme.direction}>
-        <Typography style={{ paddingTop: '1rem' }} variant="h4">
-          {t('contracts')}
-        </Typography>
-
         <Accordion className={classes.card} variant="outlined">
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -201,6 +197,9 @@ const ContractsPage = () => {
           </AccordionDetails>
         </Accordion>
 
+        <Typography style={{ paddingTop: '1rem' }} variant="h4">
+          {t('contracts_overview')}
+        </Typography>
         <ContractsTable businessContract={businessContract} />
       </TabPanel>
 

@@ -243,6 +243,7 @@ export default {
   add: "Lisää",
   make_contract: "Tee sopimus",
   contracts: "Sopimukset",
+  contracts_overview: "Sopimusten yleiskatsaus",
 
   //FeedbackForm
   write_feedback_here: "Kirjoita palautteesi tähän",

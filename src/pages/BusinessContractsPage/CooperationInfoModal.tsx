@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   addBusinessContractWorkerBusiness,
   fetchBusinessContracts,
+  addBusinessContract,
 } from '../../actions/businessContractActions';
 import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
@@ -60,10 +61,10 @@ const CooperationInfoModal: React.FC<any> = ({
 
   const userRole: any = useSelector((state: any) => state.user.data.role);
 
-  useEffect(() => {
-    dispatch(fetchBusinessContracts());
-    dispatch(fetchFormList());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchBusinessContracts());
+  //   dispatch(fetchFormList());
+  // }, [dispatch]);
 
   const addContract = async () => {
     /*
@@ -77,38 +78,53 @@ const CooperationInfoModal: React.FC<any> = ({
           )
         : dispatch(setAlert(`Failed: Please choose a form.`, severity.Error));
     }
-    */
     const found = businessContracts.some((bc: any) => bc._id === contractId);
     if (found) {
       dispatch(
         setAlert(
           `Fail: You have already business contract with ${agency.name}`,
           severity.Error
-        )
-      );
-    } else {
-      if (formId === 'None') {
-        dispatch(addBusinessContractWorkerBusiness(contractId, agencyId, ''));
-      } else {
-        const businessContractForm: any = await dispatch(
-          createBusinessContractForm(formId)
-        );
-        dispatch(
-          addBusinessContractWorkerBusiness(
-            contractId,
-            agencyId,
-            businessContractForm._id
           )
-        );
-      }
-      dispatch(
-        setAlert(
-          `Success:  Contract request sent to ${agency.name}`,
-          severity.Success
-        )
-      );
-    }
-
+          );
+        } else {
+          if (formId === 'None') {
+            dispatch(addBusinessContractWorkerBusiness(contractId, agencyId, ''));
+          } else {
+            const businessContractForm: any = await dispatch(
+              createBusinessContractForm(formId)
+              );
+              dispatch(
+                addBusinessContractWorkerBusiness(
+                  contractId,
+                  agencyId,
+                  businessContractForm._id
+                  )
+                  );
+                }
+                dispatch(
+                  setAlert(
+                    `Success:  Contract request sent to ${agency.name}`,
+                    severity.Success
+                    )
+                    );
+                  }
+                  
+                  */
+    dispatch(
+      addBusinessContract(
+        // workerOrBusinessData._id,
+        agencyId,
+        formId,
+        'request'
+      )
+    );
+    dispatch(
+      setAlert(
+        // `Success: Contract request sent to ${workerOrBusinessData.name}`,
+        `Success: Contract request sent...`,
+        severity.Success
+      )
+    );
     closeModal();
   };
 
@@ -146,9 +162,10 @@ const CooperationInfoModal: React.FC<any> = ({
 
         <div className={classes.selectDiv}>
           <Typography variant="subtitle1">
-            {t('select_contract_form')}
+            {/* {t('select_contract_form')} */}
+            Tähän vapaa tekstikenttä.
           </Typography>
-          <TextField
+          {/* <TextField
             id="standard-select-currency"
             select
             label={t('selected_form')}
@@ -166,7 +183,7 @@ const CooperationInfoModal: React.FC<any> = ({
                     : form.title}
                 </MenuItem>
               ))}
-          </TextField>
+          </TextField> */}
         </div>
       </DialogContent>
       <DialogActions></DialogActions>

@@ -75,7 +75,7 @@ export const ListAccordioSent = (prop: { contracts: any[] }) => {
     }
   };
 
-  console.log('business/worker: sent contracts', contracts);
+  // console.log('business/worker: sent contracts', contracts);
 
   if (contracts.length < 1) {
     return <p>{t('no_results')}</p>;
@@ -90,24 +90,28 @@ export const ListAccordioSent = (prop: { contracts: any[] }) => {
               id="panel1a-header"
             >
               <div className={classes.logoColumn}>
-                <Avatar
+                {/* <Avatar
                   alt="Remy Sharp"
                   src={contract.agency.profile.profilePicture}
-                />
+                /> */}
               </div>
               <div className={classes.column}>
                 <Typography className={classes.heading}>
-                  {contract.agency.name}
+                  {/* {contract.agency.name} */}
+                  {contract.creator.name}
                 </Typography>
               </div>
               <div className={classes.column}>
-                <Typography className={classes.color}>Odottaa</Typography>
+                <Typography className={classes.color}>
+                  {contract.status}
+                </Typography>
               </div>
             </AccordionSummary>
             <AccordionDetails>
               <div className={classes.info}>
                 <Typography style={{ margin: '10px 5px' }}>
-                  Email: {contract.agency.email}
+                  {/* Email: {contract.agency.email} */}
+                  Email: contract.agency.email
                 </Typography>
                 <Divider />
                 <Typography style={{ margin: '10px 5px' }}>

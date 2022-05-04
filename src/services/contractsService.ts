@@ -28,10 +28,10 @@ const searchUsers = async (input: string, searchType: businessContractType) => {
   try {
     switch (searchType) {
       case "worker":
-        return await axios.get(`${baseUrl}/workers?name=${input}`, authHeader())
+        return await axios.get(`${baseUrl}/user/getByUserType/worker/name=${input}`, authHeader())
       case "business":
         return await axios.get(
-          `${baseUrl}/businesses?name=${input}`,
+          `${baseUrl}/user/getByUserType/business/name=${input}`,
           authHeader()
         )
       default:
@@ -67,14 +67,19 @@ const acceptBusinessContract = async (
  * @returns Backend response.
  */
 const addBusinessContract = async (
-  contractId: string,
-  userId: string,
-  form?: string
+  targetId: string,
+  formId: string,
+  type: string
 ) => {
   try {
-    return await axios.put(
-      `${baseUrl}/businesscontracts/${contractId}/${userId}/add`,
-      { form },
+    return await axios.post(
+      `${baseUrl}/agreement/`,
+      {
+        "target": targetId,
+        "form2": formId,
+        "status": "pending",
+        "type": type
+      },
       authHeader()
     )
   } catch (error) {
@@ -143,10 +148,35 @@ const refuseBusinessContractById = async (contractId: string) => {
 const fetchBusinessContracts = async () => {
   try {
     const res = await axios.get(
-      `${baseUrl}/businesscontracts?page=1&limit=10`,
+      `${baseUrl}/agreement`,
       authHeader()
     )
-    return res.data.docs
+    return res.data
+  } catch (error) {
+    return {docs: []}
+  }
+}
+
+const fetchBusinessContractsAsTarget = async () => {
+  try {
+    const res = await axios.get(
+      `${baseUrl}/agreement/target`,
+      authHeader()
+      )
+      return res.data
+    } catch (error) {
+    return {docs: []}
+  }
+}
+
+const signAgreement = async (id: string, status: string) => {
+  try {
+    const res = await axios.put(
+      `${baseUrl}/agreement/sign/${id}/${status}`,
+      {},
+      authHeader()
+    )
+    return res.data
   } catch (error) {
     return Promise.reject(error.response)
   }
@@ -270,6 +300,8 @@ export default {
   declineBusinessContract,
   refuseBusinessContractById,
   fetchBusinessContracts,
+  fetchBusinessContractsAsTarget,
+  signAgreement,
   updateBusinessContract,
   postWorkContract,
   fetchWorkContracts,

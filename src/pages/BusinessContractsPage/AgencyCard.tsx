@@ -32,6 +32,8 @@ const AgencyCard: React.FC<any> = ({ agency }) => {
     setExpanded(!expanded);
   };
 
+  // console.log({agency})
+
   const [displayModal, setDisplayModal] = React.useState(false);
 
   const handleCooperationOpen = () => {
@@ -39,31 +41,34 @@ const AgencyCard: React.FC<any> = ({ agency }) => {
   };
 
   const handleSiirryProfiiliin = (agency: any) => {
-    if (!agency.profile){
+    // if (!agency.profile){
+    if (!agency._id){
       dispatch(setAlert("Agency profile is missing!", severity.Error));
       return;
     } else {
       history.push({
         pathname: '/profiles/profile-view',
-        state: { profileId: agency.profile._id },
+        // state: { profileId: agency.profile._id },
+        state: { profileId: agency._id },
       });
     }
   };
 
-  const contractId = agency.businessContracts[0];
-  const profilePic = agency.profile ? agency.profile.profilePicture : ''
+  // const contractId = agency.businessContracts[0];
+  const contractId = 0
+  // const profilePic = agency.profile ? agency.profile.profilePicture : ''
   return (
     <div>
       <Card className={classes.root} onClick={handleExpandClick}>
         <CardHeader
-          avatar={
-            <Avatar
-              aria-label="recipe"
-              className={classes.avatar}
-              src={profilePic}
-              alt="profilePicture"
-            />
-          }
+          // avatar={
+          //   <Avatar
+          //     aria-label="recipe"
+          //     className={classes.avatar}
+          //     src={profilePic}
+          //     alt="profilePicture"
+          //   />
+          // }
           action={
             <IconButton
               className={clsx(classes.expand, {
@@ -93,7 +98,15 @@ const AgencyCard: React.FC<any> = ({ agency }) => {
                       type="button"
                       onClick={handleCooperationOpen}
                     >
-                      {t('cooperation_send')}
+                      {t('send_request')}
+                    {/* <Button
+                      className={classes.button}
+                      variant="contained"
+                      color="primary"
+                      type="button"
+                      onClick={handleCooperationOpen}
+                    >
+                      {t('cooperation_send')} */}
                     </Button>
                     <Button variant="contained" onClick={() => handleSiirryProfiiliin(agency)}>
                       {t('transfer_company_profile')}
@@ -103,12 +116,7 @@ const AgencyCard: React.FC<any> = ({ agency }) => {
               </Grid>
               <Grid className={classes.gridText} item sm={8} xs={12}>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  This impressive paella is a perfect party dish and a fun meal
-                  to cook together with your guests. Add 1 cup of frozen peas
-                  along with the mussels, if you like. This impressive paella is
-                  a perfect party dish and a fun meal to cook together with your
-                  guests. Add 200 cups of frozen peanuts along with the mussels,
-                  if you like.
+                  HP-yrityksen lyhyt kuvaus.
                 </Typography>
               </Grid>
             </Grid>
@@ -118,7 +126,7 @@ const AgencyCard: React.FC<any> = ({ agency }) => {
       <CooperationInfoModal
         displayModal={displayModal}
         agency={agency}
-        contractId={contractId}
+        // contractId={contractId}
         closeModal={() => setDisplayModal(false)}
       />
     </div>
