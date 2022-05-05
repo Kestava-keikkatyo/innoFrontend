@@ -66,13 +66,13 @@ const LangMenuDropDown = () => {
           style={{ position: "absolute", left: "-7rem", top: "23%" }}
           onClick={() => changeLanguage("fi")}
         >
-          <img src={fi1} style={{ width: "30px" }} />
+          FI
         </Button>
         <Button
           style={{ position: "absolute", left: "-4rem", top: "23%" }}
           onClick={() => changeLanguage("en")}
         >
-          <img src={us1} style={{ width: "30px" }} />
+          EN
         </Button>
       </div>
     </>
