@@ -49,16 +49,20 @@ export const fetchUserById = (id: string) => async (dispatch: any) => {
  * @function
  * @desc Delete job by Id
  */
-export const DeleteUser = (id: string) => async (dispatch: any) => {
+export const deleteUser = (id: string) => async (dispatch: any) => {
   try {
-    const data = await usersService.deleteUser(id);
-    dispatch({ type: usersType.USER_DELETE_SUCCCESS, data: { id } });
-    console.log("deleted data", data);
-  } catch (error) {
     dispatch({
-      type: usersType.USER_DELETE_FAILURE,
-      data: error && error.message,
+      type: usersType.USER_DELETED_REQUEST,
     });
+    const data = await usersService.deleteUser(id);
+    dispatch({ type: usersType.USER_DELETED_SUCCCESS, data: { id } });
+    console.log("deleted data", data);
+  } catch (e) {
+    dispatch({
+      type: usersType.USER_DELETED_FAILURE,
+      data: e,
+    });
+    dispatch(setAlert("Failed to create the user: " + e, severity.Error, 15));
   }
 };
 

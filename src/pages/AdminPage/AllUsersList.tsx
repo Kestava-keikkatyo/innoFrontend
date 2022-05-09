@@ -1,36 +1,31 @@
 import { DataGrid } from '@mui/x-data-grid';
 import * as React from 'react';
 import { DeleteOutline } from "@mui/icons-material";
-import { Link } from "react-router-dom";
-import { fetchAllAgencies, fetchAllBusinesses, fetchAllWorkers } from '../../actions/allUsersActions';
+import { deleteUser, fetchAllUsers } from '../../actions/usersActions';
 import "./userList.css";
 import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import {updateUSerStatus, DeleteUserById } from "../../actions/adminActions";
+import {updateUSerStatus } from "../../actions/adminActions";
 import { setAlert } from '../../actions/alertActions';
 
 const UserList: React.FC<any> = () => {
 
   const dispatch = useDispatch();
 
-  const { workers, businesses, agencies } = useSelector((state: IRootState) => state.allUsers || []);
+  const { users } = useSelector((state: IRootState) => state.users || []);
 
   useEffect(() => {
-    dispatch(fetchAllWorkers());
-    dispatch(fetchAllBusinesses());
-    dispatch(fetchAllAgencies());
+    dispatch(fetchAllUsers());
   }, [dispatch]);
 
   let rows = [
-    ...workers,
-    ...businesses,
-    ...agencies
+    ...users,
   ];
 
-  const handleDelete = (id: string, userType: string) => {
+  const handleDelete = (id: string) => {
     console.log(id);
-    dispatch(DeleteUserById(id, userType))
+    dispatch(deleteUser(id))
     dispatch(setAlert("User deleted successfully!"))
   }
 
@@ -43,14 +38,27 @@ const UserList: React.FC<any> = () => {
   
   const columns = [
     {
-      field: 'name', 
-      headerName: 'Name', 
-      width: 200 
+      field: "name",
+      headerName: "User",
+      width: 200,
+      renderCell: (params: any) => {
+        return (
+          <div className="userListUser">
+            <img className="userListImg" src={params.row.profilePicture} alt="" />
+            {params.row.name}
+          </div>
+        );
+      },
     },
     { 
       field: "email", 
       headerName: "Email", 
-      width: 250 
+      width: 200 
+    },
+    { 
+      field: "city", 
+      headerName: "City", 
+      width: 200 
     },
     { 
       field: "userType", 
@@ -65,18 +73,15 @@ const UserList: React.FC<any> = () => {
     {
       field: "action",
       headerName: "Action",
-      width: 250,
+      width: 200,
       renderCell: (params: any) => {
         return (
           <>
             <DeleteOutline
               className="userListDelete"
-              onClick={() => handleDelete(params.id, params.row.userType)}
+              onClick={() => handleDelete(params.id)}
               
             />
-            <Link to={"/firstName/" + params.row.firstName}>
-              <button className="userListEdit">Edit</button>
-            </Link>
             <button 
              className="userListDeactive"
              onClick={() => handleStatus(params.id, params.row.userType, !params.row.active)}>{params.row.active ? "Deactivate" : "Activate"}</button>

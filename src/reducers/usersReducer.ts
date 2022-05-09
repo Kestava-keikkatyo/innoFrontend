@@ -102,6 +102,27 @@ const usersReducer = (state = initialState, action: UsersAction) => {
         fetchError: action.data,
       };
     }
+    case usersType.USER_DELETED_REQUEST: {
+      return {
+        ...state,
+        currentUser: action.data,
+        loading: true,
+      };
+    }
+    case usersType.USER_DELETED_SUCCCESS: {
+      return {
+        ...state,
+        loading: false,
+        users: state.users.filter((item) => item._id !== action.data.id),
+      };
+    }
+    case usersType.USER_DELETED_FAILURE: {
+      return {
+        ...state,
+        loading: false,
+        fetchError: action.data,
+      };
+    }
     default:
       return state;
   }
