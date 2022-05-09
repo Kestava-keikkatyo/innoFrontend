@@ -162,3 +162,38 @@ export const updateUser =
       dispatch(setAlert("Failed to update user: " + error, severity.Error, 15));
     }
   };
+
+/**
+ * Create user
+ * @function
+ * @param {Object} user - Basic user information (name, email, password...)
+ * @param {string} role - Admin
+ */
+export const createAdmin =
+  (name: string, email: string, password: string) => async (dispatch: any) => {
+    try {
+      dispatch({
+        type: usersType.USER_CREATE_REQUEST,
+        data: { name, email, userType: "admin", password },
+      });
+
+      const { data } = await usersService.createUser(
+        name,
+        email,
+        "admin",
+        password
+      );
+      dispatch({
+        type: usersType.USER_CREATE_SUCCESS,
+        data,
+      });
+      dispatch(setAlert("user created successfully!"));
+      console.log("Created user", data);
+    } catch (e) {
+      dispatch({
+        type: usersType.USER_CREATE_FAILURE,
+        data: e,
+      });
+      dispatch(setAlert("Failed to create the user: " + e, severity.Error, 15));
+    }
+  };

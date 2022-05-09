@@ -90,6 +90,25 @@ const updateUser = async (userId: string, user: UserInformation) => {
   return res.data;
 };
 
+/**
+ * @function
+ * @desc sends out create user request.
+ * @param {User} user - Basic user information.
+ * @param {roles} role - Account role to be created (admin).
+ */
+const createUser = async (
+  name: string,
+  email: string,
+  userType: string,
+  password: string
+) => {
+  return await axios.post(
+    `${baseUrl}/user/create`,
+    { name, email, userType, password },
+    authHeader()
+  );
+};
+
 export default {
   fetchAllUsers,
   fetchUserById,
@@ -98,4 +117,5 @@ export default {
   showMyProfile,
   fetchAllAgencies,
   updateUser,
+  createUser,
 };

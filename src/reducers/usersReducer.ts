@@ -81,6 +81,27 @@ const usersReducer = (state = initialState, action: UsersAction) => {
         fetchError: action.data,
       };
     }
+    case usersType.USER_CREATE_REQUEST: {
+      return {
+        ...state,
+        currentUser: action.data,
+        loading: true,
+      };
+    }
+    case usersType.USER_CREATE_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        users: [...state.users, action.data],
+      };
+    }
+    case usersType.USER_CREATE_FAILURE: {
+      return {
+        ...state,
+        loading: false,
+        fetchError: action.data,
+      };
+    }
     default:
       return state;
   }

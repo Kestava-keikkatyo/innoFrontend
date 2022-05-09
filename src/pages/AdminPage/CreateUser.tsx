@@ -4,7 +4,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import * as Yup from "yup";
 import { Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
-import { createAdmin } from '../../actions/adminActions';
+import { createAdmin } from '../../actions/usersActions';
 import FormikField from '../../components/FormField';
 import { setAlert } from '../../actions/alertActions';
 import ImageUploader from '../../components/ImageUploader';

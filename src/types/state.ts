@@ -60,6 +60,21 @@ interface UserUpdateFailure {
   type: typeof usersType.USER_UPDATE_FAILURE;
   data: any;
 }
+
+interface UserCreateRequest {
+  type: typeof usersType.USER_CREATE_REQUEST;
+  data: User;
+}
+
+interface UserCreateSuccess {
+  type: typeof usersType.USER_CREATE_SUCCESS;
+  data: User;
+}
+
+interface UserCreateFailure {
+  type: typeof usersType.USER_CREATE_FAILURE;
+  data: User;
+}
 export type UsersAction =
   | UserGetAllRequest
   | UserGetAllSuccess
@@ -69,7 +84,11 @@ export type UsersAction =
   | UserCurrentFailure
   | UserUpdateRequest
   | UserUpdateSuccess
-  | UserUpdateFailure;
+  | UserUpdateFailure
+  | UserCreateRequest
+  | UserCreateSuccess
+  | UserCreateFailure;
+
 /**
  * All users state & action types
  */

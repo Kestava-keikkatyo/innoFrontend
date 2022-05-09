@@ -121,9 +121,9 @@ export interface Report {
   email: string;
   phoneNumber: string;
   status: string;
-  businessArchived: string,
-  agencyArchived: string,
-  workerArchived: string,
+  businessArchived: string;
+  agencyArchived: string;
+  workerArchived: string;
 }
 
 export interface Job {
