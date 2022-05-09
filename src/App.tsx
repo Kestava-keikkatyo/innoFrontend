@@ -37,7 +37,6 @@ import BusinessWorkRequest from "./pages/BusinessWorkOverview"
 import WorkInfo from "./pages/BusinessWorkOverview/WorkInfo"
 import WorkRequest from "./pages/GigRequest"
 import WorkerJobs from "./pages/WorkerWorkOverview"
-import ProfileList from "./pages/AdminPage/ProfileList"
 import AllUsersList from "./pages/AdminPage/AllUsersList"
 import User from "./pages/AdminPage/user/User"
 import FAQIndex from "./pages/FAQPage/index"
@@ -97,9 +96,6 @@ const App: React.FC = () => {
             <Route exact path="/login">
               <LoginPage />
             </Route>
-            <PrivateRoute path="/profileList">
-              <ProfileList />
-            </PrivateRoute>
             <PrivateRoute path="/userList">
               <AllUsersList />
             </PrivateRoute>
