@@ -90,6 +90,20 @@ interface UserDeletedFailure {
   type: typeof usersType.USER_DELETED_FAILURE;
   data: { id: string };
 }
+interface UserUpdateStatusRequest {
+  type: typeof usersType.USER_UPDATE_STATUS_REQUEST;
+  data: { id: string; active: boolean };
+}
+
+interface UserUpdateStatusSuccess {
+  type: typeof usersType.USER_UPDATE_STATUS_SUCCESS;
+  data: { id: string; active: boolean };
+}
+
+interface UserUpdateStatusFailure {
+  type: typeof usersType.USER_UPDATE_STATUS_FAILURE;
+  data: { id: string; active: boolean };
+}
 export type UsersAction =
   | UserGetAllRequest
   | UserGetAllSuccess
@@ -105,7 +119,10 @@ export type UsersAction =
   | UserCreateFailure
   | UserDeletedRequest
   | UserDeletedSuccess
-  | UserDeletedFailure;
+  | UserDeletedFailure
+  | UserUpdateStatusRequest
+  | UserUpdateStatusSuccess
+  | UserUpdateStatusFailure;
 
 /**
  * All users state & action types

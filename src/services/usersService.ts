@@ -104,6 +104,19 @@ const createUser = async (
   );
 };
 
+/**
+ * @param id
+ * @returns
+ */
+const setUserStatus = async (userId: string, active: boolean) => {
+  const res = await axios.patch(
+    `${baseUrl}/user/updateStatus/${userId}`,
+    { active },
+    authHeader()
+  );
+  return res;
+};
+
 export default {
   fetchAllUsers,
   fetchUserById,
@@ -113,4 +126,5 @@ export default {
   fetchAllAgencies,
   updateUser,
   createUser,
+  setUserStatus,
 };

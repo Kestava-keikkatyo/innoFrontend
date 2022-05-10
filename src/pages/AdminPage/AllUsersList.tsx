@@ -6,7 +6,7 @@ import "./userList.css";
 import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import {updateUSerStatus } from "../../actions/adminActions";
+import {updateUSerStatus } from "../../actions/usersActions";
 import { setAlert } from '../../actions/alertActions';
 
 const UserList: React.FC<any> = () => {
@@ -29,8 +29,8 @@ const UserList: React.FC<any> = () => {
     dispatch(setAlert("User deleted successfully!"))
   }
 
-  const handleStatus = (id: string, userType: string, active: boolean) => {
-    dispatch(updateUSerStatus(id, userType, active))
+  const handleStatus = (id: string, active: boolean) => {
+    dispatch(updateUSerStatus(id, active))
     if (active === false) {
       dispatch(setAlert("User deactivated successfully!"))
     } else dispatch(setAlert("User activated successfully!"))
@@ -84,7 +84,7 @@ const UserList: React.FC<any> = () => {
             />
             <button 
              className="userListDeactive"
-             onClick={() => handleStatus(params.id, params.row.userType, !params.row.active)}>{params.row.active ? "Deactivate" : "Activate"}</button>
+             onClick={() => handleStatus(params.id, !params.row.active)}>{params.row.active ? "Deactivate" : "Activate"}</button>
             
           </>
         );

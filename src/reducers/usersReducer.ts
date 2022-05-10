@@ -123,6 +123,36 @@ const usersReducer = (state = initialState, action: UsersAction) => {
         fetchError: action.data,
       };
     }
+    case usersType.USER_UPDATE_STATUS_REQUEST: {
+      return {
+        ...state,
+        currentUser: action.data,
+        loading: true,
+      };
+    }
+    case usersType.USER_UPDATE_STATUS_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        users: state.users.map((u) => {
+          if (u._id === action.data.id) {
+            const updatedItem = {
+              ...u,
+              active: action.data.active,
+            };
+            return updatedItem;
+          }
+          return u;
+        }),
+      };
+    }
+    case usersType.USER_UPDATE_STATUS_FAILURE: {
+      return {
+        ...state,
+        loading: false,
+        fetchError: action.data,
+      };
+    }
     default:
       return state;
   }
