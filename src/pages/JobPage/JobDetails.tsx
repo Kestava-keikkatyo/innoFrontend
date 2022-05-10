@@ -40,7 +40,6 @@ const JobDetails: React.FC<any> = () =>  {
         </div>
         <div>
             <Button className={classes.button} color="secondary" component={Link} to="/job/application">{t('job_apply')}</Button>
-            <Button className={classes.button} color="secondary" component={Link} to="/jobs">{t('back')}</Button>
         </div>
         <div className={classes.jobContainer}>
             <div className={classes.jobShow}>
@@ -155,7 +154,7 @@ const useStyles = makeStyles(() => ({
         paddingTop: '0px'
     },
     button: {
-        marginLeft: '410px',
+        marginLeft: '820px',
         fontSize: '15px',
     }
 }));

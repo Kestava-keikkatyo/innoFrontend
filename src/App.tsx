@@ -123,11 +123,11 @@ const App: React.FC = () => {
             <PrivateRoute path="/feelingDetails/:workerId">
               <FeelingDetails />
             </PrivateRoute>
+            <PrivateRoute path="/jobs/details/:jobId">
+              <JobDetails />
+            </PrivateRoute>
             <PrivateRoute path="/jobs">
               <Jobs />
-            </PrivateRoute>
-            <PrivateRoute path="/job-details/:jobId">
-              <JobDetails />
             </PrivateRoute>
             <PrivateRoute path="/job/application">
               <Application />

@@ -64,7 +64,7 @@ const Jobs: React.FC<any> = () => {
             renderCell: (params: any) => {
                 return (
                     <>
-                <Link to={"/job-details/" + params.id}>
+                <Link to={"/jobs/details/" + params.id}>
                     <span className={classes.details}>{t('job_details')}</span>
                 </Link>
                 </>
