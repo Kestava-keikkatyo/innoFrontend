@@ -68,6 +68,7 @@ export const addBusinessContract = (targetId: string, formId: string, type: stri
   if (res && res.status === 200) {
     await notificationsService.updateNotifications(targetId, "HP-Yritys lähetti sinulle asiakassopimuspyynnön.")
     dispatch({ type: ADD_B_CONTRACT, data: res.data })
+    dispatch(fetchBusinessContractsAsTarget())
   }
 }
 /**

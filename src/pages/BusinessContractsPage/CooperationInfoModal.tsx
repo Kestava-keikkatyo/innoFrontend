@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-
-import TextField from '@mui/material/TextField';
 import {
   Dialog,
   DialogTitle,
@@ -10,21 +8,14 @@ import {
   Button,
   IconButton,
   DialogActions,
-  MenuItem,
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { Close as CloseIcon } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  addBusinessContractWorkerBusiness,
-  fetchBusinessContracts,
-  addBusinessContract,
-} from '../../actions/businessContractActions';
+import { addBusinessContract } from '../../actions/businessContractActions';
 import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
 import { useTranslation } from 'react-i18next';
-import { fetchFormList } from '../../actions/formListActions';
-import { createBusinessContractForm } from '../../actions/businessContractFormActions';
 
 const useStyles = makeStyles((theme) => ({
   selectDiv: {
@@ -51,20 +42,7 @@ const CooperationInfoModal: React.FC<any> = ({
   const classes = useStyles();
   const agencyId = agency._id;
   const { t } = useTranslation();
-
   const [formId, setFormId] = React.useState('None');
-  const myForms: any = useSelector((state: any) => state.formList.myForms);
-
-  const businessContracts: any = useSelector(
-    (state: any) => state.businessContracts.businessContract
-  );
-
-  const userRole: any = useSelector((state: any) => state.user.data.role);
-
-  // useEffect(() => {
-  //   dispatch(fetchBusinessContracts());
-  //   dispatch(fetchFormList());
-  // }, [dispatch]);
 
   const addContract = async () => {
     /*
@@ -112,7 +90,6 @@ const CooperationInfoModal: React.FC<any> = ({
                   */
     dispatch(
       addBusinessContract(
-        // workerOrBusinessData._id,
         agencyId,
         formId,
         'request'
@@ -120,17 +97,11 @@ const CooperationInfoModal: React.FC<any> = ({
     );
     dispatch(
       setAlert(
-        // `Success: Contract request sent to ${workerOrBusinessData.name}`,
-        `Success: Contract request sent...`,
+        `Success: Contract request sent to ${agency.name}`,
         severity.Success
       )
     );
     closeModal();
-  };
-
-  const handleChange = (event: any) => {
-    console.log(event.target.value);
-    setFormId(event.target.value);
   };
 
   return (
@@ -162,28 +133,8 @@ const CooperationInfoModal: React.FC<any> = ({
 
         <div className={classes.selectDiv}>
           <Typography variant="subtitle1">
-            {/* {t('select_contract_form')} */}
-            Tähän vapaa tekstikenttä.
+            Tähän vapaa tekstikenttä?
           </Typography>
-          {/* <TextField
-            id="standard-select-currency"
-            select
-            label={t('selected_form')}
-            value={formId}
-            onChange={handleChange}
-            helperText=""
-            variant="standard"
-          >
-            <MenuItem value="None">{t('none')}</MenuItem>
-            {myForms &&
-              myForms.docs.map((form: any) => (
-                <MenuItem key={form._id} value={form._id}>
-                  {form.title.length > 50
-                    ? `${form.title.substring(0, 50)}...`
-                    : form.title}
-                </MenuItem>
-              ))}
-          </TextField> */}
         </div>
       </DialogContent>
       <DialogActions></DialogActions>
