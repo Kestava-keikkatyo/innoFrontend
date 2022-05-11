@@ -91,6 +91,7 @@ const ContractsPage = () => {
   const theme = useTheme();
   const [searchData, setSearchData] = useState(null);
   const [displayModal, setDisplayModal] = useState(false);
+  const [expanded, setExpanded] = useState<string | false>(false);
   const [value, setValue] = useState(0);
   const { t } = useTranslation();
   const matches = useMediaQuery(theme.breakpoints.down('md'));
@@ -103,6 +104,7 @@ const ContractsPage = () => {
   }, [dispatch, data.role]);
   
   const openModal = (workerOrBusiness: any) => {
+    setExpanded(false)
     setSearchData(workerOrBusiness);
     setDisplayModal(true);
   };
@@ -110,6 +112,11 @@ const ContractsPage = () => {
   const handleChange = (event: any, newValue: any) => {
     setValue(newValue);
   };
+
+  const handleAccChange = 
+    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+    setExpanded(isExpanded ? panel : false)
+  }
 
   if (user.loading) {
     return <PageLoading />;
@@ -176,7 +183,13 @@ const ContractsPage = () => {
       </AppBar>
 
       <TabPanel value={value} index={0} dir={theme.direction}>
-        <Accordion className={classes.card} variant="outlined">
+        <Accordion 
+          className={classes.card} 
+          variant="outlined"
+          defaultExpanded={false} 
+          expanded={expanded === "panel"} 
+          onChange={handleAccChange("panel")}
+        >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
@@ -193,6 +206,7 @@ const ContractsPage = () => {
               displayModal={displayModal}
               closeModal={() => setDisplayModal(false)}
               workerOrBusinessData={searchData}
+              shrinkAccordion={() => handleAccChange("panel")}
             />
           </AccordionDetails>
         </Accordion>

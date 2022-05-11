@@ -41,6 +41,7 @@ const WorkerAndBusinessModal: React.FC<any> = ({
   displayModal,
   closeModal,
   workerOrBusinessData,
+  shrinkAccordion,
 }) => {
   const dispatch = useDispatch();
   const { businessContract } = useSelector(
@@ -79,6 +80,7 @@ const WorkerAndBusinessModal: React.FC<any> = ({
         )
       );
     }
+    shrinkAccordion()
     closeModal();
   };
 
