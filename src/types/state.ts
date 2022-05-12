@@ -10,6 +10,7 @@ import {
   Job,
   feedbackType,
   usersType,
+  jobType,
 } from "./types";
 
 export interface UsersState {
@@ -214,7 +215,7 @@ export interface LoggedInUser extends User {
 }
 
 /**
- * Job state & action types
+ * Feedback state & action types
  */
 export interface FeedbackState {
   currentFeedback: Feedback | undefined;
@@ -277,19 +278,6 @@ export type FeedbackAction =
   | FeedbackCurrentSuccess
   | FeedbackCurrentFailure;
 
-export const JOB_GETALL_REQUEST = "JOB_GETALL_REQUEST";
-export const JOB_GETALL_SUCCESS = "JOB_GETALL_SUCCESS";
-export const JOB_GETALL_FAILURE = "JOB_GETALL_FAILURE";
-export const JOB_CURRENT_REQUEST = "JOB_CURRENT_REQUEST";
-export const JOB_CURRENT_SUCCESS = "JOB_CURRENT_SUCCESS";
-export const JOB_CURRENT_FAILURE = "JOB_CURRENT_FAILURE";
-export const JOB_DELETED_REQUEST = "JOB_DELETED_REQUEST";
-export const JOB_DELETED_SUCCESS = "JOB_DELETED_SUCCESS";
-export const JOB_DELETED_FAILURE = "JOB_DELETED_FAILURE";
-export const JOB_CREATED_REQUEST = "JOB_CREATED_REQUEST";
-export const JOB_CREATED_SUCCESS = "JOB_CREATED_SUCCESS";
-export const JOB_CREATED_FAILURE = "JOB_CREATED_FAILURE";
-
 /**
  * Job state & action types
  */
@@ -300,62 +288,62 @@ export interface JobState {
 }
 
 interface JobGetAllRequest {
-  type: typeof JOB_GETALL_REQUEST;
+  type: typeof jobType.JOB_GETALL_REQUEST;
   data: any;
 }
 
 interface JobGetAllSuccess {
-  type: typeof JOB_GETALL_SUCCESS;
+  type: typeof jobType.JOB_GETALL_SUCCESS;
   data: any;
 }
 
 interface JobGetAllFailure {
-  type: typeof JOB_GETALL_FAILURE;
+  type: typeof jobType.JOB_GETALL_FAILURE;
   data: any;
 }
 
 interface JobCurrentRequest {
-  type: typeof JOB_CURRENT_REQUEST;
+  type: typeof jobType.JOB_CURRENT_REQUEST;
   data: any;
 }
 
 interface JobCurrentSuccess {
-  type: typeof JOB_CURRENT_SUCCESS;
+  type: typeof jobType.JOB_CURRENT_SUCCESS;
   data: any;
 }
 
 interface JobCurrentFailure {
-  type: typeof JOB_CURRENT_FAILURE;
+  type: typeof jobType.JOB_CURRENT_FAILURE;
   data: any;
 }
 
 interface JobDeletedRequest {
-  type: typeof JOB_DELETED_REQUEST;
+  type: typeof jobType.JOB_DELETED_REQUEST;
   data: { id: string };
 }
 
 interface JobDeletedSuccess {
-  type: typeof JOB_DELETED_SUCCESS;
+  type: typeof jobType.JOB_DELETED_SUCCESS;
   data: { id: string };
 }
 
 interface JobDeletedFailure {
-  type: typeof JOB_DELETED_FAILURE;
+  type: typeof jobType.JOB_DELETED_FAILURE;
   data: { id: string };
 }
 
 interface JobCreatedRequest {
-  type: typeof JOB_CREATED_REQUEST;
+  type: typeof jobType.JOB_CREATED_REQUEST;
   data: Job;
 }
 
 interface JobCreatedSuccess {
-  type: typeof JOB_CREATED_SUCCESS;
+  type: typeof jobType.JOB_CREATED_SUCCESS;
   data: Job;
 }
 
 interface JobCreatedFailure {
-  type: typeof JOB_CREATED_FAILURE;
+  type: typeof jobType.JOB_CREATED_FAILURE;
   data: Job;
 }
 export type JobActions =
