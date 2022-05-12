@@ -12,6 +12,7 @@ import {
   Typography,
   Grid,
   SelectChangeEvent,
+  TablePagination,
 } from '@mui/material';
 import { Search as SearchIcon } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
@@ -38,16 +39,41 @@ const AgenciesList = () => {
   const matches = useMediaQuery(theme.breakpoints.down('md'));
   const classes = useStyles();
   const { t } = useTranslation();
+  const [page, setPage] = React.useState(0)
+  const [rowsPerPage, setRowsPerPage] = React.useState(5)
+  const [count, setCount] = React.useState(agencies.length)
+  const [search, setSearch] = React.useState(false)
+  const [filter, setFilter] = React.useState(false)
 
   useEffect(() => {
     dispatch(fetchAllAgencies());
   }, [dispatch]);
+
+  useEffect(() => {
+    const filteredAgencies = agencies.filter((agency: any) => agency.category === alignment)
+    const searchedAgencies = agencies.filter((agency: any) => agency.name.toLowerCase().includes(input.toLowerCase()))
+    const searchedAndFilteredAgencies = agencies
+      .filter((agency: any) => agency.category === alignment)
+      .filter((agency: any) => agency.name.toLowerCase().includes(input.toLowerCase()))
+
+    if (search && filter) {
+      setCount(searchedAndFilteredAgencies.length)
+    } else if (search) {
+      setCount(searchedAgencies.length)
+    }
+    else {
+      alignment === 'Kaikki' ? setCount(agencies.length) : setCount(filteredAgencies.length)
+    }
+  }, [alignment, input])
 
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
     value: string
   ) => {
     event.preventDefault();
+    setInput('')
+    setSearch(false)
+    value === 'Kaikki' ? setFilter(false) : setFilter(true)
     setAlignment(value);
   };
 
@@ -61,44 +87,81 @@ const AgenciesList = () => {
 
   const handleQuerySearchChange = (event: any) => {
     setInput(event.target.value);
-    setAlignment('Search');
+    if (event.target.value === "") {
+      setAlignment('Kaikki');
+      setSearch(false)
+    }
+    else {
+      setSearch(true)
+    }
   };
+
+  const handleChangePage = (event: any, newPage: number) => {
+    setPage(newPage)
+  }
+
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  }
+
+  const noResults = () => {
+    return (
+      <>
+        <Typography>{t('no_results')}</Typography>
+      </>
+    )
+  }
 
   const showAgencyCards = (type: string) => {
     switch (type) {
       case 'Kaikki':
-        return agencies.map((agency: any) => (
-          <AgencyCard key={agency._id} agency={agency} />
-        ));
-      case 'Search':
-        const query = agencies.filter((agency: any) =>
+        if (search) {
+          const query = agencies.filter((agency: any) =>
           agency.name.toLowerCase().includes(input.toLowerCase())
-        );
-        if (query.length > 0) {
-          return query.map((agency: any) => (
+          );
+          if (query.length > 0) {
+            return query
+            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            .map((agency: any) => (
+              <AgencyCard key={agency._id} agency={agency} />
+              ));
+            } else {
+              return (<>{noResults()}</>)
+            }
+        } else {
+          return agencies
+          .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+          .map((agency: any) => (
             <AgencyCard key={agency._id} agency={agency} />
           ));
-        } else {
-          return (
-            <>
-              <Typography>{t('no_results')}</Typography>
-            </>
-          );
         }
       default:
-        const result = agencies.filter(
-          (agency: any) => agency.category === alignment
-        );
-        if (result.length > 0) {
-          return result.map((agency: any) => (
-            <AgencyCard key={agency._id} agency={agency} />
-          ));
-        } else {
-          return (
-            <>
-              <Typography>{t('no_results')}</Typography>
-            </>
-          );
+        if (search) {
+          const filteredAndSearched = agencies
+          .filter((agency: any) => agency.category === alignment)
+          .filter((agency: any) => agency.name.toLowerCase().includes(input.toLowerCase()))
+          if (filteredAndSearched.length > 0) {
+            return filteredAndSearched
+            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            .map((agency: any) => (
+              <AgencyCard key={agency._id} agency={agency} />
+            ));
+          } else {
+            return (<>{noResults()}</>)
+          }
+      } else {
+          const filtered = agencies
+          .filter((agency: any) => agency.category === alignment)
+          if (filtered.length > 0) {
+            return filtered
+            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            .map((agency: any) => (
+              <AgencyCard key={agency._id} agency={agency} />
+              ));
+          } else {
+            return (<>{noResults()}</>)
+          }
         }
     }
   };
@@ -161,7 +224,18 @@ const AgenciesList = () => {
           )}
         </Grid>
         <Grid item xs={12} md={10}>
-          {showAgencyCards(alignment)}
+          <div>
+            <TablePagination
+              rowsPerPageOptions={[5, 10, 25]}
+              component="div"
+              count={count}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+            />
+            {showAgencyCards(alignment)}
+          </div>
         </Grid>
       </Grid>
     </div>
