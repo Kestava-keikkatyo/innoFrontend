@@ -57,7 +57,6 @@ import Feedbacks from "./pages/FeedbackPage/Feedbacks"
 import Details from "./pages/FeedbackPage/Details"
 import FeedbackPage from "./pages/FeedbackPage"
 import Workers from "./pages/Profile/Workers"
-import CompanyJobPage from "./pages/JobPage"
 import { ThemeProvider, Theme, StyledEngineProvider, createTheme } from '@mui/material/styles';
 import makeStyles from '@mui/styles/makeStyles';
 import UserProfile from "./pages/Profile/User"
@@ -126,23 +125,20 @@ const App: React.FC = () => {
             <PrivateRoute path="/jobs/details/:jobId">
               <JobDetails />
             </PrivateRoute>
-            <PrivateRoute path="/jobs">
-              <Jobs />
-            </PrivateRoute>
             <PrivateRoute path="/job/application">
               <Application />
             </PrivateRoute>
             <PrivateRoute path="/jobListForAgency" roles={[roles.Agency]}>
               <CreatedJobs />
             </PrivateRoute>
-            <PrivateRoute path="/job/update" roles={[roles.Agency]}>
+            <PrivateRoute path="/job/update/:jobId" roles={[roles.Agency]}>
               <JobUpdate />
             </PrivateRoute>
             <PrivateRoute path="/job/create" roles={[roles.Agency]}>
               <CreateJob />
             </PrivateRoute>
-            <PrivateRoute path="/job-page" roles={[roles.Business, roles.Agency]}>
-              <CompanyJobPage />
+            <PrivateRoute path="/job" roles={[roles.Agency]}>
+              <JobList />
             </PrivateRoute>
             <PrivateRoute path="/send-feedback" roles={[roles.Business, roles.Agency, roles.Worker]}>
               <SendFeedback />
@@ -311,7 +307,7 @@ const App: React.FC = () => {
               <FormsPage />
             </PrivateRoute>
             <PrivateRoute path="/jobs" roles={[roles.Worker]}>
-              <JobList />
+              <Jobs />
             </PrivateRoute>
             <PrivateRoute path="/home">
               <HomePage />

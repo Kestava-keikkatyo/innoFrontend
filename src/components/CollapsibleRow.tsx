@@ -99,7 +99,7 @@ const CollapsibleRow = ({row, handleDelete}: any) => {
               />
               {/**Link to update job ad. (Not implemented at the moment.) */}
               <Link 
-                to={"/job/update"} 
+                to={"/job/update/" + row._id} 
                 style={{
                   float: 'right', 
                   paddingTop: '2px',

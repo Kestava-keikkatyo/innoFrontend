@@ -94,6 +94,27 @@ const jobReducer = (state = initialState, action: JobActions) => {
         fetchError: action.data,
       };
     }
+    case jobType.JOB_UPDATE_REQUEST: {
+      return {
+        ...state,
+        currentJob: action.data,
+        loading: true,
+      };
+    }
+    case jobType.JOB_UPDATE_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        currentJob: action.data,
+      };
+    }
+    case jobType.JOB_UPDATE_FAILURE: {
+      return {
+        ...state,
+        loading: false,
+        fetchError: action.data,
+      };
+    }
     default:
       return state;
   }

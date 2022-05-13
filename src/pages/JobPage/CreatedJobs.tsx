@@ -133,7 +133,7 @@ const CreatedJobs: React.FC<any> = () => {
           return (
             <>
                {/**Link to update job ad. (Not implemented at the moment.) */}
-              <Link to={"/job/update"}>
+              <Link to={"/job/update/" + params.id}>
                 <span className={classes.update}>{t('job_update')}</span>
               </Link>
               {/**Delete button */}

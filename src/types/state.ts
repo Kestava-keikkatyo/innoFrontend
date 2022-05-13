@@ -346,6 +346,21 @@ interface JobCreatedFailure {
   type: typeof jobType.JOB_CREATED_FAILURE;
   data: Job;
 }
+
+interface JobUpdateRequest {
+  type: typeof jobType.JOB_UPDATE_REQUEST;
+  data: any;
+}
+
+interface JobUpdateSuccess {
+  type: typeof jobType.JOB_UPDATE_SUCCESS;
+  data: any;
+}
+
+interface JobUpdateFailure {
+  type: typeof jobType.JOB_UPDATE_FAILURE;
+  data: any;
+}
 export type JobActions =
   | JobGetAllRequest
   | JobGetAllSuccess
@@ -358,7 +373,10 @@ export type JobActions =
   | JobDeletedFailure
   | JobCreatedRequest
   | JobCreatedSuccess
-  | JobCreatedFailure;
+  | JobCreatedFailure
+  | JobUpdateRequest
+  | JobUpdateSuccess
+  | JobUpdateFailure;
 
 export const LOGIN = "USER_LOGIN";
 export const LOGOUT = "USER_LOGOUT";

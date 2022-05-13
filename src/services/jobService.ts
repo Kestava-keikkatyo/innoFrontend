@@ -40,10 +40,7 @@ const fetchAllJobsForAgency = async () => {
  * @desc fetchJobById
  */
 const fetchJobById = async (id: string) => {
-  const res = await axios.get(
-    `${baseUrl}/job/jobForWorker/${id}`,
-    authHeader()
-  );
+  const res = await axios.get(`${baseUrl}/job/any/${id}`, authHeader());
   return res;
 };
 
@@ -72,10 +69,25 @@ const deleteJob = async (jobId: string) => {
 const createJob = async (job: Job) => {
   return await axios.post(`${baseUrl}/job`, job, authHeader());
 };
+
+/**
+ * @param id
+ * @returns
+ */
+const updateJob = async (jobId: string, job: Job) => {
+  const res = await axios.put(
+    `${baseUrl}/job/jobUpdate/${jobId}`,
+    job,
+    authHeader()
+  );
+  return res.data;
+};
+
 export default {
   fetchAllJobs,
   fetchJobById,
   fetchAllJobsForAgency,
   deleteJob,
   createJob,
+  updateJob,
 };

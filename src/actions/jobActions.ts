@@ -2,6 +2,7 @@ import jobService from "../services/jobService";
 import { jobType } from "../types/types";
 import { Job, severity } from "../types/types";
 import { setAlert } from "./alertActions";
+import history from "../utils/history";
 
 /**
  * @function
@@ -101,5 +102,28 @@ export const createJob = (job: Job) => async (dispatch: any) => {
       data: e,
     });
     dispatch(setAlert("Failed to create the job: " + e, severity.Error, 15));
+  }
+};
+
+/**
+ * @function
+ * @desc update user.
+ */
+export const updateJob = (jobId: string, job: Job) => async (dispatch: any) => {
+  try {
+    dispatch({
+      type: jobType.JOB_UPDATE_REQUEST,
+    });
+
+    const res = await jobService.updateJob(jobId, job);
+    dispatch({ type: jobType.JOB_UPDATE_SUCCESS, data: res.data });
+
+    history.push("/job?tab=my");
+  } catch (error) {
+    dispatch({
+      type: jobType.JOB_UPDATE_FAILURE,
+      data: error,
+    });
+    dispatch(setAlert("Failed to update user: " + error, severity.Error, 15));
   }
 };
