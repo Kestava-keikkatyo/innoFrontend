@@ -18,16 +18,13 @@ import {
 } from '@mui/material';
 import ListAccordionInBox from './ListAccordionInBox';
 import ListAccordionWaiting from './ListAccordionWaiting';
-import ListAccordionDone from './ListAccordionDone';
 import ListAccordionSent from './ListAccordionSent';
 import { useDispatch, useSelector } from 'react-redux';
 import { 
-  fetchBusinessContracts, 
   fetchBusinessContractsAsTarget
 } from '../../actions/businessContractActions';
 import { IRootState } from '../../utils/store';
 import AgenciesList from './AgenciesList';
-import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import { useTranslation } from 'react-i18next';
 
 interface TabPanelProps {
@@ -38,7 +35,6 @@ interface TabPanelProps {
 
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
-
   return (
     <div
       style={{
@@ -64,29 +60,22 @@ function a11yProps(index: any) {
   };
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    flexGrow: 1,
-    width: '100%',
-    backgroundColor: theme.palette.background.paper,
-    marginTop: 8,
-  },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular,
-  },
-  tab: {
-    minWidth: '25%',
-    maxWidth: '25%',
-  },
-}));
-
+/**
+ * @component
+ * @description
+ * Worker and Business view of business contracts (Agreements)
+ *
+ * - Displays business contracts (requested, pending, signed).
+ * - Signs business contracts sent by Agencies.
+ * - Sends contract requests to Agencies.
+ * 
+ * TODO: 
+ * - Archiving old contracts.
+ */
 const BusinessContractsPage = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-
   const { t } = useTranslation();
-
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('lg'));
 
@@ -96,7 +85,6 @@ const BusinessContractsPage = () => {
   const dispatch = useDispatch();
   const contracts = businessContract;
   const pending: any = [];
-  const waiting: any = [];
   const signed: any = [];
   const sent: any = [];
 
@@ -162,7 +150,6 @@ const BusinessContractsPage = () => {
             icon={
               <Badge badgeContent={sent.length} color="secondary">
                 {matches ? (
-                  // <Tooltip title="Lähetetyt sopimukset" placement="top" arrow>
                   <Tooltip title="Pyydetyt sopimukset" placement="top" arrow>
                     <SendIcon />
                   </Tooltip>
@@ -177,10 +164,8 @@ const BusinessContractsPage = () => {
             className={classes.tab}
             label={matches ? ' ' : 'received_contracts'}
             icon={
-              // <Badge badgeContent={pending.length} color="secondary">
               <Badge badgeContent={pending.length} color="secondary">
                 {matches ? (
-                  // <Tooltip title="Saapuneet sopimukset" placement="top" arrow>
                   <Tooltip title="Vastaanotetut sopimukset" placement="top" arrow>
                     <NotificationsActiveIcon />
                   </Tooltip>
@@ -191,26 +176,8 @@ const BusinessContractsPage = () => {
             }
             {...a11yProps(2)}
           />
-          {/* <Tab
-            className={classes.tab}
-            label={matches ? ' ' : t('waiting_contracts')}
-            label={matches ? ' ' : t('waiting_contracts')}
-            icon={
-              <Badge badgeContent={waiting.length} color="secondary">
-                {matches ? (
-                  <Tooltip title="Odottavat sopimukset" placement="top" arrow>
-                    <HourglassEmptyIcon />
-                  </Tooltip>
-                ) : (
-                  <HourglassEmptyIcon />
-                )}
-              </Badge>
-            }
-            {...a11yProps(3)}
-          /> */}
           <Tab
             className={classes.tab}
-            // label={matches ? ' ' : t('done_contracts')}
             label={matches ? ' ' : 'archived_contracts'}
             icon={
               <Badge badgeContent={archived.length} color="secondary">
@@ -223,7 +190,6 @@ const BusinessContractsPage = () => {
                 )}
               </Badge>
             }
-            // {...a11yProps(4)}
             {...a11yProps(3)}
           />
         </Tabs>
@@ -233,23 +199,32 @@ const BusinessContractsPage = () => {
         <AgenciesList />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        {/* <ListAccordionSent contracts={sent} /> */}
         <ListAccordionSent contracts={requested} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        {/* <ListAccordionInBox contracts={pending} /> */}
         <ListAccordionInBox contracts={fromAgencies} />
       </TabPanel>
       <TabPanel value={value} index={3}>
         <ListAccordionWaiting contracts={archived} />
       </TabPanel>
-      {/* <TabPanel value={value} index={3}>
-        <ListAccordionWaiting contracts={waiting} />
-      </TabPanel> */}
-      {/* <TabPanel value={value} index={4}>
-        <ListAccordionDone contracts={signed} />
-      </TabPanel> */}
     </Container>
   );
 };
 export default BusinessContractsPage;
+
+const useStyles = makeStyles((theme: Theme) => ({
+  root: {
+    flexGrow: 1,
+    width: '100%',
+    backgroundColor: theme.palette.background.paper,
+    marginTop: 8,
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
+  },
+  tab: {
+    minWidth: '25%',
+    maxWidth: '25%',
+  },
+}));

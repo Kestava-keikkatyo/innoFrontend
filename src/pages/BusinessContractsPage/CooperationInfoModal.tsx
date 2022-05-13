@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 /**
  * @component
- * @desc A modal panel to connect worker user or business user with agency.
+ * @desc A modal panel where worker or business can send contract request to agency.
  * @param props
  * @param {Function} props.displayModal callback function when opened.
  * @param {Function} props.closeModal callback when closed.
@@ -45,49 +45,6 @@ const CooperationInfoModal: React.FC<any> = ({
   const [formId, setFormId] = React.useState('None');
 
   const addContract = async () => {
-    /*
-    if (formId === 'None') {
-      userRole.toLowerCase() === 'business'
-        ? dispatch(
-            setAlert(
-              `Failed: Please choose a form. If you do not have yet, create one.`,
-              severity.Error
-            )
-          )
-        : dispatch(setAlert(`Failed: Please choose a form.`, severity.Error));
-    }
-    const found = businessContracts.some((bc: any) => bc._id === contractId);
-    if (found) {
-      dispatch(
-        setAlert(
-          `Fail: You have already business contract with ${agency.name}`,
-          severity.Error
-          )
-          );
-        } else {
-          if (formId === 'None') {
-            dispatch(addBusinessContractWorkerBusiness(contractId, agencyId, ''));
-          } else {
-            const businessContractForm: any = await dispatch(
-              createBusinessContractForm(formId)
-              );
-              dispatch(
-                addBusinessContractWorkerBusiness(
-                  contractId,
-                  agencyId,
-                  businessContractForm._id
-                  )
-                  );
-                }
-                dispatch(
-                  setAlert(
-                    `Success:  Contract request sent to ${agency.name}`,
-                    severity.Success
-                    )
-                    );
-                  }
-                  
-                  */
     dispatch(
       addBusinessContract(
         agencyId,
