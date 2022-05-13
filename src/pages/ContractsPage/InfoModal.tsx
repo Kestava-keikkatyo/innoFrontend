@@ -20,6 +20,9 @@ import { getByIdAndSetBusinessContractForm } from '../../actions/businessContrac
 /**
  * @component
  * @desc A modal panel to connect worker user or business user with agency.
+ * 
+ * Currently not in use
+ * 
  * @param props
  * @param {Function} props.displayModal callback function when opened.
  * @param {Function} props.closeModal callback when closed.

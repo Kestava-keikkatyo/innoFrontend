@@ -40,6 +40,12 @@ interface BusinessContractObject {
   agency: string;
 }
 
+/**
+ * @component
+ * @description
+ * Currently not in use.
+ *
+ */
 const ReceivedContractsFromBusinesses = (props: {
   businessContract: BusinessContractObject[];
 }) => {

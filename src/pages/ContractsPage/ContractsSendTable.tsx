@@ -25,6 +25,12 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
+/**
+ * @component
+ * @description
+ * Currently not in use.
+ *
+ */
 const ContractsSendTable = (prop: {
   contracts: [];
   declineContract: Function;

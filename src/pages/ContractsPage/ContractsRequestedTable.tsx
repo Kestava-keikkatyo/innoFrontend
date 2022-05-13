@@ -37,6 +37,9 @@ import { deleteBusinessContractForm } from '../../actions/businessContractFormAc
 /**
  * Used for business contract requests which sent from a worker or business.
  * This contract requests are listed in the business contract object as receivedContracts.
+ * 
+ * Currently not in use
+ * 
  * @param prop
  * @returns
  */

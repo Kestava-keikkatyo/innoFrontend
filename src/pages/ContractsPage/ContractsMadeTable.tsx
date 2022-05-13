@@ -32,6 +32,12 @@ import pdfFonts from 'pdfmake/build/vfs_fonts.js';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import businessContractFormService from '../../services/businessContractFormService';
 
+/**
+ * @component
+ * @description
+ * Currently not in use.
+ *
+ */
 const ContractsMadeTable = (prop: { contracts: []; contractId: string }) => {
   const { contracts, contractId } = prop;
 
