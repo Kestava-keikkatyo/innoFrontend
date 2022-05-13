@@ -32,6 +32,8 @@ const useStyles = makeStyles((theme) => ({
 /**
  * @component
  * @desc A modal panel to connect worker user or business user with agency.
+ *       Sent contracts status is 'pending'.
+ *       Worker or Business can sign them after which they become 'signed'.
  * @param props
  * @param {Function} props.displayModal callback function when opened.
  * @param {Function} props.closeModal callback when closed.
@@ -54,8 +56,6 @@ const WorkerAndBusinessModal: React.FC<any> = ({
   const classes = useStyles();
 
   const { t } = useTranslation();
-
-  console.log('workerOrBusinessData', workerOrBusinessData);
 
   const addContract = async () => {
     if (formId === 'None') {

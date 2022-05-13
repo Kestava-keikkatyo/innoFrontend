@@ -70,11 +70,11 @@ const a11yProps = (index: any) => {
 /**
  * @component
  * @description
- * - retrieves workers and businesses by name
+ * Agency view of Business contracts (Agreements)
  *
- * - Displays all the current businesscontracts, including pending ones (agency view, business view, worker view).
- * - Creates businesscontracts with businesses and workers (agency view).
- * - Accepts businesscontracts (worker view and business view).
+ * - Displays businesscontracts (requested, pending, signed).
+ * - Sends businesscontracts to businesses and workers.
+ * - TODO: Accepts businesscontract requests.
  *
  * After agency has sent businesscontract and business/worker has accepted it,
  * agency can create workcontracts between worker and business in workerpage.
@@ -96,7 +96,6 @@ const ContractsPage = () => {
   const { t } = useTranslation();
   const matches = useMediaQuery(theme.breakpoints.down('md'));
 
-  //to be switched to retrieve contracts
   useEffect(() => {
     dispatch(me());
     dispatch(fetchBusinessContracts());
@@ -122,6 +121,7 @@ const ContractsPage = () => {
     return <PageLoading />;
   }
   return (
+    // TODO: Menu on top of the site is not currently in use and could be removed in future.
     <Container maxWidth="lg" className={classes.root}>
       <AppBar position="static" color="default">
         <Tabs
@@ -182,6 +182,7 @@ const ContractsPage = () => {
         </Tabs>
       </AppBar>
 
+{/* This TabPanel is currently where all actions happen */}
       <TabPanel value={value} index={0} dir={theme.direction}>
         <Accordion 
           className={classes.card} 
@@ -217,6 +218,7 @@ const ContractsPage = () => {
         <ContractsTable businessContract={businessContract} />
       </TabPanel>
 
+{/* TabPanels below are to be removed, if no use. */}
       <TabPanel value={value} index={1} dir={theme.direction}>
         <ContractsFromBusiness businessContract={businessContract} />
         <ContractsFromWorkers businessContract={businessContract} />

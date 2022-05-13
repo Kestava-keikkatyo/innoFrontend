@@ -47,7 +47,7 @@ const INIT_SEARCH_TYPE = roles.Worker;
 
 /**
  * @component
- * @desc A table to search worker users to create new business contract.
+ * @desc A table to search workers or businesses to create new business contract (Agreement).
  * @param props
  * @param {Function} props.addWorkerOrBusiness add button click listener function,
  * which passes workers data to parent component state.
