@@ -22,7 +22,15 @@ import { setAlert } from "../../actions/alertActions"
 import { severity } from '../../types/types';
 import { useDispatch } from 'react-redux';
 
-const AgencyCard: React.FC<any> = ({ agency }) => {
+/**
+ * @component
+ * @desc
+ * A card with information of the agency.
+ * Contract request can be sent.
+ * 
+ * TODO: Link to profile not working
+ */
+ const AgencyCard: React.FC<any> = ({ agency }) => {
   const [expanded, setExpanded] = React.useState(false);
   const classes = useStyles();
   const { t } = useTranslation();
@@ -32,8 +40,6 @@ const AgencyCard: React.FC<any> = ({ agency }) => {
     setExpanded(!expanded);
   };
 
-  // console.log({agency})
-
   const [displayModal, setDisplayModal] = React.useState(false);
 
   const handleCooperationOpen = () => {
@@ -41,22 +47,17 @@ const AgencyCard: React.FC<any> = ({ agency }) => {
   };
 
   const handleSiirryProfiiliin = (agency: any) => {
-    // if (!agency.profile){
     if (!agency._id){
       dispatch(setAlert("Agency profile is missing!", severity.Error));
       return;
     } else {
       history.push({
         pathname: '/profiles/profile-view',
-        // state: { profileId: agency.profile._id },
         state: { profileId: agency._id },
       });
     }
   };
 
-  // const contractId = agency.businessContracts[0];
-  const contractId = 0
-  // const profilePic = agency.profile ? agency.profile.profilePicture : ''
   return (
     <div>
       <Card className={classes.root} onClick={handleExpandClick}>
@@ -99,14 +100,6 @@ const AgencyCard: React.FC<any> = ({ agency }) => {
                       onClick={handleCooperationOpen}
                     >
                       {t('send_request')}
-                    {/* <Button
-                      className={classes.button}
-                      variant="contained"
-                      color="primary"
-                      type="button"
-                      onClick={handleCooperationOpen}
-                    >
-                      {t('cooperation_send')} */}
                     </Button>
                     <Button variant="contained" onClick={() => handleSiirryProfiiliin(agency)}>
                       {t('transfer_company_profile')}
@@ -126,7 +119,6 @@ const AgencyCard: React.FC<any> = ({ agency }) => {
       <CooperationInfoModal
         displayModal={displayModal}
         agency={agency}
-        // contractId={contractId}
         closeModal={() => setDisplayModal(false)}
       />
     </div>

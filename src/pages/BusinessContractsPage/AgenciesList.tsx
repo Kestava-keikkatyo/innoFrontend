@@ -28,7 +28,8 @@ import createStyles from '@mui/styles/createStyles';
 /**
  * @component
  * @desc
- * A searchbar for searching worker users or business users.
+ * A searchbar for searching agencies.
+ * Agencies can be filtered by their selected category.
  */
 const AgenciesList = () => {
   const dispatch = useDispatch();
