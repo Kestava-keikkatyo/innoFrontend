@@ -1,59 +1,24 @@
 import React from 'react';
-import Typography from '@mui/material/Typography';
 import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
   Theme,
-  Divider,
-  AccordionActions,
-  IconButton,
-  Button,
   ToggleButtonGroup,
   ToggleButton,
-  FormControl,
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Avatar from '@mui/material/Avatar';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
-import {
-  sendBusinessContract,
-  refuseBusinessContractById,
-} from '../../actions/businessContractActions';
-import { IRootState } from '../../utils/store';
-import {
-  deleteBusinessContractForm,
-  getByIdAndSetBusinessContractForm,
-  setBusinessContractForm,
-} from '../../actions/businessContractFormActions';
-import { severity } from '../../types/types';
-import { setAlert } from '../../actions/alertActions';
-import businessContractFormService from '../../services/businessContractFormService';
-import pdfMake from 'pdfmake/build/pdfmake.js';
-import pdfFonts from 'pdfmake/build/vfs_fonts.js';
-import htmlToPdfmake from 'html-to-pdfmake';
-import ReactDOMServer from 'react-dom/server';
-import Form from '../FormsPage/Form';
-import { getFormById } from '../../actions/formActions';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-
-import SendIcon from '@mui/icons-material/Send';
-import EditIcon from '@mui/icons-material/Edit';
-import SaveAltIcon from '@mui/icons-material/SaveAlt';
-import CloseIcon from '@mui/icons-material/Close';
 import { useTranslation } from 'react-i18next';
-import Tooltip from '@mui/material/Tooltip';
 import ContractAccordion from './ContractsAccordion';
 
-export const ListAccordionInBox = (prop: { contracts: any[] }) => {
+/**
+ * @component
+ * @desc
+ * A list of received contract requests.
+ * Contracts can be filtered by their type (pending, signed).
+ */
+ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
   const classes = useStyles();
-  const dispatch = useDispatch();
-  const history = useHistory();
   const { t } = useTranslation();
-
   const { contracts } = prop;
+  const [filter, setFilter] = React.useState('all')
 
   const pending: any = []
   const signed: any = []
@@ -71,76 +36,6 @@ export const ListAccordionInBox = (prop: { contracts: any[] }) => {
     return '';
   });
 
-  const currentBusinessContractForm: any = useSelector(
-    (state: IRootState) => state.businessContractForm
-  );
-
-  // const handleTäytäTaiMuokkaaLomaketta = async (
-  //   businessContractFormId: any
-  // ) => {
-  //   const businessContractForm: any =
-  //     await businessContractFormService.fetchBusinessContractFormById(
-  //       businessContractFormId
-  //     );
-  //   dispatch(setBusinessContractForm(businessContractForm));
-  //   history.push({ pathname: `/business-contracts/business-contract-edit` });
-  // };
-
-  // const rejectContract = (
-  //   agencyId: any,
-  //   contractId: any,
-  //   businessContractFormId: any
-  // ) => {
-  //   dispatch(getByIdAndSetBusinessContractForm(businessContractFormId));
-  //   if (window.confirm(`Poistetaanko ${currentBusinessContractForm.title}`)) {
-  //     dispatch(refuseBusinessContractById(agencyId, contractId));
-  //     dispatch(deleteBusinessContractForm(businessContractFormId, agencyId));
-  //   }
-  // };
-
-  // const loadAndSendContract = (contractId: any) => {
-  //   let status = "signed"
-  //   dispatch(
-  //     sendBusinessContract(
-  //       contractId,
-  //       status
-  //     )
-  //     // sendBusinessContract(
-  //     //   agencyId,
-  //     //   contractId,
-  //     //   currentBusinessContractForm._id
-  //     // )
-  //   );
-  //   dispatch(setAlert('Business contract form sent!', severity.Success));
-  // };
-
-  // // Print PDF
-  // const handleTulostaLomaketta = async (formId: any) => {
-  //   let businessContractForm: any =
-  //     await businessContractFormService.fetchBusinessContractFormById(formId);
-  //   console.log('businessContractForm ', businessContractForm);
-
-  //   pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
-  //   // pdf content
-  //   let content: any = [];
-
-  //   let html = ReactDOMServer.renderToString(
-  //     <Form currentForm={businessContractForm} />
-  //   );
-  //   let htmlForm: any = htmlToPdfmake(html);
-
-  //   content.push(htmlForm);
-
-  //   // pdf document
-  //   var doc = {
-  //     content: content,
-  //   };
-
-  //   pdfMake.createPdf(doc).download(businessContractForm.title);
-  // };
-
-  const [filter, setFilter] = React.useState('all')
   const handleChange = (event: React.MouseEvent<HTMLElement>, value: string) => {
     event.preventDefault()
     setFilter(value)

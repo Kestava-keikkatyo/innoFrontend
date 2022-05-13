@@ -51,6 +51,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
+/**
+ * @component
+ * @description
+ * Business contracts that Worker or Business has sent to Agencies (Agreement, type: request)
+ * 
+ * TODO: removal of request (old code, pre user model refactoring)
+ */
 export const ListAccordioSent = (prop: { contracts: any[] }) => {
   const { contracts } = prop;
   const classes = useStyles();
@@ -75,8 +82,6 @@ export const ListAccordioSent = (prop: { contracts: any[] }) => {
     }
   };
 
-  // console.log('business/worker: sent contracts', contracts);
-
   if (contracts.length < 1) {
     return <p>{t('no_results')}</p>;
   } else
@@ -97,7 +102,6 @@ export const ListAccordioSent = (prop: { contracts: any[] }) => {
               </div>
               <div className={classes.column}>
                 <Typography className={classes.heading}>
-                  {/* {contract.agency.name} */}
                   {contract.creator.name}
                 </Typography>
               </div>
@@ -110,14 +114,11 @@ export const ListAccordioSent = (prop: { contracts: any[] }) => {
             <AccordionDetails>
               <div className={classes.info}>
                 <Typography style={{ margin: '10px 5px' }}>
-                  {/* Email: {contract.agency.email} */}
                   Email: contract.agency.email
                 </Typography>
                 <Divider />
                 <Typography style={{ margin: '10px 5px' }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                  eget.
+                  Yrityksen lyhyt kuvaus.
                 </Typography>
                 <Button
                   style={{ margin: '5px' }}

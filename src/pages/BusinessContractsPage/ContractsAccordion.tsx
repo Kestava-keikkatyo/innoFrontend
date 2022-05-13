@@ -26,7 +26,19 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useTranslation } from 'react-i18next';
 import Tooltip from '@mui/material/Tooltip';
 
-const ContractAccordion: React.FC<any> = ({ contract }) => {
+/**
+ * @component
+ * @desc
+ * Accordion of contract.
+ * Pending contracts can be signed.
+ * 
+ * TODO:
+ * - preview
+ * - edit
+ * - reject
+ * - print
+ */
+ const ContractAccordion: React.FC<any> = ({ contract }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -76,13 +88,11 @@ const ContractAccordion: React.FC<any> = ({ contract }) => {
       </div>
       <div className={classes.column}>
         <Typography className={classes.heading}>
-          {/* {contract.agency.name} */}
           {contract.creator.name}
         </Typography>
       </div>
       <div className={classes.column}>
         <Typography className={classes.color}>
-          {/* {t('unfinished')} */}
           {contract.status}
         </Typography>
       </div>
@@ -90,14 +100,11 @@ const ContractAccordion: React.FC<any> = ({ contract }) => {
     <AccordionDetails>
       <div className={classes.info}>
         <Typography style={{ margin: '10px 5px' }}>
-          {/* Email: {contract.agency.email} */}
           Email: contract.agency.email
         </Typography>
         <Divider />
         <Typography style={{ margin: '10px 5px' }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-          eget.
+          Yrityksen lyhyt kuvaus.
         </Typography>
         <Button
           style={{ margin: '5px' }}
