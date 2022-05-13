@@ -201,3 +201,30 @@ export const createAdmin =
       dispatch(setAlert("Failed to create the user: " + e, severity.Error, 15));
     }
   };
+
+/**
+ * @function
+ * @desc Update user's status by Id
+ */
+export const updateUSerStatus =
+  (id: string, active: boolean) => async (dispatch: any) => {
+    try {
+      dispatch({
+        type: usersType.USER_UPDATE_STATUS_REQUEST,
+      });
+      const data = await usersService.setUserStatus(id, active);
+      dispatch({
+        type: usersType.USER_UPDATE_STATUS_SUCCESS,
+        data: { id, active },
+      });
+      console.log("deactivate data", data);
+    } catch (e) {
+      dispatch({
+        type: usersType.USER_UPDATE_STATUS_FAILURE,
+        data: e,
+      });
+      dispatch(
+        setAlert("Failed to deactivate the user: " + e, severity.Error, 15)
+      );
+    }
+  };

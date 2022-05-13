@@ -2,15 +2,16 @@ import { DataGrid } from '@mui/x-data-grid';
 import * as React from 'react';
 import { DeleteOutline } from "@mui/icons-material";
 import { deleteUser, fetchAllUsers } from '../../actions/usersActions';
-import "./userList.css";
 import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import {updateUSerStatus } from "../../actions/adminActions";
+import {updateUSerStatus } from "../../actions/usersActions";
 import { setAlert } from '../../actions/alertActions';
+import makeStyles from '@mui/styles/makeStyles';
 
 const UserList: React.FC<any> = () => {
 
+  const classes = useStyles();
   const dispatch = useDispatch();
 
   const { users } = useSelector((state: IRootState) => state.users || []);
@@ -29,8 +30,8 @@ const UserList: React.FC<any> = () => {
     dispatch(setAlert("User deleted successfully!"))
   }
 
-  const handleStatus = (id: string, userType: string, active: boolean) => {
-    dispatch(updateUSerStatus(id, userType, active))
+  const handleStatus = (id: string, active: boolean) => {
+    dispatch(updateUSerStatus(id, active))
     if (active === false) {
       dispatch(setAlert("User deactivated successfully!"))
     } else dispatch(setAlert("User activated successfully!"))
@@ -43,8 +44,8 @@ const UserList: React.FC<any> = () => {
       width: 200,
       renderCell: (params: any) => {
         return (
-          <div className="userListUser">
-            <img className="userListImg" src={params.row.profilePicture} alt="" />
+          <div className={classes.userListUser}>
+            <img className={classes.userListImg} src={params.row.profilePicture} alt="" />
             {params.row.name}
           </div>
         );
@@ -78,13 +79,13 @@ const UserList: React.FC<any> = () => {
         return (
           <>
             <DeleteOutline
-              className="userListDelete"
+              className={classes.userListDelete}
               onClick={() => handleDelete(params.id)}
               
             />
             <button 
-             className="userListDeactive"
-             onClick={() => handleStatus(params.id, params.row.userType, !params.row.active)}>{params.row.active ? "Deactivate" : "Activate"}</button>
+             className={classes.userListDeactive}
+             onClick={() => handleStatus(params.id, !params.row.active)}>{params.row.active ? "Deactivate" : "Activate"}</button>
             
           </>
         );
@@ -107,4 +108,34 @@ const UserList: React.FC<any> = () => {
   );
 }
 
+const useStyles = makeStyles((theme) => ({
+  userList: {
+    flex: '4',
+  },
+  userListUser: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  userListImg: {
+    width: '32px',
+    height: '32px',
+    borderRadius: '50%',
+    objectFit: 'cover',
+    marginRight: '10px',
+  },
+  userListDeactive: {
+    border: 'none',
+    borderRadius: '10px',
+    padding: '5px 10px',
+    backgroundColor: '#cb6e28',
+    color: 'white',
+    cursor: 'pointer',
+    marginRight: '20px',
+  },
+  userListDelete: {
+    color: 'red',
+    marginRight: '20px',
+    cursor: 'pointer',
+  },
+}));
 export default UserList;

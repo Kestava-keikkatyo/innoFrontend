@@ -27,8 +27,8 @@ const Agencies: React.FC<any> = () => {
       width: 250,
       renderCell: (params: any) => {
         return (
-        <div className="userListUser">
-          <img className="userListImg" src={params.row.profilePicture} alt="" />
+        <div className={classes.userListUser}>
+          <img className={classes.userListImg} src={params.row.profilePicture} alt="" />
           {params.row.name}
         </div>
         );
@@ -89,7 +89,18 @@ const useStyles = makeStyles((theme) => ({
   title: {
     marginTop: '25px',
     marginBottom: '15px',
-  }
+  },
+  userListUser: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  userListImg: {
+    width: '32px',
+    height: '32px',
+    borderRadius: '50%',
+    objectFit: 'cover',
+    marginRight: '10px',
+  },
 }));
 
 export default Agencies;
