@@ -54,6 +54,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
+/**
+ * @component
+ * @description
+ * Currently not in use
+ */
 export const ListAccordionDone = (prop: { contracts: any[] }) => {
   const classes = useStyles();
   const { t } = useTranslation();

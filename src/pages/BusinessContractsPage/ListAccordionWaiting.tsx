@@ -54,6 +54,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
+/**
+ * @component
+ * @description
+ * Could be refactored for archived contracts.
+ * Currently not in practical use.
+ */
 export const ListAccordionWaiting = (prop: { contracts: any[] }) => {
   const classes = useStyles();
   const { t } = useTranslation();
