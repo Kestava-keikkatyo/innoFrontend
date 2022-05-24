@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Button, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import makeStyles from '@mui/styles/makeStyles';
 import * as Yup from "yup";
 import { Form, Formik } from "formik";
@@ -13,6 +13,7 @@ import { useParams } from 'react-router-dom';
 import { IRootState } from '../../utils/store';
 import PageLoading from '../../components/PageLoading';
 import { fetchJobById, updateJob } from '../../actions/jobActions';
+import { Link } from 'react-router-dom';
 
 const CreateJobSchema = Yup.object().shape({
   title: Yup.string()
@@ -59,7 +60,7 @@ const JobUpdate: React.FC = () => {
     const handleSubmit = (job: Job) => {
         dispatch(updateJob(jobId, job));
 
-        dispatch(setAlert(i18next.t("user_updated_successfully")));
+        dispatch(setAlert(i18next.t("job_updated_successfully")));
     };
     
     return (
@@ -94,7 +95,10 @@ const JobUpdate: React.FC = () => {
                   <FormikField name="benefits" label={t('job_benefits')} multiline />
                   <FormikField name="details" label={t('job_details')} multiline />
                 </div>
-                <Button type="submit" variant="contained" color="primary" className={classes.button}>{t('button_update')}</Button>
+                <Stack direction="row" spacing={2}>
+                  <Button type="submit" variant="contained" color="primary" className={classes.button}>{t('button_update')}</Button>
+                  <Button variant="outlined" color="primary" component={Link} to="/job">{t('button_cancel')}</Button>
+                </Stack>
               </Form>
               );
             }}

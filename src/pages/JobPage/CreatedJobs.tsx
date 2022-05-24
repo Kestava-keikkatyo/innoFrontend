@@ -132,11 +132,9 @@ const CreatedJobs: React.FC<any> = () => {
         renderCell: (params: any) => {
           return (
             <>
-               {/**Link to update job ad. (Not implemented at the moment.) */}
               <Link to={"/job/update/" + params.id}>
                 <span className={classes.update}>{t('job_update')}</span>
               </Link>
-              {/**Delete button */}
               <DeleteOutline
                 className="userListDelete"
                 onClick={() => handleDelete(params.id)}

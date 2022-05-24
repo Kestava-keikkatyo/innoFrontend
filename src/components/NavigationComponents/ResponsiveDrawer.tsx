@@ -132,7 +132,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
           )}
           {role === roles.Agency && (
             <>
-              <ListItem button component={Link} to="/job-page" onClick={handleClick}>
+              <ListItem button component={Link} to="/job" onClick={handleClick}>
                 <ListItemIcon>
                   <AssignmentTurnedInOutlinedIcon />
                 </ListItemIcon>
