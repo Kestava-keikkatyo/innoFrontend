@@ -1,0 +1,31 @@
+/**
+ * @module service/topic
+ * @desc Topic requests to backend.
+ */
+import axios from "axios";
+import { Topic } from "../types/types";
+import baseUrl from "../utils/baseUrl";
+import { loadUser } from "../utils/storage";
+
+/**
+ * @function
+ * @desc Helper function for setting up request header.
+ */
+const authHeader = () => {
+  return {
+    headers: { "x-access-token": `${loadUser().token}` },
+  };
+};
+
+/**
+ * @function
+ * @desc sends out create topic request.
+ * @param {Topic} topic - Basic topic information.
+ */
+const createTopic = async (topic: Topic) => {
+  return await axios.post(`${baseUrl}/topic/create`, topic, authHeader());
+};
+
+export default {
+  createTopic,
+};

@@ -17,6 +17,7 @@ import reportReducer from "../reducers/reportReducer";
 import jobReducer from "../reducers/jobReducer";
 import usersReducer from "../reducers/usersReducer";
 import feedBackReducer from "../reducers/feedBackReducer";
+import topicReducer from "../reducers/topicReducer";
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -38,6 +39,7 @@ const reducer = combineReducers({
   job: jobReducer,
   feedback: feedBackReducer,
   users: usersReducer,
+  topic: topicReducer,
 });
 
 export type IRootState = ReturnType<typeof reducer>;
