@@ -581,6 +581,13 @@ export default {
   job_apply: "Hae nyt",
   job_your_job_ads: "Työpaikkailmoituksesi",
 
+  //Topic
+  add_new_topic: "Lisää uusi aihe",
+  topic_question: "Kysymys",
+  topic_answer: "Vastaus",
+  topic_created_successfully: "Aihe luotiin onnistuneesti!",
+  failed_to_create_the_topic: "Aihe luominen epäonnistui!",
+
   //CreateUser
   add_new_admin: "Lisää uusi järjestelmänvalvoja",
   create_user_name: "Nimi",

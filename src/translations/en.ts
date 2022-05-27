@@ -600,6 +600,13 @@ export default {
   password_is_required: "Password is required!",
   passwords_must_match: "Passwords must match!",
 
+  //Topic
+  add_new_topic: "Add new topic",
+  topic_question: "Question",
+  topic_answer: "Answer",
+  topic_created_successfully: "Topic was created successfully!",
+  failed_to_create_the_topic: "Failed to create the topic!",
+
   //List
   list_title_workers: "Workers",
   list_title_agencies: "Agencies",
