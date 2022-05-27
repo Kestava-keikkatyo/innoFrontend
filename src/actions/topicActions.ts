@@ -30,3 +30,23 @@ export const createTopic = (topic: Topic) => async (dispatch: any) => {
     dispatch(setAlert("Failed to create the topic: " + e, severity.Error, 15));
   }
 };
+
+/**
+ * @function
+ * @desc Delete topic by Id
+ */
+export const deleteTopic = (id: string) => async (dispatch: any) => {
+  try {
+    dispatch({
+      type: topicType.TOPIC_DELETED_REQUEST,
+    });
+    const data = await topicService.deleteTopic(id);
+    dispatch({ type: topicType.TOPIC_DELETED_SUCCESS, data: { id } });
+  } catch (e) {
+    dispatch({
+      type: topicType.TOPIC_DELETED_FAILURE,
+      data: e,
+    });
+    dispatch(setAlert("Failed to delete the topic!: " + e, severity.Error, 15));
+  }
+};

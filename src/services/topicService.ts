@@ -26,6 +26,19 @@ const createTopic = async (topic: Topic) => {
   return await axios.post(`${baseUrl}/topic/create`, topic, authHeader());
 };
 
+/**
+ * @param id
+ * @returns
+ */
+const deleteTopic = async (topicId: string) => {
+  const res = await axios.delete(
+    `${baseUrl}/topic/delete/${topicId}`,
+    authHeader()
+  );
+  return res;
+};
+
 export default {
   createTopic,
+  deleteTopic,
 };

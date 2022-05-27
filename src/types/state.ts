@@ -287,6 +287,7 @@ export interface TopicState {
   currentTopic: Topic | undefined;
   loading: boolean;
   topics: Topic[];
+  fetchError?: string;
 }
 interface TopicCreatedRequest {
   type: typeof topicType.TOPIC_CREATED_REQUEST;
@@ -300,7 +301,7 @@ interface TopicCreatedSuccess {
 
 interface TopicCreatedFailure {
   type: typeof topicType.TOPIC_CREATED_FAILURE;
-  data: Topic;
+  data: string;
 }
 
 interface TopicDeletedRequest {
@@ -315,7 +316,7 @@ interface TopicDeletedSuccess {
 
 interface TopicDeletedFailure {
   type: typeof topicType.TOPIC_DELETED_FAILURE;
-  data: { id: string };
+  data: string;
 }
 
 export type TopicActions =

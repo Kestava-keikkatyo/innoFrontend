@@ -177,9 +177,9 @@ export interface Feedback {
 }
 
 export interface Topic {
-  _id?: string;
-  question: string;
-  answer: string;
+  id?: string;
+  question?: string;
+  answer?: string;
 }
 
 export interface Feeling {

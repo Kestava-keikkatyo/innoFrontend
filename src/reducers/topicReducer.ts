@@ -17,7 +17,10 @@ const initialState: TopicState = {
  * @param {Object} state - current state
  * @param {Object} action - dispatched action
  */
-const topicReducer = (state = initialState, action: TopicActions) => {
+const topicReducer = (
+  state = initialState,
+  action: TopicActions
+): TopicState => {
   switch (action.type) {
     case topicType.TOPIC_CREATED_REQUEST: {
       return {
@@ -34,6 +37,27 @@ const topicReducer = (state = initialState, action: TopicActions) => {
       };
     }
     case topicType.TOPIC_CREATED_FAILURE: {
+      return {
+        ...state,
+        loading: false,
+        fetchError: action.data,
+      };
+    }
+    case topicType.TOPIC_DELETED_REQUEST: {
+      return {
+        ...state,
+        currentTopic: action.data,
+        loading: true,
+      };
+    }
+    case topicType.TOPIC_DELETED_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        topics: state.topics.filter((item) => item.id !== action.data.id),
+      };
+    }
+    case topicType.TOPIC_DELETED_FAILURE: {
       return {
         ...state,
         loading: false,
