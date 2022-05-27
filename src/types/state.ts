@@ -11,6 +11,8 @@ import {
   feedbackType,
   usersType,
   jobType,
+  Topic,
+  topicType,
 } from "./types";
 
 export interface UsersState {
@@ -278,6 +280,33 @@ export type FeedbackAction =
   | FeedbackCurrentSuccess
   | FeedbackCurrentFailure;
 
+/**
+ * Topic state & action types
+ */
+export interface TopicState {
+  currentTopic: Topic | undefined;
+  loading: boolean;
+  topics: Topic[];
+}
+interface TopicCreatedRequest {
+  type: typeof topicType.TOPIC_CREATED_REQUEST;
+  data: Topic;
+}
+
+interface TopicCreatedSuccess {
+  type: typeof topicType.TOPIC_CREATED_SUCCESS;
+  data: Topic;
+}
+
+interface TopicCreatedFailure {
+  type: typeof topicType.TOPIC_CREATED_FAILURE;
+  data: Topic;
+}
+
+export type TopicActions =
+  | TopicCreatedRequest
+  | TopicCreatedSuccess
+  | TopicCreatedFailure;
 /**
  * Job state & action types
  */

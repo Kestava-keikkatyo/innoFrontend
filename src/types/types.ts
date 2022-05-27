@@ -61,6 +61,12 @@ export enum roles {
   Admin = "admin",
 }
 
+export enum topicType {
+  TOPIC_CREATED_REQUEST = "TOPIC_CREATED_REQUEST",
+  TOPIC_CREATED_SUCCESS = "TOPIC_CREATED_SUCCESS",
+  TOPIC_CREATED_FAILURE = "TOPIC_CREATED_FAILURE",
+}
+
 export type businessContractType = roles.Business | roles.Worker;
 
 export enum severity {
@@ -165,6 +171,12 @@ export interface Job {
 export interface Feedback {
   heading: string;
   message: string;
+}
+
+export interface Topic {
+  _id?: string;
+  question: string;
+  answer: string;
 }
 
 export interface Feeling {
