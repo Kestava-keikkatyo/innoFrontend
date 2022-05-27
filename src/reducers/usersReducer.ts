@@ -109,7 +109,7 @@ const usersReducer = (state = initialState, action: UsersAction) => {
         loading: true,
       };
     }
-    case usersType.USER_DELETED_SUCCCESS: {
+    case usersType.USER_DELETED_SUCCESS: {
       return {
         ...state,
         loading: false,
