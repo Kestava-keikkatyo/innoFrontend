@@ -55,14 +55,14 @@ export const deleteUser = (id: string) => async (dispatch: any) => {
       type: usersType.USER_DELETED_REQUEST,
     });
     const data = await usersService.deleteUser(id);
-    dispatch({ type: usersType.USER_DELETED_SUCCCESS, data: { id } });
+    dispatch({ type: usersType.USER_DELETED_SUCCESS, data: { id } });
     console.log("deleted data", data);
   } catch (e) {
     dispatch({
       type: usersType.USER_DELETED_FAILURE,
       data: e,
     });
-    dispatch(setAlert("Failed to create the user: " + e, severity.Error, 15));
+    dispatch(setAlert("Failed to delete the user: " + e, severity.Error, 15));
   }
 };
 

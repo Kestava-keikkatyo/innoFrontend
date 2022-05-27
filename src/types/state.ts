@@ -85,7 +85,7 @@ interface UserDeletedRequest {
 }
 
 interface UserDeletedSuccess {
-  type: typeof usersType.USER_DELETED_SUCCCESS;
+  type: typeof usersType.USER_DELETED_SUCCESS;
   data: { id: string };
 }
 
@@ -303,10 +303,28 @@ interface TopicCreatedFailure {
   data: Topic;
 }
 
+interface TopicDeletedRequest {
+  type: typeof topicType.TOPIC_DELETED_REQUEST;
+  data: { id: string };
+}
+
+interface TopicDeletedSuccess {
+  type: typeof topicType.TOPIC_DELETED_SUCCESS;
+  data: { id: string };
+}
+
+interface TopicDeletedFailure {
+  type: typeof topicType.TOPIC_DELETED_FAILURE;
+  data: { id: string };
+}
+
 export type TopicActions =
   | TopicCreatedRequest
   | TopicCreatedSuccess
-  | TopicCreatedFailure;
+  | TopicCreatedFailure
+  | TopicDeletedRequest
+  | TopicDeletedSuccess
+  | TopicDeletedFailure;
 /**
  * Job state & action types
  */
