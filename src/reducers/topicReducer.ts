@@ -105,6 +105,27 @@ const topicReducer = (
         fetchError: action.data,
       };
     }
+    case topicType.TOPIC_UPDATED_REQUEST: {
+      return {
+        ...state,
+        currentTopic: action.data,
+        loading: true,
+      };
+    }
+    case topicType.TOPIC_UPDATED_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        currentTopic: action.data,
+      };
+    }
+    case topicType.TOPIC_UPDATED_FAILURE: {
+      return {
+        ...state,
+        loading: false,
+        fetchError: action.data,
+      };
+    }
     default:
       return state;
   }

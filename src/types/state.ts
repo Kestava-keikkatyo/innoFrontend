@@ -349,6 +349,21 @@ interface TopicGetCurrentFailure {
   data: any;
 }
 
+interface TopicUpdatedRequest {
+  type: typeof topicType.TOPIC_UPDATED_REQUEST;
+  data: any;
+}
+
+interface TopicUpdatedSuccess {
+  type: typeof topicType.TOPIC_UPDATED_SUCCESS;
+  data: any;
+}
+
+interface TopicUpdatedFailure {
+  type: typeof topicType.TOPIC_UPDATED_FAILURE;
+  data: any;
+}
+
 export type TopicActions =
   | TopicCreatedRequest
   | TopicCreatedSuccess
@@ -361,7 +376,10 @@ export type TopicActions =
   | TopicGetAllFailure
   | TopicGetCurrentRequest
   | TopicGetCurrentSuccess
-  | TopicGetCurrentFailure;
+  | TopicGetCurrentFailure
+  | TopicUpdatedRequest
+  | TopicUpdatedSuccess
+  | TopicUpdatedFailure;
 /**
  * Job state & action types
  */

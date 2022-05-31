@@ -94,3 +94,27 @@ export const fetchTopicById = (id: string) => async (dispatch: any) => {
     );
   }
 };
+
+/**
+ * @function
+ * @desc update topic.
+ */
+export const updateTopic =
+  (topicId: string, topic: Topic) => async (dispatch: any) => {
+    try {
+      dispatch({
+        type: topicType.TOPIC_UPDATED_REQUEST,
+      });
+
+      const res = await topicService.updateTopic(topicId, topic);
+      dispatch({ type: topicType.TOPIC_UPDATED_SUCCESS, data: res.data });
+    } catch (error) {
+      dispatch({
+        type: topicType.TOPIC_UPDATED_FAILURE,
+        data: error,
+      });
+      dispatch(
+        setAlert("Failed to update topic: " + error, severity.Error, 15)
+      );
+    }
+  };

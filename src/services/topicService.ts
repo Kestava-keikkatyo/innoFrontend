@@ -56,9 +56,23 @@ const fetchTopicById = async (id: string) => {
   return res;
 };
 
+/**
+ * @param id
+ * @returns
+ */
+const updateTopic = async (topicId: string, topic: Topic) => {
+  const res = await axios.put(
+    `${baseUrl}/topic/update/${topicId}`,
+    topic,
+    authHeader()
+  );
+  return res.data;
+};
+
 export default {
   createTopic,
   deleteTopic,
   fetchAllTopics,
   fetchTopicById,
+  updateTopic,
 };
