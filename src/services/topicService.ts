@@ -47,8 +47,18 @@ const fetchAllTopics = async () => {
   return res;
 };
 
+/**
+ * @function
+ * @desc fetchTopicById
+ */
+const fetchTopicById = async (id: string) => {
+  const res = await axios.get(`${baseUrl}/topic/any/${id}`, authHeader());
+  return res;
+};
+
 export default {
   createTopic,
   deleteTopic,
   fetchAllTopics,
+  fetchTopicById,
 };

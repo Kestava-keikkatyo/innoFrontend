@@ -84,6 +84,27 @@ const topicReducer = (
         loading: false,
       };
     }
+    case topicType.TOPIC_GET_CURRENT_REQUEST: {
+      return {
+        ...state,
+        currentTopic: action.data,
+        loading: true,
+      };
+    }
+    case topicType.TOPIC_GET_CURRENT_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        currentTopic: action.data,
+      };
+    }
+    case topicType.TOPIC_GET_CURRENT_FAILURE: {
+      return {
+        ...state,
+        loading: false,
+        fetchError: action.data,
+      };
+    }
     default:
       return state;
   }

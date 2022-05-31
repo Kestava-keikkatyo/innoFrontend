@@ -334,6 +334,21 @@ interface TopicGetAllFailure {
   data: any;
 }
 
+interface TopicGetCurrentRequest {
+  type: typeof topicType.TOPIC_GET_CURRENT_REQUEST;
+  data: any;
+}
+
+interface TopicGetCurrentSuccess {
+  type: typeof topicType.TOPIC_GET_CURRENT_SUCCESS;
+  data: any;
+}
+
+interface TopicGetCurrentFailure {
+  type: typeof topicType.TOPIC_GET_CURRENT_FAILURE;
+  data: any;
+}
+
 export type TopicActions =
   | TopicCreatedRequest
   | TopicCreatedSuccess
@@ -343,7 +358,10 @@ export type TopicActions =
   | TopicDeletedFailure
   | TopicGetAllRequest
   | TopicGetAllSuccess
-  | TopicGetAllFailure;
+  | TopicGetAllFailure
+  | TopicGetCurrentRequest
+  | TopicGetCurrentSuccess
+  | TopicGetCurrentFailure;
 /**
  * Job state & action types
  */

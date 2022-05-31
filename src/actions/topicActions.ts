@@ -72,3 +72,25 @@ export const fetchAllTopics = () => async (dispatch: any) => {
     );
   }
 };
+
+/**
+ * @function
+ * @desc Fetches topic by Id.
+ */
+export const fetchTopicById = (id: string) => async (dispatch: any) => {
+  try {
+    dispatch({
+      type: topicType.TOPIC_GET_CURRENT_REQUEST,
+    });
+    const res = await topicService.fetchTopicById(id);
+    dispatch({ type: topicType.TOPIC_GET_CURRENT_SUCCESS, data: res.data });
+  } catch (error) {
+    dispatch({
+      type: topicType.TOPIC_GET_CURRENT_FAILURE,
+      data: error,
+    });
+    dispatch(
+      setAlert("Failed to fetch the topic: " + error, severity.Error, 15)
+    );
+  }
+};
