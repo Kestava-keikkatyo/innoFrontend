@@ -50,3 +50,25 @@ export const deleteTopic = (id: string) => async (dispatch: any) => {
     dispatch(setAlert("Failed to delete the topic!: " + e, severity.Error, 15));
   }
 };
+
+/**
+ * @function
+ * @desc Fetches all topics.
+ */
+export const fetchAllTopics = () => async (dispatch: any) => {
+  try {
+    dispatch({
+      type: topicType.TOPIC_GETALL_REQUEST,
+    });
+    const res = await topicService.fetchAllTopics();
+    dispatch({ type: topicType.TOPIC_GETALL_SUCCESS, data: res.data });
+  } catch (e) {
+    dispatch({
+      type: topicType.TOPIC_GETALL_FAILURE,
+      data: e,
+    });
+    dispatch(
+      setAlert("Failed to fetch all the topics!: " + e, severity.Error, 15)
+    );
+  }
+};

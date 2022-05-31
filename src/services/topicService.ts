@@ -38,7 +38,17 @@ const deleteTopic = async (topicId: string) => {
   return res;
 };
 
+/**
+ * @function
+ * @desc Fetches all topics avaible with current token.
+ */
+const fetchAllTopics = async () => {
+  const res = await axios.get(`${baseUrl}/topic/all`, authHeader());
+  return res;
+};
+
 export default {
   createTopic,
   deleteTopic,
+  fetchAllTopics,
 };

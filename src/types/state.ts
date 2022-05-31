@@ -319,13 +319,31 @@ interface TopicDeletedFailure {
   data: string;
 }
 
+interface TopicGetAllRequest {
+  type: typeof topicType.TOPIC_GETALL_REQUEST;
+  data: any;
+}
+
+interface TopicGetAllSuccess {
+  type: typeof topicType.TOPIC_GETALL_SUCCESS;
+  data: any;
+}
+
+interface TopicGetAllFailure {
+  type: typeof topicType.TOPIC_GETALL_FAILURE;
+  data: any;
+}
+
 export type TopicActions =
   | TopicCreatedRequest
   | TopicCreatedSuccess
   | TopicCreatedFailure
   | TopicDeletedRequest
   | TopicDeletedSuccess
-  | TopicDeletedFailure;
+  | TopicDeletedFailure
+  | TopicGetAllRequest
+  | TopicGetAllSuccess
+  | TopicGetAllFailure;
 /**
  * Job state & action types
  */

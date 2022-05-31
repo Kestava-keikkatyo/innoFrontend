@@ -64,6 +64,26 @@ const topicReducer = (
         fetchError: action.data,
       };
     }
+    case topicType.TOPIC_GETALL_REQUEST: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+    case topicType.TOPIC_GETALL_SUCCESS: {
+      return {
+        ...state,
+        topics: action.data,
+        loading: false,
+      };
+    }
+    case topicType.TOPIC_GETALL_FAILURE: {
+      return {
+        ...state,
+        fetchError: action.data,
+        loading: false,
+      };
+    }
     default:
       return state;
   }
