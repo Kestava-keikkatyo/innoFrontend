@@ -52,7 +52,7 @@ export const fetchJobById = (id: string) => async (dispatch: any) => {
     dispatch({ type: jobType.JOB_CURRENT_SUCCESS, data: res.data });
   } catch (error) {
     dispatch({
-      type: jobType.JOB_CREATED_FAILURE,
+      type: jobType.JOB_CURRENT_FAILURE,
       data: error,
     });
     dispatch(setAlert("Failed to fetch the job: " + error, severity.Error, 15));
