@@ -41,7 +41,7 @@ export const deleteTopic = (id: string) => async (dispatch: any) => {
       type: topicType.TOPIC_DELETED_REQUEST,
     });
     const data = await topicService.deleteTopic(id);
-    dispatch({ type: topicType.TOPIC_DELETED_SUCCESS, data: { id } });
+    dispatch({ type: topicType.TOPIC_DELETED_SUCCESS, data: { _id: id } });
   } catch (e) {
     dispatch({
       type: topicType.TOPIC_DELETED_FAILURE,
