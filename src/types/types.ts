@@ -186,7 +186,7 @@ export interface Feedback {
 }
 
 export interface Topic {
-  id?: string;
+  _id: string;
   question?: string;
   answer?: string;
 }

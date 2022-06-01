@@ -54,7 +54,7 @@ const topicReducer = (
       return {
         ...state,
         loading: false,
-        topics: state.topics.filter((item) => item.id !== action.data.id),
+        topics: state.topics.filter((item) => item._id !== action.data._id),
       };
     }
     case topicType.TOPIC_DELETED_FAILURE: {

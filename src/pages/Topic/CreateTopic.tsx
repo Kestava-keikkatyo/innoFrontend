@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next"
 import { createTopic } from '../../actions/topicActions';
 
 const initialValues: Topic = {
+  _id: "",
   question: "",
   answer: "",
 };

@@ -306,12 +306,12 @@ interface TopicCreatedFailure {
 
 interface TopicDeletedRequest {
   type: typeof topicType.TOPIC_DELETED_REQUEST;
-  data: { id: string };
+  data: Topic;
 }
 
 interface TopicDeletedSuccess {
   type: typeof topicType.TOPIC_DELETED_SUCCESS;
-  data: { id: string };
+  data: { _id: string };
 }
 
 interface TopicDeletedFailure {
