@@ -107,7 +107,7 @@ export const createJob = (job: Job) => async (dispatch: any) => {
 
 /**
  * @function
- * @desc update user.
+ * @desc update job.
  */
 export const updateJob = (jobId: string, job: Job) => async (dispatch: any) => {
   try {

@@ -2,6 +2,7 @@ import topicService from "../services/topicService";
 import { topicType } from "../types/types";
 import { Topic, severity } from "../types/types";
 import { setAlert } from "./alertActions";
+import history from "../utils/history";
 
 /**
  * Create topic
@@ -108,6 +109,7 @@ export const updateTopic =
 
       const res = await topicService.updateTopic(topicId, topic);
       dispatch({ type: topicType.TOPIC_UPDATED_SUCCESS, data: res.data });
+      history.push("/topics");
     } catch (error) {
       dispatch({
         type: topicType.TOPIC_UPDATED_FAILURE,
