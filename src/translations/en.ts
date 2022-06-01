@@ -604,6 +604,10 @@ export default {
   add_new_topic: "Add new topic",
   topic_question: "Question",
   topic_answer: "Answer",
+  topic_created_at: "Created at",
+  topics: "Frequently asked questions",
+  topic_update: "Update",
+  topic_action: "Action",
   topic_created_successfully: "Topic was created successfully!",
   failed_to_create_the_topic: "Failed to create the topic!",
 

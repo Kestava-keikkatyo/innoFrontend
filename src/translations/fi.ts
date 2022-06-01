@@ -585,6 +585,10 @@ export default {
   add_new_topic: "Lisää uusi aihe",
   topic_question: "Kysymys",
   topic_answer: "Vastaus",
+  topic_created_at: "Luotiin",
+  topics: "Usein Kysytyt Kysymykset",
+  topic_update: "Päivitä",
+  topic_action: "Toiminta",
   topic_created_successfully: "Aihe luotiin onnistuneesti!",
   failed_to_create_the_topic: "Aihe luominen epäonnistui!",
 
