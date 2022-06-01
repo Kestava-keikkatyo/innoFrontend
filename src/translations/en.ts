@@ -610,6 +610,8 @@ export default {
   topic_action: "Action",
   topic_created_successfully: "Topic was created successfully!",
   failed_to_create_the_topic: "Failed to create the topic!",
+  topic_updated_successfully: "Topic was updated successfully!",
+  topic_update_topic: "Update topic",
 
   //List
   list_title_workers: "Workers",

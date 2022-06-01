@@ -56,7 +56,7 @@ const Topics: React.FC<any> = () => {
         renderCell: (params: any) => {
             return (
                 <>
-            <Link to="/topic/update">
+            <Link to={"/topic/update/" + params.id}>
                 <span className={classes.topicUpdate}>{t('topic_update')}</span>
             </Link>
             <DeleteOutline

@@ -591,6 +591,8 @@ export default {
   topic_action: "Toiminta",
   topic_created_successfully: "Aihe luotiin onnistuneesti!",
   failed_to_create_the_topic: "Aihe luominen epäonnistui!",
+  topic_updated_successfully: "Aihe päivitetty onnistuneesti!",
+  topic_update_topic: "Päivitä aihe",
 
   //CreateUser
   add_new_admin: "Lisää uusi järjestelmänvalvoja",
