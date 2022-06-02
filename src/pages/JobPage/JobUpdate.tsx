@@ -66,7 +66,7 @@ const JobUpdate: React.FC = () => {
     return (
       <div className={classes.newJob}>
         <div className={classes.jobTitleContainer}>
-          <Typography color="primary" className={classes.title} variant="h5">Update job</Typography>
+          <Typography color="primary" className={classes.title} variant="h5">{t('job_update_job')}</Typography>
         </div>
         <div className={classes.jobContainer}>
           <Formik
