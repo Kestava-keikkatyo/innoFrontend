@@ -79,6 +79,12 @@ export enum topicType {
   TOPIC_UPDATED_FAILURE = "TOPIC_UPDATED_FAILURE",
 }
 
+export enum workRequestType {
+  WORKREQUEST_SEND_REQUEST = "WORKREQUEST_SEND_REQUEST",
+  WORKREQUEST_SEND_SUCCESS = "WORKREQUEST_SEND_SUCCESS",
+  WORKREQUEST_SEND_FAILURE = "WORKREQUEST_SEND_FAILURE",
+}
+
 export type businessContractType = roles.Business | roles.Worker;
 
 export enum severity {
@@ -189,6 +195,17 @@ export interface Topic {
   _id: string;
   question?: string;
   answer?: string;
+}
+
+export interface WorkRequest {
+  _id: string;
+  headline: string;
+  workersNumber: Number;
+  requirements: string;
+  desirableSkills: string;
+  details: string;
+  startDate: Date | null;
+  endDate: Date | null;
 }
 
 export interface Feeling {

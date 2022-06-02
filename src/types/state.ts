@@ -13,6 +13,8 @@ import {
   jobType,
   Topic,
   topicType,
+  WorkRequest,
+  workRequestType,
 } from "./types";
 
 export interface UsersState {
@@ -380,6 +382,30 @@ export type TopicActions =
   | TopicUpdatedRequest
   | TopicUpdatedSuccess
   | TopicUpdatedFailure;
+
+/**
+ * Work request state & action types
+ */
+export interface WorkRequestState {
+  currentWorkRequest: WorkRequest | undefined;
+  loading: boolean;
+  workRequests: WorkRequest[];
+  fetchError?: string;
+}
+interface WorkRequestSend {
+  type:
+    | typeof workRequestType.WORKREQUEST_SEND_REQUEST
+    | workRequestType.WORKREQUEST_SEND_SUCCESS;
+  data: WorkRequest;
+}
+
+interface WorkRequestFailure {
+  type: typeof workRequestType.WORKREQUEST_SEND_FAILURE;
+  data: string;
+}
+
+export type WorkRequestActions = WorkRequestSend | WorkRequestFailure;
+
 /**
  * Job state & action types
  */
