@@ -42,7 +42,7 @@ Start by downloading the zip file of this project from GitHub.
 Or if you have Git installed
 
 ```
-$ git clone https://github.com/Inno-Kestava-Keikkatyo/innoFrontend.git
+$ git clone https://github.com/Kestava-keikkatyo/innoFrontend.git
 ```
 
 ### VSCode
@@ -63,7 +63,7 @@ $ npm install
 $ npm start
 ```
 
-You also need to have the [backend](https://github.com/Inno-Kestava-Keikkatyo/innoBackend) set up and running. The backend needs to be run in port 3001 and it also requires MongoDB database connection.
+You also need to have the [backend](https://github.com/Kestava-Keikkatyo/innoBackend) set up and running. The backend needs to be run in port 3001 and it also requires MongoDB database connection.
 
 ## Available scripts
 
