@@ -90,9 +90,12 @@ export const signup = (user: SignUpUser) => {
  */
 export const logout = () => {
   return async (dispatch: any) => {
+    try {
+      await userService.logout();
+    } catch (error) {}
     logoutUser();
-    dispatch(clearReports())
-    dispatch(setReport(initialReport))
+    //dispatch(clearReports())
+    //dispatch(setReport(initialReport))
     dispatch({ type: LOGOUT });
     history.push("/");
     dispatch(setAlert(i18next.t("logged_out")));

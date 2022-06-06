@@ -47,6 +47,14 @@ const signin = async (credentials: Credentials) => {
   }
 };
 
+const logout = async () => {
+  return await axios.post(
+    `${baseUrl}/authentication/logout`,
+    null,
+    authHeader()
+  );
+};
+
 /**
  * @function
  * @desc Sends out login request for admins
@@ -112,4 +120,5 @@ export default {
   me,
   update,
   changePassword,
+  logout,
 };

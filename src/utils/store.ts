@@ -18,10 +18,11 @@ import jobReducer from "../reducers/jobReducer";
 import usersReducer from "../reducers/usersReducer";
 import feedBackReducer from "../reducers/feedBackReducer";
 import topicReducer from "../reducers/topicReducer";
+import { LOGOUT } from "../types/state";
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const reducer = combineReducers({
+const appReducer = combineReducers({
   user: userReducer,
   alert: alertReducer,
   businessContracts: businessContractReducer,
@@ -42,9 +43,17 @@ const reducer = combineReducers({
   topic: topicReducer,
 });
 
-export type IRootState = ReturnType<typeof reducer>;
+const rootReducer = (state: any, action: any) => {
+  if (action.type === LOGOUT) {
+    return appReducer(undefined, action);
+  }
+
+  return appReducer(state, action);
+};
+
+export type IRootState = ReturnType<typeof rootReducer>;
 
 export default createStore<any, any, any, any>(
-  reducer,
+  rootReducer,
   composeEnhancer(applyMiddleware(thunk))
 );
