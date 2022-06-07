@@ -69,13 +69,13 @@ const LandingPage = () => {
               style={{left: "-30%", marginTop:"20%"}}
               onClick={() => changeLanguage('fi')}
               >
-              <img src={fi1} style={{ width: '30px' }} />
+              <img src={fi1} alt={"fi"} style={{ width: '30px' }} />
             </Button>
             <Button
               style={{left:"20%",marginTop:"-55%"}}
               onClick={() => changeLanguage('en')}
             >
-              <img src={us1} style={{ width: '30px' }} />
+              <img src={us1} alt={"en"} style={{ width: '30px' }} />
             </Button>
           </Typography>
           <Typography style={{ width: 100 }}>
@@ -96,6 +96,7 @@ const LandingPage = () => {
           <Button
             className="next-back-btns"
             size="large"
+            aria-label="next"
             onClick={handleNext}
             disabled={activeStep === 3}
           >
@@ -110,6 +111,7 @@ const LandingPage = () => {
           <Button
             className="next-back-btns"
             size="large"
+            aria-label="back"
             onClick={handleBack}
             disabled={activeStep === 0}
           >
