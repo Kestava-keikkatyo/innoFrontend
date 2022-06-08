@@ -26,7 +26,7 @@ const FirstLandingPage: React.FC<FirstLandingPageProps> = () => {
         </Typography>
       </div>
       <div id="partner-container" className="landing-bg-dark">
-        <div id="partner-box"></div>
+        <div id="partner-box">
         <img src={eu} alt="eu" className="landing-partner-invert" />
         <img src={kkk} alt="kestavakeikkatyo" className="landing-partner" />
         <img
@@ -52,6 +52,7 @@ const FirstLandingPage: React.FC<FirstLandingPageProps> = () => {
           className="landing-partner-invert"
         />
         <img src={eu} alt="eu" className="landing-partner-invert" />
+        </div>
       </div>
     </Container>
   )

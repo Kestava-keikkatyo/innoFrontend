@@ -228,13 +228,14 @@ code {
   display: none;
 }
 
+/*
 #breadcrumbs {
-  /* margin: 1rem 0; */
-  /* padding: .5rem; */
-  /* background-color: #EB5A003a; */
-  /* border: 1px solid #ddd; */
-  /* border-radius: 3px; */
-}
+  margin: 1rem 0;
+  padding: .5rem;
+  background-color: #EB5A003a;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+} */
 
 .new-feeling-modal .MuiFormGroup-row {
   display: flex;
