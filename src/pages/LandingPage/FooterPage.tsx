@@ -64,7 +64,7 @@ const FooterPage: React.FC<FooterPageProps> = () => {
         <Grid container>
           <Grid item xs={4}>
             <Spacing m5 p5>
-              <CustomCard
+              <CustomCard className="text-black"
                 header="Oletko työntekijä?"
                 content={[
                   'Ansaitse rahaa',
@@ -105,9 +105,9 @@ const FooterPage: React.FC<FooterPageProps> = () => {
        */}
       <Grid item xs={12} className="landing-part42">
         <Spacing p5>
-          <Grid container className="text-white">
+          <Grid container className="text-black">
             <Grid xs={3} item>
-              <img src={logo} alt="logo" className="bw-logo" />
+              <img src={logo} alt="keikkakaveri-logo" className="bw-logo" />
               <Spacing m5 />
               <Typography>Yhteystiedot</Typography>
               <Typography>Yrjönkatu 29 C</Typography>

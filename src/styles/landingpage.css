@@ -52,7 +52,7 @@
 }
 
 .landing-part4 {
-  background-color: #eb5a00;
+  background-color: #FF6505;
 } /* #FF6505 lighter orange with black text give AAA in wave contrast accessibility*/
 
 .bg-white {
@@ -109,6 +109,10 @@
 
 .text-white {
   color: #fffb !important;
+}
+
+.text-black {
+  color: #000000 !important;
 }
 
 .landing-bg-dark {
@@ -188,33 +192,34 @@
 .landing-appbar {
   background-color: #FF6505 !important;
   height: 60px;
-} /* #eb5a00 original orange */
+} /* #eb5a00 original background orange */
 
 .landing-logo {
   color: #000000 !important;
   text-decoration: none !important;
   font-weight: bolder !important;
   letter-spacing: 1px;
-} /* #fff original color */
+} /* #fff original text color */
 
 .landing-nav-link {
   color: #000000 !important;
   text-decoration: none !important;
   font-weight: bold !important;
   padding-left: 5.8rem;
-} /* #fff original color */
+} /* #fff original text color */
+
 .landing-nav-link2 {
   color: #000000 !important;
   text-decoration: none !important;
   font-weight: bold !important;
   padding-left: 1.5rem;
-} /* #fff original color */
+} /* #fff original text color */
 
 .landing-login {
   color: #000000 !important;
   text-decoration: none !important;
   font-weight: bold !important;
-} /* #fff original color */
+} /* #fff original text color */
 
 .bw-logo2 {
   position: absolute !important;
