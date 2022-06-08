@@ -404,13 +404,13 @@ nav * {
 .MuiTypography-colorPrimary,
 .MuiButton-outlinedPrimary,
 .MuiRadio-colorPrimary.Mui-checked {
-  color: #eb5a00 !important;
-}
+  color: #CC4E00 !important;
+} /* #eb5a00 original color */
 
 .MuiButton-containedPrimary {
-  background-color: #eb5a00 !important;
-  color: white !important;
-}
+  background-color: #FF6505 !important;
+  color: black !important;
+} /* #eb5a00 original orange, white original color */
 
 .MuiButton-containedPrimary-worker {
   background-color: #2386cc !important;
@@ -418,8 +418,8 @@ nav * {
 }
 
 .MuiButton-outlinedPrimary {
-  border: 1px solid #eb5a0077 !important;
-}
+  border: 1px solid #CC4E00 !important;
+} /* #eb5a0077 original color */
 
 .report-container .MuiFormControl-root {
   display: flex;

@@ -53,7 +53,7 @@
 
 .landing-part4 {
   background-color: #eb5a00;
-}
+} /* #FF6505 lighter orange with black text give AAA in wave contrast accessibility*/
 
 .bg-white {
   background-color: #fff;
@@ -185,36 +185,36 @@
   flex: 1;
 }
 
+.landing-appbar {
+  background-color: #FF6505 !important;
+  height: 60px;
+} /* #eb5a00 original orange */
+
 .landing-logo {
-  color: #fff !important;
+  color: #000000 !important;
   text-decoration: none !important;
   font-weight: bolder !important;
   letter-spacing: 1px;
-}
+} /* #fff original color */
 
 .landing-nav-link {
-  color: #fff !important;
+  color: #000000 !important;
   text-decoration: none !important;
   font-weight: bold !important;
   padding-left: 5.8rem;
-}
+} /* #fff original color */
 .landing-nav-link2 {
-  color: #fff !important;
+  color: #000000 !important;
   text-decoration: none !important;
   font-weight: bold !important;
   padding-left: 1.5rem;
-}
-
-.landing-appbar {
-  background-color: #eb5a00 !important;
-  height: 60px;
-}
+} /* #fff original color */
 
 .landing-login {
-  color: #fff !important;
+  color: #000000 !important;
   text-decoration: none !important;
   font-weight: bold !important;
-}
+} /* #fff original color */
 
 .bw-logo2 {
   position: absolute !important;
