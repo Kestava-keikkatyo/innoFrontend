@@ -291,18 +291,15 @@ export interface TopicState {
   topics: Topic[];
   fetchError?: string;
 }
-interface TopicCreatedRequest {
-  type: typeof topicType.TOPIC_CREATED_REQUEST;
+interface TopicCreated {
+  type:
+    | typeof topicType.TOPIC_CREATED_REQUEST
+    | topicType.TOPIC_CREATED_SUCCESS;
   data: Topic;
 }
 
-interface TopicCreatedSuccess {
-  type: typeof topicType.TOPIC_CREATED_SUCCESS;
-  data: Topic;
-}
-
-interface TopicCreatedFailure {
-  type: typeof topicType.TOPIC_CREATED_FAILURE;
+interface TopicActionFailure {
+  type: typeof topicType.TOPIC_ACTION_FAILURE;
   data: string;
 }
 
@@ -316,72 +313,33 @@ interface TopicDeletedSuccess {
   data: { _id: string };
 }
 
-interface TopicDeletedFailure {
-  type: typeof topicType.TOPIC_DELETED_FAILURE;
-  data: string;
+interface TopicGetAll {
+  type: typeof topicType.TOPIC_GETALL_REQUEST | topicType.TOPIC_GETALL_SUCCESS;
+  data: Topic[];
 }
 
-interface TopicGetAllRequest {
-  type: typeof topicType.TOPIC_GETALL_REQUEST;
-  data: any;
+interface TopicGetCurrent {
+  type:
+    | typeof topicType.TOPIC_GET_CURRENT_REQUEST
+    | topicType.TOPIC_GET_CURRENT_SUCCESS;
+  data: Topic;
 }
 
-interface TopicGetAllSuccess {
-  type: typeof topicType.TOPIC_GETALL_SUCCESS;
-  data: any;
-}
-
-interface TopicGetAllFailure {
-  type: typeof topicType.TOPIC_GETALL_FAILURE;
-  data: any;
-}
-
-interface TopicGetCurrentRequest {
-  type: typeof topicType.TOPIC_GET_CURRENT_REQUEST;
-  data: any;
-}
-
-interface TopicGetCurrentSuccess {
-  type: typeof topicType.TOPIC_GET_CURRENT_SUCCESS;
-  data: any;
-}
-
-interface TopicGetCurrentFailure {
-  type: typeof topicType.TOPIC_GET_CURRENT_FAILURE;
-  data: any;
-}
-
-interface TopicUpdatedRequest {
-  type: typeof topicType.TOPIC_UPDATED_REQUEST;
-  data: any;
-}
-
-interface TopicUpdatedSuccess {
-  type: typeof topicType.TOPIC_UPDATED_SUCCESS;
-  data: any;
-}
-
-interface TopicUpdatedFailure {
-  type: typeof topicType.TOPIC_UPDATED_FAILURE;
-  data: any;
+interface TopicUpdated {
+  type:
+    | typeof topicType.TOPIC_UPDATED_REQUEST
+    | topicType.TOPIC_UPDATED_SUCCESS;
+  data: Topic;
 }
 
 export type TopicActions =
-  | TopicCreatedRequest
-  | TopicCreatedSuccess
-  | TopicCreatedFailure
+  | TopicCreated
+  | TopicActionFailure
   | TopicDeletedRequest
   | TopicDeletedSuccess
-  | TopicDeletedFailure
-  | TopicGetAllRequest
-  | TopicGetAllSuccess
-  | TopicGetAllFailure
-  | TopicGetCurrentRequest
-  | TopicGetCurrentSuccess
-  | TopicGetCurrentFailure
-  | TopicUpdatedRequest
-  | TopicUpdatedSuccess
-  | TopicUpdatedFailure;
+  | TopicGetAll
+  | TopicGetCurrent
+  | TopicUpdated;
 
 /**
  * Work request state & action types

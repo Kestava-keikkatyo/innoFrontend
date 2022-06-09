@@ -25,7 +25,7 @@ export const createTopic = (topic: Topic) => async (dispatch: any) => {
     dispatch(setAlert("Topic created successfully!"));
   } catch (e) {
     dispatch({
-      type: topicType.TOPIC_CREATED_FAILURE,
+      type: topicType.TOPIC_ACTION_FAILURE,
       data: e,
     });
     dispatch(setAlert("Failed to create the topic: " + e, severity.Error, 15));
@@ -45,7 +45,7 @@ export const deleteTopic = (id: string) => async (dispatch: any) => {
     dispatch({ type: topicType.TOPIC_DELETED_SUCCESS, data: { _id: id } });
   } catch (e) {
     dispatch({
-      type: topicType.TOPIC_DELETED_FAILURE,
+      type: topicType.TOPIC_ACTION_FAILURE,
       data: e,
     });
     dispatch(setAlert("Failed to delete the topic!: " + e, severity.Error, 15));
@@ -65,7 +65,7 @@ export const fetchAllTopics = () => async (dispatch: any) => {
     dispatch({ type: topicType.TOPIC_GETALL_SUCCESS, data: res.data });
   } catch (e) {
     dispatch({
-      type: topicType.TOPIC_GETALL_FAILURE,
+      type: topicType.TOPIC_ACTION_FAILURE,
       data: e,
     });
     dispatch(
@@ -87,7 +87,7 @@ export const fetchTopicById = (id: string) => async (dispatch: any) => {
     dispatch({ type: topicType.TOPIC_GET_CURRENT_SUCCESS, data: res.data });
   } catch (error) {
     dispatch({
-      type: topicType.TOPIC_GET_CURRENT_FAILURE,
+      type: topicType.TOPIC_ACTION_FAILURE,
       data: error,
     });
     dispatch(
@@ -112,7 +112,7 @@ export const updateTopic =
       history.push("/topics");
     } catch (error) {
       dispatch({
-        type: topicType.TOPIC_UPDATED_FAILURE,
+        type: topicType.TOPIC_ACTION_FAILURE,
         data: error,
       });
       dispatch(

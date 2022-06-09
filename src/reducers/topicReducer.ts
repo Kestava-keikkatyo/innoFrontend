@@ -36,7 +36,7 @@ const topicReducer = (
         topics: [...state.topics, action.data],
       };
     }
-    case topicType.TOPIC_CREATED_FAILURE: {
+    case topicType.TOPIC_ACTION_FAILURE: {
       return {
         ...state,
         loading: false,
@@ -57,13 +57,6 @@ const topicReducer = (
         topics: state.topics.filter((item) => item._id !== action.data._id),
       };
     }
-    case topicType.TOPIC_DELETED_FAILURE: {
-      return {
-        ...state,
-        loading: false,
-        fetchError: action.data,
-      };
-    }
     case topicType.TOPIC_GETALL_REQUEST: {
       return {
         ...state,
@@ -74,13 +67,6 @@ const topicReducer = (
       return {
         ...state,
         topics: action.data,
-        loading: false,
-      };
-    }
-    case topicType.TOPIC_GETALL_FAILURE: {
-      return {
-        ...state,
-        fetchError: action.data,
         loading: false,
       };
     }
@@ -98,13 +84,6 @@ const topicReducer = (
         currentTopic: action.data,
       };
     }
-    case topicType.TOPIC_GET_CURRENT_FAILURE: {
-      return {
-        ...state,
-        loading: false,
-        fetchError: action.data,
-      };
-    }
     case topicType.TOPIC_UPDATED_REQUEST: {
       return {
         ...state,
@@ -117,13 +96,6 @@ const topicReducer = (
         ...state,
         loading: false,
         currentTopic: action.data,
-      };
-    }
-    case topicType.TOPIC_UPDATED_FAILURE: {
-      return {
-        ...state,
-        loading: false,
-        fetchError: action.data,
       };
     }
     default:
