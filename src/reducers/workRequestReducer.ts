@@ -43,6 +43,19 @@ const workRequestReducer = (
         fetchError: action.data,
       };
     }
+    case workRequestType.WORKREQUEST_GETALL_REQUEST: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+    case workRequestType.WORKREQUEST_GETALL_SUCCESS: {
+      return {
+        ...state,
+        workRequests: action.data,
+        loading: false,
+      };
+    }
     default:
       return state;
   }

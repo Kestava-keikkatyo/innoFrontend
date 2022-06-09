@@ -404,7 +404,17 @@ interface WorkRequestFailure {
   data: string;
 }
 
-export type WorkRequestActions = WorkRequestSend | WorkRequestFailure;
+interface WorkRequestGetAll {
+  type:
+    | typeof workRequestType.WORKREQUEST_GETALL_REQUEST
+    | workRequestType.WORKREQUEST_GETALL_SUCCESS;
+  data: WorkRequest[];
+}
+
+export type WorkRequestActions =
+  | WorkRequestSend
+  | WorkRequestFailure
+  | WorkRequestGetAll;
 
 /**
  * Job state & action types

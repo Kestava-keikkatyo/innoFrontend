@@ -33,3 +33,28 @@ export const sendWorkRequest =
       );
     }
   };
+
+/**
+ * @function
+ * @desc Fetches user's work requests.
+ */
+export const fetchMyWorkRequests = () => async (dispatch: any) => {
+  try {
+    dispatch({
+      type: workRequestType.WORKREQUEST_GETALL_REQUEST,
+    });
+    const res = await workRequestService.fetchMyWorkRequests();
+    dispatch({
+      type: workRequestType.WORKREQUEST_GETALL_SUCCESS,
+      data: res.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: workRequestType.WORKREQUEST_FAILURE,
+      data: e,
+    });
+    dispatch(
+      setAlert("Failed to fetch work requests!: " + e, severity.Error, 15)
+    );
+  }
+};

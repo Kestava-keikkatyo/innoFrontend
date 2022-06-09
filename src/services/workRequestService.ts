@@ -20,12 +20,25 @@ const authHeader = () => {
 /**
  * @function
  * @desc send work request.
- * @param {Topic} topic - Basic work request information.
+ * @param {WorkRequest} workRequest - Basic work request information.
  */
 const sendWorkRequest = async (workRequest: WorkRequest) => {
   return await axios.post(`${baseUrl}/workRequest/`, workRequest, authHeader());
 };
 
+/**
+ * @function
+ * @desc Fetches user's work requests.
+ */
+const fetchMyWorkRequests = async () => {
+  const res = await axios.get(
+    `${baseUrl}/workRequest/myWorkRequests`,
+    authHeader()
+  );
+  return res;
+};
+
 export default {
   sendWorkRequest,
+  fetchMyWorkRequests,
 };
