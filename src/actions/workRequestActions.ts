@@ -25,7 +25,7 @@ export const sendWorkRequest =
       dispatch(setAlert("Work request was sent successfully!"));
     } catch (e) {
       dispatch({
-        type: workRequestType.WORKREQUEST_SEND_FAILURE,
+        type: workRequestType.WORKREQUEST_FAILURE,
         data: e,
       });
       dispatch(

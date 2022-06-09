@@ -82,7 +82,7 @@ export enum topicType {
 export enum workRequestType {
   WORKREQUEST_SEND_REQUEST = "WORKREQUEST_SEND_REQUEST",
   WORKREQUEST_SEND_SUCCESS = "WORKREQUEST_SEND_SUCCESS",
-  WORKREQUEST_SEND_FAILURE = "WORKREQUEST_SEND_FAILURE",
+  WORKREQUEST_FAILURE = "WORKREQUEST_FAILURE",
 }
 
 export type businessContractType = roles.Business | roles.Worker;

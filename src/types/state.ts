@@ -400,7 +400,7 @@ interface WorkRequestSend {
 }
 
 interface WorkRequestFailure {
-  type: typeof workRequestType.WORKREQUEST_SEND_FAILURE;
+  type: typeof workRequestType.WORKREQUEST_FAILURE;
   data: string;
 }
 

@@ -36,7 +36,7 @@ const workRequestReducer = (
         workRequests: [...state.workRequests, action.data],
       };
     }
-    case workRequestType.WORKREQUEST_SEND_FAILURE: {
+    case workRequestType.WORKREQUEST_FAILURE: {
       return {
         ...state,
         loading: false,
