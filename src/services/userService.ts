@@ -57,19 +57,6 @@ const logout = async () => {
 
 /**
  * @function
- * @desc Sends out login request for admins
- * @param {Credentials} credentials - Admin's credentials ({email: ..., password: ...})
- */
-const adminLogin = async (credentials: Credentials) => {
-  try {
-    return await axios.post(`${baseUrl}/login/admin`, credentials);
-  } catch (error) {
-    return Promise.reject(error.response);
-  }
-};
-
-/**
- * @function
  * @desc Sends out me request that gets user profile information.
  * @param {roles} role - Account role.
  */
@@ -116,7 +103,6 @@ const changePassword = async (updateData: object) => {
 export default {
   register,
   signin,
-  adminLogin,
   me,
   update,
   changePassword,
