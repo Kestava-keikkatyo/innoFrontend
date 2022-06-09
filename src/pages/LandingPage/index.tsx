@@ -6,7 +6,10 @@ import {
   AppBar,
   Toolbar,
   Typography,
-  Grid
+  FormControl,
+  Grid,
+  MenuItem,
+  Select
 } from '@mui/material';
 import SwipeableViews from 'react-swipeable-views';
 import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material';
@@ -29,6 +32,7 @@ const LandingPage = () => {
   };
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
+  //const [languageCode, setLanguageCode] = useState(localStorage.getItem('i18nextLng'))
   const { t } = useTranslation();
 
   const handleNext = () => {
@@ -42,6 +46,11 @@ const LandingPage = () => {
   const handleStepChange = (step: any) => {
     setActiveStep(step);
   };
+
+  const handleChange = (event: any) => {
+    changeLanguage(event.target?.value)
+  };
+
   return (
     <div>
       <AppBar position="fixed" elevation={1} className="landing-appbar">
@@ -64,25 +73,26 @@ const LandingPage = () => {
               </Link>
             </Typography>
           </Grid>
-          <Typography>
-              <Button
-              style={{left: "-30%", marginTop:"20%"}}
-              onClick={() => changeLanguage('fi')}
-              >
-              <img src={fi1} style={{ width: '30px' }} />
-            </Button>
-            <Button
-              style={{left:"20%",marginTop:"-55%"}}
-              onClick={() => changeLanguage('en')}
+          <Grid
+            container
+            alignItems="center"
+            justifyContent="flex-end"
+          >
+            <Select
+              className="landing-select-lang"
+              onChange={handleChange}
+              value={localStorage.getItem('i18nextLng')}
             >
-              <img src={us1} style={{ width: '30px' }} />
-            </Button>
-          </Typography>
-          <Typography style={{ width: 100 }}>
-            <Link className="landing-login" to="/login">
-              {t('kirjaudu_sisaan')}
-            </Link>
-          </Typography>
+              <MenuItem value="en">English</MenuItem>
+              <MenuItem value="fr">Français</MenuItem>
+              <MenuItem value="fi">Suomi</MenuItem>
+            </Select>
+            <Typography>
+              <Link className="landing-login" to="/login">
+                {t('kirjaudu_sisaan')}
+              </Link>
+            </Typography>
+          </Grid>
         </Toolbar>
       </AppBar>
       <MobileStepper
