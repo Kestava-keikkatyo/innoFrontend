@@ -44,7 +44,7 @@ const SendWorkRequest: React.FC<any> = () => {
   return (
     <div className={classes.newWorkrequest}>
       <div className={classes.workRequestTitleContainer}>
-              <Typography color="primary" className={classes.title} variant="h5">{t('sen_work_request')}</Typography>
+              <Typography color="primary" className={classes.title} variant="h5">{t('send_work_request')}</Typography>
       </div>
       <div className={classes.workRequestContainer}>
         <Formik
