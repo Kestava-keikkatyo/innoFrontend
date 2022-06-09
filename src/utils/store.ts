@@ -19,6 +19,7 @@ import usersReducer from "../reducers/usersReducer";
 import feedBackReducer from "../reducers/feedBackReducer";
 import topicReducer from "../reducers/topicReducer";
 import { LOGOUT } from "../types/state";
+import workRequestReducer from "../reducers/workRequestReducer";
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -41,6 +42,7 @@ const appReducer = combineReducers({
   feedback: feedBackReducer,
   users: usersReducer,
   topic: topicReducer,
+  workRequest: workRequestReducer,
 });
 
 const rootReducer = (state: any, action: any) => {

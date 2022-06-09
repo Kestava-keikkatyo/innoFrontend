@@ -200,7 +200,7 @@ export interface Topic {
 export interface WorkRequest {
   _id: string;
   headline: string;
-  workersNumber: Number;
+  workersNumber: Number | null;
   requirements: string;
   desirableSkills: string;
   details: string;
