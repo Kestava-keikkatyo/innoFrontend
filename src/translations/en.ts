@@ -585,6 +585,7 @@ export default {
   job_apply: "Apply now",
   job_your_job_ads: "Your job ads",
   job_update_job: "Update job",
+
   //CreateUser
   add_new_admin: "Add new admin",
   create_user_name: "Name",
@@ -612,6 +613,21 @@ export default {
   failed_to_create_the_topic: "Failed to create the topic!",
   topic_updated_successfully: "Topic was updated successfully!",
   topic_update_topic: "Update topic",
+
+  //Work request
+  send_work_request: "Send work request",
+  work_request_recipient: "Recipient",
+  work_request_title: "Title",
+  work_request_workers_nuber: "Number of workers",
+  work_request_startDate: "Start date",
+  work_request_endDate: " End date",
+  work_request_requirements: "Requirements",
+  work_request_desirableSkills: "Desirable skills",
+  work_request_created_successfully: "Work request was sent successfully!",
+  failed_to_send_the_work_request: "Failed to send work request!",
+  work_request_details: "Details",
+  work_request_update: "Update",
+  work_request_action: "Action",
 
   //List
   list_title_workers: "Workers",

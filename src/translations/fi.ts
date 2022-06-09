@@ -595,6 +595,21 @@ export default {
   topic_updated_successfully: "Aihe päivitetty onnistuneesti!",
   topic_update_topic: "Päivitä aihe",
 
+  //Work request
+  send_work_request: "Lähetä työpyyntö",
+  work_request_recipient: "Vastaanottaja",
+  work_request_title: "Otsikko",
+  work_request_workers_nuber: "Työntekijöiden määrä",
+  work_request_startDate: "Aloituspäivämäärä",
+  work_request_endDate: "Päättymispäivämäärä",
+  work_request_requirements: "Vaatimukset",
+  work_request_desirableSkills: "Toivottavat taidot",
+  work_request_created_successfully: "Työpyyntö lähetettiin onnistuneesti!",
+  failed_to_send_the_work_request: "Työpyynnön lähettäminen epäonnistui!",
+  work_request_details: "Yksityiskohdat",
+  work_request_update: "Päivitä",
+  work_request_action: "Toiminta",
+
   //CreateUser
   add_new_admin: "Lisää uusi järjestelmänvalvoja",
   create_user_name: "Nimi",
