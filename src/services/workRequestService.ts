@@ -38,7 +38,17 @@ const fetchMyWorkRequests = async () => {
   return res;
 };
 
+/**
+ * @function
+ * @desc fetchWorkRequestById
+ */
+const fetchWorkRequestById = async (id: string) => {
+  const res = await axios.get(`${baseUrl}/workRequest/any/${id}`, authHeader());
+  return res;
+};
+
 export default {
   sendWorkRequest,
   fetchMyWorkRequests,
+  fetchWorkRequestById,
 };

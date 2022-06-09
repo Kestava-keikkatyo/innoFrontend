@@ -58,3 +58,28 @@ export const fetchMyWorkRequests = () => async (dispatch: any) => {
     );
   }
 };
+
+/**
+ * @function
+ * @desc Fetches work request by Id.
+ */
+export const fetchWorkRequestById = (id: string) => async (dispatch: any) => {
+  try {
+    dispatch({
+      type: workRequestType.WORKREQUEST_GET_CURRENT_REQUEST,
+    });
+    const res = await workRequestService.fetchWorkRequestById(id);
+    dispatch({
+      type: workRequestType.WORKREQUEST_GET_CURRENT_SUCCESS,
+      data: res.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: workRequestType.WORKREQUEST_FAILURE,
+      data: error,
+    });
+    dispatch(
+      setAlert("Failed to fetch WORK REQUEST: " + error, severity.Error, 15)
+    );
+  }
+};

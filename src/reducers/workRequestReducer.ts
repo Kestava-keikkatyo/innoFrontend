@@ -56,6 +56,20 @@ const workRequestReducer = (
         loading: false,
       };
     }
+    case workRequestType.WORKREQUEST_GET_CURRENT_REQUEST: {
+      return {
+        ...state,
+        currentWorkRequest: action.data,
+        loading: true,
+      };
+    }
+    case workRequestType.WORKREQUEST_GET_CURRENT_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        currentWorkRequest: action.data,
+      };
+    }
     default:
       return state;
   }

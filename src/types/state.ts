@@ -369,10 +369,18 @@ interface WorkRequestGetAll {
   data: WorkRequest[];
 }
 
+interface WorkRequestGetCurrent {
+  type:
+    | typeof workRequestType.WORKREQUEST_GET_CURRENT_REQUEST
+    | workRequestType.WORKREQUEST_GET_CURRENT_SUCCESS;
+  data: WorkRequest;
+}
+
 export type WorkRequestActions =
   | WorkRequestSend
   | WorkRequestFailure
-  | WorkRequestGetAll;
+  | WorkRequestGetAll
+  | WorkRequestGetCurrent;
 
 /**
  * Job state & action types
