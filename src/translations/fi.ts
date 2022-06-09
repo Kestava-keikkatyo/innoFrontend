@@ -598,7 +598,7 @@ export default {
   //Work request
   send_work_request: "Lähetä työpyyntö",
   work_request_recipient: "Vastaanottaja",
-  work_request_title: "Otsikko",
+  work_request_headline: "Otsikko",
   work_request_workers_nuber: "Työntekijöiden määrä",
   work_request_startDate: "Aloituspäivämäärä",
   work_request_endDate: "Päättymispäivämäärä",
@@ -609,6 +609,8 @@ export default {
   work_request_details: "Yksityiskohdat",
   work_request_update: "Päivitä",
   work_request_action: "Toiminta",
+  work_request_sent_at: "lähetyspäivämäärä",
+  your_work_requests: "Sinun työpyynnöt",
 
   //CreateUser
   add_new_admin: "Lisää uusi järjestelmänvalvoja",

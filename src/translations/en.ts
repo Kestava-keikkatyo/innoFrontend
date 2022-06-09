@@ -617,7 +617,7 @@ export default {
   //Work request
   send_work_request: "Send work request",
   work_request_recipient: "Recipient",
-  work_request_title: "Title",
+  work_request_headline: "Headline",
   work_request_workers_nuber: "Number of workers",
   work_request_startDate: "Start date",
   work_request_endDate: " End date",
@@ -628,6 +628,8 @@ export default {
   work_request_details: "Details",
   work_request_update: "Update",
   work_request_action: "Action",
+  work_request_sent_at: "Sent at",
+  your_work_requests: "Your work requests",
 
   //List
   list_title_workers: "Workers",
