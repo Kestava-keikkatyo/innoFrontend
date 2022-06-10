@@ -109,18 +109,6 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
 
           {role === roles.Business && (
             <>
-              <ListItem button component={Link} to="/work-overview" onClick={handleClick}>
-                <ListItemIcon>
-                  <SupervisorAccountOutlinedIcon />
-                </ListItemIcon>
-                <ListItemText primary={t("work_overview")} />
-              </ListItem>
-              <Divider />
-            </>
-          )}
-
-          {role === roles.Business && (
-            <>
               <ListItem button component={Link} to="/business-contracts" onClick={handleClick}>
                 <ListItemIcon>
                   <AssignmentOutlinedIcon />
