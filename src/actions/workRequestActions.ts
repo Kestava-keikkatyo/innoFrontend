@@ -83,3 +83,34 @@ export const fetchWorkRequestById = (id: string) => async (dispatch: any) => {
     );
   }
 };
+
+/**
+ * @function
+ * @desc update work request.
+ */
+export const updateWorkRequest =
+  (workRequestId: string, workRequest: WorkRequest) =>
+  async (dispatch: any) => {
+    try {
+      dispatch({
+        type: workRequestType.WORKREQUEST_UPDATED_REQUEST,
+      });
+
+      const res = await workRequestService.updateWorkRequest(
+        workRequestId,
+        workRequest
+      );
+      dispatch({
+        type: workRequestType.WORKREQUEST_UPDATED_SUCCESS,
+        data: res.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: workRequestType.WORKREQUEST_FAILURE,
+        data: error,
+      });
+      dispatch(
+        setAlert("Failed to update work request: " + error, severity.Error, 15)
+      );
+    }
+  };

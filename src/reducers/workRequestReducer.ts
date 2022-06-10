@@ -70,6 +70,20 @@ const workRequestReducer = (
         currentWorkRequest: action.data,
       };
     }
+    case workRequestType.WORKREQUEST_UPDATED_REQUEST: {
+      return {
+        ...state,
+        currentWorkRequest: action.data,
+        loading: true,
+      };
+    }
+    case workRequestType.WORKREQUEST_UPDATED_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        currentWorkRequest: action.data,
+      };
+    }
     default:
       return state;
   }

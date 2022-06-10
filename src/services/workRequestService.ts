@@ -47,8 +47,25 @@ const fetchWorkRequestById = async (id: string) => {
   return res;
 };
 
+/**
+ * @param id
+ * @returns
+ */
+const updateWorkRequest = async (
+  workRequestId: string,
+  workRequest: WorkRequest
+) => {
+  const res = await axios.put(
+    `${baseUrl}/workRequest/update/${workRequestId}`,
+    workRequest,
+    authHeader()
+  );
+  return res.data;
+};
+
 export default {
   sendWorkRequest,
   fetchMyWorkRequests,
   fetchWorkRequestById,
+  updateWorkRequest,
 };
