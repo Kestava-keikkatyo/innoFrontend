@@ -611,6 +611,7 @@ export default {
   work_request_action: "Toiminta",
   work_request_sent_at: "lähetyspäivämäärä",
   your_work_requests: "Sinun työpyynnöt",
+  update_work_request: "Päivitä työpyyntö",
 
   //CreateUser
   add_new_admin: "Lisää uusi järjestelmänvalvoja",

@@ -630,6 +630,7 @@ export default {
   work_request_action: "Action",
   work_request_sent_at: "Sent at",
   your_work_requests: "Your work requests",
+  update_work_request: "Update work request",
 
   //List
   list_title_workers: "Workers",
