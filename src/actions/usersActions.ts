@@ -78,11 +78,12 @@ export const fetchAllWorkers = () => async (dispatch: any) => {
     });
     const res = await usersService.fetchAllWorkers();
     dispatch({ type: usersType.USER_GETALL_SUCCESS, data: res.data });
-  } catch (error) {
+  } catch (e) {
     dispatch({
       type: usersType.USER_GETALL_FAILURE,
-      data: error && error.message,
+      data: e,
     });
+    dispatch(setAlert("Failed to fetch workers!: " + e, severity.Error, 15));
   }
 };
 
