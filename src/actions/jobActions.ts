@@ -15,11 +15,12 @@ export const fetchAllJobs = () => async (dispatch: any) => {
     });
     const res = await jobService.fetchAllJobs();
     dispatch({ type: jobType.JOB_GETALL_SUCCESS, data: res.data });
-  } catch (error) {
+  } catch (e) {
     dispatch({
       type: jobType.JOB_GETALL_FAILURE,
-      data: error && error.message,
+      data: e,
     });
+    dispatch(setAlert("Failed to fetch jobs!: " + e, severity.Error, 15));
   }
 };
 
