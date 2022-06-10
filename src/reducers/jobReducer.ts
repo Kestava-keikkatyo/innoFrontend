@@ -18,7 +18,7 @@ const initialState: JobState = {
  * @param {Object} state - current state
  * @param {Object} action - dispatched action
  */
-const jobReducer = (state = initialState, action: JobActions) => {
+const jobReducer = (state = initialState, action: JobActions): JobState => {
   switch (action.type) {
     case jobType.JOB_GETALL_REQUEST: {
       return {
@@ -33,7 +33,7 @@ const jobReducer = (state = initialState, action: JobActions) => {
         loading: false,
       };
     }
-    case jobType.JOB_GETALL_FAILURE: {
+    case jobType.JOB_ACTION_FAILURE: {
       return {
         ...state,
         fetchError: action.data,
@@ -54,23 +54,10 @@ const jobReducer = (state = initialState, action: JobActions) => {
         currentJob: action.data,
       };
     }
-    case jobType.JOB_CURRENT_FAILURE: {
-      return {
-        ...state,
-        loading: false,
-        fetchError: action.data,
-      };
-    }
     case jobType.JOB_DELETED_SUCCESS: {
       return {
         ...state,
         jobs: state.jobs.filter((item) => item._id !== action.data.id),
-      };
-    }
-    case jobType.JOB_DELETED_FAILURE: {
-      return {
-        ...state,
-        fetchError: action.data,
       };
     }
     case jobType.JOB_CREATED_REQUEST: {
@@ -87,13 +74,6 @@ const jobReducer = (state = initialState, action: JobActions) => {
         jobs: [...state.jobs, action.data],
       };
     }
-    case jobType.JOB_CREATED_FAILURE: {
-      return {
-        ...state,
-        loading: false,
-        fetchError: action.data,
-      };
-    }
     case jobType.JOB_UPDATE_REQUEST: {
       return {
         ...state,
@@ -106,13 +86,6 @@ const jobReducer = (state = initialState, action: JobActions) => {
         ...state,
         loading: false,
         currentJob: action.data,
-      };
-    }
-    case jobType.JOB_UPDATE_FAILURE: {
-      return {
-        ...state,
-        loading: false,
-        fetchError: action.data,
       };
     }
     default:

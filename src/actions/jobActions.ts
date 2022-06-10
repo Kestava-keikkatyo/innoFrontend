@@ -17,7 +17,7 @@ export const fetchAllJobs = () => async (dispatch: any) => {
     dispatch({ type: jobType.JOB_GETALL_SUCCESS, data: res.data });
   } catch (e) {
     dispatch({
-      type: jobType.JOB_GETALL_FAILURE,
+      type: jobType.JOB_ACTION_FAILURE,
       data: e,
     });
     dispatch(setAlert("Failed to fetch jobs!: " + e, severity.Error, 15));
@@ -37,7 +37,7 @@ export const fetchAllJobsForAgency = () => async (dispatch: any) => {
     dispatch({ type: jobType.JOB_GETALL_SUCCESS, data: res.data });
   } catch (e) {
     dispatch({
-      type: jobType.JOB_GETALL_FAILURE,
+      type: jobType.JOB_ACTION_FAILURE,
       data: e,
     });
     dispatch(setAlert("Failed to fetch jobs!: " + e, severity.Error, 15));
@@ -57,7 +57,7 @@ export const fetchJobById = (id: string) => async (dispatch: any) => {
     dispatch({ type: jobType.JOB_CURRENT_SUCCESS, data: res.data });
   } catch (error) {
     dispatch({
-      type: jobType.JOB_CURRENT_FAILURE,
+      type: jobType.JOB_ACTION_FAILURE,
       data: error,
     });
     dispatch(setAlert("Failed to fetch the job: " + error, severity.Error, 15));
@@ -77,7 +77,7 @@ export const DeleteJobById = (id: string) => async (dispatch: any) => {
     dispatch({ type: jobType.JOB_DELETED_SUCCESS, data: { id } });
   } catch (e) {
     dispatch({
-      type: jobType.JOB_DELETED_FAILURE,
+      type: jobType.JOB_ACTION_FAILURE,
       data: e,
     });
     dispatch(setAlert("Failed to delete the job: " + e, severity.Error, 15));
@@ -106,7 +106,7 @@ export const createJob = (job: Job) => async (dispatch: any) => {
     console.log("Created job", data);
   } catch (e) {
     dispatch({
-      type: jobType.JOB_CREATED_FAILURE,
+      type: jobType.JOB_ACTION_FAILURE,
       data: e,
     });
     dispatch(setAlert("Failed to create the job: " + e, severity.Error, 15));
@@ -129,7 +129,7 @@ export const updateJob = (jobId: string, job: Job) => async (dispatch: any) => {
     history.push("/job?tab=my");
   } catch (error) {
     dispatch({
-      type: jobType.JOB_UPDATE_FAILURE,
+      type: jobType.JOB_ACTION_FAILURE,
       data: error,
     });
     dispatch(setAlert("Failed to update user: " + error, severity.Error, 15));
