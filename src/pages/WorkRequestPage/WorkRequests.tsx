@@ -48,7 +48,7 @@ const WorkRequests: React.FC<any> = () => {
         renderCell: (params: any) => {
           return (
             <>
-            <Link to={"/workRequest/update/"}>
+            <Link to={"/workRequest/update/" + params.id}>
               <span className={classes.workRequestUpdate}>{t('work_request_update')}</span>
             </Link>
             </>
