@@ -2,6 +2,7 @@ import workRequestService from "../services/workRequestService";
 import { WorkRequest, workRequestType } from "../types/types";
 import { severity } from "../types/types";
 import { setAlert } from "./alertActions";
+import history from "../utils/history";
 
 /**
  * Send work request
@@ -104,6 +105,7 @@ export const updateWorkRequest =
         type: workRequestType.WORKREQUEST_UPDATED_SUCCESS,
         data: res.data,
       });
+      history.push("/workRequests");
     } catch (error) {
       dispatch({
         type: workRequestType.WORKREQUEST_FAILURE,
