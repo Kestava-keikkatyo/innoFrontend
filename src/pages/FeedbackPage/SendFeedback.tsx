@@ -11,8 +11,9 @@ import { createFeedback } from '../../actions/feedBackActions';
 import { useTranslation } from "react-i18next";
 
 const initialValues: Feedback = {
-    heading: "",
-    message: "",
+  _id: "",
+  heading: "",
+  message: "",
 };
 
 const SendFeedbackSchema = Yup.object().shape({

@@ -225,62 +225,47 @@ export interface FeedbackState {
   currentFeedback: Feedback | undefined;
   loading: boolean;
   feedbacks: Feedback[];
+  fetchError?: string;
 }
-interface FeedbackSendRequest {
-  type: typeof feedbackType.FEEDBACK_SEND_REQUEST;
-  data: any;
-}
-
-interface FeedbackSendSuccess {
-  type: typeof feedbackType.FEEDBACK_SEND_SUCCESS;
-  data: any;
+interface FeedbackPosted {
+  type:
+    | typeof feedbackType.FEEDBACK_POSTED_REQUEST
+    | typeof feedbackType.FEEDBACK_POSTED_SUCCESS;
+  data: Feedback;
 }
 
-interface FeedbackSendFailure {
-  type: typeof feedbackType.FEEDBACK_SEND_FAILURE;
-  data: any;
+interface FeedbackActionFailure {
+  type: typeof feedbackType.FEEDBACK_ACTION_FAILURE;
+  data: string;
 }
 
-interface FeedbackGetAllRequest {
-  type: typeof feedbackType.FEEDBACK_GETALL_REQUEST;
-  data: any;
+interface FeedbackGetAll {
+  type:
+    | typeof feedbackType.FEEDBACK_GET_ALL_REQUEST
+    | typeof feedbackType.FEEDBACK_GET_ALL_SUCCESS;
+  data: Feedback[];
 }
 
-interface FeedbackGetAllSuccess {
-  type: typeof feedbackType.FEEDBACK_GETALL_SUCCESS;
-  data: any;
+interface FeedbackGetCurrent {
+  type:
+    | typeof feedbackType.FEEDBACK_GET_CURRENT_REQUEST
+    | typeof feedbackType.FEEDBACK_GET_CURRENT_SUCCESS;
+  data: Feedback;
 }
 
-interface FeedbackGetAllFailure {
-  type: typeof feedbackType.FEEDBACK_GETALL_FAILURE;
-  data: any;
-}
-
-interface FeedbackCurrentRequest {
-  type: typeof feedbackType.FEEDBACK_CURRENT_REQUEST;
-  data: any;
-}
-
-interface FeedbackCurrentSuccess {
-  type: typeof feedbackType.FEEDBACK_CURRENT_SUCCESS;
-  data: any;
-}
-
-interface FeedbackCurrentFailure {
-  type: typeof feedbackType.FEEDBACK_CURRENT_FAILURE;
-  data: any;
+interface FeedbackUpdated {
+  type:
+    | typeof feedbackType.FEEDBACK_UPDATED_REQUEST
+    | feedbackType.FEEDBACK_UPDATED_SUCCESS;
+  data: Feedback;
 }
 
 export type FeedbackAction =
-  | FeedbackSendRequest
-  | FeedbackSendSuccess
-  | FeedbackSendFailure
-  | FeedbackGetAllRequest
-  | FeedbackGetAllSuccess
-  | FeedbackGetAllFailure
-  | FeedbackCurrentRequest
-  | FeedbackCurrentSuccess
-  | FeedbackCurrentFailure;
+  | FeedbackPosted
+  | FeedbackActionFailure
+  | FeedbackGetAll
+  | FeedbackGetCurrent
+  | FeedbackUpdated;
 
 /**
  * Topic state & action types
@@ -1043,51 +1028,6 @@ export type NotificationsActions =
   | UpdateNotifications
   | ReadNotifications
   | ClearAllNotifications;
-
-export const POST_FEEDBACK = "POST_FEEDBACK";
-export const RESET_FEEDBACK = "RESET_FEEDBACK";
-export const GET_USER_FEEDBACKS = "GET_USER_FEEDBACKS";
-export const GET_ALL_FEEDBACKS = "GET_ALL_FEEDBACKS";
-export const SET_CURRENT_FEEDBACK = "SET_CURRENT_FEEDBACK";
-
-interface CurrentFeedBack {
-  type: typeof SET_CURRENT_FEEDBACK;
-  data: any;
-}
-
-interface PostFeedBack {
-  type: typeof POST_FEEDBACK;
-  data: any;
-}
-
-interface ResetFeedBack {
-  type: typeof RESET_FEEDBACK;
-  data: any;
-}
-
-interface GetUserFeedBacks {
-  type: typeof GET_USER_FEEDBACKS;
-  data: any;
-}
-
-interface GetAllFeedBacks {
-  type: typeof GET_ALL_FEEDBACKS;
-  data: any;
-}
-
-export type FeedBackActions =
-  | PostFeedBack
-  | ResetFeedBack
-  | GetUserFeedBacks
-  | GetAllFeedBacks
-  | CurrentFeedBack;
-
-export interface FeedBackState {
-  myFeedBacks: [];
-  allFeedBacks: [];
-  feedBackSaved: boolean;
-  currentFeedback: Feedback;
-}
 
 export const FETCH_GIGS = "FETCH_GIGS";
 export const ACCEPT_WORKERS = "ACCEPT_WORKERS";
