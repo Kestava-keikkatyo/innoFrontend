@@ -70,14 +70,17 @@ export const fetchJobById = (id: string) => async (dispatch: any) => {
  */
 export const DeleteJobById = (id: string) => async (dispatch: any) => {
   try {
+    dispatch({
+      type: jobType.JOB_DELETED_REQUEST,
+    });
     const data = await jobService.deleteJob(id);
     dispatch({ type: jobType.JOB_DELETED_SUCCESS, data: { id } });
-    console.log("deleted data", data);
-  } catch (error) {
+  } catch (e) {
     dispatch({
       type: jobType.JOB_DELETED_FAILURE,
-      data: error && error.message,
+      data: e,
     });
+    dispatch(setAlert("Failed to delete the job: " + e, severity.Error, 15));
   }
 };
 
