@@ -61,10 +61,9 @@ const FooterPage: React.FC<FooterPageProps> = () => {
       className="landing-part4"
     >
       <Grid item xs={12} className="landing-part41 bg-white">
-        <Grid container>
-          <Grid item xs={4}>
-            <Spacing m5 p5>
-              <CustomCard className="text-black"
+        <Grid container className="landing-container2">
+          <Grid item xs={4} className="landing-container">
+              <CustomCard
                 header="Oletko työntekijä?"
                 content={[
                   'Ansaitse rahaa',
@@ -72,10 +71,8 @@ const FooterPage: React.FC<FooterPageProps> = () => {
                   'Stressitön keikkatyömalli',
                 ]}
               />
-            </Spacing>
           </Grid>
-          <Grid item xs={4}>
-            <Spacing m5 p5>
+          <Grid item xs={4} className="landing-container">
               <CustomCard
                 header="Oletko käyttäjäyritys?"
                 content={[
@@ -84,10 +81,8 @@ const FooterPage: React.FC<FooterPageProps> = () => {
                   'Hyvinvoivien työntekijöiden tuottavuus on jopa 20% normaalia parempi',
                 ]}
               />
-            </Spacing>
           </Grid>
-          <Grid item xs={4}>
-            <Spacing m5 p5>
+          <Grid item xs={4} className="landing-container">
               <CustomCard
                 header="Oletko vuokratyöfirma?"
                 content={[
@@ -96,7 +91,6 @@ const FooterPage: React.FC<FooterPageProps> = () => {
                   'Työntekijöitesi hyvinvointi on meille tärkeää',
                 ]}
               />
-            </Spacing>
           </Grid>
         </Grid>
       </Grid>
@@ -104,11 +98,11 @@ const FooterPage: React.FC<FooterPageProps> = () => {
        * Kortit loppuvat, footer alkaa
        */}
       <Grid item xs={12} className="landing-part42">
-        <Spacing p5>
+        <Spacing p1 className="landing-spacing">
           <Grid container className="text-black">
             <Grid xs={3} item>
               <img src={logo} alt="keikkakaveri-logo" className="bw-logo" />
-              <Spacing m5 />
+              <Spacing m4 />
               <Typography>Yhteystiedot</Typography>
               <Typography>Yrjönkatu 29 C</Typography>
               <Typography>00100 Helsinki</Typography>

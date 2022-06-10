@@ -17,11 +17,11 @@ const FirstLandingPage: React.FC<FirstLandingPageProps> = () => {
         <Typography variant="h3" className="text-center landing-header-offset">
           KEIKKAKAVERI
         </Typography>
-        <Typography variant="h5" className="text-center" style={{fontSize:"178%"}}>
+        <Typography variant="h5" className="text-center landing-text">
           {t('slogan')}
           
         </Typography>
-        <Typography variant="body1" className="text-center" style={{fontSize:"146%"}}>
+        <Typography variant="body1" className="text-center landing-text2">
         {t('intro')}
         </Typography>
       </div>
@@ -39,19 +39,6 @@ const FirstLandingPage: React.FC<FirstLandingPageProps> = () => {
           alt="työturvallisuuskeskus"
           className="landing-partner-invert"
         />
-        <img src={eu} alt="eu" className="landing-partner-invert" />
-        <img src={kkk} alt="kestavakeikkatyo" className="landing-partner" />
-        <img
-          src={vipuvoima}
-          alt="vipuvoima rahasto"
-          className="landing-partner"
-        />
-        <img
-          src={ttk}
-          alt="työturvallisuuskeskus"
-          className="landing-partner-invert"
-        />
-        <img src={eu} alt="eu" className="landing-partner-invert" />
         </div>
       </div>
     </Container>
