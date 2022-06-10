@@ -56,13 +56,13 @@ const SendWorkRequest: React.FC<any> = () => {
             return (
             <Form>
               <div className={classes.workRequestContainerTop}>
-                  <FormikField name="headline" label={t('work_request_title')} required />
-                  <FormikField name="workersNumber" label={t('work_request_workers_nuber')} required />
-                  <FormikField name="requirements" label={t('work_request_requirements')} required multiline />
-                  <FormikField name="desirableSkills" label={t('work_request_desirableSkills')} multiline />
-                  <FormikField name="details" label={t('work_request_details')} required multiline />
-                  <DatePickerField name="startDate" label={t('work_request_startDate')} {...props} />
-                  <DatePickerField name="endDate" label={t('work_request_endDate')} {...props} />
+                <FormikField name="headline" label={t('work_request_headline')} required />
+                <FormikField name="workersNumber" label={t('work_request_workers_nuber')} type="number" required />
+                <FormikField name="requirements" label={t('work_request_requirements')} required multiline />
+                <FormikField name="desirableSkills" label={t('work_request_desirableSkills')} multiline />
+                <FormikField name="details" label={t('work_request_details')} required multiline />
+                <DatePickerField name="startDate" label={t('work_request_startDate')} {...props} />
+                <DatePickerField name="endDate" label={t('work_request_endDate')} {...props} />
               </div>
               {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="primary" className={classes.button}>{t('create')}</Button>}
             </Form>
