@@ -11,10 +11,10 @@ import history from "../utils/history";
 export const fetchAllJobs = () => async (dispatch: any) => {
   try {
     dispatch({
-      type: jobType.JOB_GETALL_REQUEST,
+      type: jobType.JOB_GET_ALL_REQUEST,
     });
     const res = await jobService.fetchAllJobs();
-    dispatch({ type: jobType.JOB_GETALL_SUCCESS, data: res.data });
+    dispatch({ type: jobType.JOB_GET_ALL_SUCCESS, data: res.data });
   } catch (e) {
     dispatch({
       type: jobType.JOB_ACTION_FAILURE,
@@ -31,10 +31,10 @@ export const fetchAllJobs = () => async (dispatch: any) => {
 export const fetchAllJobsForAgency = () => async (dispatch: any) => {
   try {
     dispatch({
-      type: jobType.JOB_GETALL_REQUEST,
+      type: jobType.JOB_GET_ALL_REQUEST,
     });
     const res = await jobService.fetchAllJobsForAgency();
-    dispatch({ type: jobType.JOB_GETALL_SUCCESS, data: res.data });
+    dispatch({ type: jobType.JOB_GET_ALL_SUCCESS, data: res.data });
   } catch (e) {
     dispatch({
       type: jobType.JOB_ACTION_FAILURE,
@@ -51,10 +51,10 @@ export const fetchAllJobsForAgency = () => async (dispatch: any) => {
 export const fetchJobById = (id: string) => async (dispatch: any) => {
   try {
     dispatch({
-      type: jobType.JOB_CURRENT_REQUEST,
+      type: jobType.JOB_GET_CURRENT_REQUEST,
     });
     const res = await jobService.fetchJobById(id);
-    dispatch({ type: jobType.JOB_CURRENT_SUCCESS, data: res.data });
+    dispatch({ type: jobType.JOB_GET_CURRENT_SUCCESS, data: res.data });
   } catch (error) {
     dispatch({
       type: jobType.JOB_ACTION_FAILURE,
@@ -120,11 +120,11 @@ export const createJob = (job: Job) => async (dispatch: any) => {
 export const updateJob = (jobId: string, job: Job) => async (dispatch: any) => {
   try {
     dispatch({
-      type: jobType.JOB_UPDATE_REQUEST,
+      type: jobType.JOB_UPDATED_REQUEST,
     });
 
     const res = await jobService.updateJob(jobId, job);
-    dispatch({ type: jobType.JOB_UPDATE_SUCCESS, data: res.data });
+    dispatch({ type: jobType.JOB_UPDATED_SUCCESS, data: res.data });
 
     history.push("/job?tab=my");
   } catch (error) {

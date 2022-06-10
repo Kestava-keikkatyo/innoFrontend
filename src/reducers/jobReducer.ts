@@ -20,13 +20,13 @@ const initialState: JobState = {
  */
 const jobReducer = (state = initialState, action: JobActions): JobState => {
   switch (action.type) {
-    case jobType.JOB_GETALL_REQUEST: {
+    case jobType.JOB_GET_ALL_REQUEST: {
       return {
         ...state,
         loading: true,
       };
     }
-    case jobType.JOB_GETALL_SUCCESS: {
+    case jobType.JOB_GET_ALL_SUCCESS: {
       return {
         ...state,
         jobs: action.data,
@@ -40,14 +40,14 @@ const jobReducer = (state = initialState, action: JobActions): JobState => {
         loading: false,
       };
     }
-    case jobType.JOB_CURRENT_REQUEST: {
+    case jobType.JOB_GET_CURRENT_REQUEST: {
       return {
         ...state,
         currentJob: action.data,
         loading: true,
       };
     }
-    case jobType.JOB_CURRENT_SUCCESS: {
+    case jobType.JOB_GET_CURRENT_SUCCESS: {
       return {
         ...state,
         loading: false,
@@ -74,14 +74,14 @@ const jobReducer = (state = initialState, action: JobActions): JobState => {
         jobs: [...state.jobs, action.data],
       };
     }
-    case jobType.JOB_UPDATE_REQUEST: {
+    case jobType.JOB_UPDATED_REQUEST: {
       return {
         ...state,
         currentJob: action.data,
         loading: true,
       };
     }
-    case jobType.JOB_UPDATE_SUCCESS: {
+    case jobType.JOB_UPDATED_SUCCESS: {
       return {
         ...state,
         loading: false,

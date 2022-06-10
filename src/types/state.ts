@@ -400,14 +400,9 @@ export interface JobState {
   fetchError?: string;
 }
 
-interface JobGetAllRequest {
-  type: typeof jobType.JOB_GETALL_REQUEST;
-  data: any;
-}
-
-interface JobGetAllSuccess {
-  type: typeof jobType.JOB_GETALL_SUCCESS;
-  data: any;
+interface JobGetAll {
+  type: typeof jobType.JOB_GET_ALL_REQUEST | typeof jobType.JOB_GET_ALL_SUCCESS;
+  data: Job[];
 }
 
 interface JobActionFailure {
@@ -415,14 +410,11 @@ interface JobActionFailure {
   data: string;
 }
 
-interface JobCurrentRequest {
-  type: typeof jobType.JOB_CURRENT_REQUEST;
-  data: any;
-}
-
-interface JobCurrentSuccess {
-  type: typeof jobType.JOB_CURRENT_SUCCESS;
-  data: any;
+interface JobGetCurrent {
+  type:
+    | typeof jobType.JOB_GET_CURRENT_REQUEST
+    | jobType.JOB_GET_CURRENT_SUCCESS;
+  data: Job;
 }
 
 interface JobDeletedRequest {
@@ -435,38 +427,24 @@ interface JobDeletedSuccess {
   data: { id: string };
 }
 
-interface JobCreatedRequest {
-  type: typeof jobType.JOB_CREATED_REQUEST;
+interface JobCreated {
+  type: typeof jobType.JOB_CREATED_REQUEST | typeof jobType.JOB_CREATED_SUCCESS;
   data: Job;
 }
 
-interface JobCreatedSuccess {
-  type: typeof jobType.JOB_CREATED_SUCCESS;
+interface JobUpdated {
+  type: typeof jobType.JOB_UPDATED_REQUEST | typeof jobType.JOB_UPDATED_SUCCESS;
   data: Job;
-}
-
-interface JobUpdateRequest {
-  type: typeof jobType.JOB_UPDATE_REQUEST;
-  data: any;
-}
-
-interface JobUpdateSuccess {
-  type: typeof jobType.JOB_UPDATE_SUCCESS;
-  data: any;
 }
 
 export type JobActions =
-  | JobGetAllRequest
-  | JobGetAllSuccess
+  | JobGetAll
   | JobActionFailure
-  | JobCurrentRequest
-  | JobCurrentSuccess
+  | JobGetCurrent
   | JobDeletedRequest
   | JobDeletedSuccess
-  | JobCreatedRequest
-  | JobCreatedSuccess
-  | JobUpdateRequest
-  | JobUpdateSuccess;
+  | JobCreated
+  | JobUpdated;
 
 export const LOGIN = "USER_LOGIN";
 export const LOGOUT = "USER_LOGOUT";
