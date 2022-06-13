@@ -1,6 +1,7 @@
 import feedBackService from "../services/feedBackService";
 import { Feedback, feedbackType, severity } from "../types/types";
 import { setAlert } from "./alertActions";
+import history from "../utils/history";
 
 /**
  * @function
@@ -94,3 +95,30 @@ export const createFeedback = (feedback: Feedback) => async (dispatch: any) => {
     dispatch(setAlert("Failed to send feedback: " + e, severity.Error, 15));
   }
 };
+
+/**
+ * @function
+ * @desc update feedback.
+ */
+export const updateFeedback =
+  (feedbackId: string, feedback: Feedback) => async (dispatch: any) => {
+    try {
+      dispatch({
+        type: feedbackType.FEEDBACK_UPDATED_REQUEST,
+      });
+
+      const res = await feedBackService.updateFeedback(feedbackId, feedback);
+      dispatch({
+        type: feedbackType.FEEDBACK_UPDATED_SUCCESS,
+        data: res.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: feedbackType.FEEDBACK_ACTION_FAILURE,
+        data: error,
+      });
+      dispatch(
+        setAlert("Failed to update feedback: " + error, severity.Error, 15)
+      );
+    }
+  };
