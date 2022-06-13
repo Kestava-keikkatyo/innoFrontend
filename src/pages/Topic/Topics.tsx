@@ -37,17 +37,17 @@ const Topics: React.FC<any> = () => {
     {
         field: "question",
         headerName: (i18next.t("topic_question")),
-        width: 400,
+        width: 300,
     },
     { 
         field: "answer", 
         headerName: (i18next.t("topic_answer")), 
-        width: 400 
+        width: 250 
     },
     {
         field: "createdAt",
         headerName: (i18next.t("topic_created_at")),
-        width: 200,
+        width: 250,
     },
     {
         field: "action",
@@ -56,7 +56,7 @@ const Topics: React.FC<any> = () => {
         renderCell: (params: any) => {
             return (
                 <>
-            <Link to={"/topic/update/" + params.id}>
+            <Link to={"/topics/update/" + params.id}>
                 <span className={classes.topicUpdate}>{t('topic_update')}</span>
             </Link>
             <DeleteOutline
