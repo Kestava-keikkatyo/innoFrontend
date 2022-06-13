@@ -613,6 +613,8 @@ export default {
   failed_to_create_the_topic: "Failed to create the topic!",
   topic_updated_successfully: "Topic was updated successfully!",
   topic_update_topic: "Update topic",
+  topic_create_new_topic: "Create new topic",
+  topic_navigate: "Topics",
 
   //Work request
   send_work_request: "Send work request",

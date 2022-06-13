@@ -594,6 +594,8 @@ export default {
   failed_to_create_the_topic: "Aihe luominen epäonnistui!",
   topic_updated_successfully: "Aihe päivitetty onnistuneesti!",
   topic_update_topic: "Päivitä aihe",
+  topic_create_new_topic: "Luo uusi aihe",
+  topic_navigate: "Aiheita",
 
   //Work request
   send_work_request: "Lähetä työpyyntö",
