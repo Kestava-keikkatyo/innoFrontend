@@ -7,6 +7,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import { fetchAllMyFeedbacks } from "../../actions/feedBackActions";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
+import { Stack } from '@mui/material';
 
 const Feedbacks: React.FC<any> = () => {
 
@@ -46,9 +47,14 @@ const Feedbacks: React.FC<any> = () => {
       renderCell: (params: any) => {
         return (
           <>
+          <Stack direction="row" spacing={2}>
           <Link to={"/feedback/details/" + params.id}>
             <span>{t('feedback_details')}</span>
           </Link>
+          <Link to={"/feedback/update/" + params.id}>
+            <span className={classes.update}>{t('button_edit')}</span>
+          </Link>
+          </Stack>
           </>
         );
       }
