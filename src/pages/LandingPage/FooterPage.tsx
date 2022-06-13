@@ -21,7 +21,7 @@ const FooterColumn: React.FC<any> = ({ header, list }) => (
     <Typography>{header}</Typography>
     <List component="nav" aria-label="main mailbox folders">
       {list.map((e: string, i: number) => (
-        <ListItem disableGutters button key={i}>
+        <ListItem disableGutters button key={i} className="footer-list">
           <ListItemText primary={`> ${e}`} />
         </ListItem>
       ))}
@@ -32,7 +32,7 @@ const FooterColumn: React.FC<any> = ({ header, list }) => (
 const CustomCard: React.FC<any> = ({ header, content }) => (
   <Card variant="outlined">
     <CardContent>
-      <Typography variant="h5">{header}</Typography>
+      <Typography variant="h1" className='card-header'>{header}</Typography>
       <Spacing m2 />
       {content.map((e: string, i: number) => (
         <div key={i}>
@@ -100,27 +100,28 @@ const FooterPage: React.FC<FooterPageProps> = () => {
       <Grid item xs={12} className="landing-part42">
         <Spacing p1 className="landing-spacing">
           <Grid container className="text-black">
-            <Grid xs={3} item>
+            <Grid xs={2} item className="footer-item">
               <img src={logo} alt="keikkakaveri-logo" className="bw-logo" />
-              <Spacing m4 />
+            </Grid>
+            <Grid xs={2} item className="footer-item">
               <Typography>Yhteystiedot</Typography>
               <Typography>Yrjönkatu 29 C</Typography>
               <Typography>00100 Helsinki</Typography>
               <Typography>info@keikkakaveri.fi</Typography>
             </Grid>
-            <Grid xs={3} item>
+            <Grid xs={2} item className="footer-item">
               <FooterColumn
                 header="Ajankohtaista"
                 list={['Uutiset', 'Artikkelit', 'Twitter', 'Youtube']}
               />
             </Grid>
-            <Grid xs={3} item>
+            <Grid xs={2} item className="footer-item">
               <FooterColumn
                 header="Yhteistyössä"
                 list={['Työturvakeskus', 'ESR-rahasto', 'Kestävä keikkatyö']}
               />
             </Grid>
-            <Grid xs={3} item>
+            <Grid xs={2} item className="footer-item">
               <FooterColumn
                 header="Tutustu"
                 list={['Tietopankki', 'Keikkakaveri', 'Tietosuojaseloste']}

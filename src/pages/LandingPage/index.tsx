@@ -27,6 +27,7 @@ const LandingPage = () => {
     localStorage.setItem('i18nextLng', code);
     window.location.reload();
   };
+
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
   const { t } = useTranslation();
@@ -42,6 +43,7 @@ const LandingPage = () => {
   const handleStepChange = (step: any) => {
     setActiveStep(step);
   };
+
   return (
     <div>
       <AppBar position="fixed" elevation={1} className="landing-appbar">

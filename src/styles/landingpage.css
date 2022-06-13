@@ -38,12 +38,12 @@
 
 .landing-part41 {
   width: 100%;
-  max-height: 65% !important;
+  max-height: 75% !important;
 }
 
 .landing-part42 {
   width: 100%;
-  max-height: 35% !important;
+  max-height: 25% !important;
 }
 
 .landing-spacing {
@@ -53,6 +53,7 @@
 /* <Spacing m5 p5> */
 .landing-container {
   max-width: 30%;
+  margin-top: 3rem;
 }
 
 .landing-container2 {
@@ -72,7 +73,20 @@
 
 .landing-part4 {
   background-color: #FF6505;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
 } /* #FF6505 lighter orange with black text give AAA in wave contrast accessibility*/
+
+.footer-item {
+  max-width: fit-content;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.footer-list {
+  padding: 0 !important;
+}
 
 .bg-white {
   background-color: #fff;
@@ -92,13 +106,13 @@
 
 .landing-stepper {
   position: fixed;
-  bottom: 20px;
+  bottom: 10px;
   left: calc(50% - 112px);
   z-index: 1000;
   background-color: rgba(0, 0, 0, 0.3) !important;
   border-radius: 20px !important;
-  border-radius: 20px !important;
   filter: contrast(100%);
+  padding: 0 !important;
 } /* Changed position absolute -> fixed */
 
 .next-back-btns {
@@ -152,11 +166,15 @@
 
 .landing-header-offset {
   margin-top: 3rem !important;
+  font-size: 310%;
+  font-weight: 400;
+  letter-spacing: 0em;
 }
 
 .landing-text {
   margin-top: 1rem !important;
-  font-size: 160%;
+  font-size: 165%;
+  font-weight: 400;
 }
 
 .landing-text2 {
@@ -172,6 +190,11 @@
 .landing-partner-invert {
   max-height: 150px;
   filter: grayscale(1) invert(1);
+}
+
+.card-header {
+  font-size: 1.5rem;
+  font-weight: 400;
 }
 
 /**
