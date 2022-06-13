@@ -253,7 +253,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
           )}
           {(role === roles.Agency || role === roles.Business || role === roles.Worker) && (
             <>
-              <ListItem button component={Link} to="/feedback-page" onClick={handleClick}>
+              <ListItem button component={Link} to="/feedback" onClick={handleClick}>
                 <ListItemIcon>
                   <FeedbackOutlinedIcon />
                 </ListItemIcon>

@@ -34,7 +34,7 @@ const Details: React.FC<any> = () =>  {
             <Typography color="secondary" className={classes.feedbackTitle} variant="h4">{t('feedback_title_details')}</Typography>
         </div>
         <div>
-        <Button className={classes.back} color="secondary" component={Link} to="/feedback-page">{t('back')}</Button>
+        <Button className={classes.back} color="secondary" component={Link} to="/feedback">{t('back')}</Button>
         </div>
         <div className={classes.feedbackContainer}>
             <div className={classes.feedbackShow}>

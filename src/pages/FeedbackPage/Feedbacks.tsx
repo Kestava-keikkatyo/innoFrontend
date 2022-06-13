@@ -46,7 +46,7 @@ const Feedbacks: React.FC<any> = () => {
       renderCell: (params: any) => {
         return (
           <>
-          <Link to={"/feedback-details/" + params.id}>
+          <Link to={"/feedback/details/" + params.id}>
             <span>{t('feedback_details')}</span>
           </Link>
           </>

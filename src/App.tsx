@@ -173,10 +173,10 @@ const App: React.FC = () => {
             <PrivateRoute path="/feedbacks" roles={[roles.Business, roles.Agency, roles.Worker]}>
               <Feedbacks />
             </PrivateRoute>
-            <PrivateRoute path="/feedback-details/:feedbackId" roles={[roles.Business, roles.Agency, roles.Worker]}>
+            <PrivateRoute path="/feedback/details/:feedbackId" roles={[roles.Business, roles.Agency, roles.Worker]}>
               <Details />
             </PrivateRoute>
-            <PrivateRoute path="/feedback-page" roles={[roles.Business, roles.Agency, roles.Worker]}>
+            <PrivateRoute path="/feedback" roles={[roles.Business, roles.Agency, roles.Worker]}>
               <FeedbackPage />
             </PrivateRoute>
             <PrivateRoute path="/workers/profile/:userId" roles={[roles.Business, roles.Agency]}>
