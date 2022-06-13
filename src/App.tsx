@@ -70,6 +70,7 @@ import TopicUpdate from "./pages/Topic/TopicUpdate"
 import SendWorkRequest from "./pages/WorkRequestPage/SendWorkRequest"
 import WorkRequests from "./pages/WorkRequestPage/WorkRequests"
 import WorkRequestUpdate from "./pages/WorkRequestPage/WorkRequestUpdate"
+import FeedbackUpdate from "./pages/FeedbackPage/FeedbackUpdate"
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface DefaultTheme extends Theme {}
@@ -175,6 +176,9 @@ const App: React.FC = () => {
             </PrivateRoute>
             <PrivateRoute path="/feedback/details/:feedbackId" roles={[roles.Business, roles.Agency, roles.Worker]}>
               <Details />
+            </PrivateRoute>
+            <PrivateRoute path="/feedback/update/:feedbackId" roles={[roles.Business, roles.Agency, roles.Worker]}>
+              <FeedbackUpdate />
             </PrivateRoute>
             <PrivateRoute path="/feedback" roles={[roles.Business, roles.Agency, roles.Worker]}>
               <FeedbackPage />
