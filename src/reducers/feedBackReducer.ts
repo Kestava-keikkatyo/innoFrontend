@@ -70,6 +70,20 @@ const feedBackReducer = (
         feedbacks: [...state.feedbacks, action.data],
       };
     }
+    case feedbackType.FEEDBACK_UPDATED_REQUEST: {
+      return {
+        ...state,
+        currentFeedback: action.data,
+        loading: true,
+      };
+    }
+    case feedbackType.FEEDBACK_UPDATED_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        currentFeedback: action.data,
+      };
+    }
     default:
       return state;
   }
