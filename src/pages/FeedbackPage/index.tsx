@@ -9,6 +9,7 @@ import { Container } from '@mui/material';
 import SendFeedback from './SendFeedback';
 import Feedbacks from './Feedbacks';
 import { useTranslation } from "react-i18next";
+import { useHistory, useLocation } from 'react-router-dom';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -16,65 +17,81 @@ interface TabPanelProps {
     value: any;
   }
 
-function TabPanel(props: TabPanelProps) {
+  function TabPanel(props: TabPanelProps) {
     const { children, value, index, ...other } = props;
-  
     return (
       <div
-        role="tabpanel"
-        hidden={value !== index}
-        id={`full-width-tabpanel-${index}`}
-        aria-labelledby={`full-width-tab-${index}`}
-        {...other}
+      role="tabpanel"
+      hidden={value !== index}
+      id={`full-width-tabpanel-${index}`}
+      aria-labelledby={`full-width-tab-${index}`}
+      {...other}
       >
         {value === index && (
-          <Box sx={{ p: 3 }}>
+          <Box sx={{
+            padding: {
+              xs: '20px 0px',
+              sm: '40px 20px'
+            }
+          }}>
             <Typography>{children}</Typography>
           </Box>
-        )}
+          )}
       </div>
     );
   }
   
-  function a11yProps(index: any) {
+  function a11yProps(index: number) {
     return {
       id: `full-width-tab-${index}`,
       'aria-controls': `full-width-tabpanel-${index}`,
     };
   }
   
+  function useQuery() : URLSearchParams {
+    const { search } = useLocation();
+    return React.useMemo(() => new URLSearchParams(search), [search]);
+  }
+  
+  
 
 const FeedbackPage: React.FC<any> = () => {
   const { t } = useTranslation();
   const theme = useTheme();
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+  const history = useHistory();
+  const query = useQuery();
+  const [value, setValue] = React.useState(query.get('tab') || 'send');
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
+    history.push({
+      pathname: history.location.pathname,
+      search: "?" + new URLSearchParams({tab: newValue}).toString()
+  })
     setValue(newValue);
   };
-    return (
-        <Container>
-      <AppBar position="static" color="transparent">
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="secondary"
-          textColor="secondary"
-          variant="fullWidth"
-          aria-label="full width tabs example"
-        >
-          <Tab label={t('send_new_feedback')} {...a11yProps(0)} />
-          <Tab label={t('your_feedbacks')} {...a11yProps(1)} />
-        </Tabs>
-      </AppBar>
-        <TabPanel value={value} index={0}>
-        <SendFeedback />
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-        <Feedbacks />
-        </TabPanel>
-    </Container>
-    );
+
+  return (
+  <Container>
+    <AppBar position="static" color="transparent">
+      <Tabs
+      value={value}
+      onChange={handleChange}
+      indicatorColor="secondary"
+      textColor="secondary"
+      variant="fullWidth"
+      aria-label="full width tabs example"
+      >
+      <Tab label={t('send_new_feedback')} value="send" {...a11yProps(0)} />
+      <Tab label={t('your_feedbacks')} value="my" {...a11yProps(1)} />
+      </Tabs>
+    </AppBar>
+    <TabPanel value={value} index="send">
+      <SendFeedback />
+    </TabPanel>
+    <TabPanel value={value} index="my">
+      <Feedbacks />
+    </TabPanel>
+  </Container>
+  );
 }
 
 export default FeedbackPage;
