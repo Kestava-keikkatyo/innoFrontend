@@ -11,6 +11,7 @@ import { setAlert } from '../../actions/alertActions';
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import { deleteTopic, fetchAllTopics } from '../../actions/topicActions';
+import { Button } from '@mui/material';
 
 const Topics: React.FC<any> = () => {
 
@@ -75,6 +76,9 @@ const Topics: React.FC<any> = () => {
       <div>
         <Typography className={classes.topicTitle} color="primary" align="center" variant="h5">{t('topics')}</Typography>
       </div>
+      <div>
+        <Button className={classes.button} color="secondary" component={Link} to="/topics/create">{t('topic_create_new_topic')}</Button>
+      </div>
       <DataGrid
         getRowId={(row) => row._id}
         rows={rows}
@@ -102,6 +106,10 @@ const useStyles = makeStyles(() => ({
   topicTitle: {
     marginTop: '25px',
     marginBottom: '15px',
+},
+button: {
+  marginLeft: '850px',
+  fontSize: '15px',
 }
 }));
 

@@ -158,7 +158,7 @@ const App: React.FC = () => {
             <PrivateRoute path="/workRequest/update/:workRequestId" roles={[roles.Business]}>
               <WorkRequestUpdate />
             </PrivateRoute>
-            <PrivateRoute path="/topic/create" roles={[roles.Admin]}>
+            <PrivateRoute path="/topics/create" roles={[roles.Admin]}>
               <CreateTopic />
             </PrivateRoute>
             <PrivateRoute path="/topics/update/:topicId" roles={[roles.Admin]}>
