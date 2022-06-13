@@ -284,6 +284,17 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
               <Divider />
             </>
           )}
+          {role === roles.Admin && (
+            <>
+              <ListItem button component={Link} to="/topics" onClick={handleClick}>
+                <ListItemIcon>
+                  <GroupsIcon />
+                </ListItemIcon>
+                <ListItemText primary={t("Topics")} />
+              </ListItem>
+              <Divider />
+            </>
+          )}
           <ListItem button component={Link} to="/databank" onClick={handleClick}>
             <ListItemIcon>{<Security />}</ListItemIcon>
             <ListItemText primary={t("databank")} />
