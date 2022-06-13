@@ -112,6 +112,8 @@ export const updateFeedback =
         type: feedbackType.FEEDBACK_UPDATED_SUCCESS,
         data: res.data,
       });
+
+      history.push("/feedbacks");
     } catch (error) {
       dispatch({
         type: feedbackType.FEEDBACK_ACTION_FAILURE,
