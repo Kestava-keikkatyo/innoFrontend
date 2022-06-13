@@ -290,7 +290,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                 <ListItemIcon>
                   <GroupsIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("Topics")} />
+                <ListItemText primary={t("topic_navigate")} />
               </ListItem>
               <Divider />
             </>
