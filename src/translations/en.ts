@@ -672,4 +672,5 @@ export default {
   feedback_action: "Action",
   feedback_details: "details",
   feedback_title_details: "Feedback details",
+  update_feedback: "Update feedback",
 };

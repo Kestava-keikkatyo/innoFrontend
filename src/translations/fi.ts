@@ -668,4 +668,5 @@ export default {
   feedback_action: "Toiminta",
   feedback_details: "Lisätiedot",
   feedback_title_details: "Palautteen tiedot",
+  update_feedback: "Päivitä palaute",
 };
