@@ -14,10 +14,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Spacing from '../../components/Spacing';
 import vastuualueet from '../../assets/tietopankki/vastuualueet.json';
+import { useTranslation } from 'react-i18next';
 
-export interface ContentResponsibilitiesProps {}
+export interface ContentResponsibilitiesProps {};
+
+const ReadMoreButton = () => {
+  const { t } = useTranslation();
+
+  return (
+    <Button variant="outlined" color="primary">
+      {t('read_more')}
+    </Button>
+  )
+};
 
 const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
+  const { t } = useTranslation();
+
   return (
     <Container>
       <Spacing m3 p2 />
@@ -28,12 +41,12 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
         alignItems="center"
       >
         <Grid item>
-          <Typography variant="h3">Vastuualueet</Typography>
+          <Typography variant="h3">{t('areas_of_responsibility')}</Typography>
         </Grid>
         <Grid item>
           <Link to="/databank" style={{ textDecoration: 'none' }}>
             <Button color="primary" variant="contained">
-              Lue lisää vastuualueista
+              {t('read_more_about_responsibilities')}
             </Button>
           </Link>
         </Grid>
@@ -44,9 +57,7 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
           <div className="responsibilty-card">
             <CardHeader
               action={
-                <Button variant="outlined" color="primary">
-                  Lue lisää
-                </Button>
+                <ReadMoreButton />
               }
               title="Työntekijä"
             />
@@ -66,9 +77,7 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
           <div className="responsibilty-card">
             <CardHeader
               action={
-                <Button variant="outlined" color="primary">
-                  Lue lisää
-                </Button>
+                <ReadMoreButton />
               }
               title="Käyttäjäyritys"
             />
@@ -88,9 +97,7 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
           <div className="responsibilty-card">
             <CardHeader
               action={
-                <Button variant="outlined" color="primary">
-                  Lue lisää
-                </Button>
+                <ReadMoreButton />
               }
               title="Vuokratyöyritys"
             />
