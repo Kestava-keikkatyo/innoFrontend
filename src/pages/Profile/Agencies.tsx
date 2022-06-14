@@ -64,7 +64,7 @@ const Agencies: React.FC<any> = () => {
         <>
         <Stack direction="row" spacing={2}>
         <Link to={"/agencies/profile/" + params.id}>{t('list_profile')}</Link>
-        <Link to={"/workRequest/send/" + params.id}>Send work request</Link>
+        <Link to={"/agencies/workRequest/" + params.id}>Send work request</Link>
         </Stack>
         </>
         );
