@@ -83,9 +83,9 @@ const LandingPage = () => {
               onChange={handleChange}
               value={localStorage.getItem('i18nextLng')}
             >
-              <MenuItem value="en">English</MenuItem>
-              <MenuItem value="fr">Français</MenuItem>
-              <MenuItem value="fi">Suomi</MenuItem>
+              <MenuItem value="en">{t('english')}</MenuItem>
+              <MenuItem value="fr">{t('french')}</MenuItem>
+              <MenuItem value="fi">{t('finnish')}</MenuItem>
             </Select>
             <Typography>
               <Link className="landing-login" to="/login">
