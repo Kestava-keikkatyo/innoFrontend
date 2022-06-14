@@ -185,7 +185,7 @@ export interface Job {
 }
 
 export interface Feedback {
-  _id: string;
+  _id?: string;
   heading: string;
   message: string;
 }

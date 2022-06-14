@@ -11,7 +11,6 @@ import { createFeedback } from '../../actions/feedBackActions';
 import { useTranslation } from "react-i18next";
 
 const initialValues: Feedback = {
-  _id: "",
   heading: "",
   message: "",
 };
