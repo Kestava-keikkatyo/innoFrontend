@@ -371,9 +371,13 @@ export default {
   form_tooltip_delete: 'Delete form',
   form_tooltip_download: 'Download form',
   form_tooltip_copy: 'Copy to my forms',
+  
+  // languages
+  english: "English",
+  french: "Français",
+  finnish: "Suomi",
 
   finland: "Finnish",
-  english: "English",
   tyopoyta: "Desktop",
   tietopankki: "Data Bank",
   kirjaudu_sisaan: "Log in",

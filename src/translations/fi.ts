@@ -364,9 +364,13 @@ export default {
   form_title: "Lomakkeen otsikko",
   add_question: "Lisää kysymys",
   form_editor: "Lomakkeen muokkaus",
+  
+  // languages
+  english: "English",
+  french: "Français",
+  finnish: "Suomi",
 
   finland: "Suomi",
-  english: "Englanti",
   tyopoyta: "Työpöytä",
   tietopankki: "Tietopankki",
   kirjaudu_sisaan: "Kirjaudu sisään",
