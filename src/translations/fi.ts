@@ -502,6 +502,7 @@ export default {
   articles: "Artikkelit",
   work_lifespan: "Työn elinkaari",
   areas_of_responsibility: "Vastuualueet",
+  read_more_about_responsibilities: "Lue lisää vastuualueista",
   good_practises: "Hyvät käytännöt",
 
   //NewFormHeader

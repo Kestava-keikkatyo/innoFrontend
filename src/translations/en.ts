@@ -507,6 +507,7 @@ export default {
   articles: "Articles",
   work_lifespan: "Work lifespan",
   areas_of_responsibility: "Areas of responsibility",
+  read_more_about_responsibilities: "More information about responsibilities",
   good_practises: "Good practises",
 
   //NewFormHeader
