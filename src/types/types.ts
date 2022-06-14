@@ -197,7 +197,8 @@ export interface Topic {
 }
 
 export interface WorkRequest {
-  _id: string;
+  _id?: string;
+  recipient: string;
   headline: string;
   workersNumber: Number | null;
   requirements: string;
