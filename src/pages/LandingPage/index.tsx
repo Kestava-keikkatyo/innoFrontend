@@ -28,12 +28,12 @@ const LandingPage = () => {
   const changeLanguage = (code: any) => {
     // setAnchorEl(null);
     localStorage.setItem('i18nextLng', code);
-    window.location.reload();
+    i18n.changeLanguage(code);
   };
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
   //const [languageCode, setLanguageCode] = useState(localStorage.getItem('i18nextLng'))
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
