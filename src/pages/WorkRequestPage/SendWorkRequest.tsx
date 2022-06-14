@@ -5,13 +5,21 @@ import * as Yup from "yup";
 import { Form, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import FormikField, { DatePickerField } from '../../components/FormField';
-import { WorkRequest } from '../../types/types';
+import { User, WorkRequest } from '../../types/types';
 import { IRootState } from '../../utils/store';
 import { useTranslation } from "react-i18next"
 import { sendWorkRequest } from '../../actions/workRequestActions';
+import { useParams } from 'react-router-dom';
+import { fetchUserById } from '../../actions/usersActions';
+import PageLoading from '../../components/PageLoading';
+import { useEffect } from 'react';
+
+type AgencyUrlParams = {
+  agencyId: string
+}
 
 const initialValues: WorkRequest = {
-  _id: "",
+  recipient:"",
   headline: "",
   workersNumber: null,
   requirements: "",
@@ -36,9 +44,21 @@ const SendWorkRequest: React.FC<any> = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const isLoading = useSelector((state: IRootState) => state.workRequest.loading)
+  const { agencyId } = useParams<AgencyUrlParams>();
+    const agencyData : User = useSelector((state: IRootState) => state.users.currentUser);
+
+    useEffect(() => {
+        dispatch(fetchUserById(agencyId));
+    }, [dispatch, agencyId]);
+
+    const isLoading = useSelector((state: IRootState) => state.workRequest.loading)
+
+    if(isLoading || !agencyData || agencyId !== agencyData._id) return (
+        <PageLoading />
+    );
 
   const handleSubmit = (workRequest: WorkRequest) => {
+    workRequest.recipient = agencyId;
     dispatch(sendWorkRequest(workRequest));
   };
   return (
@@ -56,6 +76,7 @@ const SendWorkRequest: React.FC<any> = () => {
             return (
             <Form>
               <div className={classes.workRequestContainerTop}>
+                <span>To: </span><span>{agencyData.name}</span>
                 <FormikField name="headline" label={t('work_request_headline')} required />
                 <FormikField name="workersNumber" label={t('work_request_workers_nuber')} type="number" required />
                 <FormikField name="requirements" label={t('work_request_requirements')} required multiline />
