@@ -9,6 +9,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from "react-i18next"
 import i18next from "i18next"
+import { Stack } from '@mui/material';
 
 const Agencies: React.FC<any> = () => {
   const { t } = useTranslation();
@@ -47,12 +48,12 @@ const Agencies: React.FC<any> = () => {
     {
       field: "city", 
       headerName: (i18next.t("list_city")), 
-      width: 200 
+      width: 120 
     },
     {
       field: "userType", 
       headerName: (i18next.t("list_position")), 
-      width: 150 
+      width: 120 
     },
     {
       field: "action",
@@ -61,7 +62,10 @@ const Agencies: React.FC<any> = () => {
       renderCell: (params: any) => {
         return (
         <>
+        <Stack direction="row" spacing={2}>
         <Link to={"/agencies/profile/" + params.id}>{t('list_profile')}</Link>
+        <Link to={"/workRequest/send/" + params.id}>Send work request</Link>
+        </Stack>
         </>
         );
       },
