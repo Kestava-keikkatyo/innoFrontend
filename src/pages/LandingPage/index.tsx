@@ -6,7 +6,6 @@ import {
   AppBar,
   Toolbar,
   Typography,
-  FormControl,
   Grid,
   MenuItem,
   Select
@@ -21,9 +20,7 @@ import { Link } from 'react-router-dom';
 // import logo from '../LandingPage/keikka-kaveri4.png';
 // import TranslateIcon from '@mui/icons-material/Translate';
 import { useTranslation } from 'react-i18next';
-import fi1 from '../../components/NavigationComponents/fi1.png';
-import us1 from '../../components/NavigationComponents/us1.png';
-// import sw1 from '../../components/NavigationComponents/sw1.png';
+
 const LandingPage = () => {
   const changeLanguage = (code: any) => {
     // setAnchorEl(null);

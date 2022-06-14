@@ -12,7 +12,6 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
-  Button,
   FormControl,
   Select
 } from "@mui/material";
@@ -39,8 +38,6 @@ import { usePopupState } from "material-ui-popup-state/hooks"
 import { logout } from "../../actions/userActions"
 import { useTranslation } from "react-i18next"
 import { roles } from "../../types/types"
-import fi1 from "../../components/NavigationComponents/fi1.png"
-import us1 from "../../components/NavigationComponents/us1.png"
 
 const LangMenuDropDown = () => {
   // const [anchorEl, setAnchorEl] = React.useState(null);
