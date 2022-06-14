@@ -13,6 +13,8 @@ import {
   useMediaQuery,
   useTheme,
   Button,
+  FormControl,
+  Select
 } from "@mui/material";
 import makeStyles from '@mui/styles/makeStyles';
 import NotificationsIcon from "@mui/icons-material/Notifications"
@@ -55,26 +57,29 @@ const LangMenuDropDown = () => {
     i18n.changeLanguage(code)
   }
 
+  const handleChange = (event: any) => {
+    changeLanguage(event.target?.value)
+  }
+
   // const handleClose = () => {
   //   setAnchorEl(null);
   // };
 
   return (
     <>
-      <div className="drawer-top">
-        <Button
-          style={{ position: "absolute", left: "-7rem", top: "23%" }}
-          onClick={() => changeLanguage("fi")}
+      <FormControl
+        variant="standard"
+        style={{ padding: 12 }}
+      >
+        <Select
+          onChange={handleChange}
+          value={localStorage.getItem('i18nextLng')}
         >
-          FI
-        </Button>
-        <Button
-          style={{ position: "absolute", left: "-4rem", top: "23%" }}
-          onClick={() => changeLanguage("en")}
-        >
-          EN
-        </Button>
-      </div>
+          <MenuItem value="en">{t('english')}</MenuItem>
+          <MenuItem value="fr">{t('french')}</MenuItem>
+          <MenuItem value="fi">{t('finnish')}</MenuItem>
+        </Select>
+      </FormControl>
     </>
   )
 }
