@@ -21,5 +21,12 @@ export default {
   // ContentResponsibilities
   areas_of_responsibility: "Les domaines de responsabilité",
   read_more: "Lire la suite",
-  read_more_about_responsibilities: "En savoir plus sur les responsabilités",
+  responsibilities_read_more: "En savoir plus sur les responsabilités",
+
+  // ContentWorkLifeSpan
+  work_lifespan: "Cycle de vie du travail",
+  lifespan_read_more: "En savoir plus sur le cycle de vie",
+  customer_agreement: "Contrat de service",
+  selection_and_request: "Demande et sélection des employés",
+  contract_and_orientation: "Contrat de travail et orientation générale",
 };

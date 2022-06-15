@@ -502,8 +502,12 @@ export default {
   articles: "Artikkelit",
   work_lifespan: "Työn elinkaari",
   areas_of_responsibility: "Vastuualueet",
-  read_more_about_responsibilities: "Lue lisää vastuualueista",
+  responsibilities_read_more: "Lue lisää vastuualueista",
+  lifespan_read_more: "Lue lisää elinkaaresta",
   good_practises: "Hyvät käytännöt",
+  customer_agreement: "Asiakassopimus",
+  selection_and_request: "Työntekijän tilaus ja valinta",
+  contract_and_orientation: "Työsopimus ja yleisperehdytys",
 
   //NewFormHeader
   import: "Tuo",

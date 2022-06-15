@@ -10,6 +10,7 @@ import {
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Spacing from '../../components/Spacing';
+import { useTranslation } from 'react-i18next'; 
 
 export interface ContentLifeSpanProps {}
 
@@ -31,6 +32,8 @@ const LifeSpanStep: React.FC<any> = ({ header, content, form }) => (
 );
 
 const ContentLifeSpan: React.FC<ContentLifeSpanProps> = () => {
+  const { t } = useTranslation();
+
   return (
     <Container>
       <Spacing m3 p2 />
@@ -41,12 +44,12 @@ const ContentLifeSpan: React.FC<ContentLifeSpanProps> = () => {
         alignItems="center"
       >
         <Grid item>
-          <Typography variant="h3">Työn elinkaari</Typography>
+          <Typography variant="h3">{t('work_lifespan')}</Typography>
         </Grid>
         <Grid item>
           <Link to="/databank" style={{ textDecoration: 'none' }}>
             <Button color="primary" variant="contained">
-              Lue lisää elinkaaresta
+              {t('lifespan_read_more')}
             </Button>
           </Link>
         </Grid>
@@ -55,45 +58,44 @@ const ContentLifeSpan: React.FC<ContentLifeSpanProps> = () => {
       <Grid container className="landing-part2">
         <Grid item className="lifespan-container">
           <Grid container>
-            <Grid item xs={4}>
+          <Grid item xs={4}>
               <LifeSpanStep
-                header="Asiakassopimus"
-                content="Vuokrayritys / Käyttäjäyritys"
+                header={t('customer_agreement')}
+                content={[t('agency'), t('business')].join(' / ')}
                 form="Lomake 1"
               />
             </Grid>
             <Grid item xs={4}>
               <LifeSpanStep
-                header="Työntekijän tilaus ja valinta"
-                content="Vuokrayritys / Käyttäjäyritys"
+                header={t('selection_and_request')}
+                content={[t('agency'), t('business')].join(' / ')}
                 form="0"
               />
             </Grid>
             <Grid item xs={4}>
               <LifeSpanStep
-                header="Työsopimus ja yleisperehdytys"
-                content="Vuokrayritys / Vuokratyöntekijä"
+                header={t('contract_and_orientation')}
+                content={[t('agency'), t('worker')].join(' / ')}
                 form="Lomake 2"
               />
-            </Grid>
-            <Grid item xs={4}>
+            </Grid><Grid item xs={4}>
               <LifeSpanStep
-                header="Asiakassopimus"
-                content="Vuokrayritys / Käyttäjäyritys"
+                header={t('customer_agreement')}
+                content={[t('agency'), t('business')].join(' / ')}
                 form="Lomake 1"
               />
             </Grid>
             <Grid item xs={4}>
               <LifeSpanStep
-                header="Työntekijän tilaus ja valinta"
-                content="Vuokrayritys / Käyttäjäyritys"
+                header={t('selection_and_request')}
+                content={[t('agency'), t('business')].join(' / ')}
                 form="0"
               />
             </Grid>
             <Grid item xs={4}>
               <LifeSpanStep
-                header="Työsopimus ja yleisperehdytys"
-                content="Vuokrayritys / Vuokratyöntekijä"
+                header={t('contract_and_orientation')}
+                content={[t('agency'), t('worker')].join(' / ')}
                 form="Lomake 2"
               />
             </Grid>

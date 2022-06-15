@@ -507,8 +507,12 @@ export default {
   articles: "Articles",
   work_lifespan: "Work lifespan",
   areas_of_responsibility: "Areas of responsibility",
-  read_more_about_responsibilities: "More information about responsibilities",
+  responsibilities_read_more: "More information about responsibilities",
+  lifespan_read_more: "More information about work lifespan",
   good_practises: "Good practises",
+  customer_agreement: "Customer agreement",
+  selection_and_request: "Employee request and selection",
+  contract_and_orientation: "Employment contract and general orientation",
 
   //NewFormHeader
   import: "Import",
