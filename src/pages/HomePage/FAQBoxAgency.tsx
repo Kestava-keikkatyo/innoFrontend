@@ -48,14 +48,14 @@ export default function CustomizedTables() {
                   aria-controls="panel1a-content"
                   id="panel1a-header"
                 >
-                  <Typography className={classes.text} gutterBottom>
+                  <Typography className={classes.text} variant="h1" gutterBottom>
                     {`${e.tip}`}
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography
                     className={classes.text}
-                    variant="subtitle1"
+                    variant="h2"
                   >{`${e.details}`}</Typography>
                 </AccordionDetails>
               </Accordion>
@@ -91,5 +91,8 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     color: "#000000DE",
+    fontWeight: 400,
+    fontSize: "1rem",
+    lineHeight: 1.75,
   },
 }))

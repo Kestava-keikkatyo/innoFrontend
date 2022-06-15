@@ -29,7 +29,7 @@ const SettingsPage = () => {
             onClick={() => history.push('/home')}
           >
             <Link
-              style={{ textDecoration: 'none', color: '#eb5a00' }}
+              style={{ textDecoration: 'none', color: '#CC4E00' }}
               to="/home"
             >
               {t('back')}
@@ -37,7 +37,7 @@ const SettingsPage = () => {
           </Button>
         </Grid>
       </Grid>
-      <Typography style={{ paddingTop: '0.5rem' }} variant="h4">
+      <Typography style={{ paddingTop: '0.5rem' }} variant="h1" className="header">
         {t('settings')}
       </Typography>
       <div style={{ marginTop: '1rem' }}>
@@ -57,6 +57,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   button: {
     margin: theme.spacing(1),
+    border: "1px solid #CC4E00 !important",
   },
 }));
 

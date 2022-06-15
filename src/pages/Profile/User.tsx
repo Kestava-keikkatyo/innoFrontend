@@ -42,7 +42,7 @@ const UserProfile: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
   return (
   <div className={classes.user}>
     <div className={classes.userTitleContainer}>
-      <Typography color="secondary" className={classes.userTitle} variant="h4">{t('user_profile')}</Typography>
+      <Typography color="secondary" className="header" variant="h1">{t('user_profile')}</Typography>
     </div>
     <div className={classes.userContainer}>
       <div className={classes.userShow}>
@@ -117,7 +117,6 @@ const useStyles = makeStyles((theme: any) => ({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  userTitle: {},
   userContainer: {
     display: 'flex',
     marginTop: '20px',
@@ -139,7 +138,7 @@ const useStyles = makeStyles((theme: any) => ({
   userShowTitle: {
     fontSize: '22px',
     fontWeight: 600,
-    color: 'rgb(175, 170, 170)',
+    color: '#7B7474',
   },
   userShowInfo: {
     display: 'flex',

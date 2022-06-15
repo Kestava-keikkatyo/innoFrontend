@@ -53,7 +53,7 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
   return (
     <Card variant="outlined">
       <CardContent>
-        <Typography align="center" variant="h4" gutterBottom>
+        <Typography align="center" variant="h1" gutterBottom className="header">
           {t('sign_up')}
         </Typography>
         <Formik

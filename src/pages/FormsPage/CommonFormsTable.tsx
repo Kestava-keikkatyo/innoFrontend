@@ -97,8 +97,8 @@ const CommonFormsTable: React.FC<any> = ({handleDownload}) => {
   const StyledTableCell = withStyles((theme: Theme) =>
     createStyles({
       head: {
-        color: '#EB5A02',
-      },
+        color: '#CA4F02',
+      }, /* #EB5A02 */
     })
   )(TableCell);
 

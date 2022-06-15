@@ -180,15 +180,15 @@ const FormsPage: React.FC = () => {
       </div>
 
       <div className={classes.root}>
-        <AppBar color='default'  position="static">
-          <Tabs value={value} onChange={handleChange} aria-label="wrapped label tabs example">
+        <AppBar color='default'  position="static" >
+          <Tabs value={value} onChange={handleChange} aria-label="wrapped label tabs example" >
             <Tab value="one" label={t("my_forms")} wrapped {...a11yProps('one')} />
             <Tab value="two" label={t("common")} {...a11yProps('two')} />
             <Tab value="three" label={t("community")} {...a11yProps('three')} />
           </Tabs>
         </AppBar>
         <TabPanel value={value} index="one">
-          <Typography  style={{ paddingTop: '1rem', paddingBottom: '1rem' }} variant="h4"  >
+          <Typography  style={{ paddingTop: '1rem', paddingBottom: '1rem' }} variant="h1" className="header"   >
           {t("my_forms")}
           </Typography>
           <Card className={classes.card} variant="outlined">
@@ -198,7 +198,7 @@ const FormsPage: React.FC = () => {
           </Card>
         </TabPanel>
         <TabPanel value={value} index="two">
-        <Typography  style={{ paddingTop: '1rem', paddingBottom: '1rem' }} variant="h4"  >
+        <Typography  style={{ paddingTop: '1rem', paddingBottom: '1rem' }} variant="h1" className="header" >
         {t("common_forms")}
           </Typography>
           <Card className={classes.card} variant="outlined">
@@ -208,7 +208,7 @@ const FormsPage: React.FC = () => {
           </Card>
         </TabPanel>
         <TabPanel value={value} index="three">
-        <Typography  style={{ paddingTop: '1rem', paddingBottom: '1rem' }} variant="h4"  >
+        <Typography  style={{ paddingTop: '1rem', paddingBottom: '1rem' }} variant="h1" className="header" >
         {t("community_forms")}
           </Typography>
           <Card className={classes.card} variant="outlined">

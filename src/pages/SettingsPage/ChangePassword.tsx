@@ -37,7 +37,7 @@ const ChangePassword: React.FC<any> = () => {
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography variant="h5">{t('change_password')}</Typography>
+        <Typography variant="h2" className="header2">{t('change_password')}</Typography>
       </AccordionSummary>
       <AccordionDetails>
         <Typography>

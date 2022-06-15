@@ -133,7 +133,8 @@ code {
 .drawer .MuiSvgIcon-root,
 .worker-statistics-summary .MuiTypography-body1 {
   font-weight: 600 !important;
-  color: grey;
+  color: black;
+  /* color: grey; */
 }
 
 .drawer-logout .MuiListItemIcon-root {
@@ -681,9 +682,26 @@ nav * {
   bottom: 0;
   margin: 0 20px 20px 0;
   cursor: pointer;
-  color: #ffffff;
+  color: black;
+  /* color: #ffffff; */
   font-size: 28px;
   padding: 5px 10px 5px 10px;
   border-radius: 3px;
   /* box-shadow: 10px 0 50px rgba(0, 0, 0, 0.5); */
+}
+
+.header {
+  font-weight: 400;
+  font-size: 2.125rem;
+  line-height: 1.235;
+}
+
+.header2 {
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.334;
+}
+
+.Mui-selected {
+  color: #1870C9 !important;
 }

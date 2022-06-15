@@ -4,7 +4,7 @@ import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
-import { Grid, TextField, Typography } from '@mui/material';
+import { FormLabel, Grid, TextField, Typography } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../../utils/store';
@@ -60,7 +60,7 @@ const useStyles = makeStyles({
 
   return (
     <>
-      <Typography variant="h4" align="center">
+      <Typography variant="h1" align="center" className="header">
         {t('how_do_you_feel_today')}
       </Typography>
 
@@ -113,6 +113,7 @@ const useStyles = makeStyles({
             multiline
             rows={5}
             variant="outlined"
+            label={t('tell_feelings')}
         />
         <FileUploader name={t('upload_file')} handleFile={() => ''} accept="image/*" />
     </>
