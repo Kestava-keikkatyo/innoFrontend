@@ -46,7 +46,7 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
         <Grid item>
           <Link to="/databank" style={{ textDecoration: 'none' }}>
             <Button color="primary" variant="contained">
-              {t('read_more_about_responsibilities')}
+              {t('responsibilities_read_more')}
             </Button>
           </Link>
         </Grid>
