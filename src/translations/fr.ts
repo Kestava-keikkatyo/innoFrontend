@@ -4,6 +4,11 @@ export default {
   french: "Français",
   finnish: "Suomi",
 
+  // option
+  worker: "Travailleur",
+  agency: "Agence",
+  business: "Entreprise",
+
   // LandingPage
   tyopoyta: "Bureau",
   tietopankki: "Banque informatique",

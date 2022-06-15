@@ -59,7 +59,7 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
               action={
                 <ReadMoreButton />
               }
-              title="Työntekijä"
+              title={t('worker')}
             />
             <CardContent>
               <List component="nav" aria-label="mailbox folders">
@@ -79,7 +79,7 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
               action={
                 <ReadMoreButton />
               }
-              title="Käyttäjäyritys"
+              title={t('business')}
             />
             <CardContent>
               <List component="nav" aria-label="mailbox folders">
@@ -99,7 +99,7 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
               action={
                 <ReadMoreButton />
               }
-              title="Vuokratyöyritys"
+              title={t('agency')}
             />
             <CardContent>
               <List component="nav" aria-label="mailbox folders">
