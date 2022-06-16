@@ -180,7 +180,7 @@ export const createAdmin =
   (name: string, email: string, password: string) => async (dispatch: any) => {
     try {
       dispatch({
-        type: usersType.USER_CREATE_REQUEST,
+        type: usersType.USER_CREATED_REQUEST,
         data: { name, email, userType: "admin", password },
       });
 
@@ -191,7 +191,7 @@ export const createAdmin =
         password
       );
       dispatch({
-        type: usersType.USER_CREATE_SUCCESS,
+        type: usersType.USER_CREATED_SUCCESS,
         data,
       });
       dispatch(setAlert("user created successfully!"));

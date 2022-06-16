@@ -53,13 +53,8 @@ interface UserUpdateSuccess {
   data: any;
 }
 
-interface UserCreateRequest {
-  type: typeof usersType.USER_CREATE_REQUEST;
-  data: User;
-}
-
-interface UserCreateSuccess {
-  type: typeof usersType.USER_CREATE_SUCCESS;
+interface UserCreated {
+  type: typeof usersType.USER_CREATED_REQUEST | typeof usersType.USER_CREATED_SUCCESS;
   data: User;
 }
 
@@ -90,8 +85,7 @@ export type UsersAction =
   | UserCurrentSuccess
   | UserUpdateRequest
   | UserUpdateSuccess
-  | UserCreateRequest
-  | UserCreateSuccess
+  | UserCreated
   | UserDeletedRequest
   | UserDeletedSuccess
   | UserUpdateStatusRequest

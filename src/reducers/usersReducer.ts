@@ -67,14 +67,14 @@ const usersReducer = (state = initialState, action: UsersAction) => {
         currentUser: action.data,
       };
     }
-    case usersType.USER_CREATE_REQUEST: {
+    case usersType.USER_CREATED_REQUEST: {
       return {
         ...state,
         currentUser: action.data,
         loading: true,
       };
     }
-    case usersType.USER_CREATE_SUCCESS: {
+    case usersType.USER_CREATED_SUCCESS: {
       return {
         ...state,
         loading: false,
