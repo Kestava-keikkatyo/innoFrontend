@@ -21,6 +21,7 @@ export interface UsersState {
   currentUser: User | undefined;
   loading: boolean;
   users: User[];
+  fetchError?: string;
 }
 
 interface UserGetAllRequest {
@@ -32,9 +33,9 @@ interface UserGetAllSuccess {
   data: any;
 }
 
-interface UserGetAllFailure {
-  type: typeof usersType.USER_GETALL_FAILURE;
-  data: any;
+interface UserActionFailure {
+  type: typeof usersType.USER_ACTION_FAILURE;
+  data: string;
 }
 interface UserCurrentRequest {
   type: typeof usersType.USER_CURRENT_REQUEST;
@@ -43,11 +44,6 @@ interface UserCurrentRequest {
 
 interface UserCurrentSuccess {
   type: typeof usersType.USER_CURRENT_SUCCESS;
-  data: any;
-}
-
-interface UserCurrentFailure {
-  type: typeof usersType.USER_CURRENT_FAILURE;
   data: any;
 }
 
@@ -61,11 +57,6 @@ interface UserUpdateSuccess {
   data: any;
 }
 
-interface UserUpdateFailure {
-  type: typeof usersType.USER_UPDATE_FAILURE;
-  data: any;
-}
-
 interface UserCreateRequest {
   type: typeof usersType.USER_CREATE_REQUEST;
   data: User;
@@ -73,11 +64,6 @@ interface UserCreateRequest {
 
 interface UserCreateSuccess {
   type: typeof usersType.USER_CREATE_SUCCESS;
-  data: User;
-}
-
-interface UserCreateFailure {
-  type: typeof usersType.USER_CREATE_FAILURE;
   data: User;
 }
 
@@ -91,10 +77,6 @@ interface UserDeletedSuccess {
   data: { id: string };
 }
 
-interface UserDeletedFailure {
-  type: typeof usersType.USER_DELETED_FAILURE;
-  data: { id: string };
-}
 interface UserUpdateStatusRequest {
   type: typeof usersType.USER_UPDATE_STATUS_REQUEST;
   data: { id: string; active: boolean };
@@ -105,29 +87,20 @@ interface UserUpdateStatusSuccess {
   data: { id: string; active: boolean };
 }
 
-interface UserUpdateStatusFailure {
-  type: typeof usersType.USER_UPDATE_STATUS_FAILURE;
-  data: { id: string; active: boolean };
-}
 export type UsersAction =
   | UserGetAllRequest
   | UserGetAllSuccess
-  | UserGetAllFailure
+  | UserActionFailure
   | UserCurrentRequest
   | UserCurrentSuccess
-  | UserCurrentFailure
   | UserUpdateRequest
   | UserUpdateSuccess
-  | UserUpdateFailure
   | UserCreateRequest
   | UserCreateSuccess
-  | UserCreateFailure
   | UserDeletedRequest
   | UserDeletedSuccess
-  | UserDeletedFailure
   | UserUpdateStatusRequest
-  | UserUpdateStatusSuccess
-  | UserUpdateStatusFailure;
+  | UserUpdateStatusSuccess;
 
 /**
  * All users state & action types

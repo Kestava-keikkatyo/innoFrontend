@@ -17,7 +17,7 @@ export const fetchAllUsers = () => async (dispatch: any) => {
     dispatch({ type: usersType.USER_GETALL_SUCCESS, data: res.data });
   } catch (e) {
     dispatch({
-      type: usersType.USER_GETALL_FAILURE,
+      type: usersType.USER_ACTION_FAILURE,
       data: e,
     });
     dispatch(setAlert("Failed to fetch users!: " + e, severity.Error, 15));
@@ -37,7 +37,7 @@ export const fetchUserById = (id: string) => async (dispatch: any) => {
     dispatch({ type: usersType.USER_CURRENT_SUCCESS, data: res.data });
   } catch (error) {
     dispatch({
-      type: usersType.USER_CURRENT_FAILURE,
+      type: usersType.USER_ACTION_FAILURE,
       data: error,
     });
     dispatch(
@@ -60,7 +60,7 @@ export const deleteUser = (id: string) => async (dispatch: any) => {
     console.log("deleted data", data);
   } catch (e) {
     dispatch({
-      type: usersType.USER_DELETED_FAILURE,
+      type: usersType.USER_ACTION_FAILURE,
       data: e,
     });
     dispatch(setAlert("Failed to delete the user: " + e, severity.Error, 15));
@@ -80,7 +80,7 @@ export const fetchAllWorkers = () => async (dispatch: any) => {
     dispatch({ type: usersType.USER_GETALL_SUCCESS, data: res.data });
   } catch (e) {
     dispatch({
-      type: usersType.USER_GETALL_FAILURE,
+      type: usersType.USER_ACTION_FAILURE,
       data: e,
     });
     dispatch(setAlert("Failed to fetch workers!: " + e, severity.Error, 15));
@@ -100,7 +100,7 @@ export const fetchAllAgencies = () => async (dispatch: any) => {
     dispatch({ type: usersType.USER_GETALL_SUCCESS, data: res.data });
   } catch (e) {
     dispatch({
-      type: usersType.USER_GETALL_FAILURE,
+      type: usersType.USER_ACTION_FAILURE,
       data: e,
     });
     dispatch(setAlert("Failed to fetch agencies!: " + e, severity.Error, 15));
@@ -120,7 +120,7 @@ export const showMyProfile = (id: string) => async (dispatch: any) => {
     dispatch({ type: usersType.USER_CURRENT_SUCCESS, data: res.data });
   } catch (error) {
     dispatch({
-      type: usersType.USER_CURRENT_FAILURE,
+      type: usersType.USER_ACTION_FAILURE,
       data: error,
     });
     dispatch(
@@ -163,7 +163,7 @@ export const updateUser =
       }
     } catch (error) {
       dispatch({
-        type: usersType.USER_UPDATE_FAILURE,
+        type: usersType.USER_ACTION_FAILURE,
         data: error,
       });
       dispatch(setAlert("Failed to update user: " + error, severity.Error, 15));
@@ -198,7 +198,7 @@ export const createAdmin =
       console.log("Created user", data);
     } catch (e) {
       dispatch({
-        type: usersType.USER_CREATE_FAILURE,
+        type: usersType.USER_ACTION_FAILURE,
         data: e,
       });
       dispatch(setAlert("Failed to create the user: " + e, severity.Error, 15));
@@ -223,7 +223,7 @@ export const updateUSerStatus =
       console.log("deactivate data", data);
     } catch (e) {
       dispatch({
-        type: usersType.USER_UPDATE_STATUS_FAILURE,
+        type: usersType.USER_ACTION_FAILURE,
         data: e,
       });
       dispatch(

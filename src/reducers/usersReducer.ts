@@ -32,7 +32,7 @@ const usersReducer = (state = initialState, action: UsersAction) => {
         loading: false,
       };
     }
-    case usersType.USER_GETALL_FAILURE: {
+    case usersType.USER_ACTION_FAILURE: {
       return {
         ...state,
         fetchError: action.data,
@@ -53,13 +53,6 @@ const usersReducer = (state = initialState, action: UsersAction) => {
         currentUser: action.data,
       };
     }
-    case usersType.USER_CURRENT_FAILURE: {
-      return {
-        ...state,
-        loading: false,
-        fetchError: action.data,
-      };
-    }
     case usersType.USER_UPDATE_REQUEST: {
       return {
         ...state,
@@ -72,13 +65,6 @@ const usersReducer = (state = initialState, action: UsersAction) => {
         ...state,
         loading: false,
         currentUser: action.data,
-      };
-    }
-    case usersType.USER_UPDATE_FAILURE: {
-      return {
-        ...state,
-        loading: false,
-        fetchError: action.data,
       };
     }
     case usersType.USER_CREATE_REQUEST: {
@@ -95,13 +81,6 @@ const usersReducer = (state = initialState, action: UsersAction) => {
         users: [...state.users, action.data],
       };
     }
-    case usersType.USER_CREATE_FAILURE: {
-      return {
-        ...state,
-        loading: false,
-        fetchError: action.data,
-      };
-    }
     case usersType.USER_DELETED_REQUEST: {
       return {
         ...state,
@@ -114,13 +93,6 @@ const usersReducer = (state = initialState, action: UsersAction) => {
         ...state,
         loading: false,
         users: state.users.filter((item) => item._id !== action.data.id),
-      };
-    }
-    case usersType.USER_DELETED_FAILURE: {
-      return {
-        ...state,
-        loading: false,
-        fetchError: action.data,
       };
     }
     case usersType.USER_UPDATE_STATUS_REQUEST: {
@@ -144,13 +116,6 @@ const usersReducer = (state = initialState, action: UsersAction) => {
           }
           return u;
         }),
-      };
-    }
-    case usersType.USER_UPDATE_STATUS_FAILURE: {
-      return {
-        ...state,
-        loading: false,
-        fetchError: action.data,
       };
     }
     default:
