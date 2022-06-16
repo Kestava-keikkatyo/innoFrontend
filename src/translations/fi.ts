@@ -211,6 +211,11 @@ export default {
   website: "Nettisivut",
   address: "Osoite",
   contact_information: "Yhteystiedot",
+  app_contact_information: {
+    address: "Yrjönkatu 29 C",
+    address_part2: "00100 Helsinki",
+    email: "info@keikkakaveri.fi",
+  },
 
   //feeling utils
   cheer_one: "Tsemppiä!",
@@ -509,6 +514,38 @@ export default {
   selection_and_request: "Työntekijän tilaus ja valinta",
   contract_and_orientation: "Työsopimus ja yleisperehdytys",
 
+  //FooterPage
+  current_events: "Ajankohtaista",
+  news: "Uutiset",
+  twitter: "Twitter",
+  youtube: "Youtube",
+  collaborators: "Yhteistyössä",
+  centre_for_occupational_safety: "Työturvallisuuskeskus",
+  european_social_fund: "Euroopan sosiaalirahasto",
+  kestava_keikkatyo: "Kestävä keikkatyö",
+  learn_more: "Tutustu",
+  privacy_policy: "Tietosuojaseloste",
+  are_you: {
+    worker: "Oletko työntekijä?",
+    business: "Oletko käyttäjäyritys?",
+    agency: "Oletko vuokratyöfirma?",
+  },
+  worker_benefit: {
+    first: "Ansaitse rahaa",
+    second: "Tee joustavasti töitä",
+    third: "Stressitön keikkatyömalli",
+  },
+  business_benefit: {
+    first: "Nopea ja joustava malli hankkia työntekijöitä",
+    second: "Pääset vaikuttamaan rekrytointiprosessiin",
+    third: "Hyvinvoivien työntekijöiden tuottavuus on jopa 20% normaalia parempi",
+  },
+  agency_benefit: {
+    first: "Keskitä perehdyttäminen yhteen paikkaan",
+    second: "Automatisaatiolla perehdytys on rennompaa",
+    third: "Työntekijöitesi hyvinvointi on meille tärkeää",
+  },
+
   //NewFormHeader
   import: "Tuo",
   export: "Vie",
@@ -547,6 +584,7 @@ export default {
   show_more: "Näytä enemmän",
 
   //landingPage
+  app_title: "Keikkakaveri",
   slogan: "Kun henkilöstö voi hyvin, työ sujuu.",
   intro:
     "Keikkakaveri tarjoaa tietoa, koulutusta ja välineitä turvallisten ja terveellisten työolojen kehittämiseen ja ylläpitämiseen.",

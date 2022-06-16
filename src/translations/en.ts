@@ -210,6 +210,11 @@ export default {
   website: "Website",
   address: "Address",
   contact_information: "Contact information",
+  app_contact_information: {
+    address: "Yrjönkatu 29 C",
+    address_part2: "FI-00100 Helsinki, Finland",
+    email: "info@keikkakaveri.fi",
+  },
 
   //feeling utils
   cheer_one: "C'moon!",
@@ -514,6 +519,38 @@ export default {
   selection_and_request: "Employee request and selection",
   contract_and_orientation: "Employment contract and general orientation",
 
+  //FooterPage
+  current_events: "Current events",
+  news: "News",
+  twitter: "Twitter",
+  youtube: "Youtube",
+  collaborators: "Collaborators",
+  centre_for_occupational_safety: "The Centre for Occupational Safety",
+  european_social_fund: "European Social Fund",
+  kestava_keikkatyo: "Kestävä keikkatyö",
+  learn_more: "Learn more",
+  privacy_policy: "Privacy Policy",
+  are_you: {
+    worker: "Are you a worker?",
+    business: "Are you a business?",
+    agency: "Are you an agency?",
+  },
+  worker_benefit: {
+    first: "Earn money",
+    second: "Work flexibly",
+    third: "Gig pattern without stress",
+  },
+  business_benefit: {
+    first: "Quick and flexible way of hiring",
+    second: "Influence the recruitment process",
+    third: "Workers who feel good are up to 20% more productive",
+  },
+  agency_benefit: {
+    first: "Concentrate orientation to a single platform",
+    second: "Automation makes orientation easier",
+    third: "The well-being of your workers is important to us",
+  },
+
   //NewFormHeader
   import: "Import",
   export: "Export",
@@ -553,6 +590,7 @@ export default {
   show_more: "Show more",
 
   //landingPage
+  app_title: "Keikkakaveri",
   slogan: "When the personnel feels well, the work flows.",
   intro:
     "Keikkakaveri provides information, training and equipment for developing and maintaining safe and healthy working conditions.",

@@ -13,6 +13,7 @@ import {
 import React from 'react'
 import Spacing from '../../components/Spacing'
 import logo from "../LandingPage/keikka-kaveri4.png";
+import { useTranslation } from 'react-i18next';
 
 export interface FooterPageProps {}
 
@@ -29,29 +30,35 @@ const FooterColumn: React.FC<any> = ({ header, list }) => (
   </>
 )
 
-const CustomCard: React.FC<any> = ({ header, content }) => (
-  <Card variant="outlined">
-    <CardContent>
-      <Typography variant="h5">{header}</Typography>
-      <Spacing m2 />
-      {content.map((e: string, i: number) => (
-        <div key={i}>
-          <Spacing m1 />
-          <Typography color="textSecondary" gutterBottom key={i}>
-            {e}
-          </Typography>
-          <Divider />
-        </div>
-      ))}
-    </CardContent>
-    <CardActions disableSpacing>
-      <Button>Luo tili</Button>
-      <Button>Kirjaudu sisään</Button>
-    </CardActions>
-  </Card>
-)
+const CustomCard: React.FC<any> = ({ header, content }) => {
+  const { t } = useTranslation();
+
+  return (
+    <Card variant="outlined">
+      <CardContent>
+        <Typography variant="h5">{header}</Typography>
+        <Spacing m2 />
+        {content.map((e: string, i: number) => (
+          <div key={i}>
+            <Spacing m1 />
+            <Typography color="textSecondary" gutterBottom key={i}>
+              {e}
+            </Typography>
+            <Divider />
+          </div>
+        ))}
+      </CardContent>
+      <CardActions disableSpacing>
+        <Button>{t('sign_up')}</Button>
+        <Button>{t('kirjaudu_sisaan')}</Button>
+      </CardActions>
+    </Card>
+  )
+}
 
 const FooterPage: React.FC<FooterPageProps> = () => {
+  const { t } = useTranslation();
+
   return (
     <Grid
       container
@@ -65,11 +72,11 @@ const FooterPage: React.FC<FooterPageProps> = () => {
           <Grid item xs={4}>
             <Spacing m5 p5>
               <CustomCard
-                header="Oletko työntekijä?"
+                header={t('are_you.worker')}
                 content={[
-                  'Ansaitse rahaa',
-                  'Tee joustavasti töitä',
-                  'Stressitön keikkatyömalli',
+                  t('worker_benefit.first'),
+                  t('worker_benefit.second'),
+                  t('worker_benefit.third'),
                 ]}
               />
             </Spacing>
@@ -77,11 +84,11 @@ const FooterPage: React.FC<FooterPageProps> = () => {
           <Grid item xs={4}>
             <Spacing m5 p5>
               <CustomCard
-                header="Oletko käyttäjäyritys?"
+                header={t('are_you.business')}
                 content={[
-                  'Nopea ja joustava malli hankkia työntekijöitä',
-                  'Pääset vaikuttamaan rekrytointiprosessiin',
-                  'Hyvinvoivien työntekijöiden tuottavuus on jopa 20% normaalia parempi',
+                  t('business_benefit.first'),
+                  t('business_benefit.second'),
+                  t('business_benefit.third'),
                 ]}
               />
             </Spacing>
@@ -89,11 +96,11 @@ const FooterPage: React.FC<FooterPageProps> = () => {
           <Grid item xs={4}>
             <Spacing m5 p5>
               <CustomCard
-                header="Oletko vuokratyöfirma?"
+                header={t('are_you.agency')}
                 content={[
-                  'Keskitä perehdyttäminen yhteen paikkaan',
-                  'Automatisaatiolla perehdytys on rennompaa',
-                  'Työntekijöitesi hyvinvointi on meille tärkeää',
+                  t('agency_benefit.first'),
+                  t('agency_benefit.second'),
+                  t('agency_benefit.third'),
                 ]}
               />
             </Spacing>
@@ -109,27 +116,27 @@ const FooterPage: React.FC<FooterPageProps> = () => {
             <Grid xs={3} item>
               <img src={logo} alt="logo" className="bw-logo" />
               <Spacing m5 />
-              <Typography>Yhteystiedot</Typography>
-              <Typography>Yrjönkatu 29 C</Typography>
-              <Typography>00100 Helsinki</Typography>
-              <Typography>info@keikkakaveri.fi</Typography>
+              <Typography>{t('contact_information')}</Typography>
+              <Typography>{t('app_contact_information.address')}</Typography>
+              <Typography>{t('app_contact_information.address_part2')}</Typography>
+              <Typography>{t('app_contact_information.email')}</Typography>
             </Grid>
             <Grid xs={3} item>
               <FooterColumn
-                header="Ajankohtaista"
-                list={['Uutiset', 'Artikkelit', 'Twitter', 'Youtube']}
+                header={t('current_events')}
+                list={[t('news'), t('articles'), t('twitter'), t('youtube')]}
               />
             </Grid>
             <Grid xs={3} item>
               <FooterColumn
-                header="Yhteistyössä"
-                list={['Työturvakeskus', 'ESR-rahasto', 'Kestävä keikkatyö']}
+                header={t('collaborators')}
+                list={[t('centre_for_occupational_safety'), t('european_social_fund'), t('kestava_keikkatyo')]}
               />
             </Grid>
             <Grid xs={3} item>
               <FooterColumn
-                header="Tutustu"
-                list={['Tietopankki', 'Keikkakaveri', 'Tietosuojaseloste']}
+                header={t('learn_more')}
+                list={[t('tietopankki'), t('app_title'), t('privacy_policy')]}
               />
             </Grid>
           </Grid>
