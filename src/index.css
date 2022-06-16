@@ -55,9 +55,9 @@ code {
 
 .responsibilty-card {
   background-color: white;
-  /* margin: 1rem 0 !important; */
-  margin-right: 1rem;
-  height: 32rem !important;
+  margin: 1rem 1rem 1rem 0;
+  height: 100% !important; /* 32rem */
+  max-height: 70vh !important;
   overflow: auto;
   border-radius: 4px;
   border: 1px solid rgba(200, 200, 200, 150);
@@ -592,9 +592,10 @@ nav * {
   margin-bottom: 1rem;
 } */
 
+/*
 .react-swipeable-view-container {
   height: 100vh;
-}
+} */
 
 .databank-nav-link {
   text-decoration: none !important;

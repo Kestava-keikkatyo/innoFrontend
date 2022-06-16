@@ -144,14 +144,4 @@ const LandingPage = () => {
   );
 };
 
-// const useStyles = makeStyles((theme) => ({
-//   // necessary for content to be below app bar
-//   list: {
-//     '& .MuiList-root': {
-//       width: '130px !important',
-//     },
-//     top: '39px !important',
-//     left: '-40px !important',
-//   },
-// }));
 export default LandingPage;
