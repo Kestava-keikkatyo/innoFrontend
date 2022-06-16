@@ -3,6 +3,7 @@ export default {
   log_in: "Se connecter",
   sign_up: "S'enregister",
   read_more: "Lire la suite",
+  email: "E-mail",
 
   // contact information
   contact_information: "Coordonnées",
@@ -73,4 +74,20 @@ export default {
     second: "L'automatisation facilite l'orientation",
     third: "Le bien-être de vos travailleurs est important pour nous",
   },
+
+  // LoginPage
+  main_page: "Retour à la page d'accueil",
+  email_label: "E-mail",
+  password: "Mot de passe",
+  name: "Votre nom",
+  confirm: "Confirmez le mot de passe",
+  role: "Rôle",
+  category: "Catégorie",
+  field_required: "Champ de saisie obligatoire",
+  terms_of_use: "En vous inscrivant, vous acceptez de donner vos informations à des ",
+  terms_agency: "agences",
+  invalid_email_address: "Adresse e-mail invalide",
+  invalid_length: "3 caractères minimum",
+  invalid_name: "Nom invalide",
+  invalid_password: "Mot de passe invalide",
 };
