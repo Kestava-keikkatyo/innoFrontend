@@ -92,7 +92,7 @@ const usersReducer = (state = initialState, action: UsersAction) => {
       return {
         ...state,
         loading: false,
-        users: state.users.filter((item) => item._id !== action.data.id),
+        users: state.users.filter((item) => item._id !== action.data._id),
       };
     }
     case usersType.USER_UPDATE_STATUS_REQUEST: {

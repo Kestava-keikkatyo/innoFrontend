@@ -56,7 +56,7 @@ export const deleteUser = (id: string) => async (dispatch: any) => {
       type: usersType.USER_DELETED_REQUEST,
     });
     const data = await usersService.deleteUser(id);
-    dispatch({ type: usersType.USER_DELETED_SUCCESS, data: { id } });
+    dispatch({ type: usersType.USER_DELETED_SUCCESS, data: { _id: id } });
     console.log("deleted data", data);
   } catch (e) {
     dispatch({

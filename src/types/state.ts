@@ -60,12 +60,12 @@ interface UserCreated {
 
 interface UserDeletedRequest {
   type: typeof usersType.USER_DELETED_REQUEST;
-  data: { id: string };
+  data: User;
 }
 
 interface UserDeletedSuccess {
   type: typeof usersType.USER_DELETED_SUCCESS;
-  data: { id: string };
+  data: { _id: string };
 }
 
 interface UserUpdateStatusRequest {
