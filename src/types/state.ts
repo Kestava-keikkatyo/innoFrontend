@@ -24,13 +24,9 @@ export interface UsersState {
   fetchError?: string;
 }
 
-interface UserGetAllRequest {
-  type: typeof usersType.USER_GETALL_REQUEST;
-  data: any;
-}
-interface UserGetAllSuccess {
-  type: typeof usersType.USER_GETALL_SUCCESS;
-  data: any;
+interface UserGetAll {
+  type: typeof usersType.USER_GET_ALL_REQUEST | typeof usersType.USER_GET_ALL_SUCCESS;
+  data: User[];
 }
 
 interface UserActionFailure {
@@ -88,8 +84,7 @@ interface UserUpdateStatusSuccess {
 }
 
 export type UsersAction =
-  | UserGetAllRequest
-  | UserGetAllSuccess
+  | UserGetAll
   | UserActionFailure
   | UserCurrentRequest
   | UserCurrentSuccess

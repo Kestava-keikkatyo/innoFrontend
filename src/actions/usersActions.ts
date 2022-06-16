@@ -11,10 +11,10 @@ import fileService from "../services/fileService";
 export const fetchAllUsers = () => async (dispatch: any) => {
   try {
     dispatch({
-      type: usersType.USER_GETALL_REQUEST,
+      type: usersType.USER_GET_ALL_REQUEST,
     });
     const res = await usersService.fetchAllUsers();
-    dispatch({ type: usersType.USER_GETALL_SUCCESS, data: res.data });
+    dispatch({ type: usersType.USER_GET_ALL_SUCCESS, data: res.data });
   } catch (e) {
     dispatch({
       type: usersType.USER_ACTION_FAILURE,
@@ -74,10 +74,10 @@ export const deleteUser = (id: string) => async (dispatch: any) => {
 export const fetchAllWorkers = () => async (dispatch: any) => {
   try {
     dispatch({
-      type: usersType.USER_GETALL_REQUEST,
+      type: usersType.USER_GET_ALL_REQUEST,
     });
     const res = await usersService.fetchAllWorkers();
-    dispatch({ type: usersType.USER_GETALL_SUCCESS, data: res.data });
+    dispatch({ type: usersType.USER_GET_ALL_SUCCESS, data: res.data });
   } catch (e) {
     dispatch({
       type: usersType.USER_ACTION_FAILURE,
@@ -94,10 +94,10 @@ export const fetchAllWorkers = () => async (dispatch: any) => {
 export const fetchAllAgencies = () => async (dispatch: any) => {
   try {
     dispatch({
-      type: usersType.USER_GETALL_REQUEST,
+      type: usersType.USER_GET_ALL_REQUEST,
     });
     const res = await usersService.fetchAllAgencies();
-    dispatch({ type: usersType.USER_GETALL_SUCCESS, data: res.data });
+    dispatch({ type: usersType.USER_GET_ALL_SUCCESS, data: res.data });
   } catch (e) {
     dispatch({
       type: usersType.USER_ACTION_FAILURE,

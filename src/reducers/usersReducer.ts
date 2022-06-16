@@ -19,13 +19,13 @@ const initialState: UsersState = {
  */
 const usersReducer = (state = initialState, action: UsersAction) => {
   switch (action.type) {
-    case usersType.USER_GETALL_REQUEST: {
+    case usersType.USER_GET_ALL_REQUEST: {
       return {
         ...state,
         loading: true,
       };
     }
-    case usersType.USER_GETALL_SUCCESS: {
+    case usersType.USER_GET_ALL_SUCCESS: {
       return {
         ...state,
         users: action.data,
