@@ -1,6 +1,6 @@
 export default {
   // general
-  kirjaudu_sisaan: "Se connecter",
+  log_in: "Se connecter",
   sign_up: "S'enregister",
   read_more: "Lire la suite",
 
@@ -24,8 +24,8 @@ export default {
 
   // LandingPage
   app_title: "Keikkakaveri",
-  tyopoyta: "Bureau",
-  tietopankki: "Banque informatique",
+  desktop: "Bureau",
+  databank: "Banque informatique",
 
   // FirstLandingPage
   slogan: "Quand le personnel se sent bien, le travail s'écoule.",

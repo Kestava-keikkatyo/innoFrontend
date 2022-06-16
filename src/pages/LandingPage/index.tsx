@@ -61,12 +61,12 @@ const LandingPage = () => {
           <Grid container>
             <Typography>
               <Link className="landing-nav-link" to="/home">
-                {t('tyopoyta')}
+                {t('desktop')}
               </Link>
             </Typography>
             <Typography>
               <Link className="landing-nav-link2" to="/databank">
-                {t('tietopankki')}
+                {t('databank')}
               </Link>
             </Typography>
           </Grid>
@@ -86,7 +86,7 @@ const LandingPage = () => {
             </Select>
             <Typography>
               <Link className="landing-login" to="/login">
-                {t('kirjaudu_sisaan')}
+                {t('log_in')}
               </Link>
             </Typography>
           </Grid>

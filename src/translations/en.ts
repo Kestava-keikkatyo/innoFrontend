@@ -212,7 +212,7 @@ export default {
   contact_information: "Contact information",
   app_contact_information: {
     address: "Yrjönkatu 29 C",
-    address_part2: "FI-00100 Helsinki, Finland",
+    address_part2: "FI-00100 Helsinki, Finland  ",
     email: "info@keikkakaveri.fi",
   },
 
@@ -383,9 +383,7 @@ export default {
   finnish: "Suomi",
 
   finland: "Finnish",
-  tyopoyta: "Desktop",
-  tietopankki: "Data Bank",
-  kirjaudu_sisaan: "Log in",
+  desktop: "Desktop",
   //Joblist
   limit_search: "Limit search",
   jobs_found: "Jobs found",

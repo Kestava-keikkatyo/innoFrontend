@@ -376,9 +376,7 @@ export default {
   finnish: "Suomi",
 
   finland: "Suomi",
-  tyopoyta: "Työpöytä",
-  tietopankki: "Tietopankki",
-  kirjaudu_sisaan: "Kirjaudu sisään",
+  desktop: "Työpöytä",
   form_tooltip_preview: 'Esikatsele lomaketta',
   form_tooltip_edit: 'Muokkaa lomaketta',
   form_tooltip_delete: 'Poista lomake',

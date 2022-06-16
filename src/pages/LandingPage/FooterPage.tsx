@@ -50,7 +50,7 @@ const CustomCard: React.FC<any> = ({ header, content }) => {
       </CardContent>
       <CardActions disableSpacing>
         <Button>{t('sign_up')}</Button>
-        <Button>{t('kirjaudu_sisaan')}</Button>
+        <Button>{t('log_in')}</Button>
       </CardActions>
     </Card>
   )
@@ -136,7 +136,7 @@ const FooterPage: React.FC<FooterPageProps> = () => {
             <Grid xs={3} item>
               <FooterColumn
                 header={t('learn_more')}
-                list={[t('tietopankki'), t('app_title'), t('privacy_policy')]}
+                list={[t('databank'), t('app_title'), t('privacy_policy')]}
               />
             </Grid>
           </Grid>
