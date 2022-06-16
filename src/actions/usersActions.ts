@@ -31,10 +31,10 @@ export const fetchAllUsers = () => async (dispatch: any) => {
 export const fetchUserById = (id: string) => async (dispatch: any) => {
   try {
     dispatch({
-      type: usersType.USER_CURRENT_REQUEST,
+      type: usersType.USER_GET_CURRENT_REQUEST,
     });
     const res = await usersService.fetchUserById(id);
-    dispatch({ type: usersType.USER_CURRENT_SUCCESS, data: res.data });
+    dispatch({ type: usersType.USER_GET_CURRENT_SUCCESS, data: res.data });
   } catch (error) {
     dispatch({
       type: usersType.USER_ACTION_FAILURE,
@@ -114,10 +114,10 @@ export const fetchAllAgencies = () => async (dispatch: any) => {
 export const showMyProfile = (id: string) => async (dispatch: any) => {
   try {
     dispatch({
-      type: usersType.USER_CURRENT_REQUEST,
+      type: usersType.USER_GET_CURRENT_REQUEST,
     });
     const res = await usersService.showMyProfile(id);
-    dispatch({ type: usersType.USER_CURRENT_SUCCESS, data: res.data });
+    dispatch({ type: usersType.USER_GET_CURRENT_SUCCESS, data: res.data });
   } catch (error) {
     dispatch({
       type: usersType.USER_ACTION_FAILURE,

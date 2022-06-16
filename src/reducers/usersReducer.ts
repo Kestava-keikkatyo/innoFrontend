@@ -39,14 +39,14 @@ const usersReducer = (state = initialState, action: UsersAction) => {
         loading: false,
       };
     }
-    case usersType.USER_CURRENT_REQUEST: {
+    case usersType.USER_GET_CURRENT_REQUEST: {
       return {
         ...state,
         currentUser: action.data,
         loading: true,
       };
     }
-    case usersType.USER_CURRENT_SUCCESS: {
+    case usersType.USER_GET_CURRENT_SUCCESS: {
       return {
         ...state,
         loading: false,

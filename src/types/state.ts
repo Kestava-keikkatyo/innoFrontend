@@ -33,14 +33,9 @@ interface UserActionFailure {
   type: typeof usersType.USER_ACTION_FAILURE;
   data: string;
 }
-interface UserCurrentRequest {
-  type: typeof usersType.USER_CURRENT_REQUEST;
-  data: any;
-}
-
-interface UserCurrentSuccess {
-  type: typeof usersType.USER_CURRENT_SUCCESS;
-  data: any;
+interface UserGetCurrent {
+  type: typeof usersType.USER_GET_CURRENT_REQUEST | typeof usersType.USER_GET_CURRENT_SUCCESS;
+  data: User;
 }
 
 interface UserUpdateRequest {
@@ -81,8 +76,7 @@ interface UserUpdateStatusSuccess {
 export type UsersAction =
   | UserGetAll
   | UserActionFailure
-  | UserCurrentRequest
-  | UserCurrentSuccess
+  | UserGetCurrent
   | UserUpdateRequest
   | UserUpdateSuccess
   | UserCreated
