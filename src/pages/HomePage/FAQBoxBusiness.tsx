@@ -36,7 +36,7 @@ export default function CustomizedTables() {
 
   return (
     <div style={{ marginTop: 16 }}>
-      <Grid item xs={12} className={classes.grid}>
+      <Grid item xs={12}>
         <List component="nav" aria-label="mailbox folders">
           {/*
           Tulostaa FAQ-JSONin Accordion-listana
@@ -75,10 +75,6 @@ const useStyles = makeStyles((theme) => ({
   },
   list: {
     margin: "5% 0",
-  },
-  grid: {
-    overflowY: "scroll",
-    height: "60vh",
   },
   text: {
     color: "#000000DE",

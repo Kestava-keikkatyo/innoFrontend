@@ -20,25 +20,25 @@ const BusinessHome = () => {
   const { t } = useTranslation();
   
   return (
-    <Grid container>
-          <Grid item xs={12} md={6} style={{ marginTop: '1%' }}>
+    <Grid container className="homeContainer">
+      <Grid item xs={12} md={6} className="home">
       <Card variant="outlined">
           <CardHeader
             title={t("faq")}
             subheader=""
           />
-          <CardContent style={{height:'68.6vh'}}>
+          <CardContent className="homeB">
           <Faq />
           </CardContent>
         </Card>
       </Grid>
-      <Grid item xs={12} md={6} style={{ marginTop: '1%' }}>
+      <Grid item xs={12} md={6} className="home">
         <Card variant="outlined">
           <CardHeader
             title={t('business_responsibility')}
             subheader=""
           />
-          <CardContent style={{height:'68.6vh'}}>
+          <CardContent style={{paddingBottom: "0"}}>
             <List component="nav" aria-label="mailbox folders">
               <Divider />
               {vastuualueet.business.map((e, i) => (

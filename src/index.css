@@ -22,12 +22,12 @@ code {
 .report-container,
 .mood-form-container {
   background-color: white;
-  margin: 1rem 0 !important;
-  padding: 5rem 1rem 1rem;
+  /* margin: 1rem 0 !important; */
+  padding: 1rem 1rem 1rem; /* 5rem 1rem 1rem */
   border-radius: 4px;
   border: 1px solid rgba(200, 200, 200, 150);
-  -webkit-box-shadow: 5px 5px 10px -2px rgba(0, 0, 0, 0.4);
-  box-shadow: 5px 5px 10px -2px rgba(0, 0, 0, 0.4);
+  /* -webkit-box-shadow: 5px 5px 10px -2px rgba(0, 0, 0, 0.4);
+  box-shadow: 5px 5px 10px -2px rgba(0, 0, 0, 0.4); */
 }
 
 .report-container-v2-one {
@@ -479,7 +479,7 @@ nav * {
 .mood-step-one svg:hover {
   color: white !important;
   background: rgb(255, 124, 0);
-  transition: 0.8s;
+  transition: 0s; /* 0.8s -> 0s */
   box-shadow: 0 4px 10px 0 rgb(0 0 0 / 25%);
   background-image: linear-gradient(
     136deg,
@@ -705,4 +705,27 @@ nav * {
 
 .Mui-selected {
   color: #1870C9 !important;
+}
+
+.home {
+  margin-top: 1%;
+  max-width: 49%;
+}
+
+.home2 {
+  height: 32.2rem;
+  overflow-y: scroll;
+  padding: 0 !important;
+}
+
+.homeB {
+  height: 35.2rem;
+  overflow-y: scroll;
+  padding: 0 !important;
+}
+
+.homeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }

@@ -107,7 +107,7 @@ const useStyles = makeStyles({
         </Grid>
       </Grid>
         <Typography style={{paddingTop: "5%"}}>{t('write_a_comment')}</Typography>
-        <TextField
+        <TextField style={{width: "70%"}}
             onChange={handleChange}
             placeholder={t('tell_feelings')}
             multiline

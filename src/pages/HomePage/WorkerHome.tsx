@@ -52,12 +52,12 @@ const WorkerHome = () => {
   };
 
   return (
-    <Grid container>
-      <Grid item xs={12} md={6} style={{ marginBottom: '3%' }}>
+    <Grid container className="homeContainer">
+      <Grid item xs={12} md={6} className="home">
         <MoodForm handleSubmit={onHandleSubmit} />
       </Grid>
-      <Grid item xs={12} md={6} style={{ marginBottom: '3%' }}>
-        <div className="report-container" style={{ height: '100%' }}>
+      <Grid item xs={12} md={6} className="home">
+        <div className="report-container" style={{height: '100%'}}>
           <CardHeader
            /* action={
               <Button variant="outlined" color="primary">
@@ -67,7 +67,7 @@ const WorkerHome = () => {
             title={t('workers_responsibility')}
             subheader=""
           />
-          <CardContent>
+          <CardContent style={{padding: "0"}}>
             <List component="nav" aria-label="mailbox folders">
               {vastuualueet.worker.map((e, i) => (
                 <ListItem key={i} divider>

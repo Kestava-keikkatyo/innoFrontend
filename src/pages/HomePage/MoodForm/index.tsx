@@ -30,7 +30,6 @@ import MoodStepEnd from './MoodStepEnd';
 
 const ColorlibConnector = withStyles({
 
-
   alternativeLabel: {
     top: 22,
   },
@@ -209,7 +208,6 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
         {activeStep === steps.length ? (
           <div>
             <br/>
-
         {/*    <Typography className={classes.instructions}>
               All steps completed - you&apos;re finished
             </Typography>
@@ -233,8 +231,6 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
             */}
               {activeStep === steps.length - 1 ? (
               <p> </p>
-
-              
               ) : (
                 <Button
                   variant="contained"
@@ -263,7 +259,4 @@ export default MoodForm;
                 >
               {t('finish')}
               </Button> 
-
-
-
 */
