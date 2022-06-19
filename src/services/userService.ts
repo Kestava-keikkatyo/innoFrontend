@@ -3,8 +3,7 @@
  * @desc User requests to backend.
  */
 import axios from "axios";
-import { Credentials, roles } from "../types/types";
-import { User } from "../types/state";
+import { Credentials, roles, User } from "../types/types";
 import { loadUser } from "../utils/storage";
 
 import baseUrl from "../utils/baseUrl";
