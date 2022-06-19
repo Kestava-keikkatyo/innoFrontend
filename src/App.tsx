@@ -1,76 +1,75 @@
-import React, { useEffect } from "react"
-import { Switch, Route, Redirect, useLocation } from "react-router-dom"
-import SnackbarNotification from "./components/SnackbarNotification"
-import LandingPage from "./pages/LandingPage"
-import LoginPage from "./pages/LoginPage"
-import HomePage from "./pages/HomePage"
-import ContractsPage from "./pages/ContractsPage"
-import PrivateRoute from "./components/PrivateRoute"
-import ProcessPage from "./pages/ProcessPage"
-import FormsPage from "./pages/FormsPage"
-import WorkerStatistics from "./pages/MoodStatistics"
-import AgencyStatistics from "./pages/MoodStatistics/AgencyStatistics"
-import { CssBaseline } from "@mui/material"
-import NewFormPage from "./pages/FormsPage/NewFormPage"
-import EditFormPage from "./pages/FormsPage/EditFormPage"
-import FormPreviewPage from "./pages/FormPreviewPage"
-import { roles } from "./types/types"
-import DatabankRoute from "./components/DatabankRoute"
-import BestPractices from "./pages/Databank/BestPractices"
-import JobLifeline from "./pages/Databank/JobLifeline"
-import RoleResponsibilities from "./pages/Databank/RoleResponsibilities"
-import Databank from "./pages/Databank"
-import ReportPage from "./pages/ReportPage"
-import ReportsPage from "./pages/ReportPage/ReportsPage"
-import BusinessContractPage from "./pages/BusinessContractsPage"
-import BusinessContractPreviewPage from "./pages/BusinessContractPreviewPage"
-import BusinessContractFill from "./pages/BusinessContractPreviewPage/BusinessContractFill"
-import BusinessContractEdit from "./pages/BusinessContractPreviewPage/BusinessContractEdit"
-import ContractFormManagerPage from "./pages/ContractsPage/ContractFormManagerPage"
-import ContractFormPreviewPage from "./pages/ContractsPage/ContractFormManagerPage/ContractFormPreviewPage"
-import ContractFormEditPage from "./pages/ContractsPage/ContractFormManagerPage/ContractFormEditPage"
-import ProfileViewPage from "./pages/ProfilePage/ProfileViewPage"
-import EditProfilePage from "./pages/ProfilePage/EditProfilePage"
-import JobList from "./pages/JobPage"
-import SettingsPage from "./pages/SettingsPage"
-import BusinessWorkRequest from "./pages/BusinessWorkOverview"
-import WorkInfo from "./pages/BusinessWorkOverview/WorkInfo"
-import WorkRequest from "./pages/GigRequest"
-import WorkerJobs from "./pages/WorkerWorkOverview"
-import AllUsersList from "./pages/AdminPage/AllUsersList"
-import User from "./pages/AdminPage/user/User"
-import FAQIndex from "./pages/FAQPage/index"
-import CreateUser from "./pages/AdminPage/CreateUser"
-import ReportList from "./pages/AdminPage/ReportList"
-import FeedbackList from "./pages/AdminPage/FeedbackList"
-import FeedbackDetails from "./pages/AdminPage/FeedbackDetails"
-import FeelingList from "./pages/AdminPage/FeeligList"
-import ReportDetails from "./pages/AdminPage/ReportDetails"
-import FeelingDetails from "./pages/AdminPage/FeelingDetails"
-import Jobs from "./pages/JobPage/Jobs"
-import JobDetails from "./pages/JobPage/JobDetails"
-import CreatedJobs from "./pages/JobPage/CreatedJobs"
-import JobUpdate from "./pages/JobPage/JobUpdate"
-import CreateJob from "./pages/JobPage/CreateJob"
-import SendFeedback from "./pages/FeedbackPage/SendFeedback"
-import Feedbacks from "./pages/FeedbackPage/Feedbacks"
-import Details from "./pages/FeedbackPage/Details"
-import FeedbackPage from "./pages/FeedbackPage"
-import Workers from "./pages/Profile/Workers"
+import React, { useEffect } from 'react'
+import { Switch, Route, Redirect, useLocation } from 'react-router-dom'
+import SnackbarNotification from './components/SnackbarNotification'
+import LandingPage from './pages/LandingPage'
+import LoginPage from './pages/LoginPage'
+import HomePage from './pages/HomePage'
+import ContractsPage from './pages/ContractsPage'
+import PrivateRoute from './components/PrivateRoute'
+import ProcessPage from './pages/ProcessPage'
+import FormsPage from './pages/FormsPage'
+import WorkerStatistics from './pages/MoodStatistics'
+import AgencyStatistics from './pages/MoodStatistics/AgencyStatistics'
+import { CssBaseline } from '@mui/material'
+import NewFormPage from './pages/FormsPage/NewFormPage'
+import EditFormPage from './pages/FormsPage/EditFormPage'
+import FormPreviewPage from './pages/FormPreviewPage'
+import { roles } from './types/types'
+import DatabankRoute from './components/DatabankRoute'
+import BestPractices from './pages/Databank/BestPractices'
+import JobLifeline from './pages/Databank/JobLifeline'
+import RoleResponsibilities from './pages/Databank/RoleResponsibilities'
+import Databank from './pages/Databank'
+import ReportPage from './pages/ReportPage'
+import ReportsPage from './pages/ReportPage/ReportsPage'
+import BusinessContractPage from './pages/BusinessContractsPage'
+import BusinessContractPreviewPage from './pages/BusinessContractPreviewPage'
+import BusinessContractFill from './pages/BusinessContractPreviewPage/BusinessContractFill'
+import BusinessContractEdit from './pages/BusinessContractPreviewPage/BusinessContractEdit'
+import ContractFormManagerPage from './pages/ContractsPage/ContractFormManagerPage'
+import ContractFormPreviewPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormPreviewPage'
+import ContractFormEditPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormEditPage'
+import ProfileViewPage from './pages/ProfilePage/ProfileViewPage'
+import JobList from './pages/JobPage'
+import SettingsPage from './pages/SettingsPage'
+import BusinessWorkRequest from './pages/BusinessWorkOverview'
+import WorkInfo from './pages/BusinessWorkOverview/WorkInfo'
+import WorkRequest from './pages/GigRequest'
+import WorkerJobs from './pages/WorkerWorkOverview'
+import AllUsersList from './pages/AdminPage/AllUsersList'
+import User from './pages/AdminPage/user/User'
+import FAQIndex from './pages/FAQPage/index'
+import CreateUser from './pages/AdminPage/CreateUser'
+import ReportList from './pages/AdminPage/ReportList'
+import FeedbackList from './pages/AdminPage/FeedbackList'
+import FeedbackDetails from './pages/AdminPage/FeedbackDetails'
+import FeelingList from './pages/AdminPage/FeeligList'
+import ReportDetails from './pages/AdminPage/ReportDetails'
+import FeelingDetails from './pages/AdminPage/FeelingDetails'
+import Jobs from './pages/JobPage/Jobs'
+import JobDetails from './pages/JobPage/JobDetails'
+import CreatedJobs from './pages/JobPage/CreatedJobs'
+import JobUpdate from './pages/JobPage/JobUpdate'
+import CreateJob from './pages/JobPage/CreateJob'
+import SendFeedback from './pages/FeedbackPage/SendFeedback'
+import Feedbacks from './pages/FeedbackPage/Feedbacks'
+import Details from './pages/FeedbackPage/Details'
+import FeedbackPage from './pages/FeedbackPage'
+import Workers from './pages/Profile/Workers'
 import { ThemeProvider, Theme, StyledEngineProvider, createTheme } from '@mui/material/styles';
 import makeStyles from '@mui/styles/makeStyles';
-import UserProfile from "./pages/Profile/User"
-import Agencies from "./pages/Profile/Agencies"
-import Application from "./pages/JobPage/Application"
-import UserUpdate from "./pages/Profile/UserUpdate"
-import ReportReplyPage from "./pages/ReportPage/ReportReplyPage"
-import CreateTopic from "./pages/Topic/CreateTopic"
-import Topics from "./pages/Topic/Topics"
-import TopicUpdate from "./pages/Topic/TopicUpdate"
-import SendWorkRequest from "./pages/WorkRequestPage/SendWorkRequest"
-import WorkRequests from "./pages/WorkRequestPage/WorkRequests"
-import WorkRequestUpdate from "./pages/WorkRequestPage/WorkRequestUpdate"
-import FeedbackUpdate from "./pages/FeedbackPage/FeedbackUpdate"
+import UserProfile from './pages/Profile/User'
+import Agencies from './pages/Profile/Agencies'
+import Application from './pages/JobPage/Application'
+import UserUpdate from './pages/Profile/UserUpdate'
+import ReportReplyPage from './pages/ReportPage/ReportReplyPage'
+import CreateTopic from './pages/Topic/CreateTopic'
+import Topics from './pages/Topic/Topics'
+import TopicUpdate from './pages/Topic/TopicUpdate'
+import SendWorkRequest from './pages/WorkRequestPage/SendWorkRequest'
+import WorkRequests from './pages/WorkRequestPage/WorkRequests'
+import WorkRequestUpdate from './pages/WorkRequestPage/WorkRequestUpdate'
+import FeedbackUpdate from './pages/FeedbackPage/FeedbackUpdate'
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface DefaultTheme extends Theme {}
@@ -85,7 +84,7 @@ const App: React.FC = () => {
   const theme = createTheme()
 
   const useStyles = makeStyles((theme) => {
-    root: {
+    {
       // some CSS that access to theme
     }
   })
@@ -212,10 +211,6 @@ const App: React.FC = () => {
             </PrivateRoute>
             <PrivateRoute path="/profiles/profile-view">
               <ProfileViewPage />
-            </PrivateRoute>
-            /** Old user profile */
-            <PrivateRoute path="/profile/edit-profile">
-              <EditProfilePage />
             </PrivateRoute>
             <PrivateRoute path="/profile/edit">
               <UserUpdate myProfile />
