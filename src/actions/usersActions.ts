@@ -1,174 +1,186 @@
-import usersService from "../services/usersService";
-import { severity, UserInformation, usersType } from "../types/types";
-import { setAlert } from "./alertActions";
-import history from "../utils/history";
-import fileService from "../services/fileService";
+import usersService from '../services/usersService'
+import { roles, severity, User, UserInformation, usersType } from '../types/types'
+import { setAlert } from './alertActions'
+import history from '../utils/history'
+import fileService from '../services/fileService'
+import { Dispatch } from 'redux'
+import {
+  UserAction,
+  UserActionFailure,
+  UserGetAll,
+  UserGetAllSuccess,
+  UserGetCurrentRequest,
+  UserGetCurrentSuccess,
+  UserUpdateStatus,
+} from '../types/state'
 
 /**
  * @function
  * @desc Fetches all users.
  */
-export const fetchAllUsers = () => async (dispatch: any) => {
-  try {
-    dispatch({
-      type: usersType.USER_GET_ALL_REQUEST,
-    });
-    const res = await usersService.fetchAllUsers();
-    dispatch({ type: usersType.USER_GET_ALL_SUCCESS, data: res.data });
-  } catch (e) {
-    dispatch({
-      type: usersType.USER_ACTION_FAILURE,
-      data: e,
-    });
-    dispatch(setAlert("Failed to fetch users!: " + e, severity.Error, 15));
+export const fetchAllUsers =
+  () => async (dispatch: Dispatch<UserGetAll | UserGetAllSuccess | UserActionFailure>) => {
+    try {
+      dispatch({
+        type: usersType.USER_GET_ALL_REQUEST,
+      })
+      const res = await usersService.fetchAllUsers()
+      dispatch({ type: usersType.USER_GET_ALL_SUCCESS, data: res.data })
+    } catch (e) {
+      dispatch({
+        type: usersType.USER_ACTION_FAILURE,
+        data: e as string,
+      })
+      setAlert('Failed to fetch users!: ' + e, severity.Error, 15)(dispatch)
+    }
   }
-};
 
 /**
  * @function
- * @desc Fetches jod by Id.
+ * @desc Fetches user by Id.
  */
-export const fetchUserById = (id: string) => async (dispatch: any) => {
-  try {
-    dispatch({
-      type: usersType.USER_GET_CURRENT_REQUEST,
-    });
-    const res = await usersService.fetchUserById(id);
-    dispatch({ type: usersType.USER_GET_CURRENT_SUCCESS, data: res.data });
-  } catch (error) {
-    dispatch({
-      type: usersType.USER_ACTION_FAILURE,
-      data: error,
-    });
-    dispatch(
-      setAlert("Failed to fetch the user: " + error, severity.Error, 15)
-    );
+export const fetchUserById =
+  (id: string) =>
+  async (dispatch: Dispatch<UserGetCurrentRequest | UserGetCurrentSuccess | UserActionFailure>) => {
+    try {
+      dispatch({
+        type: usersType.USER_GET_CURRENT_REQUEST,
+      })
+      const res = await usersService.fetchUserById(id)
+      dispatch({ type: usersType.USER_GET_CURRENT_SUCCESS, data: res.data })
+    } catch (e) {
+      dispatch({
+        type: usersType.USER_ACTION_FAILURE,
+        data: e as string,
+      })
+      setAlert('Failed to fetch the user: ' + e, severity.Error, 15)(dispatch)
+    }
   }
-};
 
 /**
  * @function
- * @desc Delete job by Id
+ * @desc Delete user by Id
  */
-export const deleteUser = (id: string) => async (dispatch: any) => {
-  try {
-    dispatch({
-      type: usersType.USER_DELETED_REQUEST,
-    });
-    const data = await usersService.deleteUser(id);
-    dispatch({ type: usersType.USER_DELETED_SUCCESS, data: { _id: id } });
-    console.log("deleted data", data);
-  } catch (e) {
-    dispatch({
-      type: usersType.USER_ACTION_FAILURE,
-      data: e,
-    });
-    dispatch(setAlert("Failed to delete the user: " + e, severity.Error, 15));
+export const deleteUser =
+  (user: User) => async (dispatch: Dispatch<UserAction | UserActionFailure>) => {
+    try {
+      dispatch({
+        type: usersType.USER_DELETED_REQUEST,
+        data: user,
+      })
+      const responseData = await usersService.deleteUser(user._id as string)
+      dispatch({ type: usersType.USER_DELETED_SUCCESS, data: user })
+      setAlert('User deleted successfully!')
+      console.log('deleted data', responseData)
+    } catch (e) {
+      dispatch({
+        type: usersType.USER_ACTION_FAILURE,
+        data: e as string,
+      })
+      setAlert('Failed to delete the user: ' + e, severity.Error, 15)(dispatch)
+    }
   }
-};
 
 /**
  * @function
  * @desc Fetches all workers.
  */
-export const fetchAllWorkers = () => async (dispatch: any) => {
-  try {
-    dispatch({
-      type: usersType.USER_GET_ALL_REQUEST,
-    });
-    const res = await usersService.fetchAllWorkers();
-    dispatch({ type: usersType.USER_GET_ALL_SUCCESS, data: res.data });
-  } catch (e) {
-    dispatch({
-      type: usersType.USER_ACTION_FAILURE,
-      data: e,
-    });
-    dispatch(setAlert("Failed to fetch workers!: " + e, severity.Error, 15));
+export const fetchAllWorkers =
+  () => async (dispatch: Dispatch<UserGetAll | UserGetAllSuccess | UserActionFailure>) => {
+    try {
+      dispatch({
+        type: usersType.USER_GET_ALL_REQUEST,
+      })
+      const res = await usersService.fetchAllWorkers()
+      dispatch({ type: usersType.USER_GET_ALL_SUCCESS, data: res.data })
+    } catch (e) {
+      dispatch({
+        type: usersType.USER_ACTION_FAILURE,
+        data: e as string,
+      })
+      setAlert('Failed to fetch workers!: ' + e, severity.Error, 15)(dispatch)
+    }
   }
-};
 
 /**
  * @function
  * @desc Fetches all agencies.
  */
-export const fetchAllAgencies = () => async (dispatch: any) => {
-  try {
-    dispatch({
-      type: usersType.USER_GET_ALL_REQUEST,
-    });
-    const res = await usersService.fetchAllAgencies();
-    dispatch({ type: usersType.USER_GET_ALL_SUCCESS, data: res.data });
-  } catch (e) {
-    dispatch({
-      type: usersType.USER_ACTION_FAILURE,
-      data: e,
-    });
-    dispatch(setAlert("Failed to fetch agencies!: " + e, severity.Error, 15));
+export const fetchAllAgencies =
+  () => async (dispatch: Dispatch<UserGetAll | UserGetAllSuccess | UserActionFailure>) => {
+    try {
+      dispatch({
+        type: usersType.USER_GET_ALL_REQUEST,
+      })
+      const res = await usersService.fetchAllAgencies()
+      dispatch({ type: usersType.USER_GET_ALL_SUCCESS, data: res.data })
+    } catch (e) {
+      dispatch({
+        type: usersType.USER_ACTION_FAILURE,
+        data: e as string,
+      })
+      setAlert('Failed to fetch agencies!: ' + e, severity.Error, 15)(dispatch)
+    }
   }
-};
 
 /**
  * @function
  * @desc Fetches user's profile.
  */
-export const showMyProfile = (id: string) => async (dispatch: any) => {
-  try {
-    dispatch({
-      type: usersType.USER_GET_CURRENT_REQUEST,
-    });
-    const res = await usersService.showMyProfile(id);
-    dispatch({ type: usersType.USER_GET_CURRENT_SUCCESS, data: res.data });
-  } catch (error) {
-    dispatch({
-      type: usersType.USER_ACTION_FAILURE,
-      data: error,
-    });
-    dispatch(
-      setAlert("Failed to fetch user's profile: " + error, severity.Error, 15)
-    );
+export const showMyProfile =
+  (id: string) =>
+  async (dispatch: Dispatch<UserGetCurrentRequest | UserGetCurrentSuccess | UserActionFailure>) => {
+    try {
+      dispatch({
+        type: usersType.USER_GET_CURRENT_REQUEST,
+      })
+      const res = await usersService.showMyProfile(id)
+      dispatch({ type: usersType.USER_GET_CURRENT_SUCCESS, data: res.data })
+    } catch (e) {
+      dispatch({
+        type: usersType.USER_ACTION_FAILURE,
+        data: e as string,
+      })
+      setAlert('Failed to fetch user profile: ' + e, severity.Error, 15)(dispatch)
+    }
   }
-};
 
 /**
  * @function
  * @desc update user.
  */
 export const updateUser =
-  (
-    userId: string,
-    userInformation: UserInformation,
-    profilePhoto?: File,
-    myProfile?: boolean
-  ) =>
-  async (dispatch: any) => {
+  (user: User, profilePhoto?: File, myProfile?: boolean) =>
+  async (dispatch: Dispatch<UserAction | UserActionFailure>) => {
     try {
       dispatch({
         type: usersType.USER_UPDATE_REQUEST,
-      });
-      console.log("stop here");
+        data: user,
+      })
+
       if (profilePhoto) {
-        const res = await fileService.postFile(profilePhoto as any);
-        userInformation.profilePicture = res.data.fileUrl;
+        const res = await fileService.postFile(profilePhoto)
+        user.profilePicture = res.data.fileUrl
       } else if (profilePhoto === null) {
-        userInformation.profilePicture = "";
+        user.profilePicture = ''
       }
 
-      const res = await usersService.updateUser(userId, userInformation);
-      dispatch({ type: usersType.USER_UPDATE_SUCCESS, data: res.data });
+      const res = await usersService.updateUser(user)
+      dispatch({ type: usersType.USER_UPDATE_SUCCESS, data: res.data })
 
       if (myProfile) {
-        history.push("/profile");
+        history.push('/profile')
       } else {
-        history.push("/users");
+        history.push('/users')
       }
     } catch (error) {
       dispatch({
         type: usersType.USER_ACTION_FAILURE,
-        data: error,
-      });
-      dispatch(setAlert("Failed to update user: " + error, severity.Error, 15));
+        data: error as string,
+      })
+      setAlert('Failed to update user: ' + error, severity.Error, 15)(dispatch)
     }
-  };
+  }
 
 /**
  * Create user
@@ -177,57 +189,56 @@ export const updateUser =
  * @param {string} role - Admin
  */
 export const createAdmin =
-  (name: string, email: string, password: string) => async (dispatch: any) => {
+  (name: string, email: string, password: string) =>
+  async (dispatch: Dispatch<UserAction | UserActionFailure>) => {
     try {
       dispatch({
         type: usersType.USER_CREATED_REQUEST,
-        data: { name, email, userType: "admin", password },
-      });
+        data: { name, email, userType: roles.Admin, password, active: true },
+      })
 
-      const { data } = await usersService.createUser(
-        name,
-        email,
-        "admin",
-        password
-      );
+      const { data } = await usersService.createUser(name, email, 'admin', password)
       dispatch({
         type: usersType.USER_CREATED_SUCCESS,
         data,
-      });
-      dispatch(setAlert("user created successfully!"));
-      console.log("Created user", data);
+      })
+      setAlert('user created successfully!')(dispatch)
+      console.log('Created user', data)
     } catch (e) {
       dispatch({
         type: usersType.USER_ACTION_FAILURE,
-        data: e,
-      });
-      dispatch(setAlert("Failed to create the user: " + e, severity.Error, 15));
+        data: e as string,
+      })
+      setAlert('Failed to create the user: ' + e, severity.Error, 15)(dispatch)
     }
-  };
+  }
 
 /**
  * @function
  * @desc Update user's status by Id
  */
 export const updateUSerStatus =
-  (id: string, active: boolean) => async (dispatch: any) => {
+  (user: User, active: boolean) =>
+  async (dispatch: Dispatch<UserUpdateStatus | UserActionFailure>) => {
     try {
       dispatch({
         type: usersType.USER_UPDATE_STATUS_REQUEST,
-      });
-      const data = await usersService.setUserStatus(id, active);
+        data: { user, active },
+      })
+      const data = await usersService.setUserStatus(user._id as string, active)
       dispatch({
         type: usersType.USER_UPDATE_STATUS_SUCCESS,
-        data: { id, active },
-      });
-      console.log("deactivate data", data);
+        data: { user, active },
+      })
+      if (active === false) {
+        setAlert('User deactivated successfully!')(dispatch)
+      } else setAlert('User activated successfully!')(dispatch)
+      console.log('deactivate data', data)
     } catch (e) {
       dispatch({
         type: usersType.USER_ACTION_FAILURE,
-        data: e,
-      });
-      dispatch(
-        setAlert("Failed to deactivate the user: " + e, severity.Error, 15)
-      );
+        data: e as string,
+      })
+      setAlert('Failed to deactivate the user: ' + e, severity.Error, 15)(dispatch)
     }
-  };
+  }

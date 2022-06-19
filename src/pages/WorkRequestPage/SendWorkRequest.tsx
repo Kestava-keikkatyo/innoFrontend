@@ -1,51 +1,50 @@
-import React from 'react';
-import { Button, CircularProgress, Typography } from "@mui/material";
+import React, { useEffect } from 'react';
+import { Button, CircularProgress, Typography } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import * as Yup from "yup";
-import { Form, Formik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
+import * as Yup from 'yup';
+import { Form, Formik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 import FormikField, { DatePickerField } from '../../components/FormField';
-import { User, WorkRequest } from '../../types/types';
+import { WorkRequest } from '../../types/types';
 import { IRootState } from '../../utils/store';
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'react-i18next'
 import { sendWorkRequest } from '../../actions/workRequestActions';
 import { useParams } from 'react-router-dom';
 import { fetchUserById } from '../../actions/usersActions';
 import PageLoading from '../../components/PageLoading';
-import { useEffect } from 'react';
 
 type AgencyUrlParams = {
   agencyId: string
 }
 
 const initialValues: WorkRequest = {
-  recipient:"",
-  headline: "",
+  recipient:'',
+  headline: '',
   workersNumber: null,
-  requirements: "",
-  desirableSkills: "",
-  details: "",
+  requirements: '',
+  desirableSkills: '',
+  details: '',
   startDate: null,
   endDate: null,
 };
 
 const CreateWorkRequestSchema = Yup.object().shape({
-    headline: Yup.string().min(2, "Headline should be two letters at least!").required("Headline is required!"),
+    headline: Yup.string().min(2, 'Headline should be two letters at least!').required('Headline is required!'),
     workersNumber: Yup.number().typeError('You must specify a number').min(1, 'Min value 1.'),
-    requirements: Yup.string().min(3, "Requirements should be three letters at least!"),
-    desirableSkills: Yup.string().min(3, "DesirableSkills should be three letters at least!"),
-    details: Yup.string().min(3, "Details should be three letters at least!"),
+    requirements: Yup.string().min(3, 'Requirements should be three letters at least!'),
+    desirableSkills: Yup.string().min(3, 'DesirableSkills should be three letters at least!'),
+    details: Yup.string().min(3, 'Details should be three letters at least!'),
     startDate: Yup.date().nullable(),
     endDate: Yup.date().nullable(),
 });
 
-const SendWorkRequest: React.FC<any> = () => {
+const SendWorkRequest: React.FC = () => {
   const { t } = useTranslation()
   const classes = useStyles();
   const dispatch = useDispatch();
 
   const { agencyId } = useParams<AgencyUrlParams>();
-    const agencyData : User = useSelector((state: IRootState) => state.users.currentUser);
+    const agencyData = useSelector((state: IRootState) => state.users.currentUser);
 
     useEffect(() => {
         dispatch(fetchUserById(agencyId));
