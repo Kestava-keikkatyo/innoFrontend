@@ -84,7 +84,7 @@ const SendWorkRequest: React.FC = () => {
                 <DatePickerField name="startDate" label={t('work_request_startDate')} {...props} />
                 <DatePickerField name="endDate" label={t('work_request_endDate')} {...props} />
               </div>
-              {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="primary" className={classes.button}>{t('create')}</Button>}
+              {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="primary" className={classes.button}>{t('submit')}</Button>}
             </Form>
             );
           }}
