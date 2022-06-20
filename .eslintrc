@@ -21,7 +21,7 @@
   "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
 	"rules": {
     "react/react-in-jsx-scope": "off",
-    "camelcase": "error",
+    //"camelcase": "warn",
     "spaced-comment": "warn",
     "quotes": ["warn", "single"],
     "no-duplicate-imports": "error"
