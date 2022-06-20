@@ -1,4 +1,4 @@
-import { DataGrid, GridColumns, GridRowModel } from '@mui/x-data-grid';
+import { DataGrid, GridColumns } from '@mui/x-data-grid';
 import * as React from 'react';
 import { DeleteOutline } from '@mui/icons-material';
 import { deleteUser, fetchAllUsers, updateUSerStatus } from '../../actions/usersActions';
@@ -9,7 +9,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import { User } from '../../types/types';
 
 
-const UserList: React.FC<React.ReactNode> = () => {
+const UserList: React.FC = () => {
 
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -72,17 +72,17 @@ const UserList: React.FC<React.ReactNode> = () => {
       field: 'action',
       headerName: 'Action',
       width: 200,
-      renderCell: (params: GridRowModel) => {
+      renderCell: (params) => {
         return (
           <>
             <DeleteOutline
               className={classes.userListDelete}
-              onClick={() => handleDelete(params.id)}
+              onClick={() => handleDelete(params.row._id)}
               
             />
             <button 
              className={classes.userListDeactive}
-             onClick={() => handleStatus(params.id, !params.row.active)}>{params.row.active ? 'Deactivate' : 'Activate'}</button>
+             onClick={() => handleStatus(params.row._id, !params.row.active)}>{params.row.active ? 'Deactivate' : 'Activate'}</button>
             
           </>
         );
