@@ -38,9 +38,9 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
           </Link>
         </Grid>
       </Grid>
-      <Spacing m5 />
+      <div style={{margin: "0.5rem"}} />
       <Grid container className="landing-part3">
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={4} style={{marginBottom: "1rem"}}>
           <div className="responsibilty-card">
             <CardHeader
               action={
@@ -62,9 +62,9 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
             </CardContent>
           </div>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={4} style={{marginBottom: "1rem"}}>
           <div className="responsibilty-card">
-            <CardHeader
+            <CardHeader className="ContentContainer"
               action={
                 <Button variant="outlined" color="primary">
                   Lue lisää
@@ -84,9 +84,9 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
             </CardContent>
           </div>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={4} style={{marginBottom: "1rem"}}>
           <div className="responsibilty-card">
-            <CardHeader
+            <CardHeader className="ContentContainer"
               action={
                 <Button variant="outlined" color="primary">
                   Lue lisää

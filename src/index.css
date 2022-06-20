@@ -55,7 +55,7 @@ code {
 
 .responsibilty-card {
   background-color: white;
-  margin: 1rem 1rem 1rem 0;
+  margin: 1rem 1rem 0 0;
   height: 100% !important; /* 32rem */
   max-height: 70vh !important;
   overflow: auto;
@@ -583,7 +583,7 @@ nav * {
   padding: 1rem;
 }
 
-/*
+/* 
 .swipable-card-container {
   border-radius: 4px;
   border: 1px solid rgba(200, 200, 200, 150);
@@ -703,6 +703,12 @@ nav * {
   line-height: 1.334;
 }
 
+.header3 {
+  font-weight: 400;
+  font-size: 3rem;
+  line-height: 1.167;
+}
+
 .Mui-selected {
   color: #1870C9 !important;
 }
@@ -728,4 +734,41 @@ nav * {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.ContentContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 900px) {
+  .react-swipeable-view-container {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    flex-direction: initial !important;
+    transition: none !important;
+    direction: initial !important;
+    will-change: initial !important;
+    transform: initial !important;
+  }
+
+  .landing-stepper {
+    display: none !important;
+  }
+
+  /*
+  .responsibilty-card {
+    max-height: 95% !important;
+  } */
+
+  .landing-part4 {
+    height: fit-content !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .landing-container {
+    max-width: 100% !important;
+    margin: 3rem 0 0 0 !important;
+  }
 }

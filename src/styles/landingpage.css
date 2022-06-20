@@ -53,22 +53,24 @@
 
 .landing-container {
   max-width: 30%;
-  margin-top: 3rem;
+  margin-top: 3rem 0.5% 0 0.5%;
 }
 
 .landing-container2 {
   justify-content: space-around;
   align-content: center;
   height: 100%;
+  margin-bottom: 3%;
 }
 
-.landing-part2 {
+.landing-WLS {
   /*
   background-color: #eb5a00;
   border-radius: 5px !important;
   border: 1px solid #eb5a00 !important;
   */
-  height: calc(100vh - 230px);
+  height: fit-content !important;
+  margin-top: 1rem;
 }
 
 .landing-part4 {
@@ -79,9 +81,10 @@
 }
 
 .footer-item {
+  width: 16%;
   max-width: fit-content;
-  margin-left: 2rem;
-  margin-right: 2rem;
+  margin-left: 2%;
+  margin-right: 2%;
 }
 
 .footer-list {
@@ -140,7 +143,7 @@
 
 .bw-logo {
   filter: invert(1) grayscale(1) !important;
-  height: 100px;
+  width: 100%;
 }
 
 .text-white {
@@ -207,8 +210,8 @@
 
 #partner-box { 
   display: flex !important;
-  margin: 0 0.5rem;
-  justify-content: space-around;
+  margin: 0 3%;
+  justify-content: space-between;
   /* Removed animation from landing page
   -webkit-animation-name: move;
   animation-name: move;
@@ -239,7 +242,6 @@
 
 .lifespan-container {
   display: flex !important;
-  height: 150px !important;
   overflow: visible;
 }
 
