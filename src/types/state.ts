@@ -256,43 +256,45 @@ export interface WorkRequestState {
   workRequests: WorkRequest[]
   fetchError?: string
 }
-interface WorkRequestSend {
-  type: typeof workRequestType.WORKREQUEST_SEND_REQUEST | workRequestType.WORKREQUEST_SEND_SUCCESS
-  data: WorkRequest
-}
-
-interface WorkRequestFailure {
-  type: typeof workRequestType.WORKREQUEST_FAILURE
-  data: string
-}
-
-interface WorkRequestGetAll {
+export interface WorkRequestSimilarActions {
   type:
-    | typeof workRequestType.WORKREQUEST_GETALL_REQUEST
-    | workRequestType.WORKREQUEST_GETALL_SUCCESS
-  data: WorkRequest[]
-}
-
-interface WorkRequestGetCurrent {
-  type:
-    | typeof workRequestType.WORKREQUEST_GET_CURRENT_REQUEST
-    | workRequestType.WORKREQUEST_GET_CURRENT_SUCCESS
-  data: WorkRequest
-}
-
-interface WorkRequestUpdated {
-  type:
+    | typeof workRequestType.WORKREQUEST_SEND_REQUEST
+    | workRequestType.WORKREQUEST_SEND_SUCCESS
     | typeof workRequestType.WORKREQUEST_UPDATED_REQUEST
     | workRequestType.WORKREQUEST_UPDATED_SUCCESS
   data: WorkRequest
 }
 
+export interface WorkRequestFailure {
+  type: typeof workRequestType.WORKREQUEST_FAILURE
+  data: string
+}
+
+export interface WorkRequestGetAllRequest {
+  type: typeof workRequestType.WORKREQUEST_GETALL_REQUEST
+}
+
+export interface WorkRequestGetAllSuccess {
+  type: workRequestType.WORKREQUEST_GETALL_SUCCESS
+  data: WorkRequest[]
+}
+
+export interface WorkRequestGetCurrent {
+  type: typeof workRequestType.WORKREQUEST_GET_CURRENT_REQUEST
+}
+
+export interface WorkRequestGetCurrentSuccess {
+  type: workRequestType.WORKREQUEST_GET_CURRENT_SUCCESS
+  data: WorkRequest
+}
+
 export type WorkRequestActions =
-  | WorkRequestSend
+  | WorkRequestSimilarActions
   | WorkRequestFailure
-  | WorkRequestGetAll
+  | WorkRequestGetAllRequest
+  | WorkRequestGetAllSuccess
   | WorkRequestGetCurrent
-  | WorkRequestUpdated
+  | WorkRequestGetCurrentSuccess
 
 /**
  * Job state & action types
