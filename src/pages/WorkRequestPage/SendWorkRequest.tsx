@@ -30,10 +30,10 @@ const initialValues: WorkRequest = {
 
 const CreateWorkRequestSchema = Yup.object().shape({
     headline: Yup.string().min(2, 'Headline should be two letters at least!').required('Headline is required!'),
-    workersNumber: Yup.number().typeError('You must specify a number').min(1, 'Min value 1.'),
-    requirements: Yup.string().min(3, 'Requirements should be three letters at least!'),
+    workersNumber: Yup.number().typeError('You must specify a number').min(1, 'Min value 1.').required('Numer of workers is required!'),
+    requirements: Yup.string().min(3, 'Requirements should be three letters at least!').required('Requirements are required!'),
     desirableSkills: Yup.string().min(3, 'DesirableSkills should be three letters at least!'),
-    details: Yup.string().min(3, 'Details should be three letters at least!'),
+    details: Yup.string().min(3, 'Details should be three letters at least!').required('Details are required!'),
     startDate: Yup.date().nullable(),
     endDate: Yup.date().nullable(),
 });
