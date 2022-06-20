@@ -606,6 +606,7 @@ export default {
   work_request_sent_at: 'lähetyspäivämäärä',
   your_work_requests: 'Sinun työpyynnöt',
   update_work_request: 'Päivitä työpyyntö',
+  Work_request: 'Työpyyntö',
 
   // CreateUser
   add_new_admin: 'Lisää uusi järjestelmänvalvoja',

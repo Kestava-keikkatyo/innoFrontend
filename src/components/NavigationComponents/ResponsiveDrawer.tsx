@@ -1,35 +1,34 @@
 import makeStyles from '@mui/styles/makeStyles';
-import React from "react"
-import Divider from "@mui/material/Divider"
-import List from "@mui/material/List"
-import ListItem from "@mui/material/ListItem"
-import ListItemIcon from "@mui/material/ListItemIcon"
-import ListItemText from "@mui/material/ListItemText"
-import AssignmentOutlinedIcon from "@mui/icons-material/AssignmentOutlined"
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday"
-import InsertDriveFileOutlinedIcon from "@mui/icons-material/InsertDriveFileOutlined"
-import MoodIcon from "@mui/icons-material/Mood"
-import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline"
-import ExitToAppIcon from "@mui/icons-material/ExitToApp"
-import { PersonAdd, Security } from "@mui/icons-material"
-import { Link } from "react-router-dom"
-import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined"
-import { logout } from "../../actions/userActions"
-import { useDispatch, useSelector } from "react-redux"
-import { roles } from "../../types/types"
-import { IRootState } from "../../utils/store"
-import logo from "../../assets/keikkakaveri_logo.png"
-import GroupsIcon from "@mui/icons-material/Group"
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined"
+import React from 'react'
+import Divider from '@mui/material/Divider'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import ListItemText from '@mui/material/ListItemText'
+import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined'
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday'
+import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined'
+import MoodIcon from '@mui/icons-material/Mood'
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
+import ExitToAppIcon from '@mui/icons-material/ExitToApp'
+import { PersonAdd, Security } from '@mui/icons-material'
+import { Link } from 'react-router-dom'
+import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined'
+import { logout } from '../../actions/userActions'
+import { useDispatch, useSelector } from 'react-redux'
+import { roles } from '../../types/types'
+import { IRootState } from '../../utils/store'
+import logo from '../../assets/keikkakaveri_logo.png'
+import GroupsIcon from '@mui/icons-material/Group'
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
 
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'react-i18next'
 // import TranslateIcon from '@mui/icons-material/Translate';
-import LibraryBooksOutlinedIcon from "@mui/icons-material/LibraryBooksOutlined"
-import WorkOutlineIcon from "@mui/icons-material/WorkOutline"
-import SupervisorAccountOutlinedIcon from "@mui/icons-material/SupervisorAccountOutlined"
-import FormatList from "@mui/icons-material/FormatListBulleted"
-import LiveHelpIcon from "@mui/icons-material/LiveHelpOutlined"
-import AssignmentTurnedInOutlinedIcon from "@mui/icons-material/AssignmentTurnedInOutlined"
+import LibraryBooksOutlinedIcon from '@mui/icons-material/LibraryBooksOutlined'
+import WorkOutlineIcon from '@mui/icons-material/WorkOutline'
+import FormatList from '@mui/icons-material/FormatListBulleted'
+import LiveHelpIcon from '@mui/icons-material/LiveHelpOutlined'
+import AssignmentTurnedInOutlinedIcon from '@mui/icons-material/AssignmentTurnedInOutlined'
 import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
 // import fi1 from '../NavigationComponents/fi1.png';
@@ -76,7 +75,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
         <List className="overflow-container">
           <ListItem button component={Link} to="/home" onClick={handleClick}>
             <ListItemIcon>{<HomeOutlinedIcon />}</ListItemIcon>
-            <ListItemText primary={t("home")} />
+            <ListItemText primary={t('home')} />
           </ListItem>
           <Divider />
           {(role === roles.Agency || role === roles.Business) && (
@@ -85,7 +84,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                 <ListItemIcon>
                   <InsertDriveFileOutlinedIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("forms")} />
+                <ListItemText primary={t('forms')} />
               </ListItem>
               <Divider />
             </>
@@ -96,7 +95,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                 <ListItemIcon>
                   <ContactsOutlinedIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("contracts")} />
+                <ListItemText primary={t('contracts')} />
               </ListItem>
               <Divider />
             </>
@@ -113,7 +112,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                 <ListItemIcon>
                   <AssignmentOutlinedIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("business_contracts")} />
+                <ListItemText primary={t('business_contracts')} />
               </ListItem>
               <Divider />
             </>
@@ -124,7 +123,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                 <ListItemIcon>
                   <AssignmentTurnedInOutlinedIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("jobs")} />
+                <ListItemText primary={t('jobs')} />
               </ListItem>
               <Divider />
             </>
@@ -135,7 +134,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                 <ListItemIcon>
                   <WorkOutlineIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("work_request")} />
+                <ListItemText primary={t('work_request')} />
               </ListItem>
               <Divider />
             </>
@@ -146,7 +145,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                 <ListItemIcon>
                   <MoodIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("mood_stats")} />
+                <ListItemText primary={t('mood_stats')} />
               </ListItem>
               <Divider />
             </>
@@ -157,7 +156,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                 <ListItemIcon>
                   <GroupOutlinedIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("list_title_workers")} />
+                <ListItemText primary={t('list_title_workers')} />
               </ListItem>
               <Divider />
             </>
@@ -168,7 +167,18 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                 <ListItemIcon>
                   <GroupOutlinedIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("list_title_agencies")} />
+                <ListItemText primary={t('list_title_agencies')} />
+              </ListItem>
+              <Divider />
+            </>
+          )}
+          {(role === roles.Business) && (
+            <>
+              <ListItem button component={Link} to="/workRequests" onClick={handleClick}>
+                <ListItemIcon>
+                  <AssignmentOutlinedIcon />
+                </ListItemIcon>
+                <ListItemText primary={t('Work_request')} />
               </ListItem>
               <Divider />
             </>
@@ -179,7 +189,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                 <ListItemIcon>
                   <ErrorOutlineIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("reports")} />
+                <ListItemText primary={t('reports')} />
               </ListItem>
               <Divider />
             </>
@@ -188,14 +198,14 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
             <>
               <ListItem button component={Link} to="/home" onClick={handleClick}>
                 <ListItemIcon>{<CalendarTodayIcon />}</ListItemIcon>
-                <ListItemText primary={t("schedule")} />
+                <ListItemText primary={t('schedule')} />
               </ListItem>
               <Divider />
               <ListItem button component={Link} to="/business-contracts" onClick={handleClick}>
                 <ListItemIcon>
                   <LibraryBooksOutlinedIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("business_contracts")} />
+                <ListItemText primary={t('business_contracts')} />
               </ListItem>
               <Divider />
             </>
@@ -206,7 +216,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                 <ListItemIcon>
                   <FormatList />
                 </ListItemIcon>
-                <ListItemText primary={t("my_work")} />
+                <ListItemText primary={t('my_work')} />
               </ListItem>
               <Divider />
             </>
@@ -217,7 +227,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                 <ListItemIcon>
                   <WorkOutlineIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("jobs")} />
+                <ListItemText primary={t('jobs')} />
               </ListItem>
               <Divider />
             </>
@@ -228,7 +238,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                 <ListItemIcon>
                   <MoodIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("moods")} />
+                <ListItemText primary={t('moods')} />
               </ListItem>
               <Divider />
             </>
@@ -239,14 +249,14 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                 <ListItemIcon>
                   <ErrorOutlineIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("reports")} />
+                <ListItemText primary={t('reports')} />
               </ListItem>
               <Divider />
               <ListItem button component={Link} to="/faq" onClick={handleClick}>
                 <ListItemIcon>
                   <LiveHelpIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("faq")} />
+                <ListItemText primary={t('faq')} />
               </ListItem>
               <Divider />
             </>
@@ -257,7 +267,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                 <ListItemIcon>
                   <FeedbackOutlinedIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("feedback")} />
+                <ListItemText primary={t('feedback')} />
               </ListItem>
               <Divider />
             </>
@@ -268,7 +278,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                 <ListItemIcon>
                   <GroupsIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("User List")} />
+                <ListItemText primary={t('User List')} />
               </ListItem>
               <Divider />
             </>
@@ -279,7 +289,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                 <ListItemIcon>
                   <PersonAdd />
                 </ListItemIcon>
-                <ListItemText primary={t("Create User")} />
+                <ListItemText primary={t('Create User')} />
               </ListItem>
               <Divider />
             </>
@@ -290,14 +300,14 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                 <ListItemIcon>
                   <GroupsIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("topic_navigate")} />
+                <ListItemText primary={t('topic_navigate')} />
               </ListItem>
               <Divider />
             </>
           )}
           <ListItem button component={Link} to="/databank" onClick={handleClick}>
             <ListItemIcon>{<Security />}</ListItemIcon>
-            <ListItemText primary={t("databank")} />
+            <ListItemText primary={t('databank')} />
           </ListItem>
           <Divider />
         </List>
@@ -312,7 +322,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
         <ListItemIcon>
           <ExitToAppIcon />
         </ListItemIcon>
-        <ListItemText primary={t("exit_application")} />
+        <ListItemText primary={t('exit_application')} />
       </ListItem>
     </div>
   )
@@ -324,20 +334,20 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     height: 100,
     padding: 0,
-    display: "block",
-    marginLeft: "auto",
-    marginRight: "auto",
-    marginBottom: "5%",
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginBottom: '5%',
   },
   nested: {
     paddingLeft: theme.spacing(4),
   },
   list: {
-    "& .MuiList-root": {
-      width: "130px !important",
+    '& .MuiList-root': {
+      width: '130px !important',
     },
-    top: "38px !important",
-    left: "30px !important",
+    top: '38px !important',
+    left: '30px !important',
   },
 }))
 
