@@ -22,9 +22,11 @@
 	"rules": {
     "react/react-in-jsx-scope": "off",
     //"camelcase": "warn",
-    "spaced-comment": "warn",
-    "quotes": ["warn", "single"],
-    "no-duplicate-imports": "error"
+    "spaced-comment": ["warn", "always", { "markers": ["/"] }],
+    "quotes": ["warn", "single", {"avoidEscape": true}],
+    "no-multi-spaces": "warn",
+    "no-duplicate-imports": "error",
+    "no-debugger": "error"
   },
   "settings": {
     "import/resolver": {
