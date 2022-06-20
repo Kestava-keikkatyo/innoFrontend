@@ -1,26 +1,25 @@
 import React, { useEffect } from 'react';
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import * as Yup from "yup";
-import { Form, Formik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
+import * as Yup from 'yup';
+import { Form, Formik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 import FormikField, { DatePickerField } from '../../components/FormField';
 import { setAlert } from '../../actions/alertActions';
-import { useTranslation } from "react-i18next"
-import i18next from "i18next"
+import { useTranslation } from 'react-i18next'
+import i18next from 'i18next'
 import { WorkRequest } from '../../types/types';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { IRootState } from '../../utils/store';
 import PageLoading from '../../components/PageLoading';
-import { Link } from 'react-router-dom';
 import { fetchWorkRequestById, updateWorkRequest } from '../../actions/workRequestActions';
 
 const UpdateWorkRequestSchema = Yup.object().shape({
-    headline: Yup.string().min(2, "Headline should be two letters at least!").required("Headline is required!"),
+    headline: Yup.string().min(2, 'Headline should be two letters at least!').required('Headline is required!'),
     workersNumber: Yup.number().typeError('You must specify a number').min(1, 'Min value 1.'),
-    requirements: Yup.string().min(3, "Requirements should be three letters at least!"),
-    desirableSkills: Yup.string().min(3, "DesirableSkills should be three letters at least!"),
-    details: Yup.string().min(3, "Details should be three letters at least!"),
+    requirements: Yup.string().min(3, 'Requirements should be three letters at least!'),
+    desirableSkills: Yup.string().min(3, 'DesirableSkills should be three letters at least!'),
+    details: Yup.string().min(3, 'Details should be three letters at least!'),
     startDate: Yup.date().nullable(),
     endDate: Yup.date().nullable(),
 });
@@ -47,9 +46,9 @@ const WorkRequestUpdate: React.FC = () => {
     );
     
     const handleSubmit = (workRequest: WorkRequest) => {
-        dispatch(updateWorkRequest(workRequestId, workRequest));
+        dispatch(updateWorkRequest(workRequest));
 
-        dispatch(setAlert(i18next.t("work_request_updated_successfully")));
+        dispatch(setAlert(i18next.t('work_request_updated_successfully')));
     };
     
     return (
