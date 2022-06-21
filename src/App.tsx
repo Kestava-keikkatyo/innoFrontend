@@ -32,8 +32,6 @@ import ContractFormEditPage from './pages/ContractsPage/ContractFormManagerPage/
 import ProfileViewPage from './pages/ProfilePage/ProfileViewPage'
 import JobList from './pages/JobPage'
 import SettingsPage from './pages/SettingsPage'
-import BusinessWorkRequest from './pages/BusinessWorkOverview'
-import WorkInfo from './pages/BusinessWorkOverview/WorkInfo'
 import WorkRequest from './pages/GigRequest'
 import WorkerJobs from './pages/WorkerWorkOverview'
 import AllUsersList from './pages/AdminPage/AllUsersList'
@@ -57,7 +55,6 @@ import Details from './pages/FeedbackPage/Details'
 import FeedbackPage from './pages/FeedbackPage'
 import Workers from './pages/Profile/Workers'
 import { ThemeProvider, Theme, StyledEngineProvider, createTheme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
 import UserProfile from './pages/Profile/User'
 import Agencies from './pages/Profile/Agencies'
 import Application from './pages/JobPage/Application'
@@ -82,12 +79,6 @@ declare module '@mui/styles/defaultTheme' {
 const App: React.FC = () => {
 
   const theme = createTheme()
-
-  const useStyles = makeStyles((theme) => {
-    {
-      // some CSS that access to theme
-    }
-  })
 
   // extra toolbar prevents content from going underneath appbar.
   return (
@@ -317,17 +308,8 @@ const App: React.FC = () => {
             >
               <FormPreviewPage />
             </PrivateRoute>
-            <PrivateRoute path="/work-overview" roles={[roles.Business]}>
-              <BusinessWorkRequest />
-            </PrivateRoute>
             <PrivateRoute path="/work-request" roles={[roles.Agency]}>
               <WorkRequest />
-            </PrivateRoute>
-            <PrivateRoute
-              path="/work-info"
-              roles={[roles.Business, roles.Agency, roles.Worker]}
-            >
-              <WorkInfo />
             </PrivateRoute>
             <PrivateRoute path="/forms" roles={[roles.Business, roles.Agency]}>
               <FormsPage />
