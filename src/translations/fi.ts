@@ -383,23 +383,6 @@ export default {
   relocation: 'Muuttoapu',
   accept_terms: 'Hyväksyn käyttöehdot',
 
-  // jobmodal
-  send_agency_contract: ' Lähetä työkeikka pyyntö HP-yritykselle',
-  choose_agency: 'Valitse HP-yritys',
-  tell_position: ' Kerro haettava positio / ilmoituksen otsikko',
-  worker_count: 'Työntekijöiden lukumäärä',
-
-  // PendingJobPosts
-  pending_jobs: 'Käsittelyssä olevat työkeikat',
-  work_task: 'Työkeikka',
-  workers_count: 'Työntekijöiden määrä',
-  start_date: 'Aloitus päivämäärä',
-  end_date: 'Lopetus päivämäärä',
-  created: 'Tehty',
-  joined: 'Liittyi',
-  agency_status: 'Vuokratyöfirman tila',
-  business_status: 'Käyttäjäyrityksen tila',
-
   // feedbackCategory
   feedback_category: 'Palautekategoria',
   category0: 'Kategoriat',
@@ -431,7 +414,6 @@ export default {
   preview_business_contract_form: 'Esikatsele käyttäjäyrityssopimusta',
 
   choose_workers: 'Valitse työntekijät',
-  agency_description_here: '  HP-yrityksen kuvaus tulee tähän',
 
   edit_filled: 'Muokkaa täytettyä yrityssopimusta',
 

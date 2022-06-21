@@ -385,23 +385,6 @@ export default {
   relocation: 'relocation',
   accept_terms: 'I accept the terms',
 
-  // jobmodal
-  send_agency_contract: ' Send work request to agency',
-  choose_agency: 'Choose agency',
-  tell_position: ' Tell headline / position',
-  worker_count: 'Worker count',
-
-  // PendingJobPosts
-  pending_jobs: 'Pending jobs',
-  work_task: 'Work task',
-  workers_count: 'Workers count',
-  start_date: 'Start date',
-  end_date: 'End date',
-  created: 'Created at',
-  joined: 'Joined at',
-  agency_status: 'Agency status',
-  business_status: 'Business status',
-
   // feedbackCategory
   feedback_category: 'Feedback category',
   category0: 'Category',
@@ -435,7 +418,6 @@ export default {
   preview_business_contract_form: 'Preview business contract form',
 
   choose_workers: 'Choose the Workers',
-  agency_description_here: 'agency_description_here',
 
   edit_filled: 'Edit Filled Business Contract',
 
