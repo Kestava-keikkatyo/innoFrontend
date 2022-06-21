@@ -36,7 +36,7 @@ const WorkRequestUpdate: React.FC = () => {
 
     const { workRequestId } = useParams<WorkRequestUrlParams>();
     
-    const workRequestData: any = useSelector((state: IRootState) => state.workRequest.currentWorkRequest);
+    const workRequestData = useSelector((state: IRootState) => state.workRequest.currentWorkRequest);
     useEffect(() => {
       dispatch(fetchWorkRequestById(workRequestId));
     }, [dispatch, workRequestId]);
