@@ -5,6 +5,7 @@ import kkk from '../../assets/partners/kestavakeikkatyo.png'
 import vipuvoima from '../../assets/partners/vipuvoimaa.jpg'
 import ttk from '../../assets/partners/ttk.png'
 import { useTranslation } from 'react-i18next';
+import Spacing from '../../components/Spacing';
 
 export interface FirstLandingPageProps {}
 
@@ -12,6 +13,7 @@ const FirstLandingPage: React.FC<FirstLandingPageProps> = () => {
   const { t } = useTranslation();
   return (
     <Container>
+      <Spacing m3 p2 />
       <div className="landing-banner" />
       <div className="landing-bg-dark text-white intro-container">
         <Typography variant="h1" className="text-center landing-header-offset">

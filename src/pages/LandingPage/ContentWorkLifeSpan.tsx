@@ -32,8 +32,8 @@ const LifeSpanStep: React.FC<any> = ({ header, content, form }) => (
 
 const ContentLifeSpan: React.FC<ContentLifeSpanProps> = () => {
   return (
-    <Container>
-      <Spacing m3 p2 />
+    <Container style={{backgroundColor: "white"}}>
+      <div className='spacing' />
       <Grid
         container
         direction="row"

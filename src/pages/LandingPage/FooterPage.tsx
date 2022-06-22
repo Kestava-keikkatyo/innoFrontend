@@ -60,6 +60,7 @@ const FooterPage: React.FC<FooterPageProps> = () => {
       justifyContent="flex-start"
       className="landing-part4"
     >
+      <div className='spacing2' />
       <Grid item xs={12} className="landing-part41 bg-white">
         <Grid container className="landing-container2">
           <Grid item xs={12} md={4} className="landing-container">

@@ -19,8 +19,8 @@ export interface ContentResponsibilitiesProps {}
 
 const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
   return (
-    <Container>
-      <Spacing m3 p2 />
+    <Container style={{backgroundColor: "white"}}>
+      <div className='spacing' />
       <Grid
         container
         direction="row"

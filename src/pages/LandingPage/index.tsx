@@ -45,7 +45,7 @@ const LandingPage = () => {
   };
 
   return (
-    <div>
+    <div style={{height: "100%"}}>
       <AppBar position="fixed" elevation={1} className="landing-appbar">
         <Toolbar className="toolbar" variant="dense">
           <Typography>
