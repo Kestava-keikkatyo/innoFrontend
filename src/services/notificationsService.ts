@@ -2,9 +2,9 @@
  * @module service/notifications
  * @desc Notifications requests to backend.
  */
-import axios from "axios";
-import { loadUser } from "../utils/storage";
-import baseUrl from "../utils/baseUrl";
+import axios from 'axios'
+import { loadUser } from '../utils/storage'
+import baseUrl from '../utils/baseUrl'
 
 /**
  * @function
@@ -12,9 +12,9 @@ import baseUrl from "../utils/baseUrl";
  */
 const authHeader = () => {
   return {
-    headers: { "x-access-token": `${loadUser().token}` },
-  };
-};
+    headers: { 'x-access-token': `${loadUser().token}` },
+  }
+}
 
 /**
  * @function
@@ -22,12 +22,9 @@ const authHeader = () => {
  * Works for all users.
  */
 const fetchNotifications = async () => {
-  try {
-    return await axios.get(`${baseUrl}/user/notifications`, authHeader());
-  } catch (error) {
-    return Promise.reject(error.response);
-  }
-};
+  const res = await axios.get(`${baseUrl}/user/notifications`, authHeader())
+  return res
+}
 
 /**
  * @function
@@ -36,31 +33,28 @@ const fetchNotifications = async () => {
  */
 const postNotifications = async () => {
   try {
-    return await axios.post(`${baseUrl}/notifications/post`, {}, authHeader());
+    return await axios.post(`${baseUrl}/notifications/post`, {}, authHeader())
   } catch (error) {
-    return Promise.reject(error.response);
+    return Promise.reject(error.response)
   }
-};
+}
 
 /**
  * @function
  * @desc Updates notifications message array list.
  * Used when new notifications message is added to user.
  */
-const updateNotifications = async (
-  userId: string,
-  notificationMessage: string
-) => {
+const updateNotifications = async (userId: string, notificationMessage: string) => {
   try {
     return await axios.put(
       `${baseUrl}/notifications/${userId}/update`,
       { notificationMessage },
-      authHeader()
-    );
+      authHeader(),
+    )
   } catch (error) {
-    return Promise.reject(error.response);
+    return Promise.reject(error.response)
   }
-};
+}
 
 /**
  * @function
@@ -71,15 +65,11 @@ const updateNotifications = async (
  */
 const readNotifications = async (textId: string) => {
   try {
-    return await axios.put(
-      `${baseUrl}/notifications/${textId}/read`,
-      {},
-      authHeader()
-    );
+    return await axios.put(`${baseUrl}/notifications/${textId}/read`, {}, authHeader())
   } catch (error) {
-    return Promise.reject(error.response);
+    return Promise.reject(error.response)
   }
-};
+}
 /**
  * @desc
  * Moves all notifications from unread_messages array to
@@ -88,15 +78,11 @@ const readNotifications = async (textId: string) => {
  */
 const clearAllNotifications = async (clearAllArray: []) => {
   try {
-    return await axios.put(
-      `${baseUrl}/notifications/clearAll`,
-      { clearAllArray },
-      authHeader()
-    );
+    return await axios.put(`${baseUrl}/notifications/clearAll`, { clearAllArray }, authHeader())
   } catch (error) {
-    return Promise.reject(error.response);
+    return Promise.reject(error.response)
   }
-};
+}
 
 export default {
   fetchNotifications,
@@ -104,4 +90,4 @@ export default {
   updateNotifications,
   readNotifications,
   clearAllNotifications,
-};
+}
