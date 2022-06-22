@@ -12,7 +12,7 @@
 
 .text-center {
   text-align: center;
-  height: 15%;
+  /* height: 15%; */
 }
 
 .text-card {
@@ -158,11 +158,11 @@
 }
 
 .intro-container {
-  max-width: 26rem;
-  height: 26rem;
+  max-width: 25rem;
+  height: 25rem;
   border-radius: 14rem;
   margin-bottom: 2rem;
-  padding: 2rem 1rem;
+  padding: 2rem 0.5rem;
 }
 
 .landing-header-offset {
@@ -173,14 +173,14 @@
 }
 
 .landing-text {
-  margin-top: 1rem !important;
-  font-size: 165%;
+  margin-top: 1.5rem !important;
+  font-size: 155%;
   font-weight: 400;
 }
 
 .landing-text2 {
-  margin-top: 1.5rem !important;
-  font-size: 135%;
+  margin-top: 2rem !important;
+  font-size: 130%;
 }
 
 .landing-partner {

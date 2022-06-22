@@ -9,6 +9,7 @@ import {
   CardActions,
   Button,
   Divider,
+  Container,
 } from '@mui/material'
 import React from 'react'
 import Spacing from '../../components/Spacing'
@@ -53,13 +54,11 @@ const CustomCard: React.FC<any> = ({ header, content }) => (
 
 const FooterPage: React.FC<FooterPageProps> = () => {
   return (
-    <Grid
-      container
-      direction="column"
-      alignItems="stretch"
-      justifyContent="flex-start"
-      className="landing-part4"
-    >
+    <Grid container
+     direction="column"
+     alignItems="stretch"
+     justifyContent="flex-start"
+     className="landing-part4" >
       <div className='spacing2' />
       <Grid item xs={12} className="landing-part41 bg-white">
         <Grid container className="landing-container2">
@@ -70,8 +69,7 @@ const FooterPage: React.FC<FooterPageProps> = () => {
                   'Ansaitse rahaa',
                   'Tee joustavasti töitä',
                   'Stressitön keikkatyömalli',
-                ]}
-              />
+                ]} />
           </Grid>
           <Grid item xs={12} md={4} className="landing-container">
               <CustomCard
@@ -80,8 +78,7 @@ const FooterPage: React.FC<FooterPageProps> = () => {
                   'Nopea ja joustava malli hankkia työntekijöitä',
                   'Pääset vaikuttamaan rekrytointiprosessiin',
                   'Hyvinvoivien työntekijöiden tuottavuus on jopa 20% normaalia parempi',
-                ]}
-              />
+                ]} />
           </Grid>
           <Grid item xs={12} md={4} className="landing-container">
               <CustomCard
@@ -90,8 +87,7 @@ const FooterPage: React.FC<FooterPageProps> = () => {
                   'Keskitä perehdyttäminen yhteen paikkaan',
                   'Automatisaatiolla perehdytys on rennompaa',
                   'Työntekijöitesi hyvinvointi on meille tärkeää',
-                ]}
-              />
+                ]} />
           </Grid>
         </Grid>
       </Grid>
@@ -101,38 +97,38 @@ const FooterPage: React.FC<FooterPageProps> = () => {
       <Grid item xs={12} className="landing-part42">
         <Spacing p1 className="landing-spacing">
           <Grid container className="text-black">
-            <Grid item className="footer-item">
-              <img src={logo} alt="keikkakaveri-logo" className="bw-logo" />
-            </Grid>
-            <Grid item className="footer-item">
-              <Typography>Yhteystiedot</Typography>
-              <Typography>Yrjönkatu 29 C</Typography>
-              <Typography>00100 Helsinki</Typography>
-              <Typography>info@keikkakaveri.fi</Typography>
+            <Grid item xs={3} md={4} className="footer-item"
+            style={{display: "flex", flexWrap: "wrap", justifyContent: "space-between"}}>
+              <Grid item xs={8} md={6} >
+                <img src={logo} alt="keikkakaveri-logo" className="bw-logo" />
+              </Grid>
+              <Grid xs={12} md={5} item>
+                <Typography>Yhteystiedot:</Typography>
+                <Typography>Yrjönkatu 29 C</Typography>
+                <Typography>00100 Helsinki</Typography>
+                <Typography>info@keikkakaveri.fi</Typography>
+              </Grid>
             </Grid>
             <Grid item className="footer-item">
               <FooterColumn
                 header="Ajankohtaista"
-                list={['Uutiset', 'Artikkelit', 'Twitter', 'Youtube']}
-              />
+                list={['Uutiset', 'Artikkelit', 'Twitter', 'Youtube']} />
             </Grid>
             <Grid item className="footer-item">
               <FooterColumn
                 header="Yhteistyössä"
-                list={['Työturvakeskus', 'ESR-rahasto', 'Kestävä keikkatyö']}
-              />
+                list={['Työturvakeskus', 'ESR-rahasto', 'Kestävä keikkatyö']} />
             </Grid>
             <Grid item className="footer-item">
               <FooterColumn
                 header="Tutustu"
-                list={['Tietopankki', 'Keikkakaveri', 'Tietosuojaseloste']}
-              />
+                list={['Tietopankki', 'Keikkakaveri', 'Tietosuojaseloste']} />
             </Grid>
           </Grid>
         </Spacing>
       </Grid>
     </Grid>
-  )
-}
+  );
+};
 
 export default FooterPage
