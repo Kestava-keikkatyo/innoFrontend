@@ -15,6 +15,7 @@ import {
   workRequestType,
   User,
   notificationType,
+  Notification,
 } from './types'
 
 export interface UsersState {
@@ -75,19 +76,10 @@ export type UsersAction =
  * All notification state & action types
  */
 export interface NotificationState {
-  currentNotification: Notification | undefined
   loading: boolean
   notifications: Notification[]
   fetchError?: string
 }
-
-export interface NotificationPosted {
-  type:
-    | typeof notificationType.NOTIFICATION_POSTED_REQUEST
-    | typeof notificationType.NOTIFICATION_POSTED_SUCCESS
-  data: Notification
-}
-
 export interface NotificationGetAllRequest {
   type: typeof notificationType.NOTIFICATION_GET_ALL_REQUEST
 }
@@ -97,25 +89,9 @@ export interface NotificationGetAllSuccess {
   data: Notification[]
 }
 
-export interface NotificationGetCurrentRequest {
-  type: typeof notificationType.NOTIFICATION_GET_CURRENT_REQUEST
-}
-
-export interface NotificationGetCurrentSuccess {
-  type: typeof notificationType.NOTIFICATION_GET_CURRENT_SUCCESS
-  data: Notification
-}
-
 export interface NotificationActionFailure {
   type: typeof notificationType.NOTIFICATION_ACTION_FAILURE
   data: string
-}
-
-export interface NotificationUpdated {
-  type:
-    | typeof notificationType.NOTIFICATION_UPDATED_REQUEST
-    | typeof notificationType.NOTIFICATION_UPDATED_SUCCESS
-  data: { isRead: boolean }
 }
 
 export interface NotificationCleared {
@@ -126,13 +102,9 @@ export interface NotificationCleared {
 }
 
 export type NotificationsAction =
-  | NotificationPosted
   | NotificationGetAllRequest
   | NotificationGetAllSuccess
-  | NotificationGetCurrentRequest
-  | NotificationGetCurrentSuccess
   | NotificationActionFailure
-  | NotificationUpdated
   | NotificationCleared
 
 /**
