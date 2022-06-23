@@ -246,7 +246,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
             {notifications ? (
               <Notifications
                 notifications={notifications}
-                handleCloseNotifications={handleCloseNotifications}
+                onClose={handleCloseNotifications}
               />
             ) : (
               <></>
@@ -388,7 +388,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
             {notifications ? (
               <Notifications
                 notifications={notifications}
-                handleCloseNotifications={handleCloseNotifications}
+                onClose={handleCloseNotifications}
               />
             ) : (
               <></>
@@ -534,7 +534,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
             {notifications ? (
               <Notifications
                 notifications={notifications}
-                handleCloseNotifications={handleCloseNotifications}
+                onClose={handleCloseNotifications}
               />
             ) : (
               <></>
@@ -676,7 +676,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
             {notifications ? (
               <Notifications
                 notifications={notifications}
-                handleCloseNotifications={handleCloseNotifications}
+                onClose={handleCloseNotifications}
               />
             ) : (
               <></>
