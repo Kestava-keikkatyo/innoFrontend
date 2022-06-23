@@ -27,6 +27,18 @@ const fetchNotifications = async () => {
 }
 
 /**
+ * @param id
+ * @returns
+ */
+const clearNotification = async (notificationId: string) => {
+  const res = await axios.delete(
+    `${baseUrl}/user/delete/notification/${notificationId}`,
+    authHeader(),
+  )
+  return res
+}
+
+/**
  * @function
  * @desc Post notifications document for user.
  * This is used when user first registers to application.
@@ -86,6 +98,7 @@ const clearAllNotifications = async (clearAllArray: []) => {
 
 export default {
   fetchNotifications,
+  clearNotification,
   postNotifications,
   updateNotifications,
   readNotifications,
