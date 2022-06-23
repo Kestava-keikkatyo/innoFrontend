@@ -71,6 +71,33 @@ export const fetchMyWorkRequests =
 
 /**
  * @function
+ * @desc Fetches user's received work requests.
+ */
+export const fetchReceivedWorkRequests =
+  () =>
+  async (
+    dispatch: Dispatch<WorkRequestGetAllRequest | WorkRequestGetAllSuccess | WorkRequestFailure>,
+  ) => {
+    try {
+      dispatch({
+        type: workRequestType.WORKREQUEST_GETALL_REQUEST,
+      })
+      const res = await workRequestService.fetchReceivedWorkRequests()
+      dispatch({
+        type: workRequestType.WORKREQUEST_GETALL_SUCCESS,
+        data: res.data,
+      })
+    } catch (e) {
+      dispatch({
+        type: workRequestType.WORKREQUEST_FAILURE,
+        data: e as string,
+      })
+      setAlert('Failed to fetch received work requests!: ' + e, severity.Error, 15)(dispatch)
+    }
+  }
+
+/**
+ * @function
  * @desc Fetches work request by Id.
  */
 export const fetchWorkRequestById =

@@ -37,6 +37,15 @@ const fetchMyWorkRequests = async () => {
 
 /**
  * @function
+ * @desc Fetches user's received work requests.
+ */
+const fetchReceivedWorkRequests = async () => {
+  const res = await axios.get(`${baseUrl}/workRequest/received`, authHeader())
+  return res
+}
+
+/**
+ * @function
  * @desc fetchWorkRequestById
  */
 const fetchWorkRequestById = async (id: string) => {
@@ -60,6 +69,7 @@ const updateWorkRequest = async (workRequest: WorkRequest) => {
 export default {
   sendWorkRequest,
   fetchMyWorkRequests,
+  fetchReceivedWorkRequests,
   fetchWorkRequestById,
   updateWorkRequest,
 }
