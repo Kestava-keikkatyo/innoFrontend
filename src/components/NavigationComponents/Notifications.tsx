@@ -10,6 +10,7 @@ import {
   ListItemSecondaryAction,
   MenuItem,
   Button,
+  ListItemButton,
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import CheckIcon from '@mui/icons-material/Check';
@@ -18,6 +19,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useDispatch } from 'react-redux';
 import { clearAllNotifications } from '../../actions/notificationsActions';
 import { useTranslation } from 'react-i18next'
+import { Notification } from '../../types/types'
 
 const Notifications: React.FC<any> = (props: { notifications: any, handleCloseNotifications: Function }) => {
   const classes = useStyles()
@@ -37,20 +39,22 @@ const Notifications: React.FC<any> = (props: { notifications: any, handleCloseNo
   return (
     <Box className={classes.box}>
       <Typography className={classes.notificationsHeader}>{t('notifications')}
-        <Button onClick={handleCloseAllNotifications} style={{left:"32.5%", maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px',top:-11 }}>
-            <CloseIcon style={{ fontSize: 22 }} />
+        <Button onClick={handleCloseAllNotifications} sx={{ position: 'absolute', top: 1, right: 1 }}>
+            <CloseIcon style={{ position: 'absolute', top: 1, right: 1 }} />
           </Button>
       </Typography>
       <Divider />
       <List>
-        {sortedNotifications.length > 0 ? sortedNotifications.map((message: any) => {
+        {sortedNotifications.length > 0 ? sortedNotifications.map((item: Notification) => {
           return (
-            <div key={message._id}>
-              <ListItem key={message._id}>
-                <ListItemText className={classes.listItemText}
-                  primary={message.text}
-                />
-                <ListItemSecondaryAction>
+            <div key={item._id}>
+              <ListItem key={item._id} style={{ display: 'flex', flexDirection: 'row', padding: 0 }}>
+                <ListItemButton>
+                 <ListItemText 
+                  primary={item.type} 
+                 />
+               </ListItemButton>
+               <ListItemSecondaryAction>
                   <IconButton edge="end" aria-label="check" size="large">
                     <CheckIcon />
                   </IconButton>
@@ -71,7 +75,7 @@ const Notifications: React.FC<any> = (props: { notifications: any, handleCloseNo
   );
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   box: {
     width: 300
   },
