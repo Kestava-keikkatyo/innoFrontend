@@ -5,7 +5,6 @@
 import { Dispatch } from 'redux'
 import notificationsService from '../services/notificationsService'
 import {
-  CLEAR_ALL_NOTIFICATION,
   NotificationActionFailure,
   NotificationGetAllRequest,
   NotificationGetAllSuccess,
@@ -67,13 +66,3 @@ export const clearNotification =
       setAlert('Failed to delete this notification!: ' + e, severity.Error, 15)(dispatch)
     }
   }
-
-/**
- * @function
- * @desc Updates notifications document. Moves all notifications from unread_messages array to
- * read_messages array. Used when user presses clearAll button in notifications view.
- */
-export const clearAllNotifications = (clearAllArray: []) => async (dispatch: any) => {
-  const res = await notificationsService.clearAllNotifications(clearAllArray)
-  if (res.status === 200) dispatch({ type: CLEAR_ALL_NOTIFICATION, data: res.data })
-}

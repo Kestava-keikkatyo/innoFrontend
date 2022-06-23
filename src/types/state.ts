@@ -930,15 +930,6 @@ export interface NotificationsState {
   notifications: []
 }
 
-export const CLEAR_ALL_NOTIFICATION = 'CLEAR_ALL_NOTIFICATION'
-
-interface ClearAllNotifications {
-  type: typeof CLEAR_ALL_NOTIFICATION
-  data: any
-}
-
-export type NotificationsActions = ClearAllNotifications
-
 export const FETCH_GIGS = 'FETCH_GIGS'
 export const ACCEPT_WORKERS = 'ACCEPT_WORKERS'
 

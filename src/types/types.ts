@@ -334,7 +334,3 @@ export interface Profile {
   instructions: any[]
   occupationalSafetyRules: any[]
 }
-export interface Notifications {
-  userId: string
-  message: []
-}
