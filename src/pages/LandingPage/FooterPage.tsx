@@ -60,7 +60,7 @@ const FooterPage: React.FC<FooterPageProps> = () => {
      className="landing-part4" >
       <Container>
       <div className='spacing2' />
-      <Grid item xs={12} className="landing-part41 bg-white">
+      <Grid item xs={12}>
         <Grid container className="landing-container2">
           <Grid item xs={12} md={4} className="landing-container">
               <CustomCard
@@ -95,7 +95,7 @@ const FooterPage: React.FC<FooterPageProps> = () => {
       {/*
        * Kortit loppuvat, footer alkaa
        */}
-      <Grid item xs={12} className="landing-part42">
+      <Grid item xs={12} className="bg-orange">
         <Spacing p1 className="landing-spacing">
           <Grid container className="text-black footer-container">
             <Grid item xs={3} md={4} className="footer-item"

@@ -718,7 +718,7 @@ nav * {
 
 .home {
   margin-top: 1%;
-  max-width: 49%;
+  padding: 0 0.5%;
 }
 
 .home2 {
@@ -755,6 +755,10 @@ nav * {
   padding: 3rem;
 }
 
+.icd {
+  height: 100%;
+}
+
 @media screen and (max-width: 900px) {
   .react-swipeable-view-container {
     display: flex !important;
@@ -783,11 +787,16 @@ nav * {
   }
 
   .footer-item {
-    width: 20% !important;
+    width: fit-content !important;
+    max-width: 20% !important;
   }
 
   .footer-container {
     justify-content: space-between;
+  }
+
+  .icd {
+    height: auto;
   }
 }
 
@@ -795,5 +804,9 @@ nav * {
   .landing-container {
     max-width: 100% !important;
     margin: 3rem 0 0 0 !important;
+  }
+
+  .spacing2 {
+    margin-bottom: 0;
   }
 }
