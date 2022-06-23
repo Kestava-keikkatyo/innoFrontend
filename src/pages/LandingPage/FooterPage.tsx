@@ -55,10 +55,10 @@ const CustomCard: React.FC<any> = ({ header, content }) => (
 const FooterPage: React.FC<FooterPageProps> = () => {
   return (
     <Grid container
-     direction="column"
-     alignItems="stretch"
-     justifyContent="flex-start"
+    alignItems="stretch"
+    justifyContent="flex-start"
      className="landing-part4" >
+      <Container>
       <div className='spacing2' />
       <Grid item xs={12} className="landing-part41 bg-white">
         <Grid container className="landing-container2">
@@ -91,12 +91,13 @@ const FooterPage: React.FC<FooterPageProps> = () => {
           </Grid>
         </Grid>
       </Grid>
+      </Container>
       {/*
        * Kortit loppuvat, footer alkaa
        */}
       <Grid item xs={12} className="landing-part42">
         <Spacing p1 className="landing-spacing">
-          <Grid container className="text-black">
+          <Grid container className="text-black footer-container">
             <Grid item xs={3} md={4} className="footer-item"
             style={{display: "flex", flexWrap: "wrap", justifyContent: "space-between"}}>
               <Grid item xs={8} md={6} >

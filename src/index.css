@@ -750,6 +750,11 @@ nav * {
   padding: 1rem;
 }
 
+.spacing2 {
+  margin-bottom: 3rem;
+  padding: 3rem;
+}
+
 @media screen and (max-width: 900px) {
   .react-swipeable-view-container {
     display: flex !important;
@@ -775,7 +780,14 @@ nav * {
 
   .spacing2 {
     padding: 1rem;
-    background-color: white;
+  }
+
+  .footer-item {
+    width: 20% !important;
+  }
+
+  .footer-container {
+    justify-content: space-between;
   }
 }
 

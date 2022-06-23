@@ -42,8 +42,9 @@
 }
 
 .landing-part42 {
+  background-color: #FF6505;
   width: 100%;
-  max-height: 25% !important;
+  /* max-height: 25% !important; */
 }
 
 .landing-spacing {
@@ -73,10 +74,10 @@
 }
 
 .landing-part4 {
-  background-color: #FF6505;
   display: flex;
   flex-wrap: wrap;
   height: 100%;
+  background-color: white;
 }
 
 .footer-item {
