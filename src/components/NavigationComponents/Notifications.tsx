@@ -8,40 +8,37 @@ import {
   Typography,
   ListItemText,
   ListItemSecondaryAction,
-  MenuItem,
-  Button,
   ListItemButton,
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import CheckIcon from '@mui/icons-material/Check';
-import ClearAllIcon from '@mui/icons-material/ClearAll';
 import CloseIcon from '@mui/icons-material/Close';
-import { useDispatch } from 'react-redux';
-import { clearAllNotifications } from '../../actions/notificationsActions';
 import { useTranslation } from 'react-i18next'
 import { Notification } from '../../types/types'
 
-const Notifications: React.FC<any> = (props: { notifications: any, handleCloseNotifications: Function }) => {
+export interface BoxProps {
+  notifications: Notification[];
+  children?: React.ReactNode;
+  onClose: () => void;
+}
+
+const Notifications = (props: BoxProps) => {
+  const { notifications, children, onClose } = props;
   const classes = useStyles()
-  const dispatch = useDispatch()
-  const { notifications, handleCloseNotifications } = props
-  const sortedNotifications = notifications.reverse()
+  const sortedNotifications = notifications
   const { t } = useTranslation()
 
-  const handleClearAllNotifications = (notifications: []) => {
-    dispatch(clearAllNotifications(notifications))
-  }
-
   const handleCloseAllNotifications = () => {
-    handleCloseNotifications()
+    onClose()
   }
 
   return (
     <Box className={classes.box}>
-      <Typography className={classes.notificationsHeader}>{t('notifications')}
-        <Button onClick={handleCloseAllNotifications} sx={{ position: 'absolute', top: 1, right: 1 }}>
+      {children}
+      <Typography color="secondary" className={classes.notificationsHeader} variant="h5">{t('notifications')}
+        <IconButton onClick={handleCloseAllNotifications} sx={{ position: 'absolute', top: 1, right: 1 }}>
             <CloseIcon style={{ position: 'absolute', top: 1, right: 1 }} />
-          </Button>
+          </IconButton>
       </Typography>
       <Divider />
       <List>
@@ -65,30 +62,18 @@ const Notifications: React.FC<any> = (props: { notifications: any, handleCloseNo
           );
         }) : <><Typography className={classes.noNotifications}>{t('no_notifications')}</Typography><Divider /></>}
       </List>
-      <MenuItem
-        style={{ marginTop: 10 }}
-        onClick={() => handleClearAllNotifications(sortedNotifications)}>
-        <ClearAllIcon style={{ fontSize: 24, marginRight: 10 }} />
-        {t('empty_notifications')}
-      </MenuItem>
     </Box>
   );
 }
 
 const useStyles = makeStyles(() => ({
   box: {
-    width: 300
+    width: 350
   },
   notificationsHeader: {
     textAlign: 'center',
     paddingTop: '10px',
     paddingBottom: '10px'
-  },
-  clearButton: {
-    width: '50%',
-  },
-  closeButton: {
-    width: '50%',
   },
   noNotifications: {
     fontSize: '15px',
