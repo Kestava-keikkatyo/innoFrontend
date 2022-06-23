@@ -39,50 +39,6 @@ const clearNotification = async (notificationId: string) => {
 }
 
 /**
- * @function
- * @desc Post notifications document for user.
- * This is used when user first registers to application.
- */
-const postNotifications = async () => {
-  try {
-    return await axios.post(`${baseUrl}/notifications/post`, {}, authHeader())
-  } catch (error) {
-    return Promise.reject(error.response)
-  }
-}
-
-/**
- * @function
- * @desc Updates notifications message array list.
- * Used when new notifications message is added to user.
- */
-const updateNotifications = async (userId: string, notificationMessage: string) => {
-  try {
-    return await axios.put(
-      `${baseUrl}/notifications/${userId}/update`,
-      { notificationMessage },
-      authHeader(),
-    )
-  } catch (error) {
-    return Promise.reject(error.response)
-  }
-}
-
-/**
- * @function
- * @desc Moves object inside unread_messages array to read_messages array.
- * When user clicks notifications message text in user interface,
- * this function is used to mark message as read.
- * @param textId unread_messages arrays objects id.
- */
-const readNotifications = async (textId: string) => {
-  try {
-    return await axios.put(`${baseUrl}/notifications/${textId}/read`, {}, authHeader())
-  } catch (error) {
-    return Promise.reject(error.response)
-  }
-}
-/**
  * @desc
  * Moves all notifications from unread_messages array to
  * read_messages array.
@@ -99,8 +55,5 @@ const clearAllNotifications = async (clearAllArray: []) => {
 export default {
   fetchNotifications,
   clearNotification,
-  postNotifications,
-  updateNotifications,
-  readNotifications,
   clearAllNotifications,
 }

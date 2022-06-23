@@ -927,46 +927,17 @@ export type ProfileActionTypes =
   | GetAllProfiles
 
 export interface NotificationsState {
-  notifications: {}
+  notifications: []
 }
 
-export const FETCH_NOTIFICATIONS = 'FETCH_NOTIFICATIONS'
-export const POST_NOTIFICATIONS = 'POST_NOTIFICATIONS'
-export const UPDATE_NOTIFICATIONS = 'UPDATE_NOTIFICATIONS'
-export const READ_NOTIFICATIONS = 'READ_NOTIFICATIONS'
 export const CLEAR_ALL_NOTIFICATION = 'CLEAR_ALL_NOTIFICATION'
-
-interface FetchNotifications {
-  type: typeof FETCH_NOTIFICATIONS
-  data: any
-}
-
-interface PostNotifications {
-  type: typeof POST_NOTIFICATIONS
-  data: any
-}
-
-interface UpdateNotifications {
-  type: typeof UPDATE_NOTIFICATIONS
-  data: any
-}
-
-interface ReadNotifications {
-  type: typeof READ_NOTIFICATIONS
-  data: any
-}
 
 interface ClearAllNotifications {
   type: typeof CLEAR_ALL_NOTIFICATION
   data: any
 }
 
-export type NotificationsActions =
-  | FetchNotifications
-  | PostNotifications
-  | UpdateNotifications
-  | ReadNotifications
-  | ClearAllNotifications
+export type NotificationsActions = ClearAllNotifications
 
 export const FETCH_GIGS = 'FETCH_GIGS'
 export const ACCEPT_WORKERS = 'ACCEPT_WORKERS'
