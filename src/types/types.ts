@@ -207,8 +207,14 @@ export interface Notification {
   _id?: string
   sender: string
   target: string
-  targetDoc: 'WorkRequest' | 'Agreement'
-  type: 'assignmet' | 'signiture'
+  targetDoc: 'WorkRequest' | 'Agreement' | 'Form' | 'Application' | 'FeedBack'
+  type:
+    | 'assignmet'
+    | 'signature_pending'
+    | 'form_pending'
+    | 'application_pending'
+    | 'feedback_pending'
+    | 'reply'
 }
 
 export interface Feeling {
