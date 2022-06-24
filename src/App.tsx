@@ -32,7 +32,6 @@ import ContractFormEditPage from './pages/ContractsPage/ContractFormManagerPage/
 import ProfileViewPage from './pages/ProfilePage/ProfileViewPage'
 import JobList from './pages/JobPage'
 import SettingsPage from './pages/SettingsPage'
-import WorkRequest from './pages/GigRequest'
 import WorkerJobs from './pages/WorkerWorkOverview'
 import AllUsersList from './pages/AdminPage/AllUsersList'
 import User from './pages/AdminPage/user/User'
@@ -315,9 +314,6 @@ const App: React.FC = () => {
               roles={[roles.Business, roles.Agency, roles.Worker]}
             >
               <FormPreviewPage />
-            </PrivateRoute>
-            <PrivateRoute path="/work-request" roles={[roles.Agency]}>
-              <WorkRequest />
             </PrivateRoute>
             <PrivateRoute path="/forms" roles={[roles.Business, roles.Agency]}>
               <FormsPage />
