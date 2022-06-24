@@ -343,12 +343,16 @@ export interface JobState {
   fetchError?: string
 }
 
-interface JobGetAll {
-  type: typeof jobType.JOB_GET_ALL_REQUEST | typeof jobType.JOB_GET_ALL_SUCCESS
+export interface JobGetAllRequest {
+  type: typeof jobType.JOB_GET_ALL_REQUEST
+}
+
+export interface JobGetAllSuccess {
+  type: typeof jobType.JOB_GET_ALL_SUCCESS
   data: Job[]
 }
 
-interface JobActionFailure {
+export interface JobActionFailure {
   type: typeof jobType.JOB_ACTION_FAILURE
   data: string
 }
@@ -379,7 +383,8 @@ interface JobUpdated {
 }
 
 export type JobActions =
-  | JobGetAll
+  | JobGetAllRequest
+  | JobGetAllSuccess
   | JobActionFailure
   | JobGetCurrent
   | JobDeletedRequest
