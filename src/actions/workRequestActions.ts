@@ -125,6 +125,33 @@ export const fetchWorkRequestById =
 
 /**
  * @function
+ * @desc Fetches work request by Id.
+ */
+export const fetchReceivedWorkRequestById =
+  (id: string) =>
+  async (
+    dispatch: Dispatch<WorkRequestGetCurrent | WorkRequestGetCurrentSuccess | WorkRequestFailure>,
+  ) => {
+    try {
+      dispatch({
+        type: workRequestType.WORKREQUEST_GET_CURRENT_REQUEST,
+      })
+      const res = await workRequestService.fetchReceivedWorkRequestById(id)
+      dispatch({
+        type: workRequestType.WORKREQUEST_GET_CURRENT_SUCCESS,
+        data: res.data,
+      })
+    } catch (e) {
+      dispatch({
+        type: workRequestType.WORKREQUEST_FAILURE,
+        data: e as string,
+      })
+      setAlert('Failed to fetch WORK REQUEST: ' + e, severity.Error, 15)(dispatch)
+    }
+  }
+
+/**
+ * @function
  * @desc update work request.
  */
 export const updateWorkRequest =
