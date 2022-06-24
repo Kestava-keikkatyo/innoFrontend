@@ -1,5 +1,5 @@
 import usersService from '../services/usersService'
-import { roles, severity, User, UserInformation, usersType } from '../types/types'
+import { roles, severity, User, usersType } from '../types/types'
 import { setAlert } from './alertActions'
 import history from '../utils/history'
 import fileService from '../services/fileService'
@@ -47,6 +47,28 @@ export const fetchUserById =
         type: usersType.USER_GET_CURRENT_REQUEST,
       })
       const res = await usersService.fetchUserById(id)
+      dispatch({ type: usersType.USER_GET_CURRENT_SUCCESS, data: res.data })
+    } catch (e) {
+      dispatch({
+        type: usersType.USER_ACTION_FAILURE,
+        data: e as string,
+      })
+      setAlert('Failed to fetch the user: ' + e, severity.Error, 15)(dispatch)
+    }
+  }
+
+/**
+ * @function
+ * @desc Fetches user by name.
+ */
+export const searchUserByName =
+  (input: string) =>
+  async (dispatch: Dispatch<UserGetCurrentRequest | UserGetCurrentSuccess | UserActionFailure>) => {
+    try {
+      dispatch({
+        type: usersType.USER_GET_CURRENT_REQUEST,
+      })
+      const res = await usersService.searchUserByName(input)
       dispatch({ type: usersType.USER_GET_CURRENT_SUCCESS, data: res.data })
     } catch (e) {
       dispatch({

@@ -3,7 +3,7 @@
  * @desc Users requests to backend.
  */
 import axios from 'axios'
-import { User, UserInformation } from '../types/types'
+import { User } from '../types/types'
 import baseUrl from '../utils/baseUrl'
 import { loadUser } from '../utils/storage'
 
@@ -59,7 +59,7 @@ const fetchAllWorkers = async () => {
  * @desc fetchUserById
  */
 const showMyProfile = async (id: string) => {
-  const res = await axios.get(`${baseUrl}/me/`, authHeader())
+  const res = await axios.get(`${baseUrl}/me/${id}`, authHeader())
   return res
 }
 
@@ -105,6 +105,16 @@ const setUserStatus = async (userId: string, active: boolean) => {
   return res
 }
 
+/**
+ * @function
+ * @desc Search user by name.
+ * @returns all agencies.
+ */
+const searchUserByName = async (input: string) => {
+  const res = await axios.get(`${baseUrl}/user/any/name=${input}`, authHeader())
+  return res
+}
+
 export default {
   fetchAllUsers,
   fetchUserById,
@@ -115,4 +125,5 @@ export default {
   updateUser,
   createUser,
   setUserStatus,
+  searchUserByName,
 }
