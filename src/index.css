@@ -558,7 +558,7 @@ nav * {
 
 .databank-logo img:hover {
   transform: scale(1.2);
-  transition: 1s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .databank-desktop-link {
@@ -632,8 +632,11 @@ nav * {
   transition: opacity 500ms, transform 500ms;
 }
 
+.triangle-container {
+  padding: 0.5rem;
+}
+
 .triangle-card {
-  margin: 1rem;
   border: #000a solid 1px;
   position: relative;
   display: flex;
@@ -641,10 +644,9 @@ nav * {
   justify-content: center;
   flex-direction: column;
   height: 400px;
-  width: 400px;
+  width: 100%;
   border-radius: 3px;
   background-color: #ffffff;
-  /* box-shadow: 10px 0 50px rgba(0, 0, 0, 0.5); */
   overflow: hidden;
 }
 
@@ -653,7 +655,7 @@ nav * {
   left: 0;
   top: 0;
   margin: 20px 0 0 20px;
-  font-size: 44px;
+  font-size: 3vw;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 15px;
@@ -665,7 +667,7 @@ nav * {
   position: absolute;
   left: 0;
   bottom: 0;
-  margin: 0 20px 60px 20px;
+  margin: 0 1rem 5rem 1rem;
   font-size: 18px;
   color: #ffffff;
   mix-blend-mode: difference;
@@ -800,6 +802,12 @@ nav * {
   }
 }
 
+@media screen and (max-width: 899px) {
+  .triangle-h2 {
+    font-size: 4vw;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .landing-container {
     max-width: 100% !important;
@@ -808,5 +816,9 @@ nav * {
 
   .spacing2 {
     margin-bottom: 0;
+  }
+
+  .triangle-h2 {
+    font-size: 12vw;
   }
 }
