@@ -67,6 +67,8 @@ import SendWorkRequest from './pages/WorkRequestPage/SendWorkRequest'
 import WorkRequests from './pages/WorkRequestPage/WorkRequests'
 import WorkRequestUpdate from './pages/WorkRequestPage/WorkRequestUpdate'
 import FeedbackUpdate from './pages/FeedbackPage/FeedbackUpdate'
+import ReceivedWorkRequests from './pages/WorkRequestPage/ReceivedWorkRequests'
+import WorkRequestDetails from './pages/WorkRequestPage/WorkRequestDetails'
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface DefaultTheme extends Theme {}
@@ -142,6 +144,12 @@ const App: React.FC = () => {
             </PrivateRoute>
             <PrivateRoute path="/agencies/workRequest/:agencyId" roles={[roles.Business]}>
               <SendWorkRequest />
+            </PrivateRoute>
+            <PrivateRoute path="/receivedWorkRequests/details/:receivedWorkRequestId" roles={[roles.Agency]}>
+              <WorkRequestDetails />
+            </PrivateRoute>
+            <PrivateRoute path="/receivedWorkRequests" roles={[roles.Agency]}>
+              <ReceivedWorkRequests />
             </PrivateRoute>
             <PrivateRoute path="/workRequests" roles={[roles.Business]}>
               <WorkRequests />
