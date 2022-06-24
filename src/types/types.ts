@@ -193,6 +193,7 @@ export interface Topic {
 
 export interface WorkRequest {
   _id?: string
+  sender?: string
   recipient: string
   headline: string
   workersNumber: number | null
@@ -331,6 +332,6 @@ export interface Profile {
   profilePicture: string
   video: string
   website: string
-  instructions: any[]
-  occupationalSafetyRules: any[]
+  instructions: string[]
+  occupationalSafetyRules: string[]
 }
