@@ -55,7 +55,7 @@ const jobReducer = (state = initialState, action: JobActions): JobState => {
     case jobType.JOB_DELETED_SUCCESS: {
       return {
         ...state,
-        jobs: state.jobs.filter((item) => item._id !== action.data.id),
+        jobs: state.jobs.filter((item) => item._id !== action.data._id),
       }
     }
     case jobType.JOB_CREATED_REQUEST: {

@@ -366,23 +366,21 @@ export interface JobGetCurrentSuccess {
   data: Job
 }
 
-interface JobDeletedRequest {
+export interface JobDeletedRequest {
   type: typeof jobType.JOB_DELETED_REQUEST
-  data: { id: string }
-}
-
-interface JobDeletedSuccess {
-  type: typeof jobType.JOB_DELETED_SUCCESS
-  data: { id: string }
-}
-
-interface JobCreated {
-  type: typeof jobType.JOB_CREATED_REQUEST | typeof jobType.JOB_CREATED_SUCCESS
   data: Job
 }
 
-interface JobUpdated {
-  type: typeof jobType.JOB_UPDATED_REQUEST | typeof jobType.JOB_UPDATED_SUCCESS
+export interface JobDeletedSuccess {
+  type: typeof jobType.JOB_DELETED_SUCCESS
+  data: { _id: string }
+}
+export interface JobSimilarActions {
+  type:
+    | typeof jobType.JOB_CREATED_REQUEST
+    | typeof jobType.JOB_CREATED_SUCCESS
+    | typeof jobType.JOB_UPDATED_REQUEST
+    | typeof jobType.JOB_UPDATED_SUCCESS
   data: Job
 }
 
@@ -392,10 +390,9 @@ export type JobActions =
   | JobActionFailure
   | JobGetCurrentRequest
   | JobGetCurrentSuccess
+  | JobSimilarActions
   | JobDeletedRequest
   | JobDeletedSuccess
-  | JobCreated
-  | JobUpdated
 
 export const LOGIN = 'USER_LOGIN'
 export const LOGOUT = 'USER_LOGOUT'
