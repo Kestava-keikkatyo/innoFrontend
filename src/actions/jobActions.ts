@@ -3,7 +3,13 @@ import { Job, jobType, severity } from '../types/types'
 import { setAlert } from './alertActions'
 import history from '../utils/history'
 import { Dispatch } from 'redux'
-import { JobActionFailure, JobGetAllRequest, JobGetAllSuccess } from '../types/state'
+import {
+  JobActionFailure,
+  JobGetAllRequest,
+  JobGetAllSuccess,
+  JobGetCurrentRequest,
+  JobGetCurrentSuccess,
+} from '../types/state'
 
 /**
  * @function
@@ -45,6 +51,28 @@ export const fetchAllMyJobs = () => async (dispatch: any) => {
     dispatch(setAlert('Failed to fetch jobs!: ' + e, severity.Error, 15))
   }
 }
+
+/**
+ * @function
+ * @desc Fetches user's created job by Id.
+ */
+export const fetchMyJobById =
+  (id: string) =>
+  async (dispatch: Dispatch<JobGetCurrentRequest | JobGetCurrentSuccess | JobActionFailure>) => {
+    try {
+      dispatch({
+        type: jobType.JOB_GET_CURRENT_REQUEST,
+      })
+      const res = await jobService.fetchJobById(id)
+      dispatch({ type: jobType.JOB_GET_CURRENT_SUCCESS, data: res.data })
+    } catch (e) {
+      dispatch({
+        type: jobType.JOB_ACTION_FAILURE,
+        data: e as string,
+      })
+      setAlert('Failed to fetch the job: ' + e, severity.Error, 15)(dispatch)
+    }
+  }
 
 /**
  * @function

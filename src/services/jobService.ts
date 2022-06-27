@@ -37,6 +37,15 @@ const fetchAllMyJobs = async () => {
 
 /**
  * @function
+ * @desc fetches ueser's created job by id
+ */
+const fetchMyJobById = async (id: string) => {
+  const res = await axios.get(`${baseUrl}/job/my/any/${id}`, authHeader())
+  return res
+}
+
+/**
+ * @function
  * @desc fetchJobById
  */
 const fetchJobById = async (id: string) => {
@@ -78,6 +87,7 @@ const updateJob = async (jobId: string, job: Job) => {
 
 export default {
   fetchAllJobAds,
+  fetchMyJobById,
   fetchJobById,
   fetchAllMyJobs,
   deleteJob,
