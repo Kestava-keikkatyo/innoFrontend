@@ -80,21 +80,23 @@ export const fetchMyJobById =
  * @function
  * @desc Fetches jod by Id.
  */
-export const fetchJobById = (id: string) => async (dispatch: any) => {
-  try {
-    dispatch({
-      type: jobType.JOB_GET_CURRENT_REQUEST,
-    })
-    const res = await jobService.fetchJobById(id)
-    dispatch({ type: jobType.JOB_GET_CURRENT_SUCCESS, data: res.data })
-  } catch (error) {
-    dispatch({
-      type: jobType.JOB_ACTION_FAILURE,
-      data: error,
-    })
-    dispatch(setAlert('Failed to fetch the job: ' + error, severity.Error, 15))
+export const fetchJobById =
+  (id: string) =>
+  async (dispatch: Dispatch<JobGetCurrentRequest | JobGetCurrentSuccess | JobActionFailure>) => {
+    try {
+      dispatch({
+        type: jobType.JOB_GET_CURRENT_REQUEST,
+      })
+      const res = await jobService.fetchJobById(id)
+      dispatch({ type: jobType.JOB_GET_CURRENT_SUCCESS, data: res.data })
+    } catch (e) {
+      dispatch({
+        type: jobType.JOB_ACTION_FAILURE,
+        data: e as string,
+      })
+      setAlert('Failed to fetch the job: ' + e, severity.Error, 15)(dispatch)
+    }
   }
-}
 
 /**
  * @function
