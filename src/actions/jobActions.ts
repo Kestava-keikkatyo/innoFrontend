@@ -100,21 +100,23 @@ export const fetchJobById = (id: string) => async (dispatch: any) => {
  * @function
  * @desc Delete job by Id
  */
-export const DeleteJobById = (id: string) => async (dispatch: any) => {
-  try {
-    dispatch({
-      type: jobType.JOB_DELETED_REQUEST,
-    })
-    const data = await jobService.deleteJob(id)
-    dispatch({ type: jobType.JOB_DELETED_SUCCESS, data: { id } })
-  } catch (e) {
-    dispatch({
-      type: jobType.JOB_ACTION_FAILURE,
-      data: e,
-    })
-    dispatch(setAlert('Failed to delete the job: ' + e, severity.Error, 15))
+export const DeleteJobById =
+  (job: Job) => async (dispatch: Dispatch<JobSimilarActions | JobActionFailure>) => {
+    try {
+      dispatch({
+        type: jobType.JOB_DELETED_REQUEST,
+        data: job,
+      })
+      await jobService.deleteJob(job._id as string)
+      dispatch({ type: jobType.JOB_DELETED_SUCCESS, data: job })
+    } catch (e) {
+      dispatch({
+        type: jobType.JOB_ACTION_FAILURE,
+        data: e as string,
+      })
+      setAlert('Failed to delete the job: ' + e, severity.Error, 15)(dispatch)
+    }
   }
-}
 
 /**
  * Create job

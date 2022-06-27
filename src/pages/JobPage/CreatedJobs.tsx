@@ -23,6 +23,7 @@ import { setAlert } from '../../actions/alertActions';
 import CollapsibleRow from '../../components/CollapsibleRow'
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import { Job } from '../../types/types';
 
 const CreatedJobs: React.FC = () => {
 
@@ -58,7 +59,7 @@ const CreatedJobs: React.FC = () => {
   
   const handleDelete = (id: string) => {
     console.log(id);
-    dispatch(DeleteJobById(id))
+    dispatch(DeleteJobById(jobs.find(job => job._id === id) as Job))
     dispatch(setAlert('Job was deleted successfully!'))
   }
 

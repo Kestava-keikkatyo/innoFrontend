@@ -365,22 +365,14 @@ export interface JobGetCurrentSuccess {
   type: typeof jobType.JOB_GET_CURRENT_SUCCESS
   data: Job
 }
-
-export interface JobDeletedRequest {
-  type: typeof jobType.JOB_DELETED_REQUEST
-  data: Job
-}
-
-export interface JobDeletedSuccess {
-  type: typeof jobType.JOB_DELETED_SUCCESS
-  data: { _id: string }
-}
 export interface JobSimilarActions {
   type:
     | typeof jobType.JOB_CREATED_REQUEST
     | typeof jobType.JOB_CREATED_SUCCESS
     | typeof jobType.JOB_UPDATED_REQUEST
     | typeof jobType.JOB_UPDATED_SUCCESS
+    | typeof jobType.JOB_DELETED_REQUEST
+    | typeof jobType.JOB_DELETED_SUCCESS
   data: Job
 }
 
@@ -391,8 +383,6 @@ export type JobActions =
   | JobGetCurrentRequest
   | JobGetCurrentSuccess
   | JobSimilarActions
-  | JobDeletedRequest
-  | JobDeletedSuccess
 
 export const LOGIN = 'USER_LOGIN'
 export const LOGOUT = 'USER_LOGOUT'
