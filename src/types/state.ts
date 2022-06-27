@@ -202,20 +202,25 @@ interface FeedbackPosted {
   data: Feedback
 }
 
-interface FeedbackActionFailure {
+export interface FeedbackActionFailure {
   type: typeof feedbackType.FEEDBACK_ACTION_FAILURE
   data: string
 }
 
-interface FeedbackGetAll {
-  type: typeof feedbackType.FEEDBACK_GET_ALL_REQUEST | typeof feedbackType.FEEDBACK_GET_ALL_SUCCESS
+export interface FeedbackGetAllRequest {
+  type: typeof feedbackType.FEEDBACK_GET_ALL_REQUEST
+}
+
+export interface FeedbackGetAllSuccess {
+  type: typeof feedbackType.FEEDBACK_GET_ALL_SUCCESS
   data: Feedback[]
 }
 
-interface FeedbackGetCurrent {
-  type:
-    | typeof feedbackType.FEEDBACK_GET_CURRENT_REQUEST
-    | typeof feedbackType.FEEDBACK_GET_CURRENT_SUCCESS
+export interface FeedbackGetCurrentRequest {
+  type: typeof feedbackType.FEEDBACK_GET_CURRENT_REQUEST
+}
+export interface FeedbackGetCurrentSuccess {
+  type: typeof feedbackType.FEEDBACK_GET_CURRENT_SUCCESS
   data: Feedback
 }
 
@@ -227,8 +232,10 @@ interface FeedbackUpdated {
 export type FeedbackAction =
   | FeedbackPosted
   | FeedbackActionFailure
-  | FeedbackGetAll
-  | FeedbackGetCurrent
+  | FeedbackGetAllRequest
+  | FeedbackGetAllSuccess
+  | FeedbackGetCurrentRequest
+  | FeedbackGetCurrentSuccess
   | FeedbackUpdated
 
 /**
