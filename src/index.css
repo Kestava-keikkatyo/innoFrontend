@@ -761,6 +761,27 @@ nav * {
   height: 100%;
 }
 
+.form-button {
+  margin: 1%;
+  width: 20%;
+  max-width: fit-content;
+}
+
+.button-text {
+  text-decoration: none;
+  color: #CC4E00 !important;
+}
+
+.file-upload-button {
+  width: 100%;
+  max-width: 100%;
+}
+
+.form-select {
+  width: 100%;
+  padding: 0 2rem;
+}
+
 @media screen and (max-width: 900px) {
   .react-swipeable-view-container {
     display: flex !important;
@@ -788,11 +809,6 @@ nav * {
     padding: 1rem;
   }
 
-  .footer-item {
-    width: fit-content !important;
-    max-width: 20% !important;
-  }
-
   .footer-container {
     justify-content: space-between;
   }
@@ -800,11 +816,31 @@ nav * {
   .icd {
     height: auto;
   }
+
+  .form-button,
+  .file-upload-button {
+    padding: revert !important;
+  }
+
+  .form-button {
+    width: 22%;
+    margin: 0 0.5%;
+    font-size: smaller;
+  }
+
+  .button-text {
+    font-size: smaller;
+  }
 }
 
 @media screen and (max-width: 899px) {
   .triangle-h2 {
     font-size: 4vw;
+  }
+
+  .footer-item {
+    width: fit-content !important;
+    max-width: 20% !important;
   }
 }
 
@@ -820,5 +856,50 @@ nav * {
 
   .triangle-h2 {
     font-size: 12vw;
+  }
+
+  .form-button,
+  .file-upload-button {
+    max-width: 100%;
+    margin: 1%;
+  }
+
+  .form-button {
+    width: 18%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .form-label {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .form-button {
+    width: 48%;
+  }
+
+  .form-select {
+    padding: 0 1rem;
+  }
+
+  .button-text {
+    font-size: inherit;
+  }
+
+  .file-upload-button {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .form-q {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+
+  .form-select {
+    padding: 0;
   }
 }

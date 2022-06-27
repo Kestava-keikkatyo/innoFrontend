@@ -18,8 +18,8 @@ const TypeDropDown: React.FC<{ index: number }> = ({ index }) => {
 
   
   return (
-    <Spacing ph4 className="relative" style={{ width: "100%" }}>
-      <label className="absolute label-type">{t('question_type')}</label>
+    <Spacing className="relative form-select">
+      <label className="absolute label-type form-label">{t('question_type')}</label>
       <select
         className="customFormInput"
         value={questions[index].questionType}
@@ -57,7 +57,7 @@ const QuestionModule: React.FC<{ questionIndex: number }> = ({
 
   return <>
     <Grid container>
-      <Grid item xs={8}>
+      <Grid item xs={6} sm={8} className="form-q">
         <CustomFormInput
           labelFontSize="large"
           label={`Question: ${questionIndex}`}
@@ -75,7 +75,7 @@ const QuestionModule: React.FC<{ questionIndex: number }> = ({
           }
         />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={6} sm={4} className="form-q">
         <Grid
           style={{ paddingTop: 4 }}
           container
