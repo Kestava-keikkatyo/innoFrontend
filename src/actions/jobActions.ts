@@ -151,21 +151,23 @@ export const createJob =
  * @function
  * @desc update job.
  */
-export const updateJob = (jobId: string, job: Job) => async (dispatch: any) => {
-  try {
-    dispatch({
-      type: jobType.JOB_UPDATED_REQUEST,
-    })
+export const updateJob =
+  (jobId: string, job: Job) => async (dispatch: Dispatch<JobSimilarActions | JobActionFailure>) => {
+    try {
+      dispatch({
+        type: jobType.JOB_UPDATED_REQUEST,
+        data: job,
+      })
 
-    const res = await jobService.updateJob(jobId, job)
-    dispatch({ type: jobType.JOB_UPDATED_SUCCESS, data: res.data })
+      const res = await jobService.updateJob(job)
+      dispatch({ type: jobType.JOB_UPDATED_SUCCESS, data: res.data })
 
-    history.push('/job?tab=my')
-  } catch (error) {
-    dispatch({
-      type: jobType.JOB_ACTION_FAILURE,
-      data: error,
-    })
-    dispatch(setAlert('Failed to update user: ' + error, severity.Error, 15))
+      history.push('/job?tab=my')
+    } catch (e) {
+      dispatch({
+        type: jobType.JOB_ACTION_FAILURE,
+        data: e as string,
+      })
+      setAlert('Failed to update user: ' + e, severity.Error, 15)(dispatch)
+    }
   }
-}

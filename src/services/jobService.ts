@@ -80,8 +80,8 @@ const createJob = async (job: Job) => {
  * @param id
  * @returns
  */
-const updateJob = async (jobId: string, job: Job) => {
-  const res = await axios.put(`${baseUrl}/job/jobUpdate/${jobId}`, job, authHeader())
+const updateJob = async (job: Job) => {
+  const res = await axios.put(`${baseUrl}/job/jobUpdate/${job._id}`, job, authHeader())
   return res.data
 }
 
