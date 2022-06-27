@@ -170,6 +170,6 @@ export const updateJob =
         type: jobType.JOB_ACTION_FAILURE,
         data: e as string,
       })
-      setAlert('Failed to update user: ' + e, severity.Error, 15)(dispatch)
+      setAlert('Failed to update job: ' + e, severity.Error, 15)(dispatch)
     }
   }
