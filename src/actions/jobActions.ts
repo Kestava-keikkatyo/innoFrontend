@@ -30,12 +30,12 @@ export const fetchAllJobAds =
  * @function
  * @desc Fetches all jobs for agency.
  */
-export const fetchAllJobsForAgency = () => async (dispatch: any) => {
+export const fetchAllMyJobs = () => async (dispatch: any) => {
   try {
     dispatch({
       type: jobType.JOB_GET_ALL_REQUEST,
     })
-    const res = await jobService.fetchAllJobsForAgency()
+    const res = await jobService.fetchAllMyJobs()
     dispatch({ type: jobType.JOB_GET_ALL_SUCCESS, data: res.data })
   } catch (e) {
     dispatch({
