@@ -34,23 +34,24 @@ export const fetchAllJobAds =
 
 /**
  * @function
- * @desc Fetches all jobs for agency.
+ * @desc Fetches creater's jobs.
  */
-export const fetchAllMyJobs = () => async (dispatch: any) => {
-  try {
-    dispatch({
-      type: jobType.JOB_GET_ALL_REQUEST,
-    })
-    const res = await jobService.fetchAllMyJobs()
-    dispatch({ type: jobType.JOB_GET_ALL_SUCCESS, data: res.data })
-  } catch (e) {
-    dispatch({
-      type: jobType.JOB_ACTION_FAILURE,
-      data: e,
-    })
-    dispatch(setAlert('Failed to fetch jobs!: ' + e, severity.Error, 15))
+export const fetchAllMyJobs =
+  () => async (dispatch: Dispatch<JobGetAllRequest | JobGetAllSuccess | JobActionFailure>) => {
+    try {
+      dispatch({
+        type: jobType.JOB_GET_ALL_REQUEST,
+      })
+      const res = await jobService.fetchAllMyJobs()
+      dispatch({ type: jobType.JOB_GET_ALL_SUCCESS, data: res.data })
+    } catch (e) {
+      dispatch({
+        type: jobType.JOB_ACTION_FAILURE,
+        data: e as string,
+      })
+      setAlert('Failed to fetch jobs!: ' + e, severity.Error, 15)(dispatch)
+    }
   }
-}
 
 /**
  * @function
@@ -63,7 +64,7 @@ export const fetchMyJobById =
       dispatch({
         type: jobType.JOB_GET_CURRENT_REQUEST,
       })
-      const res = await jobService.fetchJobById(id)
+      const res = await jobService.fetchMyJobById(id)
       dispatch({ type: jobType.JOB_GET_CURRENT_SUCCESS, data: res.data })
     } catch (e) {
       dispatch({
