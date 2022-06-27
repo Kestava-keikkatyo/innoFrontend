@@ -9,6 +9,7 @@ import {
   JobGetAllSuccess,
   JobGetCurrentRequest,
   JobGetCurrentSuccess,
+  JobSimilarActions,
 } from '../types/state'
 
 /**
@@ -121,28 +122,28 @@ export const DeleteJobById = (id: string) => async (dispatch: any) => {
  * @param {Object} job - Basic job information (title, cayegory, location...)
  * @param {string} role - Agency
  */
-export const createJob = (job: Job) => async (dispatch: any) => {
-  try {
-    dispatch({
-      type: jobType.JOB_CREATED_REQUEST,
-      data: job,
-    })
+export const createJob =
+  (job: Job) => async (dispatch: Dispatch<JobSimilarActions | JobActionFailure>) => {
+    try {
+      dispatch({
+        type: jobType.JOB_CREATED_REQUEST,
+        data: job,
+      })
 
-    const { data } = await jobService.createJob(job)
-    dispatch({
-      type: jobType.JOB_CREATED_SUCCESS,
-      data,
-    })
-    dispatch(setAlert('Job created successfully!'))
-    console.log('Created job', data)
-  } catch (e) {
-    dispatch({
-      type: jobType.JOB_ACTION_FAILURE,
-      data: e,
-    })
-    dispatch(setAlert('Failed to create the job: ' + e, severity.Error, 15))
+      const { data } = await jobService.createJob(job)
+      dispatch({
+        type: jobType.JOB_CREATED_SUCCESS,
+        data,
+      })
+      setAlert('Job created successfully!')
+    } catch (e) {
+      dispatch({
+        type: jobType.JOB_ACTION_FAILURE,
+        data: e as string,
+      })
+      setAlert('Failed to create the job: ' + e, severity.Error, 15)(dispatch)
+    }
   }
-}
 
 /**
  * @function
