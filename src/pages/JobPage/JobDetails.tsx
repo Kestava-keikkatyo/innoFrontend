@@ -1,24 +1,23 @@
 import {
     LocationSearching,
     PermIdentity,
-  } from "@mui/icons-material";
+  } from '@mui/icons-material';
 import React, { useEffect } from 'react';
-//import { Link } from '@mui/material';
+// import { Link } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { IRootState } from "../../utils/store";
-import { fetchJobById } from "../../actions/jobActions";
-import PageLoading from "../../components/PageLoading";
-import { useTranslation } from "react-i18next";
+import { useParams, Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { IRootState } from '../../utils/store';
+import { fetchJobById } from '../../actions/jobActions';
+import PageLoading from '../../components/PageLoading';
+import { useTranslation } from 'react-i18next';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
-import { Link } from 'react-router-dom';
 
 type JobUrlParams = {
     jobId: string
 }
-const JobDetails: React.FC<any> = () =>  {
+const JobDetails: React.FC<any> = () => {
    
     const { t } = useTranslation()
     const { jobId } = useParams<JobUrlParams>();
