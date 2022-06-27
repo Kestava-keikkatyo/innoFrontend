@@ -139,7 +139,7 @@ export const createJob =
         type: jobType.JOB_CREATED_SUCCESS,
         data,
       })
-      setAlert('Job created successfully!')
+      setAlert('Job created successfully!')(dispatch)
     } catch (e) {
       dispatch({
         type: jobType.JOB_ACTION_FAILURE,
