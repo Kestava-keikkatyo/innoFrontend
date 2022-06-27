@@ -357,8 +357,12 @@ export interface JobActionFailure {
   data: string
 }
 
-interface JobGetCurrent {
-  type: typeof jobType.JOB_GET_CURRENT_REQUEST | jobType.JOB_GET_CURRENT_SUCCESS
+export interface JobGetCurrentRequest {
+  type: typeof jobType.JOB_GET_CURRENT_REQUEST
+}
+
+export interface JobGetCurrentSuccess {
+  type: typeof jobType.JOB_GET_CURRENT_SUCCESS
   data: Job
 }
 
@@ -386,7 +390,8 @@ export type JobActions =
   | JobGetAllRequest
   | JobGetAllSuccess
   | JobActionFailure
-  | JobGetCurrent
+  | JobGetCurrentRequest
+  | JobGetCurrentSuccess
   | JobDeletedRequest
   | JobDeletedSuccess
   | JobCreated

@@ -42,7 +42,6 @@ const jobReducer = (state = initialState, action: JobActions): JobState => {
     case jobType.JOB_GET_CURRENT_REQUEST: {
       return {
         ...state,
-        currentJob: action.data,
         loading: true,
       }
     }
