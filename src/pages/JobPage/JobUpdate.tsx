@@ -96,7 +96,7 @@ const JobUpdate: React.FC = () => {
                 </div>
                 <Stack direction="row" spacing={2}>
                   <Button type="submit" variant="contained" color="primary" className={classes.button}>{t('button_update')}</Button>
-                  <Button variant="outlined" color="primary" component={Link} to="/jobListForAgency">{t('button_cancel')}</Button>
+                  <Button variant="outlined" color="primary" component={Link} to="/job?tab=my">{t('button_cancel')}</Button>
                 </Stack>
               </Form>
               );
