@@ -1,6 +1,6 @@
 import React from 'react';
 import { Feedback } from '../../types/types';
-import * as Yup from "yup";
+import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, CircularProgress, Typography } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
@@ -8,23 +8,23 @@ import { Form, Formik } from 'formik';
 import FormikField from '../../components/FormField';
 import { IRootState } from '../../utils/store';
 import { createFeedback } from '../../actions/feedBackActions';
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 
 const initialValues: Feedback = {
-  heading: "",
-  message: "",
+  heading: '',
+  message: '',
 };
 
 const SendFeedbackSchema = Yup.object().shape({
     heading: Yup.string()
-    .min(2, "Title should be three letters at least!")
-    .required("Title is required!"),
+    .min(2, 'Title should be three letters at least!')
+    .required('Title is required!'),
     message: Yup.string()
-    .min(2, "Category should be three letters at least!")
-    .required("Category is required!"),
+    .min(2, 'Category should be three letters at least!')
+    .required('Category is required!'),
   });
 
-const SendFeedback: React.FC<any> = () => {
+const SendFeedback: React.FC = () => {
   const { t } = useTranslation();
   const classes = useStyles();
   const dispatch = useDispatch();
