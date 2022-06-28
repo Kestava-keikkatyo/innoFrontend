@@ -9,6 +9,7 @@ import {
   FeedbackGetAllSuccess,
   FeedbackGetCurrentRequest,
   FeedbackGetCurrentSuccess,
+  FeedbackSimilarActions,
 } from '../types/state'
 
 /**
@@ -123,27 +124,29 @@ export const fetchFeedbackById =
  * @param {Object} feedback - Basic feedback information (heading, message)
  * @param {string} role - user
  */
-export const createFeedback = (feedback: Feedback) => async (dispatch: any) => {
-  try {
-    dispatch({
-      type: feedbackType.FEEDBACK_POSTED_REQUEST,
-      data: feedback,
-    })
+export const createFeedback =
+  (feedback: Feedback) =>
+  async (dispatch: Dispatch<FeedbackSimilarActions | FeedbackActionFailure>) => {
+    try {
+      dispatch({
+        type: feedbackType.FEEDBACK_POSTED_REQUEST,
+        data: feedback,
+      })
 
-    const { data } = await feedBackService.createFeedback(feedback)
-    dispatch({
-      type: feedbackType.FEEDBACK_POSTED_SUCCESS,
-      data,
-    })
-    dispatch(setAlert('Feedback was sent successfully!'))
-  } catch (e) {
-    dispatch({
-      type: feedbackType.FEEDBACK_ACTION_FAILURE,
-      data: e,
-    })
-    dispatch(setAlert('Failed to send feedback: ' + e, severity.Error, 15))
+      const { data } = await feedBackService.createFeedback(feedback)
+      dispatch({
+        type: feedbackType.FEEDBACK_POSTED_SUCCESS,
+        data,
+      })
+      setAlert('Feedback was sent successfully!')(dispatch)
+    } catch (e) {
+      dispatch({
+        type: feedbackType.FEEDBACK_ACTION_FAILURE,
+        data: e as string,
+      })
+      setAlert('Failed to send feedback: ' + e, severity.Error, 15)(dispatch)
+    }
   }
-}
 
 /**
  * @function
