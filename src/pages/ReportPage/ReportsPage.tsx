@@ -245,10 +245,10 @@ const ReportsPage: React.FC<any> = () => {
             </Fab> 
           }
         </Grid> 
-        <Grid item>
+        <Grid item style={{display: "flex", marginTop: "1rem"}}>
 
           {/**Display state selection. A dropdown list using MUI Select */}
-          <Box sx={{minWidth: '50px', float: 'right'}}>
+          <Box sx={{minWidth: '50px', marginRight: "1rem"}}>
             <FormControl fullWidth>
               <InputLabel id="display-select-label">{t('report_display_label')}</InputLabel>
               <Select
@@ -266,7 +266,7 @@ const ReportsPage: React.FC<any> = () => {
           </Box>
 
           {/**Sorting state selection. A dropdown list using MUI Select */}
-          <Box sx={{minWidth: '200px', marginRight: '20px', float: 'right'}}>
+          <Box sx={{minWidth: '200px'}}>
             <FormControl fullWidth>
               <InputLabel id="sorting-select-label">{t('report_sort_label')}</InputLabel>
               <Select

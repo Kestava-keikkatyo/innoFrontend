@@ -178,7 +178,7 @@ const AgenciesList = () => {
 
   return (
     <div>
-      <Grid container spacing={3}>
+      <Grid container spacing={2}>
         <Grid item xs={12}>
           <Box className={classes.searchBar}>
             <InputBase
@@ -191,7 +191,7 @@ const AgenciesList = () => {
             </IconButton>
           </Box>
         </Grid>
-        <Grid item xs={12} md={2}>
+        <Grid item xs={12} sm={3}>
           {matches ? (
             <FormControl style={{ minWidth: '100%' }}>
               <InputLabel>Category</InputLabel>
@@ -224,7 +224,7 @@ const AgenciesList = () => {
             </ToggleButtonGroup>
           )}
         </Grid>
-        <Grid item xs={12} md={10}>
+        <Grid item xs={12} sm={9}>
           <div>
             <TablePagination
               rowsPerPageOptions={[5, 10, 25]}

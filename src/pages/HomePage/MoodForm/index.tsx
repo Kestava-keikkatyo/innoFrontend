@@ -113,7 +113,6 @@ ColorlibStepIcon.propTypes = {
   icon: PropTypes.node,
 };
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -145,8 +144,6 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
   const steps = getSteps();
   // const dispatch = useDispatch();
 
-  
-
   const getStepContent = (step: any) => {
     switch (step) {
       case 0:
@@ -157,7 +154,6 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
         return <></>;
     }
   };
-
 
   // const handleNext = () => {
   //   setActiveStep((prevActiveStep) => prevActiveStep + 2);

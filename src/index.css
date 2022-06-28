@@ -17,6 +17,10 @@ code {
     monospace;
 }
 
+.worker-statistics-summary {
+  margin: 1rem 0;
+}
+
 .worker-statistics-summary,
 .t-center {
   text-align: center;

@@ -11,6 +11,7 @@ import { IRootState } from '../../../utils/store';
 import { updateFeeling } from '../../../actions/feelingActions';
 import { useTranslation } from 'react-i18next';
 import FileUploader from '../../../components/FileUploader';
+import Spacing from '../../../components/Spacing'
 
 const MoodStep: React.FC = () => {
 
@@ -115,6 +116,7 @@ const useStyles = makeStyles({
             variant="outlined"
             label={t('tell_feelings')}
         />
+        <Spacing m2/>
         <FileUploader name={t('upload_file')} handleFile={() => ''} accept="image/*" />
     </>
   );    

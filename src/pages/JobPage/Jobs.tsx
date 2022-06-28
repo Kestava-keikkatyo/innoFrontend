@@ -74,7 +74,7 @@ const Jobs: React.FC<any> = () => {
     ];
     
     return (
-        <div style={{ height: 700, width: '100%' }}>
+        <div style={{ height: "95vh", width: '100%', padding: "0 1rem" }}>
             <div className={classes.title}>
                 <Typography color="primary" align="center" className={classes.title} variant="h5">{t('job_ads')}</Typography>
             </div>
