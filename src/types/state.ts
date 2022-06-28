@@ -250,7 +250,7 @@ interface TopicCreated {
   data: Topic
 }
 
-interface TopicActionFailure {
+export interface TopicActionFailure {
   type: typeof topicType.TOPIC_ACTION_FAILURE
   data: string
 }
@@ -265,8 +265,12 @@ interface TopicDeletedSuccess {
   data: { _id: string }
 }
 
-interface TopicGetAll {
-  type: typeof topicType.TOPIC_GETALL_REQUEST | topicType.TOPIC_GETALL_SUCCESS
+export interface TopicGetAllRequest {
+  type: typeof topicType.TOPIC_GETALL_REQUEST
+}
+
+export interface TopicGetAllSuccess {
+  type: typeof topicType.TOPIC_GETALL_SUCCESS
   data: Topic[]
 }
 
@@ -285,7 +289,8 @@ export type TopicActions =
   | TopicActionFailure
   | TopicDeletedRequest
   | TopicDeletedSuccess
-  | TopicGetAll
+  | TopicGetAllRequest
+  | TopicGetAllSuccess
   | TopicGetCurrent
   | TopicUpdated
 
