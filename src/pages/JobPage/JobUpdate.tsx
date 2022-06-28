@@ -57,7 +57,7 @@ const JobUpdate: React.FC = () => {
     );
     
     const handleSubmit = (job: Job) => {
-        dispatch(updateJob(jobId, job));
+        dispatch(updateJob(job));
 
         dispatch(setAlert(i18next.t('job_updated_successfully')));
     };

@@ -154,7 +154,7 @@ export const createJob =
  * @desc update job.
  */
 export const updateJob =
-  (jobId: string, job: Job) => async (dispatch: Dispatch<JobSimilarActions | JobActionFailure>) => {
+  (job: Job) => async (dispatch: Dispatch<JobSimilarActions | JobActionFailure>) => {
     try {
       dispatch({
         type: jobType.JOB_UPDATED_REQUEST,
