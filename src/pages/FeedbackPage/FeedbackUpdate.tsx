@@ -31,7 +31,7 @@ const FeedbackUpdate: React.FC = () => {
 
     const { feedbackId } = useParams<FeedbackUrlParams>();
     
-    const feedbackData: any = useSelector((state: IRootState) => state.feedback.currentFeedback);
+    const feedbackData = useSelector((state: IRootState) => state.feedback.currentFeedback);
     useEffect(() => {
       dispatch(fetchMyFeedbackById(feedbackId));
     }, [dispatch, feedbackId]);
