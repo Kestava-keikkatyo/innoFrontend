@@ -152,24 +152,27 @@ export const createFeedback =
  * @function
  * @desc update feedback.
  */
-export const updateFeedback = (feedbackId: string, feedback: Feedback) => async (dispatch: any) => {
-  try {
-    dispatch({
-      type: feedbackType.FEEDBACK_UPDATED_REQUEST,
-    })
+export const updateFeedback =
+  (feedback: Feedback) =>
+  async (dispatch: Dispatch<FeedbackSimilarActions | FeedbackActionFailure>) => {
+    try {
+      dispatch({
+        type: feedbackType.FEEDBACK_UPDATED_REQUEST,
+        data: feedback,
+      })
 
-    const res = await feedBackService.updateFeedback(feedbackId, feedback)
-    dispatch({
-      type: feedbackType.FEEDBACK_UPDATED_SUCCESS,
-      data: res.data,
-    })
+      const res = await feedBackService.updateFeedback(feedback)
+      dispatch({
+        type: feedbackType.FEEDBACK_UPDATED_SUCCESS,
+        data: res.data,
+      })
 
-    history.push('/feedbacks')
-  } catch (error) {
-    dispatch({
-      type: feedbackType.FEEDBACK_ACTION_FAILURE,
-      data: error,
-    })
-    dispatch(setAlert('Failed to update feedback: ' + error, severity.Error, 15))
+      history.push('/feedback?tab=my')
+    } catch (e) {
+      dispatch({
+        type: feedbackType.FEEDBACK_ACTION_FAILURE,
+        data: e as string,
+      })
+      setAlert('Failed to update feedback: ' + e, severity.Error, 15)(dispatch)
+    }
   }
-}

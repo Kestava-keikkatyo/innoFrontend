@@ -41,7 +41,7 @@ const FeedbackUpdate: React.FC = () => {
     );
     
     const handleSubmit = (feedback: Feedback) => {
-        dispatch(updateFeedback(feedbackId, feedback));
+        dispatch(updateFeedback(feedback));
 
         dispatch(setAlert(i18next.t('feedback_updated_successfully')));
     };
@@ -57,7 +57,7 @@ const FeedbackUpdate: React.FC = () => {
           onSubmit={handleSubmit}
           validationSchema={UpdateFeedbackSchema}
           >
-            {(props) => {
+            {() => {
               return (
               <Form>
                 <div className={classes.feedbackContainerTop}>
@@ -66,7 +66,7 @@ const FeedbackUpdate: React.FC = () => {
               </div>
                 <Stack direction="row" spacing={2}>
                   <Button type="submit" variant="contained" color="primary" className={classes.button}>{t('button_edit')}</Button>
-                  <Button variant="outlined" color="primary" component={Link} to="/feedbacks">{t('button_cancel')}</Button>
+                  <Button variant="outlined" color="primary" component={Link} to="/feedback?tab=my">{t('button_cancel')}</Button>
                 </Stack>
               </Form>
               );
