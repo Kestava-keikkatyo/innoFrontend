@@ -1,26 +1,26 @@
 import React from 'react';
-import { Button, CircularProgress, Typography } from "@mui/material";
+import { Button, CircularProgress, Typography } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import * as Yup from "yup";
-import { Form, Formik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
+import * as Yup from 'yup';
+import { Form, Formik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 import FormikField from '../../components/FormField';
 import { Topic } from '../../types/types';
 import { IRootState } from '../../utils/store';
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'react-i18next'
 import { createTopic } from '../../actions/topicActions';
 
 const initialValues: Topic = {
-  question: "",
-  answer: "",
+  question: '',
+  answer: '',
 };
 
 const CreateTopicSchema = Yup.object().shape({
-  question: Yup.string().min(2, "Question should be three letters at least!").required("Question is required!"),
-  answer: Yup.string().min(2, "Answer should be three letters at least!").required("Answer is required!"),
+  question: Yup.string().min(2, 'Question should be three letters at least!').required('Question is required!'),
+  answer: Yup.string().min(2, 'Answer should be three letters at least!').required('Answer is required!'),
 });
 
-const CreateTopic: React.FC<any> = () => {
+const CreateTopic: React.FC = () => {
   const { t } = useTranslation()
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -41,7 +41,7 @@ const CreateTopic: React.FC<any> = () => {
         onSubmit={handleSubmit}
         validationSchema={CreateTopicSchema}
         >
-          {(props) => {
+          {() => {
             return (
             <Form>
               <div className={classes.topicContainerTop}>

@@ -245,8 +245,14 @@ export interface TopicState {
   topics: Topic[]
   fetchError?: string
 }
-interface TopicCreated {
-  type: typeof topicType.TOPIC_CREATED_REQUEST | topicType.TOPIC_CREATED_SUCCESS
+export interface TopicSimilarActions {
+  type:
+    | typeof topicType.TOPIC_CREATED_REQUEST
+    | topicType.TOPIC_CREATED_SUCCESS
+    | typeof topicType.TOPIC_DELETED_REQUEST
+    | typeof topicType.TOPIC_DELETED_SUCCESS
+    | typeof topicType.TOPIC_UPDATED_REQUEST
+    | typeof topicType.TOPIC_UPDATED_SUCCESS
   data: Topic
 }
 
@@ -254,17 +260,6 @@ export interface TopicActionFailure {
   type: typeof topicType.TOPIC_ACTION_FAILURE
   data: string
 }
-
-interface TopicDeletedRequest {
-  type: typeof topicType.TOPIC_DELETED_REQUEST
-  data: Topic
-}
-
-interface TopicDeletedSuccess {
-  type: typeof topicType.TOPIC_DELETED_SUCCESS
-  data: { _id: string }
-}
-
 export interface TopicGetAllRequest {
   type: typeof topicType.TOPIC_GETALL_REQUEST
 }
@@ -274,25 +269,22 @@ export interface TopicGetAllSuccess {
   data: Topic[]
 }
 
-interface TopicGetCurrent {
-  type: typeof topicType.TOPIC_GET_CURRENT_REQUEST | topicType.TOPIC_GET_CURRENT_SUCCESS
-  data: Topic
+export interface TopicGetCurrentRequest {
+  type: typeof topicType.TOPIC_GET_CURRENT_REQUEST
 }
 
-interface TopicUpdated {
-  type: typeof topicType.TOPIC_UPDATED_REQUEST | topicType.TOPIC_UPDATED_SUCCESS
+export interface TopicGetCurrentSuccess {
+  type: typeof topicType.TOPIC_GET_CURRENT_SUCCESS
   data: Topic
 }
 
 export type TopicActions =
-  | TopicCreated
+  | TopicSimilarActions
   | TopicActionFailure
-  | TopicDeletedRequest
-  | TopicDeletedSuccess
   | TopicGetAllRequest
   | TopicGetAllSuccess
-  | TopicGetCurrent
-  | TopicUpdated
+  | TopicGetCurrentRequest
+  | TopicGetCurrentSuccess
 
 /**
  * Work request state & action types
