@@ -1,23 +1,22 @@
 import React, { useEffect } from 'react';
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import * as Yup from "yup";
-import { Form, Formik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
+import * as Yup from 'yup';
+import { Form, Formik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 import FormikField from '../../components/FormField';
 import { setAlert } from '../../actions/alertActions';
-import { useTranslation } from "react-i18next"
-import i18next from "i18next"
+import { useTranslation } from 'react-i18next'
+import i18next from 'i18next'
 import { Feedback } from '../../types/types';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { IRootState } from '../../utils/store';
 import PageLoading from '../../components/PageLoading';
-import { Link } from 'react-router-dom';
-import { fetchFeedbackById, updateFeedback } from '../../actions/feedBackActions';
+import { fetchMyFeedbackById, updateFeedback } from '../../actions/feedBackActions';
 
 const UpdateFeedbackSchema = Yup.object().shape({
-    heading: Yup.string().min(2, "Heading should be two letters at least!").required("Heading is required!"),
-    message: Yup.string().min(2, "Message should be two letters at least!").required("Message is required!"),
+    heading: Yup.string().min(2, 'Heading should be two letters at least!').required('Heading is required!'),
+    message: Yup.string().min(2, 'Message should be two letters at least!').required('Message is required!'),
 });
 
 type FeedbackUrlParams = {
@@ -34,7 +33,7 @@ const FeedbackUpdate: React.FC = () => {
     
     const feedbackData: any = useSelector((state: IRootState) => state.feedback.currentFeedback);
     useEffect(() => {
-      dispatch(fetchFeedbackById(feedbackId));
+      dispatch(fetchMyFeedbackById(feedbackId));
     }, [dispatch, feedbackId]);
   
     if (!feedbackData || feedbackId !== feedbackData._id) return (
@@ -44,7 +43,7 @@ const FeedbackUpdate: React.FC = () => {
     const handleSubmit = (feedback: Feedback) => {
         dispatch(updateFeedback(feedbackId, feedback));
 
-        dispatch(setAlert(i18next.t("feedback_updated_successfully")));
+        dispatch(setAlert(i18next.t('feedback_updated_successfully')));
     };
     
     return (

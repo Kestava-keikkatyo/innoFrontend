@@ -1,26 +1,25 @@
 import React, { useEffect } from 'react';
 import { Button } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { IRootState } from "../../utils/store";
-import PageLoading from "../../components/PageLoading";
+import { useParams, Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { IRootState } from '../../utils/store';
+import PageLoading from '../../components/PageLoading';
 import Typography from '@mui/material/Typography';
-import { fetchFeedbackById } from "../../actions/feedBackActions";
-import { Link } from 'react-router-dom';
-import { useTranslation } from "react-i18next";
+import { fetchMyFeedbackById } from '../../actions/feedBackActions';
+import { useTranslation } from 'react-i18next';
 
 type FeedbackUrlParams = {
     feedbackId: string
 }
-const Details: React.FC<any> = () =>  {
+const Details: React.FC = () => {
    
     const { t } = useTranslation();
     const { feedbackId } = useParams<FeedbackUrlParams>();
     const feedbackData: any = useSelector((state: IRootState) => state.feedback.currentFeedback);
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(fetchFeedbackById(feedbackId));
+        dispatch(fetchMyFeedbackById(feedbackId));
     }, [dispatch, feedbackId]);
     const classes = useStyles();
 

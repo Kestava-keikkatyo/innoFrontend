@@ -197,8 +197,12 @@ export interface FeedbackState {
   feedbacks: Feedback[]
   fetchError?: string
 }
-interface FeedbackPosted {
-  type: typeof feedbackType.FEEDBACK_POSTED_REQUEST | typeof feedbackType.FEEDBACK_POSTED_SUCCESS
+export interface FeedbackSimilarActions {
+  type:
+    | typeof feedbackType.FEEDBACK_POSTED_REQUEST
+    | typeof feedbackType.FEEDBACK_POSTED_SUCCESS
+    | typeof feedbackType.FEEDBACK_UPDATED_REQUEST
+    | typeof feedbackType.FEEDBACK_UPDATED_SUCCESS
   data: Feedback
 }
 
@@ -224,19 +228,13 @@ export interface FeedbackGetCurrentSuccess {
   data: Feedback
 }
 
-interface FeedbackUpdated {
-  type: typeof feedbackType.FEEDBACK_UPDATED_REQUEST | feedbackType.FEEDBACK_UPDATED_SUCCESS
-  data: Feedback
-}
-
 export type FeedbackAction =
-  | FeedbackPosted
+  | FeedbackSimilarActions
   | FeedbackActionFailure
   | FeedbackGetAllRequest
   | FeedbackGetAllSuccess
   | FeedbackGetCurrentRequest
   | FeedbackGetCurrentSuccess
-  | FeedbackUpdated
 
 /**
  * Topic state & action types

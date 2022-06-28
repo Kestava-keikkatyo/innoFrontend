@@ -1,15 +1,15 @@
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridColumns } from '@mui/x-data-grid';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../utils/store';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import makeStyles from '@mui/styles/makeStyles';
-import { fetchAllMyFeedbacks } from "../../actions/feedBackActions";
-import { useTranslation } from "react-i18next";
-import i18next from "i18next";
+import { fetchAllMyFeedbacks } from '../../actions/feedBackActions';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 import { Stack } from '@mui/material';
 
-const Feedbacks: React.FC<any> = () => {
+const Feedbacks: React.FC = () => {
 
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -24,34 +24,34 @@ const Feedbacks: React.FC<any> = () => {
   rows = feedbacks;
   console.log('feedbacks:', feedbacks);
   
-  const columns = [
+  const columns: GridColumns = [
     {
-      field: "heading",
-      headerName: (i18next.t("feedback_title")),
+      field: 'heading',
+      headerName: (i18next.t('feedback_title')),
       width: 250,
     },
     { 
-      field: "recipient", 
-      headerName: (i18next.t("feedback_recipient")),
+      field: 'recipient', 
+      headerName: (i18next.t('feedback_recipient')),
       width: 250 
     },
     {
-      field: "createdAt",
-      headerName: (i18next.t("sending_date")),
+      field: 'createdAt',
+      headerName: (i18next.t('sending_date')),
       width: 250,
     },
     {
-      field: "action",
-      headerName: (i18next.t("feedback_action")),
+      field: 'action',
+      headerName: (i18next.t('feedback_action')),
       width: 250,
-      renderCell: (params: any) => {
+      renderCell: (params) => {
         return (
           <>
           <Stack direction="row" spacing={2}>
-          <Link to={"/feedback/details/" + params.id}>
+          <Link to={'/feedback/details/' + params.id}>
             <span>{t('feedback_details')}</span>
           </Link>
-          <Link to={"/feedback/update/" + params.id}>
+          <Link to={'/feedback/update/' + params.id}>
             <span className={classes.update}>{t('button_edit')}</span>
           </Link>
           </Stack>
