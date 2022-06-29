@@ -13,6 +13,7 @@ import PageLoading from '../../components/PageLoading';
 import { useTranslation } from 'react-i18next';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
+import moment from 'moment';
 
 type JobUrlParams = {
     jobId: string
@@ -70,7 +71,7 @@ const JobDetails: React.FC = () => {
                 </div>
                 <div className={classes.jobShowInfo}>
                     <span className={classes.jobShowTitle}>{t('job_posted_at')}</span>
-                    <span className={classes.jobShowInfoTitle}> { jobData.createdAt }</span>
+                    <span className={classes.jobShowInfoTitle}> { moment(jobData.createdAt).format('DD/MM/YYYY') }</span>
                 </div>
                 <div className={classes.jobShowInfo}>
                     <span className={classes.jobShowTitle}>{t('job_available_until')}</span>
