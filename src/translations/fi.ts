@@ -576,7 +576,7 @@ export default {
   work_request_recipient: 'Vastaanottaja',
   work_request_sender: 'Lähettäjä',
   work_request_headline: 'Otsikko',
-  work_request_workers_nuber: 'Työntekijöiden määrä',
+  work_request_workers_number: 'Työntekijöiden määrä',
   work_request_startDate: 'Aloituspäivämäärä',
   work_request_endDate: 'Päättymispäivämäärä',
   work_request_requirements: 'Vaatimukset',

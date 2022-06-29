@@ -597,7 +597,7 @@ export default {
   work_request_recipient: 'Recipient',
   work_request_sender: 'Sender',
   work_request_headline: 'Headline',
-  work_request_workers_nuber: 'Number of workers',
+  work_request_workers_number: 'Number of workers',
   work_request_startDate: 'Start date',
   work_request_endDate: ' End date',
   work_request_requirements: 'Requirements',

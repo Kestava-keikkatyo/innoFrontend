@@ -18,7 +18,7 @@ type AgencyUrlParams = {
 }
 
 const initialValues: WorkRequest = {
-  recipient:'',
+  recipient: '',
   headline: '',
   workersNumber: null,
   requirements: '',

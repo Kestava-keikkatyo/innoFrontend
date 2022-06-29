@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { fetchReceivedWorkRequests } from '../../actions/workRequestActions';
+import moment from 'moment';
 
 const WorkRequests: React.FC = () => {
 
@@ -43,6 +44,10 @@ const WorkRequests: React.FC = () => {
         field: 'createdAt',
         headerName: (i18next.t('work_request_sent_at')),
         width: 250,
+        renderCell: (params) => {
+          console.log(params.row);
+          return <>{moment(params.row.createdAt).format('DD/MM/YYYY')}</>; 
+      }
     },
     {
         field: 'action',

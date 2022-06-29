@@ -198,7 +198,7 @@ export interface Topic {
 
 export interface WorkRequest {
   _id?: string
-  sender?: string
+  sender?: User
   recipient: string
   headline: string
   workersNumber: number | null
@@ -207,6 +207,7 @@ export interface WorkRequest {
   details: string
   startDate: Date | null
   endDate: Date | null
+  createdAt?: Date
 }
 
 export interface Notification {

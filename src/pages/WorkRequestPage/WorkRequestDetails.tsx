@@ -10,6 +10,7 @@ import PageLoading from '../../components/PageLoading';
 import { useTranslation } from 'react-i18next';
 import Typography from '@mui/material/Typography';
 import { fetchReceivedWorkRequestById } from '../../actions/workRequestActions';
+import moment from 'moment';
 
 type ReceivedWorkRequestUrlParams = {
     receivedWorkRequestId: string
@@ -18,7 +19,7 @@ const WorkRequestDetails: React.FC<React.ReactNode> = () => {
    
     const { t } = useTranslation()
     const { receivedWorkRequestId } = useParams<ReceivedWorkRequestUrlParams>();
-    const receivedWorkRequestData: any = useSelector((state: IRootState) => state.workRequest.currentWorkRequest);
+    const receivedWorkRequestData = useSelector((state: IRootState) => state.workRequest.currentWorkRequest);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchReceivedWorkRequestById(receivedWorkRequestId));
@@ -36,10 +37,14 @@ const WorkRequestDetails: React.FC<React.ReactNode> = () => {
         </div>
         <div className={classes.workRWContainer}>
             <div className={classes.workRWShow}>
+                <div className={classes.workRWShowInfo}>
+                    <span className={classes.workRWShowTitle}>{t('work_request_sent_at')}</span>
+                    <span className={classes.workRWShowInfoTitle}>{ moment(receivedWorkRequestData.createdAt).format('DD/MM/YYYY') }</span>
+                </div>
                 <span className={classes.workRWTitle}>{t('work_request_sender')}</span>
                 <div className={classes.workRWShowInfo}>
                     <PermIdentity className={classes.workRWShowIcon} />
-                    <span className={classes.workRWShowInfoTitle}> {receivedWorkRequestData.sender.name} </span>
+                    <span className={classes.workRWShowInfoTitle}> {receivedWorkRequestData.sender?.name} </span>
                 </div>
                 <span className={classes.workRWTitle}>{t('work_request_specifics')}</span>
                 <div className={classes.workRWShowInfo}>
@@ -47,7 +52,7 @@ const WorkRequestDetails: React.FC<React.ReactNode> = () => {
                     <span className={classes.workRWShowInfoTitle}>{ receivedWorkRequestData.headline }</span>
                 </div>
                 <div className={classes.workRWShowInfo}>
-                    <span className={classes.workRWShowTitle}>{t('work_request_workers_nuber')}</span>
+                    <span className={classes.workRWShowTitle}>{t('work_request_workers_number')}</span>
                     <span className={classes.workRWShowInfoTitle}>{ receivedWorkRequestData.workersNumber }</span>
                 </div>
             </div>
