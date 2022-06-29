@@ -17,11 +17,11 @@ import { Button } from '@mui/material';
 type JobUrlParams = {
     jobId: string
 }
-const JobDetails: React.FC<any> = () => {
+const JobDetails: React.FC = () => {
    
     const { t } = useTranslation()
     const { jobId } = useParams<JobUrlParams>();
-    const jobData: any = useSelector((state: IRootState) => state.job.currentJob);
+    const jobData = useSelector((state: IRootState) => state.job.currentJob);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchJobById(jobId));
@@ -45,7 +45,7 @@ const JobDetails: React.FC<any> = () => {
                 <span className={classes.jobTitle}>{t('job_supplier')}</span>
                 <div className={classes.jobShowInfo}>
                     <PermIdentity className={classes.jobShowIcon} />
-                    <span className={classes.jobShowInfoTitle}>{ jobData.user.name }</span>
+                    <span className={classes.jobShowInfoTitle}>{ jobData.user?.name }</span>
                 </div>
                 <span className={classes.jobTitle}>{t('job_specifics')}</span>
                 <div className={classes.jobShowInfo}>
