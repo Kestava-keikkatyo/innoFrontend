@@ -12,7 +12,7 @@ import { fetchJobById } from '../../actions/jobActions';
 import PageLoading from '../../components/PageLoading';
 import { useTranslation } from 'react-i18next';
 import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 import moment from 'moment';
 
 type JobUrlParams = {
@@ -39,7 +39,10 @@ const JobDetails: React.FC = () => {
             <Typography className={classes.jobTitle} color="primary" variant="h4">{t('job_details_title')}</Typography>
         </div>
         <div>
-            <Button className={classes.button} color="secondary" component={Link} to="/job/application">{t('job_apply')}</Button>
+            <Stack direction="row" spacing={2}>
+                <Button className={classes.button} color="secondary" component={Link} to="/job/application">{t('job_apply')}</Button>
+                <Button color="secondary" component={Link} to="/jobs">{t('back')}</Button>
+            </Stack>
         </div>
         <div className={classes.jobContainer}>
             <div className={classes.jobShow}>
@@ -75,7 +78,7 @@ const JobDetails: React.FC = () => {
                 </div>
                 <div className={classes.jobShowInfo}>
                     <span className={classes.jobShowTitle}>{t('job_available_until')}</span>
-                    <span className={classes.jobShowInfoTitle}> { jobData.applicationLastDate }</span>
+                    <span className={classes.jobShowInfoTitle}> { moment(jobData.applicationLastDate).format('DD/MM/YYYY') }</span>
                 </div>
             </div>
             <div className={classes.jobDescription}>
@@ -155,7 +158,6 @@ const useStyles = makeStyles(() => ({
     },
     button: {
         marginLeft: '820px',
-        fontSize: '15px',
     }
 }));
 
