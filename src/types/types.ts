@@ -178,7 +178,7 @@ export interface Job {
   desirableSkills: string
   benefits: string
   details: string
-  createdAt?: Date
+  createdAt?: string
 }
 
 export interface Feedback {

@@ -24,6 +24,7 @@ import CollapsibleRow from '../../components/CollapsibleRow'
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { Job } from '../../types/types';
+import moment from 'moment';
 
 const CreatedJobs: React.FC = () => {
 
@@ -46,9 +47,9 @@ const CreatedJobs: React.FC = () => {
     dispatch(fetchAllMyJobs());
   }, [dispatch]);
 
-  const rows = jobs.map( (job: any) => {
+  const rows = jobs.map( (job: Job) => {
     /** Format date created to a format with only date. */
-    const formattedDate = job.createdAt.slice(0,10)
+    const formattedDate = moment(job.createdAt).format('DD/MM/YYYY')
     job = {
       ...job, 
       createdAt: formattedDate,
