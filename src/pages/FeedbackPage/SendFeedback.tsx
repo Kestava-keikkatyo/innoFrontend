@@ -67,7 +67,7 @@ const SendFeedback: React.FC<any> = () => {
 const useStyles = makeStyles((theme) => ({
   newFeedback: {
     flex: '4',
-    padding: '20px',
+    //padding: '20px',
   },
   button: {
     left: theme.spacing(0),
@@ -87,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
   feedbackContainer: {
     flex: '1',
     padding: '20px',
-    width: '600px',
+    //width: '600px',
     webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
     boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)'
   },

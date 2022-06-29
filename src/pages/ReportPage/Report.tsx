@@ -133,20 +133,20 @@ const Report: React.FC<any> = ({ report }) => {
           }}
       >
           {/**Title */}
-          <Typography sx={{ width: '33%'}}>
+          <Typography className='report1' sx={{ width: '30%'}}>
             {report.title}
           </Typography>
         
           {/**Date */}
-          <Typography 
+          <Typography className='report1'
             display='inline' 
-            sx={{color: 'text.secondary', width: '33%'}}
+            sx={{color: 'text.secondary', width: '35%'}}
           >
             {localizedDate}
           </Typography>
 
           {/**Status (Reply-status and archived-status if archived) */}
-          <Box sx={{width: '33%'}}>
+          <Box className='report1' sx={{width: '35%'}}>
             {/**Reply-status*/}
             <Typography 
               display='inline'
