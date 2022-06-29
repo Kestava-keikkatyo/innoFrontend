@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -8,13 +7,13 @@ import Box from '@mui/material/Box';
 import { Container } from '@mui/material';
 import SendFeedback from './SendFeedback';
 import Feedbacks from './Feedbacks';
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 import { useHistory, useLocation } from 'react-router-dom';
 
 interface TabPanelProps {
     children?: React.ReactNode;
-    index: any;
-    value: any;
+    index: string;
+    value: string;
   }
 
   function TabPanel(props: TabPanelProps) {
@@ -48,26 +47,28 @@ interface TabPanelProps {
     };
   }
   
-  function useQuery() : URLSearchParams {
-    const { search } = useLocation();
-    return React.useMemo(() => new URLSearchParams(search), [search]);
+  function getQueryParam(search : string, paramName : string) : string | null {
+    return new URLSearchParams(search).get(paramName);
   }
   
   
 
-const FeedbackPage: React.FC<any> = () => {
+const FeedbackPage: React.FC = () => {
   const { t } = useTranslation();
-  const theme = useTheme();
   const history = useHistory();
-  const query = useQuery();
-  const [value, setValue] = React.useState(query.get('tab') || 'send');
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
+  
+  useLocation();
+
+  const handleChange = (_event: React.SyntheticEvent<Element, Event>, newValue: string) => {
     history.push({
       pathname: history.location.pathname,
-      search: "?" + new URLSearchParams({tab: newValue}).toString()
+      search: '?' + new URLSearchParams({tab: newValue}).toString()
   })
-    setValue(newValue);
   };
+
+  const value = getQueryParam(history.location.search, 'tab') || 'send';
+
+  console.log('Feedback page rendered', history, value);
 
   return (
   <Container>

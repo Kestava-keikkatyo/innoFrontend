@@ -9,6 +9,7 @@ import FormikField from '../../components/FormField';
 import { IRootState } from '../../utils/store';
 import { createFeedback } from '../../actions/feedBackActions';
 import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
 
 const initialValues: Feedback = {
   heading: '',
@@ -28,10 +29,15 @@ const SendFeedback: React.FC = () => {
   const { t } = useTranslation();
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
   const isLoading = useSelector((state: IRootState) => state.feedback.loading)
     
   const handleSubmit = (feedback: Feedback) => {
     dispatch(createFeedback(feedback));
+    history.push({
+      pathname: history.location.pathname,
+      search: '?' + new URLSearchParams({ tab: 'my' }).toString(),
+    })
   };
   
   return (
