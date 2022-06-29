@@ -10,7 +10,7 @@ import ImageUploader from '../../components/ImageUploader';
 import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
 import { fetchUserById, updateUser } from '../../actions/usersActions';
-import { roles, User, UserInformation } from '../../types/types';
+import { roles, User } from '../../types/types';
 import { useParams } from 'react-router-dom';
 import { IRootState } from '../../utils/store';
 import PageLoading from '../../components/PageLoading';
