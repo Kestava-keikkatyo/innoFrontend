@@ -10,6 +10,7 @@ import { fetchAllJobAds } from '../../actions/jobActions';
 import PageLoading from '../../components/PageLoading';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next'
+import moment from 'moment';
 
 const Jobs: React.FC = () => {
 
@@ -56,6 +57,10 @@ const Jobs: React.FC = () => {
             field: 'createdAt',
             headerName: (i18next.t('job_release_date')),
             width: 200,
+            renderCell: (params) => {
+                console.log(params.row);
+                return <>{moment(params.row.createdAt).format('DD/MM/YYYY')}</>; 
+            }
         },
         {
             field: 'action',
