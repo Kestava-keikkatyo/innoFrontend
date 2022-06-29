@@ -225,7 +225,7 @@ export const createAdmin =
         data,
       })
       setAlert('user created successfully!')(dispatch)
-      console.log('Created user', data)
+      history.push('/userList')
     } catch (e) {
       dispatch({
         type: usersType.USER_ACTION_FAILURE,

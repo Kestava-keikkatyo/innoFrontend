@@ -1,15 +1,15 @@
 import React from 'react';
-import { Button, Typography } from "@mui/material";
+import { Button, Typography } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import * as Yup from "yup";
-import { Form, Formik } from "formik";
-import { useDispatch } from "react-redux";
+import * as Yup from 'yup';
+import { Form, Formik } from 'formik';
+import { useDispatch } from 'react-redux';
 import { createAdmin } from '../../actions/usersActions';
 import FormikField from '../../components/FormField';
 import { setAlert } from '../../actions/alertActions';
 import ImageUploader from '../../components/ImageUploader';
-import { useTranslation } from "react-i18next"
-import i18next from "i18next"
+import { useTranslation } from 'react-i18next'
+import i18next from 'i18next'
 
 interface FormValues {
     name: string;
@@ -19,23 +19,23 @@ interface FormValues {
   }
 
 const initialValues: FormValues = {
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: ""
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
 };
 
 const CreateUserSchema = Yup.object().shape({
     name: Yup.string()
-    .min(2, i18next.t("name_should_be_three_letters_at_least"))
-    .required(i18next.t("name_is_required")),
-    email: Yup.string().email(i18next.t("not_valid_email")).required(i18next.t("email_is_required")),
-    password: Yup.string().required(i18next.t("password_is_required")),
+    .min(2, i18next.t('name_should_be_three_letters_at_least'))
+    .required(i18next.t('name_is_required')),
+    email: Yup.string().email(i18next.t('not_valid_email')).required(i18next.t('email_is_required')),
+    password: Yup.string().required(i18next.t('password_is_required')),
     confirmPassword: Yup.string()
-     .oneOf([Yup.ref('password'), undefined], i18next.t("passwords_must_match"))
+     .oneOf([Yup.ref('password'), undefined], i18next.t('passwords_must_match'))
 });
 
-const NewUser: React.FC<any> = () => {
+const NewUser: React.FC = () => {
 
     const { t } = useTranslation()
     const classes = useStyles();
@@ -43,7 +43,7 @@ const NewUser: React.FC<any> = () => {
     
     const handleSubmit = (values: FormValues) => {
         dispatch(createAdmin(values.name, values.email, values.password));
-        dispatch(setAlert(i18next.t("user_created_successfully")));
+        dispatch(setAlert(i18next.t('user_created_successfully')));
       };
       return (
       <div className={classes.newUser}>
