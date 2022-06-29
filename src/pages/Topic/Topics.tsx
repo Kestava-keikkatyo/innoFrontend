@@ -13,6 +13,7 @@ import i18next from 'i18next';
 import { deleteTopic, fetchAllTopics } from '../../actions/topicActions';
 import { Button } from '@mui/material';
 import { Topic } from '../../types/types';
+import moment from 'moment';
 
 const Topics: React.FC = () => {
 
@@ -50,6 +51,10 @@ const Topics: React.FC = () => {
         field: 'createdAt',
         headerName: (i18next.t('topic_created_at')),
         width: 250,
+        renderCell: (params) => {
+          console.log(params.row);
+          return <>{moment(params.row.createdAt).format('DD/MM/YYYY')}</>; 
+      }
     },
     {
         field: 'action',
