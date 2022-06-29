@@ -1,16 +1,16 @@
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridColumns } from '@mui/x-data-grid';
 import * as React from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchAllWorkers } from "../../actions/usersActions";
+import { fetchAllWorkers } from '../../actions/usersActions';
 import makeStyles from '@mui/styles/makeStyles';
 import Typography from '@mui/material/Typography';
-import { useTranslation } from "react-i18next"
-import i18next from "i18next"
+import { useTranslation } from 'react-i18next'
+import i18next from 'i18next'
 
-const Workers: React.FC<any> = () => {
+const Workers: React.FC = () => {
   const { t } = useTranslation()
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -20,12 +20,12 @@ const Workers: React.FC<any> = () => {
   }, [dispatch]);
   let rows = [];
   rows = users;
-  const columns = [
+  const columns: GridColumns = [
     {
-      field: "name",
-      headerName: (i18next.t("list_name")),
+      field: 'name',
+      headerName: (i18next.t('list_name')),
       width: 250,
-      renderCell: (params: any) => {
+      renderCell: (params) => {
         return (
         <div className={classes.userListUser}>
           <img className={classes.userListImg} src={params.row.profilePicture} alt="" />
@@ -35,28 +35,28 @@ const Workers: React.FC<any> = () => {
       },
     },
     {
-      field: "email", 
-      headerName: (i18next.t("list_email")), 
+      field: 'email', 
+      headerName: (i18next.t('list_email')), 
       width: 200 
     },
     {
-      field: "city", 
-      headerName: (i18next.t("list_city")), 
+      field: 'city', 
+      headerName: (i18next.t('list_city')), 
       width: 200 
     },
     {
-      field: "userType", 
-      headerName: (i18next.t("list_position")), 
+      field: 'userType', 
+      headerName: (i18next.t('list_position')), 
       width: 150 
     },
     {
-      field: "action",
-      headerName: (i18next.t("list_action")),
+      field: 'action',
+      headerName: (i18next.t('list_action')),
       width: 200,
-      renderCell: (params: any) => {
+      renderCell: (params) => {
       return (
       <>
-      <Link to={"/workers/profile/" + params.id}>{t('list_profile')}</Link>
+      <Link to={'/workers/profile/' + params.id}>{t('list_profile')}</Link>
       </>
       );
     },
@@ -81,7 +81,7 @@ return (
 );
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   title: {
     marginTop: '25px',
     marginBottom: '15px',

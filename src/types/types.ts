@@ -121,6 +121,7 @@ export interface UserInformation {
   website?: string
   licenses?: string
   profilePicture?: string
+  category?: string
 }
 
 export interface User extends UserInformation {

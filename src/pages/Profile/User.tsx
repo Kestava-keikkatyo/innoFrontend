@@ -1,19 +1,16 @@
-import React from 'react';
-import { useDispatch, useSelector } from "react-redux";
-import {useEffect  } from "react";
-import { fetchUserById } from "../../actions/usersActions";
-import { IRootState } from "../../utils/store";
-import { useParams } from "react-router-dom";
-import PageLoading from "../../components/PageLoading";
-import { Avatar, Typography } from "@mui/material";
+import React, {useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUserById } from '../../actions/usersActions';
+import { IRootState } from '../../utils/store';
+import { useParams, Link } from 'react-router-dom';
+import PageLoading from '../../components/PageLoading';
+import { Avatar, Typography, Button } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { LocationSearching, MailOutline, PermIdentity, PhoneAndroid } from '@mui/icons-material';
 import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOutlined';
 import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined';
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
-import { useTranslation } from "react-i18next";
-import { Button } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { roles } from '../../types/types';
 
 type UserUrlParams = {
@@ -26,9 +23,9 @@ const UserProfile: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
 
   const myUserId = useSelector((state: IRootState) => state.user.data._id);
 
-  let profileId : string = myProfile ? myUserId : userId;
+  const profileId : string = myProfile ? myUserId : userId;
 
-  const profileData: any = useSelector((state: IRootState) => state.users.currentUser);
+  const profileData = useSelector((state: IRootState) => state.users.currentUser);
   const { t } = useTranslation();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -107,7 +104,7 @@ const UserProfile: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
   );
 }
 
-const useStyles = makeStyles((theme: any) => ({
+const useStyles = makeStyles((theme) => ({
   user: {
     flex: '4',
     padding: '20px',

@@ -1,17 +1,17 @@
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridColumns } from '@mui/x-data-grid';
 import * as React from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchAllAgencies } from "../../actions/usersActions";
+import { fetchAllAgencies } from '../../actions/usersActions';
 import makeStyles from '@mui/styles/makeStyles';
 import Typography from '@mui/material/Typography';
-import { useTranslation } from "react-i18next"
-import i18next from "i18next"
+import { useTranslation } from 'react-i18next'
+import i18next from 'i18next'
 import { Stack } from '@mui/material';
 
-const Agencies: React.FC<any> = () => {
+const Agencies: React.FC = () => {
   const { t } = useTranslation();
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -21,12 +21,12 @@ const Agencies: React.FC<any> = () => {
   }, [dispatch]);
   let rows = [];
   rows = users;
-  const columns = [
+  const columns: GridColumns = [
     {
-      field: "name",
-      headerName: (i18next.t("list_name")),
+      field: 'name',
+      headerName: (i18next.t('list_name')),
       width: 250,
-      renderCell: (params: any) => {
+      renderCell: (params) => {
         return (
         <div className={classes.userListUser}>
           <img className={classes.userListImg} src={params.row.profilePicture} alt="" />
@@ -36,35 +36,35 @@ const Agencies: React.FC<any> = () => {
       },
     },
     {
-      field: "category", 
-      headerName: (i18next.t("list_category")),
+      field: 'category', 
+      headerName: (i18next.t('list_category')),
       width: 150 
     },
     {
-      field: "email", 
-      headerName: (i18next.t("list_email")), 
+      field: 'email', 
+      headerName: (i18next.t('list_email')), 
       width: 200 
     },
     {
-      field: "city", 
-      headerName: (i18next.t("list_city")), 
+      field: 'city', 
+      headerName: (i18next.t('list_city')), 
       width: 120 
     },
     {
-      field: "userType", 
-      headerName: (i18next.t("list_position")), 
+      field: 'userType', 
+      headerName: (i18next.t('list_position')), 
       width: 120 
     },
     {
-      field: "action",
-      headerName: (i18next.t("list_action")),
+      field: 'action',
+      headerName: (i18next.t('list_action')),
       width: 200,
-      renderCell: (params: any) => {
+      renderCell: (params) => {
         return (
         <>
         <Stack direction="row" spacing={2}>
-        <Link to={"/agencies/profile/" + params.id}>{t('list_profile')}</Link>
-        <Link to={"/agencies/workRequest/" + params.id}>Send work request</Link>
+        <Link to={'/agencies/profile/' + params.id}>{t('list_profile')}</Link>
+        <Link to={'/agencies/workRequest/' + params.id}>Send work request</Link>
         </Stack>
         </>
         );
@@ -89,7 +89,7 @@ const Agencies: React.FC<any> = () => {
   );
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   title: {
     marginTop: '25px',
     marginBottom: '15px',
