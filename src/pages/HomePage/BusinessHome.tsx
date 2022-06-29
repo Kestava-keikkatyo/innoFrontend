@@ -24,7 +24,7 @@ const BusinessHome = () => {
           <Grid item xs={12} md={6} style={{ marginTop: '1%' }}>
       <Card variant="outlined">
           <CardHeader
-            title={t("faq")}
+            title={t('faq')}
             subheader=""
           />
           <CardContent style={{height:'68.6vh'}}>

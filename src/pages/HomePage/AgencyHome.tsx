@@ -1,7 +1,6 @@
 import React from 'react';
 
 import vastuualueet from '../../assets/tietopankki/vastuualueet.json';
-import faq from '../../assets/tietopankki/faq.json';
 import {
   Card,
   List,
@@ -12,10 +11,8 @@ import {
   ListItemText,
   Divider,
   CardHeader,
-  Button,
   Grid,
 } from '@mui/material';
-import { useSelector } from 'react-redux';
 import Faq from './FAQBoxAgency';
 import { useTranslation } from 'react-i18next';
 
@@ -26,7 +23,7 @@ const AgencyHome = () => {
     <Grid item xs={12} md={6} style={{ marginTop: '1%'}}>
       <Card variant="outlined">
           <CardHeader
-            title={t("faq")}
+            title={t('faq')}
             subheader=""
           />
           <CardContent style={{height:'68.6vh'}}>
