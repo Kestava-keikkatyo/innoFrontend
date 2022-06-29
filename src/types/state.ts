@@ -2,7 +2,6 @@ import {
   Feeling,
   Form,
   severity,
-  Profile,
   Report,
   Feedback,
   Job,
@@ -599,12 +598,6 @@ export interface FileState {
   currentFiles: (File | null)[]
 }
 
-export interface ProfileState {
-  currentProfile: Profile
-  profileToBeViewed: Profile
-  profiles: any
-}
-
 export const ADD_FEELING = 'ADD_FEELING'
 export const ADD_FEELINGS = 'ADD_FEELINGS'
 export const FETCH_FEELINGS = 'FETCH_FEELINGS'
@@ -884,46 +877,6 @@ interface AddToBusinessContractList {
 export type BusinssContractListActionTypes =
   | FetchBusinessContractListAction
   | AddToBusinessContractList
-
-// Edit profile
-
-export const UPDATE_CURRENT_PROFILE = 'UPDATE_CURRENT_PROFILE'
-export const SET_CURRENT_PROFILE = 'SET_CURRENT_PROFILE'
-export const SET_PROFILE_TO_BE_VIEWED = 'SET_PROFILE_TO_BE_VIEWED'
-export const POST_PROFILE = 'POST_PROFILE'
-export const GET_ALL_PROFILES = 'GET_ALL_PROFILES'
-
-interface GetAllProfiles {
-  type: typeof GET_ALL_PROFILES
-  data: any
-}
-
-interface SetCurrentProfileAction {
-  type: typeof SET_CURRENT_PROFILE
-  data: any
-}
-
-interface SetProfileToBeViewedAction {
-  type: typeof SET_PROFILE_TO_BE_VIEWED
-  data: any
-}
-
-interface UpdateCurrentProfile {
-  type: typeof SET_CURRENT_FORM
-  data: any
-}
-
-interface PostProfile {
-  type: typeof POST_PROFILE
-  data: any
-}
-
-export type ProfileActionTypes =
-  | UpdateCurrentProfile
-  | PostProfile
-  | SetCurrentProfileAction
-  | SetProfileToBeViewedAction
-  | GetAllProfiles
 
 export interface NotificationsState {
   notifications: []

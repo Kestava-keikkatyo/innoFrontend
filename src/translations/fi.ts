@@ -75,12 +75,6 @@ export default {
   // Mood index page
   entry_mood: 'Lisää fiilis',
 
-  // profile page
-  profiles: 'Profiilit',
-  search_by_name: 'Etsi nimellä...',
-  search: 'Etsi...',
-  no_results: 'Ei tuloksia',
-
   // Line chart
   mood_history: 'Fiilishistoria',
 
@@ -303,17 +297,10 @@ export default {
   feedback: 'Palaute',
 
   // profilePage
-  edit_profile: 'Muokkaa profiilia',
   settings: 'Asetukset',
   profile: 'Profiili',
   logout: 'Kirjaudu ulos',
   return: 'Palaa',
-  introduction_video: 'Esittelyvideo',
-  instructions: 'Ohjeet',
-  change_picture: 'Vaihda kuva',
-  change_cover: 'Vaihda kehys',
-  change_introduction_video: 'Vaihda esittelyvideo',
-  save_changes: 'Tallenna muutokset',
 
   // ChangePassword
   change_password: 'Vaihda salasana',

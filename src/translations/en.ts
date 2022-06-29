@@ -75,12 +75,6 @@ export default {
   // Mood index page
   entry_mood: 'Add mood',
 
-  // profile page
-  profiles: 'Profiles',
-  search_by_name: 'Search by name...',
-  no_results: 'No results',
-  search: 'Search...',
-
   // Line chart
   mood_history: 'Mood history',
 
@@ -306,18 +300,10 @@ export default {
   feedback: 'Feedback',
 
   // profilePage
-  edit_profile: 'Edit profile',
   settings: 'Settings',
   profile: 'Profile',
   logout: 'Logout',
   return: 'Return',
-  introduction_video: 'Introduction video',
-  instructions: 'Instructions',
-  occupational: 'Occupational Safety Rules',
-  change_picture: 'Change picture',
-  change_cover: 'Change cover',
-  change_introduction_video: 'Change introduction video',
-  save_changes: 'Save changes',
 
   // ChangePassword
   change_password: 'Change password',

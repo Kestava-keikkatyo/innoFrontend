@@ -326,18 +326,3 @@ export interface BusinessContractForm {
   questions: Array<Question>
   filled: boolean
 }
-
-export interface Profile {
-  name: string
-  phone: string
-  email: string
-  streetAddress: string
-  zipCode: string
-  city: string
-  coverPhoto: string
-  profilePicture: string
-  video: string
-  website: string
-  instructions: string[]
-  occupationalSafetyRules: string[]
-}

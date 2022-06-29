@@ -29,11 +29,9 @@ import BusinessContractEdit from './pages/BusinessContractPreviewPage/BusinessCo
 import ContractFormManagerPage from './pages/ContractsPage/ContractFormManagerPage'
 import ContractFormPreviewPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormPreviewPage'
 import ContractFormEditPage from './pages/ContractsPage/ContractFormManagerPage/ContractFormEditPage'
-import ProfileViewPage from './pages/ProfilePage/ProfileViewPage'
 import JobList from './pages/JobPage'
 import SettingsPage from './pages/SettingsPage'
 import AllUsersList from './pages/AdminPage/AllUsersList'
-import User from './pages/AdminPage/user/User'
 import FAQIndex from './pages/FAQPage/index'
 import CreateUser from './pages/AdminPage/CreateUser'
 import ReportList from './pages/AdminPage/ReportList'
@@ -94,9 +92,6 @@ const App: React.FC = () => {
             </Route>
             <PrivateRoute path="/userList">
               <AllUsersList />
-            </PrivateRoute>
-            <PrivateRoute path="/user/:profileId">
-              <User />
             </PrivateRoute>
             <PrivateRoute path="/createUser">
               <CreateUser />
@@ -205,9 +200,6 @@ const App: React.FC = () => {
             </DatabankRoute>
             <PrivateRoute path="/settings">
               <SettingsPage />
-            </PrivateRoute>
-            <PrivateRoute path="/profiles/profile-view">
-              <ProfileViewPage />
             </PrivateRoute>
             <PrivateRoute path="/profile/edit">
               <UserUpdate myProfile />

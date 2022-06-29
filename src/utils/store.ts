@@ -11,7 +11,6 @@ import formReducer from '../reducers/formReducer'
 import formListReducer from '../reducers/formListReducer'
 import buisnessContractFormReducer from '../reducers/businessContractFormReducer'
 import allUsersReducer from '../reducers/allUsersReducer'
-import profileReducer from '../reducers/profileReducer'
 import reportReducer from '../reducers/reportReducer'
 import jobReducer from '../reducers/jobReducer'
 import usersReducer from '../reducers/usersReducer'
@@ -35,7 +34,6 @@ const appReducer = combineReducers({
   files: fileReducer,
   businessContractForm: buisnessContractFormReducer,
   allUsers: allUsersReducer,
-  profile: profileReducer,
   report: reportReducer,
   job: jobReducer,
   feedback: feedBackReducer,
