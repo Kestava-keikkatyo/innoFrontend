@@ -7,12 +7,12 @@ import Box from '@mui/material/Box';
 import { Container } from '@mui/material';
 import CreateJob from './CreateJob';
 import CreatedJobs from './CreatedJobs';
-import { generatePath, useHistory, useLocation, useParams } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 interface TabPanelProps {
     children?: React.ReactNode;
-    index: any;
-    value: any;
+    index: string;
+    value: string;
   }
 
 function TabPanel(props: TabPanelProps) {
@@ -45,23 +45,23 @@ function a11yProps(index: number) {
   };
 }
 
-function useQuery() : URLSearchParams {
-  const { search } = useLocation();
-  return React.useMemo(() => new URLSearchParams(search), [search]);
+function getQueryParam(search : string, paramName : string) : string | null {
+  return new URLSearchParams(search).get(paramName);
 }
 
 const CompanyJobPage: React.FC<any> = () => {
-  const theme = useTheme();
   const history = useHistory();
-  const query = useQuery();
-  const [value, setValue] = React.useState(query.get('tab') || 'create');
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
+
+  useLocation();
+
+  const handleChange = (_event: React.SyntheticEvent<Element, Event>, newValue: string) => {
     history.push({
       pathname: history.location.pathname,
-      search: "?" + new URLSearchParams({tab: newValue}).toString()
+      search: '?' + new URLSearchParams({tab: newValue}).toString()
   })
-    setValue(newValue);
   };
+
+  const value = getQueryParam(history.location.search, 'tab') || 'create';
 
   return (
   <Container>

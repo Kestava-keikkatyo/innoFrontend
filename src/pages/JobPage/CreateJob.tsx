@@ -8,7 +8,8 @@ import FormikField, { DatePickerField } from '../../components/FormField';
 import { createJob } from '../../actions/jobActions';
 import { Job } from '../../types/types';
 import { IRootState } from '../../utils/store';
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
 
 const initialValues: Job = {
   category: '',
@@ -52,11 +53,16 @@ const CreateJob: React.FC = () => {
   const { t } = useTranslation()
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const isLoading = useSelector((state: IRootState) => state.job.loading)
 
   const handleSubmit = (job: Job) => {
     dispatch(createJob(job));
+    history.push({
+      pathname: history.location.pathname,
+      search: '?' + new URLSearchParams({ tab: 'my' }).toString(),
+    })
   };
   return (
     <div className={classes.newJob}>
