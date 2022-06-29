@@ -8,6 +8,7 @@ import { fetchAllMyFeedbacks } from '../../actions/feedBackActions';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { Stack } from '@mui/material';
+import moment from 'moment';
 
 const Feedbacks: React.FC = () => {
 
@@ -39,6 +40,10 @@ const Feedbacks: React.FC = () => {
       field: 'createdAt',
       headerName: (i18next.t('sending_date')),
       width: 250,
+      renderCell: (params) => {
+        console.log(params.row);
+        return <>{moment(params.row.createdAt).format('DD/MM/YYYY')}</>; 
+    }
     },
     {
       field: 'action',
