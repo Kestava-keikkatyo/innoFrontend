@@ -8,6 +8,7 @@ import PageLoading from '../../components/PageLoading';
 import Typography from '@mui/material/Typography';
 import { fetchMyFeedbackById } from '../../actions/feedBackActions';
 import { useTranslation } from 'react-i18next';
+import moment from 'moment';
 
 type FeedbackUrlParams = {
     feedbackId: string
@@ -16,7 +17,7 @@ const Details: React.FC = () => {
    
     const { t } = useTranslation();
     const { feedbackId } = useParams<FeedbackUrlParams>();
-    const feedbackData: any = useSelector((state: IRootState) => state.feedback.currentFeedback);
+    const feedbackData = useSelector((state: IRootState) => state.feedback.currentFeedback);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchMyFeedbackById(feedbackId));
@@ -43,7 +44,7 @@ const Details: React.FC = () => {
                 </div>
                 <div className={classes.feedbackShowInfo}>
                     <span className={classes.feedbackShowTitle}>{t('sending_date')}</span>
-                    <span className={classes.feedbackShowInfoTitle}> { feedbackData.createdAt }</span>
+                    <span className={classes.feedbackShowInfoTitle}> { moment(feedbackData.createdAt).format('DD/MM/YYYY') }</span>
                 </div>
                 <div className={classes.feedbackShowInfo}>
                     <span className={classes.feedbackShowTitle}>{t('feedback_recipient')}</span>
