@@ -170,6 +170,7 @@ export interface Job {
   street: string
   zipCode: string
   city: string
+  user?: User
   startDate: Date | null
   endDate: Date | null
   applicationLastDate: Date | null
@@ -177,6 +178,7 @@ export interface Job {
   desirableSkills: string
   benefits: string
   details: string
+  createdAt?: Date
 }
 
 export interface Feedback {
