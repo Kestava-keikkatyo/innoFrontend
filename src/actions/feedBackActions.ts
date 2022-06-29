@@ -145,6 +145,7 @@ export const createFeedback =
         data: e as string,
       })
       setAlert('Failed to send feedback: ' + e, severity.Error, 15)(dispatch)
+      return e
     }
   }
 
