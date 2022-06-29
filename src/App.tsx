@@ -32,7 +32,6 @@ import ContractFormEditPage from './pages/ContractsPage/ContractFormManagerPage/
 import ProfileViewPage from './pages/ProfilePage/ProfileViewPage'
 import JobList from './pages/JobPage'
 import SettingsPage from './pages/SettingsPage'
-import WorkerJobs from './pages/WorkerWorkOverview'
 import AllUsersList from './pages/AdminPage/AllUsersList'
 import User from './pages/AdminPage/user/User'
 import FAQIndex from './pages/FAQPage/index'
@@ -215,9 +214,6 @@ const App: React.FC = () => {
             </PrivateRoute>
             <PrivateRoute path="/profile">
               <UserProfile myProfile />
-            </PrivateRoute>
-            <PrivateRoute path="/my-work" roles={[roles.Worker]}>
-              <WorkerJobs />
             </PrivateRoute>
             <PrivateRoute path="/process" roles={[roles.Worker]}>
               <ProcessPage />

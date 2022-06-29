@@ -301,7 +301,6 @@ export default {
   work_request: 'Work requests',
   exit_application: 'Exit application',
   business_contracts: 'Business contracts',
-  my_work: 'My work',
   remove: 'Remove',
   close: 'close',
   feedback: 'Feedback',

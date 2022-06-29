@@ -299,7 +299,6 @@ export default {
   work_request: 'Työpyynnöt',
   exit_application: 'Poistu sovelluksesta',
   business_contracts: 'Yrityssopimukset',
-  my_work: 'Työni',
   remove: 'Poista',
   feedback: 'Palaute',
 

@@ -26,7 +26,6 @@ import { useTranslation } from 'react-i18next'
 // import TranslateIcon from '@mui/icons-material/Translate';
 import LibraryBooksOutlinedIcon from '@mui/icons-material/LibraryBooksOutlined'
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline'
-import FormatList from '@mui/icons-material/FormatListBulleted'
 import LiveHelpIcon from '@mui/icons-material/LiveHelpOutlined'
 import AssignmentTurnedInOutlinedIcon from '@mui/icons-material/AssignmentTurnedInOutlined'
 import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
@@ -206,17 +205,6 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                   <LibraryBooksOutlinedIcon />
                 </ListItemIcon>
                 <ListItemText primary={t('business_contracts')} />
-              </ListItem>
-              <Divider />
-            </>
-          )}
-          {role === roles.Worker && (
-            <>
-              <ListItem button component={Link} to="/my-work" onClick={handleClick}>
-                <ListItemIcon>
-                  <FormatList />
-                </ListItemIcon>
-                <ListItemText primary={t('my_work')} />
               </ListItem>
               <Divider />
             </>
