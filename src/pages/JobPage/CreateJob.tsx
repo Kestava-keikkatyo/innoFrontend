@@ -48,7 +48,7 @@ const CreateJobSchema = Yup.object().shape({
   details: Yup.string(),
 });
 
-const CreateJob: React.FC<any> = () => {
+const CreateJob: React.FC = () => {
   const { t } = useTranslation()
   const classes = useStyles();
   const dispatch = useDispatch();
