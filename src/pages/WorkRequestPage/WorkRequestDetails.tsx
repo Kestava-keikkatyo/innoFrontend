@@ -3,7 +3,7 @@ import {
   } from '@mui/icons-material';
 import React, { useEffect } from 'react';
 import makeStyles from '@mui/styles/makeStyles';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../utils/store';
 import PageLoading from '../../components/PageLoading';
@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next';
 import Typography from '@mui/material/Typography';
 import { fetchReceivedWorkRequestById } from '../../actions/workRequestActions';
 import moment from 'moment';
+import Button from '@mui/material/Button';
 
 type ReceivedWorkRequestUrlParams = {
     receivedWorkRequestId: string
@@ -34,6 +35,9 @@ const WorkRequestDetails: React.FC<React.ReactNode> = () => {
     <div className={classes.receivedWR}>
         <div className={classes.workRWTitleContainer}>
             <Typography className={classes.workRWTitle} color="primary" variant="h5">{t('work_request_description')}</Typography>
+        </div>
+        <div>
+        <Button className={classes.back} color="secondary" component={Link} to="/receivedWorkRequests">{t('back')}</Button>
         </div>
         <div className={classes.workRWContainer}>
             <div className={classes.workRWShow}>
@@ -130,7 +134,11 @@ const useStyles = makeStyles(() => ({
     button: {
         marginLeft: '820px',
         fontSize: '15px',
-    }
+    },
+    back: {
+        marginLeft: '1000px',
+        fontSize: '17px',
+    },
 }));
 
 export default WorkRequestDetails;
