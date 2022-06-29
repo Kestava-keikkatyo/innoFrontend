@@ -185,6 +185,8 @@ export interface Feedback {
   _id?: string
   heading: string
   message: string
+  recipient?: User
+  createdAt?: Date
 }
 
 export interface Topic {
