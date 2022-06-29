@@ -57,7 +57,7 @@ const UserUpdate: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
         dispatch(setAlert(i18next.t('user_updated_successfully')));
     };
 
-    const profileData: any = useSelector((state: IRootState) => state.users.currentUser);
+    const profileData = useSelector((state: IRootState) => state.users.currentUser);
     useEffect(() => {
       dispatch(fetchUserById(profileId));
     }, [dispatch, profileId]);
