@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -49,7 +48,7 @@ function getQueryParam(search : string, paramName : string) : string | null {
   return new URLSearchParams(search).get(paramName);
 }
 
-const CompanyJobPage: React.FC<any> = () => {
+const CompanyJobPage: React.FC = () => {
   const history = useHistory();
 
   useLocation();
