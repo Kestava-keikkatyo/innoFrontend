@@ -92,5 +92,83 @@
       "tip": "Teen tarvittaessa turvallisuusilmoituksen esim. läheltä piti-tilanteesta",
       "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
     }
+  ],
+  "agency2": [
+    {
+      "tip": "Jaettu työsuojeluvastuu (henkilöstöpalveluyrityksen kanssa, yhteinen laatikko)"
+    },
+    {
+      "tip": "Vastuu työaikalain noudattimesta"
+    },
+    {
+      "tip": "Työntekijöiden vakuuttaminen työtapaturmien ja ammattitautien varalta"
+    },
+    {
+      "tip": "Työterveyshuollon järjestäminen"
+    },
+    {
+      "tip": "Tasa-arvon ja yhdenvertaisuuden edistäminen"
+    },
+    {
+      "tip": "Käyttäjäyrityksen velvoitteiden täyttämisen varmistaminen"
+    },
+    {
+      "tip": "Vuokratyöntekijän riittävän ammattitaidon ja työhön soveltumisen varmistaminen"
+    }
+  ],
+  "business2": [
+    {
+      "tip": "Jaettu työsuojeluvastuu (henkilöstöpalveluyrityksen kanssa, yhteinen laatikko)"
+    },
+    {
+      "tip": "Tilaajavastuu"
+    },
+    {
+      "tip": "Tarvittavien tietojen antaminen henkilöstöpalveluyritykselle"
+    },
+    {
+      "tip": "Työn edellyttämien ammattitaitovaatimusten ja erityispiirteiden ilmoittaminen henkilöstöpalveluyritykselle"
+    },
+    {
+      "tip": "Työn vaarojen selvittäminen ja arviointi"
+    },
+    {
+      "tip": "Tarvittavien henkilönsuojainten hankinta (yhteistyössä henkilöstöpalveluyrityksen kanssa)"
+    },
+    {
+      "tip": "Ilmoittaminen työpaikan työterveyshuollolle ja työsuojeluvaltuutetulle"
+    },
+    {
+      "tip": "Työsuojelun toimintaohjelman laatiminen"
+    },
+    {
+      "tip": "Tasa-arvon ja yhdenvertaisuuden edistäminen"
+    },
+    {
+      "tip": "Vuokratyöntekijän perehdytys työhön ja työoloihin"
+    },
+    {
+      "tip": "Vastuu vuokratyöntekijöiden työnjohdosta ja -valvonnasta (tämän alle keskeiset vaatimukset mm. vastuu työn aikaisesta työn turvallisuudesta ja terveellisyydestä huolehtiminen, tarvittavien henkilönsuojainten ja turvavälineiden käyttämisen varmistaminen, työaikalainsäädännön noudattaminen)"
+    },
+    {
+      "tip": "Työsuojeluvastuu yhteisellä työpaikalla"
+    }
+  ],
+  "worker2": [
+    {
+      "tip": "Työnantajan ohjeiden ja määräysten noudattaminen"
+    },
+    {
+      "tip": "Omasta ja työkavereiden turvallisuudesta huolehtiminen"
+    },
+    {
+      "tip": "Häirinnän ja epäasiallisen kohtelun välttäminen"
+    },
+    {
+      "tip": "Työvälineiden, henkilönsuojainten ja turvalaitteiden asianmukainen käyttö"
+    },
+    {
+      "tip": "Havaitsemistaan vioista ja puutteista ilmoittaminen"
+    }
   ]
 }

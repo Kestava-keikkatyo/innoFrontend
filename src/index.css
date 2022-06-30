@@ -876,6 +876,10 @@ nav * {
   .form-button {
     width: 18%;
   }
+
+  .modal {
+    max-width: 70% !important;
+  }
 }
 
 @media screen and (max-width: 450px) {
@@ -885,6 +889,10 @@ nav * {
 
   .report1 {
     width: 100% !important;
+  }
+
+  .modal {
+    max-width: 80% !important;
   }
 }
 
