@@ -35,7 +35,7 @@ export default function CustomizedTables() {
   )(TableCell)
 
   return (
-    <div style={{ marginTop: 16 }}>
+    <div>
       <Grid item xs={12}>
         <List component="nav" aria-label="mailbox folders">
           {/*

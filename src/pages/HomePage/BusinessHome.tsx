@@ -28,7 +28,7 @@ const BusinessHome = () => {
             title={t("faq")}
             subheader=""
           />
-          <CardContent className="homeB">
+          <CardContent className="home2">
           <Faq />
           </CardContent>
         </Card>
@@ -39,7 +39,7 @@ const BusinessHome = () => {
             title={t('business_responsibility')}
             subheader=""
           />
-          <CardContent style={{padding: "0 1rem !important"}} className="home2">
+          <CardContent className="home3">
             {/* Old business responsibilities list
             <List component="nav" aria-label="mailbox folders">
               <Divider />

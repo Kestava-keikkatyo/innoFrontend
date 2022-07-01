@@ -42,7 +42,7 @@ const AgencyHome = () => {
             title={t('agency_responsibility')}
             subheader=""
           />
-          <CardContent style={{padding: "0 1rem !important"}} className="home2">
+          <CardContent className="home3">
             {/* Old agency responsibilities list
             <List component="nav" aria-label="mailbox folders">
               <Divider />

@@ -733,10 +733,10 @@ nav * {
   padding: 0 !important;
 }
 
-.homeB {
-  height: 35.2rem;
+.home3 {
+  height: 31.5rem;
   overflow-y: scroll;
-  padding: 0 !important;
+  padding: 0 1rem !important;
 }
 
 .homeContainer {
@@ -850,6 +850,10 @@ nav * {
   .footer-item {
     width: fit-content !important;
     max-width: 20% !important;
+  }
+
+  .home {
+    margin-bottom: 5%;
   }
 }
 
