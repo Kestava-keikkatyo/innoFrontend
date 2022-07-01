@@ -98,6 +98,7 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
                   </Typography>
                   <List id="modal-modal-description">
                     <Divider />
+                    {/* Worker responsibilities list */}
                     {vastuualueet.worker2.map((e, i) => (
                       <ListItem key={i} divider>
                         <ListItemText primary={`${i + 1}. ${e.tip}`} />
@@ -142,6 +143,21 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
                   </Typography>
                   <List id="modal-modal-description">
                     <Divider />
+                    <Typography variant="h6" component="h2">
+                    Jaetut vastuut
+                    </Typography>
+                    <Divider />
+                    {/* Yhtenäiset vastuut lista */}
+                    {vastuualueet.yhtenäinen.map((e, i) => (
+                      <ListItem key={i} divider>
+                        <ListItemText primary={`${i + 1}. ${e.tip}`} />
+                      </ListItem>
+                    ))}
+                    <Typography variant="h6" component="h2">
+                    Käyttäjäyritys vastuut
+                    </Typography>
+                    <Divider />
+                    {/* Business responsibilities list */}
                     {vastuualueet.business2.map((e, i) => (
                       <ListItem key={i} divider>
                         <ListItemText primary={`${i + 1}. ${e.tip}`} />
@@ -186,11 +202,26 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
                   </Typography>
                   <List id="modal-modal-description">
                     <Divider />
+                    <Typography variant="h6" component="h2">
+                    Jaetut vastuut
+                    </Typography>
+                    <Divider />
+                    {/* Yhtenäiset vastuut lista */}
+                    {vastuualueet.yhtenäinen.map((e, i) => (
+                      <ListItem key={i} divider>
+                        <ListItemText primary={`${i + 1}. ${e.tip}`} />
+                      </ListItem>
+                    ))}
+                    <Typography variant="h6" component="h2">
+                    Vuokratyöyritys vastuut
+                    </Typography>
+                    <Divider />
+                    {/* Agency responsibilities list */}
                     {vastuualueet.agency2.map((e, i) => (
-                  <ListItem key={i} divider>
-                    <ListItemText primary={`${i + 1}. ${e.tip}`} />
-                  </ListItem>
-                ))}
+                      <ListItem key={i} divider>
+                        <ListItemText primary={`${i + 1}. ${e.tip}`} />
+                      </ListItem>
+                    ))}
                   </List>
                 </Box>
               </Modal>

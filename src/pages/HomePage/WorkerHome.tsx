@@ -67,11 +67,12 @@ const WorkerHome = () => {
             title={t('workers_responsibility')}
             subheader=""
           />
-          <CardContent style={{padding: "0"}}>
+          <CardContent style={{padding: "0 1rem !important"}}>
             <List component="nav" aria-label="mailbox folders">
-              {vastuualueet.worker.map((e, i) => (
+              {/* change worker2 to worker to get old list */}
+              {vastuualueet.worker2.map((e, i) => (
                 <ListItem key={i} divider>
-                  <ListItemText primary={`${i + 1}. ${e.tip}`} />
+                  <ListItemText primary={`${e.tip}`} />
                 </ListItem>
               ))}
             </List>

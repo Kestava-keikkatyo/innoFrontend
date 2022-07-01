@@ -14,6 +14,7 @@ import {
   CardHeader,
   Button,
   Grid,
+  Typography
 } from '@mui/material';
 import { useSelector } from 'react-redux';
 import Faq from './FAQBoxAgency';
@@ -25,7 +26,7 @@ const AgencyHome = () => {
   return (
     <Grid container className="homeContainer">
       <Grid item xs={12} md={6} className="home">
-      <Card variant="outlined">
+        <Card variant="outlined">
           <CardHeader
             title={t("faq")}
             subheader=""
@@ -41,12 +42,36 @@ const AgencyHome = () => {
             title={t('agency_responsibility')}
             subheader=""
           />
-          <CardContent style={{paddingBottom: "0"}}>
+          <CardContent style={{padding: "0 1rem !important"}} className="home2">
+            {/* Old agency responsibilities list
             <List component="nav" aria-label="mailbox folders">
               <Divider />
               {vastuualueet.agency.map((e, i) => (
                 <ListItem key={i} divider>
                   <ListItemText primary={`${i + 1}. ${e.tip}`} />
+                </ListItem>
+              ))}
+              </List> */}
+            <List component="nav" aria-label="mailbox folders">
+              <Divider />
+              <Typography variant="h6" component="h2">
+                Jaetut vastuut
+              </Typography>
+              <Divider />
+              {/* Yhtenäiset vastuut lista */}
+              {vastuualueet.yhtenäinen.map((e, i) => (
+                <ListItem key={i} divider>
+                  <ListItemText primary={`${e.tip}`} />
+                </ListItem>
+              ))}
+              <Typography variant="h6" component="h2">
+                {t('agency_responsibility')}
+              </Typography>
+              <Divider />
+              {/* Agency responsibilities list */}
+              {vastuualueet.agency2.map((e, i) => (
+                <ListItem key={i} divider>
+                  <ListItemText primary={`${e.tip}`} />
                 </ListItem>
               ))}
             </List>

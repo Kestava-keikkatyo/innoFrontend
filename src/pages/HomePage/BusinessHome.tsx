@@ -12,6 +12,7 @@ import {
   Divider,
   CardHeader,
   Grid,
+  Typography
 } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import Faq from './FAQBoxBusiness';
@@ -38,12 +39,36 @@ const BusinessHome = () => {
             title={t('business_responsibility')}
             subheader=""
           />
-          <CardContent style={{paddingBottom: "0"}}>
+          <CardContent style={{padding: "0 1rem !important"}} className="home2">
+            {/* Old business responsibilities list
             <List component="nav" aria-label="mailbox folders">
               <Divider />
               {vastuualueet.business.map((e, i) => (
                 <ListItem key={i} divider>
                   <ListItemText primary={`${i + 1}. ${e.tip}`} />
+                </ListItem>
+              ))}
+            </List> */}
+            <List component="nav" aria-label="mailbox folders">
+              <Divider />
+              <Typography variant="h6" component="h2">
+                Jaetut vastuut
+              </Typography>
+              <Divider />
+              {/* Yhtenäiset vastuut lista */}
+              {vastuualueet.yhtenäinen.map((e, i) => (
+                <ListItem key={i} divider>
+                  <ListItemText primary={`${e.tip}`} />
+                </ListItem>
+              ))}
+              <Typography variant="h6" component="h2">
+                {t('business_responsibility')}
+              </Typography>
+              <Divider />
+              {/* Business responsibilities list */}
+              {vastuualueet.business2.map((e, i) => (
+                <ListItem key={i} divider>
+                  <ListItemText primary={`${e.tip}`} />
                 </ListItem>
               ))}
             </List>

@@ -170,5 +170,34 @@
     {
       "tip": "Havaitsemistaan vioista ja puutteista ilmoittaminen"
     }
+  ],
+  "yhtenäinen": [
+    {
+      "tip": "Jaettu työsuojeluvastuu (käyttäjäyrityksen kanssa, yhteinen laatikko)"
+    },
+    {
+      "tip": "Yleisvastuu työturvallisuudesta (tämän alle keskeiset vaatimukset, mm."
+    },
+    {
+      "tip": "* Työn vaarojen selvittäminen ja arviointi"
+    },
+    {
+      "tip": "* Työsuojelun toimintaohjelman laatiminen"
+    },
+    {
+      "tip": "* Työsuojelun yhteistoiminnan järjestäminen"
+    },
+    {
+      "tip": "* Perehdytys (ml. yleisperehdytyksen antaminen vuokratyöntekijälle)"
+    },
+    {
+      "tip": "* Ilmoittaminen nuorten työntekijöiden käyttämisestä vaarallisiin töihin"
+    },
+    {
+      "tip": "* Vakavasta työtapaturmasta ilmoittaminen työsuojeluviranomaisille ja poliisille)"
+    },
+    {
+      "tip": "Tarvittavien henkilönsuojainten hankinta (yhteistyössä käyttäjäyrityksen kanssa, yhteinen laatikko)"
+    }
   ]
 }
