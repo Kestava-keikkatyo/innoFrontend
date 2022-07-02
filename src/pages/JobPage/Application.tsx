@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Application: React.FC<any> = () => {
+const Application: React.FC = () => {
     return (
         <div>
             This page is for job application 
