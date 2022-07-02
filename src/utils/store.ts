@@ -19,6 +19,7 @@ import topicReducer from '../reducers/topicReducer'
 import { LOGOUT } from '../types/state'
 import workRequestReducer from '../reducers/workRequestReducer'
 import notificationReducer from '../reducers/notificationReducer'
+import myFeelingReducer from '../reducers/myFeelingReducer'
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -41,6 +42,7 @@ const appReducer = combineReducers({
   topic: topicReducer,
   workRequest: workRequestReducer,
   notification: notificationReducer,
+  myFeeling: myFeelingReducer,
 })
 
 const rootReducer = (state: any, action: any) => {
