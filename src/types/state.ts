@@ -15,6 +15,8 @@ import {
   User,
   notificationType,
   Notification,
+  feelingType,
+  MyFeeling,
 } from './types'
 
 export interface UsersState {
@@ -384,6 +386,57 @@ export type JobActions =
   | JobGetCurrentRequest
   | JobGetCurrentSuccess
   | JobSimilarActions
+
+/**
+ * Worker feeling state & action types
+ */
+export interface MyFeelingState {
+  currentMyFeeling: MyFeeling | undefined
+  loading: boolean
+  myFeelings: MyFeeling[]
+  fetchError?: string
+}
+
+export interface FeelingGetAllRequest {
+  type: typeof feelingType.FEELING_GET_ALL_REQUEST
+}
+
+export interface FeelingGetAllSuccess {
+  type: typeof feelingType.FEELING_GET_ALL_SUCCESS
+  data: MyFeeling[]
+}
+
+export interface FeelingActionFailure {
+  type: typeof feelingType.FEELING_ACTION_FAILURE
+  data: string
+}
+
+export interface FeelingGetCurrentRequest {
+  type: typeof feelingType.FEELING_GET_CURRENT_REQUEST
+}
+
+export interface FeelingGetCurrentSuccess {
+  type: typeof feelingType.FEELING_GET_CURRENT_SUCCESS
+  data: MyFeeling
+}
+export interface FeelingSimilarActions {
+  type:
+    | typeof feelingType.FEELING_CREATED_REQUEST
+    | typeof feelingType.FEELING_CREATED_SUCCESS
+    | typeof feelingType.FEELING_UPDATED_REQUEST
+    | typeof feelingType.FEELING_UPDATED_SUCCESS
+    | typeof feelingType.FEELING_DELETED_REQUEST
+    | typeof feelingType.FEELING_DELETED_SUCCESS
+  data: MyFeeling
+}
+
+export type MyFeelingActions =
+  | FeelingGetAllRequest
+  | FeelingGetAllSuccess
+  | FeelingActionFailure
+  | FeelingGetCurrentRequest
+  | FeelingGetCurrentSuccess
+  | FeelingSimilarActions
 
 export const LOGIN = 'USER_LOGIN'
 export const LOGOUT = 'USER_LOGOUT'
