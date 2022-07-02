@@ -1,5 +1,19 @@
 import { compose } from 'redux'
 
+export enum feelingType {
+  FEELING_GET_ALL_REQUEST = 'FEELING_GET_ALL_REQUEST',
+  FEELING_GET_ALL_SUCCESS = 'FEELING_GET_ALL_SUCCESS',
+  FEELING_ACTION_FAILURE = 'FEELING_ACTION_FAILURE',
+  FEELING_GET_CURRENT_REQUEST = 'FEELING_GET_CURRENT_REQUEST',
+  FEELING_GET_CURRENT_SUCCESS = 'FEELING_GET_CURRENT_SUCCESS',
+  FEELING_DELETED_REQUEST = 'FEELING_DELETED_REQUEST',
+  FEELING_DELETED_SUCCESS = 'FEELING_DELETED_SUCCESS',
+  FEELING_CREATED_REQUEST = 'FEELING_CREATED_REQUEST',
+  FEELING_CREATED_SUCCESS = 'FEELING_CREATED_SUCCESS',
+  FEELING_UPDATED_REQUEST = 'FEELING_UPDATED_REQUEST',
+  FEELING_UPDATED_SUCCESS = 'FEELING_UPDATED_SUCCESS',
+}
+
 export enum feedbackType {
   FEEDBACK_POSTED_REQUEST = 'FEEDBACK_POSTED_REQUEST',
   FEEDBACK_POSTED_SUCCESS = 'FEEDBACK_POSTED_SUCCESS',
@@ -222,6 +236,20 @@ export interface Notification {
     | 'application_pending'
     | 'feedback_pending'
     | 'reply'
+}
+
+export interface MyFeeling {
+  _id?: string
+  worker?: User
+  comfortable: number | null
+  satisfied: number | null
+  energetic: number | null
+  enthusiastic: number | null
+  frustrated: number | null
+  stressed: number | null
+  anxious: number | null
+  comment?: string
+  createdAt?: Date
 }
 
 export interface Feeling {
