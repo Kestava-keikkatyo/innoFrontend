@@ -1,8 +1,37 @@
 import { feelingType, MyFeeling, severity } from '../types/types'
 import { setAlert } from './alertActions'
 import { Dispatch } from 'redux'
-import { FeelingActionFailure, FeelingSimilarActions } from '../types/state'
+import {
+  FeelingActionFailure,
+  FeelingGetAllRequest,
+  FeelingGetAllSuccess,
+  FeelingSimilarActions,
+} from '../types/state'
 import myFeelingService from '../services/myFeelingService'
+
+/**
+ * @function
+ * @desc Fetches worker's feelings.
+ */
+export const fetchMyFeelings =
+  () =>
+  async (
+    dispatch: Dispatch<FeelingGetAllRequest | FeelingGetAllSuccess | FeelingActionFailure>,
+  ) => {
+    try {
+      dispatch({
+        type: feelingType.FEELING_GET_ALL_REQUEST,
+      })
+      const res = await myFeelingService.fetchMyFeelings()
+      dispatch({ type: feelingType.FEELING_GET_ALL_SUCCESS, data: res.data })
+    } catch (e) {
+      dispatch({
+        type: feelingType.FEELING_ACTION_FAILURE,
+        data: e as string,
+      })
+      setAlert('Failed to fetch feelings!: ' + e, severity.Error, 15)(dispatch)
+    }
+  }
 
 /**
  * send feeling

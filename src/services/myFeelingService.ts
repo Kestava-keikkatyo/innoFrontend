@@ -26,6 +26,16 @@ const sendMyFeeling = async (myFeeling: MyFeeling) => {
   return await axios.put(`${baseUrl}/user/my/feeling`, myFeeling, authHeader())
 }
 
+/**
+ * @function
+ * @desc Fetches worker's feelings.
+ */
+const fetchMyFeelings = async () => {
+  const res = await axios.get(`${baseUrl}/user/my`, authHeader())
+  return res
+}
+
 export default {
   sendMyFeeling,
+  fetchMyFeelings,
 }
