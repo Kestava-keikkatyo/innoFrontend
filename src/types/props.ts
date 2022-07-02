@@ -1,5 +1,5 @@
-import { MouseEventHandler, ReactNode } from "react";
-import { Question, roles } from "./types";
+import { ReactNode } from 'react'
+import { Question, roles } from './types'
 
 /**
  * @interface
@@ -8,7 +8,7 @@ export interface PieChartProps {
   /**
    * Contains data to display in PieChart.
    */
-  datasets: any,
+  datasets: any
   /**
    * Child components that the component renders inside chart.
    */
@@ -22,24 +22,23 @@ export interface GridFormPreviewProps {
   /**
    * Title to display.
    */
-  formTitle: string,
+  formTitle: string
   /**
    * Description to display.
    */
   formDesc: string
-  /**On click function */
+  /** On click function */
   formId: string
 }
 
-export interface FormProps{
-
+export interface FormProps {
   currentForm: object
 }
 
 /**
  * @interface
  * Private routes props.
-*/
+ */
 export interface PrivateRouteProps {
   /**
    * List of roles (worker, business, agency). Required if private route is role specific.
@@ -84,7 +83,7 @@ export interface FormHeaderProps {
   /**
    * Title of the form.
    */
-  title: string,
+  title: string
   /**
    * Description of the form.
    */

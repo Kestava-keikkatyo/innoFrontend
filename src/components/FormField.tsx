@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ErrorMessage, Field, FormikProps, useField } from 'formik'
 import PropTypes from 'prop-types'
 import {
@@ -13,7 +13,6 @@ import {
   Radio,
   FormControlLabel
 } from '@mui/material'
-import { useEffect } from 'react'
 import './FormikField.css'
 import DatePicker from '@mui/lab/DatePicker'
 import LocalizationProvider from '@mui/lab/LocalizationProvider'
@@ -91,7 +90,7 @@ export const FormikSelectField: React.FC<any> = ({ options, label, disabled, set
     if (disabled) {
       setFieldValue('category','')
     }
-  },[disabled])  // eslint-disable-line react-hooks/exhaustive-deps
+  },[disabled]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <FormControl
@@ -214,7 +213,7 @@ export const DatePickerField: React.FC<DatePickerFieldProps & FormikProps<any>> 
           value={values[name]}
           onChange={value => setFieldValue(name, value)}
           OpenPickerButtonProps={{
-            "aria-label": "change date"
+            'aria-label': 'change date'
           }}
           
         />
@@ -233,7 +232,7 @@ interface FormikFieldProps {
   minRows?: number;
 }
 
-const FormikField: React.FC<FormikFieldProps> = ({ name, label, type = "text", required = false, multiline = false, maxRows=null, minRows=2}) => {
+const FormikField: React.FC<FormikFieldProps> = ({ name, label, type = 'text', required = false, multiline = false, maxRows=null, minRows=2}) => {
   return (
     <div className="FormikField">
       <Field
