@@ -24,7 +24,8 @@ const Workers: React.FC<any> = () => {
     {
       field: "name",
       headerName: (i18next.t("list_name")),
-      width: 250,
+      minWidth: 125,
+      flex: 1,
       renderCell: (params: any) => {
         return (
         <div className={classes.userListUser}>
@@ -36,23 +37,27 @@ const Workers: React.FC<any> = () => {
     },
     {
       field: "email", 
-      headerName: (i18next.t("list_email")), 
-      width: 200 
+      headerName: (i18next.t("list_email")),
+      minWidth: 200,
+      flex: 1
     },
     {
       field: "city", 
       headerName: (i18next.t("list_city")), 
-      width: 200 
+      minWidth: 125,
+      flex: 1
     },
     {
       field: "userType", 
       headerName: (i18next.t("list_position")), 
-      width: 150 
+      minWidth: 75,
+      flex: 1 
     },
     {
       field: "action",
       headerName: (i18next.t("list_action")),
-      width: 200,
+      minWidth: 100,
+      flex: 1,
       renderCell: (params: any) => {
       return (
       <>
@@ -64,9 +69,14 @@ const Workers: React.FC<any> = () => {
 ];
 
 return (
-<div style={{ height: 700, width: '100%' }}>
+<div style={{ height: "75vh", width: "100%", padding: "0 1rem" }}>
   <div>
-    <Typography className={classes.title} color="primary" align="center" variant="h5">{t('list_title_workers')}</Typography>
+    <Typography className={"header"}
+    style={{marginTop: "25px", marginBottom: "15px"}}
+    color="primary" 
+    align="center" 
+    variant="h1">
+      {t('list_title_workers')}</Typography>
   </div>
   <DataGrid
   getRowId={(row) => row._id}
@@ -82,10 +92,6 @@ return (
 }
 
 const useStyles = makeStyles((theme) => ({
-  title: {
-    marginTop: '25px',
-    marginBottom: '15px',
-  },
   userListUser: {
     display: 'flex',
     alignItems: 'center',

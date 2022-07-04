@@ -33,7 +33,7 @@ const Feedbacks: React.FC<any> = () => {
     { 
       field: "recipient", 
       headerName: (i18next.t("feedback_recipient")),
-      minWidth: 125,
+      minWidth: 100,
       flex: 1,
     },
     {
@@ -45,7 +45,7 @@ const Feedbacks: React.FC<any> = () => {
     {
       field: "action",
       headerName: (i18next.t("feedback_action")),
-      minWidth: 125,
+      minWidth: 100,
       flex: 1,
       renderCell: (params: any) => {
         return (
