@@ -1,5 +1,6 @@
 import { feelingType, MyFeeling, severity } from '../types/types'
 import { setAlert } from './alertActions'
+import history from '../utils/history'
 import { Dispatch } from 'redux'
 import {
   FeelingActionFailure,
@@ -63,6 +64,10 @@ export const sendMyFeeling =
     }
   }
 
+/**
+ * @function
+ * @desc Delete feeling by Id
+ */
 export const deleteMyFeeling =
   (myFeeling: MyFeeling) =>
   async (dispatch: Dispatch<FeelingSimilarActions | FeelingActionFailure>) => {
@@ -79,5 +84,31 @@ export const deleteMyFeeling =
         data: e as string,
       })
       setAlert('Failed to delete feeling!: ' + e, severity.Error, 15)(dispatch)
+    }
+  }
+
+/**
+ * @function
+ * @desc update worker's feeling.
+ */
+export const updateMyFeeling =
+  (myFeeling: MyFeeling) =>
+  async (dispatch: Dispatch<FeelingSimilarActions | FeelingActionFailure>) => {
+    try {
+      dispatch({
+        type: feelingType.FEELING_UPDATED_REQUEST,
+        data: myFeeling,
+      })
+
+      const res = await myFeelingService.updateMyFeeling(myFeeling)
+      dispatch({ type: feelingType.FEELING_UPDATED_SUCCESS, data: res.data })
+
+      history.push('/myFeeling?tab=my')
+    } catch (e) {
+      dispatch({
+        type: feelingType.FEELING_ACTION_FAILURE,
+        data: e as string,
+      })
+      setAlert('Failed to update feeling: ' + e, severity.Error, 15)(dispatch)
     }
   }

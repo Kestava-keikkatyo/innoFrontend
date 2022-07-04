@@ -39,6 +39,19 @@ const fetchMyFeelings = async () => {
  * @param id
  * @returns
  */
+const updateMyFeeling = async (myFeeling: MyFeeling) => {
+  const res = await axios.put(
+    `${baseUrl}/user/myFeeling/update/${myFeeling._id}`,
+    myFeeling,
+    authHeader(),
+  )
+  return res.data
+}
+
+/**
+ * @param id
+ * @returns
+ */
 const deleteMyFeeling = async (myFeelingId: string) => {
   const res = await axios.delete(`${baseUrl}/user/myFeeling/delete/${myFeelingId}`, authHeader())
   return res
@@ -47,5 +60,6 @@ const deleteMyFeeling = async (myFeelingId: string) => {
 export default {
   sendMyFeeling,
   fetchMyFeelings,
+  updateMyFeeling,
   deleteMyFeeling,
 }
