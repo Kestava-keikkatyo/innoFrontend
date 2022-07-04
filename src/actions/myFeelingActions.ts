@@ -62,3 +62,22 @@ export const sendMyFeeling =
       setAlert('Failed to send feeling!: ' + e, severity.Error, 15)(dispatch)
     }
   }
+
+export const deleteMyFeeling =
+  (myFeeling: MyFeeling) =>
+  async (dispatch: Dispatch<FeelingSimilarActions | FeelingActionFailure>) => {
+    try {
+      dispatch({
+        type: feelingType.FEELING_DELETED_REQUEST,
+        data: myFeeling,
+      })
+      await myFeelingService.deleteMyFeeling(myFeeling._id as string)
+      dispatch({ type: feelingType.FEELING_DELETED_SUCCESS, data: myFeeling })
+    } catch (e) {
+      dispatch({
+        type: feelingType.FEELING_ACTION_FAILURE,
+        data: e as string,
+      })
+      setAlert('Failed to delete feeling!: ' + e, severity.Error, 15)(dispatch)
+    }
+  }

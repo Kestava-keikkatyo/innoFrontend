@@ -35,7 +35,17 @@ const fetchMyFeelings = async () => {
   return res
 }
 
+/**
+ * @param id
+ * @returns
+ */
+const deleteMyFeeling = async (myFeelingId: string) => {
+  const res = await axios.delete(`${baseUrl}/user/myFeeling/delete/${myFeelingId}`, authHeader())
+  return res
+}
+
 export default {
   sendMyFeeling,
   fetchMyFeelings,
+  deleteMyFeeling,
 }
