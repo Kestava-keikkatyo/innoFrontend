@@ -230,9 +230,10 @@ interface FormikFieldProps {
   multiline?: boolean;
   maxRows?: number;
   minRows?: number;
+  helperClassName?: string
 }
 
-const FormikField: React.FC<FormikFieldProps> = ({ name, label, type = 'text', required = false, multiline = false, maxRows=null, minRows=2}) => {
+const FormikField: React.FC<FormikFieldProps> = ({ name, label, type = 'text', required = false, multiline = false, maxRows=null, minRows=2, helperClassName}) => {
   return (
     <div className="FormikField">
       <Field
@@ -246,7 +247,7 @@ const FormikField: React.FC<FormikFieldProps> = ({ name, label, type = 'text', r
         maxRows={maxRows}
         minRows={minRows}
         multiline={multiline}
-        helperText={<ErrorMessage name={name} />}
+        helperText={<ErrorMessage name={name} render={msg => <div className={helperClassName}>{msg}</div>} />}
       />
     </div>
   );
