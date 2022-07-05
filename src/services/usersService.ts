@@ -83,6 +83,19 @@ const updateUser = async (user: User) => {
 }
 
 /**
+ * @param id
+ * @returns
+ */
+const changePassword = async (newPassword: string, currentPassword: string) => {
+  const res = await axios.put(
+    `${baseUrl}/authentication/changePassword`,
+    { newPassword, currentPassword },
+    authHeader(),
+  )
+  return res.data
+}
+
+/**
  * @function
  * @desc sends out create user request.
  * @param {User} user - Basic user information.
@@ -126,4 +139,5 @@ export default {
   createUser,
   setUserStatus,
   searchUserByName,
+  changePassword,
 }

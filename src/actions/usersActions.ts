@@ -264,3 +264,23 @@ export const updateUSerStatus =
       setAlert('Failed to deactivate the user: ' + e, severity.Error, 15)(dispatch)
     }
   }
+
+/**
+ * @function
+ * @desc Update user's password
+ */
+export const changePassword =
+  (newPassword: string, currentPassword: string) =>
+  async (dispatch: Dispatch<UserAction | UserActionFailure>) => {
+    try {
+      await usersService.changePassword(newPassword, currentPassword)
+      setAlert('Password was changed successfully!')(dispatch)
+      history.push('/home')
+    } catch (e) {
+      dispatch({
+        type: usersType.USER_ACTION_FAILURE,
+        data: e as string,
+      })
+      setAlert('Failed to change password: ' + e, severity.Error, 15)(dispatch)
+    }
+  }
