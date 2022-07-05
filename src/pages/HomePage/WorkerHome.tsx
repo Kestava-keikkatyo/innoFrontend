@@ -8,8 +8,13 @@ import {
   FormControlLabel,
   ListItem,
   ListItemText,
+  Card,
   CardHeader,
   Grid,
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Typography
 } from '@mui/material';
 import MoodForm from './MoodForm';
 import { submitFeeling, updateFeeling } from '../../actions/feelingActions';
@@ -17,6 +22,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../utils/store';
 import fileService from '../../services/fileService';
 import { useTranslation } from 'react-i18next';
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 
 const WorkerHome = () => {
   const dispatch = useDispatch();
@@ -53,11 +59,11 @@ const WorkerHome = () => {
 
   return (
     <Grid container className="homeContainer">
-      <Grid item xs={12} md={6} className="home">
-        <MoodForm handleSubmit={onHandleSubmit} />
+      <Grid item xs={12} md={6} className="home" style={{height: "fit-content"}}>
+        <MoodForm handleSubmit={onHandleSubmit}/>
       </Grid>
       <Grid item xs={12} md={6} className="home">
-        <div className="report-container" style={{height: '100%'}}>
+        <Card variant='outlined'>
           <CardHeader
            /* action={
               <Button variant="outlined" color="primary">
@@ -67,18 +73,41 @@ const WorkerHome = () => {
             title={t('workers_responsibility')}
             subheader=""
           />
-          <CardContent style={{padding: "0 1rem !important"}}>
+          <CardContent className='home2'>
+            {/*
             <List component="nav" aria-label="mailbox folders">
-              {/* change worker2 to worker to get old list */}
+              {/* change worker2 to worker to get old list *}
               {vastuualueet.worker2.map((e, i) => (
                 <ListItem key={i} divider>
                   <ListItemText primary={`${e.tip}`} />
                 </ListItem>
               ))}
+            </List> */}
+            <List component="nav" aria-label="mailbox folders">
+              {vastuualueet.worker.map((e, i) => (
+              <ListItem key={e.tip}>
+                <Accordion style={{margin: "4px 0"}} variant="outlined">
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                  >
+                    <Typography style={{color: "#000000DE"}}>{`${e.tip}`}</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography variant="body1">{`${e.details}`}</Typography>
+                  </AccordionDetails>
+                </Accordion>
+              </ListItem>
+              ))}
             </List>
-            <FormControlLabel control={<Checkbox defaultChecked style={{color:'#eb5a00'}} />} label={t<string>('worker_responsibilities_read')}/>
+            <FormControlLabel 
+            control={<Checkbox defaultChecked style={{color:'#eb5a00'}} />} 
+            label={t<string>('worker_responsibilities_read')}
+            style={{padding: "0 1rem"}}
+            />
           </CardContent>
-        </div>
+        </Card>
       </Grid>
     </Grid>
   );

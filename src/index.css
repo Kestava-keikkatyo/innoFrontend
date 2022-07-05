@@ -733,12 +733,6 @@ nav * {
   padding: 0 !important;
 }
 
-.home3 {
-  height: 31.5rem;
-  overflow-y: scroll;
-  padding: 0 1rem !important;
-}
-
 .homeContainer {
   display: flex;
   flex-wrap: wrap;
