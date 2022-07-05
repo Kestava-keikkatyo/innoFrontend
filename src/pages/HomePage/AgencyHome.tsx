@@ -34,6 +34,7 @@ const AgencyHome = () => {
           <CardHeader
             title={t("faq")}
             subheader=""
+            style={{ textAlign: "center", paddingBottom: "0"}}
           />
           <CardContent className="home2">
           <Faq />
@@ -45,6 +46,7 @@ const AgencyHome = () => {
           <CardHeader
             title={t('agency_responsibility')}
             subheader=""
+            style={{ textAlign: "center", paddingBottom: "0"}}
           />
           <CardContent className="home2">
             {/* Old agency responsibilities list

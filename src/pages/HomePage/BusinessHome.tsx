@@ -30,6 +30,7 @@ const BusinessHome = () => {
           <CardHeader
             title={t("faq")}
             subheader=""
+            style={{ textAlign: "center", paddingBottom: "0"}}
           />
           <CardContent className="home2">
           <Faq />
@@ -41,6 +42,7 @@ const BusinessHome = () => {
           <CardHeader
             title={t('business_responsibility')}
             subheader=""
+            style={{ textAlign: "center", paddingBottom: "0"}}
           />
           <CardContent className="home2">
             {/* Old business responsibilities list

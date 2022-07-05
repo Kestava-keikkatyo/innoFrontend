@@ -72,6 +72,7 @@ const WorkerHome = () => {
             }*/
             title={t('workers_responsibility')}
             subheader=""
+            style={{ textAlign: "center", paddingBottom: "0"}}
           />
           <CardContent className='home2'>
             {/*
