@@ -305,13 +305,17 @@ export default {
   // ChangePassword
   change_password: 'Vaihda salasana',
   update_password: 'Päivitä salasana',
-  password_instructions:
-    'Laita nykyinen salasanasi, uusi salasanasi ja sitten paina päivitä salasana.',
   current_password: 'Nykyinen salasanasi',
   new_password: 'Uusi salasana',
   confirm_password: 'Toista uusi salasana',
   occupational: 'Työsuojelusäännöt',
   password_update_succesful: 'Salasanan päivittäminen onnistui',
+  change_password_current_password_is_required: 'Nykyinen salasana on syötettävä!',
+  change_password_new_password_is_required: 'Uusi salasana on syötettävä!',
+  change_password_validation:
+    'Täytyy sisältää 8 merkkiä, yksi iso kirjain, yksi pieni kirjain, yksi numero ja yksi erikoismerkki',
+  change_password_password_was_changed_successfully: 'Salasanan vaihto onnistui!',
+  change_password_failed_to_change_password: 'Salasanan vaihto epäonnistui!: ',
 
   // FeedbackForm
   no_feedback: 'Ei palautteita',

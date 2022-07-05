@@ -308,12 +308,16 @@ export default {
   // ChangePassword
   change_password: 'Change password',
   update_password: 'Update password',
-  password_instructions:
-    ' Enter your current password, the new password and then confirm the new password',
   current_password: 'Current password',
   new_password: 'New password',
   confirm_password: 'Confirm new password',
   password_update_succesful: 'Password updated successfully!',
+  change_password_current_password_is_required: 'Current password is required!',
+  change_password_new_password_is_required: 'New password is required!',
+  change_password_validation:
+    'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character',
+  change_password_password_was_changed_successfully: 'Password was changed successfully!',
+  change_password_failed_to_change_password: 'Failed to change password!: ',
 
   // FeedbackForm
   no_feedback: 'No feedback.',
