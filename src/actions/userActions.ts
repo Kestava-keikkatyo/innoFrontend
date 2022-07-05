@@ -2,22 +2,13 @@
  * @module userActions
  * @desc Redux user actions
  */
-import userService from "../services/userService";
-import { saveUser, logoutUser } from "../utils/storage";
-import history from "../utils/history";
-import { setAlert } from "./alertActions";
-import {
-  LOGIN,
-  LOGOUT,
-  USER_FAILURE,
-  USER_PROFILE,
-  USER_REQUEST,
-  SignUpUser,
-} from "../types/state";
-import { Credentials, severity } from "../types/types";
-import i18next from "i18next";
-import { clearReports, setReport } from "./reportActions";
-import { initialReport } from "../reducers/reportReducer";
+import userService from '../services/userService'
+import { saveUser, logoutUser } from '../utils/storage'
+import history from '../utils/history'
+import { setAlert } from './alertActions'
+import { LOGIN, LOGOUT, USER_FAILURE, USER_PROFILE, USER_REQUEST, SignUpUser } from '../types/state'
+import { Credentials, severity } from '../types/types'
+import i18next from 'i18next'
 
 /**
  * Logs user in
@@ -30,28 +21,28 @@ export const login = (credentials: Credentials, from: string) => {
   return async (dispatch: any) => {
     dispatch({
       type: USER_REQUEST,
-    });
+    })
     try {
-      const { data } = await userService.signin(credentials);
+      const { data } = await userService.signin(credentials)
       dispatch({
         type: LOGIN,
         data,
-      });
-      saveUser(data);
+      })
+      saveUser(data)
 
       if (from) {
-        history.push(from);
+        history.push(from)
       }
 
-      dispatch(setAlert(i18next.t("login_successful"), severity.Success));
+      dispatch(setAlert(i18next.t('login_successful'), severity.Success))
     } catch (error) {
       dispatch({
         type: USER_FAILURE,
-      });
-      dispatch(setAlert(i18next.t("login_failed"), severity.Error));
+      })
+      dispatch(setAlert(i18next.t('login_failed'), severity.Error))
     }
-  };
-};
+  }
+}
 
 /**
  * Signs user up
@@ -60,29 +51,29 @@ export const login = (credentials: Credentials, from: string) => {
  * @param {string} role - User's role
  */
 export const signup = (user: SignUpUser) => {
-  //const { t } = useTranslation();
+  // const { t } = useTranslation();
   return async (dispatch: any) => {
     dispatch({
       type: USER_REQUEST,
-    });
+    })
     try {
-      const { data } = await userService.register(user);
+      const { data } = await userService.register(user)
       dispatch({
         type: LOGIN,
         data,
-      });
-      saveUser(data);
+      })
+      saveUser(data)
 
-      history.push("/home");
-      dispatch(setAlert("signup_successful", severity.Success));
+      history.push('/home')
+      dispatch(setAlert('signup_successful', severity.Success))
     } catch (error) {
       dispatch({
         type: USER_FAILURE,
-      });
-      dispatch(setAlert(i18next.t("email_already_used"), severity.Error));
+      })
+      dispatch(setAlert(i18next.t('email_already_used'), severity.Error))
     }
-  };
-};
+  }
+}
 
 /**
  * Logs user out
@@ -91,16 +82,16 @@ export const signup = (user: SignUpUser) => {
 export const logout = () => {
   return async (dispatch: any) => {
     try {
-      await userService.logout();
+      await userService.logout()
     } catch (error) {}
-    logoutUser();
-    //dispatch(clearReports())
-    //dispatch(setReport(initialReport))
-    dispatch({ type: LOGOUT });
-    history.push("/");
-    dispatch(setAlert(i18next.t("logged_out")));
-  };
-};
+    logoutUser()
+    // dispatch(clearReports())
+    // dispatch(setReport(initialReport))
+    dispatch({ type: LOGOUT })
+    history.push('/')
+    dispatch(setAlert(i18next.t('logged_out')))
+  }
+}
 
 /**
  * Gets user profile information using user's role and token
@@ -110,20 +101,20 @@ export const logout = () => {
 export const me = () => async (dispatch: any) => {
   dispatch({
     type: USER_REQUEST,
-  });
+  })
   try {
-    //TODO: PURKKAMALLIRATKAISU
+    // TODO: PURKKAMALLIRATKAISU
     // Kirjautuessa sisään setItem ei ehdi päivittää loggedInnoAppUseria
-    if (!localStorage.getItem("loggedInnoAppUser")) return;
-    const { data } = await userService.me();
+    if (!localStorage.getItem('loggedInnoAppUser')) return
+    const { data } = await userService.me()
     dispatch({
       type: USER_PROFILE,
       data,
-    });
+    })
   } catch (error) {
-    statusHandler(dispatch, error);
+    statusHandler(dispatch, error)
   }
-};
+}
 
 /**
  * Updates user profile information
@@ -134,43 +125,19 @@ export const me = () => async (dispatch: any) => {
 export const update = (updateData: any) => async (dispatch: any) => {
   dispatch({
     type: USER_REQUEST,
-  });
+  })
   try {
-    const profile = await userService.update(updateData);
+    const profile = await userService.update(updateData)
     dispatch({
       type: USER_PROFILE,
       profile,
-    });
-    dispatch(setAlert(i18next.t("user_information_updated")));
+    })
+    dispatch(setAlert(i18next.t('user_information_updated')))
   } catch (error) {
-    console.log("update error");
-    statusHandler(dispatch, error);
+    console.log('update error')
+    statusHandler(dispatch, error)
   }
-};
-
-/**
- * Updates user password
- * @function
- * @param {Object} updateData - the object has two properties: currentPassword and
- * and newPassword
- * @param {string} role - user's role
- */
-export const updatePassword = (updateData: any) => async (dispatch: any) => {
-  try {
-    const res: any = await userService.changePassword(updateData);
-    if (res.status === 200) {
-      dispatch(
-        setAlert(i18next.t("password_update_succesful"), severity.Success)
-      );
-      window.location.reload();
-    } else {
-      dispatch(setAlert(res.data.message, severity.Error));
-    }
-  } catch (error) {
-    console.log("UpdatePassword error");
-    statusHandler(dispatch, error);
-  }
-};
+}
 
 /** invalid_token
  * Logs out user if token or role is wrong
@@ -182,9 +149,9 @@ export const updatePassword = (updateData: any) => async (dispatch: any) => {
 const statusHandler = (dispatch: Function, response: any) => {
   if (!response || response.status === 401 || response.status === 500) {
     // logoutUser()
-    dispatch({ type: USER_FAILURE });
-    dispatch(setAlert(i18next.t("invalid_token"), severity.Error));
+    dispatch({ type: USER_FAILURE })
+    dispatch(setAlert(i18next.t('invalid_token'), severity.Error))
   } else {
-    window.location.reload();
+    window.location.reload()
   }
-};
+}
