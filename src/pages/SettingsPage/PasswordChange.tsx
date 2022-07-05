@@ -11,6 +11,7 @@ import i18next from 'i18next'
 import { IRootState } from '../../utils/store';
 import PageLoading from '../../components/PageLoading';
 import { useHistory } from 'react-router-dom';
+import i18n from '../../i18nextInit';
 
 interface FormValues {
     currentPassword: string;
@@ -26,10 +27,10 @@ const initialValues: FormValues = {
 
 
 const ChangePasswordSchema = Yup.object().shape({
-    currentPassword: Yup.string().required(i18next.t('password_is_required')),
-    newPassword: Yup.string().required(i18next.t('password_is_required')).matches(
+    currentPassword: Yup.string().required(i18next.t('change_password_current_password_is_required')),
+    newPassword: Yup.string().required(i18next.t('change_password_new_password_is_required')).matches(
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-        'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character'
+        i18n.t('change_password_validation')
       ),
     confirmNewPassword: Yup.string()
      .oneOf([Yup.ref('newPassword'), undefined], i18next.t('passwords_must_match'))

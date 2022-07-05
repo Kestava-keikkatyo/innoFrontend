@@ -13,6 +13,7 @@ import {
   UserGetCurrentSuccess,
   UserUpdateStatus,
 } from '../types/state'
+import i18next from 'i18next'
 
 /**
  * @function
@@ -274,13 +275,17 @@ export const changePassword =
   async (dispatch: Dispatch<UserAction | UserActionFailure>) => {
     try {
       await usersService.changePassword(newPassword, currentPassword)
-      setAlert('Password was changed successfully!')(dispatch)
+      setAlert(i18next.t('change_password_password_was_changed_successfully'))(dispatch)
       history.push('/home')
     } catch (e) {
       dispatch({
         type: usersType.USER_ACTION_FAILURE,
         data: e as string,
       })
-      setAlert('Failed to change password: ' + e, severity.Error, 15)(dispatch)
+      setAlert(
+        i18next.t('change_password_failed_to_change_password') + e,
+        severity.Error,
+        15,
+      )(dispatch)
     }
   }
