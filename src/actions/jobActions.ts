@@ -35,6 +35,27 @@ export const fetchAllJobAds =
 
 /**
  * @function
+ * @desc Fetches all jobs.
+ */
+export const fetchLatestJobAds =
+  () => async (dispatch: Dispatch<JobGetAllRequest | JobGetAllSuccess | JobActionFailure>) => {
+    try {
+      dispatch({
+        type: jobType.JOB_GET_ALL_REQUEST,
+      })
+      const res = await jobService.fetchLatestJobAds()
+      dispatch({ type: jobType.JOB_GET_ALL_SUCCESS, data: res.data })
+    } catch (e) {
+      dispatch({
+        type: jobType.JOB_ACTION_FAILURE,
+        data: e as string,
+      })
+      setAlert('Failed to fetch JOBS!: ' + e, severity.Error, 15)(dispatch)
+    }
+  }
+
+/**
+ * @function
  * @desc Fetches creater's jobs.
  */
 export const fetchAllMyJobs =

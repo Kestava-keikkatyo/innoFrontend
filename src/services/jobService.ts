@@ -28,6 +28,15 @@ const fetchAllJobAds = async () => {
 
 /**
  * @function
+ * @desc Fetches latest job ads with current token.
+ */
+const fetchLatestJobAds = async () => {
+  const res = await axios.get(`${baseUrl}/job/latest`, authHeader())
+  return res
+}
+
+/**
+ * @function
  * @desc Fetches all jobs avaible with current token.
  */
 const fetchAllMyJobs = async () => {
@@ -87,6 +96,7 @@ const updateJob = async (job: Job) => {
 
 export default {
   fetchAllJobAds,
+  fetchLatestJobAds,
   fetchMyJobById,
   fetchJobById,
   fetchAllMyJobs,
