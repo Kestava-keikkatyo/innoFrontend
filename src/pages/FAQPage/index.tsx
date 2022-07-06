@@ -1,15 +1,14 @@
-import React, { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { me } from "../../actions/userActions"
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { me } from '../../actions/userActions'
 
-import PageLoading from "../../components/PageLoading"
+import PageLoading from '../../components/PageLoading'
 
-import { Container, Typography } from "@mui/material"
-import { roles } from "../../types/types"
-import { useTranslation } from "react-i18next"
-import FAQComponentWorker from "./FAQComponentWorker"
-import FAQComponentAgency from "./FAQComponentAgency"
-import FAQComponentBusiness from "./FAQComponentBusiness"
+import { Container, Typography } from '@mui/material'
+import { roles } from '../../types/types'
+import { useTranslation } from 'react-i18next'
+import FAQComponentAgency from './FAQComponentAgency'
+import FAQComponentBusiness from './FAQComponentBusiness'
 
 const FAQIndex = () => {
   const { data, ...user } = useSelector((state: any) => state.user)
@@ -38,8 +37,6 @@ const FAQIndex = () => {
         return <FAQComponentBusiness />
       case roles.Agency:
         return <FAQComponentAgency />
-      case roles.Worker:
-        return <FAQComponentWorker />
       default:
         return <></>
     }
@@ -47,7 +44,7 @@ const FAQIndex = () => {
   return (
     <Container style={{ marginTop: 24 }}>
       <Typography variant="h4" color="primary">
-        {t("faq")}
+        {t('faq')}
       </Typography>
       {getContent()}
     </Container>
