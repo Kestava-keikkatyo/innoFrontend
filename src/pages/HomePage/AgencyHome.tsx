@@ -1,59 +1,81 @@
 import React from 'react';
 
-import vastuualueet from '../../assets/tietopankki/vastuualueet.json';
-import {
-  Card,
-  List,
-  CardContent,
-  FormControlLabel,
-  Checkbox,
-  ListItem,
-  ListItemText,
-  Divider,
-  CardHeader,
-  Grid,
+// import vastuualueet from '../../assets/tietopankki/vastuualueet.json';
+import { Grid, Link, Typography,
 } from '@mui/material';
-import Faq from './FAQBoxAgency';
-import { useTranslation } from 'react-i18next';
+import makeStyles from '@mui/styles/makeStyles';
+import LatestJoinedWorkers from '../Profile/LatestJoinedWorkers';
 
 const AgencyHome = () => {
-  const { t } = useTranslation();
+  const classes = useStyles();
   return (
     <Grid container>
-    <Grid item xs={12} md={6} style={{ marginTop: '1%'}}>
-      <Card variant="outlined">
-          <CardHeader
-            title={t('faq')}
-            subheader=""
-          />
-          <CardContent style={{height:'68.6vh'}}>
-          <Faq />
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item xs={12} md={6} style={{ marginTop: '1%'}}>
-        <Card variant="outlined">
-          <CardHeader
-            title={t('agency_responsibility')}
-            subheader=""
-          />
-          <CardContent style={{height:'68.6vh'}}>
-            <List component="nav" aria-label="mailbox folders">
-              <Divider />
-              {vastuualueet.agency.map((e, i) => (
-                <ListItem key={i} divider>
-                  <ListItemText primary={`${i + 1}. ${e.tip}`} />
-                </ListItem>
-              ))}
-            </List>
-            <FormControlLabel control={<Checkbox defaultChecked style={{color:'#eb5a00'}} />} label={t<string>('agency_responsibilities_read')}/>
-          </CardContent>
-        </Card>
-      </Grid>
+      <div className={classes.generalInfo}>
+        <div className={classes.item}>
+          <Typography color="primary" align="center" variant="h6"> Latest received reports</Typography>
+        </div>
+        <div className={classes.item}>
+          <Typography color="primary" align="center" variant="h6"> <Link href="/information" underline="hover">Information</Link> </Typography>
+        </div>
+        <div className={classes.item}>
+          <Typography color="primary" align="center" variant="h6"> Areas of responsibility </Typography>
+        </div>
+      </div>
+      <div className={classes.pageContent}>
+        <div className={classes.contentContainer}>
+            <div className={classes.feelingAnalysis}>
+             
+            </div>
+            <div className={classes.latestJobAds}>
+            <LatestJoinedWorkers />
+            </div>
+        </div>
+      </div> 
     </Grid>
   );
 };
 
-
+const useStyles = makeStyles(() => ({
+  generalInfo: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  item: {
+    flex: '1',
+    margin: '0px 20px',
+    padding: '30px',
+    borderRadius: '10px',
+    webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
+    boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
+  },
+  container: {
+    margin: '10px 0px',
+    display: 'flex',
+    alignItems: 'center'
+  },
+  pageContent: {
+    flex: '4',
+    padding: '5px'
+},
+feelingAnalysis: {
+    flex: 1,
+    padding: '10px',
+    webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
+    boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
+},
+latestJobAds: {
+    flex: 2,
+    padding: '10px',
+    webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
+    boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
+    marginLeft: '20px',
+},
+contentContainer: {
+    display: 'flex',
+    marginTop: '10px',
+    hight: '500',
+},
+}));
 
 export default AgencyHome;
