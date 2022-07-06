@@ -17,7 +17,7 @@ const WorkerHome = () => {
           <Typography color="primary" align="center" variant="h6"> <Link href="/information" underline="hover">Information</Link> </Typography>
         </div>
         <div className={classes.item}>
-          <Typography color="primary" align="center" variant="h6"> <Link href="/information" underline="hover">Areas of responsibility</Link> </Typography>
+          <Typography color="primary" align="center" variant="h6"> Areas of responsibility </Typography>
         </div>
       </div>
       <div className={classes.pageContent}>
