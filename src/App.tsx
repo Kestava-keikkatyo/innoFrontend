@@ -32,7 +32,6 @@ import ContractFormEditPage from './pages/ContractsPage/ContractFormManagerPage/
 import JobList from './pages/JobPage'
 import SettingsPage from './pages/SettingsPage'
 import AllUsersList from './pages/AdminPage/AllUsersList'
-import FAQIndex from './pages/FAQPage/index'
 import CreateUser from './pages/AdminPage/CreateUser'
 import ReportList from './pages/AdminPage/ReportList'
 import FeedbackList from './pages/AdminPage/FeedbackList'
@@ -236,9 +235,6 @@ const App: React.FC = () => {
             </PrivateRoute>
             <PrivateRoute path="/reports" roles={[roles.Business, roles.Agency, roles.Worker]}>
               <ReportsPage />
-            </PrivateRoute>
-            <PrivateRoute path="/faq" roles={[roles.Worker]}>
-              <FAQIndex />
             </PrivateRoute>
             <PrivateRoute
               path="/contracts/contract-form-manager/contract-form-preview"
