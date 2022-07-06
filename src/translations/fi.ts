@@ -640,7 +640,7 @@ export default {
   update_feedback: 'Päivitä palaute',
 
   // Worker feeling
-  my_feeling_send: 'Send feeling',
+  my_feeling_send: 'Lähetä fiilis',
   my_feeling_comfortable: 'Mukava',
   my_feeling_satisfied: 'Tyytyväinen',
   my_feeling_energetic: 'Energinen',

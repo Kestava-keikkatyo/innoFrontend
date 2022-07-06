@@ -64,7 +64,7 @@ const SendFeeling: React.FC = () => {
       return (
       <div className={classes.feeling}>
           <div className={classes.feelingTitleContainer}>
-              <Typography color="secondary" className={classes.title} variant="h5">{t('send_feeling')}</Typography>
+              <Typography color="primary" className={classes.title} variant="h5">{t('my_feeling_send')}</Typography>
           </div>
           <div className={classes.userMood}>
               <Formik
@@ -101,7 +101,7 @@ const SendFeeling: React.FC = () => {
                                 <div>
                                     <Typography color="success" className={classes.title} variant="h6">Would you like to leave a comment?</Typography>
                                 </div>
-                                <FormikField name="comment" label={t('feeling_comment')} multiline />
+                                <FormikField name="comment" label={t('my_feeling_comment')} multiline />
                             </div>
                         </div>
                         {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="primary" className={classes.button}>{t('submit')}</Button>}
