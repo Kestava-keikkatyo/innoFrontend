@@ -551,6 +551,7 @@ export default {
   job_apply: 'Apply now',
   job_your_job_ads: 'Your job ads',
   job_update_job: 'Update job',
+  job_latest_job_ads: 'Latest job ads',
 
   // CreateUser
   add_new_admin: 'Add new admin',

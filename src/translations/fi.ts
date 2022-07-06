@@ -545,6 +545,7 @@ export default {
   job_apply: 'Hae nyt',
   job_your_job_ads: 'Työpaikkailmoituksesi',
   job_update_job: 'Päivitä työpaikka',
+  job_latest_job_ads: 'Uusimmat työpaikkailmoitukset',
 
   // Topic
   add_new_topic: 'Lisää uusi aihe',
