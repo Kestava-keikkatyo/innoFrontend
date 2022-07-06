@@ -56,6 +56,16 @@ const fetchAllWorkers = async () => {
 
 /**
  * @function
+ * @desc Fetch the latest joined workers.
+ * @returns the latest joined workers.
+ */
+const fetchLatestJoinedWorkers = async () => {
+  const res = await axios.get(`${baseUrl}/user/workers/latest`, authHeader())
+  return res
+}
+
+/**
+ * @function
  * @desc fetchUserById
  */
 const showMyProfile = async (id: string) => {
@@ -133,6 +143,7 @@ export default {
   fetchUserById,
   deleteUser,
   fetchAllWorkers,
+  fetchLatestJoinedWorkers,
   showMyProfile,
   fetchAllAgencies,
   updateUser,

@@ -127,6 +127,27 @@ export const fetchAllWorkers =
 
 /**
  * @function
+ * @desc Fetches latest joined workers.
+ */
+export const fetchLatestJoinedWorkers =
+  () => async (dispatch: Dispatch<UserGetAll | UserGetAllSuccess | UserActionFailure>) => {
+    try {
+      dispatch({
+        type: usersType.USER_GET_ALL_REQUEST,
+      })
+      const res = await usersService.fetchLatestJoinedWorkers()
+      dispatch({ type: usersType.USER_GET_ALL_SUCCESS, data: res.data })
+    } catch (e) {
+      dispatch({
+        type: usersType.USER_ACTION_FAILURE,
+        data: e as string,
+      })
+      setAlert('Failed to fetch workers!: ' + e, severity.Error, 15)(dispatch)
+    }
+  }
+
+/**
+ * @function
  * @desc Fetches all agencies.
  */
 export const fetchAllAgencies =
