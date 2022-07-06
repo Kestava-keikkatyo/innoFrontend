@@ -21,12 +21,10 @@ import { IRootState } from '../../utils/store'
 import logo from '../../assets/keikkakaveri_logo.png'
 import GroupsIcon from '@mui/icons-material/Group'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
-
 import { useTranslation } from 'react-i18next'
 // import TranslateIcon from '@mui/icons-material/Translate';
 import LibraryBooksOutlinedIcon from '@mui/icons-material/LibraryBooksOutlined'
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline'
-import LiveHelpIcon from '@mui/icons-material/LiveHelpOutlined'
 import AssignmentTurnedInOutlinedIcon from '@mui/icons-material/AssignmentTurnedInOutlined'
 import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
@@ -238,13 +236,6 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                   <ErrorOutlineIcon />
                 </ListItemIcon>
                 <ListItemText primary={t('reports')} />
-              </ListItem>
-              <Divider />
-              <ListItem button component={Link} to="/faq" onClick={handleClick}>
-                <ListItemIcon>
-                  <LiveHelpIcon />
-                </ListItemIcon>
-                <ListItemText primary={t('faq')} />
               </ListItem>
               <Divider />
             </>
