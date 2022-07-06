@@ -45,7 +45,7 @@ const WorkView: React.FC<any> = ({ works }) => {
           />
         </RadioGroup>
       </FormControl>
-      <Typography className={classes.headline} variant="h6" gutterBottom>
+      <Typography className={classes.headline} gutterBottom>
         {t(value === "done" ? "history" : "active")}
       </Typography>
       {works

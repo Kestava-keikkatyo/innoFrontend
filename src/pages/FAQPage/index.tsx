@@ -46,7 +46,7 @@ const FAQIndex = () => {
   }
   return (
     <Container style={{ marginTop: 24 }}>
-      <Typography variant="h4" color="primary">
+      <Typography variant="h1" className="header" color="primary">
         {t("faq")}
       </Typography>
       {getContent()}

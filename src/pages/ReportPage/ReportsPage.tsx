@@ -234,7 +234,7 @@ const ReportsPage: React.FC<any> = () => {
       >
         <Grid item>
           {/**Reports page title */}
-          <Typography display='inline' variant="h4" color="primary" sx={{float: 'left', paddingRight: '1em'}}>
+          <Typography display='inline' variant="h1" className='header' color="primary" sx={{float: 'left', paddingRight: '1em'}}>
             {t("reports")}
           </Typography>
 

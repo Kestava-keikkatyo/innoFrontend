@@ -30,11 +30,11 @@ const AgencyStatisticsSummary: React.FC<any> = () => {
     <Grid className="worker-statistics-summary" container spacing={1}>
       <Grid item xs={6} style={{padding: "0"}}>
         <ProgressPieChart datasets={getDataSet(averageFeeling(feelings))}>
-          <Typography variant="h5">
+          <Typography variant="h2" className='header2'>
             {averageFeeling(feelings).toString()}
           </Typography>
           <Hidden smDown>
-            <Typography variant="h6">
+            <Typography variant="h3" className='header4'>
               {calculateCheer(averageFeeling(feelings), 4)}
             </Typography>
           </Hidden>
@@ -43,9 +43,9 @@ const AgencyStatisticsSummary: React.FC<any> = () => {
       </Grid>
       <Grid item xs={6} style={{padding: "0"}}>
         <ProgressPieChart datasets={getTotalDataSet(feelings.length)}>
-          <Typography variant="h5">{feelings.length}</Typography>
+          <Typography variant="h2" className='header2'>{feelings.length}</Typography>
           <Hidden smDown>
-            <Typography variant="h6">
+            <Typography variant="h3" className='header4'>
               {calculateCheer(feelings.length, 100)}
             </Typography>
           </Hidden>

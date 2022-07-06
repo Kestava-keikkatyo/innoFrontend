@@ -19,7 +19,7 @@ const WorkerStatisticsButtonRow = () => {
         style={{ marginTop: 16 }}
       >
         <Grid item xs={6}>
-          <Typography variant="h4" className="text-secondary">
+          <Typography variant="h1" className="text-secondary header">
             {t('mood_stats')}
           </Typography>
         </Grid>

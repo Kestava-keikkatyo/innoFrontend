@@ -106,7 +106,7 @@ const WorkerJobs = () => {
         <WorkView works={works}/>
       </TabPanel>
       <TabPanel value={value} index={1} dir={theme.direction}>
-        <Typography style={{ paddingTop: "1rem" }} variant="h4"></Typography>
+        <Typography style={{ paddingTop: "1rem" }} variant="h1" className="header"></Typography>
         <WorkRequest/>
       </TabPanel>
       <TabPanel value={value} index={2} dir={theme.direction}></TabPanel>

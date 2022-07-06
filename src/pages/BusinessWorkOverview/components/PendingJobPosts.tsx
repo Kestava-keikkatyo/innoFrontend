@@ -23,7 +23,9 @@ const PendingJobPosts = (prop: { workContracts: Array<Object> }) => {
 
   return (
     <>
-      <h2>{t("pending_jobs")}</h2>
+      <Typography variant="h1" className="header2" style={{marginBlock: "0.83em"}}>
+        {t("pending_jobs")}
+      </Typography>
       {workContracts.map((object:any) => (
         object.contracts.map((job:any) => (
           <Accordion key={job._id}>

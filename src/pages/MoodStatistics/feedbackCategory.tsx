@@ -94,7 +94,7 @@ export default function CustomizedTables() {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography gutterBottom variant="h5">
+            <Typography gutterBottom variant="h4" className='header2'>
               {t('feedback_category')}
             </Typography>
           </AccordionSummary>

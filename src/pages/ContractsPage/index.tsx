@@ -196,7 +196,7 @@ const ContractsPage = () => {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography gutterBottom variant="h5">
+            <Typography gutterBottom variant="h1" className='header2'>
               {t('make_contract')}
             </Typography>
           </AccordionSummary>
@@ -212,7 +212,7 @@ const ContractsPage = () => {
           </AccordionDetails>
         </Accordion>
 
-        <Typography style={{ paddingTop: '1rem' }} variant="h4">
+        <Typography style={{ paddingTop: '1rem' }} variant="h1" className='header'>
           {t('contracts_overview')}
         </Typography>
         <ContractsTable businessContract={businessContract} />

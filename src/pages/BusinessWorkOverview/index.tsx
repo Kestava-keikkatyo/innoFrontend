@@ -79,7 +79,9 @@ const BusinessWorkRequest: React.FC<any> = () => {
       <Grid container direction="row" justifyContent="center" alignItems="stretch" spacing={3}>
         <Grid item xs={12} md={6}>
           <form onSubmit={handleSubmit} >
-            <h2>  {t("send_agency_contract")}</h2>
+            <Typography variant="h1" className="header2" style={{marginBlock: "0.83em"}}>
+              {t("send_agency_contract")}
+            </Typography>
             <Typography className={classes.choose}> {t("choose_agency")}</Typography>
             <InputBase
               placeholder={t("search_by_name")}

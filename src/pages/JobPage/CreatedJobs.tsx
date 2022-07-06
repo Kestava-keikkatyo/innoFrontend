@@ -207,7 +207,8 @@ const CreatedJobs: React.FC<any> = () => {
     <>
     <div>
       {/**Title */}
-      <Typography className={classes.title} color="primary" align="center" variant="h5">{t('job_your_job_ads')}</Typography>
+      <Typography className='header' style={{marginTop: '25px', marginBottom: '15px'}}
+      color="primary" align="center" variant="h1">{t('job_your_job_ads')}</Typography>
     </div>
     {/**Job ads list depending on device width ('mobile' or not). */}
     {isMobile ? mobileView() : tableView()}

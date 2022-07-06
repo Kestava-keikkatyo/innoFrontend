@@ -700,6 +700,7 @@ nav * {
   /* box-shadow: 10px 0 50px rgba(0, 0, 0, 0.5); */
 }
 
+/* Better naming for headers? */
 .header {
   font-weight: 400;
   font-size: 2.125rem;
@@ -716,6 +717,20 @@ nav * {
   font-weight: 400;
   font-size: 3rem;
   line-height: 1.167;
+}
+
+.header4 {
+  font-weight: 400 !important;
+  font-size: 1.5rem;
+  line-height: 1.334;
+  padding-top: 0 !important;
+}
+
+.header5 {
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  letter-spacing: 0.0075em;
 }
 
 .Mui-selected {

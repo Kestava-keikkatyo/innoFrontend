@@ -7,7 +7,7 @@ const WorkRequest:React.FC<any> = () => {
     const classes = useStyles()
   return (
     <div>
-      <Typography className={classes.headline} variant="h6" gutterBottom>
+      <Typography style={{textAlign: 'center'}} className='header2' variant="h2" gutterBottom>
        {t("work_request")}
       </Typography>
     </div>

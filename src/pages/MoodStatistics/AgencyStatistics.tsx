@@ -30,7 +30,7 @@ const AgencyStatistics = () => {
   return (
     <Container maxWidth="lg" className={classes.container}>
       <Box style={{ paddingTop: 10, paddingBottom: 10 }}>
-        <Typography variant="h4" color="primary">
+        <Typography variant="h1" className='header' color="primary">
           {t('mood_stats')}
         </Typography>
         <AgencyStatisticsSummary />

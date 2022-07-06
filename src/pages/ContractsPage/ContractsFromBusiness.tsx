@@ -86,9 +86,9 @@ const ContractsFromBusiness = (props: {
     return (
       <Typography
         style={{ padding: '1rem' }}
-        variant="h5"
+        variant="h1"
         align="center"
-        className="text-secondary"
+        className="text-secondary header2"
       >
         {t('no_results')}
       </Typography>
@@ -110,7 +110,7 @@ const ContractsFromBusiness = (props: {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography gutterBottom variant="h5">
+            <Typography gutterBottom variant="h1" className='header2'>
               {t('contracts_from_business')}
             </Typography>
           </AccordionSummary>
