@@ -68,6 +68,7 @@ import SendFeeling from './pages/Feeling/SendFeeling'
 import Information from './pages/Topic/Information'
 import PasswordChange from './pages/SettingsPage/PasswordChange'
 import CreateResponsibility from './pages/Responsibility/CreateResponsibility'
+import Responsibilities from './pages/Responsibility/Responsibilities'
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface DefaultTheme extends Theme {}
@@ -164,6 +165,9 @@ const App: React.FC = () => {
             </PrivateRoute>
             <PrivateRoute path="/responsibilities/create" roles={[roles.Admin]}>
               <CreateResponsibility />
+            </PrivateRoute>
+            <PrivateRoute path="/responsibilities" roles={[roles.Admin]}>
+              <Responsibilities />
             </PrivateRoute>
             <PrivateRoute path="/feedback/send" roles={[roles.Business, roles.Agency, roles.Worker]}>
               <SendFeedback />
