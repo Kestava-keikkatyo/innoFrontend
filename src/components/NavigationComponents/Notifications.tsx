@@ -37,9 +37,10 @@ const Notifications: React.FC<any> = (props: { notifications: any, handleCloseNo
   return (
     <Box className={classes.box}>
       <Typography className={classes.notificationsHeader}>{t('notifications')}
-        <Button onClick={handleCloseAllNotifications} style={{left:"32.5%", maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px',top:-11 }}>
-            <CloseIcon style={{ fontSize: 22 }} />
-          </Button>
+        <Button onClick={handleCloseAllNotifications}
+        style={{left:"32.5%", maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px',top:-11 }}>
+          <CloseIcon style={{ fontSize: 22 }} />
+        </Button>
       </Typography>
       <Divider />
       <List>

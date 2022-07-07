@@ -40,7 +40,7 @@ export default function CustomizedTables() {
     createStyles({
       head: {
         backgroundColor: theme.palette.common.white,
-        color: '#eb5a02',
+        color: '#CC4E00',
       },
     })
   )(TableCell);

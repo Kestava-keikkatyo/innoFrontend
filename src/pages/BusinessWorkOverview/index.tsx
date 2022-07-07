@@ -1,4 +1,4 @@
-import { Button, Container, Grid, IconButton, InputBase, Theme, Typography } from "@mui/material";
+import { Button, Container, FormControl, Grid, IconButton, InputBase, InputLabel, Theme, Typography } from "@mui/material";
 import makeStyles from '@mui/styles/makeStyles';
 import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
@@ -78,12 +78,15 @@ const BusinessWorkRequest: React.FC<any> = () => {
     <Container className="lg">
       <Grid container direction="row" justifyContent="center" alignItems="stretch" spacing={3}>
         <Grid item xs={12} md={6}>
-          <form onSubmit={handleSubmit} >
+          <form onSubmit={handleSubmit}>
             <Typography variant="h1" className="header2" style={{marginBlock: "0.83em"}}>
               {t("send_agency_contract")}
             </Typography>
-            <Typography className={classes.choose}> {t("choose_agency")}</Typography>
+            <Typography className={classes.choose}> 
+              <label htmlFor="search">{t("choose_agency")}</label>
+            </Typography>
             <InputBase
+              id="search"
               placeholder={t("search_by_name")}
               onChange={(event) => handleChange(event)}
             />
@@ -93,36 +96,34 @@ const BusinessWorkRequest: React.FC<any> = () => {
             </IconButton>
             <AgencyGrid workContracts={workContracts} setSelectedAgency={setSelectedAgency} searchInput={searchInput}/>
             <Typography className={classes.field}>
-              {t("tell_position")}
+              <label htmlFor="tell">{t("tell_position")}</label>
             </Typography>
             <TextField
               className={classes.information}
               error={formData.headline.length > 0 ? false : true}
               type="text"
               variant="outlined"
-              id="margin-none"
+              id="tell"
               value={formData.headline}
               onChange={(e) => setFormData({ ...formData, headline: e.target.value })}
-            />
-            <Typography
-              className={classes.field}
-            >
-              {t("worker_count")}
+            /> {/* label={t("tell_position")}
+            InputLabelProps={{
+            shrink: true
+            }} */}
+            <Typography className={classes.field}>
+              <label htmlFor="outlined-number">{t("worker_count")}</label>
             </Typography>
             <TextField
               error={formData.workerCount.length > 0 ? false : true}
               id="outlined-number"
               type="number"
-              InputLabelProps={{
-                shrink: true,
-              }}
               inputProps={{ min: 0 }}
               value={formData.workerCount}
               onChange={(e) => setFormData({ ...formData, workerCount: e.target.value })}
               variant="standard"
             />
             <Typography className={classes.field}>
-              {t('report_details')}
+              <label htmlFor="details">{t('report_details')}</label>
             </Typography>
             <TextField
               className={classes.information}
@@ -131,7 +132,7 @@ const BusinessWorkRequest: React.FC<any> = () => {
               multiline
               rows={6}
               variant="outlined"
-              id="margin-none"
+              id="details"
               value={formData.detailedInfo}
               onChange={(e) => setFormData({ ...formData, detailedInfo: e.target.value })}
             />
