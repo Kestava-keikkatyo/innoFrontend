@@ -17,6 +17,8 @@ import {
   Notification,
   feelingType,
   MyFeeling,
+  Responsibility,
+  responsibilityType,
 } from './types'
 
 export interface UsersState {
@@ -249,7 +251,7 @@ export interface TopicState {
 export interface TopicSimilarActions {
   type:
     | typeof topicType.TOPIC_CREATED_REQUEST
-    | topicType.TOPIC_CREATED_SUCCESS
+    | typeof topicType.TOPIC_CREATED_SUCCESS
     | typeof topicType.TOPIC_DELETED_REQUEST
     | typeof topicType.TOPIC_DELETED_SUCCESS
     | typeof topicType.TOPIC_UPDATED_REQUEST
@@ -286,6 +288,56 @@ export type TopicActions =
   | TopicGetAllSuccess
   | TopicGetCurrentRequest
   | TopicGetCurrentSuccess
+
+/**
+ * Responsibility state & action types
+ */
+export interface ResponsibilityState {
+  currentResponsibility: Responsibility | undefined
+  loading: boolean
+  responsibilities: Responsibility[]
+  fetchError?: string
+}
+export interface ResponsibilitySimilarActions {
+  type:
+    | typeof responsibilityType.RESPONSIBILITY_CREATED_REQUEST
+    | typeof responsibilityType.RESPONSIBILITY_CREATED_SUCCESS
+    | typeof responsibilityType.RESPONSIBILITY_DELETED_REQUEST
+    | typeof responsibilityType.RESPONSIBILITY_DELETED_SUCCESS
+    | typeof responsibilityType.RESPONSIBILITY_UPDATED_REQUEST
+    | typeof responsibilityType.RESPONSIBILITY_UPDATED_SUCCESS
+  data: Responsibility
+}
+
+export interface ResponsibilityActionFailure {
+  type: typeof responsibilityType.RESPONSIBILITY_ACTION_FAILURE
+  data: string
+}
+export interface ResponsibilityGetAllRequest {
+  type: typeof responsibilityType.RESPONSIBILITY_GETALL_REQUEST
+}
+
+export interface ResponsibilityGetAllSuccess {
+  type: typeof responsibilityType.RESPONSIBILITY_GETALL_SUCCESS
+  data: Responsibility[]
+}
+
+export interface ResponsibilityGetCurrentRequest {
+  type: typeof responsibilityType.RESPONSIBILITY_GET_CURRENT_REQUEST
+}
+
+export interface ResponsibilityGetCurrentSuccess {
+  type: typeof responsibilityType.RESPONSIBILITY_GET_CURRENT_SUCCESS
+  data: Responsibility
+}
+
+export type ResponsibilityActions =
+  | ResponsibilitySimilarActions
+  | ResponsibilityActionFailure
+  | ResponsibilityGetAllRequest
+  | ResponsibilityGetAllSuccess
+  | ResponsibilityGetCurrentRequest
+  | ResponsibilityGetCurrentSuccess
 
 /**
  * Work request state & action types
