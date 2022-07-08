@@ -26,8 +26,9 @@ import { useTranslation } from 'react-i18next'
 import LibraryBooksOutlinedIcon from '@mui/icons-material/LibraryBooksOutlined'
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline'
 import AssignmentTurnedInOutlinedIcon from '@mui/icons-material/AssignmentTurnedInOutlined'
-import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
-import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
+import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined'
+import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
+import AssignmentIndOutlinedIcon from '@mui/icons-material/AssignmentIndOutlined'
 // import fi1 from '../NavigationComponents/fi1.png';
 // import us1 from '../NavigationComponents/us1.png';
 // import sw1 from '../NavigationComponents/sw1.png';
@@ -280,6 +281,17 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                   <GroupsIcon />
                 </ListItemIcon>
                 <ListItemText primary={t('topic_navigate')} />
+              </ListItem>
+              <Divider />
+            </>
+          )}
+          {role === roles.Admin && (
+            <>
+              <ListItem button component={Link} to="/responsibilities" onClick={handleClick}>
+                <ListItemIcon>
+                  <AssignmentIndOutlinedIcon />
+                </ListItemIcon>
+                <ListItemText primary={t('responsibility_navigate')} />
               </ListItem>
               <Divider />
             </>
