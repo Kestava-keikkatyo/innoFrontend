@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, CircularProgress, Typography } from '@mui/material';
+import { Button, CircularProgress, Stack, Typography } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
@@ -9,6 +9,7 @@ import { Topic } from '../../types/types';
 import { IRootState } from '../../utils/store';
 import { useTranslation } from 'react-i18next'
 import { createTopic } from '../../actions/topicActions';
+import { Link } from 'react-router-dom';
 
 const initialValues: Topic = {
   question: '',
@@ -48,7 +49,10 @@ const CreateTopic: React.FC = () => {
                 <FormikField name="question" label={t('topic_question')} required multiline />
                 <FormikField name="answer" label={t('topic_answer')} required multiline />
               </div>
-              {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="primary" className={classes.button}>{t('create')}</Button>}
+              <Stack direction="row" spacing={2}>
+                {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="primary" className={classes.button}>{t('create')}</Button>}
+                <Button variant="outlined" color="primary" component={Link} to="/topics">{t('button_cancel')}</Button>
+              </Stack>
             </Form>
             );
           }}
