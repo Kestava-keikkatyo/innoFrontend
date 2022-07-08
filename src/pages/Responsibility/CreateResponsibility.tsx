@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, CircularProgress, Typography } from '@mui/material';
+import { Button, CircularProgress, Stack, Typography } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
@@ -9,6 +9,7 @@ import { Responsibility } from '../../types/types';
 import { IRootState } from '../../utils/store';
 import { useTranslation } from 'react-i18next'
 import { createResponsibility } from '../../actions/responsibilityActions';
+import { Link } from 'react-router-dom';
 
 const initialValues: Responsibility = {
     responsible: '',
@@ -33,7 +34,7 @@ const CreateResponsibility: React.FC = () => {
   return (
     <div className={classes.newResponsibility}>
       <div className={classes.responsibilityTitleContainer}>
-              <Typography color="primary" className={classes.title} variant="h5">{t('add_new_Responsibility')}</Typography>
+              <Typography color="primary" className={classes.title} variant="h5">{t('responsibility_create_new_responsibility')}</Typography>
       </div>
       <div className={classes.responsibilityContainer}>
         <Formik
@@ -48,7 +49,10 @@ const CreateResponsibility: React.FC = () => {
                 <FormikField name="responsible" label={t('responsibility_responsible')} required multiline />
                 <FormikField name="rule" label={t('responsibility_rule')} required multiline />
               </div>
-              {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="primary" className={classes.button}>{t('create')}</Button>}
+              <Stack direction="row" spacing={2}>
+                {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="primary" className={classes.button}>{t('create')}</Button>}
+                <Button variant="outlined" color="primary" component={Link} to="/responsibilities">{t('button_cancel')}</Button>
+              </Stack>
             </Form>
             );
           }}
