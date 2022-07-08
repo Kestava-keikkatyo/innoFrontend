@@ -7,14 +7,17 @@ import {
   Box,
   Typography,
   ListItemText,
-  ListItemSecondaryAction,
   ListItemButton,
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import { useTranslation } from 'react-i18next'
 import { Notification } from '../../types/types'
+import moment from 'moment';
+import { clearNotification } from '../../actions/notificationsActions';
+import history from '../../utils/history';
+import { AssignmentOutlined } from '@mui/icons-material';
+import { useDispatch } from 'react-redux';
 
 export interface BoxProps {
   notifications: Notification[];
@@ -25,11 +28,28 @@ export interface BoxProps {
 const Notifications = (props: BoxProps) => {
   const { notifications, children, onClose } = props;
   const classes = useStyles()
-  const sortedNotifications = notifications
   const { t } = useTranslation()
+  const dispatch = useDispatch();
 
   const handleCloseAllNotifications = () => {
     onClose()
+  }
+
+  const handleLinkClick = (notification : Notification) => {
+    dispatch(clearNotification(notification));
+    switch (notification.targetDoc) {
+      case 'Agreement':
+        break;
+      case 'Application':
+        break;
+      case 'FeedBack':
+        break;
+      case 'Form':
+        break;
+      case 'WorkRequest':
+        history.push(`/receivedWorkRequests/details/${notification.target}`);
+        break;
+    }
   }
 
   return (
@@ -42,20 +62,16 @@ const Notifications = (props: BoxProps) => {
       </Typography>
       <Divider />
       <List>
-        {sortedNotifications.length > 0 ? sortedNotifications.map((item: Notification) => {
+        {notifications.length > 0 ? notifications.map((item: Notification) => {
           return (
             <div key={item._id}>
               <ListItem key={item._id} style={{ display: 'flex', flexDirection: 'row', padding: 0 }}>
-                <ListItemButton>
+                <ListItemButton onClick={() => handleLinkClick(item)}>
                  <ListItemText 
-                  primary={item.type} 
+                  primary={renderNotificationMessage(item)} 
                  />
+                 <AssignmentOutlined />
                </ListItemButton>
-               <ListItemSecondaryAction>
-                  <IconButton edge="end" aria-label="check" size="large">
-                    <CheckIcon />
-                  </IconButton>
-                </ListItemSecondaryAction>
               </ListItem>
               <Divider />
             </div>
@@ -64,6 +80,20 @@ const Notifications = (props: BoxProps) => {
       </List>
     </Box>
   );
+}
+
+const renderNotificationMessage = (notification : Notification) : string => {
+  let message = `${moment(notification.createdAt).format('D.M.')} • `;
+  switch (notification.type) {
+    case 'assignmet':
+        switch (notification.targetDoc) {
+          case 'WorkRequest': message += `${notification.sender.name} requested work from you.`;
+            break;
+        }
+      break;
+  }
+
+  return message;
 }
 
 const useStyles = makeStyles(() => ({
