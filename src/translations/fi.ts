@@ -658,4 +658,19 @@ export default {
   my_feeling_do_you_feel_anxious: 'Tunnetko olosi ahdistuneeksi?',
   my_feeling_would_you_like_to_leave_a_comment: 'Haluatko jättää kommentin?',
   insert_number_between_zero_and_four: 'Lisää numero väliin 0 = niin vähän ja 4 = niin paljon',
+
+  // Responsibility
+  responsibility_create_new_responsibility: 'Lisää uusi vastuu',
+  responsibility_responsible: 'Vastuullinen',
+  responsibility_rule: 'Sääntö',
+  responsibility_created_at: 'Luotiin',
+  responsibilities: 'Vastuut',
+  responsibility_update: 'Päivitä',
+  responsibility_action: 'Toiminta',
+  responsibility_created_successfully: 'Vastuu on luotu onnistuneesti!',
+  failed_to_create_the_responsibility: 'Vastuun luominen epäonnistui!',
+  responsibility_updated_successfully: 'Vastuun päivitys onnistui!',
+  responsibility_update_topic: 'Päivitä vastuu',
+  responsibility_create_new_topic: 'Päivitä vastuu',
+  responsibility_navigate: 'Vastuut',
 }

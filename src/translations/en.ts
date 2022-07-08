@@ -664,4 +664,19 @@ export default {
   my_feeling_do_you_feel_anxious: 'Do you feel anxious?',
   my_feeling_would_you_like_to_leave_a_comment: 'Would you like to leave a comment?',
   insert_number_between_zero_and_four: 'Insert a number between 0= so little and 4= so much',
+
+  // Responsibility
+  responsibility_create_new_responsibility: 'Add new responsibility',
+  responsibility_responsible: 'Responsible',
+  responsibility_rule: 'Rule',
+  responsibility_created_at: 'Created at',
+  responsibilities: 'Responsibilities',
+  responsibility_update: 'Update',
+  responsibility_action: 'Action',
+  responsibility_created_successfully: 'Responsibility was created successfully!',
+  failed_to_create_the_responsibility: 'Failed to create the responsibility!',
+  responsibility_updated_successfully: 'Responsibility was updated successfully!',
+  responsibility_update_topic: 'Update responsibility',
+  responsibility_create_new_topic: 'Create new responsibility',
+  responsibility_navigate: 'Responsibilities',
 }
