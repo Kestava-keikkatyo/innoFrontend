@@ -49,7 +49,6 @@ const LatestJobAds: React.FC = () => {
             headerName: (i18next.t('job_supplier')),
             width: 200,
             renderCell: (params) => {
-                console.log(params.row);
                 return <>{params.row.user.name}</>;
             }
         },
@@ -58,7 +57,6 @@ const LatestJobAds: React.FC = () => {
             headerName: (i18next.t('job_release_date')),
             width: 200,
             renderCell: (params) => {
-                console.log(params.row);
                 return <>{moment(params.row.createdAt).format('DD/MM/YYYY')}</>; 
             }
         },
