@@ -31,7 +31,7 @@ const ResponsibilityUpdate: React.FC = () => {
 
     const { responsibilityId } = useParams<ResponsibilityUrlParams>();
     
-    const responsibilityData = useSelector((state: IRootState) => state.responsibility.currentResponsibility);
+    const responsibilityData: Responsibility | undefined = useSelector((state: IRootState) => state.responsibility.currentResponsibility);
     useEffect(() => {
       dispatch(fetchResponsibilityById(responsibilityId));
     }, [dispatch, responsibilityId]);
