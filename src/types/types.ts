@@ -246,8 +246,9 @@ export interface WorkRequest {
 
 export interface Notification {
   _id?: string
-  sender: string
+  sender: User
   target: string
+  createdAt: Date
   targetDoc: 'WorkRequest' | 'Agreement' | 'Form' | 'Application' | 'FeedBack'
   type:
     | 'assignmet'
