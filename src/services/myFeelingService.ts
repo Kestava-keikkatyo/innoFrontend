@@ -23,7 +23,7 @@ const authHeader = () => {
  * @param {MyFeeling} myFeeling - Basic feeling information.
  */
 const sendMyFeeling = async (myFeeling: MyFeeling) => {
-  return await axios.put(`${baseUrl}/user/my/feeling`, myFeeling, authHeader())
+  return await axios.post(`${baseUrl}/feeling/send`, myFeeling, authHeader())
 }
 
 /**
@@ -31,35 +31,21 @@ const sendMyFeeling = async (myFeeling: MyFeeling) => {
  * @desc Fetches worker's feelings.
  */
 const fetchMyFeelings = async () => {
-  const res = await axios.get(`${baseUrl}/user/my`, authHeader())
+  const res = await axios.get(`${baseUrl}/feeling/my`, authHeader())
   return res
 }
 
 /**
- * @param id
- * @returns
+ * @function
+ * @desc Fetches received feelings.
  */
-const updateMyFeeling = async (myFeeling: MyFeeling) => {
-  const res = await axios.put(
-    `${baseUrl}/user/myFeeling/update/${myFeeling._id}`,
-    myFeeling,
-    authHeader(),
-  )
-  return res.data
-}
-
-/**
- * @param id
- * @returns
- */
-const deleteMyFeeling = async (myFeelingId: string) => {
-  const res = await axios.delete(`${baseUrl}/user/myFeeling/delete/${myFeelingId}`, authHeader())
+const fetchReceivedFeelings = async () => {
+  const res = await axios.get(`${baseUrl}/user/received`, authHeader())
   return res
 }
 
 export default {
   sendMyFeeling,
   fetchMyFeelings,
-  updateMyFeeling,
-  deleteMyFeeling,
+  fetchReceivedFeelings,
 }

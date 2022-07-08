@@ -55,6 +55,7 @@ export const sendMyFeeling =
         data,
       })
       setAlert('Feeling was sent successfully!')(dispatch)
+      history.push('/home')
     } catch (e) {
       dispatch({
         type: feelingType.FEELING_ACTION_FAILURE,
@@ -66,49 +67,24 @@ export const sendMyFeeling =
 
 /**
  * @function
- * @desc Delete feeling by Id
+ * @desc Fetches worker's feelings.
  */
-export const deleteMyFeeling =
-  (myFeeling: MyFeeling) =>
-  async (dispatch: Dispatch<FeelingSimilarActions | FeelingActionFailure>) => {
+export const fetchReceivedFeelings =
+  () =>
+  async (
+    dispatch: Dispatch<FeelingGetAllRequest | FeelingGetAllSuccess | FeelingActionFailure>,
+  ) => {
     try {
       dispatch({
-        type: feelingType.FEELING_DELETED_REQUEST,
-        data: myFeeling,
+        type: feelingType.FEELING_GET_ALL_REQUEST,
       })
-      await myFeelingService.deleteMyFeeling(myFeeling._id as string)
-      dispatch({ type: feelingType.FEELING_DELETED_SUCCESS, data: myFeeling })
+      const res = await myFeelingService.fetchReceivedFeelings()
+      dispatch({ type: feelingType.FEELING_GET_ALL_SUCCESS, data: res.data })
     } catch (e) {
       dispatch({
         type: feelingType.FEELING_ACTION_FAILURE,
         data: e as string,
       })
-      setAlert('Failed to delete feeling!: ' + e, severity.Error, 15)(dispatch)
-    }
-  }
-
-/**
- * @function
- * @desc update worker's feeling.
- */
-export const updateMyFeeling =
-  (myFeeling: MyFeeling) =>
-  async (dispatch: Dispatch<FeelingSimilarActions | FeelingActionFailure>) => {
-    try {
-      dispatch({
-        type: feelingType.FEELING_UPDATED_REQUEST,
-        data: myFeeling,
-      })
-
-      const res = await myFeelingService.updateMyFeeling(myFeeling)
-      dispatch({ type: feelingType.FEELING_UPDATED_SUCCESS, data: res.data })
-
-      history.push('/myFeeling?tab=my')
-    } catch (e) {
-      dispatch({
-        type: feelingType.FEELING_ACTION_FAILURE,
-        data: e as string,
-      })
-      setAlert('Failed to update feeling: ' + e, severity.Error, 15)(dispatch)
+      setAlert('Failed to fetch feelings!: ' + e, severity.Error, 15)(dispatch)
     }
   }
