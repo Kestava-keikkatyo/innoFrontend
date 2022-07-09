@@ -28,13 +28,13 @@ const initialValues: MyFeeling = {
 };
 
 const SendFeelingSchema = Yup.object().shape({
-    comfortable: Yup.number().min(0, 'Min value 0.').max(4, 'Max value 4.').required('Comfortable is required!'),
-    satisfied: Yup.number().min(0, 'Min value 0.').max(4, 'Max value 4.').required('Satisfied is required!'),
-    energetic: Yup.number().min(0, 'Min value 0.').max(4, 'Max value 4.').required('Energetic is required!'),
-    enthusiastic: Yup.number().min(0, 'Min value 0.').max(4, 'Max value 4.').required('Enthusiastic is required!'),
-    frustrated: Yup.number().min(0, 'Min value 0.').max(4, 'Max value 4.').required('Frustrated is required!'),
-    stressed: Yup.number().min(0, 'Min value 0.').max(4, 'Max value 4.').required('Stressed is required!'),
-    anxious: Yup.number().min(0, 'Min value 0.').max(4, 'Max value 4.').required('Anxious is required!'),
+    comfortable: Yup.number().min(1, 'Min value 1.').max(5, 'Max value 5.').required('Comfortable is required!'),
+    satisfied: Yup.number().min(1, 'Min value 1.').max(5, 'Max value 5.').required('Satisfied is required!'),
+    energetic: Yup.number().min(1, 'Min value 1.').max(5, 'Max value 5.').required('Energetic is required!'),
+    enthusiastic: Yup.number().min(1, 'Min value 1.').max(5, 'Max value 5.').required('Enthusiastic is required!'),
+    frustrated: Yup.number().min(1, 'Min value 1.').max(5, 'Max value 5.').required('Frustrated is required!'),
+    stressed: Yup.number().min(1, 'Min value 1.').max(5, 'Max value 5.').required('Stressed is required!'),
+    anxious: Yup.number().min(1, 'Min value 1.').max(5, 'Max value 5.').required('Anxious is required!'),
     comment: Yup.string().min(3, 'Comment should be three letters at least!'),
 });
 
@@ -88,11 +88,11 @@ const SendFeeling: React.FC = () => {
                                             row
                                             aria-labelledby={questionEntry[0] + '-radio-buttons-group-label'}
                                         >
-                                            <Field required name={questionEntry[0]} value={0} icon={<SentimentVeryDissatisfiedIcon />} checkedIcon={<SentimentVeryDissatisfiedIcon />} as={Radio} />
-                                            <Field name={questionEntry[0]} value={1} icon={<SentimentDissatisfiedIcon />} checkedIcon={<SentimentDissatisfiedIcon />} as={Radio} />
-                                            <Field name={questionEntry[0]} value={2} icon={<SentimentSatisfiedIcon />} checkedIcon={<SentimentSatisfiedIcon />} as={Radio} />
-                                            <Field name={questionEntry[0]} value={3} icon={<SentimentSatisfiedAltIcon />} checkedIcon={<SentimentSatisfiedAltIcon />} as={Radio} />
-                                            <Field name={questionEntry[0]} value={4} icon={<SentimentVerySatisfiedIcon />} checkedIcon={<SentimentVerySatisfiedIcon />} as={Radio} />
+                                            <Field required name={questionEntry[0]} value={1} icon={<SentimentVeryDissatisfiedIcon />} checkedIcon={<SentimentVeryDissatisfiedIcon />} as={Radio} />
+                                            <Field name={questionEntry[0]} value={2} icon={<SentimentDissatisfiedIcon />} checkedIcon={<SentimentDissatisfiedIcon />} as={Radio} />
+                                            <Field name={questionEntry[0]} value={3} icon={<SentimentSatisfiedIcon />} checkedIcon={<SentimentSatisfiedIcon />} as={Radio} />
+                                            <Field name={questionEntry[0]} value={4} icon={<SentimentSatisfiedAltIcon />} checkedIcon={<SentimentSatisfiedAltIcon />} as={Radio} />
+                                            <Field name={questionEntry[0]} value={5} icon={<SentimentVerySatisfiedIcon />} checkedIcon={<SentimentVerySatisfiedIcon />} as={Radio} />
                                         </RadioGroup>
                                     </FormControl>
                                 </div>
