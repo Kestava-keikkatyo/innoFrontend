@@ -23,7 +23,7 @@ const authHeader = () => {
  * @param {MyFeeling} myFeeling - Basic feeling information.
  */
 const sendMyFeeling = async (myFeeling: MyFeeling) => {
-  return await axios.post(`${baseUrl}/feeling/send`, myFeeling, authHeader())
+  return await axios.post(`${baseUrl}/feeling/send/`, myFeeling, authHeader())
 }
 
 /**

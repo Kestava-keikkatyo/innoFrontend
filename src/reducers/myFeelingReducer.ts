@@ -39,25 +39,6 @@ const myFeelingReducer = (state = initialState, action: MyFeelingActions): MyFee
         loading: false,
       }
     }
-    case feelingType.FEELING_GET_CURRENT_REQUEST: {
-      return {
-        ...state,
-        loading: true,
-      }
-    }
-    case feelingType.FEELING_GET_CURRENT_SUCCESS: {
-      return {
-        ...state,
-        loading: false,
-        currentMyFeeling: action.data,
-      }
-    }
-    case feelingType.FEELING_DELETED_SUCCESS: {
-      return {
-        ...state,
-        myFeelings: state.myFeelings.filter((item) => item._id !== action.data._id),
-      }
-    }
     case feelingType.FEELING_CREATED_REQUEST: {
       return {
         ...state,
@@ -70,20 +51,6 @@ const myFeelingReducer = (state = initialState, action: MyFeelingActions): MyFee
         ...state,
         loading: false,
         myFeelings: [...state.myFeelings, action.data],
-      }
-    }
-    case feelingType.FEELING_UPDATED_REQUEST: {
-      return {
-        ...state,
-        currentMyFeeling: action.data,
-        loading: true,
-      }
-    }
-    case feelingType.FEELING_UPDATED_SUCCESS: {
-      return {
-        ...state,
-        loading: false,
-        currentMyFeeling: action.data,
       }
     }
     default:
