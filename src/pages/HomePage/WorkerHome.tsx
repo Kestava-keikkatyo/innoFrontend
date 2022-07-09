@@ -4,6 +4,7 @@ import {
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import LatestJobAds from '../JobPage/LatestJobAds';
+import WorkerPieChart from '../../components/chart/WorkerPieChart';
 
 const WorkerHome = () => {
    const classes = useStyles();
@@ -23,7 +24,10 @@ const WorkerHome = () => {
       <div className={classes.pageContent}>
         <div className={classes.contentContainer}>
             <div className={classes.feelingAnalysis}>
-             
+              <div>
+                <Typography color="primary" className={classes.title} align="center" variant="h6">Summary and  analysis of your emotions </Typography>
+              </div>
+             <WorkerPieChart/>
             </div>
             <div className={classes.latestJobAds}>
             <LatestJobAds />
@@ -58,7 +62,7 @@ const useStyles = makeStyles(() => ({
     padding: '5px'
 },
 feelingAnalysis: {
-    flex: 1,
+    flex: 2,
     padding: '10px',
     webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
     boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
@@ -74,6 +78,10 @@ contentContainer: {
     display: 'flex',
     marginTop: '10px',
     hight: '500',
+},
+title: {
+  marginTop: '5px',
+  marginBottom: '5px',
 },
 }));
 
