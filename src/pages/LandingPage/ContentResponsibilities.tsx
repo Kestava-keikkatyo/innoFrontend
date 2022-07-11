@@ -203,7 +203,7 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
                   <List id="modal-modal-description">
                     <Divider />
                     <Typography variant="h6" component="h2">
-                    Jaetut vastuut
+                      Jaetut vastuut
                     </Typography>
                     <Divider />
                     {/* Yhtenäiset vastuut lista */}
@@ -213,7 +213,7 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
                       </ListItem>
                     ))}
                     <Typography variant="h6" component="h2">
-                    Vuokratyöyritys vastuut
+                      Vuokratyöyritys vastuut
                     </Typography>
                     <Divider />
                     {/* Agency responsibilities list */}

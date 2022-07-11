@@ -7,14 +7,14 @@ import {
   Checkbox,
   FormControlLabel,
   ListItem,
-  ListItemText,
   Card,
   CardHeader,
   Grid,
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Typography
+  Typography,
+  Button
 } from '@mui/material';
 import MoodForm from './MoodForm';
 import { submitFeeling, updateFeeling } from '../../actions/feelingActions';
@@ -22,7 +22,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../utils/store';
 import fileService from '../../services/fileService';
 import { useTranslation } from 'react-i18next';
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Link } from 'react-router-dom';
 
 const WorkerHome = () => {
   const dispatch = useDispatch();
@@ -97,6 +98,11 @@ const WorkerHome = () => {
                   </AccordionSummary>
                   <AccordionDetails>
                     <Typography variant="body1">{`${e.details}`}</Typography>
+                    <Button color="primary" variant="contained" style={{marginTop: "1rem"}}>
+                      <Link to="/databank" style={{textDecoration: 'none', color: "black"}}>
+                        Lue lisää vastuualueista
+                      </Link>
+                    </Button>
                   </AccordionDetails>
                 </Accordion>
               </ListItem>

@@ -14,11 +14,13 @@ import {
   Typography,
   Accordion,
   AccordionDetails,
-  AccordionSummary
+  AccordionSummary,
+  Button
 } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import Faq from './FAQBoxBusiness';
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import { Link } from 'react-router-dom';
 
 const BusinessHome = () => {
   const { t } = useTranslation();
@@ -91,6 +93,11 @@ const BusinessHome = () => {
                   </AccordionSummary>
                   <AccordionDetails>
                     <Typography variant="body1">{`${e.details}`}</Typography>
+                    <Button color="primary" variant="contained" style={{marginTop: "1rem"}}>
+                      <Link to="/databank" style={{textDecoration: 'none', color: "black"}}>
+                        Lue lisää vastuualueista
+                      </Link>
+                    </Button>
                   </AccordionDetails>
                 </Accordion>
               </ListItem>

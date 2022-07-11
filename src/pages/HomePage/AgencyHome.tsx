@@ -23,6 +23,7 @@ import { useSelector } from 'react-redux';
 import Faq from './FAQBoxAgency';
 import { useTranslation } from 'react-i18next';
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import { Link } from 'react-router-dom';
 
 const AgencyHome = () => {
   const { t } = useTranslation();
@@ -95,6 +96,11 @@ const AgencyHome = () => {
                   </AccordionSummary>
                   <AccordionDetails>
                     <Typography variant="body1">{`${e.details}`}</Typography>
+                    <Button color="primary" variant="contained" style={{marginTop: "1rem"}}>
+                      <Link to="/databank" style={{textDecoration: 'none', color: "black"}}>
+                        Lue lisää vastuualueista
+                      </Link>
+                    </Button>
                   </AccordionDetails>
                 </Accordion>
               </ListItem>
