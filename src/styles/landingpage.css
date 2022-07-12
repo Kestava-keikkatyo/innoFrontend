@@ -155,12 +155,12 @@
   max-width: 25rem;
   height: 25rem;
   border-radius: 14rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   padding: 2rem 0.5rem;
 }
 
 .landing-header-offset {
-  margin-top: 3rem !important;
+  margin-top: 3rem;
   font-size: 310%;
   font-weight: 400;
   letter-spacing: 0em;
@@ -173,17 +173,17 @@
 }
 
 .landing-text2 {
-  margin-top: 2rem !important;
+  margin-top: 2rem;
   font-size: 130%;
 }
 
 .landing-partner {
-  max-height: 150px;
+  max-height: 130px;
   filter: grayscale(1);
 }
 
 .landing-partner-invert {
-  max-height: 150px;
+  max-height: 130px;
   filter: grayscale(1) invert(1);
 }
 
@@ -195,7 +195,6 @@
 #partner-container {
   padding-top: 1.5rem;
   padding-bottom: 1rem;
-  max-height: 250px;
   overflow: hidden;
   border-radius: 3.5rem;
 }

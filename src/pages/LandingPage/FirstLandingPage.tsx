@@ -1,4 +1,4 @@
-import { Container, Typography } from '@mui/material'
+import { Container, Typography, Grid } from '@mui/material'
 import React from 'react'
 import eu from '../../assets/partners/eu.png'
 import kkk from '../../assets/partners/kestavakeikkatyo.png'
@@ -12,7 +12,7 @@ export interface FirstLandingPageProps {}
 const FirstLandingPage: React.FC<FirstLandingPageProps> = () => {
   const { t } = useTranslation();
   return (
-    <Container>
+    <Container style={{height: "96vh"}}>
       <Spacing m3 p2 />
       <div className="landing-banner" />
       <div className="landing-bg-dark text-white intro-container">
@@ -28,10 +28,10 @@ const FirstLandingPage: React.FC<FirstLandingPageProps> = () => {
       </div>
       <div id="partner-container" className="landing-bg-dark">
         <div id="partner-box">
-          <img src={eu} alt="eu" className="landing-partner-invert"
-           style={{width: "fit-content", maxWidth: "14%", marginRight: "1%"}} />
-          <img src={kkk} alt="kestavakeikkatyo" className="landing-partner"
-           style={{width: "fit-content", maxWidth: "16%", marginRight: "1%"}} />
+          <img src={eu} alt="eu" className="landing-partner-invert" 
+          style={{width: "fit-content", maxWidth: "14%", marginRight: "1%"}} />
+          <img src={kkk} alt="kestavakeikkatyo" className="landing-partner" 
+          style={{width: "fit-content", maxWidth: "16%", marginRight: "1%"}} />
           <img src={vipuvoima} alt="vipuvoima rahasto" className="landing-partner" 
           style={{width: "fit-content", maxWidth: "20%", marginRight: "1%"}} />
           <img src={ttk} alt="työturvallisuuskeskus" className="landing-partner-invert" 
