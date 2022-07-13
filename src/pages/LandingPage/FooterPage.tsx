@@ -19,11 +19,11 @@ export interface FooterPageProps {}
 
 const FooterColumn: React.FC<any> = ({ header, list }) => (
   <>
-    <Typography>{header}</Typography>
+    <Typography className='footer-header'>{header}</Typography>
     <List component="nav" aria-label="main mailbox folders">
       {list.map((e: string, i: number) => (
         <ListItem disableGutters button key={i} className="footer-list">
-          <ListItemText primary={`> ${e}`} />
+          <ListItemText primary={`${e}`} />
         </ListItem>
       ))}
     </List>
@@ -98,31 +98,30 @@ const FooterPage: React.FC<FooterPageProps> = () => {
       <Grid item xs={12} className="bg-orange">
         <Spacing p1 className="landing-spacing">
           <Grid container className="text-black footer-container">
-            <Grid item xs={3} md={4} className="footer-item"
-            style={{display: "flex", flexWrap: "wrap", justifyContent: "space-between"}}>
-              <Grid item xs={8} md={6} >
+            <Grid item xs={12} sm={4} className="footer-item footer-logo">
+              <Grid item xs={4} sm={10} md={6} >
                 <img src={logo} alt="keikkakaveri-logo" className="bw-logo" />
               </Grid>
-              <Grid xs={12} md={5} item>
+              <Grid item xs={6} sm={12} md={5} >
                 <Typography>Yhteystiedot:</Typography>
                 <Typography>Yrjönkatu 29 C</Typography>
                 <Typography>00100 Helsinki</Typography>
                 <Typography>info@keikkakaveri.fi</Typography>
               </Grid>
             </Grid>
-            <Grid item className="footer-item">
+            <Grid item xs={4} sm={3} className="footer-item footer-third">
               <FooterColumn
-                header="Ajankohtaista"
+                header="Ajankohtaista: "
                 list={['Uutiset', 'Artikkelit', 'Twitter', 'Youtube']} />
             </Grid>
-            <Grid item className="footer-item">
+            <Grid item xs={4} sm={3} className="footer-item footer-third">
               <FooterColumn
-                header="Yhteistyössä"
+                header="Yhteistyössä: "
                 list={['Työturvakeskus', 'ESR-rahasto', 'Kestävä keikkatyö']} />
             </Grid>
-            <Grid item className="footer-item">
+            <Grid item xs={4} sm={3} className="footer-item footer-third">
               <FooterColumn
-                header="Tutustu"
+                header="Tutustu: "
                 list={['Tietopankki', 'Keikkakaveri', 'Tietosuojaseloste']} />
             </Grid>
           </Grid>

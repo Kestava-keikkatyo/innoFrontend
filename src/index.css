@@ -800,6 +800,16 @@ nav * {
   flex-wrap: wrap;
 }
 
+.footer-header {
+  font-weight: bold;
+}
+
+.footer-logo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 @media screen and (max-width: 900px) {
   .react-swipeable-view-container {
     display: flex !important;
@@ -886,7 +896,8 @@ nav * {
 
   .footer-item {
     width: fit-content !important;
-    max-width: 20% !important;
+    max-width: 23% !important;
+    margin: 0 1% !important;
   }
 
   .home {
@@ -965,6 +976,30 @@ nav * {
   .intro-container {
     margin: 0 2rem !important;
     margin-bottom: 7rem !important;
+  }
+
+  .footer-item {
+    max-width: initial !important;
+    text-align: center;
+    margin: 0 !important;
+    margin-top: 1rem !important;
+  }
+
+  .footer-list {
+    text-align: center;
+  }
+
+  .footer-header {
+    text-align: center;
+  }
+
+  .footer-logo {
+    justify-content: center !important;
+    margin: 0 !important;
+  }
+
+  .footer-third {
+    max-width: 33.3% !important;
   }
 }
 
