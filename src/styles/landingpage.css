@@ -257,14 +257,15 @@
   color: #000000 !important;
   text-decoration: none !important;
   font-weight: bold !important;
-  padding-left: 5.8rem;
+  margin-right: 1rem;
+  /* padding-left: 5.8rem; */
 } /* #fff original text color */
 
 .landing-nav-link2 {
   color: #000000 !important;
   text-decoration: none !important;
   font-weight: bold !important;
-  padding-left: 1.5rem;
+  /* padding-left: 1.5rem; */
 } /* #fff original text color */
 
 .landing-login {
