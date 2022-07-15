@@ -19,6 +19,7 @@ code {
 
 .worker-statistics-summary {
   margin: 1rem 0;
+  width: 100%;
 }
 
 .worker-statistics-summary,

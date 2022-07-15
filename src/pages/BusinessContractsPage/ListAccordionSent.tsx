@@ -46,8 +46,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: 'gold',
   },
   info: {
-    display: 'column',
-    width: '30rem',
+    width: 'fit-content',
   },
 }));
 
