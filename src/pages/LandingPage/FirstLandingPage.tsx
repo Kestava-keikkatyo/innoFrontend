@@ -12,7 +12,7 @@ export interface FirstLandingPageProps {}
 const FirstLandingPage: React.FC<FirstLandingPageProps> = () => {
   const { t } = useTranslation();
   return (
-    <Container style={{height: "96vh"}}>
+    <Container className="background">
       <Spacing m3 p2 />
       <div className="landing-banner" />
       <div className="landing-bg-dark text-white intro-container">

@@ -812,15 +812,18 @@ nav * {
   justify-content: space-between;
 }
 
+.flex {
+  display: none;
+}
+
 @media screen and (max-width: 900px) {
-  .react-swipeable-view-container {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    flex-direction: initial !important;
-    transition: none !important;
-    direction: initial !important;
-    will-change: initial !important;
-    transform: initial !important;
+  .swipe {
+    display: none;
+  }
+
+  .flex {
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .landing-stepper {
@@ -885,9 +888,14 @@ nav * {
     margin-top: 1rem !important;
   }
 
-  #partner-container {
-    position: absolute !important;
-    bottom: 1rem !important;
+  .background {
+    background: url('./assets/ttk.jpg') !important;
+    background-size: cover !important;
+    filter: grayscale(1) !important;
+  }
+  
+  .landing-banner {
+    display: none !important;
   }
 }
 

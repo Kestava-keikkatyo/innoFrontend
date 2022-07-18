@@ -74,7 +74,7 @@ const Jobs: React.FC<any> = () => {
     ];
     
     return (
-        <div style={{ height: "83vh", width: '100%', padding: "0 1rem" }}>
+        <div style={{ height: "75vh", width: '100%', padding: "0 1rem" }}>
             <div className={classes.title}>
                 <Typography color="primary" align="center" 
                 style={{marginTop: "25px", marginBottom: "15px"}} 

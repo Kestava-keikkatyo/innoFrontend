@@ -281,7 +281,7 @@ const LandingPage = () => {
         index={activeStep}
         onChangeIndex={handleStepChange}
         enableMouseEvents
-        className="swipable-card-container"
+        className="swipable-card-container swipe"
       >
         {/**
          * First page
@@ -291,6 +291,13 @@ const LandingPage = () => {
         <ContentLifeSpan />
         <FooterPage />
       </SwipeableViews>
+      {/* Change from swipeable to flex when >900px */}
+      <div className='flex'>
+        <FirstLandingPage />
+        <ContentResponsibilities />
+        <ContentLifeSpan />
+        <FooterPage />
+      </div>
     </div>
   );
 };

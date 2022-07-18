@@ -69,7 +69,7 @@ const RoleResponsibilities: React.SFC<RoleResponsibilitiesProps> = () => {
           {header}
         </Typography>
       </Grid>
-      <Grid item md={9} xs={12}>
+      <Grid item xs={8}>
         <SwitchTransition mode="out-in">
           <CSSTransition
             key={showDetails}
@@ -133,15 +133,13 @@ const RoleResponsibilities: React.SFC<RoleResponsibilitiesProps> = () => {
           }
         />
       </Grid>
-      <Grid item md={3} xs={12}>
+      <Grid item xs={4}>
         <Grid
           container
           direction="column"
           justifyContent="center"
-          alignItems="stretch"
-          style={{ paddingLeft: 8 }}
-        >
-          <Grid item md={12} xs={4}>
+          alignItems="stretch" >
+          <Grid xs={12}>
             <Button
               variant="contained"
               color="primary"
@@ -151,7 +149,7 @@ const RoleResponsibilities: React.SFC<RoleResponsibilitiesProps> = () => {
               Vuokra työntekijä
             </Button>
           </Grid>
-          <Grid item md={12} xs={4}>
+          <Grid xs={12}>
             <Button
               variant="contained"
               color="secondary"
@@ -161,7 +159,7 @@ const RoleResponsibilities: React.SFC<RoleResponsibilitiesProps> = () => {
               Vuokratyö yritys
             </Button>
           </Grid>
-          <Grid item md={12} xs={4}>
+          <Grid xs={12}>
             <Button
               variant="contained"
               style={{ height: 100, width: '100%' }}
