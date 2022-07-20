@@ -27,8 +27,8 @@ const AgencyStatisticsSummary: React.FC<any> = () => {
   }
 
   return (
-    <Grid className="worker-statistics-summary" container spacing={1}>
-      <Grid item xs={6} style={{padding: "0"}}>
+    <Grid className="worker-statistics-summary" container >
+      <Grid item sm={6} xs={12} style={{padding: "0"}}>
         <ProgressPieChart datasets={getDataSet(averageFeeling(feelings))}>
           <Typography variant="h2" className='header2'>
             {averageFeeling(feelings).toString()}
@@ -41,7 +41,7 @@ const AgencyStatisticsSummary: React.FC<any> = () => {
         </ProgressPieChart>
         <Typography>{t('average')}</Typography>
       </Grid>
-      <Grid item xs={6} style={{padding: "0"}}>
+      <Grid item sm={6} xs={12} style={{padding: "0"}}>
         <ProgressPieChart datasets={getTotalDataSet(feelings.length)}>
           <Typography variant="h2" className='header2'>{feelings.length}</Typography>
           <Hidden smDown>

@@ -897,6 +897,10 @@ nav * {
   .landing-banner {
     display: none !important;
   }
+
+  #maxContainer {
+    max-width: 100vw !important;
+  }
 }
 
 @media screen and (max-width: 899px) {

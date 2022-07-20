@@ -55,7 +55,7 @@ const TabPanel = (props: TabPanelProps) => {
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
     >
-      {value === index && <Box p={3}>{children}</Box>}
+      {value === index && <Box pt={3} px={{xs: 0, sm: 2}}>{children}</Box>}
     </div>
   );
 };
@@ -122,7 +122,7 @@ const ContractsPage = () => {
   }
   return (
     // TODO: Menu on top of the site is not currently in use and could be removed in future.
-    <Container maxWidth="lg" className={classes.root}>
+    <Container maxWidth="lg" id="maxContainer" className={classes.root}>
       <AppBar position="static" color="default">
         <Tabs
           value={value}
@@ -185,10 +185,10 @@ const ContractsPage = () => {
 {/* This TabPanel is currently where all actions happen */}
       <TabPanel value={value} index={0} dir={theme.direction}>
         <Accordion 
-          className={classes.card} 
+          className={classes.card}
           variant="outlined"
-          defaultExpanded={false} 
-          expanded={expanded === "panel"} 
+          defaultExpanded={false}
+          expanded={expanded === "panel"}
           onChange={handleAccChange("panel")}
         >
           <AccordionSummary
