@@ -608,8 +608,8 @@ nav * {
 
 .databank-nav-link {
   text-decoration: none !important;
-  color: white !important;
-}
+  color: black !important;
+} /* color: white -> black */
 
 /* background: radial-gradient(
     circle,
@@ -733,6 +733,13 @@ nav * {
   font-size: 1.25rem;
   line-height: 1.6;
   letter-spacing: 0.0075em;
+}
+
+.header6 {
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
 }
 
 .Mui-selected {

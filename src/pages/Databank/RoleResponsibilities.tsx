@@ -62,10 +62,10 @@ const RoleResponsibilities: React.SFC<RoleResponsibilitiesProps> = () => {
   return (
     <Grid container className={classes.root}>
       <Grid item xs={12}>
-        <Typography variant="h4" color="primary">
+        <Typography variant="h1" className='header' color="primary">
           Vastuualueet
         </Typography>
-        <Typography variant="h5" color="textSecondary">
+        <Typography variant="h2" className='header2' color="textSecondary">
           {header}
         </Typography>
       </Grid>

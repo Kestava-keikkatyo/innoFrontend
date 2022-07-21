@@ -9,9 +9,9 @@ const LifelineCard: React.FC<LifelineCardProps> = ({ step }) => {
   const getFormPart = () =>
     step.form ? (
       <>
-        <h4>Lomake</h4>
+        <h1 className='header6'>Lomake</h1>
         <Chip label={step.form.formName} />
-        <h5>{step.form.title}</h5>
+        <h2 className='header6'>{step.form.title}</h2>
         <p>{step.form.description}</p>
       </>
     ) : (
@@ -26,7 +26,7 @@ const LifelineCard: React.FC<LifelineCardProps> = ({ step }) => {
         <Chip label={step.parties[1]} />
       </div>
       {getFormPart()}
-      <h4>{step.subtitle}</h4>
+      <h1 className='header6'>{step.subtitle}</h1>
       <ul>
         {step.details.map((e: string, i: number) => (
           <li key={i}>{e}</li>
@@ -34,7 +34,7 @@ const LifelineCard: React.FC<LifelineCardProps> = ({ step }) => {
       </ul>
       {step.notes ? (
         <>
-          <h4>Notes:</h4>
+          <h2 className='header6'>Notes:</h2>
           <ul>
             {step.notes.map((e: string, i: number) => (
               <li key={i}>{e}</li>

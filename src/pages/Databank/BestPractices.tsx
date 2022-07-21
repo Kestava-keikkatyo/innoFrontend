@@ -9,7 +9,7 @@ import bestPractices from '../../assets/tietopankki/hyvat-kaytannot.json'
 const BestPractices: React.FC = () => {
   return (
     <div style={{ width: '100%', marginTop: '2rem', marginBottom: '2rem' }}>
-      <Typography style={{ marginBottom: '1rem' }} variant="h4" color="primary">
+      <Typography style={{ marginBottom: '1rem' }} variant="h1" className='header' color="primary">
         Hyvät käytännöt
       </Typography>
       {bestPractices.map((e, i) => (
@@ -19,7 +19,7 @@ const BestPractices: React.FC = () => {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography variant="h5">{e.title}</Typography>
+            <Typography variant="h2" className='header2'>{e.title}</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <ul>
