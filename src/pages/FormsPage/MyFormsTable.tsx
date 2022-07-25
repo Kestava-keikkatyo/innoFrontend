@@ -248,12 +248,15 @@ const MyFormsTable: React.FC<any> = ({handleDownload}) => {
       >
         <form>
           <Box display="flex" alignItems="center">
+            <label htmlFor='search' style={{display: 'none'}}>{t('search_by_title')}</label>
             <InputBase
+              id='search'
               placeholder={t('search_by_title')}
               value={filter}
               onChange={handleFilterchange}
+              aria-label='search'
             />
-            <IconButton size="large">
+            <IconButton size="large" aria-label='search icon'>
               <Search />
             </IconButton>
           </Box>

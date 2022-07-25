@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontWeight: theme.typography.fontWeightRegular,
   },
   color: {
-    color: 'gold',
+    color: 'black',
   },
   info: {
     width: 'fit-content',

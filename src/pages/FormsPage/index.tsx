@@ -172,7 +172,7 @@ const FormsPage: React.FC = () => {
       </Grid>
       {/**Link to new form... form. */}
       <div className="new-form-btn">
-        <Link to="/forms/newform">
+        <Link to="/forms/newform" aria-label='add'>
           <Fab size="medium" color="primary" aria-label="add">
             <Add />
           </Fab>
