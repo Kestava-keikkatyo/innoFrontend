@@ -79,6 +79,7 @@
 
 .footer-list {
   padding: 0 !important;
+  overflow: hidden;
 }
 
 .bg-white {
