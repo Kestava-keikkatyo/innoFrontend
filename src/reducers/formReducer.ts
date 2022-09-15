@@ -2,7 +2,7 @@
  * @module reducer/form
  * @desc Redux form reducer
  */
-import { Form } from "../types/types"
+import { Form } from '../types/types'
 import {
   SET_CURRENT_FORM,
   UPDATE_TITLE,
@@ -18,11 +18,11 @@ import {
   SET_QUESTIONS,
   CLEAR_CURRENT_FORM,
   FormActionTypes,
-} from "../types/state"
+} from '../types/state'
 
 const initialState: Form = {
-  title: "",
-  description: "",
+  title: '',
+  description: '',
   tags: [],
   isPublic: true,
   questions: [],
@@ -37,7 +37,10 @@ const initialState: Form = {
  * @param {FormActionTypes} action - dispatched action
  * @todo - Figure out immutability: formReducer is not a pure function. Ditch temp?
  */
-const formReducer = (state = initialState, action: FormActionTypes) => {
+const formReducer = (state = initialState, action?: FormActionTypes) => {
+  if (action === null || action === undefined) {
+    return state
+  }
   switch (action.type) {
     case SET_CURRENT_FORM:
       return action.data
