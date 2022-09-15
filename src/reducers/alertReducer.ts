@@ -6,8 +6,8 @@ import {
   AlertActionTypes,
   AlertState,
   ALERT_CLEAR,
-  ALERT_SET,
-} from '../types/state'
+  ALERT_SET
+} from '../types/state';
 import { severity } from '../types/types'
 
 const initialState: AlertState = {
@@ -22,8 +22,10 @@ const initialState: AlertState = {
  * @param {Object} state - current state
  * @param {Object} action - dispatched action
  */
-const alertReducer = (state = initialState, action: AlertActionTypes) => {
-  //this should be illegal
+const alertReducer = (state = initialState, action?: AlertActionTypes) => {
+  if (action === null || action === undefined) {
+    return state
+  }
   switch (action.type) {
     case ALERT_SET:
       return {
