@@ -82,7 +82,7 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
     <Grid container style={{ marginTop: 16 }}>
       {/**Helper text for user to choose report recipient. */}
       <Grid item xs={12}>
-        <Typography variant="h6"> {t('select_report_handler')}</Typography>
+        <Typography variant="h2" className='header5'> {t('select_report_handler')}</Typography>
         <Typography variant="body2" style={{ color: '#757575' }}>
          {t('select_report_helper_text')}
         </Typography>

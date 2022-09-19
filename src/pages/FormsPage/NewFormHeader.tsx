@@ -20,34 +20,36 @@ const NewFormHeader: React.FC = () => {
     history.push('/forms');
   };
   return (
-    <Grid container direction="row" justifyContent="space-between">
-      <Grid item xs={6}>
-        <Typography variant="h4" color="secondary">
+    <Grid container direction="row" alignItems="self-end" >
+      <Grid item xs={12} sm={4} md={6}>
+        <Typography variant="h1" color="secondary" className='header'>
         {t("create_new_form")}
         </Typography>
       </Grid>
-      <Grid item xs={6}>
-        <Grid container direction="row-reverse">
-          <Button>
-            <Link to="/forms"> {t("back")}</Link>
-          </Button>
-          <Button>
-            <Link to="/forms/newform/preview"> {t("preview")}</Link>
-          </Button>
-          <Button onClick={handleSubmit}> {t("submit")}</Button>
-          <FileUploader
-            name={t('import')}
-            accept="data:text/json"
-            handleFile={(data: any) => dispatch(importFormByPath())}
-          />
-
-          <Button
+      <Grid item xs={12} sm={8} md={6}>
+        <Grid container style={{justifyContent: "end"}}>
+          <Button className='form-button'
+            color='primary'
+            variant='outlined'
             download={`${title}.json`}
             href={`data:text/json;charset=utf-8,${encodeURIComponent(
               JSON.stringify(currentForm)
             )}`}
           >
              {t("export")}
+          </Button>
+          <div className='form-button'>
+            <FileUploader
+            name={t('import')}
+            accept="data:text/json"
+            handleFile={(data: any) => dispatch(importFormByPath())}/>
+          </div>
+          <Button className='form-button' color='primary' variant='outlined' onClick={handleSubmit}> {t("submit")}</Button>
+          <Button className='form-button' color='primary' variant='outlined'>
+            <Link className='button-text' to="/forms/newform/preview"> {t("preview")}</Link>
+          </Button>
+          <Button className='form-button' color='primary' variant='outlined'>
+            <Link className='button-text' to="/forms"> {t("back")}</Link>
           </Button>
         </Grid>
       </Grid>

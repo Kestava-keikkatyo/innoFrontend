@@ -95,21 +95,17 @@ const Form: React.FC<any> = ({currentForm}) => {
             <h5 style={styles.formDescription}>{currentForm.description}</h5>
           </header>
           <div>
-
-                {currentForm.questions.map((q: any | null, k:number) => (
+              {currentForm.questions.map((q: any | null, k:number) => (
                     /**Avoid breaking PDF-page inside a question and splitting the element.
                      * Used by html2pdf library which is used when downloading form as PDF. 
                      */
                     <div className="avoid_pagebreak" key={k}>
-
                         {(q && q.questionType === 'comment') ? (
                             <div>
                                 <p style={styles.title}>{q.title}</p>
                             </div>
                             ) : null
                         }
-
-
                         {(q && q.questionType === 'text') ? (
                             <div>
                                 <p style={styles.title}>{q.title}</p>
@@ -119,7 +115,6 @@ const Form: React.FC<any> = ({currentForm}) => {
                             </div>
                             ) : null
                         }
-
                         {(q && q.questionType === 'textarea') ? (
                             <div >
                                 <p style={styles.title}>{q.title}</p>
@@ -128,14 +123,13 @@ const Form: React.FC<any> = ({currentForm}) => {
                             </div>
                             ) : null
                         }
-
                         {(q && q.questionType === 'checkbox') ? (
                             <div>
                                 <table>
                                     <tbody>
                                     <tr>
-                                            <td style={styles.option}>
-                                                {q.checked ? (<img style={styles.img} src={checkboxChecked} alt='checkbox-checked'/>) : (<img style={styles.img} src={checkboxUnckecked} alt='checkbox-unchecked'/>)}
+                                        <td style={styles.option}>
+                                            {q.checked ? (<img style={styles.img} src={checkboxChecked} alt='checkbox-checked'/>) : (<img style={styles.img} src={checkboxUnckecked} alt='checkbox-unchecked'/>)}
                                             </td>
                                             <td style={styles.option}>{q.title}</td>
                                     </tr>
@@ -145,8 +139,6 @@ const Form: React.FC<any> = ({currentForm}) => {
                             </div>
                             ) : null
                         }
-
-
                         {(q && q.questionType === 'checkbox_group') ? (
                             <div>
                                 <p style={styles.title}>{q.title}</p>
@@ -164,12 +156,9 @@ const Form: React.FC<any> = ({currentForm}) => {
                                 }
                                 </tbody>
                                 </table>
-
                             </div>
                             ) : null
                         }
-
-
                         {(q && q.questionType === 'radiobutton_group') ? (
                             <div>
                                 <p style={styles.title}>{q.title}</p>
@@ -191,7 +180,6 @@ const Form: React.FC<any> = ({currentForm}) => {
                             </div>
                             ) : null
                         }
-
                         {(q && q.questionType === 'radiobutton_group_horizontal') ? (
                             <div>
                                 <p style={styles.title}>{q.title}</p>
@@ -211,11 +199,9 @@ const Form: React.FC<any> = ({currentForm}) => {
                                 </tr>
                                 </tbody>
                                 </table>
-
                             </div>
                             ) : null
                         }
-
                         {(q && q.questionType === 'contact_information') ? (
                             <div>
                                 <p style={styles.title}>{q.title}</p>
@@ -237,17 +223,12 @@ const Form: React.FC<any> = ({currentForm}) => {
                                         </tr>
                                     </tbody>
                                 </table>
-
-
-
                             </div>
                             ) : null
                         }
-
                         {(q && (q.questionType === 'datepicker' || q.questionType === 'timepicker')) ? (
                             <table>
                                 <tbody>
-
                                     <tr>
                                         <td style={{marginRight: 100,border:'none', fontSize:12 }}>
                                             {(q.questionType === 'datepicker') ? (
@@ -258,7 +239,6 @@ const Form: React.FC<any> = ({currentForm}) => {
 
                                                 ) : null
                                             }
-
                                             {(q.questionType === 'timepicker') ? (
                                                 <>
                                                     {q.title} {q.answer ? q.answer : <span style={styles.oneLineAnswerEmpty}>{emptyTimeAnswer}</span>}
@@ -268,19 +248,14 @@ const Form: React.FC<any> = ({currentForm}) => {
                                             }
                                         </td>
                                     </tr>
-
-
                                 </tbody>
                             </table>
                             ): null
                         }
-
                     </div>
-
                 ))
                 }
           </div>
-
       </div>
   )
 }

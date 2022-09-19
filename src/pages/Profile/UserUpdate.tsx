@@ -69,7 +69,7 @@ const UserUpdate: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
     return (
       <div className={classes.user}>
           <div className={classes.userTitleContainer}>
-              <Typography color="primary" className={classes.title} variant="h4">{t('user_edit_profile')}</Typography>
+              <Typography color="primary" className={classes.title} variant="h1">{t('user_edit_profile')}</Typography>
           </div>
           <div className={classes.userAccount}>
               <Formik
@@ -120,6 +120,9 @@ const useStyles = makeStyles((theme) => ({
     title: {
         marginTop: '5px',
         marginBottom: '15px',
+        fontWeight: 400,
+        fontSize: "2.125rem",
+        lineHeight: 1.235,
     },
     userTitleContainer: {
         display: 'flex',

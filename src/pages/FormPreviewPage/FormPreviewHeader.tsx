@@ -25,12 +25,12 @@ const FormPreviewHeader: React.FC<any> = () => {
     <Grid container direction="row"
       justifyContent="space-between">
         <Grid item xs={6}>
-          <Typography variant="h4" color="secondary" >
+          <Typography variant="h1" color="secondary" className='header'>
             {t('form_preview')}
           </Typography>
         </Grid>
         <Grid item xs={6} >
-          <Grid container direction="row-reverse">
+          <Grid container style={{justifyContent: "end"}}>
             <Button>
               <Link to={backUrl}>{t('back')}</Link>
             </Button>

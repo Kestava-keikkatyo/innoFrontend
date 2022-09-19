@@ -229,12 +229,15 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
 
       <form>
         <Box display="flex" alignItems="center">
+          <label htmlFor='search' style={{display: 'none'}}>{t("search_by_name")}</label>
           <InputBase
+            id='search'
             placeholder={t("search_by_name")}
             value={filter}
             onChange={handleFilterchange}
+            aria-label='search'
           />
-          <IconButton type="submit" size="large">
+          <IconButton type="submit" size="large" aria-label='search icon'>
             <SearchIcon />
           </IconButton>
         </Box>

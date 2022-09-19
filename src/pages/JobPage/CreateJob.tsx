@@ -67,7 +67,9 @@ const CreateJob: React.FC = () => {
   return (
     <div className={classes.newJob}>
       <div className={classes.jobTitleContainer}>
-              <Typography color="primary" className={classes.title} variant="h5">{t('add_new_job')}</Typography>
+        <Typography color="primary" className='header' 
+        style={{marginTop: '5px', marginBottom: '15px'}} variant="h1">{t('add_new_job')}
+        </Typography>
       </div>
       <div className={classes.jobContainer}>
         <Formik
