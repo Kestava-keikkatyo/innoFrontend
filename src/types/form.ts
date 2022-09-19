@@ -2,53 +2,53 @@
  * @todo käännä näiden tyypitys
  */
 const comment = {
-  text: "Comment",
-  value: "comment",
+  text: 'Comment',
+  value: 'comment',
 }
 
 const textField = {
-  text: "Textfield",
-  value: "text",
+  text: 'Textfield',
+  value: 'text',
 }
 
 const textArea = {
-  text: "Textarea",
-  value: "textarea",
+  text: 'Textarea',
+  value: 'textarea',
 }
 
 const checkBox = {
-  text: "Checkbox",
-  value: "checkbox",
+  text: 'Checkbox',
+  value: 'checkbox',
 }
 
 const checkBoxGroup = {
-  text: "Checkbox group",
-  value: "checkbox_group"
+  text: 'Checkbox group',
+  value: 'checkbox_group',
 }
 
 const radioButtonGroup = {
-  text: "Radiobutton group",
-  value: "radiobutton_group",
+  text: 'Radiobutton group',
+  value: 'radiobutton_group',
 }
 
 const radioButtonRow = {
-  text: "Radiobutton group horizontal",
-  value: "radiobutton_group_horizontal",
+  text: 'Radiobutton group horizontal',
+  value: 'radiobutton_group_horizontal',
 }
 
 const datePicker = {
-  text: "Datepicker",
-  value: "datepicker",
+  text: 'Datepicker',
+  value: 'datepicker',
 }
 
 const timePicker = {
-  text: "Timepicker",
-  value: "timepicker",
+  text: 'Timepicker',
+  value: 'timepicker',
 }
 
 const contactInfo = {
-  text: "ContactInformation",
-  value: "contact_information",
+  text: 'ContactInformation',
+  value: 'contact_information',
 }
 
 export default {

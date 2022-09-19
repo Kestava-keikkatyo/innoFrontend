@@ -1,28 +1,28 @@
 import {
     LocationSearching,
     PermIdentity,
-  } from "@mui/icons-material";
+  } from '@mui/icons-material';
 import React, { useEffect } from 'react';
-//import { Link } from '@mui/material';
+// import { Link } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { IRootState } from "../../utils/store";
-import { fetchJobById } from "../../actions/jobActions";
-import PageLoading from "../../components/PageLoading";
-import { useTranslation } from "react-i18next";
+import { useParams, Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { IRootState } from '../../utils/store';
+import { fetchJobById } from '../../actions/jobActions';
+import PageLoading from '../../components/PageLoading';
+import { useTranslation } from 'react-i18next';
 import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Button, Stack } from '@mui/material';
+import moment from 'moment';
 
 type JobUrlParams = {
     jobId: string
 }
-const JobDetails: React.FC<any> = () =>  {
+const JobDetails: React.FC = () => {
    
     const { t } = useTranslation()
     const { jobId } = useParams<JobUrlParams>();
-    const jobData: any = useSelector((state: IRootState) => state.job.currentJob);
+    const jobData = useSelector((state: IRootState) => state.job.currentJob);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchJobById(jobId));
@@ -39,14 +39,17 @@ const JobDetails: React.FC<any> = () =>  {
             <Typography className={classes.jobTitle} color="primary" variant="h4">{t('job_details_title')}</Typography>
         </div>
         <div>
-            <Button className={classes.button} color="secondary" component={Link} to="/job/application">{t('job_apply')}</Button>
+            <Stack direction="row" spacing={2}>
+                <Button className={classes.button} color="secondary" component={Link} to="/job/application">{t('job_apply')}</Button>
+                <Button color="secondary" component={Link} to="/jobs">{t('back')}</Button>
+            </Stack>
         </div>
         <div className={classes.jobContainer}>
             <div className={classes.jobShow}>
                 <span className={classes.jobTitle}>{t('job_supplier')}</span>
                 <div className={classes.jobShowInfo}>
                     <PermIdentity className={classes.jobShowIcon} />
-                    <span className={classes.jobShowInfoTitle}>{ jobData.user.name }</span>
+                    <span className={classes.jobShowInfoTitle}>{ jobData.user?.name }</span>
                 </div>
                 <span className={classes.jobTitle}>{t('job_specifics')}</span>
                 <div className={classes.jobShowInfo}>
@@ -71,11 +74,11 @@ const JobDetails: React.FC<any> = () =>  {
                 </div>
                 <div className={classes.jobShowInfo}>
                     <span className={classes.jobShowTitle}>{t('job_posted_at')}</span>
-                    <span className={classes.jobShowInfoTitle}> { jobData.createdAt }</span>
+                    <span className={classes.jobShowInfoTitle}> { moment(jobData.createdAt).format('DD/MM/YYYY') }</span>
                 </div>
                 <div className={classes.jobShowInfo}>
                     <span className={classes.jobShowTitle}>{t('job_available_until')}</span>
-                    <span className={classes.jobShowInfoTitle}> { jobData.applicationLastDate }</span>
+                    <span className={classes.jobShowInfoTitle}> { moment(jobData.applicationLastDate).format('DD/MM/YYYY') }</span>
                 </div>
             </div>
             <div className={classes.jobDescription}>
@@ -155,7 +158,6 @@ const useStyles = makeStyles(() => ({
     },
     button: {
         marginLeft: '820px',
-        fontSize: '15px',
     }
 }));
 

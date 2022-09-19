@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Typography } from "@mui/material";
+import { Button, Typography } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import * as Yup from "yup";
-import { Form, Formik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
+import * as Yup from 'yup';
+import { Form, Formik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 import FormikField from '../../components/FormField';
 import { setAlert } from '../../actions/alertActions';
 import ImageUploader from '../../components/ImageUploader';
-import { useTranslation } from "react-i18next"
-import i18next from "i18next"
+import { useTranslation } from 'react-i18next'
+import i18next from 'i18next'
 import { fetchUserById, updateUser } from '../../actions/usersActions';
-import { roles, UserInformation } from '../../types/types';
+import { roles, User } from '../../types/types';
 import { useParams } from 'react-router-dom';
 import { IRootState } from '../../utils/store';
 import PageLoading from '../../components/PageLoading';
 
 const CreateUserSchema = Yup.object().shape({
     name: Yup.string()
-    .min(2, i18next.t("name_should_be_three_letters_at_least"))
-    .required(i18next.t("name_is_required")),
-    email: Yup.string().email(i18next.t("not_valid_email")).required(i18next.t("email_is_required")),
+    .min(2, i18next.t('name_should_be_three_letters_at_least'))
+    .required(i18next.t('name_is_required')),
+    email: Yup.string().email(i18next.t('not_valid_email')).required(i18next.t('email_is_required')),
     city: Yup.string().nullable(),
     zipCode: Yup.string().nullable(),
     street: Yup.string().nullable(),
@@ -35,7 +35,7 @@ type UserUrlParams = {
     userId: string
   }
 
-interface UserFormValues extends UserInformation {
+interface UserFormValues extends User {
     newProfilePictureFile?: File
 }
 
@@ -47,17 +47,17 @@ const UserUpdate: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
 
     const { userId } = useParams<UserUrlParams>();
     const myUserId = useSelector((state: IRootState) => state.user.data._id);
-    let profileId : string = myProfile ? myUserId : userId;
+    const profileId : string = myProfile ? myUserId : userId;
 
     const [profilePicture, setProfilePicture] = useState<File>();
     
     const handleSubmit = (values: UserFormValues) => {
-        dispatch(updateUser(profileId, values, profilePicture, myProfile));
+        dispatch(updateUser(values, profilePicture, myProfile));
 
-        dispatch(setAlert(i18next.t("user_updated_successfully")));
+        dispatch(setAlert(i18next.t('user_updated_successfully')));
     };
 
-    const profileData: any = useSelector((state: IRootState) => state.users.currentUser);
+    const profileData = useSelector((state: IRootState) => state.users.currentUser);
     useEffect(() => {
       dispatch(fetchUserById(profileId));
     }, [dispatch, profileId]);

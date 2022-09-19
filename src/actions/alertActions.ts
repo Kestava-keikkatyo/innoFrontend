@@ -14,26 +14,24 @@ let timeoutId: any
  * @param {string} [severity=info] - alert severity (error, warning, info, success)
  * @param {number} [duration=5]  - amount of time the alert is shown in seconds
  */
-export const setAlert = (
-  message: string,
-  severity: eSeverity = eSeverity.Info,
-  duration: number = 5
-) => async (dispatch: any) => {
-  dispatch({
-    type: ALERT_SET,
-    data: { message, severity },
-  })
-
-  if (timeoutId) {
-    clearTimeout(timeoutId)
-  }
-
-  timeoutId = setTimeout(() => {
+export const setAlert =
+  (message: string, severity: eSeverity = eSeverity.Info, duration = 5) =>
+  async (dispatch: any) => {
     dispatch({
-      type: ALERT_CLEAR,
+      type: ALERT_SET,
+      data: { message, severity },
     })
-  }, duration * 1000)
-}
+
+    if (timeoutId) {
+      clearTimeout(timeoutId)
+    }
+
+    timeoutId = setTimeout(() => {
+      dispatch({
+        type: ALERT_CLEAR,
+      })
+    }, duration * 1000)
+  }
 
 /**
  * @function

@@ -2,10 +2,10 @@
  * @module service/feedback
  * @desc Feedback requests to backend.
  */
-import axios from "axios";
-import { Feedback } from "../types/types";
-import baseUrl from "../utils/baseUrl";
-import { loadUser } from "../utils/storage";
+import axios from 'axios'
+import { Feedback } from '../types/types'
+import baseUrl from '../utils/baseUrl'
+import { loadUser } from '../utils/storage'
 
 /**
  * @function
@@ -13,9 +13,9 @@ import { loadUser } from "../utils/storage";
  */
 const authHeader = () => {
   return {
-    headers: { "x-access-token": `${loadUser().token}` },
-  };
-};
+    headers: { 'x-access-token': `${loadUser().token}` },
+  }
+}
 
 /**
  * @function
@@ -23,42 +23,59 @@ const authHeader = () => {
  * @param {Feedback} feedback - Basic feedback information.
  */
 const createFeedback = async (feedback: Feedback) => {
-  return await axios.post(`${baseUrl}/feedback`, feedback, authHeader());
-};
+  return await axios.post(`${baseUrl}/feedback/send`, feedback, authHeader())
+}
 
 /**
  * @function
  * @desc Fetches all feedbacks with current token.
  */
 const fetchAllMyFeedbacks = async () => {
-  const res = await axios.get(
-    `${baseUrl}/feedback/allMyFeedbacks`,
-    authHeader()
-  );
-  return res;
-};
+  const res = await axios.get(`${baseUrl}/feedback/allMyFeedbacks`, authHeader())
+  return res
+}
 
 /**
  * @function
  * @desc Fetches all feedbacks with current token.
  */
 const fetchAllFeedbacksForAdmin = async () => {
-  const res = await axios.get(`${baseUrl}/feedback/allFeedbacks`, authHeader());
-  return res;
-};
+  const res = await axios.get(`${baseUrl}/feedback/all`, authHeader())
+  return res
+}
+
+/**
+ * @function
+ * @desc fetchFeedbackById
+ */
+const fetchMyFeedbackById = async (id: string) => {
+  const res = await axios.get(`${baseUrl}/feedback/my/any/${id}`, authHeader())
+  return res
+}
 
 /**
  * @function
  * @desc fetchFeedbackById
  */
 const fetchFeedbackById = async (id: string) => {
-  const res = await axios.get(`${baseUrl}/feedback/${id}`, authHeader());
-  return res;
-};
+  const res = await axios.get(`${baseUrl}/feedback/any/${id}`, authHeader())
+  return res
+}
+
+/**
+ * @param id
+ * @returns
+ */
+const updateFeedback = async (feedback: Feedback) => {
+  const res = await axios.put(`${baseUrl}/feedback/update/${feedback._id}`, feedback, authHeader())
+  return res.data
+}
 
 export default {
   createFeedback,
   fetchAllMyFeedbacks,
   fetchAllFeedbacksForAdmin,
+  fetchMyFeedbackById,
   fetchFeedbackById,
-};
+  updateFeedback,
+}

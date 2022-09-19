@@ -1,123 +1,88 @@
 import React from 'react';
-
-import vastuualueet from '../../assets/tietopankki/vastuualueet.json';
 import {
-  List,
-  CardContent,
-  Checkbox,
-  FormControlLabel,
-  ListItem,
-  Card,
-  CardHeader,
-  Grid,
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Typography,
-  Button
+  Grid, Link, Typography
 } from '@mui/material';
-import MoodForm from './MoodForm';
-import { submitFeeling, updateFeeling } from '../../actions/feelingActions';
-import { useDispatch, useSelector } from 'react-redux';
-import { IRootState } from '../../utils/store';
-import fileService from '../../services/fileService';
-import { useTranslation } from 'react-i18next';
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { Link } from 'react-router-dom';
+import makeStyles from '@mui/styles/makeStyles';
+import LatestJobAds from '../JobPage/LatestJobAds';
+import WorkerPieChart from '../../components/chart/WorkerPieChart';
 
 const WorkerHome = () => {
-  const dispatch = useDispatch();
-   const { t } = useTranslation();
-  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-
-  const currentFeeling: any = useSelector<IRootState>(
-    (state) => state.feeling.currentFeeling
-  );
-
-  let currentFiles: any = useSelector<IRootState>(
-    (state) => state.files.currentFiles
-  );
-
-  const onHandleSubmit = async () => {
-    console.log('### 1 currentFeeling:', currentFeeling);
-    console.log('### currentFiles:', currentFiles);
-    if (currentFiles.files[0] !== null) {
-      const res: any = await fileService.postFile(currentFiles.files[0]);
-      console.log('onHandleSubmit res', res);
-
-      const copyOfCurrentFeeling = {
-        ...currentFeeling,
-        fileUrl: res.data.fileUrl,
-      };
-
-      dispatch(updateFeeling(copyOfCurrentFeeling));
-      dispatch(submitFeeling(copyOfCurrentFeeling));
-    } else {
-      dispatch(updateFeeling(currentFeeling));
-      dispatch(submitFeeling(currentFeeling));
-    }
-  };
-
+   const classes = useStyles();
   return (
-    <Grid container className="homeContainer">
-      <Grid item xs={12} md={6} className="home" style={{height: "fit-content"}}>
-        <MoodForm handleSubmit={onHandleSubmit}/>
-      </Grid>
-      <Grid item xs={12} md={6} className="home">
-        <Card variant='outlined'>
-          <CardHeader
-           /* action={
-              <Button variant="outlined" color="primary">
-                {t('read_more')}
-              </Button> 
-            }*/
-            title={t('workers_responsibility')}
-            subheader=""
-            style={{ textAlign: "center", paddingBottom: "0"}}
-          />
-          <CardContent className='home2'>
-            {/*
-            <List component="nav" aria-label="mailbox folders">
-              {/* change worker2 to worker to get old list *}
-              {vastuualueet.worker2.map((e, i) => (
-                <ListItem key={i} divider>
-                  <ListItemText primary={`${e.tip}`} />
-                </ListItem>
-              ))}
-            </List> */}
-            <List component="nav" aria-label="mailbox folders">
-              {vastuualueet.worker.map((e, i) => (
-              <ListItem key={e.tip}>
-                <Accordion style={{margin: "4px 0"}} variant="outlined">
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                  >
-                    <Typography style={{color: "#000000DE"}}>{`${e.tip}`}</Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <Typography variant="body1">{`${e.details}`}</Typography>
-                    <Button color="primary" variant="contained" style={{marginTop: "1rem"}}>
-                      <Link to="/databank" style={{textDecoration: 'none', color: "black"}}>
-                        Lue lisää vastuualueista
-                      </Link>
-                    </Button>
-                  </AccordionDetails>
-                </Accordion>
-              </ListItem>
-              ))}
-            </List>
-            <FormControlLabel 
-            control={<Checkbox defaultChecked style={{color:'#eb5a00'}} />} 
-            label={t<string>('worker_responsibilities_read')}
-            style={{padding: "0 1rem"}}
-            />
-          </CardContent>
-        </Card>
-      </Grid>
+    <Grid container>
+      <div className={classes.generalInfo}>
+        <div className={classes.item}>
+          <Typography color="primary" align="center" variant="h6"> <Link href="/feeling/send" underline="hover">Feelings</Link> </Typography>
+        </div>
+        <div className={classes.item}>
+          <Typography color="primary" align="center" variant="h6"> <Link href="/information" underline="hover">Information</Link> </Typography>
+        </div>
+        <div className={classes.item}>
+          <Typography color="primary" align="center" variant="h6"> Areas of responsibility </Typography>
+        </div>
+      </div>
+      <div className={classes.pageContent}>
+        <div className={classes.contentContainer}>
+            <div className={classes.feelingAnalysis}>
+              <div>
+                <Typography color="primary" className={classes.title} align="center" variant="h6">Summary and  analysis of your emotions </Typography>
+              </div>
+             <WorkerPieChart/>
+            </div>
+            <div className={classes.latestJobAds}>
+            <LatestJobAds />
+            </div>
+        </div>
+      </div> 
     </Grid>
   );
 };
+
+const useStyles = makeStyles(() => ({
+  generalInfo: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  item: {
+    flex: '1',
+    margin: '0px 20px',
+    padding: '30px',
+    borderRadius: '10px',
+    webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
+    boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
+  },
+  container: {
+    margin: '10px 0px',
+    display: 'flex',
+    alignItems: 'center'
+  },
+  pageContent: {
+    flex: '4',
+    padding: '5px'
+},
+feelingAnalysis: {
+    flex: 2,
+    padding: '10px',
+    webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
+    boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
+},
+latestJobAds: {
+    flex: 2,
+    padding: '10px',
+    webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
+    boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
+    marginLeft: '20px',
+},
+contentContainer: {
+    display: 'flex',
+    marginTop: '10px',
+    hight: '500',
+},
+title: {
+  marginTop: '5px',
+  marginBottom: '5px',
+},
+}));
 
 export default WorkerHome;

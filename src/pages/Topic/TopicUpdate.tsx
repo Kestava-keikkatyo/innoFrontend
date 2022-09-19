@@ -1,23 +1,22 @@
 import React, { useEffect } from 'react';
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import * as Yup from "yup";
-import { Form, Formik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
-import FormikField, { DatePickerField } from '../../components/FormField';
+import * as Yup from 'yup';
+import { Form, Formik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+import FormikField from '../../components/FormField';
 import { setAlert } from '../../actions/alertActions';
-import { useTranslation } from "react-i18next"
-import i18next from "i18next"
+import { useTranslation } from 'react-i18next'
+import i18next from 'i18next'
 import { Topic } from '../../types/types';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { IRootState } from '../../utils/store';
 import PageLoading from '../../components/PageLoading';
-import { Link } from 'react-router-dom';
 import { fetchTopicById, updateTopic } from '../../actions/topicActions';
 
 const CreateTopicSchema = Yup.object().shape({
-    question: Yup.string().min(2, "Question should be three letters at least!").required("Question is required!"),
-    answer: Yup.string().min(2, "Answer should be three letters at least!").required("Answer is required!"),
+    question: Yup.string().min(2, 'Question should be three letters at least!').required('Question is required!'),
+    answer: Yup.string().min(2, 'Answer should be three letters at least!').required('Answer is required!'),
 });
 
 type TopicUrlParams = {
@@ -32,7 +31,7 @@ const TopicUpdate: React.FC = () => {
 
     const { topicId } = useParams<TopicUrlParams>();
     
-    const topicData: any = useSelector((state: IRootState) => state.topic.currentTopic);
+    const topicData = useSelector((state: IRootState) => state.topic.currentTopic);
     useEffect(() => {
       dispatch(fetchTopicById(topicId));
     }, [dispatch, topicId]);
@@ -42,9 +41,9 @@ const TopicUpdate: React.FC = () => {
     );
     
     const handleSubmit = (topic: Topic) => {
-        dispatch(updateTopic(topicId, topic));
+        dispatch(updateTopic(topic));
 
-        dispatch(setAlert(i18next.t("topic_updated_successfully")));
+        dispatch(setAlert(i18next.t('topic_updated_successfully')));
     };
     
     return (
@@ -58,7 +57,7 @@ const TopicUpdate: React.FC = () => {
           onSubmit={handleSubmit}
           validationSchema={CreateTopicSchema}
           >
-            {(props) => {
+            {() => {
               return (
               <Form>
                 <div className={classes.topicContainerTop}>

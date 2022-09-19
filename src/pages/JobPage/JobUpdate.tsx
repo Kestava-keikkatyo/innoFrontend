@@ -1,27 +1,26 @@
 import React, { useEffect } from 'react';
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import * as Yup from "yup";
-import { Form, Formik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
+import * as Yup from 'yup';
+import { Form, Formik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 import FormikField, { DatePickerField } from '../../components/FormField';
 import { setAlert } from '../../actions/alertActions';
-import { useTranslation } from "react-i18next"
-import i18next from "i18next"
+import { useTranslation } from 'react-i18next'
+import i18next from 'i18next'
 import { Job } from '../../types/types';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { IRootState } from '../../utils/store';
 import PageLoading from '../../components/PageLoading';
-import { fetchJobById, updateJob } from '../../actions/jobActions';
-import { Link } from 'react-router-dom';
+import { fetchMyJobById, updateJob } from '../../actions/jobActions';
 
 const CreateJobSchema = Yup.object().shape({
   title: Yup.string()
-  .min(2, "Title should be three letters at least!")
-  .required("Title is required!"),
+  .min(2, 'Title should be three letters at least!')
+  .required('Title is required!'),
   category: Yup.string()
-  .min(2, "Category should be three letters at least!")
-  .required("Category is required!"),
+  .min(2, 'Category should be three letters at least!')
+  .required('Category is required!'),
   jobType: Yup.string().required('JobType is required'),
   salary: Yup.number().typeError('You must specify a number').min(0, 'Min value 0.'),
   street: Yup.string(),
@@ -30,7 +29,7 @@ const CreateJobSchema = Yup.object().shape({
   startDate: Yup.date().nullable(),
   endDate: Yup.date().nullable(),
   applicationLastDate: Yup.date().nullable(),
-  requirements: Yup.string().min(2, "Requirements should be three letters at least!"),
+  requirements: Yup.string().min(2, 'Requirements should be three letters at least!'),
   desirableSkills: Yup.string(),
   benefits: Yup.string(),
   details: Yup.string(),
@@ -48,9 +47,9 @@ const JobUpdate: React.FC = () => {
 
     const { jobId } = useParams<JobUrlParams>();
     
-    const jobData: any = useSelector((state: IRootState) => state.job.currentJob);
+    const jobData: Job | undefined = useSelector((state: IRootState) => state.job.currentJob);
     useEffect(() => {
-      dispatch(fetchJobById(jobId));
+      dispatch(fetchMyJobById(jobId));
     }, [dispatch, jobId]);
   
     if (!jobData || jobId !== jobData._id) return (
@@ -58,9 +57,9 @@ const JobUpdate: React.FC = () => {
     );
     
     const handleSubmit = (job: Job) => {
-        dispatch(updateJob(jobId, job));
+        dispatch(updateJob(job));
 
-        dispatch(setAlert(i18next.t("job_updated_successfully")));
+        dispatch(setAlert(i18next.t('job_updated_successfully')));
     };
     
     return (
@@ -97,7 +96,7 @@ const JobUpdate: React.FC = () => {
                 </div>
                 <Stack direction="row" spacing={2}>
                   <Button type="submit" variant="contained" color="primary" className={classes.button}>{t('button_update')}</Button>
-                  <Button variant="outlined" color="primary" component={Link} to="/jobListForAgency">{t('button_cancel')}</Button>
+                  <Button variant="outlined" color="primary" component={Link} to="/job?tab=my">{t('button_cancel')}</Button>
                 </Stack>
               </Form>
               );

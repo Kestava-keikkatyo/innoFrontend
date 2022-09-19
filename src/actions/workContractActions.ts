@@ -3,10 +3,8 @@
  * @desc Redux workContract actions
  */
 import contractsService from '../services/contractsService'
-import notificationsService from '../services/notificationsService'
 import { ADD_W_CONTRACT, W_DELETE, W_FETCH, W_UPDATE, W_JOB } from '../types/state'
 import { roles } from '../types/types'
-
 
 /**
  * @function
@@ -34,32 +32,29 @@ export const fetchWorkContracts = () => async (dispatch: any) => {
  */
 export const deleteWorkContractById = (id: string) => async (dispatch: any) => {
   const res = await contractsService.deleteWorkContractById(id)
-  if(res.status === 200)
-    dispatch({ type: W_DELETE, data: id })
+  if (res.status === 200) dispatch({ type: W_DELETE, data: id })
 }
 
 /**
  * @function
  * @desc Adds WorkContract document to database. Document is linked
- * between Agency and Business. 
+ * between Agency and Business.
  * @param business Business user.
  */
 export const postWorkContract = (business: any) => async (dispatch: any) => {
   const res = await contractsService.postWorkContract(business.business._id)
-  if(res && res.status === 200)
-    dispatch({type: ADD_W_CONTRACT, data: res.data})
+  if (res && res.status === 200) dispatch({ type: ADD_W_CONTRACT, data: res.data })
 }
 
 /**
  * @function
  * @desc Used by Business to send WorkContract Job gig request to Agency.
- * @param agencyId - Agency ID used to send notification to Agency. 
+ * @param agencyId - Agency ID used to send notification to Agency.
  * @param contractId - WorkContractId between Business and Agency.
  * @param jobData - Contains header, information, startdate, enddate
  */
-export const postJobInWorkContract = (agencyId:string,contractId:string, jobData:{}) => async (dispatch:any) => {
-  const res = await contractsService.postJobInWorkContract(contractId, jobData)
-  if (res && res.status === 200)
-    dispatch({type: W_JOB, data: res.data})
-    await notificationsService.updateNotifications(agencyId, "Yritys lähetti työkeikka ilmoituksen.")
-}
+export const postJobInWorkContract =
+  (agencyId: string, contractId: string, jobData: {}) => async (dispatch: any) => {
+    const res = await contractsService.postJobInWorkContract(contractId, jobData)
+    if (res && res.status === 200) dispatch({ type: W_JOB, data: res.data })
+  }

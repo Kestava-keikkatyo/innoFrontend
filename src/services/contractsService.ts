@@ -2,11 +2,11 @@
  * @module service/contract
  * @desc Contract requests to backend.
  */
-import axios from "axios"
-import { businessContractType } from "../types/types"
-import { loadUser } from "../utils/storage"
+import axios from "axios";
+import { businessContractType } from "../types/types";
+import { loadUser } from "../utils/storage";
 
-import baseUrl from "../utils/baseUrl"
+import baseUrl from "../utils/baseUrl";
 
 /**
  * @function
@@ -15,8 +15,8 @@ import baseUrl from "../utils/baseUrl"
 const authHeader = () => {
   return {
     headers: { "x-access-token": `${loadUser().token}` },
-  }
-}
+  };
+};
 
 /**
  * @function
@@ -28,19 +28,22 @@ const searchUsers = async (input: string, searchType: businessContractType) => {
   try {
     switch (searchType) {
       case "worker":
-        return await axios.get(`${baseUrl}/user/getByUserType/worker/name=${input}`, authHeader())
+        return await axios.get(
+          `${baseUrl}/user/getByUserType/worker/name=${input}`,
+          authHeader()
+        );
       case "business":
         return await axios.get(
           `${baseUrl}/user/getByUserType/business/name=${input}`,
           authHeader()
-        )
+        );
       default:
-        return Promise.reject({ status: 500 })
+        return Promise.reject({ status: 500 });
     }
   } catch (error) {
-    return Promise.reject(error.response)
+    return Promise.reject(error.response);
   }
-}
+};
 
 const acceptBusinessContract = async (
   contractId: string,
@@ -52,11 +55,11 @@ const acceptBusinessContract = async (
       `${baseUrl}/businesscontracts/${contractId}/${userId}/accept`,
       { form },
       authHeader()
-    )
+    );
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 /**
  * @description Backend call function which is used when Agency sends BusinessContract
@@ -75,17 +78,17 @@ const addBusinessContract = async (
     return await axios.post(
       `${baseUrl}/agreement/`,
       {
-        "target": targetId,
-        "form2": formId,
-        "status": "pending",
-        "type": type
+        target: targetId,
+        form: formId,
+        status: "pending",
+        type: type,
       },
       authHeader()
-    )
+    );
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 /**
  * @description Backend call function which is used when Worker or Business sends BusinessContract
  * request to Agency.
@@ -103,11 +106,11 @@ const addBusinessContractWorkerBusiness = async (
       `${baseUrl}/businesscontracts/add/${contractId}/${agencyId}`,
       { form: formId },
       authHeader()
-    )
+    );
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 const sendBusinessContract = async (contractId: string, form?: string) => {
   try {
@@ -115,11 +118,11 @@ const sendBusinessContract = async (contractId: string, form?: string) => {
       `${baseUrl}/businesscontracts/send/${contractId}/`,
       { form },
       authHeader()
-    )
+    );
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 const declineBusinessContract = async (contractId: string, userId: string) => {
   try {
@@ -127,11 +130,11 @@ const declineBusinessContract = async (contractId: string, userId: string) => {
       `${baseUrl}/businesscontracts/${contractId}/${userId}/decline`,
       {},
       authHeader()
-    )
+    );
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 /**
  * TODO: Tarkista, kun route on valmis.
@@ -142,32 +145,26 @@ const refuseBusinessContractById = async (contractId: string) => {
     `${baseUrl}/businesscontracts/refuse/${contractId}`,
     {},
     authHeader()
-  )
-}
+  );
+};
 
 const fetchBusinessContracts = async () => {
   try {
-    const res = await axios.get(
-      `${baseUrl}/agreement`,
-      authHeader()
-    )
-    return res.data
+    const res = await axios.get(`${baseUrl}/agreement`, authHeader());
+    return res.data;
   } catch (error) {
-    return {docs: []}
+    return { docs: [] };
   }
-}
+};
 
 const fetchBusinessContractsAsTarget = async () => {
   try {
-    const res = await axios.get(
-      `${baseUrl}/agreement/target`,
-      authHeader()
-      )
-      return res.data
-    } catch (error) {
-    return {docs: []}
+    const res = await axios.get(`${baseUrl}/agreement/target`, authHeader());
+    return res.data;
+  } catch (error) {
+    return { docs: [] };
   }
-}
+};
 
 const signAgreement = async (id: string, status: string) => {
   try {
@@ -175,12 +172,12 @@ const signAgreement = async (id: string, status: string) => {
       `${baseUrl}/agreement/sign/${id}/${status}`,
       {},
       authHeader()
-    )
-    return res.data
+    );
+    return res.data;
   } catch (error) {
-    return Promise.reject(error.response)
+    return Promise.reject(error.response);
   }
-}
+};
 
 const updateBusinessContract = async (id: string) => {
   try {
@@ -188,42 +185,42 @@ const updateBusinessContract = async (id: string) => {
       `${baseUrl}/businesscontracts/${id}`,
       {},
       authHeader()
-    )
+    );
   } catch (error) {
-    return Promise.reject(error.response)
+    return Promise.reject(error.response);
   }
-}
+};
 
 const postWorkContract = async (businessId: string) => {
   const body = {
     businessId,
     processStatus: "0",
-  }
+  };
   try {
-    return await axios.post(`${baseUrl}/workcontracts/`, body, authHeader())
+    return await axios.post(`${baseUrl}/workcontracts/`, body, authHeader());
   } catch (error) {
-    return Promise.reject(error.response)
+    return Promise.reject(error.response);
   }
-}
+};
 
 const fetchWorkContracts = async () => {
   try {
     const res = await axios.get(
       `${baseUrl}/workcontracts?page=1&limit=10`,
       authHeader()
-    )
-    return res.data.docs
+    );
+    return res.data.docs;
   } catch (error) {
-    return Promise.reject(error.response)
+    return Promise.reject(error.response);
   }
-}
+};
 
 const deleteWorkContractById = async (contractId: string) => {
   return await axios.delete(
     `${baseUrl}/workcontracts/${contractId}`,
     authHeader()
-  )
-}
+  );
+};
 
 const postJobInWorkContract = async (contractId: string, data: {}) => {
   try {
@@ -231,20 +228,20 @@ const postJobInWorkContract = async (contractId: string, data: {}) => {
       `${baseUrl}/workcontracts/${contractId}/new`,
       data,
       authHeader()
-    )
+    );
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 // Create a business contract when a new agency sign up
 const createBusinessContract = async () => {
   try {
-    return await axios.post(`${baseUrl}/businesscontracts/`, {}, authHeader())
+    return await axios.post(`${baseUrl}/businesscontracts/`, {}, authHeader());
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 /**
  * @function
@@ -261,11 +258,11 @@ const updateBusinessContractsForm = async (
       `${baseUrl}/businesscontracts/${contractId}/saveForm`,
       { form },
       authHeader()
-    )
+    );
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 /**
  * @function
@@ -286,11 +283,11 @@ const sendBackBusinessContract = async (
       `${baseUrl}/businesscontracts/${contractId}/${userId}/sendBack`,
       { form },
       authHeader()
-    )
+    );
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export default {
   searchUsers,
@@ -311,4 +308,4 @@ export default {
   acceptBusinessContract,
   updateBusinessContractsForm,
   sendBackBusinessContract,
-}
+};

@@ -2,10 +2,10 @@
  * @module service/worker
  * @desc Worker requests to backend.
  */
-import axios from "axios";
-import { Job } from "../types/types";
-import baseUrl from "../utils/baseUrl";
-import { loadUser } from "../utils/storage";
+import axios from 'axios'
+import { Job } from '../types/types'
+import baseUrl from '../utils/baseUrl'
+import { loadUser } from '../utils/storage'
 
 /**
  * @function
@@ -13,36 +13,54 @@ import { loadUser } from "../utils/storage";
  */
 const authHeader = () => {
   return {
-    headers: { "x-access-token": `${loadUser().token}` },
-  };
-};
+    headers: { 'x-access-token': `${loadUser().token}` },
+  }
+}
 
 /**
  * @function
  * @desc Fetches all jobs avaible with current token.
  */
-const fetchAllJobs = async () => {
-  const res = await axios.get(`${baseUrl}/job/allJobsForWorker`, authHeader());
-  return res;
-};
+const fetchAllJobAds = async () => {
+  const res = await axios.get(`${baseUrl}/job/ads`, authHeader())
+  return res
+}
+
+/**
+ * @function
+ * @desc Fetches latest job ads with current token.
+ */
+const fetchLatestJobAds = async () => {
+  const res = await axios.get(`${baseUrl}/job/latest`, authHeader())
+  return res
+}
 
 /**
  * @function
  * @desc Fetches all jobs avaible with current token.
  */
-const fetchAllJobsForAgency = async () => {
-  const res = await axios.get(`${baseUrl}/job/allJobsForAgency`, authHeader());
-  return res;
-};
+const fetchAllMyJobs = async () => {
+  const res = await axios.get(`${baseUrl}/job/my`, authHeader())
+  return res
+}
+
+/**
+ * @function
+ * @desc fetches ueser's created job by id
+ */
+const fetchMyJobById = async (id: string) => {
+  const res = await axios.get(`${baseUrl}/job/my/any/${id}`, authHeader())
+  return res
+}
 
 /**
  * @function
  * @desc fetchJobById
  */
 const fetchJobById = async (id: string) => {
-  const res = await axios.get(`${baseUrl}/job/any/${id}`, authHeader());
-  return res;
-};
+  const res = await axios.get(`${baseUrl}/job/any/${id}`, authHeader())
+  return res
+}
 
 /**
  * @param id
@@ -50,16 +68,13 @@ const fetchJobById = async (id: string) => {
  */
 const deleteJob = async (jobId: string) => {
   try {
-    const res = await axios.delete(
-      `${baseUrl}/job/jobDelete/${jobId}`,
-      authHeader()
-    );
-    console.log("delete res", res);
-    return res;
+    const res = await axios.delete(`${baseUrl}/job/jobDelete/${jobId}`, authHeader())
+    console.log('delete res', res)
+    return res
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 /**
  * @function
@@ -67,27 +82,25 @@ const deleteJob = async (jobId: string) => {
  * @param {Job} job - Basic job information.
  */
 const createJob = async (job: Job) => {
-  return await axios.post(`${baseUrl}/job`, job, authHeader());
-};
+  return await axios.post(`${baseUrl}/job`, job, authHeader())
+}
 
 /**
  * @param id
  * @returns
  */
-const updateJob = async (jobId: string, job: Job) => {
-  const res = await axios.put(
-    `${baseUrl}/job/jobUpdate/${jobId}`,
-    job,
-    authHeader()
-  );
-  return res.data;
-};
+const updateJob = async (job: Job) => {
+  const res = await axios.put(`${baseUrl}/job/jobUpdate/${job._id}`, job, authHeader())
+  return res.data
+}
 
 export default {
-  fetchAllJobs,
+  fetchAllJobAds,
+  fetchLatestJobAds,
+  fetchMyJobById,
   fetchJobById,
-  fetchAllJobsForAgency,
+  fetchAllMyJobs,
   deleteJob,
   createJob,
   updateJob,
-};
+}

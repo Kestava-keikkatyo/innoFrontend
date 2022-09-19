@@ -1,47 +1,36 @@
 {
-  "root": true,
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
   "env": {
     "browser": true,
-    "es6": true,
-    "jest/globals": true
+    "es2021": true,
+    "jest": true
   },
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
+	"extends": [
+	  "eslint:recommended",
+	  "plugin:react/recommended",
+	  "plugin:@typescript-eslint/recommended",
+	  "prettier"
+	],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 2018,
-    "sourceType": "module"
+      "ecmaFeatures": {
+          "jsx": true
+      },
+      "ecmaVersion": "latest",
+      "sourceType": "module"
   },
-  "plugins": ["react", "jest"],
-  "rules": {
-    "no-var": "error",
-    "indent": [
-      "error",
-      2,
-      {
-        "SwitchCase": 1
-      }
-    ],
-    "linebreak-style": ["error", "windows"],
-    //"quotes": ["error", "single"],
-    "semi": ["error", "never"],
-    "eqeqeq": "error",
-    "no-trailing-spaces": "error",
-    "object-curly-spacing": ["error", "always"],
-    "arrow-spacing": [
-      "error",
-      {
-        "before": true,
-        "after": true
-      }
-    ],
-    "no-console": 0,
-    "react/prop-types": 0
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
+	"rules": {
+    "react/react-in-jsx-scope": "off",
+    //"camelcase": "warn",
+    "spaced-comment": ["warn", "always", { "markers": ["/"] }],
+    "quotes": ["warn", "single", {"avoidEscape": true}],
+    "no-multi-spaces": "warn",
+    "no-duplicate-imports": "error",
+    "no-debugger": "error"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
   }
 }

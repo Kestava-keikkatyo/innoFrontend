@@ -1,7 +1,7 @@
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridColumns } from '@mui/x-data-grid';
 import * as React from 'react';
-import { DeleteOutline } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { DeleteOutline } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
@@ -18,36 +18,38 @@ import {
   
 } from '@mui/material';
 
-import { DeleteJobById, fetchAllJobsForAgency } from "../../actions/jobActions";
+import { DeleteJobById, fetchAllMyJobs } from '../../actions/jobActions';
 import { setAlert } from '../../actions/alertActions';
 import CollapsibleRow from '../../components/CollapsibleRow'
-import { useTranslation } from "react-i18next";
-import i18next from "i18next";
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+import { Job } from '../../types/types';
+import moment from 'moment';
 
-const CreatedJobs: React.FC<any> = () => {
+const CreatedJobs: React.FC = () => {
 
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const classes = useStyles();
   const theme = useTheme();
 
-  /**Determines if device is "mobile" according to display width. 
+  /** Determines if device is "mobile" according to display width. 
    * Mobileview is shown to devices with narrow display */
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const { jobs } = useSelector((state: IRootState) => state.job || []);
   
-  /**Page number in mobileview */
+  /** Page number in mobileview */
   const [mobilePage, setMobilePage] = useState(0)
-  /**Rows per page in mobileview */
+  /** Rows per page in mobileview */
   const rowsPerPage = 10
   useEffect(() => {
-    dispatch(fetchAllJobsForAgency());
+    dispatch(fetchAllMyJobs());
   }, [dispatch]);
 
-  const rows = jobs.map( (job: any) => {
-    /**Format date created to a format with only date. */
-    let formattedDate = job.createdAt.slice(0,10)
+  const rows = jobs.map( (job: Job) => {
+    /** Format date created to a format with only date. */
+    const formattedDate = moment(job.createdAt).format('DD/MM/YYYY')
     job = {
       ...job, 
       createdAt: formattedDate,
@@ -58,24 +60,24 @@ const CreatedJobs: React.FC<any> = () => {
   
   const handleDelete = (id: string) => {
     console.log(id);
-    dispatch(DeleteJobById(id))
-    dispatch(setAlert("Job was deleted successfully!"))
+    dispatch(DeleteJobById(jobs.find(job => job._id === id) as Job))
+    dispatch(setAlert('Job was deleted successfully!'))
   }
 
-  /**Changes page in mobileview */
+  /** Changes page in mobileview */
   const handleMobilePageChange = (event: unknown, newPage: number) => {
     setMobilePage(newPage)
   }
   
-  const columns = [
+  const columns: GridColumns = [
     {
-        field: "title",
-        headerName: (i18next.t("job_title")),
+        field: 'title',
+        headerName: (i18next.t('job_title')),
         flex: 2,
-        /**Render tooltip displaying the title on mouse hover or 
+        /** Render tooltip displaying the title on mouse hover or 
          * long press. Usable when title is so long it doesn't fit 
          * in assigned space. */
-        renderCell: (params: any) => {
+        renderCell: (params) => {
           return (
             <Tooltip title={params.row.title}>
               <Typography>
@@ -86,13 +88,13 @@ const CreatedJobs: React.FC<any> = () => {
         }
     },
     { 
-        field: "category", 
-        headerName: (i18next.t("job_category")), 
+        field: 'category', 
+        headerName: (i18next.t('job_category')), 
         flex: 2,
-        /**Render tooltip displaying the category on mouse hover or 
+        /** Render tooltip displaying the category on mouse hover or 
          * long press. Usable when category is so long it doesn't fit 
          * in assigned space. */
-        renderCell: (params: any) => {
+        renderCell: (params) => {
           return (
             <Tooltip title={params.row.category}>
               <Typography>
@@ -103,13 +105,13 @@ const CreatedJobs: React.FC<any> = () => {
         }
     },
     {
-      field: "agency",
-      headerName: (i18next.t("job_supplier")),
+      field: 'agency',
+      headerName: (i18next.t('job_supplier')),
       flex: 2,
-      /**Render tooltip displaying the user name on mouse hover or 
+      /** Render tooltip displaying the user name on mouse hover or 
        * long press. Usable when user name is so long it doesn't fit 
        * in assigned space. */
-      renderCell: (params: any) => {
+      renderCell: (params) => {
         return (
           <Tooltip title={params.row.user.name}>
             <Typography>
@@ -120,24 +122,24 @@ const CreatedJobs: React.FC<any> = () => {
       }
   },
     {
-        field: "createdAt",
-        headerName: (i18next.t("job_release_date")),
+        field: 'createdAt',
+        headerName: (i18next.t('job_release_date')),
         flex: 1,
         maxWidth: 120, 
     },
     {
-        field: "action",
-        headerName: (i18next.t("job_action")),
+        field: 'action',
+        headerName: (i18next.t('job_action')),
         width: 100,
-        renderCell: (params: any) => {
+        renderCell: (params) => {
           return (
             <>
-              <Link to={"/job/update/" + params.id}>
+              <Link to={'/job/update/' + params.id}>
                 <span className={classes.update}>{t('job_update')}</span>
               </Link>
               <DeleteOutline
                 className="userListDelete"
-                onClick={() => handleDelete(params.id)}
+                onClick={() => handleDelete(params.row._id)}
               />
             </>
           );
@@ -145,7 +147,7 @@ const CreatedJobs: React.FC<any> = () => {
     },
   ];
   
-  /**Desktopview */
+  /** Desktopview */
   const tableView = () => {
     return (
       <div style={{ height: 650, width: '100%' }}>
@@ -167,7 +169,7 @@ const CreatedJobs: React.FC<any> = () => {
     )
   }
 
-  /**Mobileview */
+  /** Mobileview */
   const mobileView = () => {
     return (
       <>
@@ -180,17 +182,17 @@ const CreatedJobs: React.FC<any> = () => {
         }}>
           <Table>
             <TableBody>
-              {/**Show only 'rowsPerPage' rows in one page. 
+              {/** Show only 'rowsPerPage' rows in one page. 
                * Slice correct rows according to page */}
               {rows
               .slice(mobilePage * rowsPerPage, mobilePage * rowsPerPage + rowsPerPage )
-              .map((row: any) => (
-                /**Accordion-like collapsible row in table */
+              .map((row) => (
+                /** Accordion-like collapsible row in table */
                 <CollapsibleRow key={row._id} row={row} handleDelete={handleDelete}></CollapsibleRow>
               ))}
             </TableBody>
           </Table>
-          {/**Pagination options at bottom of page. */}
+          {/** Pagination options at bottom of page. */}
           <TablePagination
             rowsPerPageOptions = {[rowsPerPage]}
             component='div'
@@ -206,11 +208,10 @@ const CreatedJobs: React.FC<any> = () => {
   return (
     <>
     <div>
-      {/**Title */}
-      <Typography className='header' style={{marginTop: '25px', marginBottom: '15px'}}
-      color="primary" align="center" variant="h1">{t('job_your_job_ads')}</Typography>
+      {/** Title */}
+      <Typography className={classes.title} color="primary" align="center" variant="h5">{t('job_your_job_ads')}</Typography>
     </div>
-    {/**Job ads list depending on device width ('mobile' or not). */}
+    {/** Job ads list depending on device width ('mobile' or not). */}
     {isMobile ? mobileView() : tableView()}
     </>
   );

@@ -1,16 +1,17 @@
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridColumns } from '@mui/x-data-grid';
 import * as React from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchAllAgencies } from "../../actions/usersActions";
+import { fetchAllAgencies } from '../../actions/usersActions';
 import makeStyles from '@mui/styles/makeStyles';
 import Typography from '@mui/material/Typography';
-import { useTranslation } from "react-i18next"
-import i18next from "i18next"
+import { useTranslation } from 'react-i18next'
+import i18next from 'i18next'
+import { Stack } from '@mui/material';
 
-const Agencies: React.FC<any> = () => {
+const Agencies: React.FC = () => {
   const { t } = useTranslation();
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -20,13 +21,13 @@ const Agencies: React.FC<any> = () => {
   }, [dispatch]);
   let rows = [];
   rows = users;
-  const columns = [
+  const columns: GridColumns = [
     {
       field: "name",
       headerName: (i18next.t("list_name")),
       minWidth: 150,
       flex: 1,
-      renderCell: (params: any) => {
+      renderCell: (params) => {
         return (
         <div className={classes.userListUser}>
           <img className={classes.userListImg} src={params.row.profilePicture} alt="" />
@@ -64,10 +65,13 @@ const Agencies: React.FC<any> = () => {
       headerName: (i18next.t("list_action")),
       minWidth: 100,
       flex: 1,
-      renderCell: (params: any) => {
+      renderCell: (params) => {
         return (
         <>
-        <Link to={"/agencies/profile/" + params.id}>{t('list_profile')}</Link>
+        <Stack direction="row" spacing={2}>
+        <Link to={'/agencies/profile/' + params.id}>{t('list_profile')}</Link>
+        <Link to={'/agencies/workRequest/' + params.id}>Send work request</Link>
+        </Stack>
         </>
         );
       },
@@ -96,7 +100,15 @@ const Agencies: React.FC<any> = () => {
   );
 }
 
+<<<<<<< HEAD
 const useStyles = makeStyles((theme) => ({
+=======
+const useStyles = makeStyles(() => ({
+  title: {
+    marginTop: '25px',
+    marginBottom: '15px',
+  },
+>>>>>>> origin
   userListUser: {
     display: 'flex',
     alignItems: 'center',

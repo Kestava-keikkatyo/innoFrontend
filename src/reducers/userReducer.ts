@@ -2,7 +2,7 @@
  * @module reducer/user
  * @desc Redux user reducer
  */
-import { loadUser } from "../utils/storage";
+import { loadUser } from '../utils/storage'
 import {
   LOGIN,
   LOGOUT,
@@ -10,13 +10,13 @@ import {
   USER_FAILURE,
   USER_PROFILE,
   USER_REQUEST,
-} from "../types/state";
+} from '../types/state'
 
-const userData = loadUser();
+const userData = loadUser()
 const initialState = {
   loggedIn: !!userData,
   data: userData || {},
-};
+}
 
 /**
  * @function
@@ -31,12 +31,12 @@ const userReducer = (state = initialState, action: UserActionTypes) => {
         loading: true,
         data: state.data,
         loggedIn: !!state.loggedIn,
-      };
+      }
     case LOGIN:
       return {
         loggedIn: true,
         data: action.data,
-      };
+      }
     case USER_PROFILE:
       return {
         loading: false,
@@ -45,13 +45,13 @@ const userReducer = (state = initialState, action: UserActionTypes) => {
           ...state.data,
           ...action.data,
         },
-      };
+      }
     case USER_FAILURE:
     case LOGOUT:
-      return { loggedIn: false, data: {} };
+      return { loggedIn: false, data: {} }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default userReducer;
+export default userReducer

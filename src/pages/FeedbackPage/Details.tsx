@@ -1,26 +1,26 @@
 import React, { useEffect } from 'react';
 import { Button } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { IRootState } from "../../utils/store";
-import PageLoading from "../../components/PageLoading";
+import { useParams, Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { IRootState } from '../../utils/store';
+import PageLoading from '../../components/PageLoading';
 import Typography from '@mui/material/Typography';
-import { fetchFeedbackById } from "../../actions/feedBackActions";
-import { Link } from 'react-router-dom';
-import { useTranslation } from "react-i18next";
+import { fetchMyFeedbackById } from '../../actions/feedBackActions';
+import { useTranslation } from 'react-i18next';
+import moment from 'moment';
 
 type FeedbackUrlParams = {
     feedbackId: string
 }
-const Details: React.FC<any> = () =>  {
+const Details: React.FC = () => {
    
     const { t } = useTranslation();
     const { feedbackId } = useParams<FeedbackUrlParams>();
-    const feedbackData: any = useSelector((state: IRootState) => state.feedback.currentFeedback);
+    const feedbackData = useSelector((state: IRootState) => state.feedback.currentFeedback);
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(fetchFeedbackById(feedbackId));
+        dispatch(fetchMyFeedbackById(feedbackId));
     }, [dispatch, feedbackId]);
     const classes = useStyles();
 
@@ -34,7 +34,7 @@ const Details: React.FC<any> = () =>  {
             <Typography color="secondary" className={classes.feedbackTitle} variant="h4">{t('feedback_title_details')}</Typography>
         </div>
         <div>
-        <Button className={classes.back} color="secondary" component={Link} to="/feedback-page">{t('back')}</Button>
+        <Button className={classes.back} color="secondary" component={Link} to="/feedback">{t('back')}</Button>
         </div>
         <div className={classes.feedbackContainer}>
             <div className={classes.feedbackShow}>
@@ -44,7 +44,7 @@ const Details: React.FC<any> = () =>  {
                 </div>
                 <div className={classes.feedbackShowInfo}>
                     <span className={classes.feedbackShowTitle}>{t('sending_date')}</span>
-                    <span className={classes.feedbackShowInfoTitle}> { feedbackData.createdAt }</span>
+                    <span className={classes.feedbackShowInfoTitle}> { moment(feedbackData.createdAt).format('DD/MM/YYYY') }</span>
                 </div>
                 <div className={classes.feedbackShowInfo}>
                     <span className={classes.feedbackShowTitle}>{t('feedback_recipient')}</span>

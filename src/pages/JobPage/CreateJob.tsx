@@ -1,39 +1,40 @@
 import React from 'react';
-import { Button, CircularProgress, Typography } from "@mui/material";
+import { Button, CircularProgress, Typography } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import * as Yup from "yup";
-import { Form, Formik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
+import * as Yup from 'yup';
+import { Form, Formik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 import FormikField, { DatePickerField } from '../../components/FormField';
 import { createJob } from '../../actions/jobActions';
 import { Job } from '../../types/types';
 import { IRootState } from '../../utils/store';
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
 
 const initialValues: Job = {
-  category: "",
-  title: "",
-  jobType: "",
-  salary: "",
-  street: "",
-  zipCode: "",
-  city: "",
+  category: '',
+  title: '',
+  jobType: '',
+  salary: '',
+  street: '',
+  zipCode: '',
+  city: '',
   startDate: null,
   endDate: null,
   applicationLastDate: null,
-  requirements: "",
-  desirableSkills: "",
-  benefits: "",
-  details: "",
+  requirements: '',
+  desirableSkills: '',
+  benefits: '',
+  details: '',
 };
 
 const CreateJobSchema = Yup.object().shape({
   title: Yup.string()
-  .min(2, "Title should be three letters at least!")
-  .required("Title is required!"),
+  .min(2, 'Title should be three letters at least!')
+  .required('Title is required!'),
   category: Yup.string()
-  .min(2, "Category should be three letters at least!")
-  .required("Category is required!"),
+  .min(2, 'Category should be three letters at least!')
+  .required('Category is required!'),
   jobType: Yup.string().required('JobType is required'),
   salary: Yup.number().typeError('You must specify a number').min(0, 'Min value 0.'),
   street: Yup.string(),
@@ -42,21 +43,26 @@ const CreateJobSchema = Yup.object().shape({
   startDate: Yup.date().nullable(),
   endDate: Yup.date().nullable(),
   applicationLastDate: Yup.date().nullable(),
-  requirements: Yup.string().min(2, "Requirements should be three letters at least!"),
+  requirements: Yup.string().min(2, 'Requirements should be three letters at least!'),
   desirableSkills: Yup.string(),
   benefits: Yup.string(),
   details: Yup.string(),
 });
 
-const CreateJob: React.FC<any> = () => {
+const CreateJob: React.FC = () => {
   const { t } = useTranslation()
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const isLoading = useSelector((state: IRootState) => state.job.loading)
 
   const handleSubmit = (job: Job) => {
     dispatch(createJob(job));
+    history.push({
+      pathname: history.location.pathname,
+      search: '?' + new URLSearchParams({ tab: 'my' }).toString(),
+    })
   };
   return (
     <div className={classes.newJob}>

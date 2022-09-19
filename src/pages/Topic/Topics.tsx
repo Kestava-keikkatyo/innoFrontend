@@ -1,18 +1,21 @@
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridColumns } from '@mui/x-data-grid';
 import * as React from 'react';
-import { DeleteOutline } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { DeleteOutline } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import makeStyles from '@mui/styles/makeStyles';
 import Typography from '@mui/material/Typography';
 import { setAlert } from '../../actions/alertActions';
-import { useTranslation } from "react-i18next";
-import i18next from "i18next";
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 import { deleteTopic, fetchAllTopics } from '../../actions/topicActions';
+import { Button } from '@mui/material';
+import { Topic } from '../../types/types';
+import moment from 'moment';
 
-const Topics: React.FC<any> = () => {
+const Topics: React.FC = () => {
 
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -29,39 +32,43 @@ const Topics: React.FC<any> = () => {
 
   const handleDelete = (id: string) => {
     console.log(id);
-    dispatch(deleteTopic(id))
-    dispatch(setAlert("Topic was deleted successfully!"))
+    dispatch(deleteTopic(topics.find(topic => topic._id === id) as Topic))
+    dispatch(setAlert('Topic was deleted successfully!'))
   }
   
-  const columns = [
+  const columns: GridColumns = [
     {
-        field: "question",
-        headerName: (i18next.t("topic_question")),
-        width: 400,
+        field: 'question',
+        headerName: (i18next.t('topic_question')),
+        width: 300,
     },
     { 
-        field: "answer", 
-        headerName: (i18next.t("topic_answer")), 
-        width: 400 
+        field: 'answer', 
+        headerName: (i18next.t('topic_answer')), 
+        width: 250 
     },
     {
-        field: "createdAt",
-        headerName: (i18next.t("topic_created_at")),
-        width: 200,
+        field: 'createdAt',
+        headerName: (i18next.t('topic_created_at')),
+        width: 250,
+        renderCell: (params) => {
+          console.log(params.row);
+          return <>{moment(params.row.createdAt).format('DD/MM/YYYY')}</>; 
+      }
     },
     {
-        field: "action",
-        headerName: (i18next.t("topic_action")),
+        field: 'action',
+        headerName: (i18next.t('topic_action')),
         width: 200,
-        renderCell: (params: any) => {
+        renderCell: (params) => {
             return (
                 <>
-            <Link to={"/topic/update/" + params.id}>
+            <Link to={'/topics/update/' + params.id}>
                 <span className={classes.topicUpdate}>{t('topic_update')}</span>
             </Link>
             <DeleteOutline
               className={classes.topicDelete}
-              onClick={() => handleDelete(params.id)}
+              onClick={() => handleDelete(params.row._id)}
               
             />
             </>
@@ -74,6 +81,9 @@ const Topics: React.FC<any> = () => {
     <div style={{ height: 700, width: '100%' }}>
       <div>
         <Typography className={classes.topicTitle} color="primary" align="center" variant="h5">{t('topics')}</Typography>
+      </div>
+      <div>
+        <Button className={classes.button} color="secondary" component={Link} to="/topics/create">{t('topic_create_new_topic')}</Button>
       </div>
       <DataGrid
         getRowId={(row) => row._id}
@@ -102,6 +112,10 @@ const useStyles = makeStyles(() => ({
   topicTitle: {
     marginTop: '25px',
     marginBottom: '15px',
+},
+button: {
+  marginLeft: '850px',
+  fontSize: '15px',
 }
 }));
 

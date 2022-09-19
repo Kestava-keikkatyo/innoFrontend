@@ -1,14 +1,16 @@
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridColumns } from '@mui/x-data-grid';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../utils/store';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import makeStyles from '@mui/styles/makeStyles';
-import { fetchAllMyFeedbacks } from "../../actions/feedBackActions";
-import { useTranslation } from "react-i18next";
-import i18next from "i18next";
+import { fetchAllMyFeedbacks } from '../../actions/feedBackActions';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+import { Stack } from '@mui/material';
+import moment from 'moment';
 
-const Feedbacks: React.FC<any> = () => {
+const Feedbacks: React.FC = () => {
 
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -23,7 +25,7 @@ const Feedbacks: React.FC<any> = () => {
   rows = feedbacks;
   console.log('feedbacks:', feedbacks);
   
-  const columns = [
+  const columns: GridColumns = [
     {
       field: "heading",
       headerName: (i18next.t("feedback_title")),
@@ -41,18 +43,26 @@ const Feedbacks: React.FC<any> = () => {
       headerName: (i18next.t("sending_date")),
       minWidth: 125,
       flex: 1,
+      renderCell: (params) => {
+        console.log(params.row);
+        return <>{moment(params.row.createdAt).format('DD/MM/YYYY')}</>;
     },
     {
       field: "action",
       headerName: (i18next.t("feedback_action")),
       minWidth: 100,
       flex: 1,
-      renderCell: (params: any) => {
+      renderCell: (params) => {
         return (
           <>
-          <Link to={"/feedback-details/" + params.id}>
+          <Stack direction="row" spacing={2}>
+          <Link to={'/feedback/details/' + params.id}>
             <span>{t('feedback_details')}</span>
           </Link>
+          <Link to={'/feedback/update/' + params.id}>
+            <span className={classes.update}>{t('button_edit')}</span>
+          </Link>
+          </Stack>
           </>
         );
       }

@@ -1,118 +1,79 @@
 import React from 'react';
-import vastuualueet from '../../assets/tietopankki/vastuualueet.json';
-import {
-  Card,
-  List,
-  CardContent,
-  ListItem,
-  ListItemText,
-  FormControlLabel,
-  Checkbox,
-  Divider,
-  CardHeader,
-  Grid,
-  Typography,
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Button
+import { Grid, Link, Typography,
 } from '@mui/material';
-import { useTranslation } from 'react-i18next';
-import Faq from './FAQBoxBusiness';
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
-import { Link } from 'react-router-dom';
+import makeStyles from '@mui/styles/makeStyles';
+import LatestJoinedWorkers from '../Profile/LatestJoinedWorkers';
 
 const BusinessHome = () => {
-  const { t } = useTranslation();
-
+  const classes = useStyles();
   return (
-    <Grid container className="homeContainer">
-      <Grid item xs={12} md={6} className="home">
-      <Card variant="outlined">
-          <CardHeader
-            title={t("faq")}
-            subheader=""
-            style={{ textAlign: "center", paddingBottom: "0"}}
-          />
-          <CardContent className="home2">
-          <Faq />
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item xs={12} md={6} className="home">
-        <Card variant="outlined">
-          <CardHeader
-            title={t('business_responsibility')}
-            subheader=""
-            style={{ textAlign: "center", paddingBottom: "0"}}
-          />
-          <CardContent className="home2">
-            {/* Old business responsibilities list
-            <List component="nav" aria-label="mailbox folders">
-              <Divider />
-              {vastuualueet.business.map((e, i) => (
-                <ListItem key={i} divider>
-                  <ListItemText primary={`${i + 1}. ${e.tip}`} />
-                </ListItem>
-              ))}
-            </List> */}
-            {/* Business2 responsibilities list
-            <List component="nav" aria-label="mailbox folders">
-              <Divider />
-              <Typography variant="h6" component="h2">
-                Jaetut vastuut
-              </Typography>
-              <Divider />
-              {/* Shared responsibilities list *}
-              {vastuualueet.yhtenäinen.map((e, i) => (
-                <ListItem key={i} divider>
-                  <ListItemText primary={`${e.tip}`} />
-                </ListItem>
-              ))}
-              <Typography variant="h6" component="h2">
-                {t('business_responsibility')}
-              </Typography>
-              <Divider />
-              {/* Business responsibilities list *}
-              {vastuualueet.business2.map((e, i) => (
-                <ListItem key={i} divider>
-                  <ListItemText primary={`${e.tip}`} />
-                </ListItem>
-              ))}
-            </List> */}
-            <List component="nav" aria-label="mailbox folders">
-              {vastuualueet.business.map((e, i) => (
-              <ListItem key={e.tip}>
-                <Accordion style={{margin: "4px 0"}} variant="outlined">
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                  >
-                    <Typography style={{color: "#000000DE"}}>{`${e.tip}`}</Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <Typography variant="body1">{`${e.details}`}</Typography>
-                    <Button color="primary" variant="contained" style={{marginTop: "1rem"}}>
-                      <Link to="/databank" style={{textDecoration: 'none', color: "black"}}>
-                        Lue lisää vastuualueista
-                      </Link>
-                    </Button>
-                  </AccordionDetails>
-                </Accordion>
-              </ListItem>
-              ))}
-            </List>
-            <FormControlLabel 
-            control={<Checkbox defaultChecked style={{color:'#eb5a00'}} />} 
-            label={t<string>('business_responsibilities_read')}
-            style={{padding: "0 1rem"}}
-            />
-          </CardContent>
-        </Card>
-      </Grid>
+    <Grid container>
+      <div className={classes.generalInfo}>
+        <div className={classes.item}>
+          <Typography color="primary" align="center" variant="h6"> Latest received reports </Typography>
+        </div>
+        <div className={classes.item}>
+          <Typography color="primary" align="center" variant="h6"> <Link href="/information" underline="hover">Information</Link> </Typography>
+        </div>
+        <div className={classes.item}>
+          <Typography color="primary" align="center" variant="h6"> Areas of responsibility </Typography>
+        </div>
+      </div>
+      <div className={classes.pageContent}>
+        <div className={classes.contentContainer}>
+            <div className={classes.feelingAnalysis}>
+             
+            </div>
+            <div className={classes.latestJobAds}>
+            <LatestJoinedWorkers />
+            </div>
+        </div>
+      </div> 
     </Grid>
   );
 };
+
+const useStyles = makeStyles(() => ({
+  generalInfo: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  item: {
+    flex: '1',
+    margin: '0px 20px',
+    padding: '30px',
+    borderRadius: '10px',
+    webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
+    boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
+  },
+  container: {
+    margin: '10px 0px',
+    display: 'flex',
+    alignItems: 'center'
+  },
+  pageContent: {
+    flex: '4',
+    padding: '5px'
+},
+feelingAnalysis: {
+    flex: 1,
+    padding: '10px',
+    webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
+    boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
+},
+latestJobAds: {
+    flex: 2,
+    padding: '10px',
+    webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
+    boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
+    marginLeft: '20px',
+},
+contentContainer: {
+    display: 'flex',
+    marginTop: '10px',
+    hight: '500',
+},
+}));
 
 export default BusinessHome;
