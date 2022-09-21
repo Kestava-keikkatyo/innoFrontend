@@ -46,6 +46,7 @@ const Feedbacks: React.FC = () => {
       renderCell: (params) => {
         console.log(params.row);
         return <>{moment(params.row.createdAt).format('DD/MM/YYYY')}</>;
+      }
     },
     {
       field: "action",
