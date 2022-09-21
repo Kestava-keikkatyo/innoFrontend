@@ -98,7 +98,7 @@ export const FormikSelectField: React.FC<any> = ({ options, label, disabled, set
       style={{ minHeight: '5rem', minWidth: 120 }}
       error={!!errorText}>
       <InputLabel id={props._id || props.name}>{label}</InputLabel>
-      <Select {...field} >
+      <Select {...field} aria-labelledby={props._id || props.name}>
         {options.map((option: any) => (
           <MenuItem key={option.value} value={option.value}>
             {option.label || option.value}
@@ -195,19 +195,19 @@ export const DatePickerField: React.FC<DatePickerFieldProps & FormikProps<any>> 
   return (
     <>
       <LocalizationProvider dateAdapter={AdapterDateFns} >
-        <DatePicker 
-          renderInput = {props => 
-            <TextField 
-              id="date-picker-dialog" 
-              label={label} 
+        <DatePicker
+          renderInput = {props =>
+            <TextField
+              id="date-picker-dialog"
+              label={label}
               name={name}
               required={required}
               fullWidth
               style={{ minHeight: '4rem'}}
               {...props}
-            /> 
+            />
           }
-          label={label} 
+          label={label}
           inputFormat="dd.MM.yyyy"
           mask="__.__.____"
           value={values[name]}
@@ -215,7 +215,6 @@ export const DatePickerField: React.FC<DatePickerFieldProps & FormikProps<any>> 
           OpenPickerButtonProps={{
             'aria-label': 'change date'
           }}
-          
         />
       </LocalizationProvider>
     </>
