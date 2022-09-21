@@ -24,32 +24,33 @@ const Feedbacks: React.FC = () => {
   let rows = [];
   rows = feedbacks;
   console.log('feedbacks:', feedbacks);
-  
+
   const columns: GridColumns = [
     {
-      field: "heading",
-      headerName: (i18next.t("feedback_title")),
-      minWidth: 100,
-      flex: 1,
-    },
-    { 
-      field: "recipient", 
-      headerName: (i18next.t("feedback_recipient")),
+      field: 'heading',
+      headerName: (i18next.t('feedback_title')),
       minWidth: 100,
       flex: 1,
     },
     {
-      field: "createdAt",
-      headerName: (i18next.t("sending_date")),
+      field: 'recipient',
+      headerName: (i18next.t('feedback_recipient')),
+      minWidth: 100,
+      flex: 1,
+    },
+    {
+      field: 'createdAt',
+      headerName: (i18next.t('sending_date')),
       minWidth: 125,
       flex: 1,
       renderCell: (params) => {
         console.log(params.row);
         return <>{moment(params.row.createdAt).format('DD/MM/YYYY')}</>;
+      }
     },
     {
-      field: "action",
-      headerName: (i18next.t("feedback_action")),
+      field: 'action',
+      headerName: (i18next.t('feedback_action')),
       minWidth: 100,
       flex: 1,
       renderCell: (params) => {
@@ -69,7 +70,7 @@ const Feedbacks: React.FC = () => {
     },
   ];
     return (
-        <div style={{ height: "75vh" }}>
+        <div style={{ height: '75vh' }}>
       <DataGrid
         getRowId={(row) => row._id}
         rows={rows}
