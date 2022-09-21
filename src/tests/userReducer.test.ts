@@ -24,11 +24,6 @@ describe('userReducer', () => {
     data: {}
   }
 
-  test('Should return default state', () => {
-    const newState = userReducer(undefined, undefined)
-    expect(newState).toEqual(defaultState)
-  })
-
   test('Returns a new state with action USER_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT and USER_FAILURE', () => {
     const requestState = userReducer(defaultState, defaultUserRequestAction)
 

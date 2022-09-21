@@ -25,17 +25,6 @@ describe('alertReducer', () => {
     data: defaultData
   }
 
-  test('Should return default state', () => {
-    const expectedState = {
-      severity: severity.Info,
-      message: '',
-      open: false
-    }
-
-    const newState = alertReducer(undefined, undefined)
-    expect(newState).toEqual(expectedState)
-  })
-
   test('Should return a new state with action ALERT_SET and ALERT_CLEAR', () => {
     const setState = alertReducer(undefined, defaultSetAction)
 

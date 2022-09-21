@@ -37,10 +37,7 @@ const initialState: Form = {
  * @param {FormActionTypes} action - dispatched action
  * @todo - Figure out immutability: formReducer is not a pure function. Ditch temp?
  */
-const formReducer = (state = initialState, action?: FormActionTypes) => {
-  if (action === null || action === undefined) {
-    return state
-  }
+const formReducer = (state = initialState, action: FormActionTypes) => {
   switch (action.type) {
     case SET_CURRENT_FORM:
       return action.data

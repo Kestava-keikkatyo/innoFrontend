@@ -26,10 +26,7 @@ const initialState: UserState = {
  * @param {Object} state - current state
  * @param {UserActionTypes} action - dispatched action
  */
-const userReducer = (state = initialState, action?: UserActionTypes) => {
-  if (action === null || action === undefined) {
-    return state
-  }
+const userReducer = (state = initialState, action: UserActionTypes) => {
   switch (action.type) {
     case USER_REQUEST:
       return {

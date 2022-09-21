@@ -32,20 +32,6 @@ describe('formReducer', () => {
     common: false
   }
 
-  test('Should return default state', () => {
-    expect(formReducer(undefined, undefined)).toEqual(
-      {
-        title: '',
-        description: '',
-        tags: [],
-        isPublic: true,
-        questions: [],
-        filled: false,
-        common: false
-      }
-    )
-  })
-
   test('Should handle SET_CURRENT_FORM', () => {
     expect(
       formReducer(undefined, {

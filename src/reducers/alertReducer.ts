@@ -22,10 +22,7 @@ const initialState: AlertState = {
  * @param {Object} state - current state
  * @param {Object} action - dispatched action
  */
-const alertReducer = (state = initialState, action?: AlertActionTypes) => {
-  if (action === null || action === undefined) {
-    return state
-  }
+const alertReducer = (state = initialState, action: AlertActionTypes) => {
   switch (action.type) {
     case ALERT_SET:
       return {
