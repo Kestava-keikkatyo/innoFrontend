@@ -21,6 +21,12 @@ import {
   responsibilityType,
 } from './types'
 
+export interface UserState {
+  loggedIn: boolean,
+  loading: boolean,
+  data: any
+}
+
 export interface UsersState {
   currentUser: User | undefined
   loading: boolean
