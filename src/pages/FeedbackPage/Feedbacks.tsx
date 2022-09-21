@@ -24,17 +24,17 @@ const Feedbacks: React.FC = () => {
   let rows = [];
   rows = feedbacks;
   console.log('feedbacks:', feedbacks);
-  
+
   const columns: GridColumns = [
     {
       field: 'heading',
       headerName: (i18next.t('feedback_title')),
       width: 250,
     },
-    { 
-      field: 'recipient', 
+    {
+      field: 'recipient',
       headerName: (i18next.t('feedback_recipient')),
-      width: 250 
+      width: 250
     },
     {
       field: 'createdAt',
@@ -42,8 +42,8 @@ const Feedbacks: React.FC = () => {
       width: 250,
       renderCell: (params) => {
         console.log(params.row);
-        return <>{moment(params.row.createdAt).format('DD/MM/YYYY')}</>; 
-    }
+        return <>{moment(params.row.createdAt).format('DD/MM/YYYY')}</>;
+      }
     },
     {
       field: 'action',
