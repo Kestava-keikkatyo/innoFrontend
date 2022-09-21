@@ -26,7 +26,7 @@ const WorkerStatisticsSummary = () => {
   if (!feelings) {
     return (
       <div className="worker-statistics-summary">
-        <Typography variant="h5" className="no-data-text">
+        <Typography variant="h1" className="no-data-text header2">
           {t('no_data')}
         </Typography>
         <Typography className="no-data-text">
@@ -40,11 +40,11 @@ const WorkerStatisticsSummary = () => {
     <Grid className="worker-statistics-summary" container spacing={1}>
       <Grid item xs={4}>
         <ProgressPieChart datasets={getDataSet(averageFeeling(feelings))}>
-          <Typography variant="h5">
+          <Typography variant="h2" className='header2'>
             {averageFeeling(feelings).toString()}
           </Typography>
           <Hidden smDown>
-            <Typography variant="h6">
+            <Typography variant="h3" className='header4'>
               {calculateCheer(averageFeeling(feelings), 4)}
             </Typography>
           </Hidden>
@@ -55,11 +55,11 @@ const WorkerStatisticsSummary = () => {
         <ProgressPieChart
           datasets={getDataSet(feelings[feelings.length - 1]?.value)}
         >
-          <Typography variant="h5">
+          <Typography variant="h2" className='header2'>
             {feelings[feelings.length - 1]?.value}
           </Typography>
           <Hidden smDown>
-            <Typography variant="h6">
+            <Typography variant="h3" className='header4'>
               {calculateCheer(feelings[feelings.length - 1]?.value, 4)}
             </Typography>
           </Hidden>
@@ -68,9 +68,9 @@ const WorkerStatisticsSummary = () => {
       </Grid>
       <Grid item xs={4}>
         <ProgressPieChart datasets={getTotalDataSet(feelings.length)}>
-          <Typography variant="h5">{feelings.length}</Typography>
+          <Typography variant="h2" className='header2'>{feelings.length}</Typography>
           <Hidden smDown>
-            <Typography variant="h6">
+            <Typography variant="h3" className='header4'>
               {calculateCheer(feelings.length, 100)}
             </Typography>
           </Hidden>

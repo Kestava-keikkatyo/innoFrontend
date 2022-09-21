@@ -29,17 +29,20 @@ const Feedbacks: React.FC = () => {
     {
       field: 'heading',
       headerName: (i18next.t('feedback_title')),
-      width: 250,
+      minWidth: 100,
+      flex: 1,
     },
     {
       field: 'recipient',
       headerName: (i18next.t('feedback_recipient')),
-      width: 250
+      minWidth: 100,
+      flex: 1,
     },
     {
       field: 'createdAt',
       headerName: (i18next.t('sending_date')),
-      width: 250,
+      minWidth: 125,
+      flex: 1,
       renderCell: (params) => {
         console.log(params.row);
         return <>{moment(params.row.createdAt).format('DD/MM/YYYY')}</>;
@@ -48,7 +51,8 @@ const Feedbacks: React.FC = () => {
     {
       field: 'action',
       headerName: (i18next.t('feedback_action')),
-      width: 250,
+      minWidth: 100,
+      flex: 1,
       renderCell: (params) => {
         return (
           <>
@@ -66,7 +70,7 @@ const Feedbacks: React.FC = () => {
     },
   ];
     return (
-        <div style={{ height: 700, width: '100%' }}>
+        <div style={{ height: '75vh' }}>
       <DataGrid
         getRowId={(row) => row._id}
         rows={rows}

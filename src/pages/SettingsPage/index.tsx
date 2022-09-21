@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   button: {
     margin: theme.spacing(1),
+    border: "1px solid #CC4E00 !important",
   },
 }));
 

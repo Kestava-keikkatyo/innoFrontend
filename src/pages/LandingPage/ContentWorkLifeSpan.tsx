@@ -32,8 +32,8 @@ const LifeSpanStep: React.FC<any> = ({ header, content, form }) => (
 
 const ContentLifeSpan: React.FC<ContentLifeSpanProps> = () => {
   return (
-    <Container>
-      <Spacing m3 p2 />
+    <Container style={{backgroundColor: "white"}}>
+      <div className='spacing' />
       <Grid
         container
         direction="row"
@@ -41,7 +41,7 @@ const ContentLifeSpan: React.FC<ContentLifeSpanProps> = () => {
         alignItems="center"
       >
         <Grid item>
-          <Typography variant="h3">Työn elinkaari</Typography>
+          <Typography variant="h1" className="header3">Työn elinkaari</Typography>
         </Grid>
         <Grid item>
           <Link to="/databank" style={{ textDecoration: 'none' }}>
@@ -51,46 +51,46 @@ const ContentLifeSpan: React.FC<ContentLifeSpanProps> = () => {
           </Link>
         </Grid>
       </Grid>
-      <Spacing m5 />
-      <Grid container className="landing-part2">
+      {/*<Spacing m5 /> */}
+      <Grid container className="landing-WLS">
         <Grid item className="lifespan-container">
           <Grid container>
-            <Grid item xs={4}>
+            <Grid item xs={12} sm={6} md={4}>
               <LifeSpanStep
                 header="Asiakassopimus"
                 content="Vuokrayritys / Käyttäjäyritys"
                 form="Lomake 1"
               />
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={12} sm={6} md={4}>
               <LifeSpanStep
                 header="Työntekijän tilaus ja valinta"
                 content="Vuokrayritys / Käyttäjäyritys"
                 form="0"
               />
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={12} sm={6} md={4}>
               <LifeSpanStep
                 header="Työsopimus ja yleisperehdytys"
                 content="Vuokrayritys / Vuokratyöntekijä"
                 form="Lomake 2"
               />
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={12} sm={6} md={4}>
               <LifeSpanStep
                 header="Asiakassopimus"
                 content="Vuokrayritys / Käyttäjäyritys"
                 form="Lomake 1"
               />
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={12} sm={6} md={4}>
               <LifeSpanStep
                 header="Työntekijän tilaus ja valinta"
                 content="Vuokrayritys / Käyttäjäyritys"
                 form="0"
               />
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={12} sm={6} md={4}>
               <LifeSpanStep
                 header="Työsopimus ja yleisperehdytys"
                 content="Vuokrayritys / Vuokratyöntekijä"

@@ -23,9 +23,10 @@ const Agencies: React.FC = () => {
   rows = users;
   const columns: GridColumns = [
     {
-      field: 'name',
-      headerName: (i18next.t('list_name')),
-      width: 250,
+      field: "name",
+      headerName: (i18next.t("list_name")),
+      minWidth: 150,
+      flex: 1,
       renderCell: (params) => {
         return (
         <div className={classes.userListUser}>
@@ -36,29 +37,34 @@ const Agencies: React.FC = () => {
       },
     },
     {
-      field: 'category', 
-      headerName: (i18next.t('list_category')),
-      width: 150 
+      field: "category", 
+      headerName: (i18next.t("list_category")),
+      minWidth: 100,
+      flex: 1,
     },
     {
-      field: 'email', 
-      headerName: (i18next.t('list_email')), 
-      width: 200 
+      field: "email", 
+      headerName: (i18next.t("list_email")), 
+      minWidth: 200,
+      flex: 1,
     },
     {
-      field: 'city', 
-      headerName: (i18next.t('list_city')), 
-      width: 120 
+      field: "city", 
+      headerName: (i18next.t("list_city")), 
+      minWidth: 100,
+      flex: 1,
     },
     {
-      field: 'userType', 
-      headerName: (i18next.t('list_position')), 
-      width: 120 
+      field: "userType", 
+      headerName: (i18next.t("list_position")), 
+      minWidth: 75,
+      flex: 1,
     },
     {
-      field: 'action',
-      headerName: (i18next.t('list_action')),
-      width: 200,
+      field: "action",
+      headerName: (i18next.t("list_action")),
+      minWidth: 100,
+      flex: 1,
       renderCell: (params) => {
         return (
         <>
@@ -72,9 +78,14 @@ const Agencies: React.FC = () => {
     },
   ];
   return (
-    <div style={{ height: 700, width: '100%' }}>
+    <div style={{ height: "75vh", width: "100%", padding: "0 1rem" }}>
       <div>
-        <Typography className={classes.title} color="primary" align="center" variant="h5">{t('list_title_agencies')}</Typography>
+        <Typography className={"header"}
+        style={{marginTop: "25px", marginBottom: "15px"}}
+        color="primary" 
+        align="center" 
+        variant="h1">
+          {t('list_title_agencies')}</Typography>
         </div>
         <DataGrid
         getRowId={(row) => row._id}
@@ -89,11 +100,15 @@ const Agencies: React.FC = () => {
   );
 }
 
+<<<<<<< HEAD
+const useStyles = makeStyles((theme) => ({
+=======
 const useStyles = makeStyles(() => ({
   title: {
     marginTop: '25px',
     marginBottom: '15px',
   },
+>>>>>>> origin
   userListUser: {
     display: 'flex',
     alignItems: 'center',

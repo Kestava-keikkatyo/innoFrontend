@@ -115,8 +115,8 @@ const Report: React.FC<any> = ({ report }) => {
       backgroundColor: 'grey.300',
     } 
   : {} 
-  //Set reply-status color in AccordionSummary according to report.status
-  const statusColor = report.status==='pending' ? 'warning.main' : 'success.main'
+  //Set reply-status color in AccordionSummary according to report.status (warning.main changed for contrast accessibility)
+  const statusColor = report.status==='pending' ? '#CC4E00' : 'success.main'
 
   //Localize the date (date when the event happened) for AccordionSummary
   const localizedDate = report.date ? (new Date(report.date)).toLocaleString() : null;
@@ -133,20 +133,20 @@ const Report: React.FC<any> = ({ report }) => {
           }}
       >
           {/**Title */}
-          <Typography sx={{ width: '33%'}}>
+          <Typography className='report1' sx={{ width: '30%'}}>
             {report.title}
           </Typography>
         
           {/**Date */}
-          <Typography 
+          <Typography className='report1'
             display='inline' 
-            sx={{color: 'text.secondary', width: '33%'}}
+            sx={{color: 'text.secondary', width: '35%'}}
           >
             {localizedDate}
           </Typography>
 
           {/**Status (Reply-status and archived-status if archived) */}
-          <Box sx={{width: '33%'}}>
+          <Box className='report1' sx={{width: '35%'}}>
             {/**Reply-status*/}
             <Typography 
               display='inline'
@@ -286,7 +286,7 @@ const Report: React.FC<any> = ({ report }) => {
               <Typography variant="body1" className={classes.body1}>
                 {t('report_details')}
               </Typography>
-
+              
               {/**whiteSpace: 'pre-wrap' to preserve whitespace styling from the original report. */}
               <Typography paragraph variant="body2" className={classes.body2} sx={{whiteSpace: 'pre-wrap'}}>
                 {report.details}
@@ -321,7 +321,7 @@ const Report: React.FC<any> = ({ report }) => {
             )}
           </Box>
           }
-          
+
           {report.agencyReply && 
             /**Show agencys reply if it exists */
             <Box 
@@ -373,7 +373,6 @@ const Report: React.FC<any> = ({ report }) => {
               </Typography>
             </Box>
             }
-
           {/*
             For agency and business users, if they have not replied to the report, show reply button.
           */}
@@ -390,7 +389,6 @@ const Report: React.FC<any> = ({ report }) => {
             {t('report_answer_button')}
           </Button>
           }
-          
         </AccordionDetails>
       </Accordion>
     </div>
@@ -447,7 +445,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     body1: {
       marginTop: 16,
-      color: '#EB5A00',
+      color: '#CC4E00 !important',
     },
     body2: {
       marginTop: 8,

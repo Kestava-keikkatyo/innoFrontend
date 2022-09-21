@@ -43,7 +43,7 @@ const ReportStepThree: React.FC<any> = ({stepThreeError}) => {
     <Grid container style={{ marginTop: 16 }}>
       {/**Title */}
       <Grid item xs={12}>
-        <Typography variant="h6">{t('fill_details')}</Typography>
+        <Typography variant="h2" className='header5'>{t('fill_details')}</Typography>
       </Grid>
 
       {/**Report title Textfield */}

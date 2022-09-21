@@ -43,7 +43,7 @@ const SendFeedback: React.FC = () => {
   return (
     <div className={classes.newFeedback}>
       <div className={classes.feedbackTitleContainer}>
-        <Typography color="primary" className={classes.title} variant="h4">{t('send_feedback')}</Typography>
+        <Typography color="primary" className={classes.title} variant="h1">{t('send_feedback')}</Typography>
       </div>
       <div className={classes.feedbackContainer}>
         <Formik
@@ -73,7 +73,7 @@ const SendFeedback: React.FC = () => {
 const useStyles = makeStyles((theme) => ({
   newFeedback: {
     flex: '4',
-    padding: '20px',
+    //padding: '20px',
   },
   button: {
     left: theme.spacing(0),
@@ -81,6 +81,9 @@ const useStyles = makeStyles((theme) => ({
   title: {
     marginTop: '5px',
     marginBottom: '15px',
+    fontWeight: 400,
+    fontSize: "2.125rem",
+    lineHeight: 1.235,
   },
   feedbackTitleContainer: {
     display: 'flex',
@@ -90,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
   feedbackContainer: {
     flex: '1',
     padding: '20px',
-    width: '600px',
+    //width: '600px',
     webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
     boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)'
   },

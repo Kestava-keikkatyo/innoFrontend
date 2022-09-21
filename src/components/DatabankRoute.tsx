@@ -95,6 +95,7 @@ const DatabankRoute: React.FC<DatabankProps> = ({ path, children }) => {
 const useStyles = makeStyles((theme) => ({
   search: {
     position: 'relative',
+    color: 'black',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: alpha(theme.palette.common.white, 0.15),
     '&:hover': {

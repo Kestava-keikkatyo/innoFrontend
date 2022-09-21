@@ -85,7 +85,7 @@ const PieChart = () => {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography gutterBottom variant="h5">
+            <Typography gutterBottom variant="h4" className='header2'>
             {t('mood_overall')}
             </Typography>
           </AccordionSummary>
