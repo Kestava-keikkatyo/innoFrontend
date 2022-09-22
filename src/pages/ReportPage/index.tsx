@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import { setFiles } from '../../actions/fileActions';
 
 /*
-TODO: Rename report pages filenames. ReportsPage is now main page,
+TODO: Rename report pages filenames. ReportsPage is now main page
 and ReportPage in index.tsx is used only when writing a new report.
 */
 const ReportPage = () => {
