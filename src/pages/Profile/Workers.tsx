@@ -72,20 +72,20 @@ return (
 <div style={{ height: "75vh", width: "100%", padding: "0 1rem" }}>
   <div>
     <Typography className={"header"}
-    style={{marginTop: "25px", marginBottom: "15px"}}
-    color="primary" 
-    align="center" 
-    variant="h1">
+                style={{marginTop: "25px", marginBottom: "15px"}}
+                color="primary"
+                align="center"
+                variant="h1">
       {t('list_title_workers')}</Typography>
   </div>
   <DataGrid
-  getRowId={(row) => row._id}
-  rows={rows}
-  disableSelectionOnClick
-  columns={columns}
-  pageSize={10}
-  rowsPerPageOptions={[10]}
-  checkboxSelection
+      getRowId={(row) => row._id}
+      rows={rows}
+      disableSelectionOnClick
+      columns={columns}
+      pageSize={10}
+      rowsPerPageOptions={[10]}
+      checkboxSelection
   />
 </div>
 );
