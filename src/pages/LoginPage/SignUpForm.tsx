@@ -27,7 +27,7 @@ import { roles } from '../../types/types';
 const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
   const [open, setOpen] = useState(false);
   const { t } = useTranslation();
-  const { loading } = useSelector((state: any) => state.user);
+  // const { loading } = useSelector((state: any) => state.user);
 
   const roleOptions = [
     { value: roles.Worker, label: t('worker') },
@@ -160,11 +160,11 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
                 <SignUpModal open={open} handleClose={() => setOpen(false)} />
                 <Button
                   type="submit"
-                  disabled={!dirty || !isValid || loading}
+                  disabled={!dirty || !isValid}
                   variant="contained"
                   color="primary"
                 >
-                  {loading ? <CircularProgress size={24} /> : t('sign_up')}
+                  {t('sign_up')}
                 </Button>
               </Box>
             </Form>
