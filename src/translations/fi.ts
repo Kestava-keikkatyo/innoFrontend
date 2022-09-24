@@ -510,6 +510,7 @@ export default {
   slogan: 'Kun henkilöstö voi hyvin, työ sujuu.',
   intro:
     'Keikkakaveri tarjoaa tietoa, koulutusta ja välineitä turvallisten ja terveellisten työolojen kehittämiseen ja ylläpitämiseen.',
+    areas_of_responsibility_button: 'LUE LISÄÄ VASTUUALUEISTA',
 
   // CreateJobForAgency
   add_new_job: 'Lisää uusi työpaikka',
@@ -673,4 +674,28 @@ export default {
   responsibility_update_topic: 'Päivitä vastuu',
   responsibility_create_new_topic: 'Päivitä vastuu',
   responsibility_navigate: 'Vastuut',
+
+  // Work lifespan
+  lifespan_button: 'LUE LISÄÄ ELINKAARESTA',
+  customer_agreement: 'Asiakassopimus',
+  business_agency: 'Vuokrayritys / Käyttäjäyritys',
+  agency_agencyWorker: 'Vuokrayritys / Vuokratyöntekijä',
+  form: 'lomake',
+  employee_order: 'Työntekijän tilaus ja valinta',
+  contract_orientation: 'Työsopimus ja yleisperehdytys',
+
+  // Footer Page
+  worker_question: "Oletko työntekijä?",
+  make_money: "Ansaitse rahaa",
+  work_flexibly: "Tee joustavasti töitä",
+  stressFree_work: "Stressitön keikkatyö",
+  register: "LUO TILI",
+  user_company: "Oletko käyttäjäyritys?",
+  flexible_model: "Nopea ja joustava malli hankkia työntekijöitä",
+  recruitment_process: "Pääset vaikuttamaan rekrytointiprosessiin",
+  productivity: "Hyvinvoivien työntekijöiden tuottavuus on jopa 20% normaalia parempi",
+  rental_company: "Oletko vuokratyöfirma?",
+  orientation: "Keskitä perehdyttäminen yhteen paikkaan",
+  automation: "Automatisaatiolla perehdytys on rennompaa",
+  wellBeing: "Työntekijöitesi hyvinvointi on meille tärkeää",
 }

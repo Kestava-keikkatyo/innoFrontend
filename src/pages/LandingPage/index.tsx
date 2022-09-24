@@ -20,6 +20,8 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import fi1 from '../../components/NavigationComponents/fi1.png';
 import us1 from '../../components/NavigationComponents/us1.png';
+import vastuualueet from '../../assets/tietopankki/vastuualueet.json';
+import vastuualueet_en from '../../assets/tietopankki/vastuualueet_en.json';
 // import sw1 from '../../components/NavigationComponents/sw1.png';
 const LandingPage = () => {
   const changeLanguage = (code: any) => {
@@ -30,7 +32,6 @@ const LandingPage = () => {
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
   const { t } = useTranslation();
-
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };

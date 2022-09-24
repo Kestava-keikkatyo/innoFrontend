@@ -15,6 +15,7 @@ export default {
   saveButton: 'Save',
   faq: 'Frequently asked questions',
 
+
   // login
   login_title: 'Log In',
   email_label: 'Email',
@@ -516,6 +517,7 @@ export default {
   slogan: 'When the personnel feels well, the work flows.',
   intro:
     'Keikkakaveri provides information, training and equipment for developing and maintaining safe and healthy working conditions.',
+  areas_of_responsibility_button: 'READ MORE ABOUT AREAS OF RESPONSIBILITY',
 
   // CreateJobForAgency
   add_new_job: 'Add new job',
@@ -679,4 +681,28 @@ export default {
   responsibility_update_topic: 'Update responsibility',
   responsibility_create_new_topic: 'Create new responsibility',
   responsibility_navigate: 'Responsibilities',
+
+  // Work lifespan
+  lifespan_button: 'READ MORE ABOUT LIFESPAN',
+  customer_agreement: 'Customer agreement',
+  business_agency: 'Agency / Business',
+  agency_agencyWorker: 'Agency / Agency worker',
+  form: 'form',
+  employee_order: 'Order and selection of the employee',
+  contract_orientation: 'Employment contract and general orientation',
+
+  // Footer Page
+  worker_question: "Are you an employee?",
+  make_money: "Make money",
+  work_flexibly: "Work flexibly",
+  stressFree_work: "Stress-free job",
+  register: "REGISTER",
+  user_company: "Are you a user company?",
+  flexible_model: "Fast and flexible model for acquiring employees",
+  recruitment_process: "You get to influence the recruitment process",
+  productivity: "The productivity of healthy employees is up to 20% better than normal",
+  rental_company: "Are you a rental company?",
+  orientation: "Focus the orientation in one place",
+  automation: "With automation, orientation is more relaxed",
+  wellBeing: "The well-being of your employees is important to us",
 }

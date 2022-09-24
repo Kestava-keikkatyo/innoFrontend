@@ -13,6 +13,7 @@ import {
 import React from 'react'
 import Spacing from '../../components/Spacing'
 import logo from "../LandingPage/keikka-kaveri4.png";
+import { useTranslation } from 'react-i18next';
 
 export interface FooterPageProps {}
 
@@ -29,7 +30,9 @@ const FooterColumn: React.FC<any> = ({ header, list }) => (
   </>
 )
 
-const CustomCard: React.FC<any> = ({ header, content }) => (
+const FooterPage: React.FC<FooterPageProps> = () => {
+  const { t } = useTranslation();
+  const CustomCard: React.FC<any> = ({ header, content }) => (
   <Card variant="outlined">
     <CardContent>
       <Typography variant="h5">{header}</Typography>
@@ -45,13 +48,11 @@ const CustomCard: React.FC<any> = ({ header, content }) => (
       ))}
     </CardContent>
     <CardActions disableSpacing>
-      <Button>Luo tili</Button>
-      <Button>Kirjaudu sisään</Button>
+      <Button>{t('register')}</Button>
+      <Button>{t('login_title')}</Button>
     </CardActions>
   </Card>
 )
-
-const FooterPage: React.FC<FooterPageProps> = () => {
   return (
     <Grid
       container
@@ -65,11 +66,11 @@ const FooterPage: React.FC<FooterPageProps> = () => {
           <Grid item xs={4}>
             <Spacing m5 p5>
               <CustomCard
-                header="Oletko työntekijä?"
+                header={t('worker_question')}
                 content={[
-                  'Ansaitse rahaa',
-                  'Tee joustavasti töitä',
-                  'Stressitön keikkatyömalli',
+                  t('make_money'),
+                  t('work_flexibly'),
+                  t('stressFree_work'),
                 ]}
               />
             </Spacing>
@@ -77,11 +78,11 @@ const FooterPage: React.FC<FooterPageProps> = () => {
           <Grid item xs={4}>
             <Spacing m5 p5>
               <CustomCard
-                header="Oletko käyttäjäyritys?"
+                header={t('user_company')}
                 content={[
-                  'Nopea ja joustava malli hankkia työntekijöitä',
-                  'Pääset vaikuttamaan rekrytointiprosessiin',
-                  'Hyvinvoivien työntekijöiden tuottavuus on jopa 20% normaalia parempi',
+                  t('flexible_model'),
+                  t('recruitment_process'),
+                  t('productivity'),
                 ]}
               />
             </Spacing>
@@ -89,11 +90,11 @@ const FooterPage: React.FC<FooterPageProps> = () => {
           <Grid item xs={4}>
             <Spacing m5 p5>
               <CustomCard
-                header="Oletko vuokratyöfirma?"
+                header={t('rental_company')}
                 content={[
-                  'Keskitä perehdyttäminen yhteen paikkaan',
-                  'Automatisaatiolla perehdytys on rennompaa',
-                  'Työntekijöitesi hyvinvointi on meille tärkeää',
+                  t('orientation'),
+                  t('automation'),
+                  t('wellBeing'),
                 ]}
               />
             </Spacing>
