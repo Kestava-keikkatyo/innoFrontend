@@ -92,5 +92,103 @@
       "tip": "If necessary, I will make a safety report, e.g. about a near-miss situation",
       "details": "As far as possible, taking care of the above-mentioned issues and implementation methods should be agreed upon already at the stage of concluding the customer contract. However, some issues can be left to be reviewed or agreed upon only during the employee's order phase. This is the way to go, at least when the job description of temporary workers is not yet known exactly."
     }
+  ],
+  "agency2": [
+    {
+      "tip": "Vastuu työaikalain noudattimesta"
+    },
+    {
+      "tip": "Työntekijöiden vakuuttaminen työtapaturmien ja ammattitautien varalta"
+    },
+    {
+      "tip": "Työterveyshuollon järjestäminen"
+    },
+    {
+      "tip": "Tasa-arvon ja yhdenvertaisuuden edistäminen"
+    },
+    {
+      "tip": "Käyttäjäyrityksen velvoitteiden täyttämisen varmistaminen"
+    },
+    {
+      "tip": "Vuokratyöntekijän riittävän ammattitaidon ja työhön soveltumisen varmistaminen"
+    }
+  ],
+  "business2": [
+    {
+      "tip": "Tilaajavastuu"
+    },
+    {
+      "tip": "Tarvittavien tietojen antaminen henkilöstöpalveluyritykselle"
+    },
+    {
+      "tip": "Työn edellyttämien ammattitaitovaatimusten ja erityispiirteiden ilmoittaminen henkilöstöpalveluyritykselle"
+    },
+    {
+      "tip": "Työn vaarojen selvittäminen ja arviointi"
+    },
+    {
+      "tip": "Ilmoittaminen työpaikan työterveyshuollolle ja työsuojeluvaltuutetulle"
+    },
+    {
+      "tip": "Työsuojelun toimintaohjelman laatiminen"
+    },
+    {
+      "tip": "Tasa-arvon ja yhdenvertaisuuden edistäminen"
+    },
+    {
+      "tip": "Vuokratyöntekijän perehdytys työhön ja työoloihin"
+    },
+    {
+      "tip": "Vastuu vuokratyöntekijöiden työnjohdosta ja -valvonnasta (tämän alle keskeiset vaatimukset mm. vastuu työn aikaisesta työn turvallisuudesta ja terveellisyydestä huolehtiminen, tarvittavien henkilönsuojainten ja turvavälineiden käyttämisen varmistaminen, työaikalainsäädännön noudattaminen)"
+    },
+    {
+      "tip": "Työsuojeluvastuu yhteisellä työpaikalla"
+    }
+  ],
+  "worker2": [
+    {
+      "tip": "Työnantajan ohjeiden ja määräysten noudattaminen"
+    },
+    {
+      "tip": "Omasta ja työkavereiden turvallisuudesta huolehtiminen"
+    },
+    {
+      "tip": "Häirinnän ja epäasiallisen kohtelun välttäminen"
+    },
+    {
+      "tip": "Työvälineiden, henkilönsuojainten ja turvalaitteiden asianmukainen käyttö"
+    },
+    {
+      "tip": "Havaitsemistaan vioista ja puutteista ilmoittaminen"
+    }
+  ],
+  "yhtenäinen": [
+    {
+      "tip": "Jaettu työsuojeluvastuu (käyttäjäyrityksen kanssa, yhteinen laatikko)"
+    },
+    {
+      "tip": "Yleisvastuu työturvallisuudesta (tämän alle keskeiset vaatimukset, mm."
+    },
+    {
+      "tip": "* Työn vaarojen selvittäminen ja arviointi"
+    },
+    {
+      "tip": "* Työsuojelun toimintaohjelman laatiminen"
+    },
+    {
+      "tip": "* Työsuojelun yhteistoiminnan järjestäminen"
+    },
+    {
+      "tip": "* Perehdytys (ml. yleisperehdytyksen antaminen vuokratyöntekijälle)"
+    },
+    {
+      "tip": "* Ilmoittaminen nuorten työntekijöiden käyttämisestä vaarallisiin töihin"
+    },
+    {
+      "tip": "* Vakavasta työtapaturmasta ilmoittaminen työsuojeluviranomaisille ja poliisille)"
+    },
+    {
+      "tip": "Tarvittavien henkilönsuojainten hankinta (yhteistyössä käyttäjäyrityksen kanssa, yhteinen laatikko)"
+    }
   ]
 }

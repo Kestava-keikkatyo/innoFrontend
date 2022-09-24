@@ -10,11 +10,13 @@ import {
   USER_FAILURE,
   USER_PROFILE,
   USER_REQUEST,
+  UserState
 } from '../types/state'
 
 const userData = loadUser()
-const initialState = {
+const initialState: UserState = {
   loggedIn: !!userData,
+  loading: false,
   data: userData || {},
 }
 
@@ -29,13 +31,14 @@ const userReducer = (state = initialState, action: UserActionTypes) => {
     case USER_REQUEST:
       return {
         loading: true,
-        data: state.data,
-        loggedIn: !!state.loggedIn,
+        loggedIn: state.loggedIn,
+        data: state.data
       }
     case LOGIN:
       return {
+        loading: false,
         loggedIn: true,
-        data: action.data,
+        data: action.data
       }
     case USER_PROFILE:
       return {
@@ -48,7 +51,11 @@ const userReducer = (state = initialState, action: UserActionTypes) => {
       }
     case USER_FAILURE:
     case LOGOUT:
-      return { loggedIn: false, data: {} }
+      return {
+        ...state,
+        loggedIn: false,
+        data: {}
+      }
     default:
       return state
   }

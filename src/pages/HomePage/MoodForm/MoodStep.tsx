@@ -11,6 +11,7 @@ import { IRootState } from '../../../utils/store';
 import { updateFeeling } from '../../../actions/feelingActions';
 import { useTranslation } from 'react-i18next';
 import FileUploader from '../../../components/FileUploader';
+import Spacing from '../../../components/Spacing'
 
 const MoodStep: React.FC = () => {
 
@@ -60,7 +61,7 @@ const useStyles = makeStyles({
 
   return (
     <>
-      <Typography variant="h4" align="center">
+      <Typography variant="h1" align="center" className="header">
         {t('how_do_you_feel_today')}
       </Typography>
 
@@ -107,13 +108,15 @@ const useStyles = makeStyles({
         </Grid>
       </Grid>
         <Typography style={{paddingTop: "5%"}}>{t('write_a_comment')}</Typography>
-        <TextField
+        <TextField style={{width: "70%"}}
             onChange={handleChange}
             placeholder={t('tell_feelings')}
             multiline
             rows={5}
             variant="outlined"
+            label={t('tell_feelings')}
         />
+        <Spacing m2/>
         <FileUploader name={t('upload_file')} handleFile={() => ''} accept="image/*" />
     </>
   );    

@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import { setFiles } from '../../actions/fileActions';
 
 /*
-TODO: Rename report pages filenames. ReportsPage is now main page,
+TODO: Rename report pages filenames. ReportsPage is now main page
 and ReportPage in index.tsx is used only when writing a new report.
 */
 const ReportPage = () => {
@@ -26,7 +26,7 @@ const ReportPage = () => {
   return (
     <Container style={{ marginTop: 20 }}>
       {/**Title when writing a new report */}
-      <Typography variant="h4" color="primary">
+      <Typography variant="h1" className='header' color="primary">
         {t('report')}
       </Typography>
       {/**Back button takes back to reports page */}

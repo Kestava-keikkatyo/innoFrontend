@@ -36,8 +36,8 @@ const Home = () => {
     }
   };
   return (
-    <Container style={{ marginTop: 24 }}>
-      <Typography variant="h4" color="primary">
+    <Container>
+      <Typography variant="h1" color="primary" className="header">
         {t('home')}
       </Typography>
       {getContent()}

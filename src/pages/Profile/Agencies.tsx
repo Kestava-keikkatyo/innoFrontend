@@ -25,7 +25,8 @@ const Agencies: React.FC = () => {
     {
       field: 'name',
       headerName: (i18next.t('list_name')),
-      width: 250,
+      minWidth: 150,
+      flex: 1,
       renderCell: (params) => {
         return (
         <div className={classes.userListUser}>
@@ -36,29 +37,34 @@ const Agencies: React.FC = () => {
       },
     },
     {
-      field: 'category', 
+      field: 'category',
       headerName: (i18next.t('list_category')),
-      width: 150 
+      minWidth: 100,
+      flex: 1,
     },
     {
-      field: 'email', 
-      headerName: (i18next.t('list_email')), 
-      width: 200 
+      field: 'email',
+      headerName: (i18next.t('list_email')),
+      minWidth: 200,
+      flex: 1,
     },
     {
-      field: 'city', 
-      headerName: (i18next.t('list_city')), 
-      width: 120 
+      field: 'city',
+      headerName: (i18next.t('list_city')),
+      minWidth: 100,
+      flex: 1,
     },
     {
-      field: 'userType', 
-      headerName: (i18next.t('list_position')), 
-      width: 120 
+      field: 'userType',
+      headerName: (i18next.t('list_position')),
+      minWidth: 75,
+      flex: 1,
     },
     {
       field: 'action',
       headerName: (i18next.t('list_action')),
-      width: 200,
+      minWidth: 100,
+      flex: 1,
       renderCell: (params) => {
         return (
         <>
@@ -72,9 +78,14 @@ const Agencies: React.FC = () => {
     },
   ];
   return (
-    <div style={{ height: 700, width: '100%' }}>
+    <div style={{ height: '75vh', width: '100%', padding: '0 1rem' }}>
       <div>
-        <Typography className={classes.title} color="primary" align="center" variant="h5">{t('list_title_agencies')}</Typography>
+        <Typography className={'header'}
+        style={{marginTop: '25px', marginBottom: '15px'}}
+        color="primary"
+        align="center"
+        variant="h1">
+          {t('list_title_agencies')}</Typography>
         </div>
         <DataGrid
         getRowId={(row) => row._id}

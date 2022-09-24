@@ -39,6 +39,7 @@ export const login = (credentials: Credentials, from: string) => {
       dispatch({
         type: USER_FAILURE,
       })
+
       dispatch(setAlert(i18next.t('login_failed'), severity.Error))
     }
   }
@@ -65,7 +66,7 @@ export const signup = (user: SignUpUser) => {
       saveUser(data)
 
       history.push('/home')
-      dispatch(setAlert('signup_successful', severity.Success))
+      dispatch(setAlert(i18next.t('signup_successful'), severity.Success))
     } catch (error) {
       dispatch({
         type: USER_FAILURE,

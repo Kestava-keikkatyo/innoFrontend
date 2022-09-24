@@ -80,8 +80,8 @@ const FileUploader: React.FC<FileUploaderProps> = ({
   };
 
   return (
-    <div style={{ marginTop: 16 }}>
-      <Button variant="outlined" onClick={handleClick}>
+    <div>
+      <Button color='primary' variant="outlined" onClick={handleClick} className="file-upload-button">
         {name}
       </Button>
       <input
@@ -91,7 +91,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
         onChange={handleChange}
         style={{ display: 'none' }}
       />
-      <Typography variant="caption" display="block" gutterBottom>
+      <Typography variant="caption" display="block">
         {filename}
       </Typography>
     </div>

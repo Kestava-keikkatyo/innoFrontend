@@ -60,11 +60,13 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
   return (
     <div className="drawer">
       <div className="kuvake">
+      <img className={classes.logo} src={logo} alt="keikkakaveri_logo" />
+      {/*
         {isOpen ? (
           <img className={classes.logo} src={logo} alt="logo" />
         ) : (
           <div className={classes.logo} />
-        )}
+        )} */}
         {/* <Typography variant="h6" align="center">FI / EN / SV</Typography> */}
         <Divider />
       </div>

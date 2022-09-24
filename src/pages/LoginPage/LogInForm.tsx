@@ -24,12 +24,12 @@ import { useSelector } from 'react-redux';
  */
 const LogInForm: React.FC<any> = ({ handleSubmit }) => {
   const { t } = useTranslation();
-  const { loading } = useSelector((state: any) => state.user);
+  // const { loading } = useSelector((state: any) => state.user);
 
   return (
     <Card variant="outlined">
       <CardContent>
-        <Typography align="center" variant="h4" gutterBottom>
+        <Typography align="center" variant="h1" gutterBottom className="header">
           {t('log_in')}
         </Typography>
         <Formik
@@ -72,11 +72,11 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
                 />
                 <Button
                   type="submit"
-                  disabled={!isValid || loading}
+                  disabled={!isValid}
                   variant="contained"
                   color="primary"
                 >
-                  {loading ? <CircularProgress size={24} /> : t('log_in')}
+                  {t('log_in')}
                 </Button>
               </Box>
             </Form>

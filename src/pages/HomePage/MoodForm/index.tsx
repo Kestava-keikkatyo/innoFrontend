@@ -30,7 +30,6 @@ import MoodStepEnd from './MoodStepEnd';
 
 const ColorlibConnector = withStyles({
 
-
   alternativeLabel: {
     top: 22,
   },
@@ -114,7 +113,6 @@ ColorlibStepIcon.propTypes = {
   icon: PropTypes.node,
 };
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -146,8 +144,6 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
   const steps = getSteps();
   // const dispatch = useDispatch();
 
-  
-
   const getStepContent = (step: any) => {
     switch (step) {
       case 0:
@@ -158,7 +154,6 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
         return <></>;
     }
   };
-
 
   // const handleNext = () => {
   //   setActiveStep((prevActiveStep) => prevActiveStep + 2);
@@ -209,7 +204,6 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
         {activeStep === steps.length ? (
           <div>
             <br/>
-
         {/*    <Typography className={classes.instructions}>
               All steps completed - you&apos;re finished
             </Typography>
@@ -233,8 +227,6 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
             */}
               {activeStep === steps.length - 1 ? (
               <p> </p>
-
-              
               ) : (
                 <Button
                   variant="contained"
@@ -263,7 +255,4 @@ export default MoodForm;
                 >
               {t('finish')}
               </Button> 
-
-
-
 */

@@ -168,7 +168,7 @@ const ReportStepTwo = ({setStepTwoError}:any) => {
   return (
     <Grid container style={{ marginTop: 16 }}>
       <Grid item xs={12}>
-        <Typography variant="h6">{t('happened')}</Typography>
+        <Typography variant="h2" className='header5'>{t('happened')}</Typography>
       </Grid>
       <Grid item xs={12}>
         <LocalizationProvider dateAdapter={AdapterDateFns} >

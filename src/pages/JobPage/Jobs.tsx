@@ -79,9 +79,11 @@ const Jobs: React.FC = () => {
     ];
     
     return (
-        <div style={{ height: 700, width: '100%' }}>
+        <div style={{ height: "75vh", width: '100%', padding: "0 1rem" }}>
             <div className={classes.title}>
-                <Typography color="primary" align="center" className={classes.title} variant="h5">{t('job_ads')}</Typography>
+                <Typography color="primary" align="center" 
+                style={{marginTop: "25px", marginBottom: "15px"}} 
+                className="header" variant="h1">{t('job_ads')}</Typography>
             </div>
             <DataGrid
             getRowId={(row) => row._id}

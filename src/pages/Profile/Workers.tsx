@@ -22,9 +22,10 @@ const Workers: React.FC = () => {
   rows = users;
   const columns: GridColumns = [
     {
-      field: 'name',
-      headerName: (i18next.t('list_name')),
-      width: 250,
+      field: "name",
+      headerName: (i18next.t("list_name")),
+      minWidth: 125,
+      flex: 1,
       renderCell: (params) => {
         return (
         <div className={classes.userListUser}>
@@ -35,24 +36,28 @@ const Workers: React.FC = () => {
       },
     },
     {
-      field: 'email', 
-      headerName: (i18next.t('list_email')), 
-      width: 200 
+      field: "email", 
+      headerName: (i18next.t("list_email")),
+      minWidth: 200,
+      flex: 1
     },
     {
-      field: 'city', 
-      headerName: (i18next.t('list_city')), 
-      width: 200 
+      field: "city", 
+      headerName: (i18next.t("list_city")), 
+      minWidth: 125,
+      flex: 1
     },
     {
-      field: 'userType', 
-      headerName: (i18next.t('list_position')), 
-      width: 150 
+      field: "userType", 
+      headerName: (i18next.t("list_position")), 
+      minWidth: 75,
+      flex: 1 
     },
     {
-      field: 'action',
-      headerName: (i18next.t('list_action')),
-      width: 200,
+      field: "action",
+      headerName: (i18next.t("list_action")),
+      minWidth: 100,
+      flex: 1,
       renderCell: (params) => {
       return (
       <>
@@ -64,18 +69,23 @@ const Workers: React.FC = () => {
 ];
 
 return (
-<div style={{ height: 700, width: '100%' }}>
+<div style={{ height: "75vh", width: "100%", padding: "0 1rem" }}>
   <div>
-    <Typography className={classes.title} color="primary" align="center" variant="h5">{t('list_title_workers')}</Typography>
+    <Typography className={"header"}
+                style={{marginTop: "25px", marginBottom: "15px"}}
+                color="primary"
+                align="center"
+                variant="h1">
+      {t('list_title_workers')}</Typography>
   </div>
   <DataGrid
-  getRowId={(row) => row._id}
-  rows={rows}
-  disableSelectionOnClick
-  columns={columns}
-  pageSize={10}
-  rowsPerPageOptions={[10]}
-  checkboxSelection
+      getRowId={(row) => row._id}
+      rows={rows}
+      disableSelectionOnClick
+      columns={columns}
+      pageSize={10}
+      rowsPerPageOptions={[10]}
+      checkboxSelection
   />
 </div>
 );

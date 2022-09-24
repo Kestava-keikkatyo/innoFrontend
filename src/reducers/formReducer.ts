@@ -2,7 +2,7 @@
  * @module reducer/form
  * @desc Redux form reducer
  */
-import { Form } from "../types/types"
+import { Form } from '../types/types'
 import {
   SET_CURRENT_FORM,
   UPDATE_TITLE,
@@ -18,11 +18,11 @@ import {
   SET_QUESTIONS,
   CLEAR_CURRENT_FORM,
   FormActionTypes,
-} from "../types/state"
+} from '../types/state'
 
 const initialState: Form = {
-  title: "",
-  description: "",
+  title: '',
+  description: '',
   tags: [],
   isPublic: true,
   questions: [],

@@ -1,4 +1,5 @@
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux'
+import { configureStore, PreloadedState } from '@reduxjs/toolkit'
 import thunk from 'redux-thunk'
 import userReducer from '../reducers/userReducer'
 import fileReducer from '../reducers/fileReducer'
@@ -55,6 +56,13 @@ const rootReducer = (state: any, action: any) => {
   return appReducer(state, action)
 }
 
-export type IRootState = ReturnType<typeof rootReducer>
+export const setupStore = (preloadedState?: PreloadedState<IRootState>) => {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState
+  })
+}
 
+export type IRootState = ReturnType<typeof rootReducer>
+export type AppStore = ReturnType<typeof setupStore>
 export default createStore<any, any, any, any>(rootReducer, composeEnhancer(applyMiddleware(thunk)))

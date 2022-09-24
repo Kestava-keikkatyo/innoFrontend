@@ -40,10 +40,10 @@ const Databank: React.FC<DatabankProps> = () => {
   return (
     <div>
       <Spacing m2 />
-      <Typography variant="h4">Artikkelit</Typography>
+      <Typography variant="h1" className='header3'>Artikkelit</Typography>
       <Grid container>
         {Array.from(Array(10)).map((_, i: number) => (
-          <Grid item xs={4} key={i}>
+          <Grid item xs={12} sm={6} md={4} key={i} className="triangle-container">
             <TriangleCard index={i + 4} />
           </Grid>
         ))}
