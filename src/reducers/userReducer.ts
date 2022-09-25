@@ -50,6 +50,11 @@ const userReducer = (state = initialState, action: UserActionTypes) => {
         },
       }
     case USER_FAILURE:
+      return {
+        loading: false,
+        loggedIn: false,
+        data: {}
+      }
     case LOGOUT:
       return {
         ...state,
