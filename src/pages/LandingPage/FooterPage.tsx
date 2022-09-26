@@ -104,7 +104,7 @@ const FooterPage: React.FC<FooterPageProps> = () => {
                 <img src={logo} alt="keikkakaveri-logo" className="bw-logo" />
               </Grid>
               <Grid item xs={6} sm={12} md={5} >
-                <Typography>Yhteystiedot:</Typography>
+                <Typography>{t('contact_information')}</Typography>
                 <Typography>Yrjönkatu 29 C</Typography>
                 <Typography>00100 Helsinki</Typography>
                 <Typography>info@keikkakaveri.fi</Typography>
@@ -112,18 +112,18 @@ const FooterPage: React.FC<FooterPageProps> = () => {
             </Grid>
             <Grid item xs={4} sm={3} className="footer-item footer-third">
               <FooterColumn
-                header="Ajankohtaista: "
-                list={['Uutiset', 'Artikkelit', 'Twitter', 'Youtube']} />
+                header={t('topical')}
+                list={[t('news'), t('articles'), 'Twitter', 'Youtube']} />
             </Grid>
             <Grid item xs={4} sm={3} className="footer-item footer-third">
               <FooterColumn
-                header="Yhteistyössä: "
-                list={['Työturvakeskus', 'ESR-rahasto', 'Kestävä keikkatyö']} />
+                header={t('collaboration')}
+                list={[t('ttk'), t('esr'), 'Kestävä keikkatyö']} />
             </Grid>
             <Grid item xs={4} sm={3} className="footer-item footer-third">
               <FooterColumn
-                header="Tutustu: "
-                list={['Tietopankki', 'Keikkakaveri', 'Tietosuojaseloste']} />
+                header={t('get_to_know')}
+                list={[t('databank'), 'Keikkakaveri', t('privacy_statement')]} />
             </Grid>
           </Grid>
         </Spacing>

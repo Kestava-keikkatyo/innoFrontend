@@ -95,100 +95,100 @@
   ],
   "agency2": [
     {
-      "tip": "Vastuu työaikalain noudattimesta"
+      "tip": "Responsibility for compliance with the Working Time Act"
     },
     {
-      "tip": "Työntekijöiden vakuuttaminen työtapaturmien ja ammattitautien varalta"
+      "tip": "Insuring employees against work accidents and occupational diseases"
     },
     {
-      "tip": "Työterveyshuollon järjestäminen"
+      "tip": "Organization of occupational health care"
     },
     {
-      "tip": "Tasa-arvon ja yhdenvertaisuuden edistäminen"
+      "tip": "Promotion of equality and equality"
     },
     {
-      "tip": "Käyttäjäyrityksen velvoitteiden täyttämisen varmistaminen"
+      "tip": "Ensuring the fulfillment of the user company's obligations"
     },
     {
-      "tip": "Vuokratyöntekijän riittävän ammattitaidon ja työhön soveltumisen varmistaminen"
+      "tip": "Ensuring the temporary worker's sufficient professional skills and suitability for work"
     }
   ],
   "business2": [
     {
-      "tip": "Tilaajavastuu"
+      "tip": "Customer responsibility"
     },
     {
-      "tip": "Tarvittavien tietojen antaminen henkilöstöpalveluyritykselle"
+      "tip": "Providing the necessary information to the agency"
     },
     {
-      "tip": "Työn edellyttämien ammattitaitovaatimusten ja erityispiirteiden ilmoittaminen henkilöstöpalveluyritykselle"
+      "tip": "Notifying the agency of the professional requirements and special features required for the job"
     },
     {
-      "tip": "Työn vaarojen selvittäminen ja arviointi"
+      "tip": "Investigation and assessment of work hazards"
     },
     {
-      "tip": "Ilmoittaminen työpaikan työterveyshuollolle ja työsuojeluvaltuutetulle"
+      "tip": "Reporting to the workplace's occupational health service and occupational health and safety representative"
     },
     {
-      "tip": "Työsuojelun toimintaohjelman laatiminen"
+      "tip": "Drawing up an occupational health and safety action program"
     },
     {
-      "tip": "Tasa-arvon ja yhdenvertaisuuden edistäminen"
+      "tip": "Promotion of equality and equality"
     },
     {
-      "tip": "Vuokratyöntekijän perehdytys työhön ja työoloihin"
+      "tip": "Orientation of the temporary employee to work and working conditions"
     },
     {
-      "tip": "Vastuu vuokratyöntekijöiden työnjohdosta ja -valvonnasta (tämän alle keskeiset vaatimukset mm. vastuu työn aikaisesta työn turvallisuudesta ja terveellisyydestä huolehtiminen, tarvittavien henkilönsuojainten ja turvavälineiden käyttämisen varmistaminen, työaikalainsäädännön noudattaminen)"
+      "tip": "Responsibility for the work management and supervision of temporary workers (here below the key requirements, e.g. responsibility for taking care of occupational safety and health during work, ensuring the use of necessary personal protective equipment and safety equipment, compliance with working time legislation)"
     },
     {
-      "tip": "Työsuojeluvastuu yhteisellä työpaikalla"
+      "tip": "Occupational health and safety responsibility in a shared workplace"
     }
   ],
   "worker2": [
     {
-      "tip": "Työnantajan ohjeiden ja määräysten noudattaminen"
+      "tip": "Compliance with the employer's instructions and regulations"
     },
     {
-      "tip": "Omasta ja työkavereiden turvallisuudesta huolehtiminen"
+      "tip": "Taking care of your own safety and that of your colleagues"
     },
     {
-      "tip": "Häirinnän ja epäasiallisen kohtelun välttäminen"
+      "tip": "Avoiding harassment and inappropriate treatment"
     },
     {
-      "tip": "Työvälineiden, henkilönsuojainten ja turvalaitteiden asianmukainen käyttö"
+      "tip": "Appropriate use of work tools, personal protective equipment and safety devices"
     },
     {
-      "tip": "Havaitsemistaan vioista ja puutteista ilmoittaminen"
+      "tip": "Report of detected defects and deficiencies"
     }
   ],
   "yhtenäinen": [
     {
-      "tip": "Jaettu työsuojeluvastuu (käyttäjäyrityksen kanssa, yhteinen laatikko)"
+      "tip": "Shared occupational health and safety responsibility (with the user company, shared box)"
     },
     {
-      "tip": "Yleisvastuu työturvallisuudesta (tämän alle keskeiset vaatimukset, mm."
+      "tip": "General responsibility for occupational safety (key requirements below, e.g."
     },
     {
-      "tip": "* Työn vaarojen selvittäminen ja arviointi"
+      "tip": "* Investigation and assessment of work hazards"
     },
     {
-      "tip": "* Työsuojelun toimintaohjelman laatiminen"
+      "tip": "* Drawing up an occupational health and safety action program"
     },
     {
-      "tip": "* Työsuojelun yhteistoiminnan järjestäminen"
+      "tip": "* Organization of occupational health and safety cooperation"
     },
     {
-      "tip": "* Perehdytys (ml. yleisperehdytyksen antaminen vuokratyöntekijälle)"
+      "tip": "* Orientation (including giving a general orientation to the temporary worker)"
     },
     {
-      "tip": "* Ilmoittaminen nuorten työntekijöiden käyttämisestä vaarallisiin töihin"
+      "tip": "* Reporting the use of young workers in hazardous work"
     },
     {
-      "tip": "* Vakavasta työtapaturmasta ilmoittaminen työsuojeluviranomaisille ja poliisille)"
+      "tip": "* Notification of a serious accident at work to occupational safety and health authorities and the police)"
     },
     {
-      "tip": "Tarvittavien henkilönsuojainten hankinta (yhteistyössä käyttäjäyrityksen kanssa, yhteinen laatikko)"
+      "tip": "Procurement of the necessary personal protective equipment (in cooperation with the user company, shared box)"
     }
   ]
 }

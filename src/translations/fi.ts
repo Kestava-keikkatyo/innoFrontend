@@ -203,7 +203,7 @@ export default {
   phone: 'Puhelin',
   website: 'Nettisivut',
   address: 'Osoite',
-  contact_information: 'Yhteystiedot',
+  contact_information: 'Yhteystiedot:',
 
   // feeling utils
   cheer_one: 'Tsemppiä!',
@@ -675,6 +675,10 @@ export default {
   responsibility_create_new_topic: 'Päivitä vastuu',
   responsibility_navigate: 'Vastuut',
 
+  // Content responsibilities
+  shared_responsibilities: 'Jaetut vastuut',
+  business_responsibilities: 'Käyttäjäyritys vastuut',
+
   // Work lifespan
   lifespan_button: 'LUE LISÄÄ ELINKAARESTA',
   customer_agreement: 'Asiakassopimus',
@@ -698,4 +702,12 @@ export default {
   orientation: "Keskitä perehdyttäminen yhteen paikkaan",
   automation: "Automatisaatiolla perehdytys on rennompaa",
   wellBeing: "Työntekijöitesi hyvinvointi on meille tärkeää",
+  topical: 'Ajankohtaista:',
+  news: 'uutiset',
+  collaboration: 'Yhteistyössä:',
+  ttk: 'Työturvallisuuskeskus',
+  esr: 'ESR-rahasto',
+  get_to_know: 'Tutustu:',
+  privacy_statement:'Tietosuojaseloste',
+
 }

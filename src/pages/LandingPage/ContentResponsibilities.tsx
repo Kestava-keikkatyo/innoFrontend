@@ -111,7 +111,7 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
                   <List id="modal-modal-description">
                     <Divider />
                     {/* Worker responsibilities list */}
-                    {vastuualueet.worker2.map((e, i) => (
+                    {Vastuualueet.worker2.map((e, i) => (
                       <ListItem key={i} divider>
                         <ListItemText primary={`${i + 1}. ${e.tip}`} />
                       </ListItem>
@@ -151,26 +151,26 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
                 <Box sx={style} className={"modal"}>
                   {/* Add close button? */}
                   <Typography id="modal-modal-title" variant="h6" component="h2">
-                    Käyttäjäyritys
+                  {t('business')}
                   </Typography>
                   <List id="modal-modal-description">
                     <Divider />
                     <Typography variant="h6" component="h2">
-                    Jaetut vastuut
+                    {t('shared_responsibilities')}
                     </Typography>
                     <Divider />
                     {/* Yhtenäiset vastuut lista */}
-                    {vastuualueet.yhtenäinen.map((e, i) => (
+                    {Vastuualueet.yhtenäinen.map((e, i) => (
                       <ListItem key={i} divider>
                         <ListItemText primary={`${i + 1}. ${e.tip}`} />
                       </ListItem>
                     ))}
                     <Typography variant="h6" component="h2">
-                    Käyttäjäyritys vastuut
+                    {t('business_responsibilities')}
                     </Typography>
                     <Divider />
                     {/* Business responsibilities list */}
-                    {vastuualueet.business2.map((e, i) => (
+                    {Vastuualueet.business2.map((e, i) => (
                       <ListItem key={i} divider>
                         <ListItemText primary={`${i + 1}. ${e.tip}`} />
                       </ListItem>
@@ -210,26 +210,26 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
                 <Box sx={style} className={"modal"}>
                   {/* Add close button? */}
                   <Typography id="modal-modal-title" variant="h6" component="h2">
-                    Vuokratyöyritys
+                  {t('agency')}
                   </Typography>
                   <List id="modal-modal-description">
                     <Divider />
                     <Typography variant="h6" component="h2">
-                      Jaetut vastuut
+                    {t('shared_responsibilities')}
                     </Typography>
                     <Divider />
                     {/* Yhtenäiset vastuut lista */}
-                    {vastuualueet.yhtenäinen.map((e, i) => (
+                    {Vastuualueet.yhtenäinen.map((e, i) => (
                       <ListItem key={i} divider>
                         <ListItemText primary={`${i + 1}. ${e.tip}`} />
                       </ListItem>
                     ))}
                     <Typography variant="h6" component="h2">
-                      Vuokratyöyritys vastuut
+                    {t('agency_responsibility')}
                     </Typography>
                     <Divider />
                     {/* Agency responsibilities list */}
-                    {vastuualueet.agency2.map((e, i) => (
+                    {Vastuualueet.agency2.map((e, i) => (
                       <ListItem key={i} divider>
                         <ListItemText primary={`${i + 1}. ${e.tip}`} />
                       </ListItem>

@@ -204,7 +204,7 @@ export default {
   phone: 'Phone',
   website: 'Website',
   address: 'Address',
-  contact_information: 'Contact information',
+  contact_information: 'Contact information:',
 
   // feeling utils
   cheer_one: "C'moon!",
@@ -691,6 +691,10 @@ export default {
   employee_order: 'Order and selection of the employee',
   contract_orientation: 'Employment contract and general orientation',
 
+  // Content responsibilities
+  shared_responsibilities: 'Shared responsibilities',
+  business_responsibilities: 'Business responsibilities',
+
   // Footer Page
   worker_question: "Are you an employee?",
   make_money: "Make money",
@@ -705,4 +709,11 @@ export default {
   orientation: "Focus the orientation in one place",
   automation: "With automation, orientation is more relaxed",
   wellBeing: "The well-being of your employees is important to us",
+  topical: 'Topical:',
+  news: 'News',
+  collaboration: 'Collaboration:',
+  ttk: 'The Centre for Occupational Safety',
+  esr: 'The European Social Fund',
+  get_to_know: 'Get To Know:',
+  privacy_statement:'Privacy statement',
 }
