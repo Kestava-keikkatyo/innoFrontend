@@ -66,7 +66,7 @@ const LatestJoinedWorkers: React.FC = () => {
 return (
 <div style={{ height: 400, width: '100%' }}>
   <div>
-    <Typography className={classes.title} color="primary" align="center" variant="h6">{t('Latest joined workers')}</Typography>
+    <Typography className={classes.title} color="primary" align="center" variant="h6">{t('latest_joined_workers')}</Typography>
   </div>
   <DataGrid
   getRowId={(row) => row._id}

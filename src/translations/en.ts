@@ -716,4 +716,18 @@ export default {
   esr: 'The European Social Fund',
   get_to_know: 'Get To Know:',
   privacy_statement:'Privacy statement',
+
+  // Worker home
+  feelings: 'Feelings',
+  information2: 'Information',
+  emotions_summary: 'Summary and analysis of your emotions',
+  dissatisfied: 'Dissatisfied',
+  unhappy: 'Unhappy',
+  satisfied: 'Satisfied',
+  happy: 'Happy',
+  quite_happy: 'Quite happy',
+
+  // Agency home
+  received_reports: 'Latest received reports',
+  latest_joined_workers: 'Latest joined workers',
 }

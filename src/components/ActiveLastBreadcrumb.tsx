@@ -9,6 +9,7 @@ import { Theme } from '@mui/material/styles';
 import makeStyles from '@mui/styles/makeStyles';
 import createStyles from '@mui/styles/createStyles';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { useTranslation } from 'react-i18next'
 
 /**
  * @component
@@ -18,6 +19,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
  * @see {@link breadcrumbActions}
  */
 const ActiveLastBreadcrumb: React.FC = () => {
+  const { t } = useTranslation()
   const links = useSelector((state: IRootState) => state.breadcrumb);
   const classes = useStyles();
 
@@ -31,7 +33,7 @@ const ActiveLastBreadcrumb: React.FC = () => {
           style={{ marginLeft: 14, color: '#757575', textDecoration: 'none' }}
           to="/home"
         >
-          Home
+          {t('home')}
         </Link>
         {links.map((l: BreadcrumbLink, key: number) =>
           l.name !== 'Home' ? (

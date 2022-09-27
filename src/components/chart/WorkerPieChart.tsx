@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { PieChart, Pie, Cell, Legend, Tooltip, ResponsiveContainer } from 'recharts';
 import { fetchMyFeelings } from '../../actions/myFeelingActions';
 import { IRootState } from '../../utils/store';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
     cx: number,
@@ -18,6 +19,7 @@ export const WorkerPieChart: React.FC = () => {
 const dispatch = useDispatch();
 
 const feelingsChartData = useSelector((state: IRootState) => {
+    const { t } = useTranslation();
     
     const { myFeelings } = state.myFeeling;
 
@@ -30,11 +32,11 @@ const feelingsChartData = useSelector((state: IRootState) => {
     };
 
     const feelingNames = [
-        'Dissatisfied',
-        'Unhappy',
-        'Satisfied',
-        'Happy',
-        'Quite happy'
+        t('dissatisfied'),
+        t('unhappy'),
+        t('satisfied'),
+        t('happy'),
+        t('quite_happy')
     ];
 
     myFeelings.forEach(feeling => {

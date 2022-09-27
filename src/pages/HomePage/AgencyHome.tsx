@@ -5,20 +5,22 @@ import { Grid, Link, Typography,
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import LatestJoinedWorkers from '../Profile/LatestJoinedWorkers';
+import { useTranslation } from 'react-i18next';
 
 const AgencyHome = () => {
+  const { t } = useTranslation();
   const classes = useStyles();
   return (
     <Grid container>
       <div className={classes.generalInfo}>
         <div className={classes.item}>
-          <Typography color="primary" align="center" variant="h6"> Latest received reports</Typography>
+          <Typography color="primary" align="center" variant="h6">{t('received_reports')}</Typography>
         </div>
         <div className={classes.item}>
-          <Typography color="primary" align="center" variant="h6"> <Link href="/information" underline="hover">Information</Link> </Typography>
+          <Typography color="primary" align="center" variant="h6"> <Link href="/information" underline="hover">{t('information')}</Link> </Typography>
         </div>
         <div className={classes.item}>
-          <Typography color="primary" align="center" variant="h6"> Areas of responsibility </Typography>
+          <Typography color="primary" align="center" variant="h6">{t('areas_of_responsibility')}</Typography>
         </div>
       </div>
       <div className={classes.pageContent}>

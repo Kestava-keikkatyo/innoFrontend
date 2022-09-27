@@ -710,4 +710,17 @@ export default {
   get_to_know: 'Tutustu:',
   privacy_statement:'Tietosuojaseloste',
 
+  // Worker home
+  feelings: 'Tunteet',
+  information2: 'Tiedot',
+  emotions_summary: 'Tunteiden analyysi ja yhteenveto',
+  dissatisfied: 'Tyytymätön',
+  unhappy: 'Onneton',
+  satisfied: 'Tyytyväinen',
+  happy: 'Onnellinen',
+  quite_happy: 'Melko onnellinen',
+
+  // Agency home
+  received_reports: 'Viimeisimmät raportit',
+  latest_joined_workers: 'Liittyneet työntekijät',
 }

@@ -5,27 +5,29 @@ import {
 import makeStyles from '@mui/styles/makeStyles';
 import LatestJobAds from '../JobPage/LatestJobAds';
 import WorkerPieChart from '../../components/chart/WorkerPieChart';
+import { useTranslation } from 'react-i18next';
 
 const WorkerHome = () => {
-   const classes = useStyles();
+  const { t } = useTranslation();
+  const classes = useStyles();
   return (
     <Grid container>
       <div className={classes.generalInfo}>
         <div className={classes.item}>
-          <Typography color="primary" align="center" variant="h6"> <Link href="/feeling/send" underline="hover">Feelings</Link> </Typography>
+          <Typography color="primary" align="center" variant="h6"> <Link href="/feeling/send" underline="hover">{t('feelings')}</Link> </Typography>
         </div>
         <div className={classes.item}>
-          <Typography color="primary" align="center" variant="h6"> <Link href="/information" underline="hover">Information</Link> </Typography>
+          <Typography color="primary" align="center" variant="h6"> <Link href="/information" underline="hover">{t('information2')}</Link> </Typography>
         </div>
         <div className={classes.item}>
-          <Typography color="primary" align="center" variant="h6"> Areas of responsibility </Typography>
+          <Typography color="primary" align="center" variant="h6">{t('areas_of_responsibility')}</Typography>
         </div>
       </div>
       <div className={classes.pageContent}>
         <div className={classes.contentContainer}>
             <div className={classes.feelingAnalysis}>
               <div>
-                <Typography color="primary" className={classes.title} align="center" variant="h6">Summary and  analysis of your emotions </Typography>
+                <Typography color="primary" className={classes.title} align="center" variant="h6">{t('emotions_summary')}</Typography>
               </div>
              <WorkerPieChart/>
             </div>
