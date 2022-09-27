@@ -15,7 +15,7 @@ const BusinessHome = () => {
           <Typography color="primary" align="center" variant="h6">{t('received_reports')}</Typography>
         </div>
         <div className={classes.item}>
-          <Typography color="primary" align="center" variant="h6"> <Link href="/information" underline="hover">{t('information')}</Link> </Typography>
+          <Typography color="primary" align="center" variant="h6"> <Link href="/information" underline="hover">{t('information2')}</Link> </Typography>
         </div>
         <div className={classes.item}>
           <Typography color="primary" align="center" variant="h6">{t('areas_of_responsibility')}</Typography>
