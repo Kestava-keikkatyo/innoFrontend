@@ -27,8 +27,7 @@ import { useDispatch } from 'react-redux';
  * @desc
  * A card with information of the agency.
  * Contract request can be sent.
- * 
- * TODO: Link to profile not working
+ *
  */
  const AgencyCard: React.FC<any> = ({ agency }) => {
   const [expanded, setExpanded] = React.useState(false);
@@ -48,12 +47,12 @@ import { useDispatch } from 'react-redux';
 
   const handleSiirryProfiiliin = (agency: any) => {
     if (!agency._id){
-      dispatch(setAlert("Agency profile is missing!", severity.Error));
+      dispatch(setAlert('Agency profile is missing!', severity.Error));
       return;
     } else {
       history.push({
-        pathname: '/profiles/profile-view',
-        state: { profileId: agency._id },
+        pathname: '/agencies/profile/' + agency._id,
+        state: { profileId: agency._id }
       });
     }
   };
