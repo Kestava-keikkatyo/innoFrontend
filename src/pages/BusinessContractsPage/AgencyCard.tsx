@@ -21,6 +21,7 @@ import { useHistory } from 'react-router';
 import { setAlert } from "../../actions/alertActions"
 import { severity } from '../../types/types';
 import { useDispatch } from 'react-redux';
+import i18next from "i18next";
 
 /**
  * @component
@@ -47,7 +48,7 @@ import { useDispatch } from 'react-redux';
 
   const handleSiirryProfiiliin = (agency: any) => {
     if (!agency._id){
-      dispatch(setAlert('Agency profile is missing!', severity.Error));
+      dispatch(setAlert(i18next.t('agency_profile_missing', severity.Error)));
       return;
     } else {
       history.push({

@@ -43,6 +43,7 @@ export default {
   invalid_name: 'Virheellinen nimi',
   invalid_password: 'Salasana ei täsmää',
   email_already_used: 'Sähköpostiosoite on jo käytössä',
+  agency_profile_missing: 'Henkilöstöpalveluyrityksen profiilia ei löydy',
 
   // option
   role: 'Rooli',

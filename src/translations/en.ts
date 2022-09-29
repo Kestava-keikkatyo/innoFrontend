@@ -44,6 +44,7 @@ export default {
   invalid_name: 'Invalid name',
   invalid_password: 'Password does not match',
   email_already_used: 'Email is already in use',
+  agency_profile_missing: 'Agency profile is missing',
 
   // option
   role: 'Role',
