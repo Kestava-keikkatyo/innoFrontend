@@ -23,6 +23,27 @@ export default {
   agency: "Agence",
   business: "Entreprise",
 
+  // ResponsiveDrawer
+  home: "Accueil",
+  forms: "Formulaires",
+  contracts: "Contrats",
+  work_overview: "Aperçu des travaux",
+  business_contracts: "Contrats commerciaux",
+  jobs: "Travaux",
+  work_request: "Demande de travail",
+  mood_stats: "Statistiques d'humeur",
+  list_title_workers: "Travailleurs",
+  list_title_agencies: "Agences",
+  reports: "Rapports",
+  schedule: "Horaires",
+  my_work: "Mon travail",
+  moods: "Humeurs",
+  faq: "QFP",
+  feedback: "Retour d'information",
+  user_list: "Liste des utilisateurs",
+  create_user: "Créer un utilisateur",
+  exit_application: "Sortir d'application",
+
   // LandingPage
   app_title: "Keikkakaveri",
   desktop: "Bureau",
@@ -97,4 +118,20 @@ export default {
   education: "Éducation",
   medicine: "Médecine",
   estate: "Biens immobiliers",
+
+  // WorkerHome
+  workers_responsibility: "Responsabilités du travailleur",
+  worker_responsibilities_read: "Le travailleur a lu et compris ses responsabilités.",
+
+  // MoodForm
+  your_mood: "Ton humeur",
+  fill_details: "Remplissez les détails",
+  submit: "Soumettre",
+  saveButton: "Sauver",
+
+  // MoodStep
+  how_do_you_feel_today: "Comment te sens-tu aujourd'hui?",
+  write_a_comment: "Écrire un commentaire",
+  tell_feelings: "Parlez-nous de votre ressenti...",
+  upload_file: "Télécharger un fichier",
 };
