@@ -280,7 +280,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                 <ListItemIcon>
                   <GroupsIcon />
                 </ListItemIcon>
-                <ListItemText primary={t("User List")} />
+                <ListItemText primary={t("user_list")} />
               </ListItem>
               <Divider />
             </>
@@ -291,7 +291,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                 <ListItemIcon>
                   <PersonAdd />
                 </ListItemIcon>
-                <ListItemText primary={t("Create User")} />
+                <ListItemText primary={t("create_user")} />
               </ListItem>
               <Divider />
             </>
