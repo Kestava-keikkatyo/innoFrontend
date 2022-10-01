@@ -90,4 +90,11 @@ export default {
   invalid_length: "3 caractères minimum",
   invalid_name: "Nom invalide",
   invalid_password: "Mot de passe invalide",
+
+  // SignUpForm
+  construction: "Construction",
+  it: "Informatique",
+  education: "Éducation",
+  medicine: "Médecine",
+  estate: "Biens immobiliers",
 };

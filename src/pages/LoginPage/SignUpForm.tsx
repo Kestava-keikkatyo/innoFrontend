@@ -38,16 +38,16 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
   const categoryOptions = [
     {
       value: 'Rakennus, asennus ja huolto',
-      label: t('Rakennus, asennus ja huolto'),
+      label: t('construction'),
     },
-    { value: 'IT- ja tietoliikenne', label: t('IT- ja tietoliikenne') },
-    { value: 'Koulutus- ja opetusala', label: t('Koulutus- ja opetusala') },
+    { value: 'IT- ja tietoliikenne', label: t('it') },
+    { value: 'Koulutus- ja opetusala', label: t('education') },
     { value: 'Tekniikka', label: t('Tekniikka') },
     {
       value: 'Lääketeollisuus- ja farmasia',
-      label: t('Lääketeollisuus- ja farmasia'),
+      label: t('medicine'),
     },
-    { value: 'Kiinteistö', label: t('Kiinteistö') },
+    { value: 'Kiinteistö', label: t('estate') },
   ];
 
   return (
