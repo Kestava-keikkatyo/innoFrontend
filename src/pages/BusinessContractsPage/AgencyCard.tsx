@@ -52,7 +52,7 @@ import i18next from "i18next";
       return;
     } else {
       history.push({
-        pathname: '/agencies/profile/' + agency._id,
+        pathname: '/profile-view/' + agency._id,
         state: { profileId: agency._id }
       });
     }
