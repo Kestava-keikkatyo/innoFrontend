@@ -70,6 +70,7 @@ import PasswordChange from './pages/SettingsPage/PasswordChange'
 import CreateResponsibility from './pages/Responsibility/CreateResponsibility'
 import Responsibilities from './pages/Responsibility/Responsibilities'
 import ResponsibilityUpdate from './pages/Responsibility/ResponsibilityUpdate'
+
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface DefaultTheme extends Theme {}
@@ -204,6 +205,9 @@ const App: React.FC = () => {
               <Workers />
             </PrivateRoute>
             <PrivateRoute path="/agencies/profile/:userId" roles={[roles.Business]}>
+              <UserProfile />
+            </PrivateRoute>
+            <PrivateRoute path="/profile-view/:userId">
               <UserProfile />
             </PrivateRoute>
             <PrivateRoute path="/agencies" roles={[roles.Business]}>

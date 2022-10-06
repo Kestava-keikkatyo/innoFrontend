@@ -21,14 +21,14 @@ import { useHistory } from 'react-router';
 import { setAlert } from "../../actions/alertActions"
 import { severity } from '../../types/types';
 import { useDispatch } from 'react-redux';
+import i18next from "i18next";
 
 /**
  * @component
  * @desc
  * A card with information of the agency.
  * Contract request can be sent.
- * 
- * TODO: Link to profile not working
+ *
  */
  const AgencyCard: React.FC<any> = ({ agency }) => {
   const [expanded, setExpanded] = React.useState(false);
@@ -46,14 +46,14 @@ import { useDispatch } from 'react-redux';
     setDisplayModal(true);
   };
 
-  const handleSiirryProfiiliin = (agency: any) => {
+  const handleMoveToProfile = (agency: any) => {
     if (!agency._id){
-      dispatch(setAlert("Agency profile is missing!", severity.Error));
+      dispatch(setAlert(i18next.t('agency_profile_missing', severity.Error)));
       return;
     } else {
       history.push({
-        pathname: '/profiles/profile-view',
-        state: { profileId: agency._id },
+        pathname: '/profile-view/' + agency._id,
+        state: { profileId: agency._id }
       });
     }
   };
@@ -101,7 +101,7 @@ import { useDispatch } from 'react-redux';
                     >
                       {t('send_request')}
                     </Button>
-                    <Button variant="contained" onClick={() => handleSiirryProfiiliin(agency)}>
+                    <Button variant="contained" onClick={() => handleMoveToProfile(agency)}>
                       {t('transfer_company_profile')}
                     </Button>
                   </div>
