@@ -46,7 +46,7 @@ import i18next from "i18next";
     setDisplayModal(true);
   };
 
-  const handleSiirryProfiiliin = (agency: any) => {
+  const handleMoveToProfile = (agency: any) => {
     if (!agency._id){
       dispatch(setAlert(i18next.t('agency_profile_missing', severity.Error)));
       return;
@@ -101,7 +101,7 @@ import i18next from "i18next";
                     >
                       {t('send_request')}
                     </Button>
-                    <Button variant="contained" onClick={() => handleSiirryProfiiliin(agency)}>
+                    <Button variant="contained" onClick={() => handleMoveToProfile(agency)}>
                       {t('transfer_company_profile')}
                     </Button>
                   </div>
