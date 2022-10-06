@@ -61,14 +61,12 @@ const LangMenuDropDown = () => {
       <div className="drawer-top">
         <Button
           style={{ position: 'absolute', left: '-7rem', top: '23%' }}
-          onClick={() => changeLanguage('fi')}
-        >
+          onClick={() => changeLanguage('fi')}>
           FI
         </Button>
         <Button
           style={{ position: 'absolute', left: '-4rem', top: '23%' }}
-          onClick={() => changeLanguage('en')}
-        >
+          onClick={() => changeLanguage('en')}>
           EN
         </Button>
       </div>
