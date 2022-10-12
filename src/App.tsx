@@ -8,6 +8,7 @@ import ContractsPage from './pages/ContractsPage'
 import PrivateRoute from './components/PrivateRoute'
 import ProcessPage from './pages/ProcessPage'
 import FormsPage from './pages/FormsPage'
+import RentalWorkModelPage from './pages/RentalWorkModelPage'
 import WorkerStatistics from './pages/MoodStatistics'
 import AgencyStatistics from './pages/MoodStatistics/AgencyStatistics'
 import { CssBaseline } from '@mui/material'
@@ -242,6 +243,9 @@ const App: React.FC = () => {
             </PrivateRoute>
             <PrivateRoute path="/report" roles={[roles.Worker]}>
               <ReportPage />
+            </PrivateRoute>
+            <PrivateRoute path="/rentalWorkModel">
+              <RentalWorkModelPage />
             </PrivateRoute>
             <PrivateRoute path="/mood-stats" roles={[roles.Agency]}>
               <AgencyStatistics />

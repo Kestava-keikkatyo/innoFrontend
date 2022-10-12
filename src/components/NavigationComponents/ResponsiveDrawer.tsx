@@ -8,6 +8,7 @@ import ListItemText from '@mui/material/ListItemText'
 import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined'
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday'
 import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined'
+import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle'
 import MoodIcon from '@mui/icons-material/Mood'
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
 import ExitToAppIcon from '@mui/icons-material/ExitToApp'
@@ -54,7 +55,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
    * @function
    */
    const handleClick = () => {
-     if(isMobile) { setOpen(false) }    
+     if(isMobile) { setOpen(false) }
    }
 
   return (
@@ -217,6 +218,17 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                   <WorkOutlineIcon />
                 </ListItemIcon>
                 <ListItemText primary={t('jobs')} />
+              </ListItem>
+              <Divider />
+            </>
+          )}
+          {role === roles.Worker && (
+            <>
+              <ListItem component={Link} to="/rentalWorkModel" onClick={handleClick}>
+                <ListItemIcon>
+                  <SupervisedUserCircleIcon />
+                </ListItemIcon>
+                <ListItemText primary={t('rental_work_model')}/>
               </ListItem>
               <Divider />
             </>
