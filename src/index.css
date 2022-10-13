@@ -142,8 +142,6 @@ code {
 .drawer .MuiSvgIcon-root,
 .worker-statistics-summary .MuiTypography-body1 {
   font-weight: 600 !important;
-  color: black;
-  /* color: grey; */
 }
 
 .drawer-logout .MuiListItemIcon-root {
@@ -201,14 +199,14 @@ code {
 
 /* an arbitrary container of fixed height */
 .drawer-header {
-  height: 267;
+  height: 267px;
 }
 
 /* this is the flex container that will take the rest of the height */
 .content-wrapper {
   display: flex;
   flex: 1;
-  min-height: 0px; /* IMPORTANT: you need this for non-chrome browsers */
+  min-height: 0; /* IMPORTANT: you need this for non-chrome browsers */
 }
 
 /* the container for our overflowed content */
@@ -350,9 +348,8 @@ code {
 
 .form-banner {
   width: calc(100% - 48px);
-  background: url("assets/form-banner.jpg");
   background-size: cover;
-  background-position: center center;
+  background: url("assets/form-banner.jpg") center center;
   position: absolute;
   top: 0;
   left: 24px;
@@ -403,7 +400,7 @@ nav * {
   padding: 0.5rem;
   color: white !important;
   background-color: #2386CC;
-  
+
   border-radius: 2rem;
 }
 */
@@ -439,7 +436,6 @@ nav * {
 }
 
 .form-search-container {
-  margin: 0;
   background-color: #0007 !important;
   color: white;
   margin: 0 0 2rem 0;
@@ -473,9 +469,9 @@ nav * {
   color: aliceblue !important;
 }
 
-.form-search-container
-  .MuiOutlinedInput-root.Mui-focused
-  .MuiOutlinedInput-notchedOutline {
+.form-search-container,
+.MuiOutlinedInput-root .Mui-focused,
+.MuiOutlinedInput-notchedOutline {
   color: white;
   border-color: black;
   border-radius: 0;
@@ -483,15 +479,14 @@ nav * {
 
 .profile-banner {
   width: 100%;
-  height: 200;
+  height: 200px;
 }
 
 .mood-step-one svg:hover {
   color: white !important;
-  background: rgb(255, 124, 0);
   transition: 0s; /* 0.8s -> 0s */
   box-shadow: 0 4px 10px 0 rgb(0 0 0 / 25%);
-  background-image: linear-gradient(
+  background: rgb(255, 124, 0) linear-gradient(
     136deg,
     rgb(255, 150, 55) 0%,
     rgb(242, 113, 33) 50%,
@@ -516,10 +511,9 @@ nav * {
 */
 .mood-icon {
   color: white !important;
-  background: rgb(255, 124, 0);
   transition: 0.8s;
   box-shadow: 0 4px 10px 0 rgb(0 0 0 / 25%);
-  background-image: linear-gradient(
+  background: rgb(255, 124, 0) linear-gradient(
     136deg,
     rgb(255, 150, 55) 0%,
     rgb(242, 113, 33) 50%,
@@ -900,7 +894,7 @@ nav * {
     background-size: cover !important;
     filter: grayscale(1) !important;
   }
-  
+
   .landing-banner {
     display: none !important;
   }

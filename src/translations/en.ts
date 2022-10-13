@@ -301,6 +301,13 @@ export default {
   close: 'close',
   feedback: 'Feedback',
   rental_work_model: 'Rental Work Model',
+  overview: 'Overview',
+  customer_contract: 'Customer contract',
+  worker_order: 'Ordering of a employee',
+  contract_of_employment: 'Contract of employment and general orientation',
+  guidance_to_work: 'Guidance to work and working environment',
+  work_performance: 'Work performance and supervision',
+  feedback_evaluation: 'Feedback and evaluation',
 
   // profilePage
   settings: 'Settings',

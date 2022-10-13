@@ -297,6 +297,13 @@ export default {
   remove: 'Poista',
   feedback: 'Palaute',
   rental_work_model: 'Vuokratyömalli',
+  overview: 'Yleiskatsaus',
+  customer_contract: 'Asiakassopimus',
+  worker_order: 'Työntekijän tilaus ja valinta',
+  contract_of_employment: 'Työsopimus ja yleisperehdytys',
+  guidance_to_work: 'Opastus työhön ja työoloihin',
+  work_performance: 'Työsuoritus ja valvonta',
+  feedback_evaluation: 'Palaute ja toiminnan arviointi',
 
   // profilePage
   settings: 'Asetukset',
