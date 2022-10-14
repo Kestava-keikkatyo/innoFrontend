@@ -6,6 +6,8 @@ import { useTranslation } from 'react-i18next';
 import { FormikTextField, FormikSelectField } from '../../components/FormField';
 import SignUpModal from './SignUpModal';
 
+import './forms.css';
+
 import {
   Card,
   CardContent,
@@ -118,6 +120,7 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
                   name="email"
                   type="text"
                   placeholder="user@mail.com"
+                  className="marginTop"
                 />
                 <Box display="flex" flexDirection="row">
                   <Box paddingRight={1}>
@@ -126,6 +129,7 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
                       name="password"
                       type="password"
                       placeholder="secret123"
+                      className="marginTop"
                     />
                   </Box>
                   <FormikTextField
@@ -133,21 +137,26 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
                     name="passwordConfirm"
                     type="password"
                     placeholder="secret123"
+                    className="marginTop"
                   />
                 </Box>
-                <FormikSelectField
-                  label={t('role')}
-                  name="role"
-                  options={roleOptions}
-                />
-                <FormikSelectField
-                  label={t('category')}
-                  name="category"
-                  options={categoryOptions}
-                  disabled={values.role === roles.Worker ? true : false}
-                  setFieldValue={setFieldValue}
-                />
-                <Typography gutterBottom variant="body2" color="textSecondary">
+                <Box display="flex" flexDirection="column" className="marginTop2">
+                  <FormikSelectField
+                      label={t('role')}
+                      name="role"
+                      options={roleOptions}
+                  />
+                </Box>
+                <Box display="flex" flexDirection="column" className="marginTop">
+                  <FormikSelectField
+                      label={t('category')}
+                      name="category"
+                      options={categoryOptions}
+                      disabled={values.role === roles.Worker ? true : false}
+                      setFieldValue={setFieldValue}
+                  />
+                </Box>
+                <Typography gutterBottom variant="body2" color="textSecondary" className="marginTop">
                   {t('terms_of_use')}
                   <Link
                     style={{ cursor: 'pointer' }}
@@ -163,6 +172,7 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
                   disabled={!dirty || !isValid || loading}
                   variant="contained"
                   color="primary"
+                  className="marginTop"
                 >
                   {loading ? <CircularProgress size={24} /> : t('sign_up')}
                 </Button>

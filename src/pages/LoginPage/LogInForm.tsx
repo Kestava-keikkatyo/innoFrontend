@@ -2,8 +2,9 @@ import React from 'react';
 import { Formik, Form } from 'formik';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-
 import { FormikTextField } from '../../components/FormField';
+
+import './forms.css';
 
 import {
   Card,
@@ -69,12 +70,14 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
                   name="password"
                   type="password"
                   placeholder="secret123"
+                  className="marginTop"
                 />
                 <Button
                   type="submit"
                   disabled={!isValid || loading}
                   variant="contained"
                   color="primary"
+                  className="marginTop"
                 >
                   {loading ? <CircularProgress size={24} /> : t('log_in')}
                 </Button>

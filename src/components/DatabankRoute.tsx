@@ -3,7 +3,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import { Search } from '@mui/icons-material'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../assets/keikka-kaveri4.png'
+import logo from '../assets/keikkakaveri_logo.png'
 import { useTranslation } from 'react-i18next'
 export interface DatabankProps {
   path: string
