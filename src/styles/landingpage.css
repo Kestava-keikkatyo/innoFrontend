@@ -154,8 +154,8 @@
 }
 
 .intro-container {
-  max-width: 25rem;
-  height: 25rem;
+  max-width: 27rem;
+  height: 27rem;
   border-radius: 14rem;
   margin-bottom: 1rem;
   padding: 2rem 0.5rem;
@@ -163,20 +163,22 @@
 
 .landing-header-offset {
   margin-top: 3rem;
-  font-size: 310%;
+  font-size: 265%;
   font-weight: 400;
   letter-spacing: 0em;
+  text-decoration: underline;
 }
 
 .landing-text {
   margin-top: 1.5rem !important;
-  font-size: 155%;
+  font-size: 140%;
   font-weight: 400;
 }
 
 .landing-text2 {
   margin-top: 2rem;
   font-size: 130%;
+  font-weight: 300;
 }
 
 .landing-partner {
