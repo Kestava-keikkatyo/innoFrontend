@@ -704,7 +704,7 @@ export default {
   automation: "Automatisaatiolla perehdytys on rennompaa",
   wellBeing: "Työntekijöitesi hyvinvointi on meille tärkeää",
   topical: 'Ajankohtaista:',
-  news: 'uutiset',
+  news: 'Uutiset',
   collaboration: 'Yhteistyössä:',
   ttk: 'Työturvallisuuskeskus',
   esr: 'ESR-rahasto',
