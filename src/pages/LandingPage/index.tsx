@@ -170,6 +170,7 @@ const LandingPage = () => {
                   </Typography>
                 </MenuItem>
                 <MenuItem key="2" onClick={handleCloseNavMenu}>
+
                     <Button
                         sx={{color: 'black', fontWeight:600, fontSize: 16}}
                         onClick={() => changeLanguage('fi')}>
@@ -226,6 +227,7 @@ const LandingPage = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0, display: {xs: 'none', sm: 'flex' } }}>
+
               <Button
                   sx={{ color: 'black', fontWeight: 600, fontSize: 16}}
                   onClick={() => changeLanguage('fi')}>

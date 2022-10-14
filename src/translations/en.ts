@@ -522,6 +522,7 @@ export default {
 
   // CreateJobForAgency
   add_new_job: 'Add new job',
+  your_jobs: 'Your jobs',
   job_title: 'Title',
   job_category: 'Category',
   job_type: 'Job type',
@@ -731,4 +732,9 @@ export default {
   // Agency home
   received_reports: 'Latest received reports',
   latest_joined_workers: 'Latest joined workers',
+
+  //business contracts
+  search_by_name: 'Search by name',
+  requested_contracts: 'REQUESTED CONTRACTS',
+  archived_contracts: 'ARCHIVED CONTRACTS',
 }

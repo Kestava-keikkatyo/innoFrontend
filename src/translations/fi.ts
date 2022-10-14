@@ -515,6 +515,7 @@ export default {
 
   // CreateJobForAgency
   add_new_job: 'Lisää uusi työpaikka',
+  your_jobs: 'Sinun työpaikat',
   job_title: 'Otsikko',
   job_category: 'Kategoria',
   job_type: 'Työn tyyppi',
@@ -724,4 +725,9 @@ export default {
   // Agency home
   received_reports: 'Viimeisimmät raportit',
   latest_joined_workers: 'Liittyneet työntekijät',
+
+  //business contracts
+  search_by_name: 'Hae nimellä',
+  requested_contracts: 'PYYDETYT SOPIMUKSET',
+  archived_contracts: 'ARKISTOIDUT SOPIMUKSET',
 }

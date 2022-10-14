@@ -7,6 +7,7 @@ import { Container } from '@mui/material';
 import CreateJob from './CreateJob';
 import CreatedJobs from './CreatedJobs';
 import { useHistory, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -49,6 +50,7 @@ function getQueryParam(search : string, paramName : string) : string | null {
 }
 
 const CompanyJobPage: React.FC = () => {
+  const { t } = useTranslation()
   const history = useHistory();
 
   useLocation();
@@ -63,6 +65,7 @@ const CompanyJobPage: React.FC = () => {
   const value = getQueryParam(history.location.search, 'tab') || 'create';
 
   return (
+    
   <Container>
     <AppBar position="static" color="transparent">
       <Tabs
@@ -73,8 +76,8 @@ const CompanyJobPage: React.FC = () => {
       variant="fullWidth"
       aria-label="full width tabs example"
       >
-      <Tab label="Add new job" value="create" {...a11yProps(0)} />
-      <Tab label="Your jobs" value="my" {...a11yProps(1)} />
+      <Tab label={t('add_new_job')} value="create" {...a11yProps(0)} />
+      <Tab label={t('your_jobs')} value="my" {...a11yProps(1)} />
       </Tabs>
     </AppBar>
     <TabPanel value={value} index="create">
