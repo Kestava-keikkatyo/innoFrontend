@@ -146,7 +146,7 @@ const BusinessContractsPage = () => {
           <Tab
             className={classes.tab}
             // label={matches ? ' ' : t('sent_contracts')}
-            label={matches ? ' ' : 'requested_contracts'}
+            label={matches ? ' ' : t('requested_contracts')}
             icon={
               <Badge badgeContent={sent.length} color="secondary">
                 {matches ? (
@@ -162,7 +162,7 @@ const BusinessContractsPage = () => {
           />
           <Tab
             className={classes.tab}
-            label={matches ? ' ' : 'received_contracts'}
+            label={matches ? ' ' : t('received_contracts')}
             icon={
               <Badge badgeContent={pending.length} color="secondary">
                 {matches ? (
@@ -178,7 +178,7 @@ const BusinessContractsPage = () => {
           />
           <Tab
             className={classes.tab}
-            label={matches ? ' ' : 'archived_contracts'}
+            label={matches ? ' ' : t('archived_contracts')}
             icon={
               <Badge badgeContent={archived.length} color="secondary">
                 {matches ? (

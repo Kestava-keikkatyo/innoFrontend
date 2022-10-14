@@ -172,7 +172,7 @@ const LandingPage = () => {
                 <MenuItem key="2" onClick={handleCloseNavMenu}>
                   <Button
                     onClick={() => changeLanguage('fi')} >
-                    <img src={fi1} alt={"fi"} style={{ width: '30px' }} />
+                    <img style={{ width: '30px' }} />
                   </Button>
                 </MenuItem>
                 <MenuItem key="3" onClick={handleCloseNavMenu}>
@@ -225,12 +225,12 @@ const LandingPage = () => {
 
           <Box sx={{ flexGrow: 0, display: {xs: 'none', sm: 'flex' } }}>
             <Button onClick={() => changeLanguage('fi')}
-              sx={{ display: 'block', paddingRight: '0' }} >
-                <img src={fi1} alt={"fi"} style={{ width: '30px' }} />
+              sx={{ display: 'block', paddingRight: '0', fontSize: '16px', color: 'black' }} >                
+                FI
             </Button>
             <Button onClick={() => changeLanguage('en')}
-              sx={{ display: 'block', paddingLeft: '0' }} >
-                <img src={us1} alt={"en"} style={{ width: '30px' }} />
+              sx={{ display: 'block', paddingLeft: '0', fontSize: '16px', color: 'black' }} >
+                EN
             </Button>
             <Typography sx={{ my: 3, display: 'block', marginLeft: '1rem' }} >
               <Link className="landing-login" to="/login">
