@@ -20,7 +20,6 @@ import FirstLandingPage from './FirstLandingPage';
 import ContentLifeSpan from './ContentWorkLifeSpan';
 import ContentResponsibilities from './ContentResponsibilities';
 import { Link } from 'react-router-dom';
-// import logo from '../LandingPage/keikka-kaveri4.png';
 // import TranslateIcon from '@mui/icons-material/Translate';
 import { useTranslation } from 'react-i18next';
 import fi1 from '../../components/NavigationComponents/fi1.png';
