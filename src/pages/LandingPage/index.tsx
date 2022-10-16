@@ -226,14 +226,13 @@ const LandingPage = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0, display: {xs: 'none', sm: 'flex' } }}>
-
               <Button
-                  sx={{ color: 'black', fontWeight: 600, fontSize: 16}}
+                  sx={{ color: 'black', fontWeight: 600, fontSize: 16, maxHeight: 63, paddingTop: 2}}
                   onClick={() => changeLanguage('fi')}>
                   FI
               </Button>
               <Button
-                  sx={{ color: 'black', fontWeight: 600, fontSize: 16}}
+                  sx={{ color: 'black', fontWeight: 600, fontSize: 16, maxHeight: 63, paddingTop: 2}}
                   onClick={() => changeLanguage('en')}>
                   EN
               </Button>

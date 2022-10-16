@@ -22,14 +22,14 @@ import i18next from 'i18next';
 export interface ContentResponsibilitiesProps {}
 
 const style = {
-  position: 'absolute' as 'absolute',
+  position: 'absolute' as const,
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: "fit-content",
-  maxWidth: "50%",
-  maxHeight: "90%",
-  overflow: "auto",
+  width: 'fit-content',
+  maxWidth: '50%',
+  maxHeight: '90%',
+  overflow: 'auto',
   bgcolor: 'background.paper',
   p: 4,
 };
@@ -54,7 +54,7 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
     Vastuualueet = vastuualueet;
   }
   return (
-    <Container style={{backgroundColor: "white"}}>
+    <Container style={{backgroundColor: 'white'}}>
       <div className='spacing' />
       <Grid
         container
@@ -74,9 +74,9 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
           </Link>
         </Grid>
       </Grid>
-      <div style={{margin: "0.5rem"}} />
-      <Grid container className="landing-part3">
-        <Grid item xs={12} md={4} style={{marginBottom: "1rem"}}>
+      <div style={{margin: '0.5rem'}} />
+      <Grid container>
+        <Grid item xs={12} md={4} style={{marginBottom: '1rem'}}>
           <div className="responsibilty-card">
             <CardHeader
               action={
@@ -103,9 +103,9 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
               >
-                <Box sx={style} className={"modal"}>
+                <Box sx={style} className={'modal'}>
                   {/* Add close button? */}
-                  <Typography id="modal-modal-title" variant="h6" component="h2">
+                  <Typography id="modal-modal-title" variant="h4" component="h2">
                   {t('worker')}
                   </Typography>
                   <List id="modal-modal-description">
@@ -122,7 +122,7 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
             </CardContent>
           </div>
         </Grid>
-        <Grid item xs={12} md={4} style={{marginBottom: "1rem"}}>
+        <Grid item xs={12} md={4} style={{marginBottom: '1rem'}}>
           <div className="responsibilty-card">
             <CardHeader className="ContentContainer"
               action={
@@ -148,9 +148,9 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
               >
-                <Box sx={style} className={"modal"}>
+                <Box sx={style} className={'modal'}>
                   {/* Add close button? */}
-                  <Typography id="modal-modal-title" variant="h6" component="h2">
+                  <Typography id="modal-modal-title" variant="h4" component="h2">
                   {t('business')}
                   </Typography>
                   <List id="modal-modal-description">
@@ -181,7 +181,7 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
             </CardContent>
           </div>
         </Grid>
-        <Grid item xs={12} md={4} style={{marginBottom: "1rem"}}>
+        <Grid item xs={12} md={4} style={{marginBottom: '1rem'}}>
           <div className="responsibilty-card">
             <CardHeader className="ContentContainer"
               action={
@@ -207,9 +207,9 @@ const ContentResponsibilities: React.FC<ContentResponsibilitiesProps> = () => {
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
               >
-                <Box sx={style} className={"modal"}>
+                <Box sx={style} className={'modal'}>
                   {/* Add close button? */}
-                  <Typography id="modal-modal-title" variant="h6" component="h2">
+                  <Typography id="modal-modal-title" variant="h4" component="h2">
                   {t('agency')}
                   </Typography>
                   <List id="modal-modal-description">
