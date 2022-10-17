@@ -241,49 +241,49 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               </ListItemButton>
               <Collapse in={openNest} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/RentalWorkModel">
+                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rental-work-model">
                     <ListItemIcon>
                       <SupervisorAccountIcon fontSize="small" sx={{ color: iconColor.base }} />
                     </ListItemIcon>
                     <ListItemText primary={t('overview')} />
                   </ListItemButton>
 
-                  <ListItemButton sx={{ pl: 4 }}>
+                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rental-work-model/customer-contract">
                     <ListItemIcon>
                       <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.done }} />
                     </ListItemIcon>
                     <ListItemText primary={t('customer_contract')} />
                   </ListItemButton>
 
-                  <ListItemButton sx={{ pl: 4 }}>
+                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rental-work-model/ordering-employee">
                     <ListItemIcon>
                       <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.done }} />
                     </ListItemIcon>
                     <ListItemText primary={t('worker_order')} />
                   </ListItemButton>
 
-                  <ListItemButton sx={{ pl: 4 }}>
+                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rental-work-model/contract-of-employment">
                     <ListItemIcon>
                       <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.undone }} />
                     </ListItemIcon>
                     <ListItemText primary={t('contract_of_employment')} />
                   </ListItemButton>
 
-                  <ListItemButton sx={{ pl: 4 }}>
+                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rental-work-model/guidance-to-work">
                     <ListItemIcon>
                       <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.undone }} />
                     </ListItemIcon>
                     <ListItemText primary={t('guidance_to_work')} />
                   </ListItemButton>
 
-                  <ListItemButton sx={{ pl: 4 }}>
+                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rental-work-model/work-performance">
                     <ListItemIcon>
                       <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.undone }} />
                     </ListItemIcon>
                     <ListItemText primary={t('work_performance')} />
                   </ListItemButton>
 
-                  <ListItemButton sx={{ pl: 4 }}>
+                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rental-work-model/feedback-evaluation">
                     <ListItemIcon>
                       <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.undone }} />
                     </ListItemIcon>
