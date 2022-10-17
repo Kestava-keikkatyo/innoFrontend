@@ -247,6 +247,11 @@ export default {
   contracts: 'Sopimukset',
   contracts_overview: 'Sopimusten yleiskatsaus',
 
+  // Rental Work Model
+  rwm_responsibilities: 'Vastuut',
+  rwm_forms: 'Lomakkeet',
+  rwm_good_practices: 'Hyvät käytännöt',
+
   // FeedbackForm
   write_feedback_here: 'Kirjoita palautteesi tähän',
   feedback_sent: 'Palaute lähetetty',

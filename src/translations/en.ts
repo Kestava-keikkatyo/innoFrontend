@@ -248,6 +248,11 @@ export default {
   contracts: 'Contracts',
   contracts_overview: 'Contracts overview',
 
+  // Rental Work Model
+  rwm_responsibilities: 'Responsibilities',
+  rwm_forms: 'Forms',
+  rwm_good_practices: 'Good practices',
+
   // FeedbackForm
   write_feedback_here: 'Write feedback here',
   feedback_sent: 'Feedback sent',
