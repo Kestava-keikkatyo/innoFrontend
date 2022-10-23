@@ -13,7 +13,7 @@ import {
 } from '@mui/material'
 import React from 'react'
 import Spacing from '../../components/Spacing'
-import logo from "../LandingPage/keikka-kaveri4.png";
+import logo from '../../assets/keikka-kaveriFooter.png';
 import { useTranslation } from 'react-i18next';
 
 export interface FooterPageProps {}

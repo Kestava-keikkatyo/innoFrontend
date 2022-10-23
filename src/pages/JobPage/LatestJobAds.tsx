@@ -77,7 +77,7 @@ const LatestJobAds: React.FC = () => {
     ];
     
     return (
-        <div style={{ height: 400, width: '100%' }}>
+        <div style={{ height: 390, width: '100%' }}>
             <div className={classes.title}>
                 <Typography color="primary" align="center" className={classes.title} variant="h6">{t('job_latest_job_ads')}</Typography>
             </div>

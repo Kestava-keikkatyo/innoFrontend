@@ -20,7 +20,6 @@ import FirstLandingPage from './FirstLandingPage';
 import ContentLifeSpan from './ContentWorkLifeSpan';
 import ContentResponsibilities from './ContentResponsibilities';
 import { Link } from 'react-router-dom';
-// import logo from '../LandingPage/keikka-kaveri4.png';
 // import TranslateIcon from '@mui/icons-material/Translate';
 import { useTranslation } from 'react-i18next';
 import fi1 from '../../components/NavigationComponents/fi1.png';
@@ -169,20 +168,17 @@ const LandingPage = () => {
                     </Link>
                   </Typography>
                 </MenuItem>
-                <MenuItem key="2" onClick={handleCloseNavMenu}>
-
-                    <Button
-                        sx={{color: 'black', fontWeight:600, fontSize: 16}}
-                        onClick={() => changeLanguage('fi')}>
+                <MenuItem key="2" onClick={ () => {handleCloseNavMenu(); changeLanguage('fi')}}>
+                    <Typography
+                        sx={{color: 'black', fontWeight:600, fontSize: 16}}>
                         FI
-                    </Button>
+                    </Typography>
                 </MenuItem>
-                <MenuItem key="3" onClick={handleCloseNavMenu}>
-                    <Button
-                        sx={{color: 'black', fontWeight: 600, fontSize: 16}}
-                        onClick={() => changeLanguage('en')}>
+                <MenuItem key="3" onClick={ () => {handleCloseNavMenu(); changeLanguage('en')}}>
+                    <Typography
+                        sx={{color: 'black', fontWeight: 600, fontSize: 16}}>
                         EN
-                    </Button>
+                    </Typography>
                 </MenuItem>
                 <MenuItem>
                   <Typography textAlign="center">
@@ -227,14 +223,13 @@ const LandingPage = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0, display: {xs: 'none', sm: 'flex' } }}>
-
               <Button
-                  sx={{ color: 'black', fontWeight: 600, fontSize: 16}}
+                  sx={{ color: 'black', fontWeight: 600, fontSize: 16, maxHeight: 63, paddingTop: 2}}
                   onClick={() => changeLanguage('fi')}>
                   FI
               </Button>
               <Button
-                  sx={{ color: 'black', fontWeight: 600, fontSize: 16}}
+                  sx={{ color: 'black', fontWeight: 600, fontSize: 16, maxHeight: 63, paddingTop: 2}}
                   onClick={() => changeLanguage('en')}>
                   EN
               </Button>
