@@ -168,20 +168,17 @@ const LandingPage = () => {
                     </Link>
                   </Typography>
                 </MenuItem>
-                <MenuItem key="2" onClick={handleCloseNavMenu}>
-
-                    <Button
-                        sx={{color: 'black', fontWeight:600, fontSize: 16}}
-                        onClick={() => changeLanguage('fi')}>
+                <MenuItem key="2" onClick={ () => {handleCloseNavMenu(); changeLanguage('fi')}}>
+                    <Typography
+                        sx={{color: 'black', fontWeight:600, fontSize: 16}}>
                         FI
-                    </Button>
+                    </Typography>
                 </MenuItem>
-                <MenuItem key="3" onClick={handleCloseNavMenu}>
-                    <Button
-                        sx={{color: 'black', fontWeight: 600, fontSize: 16}}
-                        onClick={() => changeLanguage('en')}>
+                <MenuItem key="3" onClick={ () => {handleCloseNavMenu(); changeLanguage('en')}}>
+                    <Typography
+                        sx={{color: 'black', fontWeight: 600, fontSize: 16}}>
                         EN
-                    </Button>
+                    </Typography>
                 </MenuItem>
                 <MenuItem>
                   <Typography textAlign="center">
