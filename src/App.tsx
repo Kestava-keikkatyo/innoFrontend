@@ -70,6 +70,8 @@ import PasswordChange from './pages/SettingsPage/PasswordChange'
 import CreateResponsibility from './pages/Responsibility/CreateResponsibility'
 import Responsibilities from './pages/Responsibility/Responsibilities'
 import ResponsibilityUpdate from './pages/Responsibility/ResponsibilityUpdate'
+import { useTranslation } from 'react-i18next'
+import i18next from 'i18next';
 
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -83,7 +85,7 @@ declare module '@mui/styles/defaultTheme' {
 const App: React.FC = () => {
 
   const theme = createTheme()
-
+  const { t } = useTranslation()
   // extra toolbar prevents content from going underneath appbar.
   return (
     <>
@@ -207,7 +209,7 @@ const App: React.FC = () => {
             <PrivateRoute path="/agencies/profile/:userId" roles={[roles.Business]}>
               <UserProfile />
             </PrivateRoute>
-            <PrivateRoute path="/profile-view/:userId">
+            <PrivateRoute path="/profileView/:userId">
               <UserProfile />
             </PrivateRoute>
             <PrivateRoute path="/agencies" roles={[roles.Business]}>
@@ -243,7 +245,7 @@ const App: React.FC = () => {
             <PrivateRoute path="/report" roles={[roles.Worker]}>
               <ReportPage />
             </PrivateRoute>
-            <PrivateRoute path="/mood-stats" roles={[roles.Agency]}>
+            <PrivateRoute path="/moodStats" roles={[roles.Agency]}>
               <AgencyStatistics />
             </PrivateRoute>
             <PrivateRoute path="/reports/answer" roles={[roles.Business, roles.Agency]}>
@@ -274,13 +276,13 @@ const App: React.FC = () => {
               <ContractsPage />
             </PrivateRoute>
             <PrivateRoute
-              path="/business-contracts/business-contract-preview"
+              path="/businessContracts/business-contract-preview"
               roles={[roles.Business, roles.Agency, roles.Worker]}
             >
               <BusinessContractPreviewPage />
             </PrivateRoute>
             <PrivateRoute
-              path="/business-contracts/business-contract-fill"
+              path="/businessContracts/business-contract-fill"
               roles={[roles.Business, roles.Agency, roles.Worker]}
             >
               <BusinessContractFill />
@@ -292,7 +294,7 @@ const App: React.FC = () => {
               <BusinessContractEdit />
             </PrivateRoute>
             <PrivateRoute
-              path="/business-contracts"
+              path="/businessContracts"
               roles={[roles.Business, roles.Worker]}
             >
               <BusinessContractPage />

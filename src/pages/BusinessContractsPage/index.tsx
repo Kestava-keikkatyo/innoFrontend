@@ -98,12 +98,13 @@ const BusinessContractsPage = () => {
 
   if(contracts.length){
     contracts.map((contract: any) => {
-      if (contract.status === "pending") {
+      if (contract.status ===  "pending") {
+        t('pending')
         pending.push(contract);
         fromAgencies.push(contract)
-      } else if (contract.status === "request") {
+      } else if (contract.status = t('request')) {
         requested.push(contract);
-      } else if (contract.status === "signed") {
+      } else if (contract.status = t('signed')) {
         signed.push(contract);
         fromAgencies.push(contract)
       } else {
