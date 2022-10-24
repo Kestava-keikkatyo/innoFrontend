@@ -246,7 +246,7 @@ const App: React.FC = () => {
               <ReportPage />
             </PrivateRoute>
             <PrivateRoute
-              path="/rental-work-model/customer-contract"
+              path="/rentalWorkModel/customerContract"
               roles={[roles.Worker]}
             >
               <RentalWorkModelPage path='customer-contract' />

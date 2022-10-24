@@ -200,11 +200,6 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           {role === roles.Worker && (
             <>
               <ListItemButton component={Link} to="/home" onClick={handleClick}>
-                <ListItemIcon>{<CalendarTodayIcon />}</ListItemIcon>
-                <ListItemText primary={t('schedule')} />
-              </ListItemButton>
-              <Divider />
-              <ListItemButton component={Link} to="/businessContracts" onClick={handleClick}>
                 <ListItemIcon>
                   <CalendarTodayIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>

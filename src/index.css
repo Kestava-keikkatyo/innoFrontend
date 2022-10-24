@@ -469,9 +469,7 @@ nav * {
   color: aliceblue !important;
 }
 
-.form-search-container,
-.MuiOutlinedInput-root .Mui-focused,
-.MuiOutlinedInput-notchedOutline {
+.form-search-container .MuiOutlinedInput-root .Mui-focused .MuiOutlinedInput-notchedOutline {
   color: white;
   border-color: black;
   border-radius: 0;

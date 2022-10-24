@@ -16,7 +16,7 @@ export interface RentalWorkModelSteps {
     'feedback-evaluation'
 }
 
-const RentalWorkModel = ({ path }: RentalWorkModelSteps) => {
+const RentalWorkModelPage = ({ path }: RentalWorkModelSteps) => {
   const { data, ...user } = useSelector((state: any) => state.user);
 
   if (user.loading) {
@@ -41,4 +41,4 @@ const RentalWorkModel = ({ path }: RentalWorkModelSteps) => {
   return getContent()
 };
 
-export default RentalWorkModel;
+export default RentalWorkModelPage;
