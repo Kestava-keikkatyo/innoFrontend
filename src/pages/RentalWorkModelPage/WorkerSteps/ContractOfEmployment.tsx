@@ -4,7 +4,8 @@ import WorkerStepBase from './WorkerStepBase';
 import Typography from '@mui/material/Typography';
 import makeStyles from '@mui/styles/makeStyles';
 import { Theme } from '@mui/material/styles';
-import { Container } from '@mui/material';
+import { Container, Link } from '@mui/material';
+import ContractOfEmploymentGP from './GoodPractices/ContractOfEmploymentGP';
 
 const ContractOfEmployment = () => {
   const { t } = useTranslation();
@@ -18,6 +19,7 @@ const ContractOfEmployment = () => {
       Tab 1 content for {t('contract_of_employment')}
     </div>,
     <div key="tab2">
+      <ContractOfEmploymentGP/>
       Tab 2 content for {t('contract_of_employment')}
     </div>
   ]

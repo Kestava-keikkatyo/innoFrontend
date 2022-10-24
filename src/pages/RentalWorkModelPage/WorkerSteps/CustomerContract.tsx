@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import makeStyles from '@mui/styles/makeStyles';
 import { Theme } from '@mui/material/styles';
 import { Container } from '@mui/material';
+import CustomerContractGP from './GoodPractices/CustomerContractGP';
 
 const CustomerContract = () => {
   const { t } = useTranslation();
@@ -18,6 +19,7 @@ const CustomerContract = () => {
       Tab 1 content for {t('customer_contract')}
     </div>,
     <div key="tab2">
+      <CustomerContractGP/>
       Tab 2 content for {t('customer_contract')}
     </div>
   ]
