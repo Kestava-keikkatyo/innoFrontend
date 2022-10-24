@@ -43,7 +43,7 @@ const ActiveLastBreadcrumb: React.FC = () => {
               to={l.link}
               aria-current="page"
             >
-              {l.name}
+              {t(l.name)}
             </Link>
           ) : null
         )}

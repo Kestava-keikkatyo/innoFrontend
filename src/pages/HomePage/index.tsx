@@ -37,7 +37,7 @@ const Home = () => {
   };
   return (
     <Container>
-      <Typography variant="h1" color="primary" className="header">
+      <Typography variant="h1" color="primary" className="header" align={'center'} marginBottom={4}>
         {t('home')}
       </Typography>
       {getContent()}

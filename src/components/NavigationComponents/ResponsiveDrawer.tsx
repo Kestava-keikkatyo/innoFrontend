@@ -111,7 +111,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           )}
           {role === roles.Business && (
             <>
-              <ListItemButton component={Link} to="/business-contracts" onClick={handleClick}>
+              <ListItemButton component={Link} to="/businessContracts" onClick={handleClick}>
                 <ListItemIcon>
                   <AssignmentOutlinedIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
@@ -144,7 +144,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           )}
           {role === roles.Agency && (
             <>
-              <ListItemButton component={Link} to="/mood-stats" onClick={handleClick}>
+              <ListItemButton component={Link} to="/moodStats" onClick={handleClick}>
                 <ListItemIcon>
                   <MoodIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
@@ -200,6 +200,11 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           {role === roles.Worker && (
             <>
               <ListItemButton component={Link} to="/home" onClick={handleClick}>
+                <ListItemIcon>{<CalendarTodayIcon />}</ListItemIcon>
+                <ListItemText primary={t('schedule')} />
+              </ListItemButton>
+              <Divider />
+              <ListItemButton component={Link} to="/businessContracts" onClick={handleClick}>
                 <ListItemIcon>
                   <CalendarTodayIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
@@ -210,7 +215,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           )}
           {role === roles.Worker && (
             <>
-              <ListItemButton component={Link} to="/business-contracts" onClick={handleClick}>
+              <ListItemButton component={Link} to="/businessContracts" onClick={handleClick}>
                 <ListItemIcon>
                   <LibraryBooksOutlinedIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
@@ -241,49 +246,49 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               </ListItemButton>
               <Collapse in={openNest} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rental-work-model">
+                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel">
                     <ListItemIcon>
                       <SupervisorAccountIcon fontSize="small" sx={{ color: iconColor.base }} />
                     </ListItemIcon>
                     <ListItemText primary={t('overview')} />
                   </ListItemButton>
 
-                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rental-work-model/customer-contract">
+                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/customerContract">
                     <ListItemIcon>
                       <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.done }} />
                     </ListItemIcon>
                     <ListItemText primary={t('customer_contract')} />
                   </ListItemButton>
 
-                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rental-work-model/ordering-employee">
+                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/orderingEmployee">
                     <ListItemIcon>
                       <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.done }} />
                     </ListItemIcon>
                     <ListItemText primary={t('worker_order')} />
                   </ListItemButton>
 
-                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rental-work-model/contract-of-employment">
+                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/contractOfEmployment">
                     <ListItemIcon>
                       <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.undone }} />
                     </ListItemIcon>
                     <ListItemText primary={t('contract_of_employment')} />
                   </ListItemButton>
 
-                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rental-work-model/guidance-to-work">
+                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/guidanceToWork">
                     <ListItemIcon>
                       <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.undone }} />
                     </ListItemIcon>
                     <ListItemText primary={t('guidance_to_work')} />
                   </ListItemButton>
 
-                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rental-work-model/work-performance">
+                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/workPerformance">
                     <ListItemIcon>
                       <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.undone }} />
                     </ListItemIcon>
                     <ListItemText primary={t('work_performance')} />
                   </ListItemButton>
 
-                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rental-work-model/feedback-evaluation">
+                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/feedbackEvaluation">
                     <ListItemIcon>
                       <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.undone }} />
                     </ListItemIcon>

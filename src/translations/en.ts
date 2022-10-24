@@ -535,6 +535,7 @@ export default {
 
   // CreateJobForAgency
   add_new_job: 'Add new job',
+  your_jobs: 'Your jobs',
   job_title: 'Title',
   job_category: 'Category',
   job_type: 'Job type',
@@ -744,4 +745,39 @@ export default {
   // Agency home
   received_reports: 'Latest received reports',
   latest_joined_workers: 'Latest joined workers',
+
+  //business contracts
+  search_by_name: 'Search by name',
+  requested_contracts: 'REQUESTED CONTRACTS',
+  archived_contracts: 'ARCHIVED CONTRACTS',
+  send_request: 'SEND REQUEST',
+  delete_request: 'Delete contract request?',
+  no_results: 'No results',
+  request: 'Request',
+  signed: 'Signed',
+  pending: 'Pending',
+
+  //links
+  Fiilismittari: 'Feelings',
+  Send: 'Send',
+  Information: 'Information',
+  BusinessContracts: 'Business contracts',
+  Jobs: 'Jobs',
+  Reports: 'Reports',
+  Report: 'Report',
+  Feedback: 'Feedback',
+  Details: 'Details',
+  Profile: 'Profile',
+  Edit: 'Edit',
+  Settings: 'Settings',
+  ProfileView: 'Company profile',
+  Forms: 'Forms',
+  Preview: 'Preview',
+  Contracts: 'Contracts',
+  Job: 'Jobs',
+  ReceivedWorkRequests: 'Work requests',
+  MoodStats: 'Feeling stats',
+  Workers: 'Workers',
+  Agencies: 'Agencies',
+  WorkRequests: 'Work requests',
 }

@@ -98,7 +98,7 @@ export const FormikSelectField: React.FC<any> = ({ options, label, disabled, set
       style={{ minHeight: '5rem', minWidth: 120 }}
       error={!!errorText}>
       <InputLabel id={props._id || props.name}>{label}</InputLabel>
-      <Select {...field} aria-labelledby={props._id || props.name}>
+      <Select {...field} aria-labelledby={props._id || props.name} label={label}>
         {options.map((option: any) => (
           <MenuItem key={option.value} value={option.value}>
             {option.label || option.value}

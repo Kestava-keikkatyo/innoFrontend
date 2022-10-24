@@ -60,15 +60,13 @@ const LangMenuDropDown = () => {
     <>
       <div className="drawer-top">
         <Button
-          style={{ position: 'absolute', left: '-7rem', top: '23%' }}
-          onClick={() => changeLanguage('fi')}
-        >
+          style={{ position: 'absolute', left: '-8rem', top: '23%' }}
+          onClick={() => changeLanguage('fi')}>
           FI
         </Button>
         <Button
           style={{ position: 'absolute', left: '-4rem', top: '23%' }}
-          onClick={() => changeLanguage('en')}
-        >
+          onClick={() => changeLanguage('en')}>
           EN
         </Button>
       </div>
@@ -223,6 +221,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               color="default"
+              sx={{ borderRadius: 0 }}
               onClick={handleNotifications}
               size="large">
               <NotificationsIcon />
@@ -258,6 +257,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
               aria-label="account of current user"
               aria-controls="menu-appbar"
               color="primary"
+              sx={{ borderRadius: 0 }}
               className={classes.user}
               {...bindTrigger(popupState)}
               size="large">
@@ -365,6 +365,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               color="default"
+              sx={{ borderRadius: 0 }}
               onClick={handleNotifications}
               size="large">
               <NotificationsIcon />
@@ -400,6 +401,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
               aria-label="account of current user"
               aria-controls="menu-appbar"
               color="primary"
+              sx={{ borderRadius: 0 }}
               className={classes.user}
               {...bindTrigger(popupState)}
               size="large">
@@ -511,6 +513,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               color="default"
+              sx={{ borderRadius: 0 }}
               onClick={handleNotifications}
               size="large">
               <NotificationsIcon />
@@ -546,6 +549,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
               aria-label="account of current user"
               aria-controls="menu-appbar"
               color="primary"
+              sx={{ borderRadius: 0 }}
               className={classes.user}
               {...bindTrigger(popupState)}
               size="large">

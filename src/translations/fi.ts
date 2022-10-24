@@ -528,6 +528,7 @@ export default {
 
   // CreateJobForAgency
   add_new_job: 'Lisää uusi työpaikka',
+  your_jobs: 'Sinun työpaikat',
   job_title: 'Otsikko',
   job_category: 'Kategoria',
   job_type: 'Työn tyyppi',
@@ -717,7 +718,7 @@ export default {
   automation: 'Automatisaatiolla perehdytys on rennompaa',
   wellBeing: 'Työntekijöitesi hyvinvointi on meille tärkeää',
   topical: 'Ajankohtaista:',
-  news: 'uutiset',
+  news: 'Uutiset',
   collaboration: 'Yhteistyössä:',
   ttk: 'Työturvallisuuskeskus',
   esr: 'ESR-rahasto',
@@ -725,7 +726,7 @@ export default {
   privacy_statement:'Tietosuojaseloste',
 
   // Worker home
-  feelings: 'Tunteet',
+  feelings: 'Fiilikset',
   information2: 'Tiedot',
   emotions_summary: 'Tunteiden analyysi ja yhteenveto',
   dissatisfied: 'Tyytymätön',
@@ -737,4 +738,39 @@ export default {
   // Agency home
   received_reports: 'Viimeisimmät raportit',
   latest_joined_workers: 'Liittyneet työntekijät',
+
+  //business contracts
+  search_by_name: 'Hae nimellä',
+  requested_contracts: 'PYYDETYT SOPIMUKSET',
+  archived_contracts: 'ARKISTOIDUT SOPIMUKSET',
+  send_request: 'LÄHETÄ PYYNTÖ',
+  delete_request: 'Poistetaanko sopimuspyyntö?',
+  no_results: 'Ei tuloksia',
+  request: 'Pyyntö',
+  signed: 'Allekirjoitettu',
+  pending: 'Odottaa hyväksyntää',
+
+  //links
+  Fiilismittari: 'Fiilikset',
+  Send: 'Lähetä',
+  Information: 'Tiedot',
+  BusinessContracts: 'Yrityssopimukset',
+  Jobs: 'Työpaikat',
+  Reports: 'Raportit',
+  Report: 'Raportti',
+  Feedback: 'Palaute',
+  Details: 'Lisätiedot',
+  Profile: 'Profiili',
+  Edit: 'Muokkaa',
+  Settings: 'Asetukset',
+  ProfileView: 'Työpaikan profiili',
+  Forms: 'Lomakkeet',
+  Preview: 'Esikatselu',
+  Contracts: 'Sopimukset',
+  Job: 'Työpaikat',
+  ReceivedWorkRequests: 'Työpyynnöt',
+  MoodStats: 'Fiilistilastot',
+  Workers: 'Työntekijät',
+  Agencies: 'Vuokrayritykset',
+  WorkRequests: 'Työpyyntö',
 }
