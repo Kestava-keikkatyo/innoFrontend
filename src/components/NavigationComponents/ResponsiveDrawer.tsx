@@ -108,7 +108,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
 
           {role === roles.Business && (
             <>
-              <ListItem button component={Link} to="/business-contracts" onClick={handleClick}>
+              <ListItem button component={Link} to="/businessContracts" onClick={handleClick}>
                 <ListItemIcon>
                   <AssignmentOutlinedIcon />
                 </ListItemIcon>
@@ -141,7 +141,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
           )}
           {role === roles.Agency && (
             <>
-              <ListItem button component={Link} to="/mood-stats" onClick={handleClick}>
+              <ListItem button component={Link} to="/moodStats" onClick={handleClick}>
                 <ListItemIcon>
                   <MoodIcon />
                 </ListItemIcon>
@@ -201,7 +201,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, isOpen, setOpen }) => {
                 <ListItemText primary={t('schedule')} />
               </ListItem>
               <Divider />
-              <ListItem button component={Link} to="/business-contracts" onClick={handleClick}>
+              <ListItem button component={Link} to="/businessContracts" onClick={handleClick}>
                 <ListItemIcon>
                   <LibraryBooksOutlinedIcon />
                 </ListItemIcon>

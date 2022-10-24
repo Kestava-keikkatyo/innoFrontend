@@ -65,7 +65,7 @@ export const ListAccordioSent = (prop: { contracts: any[] }) => {
   const { t } = useTranslation();
 
   const cancelContract = (contract: any) => {
-    if (window.confirm(`Poistetaanko sopimuspyyntö?`)) {
+    if (window.confirm(t('delete_request'))) {
       dispatch(refuseBusinessContractById(contract.agency._id, contract._id));
 
       if (contract.receivedContracts.formId) {
