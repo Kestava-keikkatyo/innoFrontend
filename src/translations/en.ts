@@ -780,4 +780,17 @@ export default {
   Workers: 'Workers',
   Agencies: 'Agencies',
   WorkRequests: 'Work requests',
+
+   //good practices
+   good_practices_customer_contract_array: [
+    {'practice':'ENHenkilöstöpalveluyritys ja käyttäjäyritys käyvät yhdessä läpi lainsäädäntöön perustuvan vastuunjaon.'},
+    {'practice':'ENHenkilöstöpalveluyritys ja käyttäjäyritys sopivat vuokratyöntekijän perehdytyksestä ja työnopastuksesta.'},
+    {'practice':'ENVuokratyöntekijän pääsy perehdytysmateriaaliin on varmistettava.'},
+    {'practice':'ENPerehdytysprosessin sopimisen yhteydessä sovitaan, miten perehdytettävien oppiminen eli olennaisen tiedon sisäistäminen varmistetaan.Oppimista voidaan arvioida esimerkiksi seurantakeskustelujen tai käytännön harjoitusten avulla.'},
+    {'practice':'ENHenkilöstöpalveluyritys ja käyttäjäyritys sopivat, kuinka toimitaan työtapaturma-, sairauspoissaolo- ja muissa poikkeustilanteissa.'},
+    {'practice':'ENKäyttäjäyritys tiedottaa vuokratyön käytöstä omalle henkilöstölleen.'},
+    {'practice':'ENHenkilöstöpalveluyrityksen edustaja voi tavata käyttäjäyrityksen luottamusmiehet ja työsuojeluvaltuutetun sekä tutustua työympäristöön ennen vuokratyön aloitusta.'},
+    {'practice':'ENVierailukäyntiin voidaan yhdistää myös vaarojen kartoittamisen ja riskien arvioinnin, jotka voidaan tehdään yhdessä käyttäjäyrityksen edustajan kanssa.'},
+    {'practice':'ENVaarojen tunnistamisessa ja riskien arvioinnissa on hyvä olla mukana myös työsuojeluvaltuutettu.'}
+  ],
 }

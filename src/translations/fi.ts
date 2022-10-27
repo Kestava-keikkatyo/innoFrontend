@@ -776,5 +776,17 @@ export default {
 
 
   //good practices
-  good_practices_customer_contract: '<br/>Henkilöstöpalveluyritys ja käyttäjäyritys käyvät yhdessä läpi lainsäädäntöön perustuvan vastuunjaon.<br/>Henkilöstöpalveluyritys ja käyttäjäyritys sopivat vuokratyöntekijän perehdytyksestä ja työnopastuksesta.<br/>Vuokratyöntekijän pääsy perehdytysmateriaaliin on varmistettava.<br/>Perehdytysprosessin sopimisen yhteydessä sovitaan, miten perehdytettävien oppiminen eli olennaisen tiedon sisäistäminen varmistetaan.Oppimista voidaan arvioida esimerkiksi seurantakeskustelujen tai käytännön harjoitusten avulla.<br/>Henkilöstöpalveluyritys ja käyttäjäyritys sopivat, kuinka toimitaan työtapaturma-, sairauspoissaolo- ja muissa poikkeustilanteissa.<br/>Käyttäjäyritys tiedottaa vuokratyön käytöstä omalle henkilöstölleen.<br/>Henkilöstöpalveluyrityksen edustaja voi tavata käyttäjäyrityksen luottamusmiehet ja työsuojeluvaltuutetun sekä tutustua työympäristöön ennen vuokratyön aloitusta.<br/>Vierailukäyntiin voidaan yhdistää myös vaarojen kartoittamisen ja riskien arvioinnin, jotka voidaan tehdään yhdessä käyttäjäyrityksen edustajan kanssa.<br/>Vaarojen tunnistamisessa ja riskien arvioinnissa on hyvä olla mukana myös työsuojeluvaltuutettu.<br/>',
+  good_practices_customer_contract_array: [
+    'Henkilöstöpalveluyritys ja käyttäjäyritys käyvät yhdessä läpi lainsäädäntöön perustuvan vastuunjaon.',
+    'Henkilöstöpalveluyritys ja käyttäjäyritys sopivat vuokratyöntekijän perehdytyksestä ja työnopastuksesta.',
+    'Vuokratyöntekijän pääsy perehdytysmateriaaliin on varmistettava.',
+    'Perehdytysprosessin sopimisen yhteydessä sovitaan, miten perehdytettävien oppiminen eli olennaisen tiedon sisäistäminen varmistetaan.Oppimista voidaan arvioida esimerkiksi seurantakeskustelujen tai käytännön harjoitusten avulla.',
+    'Henkilöstöpalveluyritys ja käyttäjäyritys sopivat, kuinka toimitaan työtapaturma-, sairauspoissaolo- ja muissa poikkeustilanteissa.',
+    'Käyttäjäyritys tiedottaa vuokratyön käytöstä omalle henkilöstölleen.',
+    'Henkilöstöpalveluyrityksen edustaja voi tavata käyttäjäyrityksen luottamusmiehet ja työsuojeluvaltuutetun sekä tutustua työympäristöön ennen vuokratyön aloitusta.',
+    'Vierailukäyntiin voidaan yhdistää myös vaarojen kartoittamisen ja riskien arvioinnin, jotka voidaan tehdään yhdessä käyttäjäyrityksen edustajan kanssa.',
+    'Vaarojen tunnistamisessa ja riskien arvioinnissa on hyvä olla mukana myös työsuojeluvaltuutettu.'
+  ],
+
+
 }

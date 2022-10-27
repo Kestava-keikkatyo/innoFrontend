@@ -20,7 +20,7 @@ const CustomerContract = () => {
     </div>,
     <div key="tab2">
       <CustomerContractGP/>
-      Tab 2 content for {t('customer_contract')}
+      
     </div>
   ]
 
