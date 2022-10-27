@@ -94,7 +94,6 @@ const Agencies: React.FC = () => {
         columns={columns}
         pageSize={10}
         rowsPerPageOptions={[10]}
-        checkboxSelection
         />
     </div>
   );

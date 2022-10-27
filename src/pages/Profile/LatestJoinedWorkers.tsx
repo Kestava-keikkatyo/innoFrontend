@@ -68,14 +68,13 @@ const LatestJoinedWorkers: React.FC = () => {
         <div className={classes.title}>
           <Typography className={classes.title} color="primary" align="center" variant="h6">{t('latest_joined_workers')}</Typography>
         </div>
-        <DataGrid
+        <DataGrid className={classes.grid}
             getRowId={(row) => row._id}
             rows={rows}
             disableSelectionOnClick
             columns={columns}
             pageSize={10}
             rowsPerPageOptions={[10]}
-            checkboxSelection
         />
       </div>
   );
@@ -96,6 +95,9 @@ const useStyles = makeStyles(() => ({
     borderRadius: '50%',
     objectFit: 'cover',
     marginRight: '10px',
+  },
+  grid: {
+    maxHeight: '370px'
   },
 }));
 

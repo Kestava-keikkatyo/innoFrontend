@@ -30,7 +30,7 @@ const FormPreviewHeader: React.FC<any> = () => {
           </Typography>
         </Grid>
         <Grid item xs={6} >
-          <Grid container style={{justifyContent: "end"}}>
+          <Grid container style={{justifyContent: 'end'}}>
             <Button>
               <Link to={backUrl}>{t('back')}</Link>
             </Button>
