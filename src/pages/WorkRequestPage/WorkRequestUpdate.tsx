@@ -67,7 +67,7 @@ const WorkRequestUpdate: React.FC = () => {
               <Form>
                 <div className={classes.workRequestContainerTop}>
                 <FormikField name="headline" label={t('work_request_headline')} required />
-                <FormikField name="workersNumber" label={t('work_request_workers_nuber')} type="number" required />
+                <FormikField name="workersNumber" label={t('work_request_workers_number')} type="number" required />
                 <FormikField name="requirements" label={t('work_request_requirements')} required multiline />
                 <FormikField name="desirableSkills" label={t('work_request_desirableSkills')} multiline />
                 <FormikField name="details" label={t('work_request_details')} required multiline />

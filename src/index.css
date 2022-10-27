@@ -344,6 +344,7 @@ code {
 
 .new-form-btn {
   text-align: start;
+  margin-bottom: 1rem;
 }
 
 .form-banner {
@@ -438,7 +439,7 @@ nav * {
 .form-search-container {
   background-color: #0007 !important;
   color: white;
-  margin: 0 0 2rem 0;
+  margin: 0 0 1rem 0;
 }
 
 /* .form-search-container .MuiSelect-icon {

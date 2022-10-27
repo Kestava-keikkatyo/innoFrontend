@@ -88,7 +88,6 @@ const LatestJobAds: React.FC = () => {
             columns={columns}
             pageSize={10}
             rowsPerPageOptions={[5]}
-            checkboxSelection
             />
         </div>
     );

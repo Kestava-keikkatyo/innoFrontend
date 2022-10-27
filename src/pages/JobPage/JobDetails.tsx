@@ -39,9 +39,9 @@ const JobDetails: React.FC = () => {
             <Typography className={classes.jobTitle} color="primary" variant="h4">{t('job_details_title')}</Typography>
         </div>
         <div>
-            <Stack direction="row" spacing={2}>
+            <Stack direction="row" spacing={2} className={classes.stack}>
                 <Button className={classes.button} color="secondary" component={Link} to="/job/application">{t('job_apply')}</Button>
-                <Button color="secondary" component={Link} to="/jobs">{t('back')}</Button>
+                <Button className={classes.button} color="secondary" component={Link} to="/jobs">{t('back')}</Button>
             </Stack>
         </div>
         <div className={classes.jobContainer}>
@@ -156,8 +156,14 @@ const useStyles = makeStyles(() => ({
         fontSize: '15px',
         paddingTop: '0px'
     },
+    stack: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end'
+    },
     button: {
-        marginLeft: '820px',
+        border: '1px solid',
+        borderColor: 'secondary'
     }
 }));
 

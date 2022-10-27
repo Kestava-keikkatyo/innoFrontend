@@ -70,7 +70,7 @@ export default {
   active: 'Aktiivisia',
   create: 'Luo',
   button_update: 'päivitä',
-  button_cancel: 'peruta',
+  button_cancel: 'peruuta',
   button_edit: 'muokkaa',
 
   // Mood index page

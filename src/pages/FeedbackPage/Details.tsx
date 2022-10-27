@@ -33,8 +33,8 @@ const Details: React.FC = () => {
         <div className={classes.feedbackTitleContainer}>
             <Typography color="secondary" className={classes.feedbackTitle} variant="h4">{t('feedback_title_details')}</Typography>
         </div>
-        <div>
-        <Button className={classes.back} color="secondary" component={Link} to="/feedback">{t('back')}</Button>
+        <div className={classes.back}>
+        <Button className={classes.backButton} color="secondary" component={Link} to="/feedback">{t('back')}</Button>
         </div>
         <div className={classes.feedbackContainer}>
             <div className={classes.feedbackShow}>
@@ -112,9 +112,15 @@ const useStyles = makeStyles(() => ({
         fontSize: '15px',
         paddingTop: '0px'
     },
+    backButton: {
+        fontSize: '14px',
+        border: '1px solid',
+        borderColor: 'secondary'
+    },
     back: {
-        marginLeft: '1000px',
-        fontSize: '17px',
+        display: 'flex',
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end'
     }
 }));
 
