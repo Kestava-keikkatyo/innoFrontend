@@ -21,6 +21,9 @@ const Overview = () => {
         quis sint vel velit, vitae voluptatibus! Commodi dicta dolorum eaque
         earum esse est facere fugit iste labore magnam, minus, neque nobis!
       </Typography>
+      <h3>Lomakkeet</h3>
+      <Typography>Lomakepohjat ohjaavat huolehtimaan tärkeistä asioista vuokratyötoimeksiannon eri vaiheissa. Lomakkeet täytetään kahden osapuolen yhteistyönä toimeksiannon tietyissä vaiheissa. Mallin kunkin vaiheen kohdalla on kerrottu, mikä lomake tähän vaiheeseen liittyy. Lomakkeiden täyttäminen varmistaa, että olennaisimmat vuokratyöntekijän työturvallisuuteen liittyvät seikat käydään läpi ja tärkeistä asioista sovitaan pelisäännöt henkilöstöpalvelu- ja käyttäjäyrityksen välillä. Kahden osapuolen kesken täytetty lomake voidaan aina antaa tiedoksi myös kolmannelle osapuolelle. Tämä toimii osana kumppaneiden välistä tiedonkulkua ja tärkeän informaation perillemenon varmistamista.
+      </Typography>
     </Container>
   )
 
