@@ -190,5 +190,22 @@
     {
       "tip": "Procurement of the necessary personal protective equipment (in cooperation with the user company, shared box)"
     }
+  ],
+  "vastuualueet_worker": [
+    {
+      "tip": "Compliance with the employer's instructions and regulations"
+    },
+    {
+      "tip": "Taking care of your own safety and that of your colleagues"
+    },
+    {
+      "tip": "Avoiding harassment and inappropriate treatment"
+    },
+    {
+      "tip": "Appropriate use of work tools, personal protective equipment and safety devices"
+    },
+    {
+      "tip": "Report of detected defects and deficiencies"
+    }
   ]
 }

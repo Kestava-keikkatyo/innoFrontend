@@ -70,8 +70,8 @@ import PasswordChange from './pages/SettingsPage/PasswordChange'
 import CreateResponsibility from './pages/Responsibility/CreateResponsibility'
 import Responsibilities from './pages/Responsibility/Responsibilities'
 import ResponsibilityUpdate from './pages/Responsibility/ResponsibilityUpdate'
+import RentalWorkModelPage from './pages/RentalWorkModelPage'
 import { useTranslation } from 'react-i18next'
-import i18next from 'i18next';
 
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -244,6 +244,48 @@ const App: React.FC = () => {
             </PrivateRoute>
             <PrivateRoute path="/report" roles={[roles.Worker]}>
               <ReportPage />
+            </PrivateRoute>
+            <PrivateRoute
+              path="/rentalWorkModel/customerContract"
+              roles={[roles.Worker]}
+            >
+              <RentalWorkModelPage path='customer-contract' />
+            </PrivateRoute>
+            <PrivateRoute
+              path="/rentalWorkModel/orderingEmployee"
+              roles={[roles.Worker]}
+            >
+              <RentalWorkModelPage path='ordering-employee' />
+            </PrivateRoute>
+            <PrivateRoute
+              path="/rentalWorkModel/contractOfEmployment"
+              roles={[roles.Worker]}
+            >
+              <RentalWorkModelPage path='contract-of-employment' />
+            </PrivateRoute>
+            <PrivateRoute
+              path="/rentalWorkModel/guidanceToWork"
+              roles={[roles.Worker]}
+            >
+              <RentalWorkModelPage path='guidance-to-work' />
+            </PrivateRoute>
+            <PrivateRoute
+              path="/rentalWorkModel/workPerformance"
+              roles={[roles.Worker]}
+            >
+              <RentalWorkModelPage path='work-performance' />
+            </PrivateRoute>
+            <PrivateRoute
+              path="/rentalWorkModel/feedbackEvaluation"
+              roles={[roles.Worker]}
+            >
+              <RentalWorkModelPage path='feedback-evaluation' />
+            </PrivateRoute>
+            <PrivateRoute
+              path="/rentalWorkModel"
+              roles={[roles.Worker]}
+            >
+              <RentalWorkModelPage path='rental-work-model'/>
             </PrivateRoute>
             <PrivateRoute path="/moodStats" roles={[roles.Agency]}>
               <AgencyStatistics />

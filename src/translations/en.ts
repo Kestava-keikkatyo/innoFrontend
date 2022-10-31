@@ -248,6 +248,11 @@ export default {
   contracts: 'Contracts',
   contracts_overview: 'Contracts overview',
 
+  // Rental Work Model
+  rwm_responsibilities: 'Responsibilities',
+  rwm_forms: 'Forms',
+  rwm_good_practices: 'Good practices',
+
   // FeedbackForm
   write_feedback_here: 'Write feedback here',
   feedback_sent: 'Feedback sent',
@@ -300,6 +305,14 @@ export default {
   remove: 'Remove',
   close: 'close',
   feedback: 'Feedback',
+  rental_work_model: 'Rental Work Model',
+  overview: 'Overview',
+  customer_contract: 'Customer contract',
+  worker_order: 'Ordering of a employee',
+  contract_of_employment: 'Contract of employment and general orientation',
+  guidance_to_work: 'Guidance to work and working environment',
+  work_performance: 'Work performance and supervision',
+  feedback_evaluation: 'Feedback and evaluation',
 
   // profilePage
   settings: 'Settings',
@@ -767,4 +780,14 @@ export default {
   Workers: 'Workers',
   Agencies: 'Agencies',
   WorkRequests: 'Work requests',
+  RentalWorkModel: 'Overview',
+  CustomerContract: 'Customer contract',
+  OrderingEmployee: 'Ordering of an employee',
+  ContractOfEmployment: 'Contract of employment and general orientation',
+  GuidanceToWork: 'Guidance to work and working environment',
+  WorkPerformance: 'Work performance and supervision',
+  FeedbackEvaluation: 'Feedback and evaluation',
+
+  //Responsibilities
+  CustomerContractResponsibilities: '',
 }

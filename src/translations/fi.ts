@@ -247,6 +247,11 @@ export default {
   contracts: 'Sopimukset',
   contracts_overview: 'Sopimusten yleiskatsaus',
 
+  // Rental Work Model
+  rwm_responsibilities: 'Vastuut',
+  rwm_forms: 'Lomakkeet',
+  rwm_good_practices: 'Hyvät käytännöt',
+
   // FeedbackForm
   write_feedback_here: 'Kirjoita palautteesi tähän',
   feedback_sent: 'Palaute lähetetty',
@@ -296,6 +301,14 @@ export default {
   business_contracts: 'Yrityssopimukset',
   remove: 'Poista',
   feedback: 'Palaute',
+  rental_work_model: 'Vuokratyömalli',
+  overview: 'Yleiskatsaus',
+  customer_contract: 'Asiakassopimus',
+  worker_order: 'Työntekijän tilaus ja valinta',
+  contract_of_employment: 'Työsopimus ja yleisperehdytys',
+  guidance_to_work: 'Opastus työhön ja työoloihin',
+  work_performance: 'Työsuoritus ja valvonta',
+  feedback_evaluation: 'Palaute ja toiminnan arviointi',
 
   // profilePage
   settings: 'Asetukset',
@@ -760,4 +773,14 @@ export default {
   Workers: 'Työntekijät',
   Agencies: 'Vuokrayritykset',
   WorkRequests: 'Työpyyntö',
+  RentalWorkModel: 'Yleiskatsaus',
+  CustomerContract: 'Asiakassopimus',
+  OrderingEmployee: 'Työntekijän tilaus ja valinta',
+  ContractOfEmployment: 'Työsopimus ja yleisperehdytys',
+  GuidanceToWork: 'Opastus työhön ja työoloihin',
+  WorkPerformance: 'Työsuoritus ja valvonta',
+  FeedbackEvaluation: 'Palaute ja toiminnan arviointi',
+
+  //Responsibilities
+  CustomerContractResponsibilities: '1. Jaettu työsuojeluvastuu (käyttäjäyrityksen kanssa) \n\n 2.Yleisvastuu työturvallisuudesta (tämän alle keskeiset vaatimukset, mm. Työn vaarojen selvittäminen ja arviointi Työsuojelun toimintaohjelman laatiminen Työsuojelun yhteistoiminnan järjestäminen Perehdytys (ml. yleisperehdytyksen antaminen vuokratyöntekijälle) Ilmoittaminen nuorten työntekijöiden käyttämisestä vaarallisiin töihin Vakavasta työtapaturmasta ilmoittaminen työsuojeluviranomaisille ja poliisille) Vastuu työaikalain noudattamisesta Työntekijöiden vakuuttaminen työtapaturmien ja ammattitautien varalta Työterveyshuollon järjestäminen Tasa-arvon ja yhdenvertaisuuden edistäminen  Käyttäjäyrityksen velvoitteiden täyttämisen varmistaminen Vuokratyöntekijän riittävän ammattitaidon ja työhön soveltumisen varmistaminen Tarvittavien henkilönsuojainten hankinta (yhteistyössä käyttäjäyrityksen kanssa)',
 }
