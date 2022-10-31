@@ -190,5 +190,22 @@
     {
       "tip": "Tarvittavien henkilönsuojainten hankinta (yhteistyössä käyttäjäyrityksen kanssa, yhteinen laatikko)"
     }
+  ],
+  "vastuualueet_worker": [
+    {
+      "tip": "Työnantajan ohjeiden ja määräysten noudattaminen"
+    },
+    {
+      "tip": "Omasta ja työkavereiden turvallisuudesta huolehtiminen"
+    },
+    {
+      "tip": "Häirinnän ja epäasiallisen kohtelun välttäminen"
+    },
+    {
+      "tip": "Työvälineiden, henkilönsuojainten ja turvalaitteiden asianmukainen käyttö"
+    },
+    {
+      "tip": "Havaitsemistaan vioista ja puutteista ilmoittaminen"
+    }
   ]
 }

@@ -780,4 +780,14 @@ export default {
   Workers: 'Workers',
   Agencies: 'Agencies',
   WorkRequests: 'Work requests',
+  RentalWorkModel: 'Overview',
+  CustomerContract: 'Customer contract',
+  OrderingEmployee: 'Ordering of an employee',
+  ContractOfEmployment: 'Contract of employment and general orientation',
+  GuidanceToWork: 'Guidance to work and working environment',
+  WorkPerformance: 'Work performance and supervision',
+  FeedbackEvaluation: 'Feedback and evaluation',
+
+  //Responsibilities
+  CustomerContractResponsibilities: '',
 }

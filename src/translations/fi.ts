@@ -773,4 +773,14 @@ export default {
   Workers: 'Työntekijät',
   Agencies: 'Vuokrayritykset',
   WorkRequests: 'Työpyyntö',
+  RentalWorkModel: 'Yleiskatsaus',
+  CustomerContract: 'Asiakassopimus',
+  OrderingEmployee: 'Työntekijän tilaus ja valinta',
+  ContractOfEmployment: 'Työsopimus ja yleisperehdytys',
+  GuidanceToWork: 'Opastus työhön ja työoloihin',
+  WorkPerformance: 'Työsuoritus ja valvonta',
+  FeedbackEvaluation: 'Palaute ja toiminnan arviointi',
+
+  //Responsibilities
+  CustomerContractResponsibilities: '1. Jaettu työsuojeluvastuu (käyttäjäyrityksen kanssa) \n\n 2.Yleisvastuu työturvallisuudesta (tämän alle keskeiset vaatimukset, mm. Työn vaarojen selvittäminen ja arviointi Työsuojelun toimintaohjelman laatiminen Työsuojelun yhteistoiminnan järjestäminen Perehdytys (ml. yleisperehdytyksen antaminen vuokratyöntekijälle) Ilmoittaminen nuorten työntekijöiden käyttämisestä vaarallisiin töihin Vakavasta työtapaturmasta ilmoittaminen työsuojeluviranomaisille ja poliisille) Vastuu työaikalain noudattamisesta Työntekijöiden vakuuttaminen työtapaturmien ja ammattitautien varalta Työterveyshuollon järjestäminen Tasa-arvon ja yhdenvertaisuuden edistäminen  Käyttäjäyrityksen velvoitteiden täyttämisen varmistaminen Vuokratyöntekijän riittävän ammattitaidon ja työhön soveltumisen varmistaminen Tarvittavien henkilönsuojainten hankinta (yhteistyössä käyttäjäyrityksen kanssa)',
 }
