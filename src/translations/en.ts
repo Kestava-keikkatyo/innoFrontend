@@ -39,7 +39,7 @@ export default {
 
   // error
   invalid_email: 'Invalid email address',
-  invalid_length: 'Length must be at least 3',
+  invalid_length: 'Length must be at least 8',
   field_required: 'Field is required',
   invalid_name: 'Invalid name',
   invalid_password: 'Password does not match',
@@ -698,19 +698,19 @@ export default {
   business_responsibilities: 'Business responsibilities',
 
   // Footer Page
-  worker_question: "Are you an employee?",
-  make_money: "Make money",
-  work_flexibly: "Work flexibly",
-  stressFree_work: "Stress-free job",
-  register: "REGISTER",
-  user_company: "Are you a user company?",
-  flexible_model: "Fast and flexible model for acquiring employees",
-  recruitment_process: "You get to influence the recruitment process",
-  productivity: "The productivity of healthy employees is up to 20% better than normal",
-  rental_company: "Are you a rental company?",
-  orientation: "Focus the orientation in one place",
-  automation: "With automation, orientation is more relaxed",
-  wellBeing: "The well-being of your employees is important to us",
+  worker_question: 'Are you an employee?',
+  make_money: 'Make money',
+  work_flexibly: 'Work flexibly',
+  stressFree_work: 'Stress-free job',
+  register: 'REGISTER',
+  user_company: 'Are you a user company?',
+  flexible_model: 'Fast and flexible model for acquiring employees',
+  recruitment_process: 'You get to influence the recruitment process',
+  productivity: 'The productivity of healthy employees is up to 20% better than normal',
+  rental_company: 'Are you a rental company?',
+  orientation: 'Focus the orientation in one place',
+  automation: 'With automation, orientation is more relaxed',
+  wellBeing: 'The well-being of your employees is important to us',
   topical: 'Topical:',
   news: 'News',
   collaboration: 'Collaboration:',
@@ -733,7 +733,7 @@ export default {
   received_reports: 'Latest received reports',
   latest_joined_workers: 'Latest joined workers',
 
-  //business contracts
+  // business contracts
   search_by_name: 'Search by name',
   requested_contracts: 'REQUESTED CONTRACTS',
   archived_contracts: 'ARCHIVED CONTRACTS',
@@ -744,7 +744,7 @@ export default {
   signed: 'Signed',
   pending: 'Pending',
 
-  //links
+  // links
   Fiilismittari: 'Feelings',
   Send: 'Send',
   Information: 'Information',
