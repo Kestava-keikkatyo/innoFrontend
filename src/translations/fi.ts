@@ -38,7 +38,7 @@ export default {
 
   // error
   invalid_email: 'Virheellinen sähköpostiosoite',
-  invalid_length: 'pituus on oltava ainakin 3',
+  invalid_length: 'pituus on oltava ainakin 8',
   field_required: 'Pakollinen kenttä',
   invalid_name: 'Virheellinen nimi',
   invalid_password: 'Salasana ei täsmää',
@@ -691,19 +691,19 @@ export default {
   contract_orientation: 'Työsopimus ja yleisperehdytys',
 
   // Footer Page
-  worker_question: "Oletko työntekijä?",
-  make_money: "Ansaitse rahaa",
-  work_flexibly: "Tee joustavasti töitä",
-  stressFree_work: "Stressitön keikkatyö",
-  register: "LUO TILI",
-  user_company: "Oletko käyttäjäyritys?",
-  flexible_model: "Nopea ja joustava malli hankkia työntekijöitä",
-  recruitment_process: "Pääset vaikuttamaan rekrytointiprosessiin",
-  productivity: "Hyvinvoivien työntekijöiden tuottavuus on jopa 20% normaalia parempi",
-  rental_company: "Oletko vuokratyöfirma?",
-  orientation: "Keskitä perehdyttäminen yhteen paikkaan",
-  automation: "Automatisaatiolla perehdytys on rennompaa",
-  wellBeing: "Työntekijöitesi hyvinvointi on meille tärkeää",
+  worker_question: 'Oletko työntekijä?',
+  make_money: 'Ansaitse rahaa',
+  work_flexibly: 'Tee joustavasti töitä',
+  stressFree_work: 'Stressitön keikkatyö',
+  register: 'LUO TILI',
+  user_company: 'Oletko käyttäjäyritys?',
+  flexible_model: 'Nopea ja joustava malli hankkia työntekijöitä',
+  recruitment_process: 'Pääset vaikuttamaan rekrytointiprosessiin',
+  productivity: 'Hyvinvoivien työntekijöiden tuottavuus on jopa 20% normaalia parempi',
+  rental_company: 'Oletko vuokratyöfirma?',
+  orientation: 'Keskitä perehdyttäminen yhteen paikkaan',
+  automation: 'Automatisaatiolla perehdytys on rennompaa',
+  wellBeing: 'Työntekijöitesi hyvinvointi on meille tärkeää',
   topical: 'Ajankohtaista:',
   news: 'Uutiset',
   collaboration: 'Yhteistyössä:',
@@ -726,7 +726,7 @@ export default {
   received_reports: 'Viimeisimmät raportit',
   latest_joined_workers: 'Liittyneet työntekijät',
 
-  //business contracts
+  // business contracts
   search_by_name: 'Hae nimellä',
   requested_contracts: 'PYYDETYT SOPIMUKSET',
   archived_contracts: 'ARKISTOIDUT SOPIMUKSET',
@@ -737,7 +737,7 @@ export default {
   signed: 'Allekirjoitettu',
   pending: 'Odottaa hyväksyntää',
 
-  //links
+  // links
   Fiilismittari: 'Fiilikset',
   Send: 'Lähetä',
   Information: 'Tiedot',
