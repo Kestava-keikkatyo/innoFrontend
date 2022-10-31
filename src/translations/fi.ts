@@ -788,5 +788,5 @@ export default {
     'Vaarojen tunnistamisessa ja riskien arvioinnissa on hyvä olla mukana myös työsuojeluvaltuutettu.'
   ],
 
-
+  numberss:[1, 2, 3, 4, 5],
 }
