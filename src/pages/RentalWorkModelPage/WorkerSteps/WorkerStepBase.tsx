@@ -6,6 +6,9 @@ import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import BusinessIcon from '@mui/icons-material/Business';
+import TaskOutlinedIcon from '@mui/icons-material/TaskOutlined';
+import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
+import AccessibilityOutlinedIcon from '@mui/icons-material/AccessibilityOutlined';
 import {
   Container,
   Tooltip,
@@ -16,6 +19,7 @@ import { useTranslation } from 'react-i18next';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import makeStyles from '@mui/styles/makeStyles';
+
 
 interface WorkerStepBaseProps {
   content: Array<JSX.Element>
@@ -91,7 +95,7 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
                   <BusinessIcon />
                 </Tooltip>
               ) : (
-                <BusinessIcon />
+                <AccessibilityOutlinedIcon />
               )
             }
             {...a11yProps(0)}
@@ -104,7 +108,7 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
                   <BusinessIcon />
                 </Tooltip>
               ) : (
-                <BusinessIcon />
+                <TaskOutlinedIcon />
               )
             }
             {...a11yProps(1)}
@@ -117,7 +121,7 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
                   <BusinessIcon />
                 </Tooltip>
               ) : (
-                <BusinessIcon />
+                <GroupsOutlinedIcon/>
               )
             }
             {...a11yProps(2)}
