@@ -786,6 +786,7 @@ export default {
 
 
   //good practices
+  //step1
   good_practices_customer_contract_array: [
     'Henkilöstöpalveluyritys ja käyttäjäyritys käyvät yhdessä läpi lainsäädäntöön perustuvan vastuunjaon.',
     'Henkilöstöpalveluyritys ja käyttäjäyritys sopivat vuokratyöntekijän perehdytyksestä ja työnopastuksesta.',
@@ -797,6 +798,42 @@ export default {
     'Vierailukäyntiin voidaan yhdistää myös vaarojen kartoittamisen ja riskien arvioinnin, jotka voidaan tehdään yhdessä käyttäjäyrityksen edustajan kanssa.',
     'Vaarojen tunnistamisessa ja riskien arvioinnissa on hyvä olla mukana myös työsuojeluvaltuutettu.'
   ],
-
+  //step2
+  good_practices_order_and_selection_of_the_employee_array: [
+    'Käyttäjäyritys voi osallistua myös itse vuokratyöntekijän valintaan ja esimerkiksi haastatella parhaita ehdokkaita. ',
+    'Uusille tai kokemattomammille vuokratyöntekijöille voidaan tarjota ensin helpompia työtehtäviä, jolloin vuokratyöntekijät saavat kokemusta ja käyttäjäyrityksessä voidaan tutustua vuokratyöntekijään.'
+  ],
+  //step3
+  good_practices_employment_contract_and_general_orientation_array: [
+    'Työsopimus kannattaa tehdä aina kirjallisena. ',
+    'Yleisperehdytys annetaan kasvotusten työntekijän kanssa. ',
+    'Yleisiä asioita ja vuokrayrityksen toimintaperiaatteita koskeva perehdytys voidaan antaa työntekijälle jo ennen kuin varsinainen työtehtävä ja käyttäjäyritys ovat tiedossa.',
+    'Kiireellisessäkin tilanteessa työturvallisuuteen perehdyttäminen on varmistettava.  ',
+    'Mikäli tiedetään etukäteen, että kiireelliset rekrytoinnit ovat todennäköisiä, voidaan perehdytystä ennakoida antamalla tarvittava perehdytys jo etukäteen. Pelkkä henkilöstöpalveluyrityksen antama yleisperehdytys ei kuitenkaan riitä, vaan käyttäjäyrityksessä tulee antaa myös työhön ja työoloihin liittyvä perehdytys. ',
+    'Yhteisen kielen puuttuessa perehdytyksessä kannattaa hyödyntää videoita, kuvia ja selkokieltä.',
+    'Henkilöstöpalveluyritys voi tarjota vuokratyöntekijöilleen esimerkiksi työturvallisuus- tai työhyvinvointikorttikoulutuksen tai muun vaadittavan työturvallisuuskoulutuksen. '
+  ],
+  //step4
+  good_practices_guidance_on_work_and_working_conditions_array: [
+    'Käyttäjäyrityksen on tärkeää huolehtia siitä, että vuokratyöntekijä tuntee olonsa tervetulleeksi ja yhdenvertaiseksi muiden työntekijöiden kanssa. ',
+    'Alussa on hyvä käydä läpi yleisiä työhön ja työpaikkaan liittyviä asioita. Sen jälkeen tehdään työpaikkakierros, joka sisältää työtiloihin, työtehtäviin ja henkilöstöön tutustumisen. Samalla opastetaan poistumistiet, sammuttimien ja ensiaputarvikkeiden sijainti sekä turvallisuuteen liittyvät asiat. ',
+    'Työnopastuksessa voi hyödyntää kokeneita, työturvallisuusasioissa esimerkillisesti toimivia työntekijöitä.', 
+    'Työntekijän oppiminen kannattaa varmistaa esimerkiksi kysymyksillä, keskusteluilla ja käytännön havainnoinnilla. Tukena voi käyttää myös kirjallisessa muodossa annettavia ohjeita. ',
+    'Työn tekemisen paikka voi olla kaikille vuokratyön osapuolille ennestään tuntematon. Näissäkin tilanteissa vuokratyöntekijälle tulee varmistaa riittävä opastus työhön ja työoloihin. '
+  ],
+  //step5  
+  good_practices_work_performance_and_supervision_array: [
+    'Perehdytyksen ja työnopastuksen jälkeen vuokratyöntekijä aloittaa varsinaiset työtehtävät. Hyvä käytäntö on nimetä vuokratyöntekijälle ensimmäisiksi päiviksi työpari tai mentori. ',
+    'Vuokratyöntekijät on hyvä ottaa mukaan kaikkiin olennaisiin koulutus- ja tiedotustilaisuuksiin. '
+  ],
+  //step6
+  good_practices_feedback_and_erformance_evaluation_array: [
+    'Palautetta hyödynnetään osaamisen ja toiminnan kehittämisessä. ',
+    'Henkilöstöpalveluyrityksen on hyvä olla yhteydessä jokaiseen vuokratyöntekijään ensimmäisen työviikon aikana ja varmistaa onnistunut töiden aloitus ja riittävä perehdytys. ',
+    'On tärkeää tarjota kaikille osapuolille mahdollisuus jatkuvaan palautteen antoon. ',
+    'Toimintaa on hyvä arvioida yhdessä systemaattisesti ainakin asiakkuuden päättyessä. ',
+    'Henkilöstöpalveluyrityksen kannattaa kerätä palautetta työn sujumisesta sekä vuokratyöntekijältä että käyttäjäyrityksestä.',
+    'Henkilöstöpalveluyrityksen edustaja voi osallistua käyttäjäyrityksen työturvallisuutta ja -hyvinvointia käsitteleviin kokouksiin.'
+  ],  
 }
 

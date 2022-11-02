@@ -42,7 +42,6 @@ const ContractOfEmployment = () => {
     </div>,
     <div key="tab2">
       <ContractOfEmploymentGP/>
-      Tab 2 content for {t('contract_of_employment')}
     </div>
   ]
 

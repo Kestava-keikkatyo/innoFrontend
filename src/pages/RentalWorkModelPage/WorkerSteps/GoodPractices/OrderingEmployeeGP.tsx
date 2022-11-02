@@ -3,9 +3,9 @@ import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
 
-const ContractOfEmploymentGP: React.FC = () => {
+const OrderingEmployeeGP: React.FC = () => {
   const { t } = useTranslation();
-  const employeeContractGoodPracticeArray = (t('good_practices_employment_contract_and_general_orientation_array', {returnObjects: true}) as string[]);
+  const orderingEmployeeGoodPracticeArray = (t('good_practices_order_and_selection_of_the_employee_array', {returnObjects: true}) as string[]);
 
 
   return (
@@ -13,7 +13,7 @@ const ContractOfEmploymentGP: React.FC = () => {
     <Trans>
       <Divider/> 
       <ul>
-      {employeeContractGoodPracticeArray.map((practice, index) => {
+      {orderingEmployeeGoodPracticeArray.map((practice, index) => {
           return (<li key={index}>{practice}</li>)
         })}
       </ul>
@@ -24,4 +24,4 @@ const ContractOfEmploymentGP: React.FC = () => {
 );
 }
 
-export default ContractOfEmploymentGP;
+export default OrderingEmployeeGP;
