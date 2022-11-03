@@ -1,4 +1,5 @@
-import { Divider } from '@mui/material';
+import { Stack, ListItem, Divider, ListItemIcon } from '@mui/material';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
@@ -11,13 +12,20 @@ const OrderingEmployeeGP: React.FC = () => {
   return (
    
     <Trans>
-      <Divider/> 
-      <ul>
-      {orderingEmployeeGoodPracticeArray.map((practice, index) => {
-          return (<li key={index}>{practice}</li>)
-        })}
-      </ul>
-      <Divider/>
+        <Stack
+        divider={<Divider orientation="horizontal" variant="inset" />}
+        >  
+          {orderingEmployeeGoodPracticeArray.map((practice, index) => {
+          return (
+            <ListItem key={index}>
+              <ListItemIcon>
+                <FiberManualRecordIcon fontSize='small' />
+              </ListItemIcon>
+              {practice}
+            </ListItem>) 
+          })}
+        </Stack>  
+     
     </Trans>
 
 

@@ -792,6 +792,9 @@ export default {
   CustomerContractResponsibilities: '',
 
    //good practices
+   checkAll: 'Check all',
+   readAndUnderstood: 'Read and understood',
+
    //step1
   good_practices_customer_contract_array: [
     'The personnel service company and the user company go through the division of responsibilities based on legislation together.',

@@ -14,7 +14,7 @@ import i18next from 'i18next';
 import vastuualueet from '../../../assets/tietopankki/vastuualueet.json';
 import vastuualueet_en from '../../../assets/tietopankki/vastuualueet_en.json';
 import FeedbackAndEvaluationGP from './GoodPractices/FeedbackAndEvaluationGP';
-import SendIcon from '@mui/icons-material/Send';
+
 
 const FeedbackAndEvaluation = () => {
   const { t } = useTranslation();
@@ -41,7 +41,6 @@ const FeedbackAndEvaluation = () => {
       Tab 1 content for {t('feedback_evaluation')}
     </div>,
     <div key="tab2">
-      <SendIcon />
       <FeedbackAndEvaluationGP/>
     </div>
   ]

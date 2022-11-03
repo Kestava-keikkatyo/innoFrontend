@@ -14,6 +14,7 @@ import {
   Tooltip,
   useMediaQuery,
   Divider,
+  Card,
 } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import Typography from '@mui/material/Typography';
@@ -92,7 +93,7 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
             icon={
               matches ? (
                 <Tooltip title="Open" placement="top" arrow>
-                  <BusinessIcon />
+                  <AccessibilityOutlinedIcon />
                 </Tooltip>
               ) : (
                 <AccessibilityOutlinedIcon />
@@ -105,7 +106,7 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
             icon={
               matches ? (
                 <Tooltip title="Open" placement="top" arrow>
-                  <BusinessIcon />
+                  <TaskOutlinedIcon />
                 </Tooltip>
               ) : (
                 <TaskOutlinedIcon />
@@ -118,7 +119,7 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
             icon={
               matches ? (
                 <Tooltip title="Open" placement="top" arrow>
-                  <BusinessIcon />
+                  <GroupsOutlinedIcon />
                 </Tooltip>
               ) : (
                 <GroupsOutlinedIcon/>
@@ -147,12 +148,15 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
         </TabPanel>
 
         <TabPanel value={value} index={2}>
-          <Typography variant="h1" color="secondary" className="header">
+          <Card>
+          <Typography variant="h1" color="secondary" className="header" padding={2}>
             {t('rwm_good_practices')}
           </Typography>
           <Typography variant="subtitle1">
+            
             {content[2]}
           </Typography>
+          </Card>
         </TabPanel>
       </AppBar>
     </Container>

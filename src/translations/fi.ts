@@ -786,6 +786,9 @@ export default {
 
 
   //good practices
+  checkAll: 'Merkkaa kaikki luetuksi',
+  readAndUnderstood: 'Luettu ja ymmärretty',
+
   //step1
   good_practices_customer_contract_array: [
     'Henkilöstöpalveluyritys ja käyttäjäyritys käyvät yhdessä läpi lainsäädäntöön perustuvan vastuunjaon.',
