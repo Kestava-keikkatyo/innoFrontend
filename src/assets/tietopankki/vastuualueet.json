@@ -207,5 +207,60 @@
     {
       "tip": "Havaitsemistaan vioista ja puutteista ilmoittaminen"
     }
+  ],
+  "vastuualueet_worker2": [
+    {
+      "tip": "Työntekijöiltä edellytettävä koulutus ja työkokemus sekä työn ammattitaitovaatimukset"
+    },
+    {
+      "tip": "Työn erityispiirteet, työssä esiintyvät haitta- ja vaaratekijät sekä muut työympäristössä erityistä huomiota vaativat asiat (esim. terveydentilavaatimukset)"
+    },
+    {
+      "tip": "Työtehtävissä tarvittavat henkilönsuojaimet ja turvalaitteet"
+    }
+  ],
+  "vastuualueet_worker3": [
+    {
+      "tip": "Noudattaa työnantajan antamia ohjeita ja määräyksiä"
+    },
+    {
+      "tip": "Huolehtia omasta ja muiden työntekijöiden turvallisuudesta käytettävissä olevin keinoin"
+    },
+    {
+      "tip": "Olla kohdistamatta häirintää tai epäasiallista kohtelua muihin työntekijöihin"
+    },
+    {
+      "tip": "Käyttää ja hoitaa työssä tarvittavia henkilönsuojaimia ja apuvälineitä"
+    },
+    {
+      "tip": "Viipymättä ilmoittaa viasta tai puutteesta (omalle esimiehelle tai työsuojeluvaltuutetulle), jos se voi aiheuttaa joko omalle tai työnkaverin turvallisuudelle/terveydelle haittaa tai vaaraa"
+    },
+    {
+      "tip": "Korjata edellä mainittu havaitsemansa vika, mikäli oma kokemus tai ammattitaito riittää"
+    },
+    {
+      "tip": "Olla poistamatta turva- tai suojalaitetta käytöstä"
+    }
+  ],
+  "vastuualueet_worker4": [
+    {
+      "tip": "Työntekijän tulee varmistaa, että käyttäjäyritys antaa tarpeeksi hyvän opastuksen työhön ja työoloihin."
+    },
+    {
+      "tip": "Varmistaa, että annetaan riittävät tiedot suoriutua turvallisesti annetuista työtehtävistä."
+    }
+  ],
+  "vastuualueet_worker5": [
+    {
+      "tip": "Työntekijälle tulee nimetä ensimmäisiksi päiviksi työpari tai muu henkilö, joka ohjaa jatkuvasti työntekijän suoriutumista ja auttaa tarvittaessa."
+    },
+    {
+      "tip": "Varmistaa, että vuokratyöntekijää kohdellaan samalla tavalla kuin vakituisiakin työntekijöitä."
+    }
+  ],
+  "vastuualueet_worker6": [
+    {
+      "tip": "Työntekijä ilmoittaa kaikista työtapaturmista, onnettomuustilanteista, läheltä piti- tilanteista, väkivalta- ja uhkatilanteista, sekä antaa muuhun työturvallisuuteen liittyvää palautetta (mahdolliset työturvallisuuteen liittyvät puutteet tai ongelmat sekä turvallisuusaloitteet)."
+    }
   ]
 }

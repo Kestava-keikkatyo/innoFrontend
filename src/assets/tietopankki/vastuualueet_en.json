@@ -207,5 +207,60 @@
     {
       "tip": "Report of detected defects and deficiencies"
     }
+  ],
+  "vastuualueet_worker2": [
+    {
+      "tip": "Training and experience expected of workers as well as the professional requirements of the job"
+    },
+    {
+      "tip": "Special features of the work, harmful and dangerous factors occurring at work as well as other matters requiring special attention (For example health requirements)"
+    },
+    {
+      "tip": "Personal protective equipment and safety devices required for work tasks"
+    }
+  ],
+  "vastuualueet_worker3": [
+    {
+      "tip": "Follow the instructions and regulations given by the employer"
+    },
+    {
+      "tip": "Take care of your own safety and that of other employees with the available means"
+    },
+    {
+      "tip": "Not to harass or mistreat other employees"
+    },
+    {
+      "tip": "Use and care for the personal protective equipment and aids required at work"
+    },
+    {
+      "tip": "Immediately report a defect or deficiency (to your supervisor or health and safety representative) if it may cause harm or danger to either your own or a co-worker's safety/health"
+    },
+    {
+      "tip": "To correct the above-mentioned fault that they have detected, if their own experience or expertise is sufficient"
+    },
+    {
+      "tip": "Not to disable the safety or protective devices from use"
+    }
+  ],
+  "vastuualueet_worker4": [
+    {
+      "tip": "The employee must ensure that the user company provides good enough guidance on work and working conditions"
+    },
+    {
+      "tip": "Ensure that sufficient information is given to safely perform the given job."
+    }
+  ],
+  "vastuualueet_worker5": [
+    {
+      "tip": "For the first few days, the employee should be assigned a work partner or another person who will constantly guide the employee's performance and help if necessary."
+    },
+    {
+      "tip": "Ensures that the temporary worker is treated in the same way as a permanent worker."
+    }
+  ],
+  "vastuualueet_worker6": [
+    {
+      "tip": "The employee reports all accidents, near misses, violence and threats, and gives feedback related to other occupational safety (possible deficiencies or problems related to occupational safety and safety initiatives)."
+    }
   ]
 }

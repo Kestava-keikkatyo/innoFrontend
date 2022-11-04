@@ -30,7 +30,7 @@ const FeedbackAndEvaluation = () => {
     <div key="tab0">
       <List id="modal-modal-description">
                     {/* Yhtenäiset vastuut lista */}
-                    {Vastuualueet.yhtenäinen.map((e, i) => (
+                    {Vastuualueet.vastuualueet_worker6.map((e, i) => (
                       <ListItem key={i} divider>
                         <ListItemText primary={`${i + 1}. ${e.tip}`} />
                       </ListItem>
