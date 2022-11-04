@@ -790,4 +790,59 @@ export default {
 
   //Responsibilities
   CustomerContractResponsibilities: '',
+
+   //good practices
+   checkAll: 'Mark all read',
+   readAndUnderstood: 'Read and understood',
+
+   //step1
+  good_practices_customer_contract_array: [
+    'The personnel service company and the user company go through the division of responsibilities based on legislation together.',
+    'The personnel service company and the user company agree on the orientation and job guidance of the temporary worker.',
+    "The temporary worker's access to the orientation material must be ensured.",
+    'When agreeing on the induction process, it is agreed how the learning of the trainees, i.e. the internalization of essential information, is ensured. Learning can be evaluated, for example, through follow-up discussions or practical exercises.',
+    'The personnel service company and the user company agree on how to act in the event of a work accident, sick leave and other exceptional situations.',
+    'The user company informs its own personnel about the use of temporary work.',
+    'The representative of the personnel service company can meet the shop stewards and the occupational health and safety representative of the user company and get to know the work environment before starting the temporary work.',
+    'The visit can also be combined with hazard mapping and risk assessment, which can be done together with a representative of the user company.',
+    'It is good to have the occupational health and safety commissioner involved in identifying hazards and assessing risks.'
+  ],
+  //step2
+  good_practices_order_and_selection_of_the_employee_array: [
+    'The user company can also participate in the selection of the temporary worker itself and, for example, interview the best candidates. ',
+    'New or inexperienced temporary workers can be offered easier tasks first, so that the temporary workers gain experience and the user company can get to know the temporary worker.'
+  ],
+  //step3
+  good_practices_employment_contract_and_general_orientation_array: [
+    'The employment contract should always be in writing. ',
+    'General orientation is given face-to-face with the employee. ',
+    'Introduction to general issues and operating principles of the rental company can be given to the employee even before the actual work task and the user company are known.',
+    'Even in an urgent situation, familiarization with occupational safety must be ensured. ',
+    'If it is known in advance that urgent recruitments are likely, orientation can be anticipated by giving the necessary orientation in advance. However, the general orientation provided by the personnel service company alone is not enough, the user company must also provide orientation related to work and working conditions. ',
+    'In the absence of a common language, it is worth using videos, pictures and plain language in the orientation. ',
+    'A personnel service company can offer its temporary employees, for example, occupational safety or occupational welfare card training or other required occupational safety training. '
+    ],
+  //step4
+  good_practices_guidance_on_work_and_working_conditions_array: [
+    'It is important for the user company to ensure that the temporary employee feels welcome and equal to other employees. ',
+    "In the beginning, it's good to go through general issues related to work and the workplace. After that, a workplace tour is made, which includes getting to know the workplaces, tasks and personnel. At the same time, the exit routes, the location of fire extinguishers and first aid supplies, as well as safety-related issues, are provided. ",
+    'You can make use of experienced employees who are exemplary in occupational safety matters.',
+    'Employee learning should be ensured with, for example, questions, discussions and practical observations. Instructions given in written form can also be used as support. ',
+    'The place where the work is done may be previously unknown to all parties involved in the temporary work. Even in these situations, the temporary worker must be provided with adequate guidance on the work and working conditions. '
+    ],
+  //step5
+  good_practices_work_performance_and_supervision_array: [
+    'After the orientation and job guidance, the agency worker starts the actual work tasks. It is a good practice to appoint a work partner or mentor for the temporary employee for the first few days. ',
+    'It is a good idea to include agency workers in all essential training and information events. '
+    ],
+  //step6
+  good_practices_feedback_and_erformance_evaluation_array: [
+    'The feedback is utilized in the development of competence and operations. ',
+    'It is a good idea for a personnel service company to be in contact with every temporary worker during the first week of work and ensure a successful start of work and adequate orientation. ',
+    'It is important to offer all parties the opportunity to give continuous feedback. ',
+    'It is good to systematically evaluate the operation together, at least at the end of the customership. ',
+    'A personnel service company should collect feedback on the flow of work from both the agency worker and the user company.',
+    'A representative of a personnel service company can participate in meetings dealing with occupational safety and well-being of the user company.'
+    ],
+            
 }

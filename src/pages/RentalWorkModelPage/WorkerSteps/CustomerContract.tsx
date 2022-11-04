@@ -2,6 +2,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  Container,
 }from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -9,10 +10,10 @@ import WorkerStepBase from './WorkerStepBase';
 import Typography from '@mui/material/Typography';
 import makeStyles from '@mui/styles/makeStyles';
 import { Theme } from '@mui/material/styles';
-import { Container } from '@mui/material';
 import i18next from 'i18next';
 import vastuualueet from '../../../assets/tietopankki/vastuualueet.json';
 import vastuualueet_en from '../../../assets/tietopankki/vastuualueet_en.json';
+import CustomerContractGP from './GoodPractices/CustomerContractGP';
 
 const CustomerContract = () => {
   const { t } = useTranslation();
@@ -39,7 +40,8 @@ const CustomerContract = () => {
       Tab 1 content for {t('customer_contract')}
     </div>,
     <div key="tab2">
-      Tab 2 content for {t('customer_contract')}
+      <CustomerContractGP/>
+      
     </div>
   ]
 
