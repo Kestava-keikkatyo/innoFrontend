@@ -39,7 +39,7 @@ export default {
 
   // error
   invalid_email: 'Invalid email address',
-  invalid_length: 'Length must be at least 3',
+  invalid_length: 'Length must be at least 8',
   field_required: 'Field is required',
   invalid_name: 'Invalid name',
   invalid_password: 'Password does not match',
@@ -746,7 +746,7 @@ export default {
   received_reports: 'Latest received reports',
   latest_joined_workers: 'Latest joined workers',
 
-  //business contracts
+  // business contracts
   search_by_name: 'Search by name',
   requested_contracts: 'REQUESTED CONTRACTS',
   archived_contracts: 'ARCHIVED CONTRACTS',
@@ -757,7 +757,7 @@ export default {
   signed: 'Signed',
   pending: 'Pending',
 
-  //links
+  // links
   Fiilismittari: 'Feelings',
   Send: 'Send',
   Information: 'Information',
@@ -780,4 +780,27 @@ export default {
   Workers: 'Workers',
   Agencies: 'Agencies',
   WorkRequests: 'Work requests',
+  RentalWorkModel: 'Overview',
+  CustomerContract: 'Customer contract',
+  OrderingEmployee: 'Ordering of an employee',
+  ContractOfEmployment: 'Contract of employment and general orientation',
+  GuidanceToWork: 'Guidance to work and working environment',
+  WorkPerformance: 'Work performance and supervision',
+  FeedbackEvaluation: 'Feedback and evaluation',
+
+  //Responsibilities
+  CustomerContractResponsibilities: '',
+
+   //good practices
+   good_practices_customer_contract_array: [
+    'The personnel service company and the user company go through the division of responsibilities based on legislation together.',
+    "The personnel service company and the user company agree on the orientation and job guidance of the temporary worker.",
+    "The temporary worker's access to the orientation material must be ensured.",
+    'When agreeing on the induction process, it is agreed how the learning of the trainees, i.e. the internalization of essential information, is ensured. Learning can be evaluated, for example, through follow-up discussions or practical exercises.',
+    'The personnel service company and the user company agree on how to act in the event of a work accident, sick leave and other exceptional situations.',
+    'The user company informs its own personnel about the use of temporary work.',
+    'The representative of the personnel service company can meet the shop stewards and the occupational health and safety representative of the user company and get to know the work environment before starting the temporary work.',
+    "The visit can also be combined with hazard mapping and risk assessment, which can be done together with a representative of the user company.",
+    'It is good to have the occupational health and safety commissioner involved in identifying hazards and assessing risks.'
+  ],
 }

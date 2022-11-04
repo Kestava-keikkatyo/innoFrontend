@@ -1,3 +1,9 @@
+import {
+  List,
+  ListItem,
+  ListItemText,
+  Container,
+}from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import WorkerStepBase from './WorkerStepBase';
@@ -7,15 +13,32 @@ import Box from '@mui/material/Box';
 import { FormikTextField } from '../../../components/FormField';
 import makeStyles from '@mui/styles/makeStyles';
 import { Theme } from '@mui/material/styles';
-import { Container } from '@mui/material';
+import i18next from 'i18next';
+import vastuualueet from '../../../assets/tietopankki/vastuualueet.json';
+import vastuualueet_en from '../../../assets/tietopankki/vastuualueet_en.json';
+import ContractOfEmploymentGP from './GoodPractices/ContractOfEmploymentGP';
+
 
 const ContractOfEmployment = () => {
   const { t } = useTranslation();
+  let Vastuualueet = vastuualueet;
+  if(i18next.language == 'en') {
+    Vastuualueet = vastuualueet_en;
+  } else {
+    Vastuualueet = vastuualueet;
+  }
   const classes = useStyles();
 
   const tabContent = [
     <div key="tab0">
-      Tab 0 content for {t('contract_of_employment')}
+        <List id="modal-modal-description">
+                    {/* Yhtenäiset vastuut lista */}
+                    {Vastuualueet.yhtenäinen.map((e, i) => (
+                      <ListItem key={i} divider>
+                        <ListItemText primary={`${i + 1}. ${e.tip}`} />
+                      </ListItem>
+                    ))}
+                  </List>
     </div>,
     <div key="tab1">
       <h2 className={classes.center}>LOMAKE 2 – TYÖNTEKIJÄN YLEISPEREHDYTYS (vuokrausyrityksen perehdyttäjä täyttää)</h2>
@@ -38,6 +61,7 @@ const ContractOfEmployment = () => {
       </Formik>
     </div>,
     <div key="tab2">
+      <ContractOfEmploymentGP/>
       Tab 2 content for {t('contract_of_employment')}
     </div>
   ]

@@ -38,7 +38,7 @@ export default {
 
   // error
   invalid_email: 'Virheellinen sähköpostiosoite',
-  invalid_length: 'pituus on oltava ainakin 3',
+  invalid_length: 'pituus on oltava ainakin 8',
   field_required: 'Pakollinen kenttä',
   invalid_name: 'Virheellinen nimi',
   invalid_password: 'Salasana ei täsmää',
@@ -739,7 +739,7 @@ export default {
   received_reports: 'Viimeisimmät raportit',
   latest_joined_workers: 'Liittyneet työntekijät',
 
-  //business contracts
+  // business contracts
   search_by_name: 'Hae nimellä',
   requested_contracts: 'PYYDETYT SOPIMUKSET',
   archived_contracts: 'ARKISTOIDUT SOPIMUKSET',
@@ -750,7 +750,7 @@ export default {
   signed: 'Allekirjoitettu',
   pending: 'Odottaa hyväksyntää',
 
-  //links
+  // links
   Fiilismittari: 'Fiilikset',
   Send: 'Lähetä',
   Information: 'Tiedot',
@@ -773,4 +773,30 @@ export default {
   Workers: 'Työntekijät',
   Agencies: 'Vuokrayritykset',
   WorkRequests: 'Työpyyntö',
+  RentalWorkModel: 'Yleiskatsaus',
+  CustomerContract: 'Asiakassopimus',
+  OrderingEmployee: 'Työntekijän tilaus ja valinta',
+  ContractOfEmployment: 'Työsopimus ja yleisperehdytys',
+  GuidanceToWork: 'Opastus työhön ja työoloihin',
+  WorkPerformance: 'Työsuoritus ja valvonta',
+  FeedbackEvaluation: 'Palaute ja toiminnan arviointi',
+
+  //Responsibilities
+  CustomerContractResponsibilities: '1. Jaettu työsuojeluvastuu (käyttäjäyrityksen kanssa) \n\n 2.Yleisvastuu työturvallisuudesta (tämän alle keskeiset vaatimukset, mm. Työn vaarojen selvittäminen ja arviointi Työsuojelun toimintaohjelman laatiminen Työsuojelun yhteistoiminnan järjestäminen Perehdytys (ml. yleisperehdytyksen antaminen vuokratyöntekijälle) Ilmoittaminen nuorten työntekijöiden käyttämisestä vaarallisiin töihin Vakavasta työtapaturmasta ilmoittaminen työsuojeluviranomaisille ja poliisille) Vastuu työaikalain noudattamisesta Työntekijöiden vakuuttaminen työtapaturmien ja ammattitautien varalta Työterveyshuollon järjestäminen Tasa-arvon ja yhdenvertaisuuden edistäminen  Käyttäjäyrityksen velvoitteiden täyttämisen varmistaminen Vuokratyöntekijän riittävän ammattitaidon ja työhön soveltumisen varmistaminen Tarvittavien henkilönsuojainten hankinta (yhteistyössä käyttäjäyrityksen kanssa)',
+
+
+  //good practices
+  good_practices_customer_contract_array: [
+    'Henkilöstöpalveluyritys ja käyttäjäyritys käyvät yhdessä läpi lainsäädäntöön perustuvan vastuunjaon.',
+    'Henkilöstöpalveluyritys ja käyttäjäyritys sopivat vuokratyöntekijän perehdytyksestä ja työnopastuksesta.',
+    'Vuokratyöntekijän pääsy perehdytysmateriaaliin on varmistettava.',
+    'Perehdytysprosessin sopimisen yhteydessä sovitaan, miten perehdytettävien oppiminen eli olennaisen tiedon sisäistäminen varmistetaan.Oppimista voidaan arvioida esimerkiksi seurantakeskustelujen tai käytännön harjoitusten avulla.',
+    'Henkilöstöpalveluyritys ja käyttäjäyritys sopivat, kuinka toimitaan työtapaturma-, sairauspoissaolo- ja muissa poikkeustilanteissa.',
+    'Käyttäjäyritys tiedottaa vuokratyön käytöstä omalle henkilöstölleen.',
+    'Henkilöstöpalveluyrityksen edustaja voi tavata käyttäjäyrityksen luottamusmiehet ja työsuojeluvaltuutetun sekä tutustua työympäristöön ennen vuokratyön aloitusta.',
+    'Vierailukäyntiin voidaan yhdistää myös vaarojen kartoittamisen ja riskien arvioinnin, jotka voidaan tehdään yhdessä käyttäjäyrityksen edustajan kanssa.',
+    'Vaarojen tunnistamisessa ja riskien arvioinnissa on hyvä olla mukana myös työsuojeluvaltuutettu.'
+  ],
+
 }
+
