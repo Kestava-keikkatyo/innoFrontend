@@ -1,8 +1,7 @@
 
-import { Stack, ListItem, Divider, ListItemIcon } from '@mui/material';
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import React from 'react';
-import { Trans, useTranslation } from 'react-i18next';
+import {useTranslation } from 'react-i18next';
+import InterActiveListComponent from './InterActiveListComponent';
 
 
 const CustomerContractGP: React.FC = () => {
@@ -11,27 +10,9 @@ const CustomerContractGP: React.FC = () => {
 
 
   return (
-   
-    <Trans>
-        <Stack
-        divider={<Divider orientation="horizontal" variant="inset" />}
-        >  
-          {customerContractGoodPracticeArray.map((practice, index) => {
-          return (
-            <ListItem key={index}>
-              <ListItemIcon>
-                <FiberManualRecordIcon fontSize='small' />
-              </ListItemIcon>
-              {practice}
-            </ListItem>) 
-          })}
-        </Stack>  
-     
-    </Trans>
-
-
-);
-}
+    <InterActiveListComponent arrayName={customerContractGoodPracticeArray}/> 
+  );
+  }
 
 
 export default CustomerContractGP; 
