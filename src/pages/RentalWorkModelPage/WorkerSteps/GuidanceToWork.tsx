@@ -55,7 +55,7 @@ const GuidanceToWork = () => {
             <h4>Käyttäjäyritys ja työnopastuksen antaja:</h4>
             <FormikTextField label={'Käyttäjäyritys'} name={'kayttajayritys'} type={'text'}></FormikTextField>
             <h4>Pvm:</h4>
-            <FormikTextField label={'Päivämäärä'} name={'paivamaara'} type={'text'}></FormikTextField>
+            <FormikTextField label={'Päivämäärä'} name={'paivamaara1'} type={'text'}></FormikTextField>
           </Box>
           <Box display="flex" flexDirection="row">
             <h4>Työntekijä:</h4>
@@ -159,6 +159,66 @@ const GuidanceToWork = () => {
             <FormikTextField label={'Perehdyttäjä'} name={'perehdyttaja'} type={'text'}></FormikTextField>
             <h4>Perehdytetty:</h4>
             <FormikTextField label={'Perehdytetty'} name={'perehdytetty'} type={'text'}></FormikTextField>
+          </Box>
+
+          <h2 className={classes.center}>LOMAKE 5 – Perehdytys ja työnopastus kiireellisissä tilanteissa</h2>
+          <p className={classes.p}>Tilanteissa, joissa työntekijä tarvitaan nopeasti tekemään työtä, voidaan osa
+            perehdytyksestä jättää tehtäväksi työn aloittamisen jälkeen.
+            Turvallisuuteen liittyvät tärkeimmät asiat tulee kuitenkin aina kertoa työntekijälle heti alussa.
+            Tässä lomakkeessa on asiat, jotka ainakin tulee käydä läpi ennen työn aloitusta</p>
+          <h3>Henkilöstöpalveluyrityksen perehdytys kiireellisessä tapauksessa</h3>
+          <Box display="flex" flexDirection="column">
+            <h4>Henkilöstöpalveluyrityksen nimi:</h4>
+            <FormikTextField label={'Henkilöstöpalveluyritys'} name={'henkilostopalveluyritys'} type={'text'}></FormikTextField>
+            <h4>Perehdyttäjä:</h4>
+            <FormikTextField label={'Perehdyttäjä'} name={'perehdyttaja'} type={'text'}></FormikTextField>
+            <h4>Työntekijä:</h4>
+            <FormikTextField label={'Työntekijä'} name={'tyontekija'} type={'text'}></FormikTextField>
+            <h4>Pvm:</h4>
+            <FormikTextField label={'Päivämäärä'} name={'paivamaara2'} type={'text'}></FormikTextField>
+            <h4>Työtehtävä ja siinä vaadittava osaaminen:</h4>
+            <FormikTextField label={'Osaaminen'} name={'osaaminen'} type={'text'}></FormikTextField>
+            <h4>Työssä tarvittavat henkilönsuojaimet ja työvaatetus ja mistä ne saa:</h4>
+            <FormikTextField label={'Henkilönsuojaimet ja työvaatetus'} name={'suojaimetjavaatetus'} type={'text'}></FormikTextField>
+            <h4>Työhön liittyvät turvallisuus- ja terveysriskit:</h4>
+            <FormikTextField label={'Turvallisuus- ja terveysriskit'} name={'turvallisuusjaterveys'} type={'text'}></FormikTextField>
+            <h4>Henkilöstöpalveluyrityksen yhteishenkilön yhteystiedot:</h4>
+            <FormikTextField label={'Yhteystiedot'} name={'yhteystiedot1'} type={'text'}></FormikTextField>
+            <h4>Käyttäjäyrityksen osoite ja ohjeet työpaikalle pääsemiseen (esim. kulkuluvat):</h4>
+            <FormikTextField label={'Osoite ja ohjeet'} name={'osoitejaohjeet'} type={'text'}></FormikTextField>
+            <h4>Käyttäjäyrityksen yhteyshenkilön yhteystiedot:</h4>
+            <FormikTextField label={'Yhteystiedot'} name={'yhteystiedot2'} type={'text'}></FormikTextField>
+          </Box>
+          <h3>Käyttäjäyrityksen työnopastus kiireellisessä tapauksessa</h3>
+          <Box display="flex" flexDirection="column">
+            <h4>Käyttäjäyrityksen nimi:</h4>
+            <FormikTextField label={'Käyttäjäyrityksen nimi'} name={'kayttajayritysnimi'} type={'text'}></FormikTextField>
+            <h4>Työnopastaja:</h4>
+            <FormikTextField label={'Työnopastaja'} name={'tyonopastaja'} type={'text'}></FormikTextField>
+            <h4>Työntekijä:</h4>
+            <FormikTextField label={'Työntekijä'} name={'tyontekija2'} type={'text'}></FormikTextField>
+            <h4>Työtehtävät ja turvalliset työtavat:</h4>
+            <FormikTextField label={'Työtehtävät'} name={'tyotehtavat'} type={'text'}></FormikTextField>
+            <h4>Työssä esiintyvät haitta- ja vaaratekijät ja niiltä suojautuminen:</h4>
+            <FormikTextField label={'Haitta- ja vaaratekijät'} name={'haittajavaara'} type={'text'}></FormikTextField>
+            <h4>Työajat ja tauot:</h4>
+            <FormikTextField label={'Työajat ja tauot'} name={'ajatjatauot'} type={'text'}></FormikTextField>
+            <h4>Turvavarusteiden ja henkilönsuojainten käyttäminen:</h4>
+            <FormikTextField label={'Turvavarusteet ja henkilönsuojaimet'} name={'varusteetjasuojaimet'} type={'text'}></FormikTextField>
+            <h4>Toiminta onnettomuus- ja poikkeustilanteissa:</h4>
+            <FormikTextField label={'Toiminta onnettomuus- ja poikkeustilanteissa'} name={'onnettumuusjapoikkeus'} type={'text'}></FormikTextField>
+            <h4>Ensiapukaapit, alkusammuttimet, poistumistiet jne.:</h4>
+            <FormikTextField label={'Ensiapukaapit, alkusammuttimet, poistumiestiet'} name={'kaapitsammuttimet'} type={'text'}></FormikTextField>
+            <h4>Henkilöstötilat:</h4>
+            <FormikTextField label={'Henkilöstötilat'} name={'henkilostotilat'} type={'text'}></FormikTextField>
+            <h4>Erityishuomioitavat asiat:</h4>
+            <FormikTextField label={'Erityishuomioitavat asiat'} name={'erityishuomiot'} type={'text'}></FormikTextField>
+            <h4>Tiedotuskäytännöt:</h4>
+            <FormikTextField label={'Tiedotuskäytännöt'} name={'tiedotuskaytannot'} type={'text'}></FormikTextField>
+            <h4>Lupa-asiat (kulkukortit, tulityökortit ym.):</h4>
+            <FormikTextField label={'Henkilöstötilat'} name={'henkilostotilat'} type={'text'}></FormikTextField>
+            <h4>Keneltä kysytään apua tarvittaessa (yhteystiedot):</h4>
+            <FormikTextField label={'Keneltä kysytään apua tarvittaessa'} name={'keneltaapua'} type={'text'}></FormikTextField>
           </Box>
         </Form>
       </Formik>
