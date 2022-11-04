@@ -4,9 +4,9 @@ import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
 
-const ContractOfEmploymentGP: React.FC = () => {
+const FeedbackAndEvaluationGP: React.FC = () => {
   const { t } = useTranslation();
-  const employeeContractGoodPracticeArray = (t('good_practices_employment_contract_and_general_orientation_array', {returnObjects: true}) as string[]);
+  const feedbackAndEvaluationGoodPracticeArray = (t('good_practices_feedback_and_erformance_evaluation_array', {returnObjects: true}) as string[]);
 
 
   return (
@@ -15,7 +15,7 @@ const ContractOfEmploymentGP: React.FC = () => {
         <Stack
         divider={<Divider orientation="horizontal" variant="inset" />}
         >  
-          {employeeContractGoodPracticeArray.map((practice, index) => {
+          {feedbackAndEvaluationGoodPracticeArray.map((practice, index) => {
           return (
             <ListItem key={index}>
               <ListItemIcon>
@@ -32,4 +32,4 @@ const ContractOfEmploymentGP: React.FC = () => {
 );
 }
 
-export default ContractOfEmploymentGP;
+export default FeedbackAndEvaluationGP;
