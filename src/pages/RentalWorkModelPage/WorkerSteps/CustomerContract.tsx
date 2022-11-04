@@ -60,7 +60,7 @@ const CustomerContract = () => {
             <FormikTextField label={'Käyttäjäyritys'} name={'käyttäjäyritys'} type={'text'}></FormikTextField>
           </Box>
           <label>
-            <Field type="checkbox" name="toggle" />
+            <Field type="checkbox" name="check1" />
             Lainsäädännöstä seuraavat työturvallisuusvastuut on käyty yhdessä läpi
           </label>
           <Box display="flex" flexDirection="column">
@@ -108,19 +108,19 @@ const CustomerContract = () => {
           <Box display="flex" flexDirection="column">
             <h4>Käyttäjäyritys toimittaa vuokrayritykselle kopion (tarvittaessa):</h4>
             <label>
-              <Field type="checkbox" name="toggle" />
+              <Field type="checkbox" name="check2" />
               Työterveyshuollon työpaikkaselvityksestä
             </label>
             <label>
-              <Field type="checkbox" name="toggle" />
+              <Field type="checkbox" name="check3" />
               Työsuojelun toimintaohjelmasta
             </label>
             <label>
-              <Field type="checkbox" name="toggle" />
+              <Field type="checkbox" name="check4" />
               Pelastussuunnitelmasta
             </label>
             <label>
-              <Field type="checkbox" name="toggle" />
+              <Field type="checkbox" name="check5" />
               Viimeisimmän riskin arvioinnin tuloksista
             </label>
             <Box display="flex" flexDirection="row">
