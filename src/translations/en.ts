@@ -792,7 +792,7 @@ export default {
   CustomerContractResponsibilities: '',
 
    //good practices
-   checkAll: 'Check all',
+   checkAll: 'Mark all read',
    readAndUnderstood: 'Read and understood',
 
    //step1
