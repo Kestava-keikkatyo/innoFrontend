@@ -2,6 +2,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  Container
 }from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -12,10 +13,10 @@ import Box from '@mui/material/Box';
 import { FormikTextField } from '../../../components/FormField';
 import makeStyles from '@mui/styles/makeStyles';
 import { Theme } from '@mui/material/styles';
-import { Container } from '@mui/material';
 import i18next from 'i18next';
 import vastuualueet from '../../../assets/tietopankki/vastuualueet.json';
 import vastuualueet_en from '../../../assets/tietopankki/vastuualueet_en.json';
+import GuidanceToWorkGP from './GoodPractices/GuidanceToWorkGP';
 
 const GuidanceToWork = () => {
   const { t } = useTranslation();
@@ -31,7 +32,7 @@ const GuidanceToWork = () => {
     <div key="tab0">
       <List id="modal-modal-description">
                     {/* Yhtenäiset vastuut lista */}
-                    {Vastuualueet.yhtenäinen.map((e, i) => (
+                    {Vastuualueet.vastuualueet_worker4.map((e, i) => (
                       <ListItem key={i} divider>
                         <ListItemText primary={`${i + 1}. ${e.tip}`} />
                       </ListItem>
@@ -224,7 +225,7 @@ const GuidanceToWork = () => {
       </Formik>
     </div>,
     <div key="tab2">
-      Tab 2 content for {t('guidance_to_work')}
+      <GuidanceToWorkGP/>
     </div>
   ]
 

@@ -2,6 +2,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  Container,
 }from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -9,10 +10,10 @@ import WorkerStepBase from './WorkerStepBase';
 import Typography from '@mui/material/Typography';
 import makeStyles from '@mui/styles/makeStyles';
 import { Theme } from '@mui/material/styles';
-import { Container } from '@mui/material';
 import i18next from 'i18next';
 import vastuualueet from '../../../assets/tietopankki/vastuualueet.json';
 import vastuualueet_en from '../../../assets/tietopankki/vastuualueet_en.json';
+import WorkPerformanceGP from './GoodPractices/WorkPerformanceGP';
 
 const WorkPerformance = () => {
   const { t } = useTranslation();
@@ -28,7 +29,7 @@ const WorkPerformance = () => {
     <div key="tab0">
       <List id="modal-modal-description">
                     {/* Yhtenäiset vastuut lista */}
-                    {Vastuualueet.yhtenäinen.map((e, i) => (
+                    {Vastuualueet.vastuualueet_worker5.map((e, i) => (
                       <ListItem key={i} divider>
                         <ListItemText primary={`${i + 1}. ${e.tip}`} />
                       </ListItem>
@@ -39,7 +40,7 @@ const WorkPerformance = () => {
       Tab 1 content for {t('work_performance')}
     </div>,
     <div key="tab2">
-      Tab 2 content for {t('work_performance')}
+      <WorkPerformanceGP/>
     </div>
   ]
 

@@ -6,16 +6,21 @@ import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import BusinessIcon from '@mui/icons-material/Business';
+import TaskOutlinedIcon from '@mui/icons-material/TaskOutlined';
+import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
+import AccessibilityOutlinedIcon from '@mui/icons-material/AccessibilityOutlined';
 import {
   Container,
   Tooltip,
   useMediaQuery,
   Divider,
+  Card,
 } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import makeStyles from '@mui/styles/makeStyles';
+
 
 interface WorkerStepBaseProps {
   content: Array<JSX.Element>
@@ -88,10 +93,10 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
             icon={
               matches ? (
                 <Tooltip title="Open" placement="top" arrow>
-                  <BusinessIcon />
+                  <AccessibilityOutlinedIcon />
                 </Tooltip>
               ) : (
-                <BusinessIcon />
+                <AccessibilityOutlinedIcon />
               )
             }
             {...a11yProps(0)}
@@ -101,10 +106,10 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
             icon={
               matches ? (
                 <Tooltip title="Open" placement="top" arrow>
-                  <BusinessIcon />
+                  <TaskOutlinedIcon />
                 </Tooltip>
               ) : (
-                <BusinessIcon />
+                <TaskOutlinedIcon />
               )
             }
             {...a11yProps(1)}
@@ -114,10 +119,10 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
             icon={
               matches ? (
                 <Tooltip title="Open" placement="top" arrow>
-                  <BusinessIcon />
+                  <GroupsOutlinedIcon />
                 </Tooltip>
               ) : (
-                <BusinessIcon />
+                <GroupsOutlinedIcon/>
               )
             }
             {...a11yProps(2)}
@@ -143,12 +148,15 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
         </TabPanel>
 
         <TabPanel value={value} index={2}>
-          <Typography variant="h1" color="secondary" className="header">
+          <Card>
+          <Typography variant="h1" color="secondary" className="header" padding={2}>
             {t('rwm_good_practices')}
           </Typography>
           <Typography variant="subtitle1">
+            
             {content[2]}
           </Typography>
+          </Card>
         </TabPanel>
       </AppBar>
     </Container>
