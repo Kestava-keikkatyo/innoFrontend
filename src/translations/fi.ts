@@ -837,6 +837,61 @@ export default {
     'Toimintaa on hyvä arvioida yhdessä systemaattisesti ainakin asiakkuuden päättyessä. ',
     'Henkilöstöpalveluyrityksen kannattaa kerätä palautetta työn sujumisesta sekä vuokratyöntekijältä että käyttäjäyrityksestä.',
     'Henkilöstöpalveluyrityksen edustaja voi osallistua käyttäjäyrityksen työturvallisuutta ja -hyvinvointia käsitteleviin kokouksiin.'
-  ],  
+  ],
+
+  // Rental work model - Forms
+
+  // Frequently used
+  textAreaPlaceholder: 'Kirjoita...',
+  rentalCompany: 'Vuokrausyritys',
+  userCompany: 'Käyttäjäyritys',
+
+  // Form 1
+  form1Header: 'LOMAKE 1 - ASIAKASSOPIMUKSEEN LIITTYVÄT TYÖTURVALLISUUS- JA TYÖHYVINVOINTIASIAT (vuokrausyrityksen ja käyttäjäyrityksen edustajat täyttävät yhdessä)',
+  form1Text1: 'Lomake on tarkoitus täyttää henkilöstöpalvelu- ja käyttäjäyrityksen yhteistyössä. Lomakkeen täyttämisellä ohjataan käymään olennaisimmat työturvallisuuteen, -terveyteen ja -hyvinvointiin liittyvät asiat läpi sekä suunnittelemaan ja sopimaan tärkeistä asioista. Täytetty lomake voidaan liittää asiakassopimuksen loppuun ja siihen voidaan myös viitata sopimuksessa. Lomake tarkistetaan ja sitä täydennetään työntekijän tilauksen yhteydessä.',
+  form1Text2: 'TYÖNTEKIJÖILTÄ TYÖSSÄ EDELLYTETTÄVÄ KOULUTUS JA TYÖKOKEMUS SEKÄ TYÖN AMMATTITAITOVAATIMUKSET',
+  form1Text3: 'TYÖN ERITYISPIIRTEET, TYÖSSÄ ESIINTYVÄT HAITTA-JA VAARATEKIJÄT SEKÄ MUUT TYÖTURVALLISUUDEN KANNALTA ERITYISESTI HUOMIOITAVAT SEIKAT (esim. terveydentilavaatimukset sekä erityistä varaa aiheuttava työ ja siihen liittyvät terveystarkastukset ja ilmoitus 16-17 vuotiaiden nuorten työntekijäin käyttämisestä vaaralliseen työhön)',
+  form1Text4: 'TYÖTEHTÄVISSÄ TARVITTAVAT HENKILÖNSUOJAIMET (+työvaatetus) JA KUVAUS SIITÄ KUMPI OSAPUOLI VASTAA TARVITTAVIEN SUOJAINTEN TOIMITTAMISESTA TYÖNTEKIJÖILLE JA SUOJAINTEN HUOLLOSTA',
+  form1Text5: 'KUVAUS VUOKRATYÖNTEKIJÖIDEN PEREHDYTYKSESTÄ JA TYÖNOPASTUKSESTA (ketkä perehdyttävät, kuinka kauan kestää, mitä asioita käydään läpi, mitä perehdytysmateriaalia vuokratyöntekijöille annetaan jne.)',
+  form1Text6: 'MITEN TOIMITAAN TYÖTAPATURMAN SATTUESSA VUOKRATYÖNTEKIJÄLLE, SAIRAUSPOISSAOLOTILANTEISSA JA MUISSA VAARATILANTEISSA (onnettomuus ja poikkeustilanteet, läheltä piti –tilanteet, väkivalta- ja uhkatilanteet)',
+  form1Text7: 'MITEN VUOKRATYÖNTEKIJÄ ILMOITTAA TYÖTAPATURMISTA, SAIRAUSPOISSAOLOISTA, MUISTA VAARATILANTEISTA TAI MUISTA TURVALLISUUSHAVAINNOISTA (ongelmat, puutteet, turvallisuusaloitteet)',
+  form1Text8: 'MITEN TUETAAN VUOKRATYÖNTEKIJÄN TYÖKYKYÄ (VARHAISEN TUEN MALLI)?',
+  form1Text9: 'TYÖNTEKIJÄ OTTAA TYÖTURVALLISUUSASIOISSA YHTEYTTÄ HENKILÖÖN/HENKILÖIHIN',
+  form1Text10: 'Käyttäjäyritys toimittaa vuokrayritykselle kopion (tarvittaessa)',
+  form1Text11: 'KUVAUS VUOKRAYRITYKSEN JA KÄYTTÄJÄYRITYKSEN VÄLISESTÄ YHTEYDENPIDOSTA ASIAKKUUDEN AIKANA',
+  form1Text12: 'VUOKRAYRITYKSEN YHTEYSHENKILÖN YHTEYSTIEDOT',
+  form1Text13: 'KÄYTTÄJÄYRITYKSEN YHTEYSHENKILÖN YHTEYSTIEDOT',
+  form1Check1: 'Lainsäädännöstä seuraavat työturvallisuusvastuut on käyty yhdessä läpi',
+  form1Check2: 'Työterveyshuollon työpaikkaselvityksestä',
+  form1Check3: 'Työsuojelun toimintaohjelmasta',
+  form1Check4: 'Pelastussuunnitelmasta',
+  form1Check5: 'Viimeisimmän riskin arvioinnin tuloksista',
+  workRoom: 'Työhuoneen sijanti',
+  form1ByDate: 'mennessä (päivämäärä)',
+
+  // Form 2
+  form2Header: 'LOMAKE 2 – TYÖNTEKIJÄN YLEISPEREHDYTYS (vuokrausyrityksen perehdyttäjä täyttää)',
+  form2Text1: 'Henkilöstöpalveluyrityksen perehdyttäjä täyttää lomakkeen vuokratyöntekijän perehdytyksen yhteydessä. Lomakkeen aihealueiden luettelo toimii muistilistana perehdytyksessä läpikäytävistä asioista. Lomakkeen jälkimmäiseen osaan kirjataan työntekijälle tärkeiden henkilöiden yhteystiedot',
+  form2Text2: 'Kopio täytetystä lomakkeesta tulee antaa työntekijälle ja lähettää myös käyttäjäyritykselle. Täytetystä lomakkeesta käyttäjäyritys näkee mitä asioita yleisperehdytys on sisältänyt. Tämä auttaa käyttäjäyritystä työnopastuksen sisällön suunnittelussa.',
+  form2Text3: 'Yleisperehdytys annettu',
+  form2Text4: 'Seuraavat asiat on käyty läpi yleisperehdytyksen yhteydessä kaikille vuokratyöntekijöille',
+  form2Text5: 'Seuraavat asiat on käyty läpi yleisperehdytyksen yhteydessä uusille vuokratyöntekijöille (jotka saavat ensimmäistä kertaa yleisperehdytyksen)',
+  form2Text6: 'Työkyvyn varhaisen tuen malli ja sairauspoissaoloseuranta',
+  form2Text7: 'Esimiehen rooli',
+  form2Text8: 'VUOKRAYRITYKSEN YHTEYSHENKILÖN YHTEYSTIEDOT',
+  form2Check1: 'Kasvotusten',
+  form2Check2: 'Puhelimitse',
+  form2Check3: 'Ylityökäytäntö',
+  form2Check4: 'Työtehtävä ja siinä vaadittava osaaminen',
+  form2Check5: 'Työssä tarvittavat henkilönsuojaimet(+työvaatetus) ja niiden saaminen käyttöön',
+  form2Check6: 'Kenelle työntekijä ilmoittaa havaitsemistaan vioista ja puutteista',
+  form2Check7: 'Olennaisimmat asiat käyttäjäyrityksen työpaikkaselvityksestä/riskien arvioinnista',
+  form2Check8: 'Työturvallisuuslain mukaiset työntekijän velvoitteet ja oikeus pidättäytyä työstä',
+  form2Check9: 'Toimintaohjeet tapaturman tai muun vaaratilanteen sattuessa vuokratyöntekijälle',
+  form2Check10: 'Vuokrayrityksen työsuojeluvaltuutettu',
+  form2Check11: 'Toimintaohjeet vuokratyöntekijän sairastuessa',
+  form2Check12: 'Työterveyshuollon palvelut',
+  rentalCompanyAndOrientation: 'Vuokrausyritys ja perehdytyksen antaja',
+  userCompanyAddress: 'Käyttäjäyrityksen osoite',
 }
 

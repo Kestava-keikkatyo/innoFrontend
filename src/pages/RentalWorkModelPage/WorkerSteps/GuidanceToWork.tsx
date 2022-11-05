@@ -54,13 +54,13 @@ const GuidanceToWork = () => {
             Täytetty lomake toimii eräänlaisena todisteena käyttäjäyrityksen työnopastuksen antamisesta.</p>
           <Box display="flex" flexDirection="row">
             <h4>Käyttäjäyritys ja työnopastuksen antaja:</h4>
-            <FormikTextField label={'Käyttäjäyritys'} name={'kayttajayritys'} type={'text'}></FormikTextField>
+            <FormikTextField label={t('rentalCompany')} name={'rentalCompany'} type={'text'}></FormikTextField>
             <h4>Pvm:</h4>
             <FormikTextField label={'Päivämäärä'} name={'paivamaara1'} type={'text'}></FormikTextField>
           </Box>
           <Box display="flex" flexDirection="row">
-            <h4>Työntekijä:</h4>
-            <FormikTextField label={'Työntekijä'} name={'tyontekija'} type={'text'}></FormikTextField>
+            <h4>{t('worker')}:</h4>
+            <FormikTextField label={t('worker')} name={'worker'} type={'text'}></FormikTextField>
           </Box>
           <h4>Seuraavat asiat on käyty läpi käyttäjäyrityksen työntekijälle antamassa työnopastuksessa:</h4>
           <Box display="flex" flexDirection="column">
@@ -130,12 +130,12 @@ const GuidanceToWork = () => {
             </label>
           </Box>
           <Box display="flex" flexDirection="row">
-            <h4>Nimi:</h4>
-            <FormikTextField label={'Nimi'} name={'nimi1'} type={'text'}></FormikTextField>
-            <h4>Puh.</h4>
-            <FormikTextField label={'Puhelinnumero'} name={'puhelinnumero1'} type={'text'}></FormikTextField>
-            <h4>Sähköposti:</h4>
-            <FormikTextField label={'Sähköposti'} name={'sahkoposti1'} type={'text'}></FormikTextField>
+            <h4>{t('name')}:</h4>
+            <FormikTextField label={t('name')} name={'name1'} type={'text'}></FormikTextField>
+            <h4>{t('user_phone_number')}:</h4>
+            <FormikTextField label={t('user_phone_number')} name={'phonenumber1'} type={'text'}></FormikTextField>
+            <h4>{t('email')}:</h4>
+            <FormikTextField label={t('email')} name={'email1'} type={'text'}></FormikTextField>
           </Box>
           <Box display="flex" flexDirection="row">
             <h4>Työhuone/työpiste:</h4>
@@ -143,12 +143,12 @@ const GuidanceToWork = () => {
           </Box>
           <h4>Käyttäjäyrityksen esimiehen (jos eri henkilö kuin edellinen) yhteystiedot:</h4>
           <Box display="flex" flexDirection="row">
-            <h4>Nimi:</h4>
-            <FormikTextField label={'Nimi'} name={'nimi2'} type={'text'}></FormikTextField>
-            <h4>Puh.</h4>
-            <FormikTextField label={'Puhelinnumero'} name={'puhelinnumero2'} type={'text'}></FormikTextField>
-            <h4>Sähköposti:</h4>
-            <FormikTextField label={'Sähköposti'} name={'sahkoposti2'} type={'text'}></FormikTextField>
+            <h4>{t('name')}:</h4>
+            <FormikTextField label={t('name')} name={'name2'} type={'text'}></FormikTextField>
+            <h4>{t('user_phone_number')}:</h4>
+            <FormikTextField label={t('user_phone_number')} name={'phonenumber2'} type={'text'}></FormikTextField>
+            <h4>{t('email')}:</h4>
+            <FormikTextField label={t('email')} name={'email2'} type={'text'}></FormikTextField>
           </Box>
           <Box display="flex" flexDirection="row">
             <h4>Työhuone/työpiste:</h4>
@@ -173,8 +173,8 @@ const GuidanceToWork = () => {
             <FormikTextField label={'Henkilöstöpalveluyritys'} name={'henkilostopalveluyritys'} type={'text'}></FormikTextField>
             <h4>Perehdyttäjä:</h4>
             <FormikTextField label={'Perehdyttäjä'} name={'perehdyttaja'} type={'text'}></FormikTextField>
-            <h4>Työntekijä:</h4>
-            <FormikTextField label={'Työntekijä'} name={'tyontekija'} type={'text'}></FormikTextField>
+            <h4>{t('worker')}:</h4>
+            <FormikTextField label={t('worker')} name={'worker'} type={'text'}></FormikTextField>
             <h4>Pvm:</h4>
             <FormikTextField label={'Päivämäärä'} name={'paivamaara2'} type={'text'}></FormikTextField>
             <h4>Työtehtävä ja siinä vaadittava osaaminen:</h4>
@@ -196,8 +196,8 @@ const GuidanceToWork = () => {
             <FormikTextField label={'Käyttäjäyrityksen nimi'} name={'kayttajayritysnimi'} type={'text'}></FormikTextField>
             <h4>Työnopastaja:</h4>
             <FormikTextField label={'Työnopastaja'} name={'tyonopastaja'} type={'text'}></FormikTextField>
-            <h4>Työntekijä:</h4>
-            <FormikTextField label={'Työntekijä'} name={'tyontekija2'} type={'text'}></FormikTextField>
+            <h4>{t('worker')}:</h4>
+            <FormikTextField label={t('worker')} name={'worker2'} type={'text'}></FormikTextField>
             <h4>Työtehtävät ja turvalliset työtavat:</h4>
             <FormikTextField label={'Työtehtävät'} name={'tyotehtavat'} type={'text'}></FormikTextField>
             <h4>Työssä esiintyvät haitta- ja vaaratekijät ja niiltä suojautuminen:</h4>

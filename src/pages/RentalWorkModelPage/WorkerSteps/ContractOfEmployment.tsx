@@ -41,127 +41,121 @@ const ContractOfEmployment = () => {
                   </List>
     </div>,
     <div key="tab1">
-      <h2 className={classes.center}>LOMAKE 2 – TYÖNTEKIJÄN YLEISPEREHDYTYS (vuokrausyrityksen perehdyttäjä täyttää)</h2>
+      <h2 className={classes.center}>{t('form2Header')}</h2>
       <Formik
           initialValues={{
           }}
           onSubmit={() => { console.log('Submit'); }}
       >
         <Form>
-          <p className={classes.p}>Henkilöstöpalveluyrityksen perehdyttäjä täyttää lomakkeen vuokratyöntekijän perehdytyksen
-            yhteydessä. Lomakkeen aihealueiden luettelo toimii muistilistana perehdytyksessä läpikäytävistä asioista.
-            Lomakkeen jälkimmäiseen osaan kirjataan työntekijälle tärkeiden henkilöiden yhteystiedot.
-          </p>
-          <p className={classes.p}>Kopio täytetystä lomakkeesta tulee antaa työntekijälle ja lähettää myös käyttäjäyritykselle.
-            Täytetystä lomakkeesta käyttäjäyritys näkee mitä asioita yleisperehdytys on sisältänyt.
-            Tämä auttaa käyttäjäyritystä työnopastuksen sisällön suunnittelussa.
-          </p>
+          <p className={classes.p}>{t('form2Text1')}</p>
+          <p className={classes.p}>{t('form2Text2')}</p>
           <Box display="flex" flexDirection="row">
-            <h4>Vuokrausyritys ja perehdytyksen antaja:</h4>
-            <FormikTextField label={'Vuokrausyritys'} name={'vuokrausyritys'} type={'text'}></FormikTextField>
-            <h4>Pvm:</h4>
-            <FormikTextField label={'Päivämäärä'} name={'paivamaara'} type={'text'}></FormikTextField>
+            <h4>{t('rentalCompanyAndOrientation')}:</h4>
+            <FormikTextField label={t('rentalCompanyAndOrientation')} name={'rentalCompany'} type={'text'}></FormikTextField>
+            <h4>{t('date')}:</h4>
+            <FormikTextField name={'date'} type={'date'}></FormikTextField>
           </Box>
           <Box display="flex" flexDirection="row">
             <label>
               <Field type="checkbox" name="check1" />
-              Kasvotusten
+              {t('form2Check1')}
             </label>
             <label>
               <Field type="checkbox" name="check2" />
-              Puhelimitse
+              {t('form2Check2')}
             </label>
-            <h4>Työntekijä:</h4>
-            <FormikTextField label={'Työntekijä'} name={'tyontekija'} type={'text'}></FormikTextField>
+            <h4>{t('worker')}:</h4>
+            <FormikTextField label={t('worker')} name={'worker'} type={'text'}></FormikTextField>
           </Box>
-          <h4>Yleisperehdytys annettu</h4>
+          <h4>{t('form2Text3')}</h4>
           <Box display="flex" flexDirection="row">
             <label>
               <Field type="checkbox" name="check3" />
-              Ylityökäytäntö
+              {t('form2Check3')}
             </label>
             <label>
               <Field type="checkbox" name="check4" />
-              Työtehtävä ja siinä vaadittava osaaminen
+              {t('form2Check4')}
             </label>
           </Box>
-          <h4>Seuraavat asiat on käyty läpi yleisperehdytyksen yhteydessä kaikille vuokratyöntekijöille:</h4>
+          <h4>{t('form2Text4')}:</h4>
           <Box display="flex" flexDirection="column">
             <label>
               <Field type="checkbox" name="check5" />
-              Työssä tarvittavat henkilönsuojaimet(+työvaatetus) ja niiden saaminen käyttöön
+              {t('form2Check5')}
             </label>
             <label>
               <Field type="checkbox" name="check6" />
-              Kenelle työntekijä ilmoittaa havaitsemistaan vioista ja puutteista
+              {t('form2Check6')}
             </label>
             <label>
               <Field type="checkbox" name="check7" />
-              Olennaisimmat asiat käyttäjäyrityksen työpaikkaselvityksestä/riskien arvioinnista
+              {t('form2Check7')}
             </label>
             <label>
               <Field type="checkbox" name="check8" />
-              Työturvallisuuslain mukaiset työntekijän velvoitteet ja oikeus pidättäytyä työstä
+              {t('form2Check8')}
             </label>
           </Box>
-          <h4>Seuraavat asiat on käyty läpi yleisperehdytyksen yhteydessä uusille vuokratyöntekijöille (jotka saavat ensimmäistä kertaa yleisperehdytyksen):</h4>
+          <h4>{t('form2Text5')}:</h4>
           <label>
             <Field type="checkbox" name="check9" />
-            Toimintaohjeet tapaturman tai muun vaaratilanteen sattuessa vuokratyöntekijälle
+            {t('form2Check9')}
           </label>
           <Box display="flex" flexDirection="row">
             <label>
               <Field type="checkbox" name="check10" />
-              Vuokrayrityksen työsuojeluvaltuutettu
+              {t('form2Check10')}
             </label>
             <label>
             <Field type="checkbox" name="check11" />
-            Toimintaohjeet vuokratyöntekijän sairastuessa
+              {t('form2Check11')}
           </label>
           </Box>
           <Box display="flex" flexDirection="row">
             <label>
               <Field type="checkbox" name="check12" />
-              Työterveyshuollon palvelut
+              {t('form2Check12')}
             </label>
-            <h4>Yhteystiedot:</h4>
-            <FormikTextField label={'Yhteystiedot'} name={'yhteystiedot1'} type={'text'}></FormikTextField>
-            <h4>Puh:</h4>
-            <FormikTextField label={'Puhelinnumero'} name={'puhelinnumero1'} type={'text'}></FormikTextField>
+            <h4>{t('user_contact_details')}:</h4>
+            <FormikTextField label={t('user_contact_details')} name={'contact1'} type={'text'}></FormikTextField>
+            <h4>{t('user_phone_number')}:</h4>
+            <FormikTextField label={t('user_phone_number')} name={'phonenumber1'} type={'text'}></FormikTextField>
           </Box>
           <Box display="flex" flexDirection="row">
-            <h4>Yhteystiedot:</h4>
-            <FormikTextField label={'Työntekijä'} name={'yhteystiedot2'} type={'text'}></FormikTextField>
-            <h4>Puh:</h4>
-            <FormikTextField label={'Puhelinnumero'} name={'puhelinnumero2'} type={'text'}></FormikTextField>
+            <h4>{t('user_contact_details')}:</h4>
+            <FormikTextField label={t('user_contact_details')} name={'contact2'} type={'text'}></FormikTextField>
+            <h4>{t('user_phone_number')}:</h4>
+            <FormikTextField label={t('user_phone_number')} name={'phonenumber2'} type={'text'}></FormikTextField>
           </Box>
-          <h4>Työkyvyn varhaisen tuen malli ja sairauspoissaoloseuranta</h4>
-          <h4>Esimiehen rooli</h4>
-          <h4>VUOKRAYRITYKSEN YHTEYSHENKILÖN YHTEYSTIEDOT</h4>
+          <h4>{t('form2Text6')}</h4>
+          <h4>{t('form2Text7')}</h4>
+          <h4>{t('form2Text8')}</h4>
           <Box display="flex" flexDirection="row">
-            <h4>Nimi:</h4>
-            <FormikTextField label={'Nimi'} name={'nimi1'} type={'text'}></FormikTextField>
-            <h4>Puh.</h4>
-            <FormikTextField label={'Puhelinnumero'} name={'puhelinnumero3'} type={'text'}></FormikTextField>
-            <h4>Sähköposti:</h4>
-            <FormikTextField label={'Sähköposti'} name={'sahkoposti1'} type={'text'}></FormikTextField>
+            <h4>{t('name')}:</h4>
+            <FormikTextField label={t('name')} name={'name1'} type={'text'}></FormikTextField>
+            <h4>{t('user_phone_number')}:</h4>
+            <FormikTextField label={t('user_phone_number')} name={'phonenumber3'} type={'text'}></FormikTextField>
+            <h4>{t('email')}:</h4>
+            <FormikTextField label={t('email')} name={'email1'} type={'text'}></FormikTextField>
           </Box>
           <Box display="flex" flexDirection="row">
-            <h4>Käyttäjäyrityksen osoite:</h4>
-            <FormikTextField label={'Osoite'} name={'osoite'} type={'text'}></FormikTextField>
+            <h4>{t('userCompanyAddress')}:</h4>
+            <FormikTextField label={t('userCompanyAddress')} name={'address'} type={'text'}></FormikTextField>
           </Box>
           <Box display="flex" flexDirection="column">
             <h4>TYÖNTEKIJÄN PÄÄSY TYÖPAIKKAAN (kulkuyhteydet, kulkuluvat jne.)</h4>
-            <Field component="textarea" rows="4" placeholder='Kirjoita...' value=''></Field>
+            <Field component="textarea" rows="4" placeholder={t('textAreaPlaceholder')} value=''></Field>
           </Box>
           <h4>KÄYTTÄJÄYRITYKSEN YHTEYSHENKILÖN (JOLLE ILMOITTAUDUTAAN) YHTEYSTIEDOT</h4>
           <Box display="flex" flexDirection="row">
-            <h4>Nimi:</h4>
-            <FormikTextField label={'Nimi'} name={'nimi2'} type={'text'}></FormikTextField>
-            <h4>Puh.</h4>
-            <FormikTextField label={'Puhelinnumero'} name={'puhelinnumero4'} type={'text'}></FormikTextField>
-            <h4>Sähköposti:</h4>
-            <FormikTextField label={'Sähköposti'} name={'sahkoposti2'} type={'text'}></FormikTextField>
+            <h4>{t('name')}:</h4>
+            <FormikTextField label={t('name')} name={'name2'} type={'text'}></FormikTextField>
+            <h4>{t('user_phone_number')}:</h4>
+            <FormikTextField label={t('user_phone_number')} name={'phonenumber4'} type={'text'}></FormikTextField>
+            <h4>{t('email')}:</h4>
+            <FormikTextField label={t('email')} name={'email2'} type={'text'}></FormikTextField>
           </Box>
           <label>
             <Field type="checkbox" name="check13" />

@@ -95,16 +95,16 @@ const FeedbackAndEvaluation = () => {
               Työssä käytettyjen henkilönsuojainten ja turvavälineiden riittävyys
             </label>
             <h4>YHTEENVETO TOIMEKSIANNON (TYÖTURVALLISUUTEEN LIITTYVISTÄ) ONNISTUMISISTA JA HYVIN SUJUNEISTA ASIOISTA</h4>
-            <Field component="textarea" rows="10" placeholder='Kirjoita...' value=''></Field>
+            <Field component="textarea" rows="10" placeholder={t('textAreaPlaceholder')} value=''></Field>
             <h4>YHTEENVETO TOIMEKSIANNON AIKANA ILMENNEISTÄ ONGELMISTA/PARANTAMISTA VAATIVISTA ASIOISTA</h4>
-            <Field component="textarea" rows="10" placeholder='Kirjoita...' value=''></Field>
+            <Field component="textarea" rows="10" placeholder={t('textAreaPlaceholder')} value=''></Field>
             <h4>MITEN OMAA TOIMINTAA VOIDAAN KEHITTÄÄ, JOTTA EDELLÄ MAINITTUJA ASIOITA SAADAAN JATKOSSA PARANNETTUA</h4>
             <h4>VUOKRAYRITYS</h4>
-            <Field component="textarea" rows="10" placeholder='Kirjoita...' value=''></Field>
+            <Field component="textarea" rows="10" placeholder={t('textAreaPlaceholder')} value=''></Field>
             <h4>KÄYTTÄJÄYRITYS</h4>
-            <Field component="textarea" rows="10" placeholder='Kirjoita...' value=''></Field>
+            <Field component="textarea" rows="10" placeholder={t('textAreaPlaceholder')} value=''></Field>
             <h4>YHTEISTYÖ</h4>
-            <Field component="textarea" rows="10" placeholder='Kirjoita...' value=''></Field>
+            <Field component="textarea" rows="10" placeholder={t('textAreaPlaceholder')} value=''></Field>
           </Box>
         </Form>
       </Formik>
