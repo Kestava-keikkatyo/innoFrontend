@@ -41,69 +41,63 @@ const FeedbackAndEvaluation = () => {
                   </List>
     </div>,
     <div key="tab1">
-      <h2 className={classes.center}>LOMAKE 4 – TOIMINNAN ARVIOINTI (käyttäjäyrityksen ja vuokrayrityksen edustajat täyttävät)</h2>
+      <h2 className={classes.center}>{t('form4Header')}</h2>
       <Formik
           initialValues={{
           }}
           onSubmit={() => { console.log('Submit'); }}
       >
         <Form>
-          <p className={classes.p}>Henkilöstöpalveluyrityksen ja käyttäjäyrityksen edustajat täyttävät lomakkeen yhdessä.
-            Loppupalaverissa tehdään yhteenveto toimeksiannon ja erityisesti työturvallisuuden varmistamisen sujumisesta.
-            Lomakkeen alussa on muistilista toiminnan arvioinnissa läpikäytävistä asioista.
-            Lomakkeen loppuosaan tulee kirjoittaa ylös toiminnan arvioinnin ja yhteisen analysoinnin aikana esiinnousseet
-            olennaisimmat asiat (sekä toimeksiannon onnistumiset että kehittämistä vaativat asiat).</p>
-          <p className={classes.p}>Täytetystä lomakkeesta (tai sen kopiosta) tulee jäädä oma kappale molemmille osapuolille.
-            Lomakkeeseen kirjattujen asioiden pohjalta yritykset voivat kehittää työturvallisuustoimintaansa seuraavassa
-            vuokratyötoimeksiannossa. Palautteet on hyvä käydä läpi myös vuokratyöntekijän kanssa</p>
-          <h4>Seuraavat asiat on käyty läpi toimeksiannon päätyttyä tehdyssä jälkiarvioinnissa:</h4>
+          <p className={classes.p}>{t('form4Text1')}</p>
+          <p className={classes.p}>{t('form4Text2')}</p>
+          <h4>{t('form4Text3')}:</h4>
           <Box display="flex" flexDirection="column">
             <label>
               <Field type="checkbox" name="check1" />
-              Toimeksiannon aikana vuokratyöntekijöiltä saatu turvallisuuspalaute (työtapaturmat, muut vaaratilanteet, aloitteet, puutteet/ongelmat)
+              {t('form4Check1')}
             </label>
             <label>
               <Field type="checkbox" name="check2" />
-              Vuokratyöntekijöiden ammattitaidon ja osaamisen riittävyys suhteessa työtehtäviin
+              {t('form4Check2')}
             </label>
             <label>
               <Field type="checkbox" name="check3" />
-              Vuokratyöntekijöiden työssä suoriutuminen mukaanlukien työturvallisuusasiat
+              {t('form4Check3')}
             </label>
             <label>
               <Field type="checkbox" name="check4" />
-              Vuokratyöntekijöille sattuneet työtapaturmat ja niiden tutkintaraportit
+              {t('form4Check4')}
             </label>
             <label>
               <Field type="checkbox" name="check5" />
-              Käyttäjäyrityksen palaute vuokrayritykselle tämän toiminnasta toimeksiannon aikana
+              {t('form4Check5')}
             </label>
             <label>
               <Field type="checkbox" name="check6" />
-              Vuokrayrityksen (ja vuokratyöntekijöiden) palaute käyttäjäyritykselle tämän toiminnasta toimeksiannon aikana
+              {t('form4Check6')}
             </label>
             <label>
               <Field type="checkbox" name="check7" />
-              Tiedonkulun toimivuus toimeksiannon aikana (erityisesti vuokra- ja käyttäjäyrityksen välillä)
+              {t('form4Check7')}
             </label>
             <label>
               <Field type="checkbox" name="check8" />
-              Annetun perehdytyksen ja työnopastuksen riittävyys (määrä ja laatu)
+              {t('form4Check8')}
             </label>
             <label>
               <Field type="checkbox" name="check9" />
-              Työssä käytettyjen henkilönsuojainten ja turvavälineiden riittävyys
+              {t('form4Check9')}
             </label>
-            <h4>YHTEENVETO TOIMEKSIANNON (TYÖTURVALLISUUTEEN LIITTYVISTÄ) ONNISTUMISISTA JA HYVIN SUJUNEISTA ASIOISTA</h4>
+            <h4>{t('form4Text4')}</h4>
             <Field component="textarea" rows="10" placeholder={t('textAreaPlaceholder')} value=''></Field>
-            <h4>YHTEENVETO TOIMEKSIANNON AIKANA ILMENNEISTÄ ONGELMISTA/PARANTAMISTA VAATIVISTA ASIOISTA</h4>
+            <h4>{t('form4Text5')}</h4>
             <Field component="textarea" rows="10" placeholder={t('textAreaPlaceholder')} value=''></Field>
-            <h4>MITEN OMAA TOIMINTAA VOIDAAN KEHITTÄÄ, JOTTA EDELLÄ MAINITTUJA ASIOITA SAADAAN JATKOSSA PARANNETTUA</h4>
-            <h4>VUOKRAYRITYS</h4>
+            <h4>{t('form4Text6')}</h4>
+            <h4>{t('rentalCompanyCaps')}</h4>
             <Field component="textarea" rows="10" placeholder={t('textAreaPlaceholder')} value=''></Field>
-            <h4>KÄYTTÄJÄYRITYS</h4>
+            <h4>{t('userCompanyCaps')}</h4>
             <Field component="textarea" rows="10" placeholder={t('textAreaPlaceholder')} value=''></Field>
-            <h4>YHTEISTYÖ</h4>
+            <h4>{t('cooperation')}</h4>
             <Field component="textarea" rows="10" placeholder={t('textAreaPlaceholder')} value=''></Field>
           </Box>
         </Form>

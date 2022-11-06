@@ -40,93 +40,90 @@ const GuidanceToWork = () => {
                   </List>
     </div>,
     <div key="tab1">
-      <h2 className={classes.center}>LOMAKE 3 – TYÖNOPASTUS (käyttäjäyrityksen työnopastaja täyttää)</h2>
+      <h2 className={classes.center}>{t('form3Header')}</h2>
       <Formik
           initialValues={{
           }}
           onSubmit={() => { console.log('Submit'); }}
       >
         <Form>
-          <p className={classes.p}>Käyttäjäyrityksen perehdyttäjä täyttää lomakkeen vuokratyöntekijän työnopastuksen yhteydessä.
-            Lomakkeen aihealueiden luettelo toimii tarkistuslistana työnopastuksessa läpikäytävistä asioista.
-            Lomakkeeseen täytetään myös käyttäjäyrityksessä vuokratyöntekijän esimiehenä toimivan henkilön yhteystiedot.</p>
-          <p className={classes.p}>Kopio täytetystä lomakkeesta tulee antaa työntekijälle ja henkilöstöpalveluyritykselle.
-            Täytetty lomake toimii eräänlaisena todisteena käyttäjäyrityksen työnopastuksen antamisesta.</p>
+          <p className={classes.p}>{t('form3Text1')}</p>
+          <p className={classes.p}>{t('form3Text2')}</p>
           <Box display="flex" flexDirection="row">
-            <h4>Käyttäjäyritys ja työnopastuksen antaja:</h4>
+            <h4>{t('form3Text3')}:</h4>
             <FormikTextField label={t('rentalCompany')} name={'rentalCompany'} type={'text'}></FormikTextField>
-            <h4>Pvm:</h4>
-            <FormikTextField label={'Päivämäärä'} name={'paivamaara1'} type={'text'}></FormikTextField>
+            <h4>{t('date')}:</h4>
+            <FormikTextField label={t('date')} name={'date1'} type={'text'}></FormikTextField>
           </Box>
           <Box display="flex" flexDirection="row">
             <h4>{t('worker')}:</h4>
             <FormikTextField label={t('worker')} name={'worker'} type={'text'}></FormikTextField>
           </Box>
-          <h4>Seuraavat asiat on käyty läpi käyttäjäyrityksen työntekijälle antamassa työnopastuksessa:</h4>
+          <h4>{t('form3Text4')}:</h4>
           <Box display="flex" flexDirection="column">
             <label>
               <Field type="checkbox" name="check1" />
-              Työtehtävät ja turvalliset työtavat
+              {t('form3Check1')}
             </label>
             <label>
               <Field type="checkbox" name="check2" />
-              Työssä esiintyvät haitta- ja vaaratekijät sekä niiltä suojautuminen
+              {t('form3Check2')}
             </label>
             <label>
               <Field type="checkbox" name="check3" />
-              Työajat ja tauot
+              {t('form3Check3')}
             </label>
             <label>
               <Field type="checkbox" name="check4" />
-              Turvavarusteiden ja henkilönsuojainten käyttäminen ja huoltaminen
+              {t('form3Check4')}
             </label>
             <label>
               <Field type="checkbox" name="check5" />
-              Siisteys ja järjestys
+              {t('form3Check5')}
             </label>
             <label>
               <Field type="checkbox" name="check6" />
-              Toiminta onnettomuus- ja poikkeustilanteissa
+              {t('form3Check6')}
             </label>
             <label>
               <Field type="checkbox" name="check7" />
-              Turvallisuushavaintojen tekeminen (työtapaturmat ja muut vaaratilanteet, aloitteet, puutteet/ongelmat)
+              {t('form3Check7')}
             </label>
             <label>
               <Field type="checkbox" name="check8" />
-              Ensiapukaapit, alkusammuttimet, poistumistiet jne.
+              {t('form3Check8')}
             </label>
             <label>
               <Field type="checkbox" name="check9" />
-              Henkilöstötilat (savuttomuus ym.)
+              {t('form3Check9')}
             </label>
             <label>
               <Field type="checkbox" name="check10" />
-              Erityishuomioitavat asiat
+              {t('form3Check10')}
             </label>
             <label>
               <Field type="checkbox" name="check11" />
-              Työn hyvä ergonomia (tuolien/pöytien/työtasojen säätäminen, työasennot ja liikkeet, nostotekniikat jne.)
+              {t('form3Check11')}
             </label>
             <label>
               <Field type="checkbox" name="check12" />
-              Tiedotuskäytännöt (ilmoitustaulut, sähköpostilistat jne.)
+              {t('form3Check12')}
             </label>
             <label>
               <Field type="checkbox" name="check13" />
-              Osallistuminen käyttäjäyrityksen kokouksiin ja muuhun viikottaiseen toimintaan
+              {t('form3Check13')}
             </label>
             <label>
               <Field type="checkbox" name="check14" />
-              Lupa-asiat (kulkukortit, tulityökortit jne.)
+              {t('form3Check14')}
             </label>
             <label>
               <Field type="checkbox" name="check15" />
-              Käyttäjäyrityksen työsuojeluvaltuutettu
+              {t('form3Check15')}
             </label>
             <label>
               <Field type="checkbox" name="check16" />
-              Keneltä kysytään apua sitä tarvittaessa
+              {t('form3Check16')}
             </label>
           </Box>
           <Box display="flex" flexDirection="row">
@@ -138,10 +135,10 @@ const GuidanceToWork = () => {
             <FormikTextField label={t('email')} name={'email1'} type={'text'}></FormikTextField>
           </Box>
           <Box display="flex" flexDirection="row">
-            <h4>Työhuone/työpiste:</h4>
-            <FormikTextField label={'Työhuone/työpiste'} name={'tyohuonepiste1'} type={'text'}></FormikTextField>
+            <h4>{t('workstation')}:</h4>
+            <FormikTextField label={t('workstation')} name={'workstation1'} type={'text'}></FormikTextField>
           </Box>
-          <h4>Käyttäjäyrityksen esimiehen (jos eri henkilö kuin edellinen) yhteystiedot:</h4>
+          <h4>{t('form3Text5')}:</h4>
           <Box display="flex" flexDirection="row">
             <h4>{t('name')}:</h4>
             <FormikTextField label={t('name')} name={'name2'} type={'text'}></FormikTextField>
@@ -151,75 +148,72 @@ const GuidanceToWork = () => {
             <FormikTextField label={t('email')} name={'email2'} type={'text'}></FormikTextField>
           </Box>
           <Box display="flex" flexDirection="row">
-            <h4>Työhuone/työpiste:</h4>
-            <FormikTextField label={'Työhuone/työpiste'} name={'tyohuonepiste2'} type={'text'}></FormikTextField>
+            <h4>{t('workstation')}:</h4>
+            <FormikTextField label={t('workstation')} name={'workstation2'} type={'text'}></FormikTextField>
           </Box>
-          <h4>ALLEKIRJOITUKSET</h4>
+          <h4>{t('signatures')}</h4>
           <Box display="flex" flexDirection="row">
-            <h4>Perehdyttäjä:</h4>
-            <FormikTextField label={'Perehdyttäjä'} name={'perehdyttaja'} type={'text'}></FormikTextField>
-            <h4>Perehdytetty:</h4>
-            <FormikTextField label={'Perehdytetty'} name={'perehdytetty'} type={'text'}></FormikTextField>
+            <h4>{t('orientator')}:</h4>
+            <FormikTextField label={t('orientator')} name={'orientator'} type={'text'}></FormikTextField>
+            <h4>{t('orientated')}:</h4>
+            <FormikTextField label={t('orientated')} name={'orientated'} type={'text'}></FormikTextField>
           </Box>
 
-          <h2 className={classes.center}>LOMAKE 5 – Perehdytys ja työnopastus kiireellisissä tilanteissa</h2>
-          <p className={classes.p}>Tilanteissa, joissa työntekijä tarvitaan nopeasti tekemään työtä, voidaan osa
-            perehdytyksestä jättää tehtäväksi työn aloittamisen jälkeen.
-            Turvallisuuteen liittyvät tärkeimmät asiat tulee kuitenkin aina kertoa työntekijälle heti alussa.
-            Tässä lomakkeessa on asiat, jotka ainakin tulee käydä läpi ennen työn aloitusta</p>
-          <h3>Henkilöstöpalveluyrityksen perehdytys kiireellisessä tapauksessa</h3>
+          <h2 className={classes.center}>{t('form5Header')}</h2>
+          <p className={classes.p}>{t('form5Text1')}</p>
+          <h3>{t('form5Text2')}</h3>
           <Box display="flex" flexDirection="column">
-            <h4>Henkilöstöpalveluyrityksen nimi:</h4>
-            <FormikTextField label={'Henkilöstöpalveluyritys'} name={'henkilostopalveluyritys'} type={'text'}></FormikTextField>
-            <h4>Perehdyttäjä:</h4>
-            <FormikTextField label={'Perehdyttäjä'} name={'perehdyttaja'} type={'text'}></FormikTextField>
+            <h4>{t('serviceCompany')}:</h4>
+            <FormikTextField label={t('serviceCompany')} name={'serviceCompany'} type={'text'}></FormikTextField>
+            <h4>{t('orientator')}:</h4>
+            <FormikTextField label={t('orientator')} name={'orientator'} type={'text'}></FormikTextField>
             <h4>{t('worker')}:</h4>
             <FormikTextField label={t('worker')} name={'worker'} type={'text'}></FormikTextField>
-            <h4>Pvm:</h4>
-            <FormikTextField label={'Päivämäärä'} name={'paivamaara2'} type={'text'}></FormikTextField>
-            <h4>Työtehtävä ja siinä vaadittava osaaminen:</h4>
-            <FormikTextField label={'Osaaminen'} name={'osaaminen'} type={'text'}></FormikTextField>
-            <h4>Työssä tarvittavat henkilönsuojaimet ja työvaatetus ja mistä ne saa:</h4>
-            <FormikTextField label={'Henkilönsuojaimet ja työvaatetus'} name={'suojaimetjavaatetus'} type={'text'}></FormikTextField>
-            <h4>Työhön liittyvät turvallisuus- ja terveysriskit:</h4>
-            <FormikTextField label={'Turvallisuus- ja terveysriskit'} name={'turvallisuusjaterveys'} type={'text'}></FormikTextField>
-            <h4>Henkilöstöpalveluyrityksen yhteishenkilön yhteystiedot:</h4>
-            <FormikTextField label={'Yhteystiedot'} name={'yhteystiedot1'} type={'text'}></FormikTextField>
-            <h4>Käyttäjäyrityksen osoite ja ohjeet työpaikalle pääsemiseen (esim. kulkuluvat):</h4>
-            <FormikTextField label={'Osoite ja ohjeet'} name={'osoitejaohjeet'} type={'text'}></FormikTextField>
-            <h4>Käyttäjäyrityksen yhteyshenkilön yhteystiedot:</h4>
-            <FormikTextField label={'Yhteystiedot'} name={'yhteystiedot2'} type={'text'}></FormikTextField>
+            <h4>{t('date')}:</h4>
+            <FormikTextField label={t('date')} name={'date2'} type={'text'}></FormikTextField>
+            <h4>{t('form2Check4')}:</h4>
+            <FormikTextField label={t('form2Check4')} name={'requiredSkills'} type={'text'}></FormikTextField>
+            <h4>{t('form2Check5')}:</h4>
+            <FormikTextField label={t('form2Check5')} name={'protectiveEquipment'} type={'text'}></FormikTextField>
+            <h4>{t('form5Text3')}:</h4>
+            <FormikTextField label={t('form5Text3')} name={'safetyAndRisks'} type={'text'}></FormikTextField>
+            <h4>{t('form5Text4')}:</h4>
+            <FormikTextField label={t('form5Text4')} name={'contact1'} type={'text'}></FormikTextField>
+            <h4>{t('form5Text5')}:</h4>
+            <FormikTextField label={t('form5Text5')} name={'addressAndInstructions'} type={'text'}></FormikTextField>
+            <h4>{t('form5Text6')}:</h4>
+            <FormikTextField label={t('form5Text6')} name={'contact2'} type={'text'}></FormikTextField>
           </Box>
-          <h3>Käyttäjäyrityksen työnopastus kiireellisessä tapauksessa</h3>
+          <h3>{t('form5Text7')}</h3>
           <Box display="flex" flexDirection="column">
-            <h4>Käyttäjäyrityksen nimi:</h4>
-            <FormikTextField label={'Käyttäjäyrityksen nimi'} name={'kayttajayritysnimi'} type={'text'}></FormikTextField>
-            <h4>Työnopastaja:</h4>
-            <FormikTextField label={'Työnopastaja'} name={'tyonopastaja'} type={'text'}></FormikTextField>
+            <h4>{t('userCompanyName')}:</h4>
+            <FormikTextField label={t('userCompanyName')} name={'userCompanyName'} type={'text'}></FormikTextField>
+            <h4>{t('jobAdvisor')}:</h4>
+            <FormikTextField label={t('jobAdvisor')} name={'jobAdvisor'} type={'text'}></FormikTextField>
             <h4>{t('worker')}:</h4>
             <FormikTextField label={t('worker')} name={'worker2'} type={'text'}></FormikTextField>
-            <h4>Työtehtävät ja turvalliset työtavat:</h4>
-            <FormikTextField label={'Työtehtävät'} name={'tyotehtavat'} type={'text'}></FormikTextField>
-            <h4>Työssä esiintyvät haitta- ja vaaratekijät ja niiltä suojautuminen:</h4>
-            <FormikTextField label={'Haitta- ja vaaratekijät'} name={'haittajavaara'} type={'text'}></FormikTextField>
-            <h4>Työajat ja tauot:</h4>
-            <FormikTextField label={'Työajat ja tauot'} name={'ajatjatauot'} type={'text'}></FormikTextField>
-            <h4>Turvavarusteiden ja henkilönsuojainten käyttäminen:</h4>
-            <FormikTextField label={'Turvavarusteet ja henkilönsuojaimet'} name={'varusteetjasuojaimet'} type={'text'}></FormikTextField>
-            <h4>Toiminta onnettomuus- ja poikkeustilanteissa:</h4>
-            <FormikTextField label={'Toiminta onnettomuus- ja poikkeustilanteissa'} name={'onnettumuusjapoikkeus'} type={'text'}></FormikTextField>
-            <h4>Ensiapukaapit, alkusammuttimet, poistumistiet jne.:</h4>
-            <FormikTextField label={'Ensiapukaapit, alkusammuttimet, poistumiestiet'} name={'kaapitsammuttimet'} type={'text'}></FormikTextField>
-            <h4>Henkilöstötilat:</h4>
-            <FormikTextField label={'Henkilöstötilat'} name={'henkilostotilat'} type={'text'}></FormikTextField>
-            <h4>Erityishuomioitavat asiat:</h4>
-            <FormikTextField label={'Erityishuomioitavat asiat'} name={'erityishuomiot'} type={'text'}></FormikTextField>
-            <h4>Tiedotuskäytännöt:</h4>
-            <FormikTextField label={'Tiedotuskäytännöt'} name={'tiedotuskaytannot'} type={'text'}></FormikTextField>
-            <h4>Lupa-asiat (kulkukortit, tulityökortit ym.):</h4>
-            <FormikTextField label={'Henkilöstötilat'} name={'henkilostotilat'} type={'text'}></FormikTextField>
-            <h4>Keneltä kysytään apua tarvittaessa (yhteystiedot):</h4>
-            <FormikTextField label={'Keneltä kysytään apua tarvittaessa'} name={'keneltaapua'} type={'text'}></FormikTextField>
+            <h4>{t('form3Check1')}:</h4>
+            <FormikTextField label={t('form3Check1')} name={'workDuties'} type={'text'}></FormikTextField>
+            <h4>{t('form3Check2')}:</h4>
+            <FormikTextField label={t('form3Check2')} name={'harmfulAndDangerous'} type={'text'}></FormikTextField>
+            <h4>{t('form3Check3')}:</h4>
+            <FormikTextField label={t('form3Check3')} name={'hoursAndBreaks'} type={'text'}></FormikTextField>
+            <h4>{t('form5Text8')}:</h4>
+            <FormikTextField label={t('form5Text8')} name={'equipment'} type={'text'}></FormikTextField>
+            <h4>{t('form3Check6')}:</h4>
+            <FormikTextField label={t('form3Check6')} name={'accidents'} type={'text'}></FormikTextField>
+            <h4>{t('form3Check8')}:</h4>
+            <FormikTextField label={t('form3Check8')} name={'firstAidCabinets'} type={'text'}></FormikTextField>
+            <h4>{t('form3Check9')}:</h4>
+            <FormikTextField label={t('form3Check9')} name={'facilities'} type={'text'}></FormikTextField>
+            <h4>{t('form3Check10')}:</h4>
+            <FormikTextField label={t('form3Check10')} name={'specials'} type={'text'}></FormikTextField>
+            <h4>{t('form3Check12')}:</h4>
+            <FormikTextField label={t('form3Check12')} name={'informationPractices'} type={'text'}></FormikTextField>
+            <h4>{t('form3Check14')}:</h4>
+            <FormikTextField label={t('form3Check14')} name={'licensing'} type={'text'}></FormikTextField>
+            <h4>{t('form3Check16')}:</h4>
+            <FormikTextField label={t('form3Check16')} name={'askHelp'} type={'text'}></FormikTextField>
           </Box>
         </Form>
       </Formik>

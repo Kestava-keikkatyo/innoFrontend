@@ -145,10 +145,10 @@ const ContractOfEmployment = () => {
             <FormikTextField label={t('userCompanyAddress')} name={'address'} type={'text'}></FormikTextField>
           </Box>
           <Box display="flex" flexDirection="column">
-            <h4>TYÖNTEKIJÄN PÄÄSY TYÖPAIKKAAN (kulkuyhteydet, kulkuluvat jne.)</h4>
+            <h4>{t('form2Text9')}</h4>
             <Field component="textarea" rows="4" placeholder={t('textAreaPlaceholder')} value=''></Field>
           </Box>
-          <h4>KÄYTTÄJÄYRITYKSEN YHTEYSHENKILÖN (JOLLE ILMOITTAUDUTAAN) YHTEYSTIEDOT</h4>
+          <h4>{t('form2Text10')}</h4>
           <Box display="flex" flexDirection="row">
             <h4>{t('name')}:</h4>
             <FormikTextField label={t('name')} name={'name2'} type={'text'}></FormikTextField>
@@ -159,33 +159,33 @@ const ContractOfEmployment = () => {
           </Box>
           <label>
             <Field type="checkbox" name="check13" />
-            Annettu työntekijälle perehdytyksen päätteeksi
+            {t('form2Check13')}
           </label>
           <Box display="flex" flexDirection="row">
-            <h4>Työhuone/Ilmoittautumispaikka:</h4>
-            <FormikTextField label={'Työhuone/Ilmoittautumispaikka'} name={'tyohuonepaikka'} type={'text'}></FormikTextField>
-            <h4>Ilmoittautumisaika Pvm:</h4>
-            <FormikTextField label={'Ilmoittautumisaika'} name={'ilmoittautumisaika'} type={'text'}></FormikTextField>
-            <h4>Klo:</h4>
-            <FormikTextField label={'Kello'} name={'kello'} type={'text'}></FormikTextField>
+            <h4>{t('workRoomPlace')}:</h4>
+            <FormikTextField label={t('workRoomPlace')} name={'workRoomPlace'} type={'text'}></FormikTextField>
+            <h4>{t('registrationTime')}:</h4>
+            <FormikTextField label={t('registrationTime')} name={'registrationTime'} type={'text'}></FormikTextField>
+            <h4>{t('clock')}:</h4>
+            <FormikTextField label={t('clock')} name={'clock'} type={'text'}></FormikTextField>
           </Box>
-          <h4>Täytetyn lomakkeen kopio on:</h4>
+          <h4>{t('form2Text11')}:</h4>
           <Box display="flex" flexDirection="column">
             <label>
               <Field type="checkbox" name="check14" />
-              Lähetetty työntekijälle postitse/sähköpostitse
+              {t('form2Check14')}
             </label>
             <label>
               <Field type="checkbox" name="check15" />
-              Annettu työntekijälle perehdytyksen päätteeksi
+              {t('form2Check15')}
             </label>
           </Box>
-          <h4>ALLEKIRJOITUKSET</h4>
+          <h4>{t('signatures')}</h4>
           <Box display="flex" flexDirection="row">
-            <h4>Perehdyttäjä:</h4>
-            <FormikTextField label={'Perehdyttäjä'} name={'perehdyttaja'} type={'text'}></FormikTextField>
-            <h4>Perehdytetty:</h4>
-            <FormikTextField label={'Perehdytetty'} name={'perehdytetty'} type={'text'}></FormikTextField>
+            <h4>{t('orientator')}:</h4>
+            <FormikTextField label={t('orientator')} name={'orientator'} type={'text'}></FormikTextField>
+            <h4>{t('orientated')}:</h4>
+            <FormikTextField label={t('orientated')} name={'orientated'} type={'text'}></FormikTextField>
           </Box>
         </Form>
       </Formik>
