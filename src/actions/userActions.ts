@@ -3,12 +3,14 @@
  * @desc Redux user actions
  */
 import userService from '../services/userService'
-import { saveUser, logoutUser } from '../utils/storage'
+import { saveUser, logoutUser, saveRentalWorkModel } from '../utils/storage';
 import history from '../utils/history'
 import { setAlert } from './alertActions'
 import { LOGIN, LOGOUT, USER_FAILURE, USER_PROFILE, USER_REQUEST, SignUpUser } from '../types/state'
-import { Credentials, severity } from '../types/types'
+import { Credentials, rentalWorkModelType, severity } from '../types/types';
 import i18next from 'i18next'
+import rentalWorkModelService from '../services/rentalWorkModelService';
+import { AxiosResponse } from 'axios';
 
 /**
  * Logs user in
@@ -22,13 +24,23 @@ export const login = (credentials: Credentials, from: string) => {
     dispatch({
       type: USER_REQUEST,
     })
+    dispatch({
+      type: rentalWorkModelType.RMW_GET_MODEL_REQUEST
+    })
     try {
-      const { data } = await userService.signin(credentials)
+      const userRes: AxiosResponse = await userService.signin(credentials)
       dispatch({
         type: LOGIN,
-        data,
+        data: userRes.data
       })
-      saveUser(data)
+      saveUser(userRes.data)
+
+      const rentalWorkModelRes: AxiosResponse = await rentalWorkModelService.fetchModel(userRes.data._id)
+      dispatch({
+        type: rentalWorkModelType.RMW_GET_MODEL_SUCCESS,
+        data: rentalWorkModelRes.data
+      })
+      saveRentalWorkModel(rentalWorkModelRes.data)
 
       if (from) {
         history.push(from)
@@ -38,6 +50,9 @@ export const login = (credentials: Credentials, from: string) => {
     } catch (error) {
       dispatch({
         type: USER_FAILURE,
+      })
+      dispatch({
+        type: rentalWorkModelType.RMW_GET_MODEL_FAILURE
       })
 
       dispatch(setAlert(i18next.t('login_failed'), severity.Error))
@@ -52,24 +67,36 @@ export const login = (credentials: Credentials, from: string) => {
  * @param {string} role - User's role
  */
 export const signup = (user: SignUpUser) => {
-  // const { t } = useTranslation();
   return async (dispatch: any) => {
     dispatch({
       type: USER_REQUEST,
     })
+    dispatch({
+      type: rentalWorkModelType.RMW_CREATE_DEFAULT_REQUEST
+    })
     try {
-      const { data } = await userService.register(user)
+      const userRes: AxiosResponse = await userService.register(user)
       dispatch({
         type: LOGIN,
-        data,
+        data: userRes.data
       })
-      saveUser(data)
+      saveUser(userRes.data)
+
+      const rentalWorkModelRes: AxiosResponse = await rentalWorkModelService.createRentalWorkModel(userRes.data._id)
+      dispatch({
+        type: rentalWorkModelType.RMW_CREATE_DEFAULT_SUCCESS,
+        data: rentalWorkModelRes.data
+      })
+      saveRentalWorkModel(rentalWorkModelRes.data)
 
       history.push('/home')
       dispatch(setAlert(i18next.t('signup_successful'), severity.Success))
     } catch (error) {
       dispatch({
         type: USER_FAILURE,
+      })
+      dispatch({
+        type: rentalWorkModelType.RMW_CREATE_DEFAULT_FAILURE
       })
       dispatch(setAlert(i18next.t('email_already_used'), severity.Error))
     }
@@ -84,7 +111,9 @@ export const logout = () => {
   return async (dispatch: any) => {
     try {
       await userService.logout()
-    } catch (error) {}
+    } catch (error) {
+      console.error(error)
+    }
     logoutUser()
     // dispatch(clearReports())
     // dispatch(setReport(initialReport))
