@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
-import PageLoading from '../../../components/PageLoading';
 import { Theme, useTheme } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
@@ -16,22 +15,24 @@ import { useTranslation } from 'react-i18next';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import makeStyles from '@mui/styles/makeStyles';
+import Checkbox from '@mui/material/Checkbox';
 
 interface WorkerStepBaseProps {
-  content: Array<JSX.Element>
+  content: Array<JSX.Element>,
+  handleCheckboxUpdate: (value: number, checked: boolean) => void
 }
 
-const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
-  const { data, ...user } = useSelector((state: any) => state.user);
-  const [value, setValue] = React.useState(0);
+const WorkerStepBase = ({ content, handleCheckboxUpdate }: WorkerStepBaseProps) => {
+  const curRentModel = useSelector((state: any) => state.currentRentalWorkModel);
+  const [value, setValue] = useState(0);
+  const [checked, setChecked] = useState(false);
   const { t } = useTranslation();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('lg'));
   const classes = useStyles();
 
-  if (user.loading) {
-    return <PageLoading />;
-  }
+  console.log('RentalWorkModel:')
+  console.log(curRentModel)
 
   function a11yProps(index: number) {
     return {
@@ -42,6 +43,11 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
 
   const handleChange = (event: React.ChangeEvent<any>, newValue: number) => {
     setValue(newValue);
+  };
+
+  const handleCheckbox = () => {
+    handleCheckboxUpdate(value, !checked);
+    setChecked(!checked);
   };
 
   interface TabPanelProps {
@@ -58,7 +64,6 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
           borderLeft: '1px solid #ccc',
           borderRight: '1px solid #ccc',
           borderBottom: '1px solid #ccc',
-
         }}
         role="tabpanel"
         hidden={value !== index}
@@ -131,6 +136,12 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
           <Typography variant="subtitle1">
             {content[0]}
           </Typography>
+          <Box className={classes.flex}>
+            <Checkbox checked={checked} onChange={handleCheckbox} />
+            <Typography variant="subtitle1">
+              {checked ? t('rwm_incomplete_step') : t('rwm_complete_step')}
+            </Typography>
+          </Box>
         </TabPanel>
 
         <TabPanel value={value} index={1}>
@@ -140,6 +151,12 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
           <Typography variant="subtitle1">
             {content[1]}
           </Typography>
+          <Box className={classes.flex}>
+            <Checkbox checked={checked} onChange={handleCheckbox} />
+            <Typography variant="subtitle1">
+              {checked ? t('rwm_incomplete_step') : t('rwm_complete_step')}
+            </Typography>
+          </Box>
         </TabPanel>
 
         <TabPanel value={value} index={2}>
@@ -149,6 +166,12 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
           <Typography variant="subtitle1">
             {content[2]}
           </Typography>
+          <Box className={classes.flex}>
+            <Checkbox checked={checked} onChange={handleCheckbox} />
+            <Typography variant="subtitle1">
+              {checked ? t('rwm_incomplete_step') : t('rwm_complete_step')}
+            </Typography>
+          </Box>
         </TabPanel>
       </AppBar>
     </Container>
@@ -162,6 +185,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: theme.palette.background.paper,
     marginTop: 32,
   },
+  flex: {
+    display: 'flex',
+    alignItems: 'center'
+  }
 }));
 
 export default WorkerStepBase;
