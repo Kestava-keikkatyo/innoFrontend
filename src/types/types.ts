@@ -1,5 +1,17 @@
 import { compose } from 'redux'
 
+export enum rentalWorkModelType {
+  RMW_CREATE_DEFAULT_REQUEST = 'RMW_CREATE_DEFAULT_REQUEST',
+  RMW_CREATE_DEFAULT_SUCCESS = 'RMW_CREATE_DEFAULT_SUCCESS',
+  RMW_CREATE_DEFAULT_FAILURE = 'RMW_CREATE_DEFAULT_FAILURE',
+  RMW_GET_MODEL_REQUEST = 'RMW_GET_MODEL_REQUEST',
+  RMW_GET_MODEL_SUCCESS = 'RMW_GET_MODEL_SUCCESS',
+  RMW_GET_MODEL_FAILURE = 'RMW_GET_MODEL_FAILURE',
+  RMW_UPDATE_CUSTOMER_CONTRACT_REQUEST = 'RMW_UPDATE_CUSTOMER_CONTRACT_REQUEST',
+  RMW_UPDATE_CUSTOMER_CONTRACT_SUCCESS = 'RMW_UPDATE_CUSTOMER_CONTRACT_SUCCESS',
+  RMW_UPDATE_CUSTOMER_CONTRACT_FAILURE = 'RMW_UPDATE_CUSTOMER_CONTRACT_FAILURE',
+}
+
 export enum feelingType {
   FEELING_GET_ALL_REQUEST = 'FEELING_GET_ALL_REQUEST',
   FEELING_GET_ALL_SUCCESS = 'FEELING_GET_ALL_SUCCESS',
@@ -257,6 +269,28 @@ export interface Notification {
     | 'application_pending'
     | 'feedback_pending'
     | 'reply'
+}
+
+export interface RentalWorkModel {
+  _id?: string
+  worker?: User
+  customerContract: Step;
+  orderingEmployee: Step;
+  contractOfEmployment: Step;
+  guidanceToWork: Step;
+  workPerformance: Step;
+  feedbackEvaluation: Step;
+}
+
+export interface Step {
+  responsibilities: boolean;
+  forms: boolean;
+  good_practices: boolean;
+}
+
+export interface StepRequest {
+  step: number,
+  checked: boolean
 }
 
 export interface MyFeeling {

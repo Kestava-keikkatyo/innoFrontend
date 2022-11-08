@@ -18,8 +18,8 @@ import {
   feelingType,
   MyFeeling,
   Responsibility,
-  responsibilityType,
-} from './types'
+  responsibilityType, RentalWorkModel, rentalWorkModelType
+} from './types';
 
 export interface UserState {
   loggedIn: boolean,
@@ -444,6 +444,69 @@ export type JobActions =
   | JobGetCurrentRequest
   | JobGetCurrentSuccess
   | JobSimilarActions
+
+/**
+ * Worker rental work model state & action types
+ */
+
+export interface RentalWorkModelState {
+  currentRentalWorkModel: RentalWorkModel | undefined
+  loading: boolean
+  fetchError?: string
+}
+
+export interface RWMGetModelRequest {
+  type: typeof rentalWorkModelType.RMW_GET_MODEL_REQUEST
+}
+
+export interface RWMGetModelSuccess {
+  type: typeof rentalWorkModelType.RMW_GET_MODEL_SUCCESS
+  data: RentalWorkModel
+}
+
+export interface RWMGetModelFailure {
+  type: typeof rentalWorkModelType.RMW_GET_MODEL_FAILURE
+  data: string
+}
+
+export interface RWMCreateModelRequest {
+  type: typeof rentalWorkModelType.RMW_CREATE_DEFAULT_REQUEST
+}
+
+export interface RWMCreateModelSuccess {
+  type: typeof rentalWorkModelType.RMW_CREATE_DEFAULT_SUCCESS
+  data: RentalWorkModel
+}
+
+export interface RWMCreateModelFailure {
+  type: typeof rentalWorkModelType.RMW_CREATE_DEFAULT_FAILURE
+  data: string
+}
+
+export interface RWMUpdateCustomerContractRequest {
+  type: typeof rentalWorkModelType.RMW_UPDATE_CUSTOMER_CONTRACT_REQUEST
+}
+
+export interface RWMUpdateCustomerContractSuccess {
+  type: typeof rentalWorkModelType.RMW_UPDATE_CUSTOMER_CONTRACT_SUCCESS
+  data: RentalWorkModel
+}
+
+export interface RWMUpdateCustomerContractFailure {
+  type: typeof rentalWorkModelType.RMW_UPDATE_CUSTOMER_CONTRACT_FAILURE
+  data: string
+}
+
+export type RentalWorkModelActions =
+  | RWMGetModelRequest
+  | RWMGetModelSuccess
+  | RWMGetModelFailure
+  | RWMCreateModelRequest
+  | RWMCreateModelSuccess
+  | RWMCreateModelFailure
+  | RWMUpdateCustomerContractRequest
+  | RWMUpdateCustomerContractSuccess
+  | RWMUpdateCustomerContractFailure
 
 /**
  * Worker feeling state & action types
