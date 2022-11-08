@@ -22,6 +22,7 @@ import workRequestReducer from '../reducers/workRequestReducer'
 import notificationReducer from '../reducers/notificationReducer'
 import myFeelingReducer from '../reducers/myFeelingReducer'
 import responsibilityReducer from '../reducers/responsibilityReducer'
+import rentalWorkModelReducer from '../reducers/rentalWorkModelReducer'
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -46,6 +47,7 @@ const appReducer = combineReducers({
   notification: notificationReducer,
   myFeeling: myFeelingReducer,
   responsibility: responsibilityReducer,
+  rentalWorkModel: rentalWorkModelReducer,
 })
 
 const rootReducer = (state: any, action: any) => {
