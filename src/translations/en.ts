@@ -252,6 +252,8 @@ export default {
   rwm_responsibilities: 'Responsibilities',
   rwm_forms: 'Forms',
   rwm_good_practices: 'Good practices',
+  rwm_complete_step: 'Mark step as complete',
+  rwm_incomplete_step: 'Mark step as incomplete',
 
   // FeedbackForm
   write_feedback_here: 'Write feedback here',
@@ -746,7 +748,7 @@ export default {
   received_reports: 'Latest received reports',
   latest_joined_workers: 'Latest joined workers',
 
-  //business contracts
+  // business contracts
   search_by_name: 'Search by name',
   requested_contracts: 'REQUESTED CONTRACTS',
   archived_contracts: 'ARCHIVED CONTRACTS',
@@ -757,7 +759,7 @@ export default {
   signed: 'Signed',
   pending: 'Pending',
 
-  //links
+  // links
   Fiilismittari: 'Feelings',
   Send: 'Send',
   Information: 'Information',

@@ -251,6 +251,8 @@ export default {
   rwm_responsibilities: 'Vastuut',
   rwm_forms: 'Lomakkeet',
   rwm_good_practices: 'Hyvät käytännöt',
+  rwm_complete_step: 'Merkkaa kohta tehdyksi',
+  rwm_incomplete_step: 'Merkkaa kohta tekemättömäksi',
 
   // FeedbackForm
   write_feedback_here: 'Kirjoita palautteesi tähän',
@@ -739,7 +741,7 @@ export default {
   received_reports: 'Viimeisimmät raportit',
   latest_joined_workers: 'Liittyneet työntekijät',
 
-  //business contracts
+  // business contracts
   search_by_name: 'Hae nimellä',
   requested_contracts: 'PYYDETYT SOPIMUKSET',
   archived_contracts: 'ARKISTOIDUT SOPIMUKSET',
@@ -750,7 +752,7 @@ export default {
   signed: 'Allekirjoitettu',
   pending: 'Odottaa hyväksyntää',
 
-  //links
+  // links
   Fiilismittari: 'Fiilikset',
   Send: 'Lähetä',
   Information: 'Tiedot',
