@@ -27,7 +27,7 @@ const FeedbackAndEvaluation = () => {
       <Typography variant="h1" color="primary" className={classes.header}>
         {t('feedback_evaluation')}
       </Typography>
-      <WorkerStepBase content={tabContent} />
+      {/* <WorkerStepBase content={tabContent} />*/}
     </Container>
   )
 };

@@ -27,7 +27,7 @@ const ContractOfEmployment = () => {
       <Typography variant="h1" color="primary" className={classes.header}>
         {t('contract_of_employment')}
       </Typography>
-      <WorkerStepBase content={tabContent} />
+      {/* <WorkerStepBase content={tabContent} />*/}
     </Container>
   )
 };

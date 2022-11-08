@@ -27,7 +27,7 @@ const WorkPerformance = () => {
       <Typography variant="h1" color="primary" className={classes.header}>
         {t('work_performance')}
       </Typography>
-      <WorkerStepBase content={tabContent} />
+      {/* <WorkerStepBase content={tabContent} />*/}
     </Container>
   )
 };

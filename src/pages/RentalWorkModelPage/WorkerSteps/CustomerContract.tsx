@@ -5,10 +5,14 @@ import Typography from '@mui/material/Typography';
 import makeStyles from '@mui/styles/makeStyles';
 import { Theme } from '@mui/material/styles';
 import { Container } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { fetchRentalWorkModel, updateCustomerContract } from '../../../actions/rentalWorkModelActions';
+import { StepRequest } from '../../../types/types';
 
 const CustomerContract = () => {
   const { t } = useTranslation();
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const tabContent = [
     <div key="tab0">
@@ -22,12 +26,18 @@ const CustomerContract = () => {
     </div>
   ]
 
+  const handleCheckboxUpdate = (step: number, checked: boolean) => {
+    const stepRequest: StepRequest = { step, checked }
+    dispatch(updateCustomerContract(stepRequest))
+    dispatch(fetchRentalWorkModel())
+  }
+
   return (
     <Container maxWidth="xl" className={classes.root}>
       <Typography variant="h1" color="primary" className={classes.header}>
         {t('customer_contract')}
       </Typography>
-      <WorkerStepBase content={tabContent} />
+      <WorkerStepBase content={tabContent} handleCheckboxUpdate={handleCheckboxUpdate} />
     </Container>
   )
 };

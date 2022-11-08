@@ -27,7 +27,7 @@ const OrderingEmployee = () => {
       <Typography variant="h1" color="primary" className={classes.header}>
         {t('worker_order')}
       </Typography>
-      <WorkerStepBase content={tabContent} />
+      {/* <WorkerStepBase content={tabContent} />*/}
     </Container>
   )
 };

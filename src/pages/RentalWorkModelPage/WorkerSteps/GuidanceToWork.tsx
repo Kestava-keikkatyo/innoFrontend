@@ -27,7 +27,7 @@ const GuidanceToWork = () => {
       <Typography variant="h1" color="primary" className={classes.header}>
         {t('guidance_to_work')}
       </Typography>
-      <WorkerStepBase content={tabContent} />
+      {/* <WorkerStepBase content={tabContent} />*/}
     </Container>
   )
 };
