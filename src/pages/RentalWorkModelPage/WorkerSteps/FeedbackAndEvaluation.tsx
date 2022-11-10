@@ -13,7 +13,6 @@ import { Theme } from '@mui/material/styles';
 import i18next from 'i18next';
 import vastuualueet from '../../../assets/tietopankki/vastuualueet.json';
 import vastuualueet_en from '../../../assets/tietopankki/vastuualueet_en.json';
-import FeedbackAndEvaluationGP from './GoodPractices/FeedbackAndEvaluationGP';
 
 
 const FeedbackAndEvaluation = () => {
@@ -41,7 +40,7 @@ const FeedbackAndEvaluation = () => {
       Tab 1 content for {t('feedback_evaluation')}
     </div>,
     <div key="tab2">
-      <FeedbackAndEvaluationGP/>
+      <p>kontentti siirretty työsuoritus, valvonta ja palaute</p>
     </div>
   ]
 

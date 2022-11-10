@@ -825,18 +825,16 @@ export default {
     'Työn tekemisen paikka voi olla kaikille vuokratyön osapuolille ennestään tuntematon. Näissäkin tilanteissa vuokratyöntekijälle tulee varmistaa riittävä opastus työhön ja työoloihin. '
   ],
   //step5  
-  good_practices_work_performance_and_supervision_array: [
+  good_practices_work_performance_supervision_and_feedback_array: [
     'Perehdytyksen ja työnopastuksen jälkeen vuokratyöntekijä aloittaa varsinaiset työtehtävät. Hyvä käytäntö on nimetä vuokratyöntekijälle ensimmäisiksi päiviksi työpari tai mentori. ',
-    'Vuokratyöntekijät on hyvä ottaa mukaan kaikkiin olennaisiin koulutus- ja tiedotustilaisuuksiin. '
-  ],
-  //step6
-  good_practices_feedback_and_erformance_evaluation_array: [
+    'Vuokratyöntekijät on hyvä ottaa mukaan kaikkiin olennaisiin koulutus- ja tiedotustilaisuuksiin. ',
     'Palautetta hyödynnetään osaamisen ja toiminnan kehittämisessä. ',
     'Henkilöstöpalveluyrityksen on hyvä olla yhteydessä jokaiseen vuokratyöntekijään ensimmäisen työviikon aikana ja varmistaa onnistunut töiden aloitus ja riittävä perehdytys. ',
     'On tärkeää tarjota kaikille osapuolille mahdollisuus jatkuvaan palautteen antoon. ',
     'Toimintaa on hyvä arvioida yhdessä systemaattisesti ainakin asiakkuuden päättyessä. ',
     'Henkilöstöpalveluyrityksen kannattaa kerätä palautetta työn sujumisesta sekä vuokratyöntekijältä että käyttäjäyrityksestä.',
     'Henkilöstöpalveluyrityksen edustaja voi osallistua käyttäjäyrityksen työturvallisuutta ja -hyvinvointia käsitteleviin kokouksiin.'
-  ],  
+  ],
+ 
 }
 

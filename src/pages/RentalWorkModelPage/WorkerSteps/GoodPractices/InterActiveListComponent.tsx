@@ -1,4 +1,4 @@
-import { Stack, ListItem, Divider, ListItemIcon, Button, Box} from '@mui/material';
+import { Stack, ListItem, Divider, ListItemIcon, Button, Box, ListItemText} from '@mui/material';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import DoneRoundedIcon from '@mui/icons-material/DoneRounded';
 import React, { useState } from 'react';
@@ -13,40 +13,32 @@ function InterActiveListComponent(props: any){
   const classes = useStyles()
   const [buttonText, setButtonText] = useState(t('checkAll'));
   const [style, setStyle]= useState(classes.buttonNotClicked);
-  const [show,setShow]=useState(true)
-  const [hide, setHide]=useState(false);
-
-
+  const [checked,notChecked]=useState(true)
  
   const handleClick = () => {
     setButtonText(t('readAndUnderstood'));
     setStyle(classes.buttonClicked);
-    setShow(false);
-    setHide(true);
+    notChecked(false);
+
   }
 
-
   return (
-   
     <Trans>
         <Stack
         divider={<Divider orientation="horizontal" variant="inset" />}
         margin='20px'
         >  
-          {goodPracticeArray.map((practice: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined, index: React.Key | null | undefined) => {
+
+          {goodPracticeArray.map((practice: any, index: number) => {
           return (
-            <ListItem key={index}>
+            <ListItem key={index} className={classes.list}>
               <ListItemIcon>
-                <div className={style}>
-                  {show?<CircleOutlinedIcon fontSize='small'/>:null}
-                </div>
-                <div className={style}>
-                  {hide?<DoneRoundedIcon/>:null}
-                </div>  
+                {checked?<CircleOutlinedIcon className={style} fontSize='small' />:<DoneRoundedIcon className={style} fontSize='small'/>}
               </ListItemIcon>
-              {practice}
+              <ListItemText primary= {practice} />        
             </ListItem>) 
           })}
+      
         </Stack> 
         <Box className={classes.buttonBoxCenter}>
           <Button className={style} size="small" onClick={handleClick}>{buttonText}</Button> 
@@ -65,21 +57,17 @@ buttonBoxCenter:{
   justifyContent:'center',
   alignItems:'center',
   margin: 5
-},
-buttonBoxRight:{
-  display:'flex',
-  justifyContent:'right',
-  alignItems:'center',
-
-},  
+}, 
 buttonNotClicked:{
   color:'#1976D5'
 },
 buttonClicked:{
   color:'green',
 },
-
-
+list:{
+  display:'flex',
+  alignItems:'center',
+}
 
 }))
 

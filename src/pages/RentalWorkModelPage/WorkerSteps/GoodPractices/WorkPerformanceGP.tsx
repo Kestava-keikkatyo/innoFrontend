@@ -7,7 +7,7 @@ import InterActiveListComponent from './InterActiveListComponent';
 
 const WorkPerformanceGP: React.FC = () => {
   const { t } = useTranslation();
-  const workPerformanceGoodPracticeArray = (t('good_practices_work_performance_and_supervision_array', {returnObjects: true}) as string[]);
+  const workPerformanceGoodPracticeArray = (t('good_practices_work_performance_supervision_and_feedback_array', {returnObjects: true}) as string[]);
 
   return (
     <InterActiveListComponent arrayName={workPerformanceGoodPracticeArray}/>
