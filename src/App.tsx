@@ -276,12 +276,6 @@ const App: React.FC = () => {
               <RentalWorkModelPage path='work-performance' />
             </PrivateRoute>
             <PrivateRoute
-              path="/rentalWorkModel/feedbackEvaluation"
-              roles={[roles.Worker]}
-            >
-              <RentalWorkModelPage path='feedback-evaluation' />
-            </PrivateRoute>
-            <PrivateRoute
               path="/rentalWorkModel"
               roles={[roles.Worker]}
             >

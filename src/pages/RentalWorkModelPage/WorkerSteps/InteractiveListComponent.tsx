@@ -7,7 +7,7 @@ import makeStyles from '@mui/styles/makeStyles';
 
 
 
-function InterActiveListComponent(props: any){
+function InteractiveListComponent(props: any){
   const { t } = useTranslation();
   const goodPracticeArray = (props.arrayName);
   const classes = useStyles()
@@ -71,4 +71,4 @@ list:{
 
 }))
 
-export default InterActiveListComponent;
+export default InteractiveListComponent;

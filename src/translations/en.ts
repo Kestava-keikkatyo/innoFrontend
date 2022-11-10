@@ -791,6 +791,9 @@ export default {
   //Responsibilities
   CustomerContractResponsibilities: '',
 
+  //Overview
+  loremipsum: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam distinctio esse iure modi neque quaerat, repudiandae. Accusantium alias aut commodi debitis ea harum ipsa itaque laudantium molestiae nesciunt quis sint vel velit, vitae voluptatibus! Commodi dicta dolorum eaque earum esse est facere fugit iste labore magnam, minus, neque nobis!',
+
    //good practices
    checkAll: 'Mark all read',
    readAndUnderstood: 'Read and understood',

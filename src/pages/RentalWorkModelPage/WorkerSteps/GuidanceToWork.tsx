@@ -10,8 +10,7 @@ import WorkerStepBase from './WorkerStepBase';
 import Typography from '@mui/material/Typography';
 import makeStyles from '@mui/styles/makeStyles';
 import { Theme } from '@mui/material/styles';
-import GuidanceToWorkGP from './GoodPractices/GuidanceToWorkGP';
-import WorkerResponsibility from './WorkerResponsibility';
+import SearchFromFileComponent from './SearchFromFileComponent';
 
 const GuidanceToWork = () => {
   const { t } = useTranslation();
@@ -19,13 +18,13 @@ const GuidanceToWork = () => {
 
   const tabContent = [
     <div key="tab0">
-      <WorkerResponsibility inputString="worker_step_4" />
+      <SearchFromFileComponent inputString="worker_step_4" />
     </div>,
     <div key="tab1">
       Tab 1 content for {t('guidance_to_work')}
     </div>,
     <div key="tab2">
-      <GuidanceToWorkGP/>
+       <SearchFromFileComponent inputString="good_practices_guidance_on_work_and_working_conditions_array" />
     </div>
   ]
 

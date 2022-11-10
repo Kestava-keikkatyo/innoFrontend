@@ -13,8 +13,7 @@ import { Theme } from '@mui/material/styles';
 import i18next from 'i18next';
 import vastuualueet from '../../../assets/tietopankki/vastuualueet.json';
 import vastuualueet_en from '../../../assets/tietopankki/vastuualueet_en.json';
-import WorkPerformanceGP from './GoodPractices/WorkPerformanceGP';
-import WorkerResponsibility from './WorkerResponsibility';
+import SearchFromFileComponent from './SearchFromFileComponent';
 
 const WorkPerformance = () => {
   const { t } = useTranslation();
@@ -28,13 +27,13 @@ const WorkPerformance = () => {
 
   const tabContent = [
     <div key="tab0">
-      <WorkerResponsibility inputString="worker_step_5" />
+      <SearchFromFileComponent inputString="worker_step_5" />
     </div>,
     <div key="tab1">
       Tab 1 content for {t('work_performance')}
     </div>,
     <div key="tab2">
-      <WorkPerformanceGP/>
+       <SearchFromFileComponent inputString="good_practices_work_performance_supervision_and_feedback_array" />
     </div>
   ]
 
