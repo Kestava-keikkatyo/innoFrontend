@@ -844,5 +844,10 @@ export default {
     'A personnel service company should collect feedback on the flow of work from both the agency worker and the user company.',
     'A representative of a personnel service company can participate in meetings dealing with occupational safety and well-being of the user company.'
     ],
+
+  //Responsibilities step 6
+  worker_step_6: [
+    'The employee reports all accidents, near misses, violence and threats, and gives feedback related to other occupational safety (possible deficiencies or problems related to occupational safety and safety initiatives).'
+  ]
             
 }

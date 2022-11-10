@@ -14,6 +14,7 @@ import i18next from 'i18next';
 import vastuualueet from '../../../assets/tietopankki/vastuualueet.json';
 import vastuualueet_en from '../../../assets/tietopankki/vastuualueet_en.json';
 import FeedbackAndEvaluationGP from './GoodPractices/FeedbackAndEvaluationGP';
+import InterActiveListComponent from './GoodPractices/InterActiveListComponent';
 
 
 const FeedbackAndEvaluation = () => {
@@ -25,17 +26,11 @@ const FeedbackAndEvaluation = () => {
     Vastuualueet = vastuualueet;
   }
   const classes = useStyles();
+  const feedbackAndEvaluationGoodPracticeArray = (t('worker_step_6', {returnObjects: true}) as string[]);
 
   const tabContent = [
     <div key="tab0">
-      <List id="modal-modal-description">
-                    {/* Yhtenäiset vastuut lista */}
-                    {Vastuualueet.vastuualueet_worker6.map((e, i) => (
-                      <ListItem key={i} divider>
-                        <ListItemText primary={`${i + 1}. ${e.tip}`} />
-                      </ListItem>
-                    ))}
-                  </List>
+      <InterActiveListComponent arrayName={feedbackAndEvaluationGoodPracticeArray}/> 
     </div>,
     <div key="tab1">
       Tab 1 content for {t('feedback_evaluation')}

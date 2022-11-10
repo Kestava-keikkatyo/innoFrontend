@@ -838,5 +838,10 @@ export default {
     'Henkilöstöpalveluyrityksen kannattaa kerätä palautetta työn sujumisesta sekä vuokratyöntekijältä että käyttäjäyrityksestä.',
     'Henkilöstöpalveluyrityksen edustaja voi osallistua käyttäjäyrityksen työturvallisuutta ja -hyvinvointia käsitteleviin kokouksiin.'
   ],  
+
+  //Responsibilities step 6
+  worker_step_6: [
+    'Työntekijä ilmoittaa kaikista työtapaturmista, onnettomuustilanteista, läheltä piti- tilanteista, väkivalta- ja uhkatilanteista, sekä antaa muuhun työturvallisuuteen liittyvää palautetta (mahdolliset työturvallisuuteen liittyvät puutteet tai ongelmat sekä turvallisuusaloitteet).'
+  ]
 }
 
