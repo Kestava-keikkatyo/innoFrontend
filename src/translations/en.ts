@@ -831,23 +831,22 @@ export default {
     'The place where the work is done may be previously unknown to all parties involved in the temporary work. Even in these situations, the temporary worker must be provided with adequate guidance on the work and working conditions. '
     ],
   //step5
-  good_practices_work_performance_and_supervision_array: [
+  good_practices_work_performance_supervision_and_feedback_array: [
     'After the orientation and job guidance, the agency worker starts the actual work tasks. It is a good practice to appoint a work partner or mentor for the temporary employee for the first few days. ',
-    'It is a good idea to include agency workers in all essential training and information events. '
-    ],
-  //step6
-  good_practices_feedback_and_erformance_evaluation_array: [
+    'It is a good idea to include agency workers in all essential training and information events. ',
     'The feedback is utilized in the development of competence and operations. ',
     'It is a good idea for a personnel service company to be in contact with every temporary worker during the first week of work and ensure a successful start of work and adequate orientation. ',
     'It is important to offer all parties the opportunity to give continuous feedback. ',
     'It is good to systematically evaluate the operation together, at least at the end of the customership. ',
     'A personnel service company should collect feedback on the flow of work from both the agency worker and the user company.',
     'A representative of a personnel service company can participate in meetings dealing with occupational safety and well-being of the user company.'
+
     ],
 
   //Responsibilities step 6
   worker_step_6: [
     'The employee reports all accidents, near misses, violence and threats, and gives feedback related to other occupational safety (possible deficiencies or problems related to occupational safety and safety initiatives).'
   ]
-            
+                    
+
 }
