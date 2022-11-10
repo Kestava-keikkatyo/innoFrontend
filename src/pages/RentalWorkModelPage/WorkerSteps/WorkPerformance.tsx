@@ -14,6 +14,7 @@ import i18next from 'i18next';
 import vastuualueet from '../../../assets/tietopankki/vastuualueet.json';
 import vastuualueet_en from '../../../assets/tietopankki/vastuualueet_en.json';
 import WorkPerformanceGP from './GoodPractices/WorkPerformanceGP';
+import WorkerResponsibility from './WorkerResponsibility';
 
 const WorkPerformance = () => {
   const { t } = useTranslation();
@@ -27,14 +28,7 @@ const WorkPerformance = () => {
 
   const tabContent = [
     <div key="tab0">
-      <List id="modal-modal-description">
-                    {/* Yhtenäiset vastuut lista */}
-                    {Vastuualueet.vastuualueet_worker5.map((e, i) => (
-                      <ListItem key={i} divider>
-                        <ListItemText primary={`${i + 1}. ${e.tip}`} />
-                      </ListItem>
-                    ))}
-                  </List>
+      <WorkerResponsibility inputString="worker_step_5" />
     </div>,
     <div key="tab1">
       Tab 1 content for {t('work_performance')}

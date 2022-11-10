@@ -311,7 +311,7 @@ export default {
   worker_order: 'Ordering of a employee',
   contract_of_employment: 'Contract of employment and general orientation',
   guidance_to_work: 'Guidance to work and working environment',
-  work_performance: 'Work performance and supervision',
+  work_performance: 'Work performance, supervision and feedback',
   feedback_evaluation: 'Feedback and evaluation',
 
   // profilePage
@@ -843,10 +843,41 @@ export default {
 
     ],
 
-  //Responsibilities step 6
-  worker_step_6: [
-    'The employee reports all accidents, near misses, violence and threats, and gives feedback related to other occupational safety (possible deficiencies or problems related to occupational safety and safety initiatives).'
-  ]
+    //Worker responsibilities
+    worker_step_1: [
+      "Compliance with the employer's instructions and regulations",
+      'Taking care of your own safety and that of your colleagues',
+      'Avoiding harassment and inappropriate treatment',
+      'Appropriate use of work tools, personal protective equipment and safety devices',
+      'Report of detected defects and deficiencies'
+    ],
+
+    worker_step_2: [
+      'Training and experience expected of workers as well as the professional requirements of the job',
+      'Special features of the work, harmful and dangerous factors occurring at work as well as other matters requiring special attention (For example health requirements)',
+      'Personal protective equipment and safety devices required for work tasks'
+    ],
+
+    worker_step_3: [
+      'Follow the instructions and regulations given by the employer',
+      'Take care of your own safety and that of other employees with the available means',
+      'Not to harass or mistreat other employees',
+      'Use and care for the personal protective equipment and aids required at work',
+      "Immediately report a defect or deficiency (to your supervisor or health and safety representative) if it may cause harm or danger to either your own or a co-worker's safety/health",
+      'To correct the above-mentioned fault that they have detected, if their own experience or expertise is sufficient',
+      'Not to disable the safety or protective devices from use'
+    ],
+
+    worker_step_4: [
+      'The employee must ensure that the user company provides good enough guidance on work and working conditions',
+      'Ensure that sufficient information is given to safely perform the given job.'
+    ],
+
+    worker_step_5: [
+      "For the first few days, the employee should be assigned a work partner or another person who will constantly guide the employee's performance and help if necessary.",
+      'Ensures that the temporary worker is treated in the same way as a permanent worker.',
+      'The employee reports all accidents, near misses, violence and threats, and gives feedback related to other occupational safety (possible deficiencies or problems related to occupational safety and safety initiatives).'
+    ]
                     
 
 }

@@ -32,7 +32,7 @@ const FeedbackAndEvaluation = () => {
 
   const tabContent = [
     <div key="tab0">
-      <InterActiveListComponent arrayName={feedbackAndEvaluationGoodPracticeArray}/> 
+      <p>kontentti siirretty työsuoritus, valvonta ja palaute</p>
     </div>,
     <div key="tab1">
       Tab 1 content for {t('feedback_evaluation')}
