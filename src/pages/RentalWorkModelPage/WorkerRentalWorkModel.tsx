@@ -7,7 +7,6 @@ import OrderingEmployee from './WorkerSteps/OrderingEmployee';
 import ContractOfEmployment from './WorkerSteps/ContractOfEmployment';
 import GuidanceToWork from './WorkerSteps/GuidanceToWork';
 import WorkPerformance from './WorkerSteps/WorkPerformance';
-import FeedbackAndEvaluation from './WorkerSteps/FeedbackAndEvaluation';
 import Overview from './WorkerSteps/Overview';
 
 const WorkerRentalWorkModel = (props: RentalWorkModelSteps) => {
@@ -29,8 +28,6 @@ const WorkerRentalWorkModel = (props: RentalWorkModelSteps) => {
         return <GuidanceToWork />
       case 'work-performance':
         return <WorkPerformance />
-      case 'feedback-evaluation':
-        return <FeedbackAndEvaluation />
       case 'rental-work-model':
       default:
         return <Overview />

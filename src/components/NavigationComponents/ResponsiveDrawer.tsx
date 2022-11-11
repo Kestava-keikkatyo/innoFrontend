@@ -282,13 +282,6 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
                     </ListItemIcon>
                     <ListItemText primary={t('work_performance')} />
                   </ListItemButton>
-
-                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/feedbackEvaluation">
-                    <ListItemIcon>
-                      <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.undone }} />
-                    </ListItemIcon>
-                    <ListItemText primary={t('feedback_evaluation')} />
-                  </ListItemButton>
                 </List>
               </Collapse>
               <Divider />

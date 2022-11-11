@@ -784,6 +784,8 @@ export default {
   //Responsibilities
   CustomerContractResponsibilities: '1. Jaettu työsuojeluvastuu (käyttäjäyrityksen kanssa) \n\n 2.Yleisvastuu työturvallisuudesta (tämän alle keskeiset vaatimukset, mm. Työn vaarojen selvittäminen ja arviointi Työsuojelun toimintaohjelman laatiminen Työsuojelun yhteistoiminnan järjestäminen Perehdytys (ml. yleisperehdytyksen antaminen vuokratyöntekijälle) Ilmoittaminen nuorten työntekijöiden käyttämisestä vaarallisiin töihin Vakavasta työtapaturmasta ilmoittaminen työsuojeluviranomaisille ja poliisille) Vastuu työaikalain noudattamisesta Työntekijöiden vakuuttaminen työtapaturmien ja ammattitautien varalta Työterveyshuollon järjestäminen Tasa-arvon ja yhdenvertaisuuden edistäminen  Käyttäjäyrityksen velvoitteiden täyttämisen varmistaminen Vuokratyöntekijän riittävän ammattitaidon ja työhön soveltumisen varmistaminen Tarvittavien henkilönsuojainten hankinta (yhteistyössä käyttäjäyrityksen kanssa)',
 
+   //Overview
+   loremipsum: 'FI Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam distinctio esse iure modi neque quaerat, repudiandae. Accusantium alias aut commodi debitis ea harum ipsa itaque laudantium molestiae nesciunt quis sint vel velit, vitae voluptatibus! Commodi dicta dolorum eaque earum esse est facere fugit iste labore magnam, minus, neque nobis!',
 
   //good practices
   checkAll: 'Merkkaa kaikki luetuksi',
