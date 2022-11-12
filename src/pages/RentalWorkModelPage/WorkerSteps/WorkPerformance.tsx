@@ -98,6 +98,7 @@ const WorkPerformance = () => {
             <h4>{t('cooperation')}</h4>
             <Field component="textarea" rows="10" placeholder={t('textAreaPlaceholder')} value=''></Field>
           </Box>
+          <input className={classes.submitButton} type="submit" value="Submit"/>
         </Form>
       </Formik>
     </div>,
@@ -134,6 +135,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   p: {
     textAlign: 'left',
     marginBottom: '50px'
+  },
+  submitButton: {
+    fontSize: '24px',
+    display: 'block',
+    margin: '0 auto',
+    marginTop: '50px'
   }
 }));
 

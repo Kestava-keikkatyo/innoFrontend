@@ -79,9 +79,9 @@ const CustomerContract = () => {
             <h4 className={classes.h4}>{t('name')}:</h4>
             <FormikTextField className={classes.textField} label={t('name')} name={'name1'} type={'text'}></FormikTextField>
             <h4 className={classes.h4}>{t('user_phone_number')}:</h4>
-            <FormikTextField className={classes.textField} label={t('user_phone_number')} name={'phonenumber1'} type={'text'}></FormikTextField>
+            <FormikTextField className={classes.textField} label={t('user_phone_number')} name={'phonenumber1'} type={'tel'}></FormikTextField>
             <h4 className={classes.h4}>{t('email')}:</h4>
-            <FormikTextField className={classes.textField} label={t('email')} name={'email1'} type={'text'}></FormikTextField>
+            <FormikTextField className={classes.textField} label={t('email')} name={'email1'} type={'email'}></FormikTextField>
           </Box>
           <Box display="flex" flexDirection="row">
             <h4 className={classes.h4}>{t('workRoom')}:</h4>
@@ -91,9 +91,9 @@ const CustomerContract = () => {
             <h4 className={classes.h4}>{t('name')}:</h4>
             <FormikTextField className={classes.textField} label={t('name')} name={'name2'} type={'text'}></FormikTextField>
             <h4 className={classes.h4}>{t('user_phone_number')}:</h4>
-            <FormikTextField className={classes.textField} label={t('user_phone_number')} name={'phonenumber2'} type={'text'}></FormikTextField>
+            <FormikTextField className={classes.textField} label={t('user_phone_number')} name={'phonenumber2'} type={'tel'}></FormikTextField>
             <h4 className={classes.h4}>{t('email')}:</h4>
-            <FormikTextField className={classes.textField} label={t('email')} name={'email2'} type={'text'}></FormikTextField>
+            <FormikTextField className={classes.textField} label={t('email')} name={'email2'} type={'email'}></FormikTextField>
           </Box>
           <Box display="flex" flexDirection="row">
             <h4 className={classes.h4}>{t('workRoom')}:</h4>
@@ -131,19 +131,20 @@ const CustomerContract = () => {
             <h4 className={classes.h4}>{t('name')}:</h4>
             <FormikTextField className={classes.textField} label={t('name')} name={'name3'} type={'text'}></FormikTextField>
             <h4 className={classes.h4}>{t('user_phone_number')}:</h4>
-            <FormikTextField className={classes.textField} label={t('user_phone_number')} name={'phonenumber3'} type={'text'}></FormikTextField>
+            <FormikTextField className={classes.textField} label={t('user_phone_number')} name={'phonenumber3'} type={'tel'}></FormikTextField>
             <h4 className={classes.h4}>{t('email')}:</h4>
-            <FormikTextField className={classes.textField} label={t('email')} name={'email3'} type={'text'}></FormikTextField>
+            <FormikTextField className={classes.textField} label={t('email')} name={'email3'} type={'email'}></FormikTextField>
           </Box>
           <h4>{t('form1Text13')}</h4>
           <Box display="flex" flexDirection="row">
             <h4 className={classes.h4}>{t('name')}:</h4>
             <FormikTextField className={classes.textField} label={t('name')} name={'name4'} type={'text'}></FormikTextField>
             <h4 className={classes.h4}>{t('user_phone_number')}:</h4>
-            <FormikTextField className={classes.textField} label={t('user_phone_number')} name={'phonenumber4'} type={'text'}></FormikTextField>
+            <FormikTextField className={classes.textField} label={t('user_phone_number')} name={'phonenumber4'} type={'tel'}></FormikTextField>
             <h4 className={classes.h4}>{t('email')}:</h4>
-            <FormikTextField className={classes.textField} label={t('email')} name={'email4'} type={'text'}></FormikTextField>
+            <FormikTextField className={classes.textField} label={t('email')} name={'email4'} type={'email'}></FormikTextField>
           </Box>
+          <input className={classes.submitButton} type="submit" value="Submit"/>
         </Form>
       </Formik>
     </div>,
@@ -205,6 +206,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginTop: '30px'
   },
   marginTop: {
+    marginTop: '50px'
+  },
+  submitButton: {
+    fontSize: '24px',
+    display: 'block',
+    margin: '0 auto',
     marginTop: '50px'
   }
 }));

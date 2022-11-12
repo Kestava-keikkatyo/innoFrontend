@@ -215,6 +215,7 @@ const GuidanceToWork = () => {
             <h4>{t('form3Check16')}:</h4>
             <FormikTextField label={t('form3Check16')} name={'askHelp'} type={'text'}></FormikTextField>
           </Box>
+          <input className={classes.submitButton} type="submit" value="Submit"/>
         </Form>
       </Formik>
     </div>,
@@ -251,6 +252,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   p: {
     textAlign: 'left',
     marginBottom: '50px'
+  },
+  submitButton: {
+    fontSize: '24px',
+    display: 'block',
+    margin: '0 auto',
+    marginTop: '50px'
   }
 }));
 
