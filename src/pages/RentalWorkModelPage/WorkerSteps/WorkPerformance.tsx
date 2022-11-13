@@ -2,8 +2,8 @@ import {
   List,
   ListItem,
   ListItemText,
-  Container,
-}from '@mui/material';
+  Container, TextField,
+} from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import WorkerStepBase from './WorkerStepBase';
@@ -87,16 +87,16 @@ const WorkPerformance = () => {
               {t('form4Check9')}
             </label>
             <h4>{t('form4Text4')}</h4>
-            <Field component="textarea" rows="10" placeholder={t('textAreaPlaceholder')} value=''></Field>
+            <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
             <h4>{t('form4Text5')}</h4>
-            <Field component="textarea" rows="10" placeholder={t('textAreaPlaceholder')} value=''></Field>
-            <h4>{t('form4Text6')}</h4>
+            <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
+            <h4 className={classes.marginTop}>{t('form4Text6')}:</h4>
             <h4>{t('rentalCompanyCaps')}</h4>
-            <Field component="textarea" rows="10" placeholder={t('textAreaPlaceholder')} value=''></Field>
+            <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
             <h4>{t('userCompanyCaps')}</h4>
-            <Field component="textarea" rows="10" placeholder={t('textAreaPlaceholder')} value=''></Field>
+            <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
             <h4>{t('cooperation')}</h4>
-            <Field component="textarea" rows="10" placeholder={t('textAreaPlaceholder')} value=''></Field>
+            <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
           </Box>
           <input className={classes.submitButton} type="submit" value="Submit"/>
         </Form>
@@ -135,6 +135,22 @@ const useStyles = makeStyles((theme: Theme) => ({
   p: {
     textAlign: 'left',
     marginBottom: '50px'
+  },
+  h4: {
+    marginRight: '5px'
+  },
+  textField: {
+    marginRight: '10px',
+    width: '100%',
+    top: '5px'
+  },
+  smallerTextField: {
+    marginRight: '10px',
+    width: '40%',
+    top: '5px'
+  },
+  marginTop: {
+    marginTop: '50px'
   },
   submitButton: {
     fontSize: '24px',
