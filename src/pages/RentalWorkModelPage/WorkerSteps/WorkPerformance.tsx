@@ -2,7 +2,7 @@ import {
   List,
   ListItem,
   ListItemText,
-  Container, TextField,
+  Container, TextField, CircularProgress, Button,
 } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -16,9 +16,12 @@ import i18next from 'i18next';
 import vastuualueet from '../../../assets/tietopankki/vastuualueet.json';
 import vastuualueet_en from '../../../assets/tietopankki/vastuualueet_en.json';
 import WorkPerformanceGP from './GoodPractices/WorkPerformanceGP';
+import {useSelector} from "react-redux";
+import {IRootState} from "../../../utils/store";
 
 const WorkPerformance = () => {
   const { t } = useTranslation();
+  const isLoading = useSelector((state: IRootState) => state.feedback.loading);
   let Vastuualueet = vastuualueet;
   if(i18next.language == 'en') {
     Vastuualueet = vastuualueet_en;
@@ -98,7 +101,7 @@ const WorkPerformance = () => {
             <h4>{t('cooperation')}</h4>
             <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
           </Box>
-          <input className={classes.submitButton} type="submit" value="Submit"/>
+          {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="primary" className={classes.submitButton}>{t('submit')}</Button>}
         </Form>
       </Formik>
     </div>,
@@ -153,7 +156,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginTop: '50px'
   },
   submitButton: {
-    fontSize: '24px',
+    fontSize: '20px',
     display: 'block',
     margin: '0 auto',
     marginTop: '50px'

@@ -2,8 +2,8 @@ import {
   List,
   ListItem,
   ListItemText,
-  Container
-}from '@mui/material';
+  Container, CircularProgress, Button
+} from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import WorkerStepBase from './WorkerStepBase';
@@ -17,9 +17,12 @@ import i18next from 'i18next';
 import vastuualueet from '../../../assets/tietopankki/vastuualueet.json';
 import vastuualueet_en from '../../../assets/tietopankki/vastuualueet_en.json';
 import GuidanceToWorkGP from './GoodPractices/GuidanceToWorkGP';
+import {useSelector} from "react-redux";
+import {IRootState} from "../../../utils/store";
 
 const GuidanceToWork = () => {
   const { t } = useTranslation();
+  const isLoading = useSelector((state: IRootState) => state.feedback.loading);
   let Vastuualueet = vastuualueet;
   if(i18next.language == 'en') {
     Vastuualueet = vastuualueet_en;
@@ -158,7 +161,7 @@ const GuidanceToWork = () => {
             <h4 className={classes.h4}>{t('orientated')}:</h4>
             <FormikTextField className={classes.textField} label={t('orientated')} name={'orientated'} type={'text'}></FormikTextField>
           </Box>
-          <input className={classes.submitButton} type="submit" value="Submit"/>
+          {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="primary" className={classes.submitButton}>{t('submit')}</Button>}
 
           <h2 className={classes.center}>{t('form5Header')}</h2>
           <p className={classes.p}>{t('form5Text1')}</p>
@@ -216,7 +219,7 @@ const GuidanceToWork = () => {
             <h4>{t('form3Check16')}:</h4>
             <FormikTextField label={t('form3Check16')} name={'askHelp'} type={'text'}></FormikTextField>
           </Box>
-          <input className={classes.submitButton} type="submit" value="Submit"/>
+          {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="primary" className={classes.submitButton}>{t('submit')}</Button>}
         </Form>
       </Formik>
     </div>,
@@ -271,7 +274,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginTop: '50px'
   },
   submitButton: {
-    fontSize: '24px',
+    fontSize: '20px',
     display: 'block',
     margin: '0 auto',
     marginTop: '50px'
