@@ -307,7 +307,7 @@ export default {
   worker_order: 'Työntekijän tilaus ja valinta',
   contract_of_employment: 'Työsopimus ja yleisperehdytys',
   guidance_to_work: 'Opastus työhön ja työoloihin',
-  work_performance: 'Työsuoritus ja valvonta',
+  work_performance: 'Työsuoritus, valvonta ja palaute',
   feedback_evaluation: 'Palaute ja toiminnan arviointi',
 
   // profilePage
@@ -784,6 +784,8 @@ export default {
   //Responsibilities
   CustomerContractResponsibilities: '1. Jaettu työsuojeluvastuu (käyttäjäyrityksen kanssa) \n\n 2.Yleisvastuu työturvallisuudesta (tämän alle keskeiset vaatimukset, mm. Työn vaarojen selvittäminen ja arviointi Työsuojelun toimintaohjelman laatiminen Työsuojelun yhteistoiminnan järjestäminen Perehdytys (ml. yleisperehdytyksen antaminen vuokratyöntekijälle) Ilmoittaminen nuorten työntekijöiden käyttämisestä vaarallisiin töihin Vakavasta työtapaturmasta ilmoittaminen työsuojeluviranomaisille ja poliisille) Vastuu työaikalain noudattamisesta Työntekijöiden vakuuttaminen työtapaturmien ja ammattitautien varalta Työterveyshuollon järjestäminen Tasa-arvon ja yhdenvertaisuuden edistäminen  Käyttäjäyrityksen velvoitteiden täyttämisen varmistaminen Vuokratyöntekijän riittävän ammattitaidon ja työhön soveltumisen varmistaminen Tarvittavien henkilönsuojainten hankinta (yhteistyössä käyttäjäyrityksen kanssa)',
 
+   //Overview
+   loremipsum: 'FI Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam distinctio esse iure modi neque quaerat, repudiandae. Accusantium alias aut commodi debitis ea harum ipsa itaque laudantium molestiae nesciunt quis sint vel velit, vitae voluptatibus! Commodi dicta dolorum eaque earum esse est facere fugit iste labore magnam, minus, neque nobis!',
 
   //good practices
   checkAll: 'Merkkaa kaikki luetuksi',
@@ -825,18 +827,51 @@ export default {
     'Työn tekemisen paikka voi olla kaikille vuokratyön osapuolille ennestään tuntematon. Näissäkin tilanteissa vuokratyöntekijälle tulee varmistaa riittävä opastus työhön ja työoloihin. '
   ],
   //step5  
-  good_practices_work_performance_and_supervision_array: [
+  good_practices_work_performance_supervision_and_feedback_array: [
     'Perehdytyksen ja työnopastuksen jälkeen vuokratyöntekijä aloittaa varsinaiset työtehtävät. Hyvä käytäntö on nimetä vuokratyöntekijälle ensimmäisiksi päiviksi työpari tai mentori. ',
-    'Vuokratyöntekijät on hyvä ottaa mukaan kaikkiin olennaisiin koulutus- ja tiedotustilaisuuksiin. '
-  ],
-  //step6
-  good_practices_feedback_and_erformance_evaluation_array: [
+    'Vuokratyöntekijät on hyvä ottaa mukaan kaikkiin olennaisiin koulutus- ja tiedotustilaisuuksiin. ',
     'Palautetta hyödynnetään osaamisen ja toiminnan kehittämisessä. ',
     'Henkilöstöpalveluyrityksen on hyvä olla yhteydessä jokaiseen vuokratyöntekijään ensimmäisen työviikon aikana ja varmistaa onnistunut töiden aloitus ja riittävä perehdytys. ',
     'On tärkeää tarjota kaikille osapuolille mahdollisuus jatkuvaan palautteen antoon. ',
     'Toimintaa on hyvä arvioida yhdessä systemaattisesti ainakin asiakkuuden päättyessä. ',
     'Henkilöstöpalveluyrityksen kannattaa kerätä palautetta työn sujumisesta sekä vuokratyöntekijältä että käyttäjäyrityksestä.',
     'Henkilöstöpalveluyrityksen edustaja voi osallistua käyttäjäyrityksen työturvallisuutta ja -hyvinvointia käsitteleviin kokouksiin.'
-  ],  
+  ],
+ 
+//Worker responsibilities
+worker_step_1: [
+  'Työnantajan ohjeiden ja määräysten noudattaminen',
+  'Omasta ja työkavereiden turvallisuudesta huolehtiminen',
+  'Häirinnän ja epäasiallisen kohtelun välttäminen',
+  'Työvälineiden, henkilönsuojainten ja turvalaitteiden asianmukainen käyttö',
+  'Havaitsemistaan vioista ja puutteista ilmoittaminen'
+],
+
+worker_step_2: [
+  'Työntekijöiltä edellytettävä koulutus ja työkokemus sekä työn ammattitaitovaatimukset',
+  'Työn erityispiirteet, työssä esiintyvät haitta- ja vaaratekijät sekä muut työympäristössä erityistä huomiota vaativat asiat (esim. terveydentilavaatimukset)',
+  'Työtehtävissä tarvittavat henkilönsuojaimet ja turvalaitteet'
+],
+
+worker_step_3: [
+  'Noudattaa työnantajan antamia ohjeita ja määräyksiä',
+  'Huolehtia omasta ja muiden työntekijöiden turvallisuudesta käytettävissä olevin keinoin',
+  'Olla kohdistamatta häirintää tai epäasiallista kohtelua muihin työntekijöihin',
+  'Käyttää ja hoitaa työssä tarvittavia henkilönsuojaimia ja apuvälineitä',
+  'Viipymättä ilmoittaa viasta tai puutteesta (omalle esimiehelle tai työsuojeluvaltuutetulle), jos se voi aiheuttaa joko omalle tai työnkaverin turvallisuudelle/terveydelle haittaa tai vaaraa',
+  'Korjata edellä mainittu havaitsemansa vika, mikäli oma kokemus tai ammattitaito riittää',
+  'Olla poistamatta turva- tai suojalaitetta käytöstä'
+],
+
+worker_step_4: [
+  'Työntekijän tulee varmistaa, että käyttäjäyritys antaa tarpeeksi hyvän opastuksen työhön ja työoloihin.',
+  'Varmistaa, että annetaan riittävät tiedot suoriutua turvallisesti annetuista työtehtävistä.'
+],
+
+worker_step_5: [
+  'Työntekijälle tulee nimetä ensimmäisiksi päiviksi työpari tai muu henkilö, joka ohjaa jatkuvasti työntekijän suoriutumista ja auttaa tarvittaessa.',
+  'Varmistaa, että vuokratyöntekijää kohdellaan samalla tavalla kuin vakituisiakin työntekijöitä.',
+  'Työntekijä ilmoittaa kaikista työtapaturmista, onnettomuustilanteista, läheltä piti- tilanteista, väkivalta- ja uhkatilanteista, sekä antaa muuhun työturvallisuuteen liittyvää palautetta (mahdolliset työturvallisuuteen liittyvät puutteet tai ongelmat sekä turvallisuusaloitteet).'
+]
 }
 

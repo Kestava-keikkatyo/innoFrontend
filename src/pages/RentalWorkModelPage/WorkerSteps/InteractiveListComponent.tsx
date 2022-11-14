@@ -1,47 +1,46 @@
-import { Stack, ListItem, Divider, ListItemIcon, Button, Box, Checkbox } from '@mui/material';
+import { Stack, ListItem, Divider, ListItemIcon, Button, Box, ListItemText} from '@mui/material';
+import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
+import DoneRoundedIcon from '@mui/icons-material/DoneRounded';
 import React, { useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import makeStyles from '@mui/styles/makeStyles';
 
 
 
-const WorkPerformanceGP: React.FC = () => {
+function InteractiveListComponent(props: any){
   const { t } = useTranslation();
-  const workPerformanceGoodPracticeArray = (t('good_practices_work_performance_and_supervision_array', {returnObjects: true}) as string[]);
+  const goodPracticeArray = (props.arrayName);
   const classes = useStyles()
   const [buttonText, setButtonText] = useState(t('checkAll'));
   const [style, setStyle]= useState(classes.buttonNotClicked);
-  const [isChecked, setIsChecked] = useState(false);
-
-
+  const [checked,notChecked]=useState(true)
  
   const handleClick = () => {
     setButtonText(t('readAndUnderstood'));
     setStyle(classes.buttonClicked);
-    setIsChecked(true);
-    
+    notChecked(false);
+
   }
 
-
   return (
-   
     <Trans>
         <Stack
         divider={<Divider orientation="horizontal" variant="inset" />}
+        margin='20px'
         >  
-          {workPerformanceGoodPracticeArray.map((practice, index) => {
+
+          {goodPracticeArray.map((practice: any, index: number) => {
           return (
-            <ListItem key={index}>
+            <ListItem key={index} className={classes.list}>
               <ListItemIcon>
-                
-                <Checkbox className={style} checked={isChecked} defaultChecked color="success" />
-             
+                {checked?<CircleOutlinedIcon className={style} fontSize='small' />:<DoneRoundedIcon className={style} fontSize='small'/>}
               </ListItemIcon>
-              {practice}
+              <ListItemText primary= {practice} />        
             </ListItem>) 
           })}
+      
         </Stack> 
-        <Box className={classes.buttonBox}>
+        <Box className={classes.buttonBoxCenter}>
           <Button className={style} size="small" onClick={handleClick}>{buttonText}</Button> 
        </Box>
 
@@ -53,20 +52,23 @@ const WorkPerformanceGP: React.FC = () => {
 
 const useStyles = makeStyles((theme) => ({
 
-buttonBox:{
+buttonBoxCenter:{
   display:'flex',
   justifyContent:'center',
   alignItems:'center',
   margin: 5
-},  
+}, 
 buttonNotClicked:{
   color:'#1976D5'
 },
 buttonClicked:{
   color:'green',
 },
-
+list:{
+  display:'flex',
+  alignItems:'center',
+}
 
 }))
 
-export default WorkPerformanceGP;
+export default InteractiveListComponent;

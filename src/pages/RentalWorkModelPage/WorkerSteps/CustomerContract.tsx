@@ -10,38 +10,21 @@ import WorkerStepBase from './WorkerStepBase';
 import Typography from '@mui/material/Typography';
 import makeStyles from '@mui/styles/makeStyles';
 import { Theme } from '@mui/material/styles';
-import i18next from 'i18next';
-import vastuualueet from '../../../assets/tietopankki/vastuualueet.json';
-import vastuualueet_en from '../../../assets/tietopankki/vastuualueet_en.json';
-import CustomerContractGP from './GoodPractices/CustomerContractGP';
+import SearchFromFileComponent from './SearchFromFileComponent';
 
 const CustomerContract = () => {
   const { t } = useTranslation();
-  let Vastuualueet = vastuualueet;
-  if(i18next.language == 'en') {
-    Vastuualueet = vastuualueet_en;
-  } else {
-    Vastuualueet = vastuualueet;
-  }
   const classes = useStyles();
 
   const tabContent = [
     <div key="tab0">
-     <List id="modal-modal-description">
-                    {/* Yhtenäiset vastuut lista */}
-                    {Vastuualueet.vastuualueet_worker.map((e, i) => (
-                      <ListItem key={i} divider>
-                        <ListItemText primary={`${i + 1}. ${e.tip}`} />
-                      </ListItem>
-                    ))}
-                  </List>
+      <SearchFromFileComponent inputString="worker_step_1" />
     </div>,
     <div key="tab1">
       Tab 1 content for {t('customer_contract')}
     </div>,
     <div key="tab2">
-      <CustomerContractGP/>
-      
+      <SearchFromFileComponent inputString="good_practices_customer_contract_array" />      
     </div>
   ]
 
