@@ -781,17 +781,17 @@ export default {
   WorkPerformance: 'Työsuoritus ja valvonta',
   FeedbackEvaluation: 'Palaute ja toiminnan arviointi',
 
-  //Responsibilities
+  // Responsibilities
   CustomerContractResponsibilities: '1. Jaettu työsuojeluvastuu (käyttäjäyrityksen kanssa) \n\n 2.Yleisvastuu työturvallisuudesta (tämän alle keskeiset vaatimukset, mm. Työn vaarojen selvittäminen ja arviointi Työsuojelun toimintaohjelman laatiminen Työsuojelun yhteistoiminnan järjestäminen Perehdytys (ml. yleisperehdytyksen antaminen vuokratyöntekijälle) Ilmoittaminen nuorten työntekijöiden käyttämisestä vaarallisiin töihin Vakavasta työtapaturmasta ilmoittaminen työsuojeluviranomaisille ja poliisille) Vastuu työaikalain noudattamisesta Työntekijöiden vakuuttaminen työtapaturmien ja ammattitautien varalta Työterveyshuollon järjestäminen Tasa-arvon ja yhdenvertaisuuden edistäminen  Käyttäjäyrityksen velvoitteiden täyttämisen varmistaminen Vuokratyöntekijän riittävän ammattitaidon ja työhön soveltumisen varmistaminen Tarvittavien henkilönsuojainten hankinta (yhteistyössä käyttäjäyrityksen kanssa)',
 
-   //Overview
-   loremipsum: 'FI Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam distinctio esse iure modi neque quaerat, repudiandae. Accusantium alias aut commodi debitis ea harum ipsa itaque laudantium molestiae nesciunt quis sint vel velit, vitae voluptatibus! Commodi dicta dolorum eaque earum esse est facere fugit iste labore magnam, minus, neque nobis!',
+  // Overview
+  loremipsum: 'FI Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam distinctio esse iure modi neque quaerat, repudiandae. Accusantium alias aut commodi debitis ea harum ipsa itaque laudantium molestiae nesciunt quis sint vel velit, vitae voluptatibus! Commodi dicta dolorum eaque earum esse est facere fugit iste labore magnam, minus, neque nobis!',
 
-  //good practices
+  // good practices
   checkAll: 'Merkkaa kaikki luetuksi',
   readAndUnderstood: 'Luettu ja ymmärretty',
 
-  //step1
+  // step1
   good_practices_customer_contract_array: [
     'Henkilöstöpalveluyritys ja käyttäjäyritys käyvät yhdessä läpi lainsäädäntöön perustuvan vastuunjaon.',
     'Henkilöstöpalveluyritys ja käyttäjäyritys sopivat vuokratyöntekijän perehdytyksestä ja työnopastuksesta.',
@@ -803,12 +803,12 @@ export default {
     'Vierailukäyntiin voidaan yhdistää myös vaarojen kartoittamisen ja riskien arvioinnin, jotka voidaan tehdään yhdessä käyttäjäyrityksen edustajan kanssa.',
     'Vaarojen tunnistamisessa ja riskien arvioinnissa on hyvä olla mukana myös työsuojeluvaltuutettu.'
   ],
-  //step2
+  // step2
   good_practices_order_and_selection_of_the_employee_array: [
     'Käyttäjäyritys voi osallistua myös itse vuokratyöntekijän valintaan ja esimerkiksi haastatella parhaita ehdokkaita. ',
     'Uusille tai kokemattomammille vuokratyöntekijöille voidaan tarjota ensin helpompia työtehtäviä, jolloin vuokratyöntekijät saavat kokemusta ja käyttäjäyrityksessä voidaan tutustua vuokratyöntekijään.'
   ],
-  //step3
+  // step3
   good_practices_employment_contract_and_general_orientation_array: [
     'Työsopimus kannattaa tehdä aina kirjallisena. ',
     'Yleisperehdytys annetaan kasvotusten työntekijän kanssa. ',
@@ -818,15 +818,15 @@ export default {
     'Yhteisen kielen puuttuessa perehdytyksessä kannattaa hyödyntää videoita, kuvia ja selkokieltä.',
     'Henkilöstöpalveluyritys voi tarjota vuokratyöntekijöilleen esimerkiksi työturvallisuus- tai työhyvinvointikorttikoulutuksen tai muun vaadittavan työturvallisuuskoulutuksen. '
   ],
-  //step4
+  // step4
   good_practices_guidance_on_work_and_working_conditions_array: [
     'Käyttäjäyrityksen on tärkeää huolehtia siitä, että vuokratyöntekijä tuntee olonsa tervetulleeksi ja yhdenvertaiseksi muiden työntekijöiden kanssa. ',
     'Alussa on hyvä käydä läpi yleisiä työhön ja työpaikkaan liittyviä asioita. Sen jälkeen tehdään työpaikkakierros, joka sisältää työtiloihin, työtehtäviin ja henkilöstöön tutustumisen. Samalla opastetaan poistumistiet, sammuttimien ja ensiaputarvikkeiden sijainti sekä turvallisuuteen liittyvät asiat. ',
-    'Työnopastuksessa voi hyödyntää kokeneita, työturvallisuusasioissa esimerkillisesti toimivia työntekijöitä.', 
+    'Työnopastuksessa voi hyödyntää kokeneita, työturvallisuusasioissa esimerkillisesti toimivia työntekijöitä.',
     'Työntekijän oppiminen kannattaa varmistaa esimerkiksi kysymyksillä, keskusteluilla ja käytännön havainnoinnilla. Tukena voi käyttää myös kirjallisessa muodossa annettavia ohjeita. ',
     'Työn tekemisen paikka voi olla kaikille vuokratyön osapuolille ennestään tuntematon. Näissäkin tilanteissa vuokratyöntekijälle tulee varmistaa riittävä opastus työhön ja työoloihin. '
   ],
-  //step5  
+  // step5
   good_practices_work_performance_supervision_and_feedback_array: [
     'Perehdytyksen ja työnopastuksen jälkeen vuokratyöntekijä aloittaa varsinaiset työtehtävät. Hyvä käytäntö on nimetä vuokratyöntekijälle ensimmäisiksi päiviksi työpari tai mentori. ',
     'Vuokratyöntekijät on hyvä ottaa mukaan kaikkiin olennaisiin koulutus- ja tiedotustilaisuuksiin. ',
@@ -837,47 +837,171 @@ export default {
     'Henkilöstöpalveluyrityksen kannattaa kerätä palautetta työn sujumisesta sekä vuokratyöntekijältä että käyttäjäyrityksestä.',
     'Henkilöstöpalveluyrityksen edustaja voi osallistua käyttäjäyrityksen työturvallisuutta ja -hyvinvointia käsitteleviin kokouksiin.'
   ],
- 
-//Worker responsibilities
-worker_step_1: [
-  'Työnantajan ohjeiden ja määräysten noudattaminen',
-  'Omasta ja työkavereiden turvallisuudesta huolehtiminen',
-  'Häirinnän ja epäasiallisen kohtelun välttäminen',
-  'Työvälineiden, henkilönsuojainten ja turvalaitteiden asianmukainen käyttö',
-  'Havaitsemistaan vioista ja puutteista ilmoittaminen'
-],
 
-worker_step_2: [
-  'Työntekijöiltä edellytettävä koulutus ja työkokemus sekä työn ammattitaitovaatimukset',
-  'Työn erityispiirteet, työssä esiintyvät haitta- ja vaaratekijät sekä muut työympäristössä erityistä huomiota vaativat asiat (esim. terveydentilavaatimukset)',
-  'Työtehtävissä tarvittavat henkilönsuojaimet ja turvalaitteet'
-],
+  // Rental work model - Forms
 
-worker_step_3: [
-  'Noudattaa työnantajan antamia ohjeita ja määräyksiä',
-  'Huolehtia omasta ja muiden työntekijöiden turvallisuudesta käytettävissä olevin keinoin',
-  'Olla kohdistamatta häirintää tai epäasiallista kohtelua muihin työntekijöihin',
-  'Käyttää ja hoitaa työssä tarvittavia henkilönsuojaimia ja apuvälineitä',
-  'Viipymättä ilmoittaa viasta tai puutteesta (omalle esimiehelle tai työsuojeluvaltuutetulle), jos se voi aiheuttaa joko omalle tai työnkaverin turvallisuudelle/terveydelle haittaa tai vaaraa',
-  'Korjata edellä mainittu havaitsemansa vika, mikäli oma kokemus tai ammattitaito riittää',
-  'Olla poistamatta turva- tai suojalaitetta käytöstä'
-],
+  // Frequently used
+  textAreaPlaceholder: 'Kirjoita...',
+  rentalCompany: 'Vuokrausyritys',
+  userCompany: 'Käyttäjäyritys',
+  signatures: 'ALLEKIRJOITUKSET',
+  orientator: 'Perehdyttäjä',
+  orientated: 'Perehdytetty',
+  clock: 'Klo',
+  workstation: 'Työhuone/työpiste',
 
-worker_step_4: [
-  'Työntekijän tulee varmistaa, että käyttäjäyritys antaa tarpeeksi hyvän opastuksen työhön ja työoloihin.',
-  'Varmistaa, että annetaan riittävät tiedot suoriutua turvallisesti annetuista työtehtävistä.'
-],
+  // Form 1
+  form1Header: 'LOMAKE 1 - ASIAKASSOPIMUKSEEN LIITTYVÄT TYÖTURVALLISUUS- JA TYÖHYVINVOINTIASIAT (vuokrausyrityksen ja käyttäjäyrityksen edustajat täyttävät yhdessä)',
+  form1Text1: 'Lomake on tarkoitus täyttää henkilöstöpalvelu- ja käyttäjäyrityksen yhteistyössä. Lomakkeen täyttämisellä ohjataan käymään olennaisimmat työturvallisuuteen, -terveyteen ja -hyvinvointiin liittyvät asiat läpi sekä suunnittelemaan ja sopimaan tärkeistä asioista. Täytetty lomake voidaan liittää asiakassopimuksen loppuun ja siihen voidaan myös viitata sopimuksessa. Lomake tarkistetaan ja sitä täydennetään työntekijän tilauksen yhteydessä.',
+  form1Text2: 'TYÖNTEKIJÖILTÄ TYÖSSÄ EDELLYTETTÄVÄ KOULUTUS JA TYÖKOKEMUS SEKÄ TYÖN AMMATTITAITOVAATIMUKSET',
+  form1Text3: 'TYÖN ERITYISPIIRTEET, TYÖSSÄ ESIINTYVÄT HAITTA-JA VAARATEKIJÄT SEKÄ MUUT TYÖTURVALLISUUDEN KANNALTA ERITYISESTI HUOMIOITAVAT SEIKAT (esim. terveydentilavaatimukset sekä erityistä varaa aiheuttava työ ja siihen liittyvät terveystarkastukset ja ilmoitus 16-17 vuotiaiden nuorten työntekijäin käyttämisestä vaaralliseen työhön)',
+  form1Text4: 'TYÖTEHTÄVISSÄ TARVITTAVAT HENKILÖNSUOJAIMET (+työvaatetus) JA KUVAUS SIITÄ KUMPI OSAPUOLI VASTAA TARVITTAVIEN SUOJAINTEN TOIMITTAMISESTA TYÖNTEKIJÖILLE JA SUOJAINTEN HUOLLOSTA',
+  form1Text5: 'KUVAUS VUOKRATYÖNTEKIJÖIDEN PEREHDYTYKSESTÄ JA TYÖNOPASTUKSESTA (ketkä perehdyttävät, kuinka kauan kestää, mitä asioita käydään läpi, mitä perehdytysmateriaalia vuokratyöntekijöille annetaan jne.)',
+  form1Text6: 'MITEN TOIMITAAN TYÖTAPATURMAN SATTUESSA VUOKRATYÖNTEKIJÄLLE, SAIRAUSPOISSAOLOTILANTEISSA JA MUISSA VAARATILANTEISSA (onnettomuus ja poikkeustilanteet, läheltä piti –tilanteet, väkivalta- ja uhkatilanteet)',
+  form1Text7: 'MITEN VUOKRATYÖNTEKIJÄ ILMOITTAA TYÖTAPATURMISTA, SAIRAUSPOISSAOLOISTA, MUISTA VAARATILANTEISTA TAI MUISTA TURVALLISUUSHAVAINNOISTA (ongelmat, puutteet, turvallisuusaloitteet)',
+  form1Text8: 'MITEN TUETAAN VUOKRATYÖNTEKIJÄN TYÖKYKYÄ (VARHAISEN TUEN MALLI)?',
+  form1Text9: 'TYÖNTEKIJÄ OTTAA TYÖTURVALLISUUSASIOISSA YHTEYTTÄ HENKILÖÖN/HENKILÖIHIN',
+  form1Text10: 'Käyttäjäyritys toimittaa vuokrayritykselle kopion (tarvittaessa)',
+  form1Text11: 'KUVAUS VUOKRAYRITYKSEN JA KÄYTTÄJÄYRITYKSEN VÄLISESTÄ YHTEYDENPIDOSTA ASIAKKUUDEN AIKANA',
+  form1Text12: 'VUOKRAYRITYKSEN YHTEYSHENKILÖN YHTEYSTIEDOT',
+  form1Text13: 'KÄYTTÄJÄYRITYKSEN YHTEYSHENKILÖN YHTEYSTIEDOT',
+  form1Check1: 'Lainsäädännöstä seuraavat työturvallisuusvastuut on käyty yhdessä läpi',
+  form1Check2: 'Työterveyshuollon työpaikkaselvityksestä',
+  form1Check3: 'Työsuojelun toimintaohjelmasta',
+  form1Check4: 'Pelastussuunnitelmasta',
+  form1Check5: 'Viimeisimmän riskin arvioinnin tuloksista',
+  workRoom: 'Työhuoneen sijanti',
+  form1ByDate: 'mennessä (päivämäärä)',
 
-worker_step_5: [
-  'Työntekijälle tulee nimetä ensimmäisiksi päiviksi työpari tai muu henkilö, joka ohjaa jatkuvasti työntekijän suoriutumista ja auttaa tarvittaessa.',
-  'Varmistaa, että vuokratyöntekijää kohdellaan samalla tavalla kuin vakituisiakin työntekijöitä.',
-  'Työntekijä ilmoittaa kaikista työtapaturmista, onnettomuustilanteista, läheltä piti- tilanteista, väkivalta- ja uhkatilanteista, sekä antaa muuhun työturvallisuuteen liittyvää palautetta (mahdolliset työturvallisuuteen liittyvät puutteet tai ongelmat sekä turvallisuusaloitteet).'
-],
+  // Form 2
+  form2Header: 'LOMAKE 2 – TYÖNTEKIJÄN YLEISPEREHDYTYS (vuokrausyrityksen perehdyttäjä täyttää)',
+  form2Text1: 'Henkilöstöpalveluyrityksen perehdyttäjä täyttää lomakkeen vuokratyöntekijän perehdytyksen yhteydessä. Lomakkeen aihealueiden luettelo toimii muistilistana perehdytyksessä läpikäytävistä asioista. Lomakkeen jälkimmäiseen osaan kirjataan työntekijälle tärkeiden henkilöiden yhteystiedot',
+  form2Text2: 'Kopio täytetystä lomakkeesta tulee antaa työntekijälle ja lähettää myös käyttäjäyritykselle. Täytetystä lomakkeesta käyttäjäyritys näkee mitä asioita yleisperehdytys on sisältänyt. Tämä auttaa käyttäjäyritystä työnopastuksen sisällön suunnittelussa.',
+  form2Text3: 'Yleisperehdytys annettu',
+  form2Text4: 'Seuraavat asiat on käyty läpi yleisperehdytyksen yhteydessä kaikille vuokratyöntekijöille',
+  form2Text5: 'Seuraavat asiat on käyty läpi yleisperehdytyksen yhteydessä uusille vuokratyöntekijöille (jotka saavat ensimmäistä kertaa yleisperehdytyksen)',
+  form2Text6: 'Työkyvyn varhaisen tuen malli ja sairauspoissaoloseuranta',
+  form2Text7: 'Esimiehen rooli',
+  form2Text8: 'VUOKRAYRITYKSEN YHTEYSHENKILÖN YHTEYSTIEDOT',
+  form2Text9: 'TYÖNTEKIJÄN PÄÄSY TYÖPAIKKAAN (kulkuyhteydet, kulkuluvat jne.)',
+  form2Text10: 'KÄYTTÄJÄYRITYKSEN YHTEYSHENKILÖN (JOLLE ILMOITTAUDUTAAN) YHTEYSTIEDOT',
+  form2Text11: 'Täytetyn lomakkeen kopio on',
+  form2Check1: 'Kasvotusten',
+  form2Check2: 'Puhelimitse',
+  form2Check3: 'Ylityökäytäntö',
+  form2Check4: 'Työtehtävä ja siinä vaadittava osaaminen',
+  form2Check5: 'Työssä tarvittavat henkilönsuojaimet(+työvaatetus) ja niiden saaminen käyttöön',
+  form2Check6: 'Kenelle työntekijä ilmoittaa havaitsemistaan vioista ja puutteista',
+  form2Check7: 'Olennaisimmat asiat käyttäjäyrityksen työpaikkaselvityksestä/riskien arvioinnista',
+  form2Check8: 'Työturvallisuuslain mukaiset työntekijän velvoitteet ja oikeus pidättäytyä työstä',
+  form2Check9: 'Toimintaohjeet tapaturman tai muun vaaratilanteen sattuessa vuokratyöntekijälle',
+  form2Check10: 'Vuokrayrityksen työsuojeluvaltuutettu',
+  form2Check11: 'Toimintaohjeet vuokratyöntekijän sairastuessa',
+  form2Check12: 'Työterveyshuollon palvelut',
+  form2Check13: 'Lähetetty työntekijälle postitse/sähköpostitse',
+  form2Check14: 'Annettu työntekijälle perehdytyksen päätteeksi',
+  rentalCompanyAndOrientation: 'Vuokrausyritys ja perehdytyksen antaja',
+  userCompanyAddress: 'Käyttäjäyrityksen osoite',
+  workRoomPlace: 'Työhuone/Ilmoittautumispaikka',
+  registrationTime: 'Ilmoittautumisaika (Pvm)',
 
-//feelings
-work_feel: 'Miten työt sujuvat?',
-tell_more: 'Kerro lisää!',
+  // Form 3
+  form3Header: 'LOMAKE 3 – TYÖNOPASTUS (käyttäjäyrityksen työnopastaja täyttää)',
+  form3Text1: 'Käyttäjäyrityksen perehdyttäjä täyttää lomakkeen vuokratyöntekijän työnopastuksen yhteydessä. Lomakkeen aihealueiden luettelo toimii tarkistuslistana työnopastuksessa läpikäytävistä asioista. Lomakkeeseen täytetään myös käyttäjäyrityksessä vuokratyöntekijän esimiehenä toimivan henkilön yhteystiedot.',
+  form3Text2: 'Kopio täytetystä lomakkeesta tulee antaa työntekijälle ja henkilöstöpalveluyritykselle. Täytetty lomake toimii eräänlaisena todisteena käyttäjäyrityksen työnopastuksen antamisesta.',
+  form3Text3: 'Käyttäjäyritys ja työnopastuksen antaja',
+  form3Text4: 'Seuraavat asiat on käyty läpi käyttäjäyrityksen työntekijälle antamassa työnopastuksessa',
+  form3Text5: 'Käyttäjäyrityksen esimiehen (jos eri henkilö kuin edellinen) yhteystiedot',
+  form3Check1: 'Työtehtävät ja turvalliset työtavat',
+  form3Check2: 'Työssä esiintyvät haitta- ja vaaratekijät sekä niiltä suojautuminen',
+  form3Check3: 'Työajat ja tauot',
+  form3Check4: 'Turvavarusteiden ja henkilönsuojainten käyttäminen ja huoltaminen',
+  form3Check5: 'Siisteys ja järjestys',
+  form3Check6: 'Toiminta onnettomuus- ja poikkeustilanteissa',
+  form3Check7: 'Turvallisuushavaintojen tekeminen (työtapaturmat ja muut vaaratilanteet, aloitteet, puutteet/ongelmat)',
+  form3Check8: 'Ensiapukaapit, alkusammuttimet, poistumistiet jne.',
+  form3Check9: 'Henkilöstötilat (savuttomuus ym.)',
+  form3Check10: 'Erityishuomioitavat asiat',
+  form3Check11: 'Työn hyvä ergonomia (tuolien/pöytien/työtasojen säätäminen, työasennot ja liikkeet, nostotekniikat jne.)',
+  form3Check12: 'Tiedotuskäytännöt (ilmoitustaulut, sähköpostilistat jne.)',
+  form3Check13: 'Osallistuminen käyttäjäyrityksen kokouksiin ja muuhun viikottaiseen toimintaan',
+  form3Check14: 'Lupa-asiat (kulkukortit, tulityökortit jne.)',
+  form3Check15: 'Käyttäjäyrityksen työsuojeluvaltuutettu',
+  form3Check16: 'Keneltä kysytään apua sitä tarvittaessa',
 
+  // Form 4
+  form4Header: 'LOMAKE 4 – TOIMINNAN ARVIOINTI (käyttäjäyrityksen ja vuokrayrityksen edustajat täyttävät)',
+  form4Text1: 'Henkilöstöpalveluyrityksen ja käyttäjäyrityksen edustajat täyttävät lomakkeen yhdessä. Loppupalaverissa tehdään yhteenveto toimeksiannon ja erityisesti työturvallisuuden varmistamisen sujumisesta. Lomakkeen alussa on muistilista toiminnan arvioinnissa läpikäytävistä asioista. Lomakkeen loppuosaan tulee kirjoittaa ylös toiminnan arvioinnin ja yhteisen analysoinnin aikana esiinnousseet olennaisimmat asiat (sekä toimeksiannon onnistumiset että kehittämistä vaativat asiat).',
+  form4Text2: 'Täytetystä lomakkeesta (tai sen kopiosta) tulee jäädä oma kappale molemmille osapuolille. Lomakkeeseen kirjattujen asioiden pohjalta yritykset voivat kehittää työturvallisuustoimintaansa seuraavassa vuokratyötoimeksiannossa. Palautteet on hyvä käydä läpi myös vuokratyöntekijän kanssa',
+  form4Text3: 'Seuraavat asiat on käyty läpi toimeksiannon päätyttyä tehdyssä jälkiarvioinnissa',
+  form4Text4: 'YHTEENVETO TOIMEKSIANNON (TYÖTURVALLISUUTEEN LIITTYVISTÄ) ONNISTUMISISTA JA HYVIN SUJUNEISTA ASIOISTA',
+  form4Text5: 'YHTEENVETO TOIMEKSIANNON AIKANA ILMENNEISTÄ ONGELMISTA/PARANTAMISTA VAATIVISTA ASIOISTA',
+  form4Text6: 'MITEN OMAA TOIMINTAA VOIDAAN KEHITTÄÄ, JOTTA EDELLÄ MAINITTUJA ASIOITA SAADAAN JATKOSSA PARANNETTUA',
+  form4Check1: 'Toimeksiannon aikana vuokratyöntekijöiltä saatu turvallisuuspalaute (työtapaturmat, muut vaaratilanteet, aloitteet, puutteet/ongelmat)',
+  form4Check2: 'Vuokratyöntekijöiden ammattitaidon ja osaamisen riittävyys suhteessa työtehtäviin',
+  form4Check3: 'Vuokratyöntekijöiden työssä suoriutuminen mukaanlukien työturvallisuusasiat',
+  form4Check4: 'Vuokratyöntekijöille sattuneet työtapaturmat ja niiden tutkintaraportit',
+  form4Check5: 'Käyttäjäyrityksen palaute vuokrayritykselle tämän toiminnasta toimeksiannon aikana',
+  form4Check6: 'Vuokrayrityksen (ja vuokratyöntekijöiden) palaute käyttäjäyritykselle tämän toiminnasta toimeksiannon aikana',
+  form4Check7: 'Tiedonkulun toimivuus toimeksiannon aikana (erityisesti vuokra- ja käyttäjäyrityksen välillä)',
+  form4Check8: 'Annetun perehdytyksen ja työnopastuksen riittävyys (määrä ja laatu)',
+  form4Check9: 'Työssä käytettyjen henkilönsuojainten ja turvavälineiden riittävyys',
+  rentalCompanyCaps: 'VUOKRAYRITYS',
+  userCompanyCaps: 'KÄYTTÄJÄYRITYS',
+  cooperation: 'YHTEISTYÖ',
 
+  // Form 5
+  form5Header: 'LOMAKE 5 – Perehdytys ja työnopastus kiireellisissä tilanteissa',
+  form5Text1: 'Tilanteissa, joissa työntekijä tarvitaan nopeasti tekemään työtä, voidaan osa perehdytyksestä jättää tehtäväksi työn aloittamisen jälkeen. Turvallisuuteen liittyvät tärkeimmät asiat tulee kuitenkin aina kertoa työntekijälle heti alussa. Tässä lomakkeessa on asiat, jotka ainakin tulee käydä läpi ennen työn aloitusta.',
+  form5Text2: 'Henkilöstöpalveluyrityksen perehdytys kiireellisessä tapauksessa',
+  form5Text3: 'Työhön liittyvät turvallisuus- ja terveysriskit',
+  form5Text4: 'Henkilöstöpalveluyrityksen yhteishenkilön yhteystiedot',
+  form5Text5: 'Käyttäjäyrityksen osoite ja ohjeet työpaikalle pääsemiseen (esim. kulkuluvat)',
+  form5Text6: 'Käyttäjäyrityksen yhteyshenkilön yhteystiedot',
+  form5Text7: 'Käyttäjäyrityksen työnopastus kiireellisessä tapauksessa',
+  form5Text8: 'Turvavarusteiden ja henkilönsuojainten käyttäminen',
+  jobAdvisor: 'Työnopastaja',
+  userCompanyName: 'Käyttäjäyrityksen nimi',
+  serviceCompany: 'Henkilöstöpalveluyrityksen nimi',
+
+  // Worker responsibilities
+  worker_step_1: [
+    'Työnantajan ohjeiden ja määräysten noudattaminen',
+    'Omasta ja työkavereiden turvallisuudesta huolehtiminen',
+    'Häirinnän ja epäasiallisen kohtelun välttäminen',
+    'Työvälineiden, henkilönsuojainten ja turvalaitteiden asianmukainen käyttö',
+    'Havaitsemistaan vioista ja puutteista ilmoittaminen'
+  ],
+
+  worker_step_2: [
+    'Työntekijöiltä edellytettävä koulutus ja työkokemus sekä työn ammattitaitovaatimukset',
+    'Työn erityispiirteet, työssä esiintyvät haitta- ja vaaratekijät sekä muut työympäristössä erityistä huomiota vaativat asiat (esim. terveydentilavaatimukset)',
+    'Työtehtävissä tarvittavat henkilönsuojaimet ja turvalaitteet'
+  ],
+
+  worker_step_3: [
+    'Noudattaa työnantajan antamia ohjeita ja määräyksiä',
+    'Huolehtia omasta ja muiden työntekijöiden turvallisuudesta käytettävissä olevin keinoin',
+    'Olla kohdistamatta häirintää tai epäasiallista kohtelua muihin työntekijöihin',
+    'Käyttää ja hoitaa työssä tarvittavia henkilönsuojaimia ja apuvälineitä',
+    'Viipymättä ilmoittaa viasta tai puutteesta (omalle esimiehelle tai työsuojeluvaltuutetulle), jos se voi aiheuttaa joko omalle tai työnkaverin turvallisuudelle/terveydelle haittaa tai vaaraa',
+    'Korjata edellä mainittu havaitsemansa vika, mikäli oma kokemus tai ammattitaito riittää',
+    'Olla poistamatta turva- tai suojalaitetta käytöstä'
+  ],
+
+  worker_step_4: [
+    'Työntekijän tulee varmistaa, että käyttäjäyritys antaa tarpeeksi hyvän opastuksen työhön ja työoloihin.',
+    'Varmistaa, että annetaan riittävät tiedot suoriutua turvallisesti annetuista työtehtävistä.'
+  ],
+  
+  worker_step_5: [
+    'Työntekijälle tulee nimetä ensimmäisiksi päiviksi työpari tai muu henkilö, joka ohjaa jatkuvasti työntekijän suoriutumista ja auttaa tarvittaessa.',
+    'Varmistaa, että vuokratyöntekijää kohdellaan samalla tavalla kuin vakituisiakin työntekijöitä.',
+    'Työntekijä ilmoittaa kaikista työtapaturmista, onnettomuustilanteista, läheltä piti- tilanteista, väkivalta- ja uhkatilanteista, sekä antaa muuhun työturvallisuuteen liittyvää palautetta (mahdolliset työturvallisuuteen liittyvät puutteet tai ongelmat sekä turvallisuusaloitteet).'
+  ],
+
+  // feelings
+  work_feel: 'Miten työt sujuvat?',
+  tell_more: 'Kerro lisää!',
 }
 
