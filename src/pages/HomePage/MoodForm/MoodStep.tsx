@@ -62,7 +62,7 @@ const useStyles = makeStyles({
   return (
     <>
       <Typography variant="h1" align="center" className="header">
-        {t('how_do_you_feel_today')}
+        {t('work_feel')}
       </Typography>
 
       <Grid container className="mood-step-one" justifyContent="center" style={{paddingTop: "5%"}}>
@@ -107,7 +107,7 @@ const useStyles = makeStyles({
           />
         </Grid>
       </Grid>
-        <Typography style={{paddingTop: "5%"}}>{t('write_a_comment')}</Typography>
+        <Typography style={{paddingTop: "5%"}}>{t('tell_more')}</Typography>
         <TextField style={{width: "70%"}}
             onChange={handleChange}
             placeholder={t('tell_feelings')}

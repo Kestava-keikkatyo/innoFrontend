@@ -2,9 +2,9 @@ export default {
   // home page
   information: 'Informaatio',
   how_do_you_feel_today: 'Miten voit tänään?',
-  thank_you: 'Fiilisi on vastaanotettu!',
+  thank_you: 'Kiitos kommentistasi!',
   home: 'Etusivu',
-  thank_you_for_feedback: 'Kiitos palautteestasi!',
+  thank_you_for_feedback: 'Kehitämme toimintaamme kommenttien perusteella.',
   write_a_comment: 'Kirjoita kommentti',
   workers_responsibility: 'Työntekijän vastuu',
   worker_responsibilities_read: 'Työntekijä on lukenut ja ymmärtänyt vastuunsa',
@@ -101,22 +101,22 @@ export default {
   mood_stats: 'Fiilistilastot',
 
   // Report form
-  report_handler: 'Raportti',
+  report_handler: 'Turvallisuushavainto',
   report_time: 'Tapahtuma-aika',
   report_details: 'Lisätiedot',
   steps_completed: 'Valmista',
-  reports: 'Raportit',
-  report: 'Raportti',
-  report_no_recipient: 'Sinun täytyy valita raportin vastaanottaja.',
+  reports: 'Turvallisuushavainto',
+  report: 'Turvallisuushavainto',
+  report_no_recipient: 'Sinun täytyy valita havainnon vastaanottaja.',
   report_title_required: 'Otsikko on pakollinen.',
-  report_details_required: 'Raportin yksityiskohdat ovat pakolliset.',
-  report_new_report: 'Uusi raportti',
-  report_back_to_reports: 'Takaisin raportteihin',
+  report_details_required: 'Havainnon yksityiskohdat ovat pakolliset.',
+  report_new_report: 'Uusi turvallisuushavainto',
+  report_back_to_reports: 'Takaisin turvallisuushavaintoihin',
 
   // Report step one
-  select_report_handler: 'Valitse raportin vastaanottaja',
+  select_report_handler: 'Valitse havainnon vastaanottaja',
   select_report_helper_text:
-    'Voit valita HP-yrityksen ja/tai käyttäjäyrityksen vastaanottamaan raportin.',
+    'Voit valita HP-yrityksen ja/tai käyttäjäyrityksen vastaanottamaan havainnon.',
   select_report_handler_clear: 'Tyhjennä',
   // Report step two
   happened: 'Milloin tämä tapahtui?',
@@ -129,12 +129,12 @@ export default {
   // Report step three
   fill_details: 'Kirjoita lisätiedot',
   fill_work_title: 'Tehtävänimike',
-  fill_report_title: 'Raportin otsikko',
-  fill_report_details: 'Raportin yksityiskohdat',
+  fill_report_title: 'Havainnon otsikko',
+  fill_report_details: 'Havainnon yksityiskohdat',
 
   // Reports page
-  reports_not_found: 'Raportteja ei löytynyt.',
-  reports_you_have_no_reports: 'Et ole tehnyt yhtään raporttia.',
+  reports_not_found: 'Turvallisuushavaintoja ei löytynyt.',
+  reports_you_have_no_reports: 'Et ole tehnyt yhtään turvallisuushavaintoa.',
   report_title: 'Otsikko',
   report_worker_info: 'Työntekijän tiedot',
   report_receiver_info: 'Vastaanottajan tiedot',
@@ -150,8 +150,8 @@ export default {
   report_display_not_archived: 'Ei arkistoidut',
   report_display_label: 'Näytä',
   report_sort_label: 'Järjestä',
-  report_sort_date_created_new_to_old: 'Raportointipäivän mukaan',
-  report_sort_date_created_new_to_old_reverse: 'Raportointipäivän mukaan, käänteinen',
+  report_sort_date_created_new_to_old: 'Havaintopäivän mukaan',
+  report_sort_date_created_new_to_old_reverse: 'Havaintopäivän mukaan, käänteinen',
   report_sort_date_happened_new_to_old: 'Tapahtumapäivän mukaan',
   report_sort_date_happened_new_to_old_reverse: 'Tapahtumapäivän mukaan, käänteinen',
   report_sort_title: 'Otsikon mukaan',
@@ -159,20 +159,20 @@ export default {
   report_sort_replied: 'Vastauksen mukaan',
   report_sort_replied_reverse: 'Vastauksen mukaan, käänteinen',
   report_is_archived: 'Arkistoitu',
-  report_is_archived_alert: 'Raportti arkistoitu',
-  report_is_unarchived_alert: 'Raportti palautettu arkistosta',
+  report_is_archived_alert: 'Turvallisuushavainto arkistoitu',
+  report_is_unarchived_alert: 'Turvallisuushavainto palautettu arkistosta',
   report_archive: 'Arkistoi',
   report_unarchive: 'Palauta arkistosta',
   report_time_reported: 'Raportoitu',
   report_time_happened: 'Tapahtunut',
 
   // ReportReply page
-  report_reply_title: 'Vastaus raporttiin',
+  report_reply_title: 'Vastaus turvallisuushavaintoon',
   report_reply_answer: 'Vastaus',
   report_reply_send: 'Lähetä',
   report_reply_sent_alert: 'Vastaus lähetetty',
   report_reply_reply_missing: 'Vastaus puuttuu!',
-  report_reply_you_have_new_reply_in_report: 'Sinulle on uusi vastaus raportissa:',
+  report_reply_you_have_new_reply_in_report: 'Sinulle on uusi vastaus turvallisuushavainnossa:',
 
   // Mood form
   your_mood: 'Fiiliksesi',
@@ -756,8 +756,8 @@ export default {
   Information: 'Tiedot',
   BusinessContracts: 'Yrityssopimukset',
   Jobs: 'Työpaikat',
-  Reports: 'Raportit',
-  Report: 'Raportti',
+  Reports: 'Turvallisuushavainnot',
+  Report: 'Turvallisuushavainto',
   Feedback: 'Palaute',
   Details: 'Lisätiedot',
   Profile: 'Profiili',
@@ -872,6 +872,12 @@ worker_step_5: [
   'Työntekijälle tulee nimetä ensimmäisiksi päiviksi työpari tai muu henkilö, joka ohjaa jatkuvasti työntekijän suoriutumista ja auttaa tarvittaessa.',
   'Varmistaa, että vuokratyöntekijää kohdellaan samalla tavalla kuin vakituisiakin työntekijöitä.',
   'Työntekijä ilmoittaa kaikista työtapaturmista, onnettomuustilanteista, läheltä piti- tilanteista, väkivalta- ja uhkatilanteista, sekä antaa muuhun työturvallisuuteen liittyvää palautetta (mahdolliset työturvallisuuteen liittyvät puutteet tai ongelmat sekä turvallisuusaloitteet).'
-]
+],
+
+//feelings
+work_feel: 'Miten työt sujuvat?',
+tell_more: 'Kerro lisää!',
+
+
 }
 
