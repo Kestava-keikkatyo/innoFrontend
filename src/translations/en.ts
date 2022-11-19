@@ -2,9 +2,9 @@ export default {
   // home page
   information: 'Information',
   how_do_you_feel_today: 'How do you feel today?',
-  thank_you: 'Feeling received!',
+  thank_you: 'Thank you for your comment!',
   home: 'Home',
-  thank_you_for_feedback: 'Thank you for your feedback!',
+  thank_you_for_feedback: 'We develop our operations based on comments.',
   write_a_comment: 'Write a comment',
   workers_responsibility: "Worker's responsibility",
   worker_responsibilities_read: 'Worker has read and understood his/her responsibilities.',
@@ -64,7 +64,7 @@ export default {
   back: 'back',
   next: 'next',
   finish: 'Send',
-  reset: 'Reset',
+  reset: 'Return to start',
   upload_file: 'Upload file',
   entry: 'New entry',
   history: 'History',
@@ -102,22 +102,22 @@ export default {
   mood_stats: 'Feeling stats',
 
   // Report form
-  report_handler: 'Reports',
-  report_time: 'Report time',
+  report_handler: 'Security observations',
+  report_time: 'Observation time',
   report_details: 'Details',
-  steps_completed: 'Steps are completed - you are finished',
-  reports: 'Reports',
-  report: 'Report',
-  report_no_recipient: 'You need to select report handler.',
-  report_title_required: 'Report title is required',
-  report_details_required: 'Report details are required',
-  report_new_report: 'New Report',
-  report_back_to_reports: 'Back to reports',
+  steps_completed: 'Thank you for your notice',
+  reports: 'Security observations',
+  report: 'Security observation',
+  report_no_recipient: 'You need to select observation handler.',
+  report_title_required: 'Observation title is required',
+  report_details_required: 'Observation details are required',
+  report_new_report: 'New observation',
+  report_back_to_reports: 'Back to observations',
 
   // Report step one
-  select_report_handler: 'Select report handler',
+  select_report_handler: 'Select observation handler',
   select_report_helper_text:
-    'You can choose both Business and Agency or one of them as a report handler',
+    'You can choose both Business and Agency or one of them as an observation handler',
   select_report_handler_clear: 'Clear',
   // Report step two
   happened: 'When did this happen?',
@@ -130,13 +130,13 @@ export default {
   // Report step three
   fill_details: 'Fill in details',
   fill_work_title: 'Fill work title',
-  fill_report_title: 'Fill report title',
-  fill_report_details: 'Fill report details',
+  fill_report_title: 'The subject of a security observation, e.g. slippery floor, door not locked.',
+  fill_report_details: 'What happened? Were there persons in danger? For example, I slipped in an icy parking lot',
 
   // Reports page
-  reports_not_found: 'No reports found.',
-  reports_you_have_no_reports: 'You have not made any reports.',
-  report_title: 'Report title',
+  reports_not_found: 'No observations found.',
+  reports_you_have_no_reports: 'You have not made any observations.',
+  report_title: 'Observation title',
   report_worker_info: 'Worker info',
   report_receiver_info: 'Recipient info',
   report_receiver_info_plural: 'Recipients info',
@@ -151,8 +151,8 @@ export default {
   report_display_not_archived: 'Not archived',
   report_display_label: 'Display',
   report_sort_label: 'Sort',
-  report_sort_date_created_new_to_old: 'By reporting date',
-  report_sort_date_created_new_to_old_reverse: 'By reporting date, reversed',
+  report_sort_date_created_new_to_old: 'By observation date',
+  report_sort_date_created_new_to_old_reverse: 'By observation date, reversed',
   report_sort_date_happened_new_to_old: 'By date happened',
   report_sort_date_happened_new_to_old_reverse: 'By date happened, reversed',
   report_sort_title: 'By title',
@@ -168,12 +168,12 @@ export default {
   report_time_happened: 'Time when happened',
 
   // ReportReply page
-  report_reply_title: 'Reply to report',
+  report_reply_title: 'Reply to observation',
   report_reply_answer: 'Reply',
   report_reply_send: 'Send',
   report_reply_sent_alert: 'Reply sent',
   report_reply_reply_missing: 'Reply missing!',
-  report_reply_you_have_new_reply_in_report: 'You have a new reply in report:',
+  report_reply_you_have_new_reply_in_report: 'You have a new reply in security observation:',
 
   // Mood form
   your_mood: 'Your mood',
@@ -652,7 +652,7 @@ export default {
   // user feedback
   send_new_feedback: 'Send new feedback',
   your_feedbacks: 'Your feedbacks',
-  send_feedback: 'Send feedback',
+  send_feedback: 'Thank you for the work! We hope you will give feedback and development ideas to the agency and the workplace.',
   feedback_title: 'Title',
   feedback_message: 'Message',
   feedback_recipient: 'Recipient',
@@ -743,7 +743,7 @@ export default {
   quite_happy: 'Quite happy',
 
   // Agency home
-  received_reports: 'Latest received reports',
+  received_reports: 'Latest received security observations',
   latest_joined_workers: 'Latest joined workers',
 
   // business contracts
@@ -763,8 +763,8 @@ export default {
   Information: 'Information',
   BusinessContracts: 'Business contracts',
   Jobs: 'Jobs',
-  Reports: 'Reports',
-  Report: 'Report',
+  Reports: 'Security observations',
+  Report: 'Security observation',
   Feedback: 'Feedback',
   Details: 'Details',
   Profile: 'Profile',
@@ -880,7 +880,11 @@ export default {
       "For the first few days, the employee should be assigned a work partner or another person who will constantly guide the employee's performance and help if necessary.",
       'Ensures that the temporary worker is treated in the same way as a permanent worker.',
       'The employee reports all accidents, near misses, violence and threats, and gives feedback related to other occupational safety (possible deficiencies or problems related to occupational safety and safety initiatives).'
-    ]
+    ],
+
+    //feelings
+    work_feel: 'How is the work going?',
+    tell_more: 'Tell more!',
                     
 
 }

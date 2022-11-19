@@ -18,7 +18,7 @@ import CircleTwoToneIcon from '@mui/icons-material/CircleTwoTone'
 import MoodIcon from '@mui/icons-material/Mood'
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
 import ExitToAppIcon from '@mui/icons-material/ExitToApp'
-import { PersonAdd, Security } from '@mui/icons-material'
+import { OpenInNew, PersonAdd, Security } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
 import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined'
 import { logout } from '../../actions/userActions'
@@ -65,6 +65,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
    const handleClick = () => {
      if(isMobile) { setOpen(false) }
    }
+   
 
   const [openNest, setOpenNest] = useState(false)
 
@@ -364,11 +365,12 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               <Divider />
             </>
           )}
-          <ListItemButton component={Link} to="/databank" onClick={handleClick}>
+          <ListItemButton component="a" href="/databank" target="_blank" onClick={handleClick}>
             <ListItemIcon>
               <Security sx={{ color: iconColor.base }} />
             </ListItemIcon>
             <ListItemText primary={t('databank')} />
+            <OpenInNew></OpenInNew>
           </ListItemButton>
           <Divider />
         </List>

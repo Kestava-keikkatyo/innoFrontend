@@ -25,12 +25,12 @@ const WorkerHome = () => {
       </div>
       <div className={classes.pageContent}>
         <div className={classes.contentContainer}>
-            <div className={classes.feelingAnalysis}>
+            {/* <div className={classes.feelingAnalysis}>
               <div>
                 <Typography color="primary" className={classes.title} align="center" variant="h6">{t('emotions_summary')}</Typography>
               </div>
              <WorkerPieChart/>
-            </div>
+            </div> */}
             <div className={classes.latestJobAds}>
             <LatestJobAds />
             </div>
