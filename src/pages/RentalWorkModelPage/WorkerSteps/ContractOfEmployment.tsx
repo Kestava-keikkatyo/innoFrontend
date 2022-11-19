@@ -183,6 +183,64 @@ const ContractOfEmployment = () => {
             <FormikTextField className={classes.textField} label={t('orientated')} name={'orientated'} type={'text'}></FormikTextField>
           </Box>
           {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="primary" className={classes.submitButton}>{t('submit')}</Button>}
+
+          <h2 className={classes.center}>{t('form5Header')}</h2>
+          <p className={classes.p}>{t('form5Text1')}</p>
+          <h3>{t('form5Text2')}</h3>
+          <Box display="flex" flexDirection="column">
+            <h4>{t('serviceCompany')}:</h4>
+            <FormikTextField label={t('serviceCompany')} name={'serviceCompany'} type={'text'}></FormikTextField>
+            <h4>{t('orientator')}:</h4>
+            <FormikTextField label={t('orientator')} name={'orientator'} type={'text'}></FormikTextField>
+            <h4>{t('worker')}:</h4>
+            <FormikTextField label={t('worker')} name={'worker'} type={'text'}></FormikTextField>
+            <h4>{t('date')}:</h4>
+            <FormikTextField label={''} name={'date2'} type={'date'}></FormikTextField>
+            <h4>{t('form2Check4')}:</h4>
+            <FormikTextField label={t('form2Check4')} name={'requiredSkills'} type={'text'}></FormikTextField>
+            <h4>{t('form2Check5')}:</h4>
+            <FormikTextField label={t('form2Check5')} name={'protectiveEquipment'} type={'text'}></FormikTextField>
+            <h4>{t('form5Text3')}:</h4>
+            <FormikTextField label={t('form5Text3')} name={'safetyAndRisks'} type={'text'}></FormikTextField>
+            <h4>{t('form5Text4')}:</h4>
+            <FormikTextField label={t('form5Text4')} name={'contact1'} type={'text'}></FormikTextField>
+            <h4>{t('form5Text5')}:</h4>
+            <FormikTextField label={t('form5Text5')} name={'addressAndInstructions'} type={'text'}></FormikTextField>
+            <h4>{t('form5Text6')}:</h4>
+            <FormikTextField label={t('form5Text6')} name={'contact2'} type={'text'}></FormikTextField>
+          </Box>
+          <h3>{t('form5Text7')}</h3>
+          <Box display="flex" flexDirection="column">
+            <h4>{t('userCompanyName')}:</h4>
+            <FormikTextField label={t('userCompanyName')} name={'userCompanyName'} type={'text'}></FormikTextField>
+            <h4>{t('jobAdvisor')}:</h4>
+            <FormikTextField label={t('jobAdvisor')} name={'jobAdvisor'} type={'text'}></FormikTextField>
+            <h4>{t('worker')}:</h4>
+            <FormikTextField label={t('worker')} name={'worker2'} type={'text'}></FormikTextField>
+            <h4>{t('form3Check1')}:</h4>
+            <FormikTextField label={t('form3Check1')} name={'workDuties'} type={'text'}></FormikTextField>
+            <h4>{t('form3Check2')}:</h4>
+            <FormikTextField label={t('form3Check2')} name={'harmfulAndDangerous'} type={'text'}></FormikTextField>
+            <h4>{t('form3Check3')}:</h4>
+            <FormikTextField label={t('form3Check3')} name={'hoursAndBreaks'} type={'text'}></FormikTextField>
+            <h4>{t('form5Text8')}:</h4>
+            <FormikTextField label={t('form5Text8')} name={'equipment'} type={'text'}></FormikTextField>
+            <h4>{t('form3Check6')}:</h4>
+            <FormikTextField label={t('form3Check6')} name={'accidents'} type={'text'}></FormikTextField>
+            <h4>{t('form3Check8')}:</h4>
+            <FormikTextField label={t('form3Check8')} name={'firstAidCabinets'} type={'text'}></FormikTextField>
+            <h4>{t('form3Check9')}:</h4>
+            <FormikTextField label={t('form3Check9')} name={'facilities'} type={'text'}></FormikTextField>
+            <h4>{t('form3Check10')}:</h4>
+            <FormikTextField label={t('form3Check10')} name={'specials'} type={'text'}></FormikTextField>
+            <h4>{t('form3Check12')}:</h4>
+            <FormikTextField label={t('form3Check12')} name={'informationPractices'} type={'text'}></FormikTextField>
+            <h4>{t('form3Check14')}:</h4>
+            <FormikTextField label={t('form3Check14')} name={'licensing'} type={'text'}></FormikTextField>
+            <h4>{t('form3Check16')}:</h4>
+            <FormikTextField label={t('form3Check16')} name={'askHelp'} type={'text'}></FormikTextField>
+          </Box>
+          {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="primary" className={classes.submitButton}>{t('submit')}</Button>}
         </Form>
       </Formik>
     </div>,
