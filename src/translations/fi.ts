@@ -2,9 +2,9 @@ export default {
   // home page
   information: 'Informaatio',
   how_do_you_feel_today: 'Miten voit tänään?',
-  thank_you: 'Fiilisi on vastaanotettu!',
+  thank_you: 'Kiitos kommentistasi!',
   home: 'Etusivu',
-  thank_you_for_feedback: 'Kiitos palautteestasi!',
+  thank_you_for_feedback: 'Kehitämme toimintaamme kommenttien perusteella.',
   write_a_comment: 'Kirjoita kommentti',
   workers_responsibility: 'Työntekijän vastuu',
   worker_responsibilities_read: 'Työntekijä on lukenut ja ymmärtänyt vastuunsa',
@@ -63,7 +63,7 @@ export default {
   back: 'takaisin',
   next: 'seuraava',
   finish: 'lähetä',
-  reset: 'resetoi',
+  reset: 'Palaa alkuun',
   upload_file: 'Liitä tiedosto',
   entry: 'Lisää',
   history: 'Historia',
@@ -101,22 +101,22 @@ export default {
   mood_stats: 'Fiilistilastot',
 
   // Report form
-  report_handler: 'Raportti',
+  report_handler: 'Turvallisuushavainto',
   report_time: 'Tapahtuma-aika',
   report_details: 'Lisätiedot',
-  steps_completed: 'Valmista',
-  reports: 'Raportit',
-  report: 'Raportti',
-  report_no_recipient: 'Sinun täytyy valita raportin vastaanottaja.',
+  steps_completed: 'Kiitos ilmoituksestasi',
+  reports: 'Turvallisuushavainto',
+  report: 'Turvallisuushavainto',
+  report_no_recipient: 'Sinun täytyy valita havainnon vastaanottaja.',
   report_title_required: 'Otsikko on pakollinen.',
-  report_details_required: 'Raportin yksityiskohdat ovat pakolliset.',
-  report_new_report: 'Uusi raportti',
-  report_back_to_reports: 'Takaisin raportteihin',
+  report_details_required: 'Havainnon yksityiskohdat ovat pakolliset.',
+  report_new_report: 'Uusi turvallisuushavainto',
+  report_back_to_reports: 'Takaisin turvallisuushavaintoihin',
 
   // Report step one
-  select_report_handler: 'Valitse raportin vastaanottaja',
+  select_report_handler: 'Valitse havainnon vastaanottaja',
   select_report_helper_text:
-    'Voit valita HP-yrityksen ja/tai käyttäjäyrityksen vastaanottamaan raportin.',
+    'Voit valita HP-yrityksen ja/tai käyttäjäyrityksen vastaanottamaan havainnon.',
   select_report_handler_clear: 'Tyhjennä',
   // Report step two
   happened: 'Milloin tämä tapahtui?',
@@ -129,12 +129,12 @@ export default {
   // Report step three
   fill_details: 'Kirjoita lisätiedot',
   fill_work_title: 'Tehtävänimike',
-  fill_report_title: 'Raportin otsikko',
-  fill_report_details: 'Raportin yksityiskohdat',
+  fill_report_title: 'Turvallisuushavainnon aihe esim. Liukas lattia, ovi ei lukitu.',
+  fill_report_details: 'Mitä tapahtui? Oliko henkilöitä vaarassa? Esim. Liukastuin jäisellä parkkipaikalla',
 
   // Reports page
-  reports_not_found: 'Raportteja ei löytynyt.',
-  reports_you_have_no_reports: 'Et ole tehnyt yhtään raporttia.',
+  reports_not_found: 'Turvallisuushavaintoja ei löytynyt.',
+  reports_you_have_no_reports: 'Et ole tehnyt yhtään turvallisuushavaintoa.',
   report_title: 'Otsikko',
   report_worker_info: 'Työntekijän tiedot',
   report_receiver_info: 'Vastaanottajan tiedot',
@@ -150,8 +150,8 @@ export default {
   report_display_not_archived: 'Ei arkistoidut',
   report_display_label: 'Näytä',
   report_sort_label: 'Järjestä',
-  report_sort_date_created_new_to_old: 'Raportointipäivän mukaan',
-  report_sort_date_created_new_to_old_reverse: 'Raportointipäivän mukaan, käänteinen',
+  report_sort_date_created_new_to_old: 'Havaintopäivän mukaan',
+  report_sort_date_created_new_to_old_reverse: 'Havaintopäivän mukaan, käänteinen',
   report_sort_date_happened_new_to_old: 'Tapahtumapäivän mukaan',
   report_sort_date_happened_new_to_old_reverse: 'Tapahtumapäivän mukaan, käänteinen',
   report_sort_title: 'Otsikon mukaan',
@@ -159,20 +159,20 @@ export default {
   report_sort_replied: 'Vastauksen mukaan',
   report_sort_replied_reverse: 'Vastauksen mukaan, käänteinen',
   report_is_archived: 'Arkistoitu',
-  report_is_archived_alert: 'Raportti arkistoitu',
-  report_is_unarchived_alert: 'Raportti palautettu arkistosta',
+  report_is_archived_alert: 'Turvallisuushavainto arkistoitu',
+  report_is_unarchived_alert: 'Turvallisuushavainto palautettu arkistosta',
   report_archive: 'Arkistoi',
   report_unarchive: 'Palauta arkistosta',
   report_time_reported: 'Raportoitu',
   report_time_happened: 'Tapahtunut',
 
   // ReportReply page
-  report_reply_title: 'Vastaus raporttiin',
+  report_reply_title: 'Vastaus turvallisuushavaintoon',
   report_reply_answer: 'Vastaus',
   report_reply_send: 'Lähetä',
   report_reply_sent_alert: 'Vastaus lähetetty',
   report_reply_reply_missing: 'Vastaus puuttuu!',
-  report_reply_you_have_new_reply_in_report: 'Sinulle on uusi vastaus raportissa:',
+  report_reply_you_have_new_reply_in_report: 'Sinulle on uusi vastaus turvallisuushavainnossa:',
 
   // Mood form
   your_mood: 'Fiiliksesi',
@@ -307,7 +307,7 @@ export default {
   worker_order: 'Työntekijän tilaus ja valinta',
   contract_of_employment: 'Työsopimus ja yleisperehdytys',
   guidance_to_work: 'Opastus työhön ja työoloihin',
-  work_performance: 'Työsuoritus ja valvonta',
+  work_performance: 'Työsuoritus, valvonta ja palaute',
   feedback_evaluation: 'Palaute ja toiminnan arviointi',
 
   // profilePage
@@ -645,7 +645,7 @@ export default {
   // user feedback
   send_new_feedback: 'Lähetä uutta palautetta',
   your_feedbacks: 'Sinun palautteesi',
-  send_feedback: 'Lähetä palautetta',
+  send_feedback: 'Kiitos keikasta! Toivomme sinun antavan palautetta ja kehittämisideoita henkilöstöpalveluyritykselle ja työpaikalle.',
   feedback_title: 'Otsikko',
   feedback_message: 'Viesti',
   feedback_recipient: 'Vastaanottaja',
@@ -756,8 +756,8 @@ export default {
   Information: 'Tiedot',
   BusinessContracts: 'Yrityssopimukset',
   Jobs: 'Työpaikat',
-  Reports: 'Raportit',
-  Report: 'Raportti',
+  Reports: 'Turvallisuushavainnot',
+  Report: 'Turvallisuushavainto',
   Feedback: 'Palaute',
   Details: 'Lisätiedot',
   Profile: 'Profiili',
@@ -781,15 +781,17 @@ export default {
   WorkPerformance: 'Työsuoritus ja valvonta',
   FeedbackEvaluation: 'Palaute ja toiminnan arviointi',
 
-  //Responsibilities
+  // Responsibilities
   CustomerContractResponsibilities: '1. Jaettu työsuojeluvastuu (käyttäjäyrityksen kanssa) \n\n 2.Yleisvastuu työturvallisuudesta (tämän alle keskeiset vaatimukset, mm. Työn vaarojen selvittäminen ja arviointi Työsuojelun toimintaohjelman laatiminen Työsuojelun yhteistoiminnan järjestäminen Perehdytys (ml. yleisperehdytyksen antaminen vuokratyöntekijälle) Ilmoittaminen nuorten työntekijöiden käyttämisestä vaarallisiin töihin Vakavasta työtapaturmasta ilmoittaminen työsuojeluviranomaisille ja poliisille) Vastuu työaikalain noudattamisesta Työntekijöiden vakuuttaminen työtapaturmien ja ammattitautien varalta Työterveyshuollon järjestäminen Tasa-arvon ja yhdenvertaisuuden edistäminen  Käyttäjäyrityksen velvoitteiden täyttämisen varmistaminen Vuokratyöntekijän riittävän ammattitaidon ja työhön soveltumisen varmistaminen Tarvittavien henkilönsuojainten hankinta (yhteistyössä käyttäjäyrityksen kanssa)',
 
+  // Overview
+  loremipsum: 'FI Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam distinctio esse iure modi neque quaerat, repudiandae. Accusantium alias aut commodi debitis ea harum ipsa itaque laudantium molestiae nesciunt quis sint vel velit, vitae voluptatibus! Commodi dicta dolorum eaque earum esse est facere fugit iste labore magnam, minus, neque nobis!',
 
-  //good practices
+  // good practices
   checkAll: 'Merkkaa kaikki luetuksi',
   readAndUnderstood: 'Luettu ja ymmärretty',
 
-  //step1
+  // step1
   good_practices_customer_contract_array: [
     'Henkilöstöpalveluyritys ja käyttäjäyritys käyvät yhdessä läpi lainsäädäntöön perustuvan vastuunjaon.',
     'Henkilöstöpalveluyritys ja käyttäjäyritys sopivat vuokratyöntekijän perehdytyksestä ja työnopastuksesta.',
@@ -801,12 +803,12 @@ export default {
     'Vierailukäyntiin voidaan yhdistää myös vaarojen kartoittamisen ja riskien arvioinnin, jotka voidaan tehdään yhdessä käyttäjäyrityksen edustajan kanssa.',
     'Vaarojen tunnistamisessa ja riskien arvioinnissa on hyvä olla mukana myös työsuojeluvaltuutettu.'
   ],
-  //step2
+  // step2
   good_practices_order_and_selection_of_the_employee_array: [
     'Käyttäjäyritys voi osallistua myös itse vuokratyöntekijän valintaan ja esimerkiksi haastatella parhaita ehdokkaita. ',
     'Uusille tai kokemattomammille vuokratyöntekijöille voidaan tarjota ensin helpompia työtehtäviä, jolloin vuokratyöntekijät saavat kokemusta ja käyttäjäyrityksessä voidaan tutustua vuokratyöntekijään.'
   ],
-  //step3
+  // step3
   good_practices_employment_contract_and_general_orientation_array: [
     'Työsopimus kannattaa tehdä aina kirjallisena. ',
     'Yleisperehdytys annetaan kasvotusten työntekijän kanssa. ',
@@ -816,21 +818,18 @@ export default {
     'Yhteisen kielen puuttuessa perehdytyksessä kannattaa hyödyntää videoita, kuvia ja selkokieltä.',
     'Henkilöstöpalveluyritys voi tarjota vuokratyöntekijöilleen esimerkiksi työturvallisuus- tai työhyvinvointikorttikoulutuksen tai muun vaadittavan työturvallisuuskoulutuksen. '
   ],
-  //step4
+  // step4
   good_practices_guidance_on_work_and_working_conditions_array: [
     'Käyttäjäyrityksen on tärkeää huolehtia siitä, että vuokratyöntekijä tuntee olonsa tervetulleeksi ja yhdenvertaiseksi muiden työntekijöiden kanssa. ',
     'Alussa on hyvä käydä läpi yleisiä työhön ja työpaikkaan liittyviä asioita. Sen jälkeen tehdään työpaikkakierros, joka sisältää työtiloihin, työtehtäviin ja henkilöstöön tutustumisen. Samalla opastetaan poistumistiet, sammuttimien ja ensiaputarvikkeiden sijainti sekä turvallisuuteen liittyvät asiat. ',
-    'Työnopastuksessa voi hyödyntää kokeneita, työturvallisuusasioissa esimerkillisesti toimivia työntekijöitä.', 
+    'Työnopastuksessa voi hyödyntää kokeneita, työturvallisuusasioissa esimerkillisesti toimivia työntekijöitä.',
     'Työntekijän oppiminen kannattaa varmistaa esimerkiksi kysymyksillä, keskusteluilla ja käytännön havainnoinnilla. Tukena voi käyttää myös kirjallisessa muodossa annettavia ohjeita. ',
     'Työn tekemisen paikka voi olla kaikille vuokratyön osapuolille ennestään tuntematon. Näissäkin tilanteissa vuokratyöntekijälle tulee varmistaa riittävä opastus työhön ja työoloihin. '
   ],
-  //step5  
-  good_practices_work_performance_and_supervision_array: [
+  // step5
+  good_practices_work_performance_supervision_and_feedback_array: [
     'Perehdytyksen ja työnopastuksen jälkeen vuokratyöntekijä aloittaa varsinaiset työtehtävät. Hyvä käytäntö on nimetä vuokratyöntekijälle ensimmäisiksi päiviksi työpari tai mentori. ',
-    'Vuokratyöntekijät on hyvä ottaa mukaan kaikkiin olennaisiin koulutus- ja tiedotustilaisuuksiin. '
-  ],
-  //step6
-  good_practices_feedback_and_erformance_evaluation_array: [
+    'Vuokratyöntekijät on hyvä ottaa mukaan kaikkiin olennaisiin koulutus- ja tiedotustilaisuuksiin. ',
     'Palautetta hyödynnetään osaamisen ja toiminnan kehittämisessä. ',
     'Henkilöstöpalveluyrityksen on hyvä olla yhteydessä jokaiseen vuokratyöntekijään ensimmäisen työviikon aikana ja varmistaa onnistunut töiden aloitus ja riittävä perehdytys. ',
     'On tärkeää tarjota kaikille osapuolille mahdollisuus jatkuvaan palautteen antoon. ',
@@ -964,5 +963,45 @@ export default {
   jobAdvisor: 'Työnopastaja',
   userCompanyName: 'Käyttäjäyrityksen nimi',
   serviceCompany: 'Henkilöstöpalveluyrityksen nimi',
+
+  // Worker responsibilities
+  worker_step_1: [
+    'Työnantajan ohjeiden ja määräysten noudattaminen',
+    'Omasta ja työkavereiden turvallisuudesta huolehtiminen',
+    'Häirinnän ja epäasiallisen kohtelun välttäminen',
+    'Työvälineiden, henkilönsuojainten ja turvalaitteiden asianmukainen käyttö',
+    'Havaitsemistaan vioista ja puutteista ilmoittaminen'
+  ],
+
+  worker_step_2: [
+    'Työntekijöiltä edellytettävä koulutus ja työkokemus sekä työn ammattitaitovaatimukset',
+    'Työn erityispiirteet, työssä esiintyvät haitta- ja vaaratekijät sekä muut työympäristössä erityistä huomiota vaativat asiat (esim. terveydentilavaatimukset)',
+    'Työtehtävissä tarvittavat henkilönsuojaimet ja turvalaitteet'
+  ],
+
+  worker_step_3: [
+    'Noudattaa työnantajan antamia ohjeita ja määräyksiä',
+    'Huolehtia omasta ja muiden työntekijöiden turvallisuudesta käytettävissä olevin keinoin',
+    'Olla kohdistamatta häirintää tai epäasiallista kohtelua muihin työntekijöihin',
+    'Käyttää ja hoitaa työssä tarvittavia henkilönsuojaimia ja apuvälineitä',
+    'Viipymättä ilmoittaa viasta tai puutteesta (omalle esimiehelle tai työsuojeluvaltuutetulle), jos se voi aiheuttaa joko omalle tai työnkaverin turvallisuudelle/terveydelle haittaa tai vaaraa',
+    'Korjata edellä mainittu havaitsemansa vika, mikäli oma kokemus tai ammattitaito riittää',
+    'Olla poistamatta turva- tai suojalaitetta käytöstä'
+  ],
+
+  worker_step_4: [
+    'Työntekijän tulee varmistaa, että käyttäjäyritys antaa tarpeeksi hyvän opastuksen työhön ja työoloihin.',
+    'Varmistaa, että annetaan riittävät tiedot suoriutua turvallisesti annetuista työtehtävistä.'
+  ],
+  
+  worker_step_5: [
+    'Työntekijälle tulee nimetä ensimmäisiksi päiviksi työpari tai muu henkilö, joka ohjaa jatkuvasti työntekijän suoriutumista ja auttaa tarvittaessa.',
+    'Varmistaa, että vuokratyöntekijää kohdellaan samalla tavalla kuin vakituisiakin työntekijöitä.',
+    'Työntekijä ilmoittaa kaikista työtapaturmista, onnettomuustilanteista, läheltä piti- tilanteista, väkivalta- ja uhkatilanteista, sekä antaa muuhun työturvallisuuteen liittyvää palautetta (mahdolliset työturvallisuuteen liittyvät puutteet tai ongelmat sekä turvallisuusaloitteet).'
+  ],
+
+  // feelings
+  work_feel: 'Miten työt sujuvat?',
+  tell_more: 'Kerro lisää!',
 }
 

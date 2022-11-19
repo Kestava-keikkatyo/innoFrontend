@@ -12,8 +12,7 @@ export interface RentalWorkModelSteps {
     'ordering-employee' |
     'contract-of-employment' |
     'guidance-to-work' |
-    'work-performance' |
-    'feedback-evaluation'
+    'work-performance' 
 }
 
 const RentalWorkModelPage = ({ path }: RentalWorkModelSteps) => {

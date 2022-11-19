@@ -1,48 +1,26 @@
-import {
-  List,
-  ListItem,
-  ListItemText,
-  Container,
-} from '@mui/material';
+import { Container } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import WorkerStepBase from './WorkerStepBase';
 import Typography from '@mui/material/Typography';
 import makeStyles from '@mui/styles/makeStyles';
 import { Theme } from '@mui/material/styles';
-import i18next from 'i18next';
-import vastuualueet from '../../../assets/tietopankki/vastuualueet.json';
-import vastuualueet_en from '../../../assets/tietopankki/vastuualueet_en.json';
-import ContractOfEmploymentGP from './GoodPractices/ContractOfEmploymentGP';
-import ContractOfEmploymentForm from "./Forms/ContractOfEmploymentForm";
-
+import ContractOfEmploymentForm from './Forms/ContractOfEmploymentForm';
+import SearchFromFileComponent from './SearchFromFileComponent';
 
 const ContractOfEmployment = () => {
   const { t } = useTranslation();
-  let Vastuualueet = vastuualueet;
-  if(i18next.language == 'en') {
-    Vastuualueet = vastuualueet_en;
-  } else {
-    Vastuualueet = vastuualueet;
-  }
   const classes = useStyles();
 
   const tabContent = [
     <div key="tab0">
-        <List id="modal-modal-description">
-                    {/* Yhtenäiset vastuut lista */}
-                    {Vastuualueet.vastuualueet_worker3.map((e, i) => (
-                      <ListItem key={i} divider>
-                        <ListItemText primary={`${i + 1}. ${e.tip}`} />
-                      </ListItem>
-                    ))}
-                  </List>
+ <SearchFromFileComponent inputString="worker_step_3" />
     </div>,
     <div key="tab1">
       <ContractOfEmploymentForm/>
     </div>,
     <div key="tab2">
-      <ContractOfEmploymentGP/>
+       <SearchFromFileComponent inputString="good_practices_employment_contract_and_general_orientation_array" />
     </div>
   ]
 

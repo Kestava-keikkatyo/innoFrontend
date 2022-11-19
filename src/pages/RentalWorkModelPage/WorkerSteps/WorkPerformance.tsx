@@ -1,47 +1,26 @@
-import {
-  List,
-  ListItem,
-  ListItemText,
-  Container,
-} from '@mui/material';
+import { Container } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import WorkerStepBase from './WorkerStepBase';
 import Typography from '@mui/material/Typography';
 import makeStyles from '@mui/styles/makeStyles';
 import { Theme } from '@mui/material/styles';
-import i18next from 'i18next';
-import vastuualueet from '../../../assets/tietopankki/vastuualueet.json';
-import vastuualueet_en from '../../../assets/tietopankki/vastuualueet_en.json';
-import WorkPerformanceGP from './GoodPractices/WorkPerformanceGP';
-import WorkPerformanceForm from "./Forms/WorkPerformanceForm";
+import WorkPerformanceForm from './Forms/WorkPerformanceForm';
+import SearchFromFileComponent from './SearchFromFileComponent';
 
 const WorkPerformance = () => {
   const { t } = useTranslation();
-  let Vastuualueet = vastuualueet;
-  if(i18next.language == 'en') {
-    Vastuualueet = vastuualueet_en;
-  } else {
-    Vastuualueet = vastuualueet;
-  }
   const classes = useStyles();
 
   const tabContent = [
     <div key="tab0">
-      <List id="modal-modal-description">
-                    {/* Yhtenäiset vastuut lista */}
-                    {Vastuualueet.vastuualueet_worker5.map((e, i) => (
-                      <ListItem key={i} divider>
-                        <ListItemText primary={`${i + 1}. ${e.tip}`} />
-                      </ListItem>
-                    ))}
-                  </List>
+      <SearchFromFileComponent inputString="worker_step_5" />
     </div>,
     <div key="tab1">
       <WorkPerformanceForm/>
     </div>,
     <div key="tab2">
-      <WorkPerformanceGP/>
+       <SearchFromFileComponent inputString="good_practices_work_performance_supervision_and_feedback_array" />
     </div>
   ]
 

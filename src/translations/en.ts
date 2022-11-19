@@ -2,9 +2,9 @@ export default {
   // home page
   information: 'Information',
   how_do_you_feel_today: 'How do you feel today?',
-  thank_you: 'Feeling received!',
+  thank_you: 'Thank you for your comment!',
   home: 'Home',
-  thank_you_for_feedback: 'Thank you for your feedback!',
+  thank_you_for_feedback: 'We develop our operations based on comments.',
   write_a_comment: 'Write a comment',
   workers_responsibility: "Worker's responsibility",
   worker_responsibilities_read: 'Worker has read and understood his/her responsibilities.',
@@ -64,7 +64,7 @@ export default {
   back: 'back',
   next: 'next',
   finish: 'Send',
-  reset: 'Reset',
+  reset: 'Return to start',
   upload_file: 'Upload file',
   entry: 'New entry',
   history: 'History',
@@ -102,22 +102,22 @@ export default {
   mood_stats: 'Feeling stats',
 
   // Report form
-  report_handler: 'Reports',
-  report_time: 'Report time',
+  report_handler: 'Security observations',
+  report_time: 'Observation time',
   report_details: 'Details',
-  steps_completed: 'Steps are completed - you are finished',
-  reports: 'Reports',
-  report: 'Report',
-  report_no_recipient: 'You need to select report handler.',
-  report_title_required: 'Report title is required',
-  report_details_required: 'Report details are required',
-  report_new_report: 'New Report',
-  report_back_to_reports: 'Back to reports',
+  steps_completed: 'Thank you for your notice',
+  reports: 'Security observations',
+  report: 'Security observation',
+  report_no_recipient: 'You need to select observation handler.',
+  report_title_required: 'Observation title is required',
+  report_details_required: 'Observation details are required',
+  report_new_report: 'New observation',
+  report_back_to_reports: 'Back to observations',
 
   // Report step one
-  select_report_handler: 'Select report handler',
+  select_report_handler: 'Select observation handler',
   select_report_helper_text:
-    'You can choose both Business and Agency or one of them as a report handler',
+    'You can choose both Business and Agency or one of them as an observation handler',
   select_report_handler_clear: 'Clear',
   // Report step two
   happened: 'When did this happen?',
@@ -130,13 +130,13 @@ export default {
   // Report step three
   fill_details: 'Fill in details',
   fill_work_title: 'Fill work title',
-  fill_report_title: 'Fill report title',
-  fill_report_details: 'Fill report details',
+  fill_report_title: 'The subject of a security observation, e.g. slippery floor, door not locked.',
+  fill_report_details: 'What happened? Were there persons in danger? For example, I slipped in an icy parking lot',
 
   // Reports page
-  reports_not_found: 'No reports found.',
-  reports_you_have_no_reports: 'You have not made any reports.',
-  report_title: 'Report title',
+  reports_not_found: 'No observations found.',
+  reports_you_have_no_reports: 'You have not made any observations.',
+  report_title: 'Observation title',
   report_worker_info: 'Worker info',
   report_receiver_info: 'Recipient info',
   report_receiver_info_plural: 'Recipients info',
@@ -151,8 +151,8 @@ export default {
   report_display_not_archived: 'Not archived',
   report_display_label: 'Display',
   report_sort_label: 'Sort',
-  report_sort_date_created_new_to_old: 'By reporting date',
-  report_sort_date_created_new_to_old_reverse: 'By reporting date, reversed',
+  report_sort_date_created_new_to_old: 'By observation date',
+  report_sort_date_created_new_to_old_reverse: 'By observation date, reversed',
   report_sort_date_happened_new_to_old: 'By date happened',
   report_sort_date_happened_new_to_old_reverse: 'By date happened, reversed',
   report_sort_title: 'By title',
@@ -168,12 +168,12 @@ export default {
   report_time_happened: 'Time when happened',
 
   // ReportReply page
-  report_reply_title: 'Reply to report',
+  report_reply_title: 'Reply to observation',
   report_reply_answer: 'Reply',
   report_reply_send: 'Send',
   report_reply_sent_alert: 'Reply sent',
   report_reply_reply_missing: 'Reply missing!',
-  report_reply_you_have_new_reply_in_report: 'You have a new reply in report:',
+  report_reply_you_have_new_reply_in_report: 'You have a new reply in security observation:',
 
   // Mood form
   your_mood: 'Your mood',
@@ -311,7 +311,7 @@ export default {
   worker_order: 'Ordering of a employee',
   contract_of_employment: 'Contract of employment and general orientation',
   guidance_to_work: 'Guidance to work and working environment',
-  work_performance: 'Work performance and supervision',
+  work_performance: 'Work performance, supervision and feedback',
   feedback_evaluation: 'Feedback and evaluation',
 
   // profilePage
@@ -652,7 +652,7 @@ export default {
   // user feedback
   send_new_feedback: 'Send new feedback',
   your_feedbacks: 'Your feedbacks',
-  send_feedback: 'Send feedback',
+  send_feedback: 'Thank you for the work! We hope you will give feedback and development ideas to the agency and the workplace.',
   feedback_title: 'Title',
   feedback_message: 'Message',
   feedback_recipient: 'Recipient',
@@ -743,7 +743,7 @@ export default {
   quite_happy: 'Quite happy',
 
   // Agency home
-  received_reports: 'Latest received reports',
+  received_reports: 'Latest received security observations',
   latest_joined_workers: 'Latest joined workers',
 
   // business contracts
@@ -763,8 +763,8 @@ export default {
   Information: 'Information',
   BusinessContracts: 'Business contracts',
   Jobs: 'Jobs',
-  Reports: 'Reports',
-  Report: 'Report',
+  Reports: 'Security observations',
+  Report: 'Security observation',
   Feedback: 'Feedback',
   Details: 'Details',
   Profile: 'Profile',
@@ -788,14 +788,17 @@ export default {
   WorkPerformance: 'Work performance and supervision',
   FeedbackEvaluation: 'Feedback and evaluation',
 
-  //Responsibilities
+  // Responsibilities
   CustomerContractResponsibilities: '',
 
-   //good practices
-   checkAll: 'Check all',
-   readAndUnderstood: 'Read and understood',
+  // Overview
+  loremipsum: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam distinctio esse iure modi neque quaerat, repudiandae. Accusantium alias aut commodi debitis ea harum ipsa itaque laudantium molestiae nesciunt quis sint vel velit, vitae voluptatibus! Commodi dicta dolorum eaque earum esse est facere fugit iste labore magnam, minus, neque nobis!',
 
-   //step1
+  // good practices
+  checkAll: 'Mark all read',
+  readAndUnderstood: 'Read and understood',
+
+  // step1
   good_practices_customer_contract_array: [
     'The personnel service company and the user company go through the division of responsibilities based on legislation together.',
     'The personnel service company and the user company agree on the orientation and job guidance of the temporary worker.',
@@ -807,12 +810,12 @@ export default {
     'The visit can also be combined with hazard mapping and risk assessment, which can be done together with a representative of the user company.',
     'It is good to have the occupational health and safety commissioner involved in identifying hazards and assessing risks.'
   ],
-  //step2
+  // step2
   good_practices_order_and_selection_of_the_employee_array: [
     'The user company can also participate in the selection of the temporary worker itself and, for example, interview the best candidates. ',
     'New or inexperienced temporary workers can be offered easier tasks first, so that the temporary workers gain experience and the user company can get to know the temporary worker.'
   ],
-  //step3
+  // step3
   good_practices_employment_contract_and_general_orientation_array: [
     'The employment contract should always be in writing. ',
     'General orientation is given face-to-face with the employee. ',
@@ -821,30 +824,26 @@ export default {
     'If it is known in advance that urgent recruitments are likely, orientation can be anticipated by giving the necessary orientation in advance. However, the general orientation provided by the personnel service company alone is not enough, the user company must also provide orientation related to work and working conditions. ',
     'In the absence of a common language, it is worth using videos, pictures and plain language in the orientation. ',
     'A personnel service company can offer its temporary employees, for example, occupational safety or occupational welfare card training or other required occupational safety training. '
-    ],
-  //step4
+  ],
+  // step4
   good_practices_guidance_on_work_and_working_conditions_array: [
     'It is important for the user company to ensure that the temporary employee feels welcome and equal to other employees. ',
     "In the beginning, it's good to go through general issues related to work and the workplace. After that, a workplace tour is made, which includes getting to know the workplaces, tasks and personnel. At the same time, the exit routes, the location of fire extinguishers and first aid supplies, as well as safety-related issues, are provided. ",
     'You can make use of experienced employees who are exemplary in occupational safety matters.',
     'Employee learning should be ensured with, for example, questions, discussions and practical observations. Instructions given in written form can also be used as support. ',
     'The place where the work is done may be previously unknown to all parties involved in the temporary work. Even in these situations, the temporary worker must be provided with adequate guidance on the work and working conditions. '
-    ],
-  //step5
-  good_practices_work_performance_and_supervision_array: [
+  ],
+  // step5
+  good_practices_work_performance_supervision_and_feedback_array: [
     'After the orientation and job guidance, the agency worker starts the actual work tasks. It is a good practice to appoint a work partner or mentor for the temporary employee for the first few days. ',
-    'It is a good idea to include agency workers in all essential training and information events. '
-    ],
-  //step6
-  good_practices_feedback_and_erformance_evaluation_array: [
+    'It is a good idea to include agency workers in all essential training and information events. ',
     'The feedback is utilized in the development of competence and operations. ',
     'It is a good idea for a personnel service company to be in contact with every temporary worker during the first week of work and ensure a successful start of work and adequate orientation. ',
     'It is important to offer all parties the opportunity to give continuous feedback. ',
     'It is good to systematically evaluate the operation together, at least at the end of the customership. ',
     'A personnel service company should collect feedback on the flow of work from both the agency worker and the user company.',
     'A representative of a personnel service company can participate in meetings dealing with occupational safety and well-being of the user company.'
-    ],
-
+  ],
   // Rental work model Forms
 
   // Frequently used
@@ -970,4 +969,43 @@ export default {
   jobAdvisor: 'Job advisor',
   userCompanyName: 'User company name',
   serviceCompany: 'The name of the personnel service company',
+    // Worker responsibilities
+    worker_step_1: [
+      "Compliance with the employer's instructions and regulations",
+      'Taking care of your own safety and that of your colleagues',
+      'Avoiding harassment and inappropriate treatment',
+      'Appropriate use of work tools, personal protective equipment and safety devices',
+      'Report of detected defects and deficiencies'
+    ],
+
+    worker_step_2: [
+      'Training and experience expected of workers as well as the professional requirements of the job',
+      'Special features of the work, harmful and dangerous factors occurring at work as well as other matters requiring special attention (For example health requirements)',
+      'Personal protective equipment and safety devices required for work tasks'
+    ],
+
+    worker_step_3: [
+      'Follow the instructions and regulations given by the employer',
+      'Take care of your own safety and that of other employees with the available means',
+      'Not to harass or mistreat other employees',
+      'Use and care for the personal protective equipment and aids required at work',
+      "Immediately report a defect or deficiency (to your supervisor or health and safety representative) if it may cause harm or danger to either your own or a co-worker's safety/health",
+      'To correct the above-mentioned fault that they have detected, if their own experience or expertise is sufficient',
+      'Not to disable the safety or protective devices from use'
+    ],
+
+    worker_step_4: [
+      'The employee must ensure that the user company provides good enough guidance on work and working conditions',
+      'Ensure that sufficient information is given to safely perform the given job.'
+    ],
+
+    worker_step_5: [
+      "For the first few days, the employee should be assigned a work partner or another person who will constantly guide the employee's performance and help if necessary.",
+      'Ensures that the temporary worker is treated in the same way as a permanent worker.',
+      'The employee reports all accidents, near misses, violence and threats, and gives feedback related to other occupational safety (possible deficiencies or problems related to occupational safety and safety initiatives).'
+    ],
+
+    // feelings
+    work_feel: 'How is the work going?',
+    tell_more: 'Tell more!',
 }
