@@ -63,7 +63,7 @@ export default {
   back: 'takaisin',
   next: 'seuraava',
   finish: 'lähetä',
-  reset: 'resetoi',
+  reset: 'Palaa alkuun',
   upload_file: 'Liitä tiedosto',
   entry: 'Lisää',
   history: 'Historia',
@@ -104,7 +104,7 @@ export default {
   report_handler: 'Turvallisuushavainto',
   report_time: 'Tapahtuma-aika',
   report_details: 'Lisätiedot',
-  steps_completed: 'Valmista',
+  steps_completed: 'Kiitos ilmoituksestasi',
   reports: 'Turvallisuushavainto',
   report: 'Turvallisuushavainto',
   report_no_recipient: 'Sinun täytyy valita havainnon vastaanottaja.',
@@ -129,8 +129,8 @@ export default {
   // Report step three
   fill_details: 'Kirjoita lisätiedot',
   fill_work_title: 'Tehtävänimike',
-  fill_report_title: 'Havainnon otsikko',
-  fill_report_details: 'Havainnon yksityiskohdat',
+  fill_report_title: 'Turvallisuushavainnon aihe esim. Liukas lattia, ovi ei lukitu.',
+  fill_report_details: 'Mitä tapahtui? Oliko henkilöitä vaarassa? Esim. Liukastuin jäisellä parkkipaikalla',
 
   // Reports page
   reports_not_found: 'Turvallisuushavaintoja ei löytynyt.',
@@ -645,7 +645,7 @@ export default {
   // user feedback
   send_new_feedback: 'Lähetä uutta palautetta',
   your_feedbacks: 'Sinun palautteesi',
-  send_feedback: 'Lähetä palautetta',
+  send_feedback: 'Kiitos keikasta! Toivomme sinun antavan palautetta ja kehittämisideoita henkilöstöpalveluyritykselle ja työpaikalle.',
   feedback_title: 'Otsikko',
   feedback_message: 'Viesti',
   feedback_recipient: 'Vastaanottaja',

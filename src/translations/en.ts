@@ -64,7 +64,7 @@ export default {
   back: 'back',
   next: 'next',
   finish: 'Send',
-  reset: 'Reset',
+  reset: 'Return to start',
   upload_file: 'Upload file',
   entry: 'New entry',
   history: 'History',
@@ -105,7 +105,7 @@ export default {
   report_handler: 'Security observations',
   report_time: 'Observation time',
   report_details: 'Details',
-  steps_completed: 'Steps are completed - you are finished',
+  steps_completed: 'Thank you for your notice',
   reports: 'Security observations',
   report: 'Security observation',
   report_no_recipient: 'You need to select observation handler.',
@@ -130,8 +130,8 @@ export default {
   // Report step three
   fill_details: 'Fill in details',
   fill_work_title: 'Fill work title',
-  fill_report_title: 'Fill report title',
-  fill_report_details: 'Fill report details',
+  fill_report_title: 'The subject of a security observation, e.g. slippery floor, door not locked.',
+  fill_report_details: 'What happened? Were there persons in danger? For example, I slipped in an icy parking lot',
 
   // Reports page
   reports_not_found: 'No observations found.',
@@ -652,7 +652,7 @@ export default {
   // user feedback
   send_new_feedback: 'Send new feedback',
   your_feedbacks: 'Your feedbacks',
-  send_feedback: 'Send feedback',
+  send_feedback: 'Thank you for the work! We hope you will give feedback and development ideas to the agency and the workplace.',
   feedback_title: 'Title',
   feedback_message: 'Message',
   feedback_recipient: 'Recipient',
