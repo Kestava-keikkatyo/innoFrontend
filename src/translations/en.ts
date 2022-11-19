@@ -39,7 +39,7 @@ export default {
 
   // error
   invalid_email: 'Invalid email address',
-  invalid_length: 'Length must be at least 3',
+  invalid_length: 'Length must be at least 8',
   field_required: 'Field is required',
   invalid_name: 'Invalid name',
   invalid_password: 'Password does not match',
@@ -746,7 +746,7 @@ export default {
   received_reports: 'Latest received security observations',
   latest_joined_workers: 'Latest joined workers',
 
-  //business contracts
+  // business contracts
   search_by_name: 'Search by name',
   requested_contracts: 'REQUESTED CONTRACTS',
   archived_contracts: 'ARCHIVED CONTRACTS',
@@ -757,7 +757,7 @@ export default {
   signed: 'Signed',
   pending: 'Pending',
 
-  //links
+  // links
   Fiilismittari: 'Feelings',
   Send: 'Send',
   Information: 'Information',

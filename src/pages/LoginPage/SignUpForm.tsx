@@ -79,7 +79,7 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
             if (!values.password) {
               errors.password = requiredError;
             }
-            if(values.password.length < 3){
+            if(values.password.length < 8){
               errors.password = t('invalid_length');
             }
             if (!values.name) {

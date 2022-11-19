@@ -38,7 +38,7 @@ export default {
 
   // error
   invalid_email: 'Virheellinen sähköpostiosoite',
-  invalid_length: 'pituus on oltava ainakin 3',
+  invalid_length: 'pituus on oltava ainakin 8',
   field_required: 'Pakollinen kenttä',
   invalid_name: 'Virheellinen nimi',
   invalid_password: 'Salasana ei täsmää',
@@ -739,7 +739,7 @@ export default {
   received_reports: 'Viimeisimmät raportit',
   latest_joined_workers: 'Liittyneet työntekijät',
 
-  //business contracts
+  // business contracts
   search_by_name: 'Hae nimellä',
   requested_contracts: 'PYYDETYT SOPIMUKSET',
   archived_contracts: 'ARKISTOIDUT SOPIMUKSET',
@@ -750,7 +750,7 @@ export default {
   signed: 'Allekirjoitettu',
   pending: 'Odottaa hyväksyntää',
 
-  //links
+  // links
   Fiilismittari: 'Fiilikset',
   Send: 'Lähetä',
   Information: 'Tiedot',
