@@ -147,8 +147,8 @@ const useStyles = makeStyles((theme) => ({
     webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
     boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
     maxHeight: '500px',
-    overflow: 'scroll',
     [theme.breakpoints.down('md')] : {
+      overflow: 'scroll',
       alignItems: 'center',
       flexDirection: 'column'
     }
