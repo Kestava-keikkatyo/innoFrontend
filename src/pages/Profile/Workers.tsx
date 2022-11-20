@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
 import { Box, Button, Stack } from '@mui/material';
 import { roles } from '../../types/types';
+import { AccountCircle } from '@mui/icons-material';
 
 const Workers: React.FC = () => {
   const { t } = useTranslation()
@@ -33,7 +34,11 @@ const Workers: React.FC = () => {
       renderCell: (params) => {
         return (
         <div className={classes.userListUser}>
-          <img className={classes.userListImg} src={params.row.profilePicture} alt="" />
+          {params.row.profilePicture ? (
+            <img className={classes.userListImg} src={params.row.profilePicture} alt="" />
+          ) : (
+            <AccountCircle className={classes.userListImg} />
+          )}
           {params.row.name}
         </div>
         );
