@@ -153,7 +153,7 @@ export interface UserInformation {
 }
 
 export interface User extends UserInformation {
-  _id?: string
+  _id: string
   userType: roles
   active: boolean
   password: string

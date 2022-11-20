@@ -260,7 +260,7 @@ export const createAdmin =
     try {
       dispatch({
         type: usersType.USER_CREATED_REQUEST,
-        data: { name, email, userType: roles.Admin, password, active: true },
+        data: { _id: '', name, email, userType: roles.Admin, password, active: true },
       })
 
       const { data } = await usersService.createUser(name, email, 'admin', password)
