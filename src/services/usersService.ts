@@ -1,11 +1,11 @@
 /**
- * @module service/uers
+ * @module service/users
  * @desc Users requests to backend.
  */
-import axios from 'axios'
-import { User } from '../types/types'
-import baseUrl from '../utils/baseUrl'
-import { loadUser } from '../utils/storage'
+import axios from 'axios';
+import { User } from '../types/types';
+import baseUrl from '../utils/baseUrl';
+import { loadUser } from '../utils/storage';
 
 /**
  * @function
@@ -22,8 +22,7 @@ const authHeader = () => {
  * @desc Fetches all users with current token.
  */
 const fetchAllUsers = async () => {
-  const res = await axios.get(`${baseUrl}/user/allUsersForAdmin`, authHeader())
-  return res
+  return await axios.get(`${baseUrl}/user/allUsersForAdmin`, authHeader())
 }
 
 /**
@@ -31,17 +30,15 @@ const fetchAllUsers = async () => {
  * @desc fetchUserById
  */
 const fetchUserById = async (id: string) => {
-  const res = await axios.get(`${baseUrl}/user/any/${id}`, authHeader())
-  return res
+  return await axios.get(`${baseUrl}/user/any/${id}`, authHeader())
 }
 
 /**
- * @param id
  * @returns
+ * @param userId - ID of the user
  */
 const deleteUser = async (userId: string) => {
-  const res = await axios.delete(`${baseUrl}/user/delete/${userId}`, authHeader())
-  return res
+  return await axios.delete(`${baseUrl}/user/delete/${userId}`, authHeader())
 }
 
 /**
@@ -50,8 +47,7 @@ const deleteUser = async (userId: string) => {
  * @returns all workers.
  */
 const fetchAllWorkers = async () => {
-  const res = await axios.get(`${baseUrl}/user/workers`, authHeader())
-  return res
+  return await axios.get(`${baseUrl}/user/workers`, authHeader())
 }
 
 /**
@@ -60,8 +56,7 @@ const fetchAllWorkers = async () => {
  * @returns the latest joined workers.
  */
 const fetchLatestJoinedWorkers = async () => {
-  const res = await axios.get(`${baseUrl}/user/workers/latest`, authHeader())
-  return res
+  return await axios.get(`${baseUrl}/user/workers/latest`, authHeader())
 }
 
 /**
@@ -69,8 +64,7 @@ const fetchLatestJoinedWorkers = async () => {
  * @desc fetchUserById
  */
 const showMyProfile = async (id: string) => {
-  const res = await axios.get(`${baseUrl}/me/${id}`, authHeader())
-  return res
+  return await axios.get(`${baseUrl}/me/${id}`, authHeader())
 }
 
 /**
@@ -79,13 +73,21 @@ const showMyProfile = async (id: string) => {
  * @returns all agencies.
  */
 const fetchAllAgencies = async () => {
-  const res = await axios.get(`${baseUrl}/user/agencies`, authHeader())
-  return res
+  return await axios.get(`${baseUrl}/user/agencies`, authHeader())
 }
 
 /**
- * @param id
+ * @function
+ * @desc Gets all businesses.
+ * @returns all businesses.
+ */
+const fetchAllBusinesses = async () => {
+  return await axios.get(`${baseUrl}/user/businesses`, authHeader())
+}
+
+/**
  * @returns
+ * @param user - User to be updated
  */
 const updateUser = async (user: User) => {
   const res = await axios.put(`${baseUrl}/user/${user._id}`, user, authHeader())
@@ -93,8 +95,9 @@ const updateUser = async (user: User) => {
 }
 
 /**
- * @param id
  * @returns
+ * @param newPassword - New password of the user
+ * @param currentPassword - Current password of the user
  */
 const changePassword = async (newPassword: string, currentPassword: string) => {
   const res = await axios.put(
@@ -108,8 +111,10 @@ const changePassword = async (newPassword: string, currentPassword: string) => {
 /**
  * @function
  * @desc sends out create user request.
- * @param {User} user - Basic user information.
- * @param {roles} role - Account role to be created (admin).
+ * @param name - Name of the user
+ * @param email - Email of the user
+ * @param userType - User type
+ * @param password - Password of the user
  */
 const createUser = async (name: string, email: string, userType: string, password: string) => {
   return await axios.post(
@@ -120,12 +125,12 @@ const createUser = async (name: string, email: string, userType: string, passwor
 }
 
 /**
- * @param id
  * @returns
+ * @param userId - ID of the user
+ * @param active - Status to be set
  */
 const setUserStatus = async (userId: string, active: boolean) => {
-  const res = await axios.patch(`${baseUrl}/user/updateStatus/${userId}`, { active }, authHeader())
-  return res
+  return await axios.patch(`${baseUrl}/user/updateStatus/${userId}`, { active }, authHeader())
 }
 
 /**
@@ -134,8 +139,7 @@ const setUserStatus = async (userId: string, active: boolean) => {
  * @returns all agencies.
  */
 const searchUserByName = async (input: string) => {
-  const res = await axios.get(`${baseUrl}/user/any/name=${input}`, authHeader())
-  return res
+  return await axios.get(`${baseUrl}/user/any/name=${input}`, authHeader())
 }
 
 export default {
@@ -146,6 +150,7 @@ export default {
   fetchLatestJoinedWorkers,
   showMyProfile,
   fetchAllAgencies,
+  fetchAllBusinesses,
   updateUser,
   createUser,
   setUserStatus,
