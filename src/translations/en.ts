@@ -650,7 +650,15 @@ export default {
   user_updated_successfully: 'User was updated successfully!',
 
   // User Assign
-  user_assign: 'Assign {{name}} to business',
+  user_assign: 'Assign {{worker}} to business',
+  user_arrow_top_text: 'Select which business',
+  user_arrow_bottom_text: '{{worker}} is assigned to',
+  dialog_title: 'Assigning {{worker}} to business {{business}}',
+  dialog_description:
+    'Worker will be assigned to the selected business. Worker can the ' +
+    'unassigned from business from the workers profile or from worker listing.',
+  dialog_agree: 'Assign',
+  dialog_disagree: 'Cancel',
 
   // user feedback
   send_new_feedback: 'Send new feedback',

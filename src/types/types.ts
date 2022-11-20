@@ -375,3 +375,10 @@ export interface BusinessContractForm {
   questions: Array<Question>
   filled: boolean
 }
+
+// Assign worker to business
+
+export interface SelectedBusinessNameAndID {
+  name: string
+  id: string
+}

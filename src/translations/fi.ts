@@ -643,7 +643,15 @@ export default {
   user_updated_successfully: 'Käyttäjän päivitys onnistui!',
 
   // User Assign
-  user_assign: 'Siirrä {{name}} käyttäjä yritykselle',
+  user_assign: 'Siirrä {{worker}} käyttäjä yritykselle',
+  user_arrow_top_text: 'Valitse mille käyttäjä yritykselle',
+  user_arrow_bottom_text: '{{worker}} siirretään',
+  dialog_title: 'Siirretään {{worker}} käyttäjä yritykselle {{business}}',
+  dialog_description:
+    'Työntekijä siirretään valitulle käyttäjä yritykselle. Työntekijän voi siirtää ' +
+    'käyttäjä yritykseltä pois työntekijän profiilista tai työntekijä listauksesta.',
+  dialog_agree: 'Siirrä',
+  dialog_disagree: 'Peruuta',
 
   // user feedback
   send_new_feedback: 'Lähetä uutta palautetta',

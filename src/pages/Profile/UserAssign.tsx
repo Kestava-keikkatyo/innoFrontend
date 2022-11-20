@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserById, fetchAllBusinesses } from '../../actions/usersActions';
 import { IRootState } from '../../utils/store';
 import { useParams } from 'react-router-dom';
 import PageLoading from '../../components/PageLoading';
 import {
-  Avatar,
+  Avatar, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
   Divider,
   List,
   ListItemAvatar, ListItemButton,
@@ -18,6 +18,7 @@ import { useTranslation } from 'react-i18next';
 import ArrowForward from '@mui/icons-material/ArrowForward';
 import { AccountCircle, ArrowDownward } from '@mui/icons-material';
 import useWindowDimensions from '../../utils/useWindowDimensions';
+import { SelectedBusinessNameAndID } from '../../types/types';
 
 type UserUrlParams = {
   userId: string
@@ -25,10 +26,27 @@ type UserUrlParams = {
 
 const UserAssign: React.FC = () => {
   const classes = useStyles();
-  const { userId } = useParams<UserUrlParams>();
-
   const { width } = useWindowDimensions();
 
+  const [open, setOpen] = useState(false);
+  const [selectedBusiness, setSelectedBusiness] = useState<SelectedBusinessNameAndID | null>(null);
+  const handleClickOpen = (selectedBusinessName: string, selectedBusinessID: string) => {
+    const selectedBusinessInfo: SelectedBusinessNameAndID = {
+      name: selectedBusinessName,
+      id: selectedBusinessID
+    }
+    setSelectedBusiness(selectedBusinessInfo);
+    setOpen(true);
+  }
+  const handleClose = () => {
+    setSelectedBusiness(null);
+    setOpen(false);
+  }
+  const handleAssign = () => {
+    console.log(selectedBusiness?.id)
+  }
+
+  const { userId } = useParams<UserUrlParams>();
   const profileData = useSelector((state: IRootState) => state.users.currentUser);
   const businessData = useSelector((state: IRootState) => state.users)
   const { t } = useTranslation();
@@ -40,15 +58,11 @@ const UserAssign: React.FC = () => {
 
   if (!profileData) return <PageLoading />
 
-  function handleBusinessClick(businessId: string) {
-    console.log(businessId)
-  }
-
   return (
     <div className={classes.user}>
       <div className={classes.userTitleContainer}>
         <Typography color="secondary" className="header" variant="h1">
-          {t('user_assign', { name: profileData.name })}
+          {t('user_assign', { worker: profileData.name })}
         </Typography>
       </div>
 
@@ -63,26 +77,20 @@ const UserAssign: React.FC = () => {
           <span className={classes.userName}>{ profileData.name }</span>
         </div>
         <div className={classes.middle}>
-          <p>Select which business</p>
+          <p>{t('user_arrow_top_text')}</p>
           {width >= 900 ? (
             <ArrowForward className={classes.arrowIcon} />
           ) : (
             <ArrowDownward className={classes.arrowIcon} />
           )}
-          <p>{profileData.name} is assigned to.</p>
+          <p>{t('user_arrow_bottom_text', { worker: profileData.name })}</p>
         </div>
         <div className={classes.right}>
-          <List sx={{
-            width: '100%',
-            maxWidth: 360,
-            bgcolor: 'background.paper',
-            overflow: 'auto',
-            maxHeight: 460,
-          }}>
+          <List className={classes.list}>
             {businessData.users.map((user, index) => {
               return (
                 <div key={index}>
-                  <ListItemButton alignItems="flex-start" onClick={() => handleBusinessClick(user._id)}>
+                  <ListItemButton alignItems="flex-start" onClick={() => handleClickOpen(user.name, user._id)}>
                     {user?.profilePicture ? (
                         <ListItemAvatar>
                           <Avatar alt="" src={user.profilePicture} className={classes.businessIcon} />
@@ -125,6 +133,27 @@ const UserAssign: React.FC = () => {
           </List>
         </div>
       </div>
+
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {t('dialog_title', { worker: profileData.name, business: selectedBusiness?.name})}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            {t('dialog_description')}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>{t('dialog_disagree')}</Button>
+          <Button onClick={handleAssign} autoFocus color="success">{t('dialog_agree')}</Button>
+        </DialogActions>
+      </Dialog>
+
     </div>
   );
 }
@@ -200,6 +229,13 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')] : {
       width: '100%'
     }
+  },
+  list: {
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: 'paper',
+    overflow: 'auto',
+    maxHeight: 460,
   },
   businessIcon: {
     width: theme.spacing(5),
