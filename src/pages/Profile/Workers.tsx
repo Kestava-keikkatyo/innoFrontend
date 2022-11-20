@@ -9,6 +9,8 @@ import makeStyles from '@mui/styles/makeStyles';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
+import { Button, Stack } from '@mui/material';
+import { roles } from '../../types/types';
 
 const Workers: React.FC = () => {
   const { t } = useTranslation()
@@ -18,13 +20,15 @@ const Workers: React.FC = () => {
   useEffect(() => {
     dispatch(fetchAllWorkers());
   }, [dispatch]);
-  let rows = [];
-  rows = users;
+  const rows = users;
+
+  const myUserType = useSelector((state: IRootState) => state.user.data.role);
+
   const columns: GridColumns = [
     {
-      field: "name",
-      headerName: (i18next.t("list_name")),
-      minWidth: 125,
+      field: 'name',
+      headerName: (i18next.t('list_name')),
+      minWidth: 100,
       flex: 1,
       renderCell: (params) => {
         return (
@@ -36,58 +40,52 @@ const Workers: React.FC = () => {
       },
     },
     {
-      field: "email", 
-      headerName: (i18next.t("list_email")),
-      minWidth: 200,
-      flex: 1
-    },
-    {
-      field: "city", 
-      headerName: (i18next.t("list_city")), 
-      minWidth: 125,
-      flex: 1
-    },
-    {
-      field: "userType", 
-      headerName: (i18next.t("list_position")), 
-      minWidth: 75,
-      flex: 1 
-    },
-    {
-      field: "action",
-      headerName: (i18next.t("list_action")),
+      field: 'email',
+      headerName: (i18next.t('list_email')),
       minWidth: 100,
+      flex: 1
+    },
+    {
+      field: 'action',
+      headerName: (i18next.t('list_action')),
+      minWidth: 200,
       flex: 1,
       renderCell: (params) => {
-      return (
-      <>
-      <Link to={'/workers/profile/' + params.id}>{t('list_profile')}</Link>
-      </>
-      );
+        return (
+          <Stack direction="row" spacing={2} alignItems="center">
+            <Link to={'/workers/profile/' + params.id}>
+              <Button>{t('list_profile')}</Button>
+            </Link>
+            {myUserType === roles.Agency && (
+              <Link to={'/workers/assign/' + params.id}>
+                <Button>{t('list_assign_worker')}</Button>
+              </Link>
+            )}
+          </Stack>
+        )
+      }
     },
-  },
-];
+  ];
 
-return (
-<div style={{ height: "75vh", width: "100%", padding: "0 1rem" }}>
-  <div>
-    <Typography className={"header"}
-                style={{marginTop: "25px", marginBottom: "15px"}}
-                color="primary"
-                align="center"
-                variant="h1">
-      {t('list_title_workers')}</Typography>
-  </div>
-  <DataGrid
-      getRowId={(row) => row._id}
-      rows={rows}
-      disableSelectionOnClick
-      columns={columns}
-      pageSize={10}
-      rowsPerPageOptions={[10]}
-  />
-</div>
-);
+  return (
+    <div style={{ height: '75vh', width: '100%', padding: '0 1rem' }}>
+      <Typography className={'header'}
+                  style={{marginTop: '25px', marginBottom: '15px'}}
+                  color="primary"
+                  align="center"
+                  variant="h1">
+        {t('list_title_workers')}
+      </Typography>
+      <DataGrid
+          getRowId={(row) => row._id}
+          rows={rows}
+          disableSelectionOnClick
+          columns={columns}
+          pageSize={10}
+          rowsPerPageOptions={[10]}
+      />
+    </div>
+  );
 }
 
 const useStyles = makeStyles(() => ({

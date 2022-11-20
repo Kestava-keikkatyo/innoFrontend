@@ -19,8 +19,7 @@ const Agencies: React.FC = () => {
   useEffect(() => {
     dispatch(fetchAllAgencies());
   }, [dispatch]);
-  let rows = [];
-  rows = users;
+  const rows = users;
   const columns: GridColumns = [
     {
       field: 'name',
@@ -49,30 +48,18 @@ const Agencies: React.FC = () => {
       flex: 1,
     },
     {
-      field: 'city',
-      headerName: (i18next.t('list_city')),
-      minWidth: 100,
-      flex: 1,
-    },
-    {
-      field: 'userType',
-      headerName: (i18next.t('list_position')),
-      minWidth: 75,
-      flex: 1,
-    },
-    {
       field: 'action',
       headerName: (i18next.t('list_action')),
       minWidth: 100,
       flex: 1,
       renderCell: (params) => {
         return (
-        <>
-        <Stack direction="row" spacing={2}>
-        <Link to={'/agencies/profile/' + params.id}>{t('list_profile')}</Link>
-        <Link to={'/agencies/workRequest/' + params.id}>{t('send_work_request')}</Link>
-        </Stack>
-        </>
+          <>
+            <Stack direction="row" spacing={2}>
+              <Link to={'/agencies/profile/' + params.id}>{t('list_profile')}</Link>
+              <Link to={'/agencies/workRequest/' + params.id}>{t('send_work_request')}</Link>
+            </Stack>
+          </>
         );
       },
     },
@@ -81,19 +68,21 @@ const Agencies: React.FC = () => {
     <div style={{ height: '75vh', width: '100%', padding: '0 1rem' }}>
       <div>
         <Typography className={'header'}
-        style={{marginTop: '25px', marginBottom: '15px'}}
-        color="primary"
-        align="center"
-        variant="h1">
-          {t('list_title_agencies')}</Typography>
-        </div>
+          style={{marginTop: '25px', marginBottom: '15px'}}
+          color="primary"
+          align="center"
+          variant="h1"
+        >
+          {t('list_title_agencies')}
+        </Typography>
+      </div>
         <DataGrid
-        getRowId={(row) => row._id}
-        rows={rows}
-        disableSelectionOnClick
-        columns={columns}
-        pageSize={10}
-        rowsPerPageOptions={[10]}
+          getRowId={(row) => row._id}
+          rows={rows}
+          disableSelectionOnClick
+          columns={columns}
+          pageSize={10}
+          rowsPerPageOptions={[10]}
         />
     </div>
   );
