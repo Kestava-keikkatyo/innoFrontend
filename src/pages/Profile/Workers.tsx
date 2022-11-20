@@ -9,7 +9,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
-import { Button, Stack } from '@mui/material';
+import { Box, Button, Stack } from '@mui/material';
 import { roles } from '../../types/types';
 
 const Workers: React.FC = () => {
@@ -68,7 +68,7 @@ const Workers: React.FC = () => {
   ];
 
   return (
-    <div style={{ height: '75vh', width: '100%', padding: '0 1rem' }}>
+    <div style={{ padding: '0 1rem' }}>
       <Typography className={'header'}
                   style={{marginTop: '25px', marginBottom: '15px'}}
                   color="primary"
@@ -76,14 +76,16 @@ const Workers: React.FC = () => {
                   variant="h1">
         {t('list_title_workers')}
       </Typography>
-      <DataGrid
+      <Box style={{ height: '70vh', width: '100%' }}>
+        <DataGrid
           getRowId={(row) => row._id}
           rows={rows}
           disableSelectionOnClick
           columns={columns}
           pageSize={10}
           rowsPerPageOptions={[10]}
-      />
+        />
+      </Box>
     </div>
   );
 }

@@ -9,7 +9,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
-import { Stack } from '@mui/material';
+import { Box, Button, Stack } from '@mui/material';
 
 const Agencies: React.FC = () => {
   const { t } = useTranslation();
@@ -20,11 +20,12 @@ const Agencies: React.FC = () => {
     dispatch(fetchAllAgencies());
   }, [dispatch]);
   const rows = users;
+  console.log(users)
   const columns: GridColumns = [
     {
       field: 'name',
       headerName: (i18next.t('list_name')),
-      minWidth: 150,
+      minWidth: 125,
       flex: 1,
       renderCell: (params) => {
         return (
@@ -38,26 +39,32 @@ const Agencies: React.FC = () => {
     {
       field: 'category',
       headerName: (i18next.t('list_category')),
-      minWidth: 100,
+      minWidth: 75,
       flex: 1,
     },
     {
       field: 'email',
       headerName: (i18next.t('list_email')),
-      minWidth: 200,
+      minWidth: 150,
       flex: 1,
     },
     {
       field: 'action',
       headerName: (i18next.t('list_action')),
-      minWidth: 100,
+      minWidth: 125,
       flex: 1,
       renderCell: (params) => {
         return (
           <>
             <Stack direction="row" spacing={2}>
-              <Link to={'/agencies/profile/' + params.id}>{t('list_profile')}</Link>
-              <Link to={'/agencies/workRequest/' + params.id}>{t('send_work_request')}</Link>
+              <Link to={'/agencies/profile/' + params.id}>
+                <Button>{t('list_profile')}</Button>
+              </Link>
+              <Link to={'/agencies/workRequest/' + params.id}>
+                <Button>
+                  {t('send_work_request')}
+                </Button>
+              </Link>
             </Stack>
           </>
         );
@@ -65,17 +72,16 @@ const Agencies: React.FC = () => {
     },
   ];
   return (
-    <div style={{ height: '75vh', width: '100%', padding: '0 1rem' }}>
-      <div>
-        <Typography className={'header'}
-          style={{marginTop: '25px', marginBottom: '15px'}}
-          color="primary"
-          align="center"
-          variant="h1"
-        >
-          {t('list_title_agencies')}
-        </Typography>
-      </div>
+    <div style={{ padding: '0 1rem' }}>
+      <Typography className={'header'}
+        style={{marginTop: '25px', marginBottom: '15px'}}
+        color="primary"
+        align="center"
+        variant="h1"
+      >
+        {t('list_title_agencies')}
+      </Typography>
+      <Box style={{ height: '70vh', width: '100%' }}>
         <DataGrid
           getRowId={(row) => row._id}
           rows={rows}
@@ -84,6 +90,7 @@ const Agencies: React.FC = () => {
           pageSize={10}
           rowsPerPageOptions={[10]}
         />
+      </Box>
     </div>
   );
 }
