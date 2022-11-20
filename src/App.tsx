@@ -72,6 +72,7 @@ import Responsibilities from './pages/Responsibility/Responsibilities'
 import ResponsibilityUpdate from './pages/Responsibility/ResponsibilityUpdate'
 import RentalWorkModelPage from './pages/RentalWorkModelPage'
 import { useTranslation } from 'react-i18next'
+import UserAssign from './pages/Profile/UserAssign';
 
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -202,6 +203,9 @@ const App: React.FC = () => {
             </PrivateRoute>
             <PrivateRoute path="/workers/profile/:userId" roles={[roles.Business, roles.Agency]}>
               <UserProfile />
+            </PrivateRoute>
+            <PrivateRoute path="/workers/assign/:userId" roles={[roles.Agency]}>
+              <UserAssign />
             </PrivateRoute>
             <PrivateRoute path="/workers" roles={[roles.Business, roles.Agency]}>
               <Workers />
