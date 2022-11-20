@@ -72,6 +72,7 @@ export default {
   button_update: 'päivitä',
   button_cancel: 'peruuta',
   button_edit: 'muokkaa',
+  button_assign: 'siirrä käyttäjä yritykselle',
 
   // Mood index page
   entry_mood: 'Lisää fiilis',
@@ -620,11 +621,10 @@ export default {
   list_title_agencies: 'Vuokrayritykset',
   list_name: 'Nimi',
   list_email: 'Sähköposti',
-  list_city: 'Kaupunki',
-  list_position: 'Positio',
   list_action: 'Toiminta',
   list_profile: 'Profiili',
   list_category: 'Kategoria',
+  list_assign_worker: 'Siirrä käyttäjä yritykselle',
 
   // User profile
   user_profile: 'Profiili',
@@ -641,6 +641,9 @@ export default {
   user_website: 'Verkkosivusto',
   user_category: 'Kategoria',
   user_updated_successfully: 'Käyttäjän päivitys onnistui!',
+
+  // User Assign
+  user_assign: 'Siirrä {{name}} käyttäjä yritykselle',
 
   // user feedback
   send_new_feedback: 'Lähetä uutta palautetta',
@@ -781,15 +784,15 @@ export default {
   WorkPerformance: 'Työsuoritus ja valvonta',
   FeedbackEvaluation: 'Palaute ja toiminnan arviointi',
 
-  //Responsibilities
+  // Responsibilities
   CustomerContractResponsibilities: '1. Jaettu työsuojeluvastuu (käyttäjäyrityksen kanssa) \n\n 2.Yleisvastuu työturvallisuudesta (tämän alle keskeiset vaatimukset, mm. Työn vaarojen selvittäminen ja arviointi Työsuojelun toimintaohjelman laatiminen Työsuojelun yhteistoiminnan järjestäminen Perehdytys (ml. yleisperehdytyksen antaminen vuokratyöntekijälle) Ilmoittaminen nuorten työntekijöiden käyttämisestä vaarallisiin töihin Vakavasta työtapaturmasta ilmoittaminen työsuojeluviranomaisille ja poliisille) Vastuu työaikalain noudattamisesta Työntekijöiden vakuuttaminen työtapaturmien ja ammattitautien varalta Työterveyshuollon järjestäminen Tasa-arvon ja yhdenvertaisuuden edistäminen  Käyttäjäyrityksen velvoitteiden täyttämisen varmistaminen Vuokratyöntekijän riittävän ammattitaidon ja työhön soveltumisen varmistaminen Tarvittavien henkilönsuojainten hankinta (yhteistyössä käyttäjäyrityksen kanssa)',
 
 
-  //good practices
+  // good practices
   checkAll: 'Merkkaa kaikki luetuksi',
   readAndUnderstood: 'Luettu ja ymmärretty',
 
-  //step1
+  // step1
   good_practices_customer_contract_array: [
     'Henkilöstöpalveluyritys ja käyttäjäyritys käyvät yhdessä läpi lainsäädäntöön perustuvan vastuunjaon.',
     'Henkilöstöpalveluyritys ja käyttäjäyritys sopivat vuokratyöntekijän perehdytyksestä ja työnopastuksesta.',
@@ -801,12 +804,12 @@ export default {
     'Vierailukäyntiin voidaan yhdistää myös vaarojen kartoittamisen ja riskien arvioinnin, jotka voidaan tehdään yhdessä käyttäjäyrityksen edustajan kanssa.',
     'Vaarojen tunnistamisessa ja riskien arvioinnissa on hyvä olla mukana myös työsuojeluvaltuutettu.'
   ],
-  //step2
+  // step2
   good_practices_order_and_selection_of_the_employee_array: [
     'Käyttäjäyritys voi osallistua myös itse vuokratyöntekijän valintaan ja esimerkiksi haastatella parhaita ehdokkaita. ',
     'Uusille tai kokemattomammille vuokratyöntekijöille voidaan tarjota ensin helpompia työtehtäviä, jolloin vuokratyöntekijät saavat kokemusta ja käyttäjäyrityksessä voidaan tutustua vuokratyöntekijään.'
   ],
-  //step3
+  // step3
   good_practices_employment_contract_and_general_orientation_array: [
     'Työsopimus kannattaa tehdä aina kirjallisena. ',
     'Yleisperehdytys annetaan kasvotusten työntekijän kanssa. ',
@@ -816,20 +819,20 @@ export default {
     'Yhteisen kielen puuttuessa perehdytyksessä kannattaa hyödyntää videoita, kuvia ja selkokieltä.',
     'Henkilöstöpalveluyritys voi tarjota vuokratyöntekijöilleen esimerkiksi työturvallisuus- tai työhyvinvointikorttikoulutuksen tai muun vaadittavan työturvallisuuskoulutuksen. '
   ],
-  //step4
+  // step4
   good_practices_guidance_on_work_and_working_conditions_array: [
     'Käyttäjäyrityksen on tärkeää huolehtia siitä, että vuokratyöntekijä tuntee olonsa tervetulleeksi ja yhdenvertaiseksi muiden työntekijöiden kanssa. ',
     'Alussa on hyvä käydä läpi yleisiä työhön ja työpaikkaan liittyviä asioita. Sen jälkeen tehdään työpaikkakierros, joka sisältää työtiloihin, työtehtäviin ja henkilöstöön tutustumisen. Samalla opastetaan poistumistiet, sammuttimien ja ensiaputarvikkeiden sijainti sekä turvallisuuteen liittyvät asiat. ',
-    'Työnopastuksessa voi hyödyntää kokeneita, työturvallisuusasioissa esimerkillisesti toimivia työntekijöitä.', 
+    'Työnopastuksessa voi hyödyntää kokeneita, työturvallisuusasioissa esimerkillisesti toimivia työntekijöitä.',
     'Työntekijän oppiminen kannattaa varmistaa esimerkiksi kysymyksillä, keskusteluilla ja käytännön havainnoinnilla. Tukena voi käyttää myös kirjallisessa muodossa annettavia ohjeita. ',
     'Työn tekemisen paikka voi olla kaikille vuokratyön osapuolille ennestään tuntematon. Näissäkin tilanteissa vuokratyöntekijälle tulee varmistaa riittävä opastus työhön ja työoloihin. '
   ],
-  //step5  
+  // step5
   good_practices_work_performance_and_supervision_array: [
     'Perehdytyksen ja työnopastuksen jälkeen vuokratyöntekijä aloittaa varsinaiset työtehtävät. Hyvä käytäntö on nimetä vuokratyöntekijälle ensimmäisiksi päiviksi työpari tai mentori. ',
     'Vuokratyöntekijät on hyvä ottaa mukaan kaikkiin olennaisiin koulutus- ja tiedotustilaisuuksiin. '
   ],
-  //step6
+  // step6
   good_practices_feedback_and_erformance_evaluation_array: [
     'Palautetta hyödynnetään osaamisen ja toiminnan kehittämisessä. ',
     'Henkilöstöpalveluyrityksen on hyvä olla yhteydessä jokaiseen vuokratyöntekijään ensimmäisen työviikon aikana ja varmistaa onnistunut töiden aloitus ja riittävä perehdytys. ',
@@ -837,6 +840,6 @@ export default {
     'Toimintaa on hyvä arvioida yhdessä systemaattisesti ainakin asiakkuuden päättyessä. ',
     'Henkilöstöpalveluyrityksen kannattaa kerätä palautetta työn sujumisesta sekä vuokratyöntekijältä että käyttäjäyrityksestä.',
     'Henkilöstöpalveluyrityksen edustaja voi osallistua käyttäjäyrityksen työturvallisuutta ja -hyvinvointia käsitteleviin kokouksiin.'
-  ],  
+  ],
 }
 
