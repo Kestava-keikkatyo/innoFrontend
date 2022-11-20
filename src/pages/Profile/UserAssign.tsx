@@ -75,14 +75,16 @@ const UserAssign: React.FC = () => {
               return (
                 <>
                   <ListItemButton alignItems="flex-start">
-                    {/*
-                    <ListItemAvatar>
-                      <Avatar alt="" src="" />
-                    </ListItemAvatar>
-                    */}
-                    <ListItemIcon>
-                      <AccountCircle />
-                    </ListItemIcon>
+                    {user?.profilePicture ? (
+                        <ListItemAvatar>
+                          <Avatar alt="" src={user.profilePicture} className={classes.businessIcon} />
+                        </ListItemAvatar>
+                      ) : (
+                        <ListItemIcon>
+                          <AccountCircle className={classes.businessIcon} />
+                        </ListItemIcon>
+                      )
+                    }
                     <ListItemText
                       primary={user.name}
                       secondary={
@@ -173,6 +175,10 @@ const useStyles = makeStyles((theme) => ({
     width: '33%',
     // backgroundColor: 'lightblue',
   },
+  businessIcon: {
+    width: theme.spacing(5),
+    height: theme.spacing(5),
+  }
 }));
 
 export default UserAssign;
