@@ -6,10 +6,8 @@ import { useParams } from 'react-router-dom';
 import PageLoading from '../../components/PageLoading';
 import {
   Avatar,
-  Button,
   Divider,
   List,
-  ListItem,
   ListItemAvatar, ListItemButton,
   ListItemIcon,
   ListItemText,
@@ -18,7 +16,8 @@ import {
 import makeStyles from '@mui/styles/makeStyles';
 import { useTranslation } from 'react-i18next';
 import ArrowForward from '@mui/icons-material/ArrowForward';
-import { AccountCircle } from '@mui/icons-material';
+import { AccountCircle, ArrowDownward } from '@mui/icons-material';
+import useWindowDimensions from '../../utils/useWindowDimensions';
 
 type UserUrlParams = {
   userId: string
@@ -28,9 +27,10 @@ const UserAssign: React.FC = () => {
   const classes = useStyles();
   const { userId } = useParams<UserUrlParams>();
 
+  const { width } = useWindowDimensions();
+
   const profileData = useSelector((state: IRootState) => state.users.currentUser);
   const businessData = useSelector((state: IRootState) => state.users)
-  console.log(businessData)
   const { t } = useTranslation();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -39,6 +39,10 @@ const UserAssign: React.FC = () => {
   }, [dispatch, userId]);
 
   if (!profileData) return <PageLoading />
+
+  function handleBusinessClick(businessId: string) {
+    console.log(businessId)
+  }
 
   return (
     <div className={classes.user}>
@@ -60,7 +64,11 @@ const UserAssign: React.FC = () => {
         </div>
         <div className={classes.middle}>
           <p>Select which business</p>
-          <ArrowForward className={classes.arrowIcon} />
+          {width >= 900 ? (
+            <ArrowForward className={classes.arrowIcon} />
+          ) : (
+            <ArrowDownward className={classes.arrowIcon} />
+          )}
           <p>{profileData.name} is assigned to.</p>
         </div>
         <div className={classes.right}>
@@ -71,10 +79,10 @@ const UserAssign: React.FC = () => {
             overflow: 'auto',
             maxHeight: 460,
           }}>
-            {businessData.users.map(user => {
+            {businessData.users.map((user, index) => {
               return (
-                <>
-                  <ListItemButton alignItems="flex-start">
+                <div key={index}>
+                  <ListItemButton alignItems="flex-start" onClick={() => handleBusinessClick(user._id)}>
                     {user?.profilePicture ? (
                         <ListItemAvatar>
                           <Avatar alt="" src={user.profilePicture} className={classes.businessIcon} />
@@ -111,7 +119,7 @@ const UserAssign: React.FC = () => {
                     />
                   </ListItemButton>
                   <Divider variant="inset" component="li" />
-                </>
+                </div>
               )
             })}
           </List>
@@ -139,6 +147,11 @@ const useStyles = makeStyles((theme) => ({
     webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
     boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
     maxHeight: '500px',
+    overflow: 'scroll',
+    [theme.breakpoints.down('md')] : {
+      alignItems: 'center',
+      flexDirection: 'column'
+    }
   },
   left: {
     display: 'flex',
@@ -147,11 +160,18 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     padding: '20px',
     width: '33%',
-    // backgroundColor: 'pink'
+    // backgroundColor: 'pink',
+    [theme.breakpoints.down('md')] : {
+      width: '100%'
+    }
   },
   userName: {
     fontSize: '40px',
     marginLeft: '10px',
+    textAlign: 'center',
+    [theme.breakpoints.down('md')] : {
+      fontSize: '24px'
+    }
   },
   userAvatar: {
     width: theme.spacing(15),
@@ -163,7 +183,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     width: '33%',
-    // backgroundColor: 'lightgreen'
+    // backgroundColor: 'lightgreen',
+    [theme.breakpoints.down('md')] : {
+      width: '100%'
+    }
   },
   arrowIcon: {
     fontSize: '80px'
@@ -174,6 +197,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     width: '33%',
     // backgroundColor: 'lightblue',
+    [theme.breakpoints.down('md')] : {
+      width: '100%'
+    }
   },
   businessIcon: {
     width: theme.spacing(5),
