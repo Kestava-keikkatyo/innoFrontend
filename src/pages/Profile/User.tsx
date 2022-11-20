@@ -1,10 +1,10 @@
-import React, {useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserById } from '../../actions/usersActions';
 import { IRootState } from '../../utils/store';
-import { useParams, Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import PageLoading from '../../components/PageLoading';
-import { Avatar, Typography, Button } from '@mui/material';
+import { Avatar, Button, Typography } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { LocationSearching, MailOutline, PermIdentity, PhoneAndroid } from '@mui/icons-material';
 import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOutlined';
@@ -22,6 +22,7 @@ const UserProfile: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
   const { userId } = useParams<UserUrlParams>();
 
   const myUserId = useSelector((state: IRootState) => state.user.data._id);
+  const myUserType = useSelector((state: IRootState) => state.user.data.role);
 
   const profileId : string = myProfile ? myUserId : userId;
 
@@ -43,16 +44,23 @@ const UserProfile: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
     </div>
     <div className={classes.userContainer}>
       <div className={classes.userShow}>
-      { myProfile ?
-        <Button className={classes.edit} color="secondary" component={Link} to="/profile/edit">{t('button_edit')}</Button>
-        : null}
+        { myProfile && (
+          <Button className={classes.edit} color="secondary" component={Link} to="/profile/edit">
+            {t('button_edit')}
+          </Button>
+        )}
+        { (myUserType === roles.Agency && profileData.userType === roles.Worker) && (
+          <Button className={classes.assign} color="secondary" component={Link} to={'/workers/assign/' + userId}>
+            {t('button_assign')}
+          </Button>
+        )}
         <div className={classes.userShowTop}>
-            <Avatar 
+          <Avatar
             className={classes.avatar}
             aria-label="recipe"
             alt= "profile"
             src={profileData.profilePicture}
-            />
+          />
         </div>
         <div className={classes.userShowBottom}>
           <span className={classes.userShowTitle}>{t('user_account_details')}</span>
@@ -64,12 +72,12 @@ const UserProfile: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
             <WorkspacePremiumOutlinedIcon className={classes.userShowIcon} />
             <span className={classes.userShowInfoTitle}>{ profileData.userType }</span>
           </div>
-          { (profileData.userType === roles.Agency||profileData.userType === roles.Business) ?
-          <div className={classes.userShowInfo}>
-            <CategoryOutlinedIcon className={classes.userShowIcon} />
-            <span className={classes.userShowInfoTitle}> {profileData.category }</span>
-          </div>
-          : null}
+          { (profileData.userType === roles.Agency || profileData.userType === roles.Business) && (
+            <div className={classes.userShowInfo}>
+              <CategoryOutlinedIcon className={classes.userShowIcon} />
+              <span className={classes.userShowInfoTitle}>{profileData.category }</span>
+            </div>
+          )}
           <span className={classes.userShowTitle}>{t('user_contact_details')}</span>
           <div className={classes.userShowInfo}>
             <PhoneAndroid className={classes.userShowIcon} />
@@ -77,7 +85,7 @@ const UserProfile: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
           </div>
           <div className={classes.userShowInfo}>
             <MailOutline className={classes.userShowIcon} />
-            <span className={classes.userShowInfoTitle}> {profileData.email }</span>
+            <span className={classes.userShowInfoTitle}>{profileData.email }</span>
           </div>
           <div className={classes.userShowInfo}>
             <LocationSearching className={classes.userShowIcon} />
@@ -85,22 +93,22 @@ const UserProfile: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
               { [profileData.street, profileData.zipCode, profileData.city].join(', ') }
             </span>
           </div>
-          { (profileData.userType === roles.Agency||profileData.userType === roles.Business) ?
-          <div className={classes.userShowInfo}>
-            <LanguageOutlinedIcon className={classes.userShowIcon} />
-            <span className={classes.userShowInfoTitle}> {profileData.website }</span>
-          </div>
-          : null}
-          { profileData.userType === roles.Worker ? 
-          <div className={classes.userShowInfo}>
-            <span className={classes.userShowTitle}>{t('user_licenses')}</span> 
-            <span className={classes.userShowInfoTitle}>{ profileData.licenses }</span>
-          </div>
-          : null}
+          { (profileData.userType === roles.Agency || profileData.userType === roles.Business) && (
+            <div className={classes.userShowInfo}>
+              <LanguageOutlinedIcon className={classes.userShowIcon} />
+              <span className={classes.userShowInfoTitle}> {profileData.website }</span>
+            </div>
+          )}
+          { profileData.userType === roles.Worker && (
+            <div className={classes.userShowInfo}>
+              <span className={classes.userShowTitle}>{t('user_licenses')}</span>
+              <span className={classes.userShowInfoTitle}>{ profileData.licenses }</span>
+            </div>
+          )}
         </div>
       </div>
     </div>
-  </div> 
+  </div>
   );
 }
 
@@ -156,6 +164,10 @@ const useStyles = makeStyles((theme) => ({
   edit: {
     fontSize: '17px',
     float: 'right',
+  },
+  assign: {
+    fontSize: '17px',
+    float: 'right'
   }
 }));
 
