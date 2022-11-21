@@ -1,4 +1,4 @@
-import { Grid, TextField, Typography } from '@mui/material';
+import { Grid, TextField, Typography, FormControl, Select, MenuItem, InputLabel} from '@mui/material';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import FileUploader from '../../components/FileUploader';
@@ -11,18 +11,41 @@ import { useTranslation } from 'react-i18next'
 const ReportStepThree: React.FC<any> = ({stepThreeError}) => {
   const { currentReport } = useSelector((state: any) => state.report);
   const [title, setTitle] = useState(currentReport.title)
+  const [title2, setTitle2] = useState(currentReport.title2)
   const [details, setDetails] = useState(currentReport.details)
+  const [details2, setDetails2] = useState(currentReport.details2)
   const { t } = useTranslation()
   const dispatch = useDispatch();
-
+  const [selectedBusiness, setSelectedBusiness] = useState(currentReport.business ? currentReport.business : "")
+  const [filterBusinesses, setFilterBusinesses] = useState('');
+  const { agencies, businesses } = useSelector((state: any) => state.allUsers);
   const handleTitle = (event: any) => {
     setTitle(event.target.value)
     dispatch(setReport({ ...currentReport, title: event.target.value }));
+  };
+  const handleTitle2 = (event: any) => {
+    setTitle2(event.target.value)
+    dispatch(setReport({ ...currentReport, title2: event.target.value }));
   };
 
   const handleDetails = (event: any) => {
     setDetails(event.target.value)
     dispatch(setReport({ ...currentReport, details: event.target.value }));
+  };
+  const handleDetails2 = (event: any) => {
+    setDetails2(event.target.value)
+    dispatch(setReport({ ...currentReport, details2: event.target.value }));
+  };
+  /**Select recipient business */
+  const handleSelectedBusiness = (event: any) => {
+    setSelectedBusiness(event.target.value)
+    /**Mui Select does not accept null for empty value. So we need 
+     * to use "" but send null to store when clearing selection. 
+     * */
+    const valueForDB = event.target.value === "" ? null : event.target.value 
+    dispatch(
+      setReport({ ...currentReport, business: valueForDB })
+    );
   };
 
   /**If stepThreeError status is true and title is empty, set error props
@@ -46,10 +69,11 @@ const ReportStepThree: React.FC<any> = ({stepThreeError}) => {
         <Typography variant="h2" className='header5'>{t('fill_details')}</Typography>
       </Grid>
 
+      
       {/**Report title Textfield */}
       <Grid item xs={12} style={{ marginTop: 16 }}>
         <TextField 
-          label={t('fill_report_title')} 
+          label={t('report_worker_title')} 
           value={title}
           onChange={handleTitle} 
           /**If error state is set true and title is empty, 
@@ -57,24 +81,94 @@ const ReportStepThree: React.FC<any> = ({stepThreeError}) => {
           {...titleErrorProps}
         />
       </Grid>
+    {/**Report title Textfield */}
+    <Grid item xs={12} style={{ marginTop: 16 }}>
+        <TextField 
+          label={t('fill_report_title')} 
+          value={title2}
+          onChange={handleTitle2} 
+          /**If error state is set true and title is empty, 
+            show Textfield in error state and show helper text.*/
+          {...titleErrorProps}
+          style={{ marginBottom: '1em' }}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <Typography variant="h2" className='header5'>{t('select_report_handler_report_title')}</Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <FormControl
+          style={{ marginBottom: '1em' }}
+        >
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={selectedBusiness}
+              style={{ maxHeight: 50 }}
+              onChange={handleSelectedBusiness}
+            >
+              {/**Menuitem for clearing selection */}
+            <MenuItem value="">
+              <em>{t('select_report_handler_clear')}</em>
+            </MenuItem>
+            <MenuItem value="positive">
+              {t('select_report_handler_report_positive')}
+            </MenuItem>
+            <MenuItem value="deficiency">
+              {t('select_report_handler_report_deficiency')}
+            </MenuItem>
+            <MenuItem value="inappropriate">
+              {t('select_report_handler_report_inappropriate')}
+            </MenuItem>
+            <MenuItem value="closecall">
+              {t('select_report_handler_report_closecall')}
+            </MenuItem>
+            <MenuItem value="incident">
+              {t('select_report_handler_report_incident')}
+            </MenuItem>
+            <MenuItem value="else">
+              {t('select_report_handler_report_else')}
+            </MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+      {/**Title */}
+      <Grid item xs={12}>
+        <Typography variant="h2" className='header5'>{t('fill_report_details')}</Typography>
+      </Grid>
 
       {/**Report details Textfield */}
       <Grid item xs={12}>
         <TextField
-          label={t('fill_report_details')} 
           multiline
           rows={4}
           variant="outlined"
           value={details}
           onChange={handleDetails}
-          style={{ marginTop: 8 }}
+          style={{ marginBottom: '1em' }}
           /**If error state is set true and details is empty, 
             show Textfield in error state and show helper text.*/
           {...detailsErrorProps}
         />
+      </Grid>
 
-        {/**File uploader for uploading images or video to report */}
-        <FileUploader name={t('upload_file')} accept="image/*, video/*" />
+      {/**Title */}
+      <Grid item xs={12}>
+        <Typography variant="h2" className='header5'>{t('report_suggestions')}</Typography>
+      </Grid>
+      {/**Report details Textfield */}
+      <Grid item xs={12}>
+        <TextField
+          label={t('report_suggestions_description')} 
+          multiline
+          rows={4}
+          variant="outlined"
+          value={details2}
+          onChange={handleDetails2}
+          /**If error state is set true and details is empty, 
+            show Textfield in error state and show helper text.*/
+          {...detailsErrorProps}
+        />
       </Grid>
     </Grid>
   );

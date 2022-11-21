@@ -35,7 +35,8 @@ const ReportPage = () => {
         onClick={handleBack}
         sx={{
           color: 'primary',
-          marginTop: '1em'
+          marginTop: '1em',
+          marginBottom: '1em'
         }}
       >
         {t('report_back_to_reports')}
