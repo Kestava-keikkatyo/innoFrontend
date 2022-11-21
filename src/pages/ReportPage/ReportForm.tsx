@@ -222,6 +222,9 @@ const ReportForm = () => {
         );
       }
 
+      /* ----TÄMÄ POIS? MIKSI LÄHETTÄÄ TIEDOSTOJA? TIEDOSTONAPPULA POISTETTU KOLMOSVAIHEESTA. T: Nikke 21.11.2022
+      
+      
       if (currentFiles.files[0] !== null) {
         //If there is any files attached to report, send them to DB now.
         const res: any = await fileService.postFile(currentFiles.files[0]);
@@ -235,7 +238,7 @@ const ReportForm = () => {
         dispatch(submitReport(copyOfCurrentReport));
       } else {
         dispatch(submitReport(currentReport));
-      }
+      }*/
       //Clear report in redux-store, clear step three error and finish-button loading-state and move to last step.
       dispatch(setReport(initialReport));
       setStepThreeError(false)

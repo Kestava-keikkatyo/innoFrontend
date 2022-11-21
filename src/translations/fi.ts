@@ -131,6 +131,16 @@ export default {
   fill_work_title: 'Tehtävänimike',
   fill_report_title: 'Turvallisuushavainnon aihe esim. Liukas lattia, ovi ei lukitu.',
   fill_report_details: 'Mitä tapahtui? Oliko henkilöitä vaarassa? Esim. Liukastuin jäisellä parkkipaikalla',
+  report_worker_title: 'Työtehtäväni esim. myyjä',
+  report_suggestions: 'Parannusehdotukseni',
+  report_suggestions_description: 'Ideani tilanteen korjaamiseksi',
+  select_report_handler_report_positive: 'Positiivinen havainto',
+  select_report_handler_report_deficiency: 'Puute, vika tai vaara',
+  select_report_handler_report_inappropriate: 'Epäasiallinen kohtelu',
+  select_report_handler_report_closecall: 'Läheltä piti -tilanne',
+  select_report_handler_report_incident: 'Työtapaturma',
+  select_report_handler_report_else: 'Muu tilanne',
+  select_report_handler_report_title: 'Turvallisuushavainnon tyyppi',
 
   // Reports page
   reports_not_found: 'Turvallisuushavaintoja ei löytynyt.',

@@ -132,6 +132,16 @@ export default {
   fill_work_title: 'Fill work title',
   fill_report_title: 'The subject of a security observation, e.g. slippery floor, door not locked.',
   fill_report_details: 'What happened? Were there persons in danger? For example, I slipped in an icy parking lot',
+  report_worker_title: 'Job title, cashier for example',
+  report_suggestions: 'My suggestion for improvement',
+  report_suggestions_description: 'My idea for solving the situation',
+  select_report_handler_report_positive: 'A positive observation',
+  select_report_handler_report_deficiency: 'Deficiency, fault or danger',
+  select_report_handler_report_inappropriate: 'Inappropriate treatment',
+  select_report_handler_report_closecall: 'Close call',
+  select_report_handler_report_incident: 'Work accident',
+  select_report_handler_report_else: 'Something else',
+  select_report_handler_report_title: 'Type of Security observation',
 
   // Reports page
   reports_not_found: 'No observations found.',
