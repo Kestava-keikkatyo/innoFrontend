@@ -788,17 +788,17 @@ export default {
   WorkPerformance: 'Work performance and supervision',
   FeedbackEvaluation: 'Feedback and evaluation',
 
-  //Responsibilities
+  // Responsibilities
   CustomerContractResponsibilities: '',
 
-  //Overview
+  // Overview
   loremipsum: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam distinctio esse iure modi neque quaerat, repudiandae. Accusantium alias aut commodi debitis ea harum ipsa itaque laudantium molestiae nesciunt quis sint vel velit, vitae voluptatibus! Commodi dicta dolorum eaque earum esse est facere fugit iste labore magnam, minus, neque nobis!',
 
-   //good practices
-   checkAll: 'Mark all read',
-   readAndUnderstood: 'Read and understood',
+  // good practices
+  checkAll: 'Mark all read',
+  readAndUnderstood: 'Read and understood',
 
-   //step1
+  // step1
   good_practices_customer_contract_array: [
     'The personnel service company and the user company go through the division of responsibilities based on legislation together.',
     'The personnel service company and the user company agree on the orientation and job guidance of the temporary worker.',
@@ -810,12 +810,12 @@ export default {
     'The visit can also be combined with hazard mapping and risk assessment, which can be done together with a representative of the user company.',
     'It is good to have the occupational health and safety commissioner involved in identifying hazards and assessing risks.'
   ],
-  //step2
+  // step2
   good_practices_order_and_selection_of_the_employee_array: [
     'The user company can also participate in the selection of the temporary worker itself and, for example, interview the best candidates. ',
     'New or inexperienced temporary workers can be offered easier tasks first, so that the temporary workers gain experience and the user company can get to know the temporary worker.'
   ],
-  //step3
+  // step3
   good_practices_employment_contract_and_general_orientation_array: [
     'The employment contract should always be in writing. ',
     'General orientation is given face-to-face with the employee. ',
@@ -824,16 +824,16 @@ export default {
     'If it is known in advance that urgent recruitments are likely, orientation can be anticipated by giving the necessary orientation in advance. However, the general orientation provided by the personnel service company alone is not enough, the user company must also provide orientation related to work and working conditions. ',
     'In the absence of a common language, it is worth using videos, pictures and plain language in the orientation. ',
     'A personnel service company can offer its temporary employees, for example, occupational safety or occupational welfare card training or other required occupational safety training. '
-    ],
-  //step4
+  ],
+  // step4
   good_practices_guidance_on_work_and_working_conditions_array: [
     'It is important for the user company to ensure that the temporary employee feels welcome and equal to other employees. ',
     "In the beginning, it's good to go through general issues related to work and the workplace. After that, a workplace tour is made, which includes getting to know the workplaces, tasks and personnel. At the same time, the exit routes, the location of fire extinguishers and first aid supplies, as well as safety-related issues, are provided. ",
     'You can make use of experienced employees who are exemplary in occupational safety matters.',
     'Employee learning should be ensured with, for example, questions, discussions and practical observations. Instructions given in written form can also be used as support. ',
     'The place where the work is done may be previously unknown to all parties involved in the temporary work. Even in these situations, the temporary worker must be provided with adequate guidance on the work and working conditions. '
-    ],
-  //step5
+  ],
+  // step5
   good_practices_work_performance_supervision_and_feedback_array: [
     'After the orientation and job guidance, the agency worker starts the actual work tasks. It is a good practice to appoint a work partner or mentor for the temporary employee for the first few days. ',
     'It is a good idea to include agency workers in all essential training and information events. ',
@@ -843,10 +843,133 @@ export default {
     'It is good to systematically evaluate the operation together, at least at the end of the customership. ',
     'A personnel service company should collect feedback on the flow of work from both the agency worker and the user company.',
     'A representative of a personnel service company can participate in meetings dealing with occupational safety and well-being of the user company.'
+  ],
+  // Rental work model Forms
 
-    ],
+  // Frequently used
+  textAreaPlaceholder: 'Write here...',
+  rentalCompany: 'Rental company',
+  userCompany: 'User company',
+  signatures: 'SIGNATURES',
+  orientator: 'Orientator',
+  orientated: 'Orientated',
+  clock: 'At',
+  workstation: 'Work room/work station',
 
-    //Worker responsibilities
+  // Form 1
+  form1Header: 'FORM 1 - OCCUPATIONAL SAFETY AND WELL-BEING MATTERS RELATED TO THE CUSTOMER AGREEMENT (to be completed by representatives of the rental company and the user company',
+  form1Text1: 'The form is supposed to be filled out in cooperation between the personnel service and the user company. By filling out the form, you are directed to go through the most essential issues related to occupational safety, health and well-being, and to plan and agree on important issues. The completed form can be attached to the end of the customer contract and can also be referred to in the contract. The form is checked and supplemented in connection with the employee\'s order.',
+  form1Text2: 'EDUCATION AND WORK EXPERIENCE REQUIRED FROM EMPLOYEES AND WORK SKILLS REQUIREMENTS',
+  form1Text3: 'SPECIFIC CHARACTERISTICS OF THE JOB, DISADVANTAGES AND HAZARDS IN THE JOB AND OTHER FACTS THAT SHOULD BE PARTICULARLY CONSIDERED IN TERMS OF OCCUPATIONAL SAFETY (e.g. health requirements and work that causes special risk and the related health checks and notification about using young workers aged 16-17 for dangerous work)',
+  form1Text4: 'PERSONAL PROTECTION REQUIRED FOR WORK TASKS (+work clothing) AND A DESCRIPTION OF WHICH PARTY IS RESPONSIBLE FOR SUPPLYING THE NECESSARY PROTECTION TO EMPLOYEES AND MAINTENANCE OF THE PROTECTION',
+  form1Text5: 'DESCRIPTION OF THE ORIENTATION AND COUNSELING OF TEMPORARY WORKERS (who does the orientation, how long does it take, what things are covered, what orientation material is given to the temporary workers, etc.)',
+  form1Text6: 'HOW TO PROVIDE IN THE EVENT OF A WORK ACCIDENT TO AN EMPLOYEE, SICK LEAVE AND OTHER DANGEROUS SITUATIONS (accidents and emergency situations, near-miss situations, violence and threats)',
+  form1Text7: 'HOW DOES A TENANT EMPLOYEE REPORT WORK ACCIDENTS, SICKNESS ABSENCES, OTHER DANGEROUS SITUATIONS OR OTHER SAFETY OBSERVATIONS (problems, deficiencies, safety initiatives)',
+  form1Text8: 'HOW DO YOU SUPPORT THE EMPLOYEE\'S ABILITY TO WORK (EARLY SUPPORT MODEL)?',
+  form1Text9: 'THE EMPLOYEE CONTACTS PERSON/PERSONS FOR WORK SAFETY MATTERS',
+  form1Text10: 'The user company supplies the rental company with a copy (if necessary)',
+  form1Text11: 'DESCRIPTION OF THE COMMUNICATION BETWEEN THE RENTAL COMPANY AND THE USER COMPANY DURING THE CUSTOMER CONTRACT',
+  form1Text12: 'CONTACT INFORMATION OF THE CONTACT PERSON OF THE RENTAL COMPANY',
+  form1Text13: 'CONTACT INFORMATION OF USER COMPANY CONTACT PERSON',
+  form1Check1: 'The occupational safety responsibilities following the legislation have been reviewed together',
+  form1Check2: 'About the occupational health care job survey',
+  form1Check3: 'About the occupational health and safety action program',
+  form1Check4: 'About the rescue plan',
+  form1Check5: 'From the results of the latest risk assessment',
+  workRoom: 'Office location',
+  form1ByDate: 'by (date)',
+
+  // Form 2
+  form2Header: 'FORM 2 – EMPLOYEE GENERAL ORIENTATION (to be completed by the rental company\'s orientation officer)',
+  form2Text1: 'The personnel service company\'s orientator fills out the form in connection with the orientation of the temporary employee. The list of subject areas on the form serves as a checklist of things to go through in the orientation. In the latter part of the form, the contact information of persons important to the employee is entered.',
+  form2Text2: 'A copy of the completed form must be given to the employee and also sent to the user company. From the completed form, the user company can see what the general orientation has included. This helps the user company in planning the content of the job guidance.',
+  form2Text3: 'General orientation given',
+  form2Text4: 'The following issues have been reviewed in connection with the general orientation for all temporary employees',
+  form2Text5: 'The following things have been reviewed in connection with the general orientation for new temporary employees (those receiving general orientation for the first time)',
+  form2Text6: 'A model for early support of work ability and sickness absence monitoring',
+  form2Text7: 'The role of the supervisor',
+  form2Text8: 'CONTACT INFORMATION OF THE CONTACT PERSON OF THE RENTAL COMPANY',
+  form2Text9: 'EMPLOYEE ACCESS TO THE WORKPLACE (transport connections, access permits, etc.)',
+  form2Text10: 'CONTACT INFORMATION OF THE CONTACT PERSON OF THE USER COMPANY (TO WHOM YOU APPLY)',
+  form2Text11: 'A copy of the completed form is',
+  form2Check1: 'Face to face',
+  form2Check2: 'By phone',
+  form2Check3: 'Overtime policy',
+  form2Check4: 'The job and the skills required in it',
+  form2Check5: 'Personal protective equipment (+ work clothes) needed at work and getting them into use',
+  form2Check6: 'To whom does the employee report the defects and deficiencies he/she finds',
+  form2Check7: 'The most essential things about the user company\'s job search/risk assessment',
+  form2Check8: 'Employee obligations and the right to abstain from work according to the Occupational Safety and Health Act',
+  form2Check9: 'Operating instructions for temporary employees in the event of an accident or other dangerous situation',
+  form2Check10: 'Occupational safety representative of the rental company',
+  form2Check11: 'Operating instructions when a temporary employee falls ill',
+  form2Check12: 'Occupational health care services',
+  form2Check13: 'Sent to the employee by mail/email',
+  form2Check14: 'Given to the employee at the end of orientation',
+  rentalCompanyAndOrientation: 'Rental company and orientation provider',
+  userCompanyAddress: 'User company address',
+  workRoomPlace: 'Work room/Registration place',
+  registrationTime: 'Registration time (date)',
+
+  // Form 3
+  form3Header: 'FORM 3 - JOB COUNSELING (filled in by the user company\'s job advisor)',
+  form3Text1: 'The orientation worker of the user company fills out the form in connection with the job guidance of the temporary employee. The list of subject areas on the form serves as a checklist of things to go through in job guidance. The form is also filled in with the contact information of the person acting as the manager of the temporary worker in the user company.',
+  form3Text2: 'A copy of the completed form must be given to the employee and the HR company. The filled-in form serves as a kind of proof of the user company providing job guidance.',
+  form3Text3: 'User company and job guidance provider',
+  form3Text4: 'The following issues have been covered in the job guidance provided by the user company to the employee',
+  form3Text5: 'The contact information of the manager of the user company (if a different person than the previous one).',
+  form3Check1: 'Work tasks and safe working methods',
+  form3Check2: 'Harmful and dangerous factors at work and protection against them',
+  form3Check3: 'Working hours and breaks',
+  form3Check4: 'Using and maintaining safety equipment and personal protective equipment',
+  form3Check5: 'Tidiness and order',
+  form3Check6: 'Operations in emergency and emergency situations',
+  form3Check7: 'Making safety observations (work accidents and other dangerous situations, initiatives, deficiencies/problems)',
+  form3Check8: 'First aid cabinets, fire extinguishers, exit routes, etc.',
+  form3Check9: 'Personnel facilities (non-smoking, etc.)',
+  form3Check10: 'Things to pay special attention to',
+  form3Check11: 'Good work ergonomics (adjustment of chairs/tables/worktops, working positions and movements, lifting techniques, etc.)',
+  form3Check12: 'Information practices (bulletin boards, email lists, etc.)',
+  form3Check13: 'Participation in user company meetings and other weekly activities',
+  form3Check14: 'Permit matters (access cards, hot work licence, etc.)',
+  form3Check15: 'Occupational health and safety representative of the user company',
+  form3Check16: 'Whom to ask for help if needed',
+
+  // Form 4
+  form4Header: 'FORM 4 - FUNCTIONAL EVALUATION (to be completed by the representatives of the user company and the rental company)',
+  form4Text1: 'Representatives of the personnel service company and the user company fill out the form together. In the final meeting, a summary is made of how the assignment went, and especially of ensuring work safety. At the beginning of the form there is a checklist of things to go through in the evaluation of the operation. In the last part of the form, you must write down the most relevant issues that came up during the evaluation of the operation and the joint analysis (both the successes of the assignment and the issues that need development).',
+  form4Text2: 'A separate copy of the completed form (or its copy) must remain for both parties. On the basis of the issues recorded in the form, companies can develop their occupational safety activities in the next temporary work assignment. It\'s good to go over the feedback with the temporary employee as well',
+  form4Text3: 'The following issues have been reviewed in the post-evaluation made after the end of the assignment',
+  form4Text4: 'SUMMARY OF SUCCESSES AND THINGS WELL WELL IN THE CONTRACT (RELATED TO WORK SAFETY)',
+  form4Text5: 'SUMMARY OF PROBLEMS THAT APPEARED DURING THE ASSIGNMENT/ISSUES THAT NEED IMPROVEMENT',
+  form4Text6: 'HOW CAN YOUR OWN OPERATIONS BE DEVELOPED SO THAT THE THINGS MENTIONED ABOVE CAN BE IMPROVED IN THE FUTURE',
+  form4Check1: 'Safety feedback received from temporary employees during the assignment (work accidents, other dangerous situations, initiatives, deficiencies/problems)',
+  form4Check2: 'Adequacy of temporary employees\' professional skills and competence in relation to work tasks',
+  form4Check3: 'Performance of temporary employees at work, including occupational safety issues',
+  form4Check4: 'Accidents at work for temporary employees and their investigation reports',
+  form4Check5: 'Feedback from the user company to the rental company about its activities during the assignment',
+  form4Check6: 'Feedback from the rental company (and temporary workers) to the user company about its activities during the assignment',
+  form4Check7: 'Functionality of information flow during the assignment (especially between the rental company and the user company)',
+  form4Check8: 'Adequacy of the orientation and work guidance provided (quantity and quality)',
+  form4Check9: 'Adequacy of personal protective equipment and safety equipment used at work',
+  rentalCompanyCaps: 'RENTAL COMPANY',
+  userCompanyCaps: 'USER COMPANY',
+  cooperation: 'COOPERATION',
+
+  // Form 5
+  form5Header: 'FORM 5 – Orientation and job guidance in urgent situations',
+  form5Text1: 'In situations where an employee is needed to do work quickly, part of the orientation can be left to be done after starting work. However, the most important issues related to safety should always be told to the employee at the very beginning. This form contains things that should at least be reviewed before starting the work.',
+  form5Text2: 'Orientation of a personnel service company in an urgent case',
+  form5Text3: 'Work-related safety and health risks',
+  form5Text4: 'Contact information of the person in charge of the personnel service company',
+  form5Text5: 'User company address and instructions for getting to the workplace (e.g. access permit)',
+  form5Text6: 'Contact information of the contact person of the user company',
+  form5Text7: 'User company job guidance in an urgent case',
+  form5Text8: 'Using safety equipment and personal protective equipment',
+  jobAdvisor: 'Job advisor',
+  userCompanyName: 'User company name',
+  serviceCompany: 'The name of the personnel service company',
+    // Worker responsibilities
     worker_step_1: [
       "Compliance with the employer's instructions and regulations",
       'Taking care of your own safety and that of your colleagues',
@@ -882,9 +1005,7 @@ export default {
       'The employee reports all accidents, near misses, violence and threats, and gives feedback related to other occupational safety (possible deficiencies or problems related to occupational safety and safety initiatives).'
     ],
 
-    //feelings
+    // feelings
     work_feel: 'How is the work going?',
     tell_more: 'Tell more!',
-                    
-
 }

@@ -1,15 +1,11 @@
-import {
-  List,
-  ListItem,
-  ListItemText,
-  Container,
-}from '@mui/material';
+import { Container } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import WorkerStepBase from './WorkerStepBase';
 import Typography from '@mui/material/Typography';
 import makeStyles from '@mui/styles/makeStyles';
 import { Theme } from '@mui/material/styles';
+import ContractOfEmploymentForm from './Forms/ContractOfEmploymentForm';
 import SearchFromFileComponent from './SearchFromFileComponent';
 
 const ContractOfEmployment = () => {
@@ -21,7 +17,7 @@ const ContractOfEmployment = () => {
  <SearchFromFileComponent inputString="worker_step_3" />
     </div>,
     <div key="tab1">
-      Tab 1 content for {t('contract_of_employment')}
+      <ContractOfEmploymentForm/>
     </div>,
     <div key="tab2">
        <SearchFromFileComponent inputString="good_practices_employment_contract_and_general_orientation_array" />
