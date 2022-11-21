@@ -76,7 +76,7 @@ const OrderingEmployeeForm: React.FC = () => {
                         <h4 className={classes.h4}>{t('workRoom')}:</h4>
                         <FormikTextField className={classes.smallerTextField} label={t('workRoom')} name={'workroom2'} type={'text'}></FormikTextField>
                     </Box>
-                    <Box className={classes.boxRow}>
+                    <Box className={classes.boxColumn}>
                         <h4>{t('form1Text10')}:</h4>
                         <label>
                             <Field type="checkbox" name="check2" />
@@ -170,6 +170,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     smallerTextField: {
         marginRight: '10px',
         width: '40%',
+        [theme.breakpoints.down('md')]: {
+            width: '100%'
+        },
         top: '5px'
     },
     marginTop: {
@@ -188,10 +191,14 @@ const useStyles = makeStyles((theme: Theme) => ({
         marginRight: '10px',
         marginTop: '10px',
         width: '15%',
+        [theme.breakpoints.down('md')]: {
+            width: '50%'
+        },
         top: '5px'
     },
     dateh4: {
-        marginTop: '30px'
+        marginTop: '30px',
+        whiteSpace: 'nowrap'
     },
 }));
 

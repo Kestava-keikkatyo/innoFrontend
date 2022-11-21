@@ -68,10 +68,12 @@ const GuidanceToWorkForm: React.FC = () => {
                 centered
             >
                 <Tab
+                    style={{marginTop: '30px'}}
                     label={t('form3Header')}
                     {...a11yProps(0)}
                 />
                 <Tab
+                    style={{marginTop: '30px'}}
                     label={t('form5Header')}
                     {...a11yProps(1)}
                 />

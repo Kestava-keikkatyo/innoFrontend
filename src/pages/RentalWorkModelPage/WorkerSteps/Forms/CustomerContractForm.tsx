@@ -52,7 +52,7 @@ const CustomerContractForm: React.FC = () => {
                         <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
                     </Box>
                     <h4 className={classes.marginTop}>{t('form1Text9')}:</h4>
-                    <Box className={classes.boxColumn}>
+                    <Box className={classes.boxRow}>
                         <h4 className={classes.h4}>{t('name')}:</h4>
                         <FormikTextField className={classes.textField} label={t('name')} name={'name1'} type={'text'}></FormikTextField>
                         <h4 className={classes.h4}>{t('user_phone_number')}:</h4>
@@ -94,7 +94,7 @@ const CustomerContractForm: React.FC = () => {
                             <Field type="checkbox" name="check5" />
                             {t('form1Check5')}
                         </label>
-                        <Box className={classes.boxRow}>
+                        <Box display="flex" flexDirection="row">
                             <FormikTextField className={classes.dateTextField} name={'date'} type={'date'} label={''}></FormikTextField>
                             <h4 className={classes.dateh4}>{t('form1ByDate')}</h4>
                         </Box>
@@ -170,6 +170,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     smallerTextField: {
         marginRight: '10px',
         width: '40%',
+        [theme.breakpoints.down('md')]: {
+            width: '100%'
+        },
         top: '5px'
     },
     marginTop: {
@@ -188,10 +191,14 @@ const useStyles = makeStyles((theme: Theme) => ({
         marginRight: '10px',
         marginTop: '10px',
         width: '15%',
+        [theme.breakpoints.down('md')]: {
+            width: '50%'
+        },
         top: '5px'
     },
     dateh4: {
-        marginTop: '30px'
+        marginTop: '30px',
+        whiteSpace: 'nowrap'
     },
 }));
 
