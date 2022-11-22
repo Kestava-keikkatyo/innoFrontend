@@ -65,7 +65,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
    const handleClick = () => {
      if(isMobile) { setOpen(false) }
    }
-   
+
 
   const [openNest, setOpenNest] = useState(false)
 
@@ -200,7 +200,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           )}
           {role === roles.Worker && (
             <>
-              <ListItemButton component={Link} to="/home" onClick={handleClick}>
+              <ListItemButton component={Link} to="/schedule" onClick={handleClick}>
                 <ListItemIcon>
                   <CalendarTodayIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
