@@ -1,44 +1,47 @@
 .calendar {
+    --wide-screen-calendar-height: 520px;
+    --wide-screen-day-container-height: 400px;
+    --wide-screen-font-size: 26px;
+    --wide-screen-cell-size: 64px;
+
+    --small-screen-calendar-height: 300px;
+    --small-screen-day-container-height: 220px;
+    --small-screen-font-size: 18px;
+    --small-screen-cell-size: 32px;
+}
+
+/* Whole calendar view */
+.calendar {
     width: 100%;
-    min-height: 450px;
+    min-height: var(--wide-screen-calendar-height);
 }
 
+/* Days container */
 .calendar .PrivatePickersSlideTransition-root {
-    height: 450px;
+    min-height: var(--wide-screen-day-container-height);
 }
 
-.calendar .PrivatePickersFadeTransitionGroup-root {
-    overflow: hidden;
+/* Year container */
+.calendar .MuiYearPicker-root {
+    min-height: 466px;
 }
 
 /* Weekday row */
-.calendar .MuiCalendarPicker-viewTransitionContainer > div:first-child > div:first-child {
-    justify-content: space-around;
-}
-
-/* Weekday row text ( S M T W T F S ) */
-.calendar .MuiCalendarPicker-viewTransitionContainer > div:first-child > div:first-child span {
-    font-size: 26px;
-    width: 64px;
-    height: 64px;
-}
-
-/* Calendar view */
-.calendar .PrivatePickersSlideTransition-root {
-
-}
-
+.calendar .MuiCalendarPicker-viewTransitionContainer > div:first-child > div:first-child,
 /* Day number rows */
 .calendar [role="row"] {
     justify-content: space-around;
 }
 
+/* Weekday row text ( S M T W T F S ) */
+.calendar .MuiCalendarPicker-viewTransitionContainer > div:first-child > div:first-child span,
+/* Day number cells */
+.calendar [role="gridcell"],
 /* Day number cell buttons */
-.calendar [role="cell"],
-.calendar [role="cell"] > button {
-    font-size: 26px;
-    width: 64px;
-    height: 64px;
+.calendar [role="gridcell"] > button {
+    font-size: var(--wide-screen-font-size);
+    width: var(--wide-screen-cell-size);
+    height: var(--wide-screen-cell-size);
 }
 
 /* Selected day */
@@ -47,24 +50,26 @@
 }
 
 @media only screen and (max-width: 900px) {
-    /* Calendar view */
+    /* Whole calendar view */
     .calendar,
+    /* Year container */
+    .calendar .MuiYearPicker-root{
+        min-height: var(--small-screen-calendar-height);
+    }
+
+    /* Days container */
     .calendar .PrivatePickersSlideTransition-root {
-        min-height: 200px;
+        min-height: var(--small-screen-day-container-height);
     }
 
     /* Weekday row text ( S M T W T F S ) */
-    .calendar .MuiCalendarPicker-viewTransitionContainer > div:first-child > div:first-child span {
-        font-size: 18px;
-        width: 32px;
-        height: 32px;
-    }
-
+    .calendar .MuiCalendarPicker-viewTransitionContainer > div:first-child > div:first-child span,
+    /* Day number cells */
+    .calendar [role="gridcell"],
     /* Day number cell buttons */
-    .calendar [role="cell"],
-    .calendar [role="cell"] > button {
-        font-size: 18px;
-        width: 32px;
-        height: 32px;
+    .calendar [role="gridcell"] > button{
+        font-size: var(--small-screen-font-size);
+        width: var(--small-screen-cell-size);
+        height: var(--small-screen-cell-size);
     }
 }
