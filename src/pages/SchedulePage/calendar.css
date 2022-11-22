@@ -33,7 +33,7 @@
     justify-content: space-around;
 }
 
-/* Weekday row text ( S M T W T F S ) */
+/* Weekday row text ( Su Mo Tu We Th Fr Sa ) */
 .calendar .MuiCalendarPicker-viewTransitionContainer > div:first-child > div:first-child span,
 /* Day number cells */
 .calendar [role="gridcell"],
@@ -62,7 +62,7 @@
         min-height: var(--small-screen-day-container-height);
     }
 
-    /* Weekday row text ( S M T W T F S ) */
+    /* Weekday row text ( Su Mo Tu We Th Fr Sa ) */
     .calendar .MuiCalendarPicker-viewTransitionContainer > div:first-child > div:first-child span,
     /* Day number cells */
     .calendar [role="gridcell"],

@@ -82,6 +82,9 @@ export default {
   // mood_category
   mood_category: 'Fiiliskategoria',
 
+  // Schedule
+  schedule_title: 'Aikataulusi',
+
   // Pie chaert
   mood_overall: 'Kokonaiskatsaus',
   worst: 'Todella huono',
@@ -1003,7 +1006,7 @@ export default {
     'Työntekijän tulee varmistaa, että käyttäjäyritys antaa tarpeeksi hyvän opastuksen työhön ja työoloihin.',
     'Varmistaa, että annetaan riittävät tiedot suoriutua turvallisesti annetuista työtehtävistä.'
   ],
-  
+
   worker_step_5: [
     'Työntekijälle tulee nimetä ensimmäisiksi päiviksi työpari tai muu henkilö, joka ohjaa jatkuvasti työntekijän suoriutumista ja auttaa tarvittaessa.',
     'Varmistaa, että vuokratyöntekijää kohdellaan samalla tavalla kuin vakituisiakin työntekijöitä.',

@@ -12,6 +12,7 @@ import './calendar.css'
 import fi from 'dayjs/locale/fi';
 import en from 'dayjs/locale/en';
 import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 const minDate = dayjs('1940-01-01T00:00:00.000');
 const maxDate = dayjs('2080-01-01T00:00:00.000');
@@ -19,9 +20,11 @@ const maxDate = dayjs('2080-01-01T00:00:00.000');
 const SchedulePage: React.FC = () => {
   const classes = useStyles();
   const [date, setDate] = useState<Dayjs | null>(dayjs());
+  const { t } = useTranslation();
 
   const myUserId = useSelector((state: IRootState) => state.user.data._id);
 
+  // TODO: If schedule page needs personalization, use profileData.
   const profileData = useSelector((state: IRootState) => state.users.currentUser);
   const dispatch = useDispatch();
 
@@ -36,7 +39,7 @@ const SchedulePage: React.FC = () => {
   return (
     <div className={classes.container}>
       <div className={classes.titleContainer}>
-        <Typography color="secondary" className="header" variant="h1">Your schedule</Typography>
+        <Typography color="secondary" className="header" variant="h1">{t('schedule_title')}</Typography>
       </div>
       <div className={classes.calendarContainer}>
         <LocalizationProvider dateAdapter={AdapterDayjs} locale={i18next.language === 'en' ? en : fi}>
@@ -54,7 +57,7 @@ const SchedulePage: React.FC = () => {
   );
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   container: {
     flex: '4',
     padding: '20px',
