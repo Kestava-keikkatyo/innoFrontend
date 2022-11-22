@@ -72,6 +72,7 @@ import Responsibilities from './pages/Responsibility/Responsibilities'
 import ResponsibilityUpdate from './pages/Responsibility/ResponsibilityUpdate'
 import RentalWorkModelPage from './pages/RentalWorkModelPage'
 import { useTranslation } from 'react-i18next'
+import SchedulePage from './pages/SchedulePage';
 
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -112,6 +113,9 @@ const App: React.FC = () => {
             </PrivateRoute>
             <PrivateRoute path="/feelingList">
               <FeelingList />
+            </PrivateRoute>
+            <PrivateRoute path="/schedule">
+              <SchedulePage />
             </PrivateRoute>
             <PrivateRoute path="/reportDetails/:reportId">
               <ReportDetails />

@@ -83,6 +83,9 @@ export default {
   // mood_category
   mood_category: 'Mood Category',
 
+  // Schedule
+  schedule_title: 'Your schedule',
+
   // Pie chaert
   mood_overall: 'Mood overall',
   worst: 'Very Dissatisfied',
