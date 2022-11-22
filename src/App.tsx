@@ -71,7 +71,7 @@ import CreateResponsibility from './pages/Responsibility/CreateResponsibility'
 import Responsibilities from './pages/Responsibility/Responsibilities'
 import ResponsibilityUpdate from './pages/Responsibility/ResponsibilityUpdate'
 import RentalWorkModelPage from './pages/RentalWorkModelPage'
-import ResponsibilitiesToAll from './pages/ResponsibilitiesPage/ResponsibilitiesToAll'
+import WorkerResponsibilities from './pages/ResponsibilitiesPage/WorkerResponsibilities'
 import { useTranslation } from 'react-i18next'
 
 declare module '@mui/styles/defaultTheme' {
@@ -177,8 +177,8 @@ const App: React.FC = () => {
             <PrivateRoute path="/responsibilities" roles={[roles.Admin]}>
               <Responsibilities />   
             </PrivateRoute>
-            <PrivateRoute path="/responsibilitiesToAll" roles={[roles.Worker]}>
-              <ResponsibilitiesToAll />   
+            <PrivateRoute path="/workerResponsibilities" roles={[roles.Worker]}>
+              <WorkerResponsibilities />   
             </PrivateRoute>
             <PrivateRoute path="/feedback/send" roles={[roles.Business, roles.Agency, roles.Worker]}>
               <SendFeedback />

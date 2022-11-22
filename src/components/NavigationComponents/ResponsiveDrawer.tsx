@@ -200,7 +200,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           )}
           {role === roles.Worker && (
             <>
-              <ListItemButton component={Link} to="/responsibilitiesToAll" onClick={handleClick}>
+              <ListItemButton component={Link} to="/workerResponsibilities" onClick={handleClick}>
                 <ListItemIcon>
                   <AccessibilityOutlinedIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>

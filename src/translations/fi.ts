@@ -875,17 +875,32 @@ worker_step_5: [
 ],
 
 //vastuut sivu
-responsibility_1: '1. Huolehdin omasta ja työkavereiden työhyvinvoinnista ja -turvallisuudesta.',
-responsibility_2: '2. En häiritse tai kohtele muita epäasiallisesti.',
-responsibility_3: '3. Noudatan työpaikan ohjeita.',
-responsibility_4: '4. Käytän työvälineitä, henkilösuojaimia ja turvalaitteita asianmukaisesti.',
-responsibility_5: '5. Ilmoitan havaitsemistani vioista ja puutteista',
-
 responsibility_1_article: 'Työntekijän on kokemuksensa, työnantajalta saamansa opetuksen ja ohjauksen sekä ammattitaitonsa mukaisesti työssään huolehdittava käytettävissään olevin keinoin niin omasta kuin muiden työntekijöiden turvallisuudesta ja terveydestä. Turvallisuuden ja terveellisyyden ylläpitämiseksi työntekijän on toimittava työn ja työolosuhteiden edellyttämällä tavalla huolellisesti ja varovasti sekä huolehdittava siisteydestä ja järjestyksestä. Työntekijän on toimittava yhteistyössä työnantajan ja työntekijöiden edustajien kanssa työtapaturmien, ammattitautien ja muiden työstä ja työympäristöstä johtuvien terveyshaittojen torjumiseksi. Terveydellä tarkoitetaan sekä fyysistä että henkistä terveyttä. ',
 responsibility_2_article: 'Työntekijän on työpaikalla vältettävä sellaista muihin työntekijöihin kohdistuvaa häirintää ja muuta epäasiallista kohtelua, joka aiheuttaa heidän turvallisuudelleen tai terveydelleen haittaa tai vaaraa. Työntekijän tulee ilmoittaa kokemastaan häirinnästä työnantajalle. ',
 responsibility_3_article: 'Työntekijän on noudatettava työnantajan toimivaltansa mukaisesti antamia määräyksiä ja ohjeita. Turvallisuusohjeet voivat liittyä työmenetelmiin, koneiden ja henkilökohtaisten suojainten käyttämiseen tai vaarallisten aineiden käyttöön ja käsittelyyn. ',
 responsibility_4_article: 'Työntekijän tulee käyttää ja hoitaa työnantajan antamia henkilönsuojaimia ja muita varusteita huolellisesti ja ohjeiden mukaisesti. Työntekijän on työssään käytettävä sellaista asianmukaista vaatetusta, josta ei aiheudu tapaturman vaaraa. Henkilönsuojaimilla tarkoitetaan sellaisia välineitä, varusteita tai vaatteita, jotka suojaavat työntekijää tapaturmilta tai sairastumiselta työssä. Henkilönsuojaimia ovat esimerkiksi suojalasit, turvakengät, suojakäsineet, kypärät, kuulon- ja hengityksensuojaimet, valjaat ja suojahaalarit. Työntekijän tulee käyttää oikein koneita, työvälineitä ja muita laitteita sekä niissä olevia turvallisuus- ja suojalaitteita. Käytössä tulee hyödyntää työntekijän ammattitaitoa, työkokemusta ja työnantajalta saatuja käyttö- ja muita ohjeita. Koneeseen, työvälineeseen, muuhun laitteeseen tai rakennukseen asennettua turvallisuus- tai suojalaitetta ei saa ilman erityistä syytä poistaa tai kytkeä pois päältä. Jos työntekijä joutuu tilapäisesti poistamaan turvallisuus- tai suojalaitteen käytöstä, hänen on palautettava se käyttöön tai kytkettävä laite päälle niin pian kuin mahdollista. ',
-responsibility_5_article: 'Työntekijän on viipymättä ilmoitettava työnantajalle tai työsuojeluvaltuutetulle, mikäli työpaikalla ilmenee vikoja ja puutteellisuuksia, jotka voivat aiheuttaa haittaa tai vaaraa työtekijöiden terveydelle tai turvallisuudelle. Viat ja puutteet voivat olla työolosuhteissa, työmenetelmissä, koneissa, työvälineissä, henkilösuojaimissa tai muissa laitteissa. Työntekijän on myös mahdollisuuksiensa mukaan pyrittävä poistamaan havaitsemansa mahdollista vaaraa aiheuttavat viat ja puutteellisuudet, kun tämä on mahdollista ja turvallista. Työntekijän on ilmoitettava myös poistamistaan vioista ja puutteellisuuksista. Ilmoittaminen on tärkeää, jotta työnantaja voi korjata vaaraa tai haittaa aiheuttavat viat ja puutteet. Työnantajan on kerrottava ilmoituksen tehneelle työntekijälle ja työsuojeluvaltuutetulle, mihin toimenpiteisiin ryhdytään tai on ryhdytty esille tulleen vian tai puutteen korjaamiseksi.'
+responsibility_5_article: 'Työntekijän on viipymättä ilmoitettava työnantajalle tai työsuojeluvaltuutetulle, mikäli työpaikalla ilmenee vikoja ja puutteellisuuksia, jotka voivat aiheuttaa haittaa tai vaaraa työtekijöiden terveydelle tai turvallisuudelle. Viat ja puutteet voivat olla työolosuhteissa, työmenetelmissä, koneissa, työvälineissä, henkilösuojaimissa tai muissa laitteissa. Työntekijän on myös mahdollisuuksiensa mukaan pyrittävä poistamaan havaitsemansa mahdollista vaaraa aiheuttavat viat ja puutteellisuudet, kun tämä on mahdollista ja turvallista. Työntekijän on ilmoitettava myös poistamistaan vioista ja puutteellisuuksista. Ilmoittaminen on tärkeää, jotta työnantaja voi korjata vaaraa tai haittaa aiheuttavat viat ja puutteet. Työnantajan on kerrottava ilmoituksen tehneelle työntekijälle ja työsuojeluvaltuutetulle, mihin toimenpiteisiin ryhdytään tai on ryhdytty esille tulleen vian tai puutteen korjaamiseksi.',
 
+read_more_about_responsibilities: 'Lue lisää vastuusta...',
+
+
+
+workerResponsibilitiesArray: [
+  { 
+  header:'1. Huolehdin omasta ja työkavereiden työhyvinvoinnista ja -turvallisuudesta.',
+  summary:  'Työntekijän on osaamisensa mukaisesti ja käytettävissään olevin keinoin huolehdittava omasta ja muiden työntekijöiden turvallisuudesta ja terveydestä.' },
+  {
+  header: '2. En häiritse tai kohtele muita epäasiallisesti.',
+  summary: 'Työntekijän on vältettävä muihin työntekijöihin kohdistuvaa häirintää ja muuta epäasiallista kohtelua. '},
+  {
+  header: '3. Noudatan työpaikan ohjeita.',
+  summary: 'Työntekijän on noudatettava työnantajan antamia määräyksiä ja ohjeita. '},
+  {
+  header: '4. Käytän työvälineitä, henkilösuojaimia ja turvalaitteita asianmukaisesti.',
+  summary: 'Työntekijän tulee käyttää oikein koneita, työvälineitä ja muita laitteita sekä niissä olevia turvallisuus- ja suojalaitteita. Lisäksi työntekijän tulee käyttää työnantajan antamia henkilönsuojaimia. '},
+  {
+  header: '5. Ilmoitan havaitsemistani vioista ja puutteista',
+  summary: 'Työntekijän on ilmoitettava työssä havaitsemistaan vioista ja puutteista työnantajalle ja työsuojeluvaltuutetulle. '}      
+]
 }
 
