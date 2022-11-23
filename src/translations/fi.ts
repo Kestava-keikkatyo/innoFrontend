@@ -1044,42 +1044,6 @@ workerResponsibilitiesArray: [
   userCompanyName: 'Käyttäjäyrityksen nimi',
   serviceCompany: 'Henkilöstöpalveluyrityksen nimi',
 
-  // Worker responsibilities
-  worker_step_1: [
-    'Työnantajan ohjeiden ja määräysten noudattaminen',
-    'Omasta ja työkavereiden turvallisuudesta huolehtiminen',
-    'Häirinnän ja epäasiallisen kohtelun välttäminen',
-    'Työvälineiden, henkilönsuojainten ja turvalaitteiden asianmukainen käyttö',
-    'Havaitsemistaan vioista ja puutteista ilmoittaminen'
-  ],
-
-  worker_step_2: [
-    'Työntekijöiltä edellytettävä koulutus ja työkokemus sekä työn ammattitaitovaatimukset',
-    'Työn erityispiirteet, työssä esiintyvät haitta- ja vaaratekijät sekä muut työympäristössä erityistä huomiota vaativat asiat (esim. terveydentilavaatimukset)',
-    'Työtehtävissä tarvittavat henkilönsuojaimet ja turvalaitteet'
-  ],
-
-  worker_step_3: [
-    'Noudattaa työnantajan antamia ohjeita ja määräyksiä',
-    'Huolehtia omasta ja muiden työntekijöiden turvallisuudesta käytettävissä olevin keinoin',
-    'Olla kohdistamatta häirintää tai epäasiallista kohtelua muihin työntekijöihin',
-    'Käyttää ja hoitaa työssä tarvittavia henkilönsuojaimia ja apuvälineitä',
-    'Viipymättä ilmoittaa viasta tai puutteesta (omalle esimiehelle tai työsuojeluvaltuutetulle), jos se voi aiheuttaa joko omalle tai työnkaverin turvallisuudelle/terveydelle haittaa tai vaaraa',
-    'Korjata edellä mainittu havaitsemansa vika, mikäli oma kokemus tai ammattitaito riittää',
-    'Olla poistamatta turva- tai suojalaitetta käytöstä'
-  ],
-
-  worker_step_4: [
-    'Työntekijän tulee varmistaa, että käyttäjäyritys antaa tarpeeksi hyvän opastuksen työhön ja työoloihin.',
-    'Varmistaa, että annetaan riittävät tiedot suoriutua turvallisesti annetuista työtehtävistä.'
-  ],
-
-  worker_step_5: [
-    'Työntekijälle tulee nimetä ensimmäisiksi päiviksi työpari tai muu henkilö, joka ohjaa jatkuvasti työntekijän suoriutumista ja auttaa tarvittaessa.',
-    'Varmistaa, että vuokratyöntekijää kohdellaan samalla tavalla kuin vakituisiakin työntekijöitä.',
-    'Työntekijä ilmoittaa kaikista työtapaturmista, onnettomuustilanteista, läheltä piti- tilanteista, väkivalta- ja uhkatilanteista, sekä antaa muuhun työturvallisuuteen liittyvää palautetta (mahdolliset työturvallisuuteen liittyvät puutteet tai ongelmat sekä turvallisuusaloitteet).'
-  ],
-
   // feelings
   work_feel: 'Miten työt sujuvat?',
   tell_more: 'Kerro lisää!',
