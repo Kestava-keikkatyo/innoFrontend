@@ -851,6 +851,73 @@ export default {
     'Henkilöstöpalveluyrityksen edustaja voi osallistua käyttäjäyrityksen työturvallisuutta ja -hyvinvointia käsitteleviin kokouksiin.'
   ],
 
+ 
+//Worker responsibilities
+worker_step_1: [
+  'Työnantajan ohjeiden ja määräysten noudattaminen',
+  'Omasta ja työkavereiden turvallisuudesta huolehtiminen',
+  'Häirinnän ja epäasiallisen kohtelun välttäminen',
+  'Työvälineiden, henkilönsuojainten ja turvalaitteiden asianmukainen käyttö',
+  'Havaitsemistaan vioista ja puutteista ilmoittaminen'
+],
+
+worker_step_2: [
+  'Työntekijöiltä edellytettävä koulutus ja työkokemus sekä työn ammattitaitovaatimukset',
+  'Työn erityispiirteet, työssä esiintyvät haitta- ja vaaratekijät sekä muut työympäristössä erityistä huomiota vaativat asiat (esim. terveydentilavaatimukset)',
+  'Työtehtävissä tarvittavat henkilönsuojaimet ja turvalaitteet'
+],
+
+worker_step_3: [
+  'Noudattaa työnantajan antamia ohjeita ja määräyksiä',
+  'Huolehtia omasta ja muiden työntekijöiden turvallisuudesta käytettävissä olevin keinoin',
+  'Olla kohdistamatta häirintää tai epäasiallista kohtelua muihin työntekijöihin',
+  'Käyttää ja hoitaa työssä tarvittavia henkilönsuojaimia ja apuvälineitä',
+  'Viipymättä ilmoittaa viasta tai puutteesta (omalle esimiehelle tai työsuojeluvaltuutetulle), jos se voi aiheuttaa joko omalle tai työnkaverin turvallisuudelle/terveydelle haittaa tai vaaraa',
+  'Korjata edellä mainittu havaitsemansa vika, mikäli oma kokemus tai ammattitaito riittää',
+  'Olla poistamatta turva- tai suojalaitetta käytöstä'
+],
+
+worker_step_4: [
+  'Työntekijän tulee varmistaa, että käyttäjäyritys antaa tarpeeksi hyvän opastuksen työhön ja työoloihin.',
+  'Varmistaa, että annetaan riittävät tiedot suoriutua turvallisesti annetuista työtehtävistä.'
+],
+
+worker_step_5: [
+  'Työntekijälle tulee nimetä ensimmäisiksi päiviksi työpari tai muu henkilö, joka ohjaa jatkuvasti työntekijän suoriutumista ja auttaa tarvittaessa.',
+  'Varmistaa, että vuokratyöntekijää kohdellaan samalla tavalla kuin vakituisiakin työntekijöitä.',
+  'Työntekijä ilmoittaa kaikista työtapaturmista, onnettomuustilanteista, läheltä piti- tilanteista, väkivalta- ja uhkatilanteista, sekä antaa muuhun työturvallisuuteen liittyvää palautetta (mahdolliset työturvallisuuteen liittyvät puutteet tai ongelmat sekä turvallisuusaloitteet).'
+],
+
+//vastuut sivu
+responsibility_1_article: 'Työntekijän on kokemuksensa, työnantajalta saamansa opetuksen ja ohjauksen sekä ammattitaitonsa mukaisesti työssään huolehdittava käytettävissään olevin keinoin niin omasta kuin muiden työntekijöiden turvallisuudesta ja terveydestä. Turvallisuuden ja terveellisyyden ylläpitämiseksi työntekijän on toimittava työn ja työolosuhteiden edellyttämällä tavalla huolellisesti ja varovasti sekä huolehdittava siisteydestä ja järjestyksestä. Työntekijän on toimittava yhteistyössä työnantajan ja työntekijöiden edustajien kanssa työtapaturmien, ammattitautien ja muiden työstä ja työympäristöstä johtuvien terveyshaittojen torjumiseksi. Terveydellä tarkoitetaan sekä fyysistä että henkistä terveyttä. ',
+responsibility_2_article: 'Työntekijän on työpaikalla vältettävä sellaista muihin työntekijöihin kohdistuvaa häirintää ja muuta epäasiallista kohtelua, joka aiheuttaa heidän turvallisuudelleen tai terveydelleen haittaa tai vaaraa. Työntekijän tulee ilmoittaa kokemastaan häirinnästä työnantajalle. ',
+responsibility_3_article: 'Työntekijän on noudatettava työnantajan toimivaltansa mukaisesti antamia määräyksiä ja ohjeita. Turvallisuusohjeet voivat liittyä työmenetelmiin, koneiden ja henkilökohtaisten suojainten käyttämiseen tai vaarallisten aineiden käyttöön ja käsittelyyn. ',
+responsibility_4_article: 'Työntekijän tulee käyttää ja hoitaa työnantajan antamia henkilönsuojaimia ja muita varusteita huolellisesti ja ohjeiden mukaisesti. Työntekijän on työssään käytettävä sellaista asianmukaista vaatetusta, josta ei aiheudu tapaturman vaaraa. Henkilönsuojaimilla tarkoitetaan sellaisia välineitä, varusteita tai vaatteita, jotka suojaavat työntekijää tapaturmilta tai sairastumiselta työssä. Henkilönsuojaimia ovat esimerkiksi suojalasit, turvakengät, suojakäsineet, kypärät, kuulon- ja hengityksensuojaimet, valjaat ja suojahaalarit. Työntekijän tulee käyttää oikein koneita, työvälineitä ja muita laitteita sekä niissä olevia turvallisuus- ja suojalaitteita. Käytössä tulee hyödyntää työntekijän ammattitaitoa, työkokemusta ja työnantajalta saatuja käyttö- ja muita ohjeita. Koneeseen, työvälineeseen, muuhun laitteeseen tai rakennukseen asennettua turvallisuus- tai suojalaitetta ei saa ilman erityistä syytä poistaa tai kytkeä pois päältä. Jos työntekijä joutuu tilapäisesti poistamaan turvallisuus- tai suojalaitteen käytöstä, hänen on palautettava se käyttöön tai kytkettävä laite päälle niin pian kuin mahdollista. ',
+responsibility_5_article: 'Työntekijän on viipymättä ilmoitettava työnantajalle tai työsuojeluvaltuutetulle, mikäli työpaikalla ilmenee vikoja ja puutteellisuuksia, jotka voivat aiheuttaa haittaa tai vaaraa työtekijöiden terveydelle tai turvallisuudelle. Viat ja puutteet voivat olla työolosuhteissa, työmenetelmissä, koneissa, työvälineissä, henkilösuojaimissa tai muissa laitteissa. Työntekijän on myös mahdollisuuksiensa mukaan pyrittävä poistamaan havaitsemansa mahdollista vaaraa aiheuttavat viat ja puutteellisuudet, kun tämä on mahdollista ja turvallista. Työntekijän on ilmoitettava myös poistamistaan vioista ja puutteellisuuksista. Ilmoittaminen on tärkeää, jotta työnantaja voi korjata vaaraa tai haittaa aiheuttavat viat ja puutteet. Työnantajan on kerrottava ilmoituksen tehneelle työntekijälle ja työsuojeluvaltuutetulle, mihin toimenpiteisiin ryhdytään tai on ryhdytty esille tulleen vian tai puutteen korjaamiseksi.',
+
+read_more_about_responsibilities: 'Lue lisää vastuusta...',
+
+
+
+workerResponsibilitiesArray: [
+  { 
+  header:'1. Huolehdin omasta ja työkavereiden työhyvinvoinnista ja -turvallisuudesta.',
+  summary:  'Työntekijän on osaamisensa mukaisesti ja käytettävissään olevin keinoin huolehdittava omasta ja muiden työntekijöiden turvallisuudesta ja terveydestä.' },
+  {
+  header: '2. En häiritse tai kohtele muita epäasiallisesti.',
+  summary: 'Työntekijän on vältettävä muihin työntekijöihin kohdistuvaa häirintää ja muuta epäasiallista kohtelua. '},
+  {
+  header: '3. Noudatan työpaikan ohjeita.',
+  summary: 'Työntekijän on noudatettava työnantajan antamia määräyksiä ja ohjeita. '},
+  {
+  header: '4. Käytän työvälineitä, henkilösuojaimia ja turvalaitteita asianmukaisesti.',
+  summary: 'Työntekijän tulee käyttää oikein koneita, työvälineitä ja muita laitteita sekä niissä olevia turvallisuus- ja suojalaitteita. Lisäksi työntekijän tulee käyttää työnantajan antamia henkilönsuojaimia. '},
+  {
+  header: '5. Ilmoitan havaitsemistani vioista ja puutteista',
+  summary: 'Työntekijän on ilmoitettava työssä havaitsemistaan vioista ja puutteista työnantajalle ja työsuojeluvaltuutetulle. '}      
+],
+
+
   // Rental work model - Forms
 
   // Frequently used
@@ -977,44 +1044,9 @@ export default {
   userCompanyName: 'Käyttäjäyrityksen nimi',
   serviceCompany: 'Henkilöstöpalveluyrityksen nimi',
 
-  // Worker responsibilities
-  worker_step_1: [
-    'Työnantajan ohjeiden ja määräysten noudattaminen',
-    'Omasta ja työkavereiden turvallisuudesta huolehtiminen',
-    'Häirinnän ja epäasiallisen kohtelun välttäminen',
-    'Työvälineiden, henkilönsuojainten ja turvalaitteiden asianmukainen käyttö',
-    'Havaitsemistaan vioista ja puutteista ilmoittaminen'
-  ],
-
-  worker_step_2: [
-    'Työntekijöiltä edellytettävä koulutus ja työkokemus sekä työn ammattitaitovaatimukset',
-    'Työn erityispiirteet, työssä esiintyvät haitta- ja vaaratekijät sekä muut työympäristössä erityistä huomiota vaativat asiat (esim. terveydentilavaatimukset)',
-    'Työtehtävissä tarvittavat henkilönsuojaimet ja turvalaitteet'
-  ],
-
-  worker_step_3: [
-    'Noudattaa työnantajan antamia ohjeita ja määräyksiä',
-    'Huolehtia omasta ja muiden työntekijöiden turvallisuudesta käytettävissä olevin keinoin',
-    'Olla kohdistamatta häirintää tai epäasiallista kohtelua muihin työntekijöihin',
-    'Käyttää ja hoitaa työssä tarvittavia henkilönsuojaimia ja apuvälineitä',
-    'Viipymättä ilmoittaa viasta tai puutteesta (omalle esimiehelle tai työsuojeluvaltuutetulle), jos se voi aiheuttaa joko omalle tai työnkaverin turvallisuudelle/terveydelle haittaa tai vaaraa',
-    'Korjata edellä mainittu havaitsemansa vika, mikäli oma kokemus tai ammattitaito riittää',
-    'Olla poistamatta turva- tai suojalaitetta käytöstä'
-  ],
-
-  worker_step_4: [
-    'Työntekijän tulee varmistaa, että käyttäjäyritys antaa tarpeeksi hyvän opastuksen työhön ja työoloihin.',
-    'Varmistaa, että annetaan riittävät tiedot suoriutua turvallisesti annetuista työtehtävistä.'
-  ],
-
-  worker_step_5: [
-    'Työntekijälle tulee nimetä ensimmäisiksi päiviksi työpari tai muu henkilö, joka ohjaa jatkuvasti työntekijän suoriutumista ja auttaa tarvittaessa.',
-    'Varmistaa, että vuokratyöntekijää kohdellaan samalla tavalla kuin vakituisiakin työntekijöitä.',
-    'Työntekijä ilmoittaa kaikista työtapaturmista, onnettomuustilanteista, läheltä piti- tilanteista, väkivalta- ja uhkatilanteista, sekä antaa muuhun työturvallisuuteen liittyvää palautetta (mahdolliset työturvallisuuteen liittyvät puutteet tai ongelmat sekä turvallisuusaloitteet).'
-  ],
-
   // feelings
   work_feel: 'Miten työt sujuvat?',
   tell_more: 'Kerro lisää!',
+
 }
 

@@ -71,6 +71,7 @@ import CreateResponsibility from './pages/Responsibility/CreateResponsibility'
 import Responsibilities from './pages/Responsibility/Responsibilities'
 import ResponsibilityUpdate from './pages/Responsibility/ResponsibilityUpdate'
 import RentalWorkModelPage from './pages/RentalWorkModelPage'
+import WorkerResponsibilities from './pages/ResponsibilitiesPage/WorkerResponsibilities'
 import { useTranslation } from 'react-i18next'
 import SchedulePage from './pages/SchedulePage';
 
@@ -178,7 +179,10 @@ const App: React.FC = () => {
               <ResponsibilityUpdate />
             </PrivateRoute>
             <PrivateRoute path="/responsibilities" roles={[roles.Admin]}>
-              <Responsibilities />
+              <Responsibilities />   
+            </PrivateRoute>
+            <PrivateRoute path="/workerResponsibilities" roles={[roles.Worker]}>
+              <WorkerResponsibilities />   
             </PrivateRoute>
             <PrivateRoute path="/feedback/send" roles={[roles.Business, roles.Agency, roles.Worker]}>
               <SendFeedback />

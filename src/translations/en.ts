@@ -1018,7 +1018,39 @@ export default {
       'The employee reports all accidents, near misses, violence and threats, and gives feedback related to other occupational safety (possible deficiencies or problems related to occupational safety and safety initiatives).'
     ],
 
+
+    //responsibilities page
+    responsibility_1_article: "In accordance with his experience, the teaching and guidance he has received from the employer, and his professional skills, the employee must take care of his own and other employees' safety and health in his work with the means at his disposal. In order to maintain safety and health, the employee must act carefully and cautiously as required by the work and working conditions, and take care of cleanliness and order. The employee must cooperate with the employer and employee representatives to prevent work accidents, occupational diseases and other health hazards caused by work and the work environment. Health means both physical and mental health. ",
+    responsibility_2_article: 'At the workplace, the employee must avoid harassment and other improper treatment of other employees that causes harm or danger to their safety or health. The employee must report the harassment he has experienced to the employer. ',
+    responsibility_3_article: 'The employee must comply with the regulations and instructions issued by the employer in accordance with his authority. Safety instructions may relate to work methods, the use of machines and personal protective equipment, or the use and handling of dangerous substances. ',
+    responsibility_4_article: "The employee must use and care for the personal protective equipment and other equipment provided by the employer carefully and in accordance with the instructions. The employee must wear appropriate clothing in his work that does not cause the risk of an accident. Personal protective equipment refers to tools, equipment or clothing that protect the employee from accidents or illness at work. Personal protective equipment includes, for example, safety glasses, safety shoes, protective gloves, helmets, hearing and breathing protection, harnesses and protective coveralls. The employee must use machines, work tools and other equipment as well as the safety and protection devices in them correctly. In use, the employee's professional skills, work experience and usage and other instructions received from the employer must be used. A safety or protective device installed in a machine, work tool, other device or building may not be removed or switched off without a special reason. If an employee has to temporarily disable a safety or protective device, he must return it to use or switch the device on as soon as possible. ",
+    responsibility_5_article: 'The employee must immediately notify the employer or the occupational health and safety representative if defects and deficiencies occur at the workplace that may cause harm or danger to the health or safety of the employees. Defects and deficiencies can be in working conditions, work methods, machines, work tools, personal protective equipment or other equipment. The employee must also, to the best of his ability, try to eliminate the faults and deficiencies he finds that cause potential danger, when this is possible and safe. The employee must also report the defects and deficiencies he has removed. Notification is important so that the employer can correct defects and deficiencies that cause danger or harm. The employer must tell the employee who made the report and the occupational health and safety representative what measures are being taken or have been taken to correct the defect or deficiency that has been brought up.',
+
+    read_more_about_responsibilities: 'Read more about responsibiliy...',
+
+    workerResponsibilitiesArray: [
+    {
+    header:"1. I take care of myself and my colleagues' well-being and safety at work.",
+    summary: "The employee must take care of his own and other employees' safety and health in accordance with his skills and with the means at his disposal." },
+    {
+    header: '2. I do not disturb or treat others inappropriately.',
+    summary: 'The employee must avoid harassment and other improper treatment of other employees. '},
+    {
+    header: '3. I follow the instructions of the workplace.',
+    summary: 'The employee must follow the regulations and instructions given by the employer. '},
+    {
+    header: '4. I use work tools, personal protective equipment and safety devices appropriately.',
+    summary: 'The employee must correctly use machines, work tools and other equipment, as well as the safety and protection devices in them. In addition, the employee must use personal protective equipment provided by the employer. '},
+    {
+    header: '5. I report the defects and deficiencies I have discovered',
+    summary: 'The employee must inform the employer and the occupational health and safety representative of the faults and deficiencies he/she notices at work. '}
+    ],
+
+  
+
+
     // feelings
     work_feel: 'How is the work going?',
     tell_more: 'Tell more!',
 }
+

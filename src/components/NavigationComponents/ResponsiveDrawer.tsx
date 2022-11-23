@@ -35,6 +35,7 @@ import AssignmentTurnedInOutlinedIcon from '@mui/icons-material/AssignmentTurned
 import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined'
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
 import AssignmentIndOutlinedIcon from '@mui/icons-material/AssignmentIndOutlined'
+import AccessibilityOutlinedIcon from '@mui/icons-material/AccessibilityOutlined';
 
 /**
  * @component
@@ -200,7 +201,21 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           )}
           {role === roles.Worker && (
             <>
+        
+              <ListItemButton component={Link} to="/workerResponsibilities" onClick={handleClick}>
+                <ListItemIcon>
+                  <AccessibilityOutlinedIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('responsibilities')} />
+              </ListItemButton>
+              <Divider />
+            </>
+          )}
+          {role === roles.Worker && (
+            <>
+
               <ListItemButton component={Link} to="/schedule" onClick={handleClick}>
+
                 <ListItemIcon>
                   <CalendarTodayIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
@@ -209,6 +224,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               <Divider />
             </>
           )}
+
           {role === roles.Worker && (
             <>
               <ListItemButton component={Link} to="/businessContracts" onClick={handleClick}>
