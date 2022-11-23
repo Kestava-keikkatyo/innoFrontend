@@ -1046,7 +1046,7 @@ export default {
     summary: 'The employee must inform the employer and the occupational health and safety representative of the faults and deficiencies he/she notices at work. '}
     ],
 
-  }
+  
 
 
     // feelings
