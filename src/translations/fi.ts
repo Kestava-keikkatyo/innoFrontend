@@ -915,7 +915,7 @@ workerResponsibilitiesArray: [
   {
   header: '5. Ilmoitan havaitsemistani vioista ja puutteista',
   summary: 'Työntekijän on ilmoitettava työssä havaitsemistaan vioista ja puutteista työnantajalle ja työsuojeluvaltuutetulle. '}      
-]
+],
 
 
   // Rental work model - Forms
