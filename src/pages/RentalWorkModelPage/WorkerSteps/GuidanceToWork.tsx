@@ -1,15 +1,11 @@
-import {
-  List,
-  ListItem,
-  ListItemText,
-  Container
-}from '@mui/material';
+import { Container } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import WorkerStepBase from './WorkerStepBase';
 import Typography from '@mui/material/Typography';
 import makeStyles from '@mui/styles/makeStyles';
 import { Theme } from '@mui/material/styles';
+import GuidanceToWorkForm from './Forms/GuidanceToWorkForm';
 import SearchFromFileComponent from './SearchFromFileComponent';
 
 const GuidanceToWork = () => {
@@ -21,7 +17,7 @@ const GuidanceToWork = () => {
       <SearchFromFileComponent inputString="worker_step_4" />
     </div>,
     <div key="tab1">
-      Tab 1 content for {t('guidance_to_work')}
+      <GuidanceToWorkForm/>
     </div>,
     <div key="tab2">
        <SearchFromFileComponent inputString="good_practices_guidance_on_work_and_working_conditions_array" />

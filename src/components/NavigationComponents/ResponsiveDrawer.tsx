@@ -18,7 +18,7 @@ import CircleTwoToneIcon from '@mui/icons-material/CircleTwoTone'
 import MoodIcon from '@mui/icons-material/Mood'
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
 import ExitToAppIcon from '@mui/icons-material/ExitToApp'
-import { PersonAdd, Security } from '@mui/icons-material'
+import { OpenInNew, PersonAdd, Security } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
 import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined'
 import { logout } from '../../actions/userActions'
@@ -66,6 +66,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
    const handleClick = () => {
      if(isMobile) { setOpen(false) }
    }
+
 
   const [openNest, setOpenNest] = useState(false)
 
@@ -200,6 +201,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           )}
           {role === roles.Worker && (
             <>
+        
               <ListItemButton component={Link} to="/workerResponsibilities" onClick={handleClick}>
                 <ListItemIcon>
                   <AccessibilityOutlinedIcon sx={{ color: iconColor.base }} />
@@ -211,7 +213,9 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           )}
           {role === roles.Worker && (
             <>
-              <ListItemButton component={Link} to="/home" onClick={handleClick}>
+
+              <ListItemButton component={Link} to="/schedule" onClick={handleClick}>
+
                 <ListItemIcon>
                   <CalendarTodayIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
@@ -377,11 +381,12 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               <Divider />
             </>
           )}
-          <ListItemButton component={Link} to="/databank" onClick={handleClick}>
+          <ListItemButton component="a" href="/databank" target="_blank" onClick={handleClick}>
             <ListItemIcon>
               <Security sx={{ color: iconColor.base }} />
             </ListItemIcon>
             <ListItemText primary={t('databank')} />
+            <OpenInNew></OpenInNew>
           </ListItemButton>
           <Divider />
         </List>
