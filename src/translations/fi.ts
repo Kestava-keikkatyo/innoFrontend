@@ -897,8 +897,6 @@ responsibility_5_article: 'Työntekijän on viipymättä ilmoitettava työnantaj
 
 read_more_about_responsibilities: 'Lue lisää vastuusta...',
 
-
-
 workerResponsibilitiesArray: [
   { 
   header:'1. Huolehdin omasta ja työkavereiden työhyvinvoinnista ja -turvallisuudesta.',
@@ -916,6 +914,89 @@ workerResponsibilitiesArray: [
   header: '5. Ilmoitan havaitsemistani vioista ja puutteista',
   summary: 'Työntekijän on ilmoitettava työssä havaitsemistaan vioista ja puutteista työnantajalle ja työsuojeluvaltuutetulle. '}      
 ],
+
+businessResponsibilitiesArray: [
+  {
+    header: '1. Jaettu työsuojeluvastuu',
+    summary: 'Vuokratyössä henkilöstöpalveluyrityksellä ja käyttäjäyrityksellä on yhteinen työsuojeluvastuu työntekijän työturvallisuudesta ja terveydestä. Vuokratyöntekijän työturvallisuuden ja -hyvinvoinnin varmistaminen edellyttää etukäteissuunnittelua, asioista sopimista ja yhteistyötä kaikkien osapuolten kesken. ',
+  },
+  {
+    header: '2. Tilaajavastuu ',
+    summary: 'Käyttäjäyrityksen on hankittava henkilöstöpalveluyritykseltä ennen sopimuksen solmimista tilaajavastuulain mukaiset selvitykset. Ulkomaista vuokratyövoimaa käytettäessä on huomioitava vastaavat vähimmäistyöehdot kuin kotimaisilla vuokratyöntekijöillä. ',
+  },
+  {
+    header: '3. Tietojen antaminen henkilöstöpalveluyritykselle ',
+    summary: 'Käyttäjäyrityksen on annettava henkilöstöpalveluyritykselle tieto vuokratyön ammattitaitovaatimuksista ja erityispiirteistä sekä muut tiedot, jotka henkilöstöpalveluyritys tarvitsee velvollisuuksiensa täyttämiseksi.',
+  },
+  {
+    header: '4. Käyttäjäyrityksen yleisvastuu työturvallisuudesta ',
+    summary: 'Käyttäjäyritys on velvollinen huolehtimaan vuokratyöntekijöiden turvallisuudesta ja terveydestä työssä. ',
+  },
+  {
+    header: '5. Työaika',
+    summary: 'Henkilöstöpalveluyritys huolehtii työaikakirjanpidosta. Käyttäjäyritys vastaa työaikalain noudattamisesta vuokratyöntekijän työajan järjestämisessä. ',
+  },
+  {
+    header: '6. Tasa-arvon ja yhdenvertaisuuden edistäminen',
+    summary: 'Työnantajan pitää edistää tasa-arvoa ja yhdenvertaisuutta työpaikalla. Vuokratyöntekijöitä pitää kohdella yhdenvertaisesti muiden työntekijöiden kanssa. Yli 30 työntekijän työpaikalla pitää laatia tasa-arvo- ja yhdenvertaisuussuunnitelmat.  ',
+  },
+  {
+    header: '7. Henkilösuojaimet ja työvaatetus',
+    summary: 'Henkilöstöpalveluyritys ja käyttäjäyritys sopivat työvaatetuksen tarjoamisesta työntekijälle,'+ 
+    'mikäli työssä edellytetään erityistä työvaatetusta.'+ 
+    'Työssä tarvittavat suojaimet valitaan työpaikalla tehdyn riskinarvioinnin perusteella.  ',
+  }
+],
+
+agencyResponsibilitiesArray: [
+  {
+    header: '1. Jaettu työsuojeluvastuu',
+    summary: 'Vuokratyössä henkilöstöpalveluyrityksellä ja käyttäjäyrityksellä on yhteinen työsuojeluvastuu työntekijän työturvallisuudesta ja terveydestä. Vuokratyöntekijän työturvallisuuden ja -hyvinvoinnin varmistaminen edellyttää etukäteissuunnittelua, asioista sopimista ja yhteistyötä kaikkien osapuolten kesken. ',
+  },
+  {
+    header: '2. Yleisvastuu työturvallisuudesta',
+    summary: 'Henkilöstöpalveluyritys on velvollinen huolehtimaan työntekijöidensä turvallisuudesta ja terveydestä työssä. Tämä tarkoittaa mm. työn vaarojen selvittämistä ja arviointia, työsuojelun toimintaohjelmaa, työsuojelun yhteistoimintaa ja perehdytystä. ',
+  },
+  {
+    header: '3. Työaika',
+    summary: 'Henkilöstöpalveluyritys huolehtii työaikakirjanpidosta. Käyttäjäyritys vastaa työaikalain noudattamisesta vuokratyöntekijän työajan järjestämisessä. ',
+  },
+  {
+    header: '4. Työntekijöiden vakuuttaminen työtapaturmien ja ammattitautien varalta',
+    summary: 'Henkilöstöpalveluyrityksen pitää vakuuttaa vuokratyöntekijä työtapaturman ja ammattitaudin varalta. ',
+  },
+  {
+    header: '5. Työterveyshuolto',
+    summary: 
+    'Henkilöstöpalveluyritys järjestää työntekijöilleen lakisääteisen työterveyshuollon riippumatta ' +
+    'työntekijän työsuhteen muodosta ja pituudesta. Lakisääteinen työterveyshuolto on työkyvyn tukemista ' +
+    'ennaltaehkäisevin toimin eikä siihen sisälly sairaanhoitoa. Henkilöstöpalveluyritys voi kuitenkin ' +
+    'järjestää myös sairaanhoidon työterveyshuollon palveluiden tuottajan kautta, mutta tämä on ' +
+    'työnantajalle vapaaehtoista.',
+  },
+  {
+    header: '6. Tasa-arvon ja yhdenvertaisuuden edistäminen',
+    summary: 'Henkilöstöpalveluyrityksen on arvioitava yhdenvertaisuuden toteutumista työpaikalla.',
+  },
+  {
+    header: '7. Käyttäjäyrityksen velvoitteiden täyttämisen varmistaminen',
+    summary: ' Vuokratyössä henkilöstöpalveluyrityksellä ja käyttäjäyrityksellä on jaettu työsuojeluvastuu.' +
+    'Henkilöstöpalveluyrityksen tulee varmistaa, että käyttäjäyritys huolehtii sille kuuluvista työterveys-,' +
+    ' työturvallisuus- ja työhyvinvointivastuistaan ja velvoitteistaan.',
+  },
+  {
+    header: '8. Vuokratyöntekijän sopivuuden varmistaminen',
+    summary: 'Henkilöstöpalveluyrityksen pitää varmistaa, että vuokratyöntekijällä on riittävä ammattitaito, kokemus ja sopivuus työhön. ',
+  },
+  {
+    header: '9. Henkilösuojaimet ja työvaatetus',
+    summary: 'Henkilöstöpalveluyritys ja käyttäjäyritys sopivat työvaatetuksen tarjoamisesta työntekijälle,'+ 
+    'mikäli työssä edellytetään erityistä työvaatetusta.'+ 
+    'Työssä tarvittavat suojaimet valitaan työpaikalla tehdyn riskinarvioinnin perusteella.  ',
+  }
+],
+
+
 
 
   // Rental work model - Forms

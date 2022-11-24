@@ -111,6 +111,18 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               <Divider />
             </>
           )}
+          {role === roles.Agency && (
+            <>
+        
+              <ListItemButton component={Link} to="/agencyResponsibilities" onClick={handleClick}>
+                <ListItemIcon>
+                  <AccessibilityOutlinedIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('responsibilities')} />
+              </ListItemButton>
+              <Divider />
+            </>
+          )}     
           {role === roles.Business && (
             <>
               <ListItemButton component={Link} to="/businessContracts" onClick={handleClick}>
@@ -122,6 +134,18 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               <Divider />
             </>
           )}
+          {role === roles.Business && (
+            <>
+        
+              <ListItemButton component={Link} to="/businessResponsibilities" onClick={handleClick}>
+                <ListItemIcon>
+                  <AccessibilityOutlinedIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('responsibilities')} />
+              </ListItemButton>
+              <Divider />
+            </>
+          )}    
           {role === roles.Agency && (
             <>
               <ListItemButton component={Link} to="/job" onClick={handleClick}>
@@ -198,7 +222,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               </ListItemButton>
               <Divider />
             </>
-          )}
+          )}     
           {role === roles.Worker && (
             <>
         

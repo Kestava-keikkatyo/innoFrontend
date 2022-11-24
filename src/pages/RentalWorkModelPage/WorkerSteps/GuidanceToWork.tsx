@@ -13,13 +13,13 @@ const GuidanceToWork = () => {
   const classes = useStyles();
 
   const tabContent = [
-    <div key="tab0">
+   /* <div key="tab0">
       <SearchFromFileComponent inputString="worker_step_4" />
-    </div>,
-    <div key="tab1">
+    </div>,*/
+    <div key="tab0">
       <GuidanceToWorkForm/>
     </div>,
-    <div key="tab2">
+    <div key="tab1">
        <SearchFromFileComponent inputString="good_practices_guidance_on_work_and_working_conditions_array" />
     </div>
   ]

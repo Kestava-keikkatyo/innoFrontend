@@ -72,8 +72,10 @@ import Responsibilities from './pages/Responsibility/Responsibilities'
 import ResponsibilityUpdate from './pages/Responsibility/ResponsibilityUpdate'
 import RentalWorkModelPage from './pages/RentalWorkModelPage'
 import WorkerResponsibilities from './pages/ResponsibilitiesPage/WorkerResponsibilities'
+import AgencyResponsibilities from './pages/ResponsibilitiesPage/AgencyResponsibilities'
 import { useTranslation } from 'react-i18next'
 import SchedulePage from './pages/SchedulePage';
+import BusinessResponsibilities from './pages/ResponsibilitiesPage/BusinessResponsibilities'
 
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -181,6 +183,12 @@ const App: React.FC = () => {
             <PrivateRoute path="/responsibilities" roles={[roles.Admin]}>
               <Responsibilities />   
             </PrivateRoute>
+            <PrivateRoute path="/businessResponsibilities" roles={[roles.Business]}>
+              <BusinessResponsibilities />  
+            </PrivateRoute>    
+            <PrivateRoute path="/agencyResponsibilities" roles={[roles.Agency]}>
+              <AgencyResponsibilities />  
+            </PrivateRoute>               
             <PrivateRoute path="/workerResponsibilities" roles={[roles.Worker]}>
               <WorkerResponsibilities />   
             </PrivateRoute>
