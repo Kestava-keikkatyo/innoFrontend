@@ -662,6 +662,7 @@ export default {
   feedback_title: 'Otsikko',
   feedback_message: 'Viesti',
   feedback_recipient: 'Vastaanottaja',
+  feedback_sender: 'Lähetä anonyymisti',
   sending_date: 'Lähetyspäivämäärä',
   feedback_action: 'Toiminta',
   feedback_details: 'Lisätiedot',

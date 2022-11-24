@@ -214,7 +214,8 @@ export interface Feedback {
   _id?: string
   heading: string
   message: string
-  recipient?: User
+  recipient: string
+  sender: User | boolean
   createdAt?: Date
 }
 

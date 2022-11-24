@@ -669,6 +669,7 @@ export default {
   feedback_title: 'Title',
   feedback_message: 'Message',
   feedback_recipient: 'Recipient',
+  feedback_sender: 'Send anonymously',
   sending_date: 'Sending date',
   feedback_action: 'Action',
   feedback_details: 'details',
