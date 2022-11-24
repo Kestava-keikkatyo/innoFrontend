@@ -13,13 +13,13 @@ const ContractOfEmployment = () => {
   const classes = useStyles();
 
   const tabContent = [
-    <div key="tab0">
+   /* <div key="tab0">
  <SearchFromFileComponent inputString="worker_step_3" />
-    </div>,
-    <div key="tab1">
+    </div>,*/
+    <div key="tab0">
       <ContractOfEmploymentForm/>
     </div>,
-    <div key="tab2">
+    <div key="tab1">
        <SearchFromFileComponent inputString="good_practices_employment_contract_and_general_orientation_array" />
     </div>
   ]

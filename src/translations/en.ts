@@ -1046,6 +1046,88 @@ export default {
     summary: 'The employee must inform the employer and the occupational health and safety representative of the faults and deficiencies he/she notices at work. '}
     ],
 
+    businessResponsibilitiesArray: [
+      {
+        header: '1. Shared occupational health and safety responsibility',
+        summary: "In temporary work, the personnel service company and the user company have a joint occupational health and safety responsibility for the employee's occupational safety and health. Ensuring the work safety and well-being of the temporary worker requires planning in advance, agreeing on issues and cooperation between all parties. ",
+      },
+      {
+        header: '2. Subscriber liability',
+        summary: 'The user company must obtain the reports in accordance with the Customer Liability Act from the personnel service company before concluding the contract. When using foreign temporary workers, the same minimum working conditions as for domestic temporary workers must be taken into account. ',
+      },
+      {
+        header: '3. Providing information to a personnel service company',
+        summary: 'The user company must provide the personnel service company with information about the professional requirements and special features of the temporary work, as well as other information that the personnel service company needs to fulfill its obligations.',
+      },
+      {
+        header: '4. General responsibility of the user company for occupational safety',
+        summary: 'The user company is obliged to take care of the safety and health of temporary workers at work. ',
+      },
+      {
+        header: '5. Working hours',
+        summary: "A personnel service company takes care of work time records. The user company is responsible for complying with the Working Time Act in organizing the temporary worker's working hours. ",
+      },
+      {
+        header: '6. Promoting equality and equality',
+        summary: 'The employer must promote equality and equality in the workplace. Temporary workers must be treated equally with other workers. In workplaces with more than 30 employees, equality and non-equality plans must be drawn up. ',
+      },
+      {
+        header: '7. Personal protective equipment and work clothing',
+        summary: 'The personnel service company and the user company agree on providing work clothes to the employee,'+
+        'if the work requires special work clothes.'+
+        'The protective equipment needed at work is selected based on a risk assessment made at the workplace. ',
+      }
+    ],
+
+    
+  agencyResponsibilitiesArray: [
+  {
+    header: '1. Shared occupational health and safety responsibility',
+    summary: "In temporary work, the personnel service company and the user company have a joint occupational health and safety responsibility for the employee's occupational safety and health. Ensuring the work safety and well-being of the temporary worker requires planning in advance, agreeing on issues and cooperation between all parties. ",
+  },
+  {
+    header: '2. General responsibility for occupational safety',
+    summary: 'A personnel service company is obliged to take care of the safety and health of its employees at work. This means e.g. investigation and assessment of work hazards, occupational safety action program, occupational safety cooperation and orientation. ',
+  },
+  {
+    header: '3. Working hours',
+    summary: "A personnel service company takes care of work time records. The user company is responsible for complying with the Working Time Act in organizing the temporary worker's working hours. ",
+  },
+  {
+    header: '4. Insuring employees against work accidents and occupational diseases',
+    summary: 'The personnel service company must insure the temporary employee in case of work accident and occupational disease. ',
+  },
+  {
+    header: '5. Occupational health care',
+    summary:
+    'The personnel service company arranges statutory occupational health care for its employees independently ' +
+    "on the form and length of the employee's employment relationship. Statutory occupational health care is to support the ability to work " +
+    'with preventive measures and it does not include medical treatment. However, a personnel service company can' +
+    'also organizes medical treatment through the provider of occupational health care services, but this is ' +
+    'voluntary for the employer.',
+  },
+  {
+    header: '6. Promoting equality and equality',
+    summary: 'A personnel service company must evaluate the implementation of equality in the workplace.',
+  },
+  {
+    header: "7. Ensuring the fulfillment of the user company's obligations",
+    summary: ' In temporary work, the personnel service company and the user company have shared occupational safety responsibility.' +
+    'A personnel service company must ensure that the user company takes care of its occupational health,' +
+    ' about their occupational safety and occupational well-being responsibilities and obligations.',
+  },
+  {
+    header: '8. Ensuring the suitability of the temporary worker',
+    summary: 'The personnel service company must ensure that the temporary employee has sufficient professional skills, experience and suitability for the job. ',
+  },
+  {
+    header: '9. Personal protective equipment and work clothing',
+    summary: 'The personnel service company and the user company agree on providing work clothes to the employee,'+
+    'if the work requires special work clothes.'+
+    'The protective equipment needed at work is selected based on a risk assessment made at the workplace. ',
+  }
+],
+
   
 
 
