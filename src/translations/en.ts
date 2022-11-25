@@ -800,6 +800,9 @@ export default {
   GuidanceToWork: 'Guidance to work and working environment',
   WorkPerformance: 'Work performance and supervision',
   FeedbackEvaluation: 'Feedback and evaluation',
+  WorkerResponsibilities: 'Worker responsibilities',
+  AgencyResponsibilities: 'Agency responsibilities',
+  BusinessResponsibilities: 'Business responsibilities',
 
   // Responsibilities
   CustomerContractResponsibilities: '',
