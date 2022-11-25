@@ -31,7 +31,7 @@ function ExpandableList(props: any) {
           </Button>
         </ListItem>
         <div>
-         {infoNotShowing ? <p> </p> :<><ListItemText primary={responsibilitieSummary} /><Link href="/Databank" underline="none">{t('read_more_about_responsibilities')}</Link></>}
+         {infoNotShowing ? <p> </p> :<><ListItemText primary={responsibilitieSummary} /><Link href="/Databank" target="_blank" underline="none">{t('read_more_about_responsibilities')}</Link></>}
         </div>
     </Card>
   )
