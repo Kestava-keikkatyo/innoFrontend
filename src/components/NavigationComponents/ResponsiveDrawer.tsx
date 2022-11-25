@@ -91,6 +91,28 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           <Divider />
           {(role === roles.Agency || role === roles.Business) && (
             <>
+              <ListItemButton component={Link} to="/reports" onClick={handleClick}>
+                <ListItemIcon>
+                  <ErrorOutlineIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('reports')} />
+              </ListItemButton>
+              <Divider />
+            </>
+          )} 
+          {(role === roles.Agency || role === roles.Business || role === roles.Worker) && (
+            <>
+              <ListItemButton component={Link} to="/feedback" onClick={handleClick}>
+                <ListItemIcon>
+                  <FeedbackOutlinedIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('feedback')} />
+              </ListItemButton>
+              <Divider />
+            </>
+          )}
+          {role === roles.Agency && (
+            <>
               <ListItemButton component={Link} to="/forms" onClick={handleClick}>
                 <ListItemIcon>
                   <InsertDriveFileOutlinedIcon sx={{ color: iconColor.base }} />
@@ -100,40 +122,8 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               <Divider />
             </>
           )}
-          {role === roles.Agency && (
-            <>
-              <ListItemButton component={Link} to="/contracts" onClick={handleClick}>
-                <ListItemIcon>
-                  <ContactsOutlinedIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('contracts')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}
-          {role === roles.Agency && (
-            <>
-        
-              <ListItemButton component={Link} to="/agencyResponsibilities" onClick={handleClick}>
-                <ListItemIcon>
-                  <AccessibilityOutlinedIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('responsibilities')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}     
-          {role === roles.Business && (
-            <>
-              <ListItemButton component={Link} to="/businessContracts" onClick={handleClick}>
-                <ListItemIcon>
-                  <AssignmentOutlinedIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('business_contracts')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}
+
+          {/**muuta agency alle business  */}
           {role === roles.Business && (
             <>
         
@@ -145,52 +135,19 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               </ListItemButton>
               <Divider />
             </>
-          )}    
-          {role === roles.Agency && (
+          )}
+          {role === roles.Business && (
             <>
-              <ListItemButton component={Link} to="/job" onClick={handleClick}>
+              <ListItemButton component={Link} to="/forms" onClick={handleClick}>
                 <ListItemIcon>
-                  <AssignmentTurnedInOutlinedIcon sx={{ color: iconColor.base }} />
+                  <InsertDriveFileOutlinedIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('jobs')} />
+                <ListItemText primary={t('forms')} />
               </ListItemButton>
               <Divider />
             </>
-          )}
-          {role === roles.Agency && (
-            <>
-              <ListItemButton component={Link} to="/receivedWorkRequests" onClick={handleClick}>
-                <ListItemIcon>
-                  <WorkOutlineIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('work_request')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}
-          {role === roles.Agency && (
-            <>
-              <ListItemButton component={Link} to="/moodStats" onClick={handleClick}>
-                <ListItemIcon>
-                  <MoodIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('mood_stats')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}
-          {(role === roles.Agency || role === roles.Business) && (
-            <>
-              <ListItemButton component={Link} to="/workers" onClick={handleClick}>
-                <ListItemIcon>
-                  <GroupOutlinedIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('list_title_workers')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}
-          {(role === roles.Business) && (
+          )}   
+          {role === roles.Business && (
             <>
               <ListItemButton component={Link} to="/agencies" onClick={handleClick}>
                 <ListItemIcon>
@@ -200,78 +157,8 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               </ListItemButton>
               <Divider />
             </>
-          )}
-          {(role === roles.Business) && (
-            <>
-              <ListItemButton component={Link} to="/workRequests" onClick={handleClick}>
-                <ListItemIcon>
-                  <AssignmentOutlinedIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('Work_request')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}
-          {(role === roles.Agency || role === roles.Business) && (
-            <>
-              <ListItemButton component={Link} to="/reports" onClick={handleClick}>
-                <ListItemIcon>
-                  <ErrorOutlineIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('reports')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}     
-          {role === roles.Worker && (
-            <>
-        
-              <ListItemButton component={Link} to="/workerResponsibilities" onClick={handleClick}>
-                <ListItemIcon>
-                  <AccessibilityOutlinedIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('responsibilities')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}
-          {role === roles.Worker && (
-            <>
-
-              <ListItemButton component={Link} to="/schedule" onClick={handleClick}>
-
-                <ListItemIcon>
-                  <CalendarTodayIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('schedule')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}
-
-          {role === roles.Worker && (
-            <>
-              <ListItemButton component={Link} to="/businessContracts" onClick={handleClick}>
-                <ListItemIcon>
-                  <LibraryBooksOutlinedIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('business_contracts')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}
-          {role === roles.Worker && (
-            <>
-              <ListItemButton component={Link} to="/jobs" onClick={handleClick}>
-                <ListItemIcon>
-                  <WorkOutlineIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('jobs')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}
-          {role === roles.Worker && (
+          )}   
+          {(role === roles.Worker || role === roles.Business) && (
             <>
               <ListItemButton onClick={handleOpenNest}>
                 <ListItemIcon>
@@ -328,6 +215,164 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               <Divider />
             </>
           )}
+          {role === roles.Business && (
+            <>
+              <ListItemButton component="a" href="/databank" target="_blank" onClick={handleClick}>
+                <ListItemIcon>
+                  <Security sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('databank')} />
+                <OpenInNew></OpenInNew>
+              </ListItemButton>
+              <Divider />
+            </>
+          )}      
+          {(role === roles.Business) && (
+            <>
+              <ListItemButton component={Link} to="/workRequests" onClick={handleClick} disabled>
+                <ListItemIcon>
+                  <AssignmentOutlinedIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('Work_request')} />
+              </ListItemButton>
+              <Divider />
+            </>
+          )}            
+          {/**  {role === roles.Business && (
+            <>
+              <ListItemButton component={Link} to="/businessContracts" onClick={handleClick}>
+                <ListItemIcon>
+                  <AssignmentOutlinedIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('business_contracts')} />
+              </ListItemButton>
+              <Divider />
+            </>
+          )}
+                    {(role === roles.Agency || role === roles.Business) && (
+            <>
+              <ListItemButton component={Link} to="/workers" onClick={handleClick}>
+                <ListItemIcon>
+                  <GroupOutlinedIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('list_title_workers')} />
+              </ListItemButton>
+              <Divider />
+            </>
+          )}
+          */}  
+                       
+    
+
+          {role === roles.Agency && (
+            <>
+              <ListItemButton component={Link} to="/contracts" onClick={handleClick}>
+                <ListItemIcon>
+                  <ContactsOutlinedIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('contracts')} />
+              </ListItemButton>
+              <Divider />
+            </>
+          )}
+          {role === roles.Agency && (
+            <>
+        
+              <ListItemButton component={Link} to="/agencyResponsibilities" onClick={handleClick}>
+                <ListItemIcon>
+                  <AccessibilityOutlinedIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('responsibilities')} />
+              </ListItemButton>
+              <Divider />
+            </>
+          )}     
+
+    
+          {role === roles.Agency && (
+            <>
+              <ListItemButton component={Link} to="/job" onClick={handleClick}>
+                <ListItemIcon>
+                  <AssignmentTurnedInOutlinedIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('jobs')} />
+              </ListItemButton>
+              <Divider />
+            </>
+          )}
+          {role === roles.Agency && (
+            <>
+              <ListItemButton component={Link} to="/receivedWorkRequests" onClick={handleClick}>
+                <ListItemIcon>
+                  <WorkOutlineIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('work_request')} />
+              </ListItemButton>
+              <Divider />
+            </>
+          )}
+          {role === roles.Agency && (
+            <>
+              <ListItemButton component={Link} to="/moodStats" onClick={handleClick}>
+                <ListItemIcon>
+                  <MoodIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('mood_stats')} />
+              </ListItemButton>
+              <Divider />
+            </>
+          )}
+
+  
+          {role === roles.Worker && (
+            <>
+        
+              <ListItemButton component={Link} to="/workerResponsibilities" onClick={handleClick}>
+                <ListItemIcon>
+                  <AccessibilityOutlinedIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('responsibilities')} />
+              </ListItemButton>
+              <Divider />
+            </>
+          )}
+          {role === roles.Worker && (
+            <>
+
+              <ListItemButton component={Link} to="/schedule" onClick={handleClick}>
+
+                <ListItemIcon>
+                  <CalendarTodayIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('schedule')} />
+              </ListItemButton>
+              <Divider />
+            </>
+          )}
+
+          {role === roles.Worker && (
+            <>
+              <ListItemButton component={Link} to="/businessContracts" onClick={handleClick}>
+                <ListItemIcon>
+                  <LibraryBooksOutlinedIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('business_contracts')} />
+              </ListItemButton>
+              <Divider />
+            </>
+          )}
+          {role === roles.Worker && (
+            <>
+              <ListItemButton component={Link} to="/jobs" onClick={handleClick}>
+                <ListItemIcon>
+                  <WorkOutlineIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('jobs')} />
+              </ListItemButton>
+              <Divider />
+            </>
+          )}
+
           {role === roles.Worker && (
             <>
               <ListItemButton component={Link} to="/fiilismittari" onClick={handleClick}>
@@ -346,17 +391,6 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
                   <ErrorOutlineIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
                 <ListItemText primary={t('reports')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}
-          {(role === roles.Agency || role === roles.Business || role === roles.Worker) && (
-            <>
-              <ListItemButton component={Link} to="/feedback" onClick={handleClick}>
-                <ListItemIcon>
-                  <FeedbackOutlinedIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('feedback')} />
               </ListItemButton>
               <Divider />
             </>
@@ -405,14 +439,14 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               <Divider />
             </>
           )}
-          <ListItemButton component="a" href="/databank" target="_blank" onClick={handleClick}>
+       {/**  <ListItemButton component="a" href="/databank" target="_blank" onClick={handleClick}>
             <ListItemIcon>
               <Security sx={{ color: iconColor.base }} />
             </ListItemIcon>
             <ListItemText primary={t('databank')} />
             <OpenInNew></OpenInNew>
           </ListItemButton>
-          <Divider />
+          <Divider /> */} 
         </List>
       </div>
 

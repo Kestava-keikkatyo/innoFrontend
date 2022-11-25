@@ -18,7 +18,6 @@ function ExpandableList(props: any) {
 
   const handleClick = () => {
     notChecked(!infoNotShowing);
-
   }
 
   return (
