@@ -9,12 +9,25 @@ import Typography from '@mui/material/Typography';
 import { fetchMyFeedbackById } from '../../actions/feedBackActions';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
+import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
+import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 
 type FeedbackUrlParams = {
     feedbackId: string
 }
+
+const questions = {
+    shift: 'Mikä fiilis työvuoron jälkeen?',
+    induction: 'Mites meni induktio?',
+    received: 'Mites sut otettii vastaa?',
+    credit: 'Mites arvostettiinko sua?',
+    expectation: 'Tiesitkö mitä sinulta odotettiin työvuorossa?',
+}
+
 const Details: React.FC = () => {
-   
+
     const { t } = useTranslation();
     const { feedbackId } = useParams<FeedbackUrlParams>();
     const feedbackData = useSelector((state: IRootState) => state.feedback.currentFeedback);
@@ -29,36 +42,49 @@ const Details: React.FC = () => {
     );
 
     return (
-    <div className={classes.feedback}>
-        <div className={classes.feedbackTitleContainer}>
-            <Typography color="secondary" className={classes.feedbackTitle} variant="h4">{t('feedback_title_details')}</Typography>
-        </div>
-        <div className={classes.back}>
-        <Button className={classes.backButton} color="secondary" component={Link} to="/feedback">{t('back')}</Button>
-        </div>
-        <div className={classes.feedbackContainer}>
-            <div className={classes.feedbackShow}>
-                <div className={classes.feedbackShowInfo}>
-                    <span className={classes.feedbackShowTitle}>{t('feedback_title')}</span>
-                    <span className={classes.feedbackShowInfoTitle}> { feedbackData.heading }</span>
+        <div className={classes.feedback}>
+            <div className={classes.feedbackTitleContainer}>
+                <Typography color="secondary" className={classes.feedbackTitle} variant="h4">{t('feedback_title_details')}</Typography>
+            </div>
+            <div className={classes.back}>
+            <Button className={classes.backButton} color="secondary" component={Link} to="/feedback">{t('back')}</Button>
+            </div>
+            <div className={classes.feedbackContainer}>
+                <div className={classes.feedbackShow}>
+                    <div className={classes.feedbackShowInfo}>
+                        <span className={classes.feedbackShowTitle}>{t('feedback_title')} : </span>
+                        <span className={classes.feedbackShowInfoTitle}> { feedbackData.heading }</span>
+                    </div>
+                    <div className={classes.feedbackShowInfo}>
+                        <span className={classes.feedbackShowTitle}>{t('sending_date')} : </span>
+                        <span className={classes.feedbackShowInfoTitle}> { moment(feedbackData.createdAt).format('DD/MM/YYYY') }</span>
+                    </div>
+                    <div className={classes.feedbackShowInfo}>
+                        <span className={classes.feedbackShowTitle}>{t('feedback_recipient')} : </span>
+                        <span className={classes.feedbackShowInfoTitle}>{ feedbackData.recipient }</span>
+                    </div>
+                    <div className={classes.feedbackShowInfo}>
+                        <span className={classes.feedbackShowTitle}>{t('feedback_anonymity')} : </span>
+                        <span className={classes.feedbackShowInfoTitle}>{ feedbackData.sender }</span>
+                    </div>
                 </div>
-                <div className={classes.feedbackShowInfo}>
-                    <span className={classes.feedbackShowTitle}>{t('sending_date')}</span>
-                    <span className={classes.feedbackShowInfoTitle}> { moment(feedbackData.createdAt).format('DD/MM/YYYY') }</span>
-                </div>
-                <div className={classes.feedbackShowInfo}>
-                    <span className={classes.feedbackShowTitle}>{t('feedback_recipient')}</span>
-                    <span className={classes.feedbackShowInfoTitle}>{ feedbackData.recipient }</span>
+                <div className={classes.feedbackDescription}>
+                    <span className={classes.feedbackMessageTitle}>{t('feedback_message')}</span>
+                    {Object.entries(questions).map(questionEntry => (
+                      <div key={questionEntry[0]}>
+                          <Typography color="success" id={questionEntry[0] + '-radio-buttons-group-label'} className={classes.feedbackShowTitle} variant="h6">{questionEntry[1]}</Typography>
+                          <SentimentVeryDissatisfiedIcon className={classes.icon} />
+                          <SentimentNeutralIcon className={classes.icon} />
+                          <SentimentSatisfiedAltIcon className={classes.icon} />
+                          <SentimentVerySatisfiedIcon className={classes.icon} />
+                          <p>Comment for {questionEntry[1]}</p>
+                      </div>
+                    ))}
+                    <Typography color="success" className={classes.feedbackShowTitle} variant="h6">Kommentti</Typography>
+                    <span>Konmentti</span>
                 </div>
             </div>
-            <div className={classes.feedbackDescription}>
-                <span className={classes.feedbackShowTitle}>{t('feedback_message')}</span>
-                <div className={classes.feedbackShowInfo}>
-                    <span className={classes.details}>{ feedbackData.message }</span>
-                </div>
-            </div>
         </div>
-    </div> 
     );
 };
 
@@ -98,6 +124,15 @@ const useStyles = makeStyles(() => ({
         fontWeight: 600,
         color: '#AFAAAA'
     },
+    feedbackMessageTitle: {
+        fontSize: '24px',
+        fontWeight: 600,
+        color: '#AFAAAA'
+    },
+    icon: {
+        fontSize: '32px',
+        marginRight: '6px'
+    },
     feedbackShowInfo: {
         display: 'flex',
         alignItems: 'center',
@@ -106,7 +141,6 @@ const useStyles = makeStyles(() => ({
     },
     feedbackShowInfoTitle: {
         marginLeft: '10px',
-        marginTop: '5px',
     },
     details: {
         fontSize: '15px',

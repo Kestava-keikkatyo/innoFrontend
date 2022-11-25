@@ -69,9 +69,9 @@ export default {
   history: 'Historia',
   active: 'Aktiivisia',
   create: 'Luo',
-  button_update: 'päivitä',
-  button_cancel: 'peruuta',
-  button_edit: 'muokkaa',
+  button_update: 'Päivitä',
+  button_cancel: 'Peruuta',
+  button_edit: 'Muokkaa',
 
   // Mood index page
   entry_mood: 'Lisää fiilis',
@@ -660,9 +660,10 @@ export default {
   your_feedbacks: 'Sinun palautteesi',
   send_feedback: 'Kiitos keikasta! Toivomme sinun antavan palautetta ja kehittämisideoita henkilöstöpalveluyritykselle ja työpaikalle.',
   feedback_title: 'Otsikko',
-  feedback_message: 'Viesti',
+  feedback_message: 'Lähetetty lomake',
   feedback_recipient: 'Vastaanottaja',
   feedback_sender: 'Lähetä anonyymisti',
+  feedback_anonymity: 'Lähetetty anonyymisti?',
   sending_date: 'Lähetyspäivämäärä',
   feedback_action: 'Toiminta',
   feedback_details: 'Lisätiedot',
@@ -852,8 +853,8 @@ export default {
     'Henkilöstöpalveluyrityksen edustaja voi osallistua käyttäjäyrityksen työturvallisuutta ja -hyvinvointia käsitteleviin kokouksiin.'
   ],
 
- 
-//Worker responsibilities
+
+// Worker responsibilities
 worker_step_1: [
   'Työnantajan ohjeiden ja määräysten noudattaminen',
   'Omasta ja työkavereiden turvallisuudesta huolehtiminen',
@@ -889,7 +890,7 @@ worker_step_5: [
   'Työntekijä ilmoittaa kaikista työtapaturmista, onnettomuustilanteista, läheltä piti- tilanteista, väkivalta- ja uhkatilanteista, sekä antaa muuhun työturvallisuuteen liittyvää palautetta (mahdolliset työturvallisuuteen liittyvät puutteet tai ongelmat sekä turvallisuusaloitteet).'
 ],
 
-//vastuut sivu
+// vastuut sivu
 responsibility_1_article: 'Työntekijän on kokemuksensa, työnantajalta saamansa opetuksen ja ohjauksen sekä ammattitaitonsa mukaisesti työssään huolehdittava käytettävissään olevin keinoin niin omasta kuin muiden työntekijöiden turvallisuudesta ja terveydestä. Turvallisuuden ja terveellisyyden ylläpitämiseksi työntekijän on toimittava työn ja työolosuhteiden edellyttämällä tavalla huolellisesti ja varovasti sekä huolehdittava siisteydestä ja järjestyksestä. Työntekijän on toimittava yhteistyössä työnantajan ja työntekijöiden edustajien kanssa työtapaturmien, ammattitautien ja muiden työstä ja työympäristöstä johtuvien terveyshaittojen torjumiseksi. Terveydellä tarkoitetaan sekä fyysistä että henkistä terveyttä. ',
 responsibility_2_article: 'Työntekijän on työpaikalla vältettävä sellaista muihin työntekijöihin kohdistuvaa häirintää ja muuta epäasiallista kohtelua, joka aiheuttaa heidän turvallisuudelleen tai terveydelleen haittaa tai vaaraa. Työntekijän tulee ilmoittaa kokemastaan häirinnästä työnantajalle. ',
 responsibility_3_article: 'Työntekijän on noudatettava työnantajan toimivaltansa mukaisesti antamia määräyksiä ja ohjeita. Turvallisuusohjeet voivat liittyä työmenetelmiin, koneiden ja henkilökohtaisten suojainten käyttämiseen tai vaarallisten aineiden käyttöön ja käsittelyyn. ',
@@ -901,7 +902,7 @@ read_more_about_responsibilities: 'Lue lisää vastuusta...',
 
 
 workerResponsibilitiesArray: [
-  { 
+  {
   header:'1. Huolehdin omasta ja työkavereiden työhyvinvoinnista ja -turvallisuudesta.',
   summary:  'Työntekijän on osaamisensa mukaisesti ja käytettävissään olevin keinoin huolehdittava omasta ja muiden työntekijöiden turvallisuudesta ja terveydestä.' },
   {
@@ -915,7 +916,7 @@ workerResponsibilitiesArray: [
   summary: 'Työntekijän tulee käyttää oikein koneita, työvälineitä ja muita laitteita sekä niissä olevia turvallisuus- ja suojalaitteita. Lisäksi työntekijän tulee käyttää työnantajan antamia henkilönsuojaimia. '},
   {
   header: '5. Ilmoitan havaitsemistani vioista ja puutteista',
-  summary: 'Työntekijän on ilmoitettava työssä havaitsemistaan vioista ja puutteista työnantajalle ja työsuojeluvaltuutetulle. '}      
+  summary: 'Työntekijän on ilmoitettava työssä havaitsemistaan vioista ja puutteista työnantajalle ja työsuojeluvaltuutetulle. '}
 ],
 
 

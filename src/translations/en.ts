@@ -70,9 +70,9 @@ export default {
   history: 'History',
   active: 'Active',
   create: 'Create',
-  button_update: 'update',
-  button_cancel: 'cancel',
-  button_edit: 'edit',
+  button_update: 'Update',
+  button_cancel: 'Cancel',
+  button_edit: 'Edit',
 
   // Mood index page
   entry_mood: 'Add mood',
@@ -667,9 +667,10 @@ export default {
   your_feedbacks: 'Your feedbacks',
   send_feedback: 'Thank you for the work! We hope you will give feedback and development ideas to the agency and the workplace.',
   feedback_title: 'Title',
-  feedback_message: 'Message',
+  feedback_message: 'Submitted form',
   feedback_recipient: 'Recipient',
   feedback_sender: 'Send anonymously',
+  feedback_anonymity: 'Sent anonymously?',
   sending_date: 'Sending date',
   feedback_action: 'Action',
   feedback_details: 'details',
@@ -1020,7 +1021,7 @@ export default {
     ],
 
 
-    //responsibilities page
+    // responsibilities page
     responsibility_1_article: "In accordance with his experience, the teaching and guidance he has received from the employer, and his professional skills, the employee must take care of his own and other employees' safety and health in his work with the means at his disposal. In order to maintain safety and health, the employee must act carefully and cautiously as required by the work and working conditions, and take care of cleanliness and order. The employee must cooperate with the employer and employee representatives to prevent work accidents, occupational diseases and other health hazards caused by work and the work environment. Health means both physical and mental health. ",
     responsibility_2_article: 'At the workplace, the employee must avoid harassment and other improper treatment of other employees that causes harm or danger to their safety or health. The employee must report the harassment he has experienced to the employer. ',
     responsibility_3_article: 'The employee must comply with the regulations and instructions issued by the employer in accordance with his authority. Safety instructions may relate to work methods, the use of machines and personal protective equipment, or the use and handling of dangerous substances. ',
@@ -1047,7 +1048,7 @@ export default {
     summary: 'The employee must inform the employer and the occupational health and safety representative of the faults and deficiencies he/she notices at work. '}
     ],
 
-  
+
 
 
     // feelings

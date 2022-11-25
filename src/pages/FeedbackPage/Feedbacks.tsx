@@ -21,9 +21,7 @@ const Feedbacks: React.FC = () => {
     dispatch(fetchAllMyFeedbacks());
   }, [dispatch]);
 
-  let rows = [];
-  rows = feedbacks;
-  console.log('feedbacks:', feedbacks);
+  const rows = feedbacks;
 
   const columns: GridColumns = [
     {
@@ -44,7 +42,6 @@ const Feedbacks: React.FC = () => {
       minWidth: 125,
       flex: 1,
       renderCell: (params) => {
-        console.log(params.row);
         return <>{moment(params.row.createdAt).format('DD/MM/YYYY')}</>;
       }
     },
@@ -55,32 +52,29 @@ const Feedbacks: React.FC = () => {
       flex: 1,
       renderCell: (params) => {
         return (
-          <>
           <Stack direction="row" spacing={2}>
-          <Link to={'/feedback/details/' + params.id}>
-            <span>{t('feedback_details')}</span>
-          </Link>
-          <Link to={'/feedback/update/' + params.id}>
-            <span className={classes.update}>{t('button_edit')}</span>
-          </Link>
+            <Link to={'/feedback/details/' + params.id}>
+              <span>{t('feedback_details')}</span>
+            </Link>
+            <Link to={'/feedback/update/' + params.id}>
+              <span className={classes.update}>{t('button_edit')}</span>
+            </Link>
           </Stack>
-          </>
         );
       }
     },
   ];
     return (
-        <div style={{ height: '75vh' }}>
-      <DataGrid
-        getRowId={(row) => row._id}
-        rows={rows}
-        disableSelectionOnClick
-        columns={columns}
-        pageSize={10}
-        rowsPerPageOptions={[10]}
-        checkboxSelection
-      />
-    </div>
+      <div style={{ height: '75vh' }}>
+        <DataGrid
+          getRowId={(row) => row._id}
+          rows={rows}
+          disableSelectionOnClick
+          columns={columns}
+          pageSize={10}
+          rowsPerPageOptions={[10]}
+        />
+      </div>
     );
 }
 const useStyles = makeStyles(() => ({
@@ -88,7 +82,6 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     display: 'flex',
     marginRight: '20px',
-    color: 'green',
   },
   userListDelete: {
     color: 'red',
