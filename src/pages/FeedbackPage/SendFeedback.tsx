@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { Feedback } from '../../types/types';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, CircularProgress, Typography } from '@mui/material';
+import {Button, CircularProgress, FormControl, Grid, Radio, RadioGroup, TextField, Typography} from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { Form, Formik, Field } from 'formik';
 import FormikField, {FormikSelectField} from '../../components/FormField';
@@ -11,6 +11,12 @@ import { createFeedback } from '../../actions/feedBackActions';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import {fetchAllAgencies} from '../../actions/usersActions';
+import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
+import SentimentNeutralIcon from "@mui/icons-material/SentimentNeutral";
+import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
+import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfied";
+import SentimentDissatisfiedIcon from "@mui/icons-material/SentimentDissatisfied";
+import SentimentSatisfiedIcon from "@mui/icons-material/SentimentSatisfied";
 
 const initialValues: Feedback = {
   heading: '',
@@ -37,7 +43,15 @@ const SendFeedback: React.FC = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
-  const isLoading = useSelector((state: IRootState) => state.feedback.loading)
+  const isLoading = useSelector((state: IRootState) => state.feedback.loading);
+
+  const questions = {
+    shift: t('feeling_shift'),
+    orientation: t('how_was_orientation'),
+    reception: t('reception'),
+    appreciation: t('appreciation'),
+    expectations: t('expectations'),
+  };
 
   const recipients = useSelector((state: IRootState) => state.users.users);
   const me = useSelector((state: IRootState) => state.user.data.name);
@@ -54,7 +68,7 @@ const SendFeedback: React.FC = () => {
       search: '?' + new URLSearchParams({ tab: 'my' }).toString(),
     })
   };
-  
+
   return (
     <div className={classes.newFeedback}>
       <div className={classes.feedbackTitleContainer}>
@@ -69,35 +83,27 @@ const SendFeedback: React.FC = () => {
           {() => {
             return (
             <Form>
-              <div className={classes.feedbackField}>
-                <FormikSelectField
-                  label={t('feedback_recipient')}
-                  name="recipient"
-                  options={recipients.map((recipient) => {
-                    return {
-                      value: recipient._id,
-                      label: recipient.name
-                    }
-                  })}
-                  fullWidth
-                  required
-                />
-              </div>
-              <div className={classes.feedbackField}>
-                <FormikField
-                    name="heading"
-                    label={t('feedback_title')}
-                    required
-                />
-              </div>
-              <div className={classes.feedbackField}>
-                <FormikField
-                    name="message"
-                    label={t('feedback_message')}
-                    required
-                    multiline
-                />
-              </div>
+              {Object.entries(questions).map(questionEntry => (
+                  <div key={questionEntry[0]}>
+                    <div>
+                      <Typography color="success" id={questionEntry[0] + '-radio-buttons-group-label'} className={classes.title} variant="h6">{questionEntry[1]}</Typography>
+                    </div>
+                    <FormControl>
+                      <RadioGroup
+                          row
+                          aria-labelledby={questionEntry[0] + '-radio-buttons-group-label'}
+                      >
+                        <Field required name={questionEntry[0]} value={1} icon={<SentimentVeryDissatisfiedIcon className={classes.uncheckedIcon} />} checkedIcon={<SentimentVeryDissatisfiedIcon className="mood-icon" />} as={Radio} />
+                        <Field name={questionEntry[0]} value={2} icon={<SentimentNeutralIcon className={classes.uncheckedIcon} />} checkedIcon={<SentimentNeutralIcon className="mood-icon" />} as={Radio} />
+                        <Field name={questionEntry[0]} value={3} icon={<SentimentSatisfiedAltIcon className={classes.uncheckedIcon} />} checkedIcon={<SentimentSatisfiedAltIcon className="mood-icon" />} as={Radio} />
+                        <Field name={questionEntry[0]} value={4} icon={<SentimentVerySatisfiedIcon className={classes.uncheckedIcon} />} checkedIcon={<SentimentVerySatisfiedIcon className="mood-icon" />} as={Radio} />
+                      </RadioGroup>
+                    </FormControl>
+                  </div>
+              ))}
+              <TextField className={classes.textField} placeholder={t('feedbackPlaceholder')} multiline rows={4}/>
+              <TextField className={classes.textField} placeholder={t('feedbackPlaceholderEnd')} multiline rows={10}/>
+              <Typography color="primary" className={classes.title} variant="h1">{t('thanks_for_feedback')}</Typography>
               {isLoading ?
                   <CircularProgress color="primary" /> :
                   <>
@@ -130,10 +136,11 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     marginTop: '5px',
-    marginBottom: '15px',
+    marginBottom: '40px',
     fontWeight: 400,
     fontSize: '2.125rem',
     lineHeight: 1.235,
+    textAlign: 'center',
   },
   feedbackTitleContainer: {
     display: 'flex',
@@ -150,6 +157,31 @@ const useStyles = makeStyles((theme) => ({
   feedbackField: {
     marginBottom: '40px',
   },
+  uncheckedIcon: {
+    color: '#ccc',
+    '&:hover': {
+      color: '#444',
+    },
+    width: 50,
+    height: 50,
+  },
+  checkedIcon: {
+    color: '#ccc',
+    '&:hover': {
+      color: '#444',
+    },
+    width: 50,
+    height: 50,
+  },
+  flexCenter: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  textField: {
+    display: 'flex',
+    marginTop: '40px',
+    marginBottom: '40px',
+  }
 }));
 
 export default SendFeedback;

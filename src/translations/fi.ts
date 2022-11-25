@@ -658,7 +658,8 @@ export default {
   // user feedback
   send_new_feedback: 'Lähetä uutta palautetta',
   your_feedbacks: 'Sinun palautteesi',
-  send_feedback: 'Kiitos keikasta! Toivomme sinun antavan palautetta ja kehittämisideoita henkilöstöpalveluyritykselle ja työpaikalle.',
+  send_feedback: 'Anna palautetta nopeasti työvuorostasi sekä työkohteestasi. Voit halutessasi kirjoittaa lisätietoa tekstibokseihin.',
+  thanks_for_feedback: 'Kiitos palautteesta! Sen avulla voimme kehittää keikkatyötä sekä keikkatyöntekijöiden hyvinvointia.',
   feedback_title: 'Otsikko',
   feedback_message: 'Viesti',
   feedback_recipient: 'Vastaanottaja',
@@ -668,6 +669,13 @@ export default {
   feedback_details: 'Lisätiedot',
   feedback_title_details: 'Palautteen tiedot',
   update_feedback: 'Päivitä palaute',
+  feeling_shift: 'Mikä fiilis työvuoron jälkeen?',
+  how_was_orientation: 'Miten perehdytys onnistui?',
+  reception: 'Miten sinut otettiin työkohteessa vastaan?',
+  appreciation: 'Arvostettiinko sinun työpanostasi?',
+  expectations: 'Tiesitkö mitä sinulta odotettiin työvuorossa?',
+  feedbackPlaceholder: 'Kerro halutessasi lisää tässä!',
+  feedbackPlaceholderEnd: 'Jotain muuta mistä haluat antaa palautetta?',
 
   // Worker feeling
   my_feeling_send: 'Lähetä fiilis',

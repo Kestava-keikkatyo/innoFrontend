@@ -665,7 +665,8 @@ export default {
   // user feedback
   send_new_feedback: 'Send new feedback',
   your_feedbacks: 'Your feedbacks',
-  send_feedback: 'Thank you for the work! We hope you will give feedback and development ideas to the agency and the workplace.',
+  send_feedback: 'Give feedback quickly about your shift and your job. If you wish, you can write additional information in the text boxes.',
+  thanks_for_feedback: 'Thank you for the feedback! It allows us to develop gig work and the well-being of gig workers.',
   feedback_title: 'Title',
   feedback_message: 'Message',
   feedback_recipient: 'Recipient',
@@ -675,6 +676,13 @@ export default {
   feedback_details: 'details',
   feedback_title_details: 'Feedback details',
   update_feedback: 'Update feedback',
+  feeling_shift: 'How do you feel after the shift?',
+  how_was_orientation: 'How did the orientation go?',
+  reception: 'How were you received at the workplace?',
+  appreciation: 'Was your work appreciated?',
+  expectations: 'Did you know what was expected of you during the shift?',
+  feedbackPlaceholder: 'If you want, tell me more here!',
+  feedbackPlaceholderEnd: 'Anything else you want to give feedback on?',
 
   // Worker feeling
   my_feeling_send: 'Send feeling',
