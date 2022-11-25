@@ -674,7 +674,7 @@ export default {
   feedback_anonymity: 'Sent anonymously?',
   sending_date: 'Sending date',
   feedback_action: 'Action',
-  feedback_details: 'details',
+  feedback_details: 'Details',
   feedback_title_details: 'Feedback details',
   update_feedback: 'Update feedback',
   feeling_shift: 'How do you feel after the shift?',
