@@ -18,14 +18,6 @@ type FeedbackUrlParams = {
     feedbackId: string
 }
 
-const questions = {
-    shift: 'Mikä fiilis työvuoron jälkeen?',
-    induction: 'Mites meni induktio?',
-    received: 'Mites sut otettii vastaa?',
-    credit: 'Mites arvostettiinko sua?',
-    expectation: 'Tiesitkö mitä sinulta odotettiin työvuorossa?',
-}
-
 const Details: React.FC = () => {
 
     const { t } = useTranslation();
@@ -41,6 +33,14 @@ const Details: React.FC = () => {
         <PageLoading />
     );
 
+    const questions = {
+        shift: t('feeling_shift'),
+        orientation: t('how_was_orientation'),
+        reception: t('reception'),
+        appreciation: t('appreciation'),
+        expectations: t('expectations'),
+    };
+
     return (
         <div className={classes.feedback}>
             <div className={classes.feedbackTitleContainer}>
@@ -52,19 +52,19 @@ const Details: React.FC = () => {
             <div className={classes.feedbackContainer}>
                 <div className={classes.feedbackShow}>
                     <div className={classes.feedbackShowInfo}>
-                        <span className={classes.feedbackShowTitle}>{t('feedback_title')} : </span>
+                        <span className={classes.feedbackShowTitle}>{t('feedback_title')}: </span>
                         <span className={classes.feedbackShowInfoTitle}> { feedbackData.heading }</span>
                     </div>
                     <div className={classes.feedbackShowInfo}>
-                        <span className={classes.feedbackShowTitle}>{t('sending_date')} : </span>
+                        <span className={classes.feedbackShowTitle}>{t('sending_date')}: </span>
                         <span className={classes.feedbackShowInfoTitle}> { moment(feedbackData.createdAt).format('DD/MM/YYYY') }</span>
                     </div>
                     <div className={classes.feedbackShowInfo}>
-                        <span className={classes.feedbackShowTitle}>{t('feedback_recipient')} : </span>
+                        <span className={classes.feedbackShowTitle}>{t('feedback_recipient')}: </span>
                         <span className={classes.feedbackShowInfoTitle}>{ feedbackData.recipient }</span>
                     </div>
                     <div className={classes.feedbackShowInfo}>
-                        <span className={classes.feedbackShowTitle}>{t('feedback_anonymity')} : </span>
+                        <span className={classes.feedbackShowTitle}>{t('feedback_anonymity')}: </span>
                         <span className={classes.feedbackShowInfoTitle}>{ feedbackData.sender }</span>
                     </div>
                 </div>
@@ -72,7 +72,7 @@ const Details: React.FC = () => {
                     <span className={classes.feedbackMessageTitle}>{t('feedback_message')}</span>
                     {Object.entries(questions).map(questionEntry => (
                       <div key={questionEntry[0]}>
-                          <Typography color="success" id={questionEntry[0] + '-radio-buttons-group-label'} className={classes.feedbackShowTitle} variant="h6">{questionEntry[1]}</Typography>
+                          <Typography color="success" id={questionEntry[0] + '-radio-buttons-group-label'} className={classes.feedbackShowTitleIcons} variant="h6">{questionEntry[1]}</Typography>
                           <SentimentVeryDissatisfiedIcon className={classes.icon} />
                           <SentimentNeutralIcon className={classes.icon} />
                           <SentimentSatisfiedAltIcon className={classes.icon} />
@@ -80,7 +80,7 @@ const Details: React.FC = () => {
                           <p>Comment for {questionEntry[1]}</p>
                       </div>
                     ))}
-                    <Typography color="success" className={classes.feedbackShowTitle} variant="h6">Kommentti</Typography>
+                    <Typography color="success" className={classes.feedbackShowTitle} variant="h6">{t('feedback_details')}</Typography>
                     <span>Konmentti</span>
                 </div>
             </div>
@@ -122,7 +122,13 @@ const useStyles = makeStyles(() => ({
     feedbackShowTitle: {
         fontSize: '14px',
         fontWeight: 600,
-        color: '#AFAAAA'
+        color: '#AFAAAA',
+    },
+    feedbackShowTitleIcons: {
+        fontSize: '14px',
+        fontWeight: 600,
+        color: '#AFAAAA',
+        marginTop: '20px'
     },
     feedbackMessageTitle: {
         fontSize: '24px',
