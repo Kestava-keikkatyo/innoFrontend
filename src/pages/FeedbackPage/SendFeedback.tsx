@@ -2,7 +2,17 @@ import React, {useEffect, useState} from 'react';
 import { Feedback } from '../../types/types';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import {Button, CircularProgress, FormControl, Grid, Radio, RadioGroup, TextField, Typography} from '@mui/material';
+import {
+  Button,
+  CircularProgress,
+  FormControl,
+  Grid,
+  Radio,
+  RadioGroup,
+  TextField,
+  Typography
+} from '@mui/material';
+import Box from '@mui/material/Box';
 import makeStyles from '@mui/styles/makeStyles';
 import { Form, Formik, Field } from 'formik';
 import FormikField, {FormikSelectField} from '../../components/FormField';
@@ -99,7 +109,7 @@ const SendFeedback: React.FC = () => {
                       <Typography
                         color="success"
                         id={questionEntry[0] + '-radio-buttons-group-label'}
-                        className={classes.title}
+                        className={classes.questionTitle}
                         variant="h6"
                       >
                         {questionEntry[1]}
@@ -174,6 +184,14 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     marginTop: '5px',
+    marginBottom: '40px',
+    fontWeight: 400,
+    fontSize: '2.125rem',
+    lineHeight: 1.235,
+    textAlign: 'center',
+  },
+  questionTitle: {
+    marginTop: '40px',
     marginBottom: '40px',
     fontWeight: 400,
     fontSize: '2.125rem',
