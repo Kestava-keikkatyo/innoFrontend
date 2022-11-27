@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import { Feedback } from '../../types/types';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,16 +6,13 @@ import {
   Button,
   CircularProgress,
   FormControl,
-  Grid,
   Radio,
   RadioGroup,
-  TextField,
   Typography
 } from '@mui/material';
-import Box from '@mui/material/Box';
 import makeStyles from '@mui/styles/makeStyles';
 import { Form, Formik, Field } from 'formik';
-import FormikField, {FormikSelectField} from '../../components/FormField';
+import { FormikSelectField, FormikTextField } from '../../components/FormField';
 import { IRootState } from '../../utils/store';
 import { createFeedback } from '../../actions/feedBackActions';
 import { useTranslation } from 'react-i18next';
@@ -26,25 +23,41 @@ import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 
-const initialValues: Feedback = {
-  heading: '',
-  recipient: '',
-  sender: false,
-  message: '',
-};
-
 const SendFeedbackSchema = Yup.object().shape({
-    heading: Yup.string()
-        .min(2, 'Title should be three letters at least!')
-        .required('Title is required!'),
-    recipient: Yup.string()
-        .min(2, 'Recipient must be defined')
-        .required('Recipient is required'),
-    sender: Yup.boolean(),
-    message: Yup.string()
-        .min(2, 'Message should be three letters at least!')
-        .required('Message is required!'),
-  });
+  recipient: Yup.string()
+    .min(2, 'Recipient must be defined')
+    .required('Recipient is required'),
+  shift: Yup.number().min(1, 'Min value 1.').max(4, 'Max value 4.').required('shift is required!'),
+  shiftMessage: Yup.string(),
+  orientation: Yup.number().min(1, 'Min value 1.').max(4, 'Max value 4.').required('orientation is required!'),
+  orientationMessage: Yup.string(),
+  reception: Yup.number().min(1, 'Min value 1.').max(4, 'Max value 4.').required('reception is required!'),
+  receptionMessage: Yup.string(),
+  appreciation: Yup.number().min(1, 'Min value 1.').max(4, 'Max value 4.').required('appreciation is required!'),
+  appreciationMessage: Yup.string(),
+  expectation: Yup.number().min(1, 'Min value 1.').max(4, 'Max value 4.').required('expectation is required!'),
+  expectationMessage: Yup.string(),
+  additionalMessage: Yup.string()
+    .min(2, 'Message should be three letters at least!')
+    .required('Message is required!'),
+  sender: Yup.boolean(),
+});
+
+const initialValues: Feedback = {
+  recipient: '',
+  shift: null,
+  shiftMessage: '',
+  orientation: null,
+  orientationMessage: '',
+  reception: null,
+  receptionMessage: '',
+  appreciation: null,
+  appreciationMessage: '',
+  expectation: null,
+  expectationMessage: '',
+  additionalMessage: '',
+  sender: false
+};
 
 const SendFeedback: React.FC = () => {
   const { t } = useTranslation();
@@ -58,18 +71,19 @@ const SendFeedback: React.FC = () => {
     orientation: t('how_was_orientation'),
     reception: t('reception'),
     appreciation: t('appreciation'),
-    expectations: t('expectations'),
+    expectation: t('expectation'),
   };
 
   const recipients = useSelector((state: IRootState) => state.users.users);
-  const me = useSelector((state: IRootState) => state.user.data.name);
+  const me = useSelector((state: IRootState) => state.user.data);
 
   useEffect(() => {
     dispatch(fetchAllAgencies());
   }, [dispatch]);
 
   const handleSubmit = (feedback: Feedback) => {
-    feedback.sender = !feedback.sender ? me : null;
+    feedback.sender = !feedback.sender ? me._id : null;
+    console.log(feedback)
     dispatch(createFeedback(feedback));
     history.push({
       pathname: history.location.pathname,
@@ -88,94 +102,107 @@ const SendFeedback: React.FC = () => {
           onSubmit={handleSubmit}
           validationSchema={SendFeedbackSchema}
         >
-          {() => {
-            return (
-              <Form>
-                {/* TODO: Recipient can only be business or agency the worker is part of */}
-                <FormikSelectField
-                  label={t('feedback_recipient')}
-                  name="recipient"
-                  options={recipients.map((recipient) => {
-                    return {
-                      value: recipient._id,
-                      label: recipient.name
-                    }
-                  })}
-                  fullWidth
-                  required
-                />
-                {Object.entries(questions).map(questionEntry => (
-                    <div key={questionEntry[0]}>
-                      <Typography
-                        color="success"
-                        id={questionEntry[0] + '-radio-buttons-group-label'}
-                        className={classes.questionTitle}
-                        variant="h6"
-                      >
-                        {questionEntry[1]}
-                      </Typography>
-                      <FormControl className={classes.formControl}>
-                        <RadioGroup row aria-labelledby={questionEntry[0] + '-radio-buttons-group-label'} className={classes.fieldContainer}>
-                          <Field
-                            name={questionEntry[0]}
-                            value={1}
-                            icon={<SentimentVeryDissatisfiedIcon className={classes.uncheckedIcon} />}
-                            checkedIcon={<SentimentVeryDissatisfiedIcon className={classes.checkedIcon} />}
-                            as={Radio}
-                            required
-                          />
-                          <Field
-                            name={questionEntry[0]}
-                            value={2}
-                            icon={<SentimentNeutralIcon className={classes.uncheckedIcon} />}
-                            checkedIcon={<SentimentNeutralIcon className={classes.checkedIcon} />}
-                            as={Radio}
-                            required
-                          />
-                          <Field
-                            name={questionEntry[0]}
-                            value={3}
-                            icon={<SentimentSatisfiedAltIcon className={classes.uncheckedIcon} />}
-                            checkedIcon={<SentimentSatisfiedAltIcon className={classes.checkedIcon} />}
-                            as={Radio}
-                            required
-                          />
-                          <Field
-                            name={questionEntry[0]}
-                            value={4}
-                            icon={<SentimentVerySatisfiedIcon className={classes.uncheckedIcon} />}
-                            checkedIcon={<SentimentVerySatisfiedIcon className={classes.checkedIcon} />}
-                            as={Radio}
-                            required
-                          />
-                        </RadioGroup>
-                      </FormControl>
-                      <TextField className={classes.textField} placeholder={t('feedbackPlaceholder')} multiline rows={2}/>
-                    </div>
-                ))}
-                <TextField className={classes.textField} placeholder={t('feedbackPlaceholderEnd')} multiline rows={10}/>
-                <Typography color="primary" className={classes.title} variant="h1">
-                  {t('thanks_for_feedback')}
-                </Typography>
-                {isLoading ?
-                    <CircularProgress color="primary" /> :
-                    <>
-                      <Button type="submit" variant="contained" color="primary" className={classes.button}>
-                        {t('send')}
-                      </Button>
-                      <label>
-                        <Field type="checkbox" name="sender" />
-                        {t('feedback_sender')}
-                      </label>
-                    </>
-                }
-              </Form>
-            );
-          }}
+          {() => (
+            <Form>
+              {/* TODO: Recipient can only be business or agency the worker is part of */}
+              <FormikSelectField
+                label={t('feedback_recipient')}
+                name="recipient"
+                options={recipients.map((recipient) => {
+                  return {
+                    value: recipient._id,
+                    label: recipient.name
+                  }
+                })}
+                fullWidth
+                required
+              />
+              {Object.entries(questions).map(questionEntry => (
+                <div key={questionEntry[0]}>
+                  <Typography
+                    color="success"
+                    id={questionEntry[0] + '-radio-buttons-group-label'}
+                    className={classes.questionTitle}
+                    variant="h6"
+                  >
+                    {questionEntry[1]}
+                  </Typography>
+                  <FormControl className={classes.formControl}>
+                    <RadioGroup
+                      row
+                      aria-labelledby={questionEntry[0] + '-radio-buttons-group-label'}
+                      className={classes.fieldContainer}
+                    >
+                      <Field
+                        required
+                        name={questionEntry[0]}
+                        value={1}
+                        icon={<SentimentVeryDissatisfiedIcon className={classes.uncheckedIcon} />}
+                        checkedIcon={<SentimentVeryDissatisfiedIcon className={classes.checkedIcon} />}
+                        as={Radio}
+                      />
+                      <Field
+                        name={questionEntry[0]}
+                        value={2}
+                        icon={<SentimentNeutralIcon className={classes.uncheckedIcon} />}
+                        checkedIcon={<SentimentNeutralIcon className={classes.checkedIcon} />}
+                        as={Radio}
+                      />
+                      <Field
+                        name={questionEntry[0]}
+                        value={3}
+                        icon={<SentimentSatisfiedAltIcon className={classes.uncheckedIcon} />}
+                        checkedIcon={<SentimentSatisfiedAltIcon className={classes.checkedIcon} />}
+                        as={Radio}
+                      />
+                      <Field
+                        name={questionEntry[0]}
+                        value={4}
+                        icon={<SentimentVerySatisfiedIcon className={classes.uncheckedIcon} />}
+                        checkedIcon={<SentimentVerySatisfiedIcon className={classes.checkedIcon} />}
+                        as={Radio}
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                  <FormikTextField
+                    className={classes.textField}
+                    name={`${questionEntry[0]}Message`}
+                    label={t('feedbackPlaceholder')}
+                    multiline
+                    rows={2}
+                    type='text'
+                  />
+                </div>
+              ))}
+              <FormikTextField
+                className={classes.textField}
+                name='additionalMessage'
+                label={t('feedbackPlaceholderEnd')}
+                multiline
+                rows={10}
+                type='text'
+              />
+              <Typography color="primary" className={classes.title} variant="h1">
+                {t('thanks_for_feedback')}
+              </Typography>
+              {isLoading ?
+                  <CircularProgress color="primary" /> :
+                  <>
+                    <Button type="submit" variant="contained" color="primary" className={classes.button}>
+                      {t('send')}
+                    </Button>
+                    <label>
+                      <Field type="checkbox" name="sender" />
+                      {t('feedback_sender')}
+                    </label>
+                  </>
+              }
+            </Form>
+          )}
         </Formik>
       </div>
     </div>
-    );
+  );
 }
 
 const useStyles = makeStyles((theme) => ({

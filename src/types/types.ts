@@ -212,9 +212,18 @@ export interface Job {
 
 export interface Feedback {
   _id?: string
-  heading: string
-  message: string
   recipient: string
+  shift: number | null
+  shiftMessage?: string
+  orientation: number | null
+  orientationMessage?: string
+  reception: number | null
+  receptionMessage?: string
+  appreciation: number | null
+  appreciationMessage?: string
+  expectation: number | null
+  expectationMessage?: string
+  additionalMessage: string
   sender: User | boolean
   createdAt?: Date
 }

@@ -52,16 +52,12 @@ const Details: React.FC = () => {
             <div className={classes.feedbackContainer}>
                 <div className={classes.feedbackShow}>
                     <div className={classes.feedbackShowInfo}>
-                        <span className={classes.feedbackShowTitle}>{t('feedback_title')}: </span>
-                        <span className={classes.feedbackShowInfoTitle}> { feedbackData.heading }</span>
+                        <span className={classes.feedbackShowTitle}>{t('feedback_recipient')}: </span>
+                        <span className={classes.feedbackShowInfoTitle}>{ feedbackData.recipient }</span>
                     </div>
                     <div className={classes.feedbackShowInfo}>
                         <span className={classes.feedbackShowTitle}>{t('sending_date')}: </span>
                         <span className={classes.feedbackShowInfoTitle}> { moment(feedbackData.createdAt).format('DD/MM/YYYY') }</span>
-                    </div>
-                    <div className={classes.feedbackShowInfo}>
-                        <span className={classes.feedbackShowTitle}>{t('feedback_recipient')}: </span>
-                        <span className={classes.feedbackShowInfoTitle}>{ feedbackData.recipient }</span>
                     </div>
                     <div className={classes.feedbackShowInfo}>
                         <span className={classes.feedbackShowTitle}>{t('feedback_anonymity')}: </span>

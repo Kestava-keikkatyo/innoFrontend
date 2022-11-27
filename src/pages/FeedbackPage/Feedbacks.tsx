@@ -25,12 +25,6 @@ const Feedbacks: React.FC = () => {
 
   const columns: GridColumns = [
     {
-      field: 'heading',
-      headerName: (i18next.t('feedback_title')),
-      minWidth: 100,
-      flex: 1,
-    },
-    {
       field: 'recipient',
       headerName: (i18next.t('feedback_recipient')),
       minWidth: 100,
@@ -44,6 +38,12 @@ const Feedbacks: React.FC = () => {
       renderCell: (params) => {
         return <>{moment(params.row.createdAt).format('DD/MM/YYYY')}</>;
       }
+    },
+    {
+      field: 'Sent anonymously?',
+      headerName: (i18next.t('feedback_anonymity')),
+      minWidth: 100,
+      flex: 1,
     },
     {
       field: 'action',

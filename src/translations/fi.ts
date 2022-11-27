@@ -674,7 +674,7 @@ export default {
   how_was_orientation: 'Miten perehdytys onnistui?',
   reception: 'Miten sinut otettiin työkohteessa vastaan?',
   appreciation: 'Arvostettiinko sinun työpanostasi?',
-  expectations: 'Tiesitkö mitä sinulta odotettiin työvuorossa?',
+  expectation: 'Tiesitkö mitä sinulta odotettiin työvuorossa?',
   feedbackPlaceholder: 'Kerro halutessasi lisää tässä!',
   feedbackPlaceholderEnd: 'Jotain muuta mistä haluat antaa palautetta?',
 

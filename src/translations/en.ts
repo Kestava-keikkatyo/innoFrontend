@@ -681,7 +681,7 @@ export default {
   how_was_orientation: 'How did the orientation go?',
   reception: 'How were you received at the workplace?',
   appreciation: 'Was your work appreciated?',
-  expectations: 'Did you know what was expected of you during the shift?',
+  expectation: 'Did you know what was expected of you during the shift?',
   feedbackPlaceholder: 'If you want, tell me more here!',
   feedbackPlaceholderEnd: 'Anything else you want to give feedback on?',
 
