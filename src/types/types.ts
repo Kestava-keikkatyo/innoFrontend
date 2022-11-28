@@ -223,7 +223,7 @@ export interface Feedback {
   appreciationMessage?: string
   expectation: number | null
   expectationMessage?: string
-  additionalMessage: string
+  additionalMessage?: string
   sender: User | boolean
   createdAt?: Date
 }

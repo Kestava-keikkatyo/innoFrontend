@@ -25,21 +25,34 @@ import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfi
 
 const SendFeedbackSchema = Yup.object().shape({
   recipient: Yup.string()
-    .min(2, 'Recipient must be defined')
-    .required('Recipient is required'),
-  shift: Yup.number().min(1, 'Min value 1.').max(4, 'Max value 4.').required('shift is required!'),
+    .min(4, 'Recipient must be defined')
+    .required('Recipient is required!'),
+  shift: Yup.number()
+      .min(1, 'Min value 1.')
+      .max(4, 'Max value 4.')
+      .required('Shift is required!'),
   shiftMessage: Yup.string(),
-  orientation: Yup.number().min(1, 'Min value 1.').max(4, 'Max value 4.').required('orientation is required!'),
+  orientation: Yup.number()
+      .min(1, 'Min value 1.')
+      .max(4, 'Max value 4.')
+      .required('Orientation is required!'),
   orientationMessage: Yup.string(),
-  reception: Yup.number().min(1, 'Min value 1.').max(4, 'Max value 4.').required('reception is required!'),
+  reception: Yup.number()
+      .min(1, 'Min value 1.')
+      .max(4, 'Max value 4.')
+      .required('Reception is required!'),
   receptionMessage: Yup.string(),
-  appreciation: Yup.number().min(1, 'Min value 1.').max(4, 'Max value 4.').required('appreciation is required!'),
+  appreciation: Yup.number()
+      .min(1, 'Min value 1.')
+      .max(4, 'Max value 4.')
+      .required('Appreciation is required!'),
   appreciationMessage: Yup.string(),
-  expectation: Yup.number().min(1, 'Min value 1.').max(4, 'Max value 4.').required('expectation is required!'),
+  expectation: Yup.number()
+      .min(1, 'Min value 1.')
+      .max(4, 'Max value 4.')
+      .required('Expectation is required!'),
   expectationMessage: Yup.string(),
-  additionalMessage: Yup.string()
-    .min(2, 'Message should be three letters at least!')
-    .required('Message is required!'),
+  additionalMessage: Yup.string(),
   sender: Yup.boolean(),
 });
 
@@ -67,22 +80,22 @@ const SendFeedback: React.FC = () => {
   const isLoading = useSelector((state: IRootState) => state.feedback.loading);
 
   const questions = {
-    shift: t('feeling_shift'),
-    orientation: t('how_was_orientation'),
-    reception: t('reception'),
-    appreciation: t('appreciation'),
-    expectation: t('expectation'),
+    shift: `${t('feedback_shift')} *`,
+    orientation: `${t('feedback_orientation')} *`,
+    reception: `${t('feedback_reception')} *`,
+    appreciation: `${t('feedback_appreciation')} *`,
+    expectation: `${t('feedback_expectation')} *`,
   };
 
   const recipients = useSelector((state: IRootState) => state.users.users);
-  const me = useSelector((state: IRootState) => state.user.data);
+  const myId = useSelector((state: IRootState) => state.user.data._id);
 
   useEffect(() => {
     dispatch(fetchAllAgencies());
   }, [dispatch]);
 
   const handleSubmit = (feedback: Feedback) => {
-    feedback.sender = !feedback.sender ? me._id : null;
+    feedback.sender = !feedback.sender ? myId : null;
     console.log(feedback)
     dispatch(createFeedback(feedback));
     history.push({
@@ -167,7 +180,7 @@ const SendFeedback: React.FC = () => {
                   <FormikTextField
                     className={classes.textField}
                     name={`${questionEntry[0]}Message`}
-                    label={t('feedbackPlaceholder')}
+                    label={t('feedback_message_placeholder')}
                     multiline
                     rows={2}
                     type='text'
@@ -177,7 +190,7 @@ const SendFeedback: React.FC = () => {
               <FormikTextField
                 className={classes.textField}
                 name='additionalMessage'
-                label={t('feedbackPlaceholderEnd')}
+                label={t('feedback_additional_message')}
                 multiline
                 rows={10}
                 type='text'
