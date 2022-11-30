@@ -102,7 +102,7 @@ export default {
   image: 'Image',
 
   // Agencystaistics
-  mood_stats: 'Feeling stats',
+  mood_stats: 'Mood stats',
 
   // Report form
   report_handler: 'Security observations',
@@ -311,7 +311,8 @@ export default {
   databank: 'Databank',
   schedule: 'Schedule',
   work_overview: 'Work overview',
-  forms: 'Materials',
+  forms: 'Forms',
+  materials: 'Materials',
   work_request: 'Work requests',
   exit_application: 'Exit application',
   business_contracts: 'Business contracts',
@@ -326,6 +327,7 @@ export default {
   guidance_to_work: 'Guidance to work and working environment',
   work_performance: 'Work performance, supervision and feedback',
   feedback_evaluation: 'Feedback and evaluation',
+  employees: 'Employees',
 
   // profilePage
   settings: 'Settings',
@@ -800,6 +802,7 @@ export default {
   GuidanceToWork: 'Guidance to work and working environment',
   WorkPerformance: 'Work performance and supervision',
   FeedbackEvaluation: 'Feedback and evaluation',
+  BusinessCompanies: 'Business companies',
 
   // Responsibilities
   CustomerContractResponsibilities: '',

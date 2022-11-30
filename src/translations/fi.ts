@@ -308,7 +308,8 @@ export default {
   databank: 'Tietopankki',
   schedule: 'Aikataulut',
   work_overview: 'Työn katsaus',
-  forms: 'Omat ateriaalit',
+  forms: 'Lomakkeet',
+  materials: 'Omat materiaalit',
   work_request: 'Työpyynnöt',
   exit_application: 'Poistu sovelluksesta',
   business_contracts: 'Yrityssopimukset',
@@ -322,6 +323,7 @@ export default {
   guidance_to_work: 'Opastus työhön ja työoloihin',
   work_performance: 'Työsuoritus, valvonta ja palaute',
   feedback_evaluation: 'Palaute ja toiminnan arviointi',
+  employees: 'Työntekijät',
 
   // profilePage
   settings: 'Asetukset',
@@ -796,6 +798,7 @@ export default {
   WorkerResponsibilities: 'Työntekijän vastuut',
   AgencyResponsibilities: 'Hp-yrityksen vastuut',
   BusinessResponsibilities: 'Käyttäjäyrityksen vastuut',
+  BusinessCompanies: 'Käyttäjäyritykset',
 
   // Responsibilities
   CustomerContractResponsibilities: '1. Jaettu työsuojeluvastuu (käyttäjäyrityksen kanssa) \n\n 2.Yleisvastuu työturvallisuudesta (tämän alle keskeiset vaatimukset, mm. Työn vaarojen selvittäminen ja arviointi Työsuojelun toimintaohjelman laatiminen Työsuojelun yhteistoiminnan järjestäminen Perehdytys (ml. yleisperehdytyksen antaminen vuokratyöntekijälle) Ilmoittaminen nuorten työntekijöiden käyttämisestä vaarallisiin töihin Vakavasta työtapaturmasta ilmoittaminen työsuojeluviranomaisille ja poliisille) Vastuu työaikalain noudattamisesta Työntekijöiden vakuuttaminen työtapaturmien ja ammattitautien varalta Työterveyshuollon järjestäminen Tasa-arvon ja yhdenvertaisuuden edistäminen  Käyttäjäyrityksen velvoitteiden täyttämisen varmistaminen Vuokratyöntekijän riittävän ammattitaidon ja työhön soveltumisen varmistaminen Tarvittavien henkilönsuojainten hankinta (yhteistyössä käyttäjäyrityksen kanssa)',

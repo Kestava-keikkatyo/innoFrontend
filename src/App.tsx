@@ -263,37 +263,37 @@ const App: React.FC = () => {
             </PrivateRoute>
             <PrivateRoute
               path="/rentalWorkModel/customerContract"
-              roles={[roles.Worker, roles.Business]}
+              roles={[roles.Worker, roles.Business, roles.Agency]}
             >
               <RentalWorkModelPage path='customer-contract' />
             </PrivateRoute>
             <PrivateRoute
               path="/rentalWorkModel/orderingEmployee"
-              roles={[roles.Worker, roles.Business]}
+              roles={[roles.Worker, roles.Business, roles.Agency]}
             >
               <RentalWorkModelPage path='ordering-employee' />
             </PrivateRoute>
             <PrivateRoute
               path="/rentalWorkModel/contractOfEmployment"
-              roles={[roles.Worker, roles.Business]}
+              roles={[roles.Worker, roles.Business, roles.Agency]}
             >
               <RentalWorkModelPage path='contract-of-employment' />
             </PrivateRoute>
             <PrivateRoute
               path="/rentalWorkModel/guidanceToWork"
-              roles={[roles.Worker, roles.Business]}
+              roles={[roles.Worker, roles.Business, roles.Agency]}
             >
               <RentalWorkModelPage path='guidance-to-work' />
             </PrivateRoute>
             <PrivateRoute
               path="/rentalWorkModel/workPerformance"
-              roles={[roles.Worker, roles.Business]}
+              roles={[roles.Worker, roles.Business, roles.Agency]}
             >
               <RentalWorkModelPage path='work-performance' />
             </PrivateRoute>
             <PrivateRoute
               path="/rentalWorkModel"
-              roles={[roles.Worker, roles.Business]}
+              roles={[roles.Worker, roles.Business, roles.Agency]}
             >
               <RentalWorkModelPage path='rental-work-model'/>
             </PrivateRoute>
