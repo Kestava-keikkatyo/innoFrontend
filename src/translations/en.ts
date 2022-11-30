@@ -803,6 +803,9 @@ export default {
   WorkPerformance: 'Work performance and supervision',
   FeedbackEvaluation: 'Feedback and evaluation',
   BusinessCompanies: 'Business companies',
+  WorkerResponsibilities: 'Worker responsibilities',
+  AgencyResponsibilities: 'Agency responsibilities',
+  BusinessResponsibilities: 'Business responsibilities',
 
   // Responsibilities
   CustomerContractResponsibilities: '',
