@@ -27,9 +27,9 @@ const RentalWorkModelPage = ({ path }: RentalWorkModelSteps) => {
       case roles.Admin:
         return null
       case roles.Business:
-        return null
+        return <WorkerRentalWorkModel path={path} />
       case roles.Agency:
-        return null
+        return <WorkerRentalWorkModel path={path} />
       case roles.Worker:
         return <WorkerRentalWorkModel path={path} />
       default:
