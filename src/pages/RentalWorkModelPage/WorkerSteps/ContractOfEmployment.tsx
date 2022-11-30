@@ -1,5 +1,5 @@
 import { Container } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import WorkerStepBase from './WorkerStepBase';
 import Typography from '@mui/material/Typography';
@@ -8,16 +8,20 @@ import { Theme } from '@mui/material/styles';
 import ContractOfEmploymentForm from './Forms/ContractOfEmploymentForm';
 import SearchFromFileComponent from './SearchFromFileComponent';
 
+
+
 const ContractOfEmployment = () => {
   const { t } = useTranslation();
   const classes = useStyles();
 
+
   const tabContent = [
    /* <div key="tab0">
  <SearchFromFileComponent inputString="worker_step_3" />
+ 
     </div>,*/
     <div key="tab0">
-      <ContractOfEmploymentForm/>
+      <ContractOfEmploymentForm />
     </div>,
     <div key="tab1">
        <SearchFromFileComponent inputString="good_practices_employment_contract_and_general_orientation_array" />

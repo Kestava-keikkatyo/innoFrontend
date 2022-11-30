@@ -64,9 +64,9 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
    * [Drawer]{@link module:components/Drawer}.
    * @function
    */
-   const handleClick = () => {
-     if(isMobile) { setOpen(false) }
-   }
+  const handleClick = () => {
+    if (isMobile) { setOpen(false) }
+  }
 
 
   const [openNest, setOpenNest] = useState(false)
@@ -100,7 +100,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               </ListItemButton>
               <Divider />
             </>
-          )} 
+          )}
           {role === roles.Agency && (
             <>
               <ListItemButton component={Link} to="/moodStats" onClick={handleClick}>
@@ -111,9 +111,9 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               </ListItemButton>
               <Divider />
             </>
-          )}    
+          )}
           {role === roles.Agency && (
-          <>    
+            <>
               <ListItemButton component={Link} to="/agencyResponsibilities" onClick={handleClick}>
                 <ListItemIcon>
                   <AccessibilityOutlinedIcon sx={{ color: iconColor.base }} />
@@ -122,9 +122,9 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               </ListItemButton>
               <Divider />
             </>
-          )}   
-           {/**FORMS=MATERIAL  CONTENT = ORIENTATION */}   
-          {role === roles.Agency && ( 
+          )}
+          {/**FORMS=MATERIAL  CONTENT = ORIENTATION */}
+          {role === roles.Agency && (
             <>
               <ListItemButton component={Link} to="/forms" onClick={handleClick}>
                 <ListItemIcon>
@@ -145,7 +145,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               </ListItemButton>
               <Divider />
             </>
-          )}   
+          )}
           {role === roles.Agency && (
             <>
               <ListItemButton component={Link} to="/home" onClick={handleClick}>
@@ -156,10 +156,10 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               </ListItemButton>
               <Divider />
             </>
-          )} 
-          
+          )}
 
-          {(role === roles.Business || role === roles.Worker) && (
+
+          {(role === roles.Business) && (
             <>
               <ListItemButton component={Link} to="/feedback" onClick={handleClick}>
                 <ListItemIcon>
@@ -172,7 +172,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           )}
           {role === roles.Business && (
             <>
-        
+
               <ListItemButton component={Link} to="/businessResponsibilities" onClick={handleClick}>
                 <ListItemIcon>
                   <AccessibilityOutlinedIcon sx={{ color: iconColor.base }} />
@@ -192,7 +192,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               </ListItemButton>
               <Divider />
             </>
-          )}   
+          )}
           {role === roles.Business && (
             <>
               <ListItemButton component={Link} to="/agencies" onClick={handleClick}>
@@ -203,14 +203,14 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               </ListItemButton>
               <Divider />
             </>
-          )}   
-          {(role === roles.Worker || role === roles.Business || role === roles.Agency) && (
+          )}
+          {(role === roles.Business || role === roles.Agency) && (
             <>
               <ListItemButton onClick={handleOpenNest}>
                 <ListItemIcon>
                   <SupervisedUserCircleIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('rental_work_model')}/>
+                <ListItemText primary={t('rental_work_model')} />
                 {openNest ? <ExpandLess /> : <ExpandMore />}
               </ListItemButton>
               <Collapse in={openNest} timeout="auto" unmountOnExit>
@@ -272,7 +272,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               </ListItemButton>
               <Divider />
             </>
-          )}    
+          )}
           {role === roles.Agency && (
             <>
               <ListItemButton component={Link} to="/receivedWorkRequests" onClick={handleClick} disabled>
@@ -283,7 +283,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               </ListItemButton>
               <Divider />
             </>
-          )}              
+          )}
           {(role === roles.Business) && (
             <>
               <ListItemButton component={Link} to="/workRequests" onClick={handleClick} disabled>
@@ -294,8 +294,8 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               </ListItemButton>
               <Divider />
             </>
-          )}  
-  
+          )}
+
 
           {/** 
            * REMOVED FROM NAVIGATIONBAR
@@ -350,17 +350,28 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
             */}
 
 
-         
 
-  
+
+
           {role === roles.Worker && (
             <>
-        
+
               <ListItemButton component={Link} to="/workerResponsibilities" onClick={handleClick}>
                 <ListItemIcon>
                   <AccessibilityOutlinedIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
                 <ListItemText primary={t('responsibilities')} />
+              </ListItemButton>
+              <Divider />
+            </>
+          )}
+          {(role === roles.Worker) && (
+            <>
+              <ListItemButton component={Link} to="/feedback" onClick={handleClick}>
+                <ListItemIcon>
+                  <FeedbackOutlinedIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('feedback')} />
               </ListItemButton>
               <Divider />
             </>
@@ -387,6 +398,48 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
                 </ListItemIcon>
                 <ListItemText primary={t('business_contracts')} />
               </ListItemButton>
+              <Divider />
+            </>
+          )}
+          {(role === roles.Worker) && (
+            <>
+              <ListItemButton onClick={handleOpenNest}>
+                <ListItemIcon>
+                  <SupervisedUserCircleIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('rental_work_model')} />
+                {openNest ? <ExpandLess /> : <ExpandMore />}
+              </ListItemButton>
+              <Collapse in={openNest} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel">
+                    <ListItemIcon>
+                      <SupervisorAccountIcon fontSize="small" sx={{ color: iconColor.base }} />
+                    </ListItemIcon>
+                    <ListItemText primary={t('overview')} />
+                  </ListItemButton>
+                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/contractOfEmployment">
+                    <ListItemIcon>
+                      <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.undone }} />
+                    </ListItemIcon>
+                    <ListItemText primary={t('contract_of_employment')} />
+                  </ListItemButton>
+
+                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/guidanceToWork">
+                    <ListItemIcon>
+                      <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.undone }} />
+                    </ListItemIcon>
+                    <ListItemText primary={t('guidance_to_work')} />
+                  </ListItemButton>
+
+                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/workPerformance">
+                    <ListItemIcon>
+                      <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.undone }} />
+                    </ListItemIcon>
+                    <ListItemText primary={t('work_performance')} />
+                  </ListItemButton>
+                </List>
+              </Collapse>
               <Divider />
             </>
           )}
@@ -468,14 +521,14 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               <Divider />
             </>
           )}
-       {/**  <ListItemButton component="a" href="/databank" target="_blank" onClick={handleClick}>
+          {/**  <ListItemButton component="a" href="/databank" target="_blank" onClick={handleClick}>
             <ListItemIcon>
               <Security sx={{ color: iconColor.base }} />
             </ListItemIcon>
             <ListItemText primary={t('databank')} />
             <OpenInNew></OpenInNew>
           </ListItemButton>
-          <Divider /> */} 
+          <Divider /> */}
         </List>
       </div>
 
