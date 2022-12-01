@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Button } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { useParams, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,16 +13,21 @@ import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDiss
 import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
+import { Feedback } from '../../types/types';
 
 type FeedbackUrlParams = {
     feedbackId: string
+}
+
+interface IFeedbackData extends Feedback {
+    [key: string]: any
 }
 
 const Details: React.FC = () => {
 
     const { t } = useTranslation();
     const { feedbackId } = useParams<FeedbackUrlParams>();
-    const feedbackData = useSelector((state: IRootState) => state.feedback.currentFeedback);
+    const feedbackData: IFeedbackData | undefined = useSelector((state: IRootState) => state.feedback.currentFeedback);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchMyFeedbackById(feedbackId));
@@ -47,7 +52,7 @@ const Details: React.FC = () => {
                 <Typography color="secondary" className={classes.feedbackTitle} variant="h4">{t('feedback_title_details')}</Typography>
             </div>
             <div className={classes.back}>
-            <Button className={classes.backButton} color="secondary" component={Link} to="/feedback">{t('back')}</Button>
+            <Button className={classes.backButton} color="secondary" component={Link} to="/feedback?tab=my">{t('back')}</Button>
             </div>
             <div className={classes.feedbackContainer}>
                 <div className={classes.feedbackShow}>
@@ -61,23 +66,66 @@ const Details: React.FC = () => {
                     </div>
                     <div className={classes.feedbackShowInfo}>
                         <span className={classes.feedbackShowTitle}>{t('feedback_anonymity')}: </span>
-                        <span className={classes.feedbackShowInfoTitle}>{ feedbackData.anonymous }</span>
+                        <span className={classes.feedbackShowInfoTitle}>{
+                            feedbackData.anonymous ?
+                              t('feedback_anonymity_yes') :
+                              t('feedback_anonymity_no')
+                        }</span>
                     </div>
                 </div>
                 <div className={classes.feedbackDescription}>
                     <span className={classes.feedbackMessageTitle}>{t('feedback_message')}</span>
                     {Object.entries(questions).map(questionEntry => (
                       <div key={questionEntry[0]}>
-                          <Typography color="success" id={questionEntry[0] + '-radio-buttons-group-label'} className={classes.feedbackShowTitleIcons} variant="h6">{questionEntry[1]}</Typography>
-                          <SentimentVeryDissatisfiedIcon className={classes.icon} />
-                          <SentimentNeutralIcon className={classes.icon} />
-                          <SentimentSatisfiedAltIcon className={classes.icon} />
-                          <SentimentVerySatisfiedIcon className={classes.icon} />
-                          <p>Comment for {questionEntry[1]}</p>
+                          <Typography
+                            color="success"
+                            id={questionEntry[0] + '-radio-buttons-group-label'}
+                            className={classes.feedbackShowTitleIcons}
+                            variant="h6"
+                          >
+                              {questionEntry[1]}
+                          </Typography>
+                          {Object.keys(feedbackData).map(key => {
+                              if (key === questionEntry[0]) {
+                                  return (
+                                    <>
+                                        {feedbackData[key] === 1 ?
+                                          <SentimentVeryDissatisfiedIcon className={classes.filledIcon} /> :
+                                          <SentimentVeryDissatisfiedIcon className={classes.icon} />
+                                        }
+                                        {feedbackData[key] === 2 ?
+                                          <SentimentNeutralIcon className={classes.filledIcon} /> :
+                                          <SentimentNeutralIcon className={classes.icon} />
+                                        }
+                                        {feedbackData[key] === 3 ?
+                                          <SentimentSatisfiedAltIcon className={classes.filledIcon} /> :
+                                          <SentimentSatisfiedAltIcon className={classes.icon} />
+                                        }
+                                        {feedbackData[key] === 4 ?
+                                          <SentimentVerySatisfiedIcon className={classes.filledIcon} /> :
+                                          <SentimentVerySatisfiedIcon className={classes.icon} />
+                                        }
+                                        {feedbackData[key + 'Message'] !== '' && (
+                                          <Box sx={{ boxShadow: 3, padding: '5px', borderRadius: '5px', margin: '10px 0' }}>
+                                              {feedbackData[key + 'Message']}
+                                          </Box>
+                                        )}
+                                    </>
+                                  )
+                              }
+                          })}
                       </div>
                     ))}
-                    <Typography color="success" className={classes.feedbackShowTitle} variant="h6">{t('feedback_details')}</Typography>
-                    <span>Konmentti</span>
+                    {feedbackData.additionalMessage !== '' && (
+                      <>
+                          <Typography color="success" className={classes.feedbackShowTitle} variant="h6">
+                              {t('feedback_details')}
+                          </Typography>
+                          <Box sx={{ boxShadow: 3, padding: '5px', borderRadius: '5px', margin: '10px 0' }}>
+                              { feedbackData.additionalMessage }
+                          </Box>
+                      </>
+                    )}
                 </div>
             </div>
         </div>
@@ -116,12 +164,12 @@ const useStyles = makeStyles(() => ({
         marginTop: '20px'
     },
     feedbackShowTitle: {
-        fontSize: '14px',
+        fontSize: '18px',
         fontWeight: 600,
         color: '#AFAAAA',
     },
     feedbackShowTitleIcons: {
-        fontSize: '14px',
+        fontSize: '18px',
         fontWeight: 600,
         color: '#AFAAAA',
         marginTop: '20px'
@@ -132,8 +180,22 @@ const useStyles = makeStyles(() => ({
         color: '#AFAAAA'
     },
     icon: {
-        fontSize: '32px',
+        fontSize: '52px',
         marginRight: '6px'
+    },
+    filledIcon: {
+        fontSize: '52px',
+        marginRight: '6px',
+        color: '#fff',
+        background:
+          'rgb(255, 124, 0) ' +
+          'linear-gradient(' +
+          '136deg, ' +
+          'rgb(255, 150, 55) 0%, ' +
+          'rgb(242, 113, 33) 50%, ' +
+          'rgb(233, 64, 87) 100%' +
+          ');',
+        borderRadius: '60px',
     },
     feedbackShowInfo: {
         display: 'flex',

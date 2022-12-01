@@ -672,6 +672,8 @@ export default {
   feedback_recipient: 'Recipient',
   feedback_sender: 'Send anonymously',
   feedback_anonymity: 'Sent anonymously?',
+  feedback_anonymity_yes: 'Yes',
+  feedback_anonymity_no: 'No',
   sending_date: 'Sending date',
   feedback_action: 'Action',
   feedback_details: 'Details',

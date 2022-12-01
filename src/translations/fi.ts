@@ -665,6 +665,8 @@ export default {
   feedback_recipient: 'Vastaanottaja',
   feedback_sender: 'Lähetä anonyymisti',
   feedback_anonymity: 'Lähetetty anonyymisti?',
+  feedback_anonymity_yes: 'Kyllä',
+  feedback_anonymity_no: 'Ei',
   sending_date: 'Lähetyspäivämäärä',
   feedback_action: 'Toiminta',
   feedback_details: 'Lisätiedot',
