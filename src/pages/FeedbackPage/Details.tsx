@@ -33,6 +33,7 @@ const Details: React.FC = () => {
         <PageLoading />
     );
 
+    
     const questions = {
         shift: t('feeling_shift'),
         orientation: t('how_was_orientation'),
