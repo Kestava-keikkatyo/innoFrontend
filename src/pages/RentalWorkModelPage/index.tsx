@@ -4,7 +4,9 @@ import { useSelector } from 'react-redux';
 import PageLoading from '../../components/PageLoading';
 
 import { roles } from '../../types/types';
+import RentalWorkModel from './RentalWorkModel';
 import WorkerRentalWorkModel from './WorkerRentalWorkModel';
+
 
 export interface RentalWorkModelSteps {
   path: 'rental-work-model' |
@@ -24,14 +26,12 @@ const RentalWorkModelPage = ({ path }: RentalWorkModelSteps) => {
 
   const getContent = () => {
     switch (data.role) {
-      case roles.Admin:
-        return null
       case roles.Business:
-        return <WorkerRentalWorkModel path={path} />
       case roles.Agency:
-        return <WorkerRentalWorkModel path={path} />
+        return <RentalWorkModel path={path} />
       case roles.Worker:
         return <WorkerRentalWorkModel path={path} />
+      case roles.Admin:
       default:
         return null
     }

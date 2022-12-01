@@ -1,16 +1,16 @@
 import { Container } from '@mui/material';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import WorkerStepBase from './WorkerStepBase';
+import WorkerStepBase from '../WorkerStepBase';
 import Typography from '@mui/material/Typography';
 import makeStyles from '@mui/styles/makeStyles';
 import { Theme } from '@mui/material/styles';
-import ContractOfEmploymentForm from './Forms/ContractOfEmploymentForm';
-import SearchFromFileComponent from './SearchFromFileComponent';
+import WorkerContractOfEmploymentForm from '../Forms/WorkerForms//WorkerContractOfEmploymentForm';
+import SearchFromFileComponent from '../SearchFromFileComponent';
 
 
 
-const ContractOfEmployment = () => {
+const WorkerContractOfEmployment = () => {
   const { t } = useTranslation();
   const classes = useStyles();
 
@@ -21,7 +21,7 @@ const ContractOfEmployment = () => {
  
     </div>,*/
     <div key="tab0">
-      <ContractOfEmploymentForm />
+      <WorkerContractOfEmploymentForm />
     </div>,
     <div key="tab1">
        <SearchFromFileComponent inputString="good_practices_employment_contract_and_general_orientation_array" />
@@ -52,4 +52,4 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-export default ContractOfEmployment;
+export default WorkerContractOfEmployment;
