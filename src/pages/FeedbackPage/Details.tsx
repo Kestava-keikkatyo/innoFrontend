@@ -34,11 +34,11 @@ const Details: React.FC = () => {
     );
 
     const questions = {
-        shift: t('feeling_shift'),
-        orientation: t('how_was_orientation'),
-        reception: t('reception'),
-        appreciation: t('appreciation'),
-        expectations: t('expectations'),
+        shift: t('feedback_shift'),
+        orientation: t('feedback_orientation'),
+        reception: t('feedback_reception'),
+        appreciation: t('feedback_appreciation'),
+        expectation: t('feedback_expectation'),
     };
 
     return (
