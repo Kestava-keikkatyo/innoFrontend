@@ -864,29 +864,6 @@ nav * {
     font-size: smaller;
   }
 
-  .intro-container {
-    margin: 0 3rem !important;
-    max-width: 100% !important;
-    height: 22rem !important;
-    padding: 1rem 1.2rem !important;
-    margin-bottom: 4rem !important;
-  }
-
-  .landing-header-offset {
-    font-size: 450% !important;
-    margin-top: 0 !important;
-  }
-
-  .landing-text {
-    font-size: 230% !important;
-    margin-top: 1rem !important;
-  }
-
-  .landing-text2 {
-    font-size: 180% !important;
-    margin-top: 1rem !important;
-  }
-
   .background {
     background: url('./assets/ttk.jpg') !important;
     background-size: cover !important;
@@ -918,46 +895,6 @@ nav * {
   }
 }
 
-@media screen and (max-width: 800px) {
-  .landing-header-offset {
-    margin-top: 1rem !important;
-    font-size: 400% !important;
-  }
-
-  .landing-text {
-    font-size: 200% !important;
-  }
-
-  .landing-text2 {
-    font-size: 155% !important;
-  }
-
-  .intro-container {
-    margin-bottom: 5rem !important;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .intro-container {
-    padding: 1rem 2.4rem !important;
-    border-radius: 9rem !important;
-    margin-bottom: 6rem !important;
-  }
-
-  .landing-header-offset {
-    font-size: 320% !important;
-  }
-
-  .landing-text {
-    font-size: 180% !important;
-  }
-
-  .landing-text2 {
-    margin-top: 2rem !important;
-    font-size: 130% !important;
-  }
-}
-
 @media screen and (max-width: 600px) {
   .landing-container {
     max-width: 100% !important;
@@ -983,12 +920,8 @@ nav * {
   }
 
   .modal {
-    max-width: 70% !important;
-  }
-
-  .intro-container {
-    margin: 0 2rem !important;
-    margin-bottom: 7rem !important;
+    max-width: 80% !important;
+    width: 100%;
   }
 
   .footer-item {
@@ -1016,34 +949,6 @@ nav * {
   }
 }
 
-@media screen and (max-width: 550px) {
-  .intro-container {
-    margin: 0 1rem !important;
-    margin-bottom: 7rem !important;
-    padding: 1rem 1.5rem !important;
-  }
-
-  .landing-header-offset {
-    font-size: 280% !important;
-  }
-
-  .landing-text {
-    font-size: 170% !important;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .landing-text2 {
-    margin-top: 1rem !important;
-  }
-
-  .intro-container {
-    border-radius: 6rem !important;
-    padding: 1rem 1rem !important;
-    margin-bottom: 8rem !important;
-  }
-}
-
 @media screen and (max-width: 450px) {
   .form-label {
     display: none;
@@ -1054,12 +959,8 @@ nav * {
   }
 
   .modal {
-    max-width: 80% !important;
-  }
-
-  .intro-container {
-    margin: 0 !important;
-    margin-bottom: 8rem !important;
+    max-width: 90%;
+    width: 100%
   }
 }
 
