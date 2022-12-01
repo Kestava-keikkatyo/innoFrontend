@@ -12,8 +12,6 @@ import { Link } from 'react-router-dom';
 import Spacing from '../../components/Spacing';
 import { useTranslation } from 'react-i18next';
 
-export interface ContentLifeSpanProps {}
-
 const LifeSpanStep: React.FC<any> = ({ header, content, form }) => (
   <Card variant="outlined" className="lifespan-step relative">
     <CardContent>
@@ -31,10 +29,10 @@ const LifeSpanStep: React.FC<any> = ({ header, content, form }) => (
   </Card>
 );
 
-const ContentLifeSpan: React.FC<ContentLifeSpanProps> = () => {
+const ContentLifeSpan: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <Container style={{backgroundColor: "white"}}>
+    <Container style={{backgroundColor: 'white'}}>
       <div className='spacing' />
       <Grid
         container
@@ -43,7 +41,7 @@ const ContentLifeSpan: React.FC<ContentLifeSpanProps> = () => {
         alignItems="center"
       >
         <Grid item>
-          <Typography variant="h1" className="header3">{t('work_lifespan')}</Typography>
+          <Typography variant="h3" className="landing-title">{t('work_lifespan')}</Typography>
         </Grid>
         <Grid item>
           <Link to="/databank" style={{ textDecoration: 'none' }}>
