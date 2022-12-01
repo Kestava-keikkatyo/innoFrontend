@@ -53,7 +53,7 @@ const Details: React.FC = () => {
                 <div className={classes.feedbackShow}>
                     <div className={classes.feedbackShowInfo}>
                         <span className={classes.feedbackShowTitle}>{t('feedback_recipient')}: </span>
-                        <span className={classes.feedbackShowInfoTitle}>{ feedbackData.recipient }</span>
+                        <span className={classes.feedbackShowInfoTitle}>{ feedbackData.recipientName }</span>
                     </div>
                     <div className={classes.feedbackShowInfo}>
                         <span className={classes.feedbackShowTitle}>{t('sending_date')}: </span>
@@ -61,7 +61,7 @@ const Details: React.FC = () => {
                     </div>
                     <div className={classes.feedbackShowInfo}>
                         <span className={classes.feedbackShowTitle}>{t('feedback_anonymity')}: </span>
-                        <span className={classes.feedbackShowInfoTitle}>{ feedbackData.sender }</span>
+                        <span className={classes.feedbackShowInfoTitle}>{ feedbackData.anonymous }</span>
                     </div>
                 </div>
                 <div className={classes.feedbackDescription}>

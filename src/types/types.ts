@@ -212,7 +212,8 @@ export interface Job {
 
 export interface Feedback {
   _id?: string
-  recipient: string
+  recipientId: string
+  recipientName: string | undefined
   shift: number | null
   shiftMessage?: string
   orientation: number | null
@@ -224,7 +225,9 @@ export interface Feedback {
   expectation: number | null
   expectationMessage?: string
   additionalMessage?: string
-  sender: User | boolean
+  senderId: string
+  senderName: string
+  anonymous: boolean
   createdAt?: Date
 }
 
