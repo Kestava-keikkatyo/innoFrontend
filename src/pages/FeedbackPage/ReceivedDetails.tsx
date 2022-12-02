@@ -58,11 +58,9 @@ const ReceivedDetails: React.FC = () => {
                 <div className={classes.feedbackShow}>
                     <div className={classes.feedbackShowInfo}>
                         <span className={classes.feedbackShowTitle}>{t('feedback_sender')}: </span>
-                        <span className={classes.feedbackShowInfoTitle}>{
-                            feedbackData.anonymous ?
-                                t('anonymous') :
-                                feedbackData.senderName
-                        }</span>
+                        <span className={classes.feedbackShowInfoTitle}>
+                            { feedbackData.anonymous ? t('anonymous') : feedbackData.senderName }
+                        </span>
                     </div>
                     <div className={classes.feedbackShowInfo}>
                         <span className={classes.feedbackShowTitle}>{t('sending_date')}: </span>
@@ -70,11 +68,9 @@ const ReceivedDetails: React.FC = () => {
                     </div>
                     <div className={classes.feedbackShowInfo}>
                         <span className={classes.feedbackShowTitle}>{t('feedback_anonymity')}: </span>
-                        <span className={classes.feedbackShowInfoTitle}>{
-                            feedbackData.anonymous ?
-                                t('feedback_anonymity_yes') :
-                                t('feedback_anonymity_no')
-                        }</span>
+                        <span className={classes.feedbackShowInfoTitle}>
+                            { feedbackData.anonymous ? t('feedback_anonymity_yes') : t('feedback_anonymity_no') }
+                        </span>
                     </div>
                 </div>
                 <div className={classes.feedbackDescription}>
@@ -92,7 +88,7 @@ const ReceivedDetails: React.FC = () => {
                             {Object.keys(feedbackData).map(key => {
                                 if (key === questionEntry[0]) {
                                     return (
-                                        <>
+                                        <div key={questionEntry[0]}>
                                             {feedbackData[key] === 1 ?
                                                 <SentimentVeryDissatisfiedIcon className={classes.filledIcon} /> :
                                                 <SentimentVeryDissatisfiedIcon className={classes.icon} />
@@ -114,7 +110,7 @@ const ReceivedDetails: React.FC = () => {
                                                     {feedbackData[key + 'Message']}
                                                 </Box>
                                             )}
-                                        </>
+                                        </div>
                                     )
                                 }
                             })}
