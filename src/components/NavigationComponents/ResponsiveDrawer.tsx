@@ -123,7 +123,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               <Divider />
             </>
           )}
-          {/**FORMS=MATERIAL  CONTENT = ORIENTATION */}
+          {/** FORMS=MATERIAL  CONTENT = ORIENTATION */}
           {role === roles.Agency && (
             <>
               <ListItemButton component={Link} to="/forms" onClick={handleClick}>
@@ -137,7 +137,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           )}
           {role === roles.Agency && (
             <>
-              <ListItemButton component={Link} to="/home" onClick={handleClick}>
+              <ListItemButton component={Link} to="/workers" onClick={handleClick}>
                 <ListItemIcon>
                   <PersonIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
@@ -148,7 +148,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           )}
           {role === roles.Agency && (
             <>
-              <ListItemButton component={Link} to="/home" onClick={handleClick}>
+              <ListItemButton component={Link} to="/businesses" onClick={handleClick}>
                 <ListItemIcon>
                   <GroupOutlinedIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
@@ -297,7 +297,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           )}
 
 
-          {/** 
+          {/**
            * REMOVED FROM NAVIGATIONBAR
            BUSINESS
            *  {role === roles.Business && (
@@ -322,7 +322,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               <Divider />
             </>
           )}
-          
+
 
           AGENCY
           {role === roles.Agency && (

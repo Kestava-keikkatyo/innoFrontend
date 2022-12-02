@@ -640,6 +640,7 @@ export default {
   // List
   list_title_workers: 'Workers',
   list_title_agencies: 'Agencies',
+  list_title_businesses: 'Businesses',
   list_name: 'Name',
   list_email: 'Email',
   list_city: 'City',
