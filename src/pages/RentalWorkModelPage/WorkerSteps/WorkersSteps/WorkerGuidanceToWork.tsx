@@ -1,37 +1,33 @@
 import { Container } from '@mui/material';
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import WorkerStepBase from './WorkerStepBase';
+import WorkerStepBase from '../WorkerStepBase';
 import Typography from '@mui/material/Typography';
 import makeStyles from '@mui/styles/makeStyles';
 import { Theme } from '@mui/material/styles';
-import ContractOfEmploymentForm from './Forms/ContractOfEmploymentForm';
-import SearchFromFileComponent from './SearchFromFileComponent';
+import WorkerGuidanceToWorkForm from '../Forms/WorkerForms/WorkerGuidanceToWorkForm';
+import SearchFromFileComponent from '../SearchFromFileComponent';
 
-
-
-const ContractOfEmployment = () => {
+const WorkerGuidanceToWork = () => {
   const { t } = useTranslation();
   const classes = useStyles();
 
-
   const tabContent = [
    /* <div key="tab0">
- <SearchFromFileComponent inputString="worker_step_3" />
- 
+      <SearchFromFileComponent inputString="worker_step_4" />
     </div>,*/
     <div key="tab0">
-      <ContractOfEmploymentForm />
+      <WorkerGuidanceToWorkForm/>
     </div>,
     <div key="tab1">
-       <SearchFromFileComponent inputString="good_practices_employment_contract_and_general_orientation_array" />
+       <SearchFromFileComponent inputString="good_practices_guidance_on_work_and_working_conditions_array" />
     </div>
   ]
 
   return (
     <Container maxWidth="xl" className={classes.root}>
       <Typography variant="h1" color="primary" className={classes.header}>
-        {t('contract_of_employment')}
+        {t('guidance_to_work')}
       </Typography>
       <WorkerStepBase content={tabContent} />
     </Container>
@@ -52,4 +48,4 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-export default ContractOfEmployment;
+export default WorkerGuidanceToWork;

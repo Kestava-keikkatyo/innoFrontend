@@ -72,8 +72,10 @@ import Responsibilities from './pages/Responsibility/Responsibilities'
 import ResponsibilityUpdate from './pages/Responsibility/ResponsibilityUpdate'
 import RentalWorkModelPage from './pages/RentalWorkModelPage'
 import WorkerResponsibilities from './pages/ResponsibilitiesPage/WorkerResponsibilities'
+import AgencyResponsibilities from './pages/ResponsibilitiesPage/AgencyResponsibilities'
 import { useTranslation } from 'react-i18next'
 import SchedulePage from './pages/SchedulePage';
+import BusinessResponsibilities from './pages/ResponsibilitiesPage/BusinessResponsibilities'
 
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -181,6 +183,12 @@ const App: React.FC = () => {
             <PrivateRoute path="/responsibilities" roles={[roles.Admin]}>
               <Responsibilities />   
             </PrivateRoute>
+            <PrivateRoute path="/businessResponsibilities" roles={[roles.Business]}>
+              <BusinessResponsibilities />  
+            </PrivateRoute>    
+            <PrivateRoute path="/agencyResponsibilities" roles={[roles.Agency]}>
+              <AgencyResponsibilities />  
+            </PrivateRoute>               
             <PrivateRoute path="/workerResponsibilities" roles={[roles.Worker]}>
               <WorkerResponsibilities />   
             </PrivateRoute>
@@ -255,40 +263,43 @@ const App: React.FC = () => {
             </PrivateRoute>
             <PrivateRoute
               path="/rentalWorkModel/customerContract"
-              roles={[roles.Worker]}
+              roles={[roles.Worker, roles.Business, roles.Agency]}
             >
               <RentalWorkModelPage path='customer-contract' />
             </PrivateRoute>
             <PrivateRoute
               path="/rentalWorkModel/orderingEmployee"
-              roles={[roles.Worker]}
+              roles={[roles.Worker, roles.Business, roles.Agency]}
             >
               <RentalWorkModelPage path='ordering-employee' />
             </PrivateRoute>
             <PrivateRoute
               path="/rentalWorkModel/contractOfEmployment"
-              roles={[roles.Worker]}
+              roles={[roles.Worker, roles.Business, roles.Agency]}
             >
               <RentalWorkModelPage path='contract-of-employment' />
             </PrivateRoute>
             <PrivateRoute
               path="/rentalWorkModel/guidanceToWork"
-              roles={[roles.Worker]}
+              roles={[roles.Worker, roles.Business, roles.Agency]}
             >
               <RentalWorkModelPage path='guidance-to-work' />
             </PrivateRoute>
             <PrivateRoute
               path="/rentalWorkModel/workPerformance"
-              roles={[roles.Worker]}
+              roles={[roles.Worker, roles.Business, roles.Agency]}
             >
               <RentalWorkModelPage path='work-performance' />
             </PrivateRoute>
             <PrivateRoute
               path="/rentalWorkModel"
-              roles={[roles.Worker]}
+              roles={[roles.Worker, roles.Business, roles.Agency]}
             >
               <RentalWorkModelPage path='rental-work-model'/>
             </PrivateRoute>
+
+          
+
             <PrivateRoute path="/moodStats" roles={[roles.Agency]}>
               <AgencyStatistics />
             </PrivateRoute>

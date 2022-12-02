@@ -154,6 +154,11 @@
 }
 
 .intro-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   max-width: 27rem;
   height: 27rem;
   border-radius: 14rem;
@@ -163,22 +168,49 @@
 
 .landing-header-offset {
   margin-top: 3rem;
-  font-size: 265%;
   font-weight: 400;
-  letter-spacing: 0em;
+  font-size: 2.75rem;
+  letter-spacing: 0;
   text-decoration: underline;
 }
 
 .landing-text {
   margin-top: 1.5rem !important;
-  font-size: 140%;
   font-weight: 400;
+  font-size: 1.5rem;
 }
 
 .landing-text2 {
   margin-top: 2rem;
-  font-size: 130%;
+  font-size: 1.25rem;
   font-weight: 300;
+}
+
+@media screen and (max-width: 900px) {
+  .landing-title {
+    font-size: 2rem;
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .intro-container {
+    height: 20rem;
+  }
+
+  .landing-header-offset {
+    margin-top: 10px;
+    font-size: 2rem;
+  }
+
+  .landing-text {
+    font-size: 1rem;
+  }
+
+  .landing-text2 {
+    margin-top: 10px;
+    font-size: 1rem;
+  }
 }
 
 .landing-partner {

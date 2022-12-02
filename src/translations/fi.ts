@@ -309,6 +309,7 @@ export default {
   schedule: 'Aikataulut',
   work_overview: 'Työn katsaus',
   forms: 'Lomakkeet',
+  materials: 'Omat materiaalit',
   work_request: 'Työpyynnöt',
   exit_application: 'Poistu sovelluksesta',
   business_contracts: 'Yrityssopimukset',
@@ -322,6 +323,7 @@ export default {
   guidance_to_work: 'Opastus työhön ja työoloihin',
   work_performance: 'Työsuoritus, valvonta ja palaute',
   feedback_evaluation: 'Palaute ja toiminnan arviointi',
+  employees: 'Työntekijät',
 
   // profilePage
   settings: 'Asetukset',
@@ -630,7 +632,7 @@ export default {
 
   // List
   list_title_workers: 'Työntekijät',
-  list_title_agencies: 'Vuokrayritykset',
+  list_title_agencies: 'Henkilöstöpalveluyritykset',
   list_name: 'Nimi',
   list_email: 'Sähköposti',
   list_city: 'Kaupunki',
@@ -789,14 +791,14 @@ export default {
   Edit: 'Muokkaa',
   Settings: 'Asetukset',
   ProfileView: 'Työpaikan profiili',
-  Forms: 'Lomakkeet',
+  Forms: 'Omat materiaalit',
   Preview: 'Esikatselu',
   Contracts: 'Sopimukset',
   Job: 'Työpaikat',
   ReceivedWorkRequests: 'Työpyynnöt',
   MoodStats: 'Fiilistilastot',
   Workers: 'Työntekijät',
-  Agencies: 'Vuokrayritykset',
+  Agencies: 'Henkilöstöpalveluyritykset',
   WorkRequests: 'Työpyyntö',
   RentalWorkModel: 'Yleiskatsaus',
   CustomerContract: 'Asiakassopimus',
@@ -805,6 +807,10 @@ export default {
   GuidanceToWork: 'Opastus työhön ja työoloihin',
   WorkPerformance: 'Työsuoritus ja valvonta',
   FeedbackEvaluation: 'Palaute ja toiminnan arviointi',
+  WorkerResponsibilities: 'Työntekijän vastuut',
+  AgencyResponsibilities: 'Hp-yrityksen vastuut',
+  BusinessResponsibilities: 'Käyttäjäyrityksen vastuut',
+  BusinessCompanies: 'Käyttäjäyritykset',
 
   // Responsibilities
   CustomerContractResponsibilities: '1. Jaettu työsuojeluvastuu (käyttäjäyrityksen kanssa) \n\n 2.Yleisvastuu työturvallisuudesta (tämän alle keskeiset vaatimukset, mm. Työn vaarojen selvittäminen ja arviointi Työsuojelun toimintaohjelman laatiminen Työsuojelun yhteistoiminnan järjestäminen Perehdytys (ml. yleisperehdytyksen antaminen vuokratyöntekijälle) Ilmoittaminen nuorten työntekijöiden käyttämisestä vaarallisiin töihin Vakavasta työtapaturmasta ilmoittaminen työsuojeluviranomaisille ja poliisille) Vastuu työaikalain noudattamisesta Työntekijöiden vakuuttaminen työtapaturmien ja ammattitautien varalta Työterveyshuollon järjestäminen Tasa-arvon ja yhdenvertaisuuden edistäminen  Käyttäjäyrityksen velvoitteiden täyttämisen varmistaminen Vuokratyöntekijän riittävän ammattitaidon ja työhön soveltumisen varmistaminen Tarvittavien henkilönsuojainten hankinta (yhteistyössä käyttäjäyrityksen kanssa)',
@@ -909,8 +915,6 @@ responsibility_5_article: 'Työntekijän on viipymättä ilmoitettava työnantaj
 
 read_more_about_responsibilities: 'Lue lisää vastuusta...',
 
-
-
 workerResponsibilitiesArray: [
   {
   header:'1. Huolehdin omasta ja työkavereiden työhyvinvoinnista ja -turvallisuudesta.',
@@ -928,6 +932,89 @@ workerResponsibilitiesArray: [
   header: '5. Ilmoitan havaitsemistani vioista ja puutteista',
   summary: 'Työntekijän on ilmoitettava työssä havaitsemistaan vioista ja puutteista työnantajalle ja työsuojeluvaltuutetulle. '}
 ],
+
+businessResponsibilitiesArray: [
+  {
+    header: '1. Jaettu työsuojeluvastuu',
+    summary: 'Vuokratyössä henkilöstöpalveluyrityksellä ja käyttäjäyrityksellä on yhteinen työsuojeluvastuu työntekijän työturvallisuudesta ja terveydestä. Vuokratyöntekijän työturvallisuuden ja -hyvinvoinnin varmistaminen edellyttää etukäteissuunnittelua, asioista sopimista ja yhteistyötä kaikkien osapuolten kesken. ',
+  },
+  {
+    header: '2. Tilaajavastuu ',
+    summary: 'Käyttäjäyrityksen on hankittava henkilöstöpalveluyritykseltä ennen sopimuksen solmimista tilaajavastuulain mukaiset selvitykset. Ulkomaista vuokratyövoimaa käytettäessä on huomioitava vastaavat vähimmäistyöehdot kuin kotimaisilla vuokratyöntekijöillä. ',
+  },
+  {
+    header: '3. Tietojen antaminen henkilöstöpalveluyritykselle ',
+    summary: 'Käyttäjäyrityksen on annettava henkilöstöpalveluyritykselle tieto vuokratyön ammattitaitovaatimuksista ja erityispiirteistä sekä muut tiedot, jotka henkilöstöpalveluyritys tarvitsee velvollisuuksiensa täyttämiseksi.',
+  },
+  {
+    header: '4. Käyttäjäyrityksen yleisvastuu työturvallisuudesta ',
+    summary: 'Käyttäjäyritys on velvollinen huolehtimaan vuokratyöntekijöiden turvallisuudesta ja terveydestä työssä. ',
+  },
+  {
+    header: '5. Työaika',
+    summary: 'Henkilöstöpalveluyritys huolehtii työaikakirjanpidosta. Käyttäjäyritys vastaa työaikalain noudattamisesta vuokratyöntekijän työajan järjestämisessä. ',
+  },
+  {
+    header: '6. Tasa-arvon ja yhdenvertaisuuden edistäminen',
+    summary: 'Työnantajan pitää edistää tasa-arvoa ja yhdenvertaisuutta työpaikalla. Vuokratyöntekijöitä pitää kohdella yhdenvertaisesti muiden työntekijöiden kanssa. Yli 30 työntekijän työpaikalla pitää laatia tasa-arvo- ja yhdenvertaisuussuunnitelmat.  ',
+  },
+  {
+    header: '7. Henkilösuojaimet ja työvaatetus',
+    summary: 'Henkilöstöpalveluyritys ja käyttäjäyritys sopivat työvaatetuksen tarjoamisesta työntekijälle,'+ 
+    'mikäli työssä edellytetään erityistä työvaatetusta.'+ 
+    'Työssä tarvittavat suojaimet valitaan työpaikalla tehdyn riskinarvioinnin perusteella.  ',
+  }
+],
+
+agencyResponsibilitiesArray: [
+  {
+    header: '1. Jaettu työsuojeluvastuu',
+    summary: 'Vuokratyössä henkilöstöpalveluyrityksellä ja käyttäjäyrityksellä on yhteinen työsuojeluvastuu työntekijän työturvallisuudesta ja terveydestä. Vuokratyöntekijän työturvallisuuden ja -hyvinvoinnin varmistaminen edellyttää etukäteissuunnittelua, asioista sopimista ja yhteistyötä kaikkien osapuolten kesken. ',
+  },
+  {
+    header: '2. Yleisvastuu työturvallisuudesta',
+    summary: 'Henkilöstöpalveluyritys on velvollinen huolehtimaan työntekijöidensä turvallisuudesta ja terveydestä työssä. Tämä tarkoittaa mm. työn vaarojen selvittämistä ja arviointia, työsuojelun toimintaohjelmaa, työsuojelun yhteistoimintaa ja perehdytystä. ',
+  },
+  {
+    header: '3. Työaika',
+    summary: 'Henkilöstöpalveluyritys huolehtii työaikakirjanpidosta. Käyttäjäyritys vastaa työaikalain noudattamisesta vuokratyöntekijän työajan järjestämisessä. ',
+  },
+  {
+    header: '4. Työntekijöiden vakuuttaminen työtapaturmien ja ammattitautien varalta',
+    summary: 'Henkilöstöpalveluyrityksen pitää vakuuttaa vuokratyöntekijä työtapaturman ja ammattitaudin varalta. ',
+  },
+  {
+    header: '5. Työterveyshuolto',
+    summary: 
+    'Henkilöstöpalveluyritys järjestää työntekijöilleen lakisääteisen työterveyshuollon riippumatta ' +
+    'työntekijän työsuhteen muodosta ja pituudesta. Lakisääteinen työterveyshuolto on työkyvyn tukemista ' +
+    'ennaltaehkäisevin toimin eikä siihen sisälly sairaanhoitoa. Henkilöstöpalveluyritys voi kuitenkin ' +
+    'järjestää myös sairaanhoidon työterveyshuollon palveluiden tuottajan kautta, mutta tämä on ' +
+    'työnantajalle vapaaehtoista.',
+  },
+  {
+    header: '6. Tasa-arvon ja yhdenvertaisuuden edistäminen',
+    summary: 'Henkilöstöpalveluyrityksen on arvioitava yhdenvertaisuuden toteutumista työpaikalla.',
+  },
+  {
+    header: '7. Käyttäjäyrityksen velvoitteiden täyttämisen varmistaminen',
+    summary: ' Vuokratyössä henkilöstöpalveluyrityksellä ja käyttäjäyrityksellä on jaettu työsuojeluvastuu.' +
+    'Henkilöstöpalveluyrityksen tulee varmistaa, että käyttäjäyritys huolehtii sille kuuluvista työterveys-,' +
+    ' työturvallisuus- ja työhyvinvointivastuistaan ja velvoitteistaan.',
+  },
+  {
+    header: '8. Vuokratyöntekijän sopivuuden varmistaminen',
+    summary: 'Henkilöstöpalveluyrityksen pitää varmistaa, että vuokratyöntekijällä on riittävä ammattitaito, kokemus ja sopivuus työhön. ',
+  },
+  {
+    header: '9. Henkilösuojaimet ja työvaatetus',
+    summary: 'Henkilöstöpalveluyritys ja käyttäjäyritys sopivat työvaatetuksen tarjoamisesta työntekijälle,'+ 
+    'mikäli työssä edellytetään erityistä työvaatetusta.'+ 
+    'Työssä tarvittavat suojaimet valitaan työpaikalla tehdyn riskinarvioinnin perusteella.  ',
+  }
+],
+
+
 
 
   // Rental work model - Forms

@@ -13,13 +13,13 @@ const CustomerContract = () => {
   const classes = useStyles();
 
   const tabContent = [
-    <div key="tab0">
+   /* <div key="tab0">
       <SearchFromFileComponent inputString="worker_step_1" />
-    </div>,
-    <div key="tab1">
+    </div>,*/
+    <div key="tab0">
       <CustomerContractForm/>
     </div>,
-    <div key="tab2">
+    <div key="tab1">
       <SearchFromFileComponent inputString="good_practices_customer_contract_array" />
     </div>
   ]

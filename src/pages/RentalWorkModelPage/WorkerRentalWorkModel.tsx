@@ -2,12 +2,10 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import PageLoading from '../../components/PageLoading';
 import { RentalWorkModelSteps } from './index';
-import CustomerContract from './WorkerSteps/CustomerContract';
-import OrderingEmployee from './WorkerSteps/OrderingEmployee';
-import ContractOfEmployment from './WorkerSteps/ContractOfEmployment';
-import GuidanceToWork from './WorkerSteps/GuidanceToWork';
-import WorkPerformance from './WorkerSteps/WorkPerformance';
 import Overview from './WorkerSteps/Overview';
+import WorkerContractOfEmployment from './WorkerSteps/WorkersSteps/WorkerContractOfEmployment';
+import WorkerGuidanceToWork from './WorkerSteps/WorkersSteps/WorkerGuidanceToWork';
+import WorkerWorkPerformance from './WorkerSteps/WorkersSteps/WorkerWorkPerformance';
 
 const WorkerRentalWorkModel = (props: RentalWorkModelSteps) => {
   const { data, ...user } = useSelector((state: any) => state.user);
@@ -18,16 +16,12 @@ const WorkerRentalWorkModel = (props: RentalWorkModelSteps) => {
 
   const getContent = ({ path }: RentalWorkModelSteps) => {
     switch (path) {
-      case 'customer-contract':
-        return <CustomerContract />
-      case 'ordering-employee':
-        return <OrderingEmployee />
       case 'contract-of-employment':
-        return <ContractOfEmployment />
+        return <WorkerContractOfEmployment />
       case 'guidance-to-work':
-        return <GuidanceToWork />
+        return <WorkerGuidanceToWork />
       case 'work-performance':
-        return <WorkPerformance />
+        return <WorkerWorkPerformance />
       case 'rental-work-model':
       default:
         return <Overview />

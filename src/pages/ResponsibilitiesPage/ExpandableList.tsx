@@ -7,33 +7,31 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 
-function KlickForMoreInfoListComponent(props: any) {
+function ExpandableList(props: any) {
   const { t } = useTranslation();
   const responsibilityArray=(props.arrayName);
   const index=(props.indexNumber);
-  const responsibilitieHeader= responsibilityArray[index].header;
+  const responsibilitiesHeader= responsibilityArray[index].header;
   const responsibilitieSummary=responsibilityArray[index].summary;
   const classes = useStyles();
   const [infoNotShowing,notChecked]=useState(true)
 
   const handleClick = () => {
     notChecked(!infoNotShowing);
-
   }
 
   return (
-    <Card className={classes.infoCard}>
-        <><ListItem>
-          <ListItemText primary={responsibilitieHeader} />
+    <Card className={classes.infoCard} onClick={handleClick}>
+        <ListItem>
+          <ListItemText primary={responsibilitiesHeader} classes={{primary:classes.header}}/>
           <Button
             size="small"
-            onClick={handleClick}
             startIcon={infoNotShowing ? <KeyboardArrowLeftIcon fontSize='small' /> : <KeyboardArrowDownIcon fontSize='small' />}>
           </Button>
         </ListItem>
         <div>
-         {infoNotShowing ? <p> </p> :<><ListItemText primary={responsibilitieSummary} /><Link href="/Databank" underline="none">{t('read_more_about_responsibilities')}</Link></>}
-        </div></>
+         {infoNotShowing ? <p> </p> :<><ListItemText primary={responsibilitieSummary} /><Link href="/Databank" target="_blank" underline="none">{t('read_more_about_responsibilities')}</Link></>}
+        </div>
     </Card>
   )
 };
@@ -42,7 +40,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   infoCard:{
     margin:15,
     padding:10,
+  },
+  header:{
+    fontSize:16,
+    fontWeight: 'bold',
   }
 }));
 
-export default KlickForMoreInfoListComponent;
+export default ExpandableList;

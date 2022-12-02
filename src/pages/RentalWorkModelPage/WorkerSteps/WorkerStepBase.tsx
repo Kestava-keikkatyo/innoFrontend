@@ -88,7 +88,7 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
           aria-label="scrollable force tabs example"
           centered
         >
-          <Tab
+         {/** <Tab
             label={matches ? ' ' : t('rwm_responsibilities')}
             icon={
               matches ? (
@@ -100,7 +100,7 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
               )
             }
             {...a11yProps(0)}
-          />
+          />*/} 
           <Tab
             label={matches ? ' ' : t('rwm_forms')}
             icon={
@@ -112,7 +112,7 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
                 <TaskOutlinedIcon />
               )
             }
-            {...a11yProps(1)}
+            {...a11yProps(0)}
           />
           <Tab
             label={matches ? ' ' : t('rwm_good_practices')}
@@ -125,13 +125,22 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
                 <GroupsOutlinedIcon/>
               )
             }
-            {...a11yProps(2)}
+            {...a11yProps(1)}
           />
         </Tabs>
         <Divider />
-        <TabPanel value={value} index={0}>
+       {/**  <TabPanel value={value} index={0}>
           <Typography variant="h1" color="secondary" className="header">
             {t('rwm_responsibilities')}
+          </Typography>
+          <Typography variant="subtitle1">
+            {content[0]}
+          </Typography>
+        </TabPanel>*/}
+
+        <TabPanel value={value} index={0}>
+          <Typography variant="h1" color="secondary" className="header">
+            {t('rwm_forms')}
           </Typography>
           <Typography variant="subtitle1">
             {content[0]}
@@ -139,22 +148,13 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
         </TabPanel>
 
         <TabPanel value={value} index={1}>
-          <Typography variant="h1" color="secondary" className="header">
-            {t('rwm_forms')}
-          </Typography>
-          <Typography variant="subtitle1">
-            {content[1]}
-          </Typography>
-        </TabPanel>
-
-        <TabPanel value={value} index={2}>
           <Card>
           <Typography variant="h1" color="secondary" className="header" padding={2}>
             {t('rwm_good_practices')}
           </Typography>
           <Typography variant="subtitle1">
             
-            {content[2]}
+            {content[1]}
           </Typography>
           </Card>
         </TabPanel>

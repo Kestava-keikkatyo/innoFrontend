@@ -102,7 +102,7 @@ export default {
   image: 'Image',
 
   // Agencystaistics
-  mood_stats: 'Feeling stats',
+  mood_stats: 'Mood stats',
 
   // Report form
   report_handler: 'Security observations',
@@ -312,6 +312,7 @@ export default {
   schedule: 'Schedule',
   work_overview: 'Work overview',
   forms: 'Forms',
+  materials: 'Materials',
   work_request: 'Work requests',
   exit_application: 'Exit application',
   business_contracts: 'Business contracts',
@@ -326,6 +327,7 @@ export default {
   guidance_to_work: 'Guidance to work and working environment',
   work_performance: 'Work performance, supervision and feedback',
   feedback_evaluation: 'Feedback and evaluation',
+  employees: 'Employees',
 
   // profilePage
   settings: 'Settings',
@@ -796,7 +798,7 @@ export default {
   Edit: 'Edit',
   Settings: 'Settings',
   ProfileView: 'Company profile',
-  Forms: 'Forms',
+  Forms: 'Materials',
   Preview: 'Preview',
   Contracts: 'Contracts',
   Job: 'Jobs',
@@ -812,6 +814,10 @@ export default {
   GuidanceToWork: 'Guidance to work and working environment',
   WorkPerformance: 'Work performance and supervision',
   FeedbackEvaluation: 'Feedback and evaluation',
+  BusinessCompanies: 'Business companies',
+  WorkerResponsibilities: 'Worker responsibilities',
+  AgencyResponsibilities: 'Agency responsibilities',
+  BusinessResponsibilities: 'Business responsibilities',
 
   // Responsibilities
   CustomerContractResponsibilities: '',
@@ -869,6 +875,7 @@ export default {
     'A personnel service company should collect feedback on the flow of work from both the agency worker and the user company.',
     'A representative of a personnel service company can participate in meetings dealing with occupational safety and well-being of the user company.'
   ],
+
   // Rental work model Forms
 
   // Frequently used
@@ -994,75 +1001,151 @@ export default {
   jobAdvisor: 'Job advisor',
   userCompanyName: 'User company name',
   serviceCompany: 'The name of the personnel service company',
-    // Worker responsibilities
-    worker_step_1: [
-      "Compliance with the employer's instructions and regulations",
-      'Taking care of your own safety and that of your colleagues',
-      'Avoiding harassment and inappropriate treatment',
-      'Appropriate use of work tools, personal protective equipment and safety devices',
-      'Report of detected defects and deficiencies'
-    ],
+  // Worker responsibilities
+  worker_step_1: [
+    "Compliance with the employer's instructions and regulations",
+    'Taking care of your own safety and that of your colleagues',
+    'Avoiding harassment and inappropriate treatment',
+    'Appropriate use of work tools, personal protective equipment and safety devices',
+    'Report of detected defects and deficiencies'
+  ],
 
-    worker_step_2: [
-      'Training and experience expected of workers as well as the professional requirements of the job',
-      'Special features of the work, harmful and dangerous factors occurring at work as well as other matters requiring special attention (For example health requirements)',
-      'Personal protective equipment and safety devices required for work tasks'
-    ],
+  worker_step_2: [
+    'Training and experience expected of workers as well as the professional requirements of the job',
+    'Special features of the work, harmful and dangerous factors occurring at work as well as other matters requiring special attention (For example health requirements)',
+    'Personal protective equipment and safety devices required for work tasks'
+  ],
 
-    worker_step_3: [
-      'Follow the instructions and regulations given by the employer',
-      'Take care of your own safety and that of other employees with the available means',
-      'Not to harass or mistreat other employees',
-      'Use and care for the personal protective equipment and aids required at work',
-      "Immediately report a defect or deficiency (to your supervisor or health and safety representative) if it may cause harm or danger to either your own or a co-worker's safety/health",
-      'To correct the above-mentioned fault that they have detected, if their own experience or expertise is sufficient',
-      'Not to disable the safety or protective devices from use'
-    ],
+  worker_step_3: [
+    'Follow the instructions and regulations given by the employer',
+    'Take care of your own safety and that of other employees with the available means',
+    'Not to harass or mistreat other employees',
+    'Use and care for the personal protective equipment and aids required at work',
+    "Immediately report a defect or deficiency (to your supervisor or health and safety representative) if it may cause harm or danger to either your own or a co-worker's safety/health",
+    'To correct the above-mentioned fault that they have detected, if their own experience or expertise is sufficient',
+    'Not to disable the safety or protective devices from use'
+  ],
 
-    worker_step_4: [
-      'The employee must ensure that the user company provides good enough guidance on work and working conditions',
-      'Ensure that sufficient information is given to safely perform the given job.'
-    ],
+  worker_step_4: [
+    'The employee must ensure that the user company provides good enough guidance on work and working conditions',
+    'Ensure that sufficient information is given to safely perform the given job.'
+  ],
 
-    worker_step_5: [
-      "For the first few days, the employee should be assigned a work partner or another person who will constantly guide the employee's performance and help if necessary.",
-      'Ensures that the temporary worker is treated in the same way as a permanent worker.',
-      'The employee reports all accidents, near misses, violence and threats, and gives feedback related to other occupational safety (possible deficiencies or problems related to occupational safety and safety initiatives).'
-    ],
+  worker_step_5: [
+    "For the first few days, the employee should be assigned a work partner or another person who will constantly guide the employee's performance and help if necessary.",
+    'Ensures that the temporary worker is treated in the same way as a permanent worker.',
+    'The employee reports all accidents, near misses, violence and threats, and gives feedback related to other occupational safety (possible deficiencies or problems related to occupational safety and safety initiatives).'
+  ],
 
 
-    // responsibilities page
-    responsibility_1_article: "In accordance with his experience, the teaching and guidance he has received from the employer, and his professional skills, the employee must take care of his own and other employees' safety and health in his work with the means at his disposal. In order to maintain safety and health, the employee must act carefully and cautiously as required by the work and working conditions, and take care of cleanliness and order. The employee must cooperate with the employer and employee representatives to prevent work accidents, occupational diseases and other health hazards caused by work and the work environment. Health means both physical and mental health. ",
-    responsibility_2_article: 'At the workplace, the employee must avoid harassment and other improper treatment of other employees that causes harm or danger to their safety or health. The employee must report the harassment he has experienced to the employer. ',
-    responsibility_3_article: 'The employee must comply with the regulations and instructions issued by the employer in accordance with his authority. Safety instructions may relate to work methods, the use of machines and personal protective equipment, or the use and handling of dangerous substances. ',
-    responsibility_4_article: "The employee must use and care for the personal protective equipment and other equipment provided by the employer carefully and in accordance with the instructions. The employee must wear appropriate clothing in his work that does not cause the risk of an accident. Personal protective equipment refers to tools, equipment or clothing that protect the employee from accidents or illness at work. Personal protective equipment includes, for example, safety glasses, safety shoes, protective gloves, helmets, hearing and breathing protection, harnesses and protective coveralls. The employee must use machines, work tools and other equipment as well as the safety and protection devices in them correctly. In use, the employee's professional skills, work experience and usage and other instructions received from the employer must be used. A safety or protective device installed in a machine, work tool, other device or building may not be removed or switched off without a special reason. If an employee has to temporarily disable a safety or protective device, he must return it to use or switch the device on as soon as possible. ",
-    responsibility_5_article: 'The employee must immediately notify the employer or the occupational health and safety representative if defects and deficiencies occur at the workplace that may cause harm or danger to the health or safety of the employees. Defects and deficiencies can be in working conditions, work methods, machines, work tools, personal protective equipment or other equipment. The employee must also, to the best of his ability, try to eliminate the faults and deficiencies he finds that cause potential danger, when this is possible and safe. The employee must also report the defects and deficiencies he has removed. Notification is important so that the employer can correct defects and deficiencies that cause danger or harm. The employer must tell the employee who made the report and the occupational health and safety representative what measures are being taken or have been taken to correct the defect or deficiency that has been brought up.',
+  // responsibilities page
+  responsibility_1_article: "In accordance with his experience, the teaching and guidance he has received from the employer, and his professional skills, the employee must take care of his own and other employees' safety and health in his work with the means at his disposal. In order to maintain safety and health, the employee must act carefully and cautiously as required by the work and working conditions, and take care of cleanliness and order. The employee must cooperate with the employer and employee representatives to prevent work accidents, occupational diseases and other health hazards caused by work and the work environment. Health means both physical and mental health. ",
+  responsibility_2_article: 'At the workplace, the employee must avoid harassment and other improper treatment of other employees that causes harm or danger to their safety or health. The employee must report the harassment he has experienced to the employer. ',
+  responsibility_3_article: 'The employee must comply with the regulations and instructions issued by the employer in accordance with his authority. Safety instructions may relate to work methods, the use of machines and personal protective equipment, or the use and handling of dangerous substances. ',
+  responsibility_4_article: "The employee must use and care for the personal protective equipment and other equipment provided by the employer carefully and in accordance with the instructions. The employee must wear appropriate clothing in his work that does not cause the risk of an accident. Personal protective equipment refers to tools, equipment or clothing that protect the employee from accidents or illness at work. Personal protective equipment includes, for example, safety glasses, safety shoes, protective gloves, helmets, hearing and breathing protection, harnesses and protective coveralls. The employee must use machines, work tools and other equipment as well as the safety and protection devices in them correctly. In use, the employee's professional skills, work experience and usage and other instructions received from the employer must be used. A safety or protective device installed in a machine, work tool, other device or building may not be removed or switched off without a special reason. If an employee has to temporarily disable a safety or protective device, he must return it to use or switch the device on as soon as possible. ",
+  responsibility_5_article: 'The employee must immediately notify the employer or the occupational health and safety representative if defects and deficiencies occur at the workplace that may cause harm or danger to the health or safety of the employees. Defects and deficiencies can be in working conditions, work methods, machines, work tools, personal protective equipment or other equipment. The employee must also, to the best of his ability, try to eliminate the faults and deficiencies he finds that cause potential danger, when this is possible and safe. The employee must also report the defects and deficiencies he has removed. Notification is important so that the employer can correct defects and deficiencies that cause danger or harm. The employer must tell the employee who made the report and the occupational health and safety representative what measures are being taken or have been taken to correct the defect or deficiency that has been brought up.',
 
-    read_more_about_responsibilities: 'Read more about responsibiliy...',
+  read_more_about_responsibilities: 'Read more about responsibiliy...',
 
-    workerResponsibilitiesArray: [
+  workerResponsibilitiesArray: [
     {
-    header:"1. I take care of myself and my colleagues' well-being and safety at work.",
-    summary: "The employee must take care of his own and other employees' safety and health in accordance with his skills and with the means at his disposal." },
+      header:"1. I take care of myself and my colleagues' well-being and safety at work.",
+      summary: "The employee must take care of his own and other employees' safety and health in accordance with his skills and with the means at his disposal." },
     {
-    header: '2. I do not disturb or treat others inappropriately.',
-    summary: 'The employee must avoid harassment and other improper treatment of other employees. '},
+      header: '2. I do not disturb or treat others inappropriately.',
+      summary: 'The employee must avoid harassment and other improper treatment of other employees. '},
     {
-    header: '3. I follow the instructions of the workplace.',
-    summary: 'The employee must follow the regulations and instructions given by the employer. '},
+      header: '3. I follow the instructions of the workplace.',
+      summary: 'The employee must follow the regulations and instructions given by the employer. '},
     {
-    header: '4. I use work tools, personal protective equipment and safety devices appropriately.',
-    summary: 'The employee must correctly use machines, work tools and other equipment, as well as the safety and protection devices in them. In addition, the employee must use personal protective equipment provided by the employer. '},
+      header: '4. I use work tools, personal protective equipment and safety devices appropriately.',
+      summary: 'The employee must correctly use machines, work tools and other equipment, as well as the safety and protection devices in them. In addition, the employee must use personal protective equipment provided by the employer. '},
     {
-    header: '5. I report the defects and deficiencies I have discovered',
-    summary: 'The employee must inform the employer and the occupational health and safety representative of the faults and deficiencies he/she notices at work. '}
-    ],
-
-
-
-
-    // feelings
-    work_feel: 'How is the work going?',
-    tell_more: 'Tell more!',
+      header: '5. I report the defects and deficiencies I have discovered',
+      summary: 'The employee must inform the employer and the occupational health and safety representative of the faults and deficiencies he/she notices at work. '
+    }
+  ],
+  businessResponsibilitiesArray: [
+    {
+      header: '1. Shared occupational health and safety responsibility',
+      summary: "In temporary work, the personnel service company and the user company have a joint occupational health and safety responsibility for the employee's occupational safety and health. Ensuring the work safety and well-being of the temporary worker requires planning in advance, agreeing on issues and cooperation between all parties. ",
+    },
+    {
+      header: '2. Subscriber liability',
+      summary: 'The user company must obtain the reports in accordance with the Customer Liability Act from the personnel service company before concluding the contract. When using foreign temporary workers, the same minimum working conditions as for domestic temporary workers must be taken into account. ',
+    },
+    {
+      header: '3. Providing information to a personnel service company',
+      summary: 'The user company must provide the personnel service company with information about the professional requirements and special features of the temporary work, as well as other information that the personnel service company needs to fulfill its obligations.',
+    },
+    {
+      header: '4. General responsibility of the user company for occupational safety',
+      summary: 'The user company is obliged to take care of the safety and health of temporary workers at work. ',
+    },
+    {
+      header: '5. Working hours',
+      summary: "A personnel service company takes care of work time records. The user company is responsible for complying with the Working Time Act in organizing the temporary worker's working hours. ",
+    },
+    {
+      header: '6. Promoting equality and equality',
+      summary: 'The employer must promote equality and equality in the workplace. Temporary workers must be treated equally with other workers. In workplaces with more than 30 employees, equality and non-equality plans must be drawn up. ',
+    },
+    {
+      header: '7. Personal protective equipment and work clothing',
+      summary: 'The personnel service company and the user company agree on providing work clothes to the employee,'+
+      'if the work requires special work clothes.'+
+      'The protective equipment needed at work is selected based on a risk assessment made at the workplace. ',
+    }
+  ],
+  agencyResponsibilitiesArray: [
+    {
+      header: '1. Shared occupational health and safety responsibility',
+      summary: "In temporary work, the personnel service company and the user company have a joint occupational health and safety responsibility for the employee's occupational safety and health. Ensuring the work safety and well-being of the temporary worker requires planning in advance, agreeing on issues and cooperation between all parties. ",
+    },
+    {
+      header: '2. General responsibility for occupational safety',
+      summary: 'A personnel service company is obliged to take care of the safety and health of its employees at work. This means e.g. investigation and assessment of work hazards, occupational safety action program, occupational safety cooperation and orientation. ',
+    },
+    {
+      header: '3. Working hours',
+      summary: "A personnel service company takes care of work time records. The user company is responsible for complying with the Working Time Act in organizing the temporary worker's working hours. ",
+    },
+    {
+      header: '4. Insuring employees against work accidents and occupational diseases',
+      summary: 'The personnel service company must insure the temporary employee in case of work accident and occupational disease. ',
+    },
+    {
+      header: '5. Occupational health care',
+      summary:
+      'The personnel service company arranges statutory occupational health care for its employees independently ' +
+      "on the form and length of the employee's employment relationship. Statutory occupational health care is to support the ability to work " +
+      'with preventive measures and it does not include medical treatment. However, a personnel service company can' +
+      'also organizes medical treatment through the provider of occupational health care services, but this is ' +
+      'voluntary for the employer.',
+    },
+    {
+      header: '6. Promoting equality and equality',
+      summary: 'A personnel service company must evaluate the implementation of equality in the workplace.',
+    },
+    {
+      header: "7. Ensuring the fulfillment of the user company's obligations",
+      summary: ' In temporary work, the personnel service company and the user company have shared occupational safety responsibility.' +
+      'A personnel service company must ensure that the user company takes care of its occupational health,' +
+      ' about their occupational safety and occupational well-being responsibilities and obligations.',
+    },
+    {
+      header: '8. Ensuring the suitability of the temporary worker',
+      summary: 'The personnel service company must ensure that the temporary employee has sufficient professional skills, experience and suitability for the job. ',
+    },
+    {
+      header: '9. Personal protective equipment and work clothing',
+      summary: 'The personnel service company and the user company agree on providing work clothes to the employee,'+
+      'if the work requires special work clothes.'+
+      'The protective equipment needed at work is selected based on a risk assessment made at the workplace. ',
+    }
+  ],
+  // feelings
+  work_feel: 'How is the work going?',
+  tell_more: 'Tell more!',
 }
 

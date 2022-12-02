@@ -7,9 +7,7 @@ import ttk from '../../assets/partners/ttk.png'
 import { useTranslation } from 'react-i18next';
 import Spacing from '../../components/Spacing';
 
-export interface FirstLandingPageProps {}
-
-const FirstLandingPage: React.FC<FirstLandingPageProps> = () => {
+const FirstLandingPage: React.FC = () => {
   const { t } = useTranslation();
   return (
     <Container className="background">
@@ -17,13 +15,13 @@ const FirstLandingPage: React.FC<FirstLandingPageProps> = () => {
       <div className="landing-banner" />
       <div className="landing-bg-dark text-white intro-container">
         <Typography variant="h1" className="text-center landing-header-offset">
-        KEIKKAKAVERI
+            KEIKKAKAVERI
         </Typography>
         <Typography variant="h2" className="text-center landing-text">
-        {t('slogan')} 
+            {t('slogan')}
         </Typography>
         <Typography variant="body1" className="text-center landing-text2">
-        {t('intro')}
+            {t('intro')}
         </Typography>
       </div>
       <div id="partner-container" className="landing-bg-dark">

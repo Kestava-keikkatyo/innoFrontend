@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import KlickForMoreInfoListComponent from './KlickForMoreInfoListComponent';
+import ExpandableList from './ExpandableList';
 
 type Props = {
     inputString: string,
@@ -15,7 +15,7 @@ const SrcFile: React.FC <Props> = ({inputString, inputIndex}) => {
   
   
     return (
-      <KlickForMoreInfoListComponent arrayName={WorkerResponsibilityArray} indexNumber={number}/> 
+      <ExpandableList arrayName={WorkerResponsibilityArray} indexNumber={number}/> 
    
     );
     }
