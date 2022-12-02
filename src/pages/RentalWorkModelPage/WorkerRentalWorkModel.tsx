@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import PageLoading from '../../components/PageLoading';
 import { RentalWorkModelSteps } from './index';
-import Overview from './WorkerSteps/Overview';
+import WorkerOverview from './WorkerSteps/WorkersSteps/WorkerOverview';
 import WorkerContractOfEmployment from './WorkerSteps/WorkersSteps/WorkerContractOfEmployment';
 import WorkerGuidanceToWork from './WorkerSteps/WorkersSteps/WorkerGuidanceToWork';
 import WorkerWorkPerformance from './WorkerSteps/WorkersSteps/WorkerWorkPerformance';
@@ -24,7 +24,7 @@ const WorkerRentalWorkModel = (props: RentalWorkModelSteps) => {
         return <WorkerWorkPerformance />
       case 'rental-work-model':
       default:
-        return <Overview />
+        return <WorkerOverview />
     }
   }
 

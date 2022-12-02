@@ -5,17 +5,17 @@ import makeStyles from '@mui/styles/makeStyles';
 import { Theme } from '@mui/material/styles';
 import { Container, Card, ListItem, ListItemText, Stack, Divider } from '@mui/material';
 
-const Overview = () => {
+const WorkerOverview = () => {
   const { t } = useTranslation();
   const classes = useStyles();
-  const overviewArray = (t('RentalWorkModelOverview', {returnObjects: true}) as string[]); 
+  const overviewArray = (t('WorkerRentalWorkModelOverview', {returnObjects: true}) as string[]); 
   
 
   return (
     <Container maxWidth="xl" className={classes.root}>
       <Card className={classes.card}>
         <Typography variant="h1" color="primary" className={classes.header}>
-          {t('overview')}
+          {t('overview')} 
         </Typography>
         <Stack
          divider={<Divider orientation="horizontal" variant="inset" />}>  
@@ -59,4 +59,4 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-export default Overview;
+export default WorkerOverview;

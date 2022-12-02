@@ -806,6 +806,52 @@ export default {
 
   // Overview
   loremipsum: 'FI Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam distinctio esse iure modi neque quaerat, repudiandae. Accusantium alias aut commodi debitis ea harum ipsa itaque laudantium molestiae nesciunt quis sint vel velit, vitae voluptatibus! Commodi dicta dolorum eaque earum esse est facere fugit iste labore magnam, minus, neque nobis!',
+  RentalWorkModelOverview: [
+    { 
+    header:' Yleiskatsaus ',
+    info:  'Vuokratyössä on kolme osapuolta: henkilöstöpalveluyritys, käyttäjäyritys ja vuokratyöntekijä. Henkilöstöpalveluyritys ja käyttäjäyritys tekevät asiakassopimuksen. Henkilöstöpalveluyritys toimittaa'+
+    ' sopimuksen ja käyttäjäyritykseltä saamansa tilauksen mukaisesti vuokratyöntekijän käyttäjäyritykselle. Henkilöstöpalveluyritys on vuokratyöntekijän työnantaja ja antaa vuokratyöntekijälle yleisperehdytyksen. '+
+    'Käyttäjäyritys opastaa vuokratyöntekijän työhön. Vuokratyöntekijä tekee työtä käyttäjäyrityksen johdon ja valvonnan alla. Kaikkien osapuolten on hyvä viestiä toisilleen työturvallisuuteen, -terveyteen ja '+
+    ' -hyvinvointiin liittyvistä asioista. ' },
+    {
+    header: '1. Asiakassopimus ',
+    info: 'Henkilöstöpalveluyritys ja käyttäjäyritys tekevät asiakassopimuksen. Käyttäjäyritys antaa henkilöstöpalveluyritykselle tietoa työolosuhteista ja niihin liittyvistä työturvallisuus-, työterveys- '+
+    'ja työhyvinvointiasioista. Yritykset käyvät läpi työturvallisuuteen, terveyteen ja hyvinvointiin liittyvien vastuiden jakautumisen yritysten kesken. Yritykset sopivat mm. asiakassuhteen aikaisesta '+
+    'tiedonkulusta, henkilönsuojainten hankinnasta, perehdytyksestä ja toimintatavoista työtapaturma-, sairaspoissaolo- ja vaaratilanteisiin.  '},
+    {
+    header: '2. Työntekijän tilaus ja valinta ',
+    info: 'Käyttäjäyritys tilaa henkilöstöpalveluyritykseltä työntekijän työtehtävään. Käyttäjäyritys kertoo henkilöstöpalveluyritykselle työn ammattitaitovaatimukset ja erityispiirteet. '},
+    {
+    header: '3. Työsopimus ja yleisperehdytys ',
+    info: 'Henkilöstöpalveluyritys ja vuokratyöntekijä tekevät kirjallisen työsopimuksen. Henkilöstöpalveluyritys antaa vuokratyöntekijälle yleisperehdytyksen, jossa käydään läpi mm. työntekijän velvoitteet, '+
+    'työtehtävä ja siinä vaadittava osaaminen, työn vaarat ja erityispiirteet, työvaatetus ja henkilönsuojaimet, työterveyshuolto ja toiminta työtapaturma-, sairastumis- ja muissa vaaratilanteissa. '},
+    {
+    header: '4. Opastus työhön ja työoloihin ',
+    info: 'Käyttäjäyritys opastaa vuokratyöntekijän työhön ja työoloihin. Työnopastuksessa käydään läpi mm. työtehtävät ja turvalliset työtavat, työssä esiintyvät haitta- ja vaaratekijät ja niiltä suojautuminen,'+
+    ' työajat ja tauot, toiminta onnettomuus- ja poikkeustilanteissa, turvallisuushavaintojen tekeminen sekä tiedotuskäytännöt. ' },
+    { 
+    header: '5. Työsuoritus, valvonta ja palaute ',
+    info: 'Vuokratyöntekijän työtä johtaa ja valvoo käyttäjäyritys. Henkilöstöpalveluyrityksen, käyttäjäyrityksen ja vuokratyöntekijän on hyvä keskustella ja antaa palautetta toisilleen koko vuokratyötoimeksiannon ajan. '}       
+  ],
+  WorkerRentalWorkModelOverview: [
+    { 
+    header:' Yleiskatsaus ',
+    info:  'Vuokratyössä on kolme osapuolta: henkilöstöpalveluyritys, käyttäjäyritys ja vuokratyöntekijä. Henkilöstöpalveluyritys ja käyttäjäyritys tekevät asiakassopimuksen. Henkilöstöpalveluyritys toimittaa'+
+    ' sopimuksen ja käyttäjäyritykseltä saamansa tilauksen mukaisesti vuokratyöntekijän käyttäjäyritykselle. Henkilöstöpalveluyritys on vuokratyöntekijän työnantaja ja antaa vuokratyöntekijälle yleisperehdytyksen. '+
+    'Käyttäjäyritys opastaa vuokratyöntekijän työhön. Vuokratyöntekijä tekee työtä käyttäjäyrityksen johdon ja valvonnan alla. Kaikkien osapuolten on hyvä viestiä toisilleen työturvallisuuteen, -terveyteen ja '+
+    ' -hyvinvointiin liittyvistä asioista. ' },
+    {
+    header: '1. Työsopimus ja yleisperehdytys ',
+    info: 'Henkilöstöpalveluyritys ja vuokratyöntekijä tekevät kirjallisen työsopimuksen. Henkilöstöpalveluyritys antaa vuokratyöntekijälle yleisperehdytyksen, jossa käydään läpi mm. työntekijän velvoitteet, '+
+    'työtehtävä ja siinä vaadittava osaaminen, työn vaarat ja erityispiirteet, työvaatetus ja henkilönsuojaimet, työterveyshuolto ja toiminta työtapaturma-, sairastumis- ja muissa vaaratilanteissa. '},
+    {
+    header: '2. Opastus työhön ja työoloihin ',
+    info: 'Käyttäjäyritys opastaa vuokratyöntekijän työhön ja työoloihin. Työnopastuksessa käydään läpi mm. työtehtävät ja turvalliset työtavat, työssä esiintyvät haitta- ja vaaratekijät ja niiltä suojautuminen,'+
+    ' työajat ja tauot, toiminta onnettomuus- ja poikkeustilanteissa, turvallisuushavaintojen tekeminen sekä tiedotuskäytännöt. ' },
+    { 
+    header: '3. Työsuoritus, valvonta ja palaute ',
+    info: 'Vuokratyöntekijän työtä johtaa ja valvoo käyttäjäyritys. Henkilöstöpalveluyrityksen, käyttäjäyrityksen ja vuokratyöntekijän on hyvä keskustella ja antaa palautetta toisilleen koko vuokratyötoimeksiannon ajan. '}       
+  ],
 
   // good practices
   checkAll: 'Merkkaa kaikki luetuksi',

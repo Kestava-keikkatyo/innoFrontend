@@ -813,7 +813,53 @@ export default {
 
   // Overview
   loremipsum: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam distinctio esse iure modi neque quaerat, repudiandae. Accusantium alias aut commodi debitis ea harum ipsa itaque laudantium molestiae nesciunt quis sint vel velit, vitae voluptatibus! Commodi dicta dolorum eaque earum esse est facere fugit iste labore magnam, minus, neque nobis!',
+  RentalWorkModelOverview: [
+    {
+    header:' Overview ',
+    info: 'There are three parties in temporary work: the personnel service company, the user company and the temporary employee. The personnel service company and the user company enter into a customer agreement. The personnel service company delivers'+
+    " to the user company of the temporary employee in accordance with the contract and the order received from the user company. The personnel service company is the temporary worker's employer and gives the temporary worker a general orientation. "+
+    'The user company guides the temporary employee to work. The temporary employee works under the management and supervision of the user company. It is good for all parties to communicate to each other about occupational safety, health and '+
+    ' - about matters related to well-being. ' },
+    {
+    header: '1. Customer Agreement ',
+    info: 'The personnel service company and the user company enter into a customer contract. The user company provides the personnel service company with information about the working conditions and related occupational safety, occupational health and '+
+    ' and about work well-being issues. The companies go through the division of responsibilities related to occupational safety, health and well-being among the companies. Companies agree, e.g. from during the customer relationship '+
+    'about information flow, procurement of personal protective equipment, orientation and operating methods for occupational accidents, sick leave and dangerous situations. '},
+    {
+    header: '2. Employee order and selection ',
+    info: 'The user company orders an employee from a personnel service company for a job. The user company tells the personnel service company the professional requirements and special features of the job. '},
+    {
+    header: '3. Employment contract and general orientation ',
+    info: 'The personnel service company and the temporary employee enter into a written employment contract. The personnel service company gives the temporary employee a general orientation, which goes through e.g. employee obligations, '+
+    'the work task and the skills required in it, the hazards and special features of the work, Work clothing and personal protective equipment, occupational health care and action in the event of an occupational accident, illness and other dangerous situations. '},
+    {
+    header: '4. Guidance on work and working conditions',
+    info: 'The user company guides the temporary employee on work and working conditions. In the job orientation, we go through e.g. work tasks and safe work methods, harmful and dangerous factors occurring at work and protection against them,'+
+    ' working hours and breaks, operation in accident and emergency situations, making safety observations and information practices. ' },
+    {
+    header: '5. Work performance, monitoring and feedback ',
+    info: "The temporary employee's work is managed and supervised by the user company. It is good for the personnel service company, the user company and the temporary worker to talk and give feedback to each other throughout the temporary work assignment. "}
+  ],
 
+  WorkerRentalWorkModelOverview: [
+    {
+    header:' Overview ',
+    info: 'There are three parties in temporary work: the personnel service company, the user company and the temporary employee. The personnel service company and the user company enter into a customer agreement. The personnel service company delivers'+
+    " to the user company of the temporary employee in accordance with the contract and the order received from the user company. The personnel service company is the temporary worker's employer and gives the temporary worker a general orientation. "+
+    'The user company guides the temporary employee to work. The temporary employee works under the management and supervision of the user company. It is good for all parties to communicate to each other about occupational safety, health and '+
+    ' - about matters related to well-being. ' },
+    {
+    header: '1. Employment contract and general orientation ',
+    info: 'The personnel service company and the temporary employee enter into a written employment contract. The personnel service company gives the temporary employee a general orientation, which goes through e.g. employee obligations, '+
+    'the work task and the skills required in it, the hazards and special features of the work, Work clothing and personal protective equipment, occupational health care and action in the event of an occupational accident, illness and other dangerous situations. '},
+    {
+    header: '2. Guidance on work and working conditions',
+    info: 'The user company guides the temporary employee on work and working conditions. In the job orientation, we go through e.g. work tasks and safe work methods, harmful and dangerous factors occurring at work and protection against them,'+
+    ' working hours and breaks, operation in accident and emergency situations, making safety observations and information practices. ' },
+    {
+    header: '3. Work performance, monitoring and feedback ',
+    info: "The temporary employee's work is managed and supervised by the user company. It is good for the personnel service company, the user company and the temporary worker to talk and give feedback to each other throughout the temporary work assignment. "}
+  ],
   // good practices
   checkAll: 'Mark all read',
   readAndUnderstood: 'Read and understood',
