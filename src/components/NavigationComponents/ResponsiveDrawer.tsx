@@ -101,7 +101,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               <Divider />
             </>
           )}
-          {role === roles.Agency && (
+          {(role === roles.Agency || role === roles.Business) && (
             <>
               <ListItemButton component={Link} to="/receivedFeedbacks" onClick={handleClick}>
                 <ListItemIcon>
@@ -153,19 +153,6 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
                   <GroupOutlinedIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
                 <ListItemText primary={t('BusinessCompanies')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}
-
-
-          {(role === roles.Business) && (
-            <>
-              <ListItemButton component={Link} to="/feedback" onClick={handleClick}>
-                <ListItemIcon>
-                  <FeedbackOutlinedIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('feedback')} />
               </ListItemButton>
               <Divider />
             </>

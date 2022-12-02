@@ -309,7 +309,7 @@ const App: React.FC = () => {
             >
               <RentalWorkModelPage path='rental-work-model'/>
             </PrivateRoute>
-            <PrivateRoute path="/receivedFeedbacks" roles={[roles.Agency]}>
+            <PrivateRoute path="/receivedFeedbacks" roles={[roles.Agency, roles.Business]}>
               <ReceivedFeedbacks />
             </PrivateRoute>
             <PrivateRoute path="/reports/answer" roles={[roles.Business, roles.Agency]}>
