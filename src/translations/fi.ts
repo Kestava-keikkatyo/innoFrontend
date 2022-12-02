@@ -633,6 +633,7 @@ export default {
   // List
   list_title_workers: 'Työntekijät',
   list_title_agencies: 'Henkilöstöpalveluyritykset',
+  list_title_businesses: 'Käyttäjäyritykset',
   list_name: 'Nimi',
   list_email: 'Sähköposti',
   list_city: 'Kaupunki',
