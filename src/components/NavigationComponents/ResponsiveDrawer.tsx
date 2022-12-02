@@ -103,7 +103,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           )}
           {role === roles.Agency && (
             <>
-              <ListItemButton component={Link} to="/moodStats" onClick={handleClick}>
+              <ListItemButton component={Link} to="/receivedFeedbacks" onClick={handleClick}>
                 <ListItemIcon>
                   <MoodIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>

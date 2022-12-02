@@ -77,6 +77,7 @@ import { useTranslation } from 'react-i18next'
 import SchedulePage from './pages/SchedulePage';
 import BusinessResponsibilities from './pages/ResponsibilitiesPage/BusinessResponsibilities'
 import Businesses from './pages/Profile/Businesses';
+import ReceivedFeedbacks from './pages/FeedbackPage/ReceivedFeedbacks';
 
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -304,11 +305,8 @@ const App: React.FC = () => {
             >
               <RentalWorkModelPage path='rental-work-model'/>
             </PrivateRoute>
-
-
-
-            <PrivateRoute path="/moodStats" roles={[roles.Agency]}>
-              <AgencyStatistics />
+            <PrivateRoute path="/receivedFeedbacks" roles={[roles.Agency]}>
+              <ReceivedFeedbacks />
             </PrivateRoute>
             <PrivateRoute path="/reports/answer" roles={[roles.Business, roles.Agency]}>
               <ReportReplyPage />

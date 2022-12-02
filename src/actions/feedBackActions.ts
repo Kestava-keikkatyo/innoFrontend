@@ -12,6 +12,26 @@ import {
   FeedbackSimilarActions,
 } from '../types/state'
 
+export const fetchFeedbacksAppointedToMe =
+  () =>
+  async (
+    dispatch: Dispatch<FeedbackGetAllRequest | FeedbackGetAllSuccess | FeedbackActionFailure>,
+  ) => {
+    try {
+      dispatch({
+        type: feedbackType.FEEDBACK_GET_ALL_REQUEST,
+      })
+      const res = await feedBackService.fetchFeedbacksAppointedToMe()
+      dispatch({ type: feedbackType.FEEDBACK_GET_ALL_SUCCESS, data: res.data })
+    } catch (e) {
+      dispatch({
+        type: feedbackType.FEEDBACK_ACTION_FAILURE,
+        data: e as string,
+      })
+      await setAlert('Failed to fetch feedbacks appointed to you!: ' + e, severity.Error, 15)(dispatch)
+    }
+  }
+
 /**
  * @function
  * @desc Fetches all user's feedbacks.
