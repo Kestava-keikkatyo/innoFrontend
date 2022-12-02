@@ -76,6 +76,7 @@ import AgencyResponsibilities from './pages/ResponsibilitiesPage/AgencyResponsib
 import { useTranslation } from 'react-i18next'
 import SchedulePage from './pages/SchedulePage';
 import BusinessResponsibilities from './pages/ResponsibilitiesPage/BusinessResponsibilities'
+import Businesses from './pages/Profile/Businesses';
 
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -181,16 +182,16 @@ const App: React.FC = () => {
               <ResponsibilityUpdate />
             </PrivateRoute>
             <PrivateRoute path="/responsibilities" roles={[roles.Admin]}>
-              <Responsibilities />   
+              <Responsibilities />
             </PrivateRoute>
             <PrivateRoute path="/businessResponsibilities" roles={[roles.Business]}>
-              <BusinessResponsibilities />  
-            </PrivateRoute>    
+              <BusinessResponsibilities />
+            </PrivateRoute>
             <PrivateRoute path="/agencyResponsibilities" roles={[roles.Agency]}>
-              <AgencyResponsibilities />  
-            </PrivateRoute>               
+              <AgencyResponsibilities />
+            </PrivateRoute>
             <PrivateRoute path="/workerResponsibilities" roles={[roles.Worker]}>
-              <WorkerResponsibilities />   
+              <WorkerResponsibilities />
             </PrivateRoute>
             <PrivateRoute path="/feedback/send" roles={[roles.Business, roles.Agency, roles.Worker]}>
               <SendFeedback />
@@ -225,11 +226,17 @@ const App: React.FC = () => {
             <PrivateRoute path="/agencies/profile/:userId" roles={[roles.Business]}>
               <UserProfile />
             </PrivateRoute>
+            <PrivateRoute path="/businesses/profile/:userId" roles={[roles.Agency]}>
+              <UserProfile />
+            </PrivateRoute>
             <PrivateRoute path="/profileView/:userId">
               <UserProfile />
             </PrivateRoute>
             <PrivateRoute path="/agencies" roles={[roles.Business]}>
               <Agencies />
+            </PrivateRoute>
+            <PrivateRoute path="/businesses" roles={[roles.Agency]}>
+              <Businesses />
             </PrivateRoute>
             <DatabankRoute path="/databank/lifeline">
               <JobLifeline />
@@ -298,7 +305,7 @@ const App: React.FC = () => {
               <RentalWorkModelPage path='rental-work-model'/>
             </PrivateRoute>
 
-          
+
 
             <PrivateRoute path="/moodStats" roles={[roles.Agency]}>
               <AgencyStatistics />
