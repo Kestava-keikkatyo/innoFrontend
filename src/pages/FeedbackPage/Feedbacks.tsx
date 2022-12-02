@@ -25,7 +25,7 @@ const Feedbacks: React.FC = () => {
 
   const columns: GridColumns = [
     {
-      field: 'recipient',
+      field: 'recipientName',
       headerName: (i18next.t('feedback_recipient')),
       minWidth: 100,
       flex: 1,
@@ -40,10 +40,16 @@ const Feedbacks: React.FC = () => {
       }
     },
     {
-      field: 'Sent anonymously?',
+      field: 'anonymity',
       headerName: (i18next.t('feedback_anonymity')),
       minWidth: 100,
       flex: 1,
+      renderCell: (params) => {
+        return <span>{params.row.anonymous ?
+          t('feedback_anonymity_yes') :
+          t('feedback_anonymity_no')}
+        </span>
+      }
     },
     {
       field: 'action',
