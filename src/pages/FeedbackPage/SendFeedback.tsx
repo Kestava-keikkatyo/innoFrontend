@@ -212,7 +212,7 @@ const SendFeedback: React.FC = () => {
                     </Button>
                     <label>
                       <Field type="checkbox" name="anonymous" />
-                      {t('feedback_sender')}
+                      {t('feedback_send_anonymously')}
                     </label>
                   </>
                 }

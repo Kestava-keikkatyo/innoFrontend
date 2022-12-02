@@ -24,10 +24,17 @@ const ReceivedFeedbacks: React.FC = () => {
 
   const columns: GridColumns = [
     {
-      field: 'recipientName',
-      headerName: (i18next.t('feedback_recipient')),
+      field: 'senderName',
+      headerName: (i18next.t('feedback_sender')),
       minWidth: 100,
       flex: 1,
+      renderCell: (params) => {
+        return <span>{params.row.anonymous ?
+            t('anonymous') :
+            params.row.senderName
+        }
+        </span>
+      }
     },
     {
       field: 'createdAt',
@@ -56,7 +63,7 @@ const ReceivedFeedbacks: React.FC = () => {
       minWidth: 100,
       flex: 1,
       renderCell: (params) => {
-        return <Link to={'/feedback/details/' + params.id}>{t('feedback_details')}</Link>
+        return <Link to={'/feedback/receivedDetails/' + params.id}>{t('feedback_details')}</Link>
       }
     },
   ];

@@ -78,6 +78,7 @@ import SchedulePage from './pages/SchedulePage';
 import BusinessResponsibilities from './pages/ResponsibilitiesPage/BusinessResponsibilities'
 import Businesses from './pages/Profile/Businesses';
 import ReceivedFeedbacks from './pages/FeedbackPage/ReceivedFeedbacks';
+import ReceivedDetails from './pages/FeedbackPage/ReceivedDetails'
 
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -200,8 +201,11 @@ const App: React.FC = () => {
             <PrivateRoute path="/feedbacks" roles={[roles.Business, roles.Agency, roles.Worker]}>
               <Feedbacks />
             </PrivateRoute>
-            <PrivateRoute path="/feedback/details/:feedbackId" roles={[roles.Business, roles.Agency, roles.Worker]}>
+            <PrivateRoute path="/feedback/details/:feedbackId" roles={[roles.Worker]}>
               <Details />
+            </PrivateRoute>
+            <PrivateRoute path="/feedback/receivedDetails/:feedbackId" roles={[roles.Business, roles.Agency]}>
+              <ReceivedDetails />
             </PrivateRoute>
             <PrivateRoute path="/feedback/update/:feedbackId" roles={[roles.Business, roles.Agency, roles.Worker]}>
               <FeedbackUpdate />
