@@ -37,6 +37,11 @@ import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
 import AssignmentIndOutlinedIcon from '@mui/icons-material/AssignmentIndOutlined'
 import AccessibilityOutlinedIcon from '@mui/icons-material/AccessibilityOutlined';
 import PersonIcon from '@mui/icons-material/Person';
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
+import TaskIcon from '@mui/icons-material/Task';
+import HowToRegIcon from '@mui/icons-material/HowToReg';
+import WorkIcon from '@mui/icons-material/Work';
 
 /**
  * @component
@@ -221,38 +226,39 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
                     </ListItemIcon>
                     <ListItemText primary={t('overview')} />
                   </ListItemButton>
+                
 
                   <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/customerContract">
                     <ListItemIcon>
-                      <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.done }} />
+                      <ListAltIcon fontSize="small" sx={{ color: iconColor.base }} />
                     </ListItemIcon>
                     <ListItemText primary={t('customer_contract')} />
                   </ListItemButton>
 
                   <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/orderingEmployee">
                     <ListItemIcon>
-                      <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.done }} />
+                      <PersonAddAlt1Icon fontSize="small" sx={{ color: iconColor.base }} />
                     </ListItemIcon>
                     <ListItemText primary={t('worker_order')} />
                   </ListItemButton>
 
                   <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/contractOfEmployment">
                     <ListItemIcon>
-                      <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.undone }} />
+                      <TaskIcon fontSize="small" sx={{ color: iconColor.base }} />
                     </ListItemIcon>
                     <ListItemText primary={t('contract_of_employment')} />
                   </ListItemButton>
 
                   <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/guidanceToWork">
                     <ListItemIcon>
-                      <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.undone }} />
+                      <HowToRegIcon fontSize="small" sx={{ color: iconColor.base }} />
                     </ListItemIcon>
                     <ListItemText primary={t('guidance_to_work')} />
                   </ListItemButton>
 
                   <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/workPerformance">
                     <ListItemIcon>
-                      <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.undone }} />
+                      <WorkIcon fontSize="small" sx={{ color: iconColor.base }} />
                     </ListItemIcon>
                     <ListItemText primary={t('work_performance')} />
                   </ListItemButton>
@@ -420,21 +426,21 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
                   </ListItemButton>
                   <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/contractOfEmployment">
                     <ListItemIcon>
-                      <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.undone }} />
+                      <TaskIcon fontSize="small" sx={{ color: iconColor.base }} />
                     </ListItemIcon>
                     <ListItemText primary={t('contract_of_employment')} />
                   </ListItemButton>
 
                   <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/guidanceToWork">
                     <ListItemIcon>
-                      <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.undone }} />
+                      <HowToRegIcon fontSize="small" sx={{ color: iconColor.base }} />
                     </ListItemIcon>
                     <ListItemText primary={t('guidance_to_work')} />
                   </ListItemButton>
 
                   <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/workPerformance">
                     <ListItemIcon>
-                      <CircleTwoToneIcon fontSize="small" sx={{ color: iconColor.undone }} />
+                      <WorkIcon fontSize="small" sx={{ color: iconColor.base }} />
                     </ListItemIcon>
                     <ListItemText primary={t('work_performance')} />
                   </ListItemButton>

@@ -80,8 +80,7 @@ const WorkerContractOfEmploymentForm: React.FC = () => {
                 />
             </Tabs>
             <Divider />
-            <Divider />
-            <Divider />
+        
             <TabPanel value={value} index={0}>
                 <h2 className={classes.center}>{t('form2Header')}</h2>
                 <Formik
