@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUserById, fetchAllBusinesses } from '../../actions/usersActions';
+import { fetchUserById, fetchAllBusinesses, updateUser, assignWorkerToBusiness } from '../../actions/usersActions';
 import { IRootState } from '../../utils/store';
 import { useParams } from 'react-router-dom';
 import PageLoading from '../../components/PageLoading';
@@ -19,6 +19,8 @@ import ArrowForward from '@mui/icons-material/ArrowForward';
 import { AccountCircle, ArrowDownward } from '@mui/icons-material';
 import useWindowDimensions from '../../utils/useWindowDimensions';
 import { SelectedBusinessNameAndID } from '../../types/types';
+import { setAlert } from '../../actions/alertActions';
+import i18next from 'i18next';
 
 type UserUrlParams = {
   userId: string
@@ -43,7 +45,11 @@ const UserAssign: React.FC = () => {
     setOpen(false);
   }
   const handleAssign = () => {
-    console.log(selectedBusiness?.id)
+    if (profileData && selectedBusiness) {
+      console.log(`UserId: ${profileData._id} and BusinessId: ${selectedBusiness.id}`)
+      dispatch(assignWorkerToBusiness(profileData._id, selectedBusiness.id));
+      dispatch(setAlert(i18next.t('user_updated_successfully')));
+    }
   }
 
   const { userId } = useParams<UserUrlParams>();

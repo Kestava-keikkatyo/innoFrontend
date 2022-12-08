@@ -85,6 +85,11 @@ const fetchAllBusinesses = async () => {
   return await axios.get(`${baseUrl}/user/businesses`, authHeader())
 }
 
+const assignWorkerToBusiness = async (userId: string, businessId: string) => {
+  const res = await axios.put(`${baseUrl}/user/assign/${userId}`, { businessId }, authHeader())
+  return res.data
+}
+
 /**
  * @returns
  * @param user - User to be updated
@@ -151,6 +156,7 @@ export default {
   showMyProfile,
   fetchAllAgencies,
   fetchAllBusinesses,
+  assignWorkerToBusiness,
   updateUser,
   createUser,
   setUserStatus,

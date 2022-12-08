@@ -5,14 +5,16 @@ import history from '../utils/history'
 import fileService from '../services/fileService'
 import { Dispatch } from 'redux'
 import {
+  AssignWorkerToBusinessFailure,
+  AssignWorkerToBusinessRequest, AssignWorkerToBusinessSuccess,
   UserAction,
   UserActionFailure,
   UserGetAll,
   UserGetAllSuccess,
   UserGetCurrentRequest,
   UserGetCurrentSuccess,
-  UserUpdateStatus,
-} from '../types/state'
+  UserUpdateStatus
+} from '../types/state';
 import i18next from 'i18next'
 
 /**
@@ -185,6 +187,25 @@ export const fetchAllBusinesses =
         data: e as string,
       })
       await setAlert('Failed to fetch businesses!: ' + e, severity.Error, 15)(dispatch)
+    }
+  }
+
+export const assignWorkerToBusiness =
+  (userId: string, businessId: string) => async (dispatch: Dispatch<
+      AssignWorkerToBusinessRequest |
+      AssignWorkerToBusinessSuccess |
+      AssignWorkerToBusinessFailure
+    >) => {
+    try {
+      dispatch({ type: usersType.USER_ASSIGN_TO_BUSINESS_REQUEST })
+      const res = await usersService.assignWorkerToBusiness(userId, businessId)
+      dispatch({ type: usersType.USER_ASSIGN_TO_BUSINESS_SUCCESS, data: res.data })
+    } catch (e) {
+      dispatch({
+        type: usersType.USER_ASSIGN_TO_BUSINESS_FAILURE,
+        data: e as string,
+      })
+      await setAlert('Failed to assign worker to business!: ' + e, severity.Error, 15)(dispatch)
     }
   }
 

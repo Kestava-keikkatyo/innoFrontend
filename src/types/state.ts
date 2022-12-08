@@ -1007,3 +1007,18 @@ interface AcceptWorkers {
 }
 
 export type WorkAddActions = FetchGigs | AcceptWorkers
+
+export interface AssignWorkerToBusinessRequest {
+  type: typeof usersType.USER_ASSIGN_TO_BUSINESS_REQUEST
+}
+
+export interface AssignWorkerToBusinessSuccess {
+  type: typeof usersType.USER_ASSIGN_TO_BUSINESS_SUCCESS,
+  data: any
+}
+
+export interface AssignWorkerToBusinessFailure {
+  type: typeof usersType.USER_ASSIGN_TO_BUSINESS_FAILURE,
+  data: any
+}
+
