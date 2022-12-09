@@ -118,10 +118,7 @@ const SendFeedback: React.FC = () => {
           onSubmit={handleSubmit}
           validationSchema={SendFeedbackSchema}
         >
-          {(props) => {
-            // eslint-disable-next-line react/prop-types
-            console.log(props.errors)
-            return (
+          {() => (
               <Form>
                 {/* TODO: Recipient can only be business or agency the worker is part of */}
                 <FormikSelectField
@@ -218,7 +215,7 @@ const SendFeedback: React.FC = () => {
                 }
               </Form>
             )
-          }}
+          }
         </Formik>
       </div>
     </div>

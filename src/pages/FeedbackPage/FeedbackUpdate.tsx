@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { Feedback } from '../../types/types';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,22 +10,21 @@ import {
     Radio,
     RadioGroup,
     Typography,
-    Stack, Box
+    Stack
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { Form, Formik, Field } from 'formik';
-import { FormikSelectField, FormikTextField } from '../../components/FormField';
+import { FormikTextField } from '../../components/FormField';
 import { IRootState } from '../../utils/store';
 import {fetchMyFeedbackById, updateFeedback} from '../../actions/feedBackActions';
 import { useTranslation } from 'react-i18next';
-import {fetchAllAgencies} from '../../actions/usersActions';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 import {setAlert} from '../../actions/alertActions';
 import i18next from 'i18next';
-import PageLoading from "../../components/PageLoading";
+import PageLoading from '../../components/PageLoading';
 
 type FeedbackUrlParams = {
     feedbackId: string
@@ -69,12 +68,7 @@ const FeedbackUpdate: React.FC = () => {
     const { t } = useTranslation();
     const classes = useStyles();
     const dispatch = useDispatch();
-    const isLoading = useSelector((state: IRootState) => state.feedback.loading);
     const { feedbackId } = useParams<FeedbackUrlParams>();
-    const feedbackData: IFeedbackData | undefined = useSelector((state: IRootState) => state.feedback.currentFeedback);
-    useEffect(() => {
-        dispatch(fetchMyFeedbackById(feedbackId));
-    }, [dispatch, feedbackId]);
 
     const questions = {
         shift: `${t('feedback_shift')} *`,
@@ -84,9 +78,19 @@ const FeedbackUpdate: React.FC = () => {
         expectation: `${t('feedback_expectation')} *`,
     };
 
-    if(feedbackData === undefined) {
-        return <PageLoading/>
+    const isLoading = useSelector((state: IRootState) => state.feedback.loading);
+
+    useEffect(() => {
+        dispatch(fetchMyFeedbackById(feedbackId));
+    }, [dispatch, feedbackId]);
+
+    const feedbackData: IFeedbackData | undefined = useSelector((state: IRootState) => state.feedback.currentFeedback);
+    const isFeedbackLoading = useSelector((state: IRootState) => state.feedback.loading);
+
+    if (feedbackData === undefined || isFeedbackLoading) {
+        return <PageLoading />
     }
+
     const initialValues: Feedback = {
         recipientId: feedbackData.recipientId,
         recipientName: feedbackData.recipientName,
@@ -122,10 +126,7 @@ const FeedbackUpdate: React.FC = () => {
                     onSubmit={handleSubmit}
                     validationSchema={FeedbackUpdateSchema}
                 >
-                    {(props) => {
-                        // eslint-disable-next-line react/prop-types
-                        console.log(props.errors)
-                        return (
+                    {() => (
                             <Form>
                                 {Object.entries(questions).map(questionEntry => (
                                     <div key={questionEntry[0]}>
@@ -142,6 +143,7 @@ const FeedbackUpdate: React.FC = () => {
                                                 row
                                                 aria-labelledby={questionEntry[0] + '-radio-buttons-group-label'}
                                                 className={classes.fieldContainer}
+                                                defaultValue={feedbackData[questionEntry[0]]}
                                             >
                                                 <Field
                                                     required
@@ -208,7 +210,7 @@ const FeedbackUpdate: React.FC = () => {
                                 }
                             </Form>
                         )
-                    }}
+                    }
                 </Formik>
             </div>
         </div>
