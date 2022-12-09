@@ -179,6 +179,7 @@ export default {
   report_unarchive: 'Unarchive',
   report_time_reported: 'Time when reported',
   report_time_happened: 'Time when happened',
+  report_intro:'Only identified hazards can be prevented and controlled. This is where you can report if you notice things that pose a health or safety hazard at the workplace. Even small work safety development measures are valuable so that the work environment is safe and possible work accidents can be prevented. You can also make a report about something that is particularly good in the work environment.' ,
 
   // ReportReply page
   report_reply_title: 'Reply to observation',
@@ -1141,5 +1142,8 @@ export default {
     // feelings
     work_feel: 'How is the work going?',
     tell_more: 'Tell more!',
+
+    //faq
+  general: 'General',
 }
 

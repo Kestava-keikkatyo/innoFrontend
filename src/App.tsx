@@ -17,6 +17,7 @@ import FormPreviewPage from './pages/FormPreviewPage'
 import { roles } from './types/types'
 import DatabankRoute from './components/DatabankRoute'
 import BestPractices from './pages/Databank/BestPractices'
+import Faq from './pages/Databank/Faq'
 import JobLifeline from './pages/Databank/JobLifeline'
 import RoleResponsibilities from './pages/Databank/RoleResponsibilities'
 import Databank from './pages/Databank'
@@ -246,6 +247,9 @@ const App: React.FC = () => {
             </DatabankRoute>
             <DatabankRoute path="/databank/best-practices">
               <BestPractices />
+            </DatabankRoute>
+            <DatabankRoute path="/databank/faq">
+              <Faq />
             </DatabankRoute>
             <DatabankRoute path="/databank">
               <Databank />
