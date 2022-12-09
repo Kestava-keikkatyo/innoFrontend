@@ -72,11 +72,12 @@ const fetchFeedbackById = async (id: string) => {
 }
 
 /**
- * @param id
  * @returns
+ * @param feedback
+ * @param feedbackId
  */
-const updateFeedback = async (feedback: Feedback) => {
-  const res = await axios.put(`${baseUrl}/feedback/update/${feedback._id}`, feedback, authHeader())
+const updateFeedback = async (feedback: Feedback, feedbackId: string) => {
+  const res = await axios.put(`${baseUrl}/feedback/update/${feedbackId}`, feedback, authHeader())
   return res.data
 }
 

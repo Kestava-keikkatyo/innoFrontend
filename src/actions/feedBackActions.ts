@@ -174,7 +174,7 @@ export const createFeedback =
  * @desc update feedback.
  */
 export const updateFeedback =
-  (feedback: Feedback) =>
+  (feedback: Feedback, feedbackId: string) =>
   async (dispatch: Dispatch<FeedbackSimilarActions | FeedbackActionFailure>) => {
     try {
       dispatch({
@@ -182,7 +182,7 @@ export const updateFeedback =
         data: feedback,
       })
 
-      const res = await feedBackService.updateFeedback(feedback)
+      const res = await feedBackService.updateFeedback(feedback, feedbackId)
       dispatch({
         type: feedbackType.FEEDBACK_UPDATED_SUCCESS,
         data: res.data,
