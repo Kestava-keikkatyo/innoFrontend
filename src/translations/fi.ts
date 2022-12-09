@@ -32,7 +32,7 @@ export default {
   password: 'Salasana',
   confirm: 'Toista salasana',
   user: 'Käyttäjä',
-  terms_of_use: 'Rekisteröitymällä hyväksyt tietojen lähetyksen ',
+  terms_of_use: 'Hyväksyn tietojen lähetyksen ',
   terms_agency: 'vuokrayrityksille',
   signup_successful: 'Rekistöröityminen onnistui',
 
@@ -47,7 +47,7 @@ export default {
 
   // option
   role: 'Rooli',
-  worker: 'Työntekijä',
+  worker: 'Vuokratyöntekijä',
   agency: 'Henkilöstöpalveluyritys',
   business: 'Käyttäjäyritys',
   jobs: 'Työpaikat',
@@ -178,6 +178,7 @@ export default {
   report_unarchive: 'Palauta arkistosta',
   report_time_reported: 'Raportoitu',
   report_time_happened: 'Tapahtunut',
+  report_intro: "Vain tunnistettuja vaaroja voidaan ehkäistä ja hallita. Tässä voit ilmoittaa, jos huomaat työpaikalla terveys- tai turvallisuusvaaraa aiheuttavia asioita. Pienetkin työturvallisuuden kehittämistoimet ovat arvokkaita, jotta työympäristö on turvallinen ja mahdollinen työtapaturma voidaan ehkäistä. Ilmoituksen voit tehdä myös asiasta, joka on työympäristössä erityisen hyvin.",
 
   // ReportReply page
   report_reply_title: 'Vastaus turvallisuushavaintoon',
@@ -1135,6 +1136,10 @@ agencyResponsibilitiesArray: [
   // feelings
   work_feel: 'Miten työt sujuvat?',
   tell_more: 'Kerro lisää!',
+
+  //faq
+  general: 'Yleistä',
+  
 
 }
 

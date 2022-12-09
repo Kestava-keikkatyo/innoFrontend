@@ -66,6 +66,11 @@ const DatabankRoute: React.FC<DatabankProps> = ({ path, children }) => {
               {t('good_practises')}
               </Link> {/*Hyvät käytännöt */}
             </Button>
+            <Button color="inherit">
+              <Link className="databank-nav-link" to="/databank/faq">
+              {t('faq')}
+              </Link> {/*Hyvät käytännöt */}
+            </Button>
           </Grid>
           <Grid item>
             <div className={classes.search}>
