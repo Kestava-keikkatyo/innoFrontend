@@ -1,4 +1,4 @@
-import { Button, Container, alpha, Grid, InputBase } from '@mui/material';
+import { Button, Container, alpha, Grid, InputBase, MenuItem, Typography } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { Search } from '@mui/icons-material'
 import React from 'react'
@@ -14,6 +14,15 @@ const DatabankRoute: React.FC<DatabankProps> = ({ path, children }) => {
   
   const classes = useStyles()
   const { t } = useTranslation()
+  const changeLanguage = (code: any) => {
+    // setAnchorEl(null);
+    localStorage.setItem('i18nextLng', code);
+    window.location.reload();
+  };
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
 
   return (
     <div>
@@ -27,6 +36,18 @@ const DatabankRoute: React.FC<DatabankProps> = ({ path, children }) => {
         </div>
 
         <div className="databank-desktop-link">
+        <Button variant="contained" color="primary" key="2" onClick={ () => {handleCloseNavMenu(); changeLanguage('fi')}} style={{marginRight: "0.5em"}}>
+            <Typography
+              sx={{color: 'black', fontWeight:600, fontSize: 16}}>
+              FI
+            </Typography>
+          </Button>
+          <Button variant="contained" color="primary" key="3" onClick={ () => {handleCloseNavMenu(); changeLanguage('en')}} style={{marginRight: "2em"}}>
+            <Typography
+              sx={{color: 'black', fontWeight: 600, fontSize: 16}}>
+              EN
+            </Typography>
+          </Button>
           <Link to="/home" style={{ textDecoration: 'none' }}>
             <Button variant="contained" color="primary">
              {t('homeButton')}
