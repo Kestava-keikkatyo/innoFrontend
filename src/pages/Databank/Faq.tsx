@@ -55,7 +55,7 @@ const BestPractices: React.FC = () => {
         Faq_databank = faq_databank;
     }
   return (
-    <div style={{ width: '100%', marginTop: '2rem', marginBottom: '2rem' }}>
+    <div style={{ width: '100%', marginTop: '2rem', marginBottom: '2rem', paddingBottom: '10rem' }}>
       <Typography style={{ marginBottom: '1rem' }} variant="h1" className='header' color="primary">
         {t("faq")}
       </Typography>

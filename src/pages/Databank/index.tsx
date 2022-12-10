@@ -2,9 +2,9 @@ import { Grid, Typography } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Spacing from '../../components/Spacing'
+import { useTranslation } from 'react-i18next';
 
 export interface DatabankProps {}
-
 const TriangleCard = ({ index }: { index: number }) => {
   const num1 = ((index * 10) % 175) + 80
   const num2 = ((index * 25) % 175) + 80
@@ -19,7 +19,7 @@ const TriangleCard = ({ index }: { index: number }) => {
       ${255 - num2},
       ${255 - num3},
       200)`
-  return (
+  return (   
     <div className="triangle-card" style={{ backgroundColor: bgColor }}>
       <div className="triangle" style={{ backgroundColor: accentColor }}></div>
       <h2 className="triangle-h2">Triangle</h2>
@@ -36,11 +36,12 @@ const TriangleCard = ({ index }: { index: number }) => {
   )
 }
 const Databank: React.FC<DatabankProps> = () => {
+  const { t } = useTranslation();
   // const todoColor = `rgba(${(index*10%175)+80},${(index*25%175)+80},${(index*50%175)+80},200)`
   return (
     <div>
       <Spacing m2 />
-      <Typography variant="h1" className='header3'>Artikkelit</Typography>
+      <Typography variant="h1" className='header3'>{t('articles')}</Typography>
       <Grid container>
         {Array.from(Array(10)).map((_, i: number) => (
           <Grid item xs={12} sm={6} md={4} key={i} className="triangle-container">
