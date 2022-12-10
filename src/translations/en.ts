@@ -503,7 +503,7 @@ export default {
   articles: 'Articles',
   work_lifespan: 'Work lifespan',
   areas_of_responsibility: 'Areas of responsibility',
-  good_practises: 'Good practises',
+  good_practises: 'Good practices',
 
   // NewFormHeader
   import: 'Import',
@@ -1145,5 +1145,6 @@ export default {
 
     //faq
   general: 'General',
+  search: 'Search'
 }
 

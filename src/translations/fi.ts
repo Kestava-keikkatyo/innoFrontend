@@ -1139,6 +1139,7 @@ agencyResponsibilitiesArray: [
 
   //faq
   general: 'Yleistä',
+  search: 'Hae'
   
 
 }
