@@ -4,13 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../utils/store';
 import { Link } from 'react-router-dom';
 import makeStyles from '@mui/styles/makeStyles';
-import { fetchAllMyFeedbacks } from '../../actions/feedBackActions';
+import { fetchFeedbacksAppointedToMe } from '../../actions/feedBackActions';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
-import { Stack } from '@mui/material';
 import moment from 'moment';
 
-const Feedbacks: React.FC = () => {
+const ReceivedFeedbacks: React.FC = () => {
 
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -18,17 +17,24 @@ const Feedbacks: React.FC = () => {
   const { feedbacks } = useSelector((state: IRootState) => state.feedback || []);
 
   useEffect(() => {
-    dispatch(fetchAllMyFeedbacks());
+    dispatch(fetchFeedbacksAppointedToMe());
   }, [dispatch]);
 
   const rows = feedbacks;
 
   const columns: GridColumns = [
     {
-      field: 'recipientName',
-      headerName: (i18next.t('feedback_recipient')),
+      field: 'senderName',
+      headerName: (i18next.t('feedback_sender')),
       minWidth: 100,
       flex: 1,
+      renderCell: (params) => {
+        return <span>{params.row.anonymous ?
+            t('anonymous') :
+            params.row.senderName
+        }
+        </span>
+      }
     },
     {
       field: 'createdAt',
@@ -57,31 +63,22 @@ const Feedbacks: React.FC = () => {
       minWidth: 100,
       flex: 1,
       renderCell: (params) => {
-        return (
-          <Stack direction="row" spacing={2}>
-            <Link to={'/feedback/details/' + params.id}>
-              <span>{t('feedback_details')}</span>
-            </Link>
-            <Link to={'/feedback/update/' + params.id}>
-              <span className={classes.update}>{t('button_edit')}</span>
-            </Link>
-          </Stack>
-        );
+        return <Link to={'/feedback/receivedDetails/' + params.id}>{t('feedback_details')}</Link>
       }
     },
   ];
-    return (
-      <div style={{ height: '75vh' }}>
-        <DataGrid
-          getRowId={(row) => row._id}
-          rows={rows}
-          disableSelectionOnClick
-          columns={columns}
-          pageSize={10}
-          rowsPerPageOptions={[10]}
-        />
-      </div>
-    );
+  return (
+    <div style={{ height: '75vh' }}>
+      <DataGrid
+        getRowId={(row) => row._id}
+        rows={rows}
+        disableSelectionOnClick
+        columns={columns}
+        pageSize={10}
+        rowsPerPageOptions={[10]}
+      />
+    </div>
+  );
 }
 const useStyles = makeStyles(() => ({
   update: {
@@ -96,4 +93,4 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export default Feedbacks;
+export default ReceivedFeedbacks;

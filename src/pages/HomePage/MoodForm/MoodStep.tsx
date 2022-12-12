@@ -37,7 +37,7 @@ const useStyles = makeStyles({
 
   const dispatch: any = useDispatch();
 
-  let initialClickedValues = {
+  const initialClickedValues = {
     0: false,
     1: false,
     2: false,

@@ -12,6 +12,26 @@ import {
   FeedbackSimilarActions,
 } from '../types/state'
 
+export const fetchFeedbacksAppointedToMe =
+  () =>
+  async (
+    dispatch: Dispatch<FeedbackGetAllRequest | FeedbackGetAllSuccess | FeedbackActionFailure>,
+  ) => {
+    try {
+      dispatch({
+        type: feedbackType.FEEDBACK_GET_ALL_REQUEST,
+      })
+      const res = await feedBackService.fetchFeedbacksAppointedToMe()
+      dispatch({ type: feedbackType.FEEDBACK_GET_ALL_SUCCESS, data: res.data })
+    } catch (e) {
+      dispatch({
+        type: feedbackType.FEEDBACK_ACTION_FAILURE,
+        data: e as string,
+      })
+      await setAlert('Failed to fetch feedbacks appointed to you!: ' + e, severity.Error, 15)(dispatch)
+    }
+  }
+
 /**
  * @function
  * @desc Fetches all user's feedbacks.
@@ -32,7 +52,7 @@ export const fetchAllMyFeedbacks =
         type: feedbackType.FEEDBACK_ACTION_FAILURE,
         data: e as string,
       })
-      setAlert('Failed to fetch feedbacks!: ' + e, severity.Error, 15)(dispatch)
+      await setAlert('Failed to fetch feedbacks!: ' + e, severity.Error, 15)(dispatch)
     }
   }
 
@@ -56,7 +76,7 @@ export const fetchAllFeedbacksForAdmin =
         type: feedbackType.FEEDBACK_ACTION_FAILURE,
         data: e as string,
       })
-      setAlert('Failed to fetch feedbacks!: ' + e, severity.Error, 15)(dispatch)
+      await setAlert('Failed to fetch feedbacks!: ' + e, severity.Error, 15)(dispatch)
     }
   }
 
@@ -85,7 +105,7 @@ export const fetchMyFeedbackById =
         type: feedbackType.FEEDBACK_ACTION_FAILURE,
         data: e as string,
       })
-      setAlert('Failed to fetch the feedback: ' + e, severity.Error, 15)(dispatch)
+      await setAlert('Failed to fetch the feedback: ' + e, severity.Error, 15)(dispatch)
     }
   }
 
@@ -114,7 +134,7 @@ export const fetchFeedbackById =
         type: feedbackType.FEEDBACK_ACTION_FAILURE,
         data: e as string,
       })
-      setAlert('Failed to fetch the feedback: ' + e, severity.Error, 15)(dispatch)
+      await setAlert('Failed to fetch the feedback: ' + e, severity.Error, 15)(dispatch)
     }
   }
 
@@ -138,13 +158,13 @@ export const createFeedback =
         type: feedbackType.FEEDBACK_POSTED_SUCCESS,
         data,
       })
-      setAlert('Feedback was sent successfully!')(dispatch)
+      await setAlert('Feedback was sent successfully!')(dispatch)
     } catch (e) {
       dispatch({
         type: feedbackType.FEEDBACK_ACTION_FAILURE,
         data: e as string,
       })
-      setAlert('Failed to send feedback: ' + e, severity.Error, 15)(dispatch)
+      await setAlert('Failed to send feedback: ' + e, severity.Error, 15)(dispatch)
       return e
     }
   }
@@ -154,7 +174,7 @@ export const createFeedback =
  * @desc update feedback.
  */
 export const updateFeedback =
-  (feedback: Feedback) =>
+  (feedback: Feedback, feedbackId: string) =>
   async (dispatch: Dispatch<FeedbackSimilarActions | FeedbackActionFailure>) => {
     try {
       dispatch({
@@ -162,7 +182,7 @@ export const updateFeedback =
         data: feedback,
       })
 
-      const res = await feedBackService.updateFeedback(feedback)
+      const res = await feedBackService.updateFeedback(feedback, feedbackId)
       dispatch({
         type: feedbackType.FEEDBACK_UPDATED_SUCCESS,
         data: res.data,
@@ -174,6 +194,6 @@ export const updateFeedback =
         type: feedbackType.FEEDBACK_ACTION_FAILURE,
         data: e as string,
       })
-      setAlert('Failed to update feedback: ' + e, severity.Error, 15)(dispatch)
+      await setAlert('Failed to update feedback: ' + e, severity.Error, 15)(dispatch)
     }
   }

@@ -94,6 +94,16 @@ const fetchAllBusinesses = async () => {
 }
 
 /**
+ * @function
+ * @desc Gets all agencies.
+ * @returns all agencies.
+ */
+const fetchAllBusinessesAndAgencies = async () => {
+  const res = await axios.get(`${baseUrl}/user/businessesAndAgencies`, authHeader())
+  return res
+}
+
+/**
  * @param id
  * @returns
  */
@@ -157,6 +167,7 @@ export default {
   showMyProfile,
   fetchAllAgencies,
   fetchAllBusinesses,
+  fetchAllBusinessesAndAgencies,
   updateUser,
   createUser,
   setUserStatus,
