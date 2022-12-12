@@ -178,7 +178,7 @@ export default {
   report_unarchive: 'Palauta arkistosta',
   report_time_reported: 'Raportoitu',
   report_time_happened: 'Tapahtunut',
-  report_intro: "Vain tunnistettuja vaaroja voidaan ehkäistä ja hallita. Tässä voit ilmoittaa, jos huomaat työpaikalla terveys- tai turvallisuusvaaraa aiheuttavia asioita. Pienetkin työturvallisuuden kehittämistoimet ovat arvokkaita, jotta työympäristö on turvallinen ja mahdollinen työtapaturma voidaan ehkäistä. Ilmoituksen voit tehdä myös asiasta, joka on työympäristössä erityisen hyvin.",
+  report_intro: 'Vain tunnistettuja vaaroja voidaan ehkäistä ja hallita. Tässä voit ilmoittaa, jos huomaat työpaikalla terveys- tai turvallisuusvaaraa aiheuttavia asioita. Pienetkin työturvallisuuden kehittämistoimet ovat arvokkaita, jotta työympäristö on turvallinen ja mahdollinen työtapaturma voidaan ehkäistä. Ilmoituksen voit tehdä myös asiasta, joka on työympäristössä erityisen hyvin.',
 
   // ReportReply page
   report_reply_title: 'Vastaus turvallisuushavaintoon',
@@ -1063,7 +1063,6 @@ export default {
       summary: 'Työntekijän on ilmoitettava työssä havaitsemistaan vioista ja puutteista työnantajalle ja työsuojeluvaltuutetulle. '
     }
   ],
-
   businessResponsibilitiesArray: [
     {
       header: '1. Jaettu työsuojeluvastuu',
@@ -1096,7 +1095,6 @@ export default {
         'Työssä tarvittavat suojaimet valitaan työpaikalla tehdyn riskinarvioinnin perusteella.  ',
     }
   ],
-
   agencyResponsibilitiesArray: [
     {
       header: '1. Jaettu työsuojeluvastuu',
@@ -1144,15 +1142,12 @@ export default {
         'Työssä tarvittavat suojaimet valitaan työpaikalla tehdyn riskinarvioinnin perusteella.  ',
     }
   ],
-
   // feelings
   work_feel: 'Miten työt sujuvat?',
   tell_more: 'Kerro lisää!',
 
-  //faq
+  // FAQ
   general: 'Yleistä',
   search: 'Hae'
-  
-
 }
 
