@@ -5,14 +5,24 @@ import AccordionDetails from '@mui/material/AccordionDetails'
 import Typography from '@mui/material/Typography'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import bestPractices from '../../assets/tietopankki/hyvat-kaytannot.json'
+import bestPractices_en from '../../assets/tietopankki/hyvat-kaytannot-en.json'
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
 const BestPractices: React.FC = () => {
+  const { t } = useTranslation();
+  let BestPractices;
+    if(i18next.language === 'en') {
+      BestPractices = bestPractices_en;
+    } else {
+      BestPractices = bestPractices;
+    }
   return (
     <div style={{ width: '100%', marginTop: '2rem', marginBottom: '2rem' }}>
       <Typography style={{ marginBottom: '1rem' }} variant="h1" className='header' color="primary">
-        Hyvät käytännöt
+        {t('good_practises')}
       </Typography>
-      {bestPractices.map((e, i) => (
+      {BestPractices.map((e, i) => (
         <Accordion key={i}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}

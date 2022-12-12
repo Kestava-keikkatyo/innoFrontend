@@ -179,6 +179,7 @@ export default {
   report_unarchive: 'Unarchive',
   report_time_reported: 'Time when reported',
   report_time_happened: 'Time when happened',
+  report_intro:'Only identified hazards can be prevented and controlled. This is where you can report if you notice things that pose a health or safety hazard at the workplace. Even small work safety development measures are valuable so that the work environment is safe and possible work accidents can be prevented. You can also make a report about something that is particularly good in the work environment.' ,
 
   // ReportReply page
   report_reply_title: 'Reply to observation',
@@ -502,7 +503,7 @@ export default {
   articles: 'Articles',
   work_lifespan: 'Work lifespan',
   areas_of_responsibility: 'Areas of responsibility',
-  good_practises: 'Good practises',
+  good_practises: 'Good practices',
 
   // NewFormHeader
   import: 'Import',
@@ -1005,6 +1006,7 @@ export default {
   jobAdvisor: 'Job advisor',
   userCompanyName: 'User company name',
   serviceCompany: 'The name of the personnel service company',
+  
   // Worker responsibilities
   worker_step_1: [
     "Compliance with the employer's instructions and regulations",
@@ -1040,7 +1042,6 @@ export default {
     'Ensures that the temporary worker is treated in the same way as a permanent worker.',
     'The employee reports all accidents, near misses, violence and threats, and gives feedback related to other occupational safety (possible deficiencies or problems related to occupational safety and safety initiatives).'
   ],
-
 
   // responsibilities page
   responsibility_1_article: "In accordance with his experience, the teaching and guidance he has received from the employer, and his professional skills, the employee must take care of his own and other employees' safety and health in his work with the means at his disposal. In order to maintain safety and health, the employee must act carefully and cautiously as required by the work and working conditions, and take care of cleanliness and order. The employee must cooperate with the employer and employee representatives to prevent work accidents, occupational diseases and other health hazards caused by work and the work environment. Health means both physical and mental health. ",
@@ -1151,5 +1152,9 @@ export default {
   // feelings
   work_feel: 'How is the work going?',
   tell_more: 'Tell more!',
+
+  // FAQ
+  general: 'General',
+  search: 'Search'
 }
 
