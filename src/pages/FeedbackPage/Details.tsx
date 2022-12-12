@@ -50,9 +50,7 @@ const Details: React.FC = () => {
         <div className={classes.feedback}>
             <div className={classes.feedbackTitleContainer}>
                 <Typography color="secondary" className={classes.feedbackTitle} variant="h4">{t('feedback_title_details')}</Typography>
-            </div>
-            <div className={classes.back}>
-            <Button className={classes.backButton} color="secondary" component={Link} to="/feedback?tab=my">{t('back')}</Button>
+                <Button className={classes.backButton} color="secondary" component={Link} to="/feedback?tab=my">{t('back')}</Button>
             </div>
             <div className={classes.feedbackContainer}>
                 <div className={classes.feedbackShow}>
@@ -132,7 +130,7 @@ const Details: React.FC = () => {
     );
 };
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
     feedback: {
         flex: '4',
         padding: '20px'
@@ -153,7 +151,7 @@ const useStyles = makeStyles(() => ({
         padding: '20px',
         webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
         boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
-        marginLeft: '20px'
+        marginTop: '20px'
     },
     feedbackTitle: {
         fontSize: '18px',
@@ -161,6 +159,7 @@ const useStyles = makeStyles(() => ({
     },
     feedbackContainer: {
         display: 'flex',
+        flexDirection: 'column',
         marginTop: '20px'
     },
     feedbackShowTitle: {
@@ -215,11 +214,6 @@ const useStyles = makeStyles(() => ({
         border: '1px solid',
         borderColor: 'secondary'
     },
-    back: {
-        display: 'flex',
-        justifyContent: 'flex-end',
-        alignItems: 'flex-end'
-    }
 }));
 
 export default Details;

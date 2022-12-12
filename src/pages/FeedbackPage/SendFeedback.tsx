@@ -17,7 +17,7 @@ import { IRootState } from '../../utils/store';
 import { createFeedback } from '../../actions/feedBackActions';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
-import {fetchAllAgencies} from '../../actions/usersActions';
+import { fetchAllAgencies, fetchAllBusinessesAndAgencies } from '../../actions/usersActions';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
@@ -94,7 +94,7 @@ const SendFeedback: React.FC = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchAllAgencies());
+    dispatch(fetchAllBusinessesAndAgencies());
   }, [dispatch]);
 
   const handleSubmit = (feedback: Feedback) => {
