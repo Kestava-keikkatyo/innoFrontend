@@ -1,4 +1,4 @@
-import {CircularProgress, Button, Tooltip, Divider, TextField} from '@mui/material';
+import {CircularProgress, Button, Tooltip, Divider, TextField, Card} from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Field, Form, Formik } from 'formik';
@@ -26,7 +26,7 @@ const WorkerContractOfEmploymentForm: React.FC = () => {
                     borderLeft: '1px solid #ccc',
                     borderRight: '1px solid #ccc',
                     borderBottom: '1px solid #ccc',
-                    position: 'relative'
+
                 }}
                 role="tabpanel"
                 hidden={value !== index}
@@ -34,8 +34,7 @@ const WorkerContractOfEmploymentForm: React.FC = () => {
                 aria-labelledby={`scrollable-force-tab-${index}`}
                 {...other}
             >
-                <div className={classes.disabled} />
-                 {value === index && <Box p={2} className={classes.noPointerEvents}>{children}</Box>}
+                {value === index && <Box p={2} className={classes.noPointerEvents}>{children}</Box>}
             </div>
         );
     }
@@ -80,7 +79,6 @@ const WorkerContractOfEmploymentForm: React.FC = () => {
                 />
             </Tabs>
             <Divider />
-        
             <TabPanel value={value} index={0}>
                 <h2 className={classes.center}>{t('form2Header')}</h2>
                 <Formik
@@ -97,14 +95,14 @@ const WorkerContractOfEmploymentForm: React.FC = () => {
                             <h4 className={classes.h4}>{t('date')}:</h4>
                             <FormikTextField className={classes.smallerTextField} name={'date'} type={'date'} label={''}></FormikTextField>
                         </Box>
-                        <h4 className={classes.h4}>{t('form2Text3')}:</h4>
+                        <h4 className={classes.graytext}>{t('form2Text3')}:</h4>
                         <Box className={classes.boxColumn}>
                             <label>
-                                <input disabled type="radio" name="check" />
+                                <input type="radio" name="check" />
                                 {t('form2Check1')}
                             </label>
                             <label>
-                                <input disabled type="radio" name="check" />
+                                <input type="radio" name="check" />
                                 {t('form2Check2')}
                             </label>
                         </Box>
@@ -114,51 +112,51 @@ const WorkerContractOfEmploymentForm: React.FC = () => {
                         </Box>
                         <Box className={classes.boxColumn}>
                             <label>
-                                <Field disabled type="checkbox" name="check3" />
+                                <Field type="checkbox" name="check3" />
                                 {t('form2Check3')}
                             </label>
                             <label>
-                                <Field disabled type="checkbox" name="check4" />
+                                <Field type="checkbox" name="check4" />
                                 {t('form2Check4')}
                             </label>
                         </Box>
-                        <h4 className={classes.h4}>{t('form2Text4')}:</h4>
+                        <h4 className={classes.graytext}>{t('form2Text4')}:</h4>
                         <Box className={classes.boxColumn}>
                             <label>
-                                <Field disabled type="checkbox" name="check5" />
+                                <Field type="checkbox" name="check5" />
                                 {t('form2Check5')}
                             </label>
                             <label>
-                                <Field disabled type="checkbox" name="check6" />
+                                <Field type="checkbox" name="check6" />
                                 {t('form2Check6')}
                             </label>
                             <label>
-                                <Field disabled type="checkbox" name="check7" />
+                                <Field type="checkbox" name="check7" />
                                 {t('form2Check7')}
                             </label>
                             <label>
-                                <Field disabled type="checkbox" name="check8" />
+                                <Field type="checkbox" name="check8" />
                                 {t('form2Check8')}
                             </label>
                         </Box>
-                        <h4 className={classes.h4}>{t('form2Text5')}:</h4>
+                        <h4 className={classes.graytext}>{t('form2Text5')}:</h4>
                         <Box className={classes.boxColumn}>
                             <label>
-                                <Field disabled type="checkbox" name="check9" />
+                                <Field type="checkbox" name="check9" />
                                 {t('form2Check9')}
                             </label>
                             <label>
-                                <Field disabled type="checkbox" name="check10" />
+                                <Field type="checkbox" name="check10" />
                                 {t('form2Check10')}
                             </label>
                             <label>
-                                <Field disabled type="checkbox" name="check11" />
+                                <Field type="checkbox" name="check11" />
                                 {t('form2Check11')}
                             </label>
                         </Box>
                         <Box className={classes.boxRow}>
                             <label className={classes.checkbox}>
-                                <Field disabled type="checkbox" name="check12" />
+                                <Field type="checkbox" name="check12" />
                                 {t('form2Check12')}
                             </label>
                             <h4 className={classes.h4}>{t('user_contact_details')}:</h4>
@@ -166,9 +164,9 @@ const WorkerContractOfEmploymentForm: React.FC = () => {
                             <h4 className={classes.h4}>{t('user_phone_number')}:</h4>
                             <FormikTextField className={classes.textField} label={t('user_phone_number')} name={'phonenumber1'} type={'tel'}></FormikTextField>
                         </Box>
-                        <h4 className={classes.h4}>{t('form2Text6')}</h4>
-                        <h4 className={classes.h4}>{t('form2Text7')}</h4>
-                        <h4 className={classes.h4}>{t('form2Text8')}</h4>
+                        <h4 className={classes.graytext}>{t('form2Text6')}</h4>
+                        <h4 className={classes.graytext}>{t('form2Text7')}</h4>
+                        <h4 className={classes.graytext}>{t('form2Text8')}</h4>
                         <Box className={classes.boxRow}>
                             <h4 className={classes.h4}>{t('name')}:</h4>
                             <FormikTextField className={classes.textField} label={t('name')} name={'name1'} type={'text'}></FormikTextField>
@@ -182,7 +180,7 @@ const WorkerContractOfEmploymentForm: React.FC = () => {
                             <FormikTextField className={classes.textField} label={t('userCompanyAddress')} name={'address'} type={'text'}></FormikTextField>
                         </Box>
                         <Box className={classes.boxColumn}>
-                            <h4 className={classes.h4}>{t('form2Text9')}</h4>
+                            <h4>{t('form2Text9')}</h4>
                             <TextField placeholder={t('textAreaPlaceholder')} multiline rows={4}/>
                         </Box>
                         <h4 className={classes.marginTop}>{t('form2Text10')}</h4>
@@ -202,14 +200,14 @@ const WorkerContractOfEmploymentForm: React.FC = () => {
                             <h4 className={classes.h4}>{t('clock')}:</h4>
                             <FormikTextField className={classes.smallerTextField} label={''} name={'clock'} type={'time'}></FormikTextField>
                         </Box>
-                        <h4 className={classes.h4}>{t('form2Text11')}:</h4>
+                        <h4 className={classes.graytext}>{t('form2Text11')}:</h4>
                         <Box className={classes.boxColumn}>
                             <label>
-                                <input disabled type="radio" name="check" />
+                                <input type="radio" name="check" />
                                 {t('form2Check13')}
                             </label>
                             <label>
-                                <input disabled type="radio" name="check" />
+                                <input type="radio" name="check" />
                                 {t('form2Check14')}
                             </label>
                         </Box>
@@ -220,6 +218,7 @@ const WorkerContractOfEmploymentForm: React.FC = () => {
                             <h4 className={classes.h4}>{t('orientated')}:</h4>
                             <FormikTextField className={classes.textField} label={t('orientated')} name={'orientated'} type={'text'}></FormikTextField>
                         </Box>
+                        {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="secondary" disabled className={classes.submitButton}>{t('submit')}</Button>}
                     </Form>
                 </Formik>
             </TabPanel>
@@ -287,6 +286,7 @@ const WorkerContractOfEmploymentForm: React.FC = () => {
                             <h4>{t('form3Check16')}:</h4>
                             <FormikTextField label={t('form3Check16')} name={'askHelp'} type={'text'}></FormikTextField>
                         </Box>
+                        {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="secondary" disabled className={classes.submitButton}>{t('submit')}</Button>}
                     </Form>
                 </Formik>
             </TabPanel>
@@ -310,6 +310,9 @@ const useStyles = makeStyles((theme: Theme) => ({
         textAlign: 'center',
         color: 'rgba(148, 150, 153)',
     },
+    cards:{
+        margin:10
+    },
     p: {
         textAlign: 'left',
         marginBottom: '50px',
@@ -328,6 +331,9 @@ const useStyles = makeStyles((theme: Theme) => ({
         color: 'rgba(193, 195, 199)',
     },
     h3:{
+        color: 'rgba(193, 195, 199)',
+    },
+    graytext:{
         color: 'rgba(193, 195, 199)',
     },
     h4: {
@@ -355,7 +361,8 @@ const useStyles = makeStyles((theme: Theme) => ({
         fontSize: '20px',
         display: 'block',
         margin: '0 auto',
-        marginTop: '50px'
+        marginTop: '50px',
+        
     },
     marginBottom: {
         marginBottom: '30px'
@@ -365,16 +372,9 @@ const useStyles = makeStyles((theme: Theme) => ({
         marginTop: '21px',
         color: 'rgba(193, 195, 199)',
     },
-    disabled: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
 
-    },
     noPointerEvents: {
-        pointerEvents: 'none'
+        pointerEvents: 'none',     
     }
 }));
 
