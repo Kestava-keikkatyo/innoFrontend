@@ -1148,6 +1148,16 @@ export default {
 
   // FAQ
   general: 'Yleistä',
-  search: 'Hae'
+  search: 'Hae',
+
+   // Privacy Policy
+   privacy_policy: 'Tietosuojaseloste',
+   privacy_policies1: "Rekisteröitymällä hyväksyt antamasi tietojen lähetyksen Keikkakaverille ja henkilöstöpalveluyrityksille, sekä sinua koskeville käyttäjäyrityksille.",
+   privacy_policies2: "Tietoja kerätään, jotta henkilöstöpalveluyritykset voivat välittää työntekijälle työtä ja siihen liittyviä tietoja ja lähettää työntekijän tietoja työn tilanneelle käyttäjäyritykselle.",
+   privacy_policies3: "Rekisteröityminen on välttämätöntä, sillä työnvälitys ei onnistu ilman henkilötietoja.",
+   privacy_policies4: "Tietoja säilytetään kannassa toistaiseksi. Halutessaan käyttäjällä on oikeus poistattaa tietonsa ottamalla yhteyttä Keikkakaverin ylläpitoon.",
+   privacy_policies5: "Henkilötietojasi välitetään käyttäjäyrityksille ainoastaan silloin, kun olet menossa yritykselle töihin.",
+   privacy_policies6: "Keikkakaverin keräämiin henkilötietohin kuuluvat nimi, sähköpostiosoite, osoitetiedot ja puhelinnumero.",
+   privacy_policies7: "Rekisteröitymisen yhteydessä kerätään ainoastaan nimi ja sähköpostiosoite. Muut tiedot voi lisätä myöhemmin, eivätkä ne ole pakollisia."
 }
 
