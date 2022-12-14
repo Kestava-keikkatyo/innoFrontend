@@ -1155,6 +1155,17 @@ export default {
 
   // FAQ
   general: 'General',
-  search: 'Search'
+  search: 'Search',
+
+  // Privacy Policy
+  privacy_policy: 'Privacy Policy',
+  privacy_policies1: "By registering, you agree to the sending of the information you provide to Keikkaveri and agencies, as well as to the businesses that concern you.",
+  privacy_policies2: "Information is collected so that agencies can convey the job and related information to the employee and send the employee's information to the business that ordered the work.",
+  privacy_policies3: "Registration is necessary, because job placement cannot be done without personal information.",
+  privacy_policies4: "The information will be stored in the database indefinitely. If the user wishes, he/she has the right to delete his data by contacting Keikkaveri's maintenance.",
+  privacy_policies5: "Your personal data will only be forwarded to businesses when you are going to work for the company.",
+  privacy_policies6: "The personal data collected by Keikkakaveri includes name, email address, address information and phone number.",
+  privacy_policies7: "When registering, only name and email address are collected. Other information can be added later and is not mandatory."
+  
 }
 
