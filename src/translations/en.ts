@@ -84,7 +84,7 @@ export default {
   mood_category: 'Mood Category',
 
   // Schedule
-  schedule_title: 'Your schedule',
+  schedule_title: 'Your calendar',
 
   // Pie chaert
   mood_overall: 'Mood overall',
@@ -310,7 +310,7 @@ export default {
 
   // ResponsiveDrawer
   databank: 'Databank',
-  schedule: 'Schedule',
+  schedule: 'Calendar',
   work_overview: 'Work overview',
   forms: 'Forms',
   materials: 'Materials',
@@ -823,6 +823,7 @@ export default {
   WorkerResponsibilities: 'Worker responsibilities',
   AgencyResponsibilities: 'Agency responsibilities',
   BusinessResponsibilities: 'Business responsibilities',
+  Schedule: 'Calendar',
 
   // Responsibilities
   CustomerContractResponsibilities: '',

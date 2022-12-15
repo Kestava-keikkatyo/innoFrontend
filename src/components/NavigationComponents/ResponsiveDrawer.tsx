@@ -340,6 +340,40 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               <Divider />
             </>
           )}
+          
+          {role === roles.Worker && (
+            <>
+              <ListItemButton component={Link} to="/businessContracts" onClick={handleClick}>
+                <ListItemIcon>
+                  <LibraryBooksOutlinedIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('business_contracts')} />
+              </ListItemButton>
+              <Divider />
+            </>
+          )}
+          {role === roles.Worker && (
+            <>
+              <ListItemButton component={Link} to="/jobs" onClick={handleClick}>
+                <ListItemIcon>
+                  <WorkOutlineIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('jobs')} />
+              </ListItemButton>
+              <Divider />
+            </>
+          )}      
+          {role === roles.Worker && (
+            <>
+              <ListItemButton component={Link} to="/fiilismittari" onClick={handleClick}>
+                <ListItemIcon>
+                  <MoodIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('moods')} />
+              </ListItemButton>
+              <Divider />
+            </>
+          )}              
             */}
 
 
@@ -383,17 +417,6 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
             </>
           )}
 
-          {role === roles.Worker && (
-            <>
-              <ListItemButton component={Link} to="/businessContracts" onClick={handleClick}>
-                <ListItemIcon>
-                  <LibraryBooksOutlinedIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('business_contracts')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}
           {(role === roles.Worker) && (
             <>
               <ListItemButton onClick={handleOpenNest}>
@@ -436,29 +459,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               <Divider />
             </>
           )}
-          {role === roles.Worker && (
-            <>
-              <ListItemButton component={Link} to="/jobs" onClick={handleClick}>
-                <ListItemIcon>
-                  <WorkOutlineIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('jobs')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}
 
-          {role === roles.Worker && (
-            <>
-              <ListItemButton component={Link} to="/fiilismittari" onClick={handleClick}>
-                <ListItemIcon>
-                  <MoodIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('moods')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}
           {role === roles.Worker && (
             <>
               <ListItemButton component={Link} to="/reports" onClick={handleClick}>
