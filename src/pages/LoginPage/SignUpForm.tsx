@@ -147,15 +147,16 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
                       options={roleOptions}
                   />
                 </Box>
-                <Box display="flex" flexDirection="column" className="marginTop">
-                  <FormikSelectField
+                {(values.role === roles.Agency || values.role === roles.Business) && (
+                  <Box display="flex" flexDirection="column" className="marginTop">
+                    <FormikSelectField
                       label={t('category')}
                       name="category"
                       options={categoryOptions}
-                      disabled={values.role === roles.Worker ? true : false}
                       setFieldValue={setFieldValue}
-                  />
-                </Box>
+                    />
+                  </Box>
+                )}
                 <Typography gutterBottom variant="body2" color="textSecondary" className="marginTop">
                   {t('terms_of_use')}
                   <Link
@@ -171,7 +172,7 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
                   type="submit"
                   disabled={!dirty || !isValid || loading}
                   variant="contained"
-                  color="primary"
+                  color={(!dirty || !isValid || loading) ? 'warning' : 'primary'}
                   className="marginTop"
                 >
                   {loading ? <CircularProgress size={24} /> : t('sign_up')}

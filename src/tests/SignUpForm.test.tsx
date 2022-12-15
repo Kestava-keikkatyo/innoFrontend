@@ -27,7 +27,6 @@ describe('<SignUpForm />', () => {
     const inputPassword = screen.getByLabelText('password')
     const inputConfirmPassword = screen.getByLabelText('confirm')
     const inputRoleSelection = document.querySelector('input[name="role"]')
-    const signUpButton = screen.getByRole('button', { name: 'sign_up' })
 
     await userEvent.type(inputName, 'Working Wayde')
     await userEvent.type(inputEmail, 'wayde@worker.com')
@@ -38,6 +37,9 @@ describe('<SignUpForm />', () => {
         fireEvent.change(inputRoleSelection, { target: { value: 'worker' } })
       }
     })
+
+    const signUpButton = screen.getByRole('button', { name: 'sign_up' })
+
     await userEvent.click(signUpButton)
 
     /* todo: HandleSubmit doesn't take into account the confirmPassword field. */
@@ -58,8 +60,6 @@ describe('<SignUpForm />', () => {
     const inputPassword = screen.getByLabelText('password')
     const inputConfirmPassword = screen.getByLabelText('confirm')
     const inputRoleSelection = document.querySelector('input[name="role"]')
-    const inputCategorySelection = document.querySelector('input[name="category"]')
-    const signUpButton = screen.getByRole('button', { name: 'sign_up' })
 
     await userEvent.type(inputName, 'Agency Annie')
     await userEvent.type(inputEmail, 'annie@agency.com')
@@ -70,11 +70,17 @@ describe('<SignUpForm />', () => {
         fireEvent.change(inputRoleSelection, { target: { value: 'agency' } })
       }
     })
+
+    const inputCategorySelection = document.querySelector('input[name="category"]')
+
     await act(async () => {
       if (inputCategorySelection !== null) {
         fireEvent.change(inputCategorySelection, { target: { value: 'Tekniikka' } })
       }
     })
+
+    const signUpButton = screen.getByRole('button', { name: 'sign_up' })
+
     await userEvent.click(signUpButton)
 
     /* todo: HandleSubmit doesn't take into account the confirmPassword field. */

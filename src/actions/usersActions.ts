@@ -188,6 +188,27 @@ export const fetchAllBusinesses =
     }
   }
 
+  /**
+   * @function
+   * @desc Fetches all agencies.
+   */
+export const fetchAllBusinessesAndAgencies =
+  () => async (dispatch: Dispatch<UserGetAll | UserGetAllSuccess | UserActionFailure>) => {
+    try {
+      dispatch({
+        type: usersType.USER_GET_ALL_REQUEST,
+      })
+      const res = await usersService.fetchAllBusinessesAndAgencies()
+      dispatch({ type: usersType.USER_GET_ALL_SUCCESS, data: res.data })
+    } catch (e) {
+      dispatch({
+        type: usersType.USER_ACTION_FAILURE,
+        data: e as string,
+      })
+      await setAlert('Failed to fetch all agencies or businesses!: ' + e, severity.Error, 15)(dispatch)
+    }
+  }
+
 /**
  * @function
  * @desc Fetches user's profile.

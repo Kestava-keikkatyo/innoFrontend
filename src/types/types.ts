@@ -212,9 +212,22 @@ export interface Job {
 
 export interface Feedback {
   _id?: string
-  heading: string
-  message: string
-  recipient?: User
+  recipientId: string
+  recipientName: string | undefined
+  shift: number | null
+  shiftMessage?: string
+  orientation: number | null
+  orientationMessage?: string
+  reception: number | null
+  receptionMessage?: string
+  appreciation: number | null
+  appreciationMessage?: string
+  expectation: number | null
+  expectationMessage?: string
+  additionalMessage?: string
+  senderId: string
+  senderName: string
+  anonymous: boolean
   createdAt?: Date
 }
 

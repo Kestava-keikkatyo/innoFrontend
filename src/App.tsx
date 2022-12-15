@@ -17,6 +17,7 @@ import FormPreviewPage from './pages/FormPreviewPage'
 import { roles } from './types/types'
 import DatabankRoute from './components/DatabankRoute'
 import BestPractices from './pages/Databank/BestPractices'
+import Faq from './pages/Databank/Faq'
 import JobLifeline from './pages/Databank/JobLifeline'
 import RoleResponsibilities from './pages/Databank/RoleResponsibilities'
 import Databank from './pages/Databank'
@@ -77,6 +78,8 @@ import { useTranslation } from 'react-i18next'
 import SchedulePage from './pages/SchedulePage';
 import BusinessResponsibilities from './pages/ResponsibilitiesPage/BusinessResponsibilities'
 import Businesses from './pages/Profile/Businesses';
+import ReceivedFeedbacks from './pages/FeedbackPage/ReceivedFeedbacks';
+import ReceivedDetails from './pages/FeedbackPage/ReceivedDetails'
 
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -199,8 +202,11 @@ const App: React.FC = () => {
             <PrivateRoute path="/feedbacks" roles={[roles.Business, roles.Agency, roles.Worker]}>
               <Feedbacks />
             </PrivateRoute>
-            <PrivateRoute path="/feedback/details/:feedbackId" roles={[roles.Business, roles.Agency, roles.Worker]}>
+            <PrivateRoute path="/feedback/details/:feedbackId" roles={[roles.Worker]}>
               <Details />
+            </PrivateRoute>
+            <PrivateRoute path="/feedback/receivedDetails/:feedbackId" roles={[roles.Business, roles.Agency]}>
+              <ReceivedDetails />
             </PrivateRoute>
             <PrivateRoute path="/feedback/update/:feedbackId" roles={[roles.Business, roles.Agency, roles.Worker]}>
               <FeedbackUpdate />
@@ -246,6 +252,9 @@ const App: React.FC = () => {
             </DatabankRoute>
             <DatabankRoute path="/databank/best-practices">
               <BestPractices />
+            </DatabankRoute>
+            <DatabankRoute path="/databank/faq">
+              <Faq />
             </DatabankRoute>
             <DatabankRoute path="/databank">
               <Databank />
@@ -304,11 +313,8 @@ const App: React.FC = () => {
             >
               <RentalWorkModelPage path='rental-work-model'/>
             </PrivateRoute>
-
-
-
-            <PrivateRoute path="/moodStats" roles={[roles.Agency]}>
-              <AgencyStatistics />
+            <PrivateRoute path="/receivedFeedbacks" roles={[roles.Agency, roles.Business]}>
+              <ReceivedFeedbacks />
             </PrivateRoute>
             <PrivateRoute path="/reports/answer" roles={[roles.Business, roles.Agency]}>
               <ReportReplyPage />

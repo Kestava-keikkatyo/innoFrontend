@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 
 import {
   Dialog,
@@ -19,12 +20,13 @@ import { Close as CloseIcon } from '@mui/icons-material'
  * @param {function} props.handleClose - Closes modal
  */
 const SignUpModal: React.FC<any> = ({ open, handleClose }) => {
+  const { t } = useTranslation()
   return (
     <Dialog open={open} onClose={handleClose}>
       <DialogTitle>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Typography variant="h6">
-            Sign Up modal
+          {t('privacy_policy')}
           </Typography>
           <IconButton onClick={handleClose} size="large">
             <CloseIcon />
@@ -33,12 +35,25 @@ const SignUpModal: React.FC<any> = ({ open, handleClose }) => {
       </DialogTitle>
       <DialogContent dividers>
         <Typography gutterBottom>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-          in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+          {t('privacy_policies1')}
         </Typography>
         <Typography gutterBottom>
-          Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-          lacus vel augue laoreet rutrum faucibus dolor auctor.
+          {t('privacy_policies2')}
+        </Typography>
+        <Typography gutterBottom>
+          {t('privacy_policies3')}
+        </Typography>
+        <Typography gutterBottom>
+          {t('privacy_policies4')}
+        </Typography>
+        <Typography gutterBottom>
+          {t('privacy_policies5')}
+        </Typography>
+        <Typography gutterBottom>
+          {t('privacy_policies6')}
+        </Typography>
+        <Typography gutterBottom>
+          {t('privacy_policies7')}
         </Typography>
       </DialogContent>
     </Dialog>

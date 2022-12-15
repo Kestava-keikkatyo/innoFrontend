@@ -237,7 +237,7 @@ const ReportsPage: React.FC<any> = () => {
           <Typography display='inline' variant="h1" className='header' color="primary" sx={{float: 'left', paddingRight: '1em'}}>
             {t("reports")}
           </Typography>
-
+          
           {/**New report button. Shown only for workers */}
           {user.data.role === roles.Worker &&   
             <Fab size="medium" color="primary" aria-label="add" onClick={handleNewReport} sx={{float: 'left'}}>
@@ -289,6 +289,7 @@ const ReportsPage: React.FC<any> = () => {
           </Box>
         </Grid>
       </Grid>
+      <Typography sx={{marginBottom: "3rem"}}>{t('report_intro')}</Typography> 
       {reports.length ? (
         /**Some reports exist so show them as a list of Report-components. */
         getFilteredReports()

@@ -30,6 +30,15 @@ const createFeedback = async (feedback: Feedback) => {
  * @function
  * @desc Fetches all feedbacks with current token.
  */
+const fetchFeedbacksAppointedToMe = async () => {
+  const res = await axios.get(`${baseUrl}/feedback/appointedToMe`, authHeader())
+  return res
+}
+
+/**
+ * @function
+ * @desc Fetches all feedbacks with current token.
+ */
 const fetchAllMyFeedbacks = async () => {
   const res = await axios.get(`${baseUrl}/feedback/allMyFeedbacks`, authHeader())
   return res
@@ -63,16 +72,18 @@ const fetchFeedbackById = async (id: string) => {
 }
 
 /**
- * @param id
  * @returns
+ * @param feedback
+ * @param feedbackId
  */
-const updateFeedback = async (feedback: Feedback) => {
-  const res = await axios.put(`${baseUrl}/feedback/update/${feedback._id}`, feedback, authHeader())
+const updateFeedback = async (feedback: Feedback, feedbackId: string) => {
+  const res = await axios.put(`${baseUrl}/feedback/update/${feedbackId}`, feedback, authHeader())
   return res.data
 }
 
 export default {
   createFeedback,
+  fetchFeedbacksAppointedToMe,
   fetchAllMyFeedbacks,
   fetchAllFeedbacksForAdmin,
   fetchMyFeedbackById,
