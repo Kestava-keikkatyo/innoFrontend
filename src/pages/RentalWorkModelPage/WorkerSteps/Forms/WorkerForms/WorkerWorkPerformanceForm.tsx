@@ -11,12 +11,13 @@ import { IRootState } from '../../../../../utils/store';
 
 const WorkerWorkPerformanceForm: React.FC = () => {
     const { t } = useTranslation();
+    const isLoading = useSelector((state: IRootState) => state.feedback.loading);
     const classes = useStyles();
 
     return (
         <div style={{position:'relative'}} className={classes.noPointerEvents}>
 
-          <div className={classes.disabled} />
+   
             <h2 className={classes.center}>{t('form4Header')}</h2>
             
             <Formik
@@ -29,7 +30,7 @@ const WorkerWorkPerformanceForm: React.FC = () => {
                 <Form>
                     <p className={classes.p}>{t('form4Text1')}</p>
                     <p className={classes.p}>{t('form4Text2')}</p>
-                    <h4 className={classes.h4}>{t('form4Text3')}:</h4>
+                    <h4 className={classes.graytext}>{t('form4Text3')}:</h4>
                     <Box className={classes.boxColumn}>
                         <label>
                             <Field disabled type="checkbox" name="check1" />
@@ -67,19 +68,19 @@ const WorkerWorkPerformanceForm: React.FC = () => {
                             <Field disabled type="checkbox" name="check9" />
                             {t('form4Check9')}
                         </label>
-                        <h4 className={classes.h4}>{t('form4Text4')}</h4>
+                        <h4 className={classes.graytext}>{t('form4Text4')}</h4>
                         <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
-                        <h4 className={classes.h4}>{t('form4Text5')}</h4>
+                        <h4 className={classes.graytext}>{t('form4Text5')}</h4>
                         <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
                         <h4 className={classes.h4marginTop}>{t('form4Text6')}:</h4>
-                        <h4 className={classes.h4}>{t('rentalCompanyCaps')}</h4>
+                        <h4 className={classes.graytext}>{t('rentalCompanyCaps')}</h4>
                         <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
-                        <h4 className={classes.h4}>{t('userCompanyCaps')}</h4>
+                        <h4 className={classes.graytext}>{t('userCompanyCaps')}</h4>
                         <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
-                        <h4 className={classes.h4}>{t('cooperation')}</h4>
+                        <h4 className={classes.graytext}>{t('cooperation')}</h4>
                         <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
                     </Box>
-             
+                    {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="secondary" disabled className={classes.submitButton}>{t('submit')}</Button>}
                    
                 </Form>
               
@@ -122,6 +123,9 @@ const useStyles = makeStyles((theme: Theme) => ({
         flexDirection: 'column',
         color: 'rgba(193, 195, 199)',
     },
+    graytext:{
+        color: 'rgba(193, 195, 199)',
+    },
     h4: {
         marginRight: '5px',
         whiteSpace: 'nowrap',
@@ -144,6 +148,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: {
         marginBottom: '30px'
     },
+    submitButton: {
+        fontSize: '20px',
+        display: 'block',
+        margin: '0 auto',
+        marginTop: '50px'
+    },
     dateTextField: {
         marginRight: '10px',
         marginTop: '10px',
@@ -153,14 +163,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     dateh4: {
         marginTop: '30px'
     },
-    disabled: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-   
-    },
+
     noPointerEvents: {
         pointerEvents: 'none'
     }

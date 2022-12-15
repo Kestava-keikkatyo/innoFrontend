@@ -100,7 +100,7 @@ const WorkerGuidanceToWorkForm: React.FC = () => {
                             <h4 className={classes.h4}>{t('worker')}:</h4>
                             <FormikTextField className={classes.textField} label={t('worker')} name={'worker'} type={'text'}></FormikTextField>
                         </Box>
-                        <h4 className={classes.h4}>{t('form3Text4')}:</h4>
+                        <h4 className={classes.graytext}>{t('form3Text4')}:</h4>
                         <Box className={classes.boxColumn}>
                             <label>
                                 <Field disabled type="checkbox" name="check1" />
@@ -179,7 +179,7 @@ const WorkerGuidanceToWorkForm: React.FC = () => {
                             <h4 className={classes.h4}>{t('workstation')}:</h4>
                             <FormikTextField className={classes.textField} label={t('workstation')} name={'workstation1'} type={'text'}></FormikTextField>
                         </Box>
-                        <h4 className={classes.h4}>{t('form3Text5')}:</h4>
+                        <h4 className={classes.graytext}>{t('form3Text5')}:</h4>
                         <Box className={classes.boxRow}>
                             <h4 className={classes.h4}>{t('name')}:</h4>
                             <FormikTextField className={classes.textField} label={t('name')} name={'name2'} type={'text'}></FormikTextField>
@@ -199,7 +199,7 @@ const WorkerGuidanceToWorkForm: React.FC = () => {
                             <h4 className={classes.h4}>{t('orientated')}:</h4>
                             <FormikTextField className={classes.textField} label={t('orientated')} name={'orientated'} type={'text'}></FormikTextField>
                         </Box>
-                     
+                        {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="secondary" disabled className={classes.submitButton}>{t('submit')}</Button>}
 
                     </Form>
                 </Formik>
@@ -268,6 +268,7 @@ const WorkerGuidanceToWorkForm: React.FC = () => {
                             <h4>{t('form3Check16')}:</h4>
                             <FormikTextField label={t('form3Check16')} name={'askHelp'} type={'text'}></FormikTextField>
                         </Box>
+                        {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="secondary" disabled className={classes.submitButton}>{t('submit')}</Button>}
                     </Form>
                 </Formik>
             </TabPanel>
@@ -309,6 +310,9 @@ const useStyles = makeStyles((theme: Theme) => ({
         color: 'rgba(193, 195, 199)',
     },
     h3:{
+        color: 'rgba(193, 195, 199)',
+    },
+    graytext:{
         color: 'rgba(193, 195, 199)',
     },
     h4: {
