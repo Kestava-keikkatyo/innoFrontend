@@ -1,14 +1,16 @@
+/* eslint-disable no-prototype-builtins */
 /**
  * @module userActions
  * @desc Redux user actions
  */
 import userService from '../services/userService'
-import { saveUser, logoutUser } from '../utils/storage'
+import { saveUser, insertContactData, logoutUser, loadUser } from '../utils/storage'
 import history from '../utils/history'
 import { setAlert } from './alertActions'
 import { LOGIN, LOGOUT, USER_FAILURE, USER_PROFILE, USER_REQUEST, SignUpUser } from '../types/state'
 import { Credentials, severity } from '../types/types'
 import i18next from 'i18next'
+import contractsService from '../services/contractsService'
 
 /**
  * Logs user in
@@ -24,10 +26,12 @@ export const login = (credentials: Credentials, from: string) => {
     })
     try {
       const { data } = await userService.signin(credentials)
+
       dispatch({
         type: LOGIN,
         data,
       })
+
       saveUser(data)
 
       if (from) {
@@ -77,6 +81,49 @@ export const signup = (user: SignUpUser) => {
 }
 
 /**
+ * Fetches contacts the user has with other users
+ * @function
+ */
+export const getUserContacts = () => {
+    return async (dispatch : any) => {
+      dispatch({
+        type: USER_REQUEST
+      })
+      try {
+        let contracts : any
+        let contact : string
+
+        if (loadUser().role == "agency") {
+          contracts = await contractsService.fetchBusinessContracts()
+          for (const key in contracts) {
+            if(contracts.hasOwnProperty(key)){
+              if (JSON.stringify(contracts[key].type) == '"contract"' && JSON.stringify(contracts[key].status) == '"signed"') {
+                contact = contracts[key].target
+                insertContactData(JSON.stringify(contact))
+              } 
+            }
+          }
+        }
+        else {
+          contracts = await contractsService.fetchBusinessContractsAsTarget()            
+          for (const key in contracts) {
+            if(contracts.hasOwnProperty(key)){
+              if (JSON.stringify(contracts[key].type) == '"contract"' && JSON.stringify(contracts[key].status) == '"signed"') {
+                contact = contracts[key].creator
+                insertContactData(JSON.stringify(contact))
+              } 
+            }
+          }
+        }
+              
+      } catch (error) {
+        console.log(error)
+      }
+      
+    }
+}
+
+/**
  * Logs user out
  * @function
  */
@@ -112,6 +159,7 @@ export const me = () => async (dispatch: any) => {
       type: USER_PROFILE,
       data,
     })
+    return data;
   } catch (error) {
     statusHandler(dispatch, error)
   }

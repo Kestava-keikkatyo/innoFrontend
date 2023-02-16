@@ -22,6 +22,7 @@ import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDiss
 import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
+import User from '../Profile/User';
 
 const SendFeedbackSchema = Yup.object().shape({
   recipientId: Yup.string()
@@ -70,7 +71,7 @@ const SendFeedback: React.FC = () => {
     appreciation: `${t('feedback_appreciation')} *`,
     expectation: `${t('feedback_expectation')} *`,
   };
-
+  
   const recipients = useSelector((state: IRootState) => state.users.users);
   const me = useSelector((state: IRootState) => state.user.data);
 
@@ -98,13 +99,15 @@ const SendFeedback: React.FC = () => {
   }, [dispatch]);
 
   const handleSubmit = (feedback: Feedback) => {
-    feedback.recipientName = recipients.find(recipient => feedback.recipientId === recipient._id)?.name
-    console.log(feedback)
-    dispatch(createFeedback(feedback));
-    history.push({
+    if (recipients) {
+      feedback.recipientName = recipients.find(recipient => feedback.recipientId === recipient._id)?.name
+      console.log(feedback)
+      dispatch(createFeedback(feedback));
+      history.push({
       pathname: history.location.pathname,
       search: '?' + new URLSearchParams({ tab: 'my' }).toString(),
-    })
+      })
+    }
   };
 
   return (
@@ -124,7 +127,7 @@ const SendFeedback: React.FC = () => {
                 <FormikSelectField
                   label={t('feedback_recipient')}
                   name="recipientId"
-                  options={recipients.map((recipient) => {
+                  options={Array.isArray(recipients) && recipients.map((recipient) => {
                     return {
                       value: recipient._id,
                       label: recipient.name

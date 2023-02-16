@@ -18,6 +18,7 @@ const initialState: UserState = {
   loggedIn: !!userData,
   loading: false,
   data: userData || {},
+  contacts: []
 }
 
 /**

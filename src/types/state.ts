@@ -24,7 +24,8 @@ import {
 export interface UserState {
   loggedIn: boolean,
   loading: boolean,
-  data: any
+  data: any,
+  contacts?: User[]
 }
 
 export interface UsersState {
@@ -58,12 +59,12 @@ export interface UserActionFailure {
 }
 export interface UserAction {
   type:
-    | typeof usersType.USER_UPDATE_REQUEST
-    | typeof usersType.USER_UPDATE_SUCCESS
-    | typeof usersType.USER_CREATED_REQUEST
-    | typeof usersType.USER_CREATED_SUCCESS
-    | typeof usersType.USER_DELETED_REQUEST
-    | typeof usersType.USER_DELETED_SUCCESS
+  | typeof usersType.USER_UPDATE_REQUEST
+  | typeof usersType.USER_UPDATE_SUCCESS
+  | typeof usersType.USER_CREATED_REQUEST
+  | typeof usersType.USER_CREATED_SUCCESS
+  | typeof usersType.USER_DELETED_REQUEST
+  | typeof usersType.USER_DELETED_SUCCESS
   data: User
 }
 
@@ -105,8 +106,8 @@ export interface NotificationActionFailure {
 
 export interface NotificationCleared {
   type:
-    | typeof notificationType.NOTIFICATION_CLEARED_REQUEST
-    | typeof notificationType.NOTIFICATION_CLEARED_SUCCESS
+  | typeof notificationType.NOTIFICATION_CLEARED_REQUEST
+  | typeof notificationType.NOTIFICATION_CLEARED_SUCCESS
   data: Notification
 }
 
@@ -208,10 +209,10 @@ export interface FeedbackState {
 }
 export interface FeedbackSimilarActions {
   type:
-    | typeof feedbackType.FEEDBACK_POSTED_REQUEST
-    | typeof feedbackType.FEEDBACK_POSTED_SUCCESS
-    | typeof feedbackType.FEEDBACK_UPDATED_REQUEST
-    | typeof feedbackType.FEEDBACK_UPDATED_SUCCESS
+  | typeof feedbackType.FEEDBACK_POSTED_REQUEST
+  | typeof feedbackType.FEEDBACK_POSTED_SUCCESS
+  | typeof feedbackType.FEEDBACK_UPDATED_REQUEST
+  | typeof feedbackType.FEEDBACK_UPDATED_SUCCESS
   data: Feedback
 }
 
@@ -256,12 +257,12 @@ export interface TopicState {
 }
 export interface TopicSimilarActions {
   type:
-    | typeof topicType.TOPIC_CREATED_REQUEST
-    | typeof topicType.TOPIC_CREATED_SUCCESS
-    | typeof topicType.TOPIC_DELETED_REQUEST
-    | typeof topicType.TOPIC_DELETED_SUCCESS
-    | typeof topicType.TOPIC_UPDATED_REQUEST
-    | typeof topicType.TOPIC_UPDATED_SUCCESS
+  | typeof topicType.TOPIC_CREATED_REQUEST
+  | typeof topicType.TOPIC_CREATED_SUCCESS
+  | typeof topicType.TOPIC_DELETED_REQUEST
+  | typeof topicType.TOPIC_DELETED_SUCCESS
+  | typeof topicType.TOPIC_UPDATED_REQUEST
+  | typeof topicType.TOPIC_UPDATED_SUCCESS
   data: Topic
 }
 
@@ -306,12 +307,12 @@ export interface ResponsibilityState {
 }
 export interface ResponsibilitySimilarActions {
   type:
-    | typeof responsibilityType.RESPONSIBILITY_CREATED_REQUEST
-    | typeof responsibilityType.RESPONSIBILITY_CREATED_SUCCESS
-    | typeof responsibilityType.RESPONSIBILITY_DELETED_REQUEST
-    | typeof responsibilityType.RESPONSIBILITY_DELETED_SUCCESS
-    | typeof responsibilityType.RESPONSIBILITY_UPDATED_REQUEST
-    | typeof responsibilityType.RESPONSIBILITY_UPDATED_SUCCESS
+  | typeof responsibilityType.RESPONSIBILITY_CREATED_REQUEST
+  | typeof responsibilityType.RESPONSIBILITY_CREATED_SUCCESS
+  | typeof responsibilityType.RESPONSIBILITY_DELETED_REQUEST
+  | typeof responsibilityType.RESPONSIBILITY_DELETED_SUCCESS
+  | typeof responsibilityType.RESPONSIBILITY_UPDATED_REQUEST
+  | typeof responsibilityType.RESPONSIBILITY_UPDATED_SUCCESS
   data: Responsibility
 }
 
@@ -356,10 +357,10 @@ export interface WorkRequestState {
 }
 export interface WorkRequestSimilarActions {
   type:
-    | typeof workRequestType.WORKREQUEST_SEND_REQUEST
-    | workRequestType.WORKREQUEST_SEND_SUCCESS
-    | typeof workRequestType.WORKREQUEST_UPDATED_REQUEST
-    | workRequestType.WORKREQUEST_UPDATED_SUCCESS
+  | typeof workRequestType.WORKREQUEST_SEND_REQUEST
+  | workRequestType.WORKREQUEST_SEND_SUCCESS
+  | typeof workRequestType.WORKREQUEST_UPDATED_REQUEST
+  | workRequestType.WORKREQUEST_UPDATED_SUCCESS
   data: WorkRequest
 }
 
@@ -428,12 +429,12 @@ export interface JobGetCurrentSuccess {
 }
 export interface JobSimilarActions {
   type:
-    | typeof jobType.JOB_CREATED_REQUEST
-    | typeof jobType.JOB_CREATED_SUCCESS
-    | typeof jobType.JOB_UPDATED_REQUEST
-    | typeof jobType.JOB_UPDATED_SUCCESS
-    | typeof jobType.JOB_DELETED_REQUEST
-    | typeof jobType.JOB_DELETED_SUCCESS
+  | typeof jobType.JOB_CREATED_REQUEST
+  | typeof jobType.JOB_CREATED_SUCCESS
+  | typeof jobType.JOB_UPDATED_REQUEST
+  | typeof jobType.JOB_UPDATED_SUCCESS
+  | typeof jobType.JOB_DELETED_REQUEST
+  | typeof jobType.JOB_DELETED_SUCCESS
   data: Job
 }
 
@@ -479,12 +480,12 @@ export interface FeelingGetCurrentSuccess {
 }
 export interface FeelingSimilarActions {
   type:
-    | typeof feelingType.FEELING_CREATED_REQUEST
-    | typeof feelingType.FEELING_CREATED_SUCCESS
-    | typeof feelingType.FEELING_UPDATED_REQUEST
-    | typeof feelingType.FEELING_UPDATED_SUCCESS
-    | typeof feelingType.FEELING_DELETED_REQUEST
-    | typeof feelingType.FEELING_DELETED_SUCCESS
+  | typeof feelingType.FEELING_CREATED_REQUEST
+  | typeof feelingType.FEELING_CREATED_SUCCESS
+  | typeof feelingType.FEELING_UPDATED_REQUEST
+  | typeof feelingType.FEELING_UPDATED_SUCCESS
+  | typeof feelingType.FEELING_DELETED_REQUEST
+  | typeof feelingType.FEELING_DELETED_SUCCESS
   data: MyFeeling
 }
 
@@ -520,6 +521,7 @@ interface UserFailureAction {
 interface UserRequestAction {
   type: typeof USER_REQUEST
   data: any
+  contracts?: any
 }
 
 interface LogoutAction {
