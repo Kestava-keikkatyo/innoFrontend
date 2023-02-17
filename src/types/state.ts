@@ -22,10 +22,10 @@ import {
 } from './types'
 
 export interface UserState {
-  loggedIn: boolean,
-  loading: boolean,
-  data: any,
-  contacts?: User[]
+  loggedIn: boolean
+  loading: boolean
+  data: any
+  contacts: User[]
 }
 
 export interface UsersState {
@@ -502,6 +502,8 @@ export const LOGOUT = 'USER_LOGOUT'
 export const USER_REQUEST = 'USER_REQUEST'
 export const USER_FAILURE = 'USER_FAILURE'
 export const USER_PROFILE = 'USER_PROFILE'
+export const FETCH_CONTACTS_REQUEST = 'FETCH_CONTACTS_REQUEST'
+export const FETCH_CONTACTS_SUCCESS = 'FETCH_CONTACTS_SUCCESS'
 
 interface UserProfileAction {
   type: typeof USER_PROFILE
@@ -521,7 +523,15 @@ interface UserFailureAction {
 interface UserRequestAction {
   type: typeof USER_REQUEST
   data: any
-  contracts?: any
+}
+
+interface FetchContactsRequestAction {
+  type: typeof FETCH_CONTACTS_REQUEST
+}
+
+interface FetchContactsSuccessAction {
+  type: typeof FETCH_CONTACTS_SUCCESS
+  data: User
 }
 
 interface LogoutAction {
@@ -535,6 +545,8 @@ export type UserActionTypes =
   | UserProfileAction
   | UserRequestAction
   | UserFailureAction
+  | FetchContactsRequestAction
+  | FetchContactsSuccessAction
 
 export interface AlertState {
   severity: severity.Error | severity.Success | severity.Info | severity.Warning

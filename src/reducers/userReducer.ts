@@ -10,6 +10,8 @@ import {
   USER_FAILURE,
   USER_PROFILE,
   USER_REQUEST,
+  FETCH_CONTACTS_REQUEST,
+  FETCH_CONTACTS_SUCCESS,
   UserState
 } from '../types/state'
 
@@ -33,13 +35,25 @@ const userReducer = (state = initialState, action: UserActionTypes) => {
       return {
         loading: true,
         loggedIn: state.loggedIn,
-        data: state.data
+        data: state.data,
+        contacts: state.contacts
       }
     case LOGIN:
       return {
         loading: false,
         loggedIn: true,
-        data: action.data
+        data: action.data,
+        contacts: []
+      }
+    case FETCH_CONTACTS_REQUEST:
+      return {
+        ...state,
+        contacts: state.contacts
+      }
+    case FETCH_CONTACTS_SUCCESS:
+      return {
+        ...state,
+        contacts: [...state.contacts, action.data]
       }
     case USER_PROFILE:
       return {
@@ -49,18 +63,21 @@ const userReducer = (state = initialState, action: UserActionTypes) => {
           ...state.data,
           ...action.data,
         },
+        contacts: state.contacts
       }
     case USER_FAILURE:
       return {
         loading: false,
         loggedIn: false,
-        data: {}
+        data: {},
+        contacts: []
       }
     case LOGOUT:
       return {
         ...state,
         loggedIn: false,
-        data: {}
+        data: {},
+        contacts: []
       }
     default:
       return state

@@ -72,7 +72,7 @@ const SendFeedback: React.FC = () => {
     expectation: `${t('feedback_expectation')} *`,
   };
   
-  const recipients = useSelector((state: IRootState) => state.users.users);
+  const recipients = useSelector((state: IRootState) => state.user.contacts) || [];
   const me = useSelector((state: IRootState) => state.user.data);
 
   const initialValues: Feedback = {
@@ -127,7 +127,7 @@ const SendFeedback: React.FC = () => {
                 <FormikSelectField
                   label={t('feedback_recipient')}
                   name="recipientId"
-                  options={Array.isArray(recipients) && recipients.map((recipient) => {
+                  options={recipients.map((recipient) => {
                     return {
                       value: recipient._id,
                       label: recipient.name

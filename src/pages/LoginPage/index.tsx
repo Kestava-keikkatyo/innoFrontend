@@ -4,7 +4,7 @@ import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import { login, signup, getUserContacts } from '../../actions/userActions';
+import { login, signup, fetchUserContacts } from '../../actions/userActions';
 
 import SignUpForm from './SignUpForm';
 import LogInForm from './LogInForm';
@@ -30,7 +30,7 @@ const LoginPage = () => {
 const loginSubmit = async ({ ...credentials }: any) => {
     const { from }: any = location.state || { from: { pathname: '/home' } };
     await dispatch(login(credentials, from));
-    dispatch(getUserContacts());
+    dispatch(fetchUserContacts());
   };
 
   return (
