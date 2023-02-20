@@ -5,7 +5,7 @@
  */
 import userService from '../services/userService'
 import usersService from '../services/usersService'
-import { saveUser, insertContactData, logoutUser, loadUser } from '../utils/storage'
+import { saveUser, logoutUser, loadUser } from '../utils/storage'
 import history from '../utils/history'
 import { setAlert } from './alertActions'
 import { Dispatch } from 'redux'
@@ -18,7 +18,7 @@ import {
   SignUpUser,
   FETCH_CONTACTS_REQUEST,
   FETCH_BUSINESS_CONTRACT_LIST,
-  FETCH_CONTACTS_SUCCESS, 
+  FETCH_CONTACT_SUCCESS, 
   } from '../types/state'
 import { Credentials, severity, User, usersType } from '../types/types'
 import i18next from 'i18next'
@@ -97,7 +97,7 @@ export const signup = (user: SignUpUser) => {
 }
 
 /**
- * Fetches contacts the user has with other users and saves them into localStorage
+ * Fetches contacts the user has with other users and saves them into the Redux state
  * @function
  */
 export const fetchUserContacts = () => {
@@ -106,19 +106,18 @@ export const fetchUserContacts = () => {
         let contracts : any
         let contactId : string
 
+        dispatch({ type: FETCH_CONTACTS_REQUEST, })
+
         if (loadUser().role == 'agency') {
           contracts = await contractsService.fetchBusinessContracts()              
           for (const key in contracts) { 
-
-            dispatch({ type: FETCH_CONTACTS_REQUEST, })
 
             if(contracts.hasOwnProperty(key)){       
               if (JSON.stringify(contracts[key].type) == '"contract"' && JSON.stringify(contracts[key].status) == '"signed"') {
                 contactId = JSON.stringify(contracts[key].target._id).slice(1, -1)
                 const res = await usersService.fetchUserById(contactId)
 
-                dispatch({ type: FETCH_CONTACTS_SUCCESS, data: res.data, })
-                insertContactData(JSON.stringify(contactId))
+                dispatch({ type: FETCH_CONTACT_SUCCESS, data: res.data, })
               } 
             }
           } 
@@ -127,20 +126,16 @@ export const fetchUserContacts = () => {
           contracts = await contractsService.fetchBusinessContractsAsTarget()
           for (const key in contracts) {
 
-            dispatch({ type: FETCH_CONTACTS_REQUEST, })
-
             if(contracts.hasOwnProperty(key)){
               if (JSON.stringify(contracts[key].type) == '"contract"' && JSON.stringify(contracts[key].status) == '"signed"') {
                 contactId = JSON.stringify(contracts[key].creator._id).slice(1, -1)
                 const res = await usersService.fetchUserById(contactId)
 
-                dispatch({ type: FETCH_CONTACTS_SUCCESS, data: res.data, })
-                insertContactData(JSON.stringify(contactId))
+                dispatch({ type: FETCH_CONTACT_SUCCESS, data: res.data, })
               } 
             }
           }
-        }
-              
+        }           
       } catch (error) {
         dispatch({
           type: usersType.USER_ACTION_FAILURE,

@@ -503,7 +503,7 @@ export const USER_REQUEST = 'USER_REQUEST'
 export const USER_FAILURE = 'USER_FAILURE'
 export const USER_PROFILE = 'USER_PROFILE'
 export const FETCH_CONTACTS_REQUEST = 'FETCH_CONTACTS_REQUEST'
-export const FETCH_CONTACTS_SUCCESS = 'FETCH_CONTACTS_SUCCESS'
+export const FETCH_CONTACT_SUCCESS = 'FETCH_CONTACTS_SUCCESS'
 
 interface UserProfileAction {
   type: typeof USER_PROFILE
@@ -530,7 +530,7 @@ interface FetchContactsRequestAction {
 }
 
 interface FetchContactsSuccessAction {
-  type: typeof FETCH_CONTACTS_SUCCESS
+  type: typeof FETCH_CONTACT_SUCCESS
   data: User
 }
 
