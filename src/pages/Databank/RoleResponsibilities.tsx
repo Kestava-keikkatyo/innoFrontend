@@ -1,176 +1,103 @@
 import React, { useState } from 'react'
 import { useTheme } from '@mui/material/styles';
 import makeStyles from '@mui/styles/makeStyles';
-import MobileStepper from '@mui/material/MobileStepper'
 import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
-import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft'
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight'
-import SwipeableViews from 'react-swipeable-views'
-import { Grid } from '@mui/material'
+import { Accordion, AccordionDetails, AccordionSummary, Grid } from '@mui/material'
 import responsibilities from '../../assets/tietopankki/vastuualueet.json'
-import { CSSTransition, SwitchTransition } from 'react-transition-group'
 import { roles } from '../../types/types'
+import hp from '../../assets/pictures/henkilostopalveluyritys.svg'
+import company from '../../assets/pictures/kayttajayritys.svg'
+import worker from '../../assets/pictures/vuokratyontekija.svg'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import { useTranslation } from 'react-i18next';
+import topArrow from '../../assets/icons/sivunalkuun.svg'
+import Footer from '../../components/footer';
+import Ingressi from '../../components/Ingressi';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    marginTop: '2rem',
-  },
+    root: {
+        marginTop: '2rem',
+    },
 }))
 
-export interface RoleResponsibilitiesProps {}
+export interface RoleResponsibilitiesProps { }
 
 const RoleResponsibilities: React.SFC<RoleResponsibilitiesProps> = () => {
-  const classes = useStyles()
-  const theme = useTheme()
-  const [activeStep, setActiveStep] = useState(0)
-  const [steps, setSteps] = useState(responsibilities.worker)
-  const [showDetails, setShowDetails] = useState<any>(false)
-  const [header, setHeader] = useState<string>('Vuokratyöntekijä')
+    const classes = useStyles()
+    const theme = useTheme()
+    const [steps, setSteps] = useState(responsibilities.worker)
+    const [header, setHeader] = useState<string>('Vuokratyöntekijä')
+    const { t } = useTranslation();
+    const [colors, setColors] = useState({ agency: "#F47D20", business: "", worker: "" })
 
-  const handleSwitch = (role: roles) => {
-    switch (role) {
-      case roles.Worker:
-        setHeader('Vuokratyöntekijä')
-        setSteps(responsibilities.worker)
-        break
-      case roles.Agency:
-        setHeader('Vuokratyöfirma')
-        setSteps(responsibilities.agency)
-        break
-      case roles.Business:
-        setHeader('Käyttäjäyritys')
-        setSteps(responsibilities.business)
-        break
+    const handleSwitch = (role: roles) => {
+        switch (role) {
+            case roles.Agency:
+                setColors({ ...colors, agency: "#F47D20", business: "#C0CFFA", worker: "#C0CFFA" })
+                setHeader('Vuokratyöntekijä')
+                setSteps(responsibilities.worker)
+                break
+            case roles.Business:
+                setColors({ ...colors, agency: "#C0CFFA", business: "#F47D20", worker: "#C0CFFA" })
+                setHeader('Vuokratyöfirma')
+                setSteps(responsibilities.agency)
+                break
+            case roles.Worker:
+                setColors({ ...colors, agency: "#C0CFFA", business: "#C0CFFA", worker: "#F47D20" })
+                setHeader('Käyttäjäyritys')
+                setSteps(responsibilities.business)
+                break
+        }
     }
-    setActiveStep(0)
-    setShowDetails(false)
-  }
 
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1)
-  }
+    const handleToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
 
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1)
-  }
+    const ingressi_header = "responsibilities"
+    const summary = "responsibilities_summary"
 
-  const handleStepChange = (step: any) => {
-    setActiveStep(step)
-  }
-
-  return (
-    <Grid container className={classes.root}>
-      <Grid item xs={12}>
-        <Typography variant="h1" className='header' color="primary">
-          Vastuualueet
-        </Typography>
-        <Typography variant="h2" className='header2' color="textSecondary">
-          {header}
-        </Typography>
-      </Grid>
-      <Grid item xs={8}>
-        <SwitchTransition mode="out-in">
-          <CSSTransition
-            key={showDetails}
-            addEndListener={(node, done) => {
-              node.addEventListener('transitionend', done, false)
-            }}
-            classNames="flip"
-          >
-            <SwipeableViews
-              onClick={() => setShowDetails(!showDetails)}
-              axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-              index={activeStep}
-              onChangeIndex={handleStepChange}
-              enableMouseEvents
-              className="swipable-card-container"
-            >
-              {steps.map((step, index) => (
-                <div key={index}>
-                  {Math.abs(activeStep - index) <= 2 ? (
-                    <div className="step-card">
-                      <p>{showDetails ? step.details : step.tip}</p>
-                    </div>
-                  ) : null}
-                </div>
-              ))}
-            </SwipeableViews>
-          </CSSTransition>
-        </SwitchTransition>
-        <MobileStepper
-          steps={steps.length}
-          position="static"
-          variant="text"
-          activeStep={activeStep}
-          nextButton={
-            <Button
-              size="small"
-              onClick={handleNext}
-              disabled={activeStep === steps.length - 1}
-            >
-              Next
-              {theme.direction === 'rtl' ? (
-                <KeyboardArrowLeft />
-              ) : (
-                <KeyboardArrowRight />
-              )}
-            </Button>
-          }
-          backButton={
-            <Button
-              size="small"
-              onClick={handleBack}
-              disabled={activeStep === 0}
-            >
-              {theme.direction === 'rtl' ? (
-                <KeyboardArrowRight />
-              ) : (
-                <KeyboardArrowLeft />
-              )}
-              Back
-            </Button>
-          }
-        />
-      </Grid>
-      <Grid item xs={4}>
-        <Grid
-          container
-          direction="column"
-          justifyContent="center"
-          alignItems="stretch" >
-          <Grid xs={12}>
-            <Button
-              variant="contained"
-              color="primary"
-              style={{ height: 100, width: '100%' }}
-              onClick={() => handleSwitch(roles.Worker)}
-            >
-              Vuokra työntekijä
-            </Button>
-          </Grid>
-          <Grid xs={12}>
-            <Button
-              variant="contained"
-              color="secondary"
-              style={{ height: 100, width: '100%' }}
-              onClick={() => handleSwitch(roles.Agency)}
-            >
-              Vuokratyö yritys
-            </Button>
-          </Grid>
-          <Grid xs={12}>
-            <Button
-              variant="contained"
-              style={{ height: 100, width: '100%' }}
-              onClick={() => handleSwitch(roles.Business)}>
-              Käyttäjä yritys
-            </Button>
-          </Grid>
+    return (
+      <Grid className={classes.root}>
+        <Ingressi header={ingressi_header} summary={summary}></Ingressi>
+        <Grid style={{ backgroundColor: "#C0CFFA", width: "100%", display: "flex", justifyContent: "center", alignItems: "center", paddingTop: '15px'}} item >
+          <div style={{ backgroundColor: "#C0CFFA", width: "60%", display: "flex", justifyContent: "evenly", alignItems: "center" }}>
+            <img style={{ width: "30%", padding: '30px' }} src={hp}></img>
+            <img style={{ width: "30%", padding: '30px' }} src={company}></img>
+            <img style={{ width: "30%", padding: '30px' }} src={worker}></img>
+          </div>
         </Grid>
+        <Grid style={{ backgroundColor: "#C0CFFA", width: "100%", display: "flex", justifyContent: "center", alignItems: "center" }} item >
+          <div style={{ backgroundColor: "#C0CFFA", width: "60%", display: "flex", justifyContent: "evenly", alignItems: "center", paddingBottom: '15px' }}>
+            <button onClick={() => handleSwitch(roles.Agency)} style={{ backgroundColor: colors.agency }} className="responsibilities-button">Henkilöstöpalveluyritys</button>
+            <button onClick={() => handleSwitch(roles.Business)} style={{ backgroundColor: colors.business }} className="responsibilities-button">Käyttäjäyritys</button>
+            <button onClick={() => handleSwitch(roles.Worker)} style={{ backgroundColor: colors.worker }} className="responsibilities-button">Työntekijä</button>
+          </div>
+        </Grid>
+        <Grid style={{ backgroundColor: "#DBE4FC", width: "100%", padding: "0" }}>
+          <div style={{ backgroundColor: "#DBE4FC", width: "60%", margin: "auto", alignItems: "center", paddingTop: '15px'}}>
+            {steps.map((step, index) => (
+              <Accordion defaultExpanded key={index}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header">
+                  <Typography style={{fontWeight: 'bold'} }>{step.tip}</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <ul>
+                    <li key={index}>{step.details}</li>
+                  </ul>
+                </AccordionDetails>
+              </Accordion>
+            ))}
+            <div style={{ width: "100%", display: "flex", justifyContent: "right", alignItems: "right", padding: "10px" }}>
+              <img style={{ width: "30px", height: "30px", alignContent: "right" }} onClick={handleToTop} src={topArrow}></img>
+            </div>
+          </div>
+        </Grid>
+        <Footer></Footer>
       </Grid>
-    </Grid>
-  );
+    );
 }
-
 export default RoleResponsibilities
