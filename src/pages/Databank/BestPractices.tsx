@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import makeStyles from '@mui/styles/makeStyles';
 import Ingressi from '../../components/Ingressi'
-import Footer from '../../components/footer'
+import Footer from '../../components/Footer'
 import topArrow from '../../assets/icons/sivunalkuun.svg'
 
 const BestPractices: React.FC = () => {

@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography'
 import LifelineCard from './LifelineCard'
 import lifeline from '../../assets/tietopankki/elinkaari.json'
 import { useTranslation } from 'react-i18next'
-import Footer from '../../components/footer';
+import Footer from '../../components/Footer';
 import Ingressi from '../../components/Ingressi';
 
 const useStyles = makeStyles((theme) => ({

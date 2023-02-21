@@ -11,7 +11,7 @@ import worker from '../../assets/pictures/vuokratyontekija.svg'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { useTranslation } from 'react-i18next';
 import topArrow from '../../assets/icons/sivunalkuun.svg'
-import Footer from '../../components/footer';
+import Footer from '../../components/Footer';
 import Ingressi from '../../components/Ingressi';
 
 const useStyles = makeStyles((theme) => ({

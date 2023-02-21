@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography'
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import Ingressi from '../../components/Ingressi'
-import Footer from '../../components/footer';
+import Footer from '../../components/Footer';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import { IconButton } from '@mui/material'
 
