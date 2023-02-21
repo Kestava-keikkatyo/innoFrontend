@@ -1,56 +1,105 @@
 import { Grid, Typography } from '@mui/material'
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Spacing from '../../components/Spacing'
 import { useTranslation } from 'react-i18next';
+import Footer from '../../components/footer';
+import { useTheme } from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import responsibilities from '../../assets/tietopankki/vastuualueet.json'
+import { roles } from '../../types/types'
+import hp from '../../assets/pictures/henkilostopalveluyritys.svg'
+import company from '../../assets/pictures/kayttajayritys.svg'
+import worker from '../../assets/pictures/vuokratyontekija.svg'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import topArrow from '../../assets/icons/sivunalkuun.svg'
+import React, { useState } from 'react';
+import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material'
+import Ingressi from '../../components/Ingressi';
 
-export interface DatabankProps {}
-const TriangleCard = ({ index }: { index: number }) => {
-  const num1 = ((index * 10) % 175) + 80
-  const num2 = ((index * 25) % 175) + 80
-  const num3 = ((index * 50) % 175) + 80
-  const accentColor = `rgba(
-    ${num1},
-    ${num2},
-    ${num3},
-    200)`
-  const bgColor = `rgba(
-      ${255 - num1},
-      ${255 - num2},
-      ${255 - num3},
-      200)`
-  return (   
-    <div className="triangle-card" style={{ backgroundColor: bgColor }}>
-      <div className="triangle" style={{ backgroundColor: accentColor }}></div>
-      <h2 className="triangle-h2">Triangle</h2>
-      <p className="triangle-p">
-        A triangle is a polygon with three edges and three vertices. It is one
-        of the basic shapes in geometry...
-      </p>
-      <div className="triangle-content">
-        <Link to="/" style={{ backgroundColor: accentColor }}>
-          More
-        </Link>
-      </div>
-    </div>
-  )
-}
+const useStyles = makeStyles((theme) => ({
+    root: {
+        marginTop: '2rem',
+    },
+}))
+
+export interface DatabankProps { }
 const Databank: React.FC<DatabankProps> = () => {
-  const { t } = useTranslation();
-  // const todoColor = `rgba(${(index*10%175)+80},${(index*25%175)+80},${(index*50%175)+80},200)`
-  return (
-    <div>
-      <Spacing m2 />
-      <Typography variant="h1" className='header3'>{t('articles')}</Typography>
-      <Grid container>
-        {Array.from(Array(10)).map((_, i: number) => (
-          <Grid item xs={12} sm={6} md={4} key={i} className="triangle-container">
-            <TriangleCard index={i + 4} />
-          </Grid>
-        ))}
-      </Grid>
-    </div>
-  )
-}
 
+    const classes = useStyles()
+    const theme = useTheme()
+    const [steps, setSteps] = useState(responsibilities.worker)
+    const [header, setHeader] = useState<string>('Vuokratyöntekijä')
+    const { t } = useTranslation();
+    const [colors, setColors] = useState({ agency: "#C0CFFA", business: "#F47D20", worker: "#F47D20" })
+
+    const handleSwitch = (role: roles) => {
+        switch (role) {
+            case roles.Agency:
+                setColors({ ...colors, agency: "#C0CFFA", business: "#F47D20", worker: "#F47D20" })
+                setHeader('Vuokratyöntekijä')
+                setSteps(responsibilities.worker)
+                break
+            case roles.Business:
+                setColors({ ...colors, agency: "#F47D20", business: "#C0CFFA", worker: "#F47D20" })
+                setHeader('Vuokratyöfirma')
+                setSteps(responsibilities.agency)
+                break
+            case roles.Worker:
+                setColors({ ...colors, agency: "#F47D20", business: "#F47D20", worker: "#C0CFFA" })
+                setHeader('Käyttäjäyritys')
+                setSteps(responsibilities.business)
+                break
+        }
+    }
+
+    const handleToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+
+    const ingressi_header = "instructions"
+    const summary = "instructions_summary"
+
+    return (
+      <Grid container className={classes.root}>
+        <Ingressi header={ingressi_header} summary={summary}></Ingressi>
+        <Grid style={{ backgroundColor: "#F47D20", width: "100%", display: "flex", justifyContent: "center", alignItems: "center", paddingTop: '15px' }} item >
+          <div style={{ backgroundColor: "#F47D20", width: "60%", display: "flex", justifyContent: "evenly", alignItems: "center" }}>
+            <img style={{ width: "30%", padding: '30px'}} src={hp}></img>
+            <img style={{ width: "30%", padding: '30px' }} src={company}></img>
+            <img style={{ width: "30%", padding: '30px' }} src={worker}></img>
+          </div>
+        </Grid>
+        <Grid style={{ backgroundColor: "#F47D20", width: "100%", display: "flex", justifyContent: "center", alignItems: "center" }} item>
+          <div style={{ backgroundColor: "#F47D20", width: "60%", display: "flex", justifyContent: "evenly", alignItems: "center", paddingBottom: '15px' }}>
+            <button onClick={() => handleSwitch(roles.Agency)} style={{ backgroundColor: colors.agency }} className="responsibilities-button">{t('agency')}</button>
+            <button onClick={() => handleSwitch(roles.Business)} style={{ backgroundColor: colors.business }} className="responsibilities-button">{t('business')}</button>
+            <button onClick={() => handleSwitch(roles.Worker)} style={{ backgroundColor: colors.worker }} className="responsibilities-button">{t('worker')}</button>
+          </div>
+        </Grid>
+
+      <div style={{ backgroundColor: "#FFDCBF", width: "100%", padding: "0" }}>
+        <div style={{ backgroundColor: "#FFDCBF", width: "60%", margin: "auto", alignItems: "center", paddingTop: '15px' }}>
+          {steps.map((step, index) => (
+            <Accordion defaultExpanded key={index}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header">
+              <Typography style={{fontWeight: 'bold'}}>{step.tip}</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <ul>
+                  <li key={index}>{step.details}</li>
+                </ul>
+              </AccordionDetails>
+            </Accordion>
+          ))}
+          <div style={{ width: "100%", display: "flex", justifyContent: "right", alignItems: "right", padding: "10px" }}>
+            <img style={{ width: "30px", height: "30px", alignContent: "right" }} onClick={handleToTop} src={topArrow}></img>
+          </div>
+        </div>
+      </div>
+      <Footer></Footer>
+    </Grid>
+    );
+}
 export default Databank
+

@@ -163,7 +163,7 @@ const LandingPage = () => {
                 </MenuItem>
                 <MenuItem key="1" onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <Link className="landing-nav-link2" to="/databank">
+                    <Link className="landing-nav-link2" to="/databank/lifeline">
                       {t('tietopankki')}
                     </Link>
                   </Typography>
@@ -216,7 +216,7 @@ const LandingPage = () => {
               </Link>
             </Typography>
             <Typography sx={{ my: 3, display: 'block'}}>
-              <Link className="landing-nav-link2" to="/databank">
+              <Link className="landing-nav-link2" to="/databank/lifeline">
                 {t('tietopankki')}
               </Link>
             </Typography>
