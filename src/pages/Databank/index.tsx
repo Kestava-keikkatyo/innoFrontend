@@ -1,6 +1,6 @@
 import { Grid, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next';
-import Footer from '../../components/footer';
+import Footer from '../../components/Footer';
 import { useTheme } from '@mui/material/styles';
 import makeStyles from '@mui/styles/makeStyles';
 import responsibilities from '../../assets/tietopankki/vastuualueet.json'
