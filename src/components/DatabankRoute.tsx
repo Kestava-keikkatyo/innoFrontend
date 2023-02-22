@@ -1,4 +1,4 @@
-import { Button, Container, alpha, Grid, InputBase, Typography, CardMedia } from '@mui/material';
+import { Button, Container, alpha, Grid, InputBase, Typography, CardMedia, Box } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { Search } from '@mui/icons-material'
 import React, { useEffect, useState } from 'react'
@@ -60,18 +60,18 @@ const DatabankRoute: React.FC<DatabankProps> = ({ path, children }) => {
 
     return (
       <div style={{ width: '100%' }}>
-        <Grid container spacing={0} style={{backgroundColor: '#F47D20'}}>
-          <Grid item>
-            <h1 style={{ margin: '0px', paddingTop: '15px', paddingLeft: '15px'}}>KEIKKAKAVERI</h1>
+        <Grid container spacing={0}  style={{ backgroundColor: '#F47D20' }}>
+          <Grid item style={{ }}>
+            <h1 style={{ margin: '0px'}}>KEIKKAKAVERI</h1>
           </Grid>
-            <Grid item style={{ marginRight: '0px', paddingTop: '15px', paddingRight: '15px', paddingLeft: '15px' } }>
+          <Grid item style={{ display: "flex", justifyContent: "right", paddingTop: '15px', flexGrow: "1"}}>
             <Link to="/home" style={{ textDecoration: 'none' }}>
               <Button className="databank-button">
                 {t('homeButton')}
               </Button>
             </Link>
             <Link to="/databank" style={{ textDecoration: 'none' }}>
-                        <Button className="databank-button" style={{ backgroundColor: '#FDFDFD'}}>
+              <Button className="databank-button" style={{ backgroundColor: '#FDFDFD'}}>
                 {t('tietopankki')}
               </Button>
             </Link>
@@ -80,43 +80,35 @@ const DatabankRoute: React.FC<DatabankProps> = ({ path, children }) => {
                 {t('login_title')}
               </Button>
             </Link>
-              <Button key="2" onClick={() => { handleCloseNavMenu(); changeLanguage('fi') }} style={{ marginRight: "0.5em", borderRadius: '5rem', backgroundColor: color2 }}>
-                <Typography
-                  sx={{ color: 'black', fontWeight: 600, fontSize: 16 }}>
-                  FI
-                </Typography>
-              </Button>
-              <Button key="3" onClick={() => { handleCloseNavMenu(); changeLanguage('en') }} style={{borderRadius: '5rem', backgroundColor: color }}>
-                <Typography
-                  sx={{ color: 'black', fontWeight: 600, fontSize: 16 }}>
-                  EN
-                </Typography>
-              </Button>
+            <Button key="2" onClick={() => { handleCloseNavMenu(); changeLanguage('fi') }} style={{ marginRight: "0.5em", borderRadius: '5rem', minWidth: '40px', backgroundColor: color2 }}>
+              <Typography
+                sx={{ color: 'black', fontWeight: 600, fontSize: 16 }}>
+                FI
+              </Typography>
+            </Button>
+            <Button key="3" onClick={() => { handleCloseNavMenu(); changeLanguage('en') }} style={{ borderRadius: '5rem', minWidth: '40px', backgroundColor: color }}>
+              <Typography
+                sx={{ color: 'black', fontWeight: 600, fontSize: 16 }}>
+                EN
+              </Typography>
+            </Button>
           </Grid>
         </Grid>
-        <Grid container spacing={0} style={{backgroundColor: '#F47D20'}}>
-          <Grid item></Grid>
-          <Grid item>
+        <Grid container spacing={0} style={{ backgroundColor: '#F47D20'}}>
+          <Grid item style={{ display: "flex", justifyContent: "center", alignItems: 'center', flexGrow: "1"}}>
             <CardMedia
               component="img"
               sx={{ width: 160 }}
               image={logo}
               className="databank-logo"
-              />
+            />                   
           </Grid>
-          <Grid item>
-            <h1 style={{ margin: '0px 0px 0px 0px', textTransform: 'uppercase', paddingLeft: '15px' }}>{t('tietopankki')}</h1>
+          <Grid item style={{ alignItems: 'center', display: "flex", justifyContent: "left", flexGrow: "1" }}>
+            <h1 style={{ display: "flex", justifyContent: "left", margin: '0px 0px 0px 0px', textTransform: 'uppercase'}}>{t('tietopankki')}</h1>
           </Grid>
-        </Grid>         
-        <Container>
-          <Grid
-            container
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            className="databank-nav"
-            >
-          <Grid item>
+        </Grid>
+        <Container  maxWidth={false} style={{  width: '60%', padding: 0}}>
+          <Grid item style={{ paddingLeft: '0px', paddingRight: '0px' }}>
             <Button color="inherit">
               <Link onClick={() => handleSwitch("stages_of_work")} className={colors.stages_of_work} to="/databank/lifeline">
                 {t('stages_of_work')}
@@ -130,20 +122,18 @@ const DatabankRoute: React.FC<DatabankProps> = ({ path, children }) => {
             <Button color="inherit">
               <Link onClick={() => handleSwitch("instructions")} className={colors.instructions} to="/databank/instructions">
                 {t('instructions')}
-              </Link> {/*Ohjeet */}
+            </Link> {/*Ohjeet */}
             </Button>
             <Button color="inherit">
-               <Link onClick={() => handleSwitch("good_practises")} className={colors.good_practises} to="/databank/best-practices">
-                 {t('good_practises')}
-               </Link> {/*Hyvät käytännöt */}
+              <Link onClick={() => handleSwitch("good_practises")} className={colors.good_practises} to="/databank/best-practices">
+                {t('good_practises')}
+              </Link> {/*Hyvät käytännöt */}
             </Button>
             <Button color="inherit">
               <Link onClick={() => handleSwitch("forms")} className={colors.forms} to="/databank/faq">
                 {t('rwm_forms')}
-              </Link> {/*Lomakkeet */}
+            b</Link> {/*Lomakkeet */}
             </Button>
-          </Grid>
-          <Grid item>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <Search/>
@@ -155,15 +145,14 @@ const DatabankRoute: React.FC<DatabankProps> = ({ path, children }) => {
                   input: classes.inputInput,
                 }}
                 inputProps={{ 'aria-label': 'search' }}
-                />
+              />
             </div>
             {/* <Button color="inherit">Rekistöröidy</Button> */}
           </Grid>
-          </Grid>
-            {/* <JobLifeline /> */}
-            {/* <RoleResponsibilities /> */}
-            {children}
         </Container>
+        {/* <JobLifeline /> */}
+        {/* <RoleResponsibilities /> */}
+        {children}  
       </div>
     );
 }
@@ -177,11 +166,11 @@ const useStyles = makeStyles((theme) => ({
         '&:hover': {
             //backgroundColor: alpha(theme.palette.common.white, 0.25),
         },
-        marginLeft: 0,
+        //marginLeft: 0,
         width: '100%',
         [theme.breakpoints.up('sm')]: {
             marginLeft: theme.spacing(1),
-            width: 'auto',
+            //width: 'auto',
         },
     },
     searchIcon: {

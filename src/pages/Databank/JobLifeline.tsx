@@ -12,6 +12,7 @@ import lifeline from '../../assets/tietopankki/elinkaari.json'
 import { useTranslation } from 'react-i18next'
 import Footer from '../../components/Footer';
 import Ingressi from '../../components/Ingressi';
+import { Container } from '@mui/material';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -61,11 +62,12 @@ const JobLifeline = () => {
     return (
       <div className={classes.root}>
         <Ingressi header={ingressi_header} summary={summary}></Ingressi>
-        <Stepper activeStep={activeStep} orientation="vertical">
+        <Container maxWidth={false} style={{ backgroundColor: "#DBE4FC",width: "100%", display: "center", justifyContent: 'center' }}>
+          <Stepper style={{ width: "60%",  margin: 'auto'}} activeStep={activeStep} orientation="vertical" >
           {steps.map((label, index) => (
             <Step style={{ backgroundColor: "#DBE4FC" }} key={label}>
               <StepLabel>{label}</StepLabel>
-              <StepContent style={{ width: "60%", display: "center" }}>
+                <StepContent style={{display: "center", justifyContent: 'center'}}>
                 {getStepContent(index)}
                 <div className={classes.actionsContainer}>
                   <div>
@@ -97,7 +99,8 @@ const JobLifeline = () => {
                 Reset
               </Button>
             </Paper>
-          )}
+                )}
+            </Container>
         <Footer></Footer>
       </div>
     )

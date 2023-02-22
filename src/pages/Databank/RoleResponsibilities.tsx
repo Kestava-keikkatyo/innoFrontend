@@ -17,6 +17,7 @@ import Ingressi from '../../components/Ingressi';
 const useStyles = makeStyles((theme) => ({
     root: {
         marginTop: '2rem',
+        width: '100%'
     },
 }))
 
@@ -58,20 +59,20 @@ const RoleResponsibilities: React.SFC<RoleResponsibilitiesProps> = () => {
     const summary = "responsibilities_summary"
 
     return (
-      <Grid className={classes.root}>
+      <Grid container className={classes.root}>
         <Ingressi header={ingressi_header} summary={summary}></Ingressi>
-        <Grid style={{ backgroundColor: "#C0CFFA", width: "100%", display: "flex", justifyContent: "center", alignItems: "center", paddingTop: '15px'}} item >
+        <Grid style={{ backgroundColor: "#C0CFFA", width: "100%", display: "flex", justifyContent: "center", alignItems: "center", paddingTop: '15px' }} item >
           <div style={{ backgroundColor: "#C0CFFA", width: "60%", display: "flex", justifyContent: "evenly", alignItems: "center" }}>
             <img style={{ width: "30%", padding: '30px' }} src={hp}></img>
             <img style={{ width: "30%", padding: '30px' }} src={company}></img>
             <img style={{ width: "30%", padding: '30px' }} src={worker}></img>
           </div>
         </Grid>
-        <Grid style={{ backgroundColor: "#C0CFFA", width: "100%", display: "flex", justifyContent: "center", alignItems: "center" }} item >
+        <Grid style={{ backgroundColor: "#C0CFFA", width: "100%", display: "flex", justifyContent: "center", alignItems: "center" }} item>
           <div style={{ backgroundColor: "#C0CFFA", width: "60%", display: "flex", justifyContent: "evenly", alignItems: "center", paddingBottom: '15px' }}>
-            <button onClick={() => handleSwitch(roles.Agency)} style={{ backgroundColor: colors.agency }} className="responsibilities-button">Henkilöstöpalveluyritys</button>
-            <button onClick={() => handleSwitch(roles.Business)} style={{ backgroundColor: colors.business }} className="responsibilities-button">Käyttäjäyritys</button>
-            <button onClick={() => handleSwitch(roles.Worker)} style={{ backgroundColor: colors.worker }} className="responsibilities-button">Työntekijä</button>
+            <button onClick={() => handleSwitch(roles.Agency)} style={{ backgroundColor: colors.agency }} className="responsibilities-button">{t('agency')}</button>
+            <button onClick={() => handleSwitch(roles.Business)} style={{ backgroundColor: colors.business }} className="responsibilities-button">{t('business')}</button>
+            <button onClick={() => handleSwitch(roles.Worker)} style={{ backgroundColor: colors.worker }} className="responsibilities-button">{t('worker')}</button>
           </div>
         </Grid>
         <Grid style={{ backgroundColor: "#DBE4FC", width: "100%", padding: "0" }}>
@@ -91,8 +92,8 @@ const RoleResponsibilities: React.SFC<RoleResponsibilitiesProps> = () => {
                 </AccordionDetails>
               </Accordion>
             ))}
-            <div style={{ width: "100%", display: "flex", justifyContent: "right", alignItems: "right", padding: "10px" }}>
-              <img style={{ width: "30px", height: "30px", alignContent: "right" }} onClick={handleToTop} src={topArrow}></img>
+            <div style={{ width: "100%", display: "flex", justifyContent: "right", padding: "10px" }}>
+              <img style={{ width: "30px", height: "30px" }} onClick={handleToTop} src={topArrow}></img>
             </div>
           </div>
         </Grid>
