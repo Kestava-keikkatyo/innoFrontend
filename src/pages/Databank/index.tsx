@@ -92,8 +92,8 @@ const Databank: React.FC<DatabankProps> = () => {
               </AccordionDetails>
             </Accordion>
           ))}
-          <div style={{ width: "100%", display: "flex", justifyContent: "right", alignItems: "right", padding: "10px" }}>
-            <img style={{ width: "30px", height: "30px", alignContent: "right" }} onClick={handleToTop} src={topArrow}></img>
+          <div style={{ width: "100%", display: "flex", justifyContent: "right", padding: "10px" }}>
+            <img style={{ width: "30px", height: "30px"}} onClick={handleToTop} src={topArrow}></img>
           </div>
         </div>
       </div>

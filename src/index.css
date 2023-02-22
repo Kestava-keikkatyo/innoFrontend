@@ -530,7 +530,7 @@ nav * {
     /*z-index: 5;
     top: calc(50% - 0px);
     left: calc(50% - 500px);*/
-    margin-top: 65px;
+    margin-top: 50px;
     width: 350px;
     height: 180px;
     /* background-size: contain; */
@@ -581,7 +581,7 @@ nav * {
     color: #ddd;
     padding: 0rem;
     margin-top: -30px;
-    width: 60%;
+    width: 100%;
     min-width: 60%;
     margin: auto;
 }
@@ -1069,24 +1069,6 @@ nav * {
     padding: 20px;
 }
 
-.css-1oqqzyl-MuiContainer-root {
-    padding-left: 0px;
-    padding-right: 0px;
-}
-
-.css-1oqqzyl-MuiContainer-root {
-    width: 100%;
-    /*Jotta saadaan taustavärit koko näytön leveydelle*/
-    max-width: none;
-    box-sizing: border-box;
-}
-
-.css-13i4rnv-MuiGrid-root {
-    display: center;
-    margin: auto;
-    margin-left: 0px;
-}
-
 .databank-nav-link-active {
     text-decoration: none !important;
     color: black !important;
@@ -1097,45 +1079,5 @@ nav * {
     padding: 3px;
     background-color: #F47D20;
 }
-
-.css-14yr603-MuiStepContent-root {
-    align-content: center;
-    margin: auto;
-    border-left: 0px;
-    padding-right: 0;
-    padding-left: 0;
-}
-
-.css-14sza3e-MuiStepLabel-root {
-    align-content: center;
-    margin: auto;
-    text-align: left;
-    width: 60%;
-}
-
-.MuiContainer-root MuiContainer-maxWidthLg css-1oqqzyl-MuiContainer-root {
-    align-content: center;
-    margin: auto;
-    text-align: left;
-    width: 60%;
-}
-
-.css-1e6y48t-MuiButtonBase-root-MuiButton-root{
-    min-width: 40px;
-}
-
-.css-1elwnq4-MuiPaper-root-MuiAccordion-root{
-    border-radius: 20px;
-    margin-bottom: 15px;
-}
-
-.css-1elwnq4-MuiPaper-root-MuiAccordion-root:first-of-type {
-    border-radius: 20px;
-}
-
-.css-1elwnq4-MuiPaper-root-MuiAccordion-root:before{
-    height: 0px;
-}
-
 
 

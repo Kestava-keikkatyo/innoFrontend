@@ -12,6 +12,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import Ingressi from '../../components/Ingressi'
 import Footer from '../../components/Footer'
 import topArrow from '../../assets/icons/sivunalkuun.svg'
+import { Container, Grid } from '@mui/material'
 
 const BestPractices: React.FC = () => {
 
@@ -38,12 +39,12 @@ const BestPractices: React.FC = () => {
     const summary = "good_practises_summary";
 
     return (
-      <div className={classes.root}>
+      <Grid container className={classes.root}>
         <Ingressi header={header} summary={summary}></Ingressi>
-        <div style={{ width: '100%', backgroundColor: "#DBE4FC" }} >
-          <div style={{ width: '60%', padding: '15px 0px 15px 0px', margin: 'auto'}}>
+        <Grid style={{ width: '100%', backgroundColor: "#DBE4FC" }}>
+            <div style={{ width: '60%', paddingTop: '15px', margin: 'auto'}}>
             {BestPractices.map((e, i) => (
-              <Accordion key={i}>
+              <Accordion defaultExpanded key={i}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1a-content"
@@ -60,15 +61,13 @@ const BestPractices: React.FC = () => {
                 </AccordionDetails>
               </Accordion>
             ))}
-            <div style={{ width: "100%", display: "flex", justifyContent: "right", alignItems: "right", padding: "10px" }}>
-              <img style={{ width: "30px", height: "30px", alignContent: "right" }} onClick={handleToTop} src={topArrow}></img>
+            <div style={{ width: "100%", display: "flex", justifyContent: "right", padding: "10px" }}>
+              <img style={{ width: "30px", height: "30px"}} onClick={handleToTop} src={topArrow}></img>
             </div>
           </div>
-        </div>
+        </Grid>
       <Footer></Footer>
-      </div>
-
+    </Grid>
   )
 }
-
 export default BestPractices
