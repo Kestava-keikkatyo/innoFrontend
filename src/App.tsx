@@ -4,7 +4,7 @@ import SnackbarNotification from './components/SnackbarNotification'
 import LandingPage from './pages/LandingPage'
 import LoginPage from './pages/LoginPage'
 import HomePage from './pages/HomePage'
-import ContractsPage from './pages/ContractsPage'
+import AgencyContractsPage from './pages/AgencyContractsPage'
 import PrivateRoute from './components/PrivateRoute'
 import ProcessPage from './pages/ProcessPage'
 import FormsPage from './pages/FormsPage'
@@ -83,7 +83,7 @@ import ReceivedDetails from './pages/FeedbackPage/ReceivedDetails'
 
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface DefaultTheme extends Theme {}
+  interface DefaultTheme extends Theme { }
 }
 
 /**
@@ -311,7 +311,7 @@ const App: React.FC = () => {
               path="/rentalWorkModel"
               roles={[roles.Worker, roles.Business, roles.Agency]}
             >
-              <RentalWorkModelPage path='rental-work-model'/>
+              <RentalWorkModelPage path='rental-work-model' />
             </PrivateRoute>
             <PrivateRoute path="/receivedFeedbacks" roles={[roles.Agency, roles.Business]}>
               <ReceivedFeedbacks />
@@ -341,7 +341,7 @@ const App: React.FC = () => {
               <ContractFormManagerPage />
             </PrivateRoute>
             <PrivateRoute path="/contracts" roles={[roles.Agency]}>
-              <ContractsPage />
+              <AgencyContractsPage />
             </PrivateRoute>
             <PrivateRoute
               path="/businessContracts/business-contract-preview"
