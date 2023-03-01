@@ -22,9 +22,9 @@ export default {
   invalid_email_address: 'Virheellinen sähköposti',
   required: 'Puuttuu',
   invalid_token: 'Virheellinen token',
-  logged_out: 'Kirjauduttu ulos',
-  login_failed: 'Kirjautuminen epäonnistui',
-  login_successful: 'Kirjauduttu onnistuneesti',
+  logged_out: 'Uloskirjautuminen onnistui!',
+  login_failed: 'Kirjautuminen epäonnistui!',
+  login_successful: 'Kirjautuminen onnistui!',
 
   // signup
   name: 'Nimi',
@@ -38,7 +38,7 @@ export default {
 
   // error
   invalid_email: 'Virheellinen sähköpostiosoite',
-  invalid_length: 'pituus on oltava ainakin 8',
+  invalid_length: 'Salasanan on oltava vähintään 8 merkkiä',
   field_required: 'Pakollinen kenttä',
   invalid_name: 'Virheellinen nimi',
   invalid_password: 'Salasana ei täsmää',
@@ -385,9 +385,9 @@ export default {
 
   finland: 'Suomi',
   english: 'Englanti',
-  tyopoyta: 'Työpöytä',
-  tietopankki: 'Tietopankki',
-  kirjaudu_sisaan: 'Kirjaudu sisään',
+  tyopoyta: 'TYÖPÖYTÄ',
+  tietopankki: 'TIETOPANKKI',
+  kirjaudu_sisaan: 'KIRJAUDU',
   form_tooltip_preview: 'Esikatsele lomaketta',
   form_tooltip_edit: 'Muokkaa lomaketta',
   form_tooltip_delete: 'Poista lomake',
@@ -537,10 +537,17 @@ export default {
   show_more: 'Näytä enemmän',
 
   // landingPage
-  slogan: 'Kun henkilöstö voi hyvin, työ sujuu.',
+  slogan: 'Tervetuloa käyttämään Keikkakaveria!',
   intro:
-    'Keikkakaveri tarjoaa tietoa, koulutusta ja välineitä turvallisten ja terveellisten työolojen kehittämiseen ja ylläpitämiseen.',
-    areas_of_responsibility_button: 'LUE LISÄÄ VASTUUALUEISTA',
+    'Keikkakaveri on työväline henkilöstöpalveluyrityksen, käyttäjäyrityksen ja vuokratyöntekijän väliseen yhteistyöhön työterveys-, työturvallisuus, ja työhyvinvointiasioissa. Tietopankki-sivustolle on koottu tietoa lainsäädännön velvoitteista sekä turvallisten ja terveellisten työolojen kehittämisestä.',
+  areas_of_responsibility_button: 'LUE LISÄÄ VASTUUALUEISTA',
+  left_box_header: 'Keikkakaveri-työväline',
+  left_box_content: 'Keikkakaverissa on omat sivut käyttäjäyritykselle, henkilöstöpalveluyritykselle ja vuokratyöntekijälle.',
+  enable_button: 'OTA KÄYTTÖÖN',
+  databank_button: 'SIIRRY TIETOPANKKIIN',
+  right_box_header: 'Tietopankki',
+  right_box_content: 'Sivustolle on koottu tietoa työturvallisuuden, työterveyden ja työhyvinvoinnin edistämisestä vuokratyössä.',
+
 
   // CreateJobForAgency
   add_new_job: 'Lisää uusi työpaikka',
@@ -735,27 +742,40 @@ export default {
   employee_order: 'Työntekijän tilaus ja valinta',
   contract_orientation: 'Työsopimus ja yleisperehdytys',
 
-  // Footer Page
-  worker_question: 'Oletko työntekijä?',
-  make_money: 'Ansaitse rahaa',
-  work_flexibly: 'Tee joustavasti töitä',
-  stressFree_work: 'Stressitön keikkatyö',
-  register: 'LUO TILI',
-  user_company: 'Oletko käyttäjäyritys?',
-  flexible_model: 'Nopea ja joustava malli hankkia työntekijöitä',
-  recruitment_process: 'Pääset vaikuttamaan rekrytointiprosessiin',
-  productivity: 'Hyvinvoivien työntekijöiden tuottavuus on jopa 20% normaalia parempi',
-  rental_company: 'Oletko vuokratyöfirma?',
-  orientation: 'Keskitä perehdyttäminen yhteen paikkaan',
-  automation: 'Automatisaatiolla perehdytys on rennompaa',
-  wellBeing: 'Työntekijöitesi hyvinvointi on meille tärkeää',
-  topical: 'Ajankohtaista:',
-  news: 'Uutiset',
-  collaboration: 'Yhteistyössä:',
-  ttk: 'Työturvallisuuskeskus',
-  esr: 'ESR-rahasto',
-  get_to_know: 'Tutustu:',
-  privacy_statement:'Tietosuojaseloste',
+  // Footer Page (old)
+  // worker_question: 'Oletko työntekijä?',
+  // make_money: 'Ansaitse rahaa',
+  // work_flexibly: 'Tee joustavasti töitä',
+  // stressFree_work: 'Stressitön keikkatyö',
+  // register: 'LUO TILI',
+  // user_company: 'Oletko käyttäjäyritys?',
+  // flexible_model: 'Nopea ja joustava malli hankkia työntekijöitä',
+  // recruitment_process: 'Pääset vaikuttamaan rekrytointiprosessiin',
+  // productivity: 'Hyvinvoivien työntekijöiden tuottavuus on jopa 20% normaalia parempi',
+  // rental_company: 'Oletko vuokratyöfirma?',
+  // orientation: 'Keskitä perehdyttäminen yhteen paikkaan',
+  // automation: 'Automatisaatiolla perehdytys on rennompaa',
+  // wellBeing: 'Työntekijöitesi hyvinvointi on meille tärkeää',
+  // topical: 'Ajankohtaista:',
+  // news: 'Uutiset',
+  // collaboration: 'Yhteistyössä:',
+  // ttk: 'Työturvallisuuskeskus',
+  // esr: 'ESR-rahasto',
+  // get_to_know: 'Tutustu:',
+  // privacy_statement: 'Tietosuojaseloste',
+
+  // Footer
+  // Left grid box
+  keikkakaveri_info: 'Keikkakaveri on kehitetty Kestävä Keikkatyö-hankkeessa. Hankkeen toteuttivat Metropolia ammattikorkeakoulu, Satakunnan ammattikorkeakoulu, Tampereen yliopisto ja Oulun yliopisto. Hanketta rahoitti Sosiaali- ja terveysministeriö sekä Euroopan sosiaalirahasto. Keikkakaverin ylläpidosta vastaa Työturvallisuuskeskus.',
+  // Middle grid box
+  databank_link: 'TIETOPANKKI',
+  keikkakaveri_tool_link: 'KEIKKAKAVERI-TYÖVÄLINE',
+  // Right grid box
+  centre_occupational_safety: 'Työturvallisuuskeskus',
+  privacy_policy_link: 'Tietoturvaseloste',
+  accessibility_statement_link: 'Saavutettavuusseloste',
+
+
 
   // Worker home
   feelings: 'Fiilikset',
@@ -824,50 +844,60 @@ export default {
   // Overview
   loremipsum: 'FI Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam distinctio esse iure modi neque quaerat, repudiandae. Accusantium alias aut commodi debitis ea harum ipsa itaque laudantium molestiae nesciunt quis sint vel velit, vitae voluptatibus! Commodi dicta dolorum eaque earum esse est facere fugit iste labore magnam, minus, neque nobis!',
   RentalWorkModelOverview: [
-    { 
-    header:' Yleiskatsaus ',
-    info:  'Vuokratyössä on kolme osapuolta: henkilöstöpalveluyritys, käyttäjäyritys ja vuokratyöntekijä. Henkilöstöpalveluyritys ja käyttäjäyritys tekevät asiakassopimuksen. Henkilöstöpalveluyritys toimittaa'+
-    ' sopimuksen ja käyttäjäyritykseltä saamansa tilauksen mukaisesti vuokratyöntekijän käyttäjäyritykselle. Henkilöstöpalveluyritys on vuokratyöntekijän työnantaja ja antaa vuokratyöntekijälle yleisperehdytyksen. '+
-    'Käyttäjäyritys opastaa vuokratyöntekijän työhön. Vuokratyöntekijä tekee työtä käyttäjäyrityksen johdon ja valvonnan alla. Kaikkien osapuolten on hyvä viestiä toisilleen työturvallisuuteen, -terveyteen ja '+
-    ' -hyvinvointiin liittyvistä asioista. ' },
     {
-    header: '1. Asiakassopimus ',
-    info: 'Henkilöstöpalveluyritys ja käyttäjäyritys tekevät asiakassopimuksen. Käyttäjäyritys antaa henkilöstöpalveluyritykselle tietoa työolosuhteista ja niihin liittyvistä työturvallisuus-, työterveys- '+
-    'ja työhyvinvointiasioista. Yritykset käyvät läpi työturvallisuuteen, terveyteen ja hyvinvointiin liittyvien vastuiden jakautumisen yritysten kesken. Yritykset sopivat mm. asiakassuhteen aikaisesta '+
-    'tiedonkulusta, henkilönsuojainten hankinnasta, perehdytyksestä ja toimintatavoista työtapaturma-, sairaspoissaolo- ja vaaratilanteisiin.  '},
+      header: ' Yleiskatsaus ',
+      info: 'Vuokratyössä on kolme osapuolta: henkilöstöpalveluyritys, käyttäjäyritys ja vuokratyöntekijä. Henkilöstöpalveluyritys ja käyttäjäyritys tekevät asiakassopimuksen. Henkilöstöpalveluyritys toimittaa' +
+        ' sopimuksen ja käyttäjäyritykseltä saamansa tilauksen mukaisesti vuokratyöntekijän käyttäjäyritykselle. Henkilöstöpalveluyritys on vuokratyöntekijän työnantaja ja antaa vuokratyöntekijälle yleisperehdytyksen. ' +
+        'Käyttäjäyritys opastaa vuokratyöntekijän työhön. Vuokratyöntekijä tekee työtä käyttäjäyrityksen johdon ja valvonnan alla. Kaikkien osapuolten on hyvä viestiä toisilleen työturvallisuuteen, -terveyteen ja ' +
+        ' -hyvinvointiin liittyvistä asioista. '
+    },
     {
-    header: '2. Työntekijän tilaus ja valinta ',
-    info: 'Käyttäjäyritys tilaa henkilöstöpalveluyritykseltä työntekijän työtehtävään. Käyttäjäyritys kertoo henkilöstöpalveluyritykselle työn ammattitaitovaatimukset ja erityispiirteet. '},
+      header: '1. Asiakassopimus ',
+      info: 'Henkilöstöpalveluyritys ja käyttäjäyritys tekevät asiakassopimuksen. Käyttäjäyritys antaa henkilöstöpalveluyritykselle tietoa työolosuhteista ja niihin liittyvistä työturvallisuus-, työterveys- ' +
+        'ja työhyvinvointiasioista. Yritykset käyvät läpi työturvallisuuteen, terveyteen ja hyvinvointiin liittyvien vastuiden jakautumisen yritysten kesken. Yritykset sopivat mm. asiakassuhteen aikaisesta ' +
+        'tiedonkulusta, henkilönsuojainten hankinnasta, perehdytyksestä ja toimintatavoista työtapaturma-, sairaspoissaolo- ja vaaratilanteisiin.  '
+    },
     {
-    header: '3. Työsopimus ja yleisperehdytys ',
-    info: 'Henkilöstöpalveluyritys ja vuokratyöntekijä tekevät kirjallisen työsopimuksen. Henkilöstöpalveluyritys antaa vuokratyöntekijälle yleisperehdytyksen, jossa käydään läpi mm. työntekijän velvoitteet, '+
-    'työtehtävä ja siinä vaadittava osaaminen, työn vaarat ja erityispiirteet, työvaatetus ja henkilönsuojaimet, työterveyshuolto ja toiminta työtapaturma-, sairastumis- ja muissa vaaratilanteissa. '},
+      header: '2. Työntekijän tilaus ja valinta ',
+      info: 'Käyttäjäyritys tilaa henkilöstöpalveluyritykseltä työntekijän työtehtävään. Käyttäjäyritys kertoo henkilöstöpalveluyritykselle työn ammattitaitovaatimukset ja erityispiirteet. '
+    },
     {
-    header: '4. Opastus työhön ja työoloihin ',
-    info: 'Käyttäjäyritys opastaa vuokratyöntekijän työhön ja työoloihin. Työnopastuksessa käydään läpi mm. työtehtävät ja turvalliset työtavat, työssä esiintyvät haitta- ja vaaratekijät ja niiltä suojautuminen,'+
-    ' työajat ja tauot, toiminta onnettomuus- ja poikkeustilanteissa, turvallisuushavaintojen tekeminen sekä tiedotuskäytännöt. ' },
-    { 
-    header: '5. Työsuoritus, valvonta ja palaute ',
-    info: 'Vuokratyöntekijän työtä johtaa ja valvoo käyttäjäyritys. Henkilöstöpalveluyrityksen, käyttäjäyrityksen ja vuokratyöntekijän on hyvä keskustella ja antaa palautetta toisilleen koko vuokratyötoimeksiannon ajan. '}       
+      header: '3. Työsopimus ja yleisperehdytys ',
+      info: 'Henkilöstöpalveluyritys ja vuokratyöntekijä tekevät kirjallisen työsopimuksen. Henkilöstöpalveluyritys antaa vuokratyöntekijälle yleisperehdytyksen, jossa käydään läpi mm. työntekijän velvoitteet, ' +
+        'työtehtävä ja siinä vaadittava osaaminen, työn vaarat ja erityispiirteet, työvaatetus ja henkilönsuojaimet, työterveyshuolto ja toiminta työtapaturma-, sairastumis- ja muissa vaaratilanteissa. '
+    },
+    {
+      header: '4. Opastus työhön ja työoloihin ',
+      info: 'Käyttäjäyritys opastaa vuokratyöntekijän työhön ja työoloihin. Työnopastuksessa käydään läpi mm. työtehtävät ja turvalliset työtavat, työssä esiintyvät haitta- ja vaaratekijät ja niiltä suojautuminen,' +
+        ' työajat ja tauot, toiminta onnettomuus- ja poikkeustilanteissa, turvallisuushavaintojen tekeminen sekä tiedotuskäytännöt. '
+    },
+    {
+      header: '5. Työsuoritus, valvonta ja palaute ',
+      info: 'Vuokratyöntekijän työtä johtaa ja valvoo käyttäjäyritys. Henkilöstöpalveluyrityksen, käyttäjäyrityksen ja vuokratyöntekijän on hyvä keskustella ja antaa palautetta toisilleen koko vuokratyötoimeksiannon ajan. '
+    }
   ],
   WorkerRentalWorkModelOverview: [
-    { 
-    header:' Yleiskatsaus ',
-    info:  'Vuokratyössä on kolme osapuolta: henkilöstöpalveluyritys, käyttäjäyritys ja vuokratyöntekijä. Henkilöstöpalveluyritys ja käyttäjäyritys tekevät asiakassopimuksen. Henkilöstöpalveluyritys toimittaa'+
-    ' sopimuksen ja käyttäjäyritykseltä saamansa tilauksen mukaisesti vuokratyöntekijän käyttäjäyritykselle. Henkilöstöpalveluyritys on vuokratyöntekijän työnantaja ja antaa vuokratyöntekijälle yleisperehdytyksen. '+
-    'Käyttäjäyritys opastaa vuokratyöntekijän työhön. Vuokratyöntekijä tekee työtä käyttäjäyrityksen johdon ja valvonnan alla. Kaikkien osapuolten on hyvä viestiä toisilleen työturvallisuuteen, -terveyteen ja '+
-    ' -hyvinvointiin liittyvistä asioista. ' },
     {
-    header: '1. Työsopimus ja yleisperehdytys ',
-    info: 'Henkilöstöpalveluyritys ja vuokratyöntekijä tekevät kirjallisen työsopimuksen. Henkilöstöpalveluyritys antaa vuokratyöntekijälle yleisperehdytyksen, jossa käydään läpi mm. työntekijän velvoitteet, '+
-    'työtehtävä ja siinä vaadittava osaaminen, työn vaarat ja erityispiirteet, työvaatetus ja henkilönsuojaimet, työterveyshuolto ja toiminta työtapaturma-, sairastumis- ja muissa vaaratilanteissa. '},
+      header: ' Yleiskatsaus ',
+      info: 'Vuokratyössä on kolme osapuolta: henkilöstöpalveluyritys, käyttäjäyritys ja vuokratyöntekijä. Henkilöstöpalveluyritys ja käyttäjäyritys tekevät asiakassopimuksen. Henkilöstöpalveluyritys toimittaa' +
+        ' sopimuksen ja käyttäjäyritykseltä saamansa tilauksen mukaisesti vuokratyöntekijän käyttäjäyritykselle. Henkilöstöpalveluyritys on vuokratyöntekijän työnantaja ja antaa vuokratyöntekijälle yleisperehdytyksen. ' +
+        'Käyttäjäyritys opastaa vuokratyöntekijän työhön. Vuokratyöntekijä tekee työtä käyttäjäyrityksen johdon ja valvonnan alla. Kaikkien osapuolten on hyvä viestiä toisilleen työturvallisuuteen, -terveyteen ja ' +
+        ' -hyvinvointiin liittyvistä asioista. '
+    },
     {
-    header: '2. Opastus työhön ja työoloihin ',
-    info: 'Käyttäjäyritys opastaa vuokratyöntekijän työhön ja työoloihin. Työnopastuksessa käydään läpi mm. työtehtävät ja turvalliset työtavat, työssä esiintyvät haitta- ja vaaratekijät ja niiltä suojautuminen,'+
-    ' työajat ja tauot, toiminta onnettomuus- ja poikkeustilanteissa, turvallisuushavaintojen tekeminen sekä tiedotuskäytännöt. ' },
-    { 
-    header: '3. Työsuoritus, valvonta ja palaute ',
-    info: 'Vuokratyöntekijän työtä johtaa ja valvoo käyttäjäyritys. Henkilöstöpalveluyrityksen, käyttäjäyrityksen ja vuokratyöntekijän on hyvä keskustella ja antaa palautetta toisilleen koko vuokratyötoimeksiannon ajan. '}       
+      header: '1. Työsopimus ja yleisperehdytys ',
+      info: 'Henkilöstöpalveluyritys ja vuokratyöntekijä tekevät kirjallisen työsopimuksen. Henkilöstöpalveluyritys antaa vuokratyöntekijälle yleisperehdytyksen, jossa käydään läpi mm. työntekijän velvoitteet, ' +
+        'työtehtävä ja siinä vaadittava osaaminen, työn vaarat ja erityispiirteet, työvaatetus ja henkilönsuojaimet, työterveyshuolto ja toiminta työtapaturma-, sairastumis- ja muissa vaaratilanteissa. '
+    },
+    {
+      header: '2. Opastus työhön ja työoloihin ',
+      info: 'Käyttäjäyritys opastaa vuokratyöntekijän työhön ja työoloihin. Työnopastuksessa käydään läpi mm. työtehtävät ja turvalliset työtavat, työssä esiintyvät haitta- ja vaaratekijät ja niiltä suojautuminen,' +
+        ' työajat ja tauot, toiminta onnettomuus- ja poikkeustilanteissa, turvallisuushavaintojen tekeminen sekä tiedotuskäytännöt. '
+    },
+    {
+      header: '3. Työsuoritus, valvonta ja palaute ',
+      info: 'Vuokratyöntekijän työtä johtaa ja valvoo käyttäjäyritys. Henkilöstöpalveluyrityksen, käyttäjäyrityksen ja vuokratyöntekijän on hyvä keskustella ja antaa palautetta toisilleen koko vuokratyötoimeksiannon ajan. '
+    }
   ],
 
   // good practices
@@ -1094,17 +1124,21 @@ export default {
 
   workerResponsibilitiesArray: [
     {
-      header:'1. Huolehdin omasta ja työkavereiden työhyvinvoinnista ja -turvallisuudesta.',
-      summary:  'Työntekijän on osaamisensa mukaisesti ja käytettävissään olevin keinoin huolehdittava omasta ja muiden työntekijöiden turvallisuudesta ja terveydestä.' },
+      header: '1. Huolehdin omasta ja työkavereiden työhyvinvoinnista ja -turvallisuudesta.',
+      summary: 'Työntekijän on osaamisensa mukaisesti ja käytettävissään olevin keinoin huolehdittava omasta ja muiden työntekijöiden turvallisuudesta ja terveydestä.'
+    },
     {
       header: '2. En häiritse tai kohtele muita epäasiallisesti.',
-      summary: 'Työntekijän on vältettävä muihin työntekijöihin kohdistuvaa häirintää ja muuta epäasiallista kohtelua. '},
+      summary: 'Työntekijän on vältettävä muihin työntekijöihin kohdistuvaa häirintää ja muuta epäasiallista kohtelua. '
+    },
     {
       header: '3. Noudatan työpaikan ohjeita.',
-      summary: 'Työntekijän on noudatettava työnantajan antamia määräyksiä ja ohjeita. '},
+      summary: 'Työntekijän on noudatettava työnantajan antamia määräyksiä ja ohjeita. '
+    },
     {
       header: '4. Käytän työvälineitä, henkilösuojaimia ja turvalaitteita asianmukaisesti.',
-      summary: 'Työntekijän tulee käyttää oikein koneita, työvälineitä ja muita laitteita sekä niissä olevia turvallisuus- ja suojalaitteita. Lisäksi työntekijän tulee käyttää työnantajan antamia henkilönsuojaimia. '},
+      summary: 'Työntekijän tulee käyttää oikein koneita, työvälineitä ja muita laitteita sekä niissä olevia turvallisuus- ja suojalaitteita. Lisäksi työntekijän tulee käyttää työnantajan antamia henkilönsuojaimia. '
+    },
     {
       header: '5. Ilmoitan havaitsemistani vioista ja puutteista',
       summary: 'Työntekijän on ilmoitettava työssä havaitsemistaan vioista ja puutteista työnantajalle ja työsuojeluvaltuutetulle. '
@@ -1137,8 +1171,8 @@ export default {
     },
     {
       header: '7. Henkilösuojaimet ja työvaatetus',
-      summary: 'Henkilöstöpalveluyritys ja käyttäjäyritys sopivat työvaatetuksen tarjoamisesta työntekijälle,'+
-        'mikäli työssä edellytetään erityistä työvaatetusta.'+
+      summary: 'Henkilöstöpalveluyritys ja käyttäjäyritys sopivat työvaatetuksen tarjoamisesta työntekijälle,' +
+        'mikäli työssä edellytetään erityistä työvaatetusta.' +
         'Työssä tarvittavat suojaimet valitaan työpaikalla tehdyn riskinarvioinnin perusteella.  ',
     }
   ],
@@ -1184,8 +1218,8 @@ export default {
     },
     {
       header: '9. Henkilösuojaimet ja työvaatetus',
-      summary: 'Henkilöstöpalveluyritys ja käyttäjäyritys sopivat työvaatetuksen tarjoamisesta työntekijälle,'+
-        'mikäli työssä edellytetään erityistä työvaatetusta.'+
+      summary: 'Henkilöstöpalveluyritys ja käyttäjäyritys sopivat työvaatetuksen tarjoamisesta työntekijälle,' +
+        'mikäli työssä edellytetään erityistä työvaatetusta.' +
         'Työssä tarvittavat suojaimet valitaan työpaikalla tehdyn riskinarvioinnin perusteella.  ',
     }
   ],
@@ -1197,14 +1231,14 @@ export default {
   general: 'Yleistä',
   search: 'Hae',
 
-   // Privacy Policy
-   privacy_policy: 'Tietosuojaseloste',
-   privacy_policies1: "Rekisteröitymällä hyväksyt antamasi tietojen lähetyksen Keikkakaverille ja henkilöstöpalveluyrityksille, sekä sinua koskeville käyttäjäyrityksille.",
-   privacy_policies2: "Tietoja kerätään, jotta henkilöstöpalveluyritykset voivat välittää työntekijälle työtä ja siihen liittyviä tietoja ja lähettää työntekijän tietoja työn tilanneelle käyttäjäyritykselle.",
-   privacy_policies3: "Rekisteröityminen on välttämätöntä, sillä työnvälitys ei onnistu ilman henkilötietoja.",
-   privacy_policies4: "Tietoja säilytetään kannassa toistaiseksi. Halutessaan käyttäjällä on oikeus poistattaa tietonsa ottamalla yhteyttä Keikkakaverin ylläpitoon.",
-   privacy_policies5: "Henkilötietojasi välitetään käyttäjäyrityksille ainoastaan silloin, kun olet menossa yritykselle töihin.",
-   privacy_policies6: "Keikkakaverin keräämiin henkilötietohin kuuluvat nimi, sähköpostiosoite, osoitetiedot ja puhelinnumero.",
-   privacy_policies7: "Rekisteröitymisen yhteydessä kerätään ainoastaan nimi ja sähköpostiosoite. Muut tiedot voi lisätä myöhemmin, eivätkä ne ole pakollisia."
+  // Privacy Policy
+  privacy_policy: 'Tietosuojaseloste',
+  privacy_policies1: "Rekisteröitymällä hyväksyt antamasi tietojen lähetyksen Keikkakaverille ja henkilöstöpalveluyrityksille, sekä sinua koskeville käyttäjäyrityksille.",
+  privacy_policies2: "Tietoja kerätään, jotta henkilöstöpalveluyritykset voivat välittää työntekijälle työtä ja siihen liittyviä tietoja ja lähettää työntekijän tietoja työn tilanneelle käyttäjäyritykselle.",
+  privacy_policies3: "Rekisteröityminen on välttämätöntä, sillä työnvälitys ei onnistu ilman henkilötietoja.",
+  privacy_policies4: "Tietoja säilytetään kannassa toistaiseksi. Halutessaan käyttäjällä on oikeus poistattaa tietonsa ottamalla yhteyttä Keikkakaverin ylläpitoon.",
+  privacy_policies5: "Henkilötietojasi välitetään käyttäjäyrityksille ainoastaan silloin, kun olet menossa yritykselle töihin.",
+  privacy_policies6: "Keikkakaverin keräämiin henkilötietohin kuuluvat nimi, sähköpostiosoite, osoitetiedot ja puhelinnumero.",
+  privacy_policies7: "Rekisteröitymisen yhteydessä kerätään ainoastaan nimi ja sähköpostiosoite. Muut tiedot voi lisätä myöhemmin, eivätkä ne ole pakollisia."
 }
 

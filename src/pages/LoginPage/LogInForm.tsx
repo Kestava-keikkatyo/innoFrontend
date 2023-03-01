@@ -69,7 +69,6 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
                   label={t('password')}
                   name="password"
                   type="password"
-                  placeholder="secret123"
                   className="marginTop"
                 />
                 <Button

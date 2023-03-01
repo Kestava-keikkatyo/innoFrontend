@@ -30,7 +30,7 @@ const NewFeelingEntryModal: React.FC<any> = ({ modalState }) => {
     (state) => state.feeling.currentFeeling
   );
 
-  let currentFiles: any = useSelector<IRootState>(
+  const currentFiles: any = useSelector<IRootState>(
     (state) => state.files.currentFiles
   );
 

@@ -79,7 +79,7 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
             if (!values.password) {
               errors.password = requiredError;
             }
-            if(values.password.length < 8){
+            if (values.password.length < 8) {
               errors.password = t('invalid_length');
             }
             if (!values.name) {
@@ -113,7 +113,6 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
                   label={t('name')}
                   name="name"
                   type="text"
-                  placeholder="user"
                 />
                 <FormikTextField
                   label={t('email')}
@@ -128,7 +127,6 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
                       label={t('password')}
                       name="password"
                       type="password"
-                      placeholder="secret123"
                       className="marginTop"
                     />
                   </Box>
@@ -136,15 +134,14 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
                     label={t('confirm')}
                     name="passwordConfirm"
                     type="password"
-                    placeholder="secret123"
                     className="marginTop"
                   />
                 </Box>
                 <Box display="flex" flexDirection="column" className="marginTop2">
                   <FormikSelectField
-                      label={t('role')}
-                      name="role"
-                      options={roleOptions}
+                    label={t('role')}
+                    name="role"
+                    options={roleOptions}
                   />
                 </Box>
                 {(values.role === roles.Agency || values.role === roles.Business) && (
