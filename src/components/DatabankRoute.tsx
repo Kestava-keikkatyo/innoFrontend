@@ -1,104 +1,144 @@
-import { Button, Container, alpha, Grid, InputBase, MenuItem, Typography } from '@mui/material';
+import { Button, Container, alpha, Grid, InputBase, Typography, CardMedia, Box } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { Search } from '@mui/icons-material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../assets/keikkakaveri_logo.png'
+import logo from '../assets/pictures/Tietopankki_yläpalkki_kuvitus.svg'
 import { useTranslation } from 'react-i18next'
 export interface DatabankProps {
-  path: string
-  children: any
+    path: string
+    children: any
 }
 
 const DatabankRoute: React.FC<DatabankProps> = ({ path, children }) => {
-  
-  const classes = useStyles()
-  const { t } = useTranslation()
-  const changeLanguage = (code: any) => {
-    // setAnchorEl(null);
-    localStorage.setItem('i18nextLng', code);
-    window.location.reload();
-  };
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
 
-  return (
-    <div>
-      <div className="databank-top-container relative">
-        <div className="databank-banner" />
+    const language = localStorage.getItem("i18nextLng");
+    const [color, setColor] = useState("");
+    const [color2, setColor2] = useState("");
+    const classes = useStyles()
+    const { t } = useTranslation()
+    const [colors, setColors] = useState({ stages_of_work: "databank-nav-link", work_responsibilities: "databank-nav-link", instructions: "databank-nav-link", good_practises: "databank-nav-link", forms: "databank-nav-link" })
 
-        <div className="databank-logo">
-          <Link to="/" style={{ height: 200 }}>
-            <img src={logo} alt="keikkakaveri logo" />{' '}
-          </Link>
-        </div>
+    const handleSwitch = (page: string) => {
+      switch (page) {
+        case "stages_of_work":
+          setColors({ ...colors, stages_of_work: "databank-nav-link-active", work_responsibilities: "databank-nav-link", instructions: "databank-nav-link", good_practises: "databank-nav-link", forms: "databank-nav-link" });
+          break
+        case "work_responsibilities":
+          setColors({ ...colors, stages_of_work: "databank-nav-link", work_responsibilities: "databank-nav-link-active", instructions: "databank-nav-link", good_practises: "databank-nav-link", forms: "databank-nav-link" });
+          break
+        case "instructions":
+          setColors({ ...colors, stages_of_work: "databank-nav-link", work_responsibilities: "databank-nav-link", instructions: "databank-nav-link-active", good_practises: "databank-nav-link", forms: "databank-nav-link" });
+          break
+        case "good_practises":
+          setColors({ ...colors, stages_of_work: "databank-nav-link", work_responsibilities: "databank-nav-link", instructions: "databank-nav-link", good_practises: "databank-nav-link-active", forms: "databank-nav-link" });
+          break
+        case "forms":
+          setColors({ ...colors, stages_of_work: "databank-nav-link", work_responsibilities: "databank-nav-link", instructions: "databank-nav-link", good_practises: "databank-nav-link", forms: "databank-nav-link-active" });
+          break
+        }
+    }
 
-        <div className="databank-desktop-link">
-        <Button variant="contained" color="primary" key="2" onClick={ () => {handleCloseNavMenu(); changeLanguage('fi')}} style={{marginRight: "0.5em"}}>
-            <Typography
-              sx={{color: 'black', fontWeight:600, fontSize: 16}}>
-              FI
-            </Typography>
-          </Button>
-          <Button variant="contained" color="primary" key="3" onClick={ () => {handleCloseNavMenu(); changeLanguage('en')}} style={{marginRight: "2em"}}>
-            <Typography
-              sx={{color: 'black', fontWeight: 600, fontSize: 16}}>
-              EN
-            </Typography>
-          </Button>
-          <Link to="/home" style={{ textDecoration: 'none' }}>
-            <Button variant="contained" color="primary">
-             {t('homeButton')}
+    useEffect(() => {
+        setColors({ ...colors, stages_of_work: "databank-nav-link-active", work_responsibilities: "databank-nav-link", instructions: "databank-nav-link", good_practises: "databank-nav-link", forms: "databank-nav-link" });
+        if (language === "en") {
+          setColor("#FDFDFD")
+        } else {
+          setColor2("#FDFDFD");
+        }
+    }, [])
+
+    const changeLanguage = (code: any) => {
+        localStorage.setItem('i18nextLng', code);
+        window.location.reload();
+    };
+
+    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+    const handleCloseNavMenu = () => {
+        setAnchorElNav(null);
+    };
+
+    return (
+      <div style={{ width: '100%' }}>
+        <Grid container spacing={0}  style={{ backgroundColor: '#F47D20' }}>
+          <Grid item style={{ }}>
+            <h1 style={{ margin: '0px'}}>KEIKKAKAVERI</h1>
+          </Grid>
+          <Grid item style={{ display: "flex", justifyContent: "right", paddingTop: '15px', flexGrow: "1"}}>
+            <Link to="/home" style={{ textDecoration: 'none' }}>
+              <Button className="databank-button">
+                {t('homeButton')}
+              </Button>
+            </Link>
+            <Link to="/databank" style={{ textDecoration: 'none' }}>
+              <Button className="databank-button" style={{ backgroundColor: '#FDFDFD'}}>
+                {t('tietopankki')}
+              </Button>
+            </Link>
+            <Link to="/login" style={{ textDecoration: 'none' }}>
+              <Button className="databank-button">
+                {t('login_title')}
+              </Button>
+            </Link>
+            <Button key="2" onClick={() => { handleCloseNavMenu(); changeLanguage('fi') }} style={{ marginRight: "0.5em", borderRadius: '5rem', minWidth: '40px', backgroundColor: color2 }}>
+              <Typography
+                sx={{ color: 'black', fontWeight: 600, fontSize: 16 }}>
+                FI
+              </Typography>
             </Button>
-          </Link>
-        </div>
-      </div>
-      <Container>
-        <Grid
-          container
-          direction="row"
-          justifyContent="space-between"
-          alignItems="center"
-          className="databank-nav"
-        >
-          <Grid item>
-            <Button color="inherit">
-              <Link className="databank-nav-link" to="/databank">
-                {t('articles')}
-              </Link> {/*Artikkelit */} 
-            </Button>
-            <Button color="inherit">
-              <Link className="databank-nav-link" to="/databank/lifeline">
-              {t('work_lifespan')}
-              </Link> {/*Työn elinkaari */}
-            </Button>
-            <Button color="inherit">
-              <Link
-                className="databank-nav-link"
-                to="/databank/responsibilities"
-              >
-                {t('areas_of_responsibility')}
-              </Link> {/*Vastuualueet */}
-            </Button>
-            <Button color="inherit">
-              <Link className="databank-nav-link" to="/databank/best-practices">
-              {t('good_practises')}
-              </Link> {/*Hyvät käytännöt */}
-            </Button>
-            <Button color="inherit">
-              <Link className="databank-nav-link" to="/databank/faq">
-              {t('faq')}
-              </Link> {/*Hyvät käytännöt */}
+            <Button key="3" onClick={() => { handleCloseNavMenu(); changeLanguage('en') }} style={{ borderRadius: '5rem', minWidth: '40px', backgroundColor: color }}>
+              <Typography
+                sx={{ color: 'black', fontWeight: 600, fontSize: 16 }}>
+                EN
+              </Typography>
             </Button>
           </Grid>
-          <Grid item>
+        </Grid>
+        <Grid container spacing={0} style={{ backgroundColor: '#F47D20'}}>
+          <Grid item style={{ display: "flex", justifyContent: "center", alignItems: 'center', flexGrow: "1"}}>
+            <CardMedia
+              component="img"
+              sx={{ width: 160 }}
+              image={logo}
+              className="databank-logo"
+            />                   
+          </Grid>
+          <Grid item style={{ alignItems: 'center', display: "flex", justifyContent: "left", flexGrow: "1" }}>
+            <h1 style={{ display: "flex", justifyContent: "left", margin: '0px 0px 0px 0px', textTransform: 'uppercase'}}>{t('tietopankki')}</h1>
+          </Grid>
+        </Grid>
+        <Container  maxWidth={false} style={{  width: '60%', padding: 0}}>
+          <Grid item style={{ paddingLeft: '0px', paddingRight: '0px' }}>
+            <Button color="inherit">
+              <Link onClick={() => handleSwitch("stages_of_work")} className={colors.stages_of_work} to="/databank/lifeline">
+                {t('stages_of_work')}
+              </Link> {/*Vuokratyön vaiheet */}
+            </Button>
+            <Button color="inherit">
+              <Link onClick={() => handleSwitch("work_responsibilities")} className={colors.work_responsibilities} to="/databank/responsibilities">
+                {t('work_responsibilities')}
+              </Link> {/*Vuokratyön vastuut */}
+            </Button>
+            <Button color="inherit">
+              <Link onClick={() => handleSwitch("instructions")} className={colors.instructions} to="/databank/instructions">
+                {t('instructions')}
+            </Link> {/*Ohjeet */}
+            </Button>
+            <Button color="inherit">
+              <Link onClick={() => handleSwitch("good_practises")} className={colors.good_practises} to="/databank/best-practices">
+                {t('good_practises')}
+              </Link> {/*Hyvät käytännöt */}
+            </Button>
+            <Button color="inherit">
+              <Link onClick={() => handleSwitch("forms")} className={colors.forms} to="/databank/faq">
+                {t('rwm_forms')}
+            b</Link> {/*Lomakkeet */}
+            </Button>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
-                <Search />
+                <Search/>
               </div>
-              <InputBase
+              <InputBase style={{ border: "2px solid grey", borderRadius: "5rem" }}
                 placeholder={t("search")}
                 classes={{
                   root: classes.inputRoot,
@@ -109,56 +149,54 @@ const DatabankRoute: React.FC<DatabankProps> = ({ path, children }) => {
             </div>
             {/* <Button color="inherit">Rekistöröidy</Button> */}
           </Grid>
-        </Grid>
+        </Container>
         {/* <JobLifeline /> */}
         {/* <RoleResponsibilities /> */}
-        {children}
-      </Container>
-    </div>
-  );
+        {children}  
+      </div>
+    );
 }
 
 const useStyles = makeStyles((theme) => ({
-  search: {
-    position: 'relative',
-    color: 'black',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
+    search: {
+        position: 'relative',
+        color: 'black',
+        borderRadius: '5rem',
+        backgroundColor: alpha(theme.palette.common.white, 0.15),
+        '&:hover': {
+            //backgroundColor: alpha(theme.palette.common.white, 0.25),
+        },
+        //marginLeft: 0,
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+            marginLeft: theme.spacing(1),
+            //width: 'auto',
+        },
     },
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
-      width: 'auto',
+    searchIcon: {
+        padding: theme.spacing(0, 2),
+        height: '100%',
+        position: 'absolute',
+        pointerEvents: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputRoot: {
-    color: 'inherit',
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
-      },
+    inputRoot: {
+        color: 'inherit',
     },
-  },
+    inputInput: {
+        padding: theme.spacing(0.5, 0.5, 0.5, 0),
+        // vertical padding + font size from searchIcon
+        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+        transition: theme.transitions.create('width'),
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+            width: '12ch',
+            '&:focus': {
+                width: '20ch',
+            },
+        },
+    },
 }))
-
 export default DatabankRoute
