@@ -1,14 +1,32 @@
+/* eslint-disable no-prototype-builtins */
 /**
  * @module userActions
  * @desc Redux user actions
  */
 import userService from '../services/userService'
-import { saveUser, logoutUser } from '../utils/storage'
+import usersService from '../services/usersService'
+import { saveUser, logoutUser, loadUser } from '../utils/storage'
 import history from '../utils/history'
 import { setAlert } from './alertActions'
-import { LOGIN, LOGOUT, USER_FAILURE, USER_PROFILE, USER_REQUEST, SignUpUser } from '../types/state'
-import { Credentials, severity } from '../types/types'
+import { Dispatch } from 'redux'
+import { 
+  LOGIN, 
+  LOGOUT, 
+  USER_FAILURE, 
+  USER_PROFILE, 
+  USER_REQUEST, 
+  SignUpUser,
+  FETCH_CONTACTS_REQUEST,
+  FETCH_BUSINESS_CONTRACT_LIST,
+  FETCH_CONTACT_SUCCESS, 
+  } from '../types/state'
+import { Credentials, severity, User, usersType } from '../types/types'
 import i18next from 'i18next'
+import contractsService from '../services/contractsService'
+
+import { useSelector } from 'react-redux';
+import { IRootState } from '../utils/store';
+
 
 /**
  * Logs user in
@@ -24,10 +42,12 @@ export const login = (credentials: Credentials, from: string) => {
     })
     try {
       const { data } = await userService.signin(credentials)
+
       dispatch({
         type: LOGIN,
         data,
       })
+
       saveUser(data)
 
       if (from) {
@@ -77,6 +97,57 @@ export const signup = (user: SignUpUser) => {
 }
 
 /**
+ * Fetches contacts the user has with other users and saves them into the Redux state
+ * @function
+ */
+export const fetchUserContacts = () => {
+    return async (dispatch : any) => {     
+      try {
+        let contracts : any
+        let contactId : string
+
+        dispatch({ type: FETCH_CONTACTS_REQUEST, })
+
+        if (loadUser().role == 'agency') {
+          contracts = await contractsService.fetchBusinessContracts()              
+          for (const key in contracts) { 
+
+            if(contracts.hasOwnProperty(key)){       
+              if (JSON.stringify(contracts[key].type) == '"contract"' && JSON.stringify(contracts[key].status) == '"signed"') {
+                contactId = JSON.stringify(contracts[key].target._id).slice(1, -1)
+                const res = await usersService.fetchUserById(contactId)
+
+                dispatch({ type: FETCH_CONTACT_SUCCESS, data: res.data, })
+              } 
+            }
+          } 
+        }
+        else {
+          contracts = await contractsService.fetchBusinessContractsAsTarget()
+          for (const key in contracts) {
+
+            if(contracts.hasOwnProperty(key)){
+              if (JSON.stringify(contracts[key].type) == '"contract"' && JSON.stringify(contracts[key].status) == '"signed"') {
+                contactId = JSON.stringify(contracts[key].creator._id).slice(1, -1)
+                const res = await usersService.fetchUserById(contactId)
+
+                dispatch({ type: FETCH_CONTACT_SUCCESS, data: res.data, })
+              } 
+            }
+          }
+        }           
+      } catch (error) {
+        dispatch({
+          type: usersType.USER_ACTION_FAILURE,
+          data: error as string,
+        })
+        await setAlert('Failed to fetch the user contact: ' + error, severity.Error, 15)(dispatch)
+      }  
+      
+    }
+}
+
+/**
  * Logs user out
  * @function
  */
@@ -112,6 +183,7 @@ export const me = () => async (dispatch: any) => {
       type: USER_PROFILE,
       data,
     })
+    return data;
   } catch (error) {
     statusHandler(dispatch, error)
   }
