@@ -68,6 +68,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "stop": "taskkill -F -IM node.exe",
     "build": "react-scripts build",
     "deploy": "aws s3 sync build/ s3://inno-frontend-bucket",
     "test": "react-scripts test",
