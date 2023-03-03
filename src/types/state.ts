@@ -22,9 +22,10 @@ import {
 } from './types'
 
 export interface UserState {
-  loggedIn: boolean,
-  loading: boolean,
+  loggedIn: boolean
+  loading: boolean
   data: any
+  contacts: User[]
 }
 
 export interface UsersState {
@@ -58,12 +59,12 @@ export interface UserActionFailure {
 }
 export interface UserAction {
   type:
-    | typeof usersType.USER_UPDATE_REQUEST
-    | typeof usersType.USER_UPDATE_SUCCESS
-    | typeof usersType.USER_CREATED_REQUEST
-    | typeof usersType.USER_CREATED_SUCCESS
-    | typeof usersType.USER_DELETED_REQUEST
-    | typeof usersType.USER_DELETED_SUCCESS
+  | typeof usersType.USER_UPDATE_REQUEST
+  | typeof usersType.USER_UPDATE_SUCCESS
+  | typeof usersType.USER_CREATED_REQUEST
+  | typeof usersType.USER_CREATED_SUCCESS
+  | typeof usersType.USER_DELETED_REQUEST
+  | typeof usersType.USER_DELETED_SUCCESS
   data: User
 }
 
@@ -105,8 +106,8 @@ export interface NotificationActionFailure {
 
 export interface NotificationCleared {
   type:
-    | typeof notificationType.NOTIFICATION_CLEARED_REQUEST
-    | typeof notificationType.NOTIFICATION_CLEARED_SUCCESS
+  | typeof notificationType.NOTIFICATION_CLEARED_REQUEST
+  | typeof notificationType.NOTIFICATION_CLEARED_SUCCESS
   data: Notification
 }
 
@@ -208,10 +209,10 @@ export interface FeedbackState {
 }
 export interface FeedbackSimilarActions {
   type:
-    | typeof feedbackType.FEEDBACK_POSTED_REQUEST
-    | typeof feedbackType.FEEDBACK_POSTED_SUCCESS
-    | typeof feedbackType.FEEDBACK_UPDATED_REQUEST
-    | typeof feedbackType.FEEDBACK_UPDATED_SUCCESS
+  | typeof feedbackType.FEEDBACK_POSTED_REQUEST
+  | typeof feedbackType.FEEDBACK_POSTED_SUCCESS
+  | typeof feedbackType.FEEDBACK_UPDATED_REQUEST
+  | typeof feedbackType.FEEDBACK_UPDATED_SUCCESS
   data: Feedback
 }
 
@@ -256,12 +257,12 @@ export interface TopicState {
 }
 export interface TopicSimilarActions {
   type:
-    | typeof topicType.TOPIC_CREATED_REQUEST
-    | typeof topicType.TOPIC_CREATED_SUCCESS
-    | typeof topicType.TOPIC_DELETED_REQUEST
-    | typeof topicType.TOPIC_DELETED_SUCCESS
-    | typeof topicType.TOPIC_UPDATED_REQUEST
-    | typeof topicType.TOPIC_UPDATED_SUCCESS
+  | typeof topicType.TOPIC_CREATED_REQUEST
+  | typeof topicType.TOPIC_CREATED_SUCCESS
+  | typeof topicType.TOPIC_DELETED_REQUEST
+  | typeof topicType.TOPIC_DELETED_SUCCESS
+  | typeof topicType.TOPIC_UPDATED_REQUEST
+  | typeof topicType.TOPIC_UPDATED_SUCCESS
   data: Topic
 }
 
@@ -306,12 +307,12 @@ export interface ResponsibilityState {
 }
 export interface ResponsibilitySimilarActions {
   type:
-    | typeof responsibilityType.RESPONSIBILITY_CREATED_REQUEST
-    | typeof responsibilityType.RESPONSIBILITY_CREATED_SUCCESS
-    | typeof responsibilityType.RESPONSIBILITY_DELETED_REQUEST
-    | typeof responsibilityType.RESPONSIBILITY_DELETED_SUCCESS
-    | typeof responsibilityType.RESPONSIBILITY_UPDATED_REQUEST
-    | typeof responsibilityType.RESPONSIBILITY_UPDATED_SUCCESS
+  | typeof responsibilityType.RESPONSIBILITY_CREATED_REQUEST
+  | typeof responsibilityType.RESPONSIBILITY_CREATED_SUCCESS
+  | typeof responsibilityType.RESPONSIBILITY_DELETED_REQUEST
+  | typeof responsibilityType.RESPONSIBILITY_DELETED_SUCCESS
+  | typeof responsibilityType.RESPONSIBILITY_UPDATED_REQUEST
+  | typeof responsibilityType.RESPONSIBILITY_UPDATED_SUCCESS
   data: Responsibility
 }
 
@@ -356,10 +357,10 @@ export interface WorkRequestState {
 }
 export interface WorkRequestSimilarActions {
   type:
-    | typeof workRequestType.WORKREQUEST_SEND_REQUEST
-    | workRequestType.WORKREQUEST_SEND_SUCCESS
-    | typeof workRequestType.WORKREQUEST_UPDATED_REQUEST
-    | workRequestType.WORKREQUEST_UPDATED_SUCCESS
+  | typeof workRequestType.WORKREQUEST_SEND_REQUEST
+  | workRequestType.WORKREQUEST_SEND_SUCCESS
+  | typeof workRequestType.WORKREQUEST_UPDATED_REQUEST
+  | workRequestType.WORKREQUEST_UPDATED_SUCCESS
   data: WorkRequest
 }
 
@@ -428,12 +429,12 @@ export interface JobGetCurrentSuccess {
 }
 export interface JobSimilarActions {
   type:
-    | typeof jobType.JOB_CREATED_REQUEST
-    | typeof jobType.JOB_CREATED_SUCCESS
-    | typeof jobType.JOB_UPDATED_REQUEST
-    | typeof jobType.JOB_UPDATED_SUCCESS
-    | typeof jobType.JOB_DELETED_REQUEST
-    | typeof jobType.JOB_DELETED_SUCCESS
+  | typeof jobType.JOB_CREATED_REQUEST
+  | typeof jobType.JOB_CREATED_SUCCESS
+  | typeof jobType.JOB_UPDATED_REQUEST
+  | typeof jobType.JOB_UPDATED_SUCCESS
+  | typeof jobType.JOB_DELETED_REQUEST
+  | typeof jobType.JOB_DELETED_SUCCESS
   data: Job
 }
 
@@ -479,12 +480,12 @@ export interface FeelingGetCurrentSuccess {
 }
 export interface FeelingSimilarActions {
   type:
-    | typeof feelingType.FEELING_CREATED_REQUEST
-    | typeof feelingType.FEELING_CREATED_SUCCESS
-    | typeof feelingType.FEELING_UPDATED_REQUEST
-    | typeof feelingType.FEELING_UPDATED_SUCCESS
-    | typeof feelingType.FEELING_DELETED_REQUEST
-    | typeof feelingType.FEELING_DELETED_SUCCESS
+  | typeof feelingType.FEELING_CREATED_REQUEST
+  | typeof feelingType.FEELING_CREATED_SUCCESS
+  | typeof feelingType.FEELING_UPDATED_REQUEST
+  | typeof feelingType.FEELING_UPDATED_SUCCESS
+  | typeof feelingType.FEELING_DELETED_REQUEST
+  | typeof feelingType.FEELING_DELETED_SUCCESS
   data: MyFeeling
 }
 
@@ -501,6 +502,8 @@ export const LOGOUT = 'USER_LOGOUT'
 export const USER_REQUEST = 'USER_REQUEST'
 export const USER_FAILURE = 'USER_FAILURE'
 export const USER_PROFILE = 'USER_PROFILE'
+export const FETCH_CONTACTS_REQUEST = 'FETCH_CONTACTS_REQUEST'
+export const FETCH_CONTACT_SUCCESS = 'FETCH_CONTACTS_SUCCESS'
 
 interface UserProfileAction {
   type: typeof USER_PROFILE
@@ -522,6 +525,15 @@ interface UserRequestAction {
   data: any
 }
 
+interface FetchContactsRequestAction {
+  type: typeof FETCH_CONTACTS_REQUEST
+}
+
+interface FetchContactsSuccessAction {
+  type: typeof FETCH_CONTACT_SUCCESS
+  data: User
+}
+
 interface LogoutAction {
   type: typeof LOGOUT
   data: any
@@ -533,6 +545,8 @@ export type UserActionTypes =
   | UserProfileAction
   | UserRequestAction
   | UserFailureAction
+  | FetchContactsRequestAction
+  | FetchContactsSuccessAction
 
 export interface AlertState {
   severity: severity.Error | severity.Success | severity.Info | severity.Warning

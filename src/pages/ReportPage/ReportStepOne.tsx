@@ -14,6 +14,10 @@ import {
 import { setReport } from '../../actions/reportActions';
 import SearchBox from '../../components/SearchBox';
 import { useTranslation } from 'react-i18next';
+import {
+  User,
+} from '../../types/types'
+
 export interface ReportStepOneProps {}
 
 /**First step (page) of the new report form. */
@@ -24,9 +28,20 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
   /**TODO: When choosing report recipient, show more relevant list of 
    * agencies/businesses, not all.Maybe just those the worker has a contract with. 
    * */
-  const { agencies, businesses } = useSelector((state: any) => state.allUsers);
+  const userContacts : User[] = useSelector((state: any) => state.user.contacts);
   const { t } = useTranslation()
   const dispatch = useDispatch();
+  
+  const businesses : User[] = [];
+  const agencies : User[] = [];
+  
+  userContacts.forEach((user) => {
+    if (user.userType == "agency") {
+      agencies.push(user)
+    } else if (user.userType == "business") {
+      businesses.push(user)
+    }
+  })
 
   /**TODO: More user friendly way of showing filtered recipients. Currently
    * user writes a search term and after that has to click Select-component
@@ -103,13 +118,7 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
             style={{ maxHeight: 50 }}
             onChange={handleSelectedBusiness}
           >
-            {/**Menuitem for clearing selection */}
-            <MenuItem value="">
-              <em>{t('select_report_handler_clear')}</em>
-            </MenuItem>
-            {businesses
-              // Sort alphabetically and filter by search term. Return a list of Menuitems
-              .sort((a: any, b: any) => a.name.localeCompare(b.name))
+            {businesses.sort((a: any, b: any) => a.name.localeCompare(b.name)) // Sort alphabetically and filter by search term. Return a list of Menuitems
               .filter((business: any) =>
                 business.name
                   .toLowerCase()
@@ -139,13 +148,7 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
             onChange={handleSelectedAgency}
             style={{ maxHeight: 50 }}
           >
-            {/**Menuitem for clearing selection */}
-            <MenuItem value="">
-              <em>{t('select_report_handler_clear')}</em>
-            </MenuItem>
-            {agencies
-              // Sort alphabetically and filter by search term. Return a list of Menuitems
-              .sort((a: any, b: any) => a.name.localeCompare(b.name))
+            {agencies.sort((a: any, b: any) => a.name.localeCompare(b.name)) // Sort alphabetically and filter by search term. Return a list of Menuitems
               .filter((agency: any) =>
                 agency.name.toLowerCase().includes(filterAgencies.toLowerCase())
               )

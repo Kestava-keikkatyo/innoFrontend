@@ -1,3 +1,4 @@
+import { any } from 'prop-types'
 import userReducer from '../reducers/userReducer'
 import * as types from '../types/state'
 
@@ -5,7 +6,8 @@ describe('userReducer', () => {
   const defaultState: types.UserState = {
     loggedIn: false,
     loading: false,
-    data: {}
+    data: {},
+    contacts: []
   }
   const defaultUserRequestAction: types.UserActionTypes = {
     type: types.USER_REQUEST,

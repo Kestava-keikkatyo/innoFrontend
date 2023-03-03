@@ -7,6 +7,7 @@ import jwt_decode from 'jwt-decode';
  * @module utils/storage
  */
 const storageKey = 'loggedInnoAppUser'
+const storageContactsKey = 'contacts'
 
 /**
  * Stores user's information to localStorage
@@ -23,7 +24,49 @@ export const saveUser = (user: LoggedInUser) => {
 }
 
 /**
- * Loads user's information from localStorage
+ * Inserts new user information to localStorage
+ * @function
+ * @param {Object} data - user information containing (email, name, token and role)
+ */
+export const insertUserData = (user: string) => {
+  try {
+    const serializedUser = JSON.stringify(user)
+    localStorage.setItem(storageKey, serializedUser)
+  } catch (err) {
+    console.error('storage print\n', err)
+  }
+}
+
+/**
+ * Inserts data of user's contacts into localStorage
+ * @function
+ * @param {Object} data - information to be added in stringified JSON format
+ */
+/*
+export const insertContactData = (data: string) => {
+  try {
+    let contactData = loadContacts()
+    const strData = data
+    const contacts = JSON.parse(strData)
+
+    if (!contactData) {
+      localStorage.setItem(storageContactsKey, JSON.stringify(contacts))
+      return
+    }
+    else if (!(contactData instanceof Array)) {
+      contactData = [contactData];
+    }
+
+    contactData.push(contacts)
+    localStorage.setItem(storageContactsKey, JSON.stringify(contactData))
+    
+  } catch (err) {
+    console.error('storage print\n', err)
+  }
+} */
+
+/**
+ * Loads user's information
  * @function
  */
 export const loadUser = () => {
@@ -49,7 +92,7 @@ export const getUserId = () => {
     return null;
   }
   // decoded token
-  //const decodedToken: any = jwt.decode(token)
+  // const decodedToken: any = jwt.decode(token)
   const decodedToken: any = jwt_decode(token)
   return decodedToken.id
 }
@@ -59,5 +102,7 @@ export const getUserId = () => {
  * Used for loggin out user
  * @function
  */
-export const logoutUser = () =>
+export const logoutUser = () => {
   localStorage.removeItem(storageKey)
+  localStorage.removeItem(storageContactsKey)
+}
