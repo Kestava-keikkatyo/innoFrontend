@@ -5,6 +5,7 @@ import LandingPage from './pages/LandingPage'
 import LoginPage from './pages/LoginPage'
 import HomePage from './pages/HomePage'
 import AgencyContractsPage from './pages/AgencyContractsPage'
+import UserContractsPage from './pages/UserContractsPage'
 import PrivateRoute from './components/PrivateRoute'
 import ProcessPage from './pages/ProcessPage'
 import FormsPage from './pages/FormsPage'
@@ -340,7 +341,7 @@ const App: React.FC = () => {
             >
               <ContractFormManagerPage />
             </PrivateRoute>
-            <PrivateRoute path="/contracts" roles={[roles.Agency]}>
+            <PrivateRoute path="/agencyContracts" roles={[roles.Agency]}>
               <AgencyContractsPage />
             </PrivateRoute>
             <PrivateRoute
@@ -366,6 +367,12 @@ const App: React.FC = () => {
               roles={[roles.Business, roles.Worker]}
             >
               <BusinessContractPage />
+            </PrivateRoute>
+            <PrivateRoute
+              path="/userContracts"
+              roles={[roles.Business, roles.Worker]}
+            >
+              <UserContractsPage />
             </PrivateRoute>
             <PrivateRoute
               path="/forms/newform/preview"

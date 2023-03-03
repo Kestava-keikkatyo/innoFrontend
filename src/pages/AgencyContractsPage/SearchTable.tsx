@@ -96,56 +96,58 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
   const tableView = () => {
     return (
       <div className={classes.tableDiv}>
-      <TableContainer>
-        <Table aria-label="searched workers">
-          <TableHead>
-            <TableRow>
-              <TableCell align="left">{t("name")}</TableCell>
-              <TableCell align="left">{t("email")}</TableCell>
-              <TableCell align="left">{t("add")}</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {workersOrBusinesses
-              .filter((workerOrBusiness: any) =>
-                workerOrBusiness.name
-                  .toLowerCase()
-                  .includes(filter.toLowerCase())
-              )
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((workerOrBusiness: any) => (
-                <TableRow key={workerOrBusiness._id}>
-                  <TableCell component="th" scope="row" align="left">
-                    {workerOrBusiness.name}
-                  </TableCell>
-                  <TableCell align="left">{workerOrBusiness.email}</TableCell>
-                  <TableCell
-                    padding="none"
-                    align="left"
-                    style={{ paddingLeft: 5 }}
-                  >
-                    <IconButton
-                      aria-label="add to organization"
-                      color="secondary"
-                      onClick={() => addWorkerOrBusiness(workerOrBusiness)}
-                      size="large">
-                      <AddIcon />
-                    </IconButton>
-                  </TableCell>
-                </TableRow>
-              ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-      rowsPerPageOptions={[5, 10, 25]}
-      component="div"
-      count={workersOrBusinesses.length}
-      rowsPerPage={rowsPerPage}
-      page={page}
-      onPageChange={handleChangePage}
-      onRowsPerPageChange={handleChangeRowsPerPage}
-      />
+        <TableContainer>
+          <Table aria-label="searched workers">
+            <TableHead>
+              <TableRow>
+                <TableCell align="left">{t("name")}</TableCell>
+                <TableCell align="left">{t("joined")}</TableCell>
+                <TableCell align="left">{t("add")}</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {workersOrBusinesses
+                .filter((workerOrBusiness: any) =>
+                  workerOrBusiness.name
+                    .toLowerCase()
+                    .includes(filter.toLowerCase())
+                )
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((workerOrBusiness: any) => (
+                  <TableRow key={workerOrBusiness._id}>
+                    <TableCell component="th" scope="row" align="left">
+                      {workerOrBusiness.name}
+                    </TableCell>
+                    <TableCell>
+                      {new Date(workerOrBusiness.createdAt).toLocaleDateString()}
+                    </TableCell>
+                    <TableCell
+                      padding="none"
+                      align="left"
+                      style={{ paddingLeft: 5 }}
+                    >
+                      <IconButton
+                        aria-label="add to organization"
+                        color="secondary"
+                        onClick={() => addWorkerOrBusiness(workerOrBusiness)}
+                        size="large">
+                        <AddIcon />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={workersOrBusinesses.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
       </div>
     );
   };
@@ -229,7 +231,7 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
 
       <form>
         <Box display="flex" alignItems="center">
-          <label htmlFor='search' style={{display: 'none'}}>{t("search_by_name")}</label>
+          <label htmlFor='search' style={{ display: 'none' }}>{t("search_by_name")}</label>
           <InputBase
             id='search'
             placeholder={t("search_by_name")}

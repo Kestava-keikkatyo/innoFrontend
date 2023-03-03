@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { me } from '../../actions/userActions';
-import { fetchBusinessContracts } from '../../actions/businessContractActions';
+import { addAgencyContract, fetchBusinessContracts } from '../../actions/businessContractActions';
 import PageLoading from '../../components/PageLoading';
 import SearchTable from './SearchTable';
 import ContractsTable from './ContractsTable';
-import WorkerAndBusinessModal from './WorkerAndBusinessModal';
 import {
   Container,
   Typography,
@@ -19,24 +18,11 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import ContractsFromBusiness from './ContractsFromBusiness';
 import { IRootState } from '../../utils/store';
-import ContractsFromWorkers from './ContractsFromWorkers';
-import GroupIcon from '@mui/icons-material/Group';
-import WorkIcon from '@mui/icons-material/Work';
-import BusinessIcon from '@mui/icons-material/Business';
 import { useTranslation } from 'react-i18next';
 import { fetchFormList } from '../../actions/formListActions';
-
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-} from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
-import ReceivedContractsFromBusinesses from './ReceivedContractsFromBusinesses';
-import ReceivedContractsFromWorkers from './ReceivedContractsFromWorkers';
+import { setAlert } from '../../actions/alertActions';
+import { severity } from '../../types/types';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -102,10 +88,19 @@ const AgencyContractsPage = () => {
     dispatch(fetchFormList());
   }, [dispatch, data.role]);
 
-  const openModal = (workerOrBusiness: any) => {
-    setExpanded(false)
-    setSearchData(workerOrBusiness);
-    setDisplayModal(true);
+  const sendContractProposal = (workerOrBusiness: any) => {
+    dispatch(
+      addAgencyContract(
+        workerOrBusiness._id,
+        "agency"
+      )
+    );
+    dispatch(
+      setAlert(
+        `Success: Contract request sent to ${workerOrBusiness.name}`,
+        severity.Success
+      )
+    );
   };
 
   const handleChange = (event: any, newValue: any) => {
@@ -129,13 +124,7 @@ const AgencyContractsPage = () => {
           {t('make_contract')}
         </Typography>
 
-        <SearchTable addWorkerOrBusiness={openModal} />
-        <WorkerAndBusinessModal
-          displayModal={displayModal}
-          closeModal={() => setDisplayModal(false)}
-          workerOrBusinessData={searchData}
-          shrinkAccordion={() => handleAccChange("panel")}
-        />
+        <SearchTable addWorkerOrBusiness={sendContractProposal} />
 
         <Typography style={{ paddingTop: '1rem' }} variant="h1" className='header'>
           {t('contracts_overview')}
