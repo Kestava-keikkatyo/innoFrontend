@@ -230,8 +230,8 @@
   background-color: #DBE4FC;
 }
 
+/* Landing page header and info text */
 @media (max-width: 599px) {
-
   .landing-text2,
   .landing-text {
     text-align: center;

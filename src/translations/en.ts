@@ -1240,28 +1240,28 @@ export default {
 
     // Privacy Policy
     privacy_policy: 'Privacy Policy',
-    privacy_policies1: "By registering, you agree to the sending of the information you provide to Keikkaveri and agencies, as well as to the businesses that concern you.",
+    privacy_policies1: 'By registering, you agree to the sending of the information you provide to Keikkaveri and agencies, as well as to the businesses that concern you.',
     privacy_policies2: "Information is collected so that agencies can convey the job and related information to the employee and send the employee's information to the business that ordered the work.",
-    privacy_policies3: "Registration is necessary, because job placement cannot be done without personal information.",
+    privacy_policies3: 'Registration is necessary, because job placement cannot be done without personal information.',
     privacy_policies4: "The information will be stored in the database indefinitely. If the user wishes, he/she has the right to delete his data by contacting Keikkaveri's maintenance.",
-    privacy_policies5: "Your personal data will only be forwarded to businesses when you are going to work for the company.",
-    privacy_policies6: "The personal data collected by Keikkakaveri includes name, email address, address information and phone number.",
-    privacy_policies7: "When registering, only name and email address are collected. Other information can be added later and is not mandatory.",
+    privacy_policies5: 'Your personal data will only be forwarded to businesses when you are going to work for the company.',
+    privacy_policies6: 'The personal data collected by Keikkakaveri includes name, email address, address information and phone number.',
+    privacy_policies7: 'When registering, only name and email address are collected. Other information can be added later and is not mandatory.',
 
-    //Footer
-    stages_of_work: "Stages of work",
-    work_responsibilities: "Resbonsibilities",
-    sustainable_work: "Sustainable gig work",
-    instructions: "Instructions",
-    good_practices: "Good practices",
+    // Footer
+    stages_of_work: 'Stages of work',
+    work_responsibilities: 'Resbonsibilities',
+    sustainable_work: 'Sustainable gig work',
+    instructions: 'Instructions',
+    good_practices: 'Good practices',
 
-    //Keikkakaveri summary
-    keikkakaveri_summary: "Keikkakaveri was developed in the Sustainable gig work project. The project was implemented by Metropolia University of Applied Sciences, Satakunta University of Applied Sciences, University of Tampere and University of Oulu. The project was financed by the European Social Fund. The Work Safety Center is responsible for the maintenance of the gig buddy.",
+    // Keikkakaveri summary
+    keikkakaveri_summary: 'Keikkakaveri was developed in the Sustainable gig work project. The project was implemented by Metropolia University of Applied Sciences, Satakunta University of Applied Sciences, University of Tampere and University of Oulu. The project was financed by the European Social Fund. The Work Safety Center is responsible for the maintenance of the gig buddy.',
 
-    //Databank summaries
-    stages_of_work_summary: "There are three parties in temporary work: the personnel service company, the user company and the temporary employee. The five stages of cooperation are described below.",
-    responsibilities_summary: "Each party to the temporary work has responsibilities related to occupational safety, occupational health and occupational well- being.",
-    instructions_summary: "The instructions are short texts on how the personnel service company, the user company and the temporary worker can take care of the occupational safety, occupational health and well-being of the temporary worker. The instructions describe the relevant laws, possible other internet links and forms.",
+    // Databank summaries
+    stages_of_work_summary: 'There are three parties in temporary work: the personnel service company, the user company and the temporary employee. The five stages of cooperation are described below.',
+    responsibilities_summary: 'Each party to the temporary work has responsibilities related to occupational safety, occupational health and occupational well- being.',
+    instructions_summary: 'The instructions are short texts on how the personnel service company, the user company and the temporary worker can take care of the occupational safety, occupational health and well-being of the temporary worker. The instructions describe the relevant laws, possible other internet links and forms.',
     good_practises_summary: "The form templates guide you in taking care of important issues in the different phases of the contract. Filling out the forms ensures that the most essential issues related to the temporary employee's job security are reviewed and the rules of the game are agreed on important issues between the personnel service and the user company. A form filled in between two parties can always be given to a third party as well. This works as part of the flow of information between partners and ensuring the transmission of important information.",
     forms_summary: "The form templates guide you in taking care of important issues in the different phases of the contract. Filling out the forms ensures that the most essential issues related to the temporary employee's job security are reviewed and the rules of the game are agreed on important issues between the personnel service and the user company. A form filled in between two parties can always be given to a third party as well. This works as part of the flow of information between partners and ensuring the transmission of important information."
 }

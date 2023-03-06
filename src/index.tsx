@@ -11,6 +11,7 @@ import history from './utils/history'
 
 import './index.css'
 import './styles/landingpage.css'
+import './styles/footer.css'
 
 ReactDOM.render(
   <Provider store={store}>

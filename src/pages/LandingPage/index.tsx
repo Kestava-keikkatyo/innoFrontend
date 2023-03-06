@@ -132,7 +132,7 @@ const LandingPage = () => {
           <Typography
             sx={{ mr: 2, display: { xs: 'flex', sm: 'none' }, flexGrow: 1 }} style={{}}>
             <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
-              <img src={logo_kk} style={{ width: '200px', marginRight: '30px' }} />
+              <img src={logo_kk} style={{ width: '200px', marginRight: '33px' }} />
             </Link>
           </Typography>
 

@@ -1233,31 +1233,31 @@ export default {
 
     // Privacy Policy
     privacy_policy: 'Tietosuojaseloste',
-    privacy_policies1: "Rekisteröitymällä hyväksyt antamasi tietojen lähetyksen Keikkakaverille ja henkilöstöpalveluyrityksille, sekä sinua koskeville käyttäjäyrityksille.",
-    privacy_policies2: "Tietoja kerätään, jotta henkilöstöpalveluyritykset voivat välittää työntekijälle työtä ja siihen liittyviä tietoja ja lähettää työntekijän tietoja työn tilanneelle käyttäjäyritykselle.",
-    privacy_policies3: "Rekisteröityminen on välttämätöntä, sillä työnvälitys ei onnistu ilman henkilötietoja.",
-    privacy_policies4: "Tietoja säilytetään kannassa toistaiseksi. Halutessaan käyttäjällä on oikeus poistattaa tietonsa ottamalla yhteyttä Keikkakaverin ylläpitoon.",
-    privacy_policies5: "Henkilötietojasi välitetään käyttäjäyrityksille ainoastaan silloin, kun olet menossa yritykselle töihin.",
-    privacy_policies6: "Keikkakaverin keräämiin henkilötietohin kuuluvat nimi, sähköpostiosoite, osoitetiedot ja puhelinnumero.",
-    privacy_policies7: "Rekisteröitymisen yhteydessä kerätään ainoastaan nimi ja sähköpostiosoite. Muut tiedot voi lisätä myöhemmin, eivätkä ne ole pakollisia.",
+    privacy_policies1: 'Rekisteröitymällä hyväksyt antamasi tietojen lähetyksen Keikkakaverille ja henkilöstöpalveluyrityksille, sekä sinua koskeville käyttäjäyrityksille.',
+    privacy_policies2: 'Tietoja kerätään, jotta henkilöstöpalveluyritykset voivat välittää työntekijälle työtä ja siihen liittyviä tietoja ja lähettää työntekijän tietoja työn tilanneelle käyttäjäyritykselle.',
+    privacy_policies3: 'Rekisteröityminen on välttämätöntä, sillä työnvälitys ei onnistu ilman henkilötietoja.',
+    privacy_policies4: 'Tietoja säilytetään kannassa toistaiseksi. Halutessaan käyttäjällä on oikeus poistattaa tietonsa ottamalla yhteyttä Keikkakaverin ylläpitoon.',
+    privacy_policies5: 'Henkilötietojasi välitetään käyttäjäyrityksille ainoastaan silloin, kun olet menossa yritykselle töihin.',
+    privacy_policies6: 'Keikkakaverin keräämiin henkilötietohin kuuluvat nimi, sähköpostiosoite, osoitetiedot ja puhelinnumero.',
+    privacy_policies7: 'Rekisteröitymisen yhteydessä kerätään ainoastaan nimi ja sähköpostiosoite. Muut tiedot voi lisätä myöhemmin, eivätkä ne ole pakollisia.',
 
-    //Footer
-    stages_of_work: "Vuokratyön vaiheet",
-    work_responsibilities: "Vuokratyön vastuut",
-    sustainable_work: "Kestävä keikkatyö",
-    instructions: "Ohjeet",
-    good_practices: "Hyvät käytännöt",
+    // Footer
+    stages_of_work: 'Vuokratyön vaiheet',
+    work_responsibilities: 'Vuokratyön vastuut',
+    sustainable_work: 'Kestävä keikkatyö',
+    instructions: 'Ohjeet',
+    good_practices: 'Hyvät käytännöt',
 
-    //Keikkakaveri summary
-    keikkakaveri_summary: "Keikkakaveri on kehitetty Kestävä keikkatyö-hankkeessa. Hankkeen toteuttivat " +
-        "Metropolia ammattikorkeakoulu, Satakunnan ammattikorkeakoulu,Tampereen yliopisto ja Oulun yliopisto. " +
-        "Hanketta rahoitti Euroopan sosiaalirahasto. Keikkakaverin ylläpidosta vastaa Työturvallisuuskeskus.",
+    // Keikkakaveri summary
+    keikkakaveri_summary: 'Keikkakaveri on kehitetty Kestävä keikkatyö-hankkeessa. Hankkeen toteuttivat ' +
+        'Metropolia ammattikorkeakoulu, Satakunnan ammattikorkeakoulu,Tampereen yliopisto ja Oulun yliopisto. ' +
+        'Hanketta rahoitti Euroopan sosiaalirahasto. Keikkakaverin ylläpidosta vastaa Työturvallisuuskeskus.',
 
-    //Databank summaries
-    stages_of_work_summary: "Vuokratyössä on kolme osapuolta: henkilöstöpalveluyritys, käyttäjäyritys ja vuokratyöntekijä. Alla on kuvattu yhteistyön viisi vaihetta.",
-    responsibilities_summary: "Jokaisella vuokratyön osapuolella on työturvallisuuteen, työterveyteen ja työhyvinvointiin liittyviä vastuita.",
-    instructions_summary: "Ohjeet ovat lyhyitä tekstejä siitä, miten henkilöstöpalveluyritys, käyttäjäyritys ja vuokratyöntekijä voivat huolehtia vuokratyöntekijän työturvallisuudesta, työterveydestä ja työhyvinvoinnista. Ohjeessa on kerrottu aiheeseen liittyvät lait, mahdolliset muut internetlinkit ja lomakkeet.",
-    good_practises_summary: "Lomakepohjat ohjaavat huolehtimaan tärkeistä asioista vuokratyötoimeksiannon eri vaiheissa. Lomakkeiden täyttäminen varmistaa, että olennaisimmat vuokratyöntekijän työturvallisuuteen liittyvät seikat käydään läpi ja tärkeistä asioista sovitaan pelisäännöt henkilöstöpalvelu- ja käyttäjäyrityksen välillä. Kahden osapuolen kesken täytetty lomake voidaan aina antaa tiedoksi myös kolmannelle osapuolelle. Tämä toimii osana kumppaneiden välistä tiedonkulkua ja tärkeän informaation perillemenon varmistamista.",
-    forms_summary: "Lomakepohjat ohjaavat huolehtimaan tärkeistä asioista vuokratyötoimeksiannon eri vaiheissa. Lomakkeiden täyttäminen varmistaa, että olennaisimmat vuokratyöntekijän työturvallisuuteen liittyvät seikat käydään läpi ja tärkeistä asioista sovitaan pelisäännöt henkilöstöpalvelu- ja käyttäjäyrityksen välillä. Kahden osapuolen kesken täytetty lomake voidaan aina antaa tiedoksi myös kolmannelle osapuolelle. Tämä toimii osana kumppaneiden välistä tiedonkulkua ja tärkeän informaation perillemenon varmistamista."
+    // Databank summaries
+    stages_of_work_summary: 'Vuokratyössä on kolme osapuolta: henkilöstöpalveluyritys, käyttäjäyritys ja vuokratyöntekijä. Alla on kuvattu yhteistyön viisi vaihetta.',
+    responsibilities_summary: 'Jokaisella vuokratyön osapuolella on työturvallisuuteen, työterveyteen ja työhyvinvointiin liittyviä vastuita.',
+    instructions_summary: 'Ohjeet ovat lyhyitä tekstejä siitä, miten henkilöstöpalveluyritys, käyttäjäyritys ja vuokratyöntekijä voivat huolehtia vuokratyöntekijän työturvallisuudesta, työterveydestä ja työhyvinvoinnista. Ohjeessa on kerrottu aiheeseen liittyvät lait, mahdolliset muut internetlinkit ja lomakkeet.',
+    good_practises_summary: 'Lomakepohjat ohjaavat huolehtimaan tärkeistä asioista vuokratyötoimeksiannon eri vaiheissa. Lomakkeiden täyttäminen varmistaa, että olennaisimmat vuokratyöntekijän työturvallisuuteen liittyvät seikat käydään läpi ja tärkeistä asioista sovitaan pelisäännöt henkilöstöpalvelu- ja käyttäjäyrityksen välillä. Kahden osapuolen kesken täytetty lomake voidaan aina antaa tiedoksi myös kolmannelle osapuolelle. Tämä toimii osana kumppaneiden välistä tiedonkulkua ja tärkeän informaation perillemenon varmistamista.',
+    forms_summary: 'Lomakepohjat ohjaavat huolehtimaan tärkeistä asioista vuokratyötoimeksiannon eri vaiheissa. Lomakkeiden täyttäminen varmistaa, että olennaisimmat vuokratyöntekijän työturvallisuuteen liittyvät seikat käydään läpi ja tärkeistä asioista sovitaan pelisäännöt henkilöstöpalvelu- ja käyttäjäyrityksen välillä. Kahden osapuolen kesken täytetty lomake voidaan aina antaa tiedoksi myös kolmannelle osapuolelle. Tämä toimii osana kumppaneiden välistä tiedonkulkua ja tärkeän informaation perillemenon varmistamista.'
 }
 
