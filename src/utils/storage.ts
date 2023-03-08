@@ -42,11 +42,11 @@ export const insertUserData = (user: string) => {
  * @function
  * @param {Object} data - information to be added in stringified JSON format
  */
-/*
+
 export const insertContactData = (data: string) => {
   try {
     let contactData = loadContacts()
-    const strData = data
+    const strData = JSON.stringify(data)
     const contacts = JSON.parse(strData)
 
     if (!contactData) {
@@ -63,7 +63,7 @@ export const insertContactData = (data: string) => {
   } catch (err) {
     console.error('storage print\n', err)
   }
-} */
+} 
 
 /**
  * Loads user's information
@@ -78,6 +78,24 @@ export const loadUser = () => {
     return JSON.parse(serializedUser)
   } catch (err) {
     localStorage.removeItem(storageKey)
+    console.error('storage print\n', err)
+    return undefined
+  }
+}
+
+/**
+ * Loads user's contact information
+ * @function
+ */
+export const loadContacts = () => {
+  try {
+    const serializedContacts = localStorage.getItem(storageContactsKey)
+    if (serializedContacts === null) {
+      return undefined
+    }
+    return JSON.parse(serializedContacts)
+  } catch (err) {
+    localStorage.removeItem(storageContactsKey)
     console.error('storage print\n', err)
     return undefined
   }

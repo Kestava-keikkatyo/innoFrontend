@@ -5,7 +5,7 @@
  */
 import userService from '../services/userService'
 import usersService from '../services/usersService'
-import { saveUser, logoutUser, loadUser } from '../utils/storage'
+import { saveUser, logoutUser, loadUser, insertContactData } from '../utils/storage'
 import history from '../utils/history'
 import { setAlert } from './alertActions'
 import { Dispatch } from 'redux'
@@ -23,10 +23,6 @@ import {
 import { Credentials, severity, User, usersType } from '../types/types'
 import i18next from 'i18next'
 import contractsService from '../services/contractsService'
-
-import { useSelector } from 'react-redux';
-import { IRootState } from '../utils/store';
-
 
 /**
  * Logs user in
@@ -96,56 +92,101 @@ export const signup = (user: SignUpUser) => {
   }
 }
 
+
 /**
- * Fetches contacts the user has with other users and saves them into the Redux state
+ * Fetches contacts that agency has with other users, and saves them into Redux state
  * @function
  */
-export const fetchUserContacts = () => {
-    return async (dispatch : any) => {     
-      try {
-        let contracts : any
-        let contactId : string
+export function fetchAgencyContacts() {
+  return async (dispatch : any) => {     
+    try {
+      let agreements : any
+      let contactId : string
 
-        dispatch({ type: FETCH_CONTACTS_REQUEST, })
+      dispatch({ type: FETCH_CONTACTS_REQUEST, })
 
-        if (loadUser().role == 'agency') {
-          contracts = await contractsService.fetchBusinessContracts()              
-          for (const key in contracts) { 
+      agreements = await contractsService.fetchBusinessContracts()              
+      for (const key in agreements) { 
 
-            if(contracts.hasOwnProperty(key)){       
-              if (JSON.stringify(contracts[key].type) == '"contract"' && JSON.stringify(contracts[key].status) == '"signed"') {
-                contactId = JSON.stringify(contracts[key].target._id).slice(1, -1)
-                const res = await usersService.fetchUserById(contactId)
-
-                dispatch({ type: FETCH_CONTACT_SUCCESS, data: res.data, })
-              } 
-            }
-          } 
-        }
-        else {
-          contracts = await contractsService.fetchBusinessContractsAsTarget()
-          for (const key in contracts) {
-
-            if(contracts.hasOwnProperty(key)){
-              if (JSON.stringify(contracts[key].type) == '"contract"' && JSON.stringify(contracts[key].status) == '"signed"') {
-                contactId = JSON.stringify(contracts[key].creator._id).slice(1, -1)
-                const res = await usersService.fetchUserById(contactId)
-
-                dispatch({ type: FETCH_CONTACT_SUCCESS, data: res.data, })
-              } 
-            }
+        if(agreements.hasOwnProperty(key)) {       
+          if (JSON.stringify(agreements[key].type) == '"agency"' && JSON.stringify(agreements[key].status) == '"signed"') {
+            contactId = JSON.stringify(agreements[key].target[0]._id).slice(1, -1)
+            const res = await usersService.fetchUserById(contactId)
+              
+            insertContactData(contactId)
+            dispatch({ type: FETCH_CONTACT_SUCCESS, data: res.data, })
+            } 
           }
-        }           
+        } 
       } catch (error) {
         dispatch({
           type: usersType.USER_ACTION_FAILURE,
           data: error as string,
         })
-        await setAlert('Failed to fetch the user contact: ' + error, severity.Error, 15)(dispatch)
-      }  
-      
-    }
+
+        await setAlert('Failed to fetch ' + loadUser().role + ' contacts: ' + error, severity.Error, 15)(dispatch)
+      } 
+  }
+} 
+
+/**
+ * Fetches contacts that worker or business has with other users, and saves them into Redux state.
+ * @function
+ */
+export function fetchWorkerOrBusinessContacts() {
+  return async (dispatch : any) => {    
+    try {
+      let agreements : any
+      let contactId : string
+
+      dispatch({ type: FETCH_CONTACTS_REQUEST, })
+
+      agreements = await contractsService.fetchBusinessContractsAsTarget()
+          for (const key in agreements) {
+
+            if(agreements.hasOwnProperty(key)){
+              if (JSON.stringify(agreements[key].type) == '"agency"' && JSON.stringify(agreements[key].status) == '"signed"') {
+                
+                contactId = JSON.stringify(agreements[key].creator._id).slice(1, -1)
+                const res = await usersService.fetchUserById(contactId)
+                
+                insertContactData(contactId)
+                dispatch({ type: FETCH_CONTACT_SUCCESS, data: res.data, })
+
+            } else if (JSON.stringify(agreements[key].type) == '"employment"' && JSON.stringify(agreements[key].status) == '"signed"') {
+
+                // agreement of the type "employment" has two targets
+                // here we find which one is the user's own ID and which one is the contact's ID that we're looking for
+                if (agreements[key].target[0] == loadUser()._id) {
+                  contactId = agreements[key].target[1]
+                  const res = await usersService.fetchUserById(contactId)
+
+                  console.log(JSON.stringify(res.data))
+
+                  insertContactData(contactId)
+                  dispatch({ type: FETCH_CONTACT_SUCCESS, data: res.data, })
+
+                } else if (agreements[key].target[1] == loadUser()._id) {
+                  contactId = agreements[key].target[0]
+                  const res = await usersService.fetchUserById(contactId)
+
+                  insertContactData(contactId)
+                  dispatch({ type: FETCH_CONTACT_SUCCESS, data: res.data, })
+                }
+            }
+          }
+        } 
+      } catch (error) {
+        dispatch({
+          type: usersType.USER_ACTION_FAILURE,
+          data: error as string,
+        })
+
+        await setAlert('Failed to fetch ' + loadUser().role + ' contacts: ' + error, severity.Error, 15)(dispatch)
+      } 
+  }
 }
+
 
 /**
  * Logs user out
@@ -228,3 +269,4 @@ const statusHandler = (dispatch: Function, response: any) => {
     window.location.reload()
   }
 }
+

@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
 
-import { login, signup, fetchUserContacts } from '../../actions/userActions';
+import { login, signup, fetchAgencyContacts, fetchWorkerOrBusinessContacts } from '../../actions/userActions';
 
 import SignUpForm from './SignUpForm';
 import LogInForm from './LogInForm';
 import './landingPage.css';
 
 import { Box, Button, Divider, Grid } from '@mui/material';
+import { loadUser } from '../../utils/storage';
 
 /**
  * @component
@@ -30,7 +31,21 @@ const LoginPage = () => {
 const loginSubmit = async ({ ...credentials }: any) => {
     const { from }: any = location.state || { from: { pathname: '/home' } };
     await dispatch(login(credentials, from));
-    dispatch(fetchUserContacts());
+
+    const role = loadUser().role;
+    switch (role) {
+      case 'agency':
+        dispatch(fetchAgencyContacts())
+        break;
+      case 'worker':
+        dispatch(fetchWorkerOrBusinessContacts())
+        break;
+      case 'business':
+        dispatch(fetchWorkerOrBusinessContacts())
+        break;
+      case 'admin':
+        break;
+    }
   };
 
   return (
