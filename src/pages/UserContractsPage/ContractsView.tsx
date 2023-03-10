@@ -11,7 +11,6 @@ import {
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { useTranslation } from 'react-i18next';
-import ContractAccordion from './ContractsAccordion';
 import ContractRow from './ContractRow';
 
 /**
@@ -19,10 +18,10 @@ import ContractRow from './ContractRow';
  * @desc
  * A view of contracts
  */
-export const ContractsView = (prop: { contracts: any[] }) => {
+export const ContractsView = (prop: { view: string, contracts: any[] }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const { contracts } = prop;
+  const { view, contracts } = prop;
   const [filter, setFilter] = React.useState('all')
 
   const handleChange = (event: React.MouseEvent<HTMLElement>, value: string) => {
@@ -34,14 +33,14 @@ export const ContractsView = (prop: { contracts: any[] }) => {
     switch (type) {
       case 'all':
         return contracts.map((contract: any) => (
-          <ContractRow key={contract._id} contract={contract} />
+          <ContractRow key={contract._id} view={view} contract={contract} />
         ))
       default:
         return contracts.filter((contract) => {
           return contract.type === type
         })
           .map((contract: any) => (
-            <ContractRow key={contract._id} contract={contract} />
+            <ContractRow key={contract._id} view={view} contract={contract} />
           ))
     }
   }
@@ -77,7 +76,9 @@ export const ContractsView = (prop: { contracts: any[] }) => {
                 <TableCell align="left">{t("name")}</TableCell>
                 <TableCell align="left">{t("type")}</TableCell>
                 <TableCell align="left">{t("delete")}</TableCell>
-                <TableCell align="left">{t("accept")}</TableCell>
+                {view == "pending" &&
+                  <TableCell align="left">{t("accept")}</TableCell>
+                }
               </TableRow>
             </TableHead>
             <TableBody>{showContracts(filter)}</TableBody>

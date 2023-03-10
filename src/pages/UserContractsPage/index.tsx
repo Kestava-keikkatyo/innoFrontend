@@ -16,15 +16,11 @@ import {
   Tooltip,
   useMediaQuery,
 } from '@mui/material';
-import ListAccordionInBox from './ListAccordionInBox';
-import ListAccordionWaiting from './ListAccordionWaiting';
-import ListAccordionSent from './ListAccordionSent';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchBusinessContractsAsTarget
 } from '../../actions/businessContractActions';
 import { IRootState } from '../../utils/store';
-import AgenciesList from './AgenciesList';
 import { useTranslation } from 'react-i18next';
 import ContractsView from './ContractsView';
 
@@ -154,10 +150,10 @@ const UserContractsPage = () => {
       </AppBar>
       <Divider />
       <TabPanel value={value} index={0}>
-        <ContractsView contracts={pending} />
+        <ContractsView view="pending" contracts={pending} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <ContractsView contracts={signed} />
+        <ContractsView view="signed" contracts={signed} />
       </TabPanel>
     </Container>
   );

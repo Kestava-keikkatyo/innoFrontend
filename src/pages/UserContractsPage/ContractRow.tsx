@@ -30,7 +30,7 @@ import { useTranslation } from 'react-i18next';
 import Tooltip from '@mui/material/Tooltip';
 
 
-const ContractRow: React.FC<any> = ({ contract }) => {
+const ContractRow: React.FC<any> = ({ view, contract }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -76,20 +76,22 @@ const ContractRow: React.FC<any> = ({ contract }) => {
           </IconButton>
         </Tooltip>
       </TableCell>
-      <TableCell
-        padding="none"
-        align="left"
-        style={{ paddingLeft: 5 }}
-      >
-        <Tooltip title="Allekirjoita sopimus" placement="top" arrow>
-          <IconButton
-            style={{ color: '#eb5a00' }}
-            onClick={() => signContract(contract._id)}
-            size="large">
-            <SendIcon />
-          </IconButton>
-        </Tooltip>
-      </TableCell>
+      {view == "pending" &&
+        <TableCell
+          padding="none"
+          align="left"
+          style={{ paddingLeft: 5 }}
+        >
+          <Tooltip title="Allekirjoita sopimus" placement="top" arrow>
+            <IconButton
+              style={{ color: '#eb5a00' }}
+              onClick={() => signContract(contract._id)}
+              size="large">
+              <SendIcon />
+            </IconButton>
+          </Tooltip>
+        </TableCell>
+      }
     </TableRow>
   );
 };

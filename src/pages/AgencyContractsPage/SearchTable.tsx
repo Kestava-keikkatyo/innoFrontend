@@ -60,7 +60,6 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
   const [page, setPage] = React.useState(0)
   const [rowsPerPage, setRowsPerPage] = React.useState(5)
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('md'));
   const classes = useStyles();
 
   useEffect(() => {
@@ -91,101 +90,6 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
     (state: IRootState) => state.businessContracts
   );
   const workersOrBusinesses = searchList;
-
-  // Table view for desktop devices
-  const tableView = () => {
-    return (
-      <div className={classes.tableDiv}>
-        <TableContainer>
-          <Table aria-label="searched workers">
-            <TableHead>
-              <TableRow>
-                <TableCell align="left">{t("name")}</TableCell>
-                <TableCell align="left">{t("joined")}</TableCell>
-                <TableCell align="left">{t("add")}</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {workersOrBusinesses
-                .filter((workerOrBusiness: any) =>
-                  workerOrBusiness.name
-                    .toLowerCase()
-                    .includes(filter.toLowerCase())
-                )
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((workerOrBusiness: any) => (
-                  <TableRow key={workerOrBusiness._id}>
-                    <TableCell component="th" scope="row" align="left">
-                      {workerOrBusiness.name}
-                    </TableCell>
-                    <TableCell>
-                      {new Date(workerOrBusiness.createdAt).toLocaleDateString()}
-                    </TableCell>
-                    <TableCell
-                      padding="none"
-                      align="left"
-                      style={{ paddingLeft: 5 }}
-                    >
-                      <IconButton
-                        aria-label="add to organization"
-                        color="secondary"
-                        onClick={() => addWorkerOrBusiness(workerOrBusiness)}
-                        size="large">
-                        <AddIcon />
-                      </IconButton>
-                    </TableCell>
-                  </TableRow>
-                ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={workersOrBusinesses.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-      </div>
-    );
-  };
-
-  // Accordion view for mobile devices
-  const accordionView = () => {
-    return workersOrBusinesses
-      .filter((workerOrBusiness: any) =>
-        workerOrBusiness.name.toLowerCase().includes(filter.toLowerCase())
-      )
-      .map((workerOrBusiness: any) => (
-        <div key={workerOrBusiness._id} className={classes.accordionDiv}>
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              <Typography className={classes.heading}>
-                {workerOrBusiness.name}
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography className={classes.description}>
-                {workerOrBusiness.email}
-              </Typography>
-            </AccordionDetails>
-            <AccordionActions>
-              <Tooltip title="Add worker" placement="top" arrow>
-                <IconButton onClick={() => addWorkerOrBusiness(workerOrBusiness)} size="large">
-                  <AddIcon />
-                </IconButton>
-              </Tooltip>
-            </AccordionActions>
-          </Accordion>
-        </div>
-      ));
-  };
 
   if (!workersOrBusinesses.length)
     return (
@@ -244,7 +148,62 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
           </IconButton>
         </Box>
       </form>
-      {matches ? accordionView() : tableView()}
+
+      <div className={classes.tableDiv}>
+        <TableContainer>
+          <Table aria-label="searched workers">
+            <TableHead>
+              <TableRow>
+                <TableCell align="left">{t("name")}</TableCell>
+                <TableCell align="left">{t("joined")}</TableCell>
+                <TableCell align="left">{t("add")}</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {workersOrBusinesses
+                .filter((workerOrBusiness: any) =>
+                  workerOrBusiness.name
+                    .toLowerCase()
+                    .includes(filter.toLowerCase())
+                )
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((workerOrBusiness: any) => (
+                  <TableRow key={workerOrBusiness._id}>
+                    <TableCell component="th" scope="row" align="left">
+                      {workerOrBusiness.name}
+                    </TableCell>
+                    <TableCell>
+                      {new Date(workerOrBusiness.createdAt).toLocaleDateString()}
+                    </TableCell>
+                    <TableCell
+                      padding="none"
+                      align="left"
+                      style={{ paddingLeft: 5 }}
+                    >
+                      <IconButton
+                        aria-label="add to organization"
+                        color="secondary"
+                        onClick={() => addWorkerOrBusiness(workerOrBusiness)}
+                        size="large">
+                        <AddIcon />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={workersOrBusinesses.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </div>
+
     </Box>
   );
 };

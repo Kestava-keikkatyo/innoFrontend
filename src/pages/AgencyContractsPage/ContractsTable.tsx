@@ -25,7 +25,7 @@ import {
   useTheme,
   Theme,
 } from '@mui/material';
-import { Add as AddIcon } from '@mui/icons-material';
+import { Delete as DeleteIcon } from '@mui/icons-material';
 import {
   Accordion,
   AccordionDetails,
@@ -170,11 +170,11 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
                       style={{ paddingLeft: 5 }}
                     >
                       <IconButton
-                        aria-label="add to organization"
+                        aria-label="remove contract"
                         color="secondary"
                         onClick={() => temp(contract)}
                         size="large">
-                        <AddIcon />
+                        <DeleteIcon />
                       </IconButton>
                     </TableCell>
                   </TableRow>

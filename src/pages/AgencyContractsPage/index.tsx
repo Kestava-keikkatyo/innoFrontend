@@ -58,9 +58,8 @@ const a11yProps = (index: any) => {
  * @description
  * Agency view of Business contracts (Agreements)
  *
- * - Displays businesscontracts (requested, pending, signed).
+ * - Displays businesscontracts (pending, signed).
  * - Sends businesscontracts to businesses and workers.
- * - TODO: Accepts businesscontract requests.
  *
  * After agency has sent businesscontract and business/worker has accepted it,
  * agency can create workcontracts between worker and business in workerpage.
