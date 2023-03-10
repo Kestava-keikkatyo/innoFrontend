@@ -391,6 +391,7 @@ nav * {
     flex: 1;
     justify-content: space-between;
     padding: 0 1% !important;
+
 }
 
 .translate-icon {
@@ -536,32 +537,7 @@ nav * {
     background-color: #F47D20
 }
 
-.databank-logo {
-    /*z-index: 5;
-    top: calc(50% - 0px);
-    left: calc(50% - 500px);*/
-    margin-top: 50px;
-    width: 350px;
-    height: 180px;
-    /* background-size: contain; */
-}
-
-.databank-logo img {
-    width: 400px;
-    height: 200px;
-}
-
-.databank-logo img:hover {
-    /*transform: scale(1.2);
-  transition: 0.5s ease-in-out;*/
-}
-
-
 .keikkakaveri {
-    /*display: block;
-    position: absolute;
-    left: 2rem;*/
-
     box-sizing: border-box;
     display: block;
     z-index: 4;
@@ -570,12 +546,6 @@ nav * {
 }
 
 .databank-desktop-link {
-    /*display: inline-block;
-    position: absolute;
-    right: 2rem;
-    top: 1rem;*/
-
-
     box-sizing: inherit;
     position: absolute;
     display: flex;
@@ -632,7 +602,10 @@ nav * {
     border: 2px;
     border-style: solid;
     border-color: #F47D20;
-    padding: 3px;
+    padding: 5px 15px 5px 15px;
+    font-weight: bold;
+    letter-spacing: 0;
+    width: 100%;
 }
 
 /* color: white -> black */
@@ -642,6 +615,8 @@ nav * {
     margin-right: 4px;
     border: 2px solid white;
     color: black;
+    font-weight: bold;
+    white-space: nowrap;
 }
 
 /* background: radial-gradient(
@@ -909,6 +884,7 @@ nav * {
         font-size: smaller;
     }
 
+
     .landing-banner {
         display: none !important;
     }
@@ -916,6 +892,7 @@ nav * {
     #maxContainer {
         max-width: 100vw !important;
     }
+
 }
 
 @media screen and (max-width: 899px) {
@@ -932,6 +909,16 @@ nav * {
     .home {
         margin-bottom: 5%;
     }
+
+    .databank-nav-link {
+        font-size: 8px;
+    }
+
+    .databank-nav-link-active {
+        font-size: 8px;
+    }
+
+
 }
 
 @media screen and (max-width: 600px) {
@@ -986,6 +973,15 @@ nav * {
     .footer-third {
         max-width: 33.3% !important;
     }
+
+    .responsibilities-button {
+        font-size: 9px;
+    }
+
+    .databank-route {
+        font-size: 10px;
+    }
+
 }
 
 @media screen and (max-width: 450px) {
@@ -1061,13 +1057,17 @@ nav * {
 }
 
 .responsibilities-button {
-    width: 30%;
     border-radius: 5rem;
-    padding: 10px;
+    padding: 10px 5px 10px 5px;
     border: 2px solid white;
     color: black;
     background-color: #C0CFFA;
     font-weight: bold;
+    text-transform: capitalize;
+    margin: 0;
+    width: 100%;
+    /*word-wrap: break-word;
+    word-break: break-word;*/
 }
 
 .accordion-container {
@@ -1083,6 +1083,8 @@ nav * {
     border: 2px;
     border-style: solid;
     border-color: #F47D20;
-    padding: 3px;
+    padding: 5px 15px 5px 15px;
     background-color: #F47D20;
+    font-weight: bold;
+    width: 100%;
 }

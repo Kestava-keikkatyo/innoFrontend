@@ -1229,7 +1229,7 @@ export default {
 
     // FAQ
     general: 'Yleistä',
-    search: 'Hae',
+    search: 'Haku',
 
     // Privacy Policy
     privacy_policy: 'Tietosuojaseloste',
@@ -1250,7 +1250,7 @@ export default {
 
     // Keikkakaveri summary
     keikkakaveri_summary: 'Keikkakaveri on kehitetty Kestävä keikkatyö-hankkeessa. Hankkeen toteuttivat ' +
-        'Metropolia ammattikorkeakoulu, Satakunnan ammattikorkeakoulu,Tampereen yliopisto ja Oulun yliopisto. ' +
+        'Metropolia ammattikorkeakoulu, Satakunnan ammattikorkeakoulu, Tampereen yliopisto ja Oulun yliopisto. ' +
         'Hanketta rahoitti Euroopan sosiaalirahasto. Keikkakaverin ylläpidosta vastaa Työturvallisuuskeskus.',
 
     // Databank summaries
@@ -1258,6 +1258,8 @@ export default {
     responsibilities_summary: 'Jokaisella vuokratyön osapuolella on työturvallisuuteen, työterveyteen ja työhyvinvointiin liittyviä vastuita.',
     instructions_summary: 'Ohjeet ovat lyhyitä tekstejä siitä, miten henkilöstöpalveluyritys, käyttäjäyritys ja vuokratyöntekijä voivat huolehtia vuokratyöntekijän työturvallisuudesta, työterveydestä ja työhyvinvoinnista. Ohjeessa on kerrottu aiheeseen liittyvät lait, mahdolliset muut internetlinkit ja lomakkeet.',
     good_practises_summary: 'Lomakepohjat ohjaavat huolehtimaan tärkeistä asioista vuokratyötoimeksiannon eri vaiheissa. Lomakkeiden täyttäminen varmistaa, että olennaisimmat vuokratyöntekijän työturvallisuuteen liittyvät seikat käydään läpi ja tärkeistä asioista sovitaan pelisäännöt henkilöstöpalvelu- ja käyttäjäyrityksen välillä. Kahden osapuolen kesken täytetty lomake voidaan aina antaa tiedoksi myös kolmannelle osapuolelle. Tämä toimii osana kumppaneiden välistä tiedonkulkua ja tärkeän informaation perillemenon varmistamista.',
-    forms_summary: 'Lomakepohjat ohjaavat huolehtimaan tärkeistä asioista vuokratyötoimeksiannon eri vaiheissa. Lomakkeiden täyttäminen varmistaa, että olennaisimmat vuokratyöntekijän työturvallisuuteen liittyvät seikat käydään läpi ja tärkeistä asioista sovitaan pelisäännöt henkilöstöpalvelu- ja käyttäjäyrityksen välillä. Kahden osapuolen kesken täytetty lomake voidaan aina antaa tiedoksi myös kolmannelle osapuolelle. Tämä toimii osana kumppaneiden välistä tiedonkulkua ja tärkeän informaation perillemenon varmistamista.'
+    forms_summary: 'Lomakepohjat ohjaavat huolehtimaan tärkeistä asioista vuokratyötoimeksiannon eri vaiheissa. Lomakkeiden täyttäminen varmistaa, että olennaisimmat vuokratyöntekijän työturvallisuuteen liittyvät seikat käydään läpi ja tärkeistä asioista sovitaan pelisäännöt henkilöstöpalvelu- ja käyttäjäyrityksen välillä. Kahden osapuolen kesken täytetty lomake voidaan aina antaa tiedoksi myös kolmannelle osapuolelle. Tämä toimii osana kumppaneiden välistä tiedonkulkua ja tärkeän informaation perillemenon varmistamista.',
+
+
 }
 

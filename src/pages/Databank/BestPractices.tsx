@@ -12,60 +12,61 @@ import makeStyles from '@mui/styles/makeStyles';
 import Ingressi from '../../components/Ingressi'
 import Footer from '../../components/Footer'
 import topArrow from '../../assets/icons/sivunalkuun.svg'
-import { Container, Grid } from '@mui/material'
+import { Grid } from '@mui/material'
 
 const BestPractices: React.FC = () => {
 
-    const useStyles = makeStyles(() => ({
-        root: {
-            marginTop: '2rem',
-        },
-    }))
+  const useStyles = makeStyles(() => ({
+    root: {
+      marginTop: '2rem',
+    },
+  }))
 
-    const handleToTop = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
+  const handleToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
-    let BestPractices;
-    if (i18next.language === 'en') {
-        BestPractices = bestPractices_en;
-    } else {
-        BestPractices = bestPractices;
-    }
+  let BestPractices;
+  if (i18next.language === 'en') {
+    BestPractices = bestPractices_en;
+  } else {
+    BestPractices = bestPractices;
+  }
 
-    const { t } = useTranslation();
-    const classes = useStyles()
-    const header = "good_practises";
-    const summary = "good_practises_summary";
+  const { t } = useTranslation();
+  const classes = useStyles()
+  const header = "good_practises";
+  const summary = "good_practises_summary";
 
-    return (
-      <Grid container className={classes.root}>
-        <Ingressi header={header} summary={summary}></Ingressi>
-        <Grid style={{ width: '100%', backgroundColor: "#DBE4FC" }}>
-            <div style={{ width: '60%', paddingTop: '15px', margin: 'auto'}}>
-            {BestPractices.map((e, i) => (
-              <Accordion defaultExpanded key={i}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1a-content"
-                  id="panel1a-header"
-                >
-                <Typography style={{ fontWeight: 'bold' }} >{e.title}</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <ul>
-                    {e.details.map((item, j) => (
-                      <li key={j}>{item}</li>
-                    ))}
-                  </ul>
-                </AccordionDetails>
-              </Accordion>
-            ))}
-            <div style={{ width: "100%", display: "flex", justifyContent: "right", padding: "10px" }}>
-              <img style={{ width: "30px", height: "30px"}} onClick={handleToTop} src={topArrow}></img>
-            </div>
+  return (
+    <Grid container className={classes.root}>
+
+      {/* Ingressi */}
+      <Ingressi header={header} summary={summary}></Ingressi>
+
+      <Grid style={{ width: '100%', backgroundColor: "#DBE4FC" }}>
+        <Grid sx={{ width: { xs: '90%', md: '60%' } }} style={{ paddingTop: '30px', margin: 'auto' }}>
+          {BestPractices.map((e, i) => (
+            <Accordion defaultExpanded key={i} style={{ borderRadius: '25px', backgroundColor: "#FDFDFD" }}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Typography style={{ fontWeight: 'bold', backgroundColor: "#FDFDFD" }} >{e.title}</Typography>
+              </AccordionSummary>
+              <AccordionDetails style={{ borderRadius: '25px' }}>
+                {e.details.map((item, j) => (
+                  <li style={{ listStyleType: "none" }} key={j}>{item}</li>
+                ))}
+              </AccordionDetails>
+            </Accordion>
+          ))}
+          <div style={{ width: "100%", display: "flex", justifyContent: "right", padding: "10px" }}>
+            <img style={{ width: "30px", height: "30px" }} onClick={handleToTop} src={topArrow}></img>
           </div>
         </Grid>
+      </Grid>
       <Footer></Footer>
     </Grid>
   )
