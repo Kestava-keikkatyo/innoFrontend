@@ -20,7 +20,6 @@ import {
 import makeStyles from '@mui/styles/makeStyles';
 import { IRootState } from '../../utils/store';
 import { useTranslation } from 'react-i18next';
-import { fetchFormList } from '../../actions/formListActions';
 import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
 
@@ -84,7 +83,6 @@ const AgencyContractsPage = () => {
   useEffect(() => {
     dispatch(me());
     dispatch(fetchBusinessContracts());
-    dispatch(fetchFormList());
   }, [dispatch, data.role]);
 
   const sendContractProposal = (workerOrBusiness: any) => {

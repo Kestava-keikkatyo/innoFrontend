@@ -8,6 +8,7 @@ import {
   acceptBusinessContractFromBusiness,
   acceptBusinessContractFromWorker,
   sendBackBusinessContract,
+  refuseBusinessContractById,
 } from '../../actions/businessContractActions';
 import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
@@ -82,43 +83,12 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
   const [rowsPerPage, setRowsPerPage] = React.useState(5)
   console.log({ contracts })
 
-  const acceptContractFromBusiness = (
+  const deleteContract = (
     contractId: string,
-    userId: string,
-    formId: string
+    userId: string
   ) => {
-    dispatch(acceptBusinessContractFromBusiness(contractId, userId, formId));
-    dispatch(setAlert('Contract from Business accepted.', severity.Info, 3));
-  };
-
-  const acceptContractFromWorker = (
-    contractId: string,
-    userId: string,
-    formId: string
-  ) => {
-    dispatch(acceptBusinessContractFromWorker(contractId, userId, formId));
-    dispatch(setAlert('Contract from Worker accepted.', severity.Info, 3));
-  };
-
-  const declineContract = (
-    contractId: string,
-    userId: string,
-    formId: string
-  ) => {
-    dispatch(declineBusinessContract(contractId, userId));
-    if (formId) {
-      dispatch(deleteBusinessContractForm(formId, userId));
-    }
-    dispatch(setAlert('Contract declined.', severity.Info, 3));
-  };
-
-  const sendBackContract = (
-    contractId: string,
-    userId: string,
-    formId: string
-  ) => {
-    dispatch(sendBackBusinessContract(contractId, userId, formId));
-    dispatch(setAlert('Contract sended back.', severity.Info, 3));
+    dispatch(refuseBusinessContractById(userId, contractId));
+    dispatch(setAlert('Contract deleted.', severity.Info, 3));
   };
 
   const handleChangePage = (event: any, newPage: number) => {
@@ -172,7 +142,7 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
                       <IconButton
                         aria-label="remove contract"
                         color="secondary"
-                        onClick={() => temp(contract)}
+                        onClick={() => deleteContract(contract._id, contract.creator)}
                         size="large">
                         <DeleteIcon />
                       </IconButton>

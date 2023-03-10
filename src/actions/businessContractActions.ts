@@ -55,7 +55,6 @@ export const fetchBusinessContractsAsTarget = () => async (dispatch: any) => {
  * @param {string} id - BusinessContract Id.
  */
 export const refuseBusinessContractById = (userId: string, id: string) => async (dispatch: any) => {
-  //
   const res = await contractsService.refuseBusinessContractById(id)
   const r = await contractsService.fetchBusinessContracts()
 
