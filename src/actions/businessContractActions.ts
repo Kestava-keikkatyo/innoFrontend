@@ -55,7 +55,6 @@ export const fetchBusinessContractsAsTarget = () => async (dispatch: any) => {
  * @param {string} id - BusinessContract Id.
  */
 export const refuseBusinessContractById = (userId: string, id: string) => async (dispatch: any) => {
-  //
   const res = await contractsService.refuseBusinessContractById(id)
   const r = await contractsService.fetchBusinessContracts()
 
@@ -67,6 +66,7 @@ export const refuseBusinessContractById = (userId: string, id: string) => async 
 
 /**
  * @function
+ * @deprecated Forms are not in use in this context, with current design
  * @desc Adds new business contract between logged in Agency user and Worker/Business user.
  * Must be Agency to use this.
  * @param {string} contractId BusinessContract id
@@ -75,6 +75,24 @@ export const refuseBusinessContractById = (userId: string, id: string) => async 
 export const addBusinessContract =
   (targetId: string, formId: string, type: string) => async (dispatch: any) => {
     const res = await contractsService.addBusinessContract(targetId, formId, type)
+    if (res && res.status === 200) {
+      dispatch({ type: ADD_B_CONTRACT, data: res.data })
+      type === 'request'
+        ? dispatch(fetchBusinessContractsAsTarget())
+        : dispatch(fetchBusinessContracts())
+    }
+  }
+
+/**
+* @function
+* @desc Adds new contract between logged in Agency user and Worker/Business user.
+* Must be Agency to use this.
+* @param {string} targetId Business or Worker id
+* @param type - type of contract
+*/
+export const addAgencyContract =
+  (targetId: string, type: string) => async (dispatch: any) => {
+    const res = await contractsService.addAgencyContract(targetId, type)
     if (res && res.status === 200) {
       dispatch({ type: ADD_B_CONTRACT, data: res.data })
       type === 'request'

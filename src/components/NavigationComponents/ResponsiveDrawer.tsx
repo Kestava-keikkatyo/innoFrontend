@@ -37,6 +37,7 @@ import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
 import AssignmentIndOutlinedIcon from '@mui/icons-material/AssignmentIndOutlined'
 import AccessibilityOutlinedIcon from '@mui/icons-material/AccessibilityOutlined';
 import PersonIcon from '@mui/icons-material/Person';
+import ContactMailIcon from '@mui/icons-material/ContactMail';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import TaskIcon from '@mui/icons-material/Task';
@@ -153,6 +154,28 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           )}
           {role === roles.Agency && (
             <>
+              <ListItemButton component={Link} to="/agencyContracts" onClick={handleClick}>
+                <ListItemIcon>
+                  <ContactMailIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('contracts')} />
+              </ListItemButton>
+              <Divider />
+            </>
+          )}
+          {(role === roles.Business || role === roles.Worker) && (
+            <>
+              <ListItemButton component={Link} to="/userContracts" onClick={handleClick}>
+                <ListItemIcon>
+                  <ContactMailIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText primary={t('contracts')} />
+              </ListItemButton>
+              <Divider />
+            </>
+          )}
+          {role === roles.Agency && (
+            <>
               <ListItemButton component={Link} to="/businesses" onClick={handleClick}>
                 <ListItemIcon>
                   <GroupOutlinedIcon sx={{ color: iconColor.base }} />
@@ -213,7 +236,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
                     </ListItemIcon>
                     <ListItemText primary={t('overview')} />
                   </ListItemButton>
-                
+
 
                   <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/customerContract">
                     <ListItemIcon>

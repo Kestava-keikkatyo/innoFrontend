@@ -60,8 +60,33 @@ const acceptBusinessContract = async (
     console.log(error);
   }
 };
-
 /**
+ * @description Backend call function which is used when Agency sends BusinessContract
+ * request to Worker or Business.
+ * @param targetId - Worker/Business id
+ * @param type - type of contract
+ * @returns Backend response.
+ */
+const addAgencyContract = async (
+  targetId: string,
+  type: string
+) => {
+  try {
+    return await axios.post(
+      `${baseUrl}/agreement/`,
+      {
+        target: targetId,
+        status: "pending",
+        type: type,
+      },
+      authHeader()
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
+/**
+ * @deprecated Forms are not in use in this context, with current design
  * @description Backend call function which is used when Agency sends BusinessContract
  * request to Worker or Business.
  * @param contractId - BusinessContractId
@@ -137,13 +162,12 @@ const declineBusinessContract = async (contractId: string, userId: string) => {
 };
 
 /**
- * TODO: Tarkista, kun route on valmis.
+ * Deletes contract according to id
  * @param {*} contractId
  */
 const refuseBusinessContractById = async (contractId: string) => {
-  return await axios.put(
-    `${baseUrl}/businesscontracts/refuse/${contractId}`,
-    {},
+  return await axios.delete(
+    `${baseUrl}/agreement/delete/${contractId}`,
     authHeader()
   );
 };
@@ -292,6 +316,7 @@ const sendBackBusinessContract = async (
 export default {
   searchUsers,
   createBusinessContract,
+  addAgencyContract,
   addBusinessContract,
   addBusinessContractWorkerBusiness,
   declineBusinessContract,
