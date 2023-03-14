@@ -170,7 +170,7 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
                 .map((workerOrBusiness: any) => (
                   <TableRow key={workerOrBusiness._id}>
                     <TableCell component="th" scope="row" align="left">
-                      {workerOrBusiness.name}
+                      {workerOrBusiness.firstName} {workerOrBusiness.lastName}
                     </TableCell>
                     <TableCell>
                       {new Date(workerOrBusiness.createdAt).toLocaleDateString()}

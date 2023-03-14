@@ -35,7 +35,7 @@ const Notifications = (props: BoxProps) => {
     onClose()
   }
 
-  const handleLinkClick = (notification : Notification) => {
+  const handleLinkClick = (notification: Notification) => {
     dispatch(clearNotification(notification));
     switch (notification.targetDoc) {
       case 'Agreement':
@@ -57,8 +57,8 @@ const Notifications = (props: BoxProps) => {
       {children}
       <Typography color="secondary" className={classes.notificationsHeader} variant="h5">{t('notifications')}
         <IconButton onClick={handleCloseAllNotifications} sx={{ position: 'absolute', top: 1, right: 1 }}>
-            <CloseIcon style={{ position: 'absolute', top: 1, right: 1 }} />
-          </IconButton>
+          <CloseIcon style={{ position: 'absolute', top: 1, right: 1 }} />
+        </IconButton>
       </Typography>
       <Divider />
       <List>
@@ -67,11 +67,11 @@ const Notifications = (props: BoxProps) => {
             <div key={item._id}>
               <ListItem key={item._id} style={{ display: 'flex', flexDirection: 'row', padding: 0 }}>
                 <ListItemButton onClick={() => handleLinkClick(item)}>
-                 <ListItemText 
-                  primary={renderNotificationMessage(item)} 
-                 />
-                 <AssignmentOutlined />
-               </ListItemButton>
+                  <ListItemText
+                    primary={renderNotificationMessage(item)}
+                  />
+                  <AssignmentOutlined />
+                </ListItemButton>
               </ListItem>
               <Divider />
             </div>
@@ -82,14 +82,14 @@ const Notifications = (props: BoxProps) => {
   );
 }
 
-const renderNotificationMessage = (notification : Notification) : string => {
+const renderNotificationMessage = (notification: Notification): string => {
   let message = `${moment(notification.createdAt).format('D.M.')} • `;
   switch (notification.type) {
     case 'assignmet':
-        switch (notification.targetDoc) {
-          case 'WorkRequest': message += `${notification.sender.name} requested work from you.`;
-            break;
-        }
+      switch (notification.targetDoc) {
+        case 'WorkRequest': message += `${notification.sender.firstName} ${notification.sender.lastName} requested work from you.`;
+          break;
+      }
       break;
   }
 

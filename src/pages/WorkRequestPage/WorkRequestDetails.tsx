@@ -1,6 +1,6 @@
 import {
     PermIdentity,
-  } from '@mui/icons-material';
+} from '@mui/icons-material';
 import React, { useEffect } from 'react';
 import makeStyles from '@mui/styles/makeStyles';
 import { useParams, Link } from 'react-router-dom';
@@ -17,7 +17,7 @@ type ReceivedWorkRequestUrlParams = {
     receivedWorkRequestId: string
 }
 const WorkRequestDetails: React.FC<React.ReactNode> = () => {
-   
+
     const { t } = useTranslation()
     const { receivedWorkRequestId } = useParams<ReceivedWorkRequestUrlParams>();
     const receivedWorkRequestData = useSelector((state: IRootState) => state.workRequest.currentWorkRequest);
@@ -27,55 +27,55 @@ const WorkRequestDetails: React.FC<React.ReactNode> = () => {
     }, [dispatch, receivedWorkRequestId]);
     const classes = useStyles();
 
-    if(!receivedWorkRequestData || receivedWorkRequestId !== receivedWorkRequestData._id) return (
+    if (!receivedWorkRequestData || receivedWorkRequestId !== receivedWorkRequestData._id) return (
         <PageLoading />
     );
 
     return (
-    <div className={classes.receivedWR}>
-        <div className={classes.workRWTitleContainer}>
-            <Typography className={classes.workRWTitle} color="primary" variant="h5">{t('work_request_description')}</Typography>
-        </div>
-        <div>
-        <Button className={classes.back} color="secondary" component={Link} to="/receivedWorkRequests">{t('back')}</Button>
-        </div>
-        <div className={classes.workRWContainer}>
-            <div className={classes.workRWShow}>
-                <div className={classes.workRWShowInfo}>
-                    <span className={classes.workRWShowTitle}>{t('work_request_sent_at')}</span>
-                    <span className={classes.workRWShowInfoTitle}>{ moment(receivedWorkRequestData.createdAt).format('DD/MM/YYYY') }</span>
+        <div className={classes.receivedWR}>
+            <div className={classes.workRWTitleContainer}>
+                <Typography className={classes.workRWTitle} color="primary" variant="h5">{t('work_request_description')}</Typography>
+            </div>
+            <div>
+                <Button className={classes.back} color="secondary" component={Link} to="/receivedWorkRequests">{t('back')}</Button>
+            </div>
+            <div className={classes.workRWContainer}>
+                <div className={classes.workRWShow}>
+                    <div className={classes.workRWShowInfo}>
+                        <span className={classes.workRWShowTitle}>{t('work_request_sent_at')}</span>
+                        <span className={classes.workRWShowInfoTitle}>{moment(receivedWorkRequestData.createdAt).format('DD/MM/YYYY')}</span>
+                    </div>
+                    <span className={classes.workRWTitle}>{t('work_request_sender')}</span>
+                    <div className={classes.workRWShowInfo}>
+                        <PermIdentity className={classes.workRWShowIcon} />
+                        <span className={classes.workRWShowInfoTitle}>{receivedWorkRequestData.sender?.firstName} {receivedWorkRequestData.sender?.lastName}</span>
+                    </div>
+                    <span className={classes.workRWTitle}>{t('work_request_specifics')}</span>
+                    <div className={classes.workRWShowInfo}>
+                        <span className={classes.workRWShowTitle}>{t('work_request_headline')}</span>
+                        <span className={classes.workRWShowInfoTitle}>{receivedWorkRequestData.headline}</span>
+                    </div>
+                    <div className={classes.workRWShowInfo}>
+                        <span className={classes.workRWShowTitle}>{t('work_request_workers_number')}</span>
+                        <span className={classes.workRWShowInfoTitle}>{receivedWorkRequestData.workersNumber}</span>
+                    </div>
                 </div>
-                <span className={classes.workRWTitle}>{t('work_request_sender')}</span>
-                <div className={classes.workRWShowInfo}>
-                    <PermIdentity className={classes.workRWShowIcon} />
-                    <span className={classes.workRWShowInfoTitle}> {receivedWorkRequestData.sender?.name} </span>
-                </div>
-                <span className={classes.workRWTitle}>{t('work_request_specifics')}</span>
-                <div className={classes.workRWShowInfo}>
-                    <span className={classes.workRWShowTitle}>{t('work_request_headline')}</span>
-                    <span className={classes.workRWShowInfoTitle}>{ receivedWorkRequestData.headline }</span>
-                </div>
-                <div className={classes.workRWShowInfo}>
-                    <span className={classes.workRWShowTitle}>{t('work_request_workers_number')}</span>
-                    <span className={classes.workRWShowInfoTitle}>{ receivedWorkRequestData.workersNumber }</span>
+                <div className={classes.workRWDescription}>
+                    <span className={classes.workRWShowTitle}>{t('work_request_requirements')}</span>
+                    <div className={classes.workRWShowInfo}>
+                        <span className={classes.details}>{receivedWorkRequestData.requirements}</span>
+                    </div>
+                    <span className={classes.workRWShowTitle}>{t('work_request_desirableSkills')}</span>
+                    <div className={classes.workRWShowInfo}>
+                        <span className={classes.details}>{receivedWorkRequestData.desirableSkills}</span>
+                    </div>
+                    <span className={classes.workRWShowTitle}>{t('work_request_details')}</span>
+                    <div className={classes.workRWShowInfo}>
+                        <span className={classes.details}>{receivedWorkRequestData.details}</span>
+                    </div>
                 </div>
             </div>
-            <div className={classes.workRWDescription}>
-                <span className={classes.workRWShowTitle}>{t('work_request_requirements')}</span>
-                <div className={classes.workRWShowInfo}>
-                    <span className={classes.details}>{ receivedWorkRequestData.requirements }</span>
-                </div>
-                <span className={classes.workRWShowTitle}>{t('work_request_desirableSkills')}</span>
-                <div className={classes.workRWShowInfo}>
-                    <span className={classes.details}>{ receivedWorkRequestData.desirableSkills }</span>
-                </div>
-                <span className={classes.workRWShowTitle}>{t('work_request_details')}</span>
-                <div className={classes.workRWShowInfo}>
-                    <span className={classes.details}>{ receivedWorkRequestData.details }</span>
-                </div>
-            </div>
         </div>
-    </div> 
     );
 };
 

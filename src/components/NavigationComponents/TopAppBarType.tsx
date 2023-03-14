@@ -148,13 +148,13 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
     variant: 'popper',
     popupId: 'userProfilePopper',
   })
-  const [timers, setTimers] = useState<any[]>([]) 
+  const [timers, setTimers] = useState<any[]>([])
 
   useEffect(() => {
     dispatch(fetchNotifications())
     console.log('Timers', timers)
     timers.forEach(timer => {
-      console.log('Cleared timer: ',timer)
+      console.log('Cleared timer: ', timer)
       clearInterval(timer)
     })
     setTimers([])
@@ -208,7 +208,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
         {/** Here comes the rest appbar stuff */}
         <div className="app-bar-container">
           {/** <img className={classes.logo} src={profileThumb} alt="logo" />*/}
-          <Badge 
+          <Badge
             badgeContent={
               notifications
                 ? notifications.length
@@ -251,7 +251,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
               <></>
             )}
           </Popover>
-          {/* User popup menu */}
+          {/* Worker popup menu */}
           <div>
             <IconButton
               aria-label="account of current user"
@@ -262,7 +262,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
               {...bindTrigger(popupState)}
               size="large">
               <Typography className={classes.username}>
-                {data.name || 'Loading'}
+                {data.firstName || 'Loading'}
               </Typography>
               <Avatar
                 style={{ margin: 'auto' }}
@@ -296,7 +296,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
                     align="center"
                     style={{ marginTop: 16 }}
                   >
-                    {currentProfile.name}
+                    {currentProfile.firstName} {currentProfile.lastName}
                   </Typography>
                   <Typography
                     variant="body2"
@@ -395,7 +395,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
               <></>
             )}
           </Popover>
-          {/* User popup menu */}
+          {/* Agency popup menu */}
           <div>
             <IconButton
               aria-label="account of current user"
@@ -406,7 +406,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
               {...bindTrigger(popupState)}
               size="large">
               <Typography className={classes.username}>
-                {data.name || 'Loading'}
+                {data.firstName || 'Loading'}
               </Typography>
               <Avatar
                 style={{ margin: 'auto' }}
@@ -440,7 +440,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
                     align="center"
                     style={{ marginTop: 16 }}
                   >
-                    {currentProfile.name}
+                    {currentProfile.firstName} {currentProfile.lastName}
                   </Typography>
                   <Typography
                     variant="body2"
@@ -543,7 +543,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
               <></>
             )}
           </Popover>
-          {/* User popup menu */}
+          {/* Business popup menu */}
           <div>
             <IconButton
               aria-label="account of current user"
@@ -554,7 +554,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
               {...bindTrigger(popupState)}
               size="large">
               <Typography className={classes.username}>
-                {data.name || 'Loading'}
+                {data.firstName || 'Loading'}
               </Typography>
               <Avatar
                 style={{ margin: 'auto' }}
@@ -588,7 +588,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
                     align="center"
                     style={{ marginTop: 16 }}
                   >
-                    {currentProfile.name}
+                    {currentProfile.firstName} {currentProfile.lastName}
                   </Typography>
                   <Typography
                     variant="body2"
@@ -696,7 +696,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
               {...bindTrigger(popupState)}
               size="large">
               <Typography className={classes.username}>
-                {data.name || 'Loading'}
+                {data.firstName || 'Loading'}
               </Typography>
               <Avatar
                 style={{ margin: 'auto' }}
@@ -730,7 +730,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
                     align="center"
                     style={{ marginTop: 16 }}
                   >
-                    {currentProfile.name}
+                    {currentProfile.firstName} {currentProfile.lastName}
                   </Typography>
                   <Typography
                     variant="body2"

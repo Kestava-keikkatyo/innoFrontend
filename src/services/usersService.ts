@@ -85,8 +85,8 @@ const fetchAllAgencies = async () => {
 
 /**
  * @function
- * @desc Gets all agencies.
- * @returns all agencies.
+ * @desc Gets all businesses.
+ * @returns all businesses.
  */
 const fetchAllBusinesses = async () => {
   const res = await axios.get(`${baseUrl}/user/businesses`, authHeader())

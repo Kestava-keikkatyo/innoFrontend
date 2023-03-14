@@ -1,4 +1,4 @@
-import React, {useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserById } from '../../actions/usersActions';
 import { IRootState } from '../../utils/store';
@@ -23,7 +23,7 @@ const UserProfile: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
 
   const myUserId = useSelector((state: IRootState) => state.user.data._id);
 
-  const profileId : string = myProfile ? myUserId : userId;
+  const profileId: string = myProfile ? myUserId : userId;
 
   const profileData = useSelector((state: IRootState) => state.users.currentUser);
   const { t } = useTranslation();
@@ -37,70 +37,70 @@ const UserProfile: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
   );
 
   return (
-  <div className={classes.user}>
-    <div className={classes.userTitleContainer}>
-      <Typography color="secondary" className="header" variant="h1">{t('user_profile')}</Typography>
-    </div>
-    <div className={classes.userContainer}>
-      <div className={classes.userShow}>
-      { myProfile ?
-        <Button className={classes.edit} color="secondary" component={Link} to="/profile/edit">{t('button_edit')}</Button>
-        : null}
-        <div className={classes.userShowTop}>
-            <Avatar 
-            className={classes.avatar}
-            aria-label="recipe"
-            alt= "profile"
-            src={profileData.profilePicture}
+    <div className={classes.user}>
+      <div className={classes.userTitleContainer}>
+        <Typography color="secondary" className="header" variant="h1">{t('user_profile')}</Typography>
+      </div>
+      <div className={classes.userContainer}>
+        <div className={classes.userShow}>
+          {myProfile ?
+            <Button className={classes.edit} color="secondary" component={Link} to="/profile/edit">{t('button_edit')}</Button>
+            : null}
+          <div className={classes.userShowTop}>
+            <Avatar
+              className={classes.avatar}
+              aria-label="recipe"
+              alt="profile"
+              src={profileData.profilePicture}
             />
-        </div>
-        <div className={classes.userShowBottom}>
-          <span className={classes.userShowTitle}>{t('user_account_details')}</span>
-          <div className={classes.userShowInfo}>
-            <PermIdentity className={classes.userShowIcon} />
-            <span className={classes.userShowInfoTitle}>{ profileData.name }</span>
           </div>
-          <div className={classes.userShowInfo}>
-            <WorkspacePremiumOutlinedIcon className={classes.userShowIcon} />
-            <span className={classes.userShowInfoTitle}>{ profileData.userType }</span>
+          <div className={classes.userShowBottom}>
+            <span className={classes.userShowTitle}>{t('user_account_details')}</span>
+            <div className={classes.userShowInfo}>
+              <PermIdentity className={classes.userShowIcon} />
+              <span className={classes.userShowInfoTitle}>{profileData.firstName} {profileData.lastName}</span>
+            </div>
+            <div className={classes.userShowInfo}>
+              <WorkspacePremiumOutlinedIcon className={classes.userShowIcon} />
+              <span className={classes.userShowInfoTitle}>{profileData.userType}</span>
+            </div>
+            {(profileData.userType === roles.Agency || profileData.userType === roles.Business) ?
+              <div className={classes.userShowInfo}>
+                <CategoryOutlinedIcon className={classes.userShowIcon} />
+                <span className={classes.userShowInfoTitle}> {profileData.category}</span>
+              </div>
+              : null}
+            <span className={classes.userShowTitle}>{t('user_contact_details')}</span>
+            <div className={classes.userShowInfo}>
+              <PhoneAndroid className={classes.userShowIcon} />
+              <span className={classes.userShowInfoTitle}>{profileData.phoneNumber}</span>
+            </div>
+            <div className={classes.userShowInfo}>
+              <MailOutline className={classes.userShowIcon} />
+              <span className={classes.userShowInfoTitle}> {profileData.email}</span>
+            </div>
+            <div className={classes.userShowInfo}>
+              <LocationSearching className={classes.userShowIcon} />
+              <span className={classes.userShowInfoTitle}>
+                {[profileData.street, profileData.zipCode, profileData.city].join(', ')}
+              </span>
+            </div>
+            {(profileData.userType === roles.Agency || profileData.userType === roles.Business) ?
+              <div className={classes.userShowInfo}>
+                <LanguageOutlinedIcon className={classes.userShowIcon} />
+                <span className={classes.userShowInfoTitle}> {profileData.website}</span>
+              </div>
+              : null}
+            {profileData.userType === roles.Worker ?
+              <div className={classes.userShowInfo}>
+                <span className={classes.userShowTitle}>{t('user_licenses')}</span>
+                <span className={classes.userShowInfoTitle}>{profileData.licenses}</span>
+              </div>
+              : null}
           </div>
-          { (profileData.userType === roles.Agency||profileData.userType === roles.Business) ?
-          <div className={classes.userShowInfo}>
-            <CategoryOutlinedIcon className={classes.userShowIcon} />
-            <span className={classes.userShowInfoTitle}> {profileData.category }</span>
-          </div>
-          : null}
-          <span className={classes.userShowTitle}>{t('user_contact_details')}</span>
-          <div className={classes.userShowInfo}>
-            <PhoneAndroid className={classes.userShowIcon} />
-            <span className={classes.userShowInfoTitle}>{ profileData.phoneNumber }</span>
-          </div>
-          <div className={classes.userShowInfo}>
-            <MailOutline className={classes.userShowIcon} />
-            <span className={classes.userShowInfoTitle}> {profileData.email }</span>
-          </div>
-          <div className={classes.userShowInfo}>
-            <LocationSearching className={classes.userShowIcon} />
-            <span className={classes.userShowInfoTitle}>
-              { [profileData.street, profileData.zipCode, profileData.city].join(', ') }
-            </span>
-          </div>
-          { (profileData.userType === roles.Agency||profileData.userType === roles.Business) ?
-          <div className={classes.userShowInfo}>
-            <LanguageOutlinedIcon className={classes.userShowIcon} />
-            <span className={classes.userShowInfoTitle}> {profileData.website }</span>
-          </div>
-          : null}
-          { profileData.userType === roles.Worker ? 
-          <div className={classes.userShowInfo}>
-            <span className={classes.userShowTitle}>{t('user_licenses')}</span> 
-            <span className={classes.userShowInfoTitle}>{ profileData.licenses }</span>
-          </div>
-          : null}
         </div>
       </div>
     </div>
-  </div> 
   );
 }
 
@@ -139,9 +139,9 @@ const useStyles = makeStyles((theme) => ({
   },
   userShowInfo: {
     display: 'flex',
-      alignItems: 'center',
-      margin: '20px 0px',
-      color: '#444',
+    alignItems: 'center',
+    margin: '20px 0px',
+    color: '#444',
   },
   userShowIcon: {
     fontSize: '16px !important',

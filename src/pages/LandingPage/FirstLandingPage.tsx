@@ -48,7 +48,7 @@ const FirstLandingPage: React.FC = () => {
                 <Button style={{ border: '3px solid #F47D20', borderRadius: '20px', color: '#2C2C2C', width: '90%', fontWeight: 'bold' }}>{t('enable_button')}</Button>
               </Link>
               <div style={{ marginTop: 'auto' }}>
-                <img src={left_box_image} style={{ display: 'block', margin: '0' }} />
+                <img src={left_box_image} alt='Keikkakaveri-työvälineen kuvitus' style={{ display: 'block', margin: '0' }} />
               </div>
             </Grid>
           </Grid>
@@ -60,23 +60,23 @@ const FirstLandingPage: React.FC = () => {
                 <Button style={{ border: '3px solid #F47D20', borderRadius: '20px', color: '#2C2C2C', width: '90%', fontWeight: 'bold' }}>{t('databank_button')}</Button>
               </Link>
               <div style={{ marginTop: 'auto' }}>
-                <img src={right_box_image} style={{ display: 'block', margin: '0' }} />
+                <img src={right_box_image} alt='Tietopankkikuvitus' style={{ display: 'block', margin: '0' }} />
               </div>
             </Grid>
           </Grid>
         </Grid>
         <Grid container spacing={2} justifyContent="center" alignItems='baseline' style={{ paddingTop: '32px', paddingBottom: '32px' }}>
           <Grid item xs={3} sm={3} style={{ maxWidth: '120px', display: 'flex' }}>
-            <img src={ttk} alt="työturvallisuuskeskus" />
+            <img src={ttk} alt="Työturvallisuuskeskus" />
           </Grid>
           <Grid item xs={3} sm={3} style={{ maxWidth: '120px', display: 'flex' }}>
-            <img src={kkk} alt="kestavakeikkatyo" />
+            <img src={kkk} alt="Kestävä Keikkatyö" />
           </Grid>
           <Grid item xs={3} sm={3} style={{ maxWidth: '120px', display: 'flex' }}>
-            <img src={vipuvoima} alt="vipuvoima rahasto" />
+            <img src={vipuvoima} alt="Vipuvoimaa EU:lta" />
           </Grid>
           <Grid item xs={3} sm={3} style={{ maxWidth: '120px', display: 'flex' }}>
-            <img src={eu} alt="eu" />
+            <img src={eu} alt="Euroopan Unionin sosiaalirahasto" />
           </Grid>
         </Grid>
       </Container >

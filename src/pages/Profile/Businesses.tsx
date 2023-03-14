@@ -29,7 +29,7 @@ const Businesses: React.FC = () => {
         return (
           <div className={classes.userListUser}>
             <img className={classes.userListImg} src={params.row.profilePicture} alt="" />
-            {params.row.name}
+            {params.row.firstName} {params.row.lastName}
           </div>
         );
       },
@@ -72,10 +72,10 @@ const Businesses: React.FC = () => {
     <div style={{ height: '75vh', width: '100%', padding: '0 1rem' }}>
       <div>
         <Typography className={'header'}
-                    style={{marginTop: '25px', marginBottom: '15px'}}
-                    color="primary"
-                    align="center"
-                    variant="h1">
+          style={{ marginTop: '25px', marginBottom: '15px' }}
+          color="primary"
+          align="center"
+          variant="h1">
           {t('list_title_businesses')}</Typography>
       </div>
       <DataGrid
