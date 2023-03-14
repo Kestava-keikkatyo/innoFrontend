@@ -125,14 +125,13 @@ const SendFeedback: React.FC = () => {
         >
           {() => (
               <Form>
-                {/* TODO: Recipient can only be business or agency the worker is part of */}
                 <FormikSelectField
                   label={t('feedback_recipient')}
                   name="recipientId"
                   options={recipients.map((recipient) => {
                     return {
                       value: recipient._id,
-                      label: [recipient.firstName, recipient.lastName]
+                      label: recipient.companyName
                     }
                   })}
                   fullWidth

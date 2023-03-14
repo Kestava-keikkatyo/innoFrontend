@@ -56,11 +56,6 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
   const [selectedBusiness, setSelectedBusiness] = useState(currentReport.business ? currentReport.business : "")
   const [selectedAgency, setSelectedAgency] = useState(currentReport.agency ? currentReport.agency : "")
 
-  useEffect(() => {
-    dispatch(fetchAllAgencies());
-    dispatch(fetchAllBusinesses());
-  }, [dispatch]);
-
   const handleFilterAgencies = (event: any) => {
     setFilterAgencies(event.target.value);
   };
@@ -120,13 +115,13 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
           >
             {businesses.sort((a: any, b: any) => a.name.localeCompare(b.name)) // Sort alphabetically and filter by search term. Return a list of Menuitems
               .filter((business: any) =>
-                business.name
+                business.companyName
                   .toLowerCase()
                   .includes(filterBusinesses.toLowerCase())
               )
               .map((business: any) => (
                 <MenuItem key={business._id} value={business._id}>
-                  {business.name}
+                  {business.companyName}
                 </MenuItem>
               ))}
           </Select>
@@ -150,11 +145,11 @@ const ReportStepOne: React.FC<ReportStepOneProps> = () => {
           >
             {agencies.sort((a: any, b: any) => a.name.localeCompare(b.name)) // Sort alphabetically and filter by search term. Return a list of Menuitems
               .filter((agency: any) =>
-                agency.name.toLowerCase().includes(filterAgencies.toLowerCase())
+                agency.companyName.toLowerCase().includes(filterAgencies.toLowerCase())
               )
               .map((agency: any) => (
                 <MenuItem key={agency._id} value={agency._id}>
-                  {agency.name}
+                  {agency.companyName}
                 </MenuItem>
               ))}
           </Select>

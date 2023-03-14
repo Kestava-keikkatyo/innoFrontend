@@ -161,8 +161,6 @@ export function fetchWorkerOrBusinessContacts() {
               contactId = agreements[key].target[1]
               const res = await usersService.fetchUserById(contactId)
 
-              console.log(JSON.stringify(res.data))
-
               insertContactData(contactId)
               dispatch({ type: FETCH_CONTACT_SUCCESS, data: res.data, })
 

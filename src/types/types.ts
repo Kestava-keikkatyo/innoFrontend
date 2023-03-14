@@ -154,6 +154,7 @@ export interface UserInformation {
 }
 
 export interface User extends UserInformation {
+  companyName?: string
   firstName: string
   lastName: string
   _id?: string
