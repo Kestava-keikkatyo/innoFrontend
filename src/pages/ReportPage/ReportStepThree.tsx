@@ -16,9 +16,8 @@ const ReportStepThree: React.FC<any> = ({stepThreeError}) => {
   const [details2, setDetails2] = useState(currentReport.details2)
   const { t } = useTranslation()
   const dispatch = useDispatch();
-  const [selectedBusiness, setSelectedBusiness] = useState(currentReport.business ? currentReport.business : "")
-  const [filterBusinesses, setFilterBusinesses] = useState('');
-  const { agencies, businesses } = useSelector((state: any) => state.allUsers);
+  const [selectedType, setSelectedType] = useState(currentReport.type ? currentReport.type : "")
+
   const handleTitle = (event: any) => {
     setTitle(event.target.value)
     dispatch(setReport({ ...currentReport, title: event.target.value }));
@@ -36,15 +35,17 @@ const ReportStepThree: React.FC<any> = ({stepThreeError}) => {
     setDetails2(event.target.value)
     dispatch(setReport({ ...currentReport, details2: event.target.value }));
   };
-  /**Select recipient business */
-  const handleSelectedBusiness = (event: any) => {
-    setSelectedBusiness(event.target.value)
+
+  const handleSelectedType = (event: any) => {
+    setSelectedType(event.target.value)
     /**Mui Select does not accept null for empty value. So we need 
      * to use "" but send null to store when clearing selection. 
      * */
+    console.log(event.target.value)
+
     const valueForDB = event.target.value === "" ? null : event.target.value 
     dispatch(
-      setReport({ ...currentReport, business: valueForDB })
+      setReport({ ...currentReport, type: valueForDB })
     );
   };
 
@@ -103,9 +104,9 @@ const ReportStepThree: React.FC<any> = ({stepThreeError}) => {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={selectedBusiness}
+              value={selectedType}
               style={{ maxHeight: 50 }}
-              onChange={handleSelectedBusiness}
+              onChange={handleSelectedType}
             >
               {/**Menuitem for clearing selection */}
             <MenuItem value="">

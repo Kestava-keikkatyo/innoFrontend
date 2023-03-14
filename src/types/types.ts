@@ -183,11 +183,9 @@ export interface Report {
   agency: string | null
   business: string | null
   user: string
-  fileUrl: string
-  fileType: string
-  name: string
-  email: string
-  phoneNumber: string
+  //fileUrl: string
+  //fileType: string
+  type: string
   status: string
   businessArchived: string
   agencyArchived: string

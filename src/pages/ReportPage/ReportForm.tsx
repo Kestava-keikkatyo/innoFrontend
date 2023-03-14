@@ -204,14 +204,14 @@ const ReportForm = () => {
     setStepThreeError(false)
   };
 
-  const handleFinnish = async () => {
+  const handleFinish = async () => {
     if (currentReport.title === "" || currentReport.details === "") {
-      //If title or details is missing, set step three to error state and exit handleFinnish.
+      //If title or details is missing, set step three to error state and exit handleFinish.
       setStepThreeError(true)
       return
     } else {
       /*
-        Show loading-status in send button and disable the button until handlefinnish is complete.
+        Show loading-status in send button and disable the button until handleFinish is complete.
         This could take a while when large images or videos are uploaded.
       */
       setLoading(true) 
@@ -240,6 +240,9 @@ const ReportForm = () => {
         dispatch(submitReport(currentReport));
       }*/
       //Clear report in redux-store, clear step three error and finish-button loading-state and move to last step.
+      console.log(currentReport)
+      
+      dispatch(submitReport(currentReport));
       dispatch(setReport(initialReport));
       setStepThreeError(false)
       setActiveStep(steps.length);
@@ -293,9 +296,9 @@ const ReportForm = () => {
               </Button>
 
               {activeStep === steps.length - 1 ? (
-                /**Finish button. When clicking, handleFinnish sets 
+                /**Finish button. When clicking, handleFinish sets 
                  * buttons loading status to true, disabling it until
-                 * handleFinnish is finished. This coult take a while
+                 * handleFinish is finished. This could take a while
                  * if uploading large images or videos.
                  * */
                 <LoadingButton
@@ -303,7 +306,7 @@ const ReportForm = () => {
                   loadingPosition='end'
                   variant="contained"
                   endIcon={<SendIcon />}
-                  onClick={handleFinnish}
+                  onClick={handleFinish}
                   className={`${classes.button} ${classes.primary}`}
                 >
                   {t('finish')}
