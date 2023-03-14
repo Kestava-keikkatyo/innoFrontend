@@ -49,7 +49,7 @@ const JobDetails: React.FC = () => {
                 <span className={classes.jobTitle}>{t('job_supplier')}</span>
                 <div className={classes.jobShowInfo}>
                     <PermIdentity className={classes.jobShowIcon} />
-                    <span className={classes.jobShowInfoTitle}>{ jobData.user?.name }</span>
+                    <span className={classes.jobShowInfoTitle}>{ jobData.user?.firstName } { jobData.user?.lastName }</span>
                 </div>
                 <span className={classes.jobTitle}>{t('job_specifics')}</span>
                 <div className={classes.jobShowInfo}>

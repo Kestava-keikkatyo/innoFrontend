@@ -77,7 +77,8 @@ const SendFeedback: React.FC = () => {
 
   const initialValues: Feedback = {
     recipientId: '',
-    recipientName: '',
+    recipientFirstName: '',
+    recipientLastName: '',
     shift: null,
     shiftMessage: '',
     orientation: null,
@@ -100,7 +101,8 @@ const SendFeedback: React.FC = () => {
 
   const handleSubmit = (feedback: Feedback) => {
     if (recipients) {
-      feedback.recipientName = recipients.find(recipient => feedback.recipientId === recipient._id)?.name
+      feedback.recipientFirstName = recipients.find(recipient => feedback.recipientId === recipient._id)?.firstName
+      feedback.recipientLastName = recipients.find(recipient => feedback.recipientId === recipient._id)?.lastName
       console.log(feedback)
       dispatch(createFeedback(feedback));
       history.push({
@@ -130,7 +132,7 @@ const SendFeedback: React.FC = () => {
                   options={recipients.map((recipient) => {
                     return {
                       value: recipient._id,
-                      label: recipient.name
+                      label: [recipient.firstName, recipient.lastName]
                     }
                   })}
                   fullWidth

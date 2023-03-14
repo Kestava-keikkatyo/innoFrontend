@@ -22,40 +22,40 @@ const Workers: React.FC = () => {
   rows = users;
   const columns: GridColumns = [
     {
-      field: "name",
-      headerName: (i18next.t("list_name")),
+      field: 'name',
+      headerName: (i18next.t('list_name')),
       minWidth: 125,
       flex: 1,
       renderCell: (params) => {
         return (
         <div className={classes.userListUser}>
           <img className={classes.userListImg} src={params.row.profilePicture} alt="" />
-          {params.row.name}
+          {params.row.firstName} {params.row.lastName}
         </div>
         );
       },
     },
     {
-      field: "email", 
-      headerName: (i18next.t("list_email")),
+      field: 'email', 
+      headerName: (i18next.t('list_email')),
       minWidth: 200,
       flex: 1
     },
     {
-      field: "city", 
-      headerName: (i18next.t("list_city")), 
+      field: 'city', 
+      headerName: (i18next.t('list_city')), 
       minWidth: 125,
       flex: 1
     },
     {
-      field: "userType", 
-      headerName: (i18next.t("list_position")), 
+      field: 'userType', 
+      headerName: (i18next.t('list_position')), 
       minWidth: 75,
       flex: 1 
     },
     {
-      field: "action",
-      headerName: (i18next.t("list_action")),
+      field: 'action',
+      headerName: (i18next.t('list_action')),
       minWidth: 100,
       flex: 1,
       renderCell: (params) => {
@@ -69,10 +69,10 @@ const Workers: React.FC = () => {
 ];
 
 return (
-<div style={{ height: "75vh", width: "100%", padding: "0 1rem" }}>
+<div style={{ height: '75vh', width: '100%', padding: '0 1rem' }}>
   <div>
-    <Typography className={"header"}
-                style={{marginTop: "25px", marginBottom: "15px"}}
+    <Typography className={'header'}
+                style={{marginTop: '25px', marginBottom: '15px'}}
                 color="primary"
                 align="center"
                 variant="h1">

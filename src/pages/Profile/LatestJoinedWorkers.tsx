@@ -29,7 +29,7 @@ const LatestJoinedWorkers: React.FC = () => {
         return (
         <div className={classes.workerList}>
           <img className={classes.workerListImg} src={params.row.profilePicture} alt="" />
-          {params.row.name}
+          {params.row.firstName} {params.row.lastName}
         </div>
         );
       },

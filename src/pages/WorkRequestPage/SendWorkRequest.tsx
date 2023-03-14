@@ -75,7 +75,7 @@ const SendWorkRequest: React.FC = () => {
             return (
             <Form>
               <div className={classes.workRequestContainerTop}>
-                <span>To: </span><span>{agencyData.name}</span>
+                <span>To: </span><span>{agencyData.firstName} {agencyData.lastName}</span>
                 <FormikField name="headline" label={t('work_request_headline')} required />
                 <FormikField name="workersNumber" label={t('work_request_workers_number')} type="number" required />
                 <FormikField name="requirements" label={t('work_request_requirements')} required multiline />

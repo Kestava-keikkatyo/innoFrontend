@@ -140,7 +140,8 @@ export interface BreadcrumbLink {
 }
 
 export interface UserInformation {
-  name: string
+  firstName: string
+  lastName: string
   email: string
   city?: string
   street?: string
@@ -153,6 +154,8 @@ export interface UserInformation {
 }
 
 export interface User extends UserInformation {
+  firstName: string
+  lastName: string
   _id?: string
   userType: roles
   active: boolean
@@ -213,7 +216,8 @@ export interface Job {
 export interface Feedback {
   _id?: string
   recipientId: string
-  recipientName: string | undefined
+  recipientFirstName: string | undefined
+  recipientLastName: string | undefined
   shift: number | null
   shiftMessage?: string
   orientation: number | null
@@ -264,12 +268,12 @@ export interface Notification {
   createdAt: Date
   targetDoc: 'WorkRequest' | 'Agreement' | 'Form' | 'Application' | 'FeedBack'
   type:
-    | 'assignmet'
-    | 'signature_pending'
-    | 'form_pending'
-    | 'application_pending'
-    | 'feedback_pending'
-    | 'reply'
+  | 'assignmet'
+  | 'signature_pending'
+  | 'form_pending'
+  | 'application_pending'
+  | 'feedback_pending'
+  | 'reply'
 }
 
 export interface MyFeeling {

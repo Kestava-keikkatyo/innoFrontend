@@ -14,6 +14,7 @@ import {
   UserUpdateStatus,
 } from '../types/state'
 import i18next from 'i18next'
+import { data } from 'jquery'
 
 /**
  * @function
@@ -169,7 +170,7 @@ export const fetchAllAgencies =
 
 /**
  * @function
- * @desc Fetches all agencies.
+ * @desc Fetches all businesses.
  */
 export const fetchAllBusinesses =
   () => async (dispatch: Dispatch<UserGetAll | UserGetAllSuccess | UserActionFailure>) => {
@@ -275,15 +276,15 @@ export const updateUser =
  * @param {string} role - Admin
  */
 export const createAdmin =
-  (name: string, email: string, password: string) =>
+  (firstName: string, lastName: string, email: string, password: string) =>
   async (dispatch: Dispatch<UserAction | UserActionFailure>) => {
     try {
       dispatch({
         type: usersType.USER_CREATED_REQUEST,
-        data: { name, email, userType: roles.Admin, password, active: true },
+        data: { firstName, lastName, email, userType: roles.Admin, password, active: true },
       })
 
-      const { data } = await usersService.createUser(name, email, 'admin', password)
+      const { data } = await usersService.createUser(firstName, email, 'admin', password)
       dispatch({
         type: usersType.USER_CREATED_SUCCESS,
         data,

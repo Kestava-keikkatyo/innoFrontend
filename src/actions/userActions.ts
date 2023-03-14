@@ -9,17 +9,17 @@ import { saveUser, logoutUser, loadUser, insertContactData } from '../utils/stor
 import history from '../utils/history'
 import { setAlert } from './alertActions'
 import { Dispatch } from 'redux'
-import { 
-  LOGIN, 
-  LOGOUT, 
-  USER_FAILURE, 
-  USER_PROFILE, 
-  USER_REQUEST, 
+import {
+  LOGIN,
+  LOGOUT,
+  USER_FAILURE,
+  USER_PROFILE,
+  USER_REQUEST,
   SignUpUser,
   FETCH_CONTACTS_REQUEST,
   FETCH_BUSINESS_CONTRACT_LIST,
-  FETCH_CONTACT_SUCCESS, 
-  } from '../types/state'
+  FETCH_CONTACT_SUCCESS,
+} from '../types/state'
 import { Credentials, severity, User, usersType } from '../types/types'
 import i18next from 'i18next'
 import contractsService from '../services/contractsService'
@@ -98,92 +98,92 @@ export const signup = (user: SignUpUser) => {
  * @function
  */
 export function fetchAgencyContacts() {
-  return async (dispatch : any) => {     
+  return async (dispatch: any) => {
     try {
-      let agreements : any
-      let contactId : string
+      let agreements: any
+      let contactId: string
 
       dispatch({ type: FETCH_CONTACTS_REQUEST, })
 
-      agreements = await contractsService.fetchBusinessContracts()              
-      for (const key in agreements) { 
+      agreements = await contractsService.fetchBusinessContracts()
+      for (const key in agreements) {
 
-        if(agreements.hasOwnProperty(key)) {       
+        if (agreements.hasOwnProperty(key)) {
           if (JSON.stringify(agreements[key].type) == '"agency"' && JSON.stringify(agreements[key].status) == '"signed"') {
             contactId = JSON.stringify(agreements[key].target[0]._id).slice(1, -1)
             const res = await usersService.fetchUserById(contactId)
-              
+
             insertContactData(contactId)
             dispatch({ type: FETCH_CONTACT_SUCCESS, data: res.data, })
-            } 
           }
-        } 
-      } catch (error) {
-        dispatch({
-          type: usersType.USER_ACTION_FAILURE,
-          data: error as string,
-        })
+        }
+      }
+    } catch (error) {
+      dispatch({
+        type: usersType.USER_ACTION_FAILURE,
+        data: error as string,
+      })
 
-        await setAlert('Failed to fetch ' + loadUser().role + ' contacts: ' + error, severity.Error, 15)(dispatch)
-      } 
+      await setAlert('Failed to fetch ' + loadUser().role + ' contacts: ' + error, severity.Error, 15)(dispatch)
+    }
   }
-} 
+}
 
 /**
  * Fetches contacts that worker or business has with other users, and saves them into Redux state.
  * @function
  */
 export function fetchWorkerOrBusinessContacts() {
-  return async (dispatch : any) => {    
+  return async (dispatch: any) => {
     try {
-      let agreements : any
-      let contactId : string
+      let agreements: any
+      let contactId: string
 
       dispatch({ type: FETCH_CONTACTS_REQUEST, })
 
       agreements = await contractsService.fetchBusinessContractsAsTarget()
-          for (const key in agreements) {
+      for (const key in agreements) {
 
-            if(agreements.hasOwnProperty(key)){
-              if (JSON.stringify(agreements[key].type) == '"agency"' && JSON.stringify(agreements[key].status) == '"signed"') {
-                
-                contactId = JSON.stringify(agreements[key].creator._id).slice(1, -1)
-                const res = await usersService.fetchUserById(contactId)
-                
-                insertContactData(contactId)
-                dispatch({ type: FETCH_CONTACT_SUCCESS, data: res.data, })
+        if (agreements.hasOwnProperty(key)) {
+          if (JSON.stringify(agreements[key].type) == '"agency"' && JSON.stringify(agreements[key].status) == '"signed"') {
 
-            } else if (JSON.stringify(agreements[key].type) == '"employment"' && JSON.stringify(agreements[key].status) == '"signed"') {
+            contactId = JSON.stringify(agreements[key].creator._id).slice(1, -1)
+            const res = await usersService.fetchUserById(contactId)
 
-                // agreement of the type "employment" has two targets
-                // here we find which one is the user's own ID and which one is the contact's ID that we're looking for
-                if (agreements[key].target[0] == loadUser()._id) {
-                  contactId = agreements[key].target[1]
-                  const res = await usersService.fetchUserById(contactId)
+            insertContactData(contactId)
+            dispatch({ type: FETCH_CONTACT_SUCCESS, data: res.data, })
 
-                  console.log(JSON.stringify(res.data))
+          } else if (JSON.stringify(agreements[key].type) == '"employment"' && JSON.stringify(agreements[key].status) == '"signed"') {
 
-                  insertContactData(contactId)
-                  dispatch({ type: FETCH_CONTACT_SUCCESS, data: res.data, })
+            // agreement of the type "employment" has two targets
+            // here we find which one is the user's own ID and which one is the contact's ID that we're looking for
+            if (agreements[key].target[0] == loadUser()._id) {
+              contactId = agreements[key].target[1]
+              const res = await usersService.fetchUserById(contactId)
 
-                } else if (agreements[key].target[1] == loadUser()._id) {
-                  contactId = agreements[key].target[0]
-                  const res = await usersService.fetchUserById(contactId)
+              console.log(JSON.stringify(res.data))
 
-                  insertContactData(contactId)
-                  dispatch({ type: FETCH_CONTACT_SUCCESS, data: res.data, })
-                }
+              insertContactData(contactId)
+              dispatch({ type: FETCH_CONTACT_SUCCESS, data: res.data, })
+
+            } else if (agreements[key].target[1] == loadUser()._id) {
+              contactId = agreements[key].target[0]
+              const res = await usersService.fetchUserById(contactId)
+
+              insertContactData(contactId)
+              dispatch({ type: FETCH_CONTACT_SUCCESS, data: res.data, })
             }
           }
-        } 
-      } catch (error) {
-        dispatch({
-          type: usersType.USER_ACTION_FAILURE,
-          data: error as string,
-        })
+        }
+      }
+    } catch (error) {
+      dispatch({
+        type: usersType.USER_ACTION_FAILURE,
+        data: error as string,
+      })
 
-        await setAlert('Failed to fetch ' + loadUser().role + ' contacts: ' + error, severity.Error, 15)(dispatch)
-      } 
+      await setAlert('Failed to fetch ' + loadUser().role + ' contacts: ' + error, severity.Error, 15)(dispatch)
+    }
   }
 }
 
@@ -196,13 +196,14 @@ export const logout = () => {
   return async (dispatch: any) => {
     try {
       await userService.logout()
-    } catch (error) {}
-    logoutUser()
-    // dispatch(clearReports())
-    // dispatch(setReport(initialReport))
-    dispatch({ type: LOGOUT })
-    history.push('/')
-    dispatch(setAlert(i18next.t('logged_out')))
+      logoutUser()
+      dispatch({ type: LOGOUT })
+      history.push('/')
+      dispatch(setAlert(i18next.t('logout_successful')))
+    } catch (error) {
+      history.push('/login')
+      dispatch(setAlert(i18next.t('logout_failed'), severity.Error))
+    }
   }
 }
 

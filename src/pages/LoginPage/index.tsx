@@ -25,10 +25,10 @@ const LoginPage = () => {
   const { t } = useTranslation();
 
   const signupSubmit = ({ role, ...user }: any) => {
-    dispatch(signup({...user, userType: role}));
+    dispatch(signup({ ...user, userType: role }));
   };
 
-const loginSubmit = async ({ ...credentials }: any) => {
+  const loginSubmit = async ({ ...credentials }: any) => {
     const { from }: any = location.state || { from: { pathname: '/home' } };
     await dispatch(login(credentials, from));
 

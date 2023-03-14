@@ -60,7 +60,8 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
         </Typography>
         <Formik
           initialValues={{
-            name: '',
+            firstName: '',
+            lastName: '',
             email: '',
             password: '',
             passwordConfirm: '',
@@ -69,7 +70,7 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
           }}
           validate={(values) => {
             const errors: any = {};
-            const emailRegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+            const emailRegExp = /^[\p{L}\p{N}.-]+@[\p{L}\p{N}.-]+\.[\p{L}]{2,}$/u;
             const requiredError = t('field_required');
             if (!values.email) {
               errors.email = requiredError;
@@ -82,10 +83,15 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
             if (values.password.length < 8) {
               errors.password = t('invalid_length');
             }
-            if (!values.name) {
-              errors.name = requiredError;
-            } else if (values.name.length < 3) {
-              errors.name = t('invalid_name');
+            if (!values.firstName) {
+              errors.firstName = requiredError;
+            } else if (values.firstName.length < 3) {
+              errors.firstName = t('invalid_name');
+            }
+            if (!values.lastName) {
+              errors.lastName = requiredError;
+            } else if (values.lastName.length < 3) {
+              errors.lastName = t('invalid_name');
             }
             if (!values.passwordConfirm) {
               errors.passwordConfirm = requiredError;
@@ -110,8 +116,13 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
             <Form>
               <Box display="flex" flexDirection="column">
                 <FormikTextField
-                  label={t('name')}
-                  name="name"
+                  label={t('firstName')}
+                  name="firstName"
+                  type="text"
+                />
+                <FormikTextField
+                  label={t('lastName')}
+                  name="lastName"
                   type="text"
                 />
                 <FormikTextField

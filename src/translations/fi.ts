@@ -22,12 +22,14 @@ export default {
   invalid_email_address: 'Virheellinen sähköposti',
   required: 'Puuttuu',
   invalid_token: 'Virheellinen token',
-  logged_out: 'Uloskirjautuminen onnistui!',
+  logout_successful: 'Uloskirjautuminen onnistui!',
+  logout_failed: 'Ole hyvä ja kirjaudu uudelleen.',
   login_failed: 'Kirjautuminen epäonnistui!',
   login_successful: 'Kirjautuminen onnistui!',
 
     // signup
-    name: 'Nimi',
+    firstName: 'Etunimi',
+    lastName: 'Sukunimi',
     email: 'Sähköposti',
     password: 'Salasana',
     confirm: 'Toista salasana',
@@ -57,7 +59,7 @@ export default {
     // Button
     send: 'Lähetä',
     submit: 'Lähetä',
-    log_in: 'Kirjaudu sisään',
+    log_in: 'Kirjaudu',
     sign_up: 'Rekisteröidy',
     main_page: 'Pääsivu',
     back: 'takaisin',

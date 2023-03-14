@@ -14,7 +14,8 @@ describe('<SignUpForm />', () => {
   })
 
   test('renders content', () => {
-    expect(screen.getByLabelText('name')).toBeInTheDocument()
+    expect(screen.getByLabelText('firstName')).toBeInTheDocument()
+    expect(screen.getByLabelText('lastName')).toBeInTheDocument()
     expect(screen.getByLabelText('email')).toBeInTheDocument()
     expect(screen.getByLabelText('password')).toBeInTheDocument()
     expect(screen.getByLabelText('confirm')).toBeInTheDocument()
@@ -22,13 +23,15 @@ describe('<SignUpForm />', () => {
   })
 
   test('updates state and calls submit as a worker', async () => {
-    const inputName = screen.getByLabelText('name')
+    const inputFirstName = screen.getByLabelText('firstName')
+    const inputLastName = screen.getByLabelText('lastName')
     const inputEmail = screen.getByLabelText('email')
     const inputPassword = screen.getByLabelText('password')
     const inputConfirmPassword = screen.getByLabelText('confirm')
     const inputRoleSelection = document.querySelector('input[name="role"]')
 
-    await userEvent.type(inputName, 'Working Wayde')
+    await userEvent.type(inputFirstName, 'Working')
+    await userEvent.type(inputLastName, 'Wayde')
     await userEvent.type(inputEmail, 'wayde@worker.com')
     await userEvent.type(inputPassword, 'worker123')
     await userEvent.type(inputConfirmPassword, 'worker123')
@@ -45,7 +48,8 @@ describe('<SignUpForm />', () => {
     /* todo: HandleSubmit doesn't take into account the confirmPassword field. */
     await waitFor(() => {
       expect(mockSubmit).toHaveBeenCalledWith({
-        name: 'Working Wayde',
+        firstName: 'Working',
+        lastName: 'Wayde',
         email: 'wayde@worker.com',
         password: 'worker123',
         role: 'worker',
@@ -55,13 +59,15 @@ describe('<SignUpForm />', () => {
   })
 
   test('updates state and calls submit as an agency', async () => {
-    const inputName = screen.getByLabelText('name')
+    const inputFirstName = screen.getByLabelText('firstName')
+    const inputLastName = screen.getByLabelText('lastName')
     const inputEmail = screen.getByLabelText('email')
     const inputPassword = screen.getByLabelText('password')
     const inputConfirmPassword = screen.getByLabelText('confirm')
     const inputRoleSelection = document.querySelector('input[name="role"]')
 
-    await userEvent.type(inputName, 'Agency Annie')
+    await userEvent.type(inputFirstName, 'Agency')
+    await userEvent.type(inputLastName, 'Annie')
     await userEvent.type(inputEmail, 'annie@agency.com')
     await userEvent.type(inputPassword, 'agent123')
     await userEvent.type(inputConfirmPassword, 'agent123')
@@ -86,7 +92,8 @@ describe('<SignUpForm />', () => {
     /* todo: HandleSubmit doesn't take into account the confirmPassword field. */
     await waitFor(() => {
       expect(mockSubmit).toHaveBeenCalledWith({
-        name: 'Agency Annie',
+        firstName: 'Agency',
+        lastName: 'Annie',
         email: 'annie@agency.com',
         password: 'agent123',
         role: 'agency',

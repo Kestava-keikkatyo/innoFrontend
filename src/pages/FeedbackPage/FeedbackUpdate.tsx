@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Feedback } from '../../types/types';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import {Link, useParams} from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import {
     Button,
     CircularProgress,
@@ -16,13 +16,13 @@ import makeStyles from '@mui/styles/makeStyles';
 import { Form, Formik, Field } from 'formik';
 import { FormikTextField } from '../../components/FormField';
 import { IRootState } from '../../utils/store';
-import {fetchMyFeedbackById, updateFeedback} from '../../actions/feedBackActions';
+import { fetchMyFeedbackById, updateFeedback } from '../../actions/feedBackActions';
 import { useTranslation } from 'react-i18next';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
-import {setAlert} from '../../actions/alertActions';
+import { setAlert } from '../../actions/alertActions';
 import i18next from 'i18next';
 import PageLoading from '../../components/PageLoading';
 
@@ -93,7 +93,8 @@ const FeedbackUpdate: React.FC = () => {
 
     const initialValues: Feedback = {
         recipientId: feedbackData.recipientId,
-        recipientName: feedbackData.recipientName,
+        recipientFirstName: feedbackData.recipientFirstName,
+        recipientLastName: feedbackData.recipientLastName,
         shift: feedbackData.shift,
         shiftMessage: feedbackData.shiftMessage,
         orientation: feedbackData.orientation,
@@ -127,89 +128,89 @@ const FeedbackUpdate: React.FC = () => {
                     validationSchema={FeedbackUpdateSchema}
                 >
                     {() => (
-                            <Form>
-                                {Object.entries(questions).map(questionEntry => (
-                                    <div key={questionEntry[0]}>
-                                        <Typography
-                                            color="success"
-                                            id={questionEntry[0] + '-radio-buttons-group-label'}
-                                            className={classes.questionTitle}
-                                            variant="h6"
+                        <Form>
+                            {Object.entries(questions).map(questionEntry => (
+                                <div key={questionEntry[0]}>
+                                    <Typography
+                                        color="success"
+                                        id={questionEntry[0] + '-radio-buttons-group-label'}
+                                        className={classes.questionTitle}
+                                        variant="h6"
+                                    >
+                                        {questionEntry[1]}
+                                    </Typography>
+                                    <FormControl className={classes.formControl}>
+                                        <RadioGroup
+                                            row
+                                            aria-labelledby={questionEntry[0] + '-radio-buttons-group-label'}
+                                            className={classes.fieldContainer}
+                                            defaultValue={feedbackData[questionEntry[0]]}
                                         >
-                                            {questionEntry[1]}
-                                        </Typography>
-                                        <FormControl className={classes.formControl}>
-                                            <RadioGroup
-                                                row
-                                                aria-labelledby={questionEntry[0] + '-radio-buttons-group-label'}
-                                                className={classes.fieldContainer}
-                                                defaultValue={feedbackData[questionEntry[0]]}
-                                            >
-                                                <Field
-                                                    required
-                                                    name={questionEntry[0]}
-                                                    value={1}
-                                                    icon={<SentimentVeryDissatisfiedIcon className={classes.uncheckedIcon} />}
-                                                    checkedIcon={<SentimentVeryDissatisfiedIcon className={classes.checkedIcon} />}
-                                                    as={Radio}
-                                                />
-                                                <Field
-                                                    name={questionEntry[0]}
-                                                    value={2}
-                                                    icon={<SentimentNeutralIcon className={classes.uncheckedIcon} />}
-                                                    checkedIcon={<SentimentNeutralIcon className={classes.checkedIcon} />}
-                                                    as={Radio}
-                                                />
-                                                <Field
-                                                    name={questionEntry[0]}
-                                                    value={3}
-                                                    icon={<SentimentSatisfiedAltIcon className={classes.uncheckedIcon} />}
-                                                    checkedIcon={<SentimentSatisfiedAltIcon className={classes.checkedIcon} />}
-                                                    as={Radio}
-                                                />
-                                                <Field
-                                                    name={questionEntry[0]}
-                                                    value={4}
-                                                    icon={<SentimentVerySatisfiedIcon className={classes.uncheckedIcon} />}
-                                                    checkedIcon={<SentimentVerySatisfiedIcon className={classes.checkedIcon} />}
-                                                    as={Radio}
-                                                />
-                                            </RadioGroup>
-                                        </FormControl>
-                                        <FormikTextField
-                                            className={classes.textField}
-                                            name={`${questionEntry[0]}Message`}
-                                            label={t('feedback_message_placeholder')}
-                                            multiline
-                                            rows={2}
-                                            type='text'
-                                        />
-                                    </div>
-                                ))}
-                                <FormikTextField
-                                    className={classes.textField}
-                                    name='additionalMessage'
-                                    label={t('feedback_additional_message')}
-                                    multiline
-                                    rows={10}
-                                    type='text'
-                                />
-                                <label>
-                                    <Field
-                                        className={classes.anonymous}
-                                        type="checkbox" name="anonymous"
+                                            <Field
+                                                required
+                                                name={questionEntry[0]}
+                                                value={1}
+                                                icon={<SentimentVeryDissatisfiedIcon className={classes.uncheckedIcon} />}
+                                                checkedIcon={<SentimentVeryDissatisfiedIcon className={classes.checkedIcon} />}
+                                                as={Radio}
+                                            />
+                                            <Field
+                                                name={questionEntry[0]}
+                                                value={2}
+                                                icon={<SentimentNeutralIcon className={classes.uncheckedIcon} />}
+                                                checkedIcon={<SentimentNeutralIcon className={classes.checkedIcon} />}
+                                                as={Radio}
+                                            />
+                                            <Field
+                                                name={questionEntry[0]}
+                                                value={3}
+                                                icon={<SentimentSatisfiedAltIcon className={classes.uncheckedIcon} />}
+                                                checkedIcon={<SentimentSatisfiedAltIcon className={classes.checkedIcon} />}
+                                                as={Radio}
+                                            />
+                                            <Field
+                                                name={questionEntry[0]}
+                                                value={4}
+                                                icon={<SentimentVerySatisfiedIcon className={classes.uncheckedIcon} />}
+                                                checkedIcon={<SentimentVerySatisfiedIcon className={classes.checkedIcon} />}
+                                                as={Radio}
+                                            />
+                                        </RadioGroup>
+                                    </FormControl>
+                                    <FormikTextField
+                                        className={classes.textField}
+                                        name={`${questionEntry[0]}Message`}
+                                        label={t('feedback_message_placeholder')}
+                                        multiline
+                                        rows={2}
+                                        type='text'
                                     />
-                                    {t('feedback_send_anonymously')}
-                                </label>
-                                {isLoading ?
-                                    <CircularProgress color="primary" /> :
-                                    <Stack direction="row" spacing={2}>
-                                        <Button type="submit" variant="contained" color="primary" className={classes.button}>{t('button_edit')}</Button>
-                                        <Button variant="outlined" color="primary" component={Link} to="/feedback?tab=my">{t('button_cancel')}</Button>
-                                    </Stack>
-                                }
-                            </Form>
-                        )
+                                </div>
+                            ))}
+                            <FormikTextField
+                                className={classes.textField}
+                                name='additionalMessage'
+                                label={t('feedback_additional_message')}
+                                multiline
+                                rows={10}
+                                type='text'
+                            />
+                            <label>
+                                <Field
+                                    className={classes.anonymous}
+                                    type="checkbox" name="anonymous"
+                                />
+                                {t('feedback_send_anonymously')}
+                            </label>
+                            {isLoading ?
+                                <CircularProgress color="primary" /> :
+                                <Stack direction="row" spacing={2}>
+                                    <Button type="submit" variant="contained" color="primary" className={classes.button}>{t('button_edit')}</Button>
+                                    <Button variant="outlined" color="primary" component={Link} to="/feedback?tab=my">{t('button_cancel')}</Button>
+                                </Stack>
+                            }
+                        </Form>
+                    )
                     }
                 </Formik>
             </div>

@@ -25,12 +25,14 @@ export default {
   invalid_email_address: 'Invalid email address',
   required: 'Required',
   invalid_token: 'Invalid token',
-  logged_out: 'Logout successful!',
+  logout_successful: 'Logout successful!',
+  logout_failed: 'Please login again.',
   login_failed: 'Login failed!',
   login_successful: 'Login success!',
 
     // signup
-    name: 'Name',
+    firstName: 'First name',
+    lastName: 'Last name',
     email: 'Email',
     password: 'Password',
     confirm: 'Confirm password',
@@ -60,7 +62,7 @@ export default {
     // Button
     send: 'Send',
     submit: 'Submit',
-    log_in: 'Log in',
+    log_in: 'Login',
     sign_up: 'Sign up',
     main_page: 'Go to main page',
     back: 'back',
