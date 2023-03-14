@@ -155,7 +155,7 @@ export function fetchWorkerOrBusinessContacts() {
 
           } else if (JSON.stringify(agreements[key].type) == '"employment"' && JSON.stringify(agreements[key].status) == '"signed"') {
 
-            // agreement of the type "employment" has two targets
+            // agreement of the type "employment" has two target IDs
             // here we find which one is the user's own ID and which one is the contact's ID that we're looking for
             if (agreements[key].target[0] == loadUser()._id) {
               contactId = agreements[key].target[1]

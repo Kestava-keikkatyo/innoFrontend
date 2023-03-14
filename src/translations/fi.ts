@@ -791,7 +791,7 @@ export default {
 
     // Agency home
     received_reports: 'Viimeisimmät raportit',
-    latest_joined_workers: 'Liittyneet työntekijät',
+    my_contacts: 'Käyttäjäyhteydet',
 
     // business contracts
     search_by_name: 'Hae nimellä',

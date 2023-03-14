@@ -795,9 +795,9 @@ export default {
     happy: 'Happy',
     quite_happy: 'Quite happy',
 
-    // Agency home
+    // Agency / business home
     received_reports: 'Latest received security observations',
-    latest_joined_workers: 'Latest joined workers',
+    my_contacts: 'My user contacts',
 
     // business contracts
     search_by_name: 'Search by name',

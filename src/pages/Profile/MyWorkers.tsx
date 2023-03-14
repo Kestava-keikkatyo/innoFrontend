@@ -4,20 +4,19 @@ import { Link } from 'react-router-dom';
 import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchLatestJoinedWorkers } from '../../actions/usersActions';
 import makeStyles from '@mui/styles/makeStyles';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
 
-const LatestJoinedWorkers: React.FC = () => {
+const MyWorkers: React.FC = () => {
   const { t } = useTranslation()
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { users } = useSelector((state: IRootState) => state.users || []);
-  useEffect(() => {
+  const users = useSelector((state: IRootState) => state.user.contacts || []);
+ /* useEffect(() => {
     dispatch(fetchLatestJoinedWorkers());
-  }, [dispatch]);
+  }, [dispatch]); */
   let rows = [];
   rows = users;
   const columns: GridColumns = [
@@ -39,11 +38,11 @@ const LatestJoinedWorkers: React.FC = () => {
       headerName: (i18next.t('list_email')), 
       width: 200 
     },
-    {
+    /*{
       field: 'city', 
       headerName: (i18next.t('list_city')), 
       width: 200 
-    },
+    } */
     {
       field: 'userType', 
       headerName: (i18next.t('list_position')), 
@@ -66,7 +65,7 @@ const LatestJoinedWorkers: React.FC = () => {
   return (
       <div style={{ height: 400, width: '100%' }}>
         <div className={classes.title}>
-          <Typography className={classes.title} color="primary" align="center" variant="h6">{t('latest_joined_workers')}</Typography>
+          <Typography className={classes.title} color="primary" align="center" variant="h6">{t('my_contacts')}</Typography>
         </div>
         <DataGrid className={classes.grid}
             getRowId={(row) => row._id}
@@ -101,4 +100,4 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default LatestJoinedWorkers;
+export default MyWorkers;

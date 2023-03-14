@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Link, Typography,
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import LatestJoinedWorkers from '../Profile/LatestJoinedWorkers';
+import MyWorkers from '../Profile/MyWorkers';
 import { useTranslation } from 'react-i18next';
 
 const BusinessHome = () => {
@@ -27,7 +27,7 @@ const BusinessHome = () => {
              
             </div>
             <div className={classes.latestJobAds}>
-            <LatestJoinedWorkers />
+            <MyWorkers />
             </div>
         </div>
       </div> 
