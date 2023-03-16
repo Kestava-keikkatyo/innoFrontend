@@ -40,7 +40,7 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
           }}
           validate={(values) => {
             const errors: any = {};
-            const emailRegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+            const emailRegExp = /^[\p{L}\p{N}.-]+@[\p{L}\p{N}.-]+\.[\p{L}]{2,}$/u;
             const requiredError = t('field_required');
             if (!values.email) {
               errors.email = requiredError;
