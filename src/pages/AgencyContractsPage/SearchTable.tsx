@@ -135,10 +135,10 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
 
       <form>
         <Box display="flex" alignItems="center">
-          <label htmlFor='search' style={{ display: 'none' }}>{t("search_by_name")}</label>
+          <label htmlFor='search' style={{ display: 'none' }}>{t("search_by_email")}</label>
           <InputBase
             id='search'
-            placeholder={t("search_by_name")}
+            placeholder={t("search_by_email")}
             value={filter}
             onChange={handleFilterchange}
             aria-label='search'
@@ -154,7 +154,7 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
           <Table aria-label="searched workers">
             <TableHead>
               <TableRow>
-                <TableCell align="left">{t("name")}</TableCell>
+                <TableCell align="left">{t("email")}</TableCell>
                 <TableCell align="left">{t("joined")}</TableCell>
                 <TableCell align="left">{t("add")}</TableCell>
               </TableRow>
@@ -162,7 +162,7 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
             <TableBody>
               {workersOrBusinesses
                 .filter((workerOrBusiness: any) =>
-                  workerOrBusiness.name
+                  workerOrBusiness.email
                     .toLowerCase()
                     .includes(filter.toLowerCase())
                 )
@@ -170,7 +170,7 @@ const SearchTable: React.FC<any> = ({ addWorkerOrBusiness }) => {
                 .map((workerOrBusiness: any) => (
                   <TableRow key={workerOrBusiness._id}>
                     <TableCell component="th" scope="row" align="left">
-                      {workerOrBusiness.firstName} {workerOrBusiness.lastName}
+                      {workerOrBusiness.email}
                     </TableCell>
                     <TableCell>
                       {new Date(workerOrBusiness.createdAt).toLocaleDateString()}

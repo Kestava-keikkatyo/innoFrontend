@@ -94,7 +94,7 @@ const AgencyContractsPage = () => {
     );
     dispatch(
       setAlert(
-        `Success: Contract request sent to ${workerOrBusiness.name}`,
+        `Success: Contract request sent to ${workerOrBusiness.email}`,
         severity.Success
       )
     );
