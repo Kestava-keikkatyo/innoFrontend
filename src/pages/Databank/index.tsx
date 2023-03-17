@@ -12,6 +12,7 @@ import topArrow from '../../assets/icons/sivunalkuun.svg'
 import React, { useState } from 'react';
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material'
 import Ingressi from '../../components/Ingressi';
+React.useLayoutEffect = React.useEffect
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -59,12 +60,12 @@ const Databank: React.FC<DatabankProps> = () => {
 
             {/* Pictures and buttons (agency, business, worker) */}
             <Container style={{ backgroundColor: "#F47D20", maxWidth: 'none', paddingTop: '15px', justifyContent: 'center', display: 'flex' }}>
-                <Grid container sx={{ width: { xs: '90%', md: '60%' } }} spacing={0} justifyContent='space-evenly' style={{ flexDirection: 'row', flexWrap: 'nowrap' }} >
+                <Grid container sx={{ width: { xs: '100%', sm: '90%', md: '60%' } }} spacing={0} justifyContent='space-evenly' style={{ flexDirection: 'row', flexWrap: 'nowrap' }} >
                     <Grid sx={{ flexDirection: 'column', wrap: 'no-wrap' }} item xs={4} sm={4} md={4} style={{ paddingLeft: '0', paddingBottom: '32px' }}>
                         <CardMedia
                             component="img"
                             image={hp}
-                            style={{ width: '70%', margin: 'auto' }}
+                            style={{ width: '70%', margin: 'auto', marginBottom: '10px' }}
                         />
                         <Button onClick={() => handleSwitch(roles.Agency)} style={{ backgroundColor: colors.agency }} className="responsibilities-button">{t('agency')}</Button>
                     </Grid>
@@ -72,7 +73,7 @@ const Databank: React.FC<DatabankProps> = () => {
                         <CardMedia
                             component="img"
                             image={company}
-                            style={{ width: '70%', margin: 'auto' }}
+                            style={{ width: '70%', margin: 'auto', marginBottom: '10px' }}
                         />
                         <Button onClick={() => handleSwitch(roles.Business)} style={{ backgroundColor: colors.business }} className="responsibilities-button">{t('business')}</Button>
                     </Grid>
@@ -80,7 +81,7 @@ const Databank: React.FC<DatabankProps> = () => {
                         <CardMedia
                             component="img"
                             image={worker}
-                            style={{ width: '70%', margin: 'auto' }}
+                            style={{ width: '70%', margin: 'auto', marginBottom: '10px' }}
                         />
                         <Button onClick={() => handleSwitch(roles.Worker)} style={{ backgroundColor: colors.worker }} className="responsibilities-button">{t('worker')}</Button>
                     </Grid>

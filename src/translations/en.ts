@@ -1265,5 +1265,23 @@ export default {
     responsibilities_summary: 'Each party to the temporary work has responsibilities related to occupational safety, occupational health and occupational well- being.',
     instructions_summary: 'The instructions are short texts on how the personnel service company, the user company and the temporary worker can take care of the occupational safety, occupational health and well-being of the temporary worker. The instructions describe the relevant laws, possible other internet links and forms.',
     good_practises_summary: "The form templates guide you in taking care of important issues in the different phases of the contract. Filling out the forms ensures that the most essential issues related to the temporary employee's job security are reviewed and the rules of the game are agreed on important issues between the personnel service and the user company. A form filled in between two parties can always be given to a third party as well. This works as part of the flow of information between partners and ensuring the transmission of important information.",
-    forms_summary: "The form templates guide you in taking care of important issues in the different phases of the contract. Filling out the forms ensures that the most essential issues related to the temporary employee's job security are reviewed and the rules of the game are agreed on important issues between the personnel service and the user company. A form filled in between two parties can always be given to a third party as well. This works as part of the flow of information between partners and ensuring the transmission of important information."
+    forms_summary: "The form templates guide you in taking care of important issues in the different phases of the contract. Filling out the forms ensures that the most essential issues related to the temporary employee's job security are reviewed and the rules of the game are agreed on important issues between the personnel service and the user company. A form filled in between two parties can always be given to a third party as well. This works as part of the flow of information between partners and ensuring the transmission of important information.",
+
+     //Forms in databank
+     form1HeaderText: 'FORM 1 - OCCUPATIONAL SAFETY AND WELL-BEING MATTERS RELATED TO THE CUSTOMER AGREEMENT',
+     form1SubHeader: '(to be completed by representatives of the rental company and the user company)',
+ 
+     form2HeaderText: 'FORM 2 – EMPLOYEE GENERAL ORIENTATION',
+     form2SubHeader: '(to be completed by the rental company\'s orientation officer)',
+ 
+     form3HeaderText: 'FORM 3 - JOB COUNSELING',
+     form3SubHeader: '(filled in by the user company\'s job advisor)',
+ 
+     form4HeaderText: 'FORM 4 - FUNCTIONAL EVALUATION',
+     form4SubHeader: '(to be completed by the representatives of the user company and the rental company)',
+ 
+ 
+     //Other
+     Name: 'Name',
+     contactInformation: 'Contact information'
 }

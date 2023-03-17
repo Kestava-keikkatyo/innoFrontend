@@ -1262,6 +1262,23 @@ export default {
     good_practises_summary: 'Lomakepohjat ohjaavat huolehtimaan tärkeistä asioista vuokratyötoimeksiannon eri vaiheissa. Lomakkeiden täyttäminen varmistaa, että olennaisimmat vuokratyöntekijän työturvallisuuteen liittyvät seikat käydään läpi ja tärkeistä asioista sovitaan pelisäännöt henkilöstöpalvelu- ja käyttäjäyrityksen välillä. Kahden osapuolen kesken täytetty lomake voidaan aina antaa tiedoksi myös kolmannelle osapuolelle. Tämä toimii osana kumppaneiden välistä tiedonkulkua ja tärkeän informaation perillemenon varmistamista.',
     forms_summary: 'Lomakepohjat ohjaavat huolehtimaan tärkeistä asioista vuokratyötoimeksiannon eri vaiheissa. Lomakkeiden täyttäminen varmistaa, että olennaisimmat vuokratyöntekijän työturvallisuuteen liittyvät seikat käydään läpi ja tärkeistä asioista sovitaan pelisäännöt henkilöstöpalvelu- ja käyttäjäyrityksen välillä. Kahden osapuolen kesken täytetty lomake voidaan aina antaa tiedoksi myös kolmannelle osapuolelle. Tämä toimii osana kumppaneiden välistä tiedonkulkua ja tärkeän informaation perillemenon varmistamista.',
 
+    //Forms in databank
+    form1HeaderText: 'LOMAKE 1 - ASIAKASSOPIMUKSEEN LIITTYVÄT TYÖTURVALLISUUS- JA TYÖHYVINVOINTIASIAT',
+    form1SubHeader: '(vuokrausyrityksen ja käyttäjäyrityksen edustajat täyttävät yhdessä)',
+
+    form2HeaderText: 'LOMAKE 2 – TYÖNTEKIJÄN YLEISPEREHDYTYS',
+    form2SubHeader: ' (vuokrausyrityksen perehdyttäjä täyttää)',
+
+    form3HeaderText: 'LOMAKE 3 – TYÖNOPASTUS (käyttäjäyrityksen työnopastaja täyttää)',
+    form3SubHeader: '(käyttäjäyrityksen työnopastaja täyttää)',
+
+    form4HeaderText: 'LOMAKE 4 – TOIMINNAN ARVIOINTI',
+    form4SubHeader: '(käyttäjäyrityksen ja vuokrayrityksen edustajat täyttävät)',
+
+    //Other
+    name: 'Nimi',
+    contactInformation: 'Henkilön yhteystiedot'
+
 
 }
 
