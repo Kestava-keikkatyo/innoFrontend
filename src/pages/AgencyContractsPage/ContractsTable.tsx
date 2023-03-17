@@ -103,15 +103,6 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
     setPage(0);
   }
 
-  const findEmail = (targetId: string) => {
-    let idMatch = workersOrBusinesses.find((wb: any) => wb._id == targetId)
-    if (idMatch) {
-      return idMatch.email
-    } else {
-      return null
-    }
-  }
-
   const temp = (contract: any) => {
     console.log('action', contract)
   }
@@ -145,7 +136,7 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
                       {contract.status}
                     </TableCell>
                     <TableCell align="left">
-                      {findEmail(contract.target)}
+                      {contract.target[0].email}
                     </TableCell>
                     {/* <TableCell align="left">contract.form.title</TableCell> */}
                     <TableCell
