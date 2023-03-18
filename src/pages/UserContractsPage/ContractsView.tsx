@@ -73,7 +73,7 @@ export const ContractsView = (prop: { view: string, contracts: any[] }) => {
             <TableHead>
               <TableRow>
                 <TableCell align="left">{t("status")}</TableCell>
-                <TableCell align="left">{t("name")}</TableCell>
+                <TableCell align="left">{t("email")}</TableCell>
                 <TableCell align="left">{t("type")}</TableCell>
                 <TableCell align="left">{t("delete")}</TableCell>
                 {view == "pending" &&

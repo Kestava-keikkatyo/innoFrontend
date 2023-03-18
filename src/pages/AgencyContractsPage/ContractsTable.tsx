@@ -81,7 +81,10 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
   const { t } = useTranslation();
   const [page, setPage] = React.useState(0)
   const [rowsPerPage, setRowsPerPage] = React.useState(5)
-  console.log({ contracts })
+  const { searchList } = useSelector(
+    (state: IRootState) => state.businessContracts
+  );
+  const workersOrBusinesses = searchList;
 
   const deleteContract = (
     contractId: string,
@@ -113,7 +116,7 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
             <TableHead>
               <TableRow>
                 <TableCell align="left">{t("status")}</TableCell>
-                <TableCell align="left">{t("name")}</TableCell>
+                <TableCell align="left">{t("email")}</TableCell>
                 <TableCell align="left">{t("action")}</TableCell>
               </TableRow>
             </TableHead>
@@ -132,7 +135,9 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
                     <TableCell component="th" scope="row" align="left">
                       {contract.status}
                     </TableCell>
-                    <TableCell align="left">{contract.target.name}</TableCell>
+                    <TableCell align="left">
+                      {contract.target[0].email}
+                    </TableCell>
                     {/* <TableCell align="left">contract.form.title</TableCell> */}
                     <TableCell
                       padding="none"

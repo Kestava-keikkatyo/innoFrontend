@@ -61,7 +61,7 @@ const ContractRow: React.FC<any> = ({ view, contract }) => {
       <TableCell component="th" scope="row" align="left">
         {contract.status}
       </TableCell>
-      <TableCell align="left">{contract.creator.name}</TableCell>
+      <TableCell align="left">{contract.creator.email}</TableCell>
       <TableCell align="left">{contract.type}</TableCell>
       <TableCell
         padding="none"
