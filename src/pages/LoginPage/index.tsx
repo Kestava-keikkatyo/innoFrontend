@@ -4,7 +4,8 @@ import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 
-import { login, signup, fetchAgencyContacts, fetchWorkerOrBusinessContacts } from '../../actions/userActions';
+import { login, signup } from '../../actions/userActions';
+import { fetchAgencyContacts, fetchBusinessContacts, fetchWorkerContacts } from '../../actions/usersActions';
 
 import SignUpForm from './SignUpForm';
 import LogInForm from './LogInForm';
@@ -31,20 +32,18 @@ const LoginPage = () => {
   const loginSubmit = async ({ ...credentials }: any) => {
     const { from }: any = location.state || { from: { pathname: '/home' } };
     await dispatch(login(credentials, from));
-
-    const role = loadUser().role;
-    switch (role) {
-      case 'agency':
+    switch(loadUser().role) {
+      case "agency":
         dispatch(fetchAgencyContacts())
-        break;
-      case 'worker':
-        dispatch(fetchWorkerOrBusinessContacts())
-        break;
-      case 'business':
-        dispatch(fetchWorkerOrBusinessContacts())
-        break;
-      case 'admin':
-        break;
+        break
+      case "business":
+        dispatch(fetchBusinessContacts())
+        break
+      case "worker":
+        dispatch(fetchWorkerContacts())
+        break
+      case "admin":
+        break
     }
   };
 

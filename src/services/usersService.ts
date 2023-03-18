@@ -36,6 +36,45 @@ const fetchUserById = async (id: string) => {
 }
 
 /**
+ * @function
+ * @desc Fetches all users that have a signed agreement with agency
+ */
+const fetchAgencyContacts = async () => {
+  try {
+    const res = await axios.get(`${baseUrl}/user/agencyContacts`, authHeader());
+    return res.data;
+  } catch (error) {
+    return { docs: []};
+  }
+}
+
+/**
+ * @function
+ * @desc Fetches all users that have a signed agreement with business
+ */
+const fetchBusinessContacts = async () => {
+  try {
+    const res = await axios.get(`${baseUrl}/user/businessContacts`, authHeader());
+    return res.data;
+  } catch (error) {
+    return { docs: []};
+  }
+}
+
+/**
+ * @function
+ * @desc Fetches all users that have a signed agreement with worker
+ */
+const fetchWorkerContacts = async () => {
+  try {
+    const res = await axios.get(`${baseUrl}/user/workerContacts`, authHeader());
+    return res.data;
+  } catch (error) {
+    return { docs: []};
+  }
+}
+
+/**
  * @param id
  * @returns
  */
@@ -168,6 +207,9 @@ export default {
   fetchAllAgencies,
   fetchAllBusinesses,
   fetchAllBusinessesAndAgencies,
+  fetchAgencyContacts,
+  fetchBusinessContacts,
+  fetchWorkerContacts,
   updateUser,
   createUser,
   setUserStatus,

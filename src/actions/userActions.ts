@@ -4,7 +4,6 @@
  * @desc Redux user actions
  */
 import userService from '../services/userService'
-import usersService from '../services/usersService'
 import { saveUser, logoutUser, loadUser, insertContactData } from '../utils/storage'
 import history from '../utils/history'
 import { setAlert } from './alertActions'
@@ -16,13 +15,9 @@ import {
   USER_PROFILE,
   USER_REQUEST,
   SignUpUser,
-  FETCH_CONTACTS_REQUEST,
-  FETCH_BUSINESS_CONTRACT_LIST,
-  FETCH_CONTACT_SUCCESS,
 } from '../types/state'
-import { Credentials, severity, User, usersType } from '../types/types'
+import { Credentials, severity } from '../types/types'
 import i18next from 'i18next'
-import contractsService from '../services/contractsService'
 
 /**
  * Logs user in
@@ -91,100 +86,6 @@ export const signup = (user: SignUpUser) => {
     }
   }
 }
-
-
-/**
- * Fetches contacts that agency has with other users, and saves them into Redux state
- * @function
- */
-export function fetchAgencyContacts() {
-  return async (dispatch: any) => {
-    try {
-      let agreements: any
-      let contactId: string
-
-      dispatch({ type: FETCH_CONTACTS_REQUEST, })
-
-      agreements = await contractsService.fetchBusinessContracts()
-      for (const key in agreements) {
-
-        if (agreements.hasOwnProperty(key)) {
-          if (JSON.stringify(agreements[key].type) == '"agency"' && JSON.stringify(agreements[key].status) == '"signed"') {
-            contactId = JSON.stringify(agreements[key].target[0]._id).slice(1, -1)
-            const res = await usersService.fetchUserById(contactId)
-
-            insertContactData(contactId)
-            dispatch({ type: FETCH_CONTACT_SUCCESS, data: res.data, })
-          }
-        }
-      }
-    } catch (error) {
-      dispatch({
-        type: usersType.USER_ACTION_FAILURE,
-        data: error as string,
-      })
-
-      await setAlert('Failed to fetch ' + loadUser().role + ' contacts: ' + error, severity.Error, 15)(dispatch)
-    }
-  }
-}
-
-/**
- * Fetches contacts that worker or business has with other users, and saves them into Redux state.
- * @function
- */
-export function fetchWorkerOrBusinessContacts() {
-  return async (dispatch: any) => {
-    try {
-      let agreements: any
-      let contactId: string
-
-      dispatch({ type: FETCH_CONTACTS_REQUEST, })
-
-      agreements = await contractsService.fetchBusinessContractsAsTarget()
-      for (const key in agreements) {
-
-        if (agreements.hasOwnProperty(key)) {
-          if (JSON.stringify(agreements[key].type) == '"agency"' && JSON.stringify(agreements[key].status) == '"signed"') {
-
-            contactId = JSON.stringify(agreements[key].creator._id).slice(1, -1)
-            const res = await usersService.fetchUserById(contactId)
-
-            insertContactData(contactId)
-            dispatch({ type: FETCH_CONTACT_SUCCESS, data: res.data, })
-
-          } else if (JSON.stringify(agreements[key].type) == '"employment"' && JSON.stringify(agreements[key].status) == '"signed"') {
-
-            // agreement of the type "employment" has two target IDs
-            // here we find which one is the user's own ID and which one is the contact's ID that we're looking for
-            if (agreements[key].target[0] == loadUser()._id) {
-              contactId = agreements[key].target[1]
-              const res = await usersService.fetchUserById(contactId)
-
-              insertContactData(contactId)
-              dispatch({ type: FETCH_CONTACT_SUCCESS, data: res.data, })
-
-            } else if (agreements[key].target[1] == loadUser()._id) {
-              contactId = agreements[key].target[0]
-              const res = await usersService.fetchUserById(contactId)
-
-              insertContactData(contactId)
-              dispatch({ type: FETCH_CONTACT_SUCCESS, data: res.data, })
-            }
-          }
-        }
-      }
-    } catch (error) {
-      dispatch({
-        type: usersType.USER_ACTION_FAILURE,
-        data: error as string,
-      })
-
-      await setAlert('Failed to fetch ' + loadUser().role + ' contacts: ' + error, severity.Error, 15)(dispatch)
-    }
-  }
-}
-
 
 /**
  * Logs user out

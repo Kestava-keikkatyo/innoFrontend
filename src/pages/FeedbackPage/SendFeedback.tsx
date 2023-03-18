@@ -72,7 +72,7 @@ const SendFeedback: React.FC = () => {
     expectation: `${t('feedback_expectation')} *`,
   };
   
-  const recipients = useSelector((state: IRootState) => state.user.contacts) || [];
+  const recipients = useSelector((state: IRootState) => state.user.contacts)
   const me = useSelector((state: IRootState) => state.user.data);
 
   const initialValues: Feedback = {

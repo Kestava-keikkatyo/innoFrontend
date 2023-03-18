@@ -161,6 +161,7 @@ export interface User extends UserInformation {
   userType: roles
   active: boolean
   password: string
+  contacts?: any[]
 }
 
 export interface SignUpUser extends User {

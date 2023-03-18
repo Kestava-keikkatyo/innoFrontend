@@ -10,8 +10,7 @@ import {
   USER_FAILURE,
   USER_PROFILE,
   USER_REQUEST,
-  FETCH_CONTACTS_REQUEST,
-  FETCH_CONTACT_SUCCESS,
+  FETCH_CONTACTS_SUCCESS,
   UserState
 } from '../types/state'
 
@@ -45,12 +44,7 @@ const userReducer = (state = initialState, action: UserActionTypes) => {
         data: action.data,
         contacts: []
       }
-    case FETCH_CONTACTS_REQUEST:
-      return {
-        ...state,
-        contacts: state.contacts
-      }
-    case FETCH_CONTACT_SUCCESS:
+    case FETCH_CONTACTS_SUCCESS:
       return {
         ...state,
         contacts: [...state.contacts, action.data]
