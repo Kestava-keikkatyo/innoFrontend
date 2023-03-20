@@ -136,7 +136,7 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
                       {contract.status}
                     </TableCell>
                     <TableCell align="left">
-                      {contract.target[0].email}
+                      {contract.target.email}
                     </TableCell>
                     {/* <TableCell align="left">contract.form.title</TableCell> */}
                     <TableCell
