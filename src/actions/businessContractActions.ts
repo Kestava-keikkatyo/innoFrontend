@@ -14,8 +14,9 @@ import {
   B_ACCEPT,
   ADD_B_WB_CONTRACT,
   SEND_BACK_B_CONTRACT,
+  E_FETCH
 } from '../types/state'
-import { businessContractType } from '../types/types'
+import { businessContractType, EmploymentAgreement } from '../types/types'
 
 /**
  * @function
@@ -50,6 +51,55 @@ export const fetchBusinessContractsAsTarget = () => async (dispatch: any) => {
 
 /**
  * @function
+ * @description
+ * Retrieves EmploymentContracts where user is the worker from database.
+ */
+export const fetchEmploymentContractsAsWorkerOrBusiness = () => async (dispatch: any) => {
+  const res = await contractsService.fetchEmploymentContractsAsWorkerOrBusiness()
+  dispatch({ type: E_FETCH, data: res })
+}
+
+/**
+ * @function
+ * @description
+ * Retrieves EmploymentContracts where user is the worker from database.
+ */
+export const fetchEmploymentContractsAsAgency = () => async (dispatch: any) => {
+  const res = await contractsService.fetchEmploymentContractsAsAgency()
+  dispatch({ type: E_FETCH, data: res })
+}
+
+/**
+ * @function
+ * @desc Function for worker or business to refuse employment contract
+ * Deletes the employment contract
+ * @param {string} id - EmploymentContract Id.
+ */
+export const refuseEmploymentAgreement = (id: string) => async (dispatch: any) => {
+  const res = await contractsService.refuseEmploymentContractById(id)
+  const r = await contractsService.fetchEmploymentContractsAsWorkerOrBusiness()
+
+  if (res && res.status === 200) {
+    dispatch({ type: E_FETCH, data: r })
+  }
+}
+
+/**
+ * @function
+ * @desc Function for worker or business to sign employment contract
+ * @param {string} contractId EmploymentContract Id
+ */
+export const acceptEmploymentAgreement = (id: string) => async (dispatch: any) => {
+  const res = await contractsService.signEmploymentContractById(id)
+  const r = await contractsService.fetchEmploymentContractsAsWorkerOrBusiness()
+
+  if (res && res.status === 200) {
+    dispatch({ type: E_FETCH, data: r })
+  }
+}
+
+/**
+ * @function
  * @desc Deletes a business contract by id.
  * @param {string} userId - User Id
  * @param {string} id - BusinessContract Id.
@@ -58,7 +108,7 @@ export const refuseBusinessContractById = (userId: string, id: string) => async 
   const res = await contractsService.refuseBusinessContractById(id)
   const r = await contractsService.fetchBusinessContracts()
 
-  if (res.status === 200) {
+  if (res && res.status === 200) {
     dispatch({ type: B_DELETE, data: id })
     dispatch({ type: B_FETCH, data: r })
   }
@@ -100,6 +150,7 @@ export const addAgencyContract =
         : dispatch(fetchBusinessContracts())
     }
   }
+
 /**
  * @function
  * @desc Adds new business contract between logged in Worker/Business user and Agency user.
@@ -121,6 +172,18 @@ export const addBusinessContractWorkerBusiness =
       dispatch({ type: B_FETCH, data: r })
     }
   }
+
+/**
+ * @function
+ * @desc Adds new employment agreement suggestion between Worker and Business
+ * Must be logged in as Agency to use this.
+ * @param {string} form employment agreement
+ */
+export const submitEmploymentAgreement = (form: EmploymentAgreement) => async (dispatch: any) => {
+  const res = await contractsService.postEmploymentAgreement(form);
+
+};
+
 /**
  * @function
  * @desc Function to send businessContract request from agency back to agency.
@@ -138,6 +201,7 @@ export const sendBusinessContract =
       dispatch({ type: B_FETCH, data: r })
     }
   }
+
 /**
  * @function
  * @desc Function to accept businessContract that was accepted by Business.

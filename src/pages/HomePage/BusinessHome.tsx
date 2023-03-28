@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Link, Typography,
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import MyWorkers from '../Profile/MyWorkers';
+import MyWorkers from '../Profile/AgencyWorkers';
 import { useTranslation } from 'react-i18next';
 
 const BusinessHome = () => {
@@ -23,12 +23,7 @@ const BusinessHome = () => {
       </div>
       <div className={classes.pageContent}>
         <div className={classes.contentContainer}>
-            <div className={classes.feelingAnalysis}>
-             
-            </div>
-            <div className={classes.latestJobAds}>
-            <MyWorkers />
-            </div>
+            <div className={classes.feelingAnalysis}></div>
         </div>
       </div> 
     </Grid>

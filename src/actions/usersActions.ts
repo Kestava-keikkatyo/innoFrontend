@@ -16,7 +16,7 @@ import {
 } from '../types/state'
 import i18next from 'i18next'
 import { data } from 'jquery'
-import { insertContactData, loadUser } from '../utils/storage'
+import { loadUser } from '../utils/storage'
 
 /**
  * @function
@@ -68,12 +68,12 @@ export const fetchUserById =
  * Then fetches the user profiles accordingly, and saves them into Redux state as user contacts.
  */
 export const fetchAgencyContacts = () => async (dispatch: any) => {   
+  const userList = []
   try {
     const users = await usersService.fetchAgencyContacts()
-    console.log(JSON.stringify(users))
     for (const user in users) {
-      insertContactData(users[user][0]._id)
-      dispatch({ type: FETCH_CONTACTS_SUCCESS, data: users[user][0] })
+    //  insertContactData(users[user][0]._id)
+      userList.push(users[user][0])
     }
   } catch (error) {
     dispatch({
@@ -82,6 +82,7 @@ export const fetchAgencyContacts = () => async (dispatch: any) => {
     })
     await setAlert('Failed to fetch ' + loadUser().role + ' contacts: ' + error, severity.Error, 15)(dispatch)
   }
+  dispatch({ type: FETCH_CONTACTS_SUCCESS, data: userList.flat() })
 }
 
 /**
@@ -91,11 +92,12 @@ export const fetchAgencyContacts = () => async (dispatch: any) => {
 * Then fetches the user profiles accordingly, and saves them into Redux state as user contacts.
 */
 export const fetchBusinessContacts = () => async (dispatch: any) => {   
+  const userList = []
   try {
     const users = await usersService.fetchBusinessContacts()
     for (const user in users) {
-      insertContactData(users[user][0]._id)
-      dispatch({ type: FETCH_CONTACTS_SUCCESS, data: users[user][0] })
+    //  insertContactData(users[user][0]._id)
+      userList.push(users[user][0])
     }
   } catch (error) {
     dispatch({
@@ -104,19 +106,22 @@ export const fetchBusinessContacts = () => async (dispatch: any) => {
     })
     await setAlert('Failed to fetch ' + loadUser().role + ' contacts: ' + error, severity.Error, 15)(dispatch)
   }
+  dispatch({ type: FETCH_CONTACTS_SUCCESS, data: userList.flat() })
 }
 
 /**
 * @function
 * @description 
-* Fetches all signed contracts that business has with other users.
+* Fetches all signed contracts that worker has with other users.
 * Then fetches the user profiles accordingly, and saves them into Redux state as user contacts.
 */
-export const fetchWorkerContacts = () => async (dispatch: any) => {   
+export const fetchWorkerContacts = () => async (dispatch: any) => { 
+  const userList = []  
   try {
     const users = await usersService.fetchWorkerContacts()
     for (const user in users) {
-      insertContactData(users[user][0]._id)
+    //  insertContactData(users[user][0]._id)
+      userList.push(users[user][0])
       dispatch({ type: FETCH_CONTACTS_SUCCESS, data: users[user][0] })
     }
   } catch (error) {
@@ -126,6 +131,7 @@ export const fetchWorkerContacts = () => async (dispatch: any) => {
     })
     await setAlert('Failed to fetch ' + loadUser().role + ' contacts: ' + error, severity.Error, 15)(dispatch)
   }
+  dispatch({ type: FETCH_CONTACTS_SUCCESS, data: userList.flat() })
 }
 
 /**

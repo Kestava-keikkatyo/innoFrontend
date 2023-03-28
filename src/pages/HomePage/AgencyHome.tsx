@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // import vastuualueet from '../../assets/tietopankki/vastuualueet.json';
 import { Grid, Link, Typography,
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import LatestJoinedWorkers from '../Profile/MyWorkers';
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
+import AgencyWorkers from '../Profile/AgencyWorkers';
 
 const AgencyHome = () => {
   const { t } = useTranslation();
   const classes = useStyles();
+  const dispatch = useDispatch();
+
   return (
     <Grid container>
       <div className={classes.generalInfo}>
@@ -28,8 +31,8 @@ const AgencyHome = () => {
             <div className={classes.feelingAnalysis}>
              
             </div>
-            <div className={classes.latestJobAds}>
-            <LatestJoinedWorkers />
+            <div className={classes.myWorkers}>
+            <AgencyWorkers />
             </div>
         </div>
       </div> 
@@ -66,7 +69,7 @@ feelingAnalysis: {
     webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
     boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
 },
-latestJobAds: {
+myWorkers: {
     flex: 2,
     padding: '10px',
     webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',

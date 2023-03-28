@@ -16,6 +16,7 @@ import {
   Direction,
   Tooltip,
   useMediaQuery,
+  Link,
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { IRootState } from '../../utils/store';
@@ -117,6 +118,7 @@ const AgencyContractsPage = () => {
 
       {/* This TabPanel is currently where all actions happen */}
       <TabPanel value={value} index={0} dir={theme.direction}>
+
         <Typography gutterBottom variant="h1" className='header2'>
           {t('make_contract')}
         </Typography>
@@ -127,6 +129,11 @@ const AgencyContractsPage = () => {
           {t('contracts_overview')}
         </Typography>
         <ContractsTable businessContract={businessContract} />
+                
+        <Typography gutterBottom variant="h1" className='header2'> 
+          <Link href="/employment" underline="hover" className={classes.link}>{t('add_workers_to_business')}</Link> 
+        </Typography>
+
       </TabPanel>
 
     </Container>
@@ -164,4 +171,8 @@ const useStyles = makeStyles((theme) => ({
     minWidth: '33.33%',
     maxWidth: '33.33%',
   },
+  link: {
+    color: "black",
+    textDecoration: "underline"
+  }
 }));

@@ -1,77 +1,69 @@
 import React from 'react';
 import Typography from '@mui/material/Typography';
 import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
   Theme,
-  Divider,
-  AccordionActions,
   IconButton,
-  Button,
   TableRow,
   TableCell,
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  refuseBusinessContractById,
-  sendBusinessContract,
+  refuseEmploymentAgreement,
+  acceptEmploymentAgreement,
 } from '../../actions/businessContractActions';
-import { severity } from '../../types/types';
+import { severity, User } from '../../types/types';
 import { setAlert } from '../../actions/alertActions';
-import VisibilityIcon from '@mui/icons-material/Visibility';
 import SendIcon from '@mui/icons-material/Send';
-import EditIcon from '@mui/icons-material/Edit';
-import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import CloseIcon from '@mui/icons-material/Close';
 import { useTranslation } from 'react-i18next';
 import Tooltip from '@mui/material/Tooltip';
 
 
-const ContractRow: React.FC<any> = ({ view, contract }) => {
+const EmploymentRow: React.FC<any> = ({ view, contract }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  function rejectContract(userId: string, contractId: string): void {
-    dispatch(
-      refuseBusinessContractById(
-        userId,
-        contractId
-      )
-    )
-    dispatch(setAlert('Business contract form sent!', severity.Success));
+
+  function rejectContract(contractId: string): void {
+    dispatch(refuseEmploymentAgreement(contractId))
+    dispatch(setAlert('Employment request refused!', severity.Success));
   }
 
-  function signContract(id: string): void {
-    let status = "signed"
-    dispatch(
-      sendBusinessContract(
-        id,
-        status
-      )
-    )
-    dispatch(setAlert('Business contract form sent!', severity.Success));
+  function signContract(contractId: string): void {
+    const status = "signed"
+    dispatch(acceptEmploymentAgreement(contractId))
+    dispatch(setAlert('Employment request accepted!', severity.Success));
   }
 
+  if (!contract)
+  return (
+    <Typography
+      style={{ padding: '1rem' }}
+      variant="h6"
+      align="center"
+      className="text-secondary"
+    >
+      {t("no_results")}
+    </Typography>
+  )
 
   return (
     <TableRow key={contract._id}>
       <TableCell align="left">{contract.creator.companyName}</TableCell>
       <TableCell component="th" scope="row" align="left">{contract.status}</TableCell>
-      <TableCell align="left">{t("contact_request")}</TableCell>
-      <TableCell align="left">{contract.target.email}</TableCell>
-      <TableCell align="left">{contract.creator.companyName}</TableCell>
+      <TableCell align="left">{t("employment_request")}</TableCell>
+      <TableCell align="left">{contract.worker.email}</TableCell>
+      <TableCell align="left">{contract.business.companyName}</TableCell>
       <TableCell
         padding="none"
         align="left"
         style={{ paddingLeft: 5 }}
       >
-        <Tooltip title="Hylkää Sopimus" placement="top" arrow>
+        <Tooltip title="Reject" placement="top" arrow>
           <IconButton
-            onClick={() => rejectContract(contract.target, contract._id)}
+            onClick={() => rejectContract(contract._id)}
             size="large">
             <CloseIcon />
           </IconButton>
@@ -83,7 +75,7 @@ const ContractRow: React.FC<any> = ({ view, contract }) => {
           align="left"
           style={{ paddingLeft: 5 }}
         >
-          <Tooltip title="Allekirjoita sopimus" placement="top" arrow>
+          <Tooltip title="Sign" placement="top" arrow>
             <IconButton
               style={{ color: '#eb5a00' }}
               onClick={() => signContract(contract._id)}
@@ -131,4 +123,4 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-export default ContractRow;
+export default EmploymentRow;

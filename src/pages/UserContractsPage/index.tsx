@@ -18,7 +18,7 @@ import {
 } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  fetchBusinessContractsAsTarget
+  fetchBusinessContractsAsTarget, fetchEmploymentContractsAsWorkerOrBusiness
 } from '../../actions/businessContractActions';
 import { IRootState } from '../../utils/store';
 import { useTranslation } from 'react-i18next';
@@ -79,13 +79,21 @@ const UserContractsPage = () => {
   const { businessContract } = useSelector(
     (state: IRootState) => state.businessContracts
   );
+  const employmentContract: any = useSelector(
+    (state: IRootState) => state.employmentAgreements['agreements']
+  );
+
   const dispatch = useDispatch();
   const contracts = businessContract;
   const pending: any = [];
   const signed: any = [];
+  const employmentContracts = employmentContract;
+  const emplPending: any = [];
+  const emplSigned: any = [];
 
   useEffect(() => {
     dispatch(fetchBusinessContractsAsTarget());
+    dispatch(fetchEmploymentContractsAsWorkerOrBusiness());
   }, [dispatch]);
 
   if (contracts.length) {
@@ -94,6 +102,16 @@ const UserContractsPage = () => {
         pending.push(contract)
       } else if (contract.status === 'signed') {
         signed.push(contract)
+      }
+    });
+  }
+  
+  if (employmentContracts.length) {
+    employmentContracts.map((contract: any) => {
+      if (contract.status === 'pending') {
+        emplPending.push(contract)
+      } else if (contract.status === 'signed') {
+        emplSigned.push(contract)
       }
     });
   }
@@ -150,10 +168,10 @@ const UserContractsPage = () => {
       </AppBar>
       <Divider />
       <TabPanel value={value} index={0}>
-        <ContractsView view="pending" contracts={pending} />
+        <ContractsView view="pending" contracts={pending} employmentContracts={emplPending} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <ContractsView view="signed" contracts={signed} />
+        <ContractsView view="signed" contracts={signed} employmentContracts={emplSigned} />
       </TabPanel>
     </Container>
   );

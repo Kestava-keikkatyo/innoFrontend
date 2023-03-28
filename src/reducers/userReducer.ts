@@ -47,7 +47,7 @@ const userReducer = (state = initialState, action: UserActionTypes) => {
     case FETCH_CONTACTS_SUCCESS:
       return {
         ...state,
-        contacts: [...state.contacts, action.data]
+        contacts: action.data
       }
     case USER_PROFILE:
       return {

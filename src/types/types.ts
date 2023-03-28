@@ -193,6 +193,14 @@ export interface Report {
   workerArchived: string
 }
 
+export interface EmploymentAgreement {
+  creator: string | null
+  worker: string | null
+  business: string | null
+  status: string
+  date: string
+}
+
 export interface Job {
   _id?: string
   title: string

@@ -240,7 +240,6 @@ const ReportForm = () => {
         dispatch(submitReport(currentReport));
       }*/
       //Clear report in redux-store, clear step three error and finish-button loading-state and move to last step.
-      console.log(currentReport)
       
       dispatch(submitReport(currentReport));
       dispatch(setReport(initialReport));

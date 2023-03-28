@@ -22,6 +22,7 @@ import workRequestReducer from '../reducers/workRequestReducer'
 import notificationReducer from '../reducers/notificationReducer'
 import myFeelingReducer from '../reducers/myFeelingReducer'
 import responsibilityReducer from '../reducers/responsibilityReducer'
+import employmentAgreementReducer from '../reducers/employmentAgreementReducer'
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -33,6 +34,7 @@ const appReducer = combineReducers({
   breadcrumb: breadcrumbReducer,
   feeling: feelingReducer,
   form: formReducer,
+  employmentAgreements: employmentAgreementReducer,
   formList: formListReducer,
   files: fileReducer,
   businessContractForm: buisnessContractFormReducer,

@@ -8,17 +8,23 @@ import makeStyles from '@mui/styles/makeStyles';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
+import { fetchAgencyContacts } from '../../actions/usersActions';
 
-const MyWorkers: React.FC = () => {
+const AgencyWorkers: React.FC = () => {
   const { t } = useTranslation()
   const classes = useStyles();
   const dispatch = useDispatch();
-  const users = useSelector((state: IRootState) => state.user.contacts || []);
- /* useEffect(() => {
-    dispatch(fetchLatestJoinedWorkers());
-  }, [dispatch]); */
-  let rows = [];
-  rows = users;
+  const users = useSelector((state: IRootState) => state.user.contacts);
+
+  useEffect(() => {
+      dispatch(fetchAgencyContacts());
+  }, [dispatch]) 
+
+  let rows = []
+  if (users != undefined) {
+    rows = users;
+  }
+  
   const columns: GridColumns = [
     {
       field: 'name',
@@ -100,4 +106,4 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default MyWorkers;
+export default AgencyWorkers;
