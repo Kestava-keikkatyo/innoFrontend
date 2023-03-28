@@ -59,11 +59,11 @@ const ContractRow: React.FC<any> = ({ view, contract }) => {
 
   return (
     <TableRow key={contract._id}>
-      <TableCell align="left">{contract.creator.companyName}</TableCell>
-      <TableCell component="th" scope="row" align="left">{contract.status}</TableCell>
+      <TableCell align="left">{contract.creator.companyName}</TableCell>  
       <TableCell align="left">{t("contact_request")}</TableCell>
+      <TableCell component="th" scope="row" align="left">{contract.status}</TableCell>
       <TableCell align="left">{contract.target.email}</TableCell>
-      <TableCell align="left">{contract.creator.companyName}</TableCell>
+      <TableCell align="left"> - </TableCell>
       <TableCell
         padding="none"
         align="left"

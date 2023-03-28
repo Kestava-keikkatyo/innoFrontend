@@ -81,9 +81,9 @@ export const ContractsView = (prop: { view: string, contracts: any[], employment
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell align="left">{t("creator")}</TableCell>
-              <TableCell align="left">{t("status")}</TableCell>
+              <TableCell align="left">{t("creator")}</TableCell>          
               <TableCell align="left">{t("request_type")}</TableCell>
+              <TableCell align="left">{t("status")}</TableCell>
               <TableCell align="left">{t("worker")}</TableCell>
               <TableCell align="left">{t("business")}</TableCell>
               <TableCell align="left">{t("delete")}</TableCell>

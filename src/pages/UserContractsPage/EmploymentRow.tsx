@@ -51,9 +51,9 @@ const EmploymentRow: React.FC<any> = ({ view, contract }) => {
 
   return (
     <TableRow key={contract._id}>
-      <TableCell align="left">{contract.creator.companyName}</TableCell>
-      <TableCell component="th" scope="row" align="left">{contract.status}</TableCell>
+      <TableCell align="left">{contract.creator.companyName}</TableCell> 
       <TableCell align="left">{t("employment_request")}</TableCell>
+      <TableCell component="th" scope="row" align="left">{contract.status}</TableCell>
       <TableCell align="left">{contract.worker.email}</TableCell>
       <TableCell align="left">{contract.business.companyName}</TableCell>
       <TableCell
