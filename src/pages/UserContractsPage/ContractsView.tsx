@@ -12,16 +12,17 @@ import {
 import makeStyles from '@mui/styles/makeStyles';
 import { useTranslation } from 'react-i18next';
 import ContractRow from './ContractRow';
+import EmploymentRow from './EmploymentRow';
 
 /**
  * @component
  * @desc
  * A view of contracts
  */
-export const ContractsView = (prop: { view: string, contracts: any[] }) => {
+export const ContractsView = (prop: { view: string, contracts: any[], employmentContracts: any[] }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const { view, contracts } = prop;
+  const { view, contracts, employmentContracts } = prop;
   const [filter, setFilter] = React.useState('all')
 
   const handleChange = (event: React.MouseEvent<HTMLElement>, value: string) => {
@@ -35,11 +36,18 @@ export const ContractsView = (prop: { view: string, contracts: any[] }) => {
         return contracts.map((contract: any) => (
           <ContractRow key={contract._id} view={view} contract={contract} />
         ))
+
+      case 'employment':
+        if(employmentContracts[0]) {
+          return employmentContracts.map((contract: any) => (
+            <EmploymentRow key={contract._id} view={view} contract={contract} />
+          ))
+        }
+
       default:
         return contracts.filter((contract) => {
           return contract.type === type
-        })
-          .map((contract: any) => (
+        }).map((contract: any) => (
             <ContractRow key={contract._id} view={view} contract={contract} />
           ))
     }
@@ -51,41 +59,45 @@ export const ContractsView = (prop: { view: string, contracts: any[] }) => {
     { status: 'employment' }
   ]
 
-  if (contracts.length < 1) {
+  if (contracts.length < 1 && employmentContracts.length < 1) {
     return <p>{t('no_results')}</p>;
-  } else
-    return (
+  }
+  
+  return (
+    <div>
       <div>
-        <div>
-          <ToggleButtonGroup
-            classes={{ root: classes.buttonGroupRoot }}
-            className={classes.buttonGroup}
-            value={filter}
-            exclusive
-            onChange={handleChange}
-            orientation='horizontal'
-          >
-            {contractStatuses.map(filter => (
-              <ToggleButton key={filter.status} value={filter.status}>{filter.status}</ToggleButton>
-            ))}
-          </ToggleButtonGroup>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell align="left">{t("status")}</TableCell>
-                <TableCell align="left">{t("email")}</TableCell>
-                <TableCell align="left">{t("type")}</TableCell>
-                <TableCell align="left">{t("delete")}</TableCell>
-                {view == "pending" &&
+        <ToggleButtonGroup
+          classes={{ root: classes.buttonGroupRoot }}
+          className={classes.buttonGroup}
+          value={filter}
+          exclusive
+          onChange={handleChange}
+          orientation='horizontal'
+        >     
+          {contractStatuses.map(filter => (
+            <ToggleButton key={filter.status} value={filter.status}>{filter.status}</ToggleButton>
+          ))} 
+        </ToggleButtonGroup>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell align="left">{t("creator")}</TableCell>          
+              <TableCell align="left">{t("request_type")}</TableCell>
+              <TableCell align="left">{t("status")}</TableCell>
+              <TableCell align="left">{t("worker")}</TableCell>
+              <TableCell align="left">{t("business")}</TableCell>
+              <TableCell align="left">{t("delete")}</TableCell>
+              {view == "pending" &&
                   <TableCell align="left">{t("accept")}</TableCell>
-                }
-              </TableRow>
-            </TableHead>
-            <TableBody>{showContracts(filter)}</TableBody>
-          </Table>
-        </div>
+              }
+            </TableRow>
+          </TableHead>
+          <TableBody>{showContracts(filter)}</TableBody>
+        </Table>
+          
       </div>
-    );
+    </div>
+  );
 };
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -105,6 +117,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   heading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
+  },
+  employmentTable: {
+    marginTop: '6%',
   },
   color: {
     color: 'red',

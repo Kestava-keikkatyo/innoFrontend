@@ -81,6 +81,7 @@ import BusinessResponsibilities from './pages/ResponsibilitiesPage/BusinessRespo
 import Businesses from './pages/Profile/Businesses';
 import ReceivedFeedbacks from './pages/FeedbackPage/ReceivedFeedbacks';
 import ReceivedDetails from './pages/FeedbackPage/ReceivedDetails'
+import EmploymentPage from './pages/EmploymentPage/EmploymentTable'
 
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -343,6 +344,9 @@ const App: React.FC = () => {
             </PrivateRoute>
             <PrivateRoute path="/agencyContracts" roles={[roles.Agency]}>
               <AgencyContractsPage />
+            </PrivateRoute>
+            <PrivateRoute path="/employment" roles={[roles.Agency]}>
+              <EmploymentPage />
             </PrivateRoute>
             <PrivateRoute
               path="/businessContracts/business-contract-preview"

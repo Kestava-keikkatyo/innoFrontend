@@ -19,6 +19,7 @@ import {
   MyFeeling,
   Responsibility,
   responsibilityType,
+  EmploymentAgreement,
 } from './types'
 
 export interface UserState {
@@ -189,6 +190,7 @@ interface SetReportsAction {
 }
 
 export type ReportActionTypes = SetCurrentReportAction | SetReportsAction
+
 
 export interface SignUpUser extends User {
   password: string
@@ -707,6 +709,48 @@ export type WorkContractActionTypes =
   | DeleteWorkContractAction
   | PutWorkContractJobAction
 
+
+/**
+ * Employment form state & action types
+ */
+
+export interface EmploymentAgreementState {
+  currentAgreement: EmploymentAgreement
+  agreements: any[]
+}
+
+export const E_SET_CURRENT = 'SET_CURRENT_EMPLOYMENT_AGREEMENT'
+export const E_SAVE = 'E_SAVE'
+export const E_FETCH = 'E_FETCH'
+export const E_CLEAR_CURRENT = 'CLEAR_CURRENT_EMPLOYMENT_FORM'
+
+interface SetCurrentEmploymentAgreementAction {
+  type: typeof E_SET_CURRENT
+  data: any
+}
+
+interface SaveEmploymentAgreementAction {
+  type: typeof E_SAVE
+  data: any
+}
+
+interface SetEmploymentAgreementsAction {
+  type: typeof E_FETCH
+  data: EmploymentAgreement[]
+}
+
+interface ClearCurrentEmploymentAgreement {
+  type: typeof E_CLEAR_CURRENT
+  data: any
+}
+
+export type EmploymentAgreementActionTypes = 
+SetCurrentEmploymentAgreementAction
+| SaveEmploymentAgreementAction
+| SetEmploymentAgreementsAction
+| ClearCurrentEmploymentAgreement
+
+
 export interface FeelingState {
   currentFeeling: Feeling
   feelingDataSet: any
@@ -1013,5 +1057,7 @@ interface AcceptWorkers {
   type: typeof ACCEPT_WORKERS
   data: any
 }
+
+
 
 export type WorkAddActions = FetchGigs | AcceptWorkers

@@ -137,6 +137,47 @@ const addBusinessContractWorkerBusiness = async (
   }
 };
 
+/**
+ * @description Backend call function which is used by agency to post employment agreement suggestion between Worker and Business
+ * @param form employment agreement
+ * @returns backend response
+ */
+const postEmploymentContract = async (form: any) => {
+  try {
+   // console.log("formServices:employmentForm: ", form);
+    const res = await axios.post(`${baseUrl}/agreement/employment`, form, authHeader());
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/**
+ * @description Backend call function which is used by Business retrieve it's signed and unsigned employment agreements
+ * @returns backend response
+ */
+const fetchEmploymentContractsAsWorkerOrBusiness = async () => {
+  try {
+    const res = await axios.get(`${baseUrl}/agreement/employment/`, authHeader());
+    return res.data;
+  } catch (error) {
+    return { docs: [] };
+  }
+};
+
+/**
+ * @description Backend call function which is used by Agency retrieve its signed and unsigned employment agreements
+ * @returns backend response
+ */
+const fetchEmploymentContractsAsAgency = async () => {
+  try {
+    const res = await axios.get(`${baseUrl}/agreement/employment/agency`, authHeader());
+    return res.data;
+  } catch (error) {
+    return { docs: [] };
+  }
+};
+
 const sendBusinessContract = async (contractId: string, form?: string) => {
   try {
     return await axios.put(
@@ -166,10 +207,60 @@ const declineBusinessContract = async (contractId: string, userId: string) => {
  * @param {*} contractId
  */
 const refuseBusinessContractById = async (contractId: string) => {
+  try {
   return await axios.delete(
     `${baseUrl}/agreement/delete/${contractId}`,
     authHeader()
   );
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/**
+ * Deletes employment contract by id
+ * @param {*} contractId
+ */
+const deleteEmploymentContractById = async (contractId: string) => {
+  try {
+    return await axios.delete(
+      `${baseUrl}/agreement/employment/delete/${contractId}`,
+      authHeader()
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/**
+ * Refuses employment contract by id
+ * @param {*} contractId
+ */
+const refuseEmploymentContractById = async (contractId: string) => {
+  try {
+    return await axios.delete(
+      `${baseUrl}/agreement/employment/refuse/${contractId}`,
+      authHeader()
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/**
+ * Signs employment contract by id
+ * @param {*} contractId
+ */
+const signEmploymentContractById = async (contractId: string) => {
+  try {
+    return await axios.put(
+      `${baseUrl}/agreement/employment/sign/${contractId}`,
+      {},
+      authHeader()
+    );
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const fetchBusinessContracts = async () => {
@@ -319,10 +410,16 @@ export default {
   addAgencyContract,
   addBusinessContract,
   addBusinessContractWorkerBusiness,
+  postEmploymentAgreement: postEmploymentContract,
   declineBusinessContract,
   refuseBusinessContractById,
+  refuseEmploymentContractById, 
+  deleteEmploymentContractById,
+  signEmploymentContractById,
   fetchBusinessContracts,
   fetchBusinessContractsAsTarget,
+  fetchEmploymentContractsAsAgency,
+  fetchEmploymentContractsAsWorkerOrBusiness,
   signAgreement,
   updateBusinessContract,
   postWorkContract,

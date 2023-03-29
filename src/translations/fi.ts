@@ -221,6 +221,10 @@ export default {
     transfer_profile: 'Siirry profiiliin',
     transfer_company_profile: 'Siirry yrityksen profiiliin',
 
+     // Employment page
+     connect_workers_to_business: 'Liitä työntekijöitä käyttäjäyritykseen',
+     employment_no_recipient: "Sinun täytyy valita vastaanottaja",
+
     // Contact information
     phone: 'Puhelin',
     website: 'Nettisivut',
@@ -267,6 +271,11 @@ export default {
     make_contract: 'Tee sopimus',
     contracts: 'Sopimukset',
     contracts_overview: 'Sopimusten yleiskatsaus',
+    creator: 'Lähettäjä',
+    request_type: 'Tyyppi',
+    contact_request: 'Yhteyspyyntö',
+    employment_request: 'Työtarjous',
+    add_workers_to_business: 'Lisää työntekijöitä käyttäjäyritykseen',
 
     // Rental Work Model
     rwm_responsibilities: 'Vastuut',
