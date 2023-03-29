@@ -3,6 +3,7 @@ import { Formik, Form } from 'formik';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { FormikTextField } from '../../components/FormField';
+import logo_kk from '../../assets/logo_keikkakaveri_navbar.svg'
 
 import './forms.css';
 
@@ -18,14 +19,7 @@ import {
 } from '@mui/material';
 import { useSelector } from 'react-redux';
 
-/**
- * @component
- * @desc Login form for worker, agency and business.
- * @param {Object} props
- * @param {boolean} props.loggingIn - User currently loggin in
- * @param {function} props.handleSubmit - Function for sending user credentials
- */
-const LogInForm: React.FC<any> = ({ handleSubmit }) => {
+const ForgotPasswordForm: React.FC<any> = ({ handleSubmit }) => {
   const { t } = useTranslation();
   const { loading } = useSelector((state: any) => state.user);
 
@@ -42,25 +36,21 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
     <ThemeProvider theme={fontTheme}>
       <Card variant="outlined">
         <CardContent>
-          <Typography align="center" variant="h1" gutterBottom className="header">
-            {t('log_in')}
+          <Typography align="center" className="marginTop2">
+            <img src={logo_kk} style={{ width: '200px' }} />
+          </Typography>
+          <Typography align='center' className="marginTop2">
+            {t('forgot_password_text')}
           </Typography>
           <Formik
             initialValues={{
               email: '',
-              password: '',
             }}
             validate={(values) => {
               const errors: any = {};
               const emailRegExp = /^[\p{L}\p{N}.-]+@[\p{L}\p{N}.-]+\.[\p{L}]{2,}$/u;
-              const requiredError = t('field_required');
-              if (!values.email) {
-                errors.email = requiredError;
-              } else if (!emailRegExp.test(values.email)) {
+              if (!emailRegExp.test(values.email)) {
                 errors.email = t('invalid_email_address');
-              }
-              if (!values.password) {
-                errors.password = requiredError;
               }
               return errors;
             }}
@@ -76,12 +66,7 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
                     name="email"
                     type="text"
                     placeholder="user@mail.com"
-                  />
-                  <FormikTextField
-                    label={t('password')}
-                    name="password"
-                    type="password"
-                    className="marginTop"
+                    className="marginTop2"
                   />
                   <Button
                     type="submit"
@@ -90,7 +75,7 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
                     color="primary"
                     className="marginTop"
                   >
-                    {loading ? <CircularProgress size={24} /> : t('log_in')}
+                    {loading ? <CircularProgress size={24} /> : t('forgot_password_button')}
                   </Button>
                 </Box>
               </Form>
@@ -102,8 +87,8 @@ const LogInForm: React.FC<any> = ({ handleSubmit }) => {
   );
 };
 
-LogInForm.propTypes = {
+ForgotPasswordForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
 };
 
-export default LogInForm;
+export default ForgotPasswordForm;

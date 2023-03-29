@@ -169,4 +169,3 @@ const statusHandler = (dispatch: Function, response: any) => {
     window.location.reload()
   }
 }
-

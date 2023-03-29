@@ -16,6 +16,8 @@ import {
   Box,
   CircularProgress,
   Link,
+  createTheme,
+  ThemeProvider,
 } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { roles } from '../../types/types';
@@ -30,6 +32,15 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
   const [open, setOpen] = useState(false);
   const { t } = useTranslation();
   const { loading } = useSelector((state: any) => state.user);
+
+  const fontTheme = createTheme({
+    typography: {
+      fontFamily: [
+        'Montserrat',
+        'sans-serif',
+      ].join(','),
+    },
+  });
 
   const roleOptions = [
     { value: roles.Worker, label: t('worker') },
@@ -53,144 +64,146 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
   ];
 
   return (
-    <Card variant="outlined">
-      <CardContent>
-        <Typography align="center" variant="h1" gutterBottom className="header">
-          {t('sign_up')}
-        </Typography>
-        <Formik
-          initialValues={{
-            firstName: '',
-            lastName: '',
-            email: '',
-            password: '',
-            passwordConfirm: '',
-            role: '',
-            category: '',
-          }}
-          validate={(values) => {
-            const errors: any = {};
-            const emailRegExp = /^[\p{L}\p{N}.-]+@[\p{L}\p{N}.-]+\.[\p{L}]{2,}$/u;
-            const requiredError = t('field_required');
-            if (!values.email) {
-              errors.email = requiredError;
-            } else if (!emailRegExp.test(values.email)) {
-              errors.email = t('invalid_email_address');
-            }
-            if (!values.password) {
-              errors.password = requiredError;
-            }
-            if (values.password.length < 8) {
-              errors.password = t('invalid_length');
-            }
-            if (!values.firstName) {
-              errors.firstName = requiredError;
-            } else if (values.firstName.length < 3) {
-              errors.firstName = t('invalid_name');
-            }
-            if (!values.lastName) {
-              errors.lastName = requiredError;
-            } else if (values.lastName.length < 3) {
-              errors.lastName = t('invalid_name');
-            }
-            if (!values.passwordConfirm) {
-              errors.passwordConfirm = requiredError;
-            } else if (values.passwordConfirm !== values.password) {
-              errors.passwordConfirm = t('invalid_password');
-            }
-            if (!values.role) {
-              errors.role = requiredError;
-            }
-            if (values.role !== roles.Worker && !values.category) {
-              errors.category = requiredError;
-            }
-            return errors;
-          }}
-          // handleSubmit doesn't need password confirmation
-          // eslint-disable-next-line no-unused-vars
-          onSubmit={({ passwordConfirm, ...rest }) => {
-            handleSubmit(rest);
-          }}
-        >
-          {({ isValid, dirty, values, setFieldValue }) => (
-            <Form>
-              <Box display="flex" flexDirection="column">
-                <FormikTextField
-                  label={t('firstName')}
-                  name="firstName"
-                  type="text"
-                />
-                <FormikTextField
-                  label={t('lastName')}
-                  name="lastName"
-                  type="text"
-                />
-                <FormikTextField
-                  label={t('email')}
-                  name="email"
-                  type="text"
-                  placeholder="user@mail.com"
-                  className="marginTop"
-                />
-                <Box display="flex" flexDirection="row">
-                  <Box paddingRight={1}>
+    <ThemeProvider theme={fontTheme}>
+      <Card variant="outlined">
+        <CardContent>
+          <Typography align="center" variant="h1" gutterBottom className="header">
+            {t('sign_up')}
+          </Typography>
+          <Formik
+            initialValues={{
+              firstName: '',
+              lastName: '',
+              email: '',
+              password: '',
+              passwordConfirm: '',
+              role: '',
+              category: '',
+            }}
+            validate={(values) => {
+              const errors: any = {};
+              const emailRegExp = /^[\p{L}\p{N}.-]+@[\p{L}\p{N}.-]+\.[\p{L}]{2,}$/u;
+              const requiredError = t('field_required');
+              if (!values.email) {
+                errors.email = requiredError;
+              } else if (!emailRegExp.test(values.email)) {
+                errors.email = t('invalid_email_address');
+              }
+              if (!values.password) {
+                errors.password = requiredError;
+              }
+              if (values.password.length < 8) {
+                errors.password = t('invalid_length');
+              }
+              if (!values.firstName) {
+                errors.firstName = requiredError;
+              } else if (values.firstName.length < 3) {
+                errors.firstName = t('invalid_name');
+              }
+              if (!values.lastName) {
+                errors.lastName = requiredError;
+              } else if (values.lastName.length < 3) {
+                errors.lastName = t('invalid_name');
+              }
+              if (!values.passwordConfirm) {
+                errors.passwordConfirm = requiredError;
+              } else if (values.passwordConfirm !== values.password) {
+                errors.passwordConfirm = t('invalid_password');
+              }
+              if (!values.role) {
+                errors.role = requiredError;
+              }
+              if (values.role !== roles.Worker && !values.category) {
+                errors.category = requiredError;
+              }
+              return errors;
+            }}
+            // handleSubmit doesn't need password confirmation
+            // eslint-disable-next-line no-unused-vars
+            onSubmit={({ passwordConfirm, ...rest }) => {
+              handleSubmit(rest);
+            }}
+          >
+            {({ isValid, dirty, values, setFieldValue }) => (
+              <Form>
+                <Box display="flex" flexDirection="column">
+                  <FormikTextField
+                    label={t('firstName')}
+                    name="firstName"
+                    type="text"
+                  />
+                  <FormikTextField
+                    label={t('lastName')}
+                    name="lastName"
+                    type="text"
+                  />
+                  <FormikTextField
+                    label={t('email')}
+                    name="email"
+                    type="text"
+                    placeholder="user@mail.com"
+                    className="marginTop"
+                  />
+                  <Box display="flex" flexDirection="row">
+                    <Box paddingRight={1}>
+                      <FormikTextField
+                        label={t('password')}
+                        name="password"
+                        type="password"
+                        className="marginTop"
+                      />
+                    </Box>
                     <FormikTextField
-                      label={t('password')}
-                      name="password"
+                      label={t('confirm')}
+                      name="passwordConfirm"
                       type="password"
                       className="marginTop"
                     />
                   </Box>
-                  <FormikTextField
-                    label={t('confirm')}
-                    name="passwordConfirm"
-                    type="password"
-                    className="marginTop"
-                  />
-                </Box>
-                <Box display="flex" flexDirection="column" className="marginTop2">
-                  <FormikSelectField
-                    label={t('role')}
-                    name="role"
-                    options={roleOptions}
-                  />
-                </Box>
-                {(values.role === roles.Agency || values.role === roles.Business) && (
-                  <Box display="flex" flexDirection="column" className="marginTop">
+                  <Box display="flex" flexDirection="column" className="marginTop2">
                     <FormikSelectField
-                      label={t('category')}
-                      name="category"
-                      options={categoryOptions}
-                      setFieldValue={setFieldValue}
+                      label={t('role')}
+                      name="role"
+                      options={roleOptions}
                     />
                   </Box>
-                )}
-                <Typography gutterBottom variant="body2" color="textSecondary" className="marginTop">
-                  {t('terms_of_use')}
-                  <Link
-                    style={{ cursor: 'pointer' }}
-                    variant="body2"
-                    onClick={() => setOpen(true)}
-                    underline="hover">
-                    {t('terms_agency')}
-                  </Link>
-                </Typography>
-                <SignUpModal open={open} handleClose={() => setOpen(false)} />
-                <Button
-                  type="submit"
-                  disabled={!dirty || !isValid || loading}
-                  variant="contained"
-                  color={(!dirty || !isValid || loading) ? 'warning' : 'primary'}
-                  className="marginTop"
-                >
-                  {loading ? <CircularProgress size={24} /> : t('sign_up')}
-                </Button>
-              </Box>
-            </Form>
-          )}
-        </Formik>
-      </CardContent>
-    </Card>
+                  {(values.role === roles.Agency || values.role === roles.Business) && (
+                    <Box display="flex" flexDirection="column" className="marginTop">
+                      <FormikSelectField
+                        label={t('category')}
+                        name="category"
+                        options={categoryOptions}
+                        setFieldValue={setFieldValue}
+                      />
+                    </Box>
+                  )}
+                  <Typography gutterBottom variant="body2" color="textSecondary" className="marginTop">
+                    {t('terms_of_use')}
+                    <Link
+                      style={{ cursor: 'pointer' }}
+                      variant="body2"
+                      onClick={() => setOpen(true)}
+                      underline="hover">
+                      {t('terms_agency')}
+                    </Link>
+                  </Typography>
+                  <SignUpModal open={open} handleClose={() => setOpen(false)} />
+                  <Button
+                    type="submit"
+                    disabled={!dirty || !isValid || loading}
+                    variant="contained"
+                    color={(!dirty || !isValid || loading) ? 'warning' : 'primary'}
+                    className="marginTop"
+                  >
+                    {loading ? <CircularProgress size={24} /> : t('sign_up')}
+                  </Button>
+                </Box>
+              </Form>
+            )}
+          </Formik>
+        </CardContent>
+      </Card>
+    </ThemeProvider>
   );
 };
 
