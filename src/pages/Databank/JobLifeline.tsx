@@ -1,5 +1,73 @@
 import React from 'react'
 import makeStyles from '@mui/styles/makeStyles';
+import Typography from '@mui/material/Typography'
+import LifelineCard from './LifelineCard'
+import lifeline from '../../assets/tietopankki/elinkaari.json'
+import { useTranslation } from 'react-i18next'
+import Footer from '../../components/Footer';
+import Ingressi from '../../components/Ingressi';
+import { Grid } from '@mui/material';
+import image from '../../assets/pictures/picture.png'
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    marginTop: '2rem',
+    width: '100%',
+  },
+  button: {
+    marginTop: theme.spacing(1),
+    marginRight: theme.spacing(1),
+  },
+  actionsContainer: {
+    marginBottom: theme.spacing(2),
+  },
+  resetContainer: {
+    padding: theme.spacing(3),
+  }
+}))
+
+function getSteps() {
+  return lifeline.map((e) => e.title)
+}
+
+const getStepContent = (step: any) => <LifelineCard step={lifeline[step]} />
+
+const JobLifeline = () => {
+
+  const { t } = useTranslation()
+  const classes = useStyles()
+  const steps = getSteps()
+
+  const ingressi_header = "stages_of_work"
+  const summary = "stages_of_work_summary"
+
+  return (
+    <div className={classes.root}>
+      <Ingressi header={ingressi_header} summary={summary}></Ingressi>
+
+      <Grid sx={{ width: { xs: '90%', md: '60%' } }} style={{ margin: 'auto', marginBottom: '20px' }} >
+        {steps.map((label, index) => (
+          <Grid container spacing={3} sx={{ flexDirection: { xs: 'column', md: 'row', sm: 'column' } }} style={{ margin: '0', flexWrap: 'nowrap', marginBottom: '20px', width: '100%', justifyContent: 'center' }} key={label}>
+            <Grid style={{ backgroundColor: "#DBE4FC", paddingBottom: '20px' }} item xs={12} sm={12} md={3}>
+              <img src={image}></img>
+            </Grid>
+            <Grid style={{ backgroundColor: "#DBE4FC", paddingBottom: '20px' }} item xs={12} sm={12} md={9}>
+              <Typography style={{ fontWeight: 'bold', marginBottom: '20px' }} className='header2'>{label}</Typography>
+              <Typography style={{ display: "center", justifyContent: 'center' }}>
+                {getStepContent(index)}
+              </Typography>
+            </Grid>
+          </Grid>
+        ))}
+      </Grid>
+      <Footer />
+    </div>
+  )
+}
+export default JobLifeline
+
+{/*import React from 'react'
+import makeStyles from '@mui/styles/makeStyles';
 import Stepper from '@mui/material/Stepper'
 import Step from '@mui/material/Step'
 import StepLabel from '@mui/material/StepLabel'
@@ -62,7 +130,7 @@ const JobLifeline = () => {
   return (
     <div className={classes.root}>
 
-      {/* Ingressi */}
+  
       <Ingressi header={ingressi_header} summary={summary}></Ingressi>
       
       <Container maxWidth={false} style={{ backgroundColor: "#DBE4FC", width: "100%", display: "center", justifyContent: 'center' }}>
@@ -108,4 +176,4 @@ const JobLifeline = () => {
     </div>
   )
 }
-export default JobLifeline
+export default JobLifeline*/}
