@@ -1,4 +1,4 @@
-import { Chip } from '@mui/material'
+import { Chip, Typography } from '@mui/material'
 import React from 'react'
 
 export interface LifelineCardProps {
@@ -8,11 +8,11 @@ export interface LifelineCardProps {
 const LifelineCard: React.FC<LifelineCardProps> = ({ step }) => {
   const getFormPart = () =>
     step.form ? (
-      <>
-        <h1 className='header6'>Lomake</h1>
-        <Chip label={step.form.formName} />
-        <h2 className='header6'>{step.form.title}</h2>
+      <>  
         <p>{step.form.description}</p>
+        <h1 className='header6'style={{textTransform: 'uppercase', backgroundColor: "#F47D20", display: 'inline-block', padding: '5px'}}>Lomakkeet</h1>
+        <Typography style={{fontWeight: 'bold'}}>{step.form.formName}</Typography>
+        <Typography>{step.form.title}</Typography>
       </>
     ) : (
       <></>
@@ -20,30 +20,7 @@ const LifelineCard: React.FC<LifelineCardProps> = ({ step }) => {
 
   return (
     <>
-      <div>
-        Osapuolet:
-        <Chip label={step.parties[0]} />
-        <Chip label={step.parties[1]} />
-      </div>
       {getFormPart()}
-      <h1 className='header6'>{step.subtitle}</h1>
-      <ul>
-        {step.details.map((e: string, i: number) => (
-          <li key={i}>{e}</li>
-        ))}
-      </ul>
-      {step.notes ? (
-        <>
-          <h2 className='header6'>Notes:</h2>
-          <ul>
-            {step.notes.map((e: string, i: number) => (
-              <li key={i}>{e}</li>
-            ))}
-          </ul>
-        </>
-      ) : (
-        <></>
-      )}
     </>
   )
 }
