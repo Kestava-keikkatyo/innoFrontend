@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { me } from '../../actions/userActions';
-
 import WorkerHome from './WorkerHome';
 import PageLoading from '../../components/PageLoading';
-
-import { Container, Typography } from '@mui/material';
+import { Container } from '@mui/material';
 import { roles } from '../../types/types';
 import BusinessHome from './BusinessHome';
 import AgencyHome from './AgencyHome';
@@ -36,10 +34,8 @@ const Home = () => {
     }
   };
   return (
-    <Container>
-      <Typography variant="h1" color="primary" className="header" align={'center'} marginBottom={4}>
-        {t('home')}
-      </Typography>
+    <Container style={{ paddingBottom: '100px', padding: '20px', justifyContent: 'center', margin: 'auto', marginLeft: '0', marginRight: '0', width: '100%', maxWidth: 'none', display: 'flex'}}>
+   
       {getContent()}
     </Container>
   );

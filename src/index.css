@@ -388,9 +388,8 @@ nav * {
 }
 
 .toolbar {
-    flex: 1;
     justify-content: space-between;
-    padding: 0 1% !important;
+    padding: 0;
 
 }
 
