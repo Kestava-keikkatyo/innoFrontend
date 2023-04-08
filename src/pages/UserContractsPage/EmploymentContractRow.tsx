@@ -5,11 +5,12 @@ import {
   IconButton,
   TableRow,
   TableCell,
+  TableHead,
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  refuseEmploymentAgreement,
+  deleteEmploymentAgreement,
   acceptEmploymentAgreement,
 } from '../../actions/businessContractActions';
 import { severity, User } from '../../types/types';
@@ -20,15 +21,15 @@ import { useTranslation } from 'react-i18next';
 import Tooltip from '@mui/material/Tooltip';
 
 
-const EmploymentRow: React.FC<any> = ({ view, contract }) => {
+const EmploymentContractRow: React.FC<any> = ({ view, contract }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
 
   function rejectContract(contractId: string): void {
-    dispatch(refuseEmploymentAgreement(contractId))
-    dispatch(setAlert('Employment request refused!', severity.Success));
+    dispatch(deleteEmploymentAgreement(contractId))
+    dispatch(setAlert('Employment request rejected!', severity.Success));
   }
 
   function signContract(contractId: string): void {
@@ -61,31 +62,31 @@ const EmploymentRow: React.FC<any> = ({ view, contract }) => {
         align="left"
         style={{ paddingLeft: 5 }}
       >
-        <Tooltip title="Reject" placement="top" arrow>
-          <IconButton
-            onClick={() => rejectContract(contract._id)}
-            size="large">
-            <CloseIcon />
-          </IconButton>
-        </Tooltip>
+      <Tooltip title="Delete" placement="top" arrow>
+        <IconButton
+          onClick={() => rejectContract(contract._id)}
+          size="large">
+          <CloseIcon />
+        </IconButton>
+      </Tooltip>
       </TableCell>
       {view == "pending" &&
-        <TableCell
-          padding="none"
-          align="left"
-          style={{ paddingLeft: 5 }}
-        >
-          <Tooltip title="Sign" placement="top" arrow>
-            <IconButton
-              style={{ color: '#eb5a00' }}
-              onClick={() => signContract(contract._id)}
-              size="large">
-              <SendIcon />
-            </IconButton>
-          </Tooltip>
-        </TableCell>
+      <TableCell
+        padding="none"
+        align="left"
+        style={{ paddingLeft: 5 }}
+      >
+      <Tooltip title="Sign" placement="top" arrow>
+        <IconButton
+          style={{ color: '#eb5a00' }}
+          onClick={() => signContract(contract._id)}
+          size="large">
+          <SendIcon />
+        </IconButton>
+      </Tooltip>
+      </TableCell>
       }
-    </TableRow>
+    </TableRow> 
   );
 };
 
@@ -123,4 +124,4 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-export default EmploymentRow;
+export default EmploymentContractRow;

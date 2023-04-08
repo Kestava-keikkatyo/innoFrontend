@@ -16,7 +16,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  refuseBusinessContractById,
+  deleteBusinessContractById,
   sendBusinessContract,
 } from '../../actions/businessContractActions';
 import { severity } from '../../types/types';
@@ -28,6 +28,7 @@ import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import CloseIcon from '@mui/icons-material/Close';
 import { useTranslation } from 'react-i18next';
 import Tooltip from '@mui/material/Tooltip';
+import { loadUser } from '../../utils/storage';
 
 
 const ContractRow: React.FC<any> = ({ view, contract }) => {
@@ -35,14 +36,14 @@ const ContractRow: React.FC<any> = ({ view, contract }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  function rejectContract(userId: string, contractId: string): void {
+  function deleteContract(userId: string, contractId: string): void {
     dispatch(
-      refuseBusinessContractById(
+      deleteBusinessContractById(
         userId,
         contractId
       )
     )
-    dispatch(setAlert('Business contract form sent!', severity.Success));
+    dispatch(setAlert('Contract deleted!', severity.Success));
   }
 
   function signContract(id: string): void {
@@ -53,9 +54,51 @@ const ContractRow: React.FC<any> = ({ view, contract }) => {
         status
       )
     )
-    dispatch(setAlert('Business contract form sent!', severity.Success));
+    dispatch(setAlert('Contract accepted!', severity.Success));
   }
 
+  const role = loadUser().role
+
+  if (role === "business") {
+    return (
+      <TableRow key={contract._id}>
+        <TableCell align="left">{contract.creator.companyName}</TableCell>  
+        <TableCell align="left">{t("contact_request")}</TableCell>
+        <TableCell component="th" scope="row" align="left">{contract.status}</TableCell>
+        <TableCell align="left"> - </TableCell>
+        <TableCell align="left">{contract.target.email}</TableCell>
+        <TableCell
+          padding="none"
+          align="left"
+          style={{ paddingLeft: 5 }}
+        >
+          <Tooltip title="Delete contract" placement="top" arrow>
+            <IconButton
+              onClick={() => deleteContract(contract.target, contract._id)}
+              size="large">
+              <CloseIcon />
+            </IconButton>
+          </Tooltip>
+        </TableCell>
+        {view == "pending" &&
+          <TableCell
+            padding="none"
+            align="left"
+            style={{ paddingLeft: 5 }}
+          >
+            <Tooltip title="Sign contract" placement="top" arrow>
+              <IconButton
+                style={{ color: '#eb5a00' }}
+                onClick={() => signContract(contract._id)}
+                size="large">
+                <SendIcon />
+              </IconButton>
+            </Tooltip>
+          </TableCell>
+        }
+      </TableRow>
+    );
+  }
 
   return (
     <TableRow key={contract._id}>
@@ -69,9 +112,9 @@ const ContractRow: React.FC<any> = ({ view, contract }) => {
         align="left"
         style={{ paddingLeft: 5 }}
       >
-        <Tooltip title="Hylkää Sopimus" placement="top" arrow>
+        <Tooltip title="Delete contract" placement="top" arrow>
           <IconButton
-            onClick={() => rejectContract(contract.target, contract._id)}
+            onClick={() => deleteContract(contract.target, contract._id)}
             size="large">
             <CloseIcon />
           </IconButton>
@@ -83,7 +126,7 @@ const ContractRow: React.FC<any> = ({ view, contract }) => {
           align="left"
           style={{ paddingLeft: 5 }}
         >
-          <Tooltip title="Allekirjoita sopimus" placement="top" arrow>
+          <Tooltip title="Sign contract" placement="top" arrow>
             <IconButton
               style={{ color: '#eb5a00' }}
               onClick={() => signContract(contract._id)}

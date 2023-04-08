@@ -138,7 +138,7 @@ const UserContractsPage = () => {
             icon={
               <Badge badgeContent={pending.length} color="secondary">
                 {matches ? (
-                  <Tooltip title="Vastaanotetut sopimukset" placement="top" arrow>
+                  <Tooltip title="Received contracts" placement="top" arrow>
                     <NotificationsActiveIcon />
                   </Tooltip>
                 ) : (
@@ -154,7 +154,7 @@ const UserContractsPage = () => {
             icon={
               <Badge color="secondary">
                 {matches ? (
-                  <Tooltip title="Arkistoidut sopimukset" placement="top" arrow>
+                  <Tooltip title="Archived contracts" placement="top" arrow>
                     <AllInboxIcon />
                   </Tooltip>
                 ) : (

@@ -8,7 +8,7 @@ import {
   acceptBusinessContractFromBusiness,
   acceptBusinessContractFromWorker,
   sendBackBusinessContract,
-  refuseBusinessContractById,
+  deleteBusinessContractById,
 } from '../../actions/businessContractActions';
 import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
@@ -90,7 +90,7 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
     contractId: string,
     userId: string
   ) => {
-    dispatch(refuseBusinessContractById(userId, contractId));
+    dispatch(deleteBusinessContractById(userId, contractId));
     dispatch(setAlert('Contract deleted.', severity.Info, 3));
   };
 

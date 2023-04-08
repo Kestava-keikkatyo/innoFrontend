@@ -273,7 +273,7 @@ export default {
     request_type: 'Type',
     contact_request: 'Contact request',
     employment_request: 'Employment',
-    add_workers_to_business: 'Add workers to business',
+    add_workers_to_business: 'Connect workers to business',
 
     // Rental Work Model
     rwm_responsibilities: 'Responsibilities',
@@ -301,6 +301,7 @@ export default {
 
     // MyFormsTable
     delete: 'Delete',
+    reject: 'Reject',
 
     // FormsPage
     my_forms: 'My forms',

@@ -206,7 +206,7 @@ const declineBusinessContract = async (contractId: string, userId: string) => {
  * Deletes contract according to id
  * @param {*} contractId
  */
-const refuseBusinessContractById = async (contractId: string) => {
+const deleteBusinessContractById = async (contractId: string) => {
   try {
   return await axios.delete(
     `${baseUrl}/agreement/delete/${contractId}`,
@@ -412,7 +412,7 @@ export default {
   addBusinessContractWorkerBusiness,
   postEmploymentAgreement: postEmploymentContract,
   declineBusinessContract,
-  refuseBusinessContractById,
+  deleteBusinessContractById,
   refuseEmploymentContractById, 
   deleteEmploymentContractById,
   signEmploymentContractById,

@@ -270,7 +270,7 @@ export default {
     request_type: 'Tyyppi',
     contact_request: 'Yhteyspyyntö',
     employment_request: 'Työtarjous',
-    add_workers_to_business: 'Lisää työntekijöitä käyttäjäyritykseen',
+    add_workers_to_business: 'Liitä työntekijöitä käyttäjäyritykseen',
 
     // Rental Work Model
     rwm_responsibilities: 'Vastuut',
@@ -299,6 +299,7 @@ export default {
 
     // MyFormsTable
     delete: 'Poista',
+    reject: 'Hylkää',
 
     // FormsPage
     my_forms: 'Lomakkeeni',

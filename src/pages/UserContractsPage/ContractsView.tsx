@@ -12,7 +12,7 @@ import {
 import makeStyles from '@mui/styles/makeStyles';
 import { useTranslation } from 'react-i18next';
 import ContractRow from './ContractRow';
-import EmploymentRow from './EmploymentRow';
+import EmploymentContractRow from './EmploymentContractRow';
 
 /**
  * @component
@@ -40,7 +40,7 @@ export const ContractsView = (prop: { view: string, contracts: any[], employment
       case 'employment':
         if(employmentContracts[0]) {
           return employmentContracts.map((contract: any) => (
-            <EmploymentRow key={contract._id} view={view} contract={contract} />
+            <EmploymentContractRow key={contract._id} view={view} contract={contract} />
           ))
         }
 
