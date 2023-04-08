@@ -2,12 +2,12 @@
   {
     "order": 1,
     "parties": ["Vuokrayritys", "Käyttäjäyriys"],
-    "title": "Asiakassopimus",
+    "title": "1. Asiakassopimus",
     "subtitle": "SOPIMUSVAIHEESSA LÄPIKÄYTÄVIÄ JA SOVITTAVIA ASIOITA MUUN MUASSA",
     "form": {
-      "formName": "Lomake 1",
-      "title": "TÄYTÄ LOMAKE 1 ASIAKASSOPIMUKSEN ALLEKIRJOITTAMISEN YHTEYDESSÄ",
-      "description": "Lomake on tarkoitus täyttää vuokra- ja käyttäjäyrityksen yhteistyössä. Lomakkeen täyttämisellä ohjataan käymään olennaisimmat vuokratyön turvallisuuteen liittyvät asiat läpi sekä suunnittelemaan ja sopimaan tärkeistä asioista. Täytetty lomake voidaan liittää asiakassopimuksen loppuun ja siihen voidaan myös viitata sopimuksessa."
+      "formName": "LOMAKE 1 – ASIAKASSOPIMUKSEEN LIITTYVÄT TYÖTURVALLISUUS- JA TYÖHYVINVOINTIASIAT",
+      "title": "(henkilöstöpalveluyrityksen ja käyttäjäyrityksen edustajat täyttävät yhdessä)",
+      "description": "Henkilöstöpalveluyritys ja käyttäjäyritys tekevät asiakassopimuksen. Käyttäjäyritys antaa henkilöstöpalveluyritykselle tietoa työolosuhteista ja niihin liittyvistä työturvallisuus-, työterveys- ja työhyvinvointiasioista. Yritykset käyvät läpi työturvallisuuteen, terveyteen ja hyvinvointiin liittyvien vastuiden jakautumisen yritysten kesken. Yritykset sopivat mm. asiakassuhteen aikaisesta tiedonkulusta, henkilönsuojainten hankinnasta, perehdytyksestä ja toimintatavoista työtapaturma-, sairaspoissaolo- ja vaaratilanteisiin."
     },
     "details": [
       "Lainsäädännöstä seuraavien työturvallisuusvastuiden läpikäyminen",
@@ -19,9 +19,14 @@
   },
   {
     "order": 2,
-    "title": "Työntekijän tilaus ja valinta",
+    "title": "2. Työntekijän tilaus ja valinta",
     "parties": ["Vuokrayritys", "Käyttäjäyriys"],
     "subtitle": "KÄYTTÄJÄYRITYS INFORMOI VUOKRAYRITYSTÄ",
+    "form": {
+      "formName": "",
+      "title": "",
+      "description": "Käyttäjäyritys tilaa henkilöstöpalveluyritykseltä työntekijän työtehtävään. Käyttäjäyritys kertoo henkilöstöpalveluyritykselle työn ammattitaitovaatimukset ja erityispiirteet."
+    },
     "details": [
       "Vuokratyöntekijältä edellytettävästä koulutuksesta, työkokemuksesta sekä terveydentila- ja ammattitaitovaatimuksista",
       "Työn vaaroista ja erityispiirteistä",
@@ -34,13 +39,13 @@
   },
   {
     "order": 3,
-    "title": "Työsopimus ja yleisperehdytys",
+    "title": "3. Työsopimus ja yleisperehdytys",
     "parties": ["Vuokrayritys", "Vuokratyöntekijä"],
     "subtitle": "YLEISPEREHDYTYKSESSÄ LÄPIKÄYTÄVIÄ ASIOITA MUUN MUASSA",
     "form": {
-      "formName": "Lomake 2",
-      "title": "TÄYTÄ LOMAKE 2 YLEISPEREHDYTYKSEN YHTEYDESSÄ",
-      "description": "Lomake 2 on tarkoitus täyttää vuokrayrityksen toimesta samalla kun uudelle vuokratyöntekijälle annetaan yleisperehdytys. Lomakkeen 2 aihealueiden luettelo toimii muistilistana perehdytyksessä läpikäytävistä asioista. Lomakkeen jälkimmäiseen osaan kirjataan työntekijälle tärkeiden henkilöiden yhteystiedot.\n Kopio täytetystä lomakkeesta tulee antaa työntekijälle ja lähettää myös käyttäjäyritykselle. Täytetystä lomakkeesta käyttäjäyritys näkee mitä asioita yleisperehdytys on sisältänyt. Tämä auttaa käyttäjäyritystä työnopastuksen sisällön suunnittelussa."
+      "formName": "LOMAKE 2 – TYÖNTEKIJÄN YLEISPEREHDYTYS",
+      "title": "(henkilöstöpalveluyrityksen perehdyttäjä täyttää)",
+      "description": "Henkilöstöpalveluyritys ja vuokratyöntekijä tekevät kirjallisen työsopimuksen. Henkilöstöpalveluyritys antaa vuokratyöntekijälle yleisperehdytyksen, jossa käydään läpi mm. työntekijän velvoitteet, työtehtävä ja siinä vaadittava osaaminen, työn vaarat ja erityispiirteet, työvaatetus ja henkilönsuojaimet, työterveyshuolto ja toiminta työtapaturma-, sairastumis- ja muissa vaaratilanteissa."
     },
     "details": [
       "Työntekijän velvoitteet",
@@ -58,13 +63,13 @@
   },
   {
     "order": 4,
-    "title": "Opastus työhön ja työoloihin",
+    "title": "4. Opastus työhön ja työoloihin",
     "parties": ["Käyttäjäyriys", "Vuokratyöntekijä"],
     "subtitle": "KÄYTTÄJÄYRITYKSEN ANTAMASSA TYÖNOPASTUKSESSA LÄPIKÄYTÄVIÄ ASIOITA MUUN MUASSA",
     "form": {
-      "formName": "Lomake 3",
-      "title": "TÄYTÄ LOMAKE 3 TYÖNOPASTUKSEN YHTEYDESSÄ",
-      "description": "Lomake 3 on tarkoitus täyttää käyttäjäyrityksen vuokratyöntekijälle antaman työnopastuksen päätteeksi. Lomakkeen 3 aihealueiden luettelo toimii tarkistuslistana työnopastuksessa läpikäytävistä asioista. Lomakkeeseen täytetään myös vuokratyöntekijän käyttäjäyrityksessä toimivan esimiehen yhteystiedot.\nKopio täytetystä lomakkeesta tulee antaa työntekijälle ja lähettää myös vuokrayritykselle. Täytetty lomake toimii eräänlaisena todisteena käyttäjäyrityksen työnopastuksen antamisesta."
+      "formName": "LOMAKE 3 – TYÖNOPASTUS",
+      "title": "(käyttäjäyrityksen työnopastaja täyttää)",
+      "description": "Käyttäjäyritys opastaa vuokratyöntekijän työhön ja työoloihin. Työnopastuksessa käydään läpi mm. työtehtävät ja turvalliset työtavat, työssä esiintyvät haitta- ja vaaratekijät ja niiltä suojautuminen, työajat ja tauot, toiminta onnettomuus- ja poikkeustilanteissa, turvallisuushavaintojen tekeminen sekä tiedotuskäytännöt."
     },
     "details": [
       "Työtehtävät sekä turvalliset ja terveelliset työtavat",
@@ -80,33 +85,19 @@
   },
   {
     "order": 5,
-    "title": "Työsuoritus valvonta",
+    "title": "5. Työsuoritus valvonta",
     "parties": ["Käyttäjäyriys", "Vuokratyöntekijä"],
     "subtitle": "HYVIÄ PERIAATTEITA",
+    "form": {
+      "formName": "LOMAKE 4 – TOIMINNAN ARVIOINTI",
+      "title": "",
+      "description": "Vuokratyöntekijän työtä johtaa ja valvoo käyttäjäyritys. Henkilöstöpalveluyrityksen, käyttäjäyrityksen ja vuokratyöntekijän on hyvä keskustella ja antaa palautetta toisilleen koko vuokratyötoimeksiannon ajan."
+    },
     "details": [
       "Nimetään työpari/ohjaaja, joka auttaa, tukee ja valvoo vuokratyöntekijää erityisesti ensimmäisten päivien ajan",
       "Vuokratyöntekijä sopeutetaan työyhteisöön",
       "Vuokratyöntekijöitä kohdellaan tasavertaisesti vakituisten työntekijöiden kanssa"
     ],
     "notes": ["VUOKRATYÖNTEKIJÄN TYÖN VALVONNASTA VASTAA AINA KÄYTTÄJÄYRITYS!"]
-  },
-  {
-    "order": 6,
-    "title": "Palaute ja toiminnan arviointi",
-    "parties": ["Vuokrayritys", "Käyttäjäyriys"],
-    "subtitle": "ASIAKKUUDEN LOPUKSI VUOKRAYRITYS JA KÄYTTÄJÄYRITYS",
-    "form": {
-      "formName": "Lomake 4",
-      "title": "TÄYTÄ LOMAKE 4 TOIMINNAN ARVIOINNIN YHTEYDESSÄ",
-      "description": "Lomake 4 on tarkoitus täyttää vuokrayrityksen ja käyttäjäyrityksen välisen loppupalaverin aikana. Loppupalaverissa tehdään yhteenveto toimeksiannon ja erityisesti työturvallisuuden varmistamisen sujumisesta. Lomakkeen alussa on muistilista toiminnan arvioinnissa läpikäytävistä asioista. Lomakkeen loppuosaan tulee kirjoittaa ylös toiminnan arvioinnin ja yhteisen analysoinnin aikana esiinnousseet olennaisimmat asiat (sekä toimeksiannon onnistumiset että kehittämistä vaativat asiat). \nTäytetystä lomakkeesta (tai sen kopiosta) tulee jäädä oma kappale molemmille osapuolille. Lomakkeeseen kirjattujen asioiden pohjalta yritykset voivat kehittää työturvallisuustoimintaansa seuraavassa vuokratyötoimeksiannossa. \nVuokratyöntekijöiltä on hyvä kerätä palautetta sekä käyttäjäyrityksessä että vuokrayrityksessä koko toimeksiannon ja työsuhteen ajan samoin kuin omilta työntekijöiltä esim. turvallisuushavaintoina, kehityskeskusteluissa ja muissa keskusteluissa. Myös vuokratyöntekijöille on hyvä antaa jatkuvasti sekä positiivista että kehittävää palautetta."
-    },
-    "details": [
-      "Vuokratyöntekijöiden antaman turvallisuuspalautteen (työtapaturmat, muut vaaratilanteet ja muu turvallisuuspalaute)",
-      "Miten vuokratyöntekijät suoriutuivat työstään (riittikö heidän osaamisensa/ammattitaitonsa, oliko annettu perehdytys riittävä jne.)",
-      "Vuokratyöntekijöille sattuneet työtapaturmat ja mitä niistä opittiin",
-      "Miten hyvin toimi tiedonkulku akselilla vuokrayritys- käyttäjäyritys-vuokratyöntekijät",
-      "Käyttäjäyrityksen yleisen palautteen vuokrayritykselle",
-      "Vuokrayrityksen yleisen palautteen käyttäjäyritykselle"
-    ]
   }
 ]

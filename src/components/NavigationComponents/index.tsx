@@ -8,6 +8,7 @@ import TopAppBar from './TopAppBarType';
 import ResponsiveDrawer from './ResponsiveDrawer';
 import navConstants from '../../constants/navConstants';
 import clsx from 'clsx';
+import Footer from '../../pages/LandingPage/Footer';
 // const drawerWidth = navConstants.DRAWER_WIDTH
 
 /**
@@ -46,13 +47,12 @@ const AppNavigation = (props: { windowProp: any; children: ReactNode }) => {
     windowProp !== undefined ? () => windowProp().document.body : undefined;
 
   return (
-    <div className={classes.root}>
+    <div  className={classes.root}>
       <TopAppBar open={open} handleDrawerToggle={handleDrawer} />
-
       <nav className={classes.drawer} aria-label="mailbox folders">
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden lgUp implementation="css">
-          <Drawer
+          <Drawer 
             container={container}
             variant="temporary"
             anchor={theme.direction === 'rtl' ? 'right' : 'left'}
@@ -87,11 +87,12 @@ const AppNavigation = (props: { windowProp: any; children: ReactNode }) => {
           </Drawer>
         </Hidden>
       </nav>
-
       <div className={classes.content}>
         {/*Extra toolbar to prevent content from going under top nav bar*/}
-        <div className={classes.toolbar} style={{height:`${85}px`}}/>
+        <div className={classes.toolbar} style={{height:`${150}px`}}/>
         {children}
+        <div style={{backgroundColor: '#F47D20', height: '15px', width: '100%', marginTop: '500px'}}></div>
+        <Footer ></Footer>
       </div>
     </div>
   );
@@ -121,6 +122,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     paddingRight: 0,
     marginLeft: '0%',
+    backgroundColor: '#FDFDFD',
     [theme.breakpoints.down('lg')]: {
       marginLeft: 'auto',
     },
@@ -131,12 +133,14 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
+    backgroundColor: '#FDFDFD',
   },
   drawerClose: {
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    backgroundColor: '#FDFDFD',
     display: "none",
     overflowX: 'hidden',
     width: theme.spacing(7) + 1,
