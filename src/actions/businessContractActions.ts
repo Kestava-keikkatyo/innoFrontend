@@ -89,7 +89,7 @@ export const deleteEmploymentAgreement = (id: string) => async (dispatch: any) =
  * @desc Function for worker or business to sign employment contract
  * @param {string} contractId EmploymentContract Id
  */
-export const acceptEmploymentAgreement = (id: string) => async (dispatch: any) => {
+export const signEmploymentAgreement = (id: string) => async (dispatch: any) => {
   const res = await contractsService.signEmploymentContractById(id)
   const r = await contractsService.fetchEmploymentContractsAsWorkerOrBusiness()
 

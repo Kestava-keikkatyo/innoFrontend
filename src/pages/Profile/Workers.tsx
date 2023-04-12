@@ -3,8 +3,6 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchAllWorkers } from '../../actions/usersActions';
 import makeStyles from '@mui/styles/makeStyles';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next'
@@ -12,14 +10,23 @@ import i18next from 'i18next'
 
 const Workers: React.FC = () => {
   const { t } = useTranslation()
-  const classes = useStyles();
-  const dispatch = useDispatch();
-  const { users } = useSelector((state: IRootState) => state.users || []);
-  useEffect(() => {
-    dispatch(fetchAllWorkers());
-  }, [dispatch]);
+  const classes = useStyles()
+  const dispatch = useDispatch()
+  const users = useSelector((state: IRootState) => state.user.contacts)
+  const workers: any[] = []
+
+  if (users[0]) {
+    users.forEach((user) => {
+    if (user.userType == "worker") {
+      workers.push(user)
+    }
+  }) 
+  }
+  
   let rows = [];
-  rows = users;
+  rows = workers;
+
+
   const columns: GridColumns = [
     {
       field: 'name',
@@ -86,6 +93,9 @@ return (
       pageSize={10}
       rowsPerPageOptions={[10]}
   />
+  <Typography gutterBottom variant="h1" className='header2'> 
+    <Link href="/employment" className={classes.link} to={'/employment'}>{t('add_workers_to_business')}</Link> 
+  </Typography>
 </div>
 );
 }
@@ -106,6 +116,10 @@ const useStyles = makeStyles(() => ({
     objectFit: 'cover',
     marginRight: '10px',
   },
+  link: {
+    color: "black",
+    textDecoration: "underline"
+  }
 }));
 
 export default Workers;

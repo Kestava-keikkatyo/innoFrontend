@@ -16,7 +16,7 @@ import {
 } from '../types/state'
 import i18next from 'i18next'
 import { data } from 'jquery'
-import { loadUser } from '../utils/storage'
+import { insertContactData, loadUser } from '../utils/storage'
 
 /**
  * @function
@@ -72,7 +72,6 @@ export const fetchAgencyContacts = () => async (dispatch: any) => {
   try {
     const users = await usersService.fetchAgencyContacts()
     for (const user in users) {
-    //  insertContactData(users[user][0]._id)
       userList.push(users[user][0])
     }
   } catch (error) {
@@ -82,6 +81,7 @@ export const fetchAgencyContacts = () => async (dispatch: any) => {
     })
     await setAlert('Failed to fetch ' + loadUser().role + ' contacts: ' + error, severity.Error, 15)(dispatch)
   }
+  insertContactData(userList)
   dispatch({ type: FETCH_CONTACTS_SUCCESS, data: userList.flat() })
 }
 
@@ -96,7 +96,6 @@ export const fetchBusinessContacts = () => async (dispatch: any) => {
   try {
     const users = await usersService.fetchBusinessContacts()
     for (const user in users) {
-    //  insertContactData(users[user][0]._id)
       userList.push(users[user][0])
     }
   } catch (error) {
@@ -106,6 +105,7 @@ export const fetchBusinessContacts = () => async (dispatch: any) => {
     })
     await setAlert('Failed to fetch ' + loadUser().role + ' contacts: ' + error, severity.Error, 15)(dispatch)
   }
+  insertContactData(userList)
   dispatch({ type: FETCH_CONTACTS_SUCCESS, data: userList.flat() })
 }
 
@@ -120,9 +120,7 @@ export const fetchWorkerContacts = () => async (dispatch: any) => {
   try {
     const users = await usersService.fetchWorkerContacts()
     for (const user in users) {
-    //  insertContactData(users[user][0]._id)
       userList.push(users[user][0])
-      dispatch({ type: FETCH_CONTACTS_SUCCESS, data: users[user][0] })
     }
   } catch (error) {
     dispatch({
@@ -131,6 +129,7 @@ export const fetchWorkerContacts = () => async (dispatch: any) => {
     })
     await setAlert('Failed to fetch ' + loadUser().role + ' contacts: ' + error, severity.Error, 15)(dispatch)
   }
+  insertContactData(userList)
   dispatch({ type: FETCH_CONTACTS_SUCCESS, data: userList.flat() })
 }
 

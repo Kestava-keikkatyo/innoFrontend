@@ -11,7 +11,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   deleteEmploymentAgreement,
-  acceptEmploymentAgreement,
+  signEmploymentAgreement,
 } from '../../actions/businessContractActions';
 import { severity, User } from '../../types/types';
 import { setAlert } from '../../actions/alertActions';
@@ -19,6 +19,8 @@ import SendIcon from '@mui/icons-material/Send';
 import CloseIcon from '@mui/icons-material/Close';
 import { useTranslation } from 'react-i18next';
 import Tooltip from '@mui/material/Tooltip';
+import { loadUser, removeContactData, removeContactDataById } from '../../utils/storage';
+import { fetchBusinessContacts, fetchWorkerContacts } from '../../actions/usersActions';
 
 
 const EmploymentContractRow: React.FC<any> = ({ view, contract }) => {
@@ -27,15 +29,34 @@ const EmploymentContractRow: React.FC<any> = ({ view, contract }) => {
   const { t } = useTranslation();
 
 
-  function rejectContract(contractId: string): void {
-    dispatch(deleteEmploymentAgreement(contractId))
-    dispatch(setAlert('Employment request rejected!', severity.Success));
+  function deleteContract(contract: any): void {
+    dispatch(deleteEmploymentAgreement(contract._id))
+    dispatch(setAlert('Contract deleted!', severity.Success));
+
+    removeContactData()
+    switch(loadUser().role) {
+      case "business":
+        dispatch(fetchBusinessContacts())
+        break
+      case "worker":
+        dispatch(fetchWorkerContacts())
+        break
+    }
   }
 
-  function signContract(contractId: string): void {
-    const status = "signed"
-    dispatch(acceptEmploymentAgreement(contractId))
-    dispatch(setAlert('Employment request accepted!', severity.Success));
+  function signContract(contract: any): void {
+    dispatch(signEmploymentAgreement(contract._id))
+    dispatch(setAlert('Contract accepted!', severity.Success));
+    
+    removeContactData()
+    switch(loadUser().role) {
+      case "business":
+        dispatch(fetchBusinessContacts())
+        break
+      case "worker":
+        dispatch(fetchWorkerContacts())
+        break
+    }
   }
 
   if (!contract)
@@ -64,7 +85,7 @@ const EmploymentContractRow: React.FC<any> = ({ view, contract }) => {
       >
       <Tooltip title="Delete" placement="top" arrow>
         <IconButton
-          onClick={() => rejectContract(contract._id)}
+          onClick={() => deleteContract(contract)}
           size="large">
           <CloseIcon />
         </IconButton>
@@ -79,7 +100,7 @@ const EmploymentContractRow: React.FC<any> = ({ view, contract }) => {
       <Tooltip title="Sign" placement="top" arrow>
         <IconButton
           style={{ color: '#eb5a00' }}
-          onClick={() => signContract(contract._id)}
+          onClick={() => signContract(contract)}
           size="large">
           <SendIcon />
         </IconButton>
