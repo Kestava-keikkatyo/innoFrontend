@@ -221,7 +221,8 @@ export default {
 
     // Employment page
     connect_workers_to_business: 'Connect workers to business',
-    employment_no_recipient: "You must choose recipient",
+    employment_no_recipient: 'You must choose recipient',
+    employ: 'Employ',
 
     // Contact information
     phone: 'Phone',

@@ -22,18 +22,19 @@ import { setAlert } from '../../actions/alertActions';
 import { E_SET_CURRENT } from '../../types/state';
 import { submitEmploymentAgreement } from '../../actions/businessContractActions';
 import { string } from 'prop-types';
+import { useParams } from 'react-router-dom';
 
 
 export interface EmploymentProps {}
   
 const EmploymentPage: React.FC<EmploymentProps> = () => {
-    const currentForm = useSelector((state: any) => state.employmentAgreements.currentAgreement);
     const classes = useStyles();
+    const dispatch = useDispatch();
+    const currentForm = useSelector((state: any) => state.employmentAgreements.currentAgreement);
     const { data, ...user } = useSelector((state: any) => state.user);
     const userContacts: User[] = useSelector((state: any) => state.user.contacts);
     const { t } = useTranslation()
-    const dispatch = useDispatch();
-   
+    
     const businesses: User[] = []
     const workers: User[] = []
     
@@ -52,7 +53,7 @@ const EmploymentPage: React.FC<EmploymentProps> = () => {
     const [filterWorkers, setFilterWorkers] = useState('');
     const [filterBusinesses, setFilterBusinesses] = useState('');
   
-    /**If current report has some recipients already (received from redux store),
+    /**If current agreement has some recipients already (received from redux store),
      * set those as default.
      * */
     const [selectedWorker, setSelectedWorker] = useState(currentForm.worker ? currentForm.worker : "")
@@ -89,17 +90,11 @@ const EmploymentPage: React.FC<EmploymentProps> = () => {
             try {
                 dispatch(submitEmploymentAgreement(currentForm))
                 dispatch(
-                    setAlert(
-                        `Success: Contract request sent`,
-                        severity.Success
-                    )
+                    setAlert( `Success: Contract request sent`, severity.Success)
                 )
             } catch (error) {
                 dispatch(
-                    setAlert(
-                        `Failure: Contract request not sent`,
-                        severity.Success
-                    )
+                    setAlert(`Failure: Contract request not sent`, severity.Success)
                 )
             }
         }

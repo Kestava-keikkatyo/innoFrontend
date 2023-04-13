@@ -7,25 +7,33 @@ import makeStyles from '@mui/styles/makeStyles';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
+import { E_SET_CURRENT } from '../../types/state';
 
 const Workers: React.FC = () => {
   const { t } = useTranslation()
   const classes = useStyles()
   const dispatch = useDispatch()
+  const userType = useSelector((state: IRootState) => state.user.data.role)
   const users = useSelector((state: IRootState) => state.user.contacts)
+  const currentForm = useSelector((state: any) => state.employmentAgreements.currentAgreement);
+
   const workers: any[] = []
 
   if (users[0]) {
     users.forEach((user) => {
-    if (user.userType == "worker") {
-      workers.push(user)
-    }
-  }) 
+      if (user.userType == "worker") {
+        workers.push(user)
+      }
+    }) 
   }
+  
+  const setEmploymentFormWorker = (id: any) => {
+    const employmentForm = { ...currentForm, worker: id }
+    dispatch({ type: E_SET_CURRENT, data: employmentForm})
+  };
   
   let rows = [];
   rows = workers;
-
 
   const columns: GridColumns = [
     {
@@ -47,13 +55,13 @@ const Workers: React.FC = () => {
       headerName: (i18next.t('list_email')),
       minWidth: 200,
       flex: 1
-    },
+    },/*
     {
       field: 'city', 
       headerName: (i18next.t('list_city')), 
       minWidth: 125,
       flex: 1
-    },
+    }, */
     {
       field: 'userType', 
       headerName: (i18next.t('list_position')), 
@@ -66,9 +74,13 @@ const Workers: React.FC = () => {
       minWidth: 100,
       flex: 1,
       renderCell: (params) => {
-      return (
-      <>
-      <Link to={'/workers/profile/' + params.id}>{t('list_profile')}</Link>
+        return (
+        <>
+        <Link className={classes.link} to={'/workers/profile/' + params.id}>{t('list_profile')}</Link>
+
+        { (userType === "agency") &&
+          <Link to={'/employment/'} onClick={() => setEmploymentFormWorker(params.id)}>{t('employ')}</Link>
+        }
       </>
       );
     },
@@ -93,9 +105,6 @@ return (
       pageSize={10}
       rowsPerPageOptions={[10]}
   />
-  <Typography gutterBottom variant="h1" className='header2'> 
-    <Link href="/employment" className={classes.link} to={'/employment'}>{t('add_workers_to_business')}</Link> 
-  </Typography>
 </div>
 );
 }
@@ -117,8 +126,7 @@ const useStyles = makeStyles(() => ({
     marginRight: '10px',
   },
   link: {
-    color: "black",
-    textDecoration: "underline"
+    marginRight: '6px'
   }
 }));
 

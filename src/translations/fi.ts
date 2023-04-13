@@ -218,7 +218,8 @@ export default {
 
      // Employment page
      connect_workers_to_business: 'Liitä työntekijöitä käyttäjäyritykseen',
-     employment_no_recipient: "Sinun täytyy valita vastaanottaja",
+     employment_no_recipient: 'Sinun täytyy valita vastaanottaja',
+     employ: 'Työllistä',
 
     // Contact information
     phone: 'Puhelin',
