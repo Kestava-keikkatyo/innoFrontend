@@ -174,7 +174,7 @@ const fetchEmploymentContractsAsAgency = async () => {
     const res = await axios.get(`${baseUrl}/agreement/employment/agency`, authHeader());
     return res.data;
   } catch (error) {
-    return { docs: [] };
+    console.log(error);
   }
 };
 

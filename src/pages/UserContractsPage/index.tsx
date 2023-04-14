@@ -105,7 +105,7 @@ const UserContractsPage = () => {
       }
     });
   }
-  
+
   if (employmentContracts.length) {
     employmentContracts.map((contract: any) => {
       if (contract.status === 'pending') {

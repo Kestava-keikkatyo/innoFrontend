@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Typography from '@mui/material/Typography';
 import {
   Theme,
@@ -11,16 +11,22 @@ import makeStyles from '@mui/styles/makeStyles';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   deleteEmploymentAgreement,
+  fetchBusinessContractsAsTarget,
   signEmploymentAgreement,
 } from '../../actions/businessContractActions';
 import { severity, User } from '../../types/types';
 import { setAlert } from '../../actions/alertActions';
-import SendIcon from '@mui/icons-material/Send';
-import CloseIcon from '@mui/icons-material/Close';
+import { 
+  Send as SendIcon, 
+  Delete as DeleteIcon,
+  DoneAll as AllSignedIcon,
+  HourglassEmpty as PendingIcon
+} from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 import Tooltip from '@mui/material/Tooltip';
-import { loadUser, removeContactData, removeContactDataById } from '../../utils/storage';
+import { loadUser, removeContactData as removeAllContactData } from '../../utils/storage';
 import { fetchBusinessContacts, fetchWorkerContacts } from '../../actions/usersActions';
+import { green, red, yellow } from '@mui/material/colors';
 
 
 const EmploymentContractRow: React.FC<any> = ({ view, contract }) => {
@@ -31,9 +37,8 @@ const EmploymentContractRow: React.FC<any> = ({ view, contract }) => {
 
   function deleteContract(contract: any): void {
     dispatch(deleteEmploymentAgreement(contract._id))
-    dispatch(setAlert('Contract deleted!', severity.Success));
-
-    removeContactData()
+    dispatch(setAlert('Contract deleted!', severity.Success))
+    removeAllContactData()
     switch(loadUser().role) {
       case "business":
         dispatch(fetchBusinessContacts())
@@ -46,9 +51,8 @@ const EmploymentContractRow: React.FC<any> = ({ view, contract }) => {
 
   function signContract(contract: any): void {
     dispatch(signEmploymentAgreement(contract._id))
-    dispatch(setAlert('Contract accepted!', severity.Success));
-    
-    removeContactData()
+    dispatch(setAlert('Contract accepted!', severity.Success))
+    removeAllContactData()
     switch(loadUser().role) {
       case "business":
         dispatch(fetchBusinessContacts())
@@ -58,6 +62,10 @@ const EmploymentContractRow: React.FC<any> = ({ view, contract }) => {
         break
     }
   }
+
+  useEffect(() => {
+    dispatch(fetchBusinessContractsAsTarget());
+  }, [dispatch])
 
   if (!contract)
   return (
@@ -73,21 +81,30 @@ const EmploymentContractRow: React.FC<any> = ({ view, contract }) => {
 
   return (
     <TableRow key={contract._id}>
-      <TableCell align="left">{contract.creator.companyName}</TableCell> 
+      <TableCell component="th" scope="row" align="left">
+          {contract.status === "signed" && 
+            <><Tooltip title="Each recipient has signed" placement="top" arrow>
+              <AllSignedIcon sx={{ color: green[500] }}/>
+            </Tooltip></>}
+          {contract.status === "pending" && 
+            <><Tooltip title="Pending until each recipient has signed" placement="top" arrow>
+                <PendingIcon sx={{ color: yellow[800] }} />
+            </Tooltip></>}
+      </TableCell>  
       <TableCell align="left">{t("employment_request")}</TableCell>
-      <TableCell component="th" scope="row" align="left">{contract.status}</TableCell>
+      <TableCell align="left">{contract.creator.companyName}</TableCell>
+      <TableCell align="left">{contract.business.companyName}</TableCell> 
       <TableCell align="left">{contract.worker.email}</TableCell>
-      <TableCell align="left">{contract.business.companyName}</TableCell>
       <TableCell
         padding="none"
         align="left"
         style={{ paddingLeft: 5 }}
       >
-      <Tooltip title="Delete" placement="top" arrow>
+      <Tooltip title="Delete and remove connection between recipients" placement="top" arrow>
         <IconButton
           onClick={() => deleteContract(contract)}
           size="large">
-          <CloseIcon />
+            <DeleteIcon sx={{ color: red[500] }}/>
         </IconButton>
       </Tooltip>
       </TableCell>
@@ -102,7 +119,7 @@ const EmploymentContractRow: React.FC<any> = ({ view, contract }) => {
           style={{ color: '#eb5a00' }}
           onClick={() => signContract(contract)}
           size="large">
-          <SendIcon />
+            <SendIcon />
         </IconButton>
       </Tooltip>
       </TableCell>

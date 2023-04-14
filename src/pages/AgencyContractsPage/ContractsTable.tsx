@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../utils/store";
-import { Typography, Grid } from '@mui/material';
+import { Typography, Grid, Tooltip } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import {
   declineBusinessContract,
@@ -26,7 +26,11 @@ import {
   useTheme,
   Theme,
 } from '@mui/material';
-import { Delete as DeleteIcon } from '@mui/icons-material';
+import { 
+  Delete as DeleteIcon,
+  DoneAll as SignedIcon,
+  HourglassEmpty as PendingIcon
+} from '@mui/icons-material';
 import {
   Accordion,
   AccordionDetails,
@@ -34,6 +38,7 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { deleteBusinessContractForm } from '../../actions/businessContractFormActions';
+import { green, red, yellow } from '@mui/material/colors';
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -133,7 +138,14 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
                 .map((contract: any) => (
                   <TableRow key={contract._id}>
                     <TableCell component="th" scope="row" align="left">
-                      {contract.status}
+                      {contract.status === "signed" && 
+                        <><Tooltip title="Signed" placement="top" arrow>
+                          <SignedIcon sx={{ color: green[500] }} />
+                        </Tooltip></>}
+                      {contract.status === "pending" && 
+                        <><Tooltip title="Pending" placement="top" arrow>
+                          <PendingIcon sx={{ color: yellow[800] }} />
+                        </Tooltip></>}
                     </TableCell>
                     <TableCell align="left">
                       {contract.target.email}
@@ -144,13 +156,15 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
                       align="left"
                       style={{ paddingLeft: 5 }}
                     >
-                      <IconButton
-                        aria-label="remove contract"
-                        color="secondary"
-                        onClick={() => deleteContract(contract._id, contract.creator)}
-                        size="large">
-                        <DeleteIcon />
-                      </IconButton>
+                      <Tooltip title="Delete contract and remove connection" placement="top" arrow>
+                        <IconButton
+                          aria-label="remove contract"
+                          color="secondary"
+                          onClick={() => deleteContract(contract._id, contract.creator)}
+                          size="large">
+                            <DeleteIcon sx={{ color: red[500] }}/>
+                        </IconButton>
+                      </Tooltip>
                     </TableCell>
                   </TableRow>
                 ))}
