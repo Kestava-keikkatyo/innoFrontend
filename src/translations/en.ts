@@ -220,8 +220,9 @@ export default {
     transfer_company_profile: 'Go to company profile',
 
     // Employment page
-    connect_workers_to_business: 'Connect workers to business',
-    employment_no_recipient: "You must choose recipient",
+    connect_workers_to_business_info: 'Choose recipients for employment proposal',
+    employment_no_recipient: 'You must choose recipient',
+    employ: 'Employ',
 
     // Contact information
     phone: 'Phone',
@@ -269,11 +270,17 @@ export default {
     make_contract: 'Make a contract',
     contracts: 'Contracts',
     contracts_overview: 'Contracts overview',
+    employment_contracts_overview: 'Employment overview',
     creator: 'Creator',
+    company: 'Company',
     request_type: 'Type',
     contact_request: 'Contact request',
     employment_request: 'Employment',
-    add_workers_to_business: 'Connect workers to business',
+    connect_workers_to_business: 'Create employment proposals',
+    worker_email: 'Worker',
+    business_name: 'Business',
+    worker_signed: 'Worker signed',
+    business_signed: 'Business signed',
 
     // Rental Work Model
     rwm_responsibilities: 'Responsibilities',

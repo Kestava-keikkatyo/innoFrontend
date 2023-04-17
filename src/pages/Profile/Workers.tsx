@@ -3,23 +3,38 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchAllWorkers } from '../../actions/usersActions';
 import makeStyles from '@mui/styles/makeStyles';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
+import { E_SET_CURRENT } from '../../types/state';
 
 const Workers: React.FC = () => {
   const { t } = useTranslation()
-  const classes = useStyles();
-  const dispatch = useDispatch();
-  const { users } = useSelector((state: IRootState) => state.users || []);
-  useEffect(() => {
-    dispatch(fetchAllWorkers());
-  }, [dispatch]);
+  const classes = useStyles()
+  const dispatch = useDispatch()
+  const userType = useSelector((state: IRootState) => state.user.data.role)
+  const users = useSelector((state: IRootState) => state.user.contacts)
+  const currentForm = useSelector((state: any) => state.employmentAgreements.currentAgreement);
+
+  const workers: any[] = []
+
+  if (users[0]) {
+    users.forEach((user) => {
+      if (user.userType == "worker") {
+        workers.push(user)
+      }
+    }) 
+  }
+  
+  const setEmploymentFormWorker = (id: any) => {
+    const employmentForm = { ...currentForm, worker: id }
+    dispatch({ type: E_SET_CURRENT, data: employmentForm})
+  };
+  
   let rows = [];
-  rows = users;
+  rows = workers;
+
   const columns: GridColumns = [
     {
       field: 'name',
@@ -40,13 +55,13 @@ const Workers: React.FC = () => {
       headerName: (i18next.t('list_email')),
       minWidth: 200,
       flex: 1
-    },
+    },/*
     {
       field: 'city', 
       headerName: (i18next.t('list_city')), 
       minWidth: 125,
       flex: 1
-    },
+    }, */
     {
       field: 'userType', 
       headerName: (i18next.t('list_position')), 
@@ -59,9 +74,13 @@ const Workers: React.FC = () => {
       minWidth: 100,
       flex: 1,
       renderCell: (params) => {
-      return (
-      <>
-      <Link to={'/workers/profile/' + params.id}>{t('list_profile')}</Link>
+        return (
+        <>
+        <Link className={classes.link} to={'/workers/profile/' + params.id}>{t('list_profile')}</Link>
+
+        { (userType === "agency") &&
+          <Link to={'/employment/'} onClick={() => setEmploymentFormWorker(params.id)}>{t('employ')}</Link>
+        }
       </>
       );
     },
@@ -106,6 +125,9 @@ const useStyles = makeStyles(() => ({
     objectFit: 'cover',
     marginRight: '10px',
   },
+  link: {
+    marginRight: '6px'
+  }
 }));
 
 export default Workers;

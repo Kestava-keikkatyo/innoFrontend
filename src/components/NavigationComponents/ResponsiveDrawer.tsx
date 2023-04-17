@@ -166,7 +166,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               </ListItemButton>
             </>
           )}
-          {role === roles.Agency && (
+          {(role === roles.Agency || role === roles.Business) && (
             <>
               <ListItemButton style={{ backgroundColor: colors.employees }} component={Link} to="/workers" onClick={() => handleClick("employees")} className={classes.button}>
                 <ListItemIcon>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { me } from '../../actions/userActions';
-import { addAgencyContract, fetchBusinessContracts } from '../../actions/businessContractActions';
+import { addAgencyContract, fetchBusinessContracts, fetchEmploymentContractsAsAgency } from '../../actions/businessContractActions';
 import PageLoading from '../../components/PageLoading';
 import SearchTable from './SearchTable';
 import ContractsTable from './ContractsTable';
@@ -23,6 +23,7 @@ import { IRootState } from '../../utils/store';
 import { useTranslation } from 'react-i18next';
 import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
+import EmploymentContractsTable from './EmploymentContractsTable';
 import InviteCodeGenerator from './InviteCodeGenerator';
 
 interface TabPanelProps {
@@ -72,6 +73,8 @@ const AgencyContractsPage = () => {
   const { businessContract } = useSelector(
     (state: IRootState) => state.businessContracts
   );
+  const employmentContracts = useSelector((state: any) => state.employmentAgreements.agreements);
+
   const dispatch = useDispatch();
   const classes = useStyles();
   const theme = useTheme();
@@ -85,6 +88,7 @@ const AgencyContractsPage = () => {
   useEffect(() => {
     dispatch(me());
     dispatch(fetchBusinessContracts());
+    dispatch(fetchEmploymentContractsAsAgency())
   }, [dispatch, data.role]);
 
   const sendContractProposal = (workerOrBusiness: any) => {
@@ -124,7 +128,7 @@ const AgencyContractsPage = () => {
           {t('make_contract')}
         </Typography>
 
-        <InviteCodeGenerator userId={data._id} />
+        <SearchTable addWorkerOrBusiness={sendContractProposal} />
 
         <Typography style={{ paddingTop: '1rem' }} variant="h1" className='header'>
           {t('contracts_overview')}
@@ -134,6 +138,11 @@ const AgencyContractsPage = () => {
         <Typography gutterBottom variant="h1" className='header2'>
           <Link href="/employment" underline="hover" className={classes.link}>{t('add_workers_to_business')}</Link>
         </Typography>
+
+        <Typography style={{ paddingTop: '1rem' }} variant="h1" className='header'>
+          {t('employment_contracts_overview')}
+        </Typography>
+        <EmploymentContractsTable employmentContracts={employmentContracts} />
 
       </TabPanel>
 
@@ -172,8 +181,11 @@ const useStyles = makeStyles((theme) => ({
     minWidth: '33.33%',
     maxWidth: '33.33%',
   },
-  link: {
-    color: "black",
-    textDecoration: "underline"
+  employmentHeader: {
+    fontWeight: '400',
+    fontSize: '1.75rem',
+    lineHeight: '1.334',
+    marginTop: '5%',
+    marginBottom: '5%'
   }
 }));
