@@ -23,6 +23,8 @@ import {
 import { IRootState } from '../../utils/store';
 import { useTranslation } from 'react-i18next';
 import ContractsView from './ContractsView';
+import { AddCircleOutline } from '@mui/icons-material';
+import InvitationCodeInput from './InvitationCodeInput';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -105,7 +107,7 @@ const UserContractsPage = () => {
       }
     });
   }
-  
+
   if (employmentContracts.length) {
     employmentContracts.map((contract: any) => {
       if (contract.status === 'pending') {
@@ -164,6 +166,22 @@ const UserContractsPage = () => {
             }
             {...a11yProps(1)}
           />
+          <Tab
+            className={classes.tab}
+            label={matches ? ' ' : 'input invitation code'}
+            icon={
+              <Badge color="secondary">
+                {matches ? (
+                  <Tooltip title="Invitation code" placement="top" arrow>
+                    <AddCircleOutline />
+                  </Tooltip>
+                ) : (
+                  <AddCircleOutline />
+                )}
+              </Badge>
+            }
+            {...a11yProps(2)}
+          />
         </Tabs>
       </AppBar>
       <Divider />
@@ -172,6 +190,9 @@ const UserContractsPage = () => {
       </TabPanel>
       <TabPanel value={value} index={1}>
         <ContractsView view="signed" contracts={signed} employmentContracts={emplSigned} />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <InvitationCodeInput />
       </TabPanel>
     </Container>
   );
