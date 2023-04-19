@@ -24,6 +24,7 @@ import { useTranslation } from 'react-i18next';
 import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
 import EmploymentContractsTable from './EmploymentContractsTable';
+import InviteCodeGenerator from './InviteCodeGenerator';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -126,15 +127,16 @@ const AgencyContractsPage = () => {
         <Typography gutterBottom variant="h1" className='header2'>
           {t('make_contract')}
         </Typography>
-        <SearchTable addWorkerOrBusiness={sendContractProposal} />
+
+        <InviteCodeGenerator userId={data._id} />
 
         <Typography style={{ paddingTop: '1rem' }} variant="h1" className='header'>
           {t('contracts_overview')}
         </Typography>
         <ContractsTable businessContract={businessContract} />
 
-        <Typography gutterBottom variant="h1" className={classes.employmentHeader}> 
-          <Link href="/employment" underline="hover">{t('connect_workers_to_business')}</Link> 
+        <Typography gutterBottom variant="h1" className='header2'>
+          <Link href="/employment" underline="hover">{t('add_workers_to_business')}</Link>
         </Typography>
 
         <Typography style={{ paddingTop: '1rem' }} variant="h1" className='header'>
