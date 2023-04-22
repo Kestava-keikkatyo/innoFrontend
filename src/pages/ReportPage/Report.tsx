@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 import { Theme } from '@mui/material/styles';
-
 import createStyles from '@mui/styles/createStyles';
 import makeStyles from '@mui/styles/makeStyles';
-
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -125,6 +123,7 @@ const Report: React.FC<any> = ({ report }) => {
     <div className={classes.root}>
       <Accordion>
         <AccordionSummary
+        style={{border: '2px solid #F47D20'}}
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1c-content"
           id="panel1c-header"
@@ -174,7 +173,7 @@ const Report: React.FC<any> = ({ report }) => {
               /**UnArchiveButton */
               <Button 
                 variant='outlined' 
-                color='secondary' 
+               
                 startIcon={<UnarchiveIcon />} 
                 onClick= {handleUnarchive}
                 sx={{
@@ -187,13 +186,15 @@ const Report: React.FC<any> = ({ report }) => {
               :
               /**ArchiveButton */
               <Button 
+              style={{border: '2px solid white', color: 'black', fontWeight: 'bold'}}
                 variant='outlined' 
-                color='secondary' 
-                startIcon={<ArchiveIcon />} 
+                startIcon={<ArchiveIcon style={{color: 'black'}}/>} 
                 onClick= {handleArchive}
                 sx={{
                   float: 'right', 
-                  marginTop: '16px'
+                  marginTop: '16px',
+                  color: 'black', 
+                  backgroundColor: '#F47D20',
                 }}
               >
                 {t('report_archive')}

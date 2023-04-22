@@ -1,4 +1,4 @@
-import {CircularProgress, Button, TextField} from '@mui/material';
+import { TextField } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Field, Form, Formik } from 'formik';
@@ -16,7 +16,7 @@ const WorkPerformanceForm: React.FC = () => {
 
     return (
         <>
-            <h2 className={classes.center}>{t('form4Header')}</h2>
+            <h2>{t('form4Header')}</h2>
             <Formik
                 initialValues={{
                 }}
@@ -64,18 +64,17 @@ const WorkPerformanceForm: React.FC = () => {
                             {t('form4Check9')}
                         </label>
                         <h4>{t('form4Text4')}</h4>
-                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
+                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10} />
                         <h4>{t('form4Text5')}</h4>
-                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
+                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10} />
                         <h4 className={classes.marginTop}>{t('form4Text6')}:</h4>
                         <h4>{t('rentalCompanyCaps')}</h4>
-                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
+                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10} />
                         <h4>{t('userCompanyCaps')}</h4>
-                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
+                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10} />
                         <h4>{t('cooperation')}</h4>
-                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
+                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10} />
                     </Box>
-                    {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="primary" className={classes.submitButton}>{t('submit')}</Button>}
                 </Form>
             </Formik>
         </>

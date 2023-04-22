@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Box, Button } from '@mui/material';
+import { Box, Button, ThemeProvider, createTheme } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { useParams, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -34,7 +34,7 @@ const ReceivedDetails: React.FC = () => {
     }, [dispatch, feedbackId]);
     const classes = useStyles();
 
-    if(!feedbackData) return (
+    if (!feedbackData) return (
         <PageLoading />
     );
 
@@ -46,89 +46,103 @@ const ReceivedDetails: React.FC = () => {
         expectation: t('feedback_expectation'),
     };
 
+    const theme = createTheme({
+        typography: {
+            fontFamily: 'Montserrat, serif',
+            fontSize: 15,
+            fontWeightBold: 'bold',
+            allVariants: {
+                color: "black"
+            },
+        },
+
+    });
+
     return (
-        <div className={classes.feedback}>
-            <div className={classes.feedbackTitleContainer}>
-                <Typography color="secondary" className={classes.feedbackTitle} variant="h4">{t('feedback_title_details')}</Typography>
-            </div>
-            <div className={classes.back}>
-                <Button className={classes.backButton} color="secondary" component={Link} to="/receivedFeedbacks">{t('back')}</Button>
-            </div>
-            <div className={classes.feedbackContainer}>
-                <div className={classes.feedbackShow}>
-                    <div className={classes.feedbackShowInfo}>
-                        <span className={classes.feedbackShowTitle}>{t('feedback_sender')}: </span>
-                        <span className={classes.feedbackShowInfoTitle}>
-                            { feedbackData.anonymous ? t('anonymous') : feedbackData.senderName }
-                        </span>
-                    </div>
-                    <div className={classes.feedbackShowInfo}>
-                        <span className={classes.feedbackShowTitle}>{t('sending_date')}: </span>
-                        <span className={classes.feedbackShowInfoTitle}> { moment(feedbackData.createdAt).format('DD/MM/YYYY') }</span>
-                    </div>
-                    <div className={classes.feedbackShowInfo}>
-                        <span className={classes.feedbackShowTitle}>{t('feedback_anonymity')}: </span>
-                        <span className={classes.feedbackShowInfoTitle}>
-                            { feedbackData.anonymous ? t('feedback_anonymity_yes') : t('feedback_anonymity_no') }
-                        </span>
-                    </div>
+        <ThemeProvider theme={theme}>
+            <div className={classes.feedback}>
+                <div className={classes.feedbackTitleContainer}>
+                    <Typography variant="h1" className='header'>{t('feedback_title_details')}</Typography>
                 </div>
-                <div className={classes.feedbackDescription}>
-                    <span className={classes.feedbackMessageTitle}>{t('feedback_receivedMessage')}</span>
-                    {Object.entries(questions).map(questionEntry => (
-                        <div key={questionEntry[0]}>
-                            <Typography
-                                color="success"
-                                id={questionEntry[0] + '-radio-buttons-group-label'}
-                                className={classes.feedbackShowTitleIcons}
-                                variant="h6"
-                            >
-                                {questionEntry[1]}
-                            </Typography>
-                            {Object.keys(feedbackData).map(key => {
-                                if (key === questionEntry[0]) {
-                                    return (
-                                        <div key={questionEntry[0]}>
-                                            {feedbackData[key] === 1 ?
-                                                <SentimentVeryDissatisfiedIcon className={classes.filledIcon} /> :
-                                                <SentimentVeryDissatisfiedIcon className={classes.icon} />
-                                            }
-                                            {feedbackData[key] === 2 ?
-                                                <SentimentNeutralIcon className={classes.filledIcon} /> :
-                                                <SentimentNeutralIcon className={classes.icon} />
-                                            }
-                                            {feedbackData[key] === 3 ?
-                                                <SentimentSatisfiedAltIcon className={classes.filledIcon} /> :
-                                                <SentimentSatisfiedAltIcon className={classes.icon} />
-                                            }
-                                            {feedbackData[key] === 4 ?
-                                                <SentimentVerySatisfiedIcon className={classes.filledIcon} /> :
-                                                <SentimentVerySatisfiedIcon className={classes.icon} />
-                                            }
-                                            {feedbackData[key + 'Message'] !== '' && (
-                                                <Box sx={{ boxShadow: 3, padding: '5px', borderRadius: '5px', margin: '10px 0' }}>
-                                                    {feedbackData[key + 'Message']}
-                                                </Box>
-                                            )}
-                                        </div>
-                                    )
-                                }
-                            })}
+                <div className={classes.back}>
+                    <Button className={classes.backButton} component={Link} to="/receivedFeedbacks">{t('back')}</Button>
+                </div>
+                <div className={classes.feedbackContainer}>
+                    <div className={classes.feedbackShow}>
+                        <div className={classes.feedbackShowInfo}>
+                            <span className={classes.feedbackShowTitle}>{t('feedback_sender')}: </span>
+                            <span className={classes.feedbackShowInfoTitle}>
+                                {feedbackData.anonymous ? t('anonymous') : feedbackData.senderName}
+                            </span>
                         </div>
-                    ))}
-                    {feedbackData.additionalMessage !== '' && (
-                        <>
-                            <Typography color="success" className={classes.feedbackShowTitle} variant="h6">
-                                {t('feedback_details')}
-                            </Typography>
-                            <Box sx={{ boxShadow: 3, padding: '5px', borderRadius: '5px', margin: '10px 0' }}>
-                                { feedbackData.additionalMessage }
-                            </Box>
-                        </>
-                    )}
+                        <div className={classes.feedbackShowInfo}>
+                            <span className={classes.feedbackShowTitle}>{t('sending_date')}: </span>
+                            <span className={classes.feedbackShowInfoTitle}> {moment(feedbackData.createdAt).format('DD/MM/YYYY')}</span>
+                        </div>
+                        <div className={classes.feedbackShowInfo}>
+                            <span className={classes.feedbackShowTitle}>{t('feedback_anonymity')}: </span>
+                            <span className={classes.feedbackShowInfoTitle}>
+                                {feedbackData.anonymous ? t('feedback_anonymity_yes') : t('feedback_anonymity_no')}
+                            </span>
+                        </div>
+                    </div>
+                    <div className={classes.feedbackDescription}>
+                        <span className={classes.feedbackMessageTitle}>{t('feedback_receivedMessage')}</span>
+                        {Object.entries(questions).map(questionEntry => (
+                            <div key={questionEntry[0]}>
+                                <Typography
+                                    color="success"
+                                    id={questionEntry[0] + '-radio-buttons-group-label'}
+                                    className={classes.feedbackShowTitleIcons}
+                                    variant="h6"
+                                >
+                                    {questionEntry[1]}
+                                </Typography>
+                                {Object.keys(feedbackData).map(key => {
+                                    if (key === questionEntry[0]) {
+                                        return (
+                                            <div key={questionEntry[0]}>
+                                                {feedbackData[key] === 1 ?
+                                                    <SentimentVeryDissatisfiedIcon className={classes.filledIcon} /> :
+                                                    <SentimentVeryDissatisfiedIcon className={classes.icon} />
+                                                }
+                                                {feedbackData[key] === 2 ?
+                                                    <SentimentNeutralIcon className={classes.filledIcon} /> :
+                                                    <SentimentNeutralIcon className={classes.icon} />
+                                                }
+                                                {feedbackData[key] === 3 ?
+                                                    <SentimentSatisfiedAltIcon className={classes.filledIcon} /> :
+                                                    <SentimentSatisfiedAltIcon className={classes.icon} />
+                                                }
+                                                {feedbackData[key] === 4 ?
+                                                    <SentimentVerySatisfiedIcon className={classes.filledIcon} /> :
+                                                    <SentimentVerySatisfiedIcon className={classes.icon} />
+                                                }
+                                                {feedbackData[key + 'Message'] !== '' && (
+                                                    <Box sx={{ boxShadow: 3, padding: '5px', borderRadius: '5px', margin: '10px 0' }}>
+                                                        {feedbackData[key + 'Message']}
+                                                    </Box>
+                                                )}
+                                            </div>
+                                        )
+                                    }
+                                })}
+                            </div>
+                        ))}
+                        {feedbackData.additionalMessage !== '' && (
+                            <>
+                                <Typography color="success" className={classes.feedbackShowTitle} variant="h6">
+                                    {t('feedback_details')}
+                                </Typography>
+                                <Box sx={{ boxShadow: 3, padding: '5px', borderRadius: '5px', margin: '10px 0' }}>
+                                    {feedbackData.additionalMessage}
+                                </Box>
+                            </>
+                        )}
+                    </div>
                 </div>
             </div>
-        </div>
+        </ThemeProvider>
     );
 };
 
@@ -161,7 +175,7 @@ const useStyles = makeStyles(() => ({
     },
     feedbackContainer: {
         display: 'flex',
-        marginTop: '20px'
+        marginTop: '20px',
     },
     feedbackShowTitle: {
         fontSize: '18px',
@@ -211,14 +225,18 @@ const useStyles = makeStyles(() => ({
         paddingTop: '0px'
     },
     backButton: {
+        fontWeight: 'bold',
+        color: 'black',
         fontSize: '14px',
         border: '1px solid',
-        borderColor: 'secondary'
+        borderColor: 'black',
+        backgroundColor: '#F47D20',
     },
     back: {
-        display: 'flex',
-        justifyContent: 'flex-end',
-        alignItems: 'flex-end'
+        marginTop: '20px',
+        //display: 'flex',
+        //justifyContent: 'flex-end',
+        //alignItems: 'flex-end'
     }
 }));
 

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Theme, useTheme } from '@mui/material/styles';
+import { Theme, ThemeProvider, createTheme, useTheme } from '@mui/material/styles';
 import makeStyles from '@mui/styles/makeStyles';
 import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
@@ -14,6 +14,7 @@ import {
   Container,
   Divider,
   Tooltip,
+  Typography,
   useMediaQuery,
 } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
@@ -73,8 +74,7 @@ const UserContractsPage = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const { t } = useTranslation();
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('lg'));
+  
 
   const { businessContract } = useSelector(
     (state: IRootState) => state.businessContracts
@@ -116,20 +116,37 @@ const UserContractsPage = () => {
     });
   }
 
+  const theme = createTheme({
+    typography: {
+      fontFamily: 'Montserrat, serif',
+      fontSize: 15,
+      
+      allVariants: {
+        color: "black"
+      },
+    },
+    
+  });
+
+  const matches = useMediaQuery(theme.breakpoints.down('lg'));
+
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
 
   return (
-    <Container maxWidth="xl" className={classes.root}>
+    <ThemeProvider theme={theme}>
+    <Container maxWidth={false} className={classes.root}>
+        <Typography style={{marginBottom: '1rem'}} variant="h1" className='header'>
+           {t('contracts')}
+          </Typography>
       <Divider />
-      <AppBar position="static" color="transparent">
+      <AppBar style={{backgroundColor: '#C0CFFA', width: '100%', boxShadow: 'none'}} position="static" >
         <Tabs
+          TabIndicatorProps={{style: {background:'black'}}}
           value={value}
           onChange={handleChange}
           variant="fullWidth"
-          indicatorColor="secondary"
-          textColor="primary"
           aria-label="scrollable force tabs example"
         >
           <Tab
@@ -174,6 +191,7 @@ const UserContractsPage = () => {
         <ContractsView view="signed" contracts={signed} employmentContracts={emplSigned} />
       </TabPanel>
     </Container>
+    </ThemeProvider>
   );
 };
 export default UserContractsPage;
@@ -182,8 +200,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
     width: '100%',
-    backgroundColor: theme.palette.background.paper,
-    marginTop: 8,
+    backgroundColor: '#FDFDFD',
+    marginTop: 30,
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),

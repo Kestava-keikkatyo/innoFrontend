@@ -691,7 +691,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
           size="large">
           <MenuIcon />
         </IconButton>
-        <h3 style={{ color: 'black', textTransform: 'uppercase', padding: '5px', fontWeight: 'bold' }}>{t('agencyFrontpage')}</h3>
+        <Typography sx={{fontSize: {md: '20px', sm: '20px', xs: '15px'}}} style={{ margin: '5px 0px 0px 5px', fontFamily: 'Montserrat, serif', color: 'black', textTransform: 'uppercase', padding: '5px', fontWeight: 'bold'}}>{t('agencyFrontpage')}</Typography>
       </div>
     </AppBar>
   )

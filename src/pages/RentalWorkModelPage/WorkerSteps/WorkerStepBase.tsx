@@ -5,10 +5,8 @@ import { Theme, useTheme } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import BusinessIcon from '@mui/icons-material/Business';
 import TaskOutlinedIcon from '@mui/icons-material/TaskOutlined';
 import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
-import AccessibilityOutlinedIcon from '@mui/icons-material/AccessibilityOutlined';
 import {
   Container,
   Tooltip,
@@ -63,7 +61,6 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
           borderLeft: '1px solid #ccc',
           borderRight: '1px solid #ccc',
           borderBottom: '1px solid #ccc',
-
         }}
         role="tabpanel"
         hidden={value !== index}
@@ -80,11 +77,11 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
     <Container maxWidth="xl" className={classes.root}>
       <AppBar position="static" color="transparent">
         <Tabs
+          TabIndicatorProps={{style: {background:'black'}}}
           value={value}
           onChange={handleChange}
           variant="fullWidth"
-          indicatorColor="secondary"
-          textColor="primary"
+          style={{backgroundColor: '#C0CFFA', width: '100%', boxShadow: 'none'}}
           aria-label="scrollable force tabs example"
           centered
         >
@@ -137,26 +134,18 @@ const WorkerStepBase = ({ content }: WorkerStepBaseProps) => {
             {content[0]}
           </Typography>
         </TabPanel>*/}
-
         <TabPanel value={value} index={0}>
-          <Typography variant="h1" color="secondary" className="header">
-            {t('rwm_forms')}
-          </Typography>
           <Typography variant="subtitle1">
             {content[0]}
           </Typography>
         </TabPanel>
-
         <TabPanel value={value} index={1}>
-          <Card>
-          <Typography variant="h1" color="secondary" className="header" padding={2}>
+          <Typography variant="h1"  className="header" padding={2}>
             {t('rwm_good_practices')}
           </Typography>
           <Typography variant="subtitle1">
-            
             {content[1]}
           </Typography>
-          </Card>
         </TabPanel>
       </AppBar>
     </Container>
@@ -169,6 +158,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: '100%',
     backgroundColor: theme.palette.background.paper,
     marginTop: 32,
+    padding: '0'
   },
 }));
 

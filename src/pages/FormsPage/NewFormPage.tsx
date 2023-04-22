@@ -64,7 +64,7 @@ const NewFormPage: React.FC = () => {
   console.log(currentForm);
 
   return (
-  <Container>
+  <Container style={{paddingTop: "50px"}}>
     <form onSubmit={addForm}>
     <NewFormHeader />
     <div className="create-form" >

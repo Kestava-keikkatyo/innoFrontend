@@ -1,4 +1,4 @@
-import {CircularProgress, Button, TextField} from '@mui/material';
+import { TextField } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Field, Form, Formik } from 'formik';
@@ -17,7 +17,7 @@ const CustomerContractForm: React.FC = () => {
 
     return (
         <>
-            <h2 className={classes.center}>{t('form1Header')}</h2>
+            <h2 >{t('form1Header')}</h2>
             <Formik
                 initialValues={{
                 }}
@@ -26,10 +26,14 @@ const CustomerContractForm: React.FC = () => {
                 <Form>
                     <p className={classes.p}>{t('form1Text1')}</p>
                     <Box className={classes.boxRow}>
-                        <h4 className={classes.h4}>{t('rentalCompany')}:</h4>
-                        <FormikTextField className={classes.textField} label={t('rentalCompany')} name={'rentalCompany'} type={'text'}></FormikTextField>
-                        <h4 className={classes.h4}>{t('userCompany')}:</h4>
-                        <FormikTextField className={classes.textField} label={t('userCompany')} name={'userCompany'} type={'text'}></FormikTextField>
+                        <div style={{ width: '100%', marginRight: '20px' }}>
+                            <h4 className={classes.h4}>{t('rentalCompany')}:</h4>
+                            <FormikTextField className={classes.textField} label={t('rentalCompany')} name={'rentalCompany'} type={'text'}></FormikTextField>
+                        </div>
+                        <div style={{ width: '100%' }}>
+                            <h4 className={classes.h4}>{t('userCompany')}:</h4>
+                            <FormikTextField className={classes.textField} label={t('userCompany')} name={'userCompany'} type={'text'}></FormikTextField>
+                        </div>
                     </Box>
                     <label>
                         <Field className={classes.marginTop} type="checkbox" name="check1" />
@@ -37,44 +41,60 @@ const CustomerContractForm: React.FC = () => {
                     </label>
                     <Box className={classes.boxColumn}>
                         <h4 className={classes.marginTop}>{t('form1Text2')}</h4>
-                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
+                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10} />
                         <h4 className={classes.marginTop}>{t('form1Text3')}</h4>
-                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
+                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10} />
                         <h4 className={classes.marginTop}>{t('form1Text4')}</h4>
-                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
+                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10} />
                         <h4 className={classes.marginTop}>{t('form1Text5')}</h4>
-                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
+                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10} />
                         <h4 className={classes.marginTop}>{t('form1Text6')}</h4>
-                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
+                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10} />
                         <h4 className={classes.marginTop}>{t('form1Text7')}</h4>
-                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
+                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10} />
                         <h4 className={classes.marginTop}>{t('form1Text8')}</h4>
-                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
+                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10} />
                     </Box>
                     <h4 className={classes.marginTop}>{t('form1Text9')}:</h4>
                     <Box className={classes.boxRow}>
-                        <h4 className={classes.h4}>{t('name')}:</h4>
-                        <FormikTextField className={classes.textField} label={t('name')} name={'name1'} type={'text'}></FormikTextField>
-                        <h4 className={classes.h4}>{t('user_phone_number')}:</h4>
-                        <FormikTextField className={classes.textField} label={t('user_phone_number')} name={'phonenumber1'} type={'tel'}></FormikTextField>
-                        <h4 className={classes.h4}>{t('email')}:</h4>
-                        <FormikTextField className={classes.textField} label={t('email')} name={'email1'} type={'email'}></FormikTextField>
+                        <div style={{ width: '100%', marginRight: '20px' }}>
+                            <h4 className={classes.h4}>{t('name')}:</h4>
+                            <FormikTextField className={classes.textField} label={t('name')} name={'name1'} type={'text'}></FormikTextField>
+                        </div>
+                        <div style={{ width: '100%' }}>
+                            <h4 className={classes.h4}>{t('user_phone_number')}:</h4>
+                            <FormikTextField className={classes.textField} label={t('user_phone_number')} name={'phonenumber1'} type={'tel'}></FormikTextField>
+                        </div>
                     </Box>
                     <Box className={classes.boxRow}>
-                        <h4 className={classes.h4}>{t('workRoom')}:</h4>
-                        <FormikTextField className={classes.smallerTextField} label={t('workRoom')} name={'workroom1'} type={'text'}></FormikTextField>
+                        <div style={{ width: '100%', marginRight: '20px' }}>
+                            <h4 className={classes.h4}>{t('email')}:</h4>
+                            <FormikTextField className={classes.textField} label={t('email')} name={'email1'} type={'email'}></FormikTextField>
+                        </div>
+                        <div style={{ width: '100%' }}>
+                            <h4 className={classes.h4}>{t('workRoom')}:</h4>
+                            <FormikTextField className={classes.textField} label={t('workRoom')} name={'workroom1'} type={'text'}></FormikTextField>
+                        </div>
                     </Box>
                     <Box className={classes.boxRow}>
-                        <h4 className={classes.h4}>{t('name')}:</h4>
-                        <FormikTextField className={classes.textField} label={t('name')} name={'name2'} type={'text'}></FormikTextField>
-                        <h4 className={classes.h4}>{t('user_phone_number')}:</h4>
-                        <FormikTextField className={classes.textField} label={t('user_phone_number')} name={'phonenumber2'} type={'tel'}></FormikTextField>
-                        <h4 className={classes.h4}>{t('email')}:</h4>
-                        <FormikTextField className={classes.textField} label={t('email')} name={'email2'} type={'email'}></FormikTextField>
+                        <div style={{ width: '100%', marginRight: '20px' }}>
+                            <h4 className={classes.h4}>{t('name')}:</h4>
+                            <FormikTextField className={classes.textField} label={t('name')} name={'name2'} type={'text'}></FormikTextField>
+                        </div>
+                        <div style={{ width: '100%' }}>
+                            <h4 className={classes.h4}>{t('user_phone_number')}:</h4>
+                            <FormikTextField className={classes.textField} label={t('user_phone_number')} name={'phonenumber2'} type={'tel'}></FormikTextField>
+                        </div>
                     </Box>
                     <Box className={classes.boxRow}>
-                        <h4 className={classes.h4}>{t('workRoom')}:</h4>
-                        <FormikTextField className={classes.smallerTextField} label={t('workRoom')} name={'workroom2'} type={'text'}></FormikTextField>
+                        <div style={{ width: '100%', marginRight: '20px' }}>
+                            <h4 className={classes.h4}>{t('email')}:</h4>
+                            <FormikTextField className={classes.textField} label={t('email')} name={'email2'} type={'email'}></FormikTextField>
+                        </div>
+                        <div style={{ width: '100%' }}>
+                            <h4 className={classes.h4}>{t('workRoom')}:</h4>
+                            <FormikTextField className={classes.textField} label={t('workRoom')} name={'workroom2'} type={'text'}></FormikTextField>
+                        </div>
                     </Box>
                     <Box className={classes.boxColumn}>
                         <h4>{t('form1Text10')}:</h4>
@@ -101,27 +121,38 @@ const CustomerContractForm: React.FC = () => {
                     </Box>
                     <Box className={classes.boxColumn}>
                         <h4>{t('form1Text11')}</h4>
-                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
+                        <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10} />
                     </Box>
                     <h4>{t('form1Text12')}</h4>
                     <Box className={classes.boxRow}>
-                        <h4 className={classes.h4}>{t('name')}:</h4>
-                        <FormikTextField className={classes.textField} label={t('name')} name={'name3'} type={'text'}></FormikTextField>
-                        <h4 className={classes.h4}>{t('user_phone_number')}:</h4>
-                        <FormikTextField className={classes.textField} label={t('user_phone_number')} name={'phonenumber3'} type={'tel'}></FormikTextField>
-                        <h4 className={classes.h4}>{t('email')}:</h4>
-                        <FormikTextField className={classes.textField} label={t('email')} name={'email3'} type={'email'}></FormikTextField>
+                        <div style={{ width: '100%', marginRight: '20px' }}>
+                            <h4 className={classes.h4}>{t('name')}:</h4>
+                            <FormikTextField className={classes.textField} label={t('name')} name={'name3'} type={'text'}></FormikTextField>
+                        </div>
+                        <div style={{ width: '100%', marginRight: '20px' }}>
+                            <h4 className={classes.h4}>{t('user_phone_number')}:</h4>
+                            <FormikTextField className={classes.textField} label={t('user_phone_number')} name={'phonenumber3'} type={'tel'}></FormikTextField>
+                        </div>
+                        <div style={{ width: '100%', marginRight: '20px' }}>
+                            <h4 className={classes.h4}>{t('email')}:</h4>
+                            <FormikTextField className={classes.textField} label={t('email')} name={'email3'} type={'email'}></FormikTextField>
+                        </div>
                     </Box>
                     <h4>{t('form1Text13')}</h4>
                     <Box className={classes.boxRow}>
-                        <h4 className={classes.h4}>{t('name')}:</h4>
-                        <FormikTextField className={classes.textField} label={t('name')} name={'name4'} type={'text'}></FormikTextField>
-                        <h4 className={classes.h4}>{t('user_phone_number')}:</h4>
-                        <FormikTextField className={classes.textField} label={t('user_phone_number')} name={'phonenumber4'} type={'tel'}></FormikTextField>
-                        <h4 className={classes.h4}>{t('email')}:</h4>
-                        <FormikTextField className={classes.textField} label={t('email')} name={'email4'} type={'email'}></FormikTextField>
+                        <div style={{ width: '100%', marginRight: '20px' }}>
+                            <h4 className={classes.h4}>{t('name')}:</h4>
+                            <FormikTextField className={classes.textField} label={t('name')} name={'name4'} type={'text'}></FormikTextField>
+                        </div>
+                        <div style={{ width: '100%', marginRight: '20px' }}>
+                            <h4 className={classes.h4}>{t('user_phone_number')}:</h4>
+                            <FormikTextField className={classes.textField} label={t('user_phone_number')} name={'phonenumber4'} type={'tel'}></FormikTextField>
+                        </div>
+                        <div style={{ width: '100%', marginRight: '20px' }}>
+                            <h4 className={classes.h4}>{t('email')}:</h4>
+                            <FormikTextField className={classes.textField} label={t('email')} name={'email4'} type={'email'}></FormikTextField>
+                        </div>
                     </Box>
-                    {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="primary" className={classes.submitButton}>{t('submit')}</Button>}
                 </Form>
             </Formik>
         </>
@@ -148,6 +179,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         marginBottom: '50px'
     },
     boxRow: {
+        width: '100%',
         display: 'flex',
         flexDirection: 'row',
         [theme.breakpoints.down('md')]: {

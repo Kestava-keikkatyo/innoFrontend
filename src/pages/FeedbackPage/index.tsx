@@ -66,7 +66,7 @@ const FeedbackPage: React.FC = () => {
   const value = getQueryParam(history.location.search, 'tab') || 'send';
 
   return (
-    <Container>
+    <Container style={{ marginTop: '100px'}}>
       <AppBar position="static" color="transparent">
         <Tabs
           value={value}

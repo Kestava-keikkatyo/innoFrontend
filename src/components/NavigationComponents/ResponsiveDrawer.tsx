@@ -269,7 +269,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
                     <ListItemText className={classes.buttonText} primary={t('worker_order')} />
                   </ListItemButton>
 
-                  <ListItemButton style={{ backgroundColor: colors.businesses }} sx={{ pl: 4 }} onClick={() => handleClick("businesses")} component={Link} to="/rentalWorkModel/contractOfEmployment" >
+                  <ListItemButton style={{ }} sx={{ pl: 4 }} onClick={() => handleClick("businesses")} component={Link} to="/rentalWorkModel/contractOfEmployment" >
                     <ListItemIcon>
                       <TaskIcon fontSize="small" sx={{ color: iconColor.base }} />
                     </ListItemIcon>

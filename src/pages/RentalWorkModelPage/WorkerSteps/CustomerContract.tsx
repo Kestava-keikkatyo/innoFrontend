@@ -1,10 +1,10 @@
-import { Container } from '@mui/material';
+import { Button,  Container } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import WorkerStepBase from './WorkerStepBase';
 import Typography from '@mui/material/Typography';
 import makeStyles from '@mui/styles/makeStyles';
-import { Theme } from '@mui/material/styles';
+import { Theme, ThemeProvider, createTheme } from '@mui/material/styles';
 import CustomerContractForm from './Forms/CustomerContractForm';
 import SearchFromFileComponent from './SearchFromFileComponent';
 
@@ -12,10 +12,21 @@ const CustomerContract = () => {
   const { t } = useTranslation();
   const classes = useStyles();
 
+  const theme = createTheme({
+    typography: {
+      fontFamily: 'Montserrat, serif',
+      fontSize: 15,
+      allVariants: {
+        color: "black"
+      },
+    },
+  });
+
   const tabContent = [
    /* <div key="tab0">
       <SearchFromFileComponent inputString="worker_step_1" />
     </div>,*/
+
     <div key="tab0">
       <CustomerContractForm/>
     </div>,
@@ -25,12 +36,17 @@ const CustomerContract = () => {
   ]
 
   return (
+    <ThemeProvider theme={theme}>
     <Container maxWidth="xl" className={classes.root}>
-      <Typography variant="h1" color="primary" className={classes.header}>
+      <Typography style={{marginTop: '30px'}} variant="h1" className='header'>
         {t('customer_contract')}
       </Typography>
       <WorkerStepBase content={tabContent} />
+      <Button style={{backgroundColor: '#F47D20', color: 'black', marginTop: '20px'}}>
+      {t('print')}
+        </Button>
     </Container>
+    </ThemeProvider>
   )
 };
 
@@ -38,14 +54,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
     width: '100%',
-    backgroundColor: theme.palette.background.paper,
-    marginTop: 8,
+    backgroundColor: '#FDFDFD',
+    marginTop: '30px',
   },
-  header: {
-    marginLeft: 24,
-    fontSize: theme.typography.pxToRem(38),
-    fontWeight: theme.typography.fontWeightRegular,
-  }
 }));
 
 export default CustomerContract;

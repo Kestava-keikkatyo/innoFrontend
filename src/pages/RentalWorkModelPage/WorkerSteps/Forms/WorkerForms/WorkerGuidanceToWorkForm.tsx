@@ -1,4 +1,4 @@
-import { CircularProgress, Button, Divider } from '@mui/material';
+import {Divider } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Field, Form, Formik } from 'formik';
@@ -60,6 +60,7 @@ const WorkerGuidanceToWorkForm: React.FC = () => {
     return (
         <>
             <Tabs
+                TabIndicatorProps={{ style: { background: 'black' } }}
                 value={value}
                 onChange={handleChange}
                 variant="fullWidth"
@@ -69,19 +70,19 @@ const WorkerGuidanceToWorkForm: React.FC = () => {
                 centered
             >
                 <Tab
-                    style={{marginTop: '30px'}}
+                    style={{ marginTop: '30px' }}
                     label={t('form3Header')}
                     {...a11yProps(0)}
                 />
                 <Tab
-                    style={{marginTop: '30px'}}
+                    style={{ marginTop: '30px' }}
                     label={t('form5Header')}
                     {...a11yProps(1)}
                 />
             </Tabs>
             <Divider />
             <TabPanel value={value} index={0}>
-                <h2 className={classes.center}>{t('form3Header')}</h2>
+                <h2>{t('form3Header')}</h2>
                 <Formik
                     initialValues={{
                     }}
@@ -199,8 +200,6 @@ const WorkerGuidanceToWorkForm: React.FC = () => {
                             <h4 className={classes.h4}>{t('orientated')}:</h4>
                             <FormikTextField className={classes.textField} label={t('orientated')} name={'orientated'} type={'text'}></FormikTextField>
                         </Box>
-                        {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="secondary" disabled className={classes.submitButton}>{t('submit')}</Button>}
-
                     </Form>
                 </Formik>
             </TabPanel>
@@ -212,7 +211,7 @@ const WorkerGuidanceToWorkForm: React.FC = () => {
                     onSubmit={() => { console.log('Submit form5'); }}
                 >
                     <Form>
-                        <h2 className={classes.center}>{t('form5Header')}</h2>
+                        <h2>{t('form5Header')}</h2>
                         <p className={classes.p}>{t('form5Text1')}</p>
                         <h3 className={classes.h3}>{t('form5Text2')}</h3>
                         <Box className={classes.boxColumn}>
@@ -268,7 +267,6 @@ const WorkerGuidanceToWorkForm: React.FC = () => {
                             <h4>{t('form3Check16')}:</h4>
                             <FormikTextField label={t('form3Check16')} name={'askHelp'} type={'text'}></FormikTextField>
                         </Box>
-                        {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="secondary" disabled className={classes.submitButton}>{t('submit')}</Button>}
                     </Form>
                 </Formik>
             </TabPanel>
@@ -309,10 +307,10 @@ const useStyles = makeStyles((theme: Theme) => ({
         flexDirection: 'column',
         color: 'rgba(193, 195, 199)',
     },
-    h3:{
+    h3: {
         color: 'rgba(193, 195, 199)',
     },
-    graytext:{
+    graytext: {
         color: 'rgba(193, 195, 199)',
     },
     h4: {
@@ -351,7 +349,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         left: 0,
         width: '100%',
         height: '100%',
-      
+
     },
     noPointerEvents: {
         pointerEvents: 'none'

@@ -1,9 +1,9 @@
 import React, { SetStateAction, useEffect, useState } from 'react';
-import { Theme } from '@mui/material/styles';
+import { Theme, ThemeProvider, createTheme } from '@mui/material/styles';
 import makeStyles from '@mui/styles/makeStyles';
 import createStyles from '@mui/styles/createStyles';
 import Typography from '@mui/material/Typography';
-import { Box, Container, Fab, FormControl, Grid, InputLabel, MenuItem, Select } from '@mui/material';
+import { Box, Container, Fab, FormControl, Grid, InputLabel, ListItemIcon, MenuItem, Select } from '@mui/material';
 import Report from './Report';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchReports, getMyReports, setReport } from '../../actions/reportActions';
@@ -13,9 +13,10 @@ import { Add } from '@mui/icons-material';
 import { roles } from "../../types/types"
 import { setFiles } from '../../actions/fileActions';
 import { initialReport } from '../../reducers/reportReducer';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
 
 const ReportsPage: React.FC<any> = () => {
-  const user: any = useSelector((state: any) => state.user);  
+  const user: any = useSelector((state: any) => state.user);
   const reports: any = useSelector((state: any) => state.report.reports);
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -48,13 +49,25 @@ const ReportsPage: React.FC<any> = () => {
    * and others get reports sent to them.
    */
   useEffect(() => {
-    if (user.data.role === roles.Worker){
+    if (user.data.role === roles.Worker) {
       dispatch(getMyReports());
     } else {
       dispatch(fetchReports());
     }
-    
+
   }, [dispatch]);
+
+  const theme = createTheme({
+    typography: {
+      fontFamily: 'Montserrat, serif',
+      fontSize: 15,
+
+      allVariants: {
+        color: "black"
+      },
+    },
+
+  });
 
   /**Clear current report before redirecting to new report form */
   const handleNewReport = () => {
@@ -67,77 +80,77 @@ const ReportsPage: React.FC<any> = () => {
 
   /**Comparefunction for sorting reports. 
    * This one sorts by date report created. Newest on top. */
-  const compareFnByDateCreated = (reportA :any, reportB :any) => {
+  const compareFnByDateCreated = (reportA: any, reportB: any) => {
     return new Date(reportB.createdAt).getTime() - new Date(reportA.createdAt).getTime()
   }
 
-  const compareFnByDateCreatedReversed = (reportA :any, reportB :any) => {
+  const compareFnByDateCreatedReversed = (reportA: any, reportB: any) => {
     return compareFnByDateCreated(reportB, reportA)
   }
 
   /**Comparefunction for sorting reports. 
    * This one sorts by date when report event happened (chosen by the reporter).
    * Newest on top. */
-  const compareFnByDateHappened = (reportA :any, reportB :any) => {
+  const compareFnByDateHappened = (reportA: any, reportB: any) => {
     return new Date(reportB.date).getTime() - new Date(reportA.date).getTime()
   }
 
-  const compareFnByDateHappenedReversed = (reportA :any, reportB :any) => {
+  const compareFnByDateHappenedReversed = (reportA: any, reportB: any) => {
     return compareFnByDateHappened(reportB, reportA)
   }
 
-  const compareFnByTitle = (reportA :any, reportB :any) => {
+  const compareFnByTitle = (reportA: any, reportB: any) => {
     return reportA.title.localeCompare(reportB.title)
   }
 
-  const compareFnByTitleReversed = (reportA :any, reportB :any) => {
-    return compareFnByTitle(reportB,reportA)
+  const compareFnByTitleReversed = (reportA: any, reportB: any) => {
+    return compareFnByTitle(reportB, reportA)
   }
 
-  const compareFnByReplied= (reportA :any, reportB :any) => {
+  const compareFnByReplied = (reportA: any, reportB: any) => {
     /** 0 = No one replied
      *  1 = partially replied
      *  2 = all replied
      */
     let aReply = -1;
-    if (reportA.status ==='pending') {
+    if (reportA.status === 'pending') {
       //Kukaan ei ole vastannut raporttiin
-      aReply=0
-    } else if (reportA.agency && reportA.business){
+      aReply = 0
+    } else if (reportA.agency && reportA.business) {
       //Raportilla on kaksi vastaanottajaa
       if (reportA.agencyReply && reportA.businessReply) {
         //Molemmat vastaanottajat ovat vastanneet
-        aReply=2
+        aReply = 2
       } else {
         //Vain toinen vastaanottaja on vastannut
-        aReply=1
+        aReply = 1
       }
     } else {
       //Raportilla on vain yksi vastaanottaja ja tämä on vastannut
-      aReply=2
+      aReply = 2
     }
 
     let bReply = -1;
-    if (reportB.status ==='pending') {
+    if (reportB.status === 'pending') {
       //Kukaan ei ole vastannut raporttiin
-      bReply=0
-    } else if (reportB.agency && reportB.business){
+      bReply = 0
+    } else if (reportB.agency && reportB.business) {
       //Raportilla on kaksi vastaanottajaa
       if (reportB.agencyReply && reportB.businessReply) {
         //Molemmat vastaanottajat ovat vastanneet
-        bReply=2
+        bReply = 2
       } else {
         //Vain toinen vastaanottaja on vastannut
-        bReply=1
+        bReply = 1
       }
     } else {
       //Raportilla on vain yksi vastaanottaja ja tämä on vastannut
-      bReply=2
+      bReply = 2
     }
     return (aReply - bReply)
   }
 
-  const compareFnByRepliedReversed = (reportA :any, reportB :any) => {
+  const compareFnByRepliedReversed = (reportA: any, reportB: any) => {
     return compareFnByReplied(reportB, reportA)
   }
 
@@ -148,53 +161,53 @@ const ReportsPage: React.FC<any> = () => {
   const getFilteredReports = () => {
     /**Select compare-function corresponding to user selection for report sorting. */
     let compareFn = null
-    switch(sorting){
+    switch (sorting) {
       case sortingState.DateCreatedNewToOld:
         compareFn = compareFnByDateCreated
-      break;
+        break;
       case sortingState.DateCreatedOldToNew:
         compareFn = compareFnByDateCreatedReversed
-      break;
+        break;
       case sortingState.DateHappenedNewToOld:
         compareFn = compareFnByDateHappened
-      break;
+        break;
       case sortingState.DateHappenedOldToNew:
         compareFn = compareFnByDateHappenedReversed
-      break;
+        break;
       case sortingState.TitleAtoZ:
         compareFn = compareFnByTitle
-      break;
+        break;
       case sortingState.TitleZtoA:
         compareFn = compareFnByTitleReversed
-      break;
+        break;
       case sortingState.Replied:
         compareFn = compareFnByReplied
-      break;
+        break;
       case sortingState.RepliedReverse:
         compareFn = compareFnByRepliedReversed
-      break;
+        break;
       default:
         compareFn = compareFnByDateCreated
-      break;
+        break;
     }
     /*
     Report has archived-status stored in different fields depending on the user role.
     Here we select the correct field name.
     */
     let archivedRole = ""
-    switch(user.data.userType){
+    switch (user.data.userType) {
       case roles.Worker:
         archivedRole = 'workerArchived'
-      break;
+        break;
       case roles.Agency:
         archivedRole = 'agencyArchived'
-      break;
+        break;
       case roles.Business:
         archivedRole = 'businessArchived'
-      break;
+        break;
     }
     /**Filter reports differently according to display status */
-    switch(display){
+    switch (display) {
       case displayState.All:
         return (
           //Concat with empty array to create a new array for sorting.
@@ -202,7 +215,7 @@ const ReportsPage: React.FC<any> = () => {
             .sort(compareFn)
             .map((report: any) => (
               <Report key={report._id} report={report} />
-          )))
+            )))
         )
       case displayState.Archived:
         return (
@@ -216,39 +229,52 @@ const ReportsPage: React.FC<any> = () => {
       case displayState.NotArchived:
         return (
           [].concat(reports
-          .filter((report: any) => report[archivedRole] === 'false')
-          .sort(compareFn)
-          .map((report: any) => (
-            <Report key={report._id} report={report} />
-          )))
+            .filter((report: any) => report[archivedRole] === 'false')
+            .sort(compareFn)
+            .map((report: any) => (
+              <Report key={report._id} report={report} />
+            )))
         )
     }
   }
   return (
-    <Container maxWidth="lg" className={classes.container}>
-      {/**Grid (row) for containing Reports page title, 
-       * new report button (shown only for worker) and display state selection */} 
-      <Grid 
-      container
-      sx= {{ paddingTop: '1em', paddingBottom: '1em', justifyContent: 'space-between'}}
-      >
-        <Grid item>
-          {/**Reports page title */}
-          <Typography display='inline' variant="h1" className='header' color="primary" sx={{float: 'left', paddingRight: '1em'}}>
-            {t("reports")}
+    <ThemeProvider theme={theme}>
+      <Container maxWidth={false} className={classes.container}>
+        {/**Grid (row) for containing Reports page title, 
+       * new report button (shown only for worker) and display state selection */}
+        <Grid
+          container
+          sx={{ paddingTop: '1em', paddingBottom: '1em', justifyContent: 'space-between' }}
+        >
+          <Grid item>
+            {/**Reports page title */}
+            <Typography display='inline' variant="h1" className='header' sx={{ float: 'left', paddingRight: '1em' }}>
+              {t("reports")}
+            </Typography>
+
+            {/**New report button. Shown only for workers */}
+            {user.data.role === roles.Worker &&
+              <Fab size="medium" color="primary" aria-label="add" onClick={handleNewReport} sx={{ float: 'left' }}>
+                <Add />
+              </Fab>
+            }
+          </Grid>
+
+        </Grid>
+        <div style={{ backgroundColor: '#C0CFFA', padding: '5px', marginBottom: '20px' }}>
+        <div style={{ backgroundColor: '#C0CFFA', display: 'flex', border: '2px solid white', alignItems: 'center'}}>
+          <ListItemIcon>
+            <ErrorOutlineIcon fontSize='large' sx={{ color: 'black', marginLeft: '20px'}} />
+          </ListItemIcon>
+          <Typography style={{ backgroundColor: '#C0CFFA', padding: '20px'  }} >
+            {t('report_intro')}
           </Typography>
-          
-          {/**New report button. Shown only for workers */}
-          {user.data.role === roles.Worker &&   
-            <Fab size="medium" color="primary" aria-label="add" onClick={handleNewReport} sx={{float: 'left'}}>
-              <Add />
-            </Fab> 
-          }
-        </Grid> 
-        <Grid item style={{display: "flex", flexWrap: "wrap"}}>
+        </div>
+        </div>
+        <Grid item style={{ display: "flex", flexWrap: "wrap" }}>
 
           {/**Display state selection. A dropdown list using MUI Select */}
-          <Box sx={{minWidth: '50px', marginRight: "1rem", marginTop: "1rem"}}>
+          <Box sx={{ minWidth: '50px', margin: '10px 10px 0px 0px' }}>
             <FormControl fullWidth>
               <InputLabel id="display-select-label">{t('report_display_label')}</InputLabel>
               <Select
@@ -256,7 +282,7 @@ const ReportsPage: React.FC<any> = () => {
                 id="display-select"
                 value={display}
                 label={t('report_display_label')}
-                onChange={({target}) => setDisplay(target.value as SetStateAction<displayState>)}
+                onChange={({ target }) => setDisplay(target.value as SetStateAction<displayState>)}
               >
                 <MenuItem value={displayState.All}>{t('report_display_all')}</MenuItem>
                 <MenuItem value={displayState.Archived}>{t('report_display_archived')}</MenuItem>
@@ -266,7 +292,7 @@ const ReportsPage: React.FC<any> = () => {
           </Box>
 
           {/**Sorting state selection. A dropdown list using MUI Select */}
-          <Box sx={{minWidth: '200px', marginTop: "1rem"}}>
+          <Box sx={{ minWidth: '200px', margin: "10px 0px 10px 0px" }}>
             <FormControl fullWidth>
               <InputLabel id="sorting-select-label">{t('report_sort_label')}</InputLabel>
               <Select
@@ -274,7 +300,7 @@ const ReportsPage: React.FC<any> = () => {
                 id="sorting-select"
                 value={sorting}
                 label={t('report_sort_label')}
-                onChange={({target}) => setSorting(target.value as SetStateAction<sortingState>)}
+                onChange={({ target }) => setSorting(target.value as SetStateAction<sortingState>)}
               >
                 <MenuItem value={sortingState.DateCreatedNewToOld}>{t('report_sort_date_created_new_to_old')}</MenuItem>
                 <MenuItem value={sortingState.DateCreatedOldToNew}>{t('report_sort_date_created_new_to_old_reverse')}</MenuItem>
@@ -288,20 +314,20 @@ const ReportsPage: React.FC<any> = () => {
             </FormControl>
           </Box>
         </Grid>
-      </Grid>
-      <Typography sx={{marginBottom: "3rem"}}>{t('report_intro')}</Typography> 
-      {reports.length ? (
-        /**Some reports exist so show them as a list of Report-components. */
-        getFilteredReports()
-      ) : (
-        /**No reports found. Show different message according to user role. */
-        user.data.role === roles.Worker ? (
-          <Typography>{t('reports_you_have_no_reports')}</Typography>          
+
+        {reports.length ? (
+          /**Some reports exist so show them as a list of Report-components. */
+          getFilteredReports()
         ) : (
-        <Typography>{t('reports_not_found')}</Typography>
-        )
-      )}
-    </Container>
+          /**No reports found. Show different message according to user role. */
+          user.data.role === roles.Worker ? (
+            <Typography>{t('reports_you_have_no_reports')}</Typography>
+          ) : (
+            <Typography>{t('reports_not_found')}</Typography>
+          )
+        )}
+      </Container>
+    </ThemeProvider>
   );
 };
 const useStyles = makeStyles((theme: Theme) =>
@@ -309,7 +335,7 @@ const useStyles = makeStyles((theme: Theme) =>
     container: {
       flexGrow: 1,
       width: '100%',
-      backgroundColor: theme.palette.background.paper,
+      backgroundColor: '#FDFDFD',
       marginTop: 10,
       paddingBottom: 20,
     },
