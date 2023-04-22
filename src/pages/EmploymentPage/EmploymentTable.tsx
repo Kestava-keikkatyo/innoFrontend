@@ -21,18 +21,20 @@ import { fetchAgencyContacts } from '../../actions/usersActions';
 import { setAlert } from '../../actions/alertActions';
 import { E_SET_CURRENT } from '../../types/state';
 import { submitEmploymentAgreement } from '../../actions/businessContractActions';
+import { string } from 'prop-types';
+import { useParams } from 'react-router-dom';
 
 
 export interface EmploymentProps {}
   
 const EmploymentPage: React.FC<EmploymentProps> = () => {
-    const currentForm = useSelector((state: any) => state.employmentAgreements.currentAgreement);
     const classes = useStyles();
+    const dispatch = useDispatch();
+    const currentForm = useSelector((state: any) => state.employmentAgreements.currentAgreement);
     const { data, ...user } = useSelector((state: any) => state.user);
     const userContacts: User[] = useSelector((state: any) => state.user.contacts);
     const { t } = useTranslation()
-    const dispatch = useDispatch();
-   
+    
     const businesses: User[] = []
     const workers: User[] = []
     
@@ -43,10 +45,6 @@ const EmploymentPage: React.FC<EmploymentProps> = () => {
         businesses.push(user)
       }
     })
-
-    useEffect(() => {
-        dispatch(fetchAgencyContacts());
-      }, [dispatch]); 
   
     /**TODO: More user friendly way of showing filtered recipients. Currently
      * user writes a search term and after that has to click Select-component
@@ -55,13 +53,12 @@ const EmploymentPage: React.FC<EmploymentProps> = () => {
     const [filterWorkers, setFilterWorkers] = useState('');
     const [filterBusinesses, setFilterBusinesses] = useState('');
   
-    /**If current report has some recipients already (received from redux store),
+    /**If current agreement has some recipients already (received from redux store),
      * set those as default.
      * */
     const [selectedWorker, setSelectedWorker] = useState(currentForm.worker ? currentForm.worker : "")
     const [selectedBusiness, setSelectedBusiness] = useState(currentForm.business ? currentForm.business : "")
 
-  
     const handleFilterWorkers = (event: any) => {
       setFilterWorkers(event.target.value);
     };
@@ -70,29 +67,16 @@ const EmploymentPage: React.FC<EmploymentProps> = () => {
       setFilterBusinesses(event.target.value);
     };
 
-  
     /**Select recipient worker */
     const handleSelectedWorker = (event: any) => {
       setSelectedWorker(event.target.value)
-      /**Mui Select does not accept null for empty value. So we need 
-       * to use "" but send null to store when clearing selection. 
-       * */
-      /*
-      const valueForDB = event.target.value === "" ? null : event.target.value 
-      dispatch({ type: SET_WORKER, data: valueForDB }); */
-      
-     const valueForDB = { ...currentForm, worker: event.target.value }
-     dispatch({ type: E_SET_CURRENT, data: valueForDB})
-
+      const valueForDB = { ...currentForm, worker: event.target.value }
+      dispatch({ type: E_SET_CURRENT, data: valueForDB})
     };
   
     /**Select recipient business */
     const handleSelectedBusiness = (event: any) => {
       setSelectedBusiness(event.target.value)
-      /**Mui Select does not accept null for empty value. So we need 
-       * to use "" but send null to store when clearing selection. 
-       * */
-      //const valueForDB = event.target.value === "" ? null : event.target.value 
       const valueForDB = { ...currentForm, business: event.target.value }
       dispatch({ type: E_SET_CURRENT, data: valueForDB });
     };
@@ -106,17 +90,11 @@ const EmploymentPage: React.FC<EmploymentProps> = () => {
             try {
                 dispatch(submitEmploymentAgreement(currentForm))
                 dispatch(
-                    setAlert(
-                        `Success: Contract request sent`,
-                        severity.Success
-                    )
+                    setAlert( `Success: Contract request sent`, severity.Success)
                 )
             } catch (error) {
                 dispatch(
-                    setAlert(
-                        `Failure: Contract request not sent`,
-                        severity.Success
-                    )
+                    setAlert(`Failure: Contract request not sent`, severity.Success)
                 )
             }
         }
@@ -143,12 +121,12 @@ const EmploymentPage: React.FC<EmploymentProps> = () => {
               style={{ maxHeight: 50 }}
               onChange={handleSelectedBusiness}
             >
-              {businesses.sort((a: any, b: any) => a.companyName.localeCompare(b.companyName)) // Sort alphabetically and filter by search term. Return a list of Menuitems
+              {businesses/*.sort((a: any, b: any) => a.companyName.localeCompare(b.companyName)) // Sort alphabetically and filter by search term. Return a list of Menuitems
                 .filter((business: any) =>
                   business.companyName
                     .toLowerCase()
                     .includes(filterBusinesses.toLowerCase())
-                )
+                )*/
                 .map((business: any) => (
                   <MenuItem key={business._id} value={business._id}>
                     {business.companyName}

@@ -400,3 +400,9 @@ export interface BusinessContractForm {
   questions: Array<Question>
   filled: boolean
 }
+
+
+export interface InviteCode {
+  code: string;
+  userId: string;
+}

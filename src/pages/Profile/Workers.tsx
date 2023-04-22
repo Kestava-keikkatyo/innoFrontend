@@ -3,12 +3,11 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchAllWorkers } from '../../actions/usersActions';
 import makeStyles from '@mui/styles/makeStyles';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
+import { E_SET_CURRENT } from '../../types/state';
 import { ThemeProvider, createTheme } from '@mui/material';
 
 const Workers: React.FC = () => {
@@ -16,7 +15,9 @@ const Workers: React.FC = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { users } = useSelector((state: IRootState) => state.users || []);
-
+  const users = useSelector((state: IRootState) => state.user.contacts)
+  const currentForm = useSelector((state: any) => state.employmentAgreements.currentAgreement);
+  
   const theme = createTheme({
     typography: {
       fontFamily: 'Montserrat, serif',
@@ -30,8 +31,25 @@ const Workers: React.FC = () => {
   useEffect(() => {
     dispatch(fetchAllWorkers());
   }, [dispatch]);
+  
+  const workers: any[] = []
+
+  if (users[0]) {
+    users.forEach((user) => {
+      if (user.userType == "worker") {
+        workers.push(user)
+      }
+    }) 
+  }
+  
+  const setEmploymentFormWorker = (id: any) => {
+    const employmentForm = { ...currentForm, worker: id }
+    dispatch({ type: E_SET_CURRENT, data: employmentForm})
+  };
+  
   let rows = [];
-  rows = users;
+  rows = workers;
+
   const columns: GridColumns = [
     {
       field: 'name',
@@ -82,6 +100,14 @@ const Workers: React.FC = () => {
           </>
         );
       },
+        <>
+        <Link className={classes.link} to={'/workers/profile/' + params.id}>{t('list_profile')}</Link>
+
+        { (userType === "agency") &&
+          <Link to={'/employment/'} onClick={() => setEmploymentFormWorker(params.id)}>{t('employ')}</Link>
+        }
+      </>
+      );
     },
   ];
 
@@ -136,6 +162,9 @@ const useStyles = makeStyles(() => ({
     objectFit: 'cover',
     marginRight: '10px',
   },
+  link: {
+    marginRight: '6px'
+  }
 }));
 
 export default Workers;

@@ -217,8 +217,9 @@ export default {
     transfer_company_profile: 'Siirry yrityksen profiiliin',
 
      // Employment page
-     connect_workers_to_business: 'Liitä työntekijöitä käyttäjäyritykseen',
-     employment_no_recipient: "Sinun täytyy valita vastaanottaja",
+     connect_workers_to_business_info: 'Valitse vastaanottajat keikkatyöehdotuksen luomiseksi',
+     employment_no_recipient: 'Sinun täytyy valita vastaanottaja',
+     employ: 'Työllistä',
 
     // Contact information
     phone: 'Puhelin',
@@ -266,11 +267,18 @@ export default {
     make_contract: 'Tee sopimus',
     contracts: 'Sopimukset',
     contracts_overview: 'Sopimusten yleiskatsaus',
+    employment_contracts_overview: 'Keikkatöiden yleiskatsaus',
     creator: 'Lähettäjä',
+    recipient: 'Vastaanottaja',
     request_type: 'Tyyppi',
     contact_request: 'Yhteyspyyntö',
     employment_request: 'Työtarjous',
-    add_workers_to_business: 'Lisää työntekijöitä käyttäjäyritykseen',
+    connect_workers_to_business: 'Luo keikkatyötarjous',
+    worker_email: 'Työntekijä',
+    business_name: 'Yritys',
+    worker_signed: 'Työntekijän allekirjoitus',
+    business_signed: 'Yrityksen allekirjoitus',
+    action: 'Toiminnot',
 
     // Rental Work Model
     rwm_responsibilities: 'Vastuut',
@@ -299,6 +307,7 @@ export default {
 
     // MyFormsTable
     delete: 'Poista',
+    reject: 'Hylkää',
 
     // FormsPage
     my_forms: 'Lomakkeeni',

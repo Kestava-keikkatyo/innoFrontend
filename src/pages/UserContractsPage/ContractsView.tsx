@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Theme,
   ToggleButtonGroup,
@@ -12,7 +12,9 @@ import {
 import makeStyles from '@mui/styles/makeStyles';
 import { useTranslation } from 'react-i18next';
 import ContractRow from './ContractRow';
-import EmploymentRow from './EmploymentRow';
+import EmploymentContractRow from './EmploymentContractRow';
+import { fetchBusinessContractsAsTarget, fetchEmploymentContractsAsWorkerOrBusiness } from '../../actions/businessContractActions';
+import { useDispatch } from 'react-redux';
 
 /**
  * @component
@@ -23,7 +25,7 @@ export const ContractsView = (prop: { view: string, contracts: any[], employment
   const classes = useStyles();
   const { t } = useTranslation();
   const { view, contracts, employmentContracts } = prop;
-  const [filter, setFilter] = React.useState('all')
+  const [filter, setFilter] = React.useState('agency')
 
   const handleChange = (event: React.MouseEvent<HTMLElement>, value: string) => {
     event.preventDefault()
@@ -32,15 +34,15 @@ export const ContractsView = (prop: { view: string, contracts: any[], employment
 
   const showContracts = (type: string) => {
     switch (type) {
-      case 'all':
+      case 'agency':
         return contracts.map((contract: any) => (
           <ContractRow key={contract._id} view={view} contract={contract} />
         ))
 
       case 'employment':
-        if(employmentContracts[0]) {
+        if (employmentContracts[0]) {
           return employmentContracts.map((contract: any) => (
-            <EmploymentRow key={contract._id} view={view} contract={contract} />
+            <EmploymentContractRow key={contract._id} view={view} contract={contract} />
           ))
         }
 
@@ -54,7 +56,7 @@ export const ContractsView = (prop: { view: string, contracts: any[], employment
   }
 
   const contractStatuses = [
-    { status: 'all' },
+   // { status: 'all' },
     { status: 'agency' },
     { status: 'employment' }
   ]
@@ -80,17 +82,29 @@ export const ContractsView = (prop: { view: string, contracts: any[], employment
         </ToggleButtonGroup>
         <Table>
           <TableHead>
-            <TableRow>
-              <TableCell align="left">{t("creator")}</TableCell>          
-              <TableCell align="left">{t("request_type")}</TableCell>
-              <TableCell align="left">{t("status")}</TableCell>
-              <TableCell align="left">{t("worker")}</TableCell>
-              <TableCell align="left">{t("business")}</TableCell>
-              <TableCell align="left">{t("delete")}</TableCell>
-              {view == "pending" &&
+            {filter === "agency" && 
+              <TableRow>
+                <TableCell align="left">{t("status")}</TableCell>
+                <TableCell align="left">{t("request_type")}</TableCell>
+                <TableCell align="left">{t("creator")}</TableCell>          
+                <TableCell align="left">{t("recipient")}</TableCell>
+                <TableCell align="left">{t("delete")}</TableCell>
+                {view == "pending" &&
                   <TableCell align="left">{t("accept")}</TableCell>
-              }
-            </TableRow>
+                } 
+              </TableRow> }
+            {filter === "employment" && 
+              <TableRow>
+                <TableCell align="left">{t("status")}</TableCell>
+                <TableCell align="left">{t("request_type")}</TableCell>
+                <TableCell align="left">{t("creator")}</TableCell>
+                <TableCell align="left">{t("business_name")}</TableCell>
+                <TableCell align="left">{t("worker_email")}</TableCell>
+                <TableCell align="left">{t("delete")}</TableCell>
+                {view == "pending" &&
+                  <TableCell align="left">{t("accept")}</TableCell>
+                } 
+              </TableRow> }            
           </TableHead>
           <TableBody>{showContracts(filter)}</TableBody>
         </Table>

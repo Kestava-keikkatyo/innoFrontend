@@ -3,22 +3,15 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import makeStyles from '@mui/styles/makeStyles';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
-import { fetchAgencyContacts } from '../../actions/usersActions';
 
 const AgencyWorkers: React.FC = () => {
   const { t } = useTranslation()
   const classes = useStyles();
-  const dispatch = useDispatch();
   const users = useSelector((state: IRootState) => state.user.contacts);
-
-  useEffect(() => {
-      dispatch(fetchAgencyContacts());
-  }, [dispatch]) 
 
   let rows = []
   if (users != undefined) {

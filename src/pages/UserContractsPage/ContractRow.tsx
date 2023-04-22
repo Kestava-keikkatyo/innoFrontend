@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Typography from '@mui/material/Typography';
 import {
   Accordion,
@@ -13,21 +13,25 @@ import {
   TableCell,
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  refuseBusinessContractById,
+  deleteBusinessContractById,
+  fetchBusinessContractsAsTarget,
   sendBusinessContract,
 } from '../../actions/businessContractActions';
 import { severity } from '../../types/types';
 import { setAlert } from '../../actions/alertActions';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import SendIcon from '@mui/icons-material/Send';
-import EditIcon from '@mui/icons-material/Edit';
-import SaveAltIcon from '@mui/icons-material/SaveAlt';
-import CloseIcon from '@mui/icons-material/Close';
+import { 
+  Send as SendIcon, 
+  Delete as DeleteIcon,
+  DoneAll as AllSignedIcon,
+  HourglassEmpty as PendingIcon
+} from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 import Tooltip from '@mui/material/Tooltip';
+import { loadUser } from '../../utils/storage';
+import { green, red, yellow } from '@mui/material/colors';
+import { fetchBusinessContacts, fetchWorkerContacts } from '../../actions/usersActions';
 
 
 const ContractRow: React.FC<any> = ({ view, contract }) => {
@@ -35,66 +39,67 @@ const ContractRow: React.FC<any> = ({ view, contract }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  function rejectContract(userId: string, contractId: string): void {
-    dispatch(
-      refuseBusinessContractById(
-        userId,
-        contractId
-      )
-    )
-    dispatch(setAlert('Business contract form sent!', severity.Success));
+  function deleteContract(userId: string, contractId: string): void {
+    dispatch(deleteBusinessContractById(userId, contractId))
+    dispatch(setAlert('Contract deleted!', severity.Success))
   }
 
   function signContract(id: string): void {
     let status = "signed"
-    dispatch(
-      sendBusinessContract(
-        id,
-        status
-      )
-    )
-    dispatch(setAlert('Business contract form sent!', severity.Success));
+    dispatch(sendBusinessContract(id, status))
+    dispatch(setAlert('Contract accepted!', severity.Success))
   }
 
-
+  
   return (
-    <TableRow key={contract._id}>
-      <TableCell align="left">{contract.creator.companyName}</TableCell>  
+    <TableRow key={contract._id}>    
+      <TableCell component="th" scope="row" align="left">
+          {contract.status === "signed" && 
+            <><Tooltip title="Each party has signed" placement="top" arrow>
+                <AllSignedIcon sx={{ color: green[500] }} />
+            </Tooltip></>}
+          {contract.status === "pending" && 
+            <><Tooltip title="Pending until each party has signed" placement="top" arrow>
+                <PendingIcon sx={{ color: yellow[800] }} />
+            </Tooltip></>}
+      </TableCell>
       <TableCell align="left">{t("contact_request")}</TableCell>
-      <TableCell component="th" scope="row" align="left">{contract.status}</TableCell>
+      <TableCell align="left">{contract.creator.companyName}</TableCell>  
       <TableCell align="left">{contract.target.email}</TableCell>
-      <TableCell align="left"> - </TableCell>
       <TableCell
         padding="none"
         align="left"
         style={{ paddingLeft: 5 }}
       >
-        <Tooltip title="Hylkää Sopimus" placement="top" arrow>
+        <Tooltip title="Delete and remove connection" placement="top" arrow>
           <IconButton
-            onClick={() => rejectContract(contract.target, contract._id)}
+            onClick={() => deleteContract(contract.target, contract._id)}
             size="large">
-            <CloseIcon />
+              <DeleteIcon sx={{ color: red[500] }}/>
           </IconButton>
         </Tooltip>
       </TableCell>
+
       {view == "pending" &&
         <TableCell
           padding="none"
           align="left"
           style={{ paddingLeft: 5 }}
         >
-          <Tooltip title="Allekirjoita sopimus" placement="top" arrow>
+          <Tooltip title="Sign" placement="top" arrow>
             <IconButton
               style={{ color: '#eb5a00' }}
               onClick={() => signContract(contract._id)}
               size="large">
-              <SendIcon />
+                <SendIcon />
             </IconButton>
           </Tooltip>
         </TableCell>
       }
-    </TableRow>
+
+      </TableRow>
   );
+  
 };
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -132,3 +137,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }))
 
 export default ContractRow;
+
+function removeAllContactData() {
+  throw new Error('Function not implemented.');
+}
