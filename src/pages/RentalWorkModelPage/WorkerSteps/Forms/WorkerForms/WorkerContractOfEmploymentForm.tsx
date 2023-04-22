@@ -1,4 +1,4 @@
-import {CircularProgress, Button, Tooltip, Divider, TextField, Card} from '@mui/material';
+import { CircularProgress, Button, Divider, TextField } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Field, Form, Formik } from 'formik';
@@ -10,7 +10,6 @@ import { useSelector } from 'react-redux';
 import { IRootState } from '../../../../../utils/store';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
-
 
 const WorkerContractOfEmploymentForm: React.FC = () => {
     const { t } = useTranslation();
@@ -59,6 +58,7 @@ const WorkerContractOfEmploymentForm: React.FC = () => {
     return (
         <>
             <Tabs
+                TabIndicatorProps={{ style: { background: 'black' } }}
                 value={value}
                 onChange={handleChange}
                 variant="fullWidth"
@@ -68,19 +68,19 @@ const WorkerContractOfEmploymentForm: React.FC = () => {
                 centered
             >
                 <Tab
-                    style={{marginTop: '30px'}}
+                    style={{ marginTop: '30px' }}
                     label={t('form2Header')}
                     {...a11yProps(0)}
                 />
                 <Tab
-                    style={{marginTop: '30px'}}
+                    style={{ marginTop: '30px' }}
                     label={t('form5Header')}
                     {...a11yProps(1)}
                 />
             </Tabs>
             <Divider />
             <TabPanel value={value} index={0}>
-                <h2 className={classes.center}>{t('form2Header')}</h2>
+                <h2>{t('form2Header')}</h2>
                 <Formik
                     initialValues={{
                     }}
@@ -181,7 +181,7 @@ const WorkerContractOfEmploymentForm: React.FC = () => {
                         </Box>
                         <Box className={classes.boxColumn}>
                             <h4>{t('form2Text9')}</h4>
-                            <TextField placeholder={t('textAreaPlaceholder')} multiline rows={4}/>
+                            <TextField placeholder={t('textAreaPlaceholder')} multiline rows={4} />
                         </Box>
                         <h4 className={classes.marginTop}>{t('form2Text10')}</h4>
                         <Box className={classes.boxRow}>
@@ -230,7 +230,7 @@ const WorkerContractOfEmploymentForm: React.FC = () => {
                     onSubmit={() => { console.log('Submit form5'); }}
                 >
                     <Form>
-                        <h2 className={classes.center}>{t('form5Header')}</h2>
+                        <h2>{t('form5Header')}</h2>
                         <p className={classes.p}>{t('form5Text1')}</p>
                         <h3 className={classes.h3}>{t('form5Text2')}</h3>
                         <Box className={classes.boxColumn}>
@@ -286,7 +286,6 @@ const WorkerContractOfEmploymentForm: React.FC = () => {
                             <h4>{t('form3Check16')}:</h4>
                             <FormikTextField label={t('form3Check16')} name={'askHelp'} type={'text'}></FormikTextField>
                         </Box>
-                        {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="secondary" disabled className={classes.submitButton}>{t('submit')}</Button>}
                     </Form>
                 </Formik>
             </TabPanel>
@@ -310,8 +309,8 @@ const useStyles = makeStyles((theme: Theme) => ({
         textAlign: 'center',
         color: 'rgba(148, 150, 153)',
     },
-    cards:{
-        margin:10
+    cards: {
+        margin: 10
     },
     p: {
         textAlign: 'left',
@@ -330,10 +329,10 @@ const useStyles = makeStyles((theme: Theme) => ({
         flexDirection: 'column',
         color: 'rgba(193, 195, 199)',
     },
-    h3:{
+    h3: {
         color: 'rgba(193, 195, 199)',
     },
-    graytext:{
+    graytext: {
         color: 'rgba(193, 195, 199)',
     },
     h4: {
@@ -362,7 +361,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         display: 'block',
         margin: '0 auto',
         marginTop: '50px',
-        
+
     },
     marginBottom: {
         marginBottom: '30px'
@@ -374,7 +373,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
 
     noPointerEvents: {
-        pointerEvents: 'none',     
+        pointerEvents: 'none',
     }
 }));
 

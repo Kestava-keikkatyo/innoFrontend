@@ -1315,5 +1315,8 @@ export default {
  
      //Other
      Name: 'Name',
-     contactInformation: 'Contact information'
+     contactInformation: 'Contact information',
+     check_new_reports: 'Check new reports',
+     print: 'Print pdf',
+
 }

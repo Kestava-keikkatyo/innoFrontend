@@ -1311,7 +1311,10 @@ export default {
 
     //Other
     name: 'Nimi',
-    contactInformation: 'Henkilön yhteystiedot'
+    contactInformation: 'Henkilön yhteystiedot',
+
+    check_new_reports: 'Katso uusimmat turvallisuusraportit',
+    print: 'Tulosta pdf',
 
 }
 
