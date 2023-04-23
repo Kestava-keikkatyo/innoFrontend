@@ -93,9 +93,7 @@ const Businesses: React.FC = () => {
     <ThemeProvider theme={theme}>
       <div style={{ height: '75vh', width: '100%', padding: '0 1rem' }}>
         <div>
-          <Typography className={'header'}
-            style={{ marginTop: '25px', marginBottom: '15px' }}
-            variant="h1">
+          <Typography  variant="h6" style={{ marginTop: '30px', marginBottom: '20px', fontWeight: 'bold' }}>
             {t('list_title_businesses')}</Typography>
         </div>
         <DataGrid

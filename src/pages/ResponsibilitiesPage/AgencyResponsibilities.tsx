@@ -22,8 +22,8 @@ const AgencyResponsibilities = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid className={classes.root} style={{ backgroundColor: '#FDFDFD', marginRight: '0' }}>
-        <Typography variant="h1" className={classes.header}>
+      <Grid className={classes.root}>
+        <Typography variant="h6" style={{fontWeight: 'bold', marginLeft: '20px'}}>
           {t('responsibilities')}
         </Typography>
         <Typography variant="subtitle1">
@@ -44,10 +44,9 @@ const AgencyResponsibilities = () => {
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    flexGrow: 1,
     width: '100%',
     backgroundColor: "#FDFDFD",
-    marginTop: 32,
+    marginTop: 30,
     padding: '0'
   },
   header: {

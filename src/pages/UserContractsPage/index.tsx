@@ -139,7 +139,7 @@ const UserContractsPage = () => {
   return (
     <ThemeProvider theme={theme}>
     <Container maxWidth={false} className={classes.root}>
-        <Typography style={{marginBottom: '1rem'}} variant="h1" className='header'>
+        <Typography variant="h6" style={{fontWeight: 'bold', marginBottom: '20px'}}>
            {t('contracts')}
           </Typography>
       <Divider />

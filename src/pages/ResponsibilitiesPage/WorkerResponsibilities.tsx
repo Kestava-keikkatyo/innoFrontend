@@ -23,7 +23,7 @@ const WorkerResponsibilities = () => {
   return (
     <ThemeProvider theme={theme}>
       <Container maxWidth="xl" className={classes.root}>
-        <Typography variant="h1" className={classes.header}>
+        <Typography variant="h6" style={{fontWeight: 'bold', marginLeft: '20px' }}>
           {t('responsibilities')}
         </Typography>
         <Typography variant="subtitle1" className={classes.subtitle}>
@@ -43,8 +43,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: '100%',
     backgroundColor: "#FDFDFD",
     marginTop: 30,
-    margin: 0,
-    padding: 0,
+    padding: '0'
   },
   header: {
     marginLeft: 35,
@@ -53,7 +52,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: 20
   },
   subtitle: {
-    marginLeft: 24,
+
   },
   card: {
     margin: 10,
