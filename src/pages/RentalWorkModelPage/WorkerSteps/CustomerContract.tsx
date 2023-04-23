@@ -38,7 +38,7 @@ const CustomerContract = () => {
   return (
     <ThemeProvider theme={theme}>
     <Container maxWidth="xl" className={classes.root}>
-      <Typography style={{marginTop: '30px'}} variant="h1" className='header'>
+      <Typography variant="h6" style={{fontWeight: 'bold', marginTop: '30px'}}>
         {t('customer_contract')}
       </Typography>
       <WorkerStepBase content={tabContent} />

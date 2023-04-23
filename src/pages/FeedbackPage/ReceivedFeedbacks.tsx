@@ -87,7 +87,7 @@ const ReceivedFeedbacks: React.FC = () => {
     <ThemeProvider theme={theme}>
       <Container maxWidth={false}>
         <div style={{ paddingTop: '30px', backgroundColor: '', height: '75vh' }}>
-          <Typography variant="h1" className='header'>
+          <Typography variant="h6" style={{fontWeight: 'bold'}}>
             {t("feedback")}
           </Typography>
           <DataGrid

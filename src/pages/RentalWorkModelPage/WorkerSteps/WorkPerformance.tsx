@@ -37,7 +37,7 @@ const WorkPerformance = () => {
   return (
     <ThemeProvider theme={theme}>
       <Container maxWidth="xl" className={classes.root}>
-        <Typography variant="h1" className='header'>
+        <Typography variant="h6" style={{fontWeight: 'bold', marginBottom: '20px'}}>
           {t('work_performance')}
         </Typography>
         <WorkerStepBase content={tabContent} />
