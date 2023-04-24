@@ -136,7 +136,7 @@ const AgencyContractsPage = () => {
         <ContractsTable businessContract={businessContract} />
 
         <Typography gutterBottom variant="h1" className='header2'>
-          <Link href="/employment" underline="hover">{t('add_workers_to_business')}</Link>
+          <Link href="/employment" underline="hover">{t('connect_workers_to_business')}</Link>
         </Typography>
 
         <Typography style={{ paddingTop: '1rem' }} variant="h1" className='header'>

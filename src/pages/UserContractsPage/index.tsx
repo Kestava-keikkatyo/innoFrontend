@@ -26,6 +26,7 @@ import { useTranslation } from 'react-i18next';
 import ContractsView from './ContractsView';
 import { AddCircleOutline } from '@mui/icons-material';
 import InvitationCodeInput from './InvitationCodeInput';
+import { loadUser } from '../../utils/storage';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -77,43 +78,25 @@ const UserContractsPage = () => {
   const [value, setValue] = React.useState(0);
   const { t } = useTranslation();
   
-
-  const { businessContract } = useSelector(
-    (state: IRootState) => state.businessContracts
-  );
   const employmentContract: any = useSelector(
     (state: IRootState) => state.employmentAgreements['agreements']
   );
 
   const dispatch = useDispatch();
-  const contracts = businessContract;
+  const employmentContracts = employmentContract;
   const pending: any = [];
   const signed: any = [];
-  const employmentContracts = employmentContract;
-  const emplPending: any = [];
-  const emplSigned: any = [];
 
   useEffect(() => {
-    dispatch(fetchBusinessContractsAsTarget());
     dispatch(fetchEmploymentContractsAsWorkerOrBusiness());
   }, [dispatch]);
 
-  if (contracts.length) {
-    contracts.map((contract: any) => {
-      if (contract.status === 'pending') {
-        pending.push(contract)
-      } else if (contract.status === 'signed') {
-        signed.push(contract)
-      }
-    });
-  }
-
   if (employmentContracts.length) {
     employmentContracts.map((contract: any) => {
-      if (contract.status === 'pending') {
-        emplPending.push(contract)
-      } else if (contract.status === 'signed') {
-        emplSigned.push(contract)
+      if ((loadUser().role === 'worker' && !contract.workerSigned) || (loadUser().role === 'business' && !contract.businessSigned)) {
+        pending.push(contract)
+      } else {
+        signed.push(contract)
       }
     });
   }
@@ -203,10 +186,10 @@ const UserContractsPage = () => {
       </AppBar>
       <Divider />
       <TabPanel value={value} index={0}>
-        <ContractsView view="pending" contracts={pending} employmentContracts={emplPending} />
+        <ContractsView view="pending" employmentContracts={pending} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <ContractsView view="signed" contracts={signed} employmentContracts={emplSigned} />
+        <ContractsView view="signed" employmentContracts={signed} />
       </TabPanel>
       <TabPanel value={value} index={2}>
         <InvitationCodeInput />

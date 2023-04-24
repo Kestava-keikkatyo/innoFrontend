@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   deleteEmploymentAgreement,
   fetchBusinessContractsAsTarget,
+  fetchEmploymentContractsAsWorkerOrBusiness,
   signEmploymentAgreement,
 } from '../../actions/businessContractActions';
 import { severity, User } from '../../types/types';
@@ -33,13 +34,14 @@ const EmploymentContractRow: React.FC<any> = ({ view, contract }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const role = loadUser().role
 
 
   function deleteContract(contract: any): void {
     dispatch(deleteEmploymentAgreement(contract._id))
     dispatch(setAlert('Contract deleted!', severity.Success))
     removeAllContactData()
-    switch(loadUser().role) {
+    switch(role) {
       case "business":
         dispatch(fetchBusinessContacts())
         break
@@ -53,7 +55,7 @@ const EmploymentContractRow: React.FC<any> = ({ view, contract }) => {
     dispatch(signEmploymentAgreement(contract._id))
     dispatch(setAlert('Contract accepted!', severity.Success))
     removeAllContactData()
-    switch(loadUser().role) {
+    switch(role) {
       case "business":
         dispatch(fetchBusinessContacts())
         break
@@ -64,7 +66,7 @@ const EmploymentContractRow: React.FC<any> = ({ view, contract }) => {
   }
 
   useEffect(() => {
-    dispatch(fetchBusinessContractsAsTarget());
+    dispatch(fetchEmploymentContractsAsWorkerOrBusiness());
   }, [dispatch])
 
   if (!contract)
@@ -93,8 +95,12 @@ const EmploymentContractRow: React.FC<any> = ({ view, contract }) => {
       </TableCell>  
       <TableCell align="left">{t("employment_request")}</TableCell>
       <TableCell align="left">{contract.creator.companyName}</TableCell>
+      {role == "worker" &&
       <TableCell align="left">{contract.business.companyName}</TableCell> 
+      }
+      {role == "business" &&
       <TableCell align="left">{contract.worker.email}</TableCell>
+      }
       <TableCell
         padding="none"
         align="left"

@@ -511,6 +511,10 @@ export default {
     notifications: 'Ilmoitukset',
     no_notifications: 'Ei ilmoituksia...',
     empty_notifications: 'Tyhjennä kaikki ilmoitukset',
+    requested_work: ' pyysi teiltä työntekijöitä.',
+    sent_feedback: ' lähetti teille palautetta.',
+    sent_employment_agreement: ' lähetti teille keikkatyötarjouksen.',
+
 
     // DatabankRoute
     homeButton: 'Etusivu',

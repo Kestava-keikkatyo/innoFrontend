@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import {
   Theme,
-  ToggleButtonGroup,
-  ToggleButton,
   TableBody,
   Table,
   TableHead,
@@ -11,102 +9,54 @@ import {
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { useTranslation } from 'react-i18next';
-import ContractRow from './ContractRow';
 import EmploymentContractRow from './EmploymentContractRow';
-import { fetchBusinessContractsAsTarget, fetchEmploymentContractsAsWorkerOrBusiness } from '../../actions/businessContractActions';
-import { useDispatch } from 'react-redux';
+import { loadUser } from '../../utils/storage';
 
 /**
  * @component
  * @desc
  * A view of contracts
  */
-export const ContractsView = (prop: { view: string, contracts: any[], employmentContracts: any[] }) => {
+export const ContractsView = (prop: { view: string, employmentContracts: any[] }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const { view, contracts, employmentContracts } = prop;
-  const [filter, setFilter] = React.useState('agency')
+  const { view, employmentContracts } = prop;
+  const role = loadUser().role
 
-  const handleChange = (event: React.MouseEvent<HTMLElement>, value: string) => {
-    event.preventDefault()
-    setFilter(value)
-  }
-
-  const showContracts = (type: string) => {
-    switch (type) {
-      case 'agency':
-        return contracts.map((contract: any) => (
-          <ContractRow key={contract._id} view={view} contract={contract} />
-        ))
-
-      case 'employment':
-        if (employmentContracts[0]) {
-          return employmentContracts.map((contract: any) => (
-            <EmploymentContractRow key={contract._id} view={view} contract={contract} />
-          ))
-        }
-
-      default:
-        return contracts.filter((contract) => {
-          return contract.type === type
-        }).map((contract: any) => (
-            <ContractRow key={contract._id} view={view} contract={contract} />
-          ))
+  const showContracts = () => {
+    if (employmentContracts[0]) {
+      return employmentContracts.map((contract: any) => (
+        <EmploymentContractRow key={contract._id} view={view} contract={contract} />
+      ))
     }
   }
 
-  const contractStatuses = [
-   // { status: 'all' },
-    { status: 'agency' },
-    { status: 'employment' }
-  ]
-
-  if (contracts.length < 1 && employmentContracts.length < 1) {
+  if (employmentContracts.length < 1) {
     return <p>{t('no_results')}</p>;
   }
   
   return (
     <div>
       <div>
-        <ToggleButtonGroup
-          classes={{ root: classes.buttonGroupRoot }}
-          className={classes.buttonGroup}
-          value={filter}
-          exclusive
-          onChange={handleChange}
-          orientation='horizontal'
-        >     
-          {contractStatuses.map(filter => (
-            <ToggleButton key={filter.status} value={filter.status}>{filter.status}</ToggleButton>
-          ))} 
-        </ToggleButtonGroup>
         <Table>
           <TableHead>
-            {filter === "agency" && 
-              <TableRow>
-                <TableCell align="left">{t("status")}</TableCell>
-                <TableCell align="left">{t("request_type")}</TableCell>
-                <TableCell align="left">{t("creator")}</TableCell>          
-                <TableCell align="left">{t("recipient")}</TableCell>
-                <TableCell align="left">{t("delete")}</TableCell>
-                {view == "pending" &&
-                  <TableCell align="left">{t("accept")}</TableCell>
-                } 
-              </TableRow> }
-            {filter === "employment" && 
               <TableRow>
                 <TableCell align="left">{t("status")}</TableCell>
                 <TableCell align="left">{t("request_type")}</TableCell>
                 <TableCell align="left">{t("creator")}</TableCell>
+                {role == "worker" &&
                 <TableCell align="left">{t("business_name")}</TableCell>
+                }
+                {role == "business" &&
                 <TableCell align="left">{t("worker_email")}</TableCell>
+                }
                 <TableCell align="left">{t("delete")}</TableCell>
                 {view == "pending" &&
                   <TableCell align="left">{t("accept")}</TableCell>
                 } 
-              </TableRow> }            
+              </TableRow>            
           </TableHead>
-          <TableBody>{showContracts(filter)}</TableBody>
+          <TableBody>{showContracts()}</TableBody>
         </Table>
           
       </div>
