@@ -518,6 +518,9 @@ export default {
     notifications: 'Notifications',
     no_notifications: 'No notifications...',
     empty_notifications: 'Empty all notifications',
+    requested_work: ' requested work from you.',
+    sent_feedback: ' sent you feedback.',
+    sent_employment_agreement: ' sent you employment agreement to sign.',
 
     // DatabankRoute
     homeButton: 'Home',
