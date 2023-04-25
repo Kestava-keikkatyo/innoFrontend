@@ -38,12 +38,29 @@ export const insertUserData = (user: string) => {
 }
 
 /**
+ * Loads user's information
+ * @function
+ */
+export const loadUser = () => {
+  try {
+    const serializedUser = localStorage.getItem(storageKey)
+    if (serializedUser === null) {
+      return undefined
+    }
+    return JSON.parse(serializedUser)
+  } catch (err) {
+    localStorage.removeItem(storageKey)
+    console.error('storage print\n', err)
+    return undefined
+  }
+} 
+
+/**
  * Inserts data of user's contacts into localStorage
  * @function
  * @param {Object} data - information to be added in stringified JSON format
  */
-
-export const insertContactData = (data: string) => {
+export const insertContactData = (data: any) => {
   try {
     let contactData = loadContacts()
     const strData = JSON.stringify(data)
@@ -66,21 +83,25 @@ export const insertContactData = (data: string) => {
 } 
 
 /**
- * Loads user's information
- * @function
+ * Removes a single contact from localStorage
+ * @param id id of the User to be removed
  */
-export const loadUser = () => {
-  try {
-    const serializedUser = localStorage.getItem(storageKey)
-    if (serializedUser === null) {
-      return undefined
-    }
-    return JSON.parse(serializedUser)
-  } catch (err) {
-    localStorage.removeItem(storageKey)
-    console.error('storage print\n', err)
-    return undefined
+export const removeContactDataById = (id: string) => {
+  const contacts = loadContacts()
+  let index = contacts.indexOf(id)
+  console.log(index)
+  console.log(contacts)
+  // if contact is found
+  if (index !== -1) {
+    contacts.splice(index, 1)
+    console.log(contacts)
+    localStorage.removeItem(storageContactsKey)
+    localStorage.setItem(storageContactsKey, contacts)
   }
+}
+
+export const removeContactData = () => {
+  localStorage.removeItem(storageContactsKey)
 }
 
 /**

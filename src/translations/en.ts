@@ -225,8 +225,9 @@ export default {
     transfer_company_profile: 'Go to company profile',
 
     // Employment page
-    connect_workers_to_business: 'Connect workers to business',
-    employment_no_recipient: "You must choose recipient",
+    connect_workers_to_business_info: 'Choose recipients for employment proposal',
+    employment_no_recipient: 'You must choose recipient',
+    employ: 'Employ',
 
     // Contact information
     phone: 'Phone',
@@ -274,11 +275,17 @@ export default {
     make_contract: 'Make a contract',
     contracts: 'Contracts',
     contracts_overview: 'Contracts overview',
+    employment_contracts_overview: 'Employment overview',
     creator: 'Creator',
+    company: 'Company',
     request_type: 'Type',
     contact_request: 'Contact request',
     employment_request: 'Employment',
-    add_workers_to_business: 'Add workers to business',
+    connect_workers_to_business: 'Create employment proposals',
+    worker_email: 'Worker',
+    business_name: 'Business',
+    worker_signed: 'Worker signed',
+    business_signed: 'Business signed',
 
     // Rental Work Model
     rwm_responsibilities: 'Responsibilities',
@@ -306,6 +313,7 @@ export default {
 
     // MyFormsTable
     delete: 'Delete',
+    reject: 'Reject',
 
     // FormsPage
     my_forms: 'My forms',
@@ -515,6 +523,9 @@ export default {
     notifications: 'Notifications',
     no_notifications: 'No notifications...',
     empty_notifications: 'Empty all notifications',
+    requested_work: ' requested work from you.',
+    sent_feedback: ' sent you feedback.',
+    sent_employment_agreement: ' sent you employment agreement to sign.',
 
     // DatabankRoute
     homeButton: 'Home',
@@ -1279,5 +1290,41 @@ export default {
     responsibilities_summary: 'Each party to the temporary work has responsibilities related to occupational safety, occupational health and occupational well- being.',
     instructions_summary: 'The instructions are short texts on how the personnel service company, the user company and the temporary worker can take care of the occupational safety, occupational health and well-being of the temporary worker. The instructions describe the relevant laws, possible other internet links and forms.',
     good_practises_summary: "The form templates guide you in taking care of important issues in the different phases of the contract. Filling out the forms ensures that the most essential issues related to the temporary employee's job security are reviewed and the rules of the game are agreed on important issues between the personnel service and the user company. A form filled in between two parties can always be given to a third party as well. This works as part of the flow of information between partners and ensuring the transmission of important information.",
-    forms_summary: "The form templates guide you in taking care of important issues in the different phases of the contract. Filling out the forms ensures that the most essential issues related to the temporary employee's job security are reviewed and the rules of the game are agreed on important issues between the personnel service and the user company. A form filled in between two parties can always be given to a third party as well. This works as part of the flow of information between partners and ensuring the transmission of important information."
+    forms_summary: "The form templates guide you in taking care of important issues in the different phases of the contract. Filling out the forms ensures that the most essential issues related to the temporary employee's job security are reviewed and the rules of the game are agreed on important issues between the personnel service and the user company. A form filled in between two parties can always be given to a third party as well. This works as part of the flow of information between partners and ensuring the transmission of important information.",
+
+     //Forms in databank
+     form1HeaderText: 'FORM 1 - OCCUPATIONAL SAFETY AND WELL-BEING MATTERS RELATED TO THE CUSTOMER AGREEMENT',
+     form1SubHeader: '(to be completed by representatives of the rental company and the user company)',
+ 
+     form2HeaderText: 'FORM 2 – EMPLOYEE GENERAL ORIENTATION',
+     form2SubHeader: '(to be completed by the rental company\'s orientation officer)',
+ 
+     form3HeaderText: 'FORM 3 - JOB COUNSELING',
+     form3SubHeader: '(filled in by the user company\'s job advisor)',
+ 
+     form4HeaderText: 'FORM 4 - FUNCTIONAL EVALUATION',
+     form4SubHeader: '(to be completed by the representatives of the user company and the rental company)',
+
+     form5HeaderText: 'FORM 5 - INDUCTION AND JOB QUIDANCE IN URGENT SITUATIONS',
+ 
+    //Business homepage
+    welcomeTextBusiness: "Welcome to business homepage",
+    smileSummary: "Smile summary",
+    newReports: "New reports",
+    businessFrontpage: "Business frontpage",
+
+     //Agency homepage
+     welcomeTextAgency: "Welcome to agency homepage",
+     agencyFrontpage: "Agency frontpage",
+
+     //Worker homepage
+     welcomeTextWorker: "Welcome to worker homepage ",
+     workerFrontpage: "Worker homepage",
+ 
+     //Other
+     Name: 'Name',
+     contactInformation: 'Contact information',
+     check_new_reports: 'Check new reports',
+     print: 'Print pdf',
+
 }

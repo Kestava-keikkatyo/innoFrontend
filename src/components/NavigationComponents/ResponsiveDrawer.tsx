@@ -1,5 +1,5 @@
 import makeStyles from '@mui/styles/makeStyles';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Divider from '@mui/material/Divider'
 import List from '@mui/material/List'
 import ListItemButton from '@mui/material/ListItemButton'
@@ -14,24 +14,19 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday'
 import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined'
 import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle'
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount'
-import CircleTwoToneIcon from '@mui/icons-material/CircleTwoTone'
 import MoodIcon from '@mui/icons-material/Mood'
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
 import ExitToAppIcon from '@mui/icons-material/ExitToApp'
 import { OpenInNew, PersonAdd, Security } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
-import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined'
 import { logout } from '../../actions/userActions'
 import { useDispatch, useSelector } from 'react-redux'
 import { roles } from '../../types/types'
 import { IRootState } from '../../utils/store'
-import logo from '../../assets/keikkakaveri_logo.png'
 import GroupsIcon from '@mui/icons-material/Group'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
 import { useTranslation } from 'react-i18next'
-import LibraryBooksOutlinedIcon from '@mui/icons-material/LibraryBooksOutlined'
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline'
-import AssignmentTurnedInOutlinedIcon from '@mui/icons-material/AssignmentTurnedInOutlined'
 import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined'
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
 import AssignmentIndOutlinedIcon from '@mui/icons-material/AssignmentIndOutlined'
@@ -43,6 +38,7 @@ import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import TaskIcon from '@mui/icons-material/Task';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import WorkIcon from '@mui/icons-material/Work';
+import Sisainenlinkki from '../../assets/icons/sisainenlinkki.svg'
 
 /**
  * @component
@@ -53,10 +49,11 @@ import WorkIcon from '@mui/icons-material/Work';
 const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
   const classes = useStyles()
   const dispatch = useDispatch()
-
   const { t } = useTranslation()
   const { data } = useSelector((state: IRootState) => state.user)
   const role = data.role
+
+  const [colors, setColors] = useState({ home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" })
 
   const iconColor = {
     base: '#000',
@@ -64,389 +61,309 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
     undone: '#F00'
   }
 
+  useEffect(() => {
+    setColors({ ...colors, home: "#F47D20", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
+  }, [])
+
   /**
    * Function for opening and closing drawer component.
    * Passed as prop to [AppBar]{@link module:components/AppBar} and
    * [Drawer]{@link module:components/Drawer}.
    * @function
    */
-  const handleClick = () => {
+  const handleClick = (page: string) => {
     if (isMobile) { setOpen(false) }
-  }
 
+    switch (page) {
+      case "home":
+        setColors({ ...colors, home: "#F47D20", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
+        break
+      case "reports":
+        setColors({ ...colors, home: "#FDFDFD", reports: "#F47D20", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
+        break
+      case "feedback":
+        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#F47D20", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
+        break
+      case "contracts":
+        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#F47D20", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
+        break
+      case "responsibilities":
+        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#F47D20", materials: "#FDFDFD", employees: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
+        break
+      case "materials":
+        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#F47D20", employees: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
+        break
+      case "employees":
+        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#F47D20", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
+        break
+      case "rentalmodel":
+        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", rentalmodel: "#F47D20", databank: "#FDFDFD", businesses: "#FDFDFD" });
+        break
+      case "databank":
+        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#F47D20", businesses: "#FDFDFD" });
+        break
+      case "businesses":
+        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#F47D20" });
+        break
+    }
+  }
 
   const [openNest, setOpenNest] = useState(false)
 
   const handleOpenNest = () => {
     setOpenNest(!openNest);
+    setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", rentalmodel: "#F47D20", databank: "#FDFDFD", businesses: "#FDFDFD" });
   };
 
   return (
     <div className="drawer">
-      <div className="kuvake">
-        <img className={classes.logo} src={logo} alt="keikkakaveri_logo" />
-        <Divider />
-      </div>
       <div className="content-wrapper">
         <List className="overflow-container">
-          <ListItemButton component={Link} to="/home" onClick={handleClick}>
+          <ListItemButton style={{ marginTop: '170px', backgroundColor: colors.home }} className={classes.button} component={Link} to="/home" onClick={() => handleClick("home")}>
             <ListItemIcon>
               <HomeOutlinedIcon sx={{ color: iconColor.base }} />
             </ListItemIcon>
-            <ListItemText primary={t('home')} />
+            <ListItemText className={classes.buttonText} primary={t('home')} />
           </ListItemButton>
-          <Divider />
           {(role === roles.Agency || role === roles.Business) && (
             <>
-              <ListItemButton component={Link} to="/reports" onClick={handleClick}>
+              <ListItemButton style={{ backgroundColor: colors.reports }} component={Link} to="/reports" onClick={() => handleClick("reports")} className={classes.button}>
                 <ListItemIcon>
                   <ErrorOutlineIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('reports')} />
+                <ListItemText className={classes.buttonText} primary={t('reports')} />
               </ListItemButton>
-              <Divider />
             </>
           )}
           {(role === roles.Agency || role === roles.Business) && (
             <>
-              <ListItemButton component={Link} to="/receivedFeedbacks" onClick={handleClick}>
+              <ListItemButton style={{ backgroundColor: colors.feedback }} component={Link} to="/receivedFeedbacks" onClick={() => handleClick("feedback")} className={classes.button}>
                 <ListItemIcon>
                   <MoodIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('feedback')} />
+                <ListItemText className={classes.buttonText} primary={t('feedback')} />
               </ListItemButton>
-              <Divider />
             </>
           )}
           {role === roles.Agency && (
             <>
-              <ListItemButton component={Link} to="/agencyResponsibilities" onClick={handleClick}>
+              <ListItemButton style={{ backgroundColor: colors.responsibilities }} component={Link} to="/agencyResponsibilities" onClick={() => handleClick("responsibilities")} className={classes.button}>
                 <ListItemIcon>
                   <AccessibilityOutlinedIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('responsibilities')} />
+                <ListItemText className={classes.buttonText} primary={t('responsibilities')} />
               </ListItemButton>
-              <Divider />
             </>
           )}
           {/** FORMS=MATERIAL  CONTENT = ORIENTATION */}
           {role === roles.Agency && (
             <>
-              <ListItemButton component={Link} to="/forms" onClick={handleClick}>
+              <ListItemButton style={{ backgroundColor: colors.materials }} component={Link} to="/forms" onClick={() => handleClick("materials")} className={classes.button}>
                 <ListItemIcon>
                   <InsertDriveFileOutlinedIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('materials')} />
+                <ListItemText className={classes.buttonText} primary={t('materials')} />
               </ListItemButton>
-              <Divider />
             </>
           )}
-          {role === roles.Agency && (
+          {(role === roles.Agency || role === roles.Business) && (
             <>
-              <ListItemButton component={Link} to="/workers" onClick={handleClick}>
+              <ListItemButton style={{ backgroundColor: colors.employees }} component={Link} to="/workers" onClick={() => handleClick("employees")} className={classes.button}>
                 <ListItemIcon>
                   <PersonIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('employees')} />
+                <ListItemText className={classes.buttonText} primary={t('employees')} />
               </ListItemButton>
-              <Divider />
             </>
           )}
           {role === roles.Agency && (
             <>
-              <ListItemButton component={Link} to="/agencyContracts" onClick={handleClick}>
+              <ListItemButton style={{ backgroundColor: colors.contracts }} component={Link} to="/agencyContracts" onClick={() => handleClick("contracts")} className={classes.button}>
                 <ListItemIcon>
                   <ContactMailIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('contracts')} />
+                <ListItemText className={classes.buttonText} primary={t('contracts')} />
               </ListItemButton>
-              <Divider />
             </>
           )}
           {(role === roles.Business || role === roles.Worker) && (
             <>
-              <ListItemButton component={Link} to="/userContracts" onClick={handleClick}>
+              <ListItemButton style={{ backgroundColor: colors.contracts }} component={Link} to="/userContracts" onClick={() => handleClick("contracts")} className={classes.button}>
                 <ListItemIcon>
                   <ContactMailIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('contracts')} />
+                <ListItemText className={classes.buttonText} primary={t('contracts')} />
               </ListItemButton>
-              <Divider />
             </>
           )}
           {role === roles.Agency && (
             <>
-              <ListItemButton component={Link} to="/businesses" onClick={handleClick}>
+              <ListItemButton style={{ backgroundColor: colors.businesses }} component={Link} to="/businesses" onClick={() => handleClick("businesses")} className={classes.button}>
                 <ListItemIcon>
                   <GroupOutlinedIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('BusinessCompanies')} />
+                <ListItemText className={classes.buttonText} primary={t('BusinessCompanies')} />
               </ListItemButton>
-              <Divider />
             </>
           )}
           {role === roles.Business && (
             <>
-
-              <ListItemButton component={Link} to="/businessResponsibilities" onClick={handleClick}>
+              <ListItemButton style={{ backgroundColor: colors.responsibilities }} component={Link} to="/businessResponsibilities" onClick={() => handleClick("responsibilities")} className={classes.button}>
                 <ListItemIcon>
                   <AccessibilityOutlinedIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('responsibilities')} />
+                <ListItemText className={classes.buttonText} primary={t('responsibilities')} />
               </ListItemButton>
-              <Divider />
             </>
           )}
           {role === roles.Business && (
             <>
-              <ListItemButton component={Link} to="/forms" onClick={handleClick}>
+              <ListItemButton style={{ backgroundColor: colors.materials }} component={Link} to="/forms" onClick={() => handleClick("materials")} className={classes.button}>
                 <ListItemIcon>
                   <InsertDriveFileOutlinedIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('materials')} />
+                <ListItemText className={classes.buttonText} primary={t('materials')} />
               </ListItemButton>
-              <Divider />
             </>
           )}
           {role === roles.Business && (
             <>
-              <ListItemButton component={Link} to="/agencies" onClick={handleClick}>
+              <ListItemButton style={{ backgroundColor: colors.businesses }} component={Link} to="/agencies" onClick={() => handleClick("businesses")} className={classes.button}>
                 <ListItemIcon>
                   <GroupOutlinedIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('list_title_agencies')} />
+                <ListItemText className={classes.buttonText} primary={t('list_title_agencies')} />
               </ListItemButton>
-              <Divider />
             </>
           )}
           {(role === roles.Business || role === roles.Agency) && (
             <>
-              <ListItemButton onClick={handleOpenNest}>
+              <ListItemButton style={{ backgroundColor: colors.rentalmodel }} onClick={handleOpenNest} className={classes.button}>
                 <ListItemIcon>
                   <SupervisedUserCircleIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('rental_work_model')} />
+                <ListItemText className={classes.buttonText} primary={t('rental_work_model')} />
                 {openNest ? <ExpandLess /> : <ExpandMore />}
               </ListItemButton>
               <Collapse in={openNest} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel">
+
+                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel" >
                     <ListItemIcon>
                       <SupervisorAccountIcon fontSize="small" sx={{ color: iconColor.base }} />
                     </ListItemIcon>
-                    <ListItemText primary={t('overview')} />
+                    <ListItemText className={classes.buttonText} primary={t('overview')} />
                   </ListItemButton>
-
 
                   <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/customerContract">
                     <ListItemIcon>
                       <ListAltIcon fontSize="small" sx={{ color: iconColor.base }} />
                     </ListItemIcon>
-                    <ListItemText primary={t('customer_contract')} />
+                    <ListItemText className={classes.buttonText} primary={t('customer_contract')} />
                   </ListItemButton>
 
                   <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/orderingEmployee">
                     <ListItemIcon>
                       <PersonAddAlt1Icon fontSize="small" sx={{ color: iconColor.base }} />
                     </ListItemIcon>
-                    <ListItemText primary={t('worker_order')} />
+                    <ListItemText className={classes.buttonText} primary={t('worker_order')} />
                   </ListItemButton>
 
-                  <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/contractOfEmployment">
+                  <ListItemButton style={{ }} sx={{ pl: 4 }} onClick={() => handleClick("businesses")} component={Link} to="/rentalWorkModel/contractOfEmployment" >
                     <ListItemIcon>
                       <TaskIcon fontSize="small" sx={{ color: iconColor.base }} />
                     </ListItemIcon>
-                    <ListItemText primary={t('contract_of_employment')} />
+                    <ListItemText className={classes.buttonText} primary={t('list_title_businesses')} />
                   </ListItemButton>
 
                   <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/guidanceToWork">
                     <ListItemIcon>
                       <HowToRegIcon fontSize="small" sx={{ color: iconColor.base }} />
                     </ListItemIcon>
-                    <ListItemText primary={t('guidance_to_work')} />
+                    <ListItemText className={classes.buttonText} primary={t('guidance_to_work')} />
                   </ListItemButton>
 
                   <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/workPerformance">
                     <ListItemIcon>
                       <WorkIcon fontSize="small" sx={{ color: iconColor.base }} />
                     </ListItemIcon>
-                    <ListItemText primary={t('work_performance')} />
+                    <ListItemText className={classes.buttonText} primary={t('work_performance')} />
                   </ListItemButton>
                 </List>
               </Collapse>
-              <Divider />
             </>
           )}
           {(role === roles.Business || role === roles.Agency) && (
             <>
-              <ListItemButton component="a" href="/databank" target="_blank" onClick={handleClick}>
+              <ListItemButton component="a" href="/databank" target="_blank" onClick={() => handleClick("databank")} className={classes.button}>
                 <ListItemIcon>
                   <Security sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('databank')} />
+                <ListItemText className={classes.buttonText} primary={t('databank')} />
                 <OpenInNew></OpenInNew>
               </ListItemButton>
-              <Divider />
             </>
           )}
           {role === roles.Agency && (
             <>
-              <ListItemButton component={Link} to="/receivedWorkRequests" onClick={handleClick} disabled>
+              <ListItemButton component={Link} to="/receivedWorkRequests" onClick={() => handleClick("receivedWorkRequests")} disabled>
                 <ListItemIcon>
                   <WorkOutlineIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('work_request')} />
+                <ListItemText className={classes.buttonText} primary={t('work_request')} />
               </ListItemButton>
-              <Divider />
             </>
           )}
           {(role === roles.Business) && (
             <>
-              <ListItemButton component={Link} to="/workRequests" onClick={handleClick} disabled>
+              <ListItemButton component={Link} to="/workRequests" onClick={() => handleClick("workRequests")} disabled>
                 <ListItemIcon>
                   <AssignmentOutlinedIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('Work_request')} />
+                <ListItemText className={classes.buttonText} primary={t('Work_request')} />
               </ListItemButton>
-              <Divider />
-            </>
-          )}
-
-
-          {/**
-           * REMOVED FROM NAVIGATIONBAR
-           BUSINESS
-           *  {role === roles.Business && (
-            <>
-              <ListItemButton component={Link} to="/businessContracts" onClick={handleClick}>
-                <ListItemIcon>
-                  <AssignmentOutlinedIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('business_contracts')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}
-                    {(role === roles.Agency || role === roles.Business) && (
-            <>
-              <ListItemButton component={Link} to="/workers" onClick={handleClick}>
-                <ListItemIcon>
-                  <GroupOutlinedIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('list_title_workers')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}
-
-
-          AGENCY
-          {role === roles.Agency && (
-            <>
-              <ListItemButton component={Link} to="/contracts" onClick={handleClick}>
-                <ListItemIcon>
-                  <ContactsOutlinedIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('contracts')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}
-          {role === roles.Agency && (
-            <>
-              <ListItemButton component={Link} to="/job" onClick={handleClick}>
-                <ListItemIcon>
-                  <AssignmentTurnedInOutlinedIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('jobs')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}
-          
-          {role === roles.Worker && (
-            <>
-              <ListItemButton component={Link} to="/businessContracts" onClick={handleClick}>
-                <ListItemIcon>
-                  <LibraryBooksOutlinedIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('business_contracts')} />
-              </ListItemButton>
-              <Divider />
             </>
           )}
           {role === roles.Worker && (
             <>
-              <ListItemButton component={Link} to="/jobs" onClick={handleClick}>
-                <ListItemIcon>
-                  <WorkOutlineIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('jobs')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}      
-          {role === roles.Worker && (
-            <>
-              <ListItemButton component={Link} to="/fiilismittari" onClick={handleClick}>
-                <ListItemIcon>
-                  <MoodIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText primary={t('moods')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}              
-            */}
-
-
-
-
-
-          {role === roles.Worker && (
-            <>
-
-              <ListItemButton component={Link} to="/workerResponsibilities" onClick={handleClick}>
+              <ListItemButton style={{ backgroundColor: colors.responsibilities }} component={Link} to="/workerResponsibilities" onClick={() => handleClick("responsibilities")} className={classes.button}>
                 <ListItemIcon>
                   <AccessibilityOutlinedIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('responsibilities')} />
+                <ListItemText className={classes.buttonText} primary={t('responsibilities')} />
               </ListItemButton>
               <Divider />
             </>
           )}
           {(role === roles.Worker) && (
             <>
-              <ListItemButton component={Link} to="/feedback" onClick={handleClick}>
+              <ListItemButton style={{ backgroundColor: colors.feedback }} component={Link} to="/feedback" onClick={() => handleClick("feedback")} className={classes.button}>
                 <ListItemIcon>
                   <FeedbackOutlinedIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('feedback')} />
+                <ListItemText className={classes.buttonText} primary={t('feedback')} />
               </ListItemButton>
               <Divider />
             </>
           )}
           {role === roles.Worker && (
             <>
-
-              <ListItemButton component={Link} to="/schedule" onClick={handleClick}>
-
+              <ListItemButton component={Link} to="/schedule" onClick={() => handleClick("schedule")} className={classes.button}>
                 <ListItemIcon>
                   <CalendarTodayIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('schedule')} />
+                <ListItemText className={classes.buttonText} primary={t('schedule')} />
               </ListItemButton>
               <Divider />
             </>
           )}
-
           {(role === roles.Worker) && (
             <>
-              <ListItemButton onClick={handleOpenNest}>
+              <ListItemButton style={{ backgroundColor: colors.rentalmodel }} onClick={handleOpenNest} className={classes.button}>
                 <ListItemIcon>
                   <SupervisedUserCircleIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('rental_work_model')} />
+                <ListItemText className={classes.buttonText} primary={t('rental_work_model')} />
                 {openNest ? <ExpandLess /> : <ExpandMore />}
               </ListItemButton>
               <Collapse in={openNest} timeout="auto" unmountOnExit>
@@ -455,106 +372,102 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
                     <ListItemIcon>
                       <SupervisorAccountIcon fontSize="small" sx={{ color: iconColor.base }} />
                     </ListItemIcon>
-                    <ListItemText primary={t('overview')} />
+                    <ListItemText className={classes.buttonText} primary={t('overview')} />
                   </ListItemButton>
                   <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/contractOfEmployment">
                     <ListItemIcon>
                       <TaskIcon fontSize="small" sx={{ color: iconColor.base }} />
                     </ListItemIcon>
-                    <ListItemText primary={t('contract_of_employment')} />
+                    <ListItemText className={classes.buttonText} primary={t('contract_of_employment')} />
                   </ListItemButton>
-
                   <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/guidanceToWork">
                     <ListItemIcon>
                       <HowToRegIcon fontSize="small" sx={{ color: iconColor.base }} />
                     </ListItemIcon>
-                    <ListItemText primary={t('guidance_to_work')} />
+                    <ListItemText className={classes.buttonText} primary={t('guidance_to_work')} />
                   </ListItemButton>
-
                   <ListItemButton sx={{ pl: 4 }} component={Link} to="/rentalWorkModel/workPerformance">
                     <ListItemIcon>
                       <WorkIcon fontSize="small" sx={{ color: iconColor.base }} />
                     </ListItemIcon>
-                    <ListItemText primary={t('work_performance')} />
+                    <ListItemText className={classes.buttonText} primary={t('work_performance')} />
                   </ListItemButton>
                 </List>
               </Collapse>
               <Divider />
             </>
           )}
-
           {role === roles.Worker && (
             <>
-              <ListItemButton component={Link} to="/reports" onClick={handleClick}>
+              <ListItemButton style={{ backgroundColor: colors.reports }} component={Link} to="/reports" onClick={() => handleClick("reports")} className={classes.button}>
                 <ListItemIcon>
                   <ErrorOutlineIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('reports')} />
+                <ListItemText className={classes.buttonText} primary={t('reports')} />
               </ListItemButton>
               <Divider />
             </>
           )}
           {role === roles.Admin && (
             <>
-              <ListItemButton component={Link} to="/userList" onClick={handleClick}>
+              <ListItemButton component={Link} to="/userList" >
                 <ListItemIcon>
                   <GroupsIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('User List')} />
+                <ListItemText className={classes.buttonText} primary={t('User List')} />
               </ListItemButton>
               <Divider />
             </>
           )}
           {role === roles.Admin && (
             <>
-              <ListItemButton component={Link} to="/createUser" onClick={handleClick}>
+              <ListItemButton component={Link} to="/createUser" >
                 <ListItemIcon>
                   <PersonAdd sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('Create User')} />
+                <ListItemText className={classes.buttonText} primary={t('Create User')} />
               </ListItemButton>
               <Divider />
             </>
           )}
           {role === roles.Admin && (
             <>
-              <ListItemButton component={Link} to="/topics" onClick={handleClick}>
+              <ListItemButton component={Link} to="/topics" >
                 <ListItemIcon>
                   <GroupsIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('topic_navigate')} />
+                <ListItemText className={classes.buttonText} primary={t('topic_navigate')} />
               </ListItemButton>
               <Divider />
             </>
           )}
           {role === roles.Admin && (
             <>
-              <ListItemButton component={Link} to="/responsibilities" onClick={handleClick}>
+              <ListItemButton component={Link} to="/responsibilities" onClick={() => handleClick("feedback")}>
                 <ListItemIcon>
                   <AssignmentIndOutlinedIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText primary={t('responsibility_navigate')} />
+                <ListItemText className={classes.buttonText} primary={t('responsibility_navigate')} />
               </ListItemButton>
               <Divider />
             </>
           )}
-          {/**  <ListItemButton component="a" href="/databank" target="_blank" onClick={handleClick}>
-            <ListItemIcon>
-              <Security sx={{ color: iconColor.base }} />
-            </ListItemIcon>
-            <ListItemText primary={t('databank')} />
-            <OpenInNew></OpenInNew>
+          <ListItemButton component={Link} to="/home">
+            <img src={Sisainenlinkki} style={{ width: '30px', marginRight: 10 }}></img>
+            <ListItemText style={{ textTransform: 'uppercase' }} primary={t('home')} />
           </ListItemButton>
-          <Divider /> */}
+          <ListItemButton component={Link} to="/databank">
+            <img src={Sisainenlinkki} style={{ width: '30px', marginRight: 10 }}></img>
+            <ListItemText style={{ textTransform: 'uppercase' }} primary={t('databank')} />
+          </ListItemButton>
+          <ListItemButton>
+            <ExitToAppIcon style={{ textTransform: 'uppercase', marginRight: 10, width: '30px' }} />
+            <ListItemText primary={t('logout')} />
+          </ListItemButton>
         </List>
       </div>
-
       <ListItem className="drawer-logout" onClick={() => dispatch(logout())}>
         <Divider />
-        <ListItemIcon>
-          <ExitToAppIcon sx={{ color: iconColor.base }} />
-        </ListItemIcon>
-        <ListItemText primary={t('exit_application')} />
       </ListItem>
     </div>
   )
@@ -580,6 +493,14 @@ const useStyles = makeStyles((theme) => ({
     },
     top: '38px !important',
     left: '30px !important',
+  },
+  button: {
+    marginBottom: '5px',
+    border: '3px solid #F47D20',
+    borderRadius: '5rem',
+  },
+  buttonText: {
+    marginLeft: '-20px',
   },
 }))
 

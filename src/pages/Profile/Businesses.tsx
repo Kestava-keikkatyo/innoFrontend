@@ -9,15 +9,30 @@ import makeStyles from '@mui/styles/makeStyles';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
+import { ThemeProvider, createTheme } from '@mui/material';
 
 const Businesses: React.FC = () => {
   const { t } = useTranslation();
   const classes = useStyles();
   const dispatch = useDispatch();
   const { users } = useSelector((state: IRootState) => state.users || []);
+
+  const theme = createTheme({
+    typography: {
+      fontFamily: 'Montserrat, serif',
+      fontSize: 15,
+
+      allVariants: {
+        color: "black"
+      },
+    },
+
+  });
+
   useEffect(() => {
     dispatch(fetchAllBusinesses());
   }, [dispatch]);
+
   const rows = users;
   const columns: GridColumns = [
     {
@@ -25,6 +40,7 @@ const Businesses: React.FC = () => {
       headerName: (i18next.t('list_name')),
       minWidth: 150,
       flex: 1,
+      headerClassName: 'super-app-theme--header',
       renderCell: (params) => {
         return (
           <div className={classes.userListUser}>
@@ -39,54 +55,70 @@ const Businesses: React.FC = () => {
       headerName: (i18next.t('list_category')),
       minWidth: 100,
       flex: 1,
+      headerClassName: 'super-app-theme--header',
     },
     {
       field: 'email',
       headerName: (i18next.t('list_email')),
       minWidth: 200,
       flex: 1,
+      headerClassName: 'super-app-theme--header',
     },
     {
       field: 'city',
       headerName: (i18next.t('list_city')),
       minWidth: 100,
       flex: 1,
+      headerClassName: 'super-app-theme--header',
     },
     {
       field: 'userType',
       headerName: (i18next.t('list_position')),
       minWidth: 75,
       flex: 1,
+      headerClassName: 'super-app-theme--header',
     },
     {
       field: 'action',
       headerName: (i18next.t('list_action')),
       minWidth: 100,
       flex: 1,
+      headerClassName: 'super-app-theme--header',
       renderCell: (params) => {
         return <Link to={'/businesses/profile/' + params.id}>{t('list_profile')}</Link>
       },
     },
   ];
   return (
-    <div style={{ height: '75vh', width: '100%', padding: '0 1rem' }}>
-      <div>
-        <Typography className={'header'}
-          style={{ marginTop: '25px', marginBottom: '15px' }}
-          color="primary"
-          align="center"
-          variant="h1">
-          {t('list_title_businesses')}</Typography>
+    <ThemeProvider theme={theme}>
+      <div style={{ height: '75vh', width: '100%', padding: '0 1rem' }}>
+        <div>
+          <Typography  variant="h6" style={{ marginTop: '30px', marginBottom: '20px', fontWeight: 'bold' }}>
+            {t('list_title_businesses')}</Typography>
+        </div>
+        <DataGrid
+          sx={{
+            '& .super-app-theme--header': {
+              backgroundColor: '#C0CFFA',
+              borderRight: '3px solid white',
+            },
+            '.MuiDataGrid-columnSeparator': {
+              display: 'none',
+            },
+            '&.MuiDataGrid-root': {
+              border: 'none',
+            },
+          }}
+          style={{ marginTop: '20px', border: '3px solid #C0CFFA', borderRadius: '0' }}
+          getRowId={(row) => row._id}
+          rows={rows}
+          disableSelectionOnClick
+          columns={columns}
+          pageSize={10}
+          rowsPerPageOptions={[10]}
+        />
       </div>
-      <DataGrid
-        getRowId={(row) => row._id}
-        rows={rows}
-        disableSelectionOnClick
-        columns={columns}
-        pageSize={10}
-        rowsPerPageOptions={[10]}
-      />
-    </div>
+    </ThemeProvider>
   );
 }
 

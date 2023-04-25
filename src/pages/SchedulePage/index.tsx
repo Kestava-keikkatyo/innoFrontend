@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../utils/store';
 import PageLoading from '../../components/PageLoading';
-import { Typography } from '@mui/material';
+import { ThemeProvider, Typography, createTheme } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { fetchUserById } from '../../actions/usersActions';
 import { LocalizationProvider, CalendarPicker } from '@mui/x-date-pickers';
@@ -36,10 +36,23 @@ const SchedulePage: React.FC = () => {
     <PageLoading />
   );
 
+  const theme = createTheme({
+    typography: {
+      fontFamily: 'Montserrat, serif',
+      fontSize: 15,
+      
+      allVariants: {
+        color: "black"
+      },
+    },
+    
+  });
+
   return (
+    <ThemeProvider theme={theme}>
     <div className={classes.container}>
       <div className={classes.titleContainer}>
-        <Typography color="secondary" className="header" variant="h1">{t('schedule_title')}</Typography>
+        <Typography className="header" variant="h1">{t('schedule_title')}</Typography>
       </div>
       <div className={classes.calendarContainer}>
         <LocalizationProvider dateAdapter={AdapterDayjs} locale={i18next.language === 'en' ? en : fi}>
@@ -54,6 +67,7 @@ const SchedulePage: React.FC = () => {
         </LocalizationProvider>
       </div>
     </div>
+    </ThemeProvider>
   );
 }
 

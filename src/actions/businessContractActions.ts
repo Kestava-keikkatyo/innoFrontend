@@ -75,8 +75,8 @@ export const fetchEmploymentContractsAsAgency = () => async (dispatch: any) => {
  * Deletes the employment contract
  * @param {string} id - EmploymentContract Id.
  */
-export const refuseEmploymentAgreement = (id: string) => async (dispatch: any) => {
-  const res = await contractsService.refuseEmploymentContractById(id)
+export const deleteEmploymentAgreement = (id: string) => async (dispatch: any) => {
+  const res = await contractsService.deleteEmploymentContractById(id)
   const r = await contractsService.fetchEmploymentContractsAsWorkerOrBusiness()
 
   if (res && res.status === 200) {
@@ -89,7 +89,7 @@ export const refuseEmploymentAgreement = (id: string) => async (dispatch: any) =
  * @desc Function for worker or business to sign employment contract
  * @param {string} contractId EmploymentContract Id
  */
-export const acceptEmploymentAgreement = (id: string) => async (dispatch: any) => {
+export const signEmploymentAgreement = (id: string) => async (dispatch: any) => {
   const res = await contractsService.signEmploymentContractById(id)
   const r = await contractsService.fetchEmploymentContractsAsWorkerOrBusiness()
 
@@ -104,8 +104,8 @@ export const acceptEmploymentAgreement = (id: string) => async (dispatch: any) =
  * @param {string} userId - User Id
  * @param {string} id - BusinessContract Id.
  */
-export const refuseBusinessContractById = (userId: string, id: string) => async (dispatch: any) => {
-  const res = await contractsService.refuseBusinessContractById(id)
+export const deleteBusinessContractById = (userId: string, id: string) => async (dispatch: any) => {
+  const res = await contractsService.deleteBusinessContractById(id)
   const r = await contractsService.fetchBusinessContracts()
 
   if (res && res.status === 200) {

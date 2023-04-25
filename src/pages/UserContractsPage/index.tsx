@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Theme, useTheme } from '@mui/material/styles';
+import { Theme, ThemeProvider, createTheme, useTheme } from '@mui/material/styles';
 import makeStyles from '@mui/styles/makeStyles';
 import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
@@ -14,6 +14,7 @@ import {
   Container,
   Divider,
   Tooltip,
+  Typography,
   useMediaQuery,
 } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,6 +24,9 @@ import {
 import { IRootState } from '../../utils/store';
 import { useTranslation } from 'react-i18next';
 import ContractsView from './ContractsView';
+import { AddCircleOutline } from '@mui/icons-material';
+import InvitationCodeInput from './InvitationCodeInput';
+import { loadUser } from '../../utils/storage';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -73,63 +77,61 @@ const UserContractsPage = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const { t } = useTranslation();
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('lg'));
-
-  const { businessContract } = useSelector(
-    (state: IRootState) => state.businessContracts
-  );
+  
   const employmentContract: any = useSelector(
     (state: IRootState) => state.employmentAgreements['agreements']
   );
 
   const dispatch = useDispatch();
-  const contracts = businessContract;
+  const employmentContracts = employmentContract;
   const pending: any = [];
   const signed: any = [];
-  const employmentContracts = employmentContract;
-  const emplPending: any = [];
-  const emplSigned: any = [];
 
   useEffect(() => {
-    dispatch(fetchBusinessContractsAsTarget());
     dispatch(fetchEmploymentContractsAsWorkerOrBusiness());
   }, [dispatch]);
 
-  if (contracts.length) {
-    contracts.map((contract: any) => {
-      if (contract.status === 'pending') {
+  if (employmentContracts.length) {
+    employmentContracts.map((contract: any) => {
+      if ((loadUser().role === 'worker' && !contract.workerSigned) || (loadUser().role === 'business' && !contract.businessSigned)) {
         pending.push(contract)
-      } else if (contract.status === 'signed') {
+      } else {
         signed.push(contract)
       }
     });
   }
-  
-  if (employmentContracts.length) {
-    employmentContracts.map((contract: any) => {
-      if (contract.status === 'pending') {
-        emplPending.push(contract)
-      } else if (contract.status === 'signed') {
-        emplSigned.push(contract)
-      }
-    });
-  }
+
+  const theme = createTheme({
+    typography: {
+      fontFamily: 'Montserrat, serif',
+      fontSize: 15,
+      
+      allVariants: {
+        color: "black"
+      },
+    },
+    
+  });
+
+  const matches = useMediaQuery(theme.breakpoints.down('lg'));
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
 
   return (
-    <Container maxWidth="xl" className={classes.root}>
+    <ThemeProvider theme={theme}>
+    <Container maxWidth={false} className={classes.root}>
+        <Typography variant="h6" style={{fontWeight: 'bold', marginBottom: '20px'}}>
+           {t('contracts')}
+          </Typography>
       <Divider />
-      <AppBar position="static" color="transparent">
+      <AppBar style={{backgroundColor: '#C0CFFA', width: '100%', boxShadow: 'none'}} position="static" >
         <Tabs
+          TabIndicatorProps={{style: {background:'black'}}}
           value={value}
           onChange={handleChange}
           variant="fullWidth"
-          indicatorColor="secondary"
-          textColor="primary"
           aria-label="scrollable force tabs example"
         >
           <Tab
@@ -138,7 +140,7 @@ const UserContractsPage = () => {
             icon={
               <Badge badgeContent={pending.length} color="secondary">
                 {matches ? (
-                  <Tooltip title="Vastaanotetut sopimukset" placement="top" arrow>
+                  <Tooltip title="Received contracts" placement="top" arrow>
                     <NotificationsActiveIcon />
                   </Tooltip>
                 ) : (
@@ -154,7 +156,7 @@ const UserContractsPage = () => {
             icon={
               <Badge color="secondary">
                 {matches ? (
-                  <Tooltip title="Arkistoidut sopimukset" placement="top" arrow>
+                  <Tooltip title="Archived contracts" placement="top" arrow>
                     <AllInboxIcon />
                   </Tooltip>
                 ) : (
@@ -164,16 +166,36 @@ const UserContractsPage = () => {
             }
             {...a11yProps(1)}
           />
+          <Tab
+            className={classes.tab}
+            label={matches ? ' ' : 'input invitation code'}
+            icon={
+              <Badge color="secondary">
+                {matches ? (
+                  <Tooltip title="Invitation code" placement="top" arrow>
+                    <AddCircleOutline />
+                  </Tooltip>
+                ) : (
+                  <AddCircleOutline />
+                )}
+              </Badge>
+            }
+            {...a11yProps(2)}
+          />
         </Tabs>
       </AppBar>
       <Divider />
       <TabPanel value={value} index={0}>
-        <ContractsView view="pending" contracts={pending} employmentContracts={emplPending} />
+        <ContractsView view="pending" employmentContracts={pending} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <ContractsView view="signed" contracts={signed} employmentContracts={emplSigned} />
+        <ContractsView view="signed" employmentContracts={signed} />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <InvitationCodeInput />
       </TabPanel>
     </Container>
+    </ThemeProvider>
   );
 };
 export default UserContractsPage;
@@ -182,8 +204,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
     width: '100%',
-    backgroundColor: theme.palette.background.paper,
-    marginTop: 8,
+    backgroundColor: '#FDFDFD',
+    marginTop: 30,
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),

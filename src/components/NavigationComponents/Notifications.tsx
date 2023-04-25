@@ -40,9 +40,13 @@ const Notifications = (props: BoxProps) => {
     switch (notification.targetDoc) {
       case 'Agreement':
         break;
+      case 'EmploymentAgreement':
+        history.push(`/userContracts`);
+        break;
       case 'Application':
         break;
       case 'FeedBack':
+        history.push(`/feedback/receivedDetails/${notification.target}`);
         break;
       case 'Form':
         break;
@@ -85,16 +89,26 @@ const Notifications = (props: BoxProps) => {
 const renderNotificationMessage = (notification: Notification): string => {
   let message = `${moment(notification.createdAt).format('D.M.')} • `;
   switch (notification.type) {
-    case 'assignmet':
-      switch (notification.targetDoc) {
-        case 'WorkRequest': message += `${notification.sender.firstName} ${notification.sender.lastName} requested work from you.`;
-          break;
+    case 'assignment':
+      if (notification.targetDoc === 'WorkRequest') {
+        message += `${notification.sender.firstName} ${notification.sender.lastName} requested work from you.`
       }
       break;
-  }
-
-  return message;
+    case 'feedback_pending':
+      if (notification.targetDoc ==='FeedBack') {
+        message += `${notification.sender.firstName} ${notification.sender.lastName} sent you feedback.`;
+      } 
+      break;
+    case 'signature_pending':
+      if (notification.targetDoc ==='EmploymentAgreement') {
+        message += `${notification.sender.firstName} ${notification.sender.lastName} sent you a work offer to sign.`;
+      } 
+      break;
+    
+    }
+    return message;
 }
+
 
 const useStyles = makeStyles(() => ({
   box: {

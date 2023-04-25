@@ -13,6 +13,7 @@ import {
   useMediaQuery,
   useTheme,
   Button,
+  Menu,
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles'
 import NotificationsIcon from '@mui/icons-material/Notifications'
@@ -24,7 +25,7 @@ import navConstants from '../../constants/navConstants'
 import { TopAppBarProps } from '../../types/props'
 import { IRootState } from '../../utils/store'
 import ActiveLastBreadcrumb from '../ActiveLastBreadcrumb'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { fetchNotifications } from '../../actions/notificationsActions'
 import Notifications from './Notifications'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
@@ -36,38 +37,51 @@ import { usePopupState } from 'material-ui-popup-state/hooks'
 import { logout } from '../../actions/userActions'
 import { useTranslation } from 'react-i18next'
 import { User } from '../../types/types';
+import logo_text from '../../assets/logo_keikkakaveri_navbar.svg'
 
 const LangMenuDropDown = () => {
-  // const [anchorEl, setAnchorEl] = React.useState(null);
-  // const classes = useStyles();
-  const { t, i18n } = useTranslation()
 
-  // const handleClick = (event: any) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
+  const { t, i18n } = useTranslation()
+  const [color, setColor] = useState("");
+  const [color2, setColor2] = useState("");
+  const language = localStorage.getItem("i18nextLng");
 
   const changeLanguage = (code: string) => {
-    // setAnchorEl(null);
     localStorage.setItem('i18nextLng', code)
     i18n.changeLanguage(code)
+    if (language === "en") {
+      setColor2("#FDFDFD")
+      setColor("#F47D20")
+    } else {
+      setColor("#FDFDFD");
+      setColor2("#F47D20")
+    }
   }
 
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  // };
+  useEffect(() => {
+    if (language === "en") {
+      setColor("#FDFDFD")
+    } else {
+      setColor2("#FDFDFD");
+    }
+  }, [])
 
   return (
     <>
-      <div className="drawer-top">
-        <Button
-          style={{ position: 'absolute', left: '-8rem', top: '23%' }}
-          onClick={() => changeLanguage('fi')}>
-          FI
+      <div style={{}}>
+
+        {/* Language change */}
+        <Button onClick={() => { changeLanguage('fi') }} style={{ marginRight: "1em", borderRadius: '5rem', minWidth: '40px', backgroundColor: color2 }}>
+          <Typography
+            sx={{ color: 'black', fontWeight: 600, fontSize: 16 }}>
+            FI
+          </Typography>
         </Button>
-        <Button
-          style={{ position: 'absolute', left: '-4rem', top: '23%' }}
-          onClick={() => changeLanguage('en')}>
-          EN
+        <Button onClick={() => { changeLanguage('en') }} style={{ marginRight: "1em", borderRadius: '5rem', minWidth: '40px', backgroundColor: color }}>
+          <Typography
+            sx={{ color: 'black', fontWeight: 600, fontSize: 16 }}>
+            EN
+          </Typography>
         </Button>
       </div>
     </>
@@ -122,9 +136,17 @@ const drawerWidth = navConstants.DRAWER_WIDTH
  */
 
 const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
+
   const { t } = useTranslation()
   const classes = useStyles()
   const { data } = useSelector((state: IRootState) => state.user)
+  const dispatch = useDispatch()
+  const theme = useTheme()
+  const matches = useMediaQuery(theme.breakpoints.down('md'))
+  const [timers, setTimers] = useState<any[]>([])
+  const [anchorElNotifications, setAnchorElNotifications] = React.useState(null)
+  const open2 = Boolean(anchorElNotifications)
+  const history = useHistory()
 
   const { notifications } = useSelector(
     (state: IRootState) => state.notification
@@ -133,14 +155,11 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
   const currentProfil: User = useSelector(
     (state: IRootState) => state.user.data
   )
+
   const currentProfile: User = React.useMemo(
     () => currentProfil,
     [currentProfil]
   )
-
-  const dispatch = useDispatch()
-  const theme = useTheme()
-  const matches = useMediaQuery(theme.breakpoints.down('md'))
 
   // popupState for user popup menu
   // https://www.npmjs.com/package/material-ui-popup-state
@@ -148,7 +167,6 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
     variant: 'popper',
     popupId: 'userProfilePopper',
   })
-  const [timers, setTimers] = useState<any[]>([])
 
   useEffect(() => {
     dispatch(fetchNotifications())
@@ -164,9 +182,6 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
     setTimers(new Array(newInterval))
   }, [dispatch, data.profileId])
 
-  const [anchorElNotifications, setAnchorElNotifications] = React.useState(null)
-  const open2 = Boolean(anchorElNotifications)
-
   const handleNotifications = (event: any) => {
     setAnchorElNotifications(event.currentTarget)
   }
@@ -174,8 +189,6 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
   const handleCloseNotifications = () => {
     setAnchorElNotifications(null)
   }
-
-  const history = useHistory()
 
   const handleProfileClick = () => {
     popupState.close()
@@ -192,9 +205,240 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
     dispatch(logout())
   }
 
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
   const appWorker = (
-    <AppBar position="fixed" elevation={0} className={clsx(classes.appWorker)}>
-      <Toolbar className="toolbar" variant="dense">
+    <AppBar
+      position="fixed"
+      elevation={0}
+      className={clsx(classes.appBusiness)}
+    >
+      <Toolbar className="toolbar" style={{ backgroundColor: '#F47D20', height: '100px' }}>
+
+        {/* Logo text (left corner) */}
+        <Typography style={{ marginLeft: '20px' }}
+          sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }}>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
+            <img alt="Keikkakaveri logo-text" src={logo_text} style={{ width: '200px' }} />
+          </Link>
+        </Typography>
+
+        {/* Menu */}
+        <Box sx={{ flexGrow: 1, display: { xs: 'flex', sm: 'flex', md: 'none' } }}>
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleOpenNavMenu}
+            color="default"
+          >
+            <MenuIcon />
+          </IconButton>
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorElNav}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            open={Boolean(anchorElNav)}
+            onClose={handleCloseNavMenu}
+            sx={{
+              display: { xs: 'block', sm: 'none' },
+            }}
+          >
+
+            {/* Side menu */}
+            <MenuItem key="0" onClick={handleCloseNavMenu}>
+              <Typography textAlign="center">
+                <Link className="landing-nav-link" to="/home">
+                  {t('tyopoyta')}
+                </Link>
+              </Typography>
+            </MenuItem>
+            <MenuItem key="2" >
+              <Typography
+                sx={{ color: 'black', fontWeight: 600, fontSize: 16 }}>
+                FI
+              </Typography>
+            </MenuItem>
+            <MenuItem key="3" >
+              <Typography
+                sx={{ color: 'black', fontWeight: 600, fontSize: 16 }}>
+                EN
+              </Typography>
+            </MenuItem>
+            <MenuItem>
+              <Typography textAlign="center">
+                <Link className="landing-login-dropdown" to="/login">
+                  {t('kirjaudu_sisaan')}
+                </Link>
+              </Typography>
+            </MenuItem>
+          </Menu>
+        </Box>
+
+        {/* Keikkakaveri logo-text sm (<600px) */}
+        <Typography
+          sx={{ mr: 2, display: { xs: 'flex', sm: 'flex', md: 'none' }, flexGrow: 1 }}>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
+            <img alt="Keikkakaveri logo-text" src={logo_text} style={{ width: '200px', marginRight: '30px' }} />
+          </Link>
+        </Typography>
+
+        {/* Nav top right corner */}
+        <Box style={{ alignItems: 'center' }} sx={{ display: { xs: 'none', sm: 'none', md: 'flex', lg: 'flex' } }}>
+          <Link to="/home" style={{ textDecoration: 'none', marginRight: '1em' }}>
+            <Button className="databank-button">
+              {t('homeButton')}
+            </Button>
+          </Link>
+          <Link to="/databank" style={{ textDecoration: 'none', marginRight: '1em' }}>
+            <Button className="databank-button" style={{}}>
+              {t('tietopankki')}
+            </Button>
+          </Link>
+          <LangMenuDropDown />
+          <div style={{ height: '100%', backgroundColor: '#C0CFFA', display: 'flex', flexWrap: 'nowrap', padding: '26px', borderLeft: '3px solid white' }}>
+            <Badge
+              badgeContent={
+                notifications
+                  ? notifications.length
+                  : 0
+              }
+              color="secondary"
+            >
+              <IconButton
+                style={{ color: 'black' }}
+                aria-label="notifications"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                color="default"
+                sx={{ borderRadius: 0 }}
+                onClick={handleNotifications}
+                size="large">
+                <NotificationsIcon />
+              </IconButton>
+            </Badge>
+          </div>
+          <div style={{ height: '100%', backgroundColor: '#C0CFFA', display: 'flex', flexWrap: 'nowrap', padding: '22px', borderLeft: '3px solid white' }}>
+            <Popover
+              id="menu-appbar"
+              open={open2}
+              anchorEl={anchorElNotifications}
+              onClose={handleCloseNotifications}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+            >
+              {notifications ? (
+                <Notifications
+                  notifications={notifications}
+                  onClose={handleCloseNotifications}
+                />
+              ) : (
+                <></>
+              )}
+            </Popover>
+
+            {/* Business popup menu */}
+            <div style={{ backgroundColor: '#C0CFFA' }}>
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                color="primary"
+                sx={{ borderRadius: 0 }}
+                className={classes.user}
+                {...bindTrigger(popupState)}
+                size="large">
+                <Typography className={classes.username}>
+                  {data.firstName || 'Loading'}
+                </Typography>
+                <Avatar
+                  style={{ margin: 'auto', backgroundColor: 'black', color: '#C0CFFA' }}
+                  className={classes.avatarBusiness}
+                  src={currentProfile.profilePicture || ''}
+                  alt="profilePicture"
+                />
+                <ExpandMoreIcon style={{ color: 'black' }} />
+              </IconButton>
+              <Popover
+                {...bindPopover(popupState)}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'center',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'center',
+                }}
+              >
+                <Box className={classes.userPopover}>
+                  <Grid style={{ marginTop: 16 }}>
+                    <Avatar
+                      style={{ margin: 'auto' }}
+                      className={classes.popoverAvatarBusiness}
+                      src={currentProfile.profilePicture || ''}
+                      alt="profilePicture"
+                    />
+                    <Typography
+                      variant="body1"
+                      align="center"
+                      style={{ marginTop: 16 }}
+                    >
+                      {currentProfile.firstName} {currentProfile.lastName}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      align="center"
+                      style={{ marginBottom: 16 }}
+                    >
+                      {currentProfile.email}
+                    </Typography>
+                  </Grid>
+                  <Divider />
+                  <MenuItem
+                    onClick={handleProfileClick}
+                    style={{ marginTop: 10 }}
+                  >
+                    <AccountCircleIcon
+                      style={{ fontSize: 24, marginRight: 10 }}
+                    />{' '}
+                    {t('profile')}
+                  </MenuItem>
+                  <MenuItem onClick={handleSettingsClick}>
+                    <SettingsIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
+                    {t('settings')}
+                  </MenuItem>
+                  <MenuItem onClick={handleLogout}>
+                    <ExitToAppIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
+                    {t('logout')}
+                  </MenuItem>
+                </Box>
+              </Popover>
+            </div>
+          </div>
+        </Box>
+      </Toolbar>
+      <div style={{ display: 'flex', backgroundColor: '#FDFDFD' }}>
         <IconButton
           color="inherit"
           aria-label="open drawer"
@@ -204,131 +448,8 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
           size="large">
           <MenuIcon />
         </IconButton>
-        {matches ? null : <ActiveLastBreadcrumb />}
-        {/** Here comes the rest appbar stuff */}
-        <div className="app-bar-container">
-          {/** <img className={classes.logo} src={profileThumb} alt="logo" />*/}
-          <Badge
-            badgeContent={
-              notifications
-                ? notifications.length
-                : 0
-            }
-            color="secondary"
-          >
-            <IconButton
-              aria-label="notifications"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              color="default"
-              sx={{ borderRadius: 0 }}
-              onClick={handleNotifications}
-              size="large">
-              <NotificationsIcon />
-            </IconButton>
-            <LangMenuDropDown />
-          </Badge>
-          <Popover
-            id="menu-appbar"
-            open={open2}
-            anchorEl={anchorElNotifications}
-            onClose={handleCloseNotifications}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-          >
-            {notifications ? (
-              <Notifications
-                notifications={notifications}
-                onClose={handleCloseNotifications}
-              />
-            ) : (
-              <></>
-            )}
-          </Popover>
-          {/* Worker popup menu */}
-          <div>
-            <IconButton
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              color="primary"
-              sx={{ borderRadius: 0 }}
-              className={classes.user}
-              {...bindTrigger(popupState)}
-              size="large">
-              <Typography className={classes.username}>
-                {data.firstName || 'Loading'}
-              </Typography>
-              <Avatar
-                style={{ margin: 'auto' }}
-                className={classes.avatarWorker}
-                src={currentProfile.profilePicture || ''}
-                alt="profilePicture"
-              />
-              <ExpandMoreIcon />
-            </IconButton>
-            <Popover
-              {...bindPopover(popupState)}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'center',
-              }}
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'center',
-              }}
-            >
-              <Box className={classes.userPopover}>
-                <Grid style={{ marginTop: 16 }}>
-                  <Avatar
-                    style={{ margin: 'auto' }}
-                    className={classes.popoverAvatarWorker}
-                    src={currentProfile.profilePicture || ''}
-                    alt="profilePicture"
-                  />
-                  <Typography
-                    variant="body1"
-                    align="center"
-                    style={{ marginTop: 16 }}
-                  >
-                    {currentProfile.firstName} {currentProfile.lastName}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    align="center"
-                    style={{ marginBottom: 16 }}
-                  >
-                    {currentProfile.email}
-                  </Typography>
-                </Grid>
-                <Divider />
-                <MenuItem
-                  onClick={handleProfileClick}
-                  style={{ marginTop: 10 }}
-                >
-                  <AccountCircleIcon
-                    style={{ fontSize: 24, marginRight: 10 }}
-                  />{' '}
-                  {t('profile')}
-                </MenuItem>
-                <MenuItem onClick={handleSettingsClick}>
-                  <SettingsIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
-                  {t('settings')}
-                </MenuItem>
-                <MenuItem onClick={handleLogout}>
-                  <ExitToAppIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
-                  {t('logout')}
-                </MenuItem>
-              </Box>
-            </Popover>
-          </div>
-        </div>
-      </Toolbar>
+        <h3 style={{ color: 'black', textTransform: 'uppercase', padding: '5px', fontWeight: 'bold' }}>{t('workerFrontpage')}</h3>
+      </div>
     </AppBar>
   )
 
@@ -337,8 +458,230 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
   }
 
   const appAgency = (
-    <AppBar position="fixed" elevation={0} className={clsx(classes.appAgency)}>
-      <Toolbar className="toolbar" variant="dense">
+    <AppBar
+      position="fixed"
+      elevation={0}
+      className={clsx(classes.appBusiness)}
+    >
+      <Toolbar className="toolbar" style={{ backgroundColor: '#F47D20', height: '100px' }}>
+
+        {/* Logo text (left corner) */}
+        <Typography style={{ marginLeft: '20px' }}
+          sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }}>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
+            <img alt="Keikkakaveri logo-text" src={logo_text} style={{ width: '200px' }} />
+          </Link>
+        </Typography>
+
+        {/* Menu */}
+        <Box sx={{ flexGrow: 1, display: { xs: 'flex', sm: 'flex', md: 'none' } }}>
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleOpenNavMenu}
+            color="default"
+          >
+            <MenuIcon />
+          </IconButton>
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorElNav}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            open={Boolean(anchorElNav)}
+            onClose={handleCloseNavMenu}
+            sx={{
+              display: { xs: 'block', sm: 'none' },
+            }}
+          >
+
+            {/* Side menu */}
+            <MenuItem key="0" onClick={handleCloseNavMenu}>
+              <Typography textAlign="center">
+                <Link className="landing-nav-link" to="/home">
+                  {t('tyopoyta')}
+                </Link>
+              </Typography>
+            </MenuItem>
+            <MenuItem key="2" >
+              <Typography
+                sx={{ color: 'black', fontWeight: 600, fontSize: 16 }}>
+                FI
+              </Typography>
+            </MenuItem>
+            <MenuItem key="3" >
+              <Typography
+                sx={{ color: 'black', fontWeight: 600, fontSize: 16 }}>
+                EN
+              </Typography>
+            </MenuItem>
+            <MenuItem>
+              <Typography textAlign="center">
+                <Link className="landing-login-dropdown" to="/login">
+                  {t('kirjaudu_sisaan')}
+                </Link>
+              </Typography>
+            </MenuItem>
+          </Menu>
+        </Box>
+
+        {/* Keikkakaveri logo-text sm (<600px) */}
+        <Typography
+          sx={{ mr: 2, display: { xs: 'flex', sm: 'flex', md: 'none' }, flexGrow: 1 }}>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
+            <img alt="Keikkakaveri logo-text" src={logo_text} style={{ width: '200px', marginRight: '30px' }} />
+          </Link>
+        </Typography>
+
+        {/* Nav top right corner */}
+        <Box style={{ alignItems: 'center' }} sx={{ display: { xs: 'none', sm: 'none', md: 'flex', lg: 'flex' } }}>
+          <Link to="/home" style={{ textDecoration: 'none', marginRight: '1em' }}>
+            <Button className="databank-button">
+              {t('homeButton')}
+            </Button>
+          </Link>
+          <Link to="/databank" style={{ textDecoration: 'none', marginRight: '1em' }}>
+            <Button className="databank-button" style={{}}>
+              {t('tietopankki')}
+            </Button>
+          </Link>
+          <LangMenuDropDown />
+          <div style={{ height: '100%', backgroundColor: '#C0CFFA', display: 'flex', flexWrap: 'nowrap', padding: '26px', borderLeft: '3px solid white' }}>
+            <Badge
+              badgeContent={
+                notifications
+                  ? notifications.length
+                  : 0
+              }
+              color="secondary"
+            >
+              <IconButton
+                style={{ color: 'black' }}
+                aria-label="notifications"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                color="default"
+                sx={{ borderRadius: 0 }}
+                onClick={handleNotifications}
+                size="large">
+                <NotificationsIcon />
+              </IconButton>
+            </Badge>
+          </div>
+          <div style={{ height: '100%', backgroundColor: '#C0CFFA', display: 'flex', flexWrap: 'nowrap', padding: '22px', borderLeft: '3px solid white' }}>
+            <Popover
+              id="menu-appbar"
+              open={open2}
+              anchorEl={anchorElNotifications}
+              onClose={handleCloseNotifications}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+            >
+              {notifications ? (
+                <Notifications
+                  notifications={notifications}
+                  onClose={handleCloseNotifications}
+                />
+              ) : (
+                <></>
+              )}
+            </Popover>
+
+            {/* Business popup menu */}
+            <div style={{ backgroundColor: '#C0CFFA' }}>
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                color="primary"
+                sx={{ borderRadius: 0 }}
+                className={classes.user}
+                {...bindTrigger(popupState)}
+                size="large">
+                <Typography className={classes.username}>
+                  {data.firstName || 'Loading'}
+                </Typography>
+                <Avatar
+                  style={{ margin: 'auto', backgroundColor: 'black', color: '#C0CFFA' }}
+                  className={classes.avatarBusiness}
+                  src={currentProfile.profilePicture || ''}
+                  alt="profilePicture"
+                />
+                <ExpandMoreIcon style={{ color: 'black' }} />
+              </IconButton>
+              <Popover
+                {...bindPopover(popupState)}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'center',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'center',
+                }}
+              >
+                <Box className={classes.userPopover}>
+                  <Grid style={{ marginTop: 16 }}>
+                    <Avatar
+                      style={{ margin: 'auto' }}
+                      className={classes.popoverAvatarBusiness}
+                      src={currentProfile.profilePicture || ''}
+                      alt="profilePicture"
+                    />
+                    <Typography
+                      variant="body1"
+                      align="center"
+                      style={{ marginTop: 16 }}
+                    >
+                      {currentProfile.firstName} {currentProfile.lastName}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      align="center"
+                      style={{ marginBottom: 16 }}
+                    >
+                      {currentProfile.email}
+                    </Typography>
+                  </Grid>
+                  <Divider />
+                  <MenuItem
+                    onClick={handleProfileClick}
+                    style={{ marginTop: 10 }}
+                  >
+                    <AccountCircleIcon
+                      style={{ fontSize: 24, marginRight: 10 }}
+                    />{' '}
+                    {t('profile')}
+                  </MenuItem>
+                  <MenuItem onClick={handleSettingsClick}>
+                    <SettingsIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
+                    {t('settings')}
+                  </MenuItem>
+                  <MenuItem onClick={handleLogout}>
+                    <ExitToAppIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
+                    {t('logout')}
+                  </MenuItem>
+                </Box>
+              </Popover>
+            </div>
+          </div>
+        </Box>
+      </Toolbar>
+      <div style={{ display: 'flex', backgroundColor: '#FDFDFD' }}>
         <IconButton
           color="inherit"
           aria-label="open drawer"
@@ -348,131 +691,8 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
           size="large">
           <MenuIcon />
         </IconButton>
-        {matches ? null : <ActiveLastBreadcrumb />}
-        {/** Here comes the rest appbar stuff */}
-        <div className="app-bar-container">
-          {/** <img className={classes.logo} src={profileThumb} alt="logo" />*/}
-          <Badge
-            badgeContent={
-              notifications
-                ? notifications.length
-                : 0
-            }
-            color="secondary"
-          >
-            <IconButton
-              aria-label="notifications"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              color="default"
-              sx={{ borderRadius: 0 }}
-              onClick={handleNotifications}
-              size="large">
-              <NotificationsIcon />
-            </IconButton>
-            <LangMenuDropDown />
-          </Badge>
-          <Popover
-            id="menu-appbar"
-            open={open2}
-            anchorEl={anchorElNotifications}
-            onClose={handleCloseNotifications}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-          >
-            {notifications ? (
-              <Notifications
-                notifications={notifications}
-                onClose={handleCloseNotifications}
-              />
-            ) : (
-              <></>
-            )}
-          </Popover>
-          {/* Agency popup menu */}
-          <div>
-            <IconButton
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              color="primary"
-              sx={{ borderRadius: 0 }}
-              className={classes.user}
-              {...bindTrigger(popupState)}
-              size="large">
-              <Typography className={classes.username}>
-                {data.firstName || 'Loading'}
-              </Typography>
-              <Avatar
-                style={{ margin: 'auto' }}
-                className={classes.avatarAgency}
-                src={currentProfile.profilePicture || ''}
-                alt="profilePicture"
-              />
-              <ExpandMoreIcon />
-            </IconButton>
-            <Popover
-              {...bindPopover(popupState)}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'center',
-              }}
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'center',
-              }}
-            >
-              <Box className={classes.userPopover}>
-                <Grid style={{ marginTop: 16 }}>
-                  <Avatar
-                    style={{ margin: 'auto' }}
-                    className={classes.popoverAvatarAgency}
-                    src={currentProfile.profilePicture || ''}
-                    alt="profilePicture"
-                  />
-                  <Typography
-                    variant="body1"
-                    align="center"
-                    style={{ marginTop: 16 }}
-                  >
-                    {currentProfile.firstName} {currentProfile.lastName}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    align="center"
-                    style={{ marginBottom: 16 }}
-                  >
-                    {currentProfile.email}
-                  </Typography>
-                </Grid>
-                <Divider />
-                <MenuItem
-                  onClick={handleProfileClick}
-                  style={{ marginTop: 10 }}
-                >
-                  <AccountCircleIcon
-                    style={{ fontSize: 24, marginRight: 10 }}
-                  />{' '}
-                  {t('profile')}
-                </MenuItem>
-                <MenuItem onClick={handleSettingsClick}>
-                  <SettingsIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
-                  {t('settings')}
-                </MenuItem>
-                <MenuItem onClick={handleLogout}>
-                  <ExitToAppIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
-                  {t('logout')}
-                </MenuItem>
-              </Box>
-            </Popover>
-          </div>
-        </div>
-      </Toolbar>
+        <Typography sx={{fontSize: {md: '20px', sm: '20px', xs: '15px'}}} style={{ margin: '5px 0px 0px 5px', fontFamily: 'Montserrat, serif', color: 'black', textTransform: 'uppercase', padding: '5px', fontWeight: 'bold'}}>{t('agencyFrontpage')}</Typography>
+      </div>
     </AppBar>
   )
 
@@ -486,7 +706,225 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
       elevation={0}
       className={clsx(classes.appBusiness)}
     >
-      <Toolbar className="toolbar" variant="dense">
+      <Toolbar className="toolbar" style={{ backgroundColor: '#F47D20', height: '100px' }}>
+
+        {/* Logo text (left corner) */}
+        <Typography style={{ marginLeft: '20px' }}
+          sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }}>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
+            <img alt="Keikkakaveri logo-text" src={logo_text} style={{ width: '200px' }} />
+          </Link>
+        </Typography>
+
+        {/* Menu */}
+        <Box sx={{ flexGrow: 1, display: { xs: 'flex', sm: 'flex', md: 'none' } }}>
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleOpenNavMenu}
+            color="default"
+          >
+            <MenuIcon />
+          </IconButton>
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorElNav}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            open={Boolean(anchorElNav)}
+            onClose={handleCloseNavMenu}
+            sx={{
+              display: { xs: 'block', sm: 'none' },
+            }}
+          >
+
+            {/* Side menu */}
+            <MenuItem key="0" onClick={handleCloseNavMenu}>
+              <Typography textAlign="center">
+                <Link className="landing-nav-link" to="/home">
+                  {t('tyopoyta')}
+                </Link>
+              </Typography>
+            </MenuItem>
+            <MenuItem key="2" >
+              <Typography
+                sx={{ color: 'black', fontWeight: 600, fontSize: 16 }}>
+                FI
+              </Typography>
+            </MenuItem>
+            <MenuItem key="3" >
+              <Typography
+                sx={{ color: 'black', fontWeight: 600, fontSize: 16 }}>
+                EN
+              </Typography>
+            </MenuItem>
+            <MenuItem>
+              <Typography textAlign="center">
+                <Link className="landing-login-dropdown" to="/login">
+                  {t('kirjaudu_sisaan')}
+                </Link>
+              </Typography>
+            </MenuItem>
+          </Menu>
+        </Box>
+
+        {/* Keikkakaveri logo-text sm (<600px) */}
+        <Typography
+          sx={{ mr: 2, display: { xs: 'flex', sm: 'flex', md: 'none' }, flexGrow: 1 }}>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
+            <img alt="Keikkakaveri logo-text" src={logo_text} style={{ width: '200px', marginRight: '30px' }} />
+          </Link>
+        </Typography>
+
+        {/* Nav top right corner */}
+        <Box style={{ alignItems: 'center' }} sx={{ display: { xs: 'none', sm: 'none', md: 'flex', lg: 'flex' } }}>
+          <Link to="/home" style={{ textDecoration: 'none', marginRight: '1em' }}>
+            <Button className="databank-button">
+              {t('homeButton')}
+            </Button>
+          </Link>
+          <Link to="/databank" style={{ textDecoration: 'none', marginRight: '1em' }}>
+            <Button className="databank-button" style={{}}>
+              {t('tietopankki')}
+            </Button>
+          </Link>
+          <LangMenuDropDown />
+          <div style={{ height: '100%', backgroundColor: '#C0CFFA', display: 'flex', flexWrap: 'nowrap', padding: '26px', borderLeft: '3px solid white' }}>
+            <Badge
+              badgeContent={
+                notifications
+                  ? notifications.length
+                  : 0
+              }
+              color="secondary"
+            >
+              <IconButton
+                style={{ color: 'black' }}
+                aria-label="notifications"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                color="default"
+                sx={{ borderRadius: 0 }}
+                onClick={handleNotifications}
+                size="large">
+                <NotificationsIcon />
+              </IconButton>
+            </Badge>
+          </div>
+          <div style={{ height: '100%', backgroundColor: '#C0CFFA', display: 'flex', flexWrap: 'nowrap', padding: '22px', borderLeft: '3px solid white' }}>
+            <Popover
+              id="menu-appbar"
+              open={open2}
+              anchorEl={anchorElNotifications}
+              onClose={handleCloseNotifications}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+            >
+              {notifications ? (
+                <Notifications
+                  notifications={notifications}
+                  onClose={handleCloseNotifications}
+                />
+              ) : (
+                <></>
+              )}
+            </Popover>
+
+            {/* Business popup menu */}
+            <div style={{ backgroundColor: '#C0CFFA' }}>
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                color="primary"
+                sx={{ borderRadius: 0 }}
+                className={classes.user}
+                {...bindTrigger(popupState)}
+                size="large">
+                <Typography className={classes.username}>
+                  {data.firstName || 'Loading'}
+                </Typography>
+                <Avatar
+                  style={{ margin: 'auto', backgroundColor: 'black', color: '#C0CFFA' }}
+                  className={classes.avatarBusiness}
+                  src={currentProfile.profilePicture || ''}
+                  alt="profilePicture"
+                />
+                <ExpandMoreIcon style={{ color: 'black' }} />
+              </IconButton>
+              <Popover
+                {...bindPopover(popupState)}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'center',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'center',
+                }}
+              >
+                <Box className={classes.userPopover}>
+                  <Grid style={{ marginTop: 16 }}>
+                    <Avatar
+                      style={{ margin: 'auto' }}
+                      className={classes.popoverAvatarBusiness}
+                      src={currentProfile.profilePicture || ''}
+                      alt="profilePicture"
+                    />
+                    <Typography
+                      variant="body1"
+                      align="center"
+                      style={{ marginTop: 16 }}
+                    >
+                      {currentProfile.firstName} {currentProfile.lastName}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      align="center"
+                      style={{ marginBottom: 16 }}
+                    >
+                      {currentProfile.email}
+                    </Typography>
+                  </Grid>
+                  <Divider />
+                  <MenuItem
+                    onClick={handleProfileClick}
+                    style={{ marginTop: 10 }}
+                  >
+                    <AccountCircleIcon
+                      style={{ fontSize: 24, marginRight: 10 }}
+                    />{' '}
+                    {t('profile')}
+                  </MenuItem>
+                  <MenuItem onClick={handleSettingsClick}>
+                    <SettingsIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
+                    {t('settings')}
+                  </MenuItem>
+                  <MenuItem onClick={handleLogout}>
+                    <ExitToAppIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
+                    {t('logout')}
+                  </MenuItem>
+                </Box>
+              </Popover>
+            </div>
+          </div>
+        </Box>
+      </Toolbar>
+      <div style={{ display: 'flex', backgroundColor: '#FDFDFD' }}>
         <IconButton
           color="inherit"
           aria-label="open drawer"
@@ -496,131 +934,8 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
           size="large">
           <MenuIcon />
         </IconButton>
-        {matches ? null : <ActiveLastBreadcrumb />}
-        {/** Here comes the rest appbar stuff */}
-        <div className="app-bar-container">
-          {/** <img className={classes.logo} src={profileThumb} alt="logo" />*/}
-          <Badge
-            badgeContent={
-              notifications
-                ? notifications.length
-                : 0
-            }
-            color="secondary"
-          >
-            <IconButton
-              aria-label="notifications"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              color="default"
-              sx={{ borderRadius: 0 }}
-              onClick={handleNotifications}
-              size="large">
-              <NotificationsIcon />
-            </IconButton>
-            <LangMenuDropDown />
-          </Badge>
-          <Popover
-            id="menu-appbar"
-            open={open2}
-            anchorEl={anchorElNotifications}
-            onClose={handleCloseNotifications}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-          >
-            {notifications ? (
-              <Notifications
-                notifications={notifications}
-                onClose={handleCloseNotifications}
-              />
-            ) : (
-              <></>
-            )}
-          </Popover>
-          {/* Business popup menu */}
-          <div>
-            <IconButton
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              color="primary"
-              sx={{ borderRadius: 0 }}
-              className={classes.user}
-              {...bindTrigger(popupState)}
-              size="large">
-              <Typography className={classes.username}>
-                {data.firstName || 'Loading'}
-              </Typography>
-              <Avatar
-                style={{ margin: 'auto' }}
-                className={classes.avatarBusiness}
-                src={currentProfile.profilePicture || ''}
-                alt="profilePicture"
-              />
-              <ExpandMoreIcon />
-            </IconButton>
-            <Popover
-              {...bindPopover(popupState)}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'center',
-              }}
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'center',
-              }}
-            >
-              <Box className={classes.userPopover}>
-                <Grid style={{ marginTop: 16 }}>
-                  <Avatar
-                    style={{ margin: 'auto' }}
-                    className={classes.popoverAvatarBusiness}
-                    src={currentProfile.profilePicture || ''}
-                    alt="profilePicture"
-                  />
-                  <Typography
-                    variant="body1"
-                    align="center"
-                    style={{ marginTop: 16 }}
-                  >
-                    {currentProfile.firstName} {currentProfile.lastName}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    align="center"
-                    style={{ marginBottom: 16 }}
-                  >
-                    {currentProfile.email}
-                  </Typography>
-                </Grid>
-                <Divider />
-                <MenuItem
-                  onClick={handleProfileClick}
-                  style={{ marginTop: 10 }}
-                >
-                  <AccountCircleIcon
-                    style={{ fontSize: 24, marginRight: 10 }}
-                  />{' '}
-                  {t('profile')}
-                </MenuItem>
-                <MenuItem onClick={handleSettingsClick}>
-                  <SettingsIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
-                  {t('settings')}
-                </MenuItem>
-                <MenuItem onClick={handleLogout}>
-                  <ExitToAppIcon style={{ fontSize: 24, marginRight: 10 }} />{' '}
-                  {t('logout')}
-                </MenuItem>
-              </Box>
-            </Popover>
-          </div>
-        </div>
-      </Toolbar>
+        <h3 style={{ color: 'black', textTransform: 'uppercase', padding: '5px', fontWeight: 'bold' }}>{t('businessFrontpage')}</h3>
+      </div>
     </AppBar>
   )
 
@@ -641,6 +956,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
           <MenuIcon />
         </IconButton>
         {matches ? null : <ActiveLastBreadcrumb />}
+
         {/** Here comes the rest appbar stuff */}
         <div className="app-bar-container">
           {/** <img className={classes.logo} src={profileThumb} alt="logo" />*/}
@@ -686,6 +1002,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
               <></>
             )}
           </Popover>
+
           {/* User popup menu */}
           <div>
             <IconButton
@@ -768,19 +1085,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
 }
 
 const useStyles = makeStyles((theme) => ({
-  // appBar: {
-  //   [theme.breakpoints.up('lg')]: {
-  //     width: `calc(100% - ${drawerWidth}px)`,
-  //     marginLeft: drawerWidth,
-  //   },
-  //   backgroundColor: 'white',
-  //   borderTop: '16px solid #EB5A00'
-  // },
   menuButton: {
-    // marginRight: theme.spacing(2),
-    // [theme.breakpoints.up('lg')]: {
-    //   display: 'none',
-    // },
     color: 'black',
   },
   logo: {
@@ -806,7 +1111,6 @@ const useStyles = makeStyles((theme) => ({
     zIndex: theme.zIndex.drawer + 1,
   },
   appBusiness: {
-    borderTop: '16px solid #eb5a00',
     width: `calc(100% - ${0}px)`,
     backgroundColor: 'white',
 
@@ -814,23 +1118,14 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     width: `calc(100% - ${0}px)`,
-    backgroundColor: 'white',
-    borderTop: '16px solid #eb5a00',
+    backgroundColor: '#F47D20',
     zIndex: theme.zIndex.drawer + 1,
-    /**
-     * transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-     */
     [theme.breakpoints.down('lg')]: {
       width: '100vw',
-      // marginLeft: drawerWidth,
     },
   },
   appBarShift: {
     backgroundColor: 'white',
-    // borderTop: '16px solid #eb5a00',
     borderTop: '16px solid #2386CC',
     marginLeft: drawerWidth,
     width: `calc(100% - ${navConstants.DRAWER_WIDTH}px)`,
@@ -847,7 +1142,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   user: {
-    // border: '1px solid red',
   },
   avatarWorker: {
     color: theme.palette.getContrastText('#eb5a00'),
@@ -906,6 +1200,7 @@ const useStyles = makeStyles((theme) => ({
     width: 300,
   },
   username: {
+    fontWeight: 'bold',
     color: 'black',
     marginRight: 10,
     [theme.breakpoints.down('md')]: {
@@ -915,3 +1210,4 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default TopAppBar
+

@@ -29,7 +29,7 @@ code {
 .mood-form-container {
     background-color: white;
     /* margin: 1rem 0 !important; */
-    padding: 1rem 1rem 1rem;
+    padding: 1rem 0rem 1rem 0rem;
     /* 5rem 1rem 1rem */
     border-radius: 4px;
     border: 1px solid rgba(200, 200, 200, 150);
@@ -388,9 +388,8 @@ nav * {
 }
 
 .toolbar {
-    flex: 1;
     justify-content: space-between;
-    padding: 0 1% !important;
+    padding: 0;
 
 }
 
@@ -448,9 +447,8 @@ nav * {
 }
 
 .form-search-container {
-    background-color: #0007 !important;
-    color: white;
-    margin: 0 0 1rem 0;
+    background-color: #F47D20;
+    margin: 0 0 3px 0;
 }
 
 /* .form-search-container .MuiSelect-icon {
@@ -755,7 +753,7 @@ nav * {
 }
 
 .Mui-selected {
-    color: #1870C9 !important;
+    color: 'black';
 }
 
 .home {
@@ -1088,3 +1086,11 @@ nav * {
     font-weight: bold;
     width: 100%;
 }
+
+.data-grid-styling{
+    background-color: 'red';
+
+    
+
+}
+

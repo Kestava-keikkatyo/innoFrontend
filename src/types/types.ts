@@ -274,9 +274,9 @@ export interface Notification {
   sender: User
   target: string
   createdAt: Date
-  targetDoc: 'WorkRequest' | 'Agreement' | 'Form' | 'Application' | 'FeedBack'
+  targetDoc: 'WorkRequest' | 'Agreement' | 'EmploymentAgreement' | 'Form' | 'Application' | 'FeedBack'
   type:
-  | 'assignmet'
+  | 'assignment'
   | 'signature_pending'
   | 'form_pending'
   | 'application_pending'
@@ -399,4 +399,10 @@ export interface BusinessContractForm {
   tags: string[]
   questions: Array<Question>
   filled: boolean
+}
+
+
+export interface InviteCode {
+  code: string;
+  userId: string;
 }

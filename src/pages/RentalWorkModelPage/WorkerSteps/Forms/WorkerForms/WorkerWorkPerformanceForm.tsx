@@ -1,4 +1,4 @@
-import {CircularProgress, Button, TextField} from '@mui/material';
+import {TextField} from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Field, Form, Formik } from 'formik';
@@ -8,7 +8,6 @@ import { Theme } from '@mui/material/styles';
 import { useSelector } from 'react-redux';
 import { IRootState } from '../../../../../utils/store';
 
-
 const WorkerWorkPerformanceForm: React.FC = () => {
     const { t } = useTranslation();
     const isLoading = useSelector((state: IRootState) => state.feedback.loading);
@@ -16,17 +15,12 @@ const WorkerWorkPerformanceForm: React.FC = () => {
 
     return (
         <div style={{position:'relative'}} className={classes.noPointerEvents}>
-
-   
-            <h2 className={classes.center}>{t('form4Header')}</h2>
-            
+            <h2>{t('form4Header')}</h2>
             <Formik
                 initialValues={{
                 }}
                 onSubmit={() => { console.log('Submit'); }}
-            >
-              
-                
+            > 
                 <Form>
                     <p className={classes.p}>{t('form4Text1')}</p>
                     <p className={classes.p}>{t('form4Text2')}</p>
@@ -80,12 +74,8 @@ const WorkerWorkPerformanceForm: React.FC = () => {
                         <h4 className={classes.graytext}>{t('cooperation')}</h4>
                         <TextField placeholder={t('textAreaPlaceholder')} multiline rows={10}/>
                     </Box>
-                    {isLoading ? <CircularProgress color="primary" /> : <Button type="submit" variant="contained" color="secondary" disabled className={classes.submitButton}>{t('submit')}</Button>}
-                   
                 </Form>
-              
             </Formik>
-    
         </div>  
     );
 }

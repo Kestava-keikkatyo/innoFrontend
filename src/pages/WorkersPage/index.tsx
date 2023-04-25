@@ -46,7 +46,7 @@ const WorkerContractPage = () => {
   }
 
   return (
-    <Container maxWidth="lg">
+    <Container style={{backgroundColor: 'red'}} maxWidth="lg">
       <Typography style={{ paddingTop: '1rem' }} align="center" variant="h4">
         Make WorkContracts 
       </Typography>

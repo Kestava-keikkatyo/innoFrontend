@@ -2,7 +2,7 @@
  * @module reducer/user
  * @desc Redux user reducer
  */
-import { loadUser } from '../utils/storage'
+import { loadContacts, loadUser } from '../utils/storage'
 import {
   LOGIN,
   LOGOUT,
@@ -15,11 +15,13 @@ import {
 } from '../types/state'
 
 const userData = loadUser()
+const userContacts = loadContacts()
+
 const initialState: UserState = {
   loggedIn: !!userData,
   loading: false,
   data: userData || {},
-  contacts: []
+  contacts: userContacts || []
 }
 
 /**

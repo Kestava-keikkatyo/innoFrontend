@@ -100,6 +100,7 @@ const UserList: React.FC = () => {
       pageSize={10}
       rowsPerPageOptions={[10]}
       checkboxSelection
+      style={{backgroundColor: 'red'}}
     />
   </div>
   );
