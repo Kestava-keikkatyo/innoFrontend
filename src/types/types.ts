@@ -401,8 +401,9 @@ export interface BusinessContractForm {
   filled: boolean
 }
 
-
-export interface InviteCode {
+export interface AgreementCode {
   code: string;
-  userId: string;
+  creator: string;
+  createdAt: Date;
+  marked: boolean;
 }

@@ -82,6 +82,7 @@ import Businesses from './pages/Profile/Businesses';
 import ReceivedFeedbacks from './pages/FeedbackPage/ReceivedFeedbacks';
 import ReceivedDetails from './pages/FeedbackPage/ReceivedDetails'
 import EmploymentPage from './pages/EmploymentPage/EmploymentTable'
+import InviteCode from './pages/InviteCodePage'
 
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -341,6 +342,9 @@ const App: React.FC = () => {
               roles={[roles.Agency]}
             >
               <ContractFormManagerPage />
+            </PrivateRoute>
+            <PrivateRoute path="/inviteCodes" roles={[roles.Agency]}>
+              <InviteCode />
             </PrivateRoute>
             <PrivateRoute path="/agencyContracts" roles={[roles.Agency]}>
               <AgencyContractsPage />
