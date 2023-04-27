@@ -14,9 +14,11 @@ import {
   B_ACCEPT,
   ADD_B_WB_CONTRACT,
   SEND_BACK_B_CONTRACT,
-  E_FETCH
+  E_FETCH,
+  E_SAVE
 } from '../types/state'
-import { businessContractType, EmploymentAgreement } from '../types/types'
+import { businessContractType, EmploymentAgreement, severity } from '../types/types'
+import { setAlert } from './alertActions'
 
 /**
  * @function
@@ -71,13 +73,28 @@ export const fetchEmploymentContractsAsAgency = () => async (dispatch: any) => {
 
 /**
  * @function
- * @desc Function for worker or business to refuse employment contract
+ * @desc Function for worker or business to delete employment contract
  * Deletes the employment contract
  * @param {string} id - EmploymentContract Id.
  */
-export const deleteEmploymentAgreement = (id: string) => async (dispatch: any) => {
+export const deleteEmploymentAgreementAsWorkerOrBusiness = (id: string) => async (dispatch: any) => {
   const res = await contractsService.deleteEmploymentContractById(id)
   const r = await contractsService.fetchEmploymentContractsAsWorkerOrBusiness()
+
+  if (res && res.status === 200) {
+    dispatch({ type: E_FETCH, data: r })
+  }
+}
+
+/**
+ * @function
+ * @desc Function for agency to delete employment contract
+ * Deletes the employment contract
+ * @param {string} id - EmploymentContract Id.
+ */
+export const deleteEmploymentAgreementAsAgency = (id: string) => async (dispatch: any) => {
+  const res = await contractsService.deleteEmploymentContractById(id)
+  const r = await contractsService.fetchEmploymentContractsAsAgency()
 
   if (res && res.status === 200) {
     dispatch({ type: E_FETCH, data: r })
@@ -181,7 +198,13 @@ export const addBusinessContractWorkerBusiness =
  */
 export const submitEmploymentAgreement = (form: EmploymentAgreement) => async (dispatch: any) => {
   const res = await contractsService.postEmploymentAgreement(form);
-
+  const r = await contractsService.fetchEmploymentContractsAsAgency()
+  if (res && res.status === 200) {
+    dispatch(setAlert( `Success: Employment proposal sent`, severity.Success))
+    dispatch({ type: E_SAVE, data: res.data })
+    dispatch({ type: E_FETCH, data: r })
+    return res.status
+  }
 };
 
 /**

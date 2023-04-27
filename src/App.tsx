@@ -81,7 +81,7 @@ import BusinessResponsibilities from './pages/ResponsibilitiesPage/BusinessRespo
 import Businesses from './pages/Profile/Businesses';
 import ReceivedFeedbacks from './pages/FeedbackPage/ReceivedFeedbacks';
 import ReceivedDetails from './pages/FeedbackPage/ReceivedDetails'
-import EmploymentPage from './pages/EmploymentPage/EmploymentTable'
+import EmploymentPage from './pages/AgencyContractsPage/Employment'
 
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface

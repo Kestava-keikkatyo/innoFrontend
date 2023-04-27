@@ -91,10 +91,6 @@ const Workers: React.FC = () => {
         return (
           <>
              <Link className={classes.link} to={'/workers/profile/' + params.id}>{t('list_profile')}</Link>
-
-          { (userType === "agency") &&
-            <Link to={'/employment/'} onClick={() => setEmploymentFormWorker(params.id)}>{t('employ')}</Link>
-          }
           </>
         );
     },
