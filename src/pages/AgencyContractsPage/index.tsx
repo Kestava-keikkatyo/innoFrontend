@@ -127,8 +127,6 @@ const AgencyContractsPage = () => {
           {t('make_contract')}
         </Typography>
 
-        <InviteCodeGenerator userId={data._id} />
-
         <Typography style={{ paddingTop: '1rem' }} variant="h1" className='header'>
           {t('contracts_overview')}
         </Typography>

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { AgreementCode } from "../types/types";
 import baseUrl from "../utils/baseUrl";
 import { loadUser } from "../utils/storage";
@@ -19,11 +19,13 @@ const authHeader = () => {
  * @param numberOfCodes - The number of agreement codes to be created.
  * @returns The agreement codes that were created.
  */
-export const addAgreementCodes = async (numberOfCodes: number): Promise<void> => {
+export const addAgreementCodes = async (numberOfCodes: number): Promise<Array<AgreementCode>> => {
   try {
-    return await axios.post(`${baseUrl}/addCodes`, { numberOfCodes }, authHeader());
+    const response = await axios.post(`${baseUrl}/code/addCodes`, { numberOfCodes }, authHeader());
+    return response.data; // Extract the data from the Axios response
   } catch (error) {
     console.error(error);
+    return []; // Return an empty array if an error occurs
   }
 };
 
@@ -34,7 +36,7 @@ export const addAgreementCodes = async (numberOfCodes: number): Promise<void> =>
  */
 export const getAgreementCodesByCreator = async (): Promise<Array<AgreementCode>> => {
   try {
-    const response = await axios.get(`${baseUrl}/getAgreementCodesByCreator`, authHeader());
+    const response = await axios.get(`${baseUrl}/code/getAgreementCodesByCreator`, authHeader());
     console.log(response);
     return response.data.agreementCodes;
   } catch (error) {

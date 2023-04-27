@@ -12,9 +12,9 @@ const NewCodeGeneration: React.FC = () => {
     setNumberOfCodes(num);
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     if (numberOfCodes > 0) {
-      await addAgreementCodes(numberOfCodes);
+      addAgreementCodes(numberOfCodes);
     } else {
       alert('Please enter a valid number of agreement codes');
     }
