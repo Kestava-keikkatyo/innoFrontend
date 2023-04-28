@@ -402,6 +402,7 @@ export interface BusinessContractForm {
 }
 
 export interface AgreementCode {
+  _id: string
   code: string;
   creator: string;
   createdAt: Date;

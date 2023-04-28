@@ -45,6 +45,27 @@ export const getAgreementCodesByCreator = async (): Promise<Array<AgreementCode>
   }
 };
 
+/**
+ * Sends a request to the server at the '/updateMarkedValue' endpoint to update the marked value of an agreement code.
+ * Logs the server response or any errors that occur during execution.
+ * @param id - The ID of the agreement code to be updated.
+ * @param marked - The new marked value (boolean) to be set.
+ * @returns Promise<AgreementCode> - Resolves to an updated AgreementCode object.
+ */
+export const updateAgreementCodeMarkedValue = async (id: string, marked: boolean): Promise<AgreementCode> => {
+  try {
+    const response: AxiosResponse = await axios.put(
+      `${baseUrl}/code/updateMarkedValue`,
+      { id, marked },
+      authHeader()
+    );
+    return response.data.updatedAgreementCode;
+  } catch (error) {
+    console.error(error);
+    throw error; // Re-throw the error so you can handle it in your component when calling this function
+  }
+};
+
 export const addAgencyConnection = async (code: String): Promise<void> => {
   try {
     const response = await axios.post(`${baseUrl}/code/createAgreement`, code, authHeader());
