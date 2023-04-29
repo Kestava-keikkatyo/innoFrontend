@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { addAgencyConnection } from '../../services/codeService';
-import { InviteCode } from '../../types/types';
 
 
 export const InvitationCodeInput = () => {
@@ -17,11 +16,7 @@ export const InvitationCodeInput = () => {
 
   const handleSubmit = () => {
     if (code.length === 5) {
-      const newInviteCode: InviteCode = {
-        code: code,
-        userId: data._id,
-      };
-      addAgencyConnection(newInviteCode)
+      addAgencyConnection(code)
     } else {
       alert('Please enter a 5-character invitation code.');
     }

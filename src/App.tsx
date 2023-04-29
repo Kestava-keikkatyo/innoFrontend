@@ -81,6 +81,7 @@ import BusinessResponsibilities from './pages/ResponsibilitiesPage/BusinessRespo
 import Businesses from './pages/Profile/Businesses';
 import ReceivedFeedbacks from './pages/FeedbackPage/ReceivedFeedbacks';
 import ReceivedDetails from './pages/FeedbackPage/ReceivedDetails'
+import InviteCode from './pages/InviteCodePage'
 import EmploymentPage from './pages/AgencyContractsPage/Employment'
 
 declare module '@mui/styles/defaultTheme' {
@@ -341,6 +342,9 @@ const App: React.FC = () => {
               roles={[roles.Agency]}
             >
               <ContractFormManagerPage />
+            </PrivateRoute>
+            <PrivateRoute path="/inviteCodes" roles={[roles.Agency]}>
+              <InviteCode />
             </PrivateRoute>
             <PrivateRoute path="/agencyContracts" roles={[roles.Agency]}>
               <AgencyContractsPage />
