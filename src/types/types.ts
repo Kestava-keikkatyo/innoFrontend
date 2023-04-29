@@ -405,6 +405,6 @@ export interface AgreementCode {
   _id: string
   code: string;
   creator: string;
-  createdAt: Date;
+  createdAt: string;
   marked: boolean;
 }

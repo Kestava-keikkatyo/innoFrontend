@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 import { styled } from "@mui/system";
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { AgreementCode } from '../../types/types';
 import CodeRow from './CodeRow';
 
@@ -18,13 +19,15 @@ interface CodeListProps {
 }
 
 const CodeList: React.FC<CodeListProps> = ({ agreementCodes, onToggleMarked }) => {
+  const { t } = useTranslation();
+
   return (
     <Table>
       <TableHead>
         <TableRow>
-          <TableCell>Code</TableCell>
-          <TableCell>Time of Creation</TableCell>
-          <TableCell>Marked</TableCell>
+          <TableCell>{t('invitecode')}</TableCell>
+          <TableCell>{t('timeOfCreation')}</TableCell>
+          <TableCell>{t('marked')}</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>

@@ -8,7 +8,7 @@ import {
 import { styled } from "@mui/system";
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getAgreementCodesByCreator, updateAgreementCodeMarkedValue } from '../../services/codeService';
+import { addAgreementCodes, getAgreementCodesByCreator, updateAgreementCodeMarkedValue } from '../../services/codeService';
 import { AgreementCode } from '../../types/types';
 import CodeList from './CodeList';
 import NewCodeGeneration from './NewCodeGeneration';
@@ -40,6 +40,12 @@ const InviteCode = () => {
     fetchAgreementCodes();
   }, []);
 
+  const handleGenerateNewCode = async (numberOfCodes: number) => {
+    const newCodes = await addAgreementCodes(numberOfCodes);
+    setUnmarkedAgreementCodes([...unmarkedAgreementCodes, ...newCodes]);
+  };
+
+
   const toggleMarkedStatus = async (index: number, marked: boolean) => {
     try {
       const codeToUpdate = marked ? markedAgreementCodes[index] : unmarkedAgreementCodes[index];
@@ -64,10 +70,10 @@ const InviteCode = () => {
 
   return (
     <Box>
-      <NewCodeGeneration />
-      <Typography variant="h5">Unmarked Codes:</Typography>
+      <NewCodeGeneration onGenerateNewCode={handleGenerateNewCode} />
+      <Typography variant="h5">{t('unmarkedCodes')}:</Typography>
       <CodeList agreementCodes={unmarkedAgreementCodes} onToggleMarked={toggleMarkedStatus} />
-      <Typography variant="h5">Marked Codes:</Typography>
+      <Typography variant="h5">{t('markedCodes')}:</Typography>
       <CodeList agreementCodes={markedAgreementCodes} onToggleMarked={toggleMarkedStatus} />
     </Box>
   );

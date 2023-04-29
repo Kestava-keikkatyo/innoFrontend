@@ -22,7 +22,7 @@ const authHeader = () => {
 export const addAgreementCodes = async (numberOfCodes: number): Promise<Array<AgreementCode>> => {
   try {
     const response = await axios.post(`${baseUrl}/code/addCodes`, { numberOfCodes }, authHeader());
-    return response.data; // Extract the data from the Axios response
+    return response.data.agreementCodes; // Extract the data from the Axios response
   } catch (error) {
     console.error(error);
     return []; // Return an empty array if an error occurs

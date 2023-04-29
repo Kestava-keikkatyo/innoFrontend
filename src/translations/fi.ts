@@ -15,17 +15,17 @@ export default {
     saveButton: 'Tallenna',
     faq: 'Usein kysytyt kysymykset',
 
-  // login
-  login_title: 'Kirjaudu sisään',
-  email_label: 'Sähköposti',
-  password_label: 'Salasana',
-  invalid_email_address: 'Virheellinen sähköposti',
-  required: 'Puuttuu',
-  invalid_token: 'Virheellinen token',
-  logout_successful: 'Uloskirjautuminen onnistui!',
-  logout_failed: 'Ole hyvä ja kirjaudu uudelleen.',
-  login_failed: 'Kirjautuminen epäonnistui!',
-  login_successful: 'Kirjautuminen onnistui!',
+    // login
+    login_title: 'Kirjaudu sisään',
+    email_label: 'Sähköposti',
+    password_label: 'Salasana',
+    invalid_email_address: 'Virheellinen sähköposti',
+    required: 'Puuttuu',
+    invalid_token: 'Virheellinen token',
+    logout_successful: 'Uloskirjautuminen onnistui!',
+    logout_failed: 'Ole hyvä ja kirjaudu uudelleen.',
+    login_failed: 'Kirjautuminen epäonnistui!',
+    login_successful: 'Kirjautuminen onnistui!',
 
     // signup
     firstName: 'Etunimi',
@@ -38,14 +38,14 @@ export default {
     terms_agency: 'vuokrayrityksille',
     signup_successful: 'Rekistöröityminen onnistui',
 
-  // error
-  invalid_email: 'Virheellinen sähköpostiosoite',
-  invalid_length: 'Salasanan on oltava vähintään 8 merkkiä',
-  field_required: 'Pakollinen kenttä',
-  invalid_name: 'Virheellinen nimi',
-  invalid_password: 'Salasana ei täsmää',
-  email_already_used: 'Sähköpostiosoite on jo käytössä',
-  agency_profile_missing: 'Henkilöstöpalveluyrityksen profiilia ei löydy',
+    // error
+    invalid_email: 'Virheellinen sähköpostiosoite',
+    invalid_length: 'Salasanan on oltava vähintään 8 merkkiä',
+    field_required: 'Pakollinen kenttä',
+    invalid_name: 'Virheellinen nimi',
+    invalid_password: 'Salasana ei täsmää',
+    email_already_used: 'Sähköpostiosoite on jo käytössä',
+    agency_profile_missing: 'Henkilöstöpalveluyrityksen profiilia ei löydy',
 
     // option
     role: 'Rooli',
@@ -104,6 +104,24 @@ export default {
 
     // Agencystaistics
     mood_stats: 'Fiilistilastot',
+
+    // Invitecodes
+    invitecodes: 'Kutsukoodit',
+    invitecode: 'Kutsukoodi',
+    invitecodes_create: 'Luo kutsukoodit',
+    invitecode_create_success: 'Kutsukoodi luotu',
+    invitecode_create_failed: 'Kutsukoodin luonti epäonnistui',
+    invitecode_delete_success: 'Kutsukoodi poistettu',
+    invitecode_delete_failed: 'Kutsukoodin poisto epäonnistui',
+    invitecode_delete: 'Poista kutsukoodi',
+    invitecode_delete_confirm: 'Haluatko varmasti poistaa kutsukoodin?',
+    invitecode_delete_cancel: 'Peruuta',
+    invitecode_delete_ok: 'Poista',
+    markedCodes: 'Merkitytyt kutsukoodit',
+    unmarkedCodes: 'Merkitsemättömät kutsukoodit',
+    marked: 'Merkitty',
+    numberOfCodes: 'Kutsukoodien määrä',
+    timeOfCreation: 'Luontiaika',
 
     // Report form
     report_handler: 'Turvallisuushavainto',
@@ -216,10 +234,10 @@ export default {
     transfer_profile: 'Siirry profiiliin',
     transfer_company_profile: 'Siirry yrityksen profiiliin',
 
-     // Employment page
-     connect_workers_to_business_info: 'Valitse vastaanottajat keikkatyöehdotuksen luomiseksi',
-     employment_no_recipient: 'Sinun täytyy valita vastaanottaja',
-     employ: 'Työllistä',
+    // Employment page
+    connect_workers_to_business_info: 'Valitse vastaanottajat keikkatyöehdotuksen luomiseksi',
+    employment_no_recipient: 'Sinun täytyy valita vastaanottaja',
+    employ: 'Työllistä',
 
     // Contact information
     phone: 'Puhelin',
@@ -345,6 +363,7 @@ export default {
     work_performance: 'Työsuoritus, valvonta ja palaute',
     feedback_evaluation: 'Palaute ja toiminnan arviointi',
     employees: 'Työntekijät',
+    inviteCodes: 'Kutsukoodit',
 
     // profilePage
     settings: 'Asetukset',
@@ -403,16 +422,16 @@ export default {
     add_question: 'Lisää kysymys',
     form_editor: 'Lomakkeen muokkaus',
 
-  finland: 'Suomi',
-  english: 'Englanti',
-  tyopoyta: 'TYÖPÖYTÄ',
-  tietopankki: 'TIETOPANKKI',
-  kirjaudu_sisaan: 'KIRJAUDU',
-  form_tooltip_preview: 'Esikatsele lomaketta',
-  form_tooltip_edit: 'Muokkaa lomaketta',
-  form_tooltip_delete: 'Poista lomake',
-  form_tooltip_download: 'Lataa lomake',
-  form_tooltip_copy: 'Kopioi omiin lomakkeisiin',
+    finland: 'Suomi',
+    english: 'Englanti',
+    tyopoyta: 'TYÖPÖYTÄ',
+    tietopankki: 'TIETOPANKKI',
+    kirjaudu_sisaan: 'KIRJAUDU',
+    form_tooltip_preview: 'Esikatsele lomaketta',
+    form_tooltip_edit: 'Muokkaa lomaketta',
+    form_tooltip_delete: 'Poista lomake',
+    form_tooltip_download: 'Lataa lomake',
+    form_tooltip_copy: 'Kopioi omiin lomakkeisiin',
 
     // Joblist
     limit_search: 'Rajaa hakua',
@@ -556,17 +575,17 @@ export default {
     show_less: 'Näytä vähemmän',
     show_more: 'Näytä enemmän',
 
-  // landingPage
-  slogan: 'Tervetuloa käyttämään Keikkakaveria!',
-  intro:
-    'Keikkakaveri on työväline henkilöstöpalveluyrityksen, käyttäjäyrityksen ja vuokratyöntekijän väliseen yhteistyöhön työterveys-, työturvallisuus, ja työhyvinvointiasioissa. Tietopankki-sivustolle on koottu tietoa lainsäädännön velvoitteista sekä turvallisten ja terveellisten työolojen kehittämisestä.',
-  areas_of_responsibility_button: 'LUE LISÄÄ VASTUUALUEISTA',
-  left_box_header: 'Keikkakaveri-työväline',
-  left_box_content: 'Keikkakaverissa on omat sivut käyttäjäyritykselle, henkilöstöpalveluyritykselle ja vuokratyöntekijälle.',
-  enable_button: 'OTA KÄYTTÖÖN',
-  databank_button: 'SIIRRY TIETOPANKKIIN',
-  right_box_header: 'Tietopankki',
-  right_box_content: 'Sivustolle on koottu tietoa työturvallisuuden, työterveyden ja työhyvinvoinnin edistämisestä vuokratyössä.',
+    // landingPage
+    slogan: 'Tervetuloa käyttämään Keikkakaveria!',
+    intro:
+        'Keikkakaveri on työväline henkilöstöpalveluyrityksen, käyttäjäyrityksen ja vuokratyöntekijän väliseen yhteistyöhön työterveys-, työturvallisuus, ja työhyvinvointiasioissa. Tietopankki-sivustolle on koottu tietoa lainsäädännön velvoitteista sekä turvallisten ja terveellisten työolojen kehittämisestä.',
+    areas_of_responsibility_button: 'LUE LISÄÄ VASTUUALUEISTA',
+    left_box_header: 'Keikkakaveri-työväline',
+    left_box_content: 'Keikkakaverissa on omat sivut käyttäjäyritykselle, henkilöstöpalveluyritykselle ja vuokratyöntekijälle.',
+    enable_button: 'OTA KÄYTTÖÖN',
+    databank_button: 'SIIRRY TIETOPANKKIIN',
+    right_box_header: 'Tietopankki',
+    right_box_content: 'Sivustolle on koottu tietoa työturvallisuuden, työterveyden ja työhyvinvoinnin edistämisestä vuokratyössä.',
 
 
     // CreateJobForAgency
@@ -762,38 +781,38 @@ export default {
     employee_order: 'Työntekijän tilaus ja valinta',
     contract_orientation: 'Työsopimus ja yleisperehdytys',
 
-  // Footer Page (old)
-  // worker_question: 'Oletko työntekijä?',
-  // make_money: 'Ansaitse rahaa',
-  // work_flexibly: 'Tee joustavasti töitä',
-  // stressFree_work: 'Stressitön keikkatyö',
-  // register: 'LUO TILI',
-  // user_company: 'Oletko käyttäjäyritys?',
-  // flexible_model: 'Nopea ja joustava malli hankkia työntekijöitä',
-  // recruitment_process: 'Pääset vaikuttamaan rekrytointiprosessiin',
-  // productivity: 'Hyvinvoivien työntekijöiden tuottavuus on jopa 20% normaalia parempi',
-  // rental_company: 'Oletko vuokratyöfirma?',
-  // orientation: 'Keskitä perehdyttäminen yhteen paikkaan',
-  // automation: 'Automatisaatiolla perehdytys on rennompaa',
-  // wellBeing: 'Työntekijöitesi hyvinvointi on meille tärkeää',
-  // topical: 'Ajankohtaista:',
-  // news: 'Uutiset',
-  // collaboration: 'Yhteistyössä:',
-  // ttk: 'Työturvallisuuskeskus',
-  // esr: 'ESR-rahasto',
-  // get_to_know: 'Tutustu:',
-  // privacy_statement: 'Tietosuojaseloste',
+    // Footer Page (old)
+    // worker_question: 'Oletko työntekijä?',
+    // make_money: 'Ansaitse rahaa',
+    // work_flexibly: 'Tee joustavasti töitä',
+    // stressFree_work: 'Stressitön keikkatyö',
+    // register: 'LUO TILI',
+    // user_company: 'Oletko käyttäjäyritys?',
+    // flexible_model: 'Nopea ja joustava malli hankkia työntekijöitä',
+    // recruitment_process: 'Pääset vaikuttamaan rekrytointiprosessiin',
+    // productivity: 'Hyvinvoivien työntekijöiden tuottavuus on jopa 20% normaalia parempi',
+    // rental_company: 'Oletko vuokratyöfirma?',
+    // orientation: 'Keskitä perehdyttäminen yhteen paikkaan',
+    // automation: 'Automatisaatiolla perehdytys on rennompaa',
+    // wellBeing: 'Työntekijöitesi hyvinvointi on meille tärkeää',
+    // topical: 'Ajankohtaista:',
+    // news: 'Uutiset',
+    // collaboration: 'Yhteistyössä:',
+    // ttk: 'Työturvallisuuskeskus',
+    // esr: 'ESR-rahasto',
+    // get_to_know: 'Tutustu:',
+    // privacy_statement: 'Tietosuojaseloste',
 
-  // Footer
-  // Left grid box
-  keikkakaveri_info: 'Keikkakaveri on kehitetty Kestävä Keikkatyö-hankkeessa. Hankkeen toteuttivat Metropolia ammattikorkeakoulu, Satakunnan ammattikorkeakoulu, Tampereen yliopisto ja Oulun yliopisto. Hanketta rahoitti Sosiaali- ja terveysministeriö sekä Euroopan sosiaalirahasto. Keikkakaverin ylläpidosta vastaa Työturvallisuuskeskus.',
-  // Middle grid box
-  databank_link: 'TIETOPANKKI',
-  keikkakaveri_tool_link: 'KEIKKAKAVERI-TYÖVÄLINE',
-  // Right grid box
-  centre_occupational_safety: 'Työturvallisuuskeskus',
-  privacy_policy_link: 'Tietoturvaseloste',
-  accessibility_statement_link: 'Saavutettavuusseloste',
+    // Footer
+    // Left grid box
+    keikkakaveri_info: 'Keikkakaveri on kehitetty Kestävä Keikkatyö-hankkeessa. Hankkeen toteuttivat Metropolia ammattikorkeakoulu, Satakunnan ammattikorkeakoulu, Tampereen yliopisto ja Oulun yliopisto. Hanketta rahoitti Sosiaali- ja terveysministeriö sekä Euroopan sosiaalirahasto. Keikkakaverin ylläpidosta vastaa Työturvallisuuskeskus.',
+    // Middle grid box
+    databank_link: 'TIETOPANKKI',
+    keikkakaveri_tool_link: 'KEIKKAKAVERI-TYÖVÄLINE',
+    // Right grid box
+    centre_occupational_safety: 'Työturvallisuuskeskus',
+    privacy_policy_link: 'Tietoturvaseloste',
+    accessibility_statement_link: 'Saavutettavuusseloste',
 
 
 
