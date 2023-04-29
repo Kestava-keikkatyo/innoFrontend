@@ -175,14 +175,15 @@ const FormsPage: React.FC = () => {
       </Grid> **/}
 
         <div style={{ width: '100%' }} className={classes.root}>
-          <Typography style={{ marginLeft: '15px', marginBottom: '20px' }} variant="h1" className='header'>
+          <Typography variant="h6" style={{ marginBottom: '20px', fontWeight: 'bold' }} >
             {t('forms')}
           </Typography>
-          <AppBar style={{ marginLeft: '15px', backgroundColor: '#FDFDFD', width: '100%', boxShadow: 'none' }} position="static" >
+          <div style={{border: '2px solid orange'}}>
+          <AppBar style={{ backgroundColor: '#C0CFFA', width: '100%', boxShadow: 'none' }} position="static" >
             <Tabs TabIndicatorProps={{ style: { background: 'black' } }} value={value} onChange={handleChange}  >
-              <Tab sx={{ fontSize: { xs: '10px', sm: '20px', lg: '20px' } }} style={{ marginRight: '10px', backgroundColor: '#C0CFFA', fontWeight: 'bold', color: 'black', textTransform: 'capitalize' }} value="one" label={t("materials")} wrapped {...a11yProps('one')} />
-              <Tab sx={{ fontSize: { xs: '10px', sm: '20px', lg: '20px' } }} style={{ marginRight: '10px', backgroundColor: '#C0CFFA', fontWeight: 'bold', color: 'black', textTransform: 'capitalize' }} value="two" label={t("common")} {...a11yProps('two')} />
-              <Tab sx={{ fontSize: { xs: '10px', sm: '20px', lg: '20px' } }} style={{ marginRight: '10px', backgroundColor: '#C0CFFA', fontWeight: 'bold', color: 'black', textTransform: 'capitalize' }} value="three" label={t("community")} {...a11yProps('three')} />
+              <Tab sx={{ fontSize: { xs: '10px', sm: '20px', lg: '20px' } }} style={{  borderRight: '2px solid white', backgroundColor: '#C0CFFA', fontWeight: 'bold', color: 'black', textTransform: 'capitalize' }} value="one" label={t("materials")} wrapped {...a11yProps('one')} />
+              <Tab sx={{ fontSize: { xs: '10px', sm: '20px', lg: '20px' } }} style={{  borderRight: '2px solid white', backgroundColor: '#C0CFFA', fontWeight: 'bold', color: 'black', textTransform: 'capitalize' }} value="two" label={t("common")} {...a11yProps('two')} />
+              <Tab sx={{ fontSize: { xs: '10px', sm: '20px', lg: '20px' } }} style={{  borderRight: '2px solid white', backgroundColor: '#C0CFFA', fontWeight: 'bold', color: 'black', textTransform: 'capitalize' }} value="three" label={t("community")} {...a11yProps('three')} />
             </Tabs>
           </AppBar>
           <TabPanel value={value} index="one">
@@ -224,6 +225,7 @@ const FormsPage: React.FC = () => {
               </CardContent>
             </Card>
           </TabPanel>
+          </div>
         </div>
         <Spacing m5 />
       </Grid >

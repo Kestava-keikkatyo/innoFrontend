@@ -11,17 +11,34 @@ import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
 import { ThemeProvider, createTheme } from '@mui/material';
+import { E_SET_CURRENT } from '../../types/state';
 
 const Workers: React.FC = () => {
   const { t } = useTranslation()
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { users } = useSelector((state: IRootState) => state.users || []);
-  useEffect(() => {
-    dispatch(fetchAllWorkers());
-  }, [dispatch]);
+  const userType = useSelector((state: IRootState) => state.user.data.role)
+  const users = useSelector((state: IRootState) => state.user.contacts)
+  const currentForm = useSelector((state: any) => state.employmentAgreements.currentAgreement);
+
+  const workers: any[] = []
+
+  if (users[0]) {
+    users.forEach((user) => {
+      if (user.userType == "worker") {
+        workers.push(user)
+      }
+    }) 
+  }
+
+  const setEmploymentFormWorker = (id: any) => {
+    const employmentForm = { ...currentForm, worker: id }
+    dispatch({ type: E_SET_CURRENT, data: employmentForm})
+  };
+
   let rows = [];
-  rows = users;
+  rows = workers;
+
 
   const theme = createTheme({
     typography: {
@@ -64,24 +81,18 @@ const Workers: React.FC = () => {
       headerClassName: 'super-app-theme--header',
     },
     {
-      field: 'userType',
-      headerName: (i18next.t('list_position')),
-      minWidth: 75,
-      flex: 1,
-      headerClassName: 'super-app-theme--header',
-    },
-    {
       field: 'action',
       headerName: (i18next.t('list_action')),
       minWidth: 100,
       flex: 1,
       headerClassName: 'super-app-theme--header',
+
       renderCell: (params) => {
-      return (
-      <>
-      <Link to={'/workers/profile/' + params.id}>{t('list_profile')}</Link>
-      </>
-      );
+        return (
+          <>
+             <Link className={classes.link} to={'/workers/profile/' + params.id}>{t('list_profile')}</Link>
+          </>
+        );
     },
   },
 ];
@@ -90,9 +101,7 @@ return (
   <ThemeProvider theme={theme}>
 <div style={{ height: '75vh', width: '100%', padding: '0 1rem' }}>
   <div>
-    <Typography className={'header'}
-                style={{marginTop: '25px', marginBottom: '15px'}}
-                variant="h1">
+    <Typography variant="h6" style={{ marginBottom: '20px', marginTop: '30px', fontWeight: 'bold' }}>
       {t('list_title_workers')}</Typography>
   </div>
   <DataGrid
@@ -138,6 +147,9 @@ const useStyles = makeStyles(() => ({
     objectFit: 'cover',
     marginRight: '10px',
   },
+  link: {
+    marginRight: '6px'
+  }
 }));
 
 export default Workers;

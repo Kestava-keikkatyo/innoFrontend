@@ -22,8 +22,8 @@ const BusinessResponsibilities = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid className={classes.root} style={{ backgroundColor: '#FDFDFD', marginRight: '0' }}>
-        <Typography variant="h1" className={classes.header} style={{ marginLeft: '35px' }}>
+      <Grid className={classes.root}>
+        <Typography variant="h6" style={{fontWeight: 'bold', marginLeft: '20px' }}>
           {t('responsibilities')}
         </Typography>
         <Typography variant="subtitle1" className={classes.subtitle}>
@@ -42,11 +42,10 @@ const BusinessResponsibilities = () => {
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-
     width: '100%',
-    backgroundColor: theme.palette.background.paper,
-    marginTop: 32,
-    marginRight: 0,
+    backgroundColor: "#FDFDFD",
+    marginTop: 30,
+    padding: '0'
   },
   header: {
     marginLeft: 24,
@@ -55,7 +54,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: 20
   },
   subtitle: {
-    marginLeft: 24,
+
   },
   card: {
     margin: 'auto',

@@ -1,19 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../utils/store";
-import { Typography, Grid, Tooltip } from '@mui/material';
+import { Typography, Grid, Tooltip} from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
+import { Link } from 'react-router-dom';
 import {
-  declineBusinessContract,
-  acceptBusinessContractFromBusiness,
-  acceptBusinessContractFromWorker,
-  sendBackBusinessContract,
-  deleteBusinessContractById,
-  deleteEmploymentAgreement,
+  deleteEmploymentAgreementAsAgency,
   fetchEmploymentContractsAsAgency,
 } from '../../actions/businessContractActions';
 import { setAlert } from '../../actions/alertActions';
-import { severity } from '../../types/types';
+import { EmploymentAgreement, severity } from '../../types/types';
 import { useTranslation } from 'react-i18next';
 import {
   TableContainer,
@@ -32,29 +28,9 @@ import {
   HourglassEmpty as PendingIcon
 } from '@mui/icons-material';
 import { green, red, yellow } from '@mui/material/colors';
-
-const useStyles = makeStyles((theme) => ({
-  card: {
-    margin: theme.spacing(2, 0),
-  },
-  accordion: {
-    width: '100%',
-    marginTop: 12,
-    border: '1px solid #E0E0E0',
-    borderRadius: 5,
-  },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightBold,
-  },
-  description: {
-    fontSize: theme.typography.pxToRem(13),
-    color: '#6C6C6C',
-  },
-  tableDiv: {
-    width: '100%'
-  }
-}));
+import SearchBox from '../../components/SearchBox';
+import DeleteDialog from '../../components/FormComponents/DeleteDialog';
+import DeleteDialogItem from './DeleteDialogItem';
 
 /**
  * @component
@@ -63,17 +39,16 @@ const useStyles = makeStyles((theme) => ({
  * @returns Grid
  */
 const EmploymentContractsTable: React.FC<any> = ({ employmentContracts }) => {
-  const classes = useStyles();
-  const dispatch = useDispatch();
-  const contracts = employmentContracts;
-  const { t } = useTranslation();
+  const classes = useStyles()
+  const dispatch = useDispatch()
+  const contracts = employmentContracts
+  const { t } = useTranslation()
   const [page, setPage] = React.useState(0)
-  const [rowsPerPage, setRowsPerPage] = React.useState(5)
-
-  const deleteContract = (contractId: string) => {
-    dispatch(deleteEmploymentAgreement(contractId));
-    dispatch(setAlert('Contract deleted.', severity.Info, 3));
-  };
+  const [rows, setRows] = useState([])
+  const [rowsPerPage, setRowsPerPage] = React.useState(10)
+  const [searchInput, setSearchInput] = useState('');
+  const [dialogOpen, setDialogOpen] = React.useState(false);
+  const [contractToDelete, setContractToDelete] = React.useState('');
 
   const handleChangePage = (event: any, newPage: number) => {
     setPage(newPage)
@@ -84,15 +59,70 @@ const EmploymentContractsTable: React.FC<any> = ({ employmentContracts }) => {
     setPage(0);
   }
 
+  const handleFilterContracts = () => {
+    const filteredRows = contracts?.filter((contract: any) => {
+      return contract.business.companyName.toLowerCase().includes(searchInput.toLowerCase())
+        || contract.worker.firstName.toLowerCase().includes(searchInput.toLowerCase())
+        || contract.worker.lastName.toLowerCase().includes(searchInput.toLowerCase())
+    });
+    setRows(filteredRows);
+  };
+
+  const handleSearchChange = (event: any) => {
+    event.preventDefault()
+    setSearchInput(event.target.value)
+  };
+
+  const handleCloseDialog = (contractId: string) => {
+    setContractToDelete(contractId)
+    setDialogOpen(false)
+  };
+
+  const deleteContract = (contractId: string) => {
+    dispatch(deleteEmploymentAgreementAsAgency(contractId));  
+    setContractToDelete('')
+    
+    for (let contract of contracts) {
+      if (contract._id === contractId) {
+        dispatch(setAlert('Failure: Contract not deleted!', severity.Error, 3))
+        break;
+      }
+    }
+    dispatch(setAlert('Success: Contract deleted!', severity.Success, 3))
+  };
+
   useEffect(() => {
     dispatch(fetchEmploymentContractsAsAgency());
   }, [dispatch]);
+
+  useEffect(() => {
+    setRows(contracts);
+  }, [contracts]);
+
+  useEffect(() => {
+    handleFilterContracts()
+  }, [searchInput]);
+
+  useEffect(() => {
+    if (contractToDelete) {
+      deleteContract(contractToDelete)
+    }
+  }, [contractToDelete]);
+
 
   // Table view for desktop devices
   const tableView = () => {
     return (
       <div className={classes.tableDiv}>
+        <Typography style={{ paddingTop: '1rem', marginBottom: '2%' }} variant="h1" className='header'>
+          {t('employment_contracts_overview')}
+        </Typography>
         <TableContainer>
+        <SearchBox
+            placeholder={t('search_by_name')}
+            value={searchInput}
+            onChange={handleSearchChange}
+          />
           <Table aria-label="searched workers">
             <TableHead>
               <TableRow>
@@ -105,7 +135,7 @@ const EmploymentContractsTable: React.FC<any> = ({ employmentContracts }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {contracts
+              {rows
                 // {contractsTest
                 // .filter((workerOrBusiness: any) =>
                 //   workerOrBusiness.name
@@ -128,7 +158,9 @@ const EmploymentContractsTable: React.FC<any> = ({ employmentContracts }) => {
                     </TableCell>
 
                     <TableCell align="left">
-                      {contract.business.companyName}
+                      <Link className={classes.link} to={'/businesses/profile/' + contract.business._id}>
+                        {contract.business.companyName}
+                      </Link>
                     </TableCell>
 
                     <TableCell align="left">
@@ -143,7 +175,9 @@ const EmploymentContractsTable: React.FC<any> = ({ employmentContracts }) => {
                     </TableCell>
 
                     <TableCell align="left">
-                      {contract.worker.email}
+                      <Link className={classes.link} to={'/workers/profile/' + contract.worker._id}>
+                        {contract.worker.firstName} {contract.worker.lastName}
+                      </Link>
                     </TableCell>
 
                     <TableCell align="left">
@@ -158,30 +192,26 @@ const EmploymentContractsTable: React.FC<any> = ({ employmentContracts }) => {
                     </TableCell>
 
                     <TableCell padding="none" align="left" style={{ paddingLeft: 5 }}>
-                      <Tooltip title="Delete and remove connection between recipients" placement="top" arrow>
-                        <IconButton
-                          aria-label="delete contract"
-                          color="secondary"
-                          onClick={() => deleteContract(contract._id)}
-                          size="large">
-                            <DeleteIcon sx={{ color: red[500] }}/>
-                        </IconButton>
-                      </Tooltip>
+                      <DeleteDialogItem 
+                        contractId={contract._id}
+                        onConfirm={handleCloseDialog}
+                        />
+                      
                     </TableCell>
-                  </TableRow>
-                ))}
+                  </TableRow>))}
             </TableBody>
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
+          rowsPerPageOptions={[5, 10, 25, 50]}
           component="div"
-          count={employmentContracts.length}
+          count={rows.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
+     
       </div>
     );
   };
@@ -202,5 +232,32 @@ const EmploymentContractsTable: React.FC<any> = ({ employmentContracts }) => {
   else return tableView()
 
 };
+
+
+const useStyles = makeStyles((theme) => ({
+  card: {
+    margin: theme.spacing(2, 0),
+  },
+  accordion: {
+    width: '100%',
+    marginTop: 12,
+    border: '1px solid #E0E0E0',
+    borderRadius: 5,
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightBold,
+  },
+  description: {
+    fontSize: theme.typography.pxToRem(13),
+    color: '#6C6C6C',
+  },
+  tableDiv: {
+    width: '100%'
+  },
+  link: {
+    color: '#000000'
+  }
+}));
 
 export default EmploymentContractsTable;

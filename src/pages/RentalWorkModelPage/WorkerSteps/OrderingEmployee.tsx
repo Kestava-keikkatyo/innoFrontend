@@ -37,7 +37,7 @@ const OrderingEmployee = () => {
   return (
     <ThemeProvider theme={theme}>
       <Container maxWidth="xl" className={classes.root}>
-        <Typography variant="h1" className="header">
+        <Typography variant="h6" style={{fontWeight: 'bold'}}>
           {t('worker_order')}
         </Typography>
         <WorkerStepBase content={tabContent} />

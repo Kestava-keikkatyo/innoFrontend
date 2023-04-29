@@ -116,7 +116,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
 
   const handleOpenNest = () => {
     setOpenNest(!openNest);
-    setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", rentalmodel: "#F47D20", databank: "#FDFDFD" });
+    setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", rentalmodel: "#F47D20", databank: "#FDFDFD", businesses: "#FDFDFD" });
   };
 
   return (
@@ -242,7 +242,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           )}
           {role === roles.Business && (
             <>
-              <ListItemButton style={{ backgroundColor: colors.employees }} component={Link} to="/agencies" onClick={() => handleClick("employees")} className={classes.button}>
+              <ListItemButton style={{ backgroundColor: colors.businesses }} component={Link} to="/agencies" onClick={() => handleClick("businesses")} className={classes.button}>
                 <ListItemIcon>
                   <GroupOutlinedIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>

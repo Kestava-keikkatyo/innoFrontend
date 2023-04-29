@@ -26,7 +26,7 @@ const ReportPage = () => {
   return (
     <Container style={{ marginTop: 20 }}>
       {/**Title when writing a new report */}
-      <Typography variant="h1" className='header' color="primary">
+      <Typography style={{ marginBottom: '20px', fontSize: '20px', fontWeight: 'bold' }} >
         {t('report')}
       </Typography>
       {/**Back button takes back to reports page */}

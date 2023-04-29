@@ -39,7 +39,7 @@ const ContractOfEmployment = () => {
   return (
     <ThemeProvider theme={theme}>
       <Container maxWidth="xl" className={classes.root}>
-        <Typography variant="h1" className="header">
+        <Typography variant="h6" style={{fontWeight: 'bold'}}>
           {t('contract_of_employment')}
         </Typography>
         <WorkerStepBase content={tabContent} />
