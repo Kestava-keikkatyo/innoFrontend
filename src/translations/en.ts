@@ -34,6 +34,7 @@ export default {
     firstName: 'First name',
     lastName: 'Last name',
     email: 'Email',
+    companyName: 'Company name',
     password: 'Password',
     confirm: 'Confirm password',
     user: 'User',
@@ -47,6 +48,7 @@ export default {
   field_required: 'Required field',
   invalid_name: 'Invalid name',
   invalid_password: 'Password does not match',
+  invalid_company_name: 'Invalid company name',
   email_already_used: 'Email is already in use',
   agency_profile_missing: 'Agency profile is missing',
 

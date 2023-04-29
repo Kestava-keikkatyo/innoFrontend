@@ -31,6 +31,7 @@ export default {
     firstName: 'Etunimi',
     lastName: 'Sukunimi',
     email: 'Sähköposti',
+    companyName: 'Yrityksen nimi',
     password: 'Salasana',
     confirm: 'Toista salasana',
     user: 'Käyttäjä',
@@ -44,6 +45,7 @@ export default {
   field_required: 'Pakollinen kenttä',
   invalid_name: 'Virheellinen nimi',
   invalid_password: 'Salasana ei täsmää',
+  invalid_company_name: 'Yrityksen nimen on oltava vähintään 3 merkkiä',
   email_already_used: 'Sähköpostiosoite on jo käytössä',
   agency_profile_missing: 'Henkilöstöpalveluyrityksen profiilia ei löydy',
 
