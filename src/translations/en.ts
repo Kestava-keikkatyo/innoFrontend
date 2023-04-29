@@ -18,17 +18,17 @@ export default {
     faq: 'Frequently asked questions',
 
 
-  // login
-  login_title: 'Log In',
-  email_label: 'Email',
-  password_label: 'Password',
-  invalid_email_address: 'Invalid email address',
-  required: 'Required',
-  invalid_token: 'Invalid token',
-  logout_successful: 'Logout successful!',
-  logout_failed: 'Please login again.',
-  login_failed: 'Login failed!',
-  login_successful: 'Login success!',
+    // login
+    login_title: 'Log In',
+    email_label: 'Email',
+    password_label: 'Password',
+    invalid_email_address: 'Invalid email address',
+    required: 'Required',
+    invalid_token: 'Invalid token',
+    logout_successful: 'Logout successful!',
+    logout_failed: 'Please login again.',
+    login_failed: 'Login failed!',
+    login_successful: 'Login success!',
 
     // signup
     firstName: 'First name',
@@ -41,14 +41,14 @@ export default {
     terms_agency: 'agencies',
     signup_successful: 'Signup successful',
 
-  // error
-  invalid_email: 'Invalid email address',
-  invalid_length: 'Password must be at least 8 characters',
-  field_required: 'Required field',
-  invalid_name: 'Invalid name',
-  invalid_password: 'Password does not match',
-  email_already_used: 'Email is already in use',
-  agency_profile_missing: 'Agency profile is missing',
+    // error
+    invalid_email: 'Invalid email address',
+    invalid_length: 'Password must be at least 8 characters',
+    field_required: 'Required field',
+    invalid_name: 'Invalid name',
+    invalid_password: 'Password does not match',
+    email_already_used: 'Email is already in use',
+    agency_profile_missing: 'Agency profile is missing',
 
     // option
     role: 'Role',
@@ -107,6 +107,25 @@ export default {
 
     // Agencystaistics
     mood_stats: 'Mood stats',
+
+    // Invitecodes
+    invitecodes: 'Invite Codes',
+    invitecode: 'Invite Code',
+    invitecodes_create: 'Create Invite Codes',
+    invitecode_create_success: 'Invite Code Created',
+    invitecode_create_failed: 'Invite Code Creation Failed',
+    invitecode_delete_success: 'Invite Code Deleted',
+    invitecode_delete_failed: 'Invite Code Deletion Failed',
+    invitecode_delete: 'Delete Invite Code',
+    invitecode_delete_confirm: 'Are you sure you want to delete the invite code?',
+    invitecode_delete_cancel: 'Cancel',
+    invitecode_delete_ok: 'Delete',
+    markedCodes: 'Marked Invite Codes',
+    unmarkedCodes: 'Unmarked Invite Codes',
+    marked: 'Marked',
+    numberOfCodes: 'Number of Invite Codes',
+    timeOfCreation: 'Creation Time',
+
 
     // Report form
     report_handler: 'Security observations',
@@ -350,6 +369,7 @@ export default {
     work_performance: 'Work performance, supervision and feedback',
     feedback_evaluation: 'Feedback and evaluation',
     employees: 'Employees',
+    inviteCodes: 'Invitation codes',
 
     // profilePage
     settings: 'Settings',
@@ -412,19 +432,19 @@ export default {
     form_tooltip_download: 'Download form',
     form_tooltip_copy: 'Copy to my forms',
 
-  finland: 'Finnish',
-  english: 'English',
-  tyopoyta: 'DESKTOP',
-  tietopankki: 'DATABANK',
-  kirjaudu_sisaan: 'LOGIN',
-  // Joblist
-  limit_search: 'Limit search',
-  jobs_found: 'Jobs found',
-  participants: 'Participants',
-  company_sites: 'Company websites',
-  enroll: 'Enroll ',
-  relocation: 'relocation',
-  accept_terms: 'I accept the terms',
+    finland: 'Finnish',
+    english: 'English',
+    tyopoyta: 'DESKTOP',
+    tietopankki: 'DATABANK',
+    kirjaudu_sisaan: 'LOGIN',
+    // Joblist
+    limit_search: 'Limit search',
+    jobs_found: 'Jobs found',
+    participants: 'Participants',
+    company_sites: 'Company websites',
+    enroll: 'Enroll ',
+    relocation: 'relocation',
+    accept_terms: 'I accept the terms',
 
     // feedbackCategory
     feedback_category: 'Feedback category',
@@ -567,17 +587,17 @@ export default {
     show_less: 'Show less',
     show_more: 'Show more',
 
-  // landingPage
-  slogan: 'Welcome to Keikkakaveri!',
-  intro:
-    'Keikkakaveri is a tool to promote cooperation between employment agencies, businesses and workers related to occupational health, work safety and work well-being. The data bank contains information about the law and development of healthy working conditions.',
-  areas_of_responsibility_button: 'READ MORE ABOUT AREAS OF RESPONSIBILITY',
-  left_box_header: 'Keikkakaveri',
-  left_box_content: 'Keikkakaveri can be used as a worker, business or an employment agency.',
-  enable_button: 'ENABLE',
-  databank_button: 'DATABANK',
-  right_box_header: 'Databank',
-  right_box_content: 'The databank contains information about work safety, occupational health and work well-being.',
+    // landingPage
+    slogan: 'Welcome to Keikkakaveri!',
+    intro:
+        'Keikkakaveri is a tool to promote cooperation between employment agencies, businesses and workers related to occupational health, work safety and work well-being. The data bank contains information about the law and development of healthy working conditions.',
+    areas_of_responsibility_button: 'READ MORE ABOUT AREAS OF RESPONSIBILITY',
+    left_box_header: 'Keikkakaveri',
+    left_box_content: 'Keikkakaveri can be used as a worker, business or an employment agency.',
+    enable_button: 'ENABLE',
+    databank_button: 'DATABANK',
+    right_box_header: 'Databank',
+    right_box_content: 'The databank contains information about work safety, occupational health and work well-being.',
 
     // CreateJobForAgency
     add_new_job: 'Add new job',
@@ -772,38 +792,38 @@ export default {
     shared_responsibilities: 'Shared instructions',
     business_responsibilities: 'Business instructions',
 
-  // Footer Page (old)
-  // worker_question: 'Are you an employee?',
-  // make_money: 'Make money',
-  // work_flexibly: 'Work flexibly',
-  // stressFree_work: 'Stress-free job',
-  // register: 'REGISTER',
-  // user_company: 'Are you a user company?',
-  // flexible_model: 'Fast and flexible model for acquiring employees',
-  // recruitment_process: 'You get to influence the recruitment process',
-  // productivity: 'The productivity of healthy employees is up to 20% better than normal',
-  // rental_company: 'Are you a rental company?',
-  // orientation: 'Focus the orientation in one place',
-  // automation: 'With automation, orientation is more relaxed',
-  // wellBeing: 'The well-being of your employees is important to us',
-  // topical: 'Topical:',
-  // news: 'News',
-  // collaboration: 'Collaboration:',
-  // ttk: 'The Centre for Occupational Safety',
-  // esr: 'The European Social Fund',
-  // get_to_know: 'Get To Know:',
-  // privacy_statement:'Privacy statement',
+    // Footer Page (old)
+    // worker_question: 'Are you an employee?',
+    // make_money: 'Make money',
+    // work_flexibly: 'Work flexibly',
+    // stressFree_work: 'Stress-free job',
+    // register: 'REGISTER',
+    // user_company: 'Are you a user company?',
+    // flexible_model: 'Fast and flexible model for acquiring employees',
+    // recruitment_process: 'You get to influence the recruitment process',
+    // productivity: 'The productivity of healthy employees is up to 20% better than normal',
+    // rental_company: 'Are you a rental company?',
+    // orientation: 'Focus the orientation in one place',
+    // automation: 'With automation, orientation is more relaxed',
+    // wellBeing: 'The well-being of your employees is important to us',
+    // topical: 'Topical:',
+    // news: 'News',
+    // collaboration: 'Collaboration:',
+    // ttk: 'The Centre for Occupational Safety',
+    // esr: 'The European Social Fund',
+    // get_to_know: 'Get To Know:',
+    // privacy_statement:'Privacy statement',
 
-  // Footer
-  // Left grid box
-  keikkakaveri_info: 'Keikkakaveri was developed as part of the Kestävä Keikkatyö project. The project was carried out by Metropolia University of Applied Sciences, Satakunta University of Applied Sciences, University of Tampere, and University of Oulu. The project was funded by the Ministry of Social Affairs and Health and the European Social Fund. The maintenance of Keikkakaveri is provided by the Finnish Centre for Occupational Health.',
-  // Middle grid box
-  databank_link: 'DATABANK',
-  keikkakaveri_tool_link: 'KEIKKAKAVERI',
-  // Right grid box
-  centre_occupational_safety: 'Centre for Occupational Health',
-  privacy_policy_link: 'Privacy policy',
-  accessibility_statement_link: 'Accessibility statement',
+    // Footer
+    // Left grid box
+    keikkakaveri_info: 'Keikkakaveri was developed as part of the Kestävä Keikkatyö project. The project was carried out by Metropolia University of Applied Sciences, Satakunta University of Applied Sciences, University of Tampere, and University of Oulu. The project was funded by the Ministry of Social Affairs and Health and the European Social Fund. The maintenance of Keikkakaveri is provided by the Finnish Centre for Occupational Health.',
+    // Middle grid box
+    databank_link: 'DATABANK',
+    keikkakaveri_tool_link: 'KEIKKAKAVERI',
+    // Right grid box
+    centre_occupational_safety: 'Centre for Occupational Health',
+    privacy_policy_link: 'Privacy policy',
+    accessibility_statement_link: 'Accessibility statement',
 
     // Worker home
     feelings: 'Feelings',
@@ -1287,39 +1307,39 @@ export default {
     good_practises_summary: "The form templates guide you in taking care of important issues in the different phases of the contract. Filling out the forms ensures that the most essential issues related to the temporary employee's job security are reviewed and the rules of the game are agreed on important issues between the personnel service and the user company. A form filled in between two parties can always be given to a third party as well. This works as part of the flow of information between partners and ensuring the transmission of important information.",
     forms_summary: "The form templates guide you in taking care of important issues in the different phases of the contract. Filling out the forms ensures that the most essential issues related to the temporary employee's job security are reviewed and the rules of the game are agreed on important issues between the personnel service and the user company. A form filled in between two parties can always be given to a third party as well. This works as part of the flow of information between partners and ensuring the transmission of important information.",
 
-     //Forms in databank
-     form1HeaderText: 'FORM 1 - OCCUPATIONAL SAFETY AND WELL-BEING MATTERS RELATED TO THE CUSTOMER AGREEMENT',
-     form1SubHeader: '(to be completed by representatives of the rental company and the user company)',
- 
-     form2HeaderText: 'FORM 2 – EMPLOYEE GENERAL ORIENTATION',
-     form2SubHeader: '(to be completed by the rental company\'s orientation officer)',
- 
-     form3HeaderText: 'FORM 3 - JOB COUNSELING',
-     form3SubHeader: '(filled in by the user company\'s job advisor)',
- 
-     form4HeaderText: 'FORM 4 - FUNCTIONAL EVALUATION',
-     form4SubHeader: '(to be completed by the representatives of the user company and the rental company)',
+    //Forms in databank
+    form1HeaderText: 'FORM 1 - OCCUPATIONAL SAFETY AND WELL-BEING MATTERS RELATED TO THE CUSTOMER AGREEMENT',
+    form1SubHeader: '(to be completed by representatives of the rental company and the user company)',
 
-     form5HeaderText: 'FORM 5 - INDUCTION AND JOB QUIDANCE IN URGENT SITUATIONS',
- 
+    form2HeaderText: 'FORM 2 – EMPLOYEE GENERAL ORIENTATION',
+    form2SubHeader: '(to be completed by the rental company\'s orientation officer)',
+
+    form3HeaderText: 'FORM 3 - JOB COUNSELING',
+    form3SubHeader: '(filled in by the user company\'s job advisor)',
+
+    form4HeaderText: 'FORM 4 - FUNCTIONAL EVALUATION',
+    form4SubHeader: '(to be completed by the representatives of the user company and the rental company)',
+
+    form5HeaderText: 'FORM 5 - INDUCTION AND JOB QUIDANCE IN URGENT SITUATIONS',
+
     //Business homepage
     welcomeTextBusiness: "Welcome to business homepage",
     smileSummary: "Smile summary",
     newReports: "New reports",
     businessFrontpage: "Business frontpage",
 
-     //Agency homepage
-     welcomeTextAgency: "Welcome to agency homepage",
-     agencyFrontpage: "Agency frontpage",
+    //Agency homepage
+    welcomeTextAgency: "Welcome to agency homepage",
+    agencyFrontpage: "Agency frontpage",
 
-     //Worker homepage
-     welcomeTextWorker: "Welcome to worker homepage ",
-     workerFrontpage: "Worker homepage",
- 
-     //Other
-     Name: 'Name',
-     contactInformation: 'Contact information',
-     check_new_reports: 'Check new reports',
-     print: 'Print pdf',
+    //Worker homepage
+    welcomeTextWorker: "Welcome to worker homepage ",
+    workerFrontpage: "Worker homepage",
+
+    //Other
+    Name: 'Name',
+    contactInformation: 'Contact information',
+    check_new_reports: 'Check new reports',
+    print: 'Print pdf',
 
 }
