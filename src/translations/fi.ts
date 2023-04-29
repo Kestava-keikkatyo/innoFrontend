@@ -39,7 +39,6 @@ export default {
     terms_agency: 'vuokrayrityksille',
     signup_successful: 'Rekistöröityminen onnistui',
 
-<<<<<<< HEAD
   // error
   invalid_email: 'Virheellinen sähköpostiosoite',
   invalid_length: 'Salasanan on oltava vähintään 8 merkkiä',
@@ -49,16 +48,6 @@ export default {
   invalid_company_name: 'Yrityksen nimen on oltava vähintään 3 merkkiä',
   email_already_used: 'Sähköpostiosoite on jo käytössä',
   agency_profile_missing: 'Henkilöstöpalveluyrityksen profiilia ei löydy',
-=======
-    // error
-    invalid_email: 'Virheellinen sähköpostiosoite',
-    invalid_length: 'Salasanan on oltava vähintään 8 merkkiä',
-    field_required: 'Pakollinen kenttä',
-    invalid_name: 'Virheellinen nimi',
-    invalid_password: 'Salasana ei täsmää',
-    email_already_used: 'Sähköpostiosoite on jo käytössä',
-    agency_profile_missing: 'Henkilöstöpalveluyrityksen profiilia ei löydy',
->>>>>>> 9a6bddd12545b8b424165abcf4c103bcac28a845
 
     // option
     role: 'Rooli',
