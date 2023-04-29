@@ -24,7 +24,6 @@ import { useTranslation } from 'react-i18next';
 import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
 import EmploymentContractsTable from './EmploymentContractsTable';
-import InviteCodeGenerator from './InviteCodeGenerator';
 import EmploymentTable from './Employment';
 
 interface TabPanelProps {
