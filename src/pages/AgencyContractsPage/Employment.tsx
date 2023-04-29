@@ -61,7 +61,7 @@ const EmploymentPage: React.FC<EmploymentProps> = () => {
 
  /*
   const [selectedWorker, setSelectedWorker] = useState(currentForm.worker ? currentForm.worker : "")
-  const [selectedBusiness, setSelectedBusiness] = useState(currentForm.business ? currentForm.business : "") */
+  const [selectedBusiness, setSelectedBusiness] = useState(currentForm.business ? currentForm.business : "")
 
 
   /**Select recipient worker */
@@ -83,7 +83,7 @@ const EmploymentPage: React.FC<EmploymentProps> = () => {
     } else {
       for (let agreement of agreements) {
         if (currentForm.worker === agreement.worker._id && currentForm.business === agreement.business._id) {
-          dispatch(setAlert( `Failure: Employment proposal already sent`, severity.Warning))
+          dispatch(setAlert( `Employment proposal already sent`, severity.Warning))
           break
         }
       }
@@ -99,7 +99,7 @@ const EmploymentPage: React.FC<EmploymentProps> = () => {
     <Grid container className={classes.container}>
 
       <Grid item xs={12}>
-        <Typography variant="h2" className='header5'> {t('connect_workers_to_business')}</Typography>
+        <Typography style={{ paddingTop: '1rem', marginBottom: '3%' }} variant="h2" className='header2'> {t('connect_workers_to_business')}</Typography>
       </Grid>
 
       <Grid item xs={12} style={{ marginTop: 32 }}>

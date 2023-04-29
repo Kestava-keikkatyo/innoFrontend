@@ -201,7 +201,6 @@ export const submitEmploymentAgreement = (form: EmploymentAgreement) => async (d
   const r = await contractsService.fetchEmploymentContractsAsAgency()
   if (res && res.status === 200) {
     dispatch(setAlert( `Success: Employment proposal sent`, severity.Success))
-    dispatch({ type: E_SAVE, data: res.data })
     dispatch({ type: E_FETCH, data: r })
     return res.status
   }

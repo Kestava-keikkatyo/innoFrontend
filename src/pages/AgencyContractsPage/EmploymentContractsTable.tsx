@@ -29,6 +29,8 @@ import {
 } from '@mui/icons-material';
 import { green, red, yellow } from '@mui/material/colors';
 import SearchBox from '../../components/SearchBox';
+import DeleteDialog from '../../components/FormComponents/DeleteDialog';
+import DeleteDialogItem from './DeleteDialogItem';
 
 /**
  * @component
@@ -42,9 +44,11 @@ const EmploymentContractsTable: React.FC<any> = ({ employmentContracts }) => {
   const contracts = employmentContracts
   const { t } = useTranslation()
   const [page, setPage] = React.useState(0)
-  const [rows, setRows] = useState(contracts)
+  const [rows, setRows] = useState([])
   const [rowsPerPage, setRowsPerPage] = React.useState(10)
-  const [searchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState('');
+  const [dialogOpen, setDialogOpen] = React.useState(false);
+  const [contractToDelete, setContractToDelete] = React.useState('');
 
   const handleChangePage = (event: any, newPage: number) => {
     setPage(newPage)
@@ -69,9 +73,22 @@ const EmploymentContractsTable: React.FC<any> = ({ employmentContracts }) => {
     setSearchInput(event.target.value)
   };
 
+  const handleCloseDialog = (contractId: string) => {
+    setContractToDelete(contractId)
+    setDialogOpen(false)
+  };
+
   const deleteContract = (contractId: string) => {
-    dispatch(deleteEmploymentAgreementAsAgency(contractId));
-    dispatch(setAlert('Success: Contract deleted!', severity.Success, 3));
+    dispatch(deleteEmploymentAgreementAsAgency(contractId));  
+    setContractToDelete('')
+    
+    for (let contract of contracts) {
+      if (contract._id === contractId) {
+        dispatch(setAlert('Failure: Contract not deleted!', severity.Error, 3))
+        break;
+      }
+    }
+    dispatch(setAlert('Success: Contract deleted!', severity.Success, 3))
   };
 
   useEffect(() => {
@@ -86,10 +103,20 @@ const EmploymentContractsTable: React.FC<any> = ({ employmentContracts }) => {
     handleFilterContracts()
   }, [searchInput]);
 
+  useEffect(() => {
+    if (contractToDelete) {
+      deleteContract(contractToDelete)
+    }
+  }, [contractToDelete]);
+
+
   // Table view for desktop devices
   const tableView = () => {
     return (
       <div className={classes.tableDiv}>
+        <Typography style={{ paddingTop: '1rem', marginBottom: '2%' }} variant="h1" className='header'>
+          {t('employment_contracts_overview')}
+        </Typography>
         <TableContainer>
         <SearchBox
             placeholder={t('search_by_name')}
@@ -165,18 +192,13 @@ const EmploymentContractsTable: React.FC<any> = ({ employmentContracts }) => {
                     </TableCell>
 
                     <TableCell padding="none" align="left" style={{ paddingLeft: 5 }}>
-                      <Tooltip title="Delete and remove connection between recipients" placement="top" arrow>
-                        <IconButton
-                          aria-label="delete contract"
-                          color="secondary"
-                          onClick={() => deleteContract(contract._id)}
-                          size="large">
-                            <DeleteIcon sx={{ color: red[500] }}/>
-                        </IconButton>
-                      </Tooltip>
+                      <DeleteDialogItem 
+                        contractId={contract._id}
+                        onConfirm={handleCloseDialog}
+                        />
+                      
                     </TableCell>
-                  </TableRow>
-                ))}
+                  </TableRow>))}
             </TableBody>
           </Table>
         </TableContainer>

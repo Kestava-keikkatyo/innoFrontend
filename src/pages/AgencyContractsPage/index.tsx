@@ -97,9 +97,6 @@ const AgencyContractsPage = () => {
 
         <EmploymentTable/>
 
-        <Typography style={{ paddingTop: '1rem' }} variant="h1" className='header'>
-          {t('employment_contracts_overview')}
-        </Typography>
         <EmploymentContractsTable employmentContracts={employmentContracts} />
 
       </TabPanel>
