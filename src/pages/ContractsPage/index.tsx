@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { me } from '../../actions/userActions';
-import { fetchBusinessContracts } from '../../actions/businessContractActions';
+import { fetchContractsAsTarget } from '../../actions/contractActions';
 import PageLoading from '../../components/PageLoading';
 import SearchTable from './SearchTable';
 import ContractsTable from './ContractsTable';
@@ -98,7 +98,7 @@ const ContractsPage = () => {
 
   useEffect(() => {
     dispatch(me());
-    dispatch(fetchBusinessContracts());
+    dispatch(fetchContractsAsTarget());
     dispatch(fetchFormList());
   }, [dispatch, data.role]);
   

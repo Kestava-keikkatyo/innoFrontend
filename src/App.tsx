@@ -50,6 +50,7 @@ import SendFeedback from './pages/FeedbackPage/SendFeedback'
 import Feedbacks from './pages/FeedbackPage/Feedbacks'
 import Details from './pages/FeedbackPage/Details'
 import FeedbackPage from './pages/FeedbackPage'
+import AgencyWorkers from './pages/Profile/AgencyWorkers'
 import Workers from './pages/Profile/Workers'
 import { ThemeProvider, Theme, StyledEngineProvider, createTheme } from '@mui/material/styles';
 import UserProfile from './pages/Profile/User'
@@ -229,7 +230,10 @@ const App: React.FC = () => {
             <PrivateRoute path="/workers/profile/:userId" roles={[roles.Business, roles.Agency]}>
               <UserProfile />
             </PrivateRoute>
-            <PrivateRoute path="/workers" roles={[roles.Business, roles.Agency]}>
+            <PrivateRoute path="/agencyWorkers" roles={[roles.Agency]}>
+              <AgencyWorkers />
+            </PrivateRoute>
+            <PrivateRoute path="/workers" roles={[roles.Business]}>
               <Workers />
             </PrivateRoute>
             <PrivateRoute path="/agencies/profile/:userId" roles={[roles.Business]}>

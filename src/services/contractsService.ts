@@ -218,6 +218,21 @@ const deleteBusinessContractById = async (contractId: string) => {
 };
 
 /**
+ * Deletes contract according to target id
+ * @param {*} targetId
+ */
+const deleteBusinessContractByTargetId = async (targetId: string) => {
+  try {
+  return await axios.delete(
+    `${baseUrl}/agreement/deleteByTargetId/${targetId}`,
+    authHeader()
+  );
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/**
  * Deletes employment contract by id
  * @param {*} contractId
  */
@@ -413,6 +428,7 @@ export default {
   postEmploymentAgreement: postEmploymentContract,
   declineBusinessContract,
   deleteBusinessContractById,
+  deleteBusinessContractByTargetId,
   refuseEmploymentContractById, 
   deleteEmploymentContractById,
   signEmploymentContractById,

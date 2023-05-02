@@ -28,7 +28,7 @@ import {
   AccordionActions,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { declineBusinessContract } from '../../actions/businessContractActions';
+import { rejectContract } from '../../actions/contractActions';
 import { severity } from '../../types/types';
 import { setAlert } from '../../actions/alertActions';
 import { useDispatch } from 'react-redux';
@@ -60,7 +60,7 @@ const ContractsRequestedTable = (prop: {
   const { t } = useTranslation();
 
   const declineContract = (contractId: string, userId: string, formId: any) => {
-    dispatch(declineBusinessContract(contractId, userId));
+    dispatch(rejectContract(contractId, userId));
     if (formId) {
       dispatch(deleteBusinessContractForm(formId, userId));
     }

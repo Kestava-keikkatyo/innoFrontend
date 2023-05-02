@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { me } from '../../actions/userActions';
-import { addAgencyContract, fetchBusinessContracts, fetchEmploymentContractsAsAgency } from '../../actions/businessContractActions';
+import { fetchEmploymentContractsAsAgency } from '../../actions/contractActions';
 import PageLoading from '../../components/PageLoading';
-import SearchTable from './SearchTable';
-import ContractsTable from './ContractsTable';
 import {
   Container,
-  Typography,
   Box,
-  Tabs,
-  AppBar,
-  Tab,
   useTheme,
   Direction,
-  Tooltip,
   useMediaQuery,
   Link,
 } from '@mui/material';

@@ -4,11 +4,11 @@ import { IRootState } from "../../utils/store";
 import { Typography, Grid } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import {
-  declineBusinessContract,
-  acceptBusinessContractFromBusiness,
-  acceptBusinessContractFromWorker,
-  sendBackBusinessContract,
-} from '../../actions/businessContractActions';
+  rejectContract,
+  acceptContractFromBusiness,
+  acceptContractFromWorker,
+  sendBackContract,
+} from '../../actions/contractActions';
 import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
 import ContractsReceivedTable from './ContractsReceivedTable';
@@ -90,7 +90,7 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
     userId: string,
     formId: string
   ) => {
-    dispatch(acceptBusinessContractFromBusiness(contractId, userId, formId));
+    dispatch(acceptContractFromBusiness(contractId, userId, formId));
     dispatch(setAlert('Contract from Business accepted.', severity.Info, 3));
   };
 
@@ -99,7 +99,7 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
     userId: string,
     formId: string
   ) => {
-    dispatch(acceptBusinessContractFromWorker(contractId, userId, formId));
+    dispatch(acceptContractFromWorker(contractId, userId, formId));
     dispatch(setAlert('Contract from Worker accepted.', severity.Info, 3));
   };
 
@@ -108,7 +108,7 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
     userId: string,
     formId: string
   ) => {
-    dispatch(declineBusinessContract(contractId, userId));
+    dispatch(rejectContract(contractId, userId));
     if (formId) {
       dispatch(deleteBusinessContractForm(formId, userId));
     }
@@ -120,7 +120,7 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
     userId: string,
     formId: string
   ) => {
-    dispatch(sendBackBusinessContract(contractId, userId, formId));
+    dispatch(sendBackContract(contractId, userId, formId));
     dispatch(setAlert('Contract sended back.', severity.Info, 3));
   };
 

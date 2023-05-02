@@ -15,9 +15,8 @@ import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 import { useDispatch } from 'react-redux';
 import {
-  declineBusinessContract,
-  deleteBusinessContractById,
-} from '../../actions/businessContractActions';
+  deleteContractById,
+} from '../../actions/contractActions';
 import Tooltip from '@mui/material/Tooltip';
 import CloseIcon from '@mui/icons-material/Close';
 import { useTranslation } from 'react-i18next';
@@ -66,7 +65,7 @@ export const ListAccordioSent = (prop: { contracts: any[] }) => {
 
   const cancelContract = (contract: any) => {
     if (window.confirm(t('delete_request'))) {
-      dispatch(deleteBusinessContractById(contract.agency._id, contract._id));
+      dispatch(deleteContractById(contract._id));
 
       if (contract.receivedContracts.formId) {
         dispatch(

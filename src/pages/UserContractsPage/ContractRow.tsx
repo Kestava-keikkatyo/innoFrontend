@@ -15,10 +15,9 @@ import {
 import makeStyles from '@mui/styles/makeStyles';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  deleteBusinessContractById,
-  fetchBusinessContractsAsTarget,
-  sendBusinessContract,
-} from '../../actions/businessContractActions';
+  deleteContractById,
+  sendContract,
+} from '../../actions/contractActions';
 import { severity } from '../../types/types';
 import { setAlert } from '../../actions/alertActions';
 import { 
@@ -40,13 +39,13 @@ const ContractRow: React.FC<any> = ({ view, contract }) => {
   const { t } = useTranslation();
 
   function deleteContract(userId: string, contractId: string): void {
-    dispatch(deleteBusinessContractById(userId, contractId))
+    dispatch(deleteContractById(contractId))
     dispatch(setAlert('Contract deleted!', severity.Success))
   }
 
   function signContract(id: string): void {
     let status = "signed"
-    dispatch(sendBusinessContract(id, status))
+    dispatch(sendContract(id, status))
     dispatch(setAlert('Contract accepted!', severity.Success))
   }
 

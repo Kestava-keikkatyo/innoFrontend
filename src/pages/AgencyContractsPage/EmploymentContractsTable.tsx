@@ -5,9 +5,9 @@ import { Typography, Grid, Tooltip} from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { Link } from 'react-router-dom';
 import {
-  deleteEmploymentAgreementAsAgency,
+  deleteEmploymentContractAsAgency,
   fetchEmploymentContractsAsAgency,
-} from '../../actions/businessContractActions';
+} from '../../actions/contractActions';
 import { setAlert } from '../../actions/alertActions';
 import { EmploymentAgreement, severity } from '../../types/types';
 import { useTranslation } from 'react-i18next';
@@ -29,8 +29,8 @@ import {
 } from '@mui/icons-material';
 import { green, red, yellow } from '@mui/material/colors';
 import SearchBox from '../../components/SearchBox';
-import DeleteDialog from '../../components/FormComponents/DeleteDialog';
-import DeleteDialogItem from './DeleteDialogItem';
+import DeleteDialog from '../../components/DeleteDialog';
+import DeleteDialogItem from '../../components/DeleteDialogItem';
 
 /**
  * @component
@@ -79,9 +79,8 @@ const EmploymentContractsTable: React.FC<any> = ({ employmentContracts }) => {
   };
 
   const deleteContract = (contractId: string) => {
-    dispatch(deleteEmploymentAgreementAsAgency(contractId));  
+    dispatch(deleteEmploymentContractAsAgency(contractId));  
     setContractToDelete('')
-    
     for (let contract of contracts) {
       if (contract._id === contractId) {
         dispatch(setAlert('Failure: Contract not deleted!', severity.Error, 3))
@@ -131,7 +130,7 @@ const EmploymentContractsTable: React.FC<any> = ({ employmentContracts }) => {
                 <TableCell align="left">{t("business_signed")}</TableCell>
                 <TableCell align="left">{t("worker_email")}</TableCell>
                 <TableCell align="left">{t("worker_signed")}</TableCell>
-                <TableCell align="left">{t("action")}</TableCell>
+                <TableCell align="left">{t("delete")}</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -192,11 +191,11 @@ const EmploymentContractsTable: React.FC<any> = ({ employmentContracts }) => {
                     </TableCell>
 
                     <TableCell padding="none" align="left" style={{ paddingLeft: 5 }}>
-                      <DeleteDialogItem 
-                        contractId={contract._id}
+                      <DeleteDialogItem
+                        title="Delete and permanently remove connection between the recipients?"
+                        itemId={contract._id}
                         onConfirm={handleCloseDialog}
                         />
-                      
                     </TableCell>
                   </TableRow>))}
             </TableBody>

@@ -43,17 +43,13 @@ const Agencies: React.FC = () => {
         return (
           <div className={classes.userListUser}>
             <img className={classes.userListImg} src={params.row.profilePicture} alt="" />
-            {params.row.firstName} {params.row.lastName}
+            <Link className={classes.link} to={'/agencies/profile/' + params.row._id}>
+              {params.row.companyName}
+            </Link>
+            
           </div>
         );
       },
-    },
-    {
-      field: 'category',
-      headerName: (i18next.t('list_category')),
-      minWidth: 100,
-      flex: 1,
-      headerClassName: 'super-app-theme--header',
     },
     {
       field: 'email',
@@ -62,6 +58,7 @@ const Agencies: React.FC = () => {
       flex: 1,
       headerClassName: 'super-app-theme--header',
     },
+    /*
     {
       field: 'city',
       headerName: (i18next.t('list_city')),
@@ -69,13 +66,7 @@ const Agencies: React.FC = () => {
       flex: 1,
       headerClassName: 'super-app-theme--header',
     },
-    {
-      field: 'userType',
-      headerName: (i18next.t('list_position')),
-      minWidth: 75,
-      flex: 1,
-      headerClassName: 'super-app-theme--header',
-    },
+    */
     {
       field: 'action',
       headerName: (i18next.t('list_action')),
@@ -86,8 +77,7 @@ const Agencies: React.FC = () => {
         return (
           <>
             <Stack direction="row" spacing={2}>
-              <Link to={'/agencies/profile/' + params.id}>{t('list_profile')}</Link>
-              <Link to={'/agencies/workRequest/' + params.id}>{t('send_work_request')}</Link>
+              <Link className={classes.link} to={'/agencies/workRequest/' + params.id}>{t('send_work_request')}</Link>
             </Stack>
           </>
         );
@@ -142,6 +132,15 @@ const useStyles = makeStyles(() => ({
     objectFit: 'cover',
     marginRight: '10px',
   },
+  link: {
+    color: '#000000'
+  },
+  tableCellText: {
+    fontFamily: 'Montserrat,serif',
+    fontWeight: '400',
+    fontSize: '15',
+    lineHeight: '1.43',
+  }
 }));
 
 export default Agencies;

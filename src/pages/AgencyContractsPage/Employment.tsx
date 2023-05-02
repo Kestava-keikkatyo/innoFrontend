@@ -23,7 +23,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import { fetchAgencyContacts } from '../../actions/usersActions';
 import { setAlert } from '../../actions/alertActions';
 import { E_SET_CURRENT } from '../../types/state';
-import { submitEmploymentAgreement } from '../../actions/businessContractActions';
+import { addEmploymentContract } from '../../actions/contractActions';
 import { string } from 'prop-types';
 import { useParams } from 'react-router-dom';
 
@@ -88,7 +88,7 @@ const EmploymentPage: React.FC<EmploymentProps> = () => {
         }
       }
       try {
-        dispatch(submitEmploymentAgreement(currentForm))
+        dispatch(addEmploymentContract(currentForm))
       } catch (error) {
         dispatch(setAlert( `Error: ` + error, severity.Error))
       }

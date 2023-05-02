@@ -180,7 +180,27 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               </ListItemButton>
             </>
           )}
-          {(role === roles.Agency || role === roles.Business) && (
+          {role === roles.Agency && (
+            <>
+              <ListItemButton style={{ backgroundColor: colors.contracts }} component={Link} to="/agencyContracts" onClick={() => handleClick("contracts")} className={classes.button}>
+                <ListItemIcon>
+                  <ContactMailIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText className={classes.buttonText} primary={t('Connections')} />
+              </ListItemButton>
+            </>
+          )}
+          {role === roles.Agency && (
+            <>
+              <ListItemButton style={{ backgroundColor: colors.employees }} component={Link} to="/agencyWorkers" onClick={() => handleClick("employees")} className={classes.button}>
+                <ListItemIcon>
+                  <PersonIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText className={classes.buttonText} primary={t('employees')} />
+              </ListItemButton>
+            </>
+          )}
+           {role === roles.Business && (
             <>
               <ListItemButton style={{ backgroundColor: colors.employees }} component={Link} to="/workers" onClick={() => handleClick("employees")} className={classes.button}>
                 <ListItemIcon>
@@ -190,23 +210,13 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               </ListItemButton>
             </>
           )}
-          {role === roles.Agency && (
-            <>
-              <ListItemButton style={{ backgroundColor: colors.contracts }} component={Link} to="/agencyContracts" onClick={() => handleClick("contracts")} className={classes.button}>
-                <ListItemIcon>
-                  <ContactMailIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText className={classes.buttonText} primary={t('contracts')} />
-              </ListItemButton>
-            </>
-          )}
           {(role === roles.Business || role === roles.Worker) && (
             <>
               <ListItemButton style={{ backgroundColor: colors.contracts }} component={Link} to="/userContracts" onClick={() => handleClick("contracts")} className={classes.button}>
                 <ListItemIcon>
                   <ContactMailIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText className={classes.buttonText} primary={t('contracts')} />
+                <ListItemText className={classes.buttonText} primary={t('Contracts')} />
               </ListItemButton>
             </>
           )}
@@ -239,7 +249,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
                 <ListItemText className={classes.buttonText} primary={t('materials')} />
               </ListItemButton>
             </>
-          )}
+          )} 
           {role === roles.Business && (
             <>
               <ListItemButton style={{ backgroundColor: colors.businesses }} component={Link} to="/agencies" onClick={() => handleClick("businesses")} className={classes.button}>

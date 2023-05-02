@@ -7,7 +7,7 @@ import {
 import makeStyles from '@mui/styles/makeStyles';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import AgencyWorkers from '../Profile/AgencyWorkers';
+import AgencyWorkers from '../Profile/Workers';
 import AgencyStatisticsSummary from '../MoodStatistics/AgencyStatisticsSummary';
 import picture from '../../assets/pictures/Kirjautuminen_etusivu_Keikkakaveri_tyovaline_kuvitus.svg'
 import MoodIcon from '@mui/icons-material/Mood'

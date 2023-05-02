@@ -1,4 +1,4 @@
-import MyWorkers from '../Profile/AgencyWorkers';
+import MyWorkers from '../Profile/Workers';
 import React, { useEffect, useState } from 'react';
 import {
   Button,
