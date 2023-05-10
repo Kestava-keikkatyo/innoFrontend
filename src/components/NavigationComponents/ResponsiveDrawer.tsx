@@ -38,6 +38,7 @@ import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import TaskIcon from '@mui/icons-material/Task';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import WorkIcon from '@mui/icons-material/Work';
+import AbcIcon from '@mui/icons-material/Abc';
 import Sisainenlinkki from '../../assets/icons/sisainenlinkki.svg'
 
 /**
@@ -53,7 +54,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
   const { data } = useSelector((state: IRootState) => state.user)
   const role = data.role
 
-  const [colors, setColors] = useState({ home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" })
+  const [colors, setColors] = useState({ home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", inviteCodes: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" })
 
   const iconColor = {
     base: '#000',
@@ -62,7 +63,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
   }
 
   useEffect(() => {
-    setColors({ ...colors, home: "#F47D20", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
+    setColors({ ...colors, home: "#F47D20", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", inviteCodes: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
   }, [])
 
   /**
@@ -76,34 +77,37 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
 
     switch (page) {
       case "home":
-        setColors({ ...colors, home: "#F47D20", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
+        setColors({ ...colors, home: "#F47D20", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", inviteCodes: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
         break
       case "reports":
-        setColors({ ...colors, home: "#FDFDFD", reports: "#F47D20", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
+        setColors({ ...colors, home: "#FDFDFD", reports: "#F47D20", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", inviteCodes: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
         break
       case "feedback":
-        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#F47D20", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
+        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#F47D20", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", inviteCodes: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
         break
       case "contracts":
-        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#F47D20", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
+        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#F47D20", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", inviteCodes: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
         break
       case "responsibilities":
-        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#F47D20", materials: "#FDFDFD", employees: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
+        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#F47D20", materials: "#FDFDFD", employees: "#FDFDFD", inviteCodes: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
         break
       case "materials":
-        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#F47D20", employees: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
+        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#F47D20", employees: "#FDFDFD", inviteCodes: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
         break
       case "employees":
-        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#F47D20", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
+        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#F47D20", inviteCodes: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
+        break
+      case "inviteCodes":
+        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", inviteCodes: "#F47D20", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#FDFDFD" });
         break
       case "rentalmodel":
-        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", rentalmodel: "#F47D20", databank: "#FDFDFD", businesses: "#FDFDFD" });
+        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", inviteCodes: "#FDFDFD", rentalmodel: "#F47D20", databank: "#FDFDFD", businesses: "#FDFDFD" });
         break
       case "databank":
-        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#F47D20", businesses: "#FDFDFD" });
+        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", inviteCodes: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#F47D20", businesses: "#FDFDFD" });
         break
       case "businesses":
-        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#F47D20" });
+        setColors({ ...colors, home: "#FDFDFD", reports: "#FDFDFD", feedback: "#FDFDFD", contracts: "#FDFDFD", responsibilities: "#FDFDFD", materials: "#FDFDFD", employees: "#FDFDFD", inviteCodes: "#FDFDFD", rentalmodel: "#FDFDFD", databank: "#FDFDFD", businesses: "#F47D20" });
         break
     }
   }
@@ -166,13 +170,13 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               </ListItemButton>
             </>
           )}
-          {(role === roles.Agency || role === roles.Business) && (
+          {(role === roles.Agency) && (
             <>
-              <ListItemButton style={{ backgroundColor: colors.employees }} component={Link} to="/workers" onClick={() => handleClick("employees")} className={classes.button}>
+              <ListItemButton style={{ backgroundColor: colors.inviteCodes }} component={Link} to="/inviteCodes" onClick={() => handleClick("inviteCodes")} className={classes.button}>
                 <ListItemIcon>
-                  <PersonIcon sx={{ color: iconColor.base }} />
+                  <AbcIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText className={classes.buttonText} primary={t('employees')} />
+                <ListItemText className={classes.buttonText} primary={t('inviteCodes')} />
               </ListItemButton>
             </>
           )}
@@ -182,7 +186,27 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
                 <ListItemIcon>
                   <ContactMailIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText className={classes.buttonText} primary={t('contracts')} />
+                <ListItemText className={classes.buttonText} primary={t('Connections')} />
+              </ListItemButton>
+            </>
+          )}
+          {role === roles.Agency && (
+            <>
+              <ListItemButton style={{ backgroundColor: colors.employees }} component={Link} to="/agencyWorkers" onClick={() => handleClick("employees")} className={classes.button}>
+                <ListItemIcon>
+                  <PersonIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText className={classes.buttonText} primary={t('employees')} />
+              </ListItemButton>
+            </>
+          )}
+           {role === roles.Business && (
+            <>
+              <ListItemButton style={{ backgroundColor: colors.employees }} component={Link} to="/workers" onClick={() => handleClick("employees")} className={classes.button}>
+                <ListItemIcon>
+                  <PersonIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText className={classes.buttonText} primary={t('employees')} />
               </ListItemButton>
             </>
           )}
@@ -192,7 +216,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
                 <ListItemIcon>
                   <ContactMailIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText className={classes.buttonText} primary={t('contracts')} />
+                <ListItemText className={classes.buttonText} primary={t('Contracts')} />
               </ListItemButton>
             </>
           )}
@@ -225,7 +249,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
                 <ListItemText className={classes.buttonText} primary={t('materials')} />
               </ListItemButton>
             </>
-          )}
+          )} 
           {role === roles.Business && (
             <>
               <ListItemButton style={{ backgroundColor: colors.businesses }} component={Link} to="/agencies" onClick={() => handleClick("businesses")} className={classes.button}>
@@ -269,7 +293,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
                     <ListItemText className={classes.buttonText} primary={t('worker_order')} />
                   </ListItemButton>
 
-                  <ListItemButton style={{ }} sx={{ pl: 4 }} onClick={() => handleClick("businesses")} component={Link} to="/rentalWorkModel/contractOfEmployment" >
+                  <ListItemButton style={{}} sx={{ pl: 4 }} onClick={() => handleClick("businesses")} component={Link} to="/rentalWorkModel/contractOfEmployment" >
                     <ListItemIcon>
                       <TaskIcon fontSize="small" sx={{ color: iconColor.base }} />
                     </ListItemIcon>

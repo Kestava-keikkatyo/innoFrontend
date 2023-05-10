@@ -590,7 +590,7 @@ export type BreadcrumbActionTypes = BreadcrumbAddAction | BreadcrumbSetAction
 
 export interface BusinessContractState {
   searchList: object[]
-  madeContracts: object[]
+  contracts: object[]
   businessContract: any
 }
 

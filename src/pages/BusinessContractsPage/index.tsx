@@ -21,8 +21,8 @@ import ListAccordionWaiting from './ListAccordionWaiting';
 import ListAccordionSent from './ListAccordionSent';
 import { useDispatch, useSelector } from 'react-redux';
 import { 
-  fetchBusinessContractsAsTarget
-} from '../../actions/businessContractActions';
+  fetchContractsAsTarget
+} from '../../actions/contractActions';
 import { IRootState } from '../../utils/store';
 import AgenciesList from './AgenciesList';
 import { useTranslation } from 'react-i18next';
@@ -93,7 +93,7 @@ const BusinessContractsPage = () => {
   const archived: any = []
 
   useEffect(() => {
-    dispatch(fetchBusinessContractsAsTarget());
+    dispatch(fetchContractsAsTarget());
   }, [dispatch]);
 
   if(contracts.length){

@@ -34,6 +34,7 @@ export default {
     firstName: 'First name',
     lastName: 'Last name',
     email: 'Email',
+    companyName: 'Company name',
     password: 'Password',
     confirm: 'Confirm password',
     user: 'User',
@@ -55,14 +56,15 @@ export default {
     token_error_alert: 'Error in setting new password.',
     reset_password_password_was_changed_successfully: 'New password saved!',
 
-    // error
-    invalid_email: 'Invalid email address',
-    invalid_length: 'Password must be at least 8 characters',
-    field_required: 'Required field',
-    invalid_name: 'Invalid name',
-    invalid_password: 'Password does not match',
-    email_already_used: 'Email is already in use',
-    agency_profile_missing: 'Agency profile is missing',
+  // error
+  invalid_email: 'Invalid email address',
+  invalid_length: 'Password must be at least 8 characters',
+  field_required: 'Required field',
+  invalid_name: 'Invalid name',
+  invalid_password: 'Password does not match',
+  invalid_company_name: 'Invalid company name',
+  email_already_used: 'Email is already in use',
+  agency_profile_missing: 'Agency profile is missing',
 
     // option
     role: 'Role',
@@ -122,6 +124,25 @@ export default {
 
     // Agencystaistics
     mood_stats: 'Mood stats',
+
+    // Invitecodes
+    invitecodes: 'Invite Codes',
+    invitecode: 'Invite Code',
+    invitecodes_create: 'Create Invite Codes',
+    invitecode_create_success: 'Invite Code Created',
+    invitecode_create_failed: 'Invite Code Creation Failed',
+    invitecode_delete_success: 'Invite Code Deleted',
+    invitecode_delete_failed: 'Invite Code Deletion Failed',
+    invitecode_delete: 'Delete Invite Code',
+    invitecode_delete_confirm: 'Are you sure you want to delete the invite code?',
+    invitecode_delete_cancel: 'Cancel',
+    invitecode_delete_ok: 'Delete',
+    markedCodes: 'Marked Invite Codes',
+    unmarkedCodes: 'Unmarked Invite Codes',
+    marked: 'Marked',
+    numberOfCodes: 'Number of Invite Codes',
+    timeOfCreation: 'Creation Time',
+
 
     // Report form
     report_handler: 'Security observations',
@@ -285,17 +306,17 @@ export default {
     make_contract: 'Make a contract',
     contracts: 'Contracts',
     contracts_overview: 'Contracts overview',
-    employment_contracts_overview: 'Employment overview',
+    employment_contracts_overview: 'Employment connections overview',
     creator: 'Creator',
     company: 'Company',
     request_type: 'Type',
     contact_request: 'Contact request',
     employment_request: 'Employment',
-    connect_workers_to_business: 'Create employment proposals',
+    connect_workers_to_business: 'Connect workers to business',
     worker_email: 'Worker',
     business_name: 'Business',
-    worker_signed: 'Worker signed',
-    business_signed: 'Business signed',
+    worker_signed: 'Worker accepted',
+    business_signed: 'Business accepted',
 
     // Rental Work Model
     rwm_responsibilities: 'Responsibilities',
@@ -365,6 +386,7 @@ export default {
     work_performance: 'Work performance, supervision and feedback',
     feedback_evaluation: 'Feedback and evaluation',
     employees: 'Employees',
+    inviteCodes: 'Invitation codes',
 
     // profilePage
     settings: 'Settings',
@@ -862,6 +884,7 @@ export default {
     Forms: 'Materials',
     Preview: 'Preview',
     Contracts: 'Contracts',
+    Connections: 'Connections',
     Job: 'Jobs',
     ReceivedWorkRequests: 'Work requests',
     MoodStats: 'Feeling stats',
