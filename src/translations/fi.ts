@@ -41,6 +41,16 @@ export default {
     // forgot password
     forgot_password_text: 'Unohtuiko salasana? Syötä alle sähköpostisi mihin saat ohjeet salasanan palauttamista varten.',
     forgot_password_button: 'Lähetä',
+    forgot_password_sent: 'Sähköposti lähetetty onnistuneesti!',
+    forgot_password_sent_failure: 'Sähköpostin lähettäminen epäonnistui.',
+    set_new_password_header: 'Aseta uusi salasana.',
+    repeat_password_placeholder: 'Salasana uudelleen',
+    set_new_password_submit: 'Tallenna',
+    email_sent_text: 'Sähköposti lähetetty. Mikäli sähköpostia ei löydy, tarkasta roskapostikansio.',
+    back_to_landingpage: 'Pääsivulle',
+    token_error_text: 'Jotain meni pieleen, ole hyvä ja yritä uudelleen.',
+    token_error_alert: 'Virhe uuden salasanan asettamisessa.',
+    reset_password_password_was_changed_successfully: 'Uusi salasana tallennettu!',
 
     // error
     invalid_email: 'Virheellinen sähköpostiosoite',
@@ -221,10 +231,10 @@ export default {
     transfer_profile: 'Siirry profiiliin',
     transfer_company_profile: 'Siirry yrityksen profiiliin',
 
-     // Employment page
-     connect_workers_to_business_info: 'Valitse vastaanottajat keikkatyöehdotuksen luomiseksi',
-     employment_no_recipient: 'Sinun täytyy valita vastaanottaja',
-     employ: 'Työllistä',
+    // Employment page
+    connect_workers_to_business_info: 'Valitse vastaanottajat keikkatyöehdotuksen luomiseksi',
+    employment_no_recipient: 'Sinun täytyy valita vastaanottaja',
+    employ: 'Työllistä',
 
     // Contact information
     phone: 'Puhelin',

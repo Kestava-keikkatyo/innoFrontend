@@ -44,6 +44,16 @@ export default {
     // forgot password
     forgot_password_text: 'Forgot your account’s password? Enter your email address and we’ll send you instructions on how to reset it.',
     forgot_password_button: 'Send',
+    forgot_password_sent: 'Email sent successfully!',
+    forgot_password_sent_failure: 'Email was not sent.',
+    set_new_password_header: 'Set new password.',
+    repeat_password_placeholder: 'Repeat password',
+    set_new_password_submit: 'Save',
+    email_sent_text: 'Email sent. Please check your spam folder if you are not able to find it.',
+    back_to_landingpage: 'Main page',
+    token_error_text: 'Something went wrong, please try again.',
+    token_error_alert: 'Error in setting new password.',
+    reset_password_password_was_changed_successfully: 'New password saved!',
 
     // error
     invalid_email: 'Invalid email address',
@@ -1292,39 +1302,39 @@ export default {
     good_practises_summary: "The form templates guide you in taking care of important issues in the different phases of the contract. Filling out the forms ensures that the most essential issues related to the temporary employee's job security are reviewed and the rules of the game are agreed on important issues between the personnel service and the user company. A form filled in between two parties can always be given to a third party as well. This works as part of the flow of information between partners and ensuring the transmission of important information.",
     forms_summary: "The form templates guide you in taking care of important issues in the different phases of the contract. Filling out the forms ensures that the most essential issues related to the temporary employee's job security are reviewed and the rules of the game are agreed on important issues between the personnel service and the user company. A form filled in between two parties can always be given to a third party as well. This works as part of the flow of information between partners and ensuring the transmission of important information.",
 
-     //Forms in databank
-     form1HeaderText: 'FORM 1 - OCCUPATIONAL SAFETY AND WELL-BEING MATTERS RELATED TO THE CUSTOMER AGREEMENT',
-     form1SubHeader: '(to be completed by representatives of the rental company and the user company)',
- 
-     form2HeaderText: 'FORM 2 – EMPLOYEE GENERAL ORIENTATION',
-     form2SubHeader: '(to be completed by the rental company\'s orientation officer)',
- 
-     form3HeaderText: 'FORM 3 - JOB COUNSELING',
-     form3SubHeader: '(filled in by the user company\'s job advisor)',
- 
-     form4HeaderText: 'FORM 4 - FUNCTIONAL EVALUATION',
-     form4SubHeader: '(to be completed by the representatives of the user company and the rental company)',
+    //Forms in databank
+    form1HeaderText: 'FORM 1 - OCCUPATIONAL SAFETY AND WELL-BEING MATTERS RELATED TO THE CUSTOMER AGREEMENT',
+    form1SubHeader: '(to be completed by representatives of the rental company and the user company)',
 
-     form5HeaderText: 'FORM 5 - INDUCTION AND JOB QUIDANCE IN URGENT SITUATIONS',
- 
+    form2HeaderText: 'FORM 2 – EMPLOYEE GENERAL ORIENTATION',
+    form2SubHeader: '(to be completed by the rental company\'s orientation officer)',
+
+    form3HeaderText: 'FORM 3 - JOB COUNSELING',
+    form3SubHeader: '(filled in by the user company\'s job advisor)',
+
+    form4HeaderText: 'FORM 4 - FUNCTIONAL EVALUATION',
+    form4SubHeader: '(to be completed by the representatives of the user company and the rental company)',
+
+    form5HeaderText: 'FORM 5 - INDUCTION AND JOB QUIDANCE IN URGENT SITUATIONS',
+
     //Business homepage
     welcomeTextBusiness: "Welcome to business homepage",
     smileSummary: "Smile summary",
     newReports: "New reports",
     businessFrontpage: "Business frontpage",
 
-     //Agency homepage
-     welcomeTextAgency: "Welcome to agency homepage",
-     agencyFrontpage: "Agency frontpage",
+    //Agency homepage
+    welcomeTextAgency: "Welcome to agency homepage",
+    agencyFrontpage: "Agency frontpage",
 
-     //Worker homepage
-     welcomeTextWorker: "Welcome to worker homepage ",
-     workerFrontpage: "Worker homepage",
- 
-     //Other
-     Name: 'Name',
-     contactInformation: 'Contact information',
-     check_new_reports: 'Check new reports',
-     print: 'Print pdf',
+    //Worker homepage
+    welcomeTextWorker: "Welcome to worker homepage ",
+    workerFrontpage: "Worker homepage",
+
+    //Other
+    Name: 'Name',
+    contactInformation: 'Contact information',
+    check_new_reports: 'Check new reports',
+    print: 'Print pdf',
 
 }

@@ -505,6 +505,8 @@ export const USER_REQUEST = 'USER_REQUEST'
 export const USER_FAILURE = 'USER_FAILURE'
 export const USER_PROFILE = 'USER_PROFILE'
 export const FETCH_CONTACTS_SUCCESS = 'FETCH_CONTACTS_SUCCESS'
+export const SEND_MAIL_SUCCESS = 'SEND_MAIL_SUCCESS'
+export const SEND_MAIL_FAILED = 'SEND_MAIL_FAILED'
 
 interface UserProfileAction {
   type: typeof USER_PROFILE

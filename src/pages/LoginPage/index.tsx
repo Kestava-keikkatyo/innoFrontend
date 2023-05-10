@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
-import { Link, Link as RouterLink, useLocation } from 'react-router-dom';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 
-import { login, signup } from '../../actions/userActions';
+import { forgotpassword, login, signup } from '../../actions/userActions';
 import { fetchAgencyContacts, fetchBusinessContacts, fetchWorkerContacts } from '../../actions/usersActions';
 
 import SignUpForm from './SignUpForm';
 import LogInForm from './LogInForm';
+import ForgotPasswordForm from './ForgotPasswordForm';
 import './landingPage.css';
 
 import { Box, Button, createTheme, Divider, Grid, ThemeProvider } from '@mui/material';
 import { loadUser } from '../../utils/storage';
-import ForgotPasswordForm from './ForgotPasswordForm';
 
 /**
  * @component
@@ -22,7 +22,6 @@ import ForgotPasswordForm from './ForgotPasswordForm';
  */
 const LoginPage = () => {
   const [logInForm, setLogInForm] = useState<any>(false);
-  const [forgotPasswordForm, setForgotPasswordForm] = useState<any>(false);
   const location = useLocation();
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -58,6 +57,10 @@ const LoginPage = () => {
     }
   };
 
+  const forgotPasswordSubmit = async ({ ...email }: any) => {
+    dispatch(forgotpassword(email));
+  };
+
   let component;
 
   switch (logInForm) {
@@ -68,7 +71,7 @@ const LoginPage = () => {
       component = <SignUpForm handleSubmit={signupSubmit} />
       break
     case 0:
-      component = <ForgotPasswordForm />
+      component = <ForgotPasswordForm handleSubmit={forgotPasswordSubmit} />
       break
   }
 

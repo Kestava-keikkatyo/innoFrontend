@@ -65,8 +65,8 @@ const ForgotPasswordForm: React.FC<any> = ({ handleSubmit }) => {
                     label={t('email_label')}
                     name="email"
                     type="text"
-                    placeholder="user@mail.com"
                     className="marginTop2"
+                    required
                   />
                   <Button
                     type="submit"
