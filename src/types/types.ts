@@ -177,6 +177,14 @@ export interface Credentials {
   password: string
 }
 
+export interface Email {
+  email: string
+}
+
+export interface Token {
+  token: string
+}
+
 export interface Report {
   title: string
   details: string

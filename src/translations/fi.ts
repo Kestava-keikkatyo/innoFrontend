@@ -15,17 +15,17 @@ export default {
     saveButton: 'Tallenna',
     faq: 'Usein kysytyt kysymykset',
 
-    // login
-    login_title: 'Kirjaudu sisään',
-    email_label: 'Sähköposti',
-    password_label: 'Salasana',
-    invalid_email_address: 'Virheellinen sähköposti',
-    required: 'Puuttuu',
-    invalid_token: 'Virheellinen token',
-    logout_successful: 'Uloskirjautuminen onnistui!',
-    logout_failed: 'Ole hyvä ja kirjaudu uudelleen.',
-    login_failed: 'Kirjautuminen epäonnistui!',
-    login_successful: 'Kirjautuminen onnistui!',
+      // login
+      login_title: 'Kirjaudu sisään',
+      email_label: 'Sähköposti',
+      password_label: 'Salasana',
+      invalid_email_address: 'Virheellinen sähköposti',
+      required: 'Puuttuu',
+      invalid_token: 'Virheellinen token',
+      logout_successful: 'Uloskirjautuminen onnistui!',
+      logout_failed: 'Ole hyvä ja kirjaudu uudelleen.',
+      login_failed: 'Kirjautuminen epäonnistui!',
+      login_successful: 'Kirjautuminen onnistui!',
 
     // signup
     firstName: 'Etunimi',
@@ -39,15 +39,29 @@ export default {
     terms_agency: 'vuokrayrityksille',
     signup_successful: 'Rekistöröityminen onnistui',
 
-  // error
-  invalid_email: 'Virheellinen sähköpostiosoite',
-  invalid_length: 'Salasanan on oltava vähintään 8 merkkiä',
-  field_required: 'Pakollinen kenttä',
-  invalid_name: 'Virheellinen nimi',
-  invalid_password: 'Salasana ei täsmää',
+    // forgot password
+    forgot_password_text: 'Unohtuiko salasana? Syötä alle sähköpostisi mihin saat ohjeet salasanan palauttamista varten.',
+    forgot_password_button: 'Lähetä',
+    forgot_password_sent: 'Sähköposti lähetetty onnistuneesti!',
+    forgot_password_sent_failure: 'Sähköpostin lähettäminen epäonnistui.',
+    set_new_password_header: 'Aseta uusi salasana.',
+    repeat_password_placeholder: 'Salasana uudelleen',
+    set_new_password_submit: 'Tallenna',
+    email_sent_text: 'Sähköposti lähetetty. Mikäli sähköpostia ei löydy, tarkasta roskapostikansio.',
+    back_to_landingpage: 'Pääsivulle',
+    token_error_text: 'Jotain meni pieleen, ole hyvä ja yritä uudelleen.',
+    token_error_alert: 'Virhe uuden salasanan asettamisessa.',
+    reset_password_password_was_changed_successfully: 'Uusi salasana tallennettu!',
+
+    // error
+    invalid_email: 'Virheellinen sähköpostiosoite',
+    invalid_length: 'Salasanan on oltava vähintään 8 merkkiä',
+    field_required: 'Pakollinen kenttä',
+    invalid_name: 'Virheellinen nimi',
+    invalid_password: 'Salasana ei täsmää',
   invalid_company_name: 'Yrityksen nimen on oltava vähintään 3 merkkiä',
-  email_already_used: 'Sähköpostiosoite on jo käytössä',
-  agency_profile_missing: 'Henkilöstöpalveluyrityksen profiilia ei löydy',
+    email_already_used: 'Sähköpostiosoite on jo käytössä',
+    agency_profile_missing: 'Henkilöstöpalveluyrityksen profiilia ei löydy',
 
     // option
     role: 'Rooli',
@@ -62,6 +76,7 @@ export default {
     send: 'Lähetä',
     submit: 'Lähetä',
     log_in: 'Kirjaudu',
+    forgot_password: 'Unohtuiko salasana?',
     sign_up: 'Rekisteröidy',
     main_page: 'Pääsivu',
     back: 'takaisin',

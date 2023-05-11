@@ -3,7 +3,7 @@
  * @desc User requests to backend.
  */
 import axios from 'axios'
-import { Credentials, User } from '../types/types'
+import { Credentials, Email, Token, User } from '../types/types'
 import { loadUser } from '../utils/storage'
 
 import baseUrl from '../utils/baseUrl'
@@ -46,6 +46,32 @@ const signin = async (credentials: Credentials) => {
   }
 }
 
+/**
+ * @function
+ * @desc Sends out email to which a password reset link will be sent to
+ * @param {Email} email - the email where user wants to receive password reset link
+ */
+const forgottenpassword = async (email: Email) => {
+  try {
+    return await axios.post(`${baseUrl}/authentication/forgottenpassword`, email)
+  } catch (error) {
+    return Promise.reject(error.response)
+  }
+}
+
+/**
+ * @function
+ * @desc Sends out the token from the password reset link to be verified that it is found in database
+ * @param {Token} token - token from the password reset link
+ */
+const verifyToken = async (token: Token) => {
+  try {
+    return await axios.post(`${baseUrl}/authentication/verifytoken`, token)
+  } catch (error) {
+    return Promise.reject(error.response)
+  }
+}
+
 const logout = async () => {
   return await axios.post(`${baseUrl}/authentication/logout`, null, authHeader())
 }
@@ -80,6 +106,8 @@ const update = async (updateData: User) => {
 export default {
   register,
   signin,
+  forgottenpassword,
+  verifyToken,
   me,
   update,
   logout,

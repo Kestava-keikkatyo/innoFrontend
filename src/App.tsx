@@ -84,6 +84,9 @@ import ReceivedFeedbacks from './pages/FeedbackPage/ReceivedFeedbacks';
 import ReceivedDetails from './pages/FeedbackPage/ReceivedDetails'
 import InviteCode from './pages/InviteCodePage'
 import EmploymentPage from './pages/AgencyContractsPage/Employment'
+import ForgotPassword from './pages/ForgotPasswordPage/ForgotPassword'
+import EmailSent from './pages/ForgotPasswordPage/EmailSent'
+import TokenError from './pages/ForgotPasswordPage/TokenError'
 
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -109,6 +112,15 @@ const App: React.FC = () => {
           <Switch>
             <Route exact path="/login">
               <LoginPage />
+            </Route>
+            <Route exact path="/forgotpassword">
+              <ForgotPassword />
+            </Route>
+            <Route exact path="/forgotpassword/requested">
+              <EmailSent />
+            </Route>
+            <Route exact path="/forgotpassword/error">
+              <TokenError />
             </Route>
             <PrivateRoute path="/userList">
               <AllUsersList />

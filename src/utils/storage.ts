@@ -1,6 +1,7 @@
 import { LoggedInUser } from "../types/state"
 //import jwt from 'jsonwebtoken';
 import jwt_decode from 'jwt-decode';
+import { Token } from "../types/types";
 
 /**
  * Stores, loads and removes user's information (email, name, token and role) from localStorage
@@ -8,6 +9,7 @@ import jwt_decode from 'jwt-decode';
  */
 const storageKey = 'loggedInnoAppUser'
 const storageContactsKey = 'contacts'
+const resetPasswordToken = 'token'
 
 /**
  * Stores user's information to localStorage
@@ -18,6 +20,20 @@ export const saveUser = (user: LoggedInUser) => {
   try {
     const serializedUser = JSON.stringify(user)
     localStorage.setItem(storageKey, serializedUser)
+  } catch (err) {
+    console.error('storage print\n', err)
+  }
+}
+
+/**
+ * Stores token to localStorage
+ * @function
+ * @param {Object} token - server given token
+ */
+export const saveToken = (token: Token) => {
+  try {
+    const serializedUser = JSON.stringify(token)
+    localStorage.setItem(resetPasswordToken, serializedUser)
   } catch (err) {
     console.error('storage print\n', err)
   }
@@ -53,7 +69,25 @@ export const loadUser = () => {
     console.error('storage print\n', err)
     return undefined
   }
-} 
+}
+
+/**
+ * Loads token
+ * @function
+ */
+export const loadToken = () => {
+  try {
+    const serializedUser = localStorage.getItem(resetPasswordToken)
+    if (serializedUser === null) {
+      return undefined
+    }
+    return JSON.parse(serializedUser)
+  } catch (err) {
+    localStorage.removeItem(resetPasswordToken)
+    console.error('storage print\n', err)
+    return undefined
+  }
+}
 
 /**
  * Inserts data of user's contacts into localStorage
@@ -76,11 +110,11 @@ export const insertContactData = (data: any) => {
 
     contactData.push(contacts)
     localStorage.setItem(storageContactsKey, JSON.stringify(contactData))
-    
+
   } catch (err) {
     console.error('storage print\n', err)
   }
-} 
+}
 
 /**
  * Removes a single contact from localStorage
@@ -126,8 +160,8 @@ export const loadContacts = () => {
 export const getUserId = () => {
 
   // token
-  const token :any = loadUser().token
-  if(!token){
+  const token: any = loadUser().token
+  if (!token) {
     return null;
   }
   // decoded token
@@ -144,4 +178,12 @@ export const getUserId = () => {
 export const logoutUser = () => {
   localStorage.removeItem(storageKey)
   localStorage.removeItem(storageContactsKey)
+}
+
+/**
+ * Removes token generated for password reset from localStorage.
+ * @function
+ */
+export const removeToken = () => {
+  localStorage.removeItem(resetPasswordToken)
 }

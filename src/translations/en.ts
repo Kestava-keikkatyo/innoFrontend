@@ -18,17 +18,17 @@ export default {
     faq: 'Frequently asked questions',
 
 
-    // login
-    login_title: 'Log In',
-    email_label: 'Email',
-    password_label: 'Password',
-    invalid_email_address: 'Invalid email address',
-    required: 'Required',
-    invalid_token: 'Invalid token',
-    logout_successful: 'Logout successful!',
-    logout_failed: 'Please login again.',
-    login_failed: 'Login failed!',
-    login_successful: 'Login success!',
+      // login
+      login_title: 'Log In',
+      email_label: 'Email',
+      password_label: 'Password',
+      invalid_email_address: 'Invalid email address',
+      required: 'Required',
+      invalid_token: 'Invalid token',
+      logout_successful: 'Logout successful!',
+      logout_failed: 'Please login again.',
+      login_failed: 'Login failed!',
+      login_successful: 'Login success!',
 
     // signup
     firstName: 'First name',
@@ -42,15 +42,29 @@ export default {
     terms_agency: 'agencies',
     signup_successful: 'Signup successful',
 
-  // error
-  invalid_email: 'Invalid email address',
-  invalid_length: 'Password must be at least 8 characters',
-  field_required: 'Required field',
-  invalid_name: 'Invalid name',
-  invalid_password: 'Password does not match',
+    // forgot password
+    forgot_password_text: 'Forgot your account’s password? Enter your email address and we’ll send you instructions on how to reset it.',
+    forgot_password_button: 'Send',
+    forgot_password_sent: 'Email sent successfully!',
+    forgot_password_sent_failure: 'Email was not sent.',
+    set_new_password_header: 'Set new password.',
+    repeat_password_placeholder: 'Repeat password',
+    set_new_password_submit: 'Save',
+    email_sent_text: 'Email sent. Please check your spam folder if you are not able to find it.',
+    back_to_landingpage: 'Main page',
+    token_error_text: 'Something went wrong, please try again.',
+    token_error_alert: 'Error in setting new password.',
+    reset_password_password_was_changed_successfully: 'New password saved!',
+
+    // error
+    invalid_email: 'Invalid email address',
+    invalid_length: 'Password must be at least 8 characters',
+    field_required: 'Required field',
+    invalid_name: 'Invalid name',
+    invalid_password: 'Password does not match',
   invalid_company_name: 'Invalid company name',
-  email_already_used: 'Email is already in use',
-  agency_profile_missing: 'Agency profile is missing',
+    email_already_used: 'Email is already in use',
+    agency_profile_missing: 'Agency profile is missing',
 
     // option
     role: 'Role',
@@ -65,6 +79,7 @@ export default {
     send: 'Send',
     submit: 'Submit',
     log_in: 'Login',
+    forgot_password: 'Forgot password?',
     sign_up: 'Sign up',
     main_page: 'Go to main page',
     back: 'back',

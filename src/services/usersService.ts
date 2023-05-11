@@ -5,7 +5,7 @@
 import axios from 'axios'
 import { User } from '../types/types'
 import baseUrl from '../utils/baseUrl'
-import { loadUser } from '../utils/storage'
+import { loadToken, loadUser } from '../utils/storage'
 
 /**
  * @function
@@ -14,6 +14,16 @@ import { loadUser } from '../utils/storage'
 const authHeader = () => {
   return {
     headers: { 'x-access-token': `${loadUser().token}` },
+  }
+}
+
+/**
+ * @function
+ * @desc Helper function for setting up request header when resetting password.
+ */
+const authHeaderToken = () => {
+  return {
+    headers: { 'x-access-token': `${loadToken().token}` },
   }
 }
 
@@ -44,7 +54,7 @@ const fetchAgencyContacts = async () => {
     const res = await axios.get(`${baseUrl}/user/agencyContacts`, authHeader());
     return res.data;
   } catch (error) {
-    return { docs: []};
+    return { docs: [] };
   }
 }
 
@@ -57,7 +67,7 @@ const fetchBusinessContacts = async () => {
     const res = await axios.get(`${baseUrl}/user/businessContacts`, authHeader());
     return res.data;
   } catch (error) {
-    return { docs: []};
+    return { docs: [] };
   }
 }
 
@@ -70,7 +80,7 @@ const fetchWorkerContacts = async () => {
     const res = await axios.get(`${baseUrl}/user/workerContacts`, authHeader());
     return res.data;
   } catch (error) {
-    return { docs: []};
+    return { docs: [] };
   }
 }
 
@@ -165,6 +175,20 @@ const changePassword = async (newPassword: string, currentPassword: string) => {
 }
 
 /**
+ * @desc sends out new password for password reset
+ * @param id
+ * @returns
+ */
+const resetPassword = async (newPassword: string) => {
+  const res = await axios.put(
+    `${baseUrl}/authentication/resetPassword`,
+    { newPassword },
+    authHeaderToken(),
+  )
+  return res.data
+}
+
+/**
  * @function
  * @desc sends out create user request.
  * @param {User} user - Basic user information.
@@ -215,4 +239,5 @@ export default {
   setUserStatus,
   searchUserByName,
   changePassword,
+  resetPassword,
 }

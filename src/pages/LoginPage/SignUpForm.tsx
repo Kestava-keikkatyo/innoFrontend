@@ -16,6 +16,8 @@ import {
   Box,
   CircularProgress,
   Link,
+  createTheme,
+  ThemeProvider,
 } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { roles } from '../../types/types';
@@ -30,6 +32,15 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
   const [open, setOpen] = useState(false);
   const { t } = useTranslation();
   const { loading } = useSelector((state: any) => state.user);
+
+  const fontTheme = createTheme({
+    typography: {
+      fontFamily: [
+        'Montserrat',
+        'sans-serif',
+      ].join(','),
+    },
+  });
 
   const roleOptions = [
     { value: roles.Worker, label: t('worker') },
@@ -53,6 +64,7 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
   ];
 
   return (
+    <ThemeProvider theme={fontTheme}>
     <Card variant="outlined">
       <CardContent>
         <Typography align="center" variant="h1" gutterBottom className="header">
@@ -204,6 +216,7 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
         </Formik>
       </CardContent>
     </Card>
+    </ThemeProvider>
   );
 };
 

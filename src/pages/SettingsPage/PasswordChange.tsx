@@ -50,7 +50,7 @@ const PasswordChange: React.FC = () => {
       };
 
       if (!data ) return (
-        <PageLoading />
+        <PageLoading /> 
       );
       return (
       <div className={classes.newPassword}>
