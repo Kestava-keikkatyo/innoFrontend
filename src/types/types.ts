@@ -408,3 +408,13 @@ export interface AgreementCode {
   createdAt: string;
   marked: boolean;
 }
+
+export interface File {
+  _id: string;
+  title: string;
+  description: string;
+  creator: string;
+  uploadDate: Date;
+  fileType: 'pdf' | 'mp4' | 'jpg';
+  file: Buffer;
+}
