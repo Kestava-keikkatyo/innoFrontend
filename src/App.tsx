@@ -12,6 +12,7 @@ import FormsPage from './pages/FormsPage'
 import WorkerStatistics from './pages/MoodStatistics'
 import AgencyStatistics from './pages/MoodStatistics/AgencyStatistics'
 import { CssBaseline } from '@mui/material'
+import CompanyMaterial from './pages/CompanyMaterialPage'
 import NewFormPage from './pages/FormsPage/NewFormPage'
 import EditFormPage from './pages/FormsPage/EditFormPage'
 import FormPreviewPage from './pages/FormPreviewPage'
@@ -418,6 +419,9 @@ const App: React.FC = () => {
             </PrivateRoute>
             <PrivateRoute path="/forms" roles={[roles.Business, roles.Agency]}>
               <FormsPage />
+            </PrivateRoute>
+            <PrivateRoute path="/companyMaterial" roles={[roles.Business, roles.Agency]}>
+              <CompanyMaterial />
             </PrivateRoute>
             <PrivateRoute path="/home">
               <HomePage />

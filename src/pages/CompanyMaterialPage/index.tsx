@@ -1,17 +1,30 @@
-import React, { useState } from "react";
-import { Box, Typography, InputLabel, IconButton, Input } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Box, Typography, InputLabel, IconButton, Input, List, ListItem } from "@mui/material";
 import { Add } from "@mui/icons-material";
 import MaterialTable from "./MaterialTable";
 import SearchBar from "./SearchBar";
+import FileChooser from "./FileChooser";
+import { getFilesByCreator } from "../../services/companyMaterialService";
+import { CompanyFile } from "../../types/types";
 
-const MyMaterialsPage: React.FC = () => {
-  const [searchTerm, setSearchTerm] = useState("");
+const CompanyMaterialsPage: React.FC = () => {
+  const [files, setFiles] = useState<CompanyFile[]>([]);
+
+  useEffect(() => {
+    const fetchFiles = async () => {
+      const filesFromServer = await getFilesByCreator();
+      setFiles(filesFromServer);
+    };
+
+    fetchFiles();
+  }, []);
 
   return (
     <div>
-      asd
+      <FileChooser />
+      <MaterialTable files={files} />
     </div>
   );
 };
 
-export default MyMaterialsPage;
+export default CompanyMaterialsPage;

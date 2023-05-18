@@ -409,12 +409,14 @@ export interface AgreementCode {
   marked: boolean;
 }
 
-export interface File {
+export interface CompanyFile {
   _id: string;
   title: string;
   description: string;
   creator: string;
   uploadDate: Date;
-  fileType: 'pdf' | 'mp4' | 'jpg';
-  file: Buffer;
+  file: {
+    data: Buffer;
+    contentType: 'application/pdf' | 'video/mp4' | 'image/jpeg';
+  };
 }

@@ -1,45 +1,28 @@
-import React from "react";
-import { TableRow, TableCell, IconButton, Button } from "@mui/material";
-import { Delete, GetApp } from "@mui/icons-material";
+// MaterialRow.tsx
 
-interface Material {
-  title: string;
-  description: string;
-  file: File | null;
-}
+import React from 'react';
+import { TableRow, TableCell, Button } from "@mui/material";
+import { CompanyFile } from "../../types/types";
 
 interface MaterialRowProps {
-  material: Material;
-  onDelete: () => void;
+  file: CompanyFile;
 }
 
-const MaterialRow: React.FC<MaterialRowProps> = ({ material, onDelete }) => {
-  const handleDownload = (material: Material) => {
-    if (!material.file) return;
-
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(material.file);
-    link.download = material.file.name;
-    link.click();
+const MaterialRow: React.FC<MaterialRowProps> = ({ file }) => {
+  const handleDownload = () => {
+    window.open(`/file/${file._id}`);
   };
 
   return (
-    <TableRow>
-      <TableCell>{material.title}</TableCell>
-      <TableCell>{material.description}</TableCell>
+    <TableRow key={file._id}>
+      <TableCell>{file.title}</TableCell>
+      <TableCell>{file.description}</TableCell>
+      <TableCell>{file.creator}</TableCell>
+      <TableCell>{file.uploadDate.toString()}</TableCell>
       <TableCell>
-        {/* Add appropriate view functionality */}
-        <Button variant="contained">View</Button>
-      </TableCell>
-      <TableCell>
-        <IconButton onClick={onDelete}>
-          <Delete />
-        </IconButton>
-      </TableCell>
-      <TableCell>
-        <IconButton onClick={() => handleDownload(material)}>
-          <GetApp />
-        </IconButton>
+        <Button onClick={handleDownload} variant="contained" color="primary">
+          Download
+        </Button>
       </TableCell>
     </TableRow>
   );

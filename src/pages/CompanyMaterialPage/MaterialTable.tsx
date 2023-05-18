@@ -1,43 +1,31 @@
-import React, { useState } from "react";
-import { Table, TableHead, TableRow, TableCell, TableBody, Paper } from "@mui/material";
-import MaterialRow from "./MaterialRow";
+// MaterialTable.tsx
 
-interface Material {
-  title: string;
-  description: string;
-  file: File | null;
-}
+import React from 'react';
+import { Table, TableBody, TableHead, TableRow, TableCell } from "@mui/material";
+import { CompanyFile } from "../../types/types";
+import MaterialRow from './MaterialRow';
 
 interface MaterialTableProps {
-  searchTerm: string;
+  files: CompanyFile[];
 }
 
-const MaterialTable: React.FC<MaterialTableProps> = ({ searchTerm }) => {
-  const [materials, setMaterials] = useState<Material[]>([]);
-
-  const filteredMaterials = materials.filter((material) =>
-    material.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
+const MaterialTable: React.FC<MaterialTableProps> = ({ files }) => {
   return (
-    <Paper>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>Title</TableCell>
-            <TableCell>Description</TableCell>
-            <TableCell>View</TableCell>
-            <TableCell>Delete</TableCell>
-            <TableCell>Download</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {filteredMaterials.map((material, index) => (
-            <MaterialRow key={index} material={material} onDelete={() => handleDelete(index)} />
-          ))}
-        </TableBody>
-      </Table>
-    </Paper>
+    <Table>
+      <TableHead>
+        <TableRow>
+          <TableCell>Title</TableCell>
+          <TableCell>Description</TableCell>
+          <TableCell>Creator</TableCell>
+          <TableCell>Upload Date</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {files.map((file) => (
+          <MaterialRow key={file._id} file={file} />
+        ))}
+      </TableBody>
+    </Table>
   );
 };
 
