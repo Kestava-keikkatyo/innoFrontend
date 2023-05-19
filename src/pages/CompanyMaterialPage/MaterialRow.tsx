@@ -3,14 +3,27 @@
 import React from 'react';
 import { TableRow, TableCell, Button } from "@mui/material";
 import { CompanyFile } from "../../types/types";
+import { getFileById } from '../../services/companyMaterialService';
 
 interface MaterialRowProps {
   file: CompanyFile;
 }
 
 const MaterialRow: React.FC<MaterialRowProps> = ({ file }) => {
-  const handleDownload = () => {
-    window.open(`/file/${file._id}`);
+  const handleDownload = async () => {
+    try {
+      const response = await getFileById(file._id);
+      const blob = new Blob([response], { type: file.contentType });
+      const downloadUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.download = file.title; // use actual file title here
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

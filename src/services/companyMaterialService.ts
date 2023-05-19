@@ -35,10 +35,10 @@ export const createFile = async (fileData: FormData): Promise<CompanyFile> => {
  * @param fileId - The ID of the file to be retrieved.
  * @returns Promise<File> - Resolves to a File object.
  */
-export const getFileById = async (fileId: string): Promise<CompanyFile> => {
+export const getFileById = async (fileId: string): Promise<ArrayBuffer> => {
   try {
-    const response: AxiosResponse = await axios.get(`${baseUrl}/file/${fileId}`, authHeader());
-    return response.data.file;
+    const response: AxiosResponse = await axios.get(`${baseUrl}/file/${fileId}`, { ...authHeader(), responseType: 'arraybuffer' });
+    return response.data;
   } catch (error) {
     console.error(error);
     throw error;

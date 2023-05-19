@@ -415,8 +415,6 @@ export interface CompanyFile {
   description: string;
   creator: string;
   uploadDate: Date;
-  file: {
-    data: Buffer;
-    contentType: 'application/pdf' | 'video/mp4' | 'image/jpeg';
-  };
+  contentType: 'application/pdf' | 'video/mp4' | 'image/jpeg';
+  file: Buffer;
 }
