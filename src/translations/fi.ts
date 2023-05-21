@@ -15,22 +15,23 @@ export default {
     saveButton: 'Tallenna',
     faq: 'Usein kysytyt kysymykset',
 
-    // login
-    login_title: 'Kirjaudu sisään',
-    email_label: 'Sähköposti',
-    password_label: 'Salasana',
-    invalid_email_address: 'Virheellinen sähköposti',
-    required: 'Puuttuu',
-    invalid_token: 'Virheellinen token',
-    logout_successful: 'Uloskirjautuminen onnistui!',
-    logout_failed: 'Ole hyvä ja kirjaudu uudelleen.',
-    login_failed: 'Kirjautuminen epäonnistui!',
-    login_successful: 'Kirjautuminen onnistui!',
+      // login
+      login_title: 'Kirjaudu sisään',
+      email_label: 'Sähköposti',
+      password_label: 'Salasana',
+      invalid_email_address: 'Virheellinen sähköposti',
+      required: 'Puuttuu',
+      invalid_token: 'Virheellinen token',
+      logout_successful: 'Uloskirjautuminen onnistui!',
+      logout_failed: 'Ole hyvä ja kirjaudu uudelleen.',
+      login_failed: 'Kirjautuminen epäonnistui!',
+      login_successful: 'Kirjautuminen onnistui!',
 
     // signup
     firstName: 'Etunimi',
     lastName: 'Sukunimi',
     email: 'Sähköposti',
+    companyName: 'Yrityksen nimi',
     password: 'Salasana',
     confirm: 'Toista salasana',
     user: 'Käyttäjä',
@@ -38,12 +39,27 @@ export default {
     terms_agency: 'vuokrayrityksille',
     signup_successful: 'Rekistöröityminen onnistui',
 
+    // forgot password
+    forgot_password_text: 'Unohtuiko salasana? Syötä alle sähköpostisi mihin saat ohjeet salasanan palauttamista varten.',
+    forgot_password_button: 'Lähetä',
+    forgot_password_sent: 'Sähköposti lähetetty onnistuneesti!',
+    forgot_password_sent_failure: 'Sähköpostin lähettäminen epäonnistui.',
+    set_new_password_header: 'Aseta uusi salasana.',
+    repeat_password_placeholder: 'Salasana uudelleen',
+    set_new_password_submit: 'Tallenna',
+    email_sent_text: 'Sähköposti lähetetty. Mikäli sähköpostia ei löydy, tarkasta roskapostikansio.',
+    back_to_landingpage: 'Pääsivulle',
+    token_error_text: 'Jotain meni pieleen, ole hyvä ja yritä uudelleen.',
+    token_error_alert: 'Virhe uuden salasanan asettamisessa.',
+    reset_password_password_was_changed_successfully: 'Uusi salasana tallennettu!',
+
     // error
     invalid_email: 'Virheellinen sähköpostiosoite',
     invalid_length: 'Salasanan on oltava vähintään 8 merkkiä',
     field_required: 'Pakollinen kenttä',
     invalid_name: 'Virheellinen nimi',
     invalid_password: 'Salasana ei täsmää',
+    invalid_company_name: 'Yrityksen nimen on oltava vähintään 3 merkkiä',
     email_already_used: 'Sähköpostiosoite on jo käytössä',
     agency_profile_missing: 'Henkilöstöpalveluyrityksen profiilia ei löydy',
 
@@ -60,6 +76,7 @@ export default {
     send: 'Lähetä',
     submit: 'Lähetä',
     log_in: 'Kirjaudu',
+    forgot_password: 'Unohtuiko salasana?',
     sign_up: 'Rekisteröidy',
     main_page: 'Pääsivu',
     back: 'takaisin',
@@ -104,6 +121,24 @@ export default {
 
     // Agencystaistics
     mood_stats: 'Fiilistilastot',
+
+    // Invitecodes
+    invitecodes: 'Kutsukoodit',
+    invitecode: 'Kutsukoodi',
+    invitecodes_create: 'Luo kutsukoodit',
+    invitecode_create_success: 'Kutsukoodi luotu',
+    invitecode_create_failed: 'Kutsukoodin luonti epäonnistui',
+    invitecode_delete_success: 'Kutsukoodi poistettu',
+    invitecode_delete_failed: 'Kutsukoodin poisto epäonnistui',
+    invitecode_delete: 'Poista kutsukoodi',
+    invitecode_delete_confirm: 'Haluatko varmasti poistaa kutsukoodin?',
+    invitecode_delete_cancel: 'Peruuta',
+    invitecode_delete_ok: 'Poista',
+    markedCodes: 'Merkitytyt kutsukoodit',
+    unmarkedCodes: 'Merkitsemättömät kutsukoodit',
+    marked: 'Merkitty',
+    numberOfCodes: 'Kutsukoodien määrä',
+    timeOfCreation: 'Luontiaika',
 
     // Report form
     report_handler: 'Turvallisuushavainto',
@@ -267,17 +302,17 @@ export default {
     make_contract: 'Tee sopimus',
     contracts: 'Sopimukset',
     contracts_overview: 'Sopimusten yleiskatsaus',
-    employment_contracts_overview: 'Keikkatöiden yleiskatsaus',
+    employment_contracts_overview: 'Yhteyksien yleiskatsaus',
     creator: 'Lähettäjä',
     recipient: 'Vastaanottaja',
     request_type: 'Tyyppi',
     contact_request: 'Yhteyspyyntö',
     employment_request: 'Työtarjous',
-    connect_workers_to_business: 'Luo keikkatyötarjous',
+    connect_workers_to_business: 'Yhdistä työntekijöitä käyttäjäyritykseen',
     worker_email: 'Työntekijä',
     business_name: 'Yritys',
-    worker_signed: 'Työntekijän allekirjoitus',
-    business_signed: 'Yrityksen allekirjoitus',
+    worker_signed: 'Työntekijän kuittaus',
+    business_signed: 'Yrityksen kuittaus',
     action: 'Toiminnot',
 
     // Rental Work Model
@@ -345,6 +380,7 @@ export default {
     work_performance: 'Työsuoritus, valvonta ja palaute',
     feedback_evaluation: 'Palaute ja toiminnan arviointi',
     employees: 'Työntekijät',
+    inviteCodes: 'Kutsukoodit',
 
     // profilePage
     settings: 'Asetukset',
@@ -843,6 +879,7 @@ export default {
     Forms: 'Omat materiaalit',
     Preview: 'Esikatselu',
     Contracts: 'Sopimukset',
+    Connections: 'Yhteydet',
     Job: 'Työpaikat',
     ReceivedWorkRequests: 'Työpyynnöt',
     MoodStats: 'Fiilistilastot',

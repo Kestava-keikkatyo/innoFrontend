@@ -4,12 +4,12 @@ import { IRootState } from "../../utils/store";
 import { Typography, Grid, Tooltip } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import {
-  declineBusinessContract,
-  acceptBusinessContractFromBusiness,
-  acceptBusinessContractFromWorker,
-  sendBackBusinessContract,
-  deleteBusinessContractById,
-} from '../../actions/businessContractActions';
+  rejectContract,
+  acceptContractFromBusiness,
+  acceptContractFromWorker,
+  sendBackContract,
+  deleteContractById,
+} from '../../actions/contractActions';
 import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
 import { useTranslation } from 'react-i18next';
@@ -95,7 +95,7 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
     contractId: string,
     userId: string
   ) => {
-    dispatch(deleteBusinessContractById(userId, contractId));
+    dispatch(deleteContractById(contractId));
     dispatch(setAlert('Contract deleted.', severity.Info, 3));
   };
 

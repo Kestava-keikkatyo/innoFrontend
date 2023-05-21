@@ -50,6 +50,7 @@ import SendFeedback from './pages/FeedbackPage/SendFeedback'
 import Feedbacks from './pages/FeedbackPage/Feedbacks'
 import Details from './pages/FeedbackPage/Details'
 import FeedbackPage from './pages/FeedbackPage'
+import AgencyWorkers from './pages/Profile/AgencyWorkers'
 import Workers from './pages/Profile/Workers'
 import { ThemeProvider, Theme, StyledEngineProvider, createTheme } from '@mui/material/styles';
 import UserProfile from './pages/Profile/User'
@@ -81,7 +82,11 @@ import BusinessResponsibilities from './pages/ResponsibilitiesPage/BusinessRespo
 import Businesses from './pages/Profile/Businesses';
 import ReceivedFeedbacks from './pages/FeedbackPage/ReceivedFeedbacks';
 import ReceivedDetails from './pages/FeedbackPage/ReceivedDetails'
-import EmploymentPage from './pages/EmploymentPage/EmploymentTable'
+import InviteCode from './pages/InviteCodePage'
+import EmploymentPage from './pages/AgencyContractsPage/Employment'
+import ForgotPassword from './pages/ForgotPasswordPage/ForgotPassword'
+import EmailSent from './pages/ForgotPasswordPage/EmailSent'
+import TokenError from './pages/ForgotPasswordPage/TokenError'
 
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -107,6 +112,15 @@ const App: React.FC = () => {
           <Switch>
             <Route exact path="/login">
               <LoginPage />
+            </Route>
+            <Route exact path="/forgotpassword">
+              <ForgotPassword />
+            </Route>
+            <Route exact path="/forgotpassword/requested">
+              <EmailSent />
+            </Route>
+            <Route exact path="/forgotpassword/error">
+              <TokenError />
             </Route>
             <PrivateRoute path="/userList">
               <AllUsersList />
@@ -228,7 +242,10 @@ const App: React.FC = () => {
             <PrivateRoute path="/workers/profile/:userId" roles={[roles.Business, roles.Agency]}>
               <UserProfile />
             </PrivateRoute>
-            <PrivateRoute path="/workers" roles={[roles.Business, roles.Agency]}>
+            <PrivateRoute path="/agencyWorkers" roles={[roles.Agency]}>
+              <AgencyWorkers />
+            </PrivateRoute>
+            <PrivateRoute path="/workers" roles={[roles.Business]}>
               <Workers />
             </PrivateRoute>
             <PrivateRoute path="/agencies/profile/:userId" roles={[roles.Business]}>
@@ -341,6 +358,9 @@ const App: React.FC = () => {
               roles={[roles.Agency]}
             >
               <ContractFormManagerPage />
+            </PrivateRoute>
+            <PrivateRoute path="/inviteCodes" roles={[roles.Agency]}>
+              <InviteCode />
             </PrivateRoute>
             <PrivateRoute path="/agencyContracts" roles={[roles.Agency]}>
               <AgencyContractsPage />

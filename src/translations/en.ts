@@ -18,22 +18,23 @@ export default {
     faq: 'Frequently asked questions',
 
 
-  // login
-  login_title: 'Log In',
-  email_label: 'Email',
-  password_label: 'Password',
-  invalid_email_address: 'Invalid email address',
-  required: 'Required',
-  invalid_token: 'Invalid token',
-  logout_successful: 'Logout successful!',
-  logout_failed: 'Please login again.',
-  login_failed: 'Login failed!',
-  login_successful: 'Login success!',
+      // login
+      login_title: 'Log In',
+      email_label: 'Email',
+      password_label: 'Password',
+      invalid_email_address: 'Invalid email address',
+      required: 'Required',
+      invalid_token: 'Invalid token',
+      logout_successful: 'Logout successful!',
+      logout_failed: 'Please login again.',
+      login_failed: 'Login failed!',
+      login_successful: 'Login success!',
 
     // signup
     firstName: 'First name',
     lastName: 'Last name',
     email: 'Email',
+    companyName: 'Company name',
     password: 'Password',
     confirm: 'Confirm password',
     user: 'User',
@@ -41,14 +42,29 @@ export default {
     terms_agency: 'agencies',
     signup_successful: 'Signup successful',
 
-  // error
-  invalid_email: 'Invalid email address',
-  invalid_length: 'Password must be at least 8 characters',
-  field_required: 'Required field',
-  invalid_name: 'Invalid name',
-  invalid_password: 'Password does not match',
-  email_already_used: 'Email is already in use',
-  agency_profile_missing: 'Agency profile is missing',
+    // forgot password
+    forgot_password_text: 'Forgot your account’s password? Enter your email address and we’ll send you instructions on how to reset it.',
+    forgot_password_button: 'Send',
+    forgot_password_sent: 'Email sent successfully!',
+    forgot_password_sent_failure: 'Email was not sent.',
+    set_new_password_header: 'Set new password.',
+    repeat_password_placeholder: 'Repeat password',
+    set_new_password_submit: 'Save',
+    email_sent_text: 'Email sent. Please check your spam folder if you are not able to find it.',
+    back_to_landingpage: 'Main page',
+    token_error_text: 'Something went wrong, please try again.',
+    token_error_alert: 'Error in setting new password.',
+    reset_password_password_was_changed_successfully: 'New password saved!',
+
+    // error
+    invalid_email: 'Invalid email address',
+    invalid_length: 'Password must be at least 8 characters',
+    field_required: 'Required field',
+    invalid_name: 'Invalid name',
+    invalid_password: 'Password does not match',
+  invalid_company_name: 'Invalid company name',
+    email_already_used: 'Email is already in use',
+    agency_profile_missing: 'Agency profile is missing',
 
     // option
     role: 'Role',
@@ -63,6 +79,7 @@ export default {
     send: 'Send',
     submit: 'Submit',
     log_in: 'Login',
+    forgot_password: 'Forgot password?',
     sign_up: 'Sign up',
     main_page: 'Go to main page',
     back: 'back',
@@ -107,6 +124,25 @@ export default {
 
     // Agencystaistics
     mood_stats: 'Mood stats',
+
+    // Invitecodes
+    invitecodes: 'Invite Codes',
+    invitecode: 'Invite Code',
+    invitecodes_create: 'Create Invite Codes',
+    invitecode_create_success: 'Invite Code Created',
+    invitecode_create_failed: 'Invite Code Creation Failed',
+    invitecode_delete_success: 'Invite Code Deleted',
+    invitecode_delete_failed: 'Invite Code Deletion Failed',
+    invitecode_delete: 'Delete Invite Code',
+    invitecode_delete_confirm: 'Are you sure you want to delete the invite code?',
+    invitecode_delete_cancel: 'Cancel',
+    invitecode_delete_ok: 'Delete',
+    markedCodes: 'Marked Invite Codes',
+    unmarkedCodes: 'Unmarked Invite Codes',
+    marked: 'Marked',
+    numberOfCodes: 'Number of Invite Codes',
+    timeOfCreation: 'Creation Time',
+
 
     // Report form
     report_handler: 'Security observations',
@@ -270,17 +306,17 @@ export default {
     make_contract: 'Make a contract',
     contracts: 'Contracts',
     contracts_overview: 'Contracts overview',
-    employment_contracts_overview: 'Employment overview',
+    employment_contracts_overview: 'Employment connections overview',
     creator: 'Creator',
     company: 'Company',
     request_type: 'Type',
     contact_request: 'Contact request',
     employment_request: 'Employment',
-    connect_workers_to_business: 'Create employment proposals',
+    connect_workers_to_business: 'Connect workers to business',
     worker_email: 'Worker',
     business_name: 'Business',
-    worker_signed: 'Worker signed',
-    business_signed: 'Business signed',
+    worker_signed: 'Worker accepted',
+    business_signed: 'Business accepted',
 
     // Rental Work Model
     rwm_responsibilities: 'Responsibilities',
@@ -350,6 +386,7 @@ export default {
     work_performance: 'Work performance, supervision and feedback',
     feedback_evaluation: 'Feedback and evaluation',
     employees: 'Employees',
+    inviteCodes: 'Invitation codes',
 
     // profilePage
     settings: 'Settings',
@@ -412,19 +449,19 @@ export default {
     form_tooltip_download: 'Download form',
     form_tooltip_copy: 'Copy to my forms',
 
-  finland: 'Finnish',
-  english: 'English',
-  tyopoyta: 'DESKTOP',
-  tietopankki: 'DATABANK',
-  kirjaudu_sisaan: 'LOGIN',
-  // Joblist
-  limit_search: 'Limit search',
-  jobs_found: 'Jobs found',
-  participants: 'Participants',
-  company_sites: 'Company websites',
-  enroll: 'Enroll ',
-  relocation: 'relocation',
-  accept_terms: 'I accept the terms',
+    finland: 'Finnish',
+    english: 'English',
+    tyopoyta: 'DESKTOP',
+    tietopankki: 'DATABANK',
+    kirjaudu_sisaan: 'LOGIN',
+    // Joblist
+    limit_search: 'Limit search',
+    jobs_found: 'Jobs found',
+    participants: 'Participants',
+    company_sites: 'Company websites',
+    enroll: 'Enroll ',
+    relocation: 'relocation',
+    accept_terms: 'I accept the terms',
 
     // feedbackCategory
     feedback_category: 'Feedback category',
@@ -567,17 +604,17 @@ export default {
     show_less: 'Show less',
     show_more: 'Show more',
 
-  // landingPage
-  slogan: 'Welcome to Keikkakaveri!',
-  intro:
-    'Keikkakaveri is a tool to promote cooperation between employment agencies, businesses and workers related to occupational health, work safety and work well-being. The data bank contains information about the law and development of healthy working conditions.',
-  areas_of_responsibility_button: 'READ MORE ABOUT AREAS OF RESPONSIBILITY',
-  left_box_header: 'Keikkakaveri',
-  left_box_content: 'Keikkakaveri can be used as a worker, business or an employment agency.',
-  enable_button: 'ENABLE',
-  databank_button: 'DATABANK',
-  right_box_header: 'Databank',
-  right_box_content: 'The databank contains information about work safety, occupational health and work well-being.',
+    // landingPage
+    slogan: 'Welcome to Keikkakaveri!',
+    intro:
+        'Keikkakaveri is a tool to promote cooperation between employment agencies, businesses and workers related to occupational health, work safety and work well-being. The data bank contains information about the law and development of healthy working conditions.',
+    areas_of_responsibility_button: 'READ MORE ABOUT AREAS OF RESPONSIBILITY',
+    left_box_header: 'Keikkakaveri',
+    left_box_content: 'Keikkakaveri can be used as a worker, business or an employment agency.',
+    enable_button: 'ENABLE',
+    databank_button: 'DATABANK',
+    right_box_header: 'Databank',
+    right_box_content: 'The databank contains information about work safety, occupational health and work well-being.',
 
     // CreateJobForAgency
     add_new_job: 'Add new job',
@@ -772,38 +809,38 @@ export default {
     shared_responsibilities: 'Shared instructions',
     business_responsibilities: 'Business instructions',
 
-  // Footer Page (old)
-  // worker_question: 'Are you an employee?',
-  // make_money: 'Make money',
-  // work_flexibly: 'Work flexibly',
-  // stressFree_work: 'Stress-free job',
-  // register: 'REGISTER',
-  // user_company: 'Are you a user company?',
-  // flexible_model: 'Fast and flexible model for acquiring employees',
-  // recruitment_process: 'You get to influence the recruitment process',
-  // productivity: 'The productivity of healthy employees is up to 20% better than normal',
-  // rental_company: 'Are you a rental company?',
-  // orientation: 'Focus the orientation in one place',
-  // automation: 'With automation, orientation is more relaxed',
-  // wellBeing: 'The well-being of your employees is important to us',
-  // topical: 'Topical:',
-  // news: 'News',
-  // collaboration: 'Collaboration:',
-  // ttk: 'The Centre for Occupational Safety',
-  // esr: 'The European Social Fund',
-  // get_to_know: 'Get To Know:',
-  // privacy_statement:'Privacy statement',
+    // Footer Page (old)
+    // worker_question: 'Are you an employee?',
+    // make_money: 'Make money',
+    // work_flexibly: 'Work flexibly',
+    // stressFree_work: 'Stress-free job',
+    // register: 'REGISTER',
+    // user_company: 'Are you a user company?',
+    // flexible_model: 'Fast and flexible model for acquiring employees',
+    // recruitment_process: 'You get to influence the recruitment process',
+    // productivity: 'The productivity of healthy employees is up to 20% better than normal',
+    // rental_company: 'Are you a rental company?',
+    // orientation: 'Focus the orientation in one place',
+    // automation: 'With automation, orientation is more relaxed',
+    // wellBeing: 'The well-being of your employees is important to us',
+    // topical: 'Topical:',
+    // news: 'News',
+    // collaboration: 'Collaboration:',
+    // ttk: 'The Centre for Occupational Safety',
+    // esr: 'The European Social Fund',
+    // get_to_know: 'Get To Know:',
+    // privacy_statement:'Privacy statement',
 
-  // Footer
-  // Left grid box
-  keikkakaveri_info: 'Keikkakaveri was developed as part of the Kestävä Keikkatyö project. The project was carried out by Metropolia University of Applied Sciences, Satakunta University of Applied Sciences, University of Tampere, and University of Oulu. The project was funded by the Ministry of Social Affairs and Health and the European Social Fund. The maintenance of Keikkakaveri is provided by the Finnish Centre for Occupational Health.',
-  // Middle grid box
-  databank_link: 'DATABANK',
-  keikkakaveri_tool_link: 'KEIKKAKAVERI',
-  // Right grid box
-  centre_occupational_safety: 'Centre for Occupational Health',
-  privacy_policy_link: 'Privacy policy',
-  accessibility_statement_link: 'Accessibility statement',
+    // Footer
+    // Left grid box
+    keikkakaveri_info: 'Keikkakaveri was developed as part of the Kestävä Keikkatyö project. The project was carried out by Metropolia University of Applied Sciences, Satakunta University of Applied Sciences, University of Tampere, and University of Oulu. The project was funded by the Ministry of Social Affairs and Health and the European Social Fund. The maintenance of Keikkakaveri is provided by the Finnish Centre for Occupational Health.',
+    // Middle grid box
+    databank_link: 'DATABANK',
+    keikkakaveri_tool_link: 'KEIKKAKAVERI',
+    // Right grid box
+    centre_occupational_safety: 'Centre for Occupational Health',
+    privacy_policy_link: 'Privacy policy',
+    accessibility_statement_link: 'Accessibility statement',
 
     // Worker home
     feelings: 'Feelings',
@@ -847,6 +884,7 @@ export default {
     Forms: 'Materials',
     Preview: 'Preview',
     Contracts: 'Contracts',
+    Connections: 'Connections',
     Job: 'Jobs',
     ReceivedWorkRequests: 'Work requests',
     MoodStats: 'Feeling stats',
@@ -1408,5 +1446,5 @@ export default {
      //Instructions3
      header21: "11. Työtapaturmat",
      info21: "Henkilöstöpalveluyrityksen ja käyttäjäyrityksen on sovittava, miten toimitaan, jos vuokratyöntekijälle sattuu tapaturma. Työntekijän tulee saada ohjeistus sovitusta toimintatavasta. ",
-
+   
 }

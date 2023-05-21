@@ -35,26 +35,27 @@ const initialState: EmploymentAgreementState = {
 const employmentAgreementReducer = (state = initialState, action: EmploymentAgreementActionTypes) => {
   switch (action.type) {
     case E_SET_CURRENT:
-        return {
-            currentAgreement: action.data
-        }
+      return {
+        ...state,
+        currentAgreement: action.data
+      }
     case E_SAVE:
-        return {
-            ...state,
-              agreements: [...state.agreements, action.data]
-        }
+      return {
+        ...state,
+        agreements: [...state.agreements, action.data]
+      }
     case E_FETCH:
-        return {
-            currentAgreement: state.currentAgreement,
-            agreements: action.data
-        }
+      return {
+        currentAgreement: state.currentAgreement,
+        agreements: action.data
+      }
 
     case E_CLEAR_CURRENT:
-        return {
-            currentAgreement: initialEmploymentAgreement
-        }
+      return {
+        currentAgreement: initialEmploymentAgreement
+      }
     default:
-        return state
+      return state
 
   }
 }

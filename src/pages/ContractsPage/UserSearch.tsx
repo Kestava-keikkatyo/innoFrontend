@@ -10,7 +10,7 @@ import {
   Radio,
 } from '@mui/material';
 import { Search as SearchIcon } from '@mui/icons-material';
-import { updateSearchList } from '../../actions/businessContractActions';
+import { updateSearchList } from '../../actions/contractActions';
 import { useDispatch } from 'react-redux';
 import { roles } from '../../types/types';
 

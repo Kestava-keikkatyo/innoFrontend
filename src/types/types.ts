@@ -177,6 +177,14 @@ export interface Credentials {
   password: string
 }
 
+export interface Email {
+  email: string
+}
+
+export interface Token {
+  token: string
+}
+
 export interface Report {
   title: string
   details: string
@@ -395,8 +403,10 @@ export interface BusinessContractForm {
   filled: boolean
 }
 
-
-export interface InviteCode {
+export interface AgreementCode {
+  _id: string
   code: string;
-  userId: string;
+  creator: string;
+  createdAt: string;
+  marked: boolean;
 }

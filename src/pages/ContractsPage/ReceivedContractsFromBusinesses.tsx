@@ -3,10 +3,10 @@ import { Typography, Grid } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { useDispatch } from 'react-redux';
 import {
-  declineBusinessContract,
-  acceptBusinessContractFromBusiness,
-  sendBackBusinessContract,
-} from '../../actions/businessContractActions';
+  rejectContract,
+  acceptContractFromBusiness,
+  sendBackContract,
+} from '../../actions/contractActions';
 import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
 import ContractsRequestedTable from './ContractsRequestedTable';
@@ -67,7 +67,7 @@ const ReceivedContractsFromBusinesses = (props: {
     userId: string,
     formId: string
   ) => {
-    dispatch(acceptBusinessContractFromBusiness(contractId, userId, formId));
+    dispatch(acceptContractFromBusiness(contractId, userId, formId));
     dispatch(setAlert('Contract from Business accepted.', severity.Info, 3));
   };
 
@@ -76,7 +76,7 @@ const ReceivedContractsFromBusinesses = (props: {
     userId: string,
     formId: string
   ) => {
-    dispatch(sendBackBusinessContract(contractId, userId, formId));
+    dispatch(sendBackContract(contractId, userId, formId));
     dispatch(setAlert('Contract sended back.', severity.Info, 3));
   };
 

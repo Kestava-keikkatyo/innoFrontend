@@ -15,7 +15,7 @@ import {
 import makeStyles from "@mui/styles/makeStyles";
 import { Close as CloseIcon } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
-import { addBusinessContract } from '../../actions/businessContractActions';
+import { addContract } from '../../actions/contractActions';
 import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
 import { IRootState } from '../../utils/store';
@@ -57,7 +57,7 @@ const WorkerAndBusinessModal: React.FC<any> = ({
 
   const { t } = useTranslation();
 
-  const addContract = async () => {
+  const addNewContract = async () => {
     if (formId === 'None') {
       dispatch(
         setAlert(
@@ -67,7 +67,7 @@ const WorkerAndBusinessModal: React.FC<any> = ({
       );
     } else {
       dispatch(
-        addBusinessContract(
+        addContract(
           workerOrBusinessData._id,
           formId,
           "contract"
@@ -145,7 +145,7 @@ const WorkerAndBusinessModal: React.FC<any> = ({
       </DialogContent>
       <DialogActions></DialogActions>
       <DialogActions style={{ marginBottom: 10 }}>
-        <Button color="primary" variant="outlined" onClick={addContract}>
+        <Button color="primary" variant="outlined" onClick={addNewContract}>
           {t('create_contract')}
         </Button>
       </DialogActions>

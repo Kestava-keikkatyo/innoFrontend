@@ -4,7 +4,7 @@
  * @desc Redux user actions
  */
 import userService from '../services/userService'
-import { saveUser, logoutUser, loadUser, insertContactData } from '../utils/storage'
+import { saveUser, logoutUser, loadUser, insertContactData, saveToken } from '../utils/storage'
 import history from '../utils/history'
 import { setAlert } from './alertActions'
 import { Dispatch } from 'redux'
@@ -15,8 +15,10 @@ import {
   USER_PROFILE,
   USER_REQUEST,
   SignUpUser,
+  SEND_MAIL_SUCCESS,
+  SEND_MAIL_FAILED,
 } from '../types/state'
-import { Credentials, severity } from '../types/types'
+import { Credentials, Email, Token, severity } from '../types/types'
 import i18next from 'i18next'
 
 /**
@@ -52,6 +54,54 @@ export const login = (credentials: Credentials, from: string) => {
       })
 
       dispatch(setAlert(i18next.t('login_failed'), severity.Error))
+    }
+  }
+}
+
+export const forgotpassword = (email: Email) => {
+  return async (dispatch: any) => {
+    dispatch({
+      type: USER_REQUEST,
+    })
+    try {
+      const { data } = await userService.forgottenpassword(email)
+
+      dispatch({
+        type: SEND_MAIL_SUCCESS,
+        data,
+      })
+
+      dispatch(setAlert(i18next.t('forgot_password_sent'), severity.Success))
+      history.push('/forgotpassword/requested')
+    } catch (error) {
+      dispatch({
+        type: SEND_MAIL_FAILED,
+      })
+
+      dispatch(setAlert(i18next.t('forgot_password_sent_failure'), severity.Error))
+    }
+  }
+}
+
+export const verifyToken = (token: Token) => {
+  return async (dispatch: any) => {
+    try {
+      const { data } = await userService.verifyToken(token)
+
+      dispatch({
+        type: SEND_MAIL_SUCCESS,
+        data,
+      })
+
+      saveToken(token)
+
+    } catch (error) {
+      dispatch({
+        type: SEND_MAIL_FAILED,
+      })
+
+      dispatch(setAlert(i18next.t('token_error_alert'), severity.Error))
+      history.push('/forgotpassword/error')
     }
   }
 }
@@ -169,4 +219,3 @@ const statusHandler = (dispatch: Function, response: any) => {
     window.location.reload()
   }
 }
-

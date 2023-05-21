@@ -4,48 +4,79 @@ import { Link } from 'react-router-dom';
 import { IRootState } from '../../utils/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchAllBusinesses } from '../../actions/usersActions';
+import { fetchAgencyContacts, fetchAllBusinesses } from '../../actions/usersActions';
 import makeStyles from '@mui/styles/makeStyles';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
 import { ThemeProvider, createTheme } from '@mui/material';
+import DeleteDialogItem from '../../components/DeleteDialogItem';
+import { deleteContractById, fetchContractsAsAgency, fetchContractsAsTarget } from '../../actions/contractActions';
+import { setAlert } from '../../actions/alertActions';
+import { severity } from '../../types/types';
 
 const Businesses: React.FC = () => {
   const { t } = useTranslation();
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { users } = useSelector((state: IRootState) => state.users || []);
+  const contracts = useSelector((state: IRootState) => state.businessContracts.contracts)
+  const [dialogOpen, setDialogOpen] = React.useState(false);
+  const [contractToDelete, setContractToDelete] = React.useState('');
 
-  const theme = createTheme({
-    typography: {
-      fontFamily: 'Montserrat, serif',
-      fontSize: 15,
+  const businessContracts: any[] = []
 
-      allVariants: {
-        color: "black"
-      },
-    },
+  if (contracts[0]) {
+    contracts.forEach((contract: any) => {
+      if (contract.target.userType == "business") {
+        businessContracts.push(contract)
+      }
+    }) 
+  }
 
-  });
+  const handleCloseDialog = (businessId: string) => {
+    setContractToDelete(businessId)
+    setDialogOpen(false)
+  };
+
+  const deleteContract = (contractId: string) => {
+    dispatch(deleteContractById(contractId));  
+    setContractToDelete('')
+    for (const contract of businessContracts) {
+      if (contract.target._id === contractId) {
+        dispatch(setAlert('Failure: Contract not deleted!', severity.Error, 3))
+        break;
+      }
+    }
+    dispatch(setAlert('Success: Contract deleted!', severity.Success, 3))
+  };
 
   useEffect(() => {
-    dispatch(fetchAllBusinesses());
+    dispatch(fetchContractsAsAgency())
   }, [dispatch]);
 
-  const rows = users;
+  useEffect(() => {
+    if (contractToDelete) {
+      deleteContract(contractToDelete)
+    }
+  }, [contractToDelete]);
+
+  const rows = businessContracts;
+
   const columns: GridColumns = [
     {
       field: 'name',
       headerName: (i18next.t('list_name')),
-      minWidth: 150,
+      minWidth: 160,
       flex: 1,
       headerClassName: 'super-app-theme--header',
       renderCell: (params) => {
         return (
           <div className={classes.userListUser}>
             <img className={classes.userListImg} src={params.row.profilePicture} alt="" />
-            {params.row.firstName} {params.row.lastName}
+            <Link className={classes.link} to={'/businesses/profile/' + params.row.target._id}>
+              {params.row.target.companyName}
+            </Link>
+            
           </div>
         );
       },
@@ -53,9 +84,16 @@ const Businesses: React.FC = () => {
     {
       field: 'category',
       headerName: (i18next.t('list_category')),
-      minWidth: 100,
+      minWidth: 140,
       flex: 1,
       headerClassName: 'super-app-theme--header',
+      renderCell: (params) => {
+        return (
+          <Typography className={classes.tableCellText}>
+            {params.row.target.category}
+          </Typography>
+        );
+      },
     },
     {
       field: 'email',
@@ -63,29 +101,35 @@ const Businesses: React.FC = () => {
       minWidth: 200,
       flex: 1,
       headerClassName: 'super-app-theme--header',
-    },
+      renderCell: (params) => {
+        return (
+          <Typography className={classes.tableCellText}>
+            {params.row.target.email}
+          </Typography>
+        );
+      },
+    }, /*
     {
       field: 'city',
       headerName: (i18next.t('list_city')),
       minWidth: 100,
       flex: 1,
       headerClassName: 'super-app-theme--header',
-    },
+    }, */
     {
-      field: 'userType',
-      headerName: (i18next.t('list_position')),
-      minWidth: 75,
-      flex: 1,
-      headerClassName: 'super-app-theme--header',
-    },
-    {
-      field: 'action',
-      headerName: (i18next.t('list_action')),
-      minWidth: 100,
+      field: 'delete',
+      headerName: (i18next.t('delete')),
+      minWidth: 20,
       flex: 1,
       headerClassName: 'super-app-theme--header',
       renderCell: (params) => {
-        return <Link to={'/businesses/profile/' + params.id}>{t('list_profile')}</Link>
+        return (
+          <DeleteDialogItem
+            title='Delete and remove connection permanently?'
+            itemId={params.id}
+            onConfirm={handleCloseDialog}
+          />
+        )
       },
     },
   ];
@@ -122,6 +166,17 @@ const Businesses: React.FC = () => {
   );
 }
 
+const theme = createTheme({
+  typography: {
+    fontFamily: 'Montserrat, serif',
+    fontSize: 15,
+
+    allVariants: {
+      color: "black"
+    },
+  },
+});
+
 const useStyles = makeStyles(() => ({
   title: {
     marginTop: '25px',
@@ -138,6 +193,15 @@ const useStyles = makeStyles(() => ({
     objectFit: 'cover',
     marginRight: '10px',
   },
+  link: {
+    color: '#000000'
+  },
+  tableCellText: {
+    fontFamily: 'Montserrat,serif',
+    fontWeight: '400',
+    fontSize: '0.9375rem',
+    lineHeight: '1.43',
+  }
 }));
 
 export default Businesses;
