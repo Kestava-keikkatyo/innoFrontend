@@ -250,7 +250,7 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
   //               id="panel1a-header"
   //             >
   //               <Typography gutterBottom variant="h6">
-  //                 {t('workers')}
+  //                 
   //               </Typography>
   //             </AccordionSummary>
   //             <AccordionDetails>

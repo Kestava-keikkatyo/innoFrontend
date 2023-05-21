@@ -40,13 +40,7 @@ const feelingsChartData = useSelector((state: IRootState) => {
     ];
 
     myFeelings.forEach(feeling => {
-        if (feeling.anxious) chartData[feeling.anxious] += 1;
-        if (feeling.comfortable) chartData[feeling.comfortable] += 1;
-        if (feeling.energetic) chartData[feeling.energetic] += 1;
-        if (feeling.enthusiastic) chartData[feeling.enthusiastic] += 1;
-        if (feeling.frustrated) chartData[feeling.frustrated] += 1;
-        if (feeling.satisfied) chartData[feeling.satisfied] += 1;
-        if (feeling.stressed) chartData[feeling.stressed] += 1;
+        if (feeling.feeling) chartData[feeling.feeling] += 1;
     });
     
     return Object.entries(chartData).map(entry => ({name: feelingNames[parseInt(entry[0]) - 1], value: entry[1]}));

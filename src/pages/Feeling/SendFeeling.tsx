@@ -10,43 +10,20 @@ import i18next from 'i18next'
 import { sendMyFeeling } from '../../actions/myFeelingActions';
 import { MyFeeling } from '../../types/types';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
-import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied';
 import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 import FormikField from '../../components/FormField';
 import { IRootState } from '../../utils/store';
 const initialValues: MyFeeling = {
-    comfortable: null,
-    satisfied: null,
-    energetic: null,
-    enthusiastic: null,
-    frustrated: null,
-    stressed: null,
-    anxious: null,
+    feeling: null,
     comment: '',
 };
 
 const SendFeelingSchema = Yup.object().shape({
-    comfortable: Yup.number().min(1, 'Min value 1.').max(5, 'Max value 5.').required('Comfortable is required!'),
-    satisfied: Yup.number().min(1, 'Min value 1.').max(5, 'Max value 5.').required('Satisfied is required!'),
-    energetic: Yup.number().min(1, 'Min value 1.').max(5, 'Max value 5.').required('Energetic is required!'),
-    enthusiastic: Yup.number().min(1, 'Min value 1.').max(5, 'Max value 5.').required('Enthusiastic is required!'),
-    frustrated: Yup.number().min(1, 'Min value 1.').max(5, 'Max value 5.').required('Frustrated is required!'),
-    stressed: Yup.number().min(1, 'Min value 1.').max(5, 'Max value 5.').required('Stressed is required!'),
-    anxious: Yup.number().min(1, 'Min value 1.').max(5, 'Max value 5.').required('Anxious is required!'),
+    feeling: Yup.number().min(1, 'Min value 1.').max(5, 'Max value 5.').required('This field is required!'),
     comment: Yup.string().min(3, 'Comment should be three letters at least!'),
 });
-
-const questions = {
-    comfortable: 'Do you feel comfortable?',
-    satisfied: 'Do you feel satisfied?',
-    energetic: 'Do you feel energetic?',
-    enthusiastic: 'Do you feel enthusiastic?',
-    frustrated: 'Do you feel frustrated?',
-    stressed: 'Do you feel stressed?',
-    anxious: 'Do you feel anxious?',
-}
 
 const SendFeeling: React.FC = () => {
 
@@ -76,28 +53,25 @@ const SendFeeling: React.FC = () => {
                         return (
                             <Form>
                                 <div>
-                                    {Object.entries(questions).map(questionEntry => (
-                                        <div key={questionEntry[0]}>
-                                            <div>
-                                                <Typography color="success" id={questionEntry[0] + '-radio-buttons-group-label'} className={classes.title} variant="h6">{questionEntry[1]}</Typography>
-                                            </div>
-                                            <FormControl>
-                                                <RadioGroup
-                                                    row
-                                                    aria-labelledby={questionEntry[0] + '-radio-buttons-group-label'}
-                                                >
-                                                    <Field required name={questionEntry[0]} value={1} icon={<SentimentVeryDissatisfiedIcon />} checkedIcon={<SentimentVeryDissatisfiedIcon />} as={Radio} />
-                                                    <Field name={questionEntry[0]} value={2} icon={<SentimentDissatisfiedIcon />} checkedIcon={<SentimentDissatisfiedIcon />} as={Radio} />
-                                                    <Field name={questionEntry[0]} value={3} icon={<SentimentSatisfiedIcon />} checkedIcon={<SentimentSatisfiedIcon />} as={Radio} />
-                                                    <Field name={questionEntry[0]} value={4} icon={<SentimentSatisfiedAltIcon />} checkedIcon={<SentimentSatisfiedAltIcon />} as={Radio} />
-                                                    <Field name={questionEntry[0]} value={5} icon={<SentimentVerySatisfiedIcon />} checkedIcon={<SentimentVerySatisfiedIcon />} as={Radio} />
-                                                </RadioGroup>
-                                            </FormControl>
-                                        </div>
-                                    ))}
                                     <div>
                                         <div>
-                                            <Typography color="success" className={classes.title} variant="h6">Would you like to leave a comment?</Typography>
+                                            <Typography color="success" className={classes.title} variant="h6">{t('feeling_report_question')}</Typography>
+                                        </div>
+                                        <FormControl style={{ marginBottom: '20px' }}>
+                                            <RadioGroup
+                                                row
+                                                name="feeling"
+                                            >
+                                                <Field required value={1} icon={<SentimentVeryDissatisfiedIcon className={classes.icons} />} checkedIcon={<SentimentVeryDissatisfiedIcon className={classes.icons} />} as={Radio} />
+                                                <Field value={2} icon={<SentimentSatisfiedIcon className={classes.icons} />} checkedIcon={<SentimentSatisfiedIcon className={classes.icons} />} as={Radio} />
+                                                <Field value={3} icon={<SentimentSatisfiedAltIcon className={classes.icons} />} checkedIcon={<SentimentSatisfiedAltIcon className={classes.icons} />} as={Radio} />
+                                                <Field value={4} icon={<SentimentVerySatisfiedIcon className={classes.icons} />} checkedIcon={<SentimentVerySatisfiedIcon className={classes.icons} />} as={Radio} />
+                                            </RadioGroup>
+                                        </FormControl>
+                                    </div>
+                                    <div>
+                                        <div>
+                                            <Typography color="success" className={classes.title} variant="h6">{t('my_feeling_would_you_like_to_leave_a_comment')}</Typography>
                                         </div>
                                         <FormikField name="comment" label={t('my_feeling_comment')} multiline />
                                     </div>
@@ -135,6 +109,10 @@ const useStyles = makeStyles((theme) => ({
         marginTop: '20px',
         webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
         boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)'
+    },
+    icons: {
+        marginRight: '15px',
+        transform: 'scale(2.5)',
     }
 }));
 

@@ -17,6 +17,7 @@ code {
 .worker-statistics-summary {
     margin: 1rem 0;
     width: 100%;
+    background-color: #FDFDFD;
 }
 
 .worker-statistics-summary,
@@ -1093,4 +1094,13 @@ nav * {
     
 
 }
+
+a.one:link {color:black;text-decoration: none;}
+a.one:visited {color:black;text-decoration: none;}
+a.one:hover {color:black;text-decoration: underline;}
+
+
+
+
+
 

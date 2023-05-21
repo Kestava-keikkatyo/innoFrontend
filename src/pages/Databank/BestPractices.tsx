@@ -13,6 +13,8 @@ import Ingressi from '../../components/Ingressi'
 import Footer from '../../components/Footer'
 import topArrow from '../../assets/icons/sivunalkuun.svg'
 import { Grid } from '@mui/material'
+import bestPracticesImage from '../../assets/pictures/vtm_A_hyvat_kaytannot_2.png'
+import RentalWorkModel from '../RentalWorkModelPage/RentalWorkModel'
 
 const BestPractices: React.FC = () => {
 
@@ -46,7 +48,19 @@ const BestPractices: React.FC = () => {
 
       <Grid style={{ width: '100%', backgroundColor: "#DBE4FC" }}>
         <Grid sx={{ width: { xs: '90%', md: '60%' } }} style={{ paddingTop: '30px', margin: 'auto' }}>
-          {BestPractices.map((e, i) => (
+            <img style={{width: '100%'}} src={bestPracticesImage}></img>
+          <div style={{ width: "100%", display: "flex", justifyContent: "right", padding: "10px" }}>
+            <img style={{ width: "30px", height: "30px" }} onClick={handleToTop} src={topArrow}></img>
+          </div>
+        </Grid>
+      </Grid>
+      <Footer></Footer>
+    </Grid>
+  )
+}
+export default BestPractices
+
+     /*{BestPractices.map((e, i) => (
             <Accordion defaultExpanded key={i} style={{ borderRadius: '25px', backgroundColor: "#FDFDFD" }}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
@@ -61,14 +75,4 @@ const BestPractices: React.FC = () => {
                 ))}
               </AccordionDetails>
             </Accordion>
-          ))}
-          <div style={{ width: "100%", display: "flex", justifyContent: "right", padding: "10px" }}>
-            <img style={{ width: "30px", height: "30px" }} onClick={handleToTop} src={topArrow}></img>
-          </div>
-        </Grid>
-      </Grid>
-      <Footer></Footer>
-    </Grid>
-  )
-}
-export default BestPractices
+          ))}*/

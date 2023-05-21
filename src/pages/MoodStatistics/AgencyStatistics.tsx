@@ -1,45 +1,57 @@
-import React, { useEffect } from 'react';
+import React, { useEffect} from 'react';
 import { Theme } from '@mui/material/styles';
 import makeStyles from '@mui/styles/makeStyles';
 import createStyles from '@mui/styles/createStyles';
-import Typography from '@mui/material/Typography';
 import { Box, Container } from '@mui/material';
 import { useTranslation } from 'react-i18next'
-import FeedbackCategory from './feedbackCategory';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import AgencyStatisticsSummary from './AgencyStatisticsSummary';
-import allUsersService from '../../services/allUsersService';
 import { addFeelings } from '../../actions/feelingActions';
-import PieChart from './PieChart';
+import { IRootState } from '../../utils/store';
+import { fetchFeelings } from '../../actions/feelingActions';
+
 
 const AgencyStatistics = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-
   const { t } = useTranslation()
+  const users = useSelector((state: IRootState) => state.user.contacts);
+  const workers: any[] = []
 
   useEffect(() => {
-    allUsersService.getAgencyWorkers().then((res: any) => {
-      const agencyWorkers = res.data;
-      agencyWorkers.map((worker: any) => {
-        return dispatch(addFeelings(worker.feelings));
-      });
+    if (users[0]) {
+      users.forEach((user) => {
+        if (user.userType == "worker") {
+          workers.push(user)
+          //console.log("Worker: " + user.firstName);
+        }
+      })
+    }
+
+    dispatch(fetchFeelings())
+    workers.map((worker: any) => {
+      if (users[0]) {
+        users.forEach((user) => {
+          if (user.userType == "worker") {
+            if (worker.feelings.worker == user._id) {
+              workers.push(user)
+              return dispatch(addFeelings(worker.feelings));
+            }
+          }
+        })
+      }
     });
   }, [dispatch]);
 
   return (
     <Container maxWidth="lg" id="maxContainer" className={classes.container}>
       <Box style={{ paddingTop: 10, paddingBottom: 10 }}>
-        <Typography variant="h1" className='header' color="primary">
-          {t('mood_stats')}
-        </Typography>
         <AgencyStatisticsSummary />
-        <FeedbackCategory />
-        <PieChart />
       </Box>
     </Container>
   );
 };
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     container: {
@@ -53,3 +65,16 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default AgencyStatistics;
+
+/*useEffect(() => {
+  allUsersService.getAgencyWorkers().then((res: any) => {
+    const agencyWorkers = res.data;
+    console.log('agency workers: ' + agencyWorkers)
+    users.map((worker: any) => {
+      console.log("Worker feeelings" + worker.feelings);
+      return dispatch(addFeelings(worker.feelings));
+    });
+  });
+}, [dispatch]);*/
+
+

@@ -39,9 +39,13 @@ export const calculateCheer = (value: number, maxValue: number) => {
 }
 
 export const averageFeeling = (feelingList: Feeling[]) => {
+
   let total = 0;
+
+  //console.log("Feeling list lenght: " + feelingList.length)
   for(let i = 0; i < feelingList.length; i++) {
-      total += feelingList[i].value;
+      total = total + Number(feelingList[i]);
+      //console.log("Feeling value: "+ feelingList[i])
   }
   let avg = total / feelingList.length;
   return Math.round((avg + Number.EPSILON) * 10) / 10

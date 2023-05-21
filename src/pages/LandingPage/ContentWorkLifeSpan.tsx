@@ -44,7 +44,7 @@ const ContentLifeSpan: React.FC = () => {
           <Typography variant="h3" className="landing-title">{t('work_lifespan')}</Typography>
         </Grid>
         <Grid item>
-          <Link to="/databank" style={{ textDecoration: 'none' }}>
+          <Link to="/databank/lifeline" style={{ textDecoration: 'none' }}>
             <Button color="primary" variant="contained">
             {t('lifespan_button')}
             </Button>

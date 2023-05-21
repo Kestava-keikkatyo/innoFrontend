@@ -30,8 +30,8 @@ const LineChart = () => {
     getFeelingsValues();
   }, [feelings, dispatch]);
   const { t } = useTranslation()
-  console.log('feelings', feelings);
-  console.log('feelingDataSet:', feelingDataSet);
+  /*console.log('feelings', feelings);
+  console.log('feelingDataSet:', feelingDataSet);*/
 
   const classes = useStyles();
 
@@ -123,7 +123,7 @@ const LineChart = () => {
     }
   };
 
-  console.log('moodCounts', moodCounts);
+  //console.log('moodCounts', moodCounts);
 
   return (
     <div style={{ marginTop: 16 }}>

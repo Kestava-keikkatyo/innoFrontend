@@ -13,11 +13,23 @@ import { useTranslation } from 'react-i18next';
 import topArrow from '../../assets/icons/sivunalkuun.svg'
 import Footer from '../../components/Footer';
 import Ingressi from '../../components/Ingressi';
+import Article1 from './Articles/jaettuTyosuojeluvastuu';
+import Article2 from './Articles/yleisvastuuTyoturvallisuudestaHp';
+import Article3 from './Articles/tyoaikalainNoudattaminen';
+import Article4 from './Articles/tyontekijoidenVakuuttaminenTyotapaturmienJaAmmattitautienVaralta';
+import AgencyArticles from './Articles/ArticleLists/AgencyArticles';
+import BusinessArticles from './Articles/ArticleLists/BusinessArticles';
+import WorkerArticles from './Articles/ArticleLists/WorkerArticles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: '2rem',
     width: '100%'
+  },
+  MuiAccordionroot: {
+    "&.MuiAccordion-root:before": {
+      backgroundColor: "#DBE4FC"
+    }
   },
 }))
 
@@ -26,24 +38,29 @@ export interface RoleResponsibilitiesProps { }
 const RoleResponsibilities: React.SFC<RoleResponsibilitiesProps> = () => {
   const classes = useStyles()
   const theme = useTheme()
-  const [steps, setSteps] = useState(responsibilities.worker)
+  const [steps, setSteps] = useState(responsibilities.agency)
   const [header, setHeader] = useState<string>('Vuokratyöntekijä')
   const { t } = useTranslation();
   const [colors, setColors] = useState({ agency: "#C0CFFA", business: "#F47D20", worker: "#F47D20" })
+  const [isShown, setIsShown] = useState(false);
+  const [role, setRole] = useState(roles.Agency)
 
   const handleSwitch = (role: roles) => {
     switch (role) {
       case roles.Agency:
         setColors({ ...colors, agency: "#C0CFFA", business: "#F47D20", worker: "#F47D20" })
-        setSteps(responsibilities.worker)
+        setSteps(responsibilities.agency)
+        setRole(roles.Agency)
         break
       case roles.Business:
         setColors({ ...colors, agency: "#F47D20", business: "#C0CFFA", worker: "#F47D20" })
-        setSteps(responsibilities.agency)
+        setSteps(responsibilities.business)
+        setRole(roles.Business)
         break
       case roles.Worker:
         setColors({ ...colors, agency: "#F47D20", business: "#F47D20", worker: "#C0CFFA" })
-        setSteps(responsibilities.business)
+        setSteps(responsibilities.worker)
+        setRole(roles.Worker)
         break
     }
   }
@@ -54,6 +71,13 @@ const RoleResponsibilities: React.SFC<RoleResponsibilitiesProps> = () => {
 
   const ingressi_header = "responsibilities"
   const summary = "responsibilities_summary"
+
+  const handleReadMore = () => {
+
+    setIsShown(current => !current);
+    // setIsShown(true);
+  };
+
 
   return (
     <Grid container className={classes.root}>
@@ -92,28 +116,53 @@ const RoleResponsibilities: React.SFC<RoleResponsibilitiesProps> = () => {
       </Container>
 
       {/* Content (accordion) */}
-      <Grid container style={{ backgroundColor: "#DBE4FC" }}>
-        <Grid sx={{ width: { xs: '90%', md: '60%' } }} style={{ backgroundColor: "#DBE4FC", margin: "auto", alignItems: "center", paddingTop: '30px' }}>
-          {steps.map((step, index) => (
-            <Accordion defaultExpanded key={index} style={{ borderRadius: '25px', backgroundColor: "#FDFDFD" }}>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header">
-                <Typography style={{ fontWeight: 'bold', backgroundColor: "#FDFDFD" }}>{step.tip}</Typography>
-              </AccordionSummary>
-              <AccordionDetails style={{ display: 'block', backgroundColor: "#FDFDFD", wordWrap: 'break-word', borderRadius: '25px' }}>
-                <li style={{ listStyleType: "none" }} key={index}>{step.details}</li>
-              </AccordionDetails>
-            </Accordion>
-          ))}
-          <div style={{ width: "100%", display: "flex", justifyContent: "right", padding: "10px", borderRadius: '25px' }}>
-            <img style={{ width: "30px", height: "30px" }} onClick={handleToTop} src={topArrow}></img>
-          </div>
-        </Grid>
-      </Grid>
+   
+      {(() => {
+        if (role === "agency") {
+          return (
+            <AgencyArticles></AgencyArticles>
+          )
+        } else if (role === "business") {
+          return (
+            <BusinessArticles></BusinessArticles>
+          )
+        } else {
+          return (
+            <WorkerArticles></WorkerArticles>
+          )
+        }
+      })()}
+
+
+
+
+                
+ 
       <Footer></Footer>
     </Grid>
   );
 }
 export default RoleResponsibilities
+
+    /*{step.details2}
+                   <br></br><br></br>
+                   {step.details3}
+                   <br></br><br></br>
+                   {step.details4}
+                   <br></br><br></br>
+                   {step.details5}
+                   <p>Keikkakaverin sisäiset linkit</p>
+                   <p>Lomakkeisiin:</p>
+                   <p>Lisätietoa:</p>
+                   
+                    <div style={{marginBottom: '20px'}}>{step.details2}</div>
+                 <div style={{marginBottom: '20px'}}>{step.details3}</div>
+                 <div style={{marginBottom: '20px'}}>{step.details4}</div>
+                 <div style={{marginBottom: '20px'}}>{step.details5}</div>
+                 <div style={{marginBottom: '20px'}}>{step.details6}</div>
+                 <div style={{marginBottom: '20px'}}>{step.details7}</div>
+                 <div style={{marginBottom: '20px'}}>{step.details8}</div>
+                 <div style={{marginBottom: '20px'}}>{step.details9}</div>
+                 <div style={{marginBottom: '20px'}}>{step.details10}</div>
+                 <div style={{marginBottom: '20px'}}>{step.details11}</div>
+                 <div style={{marginBottom: '20px'}}>{step.details12}</div>*/

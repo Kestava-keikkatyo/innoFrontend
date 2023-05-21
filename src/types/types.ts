@@ -287,13 +287,7 @@ export interface Notification {
 export interface MyFeeling {
   _id?: string
   worker?: User
-  comfortable: number | null
-  satisfied: number | null
-  energetic: number | null
-  enthusiastic: number | null
-  frustrated: number | null
-  stressed: number | null
-  anxious: number | null
+  feeling: number | null
   comment?: string
   createdAt?: Date
 }

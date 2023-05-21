@@ -306,7 +306,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
               {t('homeButton')}
             </Button>
           </Link>
-          <Link to="/databank" style={{ textDecoration: 'none', marginRight: '1em' }}>
+          <Link to="/databank/lifeline" style={{ textDecoration: 'none', marginRight: '1em' }}>
             <Button className="databank-button" style={{}}>
               {t('tietopankki')}
             </Button>
@@ -549,7 +549,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
               {t('homeButton')}
             </Button>
           </Link>
-          <Link to="/databank" style={{ textDecoration: 'none', marginRight: '1em' }}>
+          <Link to="/databank/lifeline" style={{ textDecoration: 'none', marginRight: '1em' }}>
             <Button className="databank-button" style={{}}>
               {t('tietopankki')}
             </Button>
@@ -792,7 +792,7 @@ const TopAppBar: React.FC<TopAppBarProps> = ({ handleDrawerToggle }) => {
               {t('homeButton')}
             </Button>
           </Link>
-          <Link to="/databank" style={{ textDecoration: 'none', marginRight: '1em' }}>
+          <Link to="/databank/lifeline" style={{ textDecoration: 'none', marginRight: '1em' }}>
             <Button className="databank-button" style={{}}>
               {t('tietopankki')}
             </Button>

@@ -111,9 +111,11 @@ const LandingPage = () => {
                   </Link>
                 </Typography>
               </MenuItem> */}
+
+
               <MenuItem key="0" onClick={handleCloseNavMenu}>
                 <Typography textAlign="center">
-                  <Link className="landing-nav-link2-dropdown" to="/databank">
+                  <Link className="landing-nav-link2-dropdown" to="/databank/lifeline">
                     {t('tietopankki')}
                   </Link>
                 </Typography>
@@ -161,7 +163,7 @@ const LandingPage = () => {
 
           {/* Navbar */}
           <Box sx={{ flexGrow: 0, display: { xs: 'none', sm: 'flex' } }}>
-            <Link className="landing-nav-link2" to="/databank" style={{height: '40px'}}>
+            <Link className="landing-nav-link2" to="/databank/lifeline" style={{height: '40px'}}>
               <Typography sx={{ px: 2.5, fontWeight: 'bold' }}>
                 {t('tietopankki')}
               </Typography>

@@ -1,0 +1,101 @@
+{
+    "agency": [
+      {
+        "tip": "1. Jaettu työsuojeluvastuu",
+        "details": "Vuokratyössä henkilöstöpalveluyrityksellä ja käyttäjäyrityksellä on yhteinen työsuojeluvastuu työntekijän työturvallisuudesta ja terveydestä. Vuokratyöntekijän työturvallisuuden ja -hyvinvoinnin varmistaminen edellyttää etukäteissuunnittelua, asioista sopimista ja yhteistyötä kaikkien osapuolten kesken.  "
+      },
+      {
+        "tip": "2. Henkilöstöpalveluyrityksen yleisvastuu työturvallisuudesta",
+        "details": "Henkilöstöpalveluyritys on velvollinen huolehtimaan työntekijöidensä turvallisuudesta ja terveydestä työssä. Tämä tarkoittaa mm. työn vaarojen selvittämistä ja arviointia, työsuojelun toimintaohjelmaa, työsuojelun yhteistoimintaa ja perehdytystä. "
+      },
+      {
+        "tip": "3. Työaikalain noudattaminen ",
+        "details": "Henkilöstöpalveluyritys huolehtii työaikakirjanpidosta. Käyttäjäyritys vastaa työaikalain noudattamisesta vuokratyöntekijän työajan järjestämisessä. "
+      },
+      {
+        "tip": "4. Työntekijöiden vakuuttaminen työtapaturmien ja ammattitautien varalta  ",
+        "details": "Henkilöstöpalveluyrityksen pitää vakuuttaa vuokratyöntekijä työtapaturman ja ammattitaudin varalta.  "
+      },
+      {
+        "tip": "5. Työterveyshuolto",
+        "details": "Henkilöstöpalveluyritys järjestää vuokratyöntekijän työterveyshuollon.  "
+      },
+      {
+        "tip": "6. Tasa-arvon ja yhdenvertaisuuden edistäminen ",
+        "details": "Henkilöstöpalveluyrityksen on arvioitava yhdenvertaisuuden toteutumista työpaikalla."
+      },
+      {
+        "tip": "7. Käyttäjäyrityksen velvoitteiden täyttämisen varmistaminen",
+        "details": "Vuokratyössä henkilöstöpalveluyrityksellä ja käyttäjäyrityksellä on jaettu työsuojeluvastuu. Henkilöstöpalveluyrityksen tulee varmistaa, että käyttäjäyritys huolehtii sille kuuluvista työterveys-, työturvallisuus- ja työhyvinvointivastuistaan ja velvoitteistaan. "
+      },
+      {
+        "tip": "8. Vuokratyöntekijän sopivuuden varmistaminen  ",
+        "details": "Henkilöstöpalveluyrityksen pitää varmistaa, että vuokratyöntekijällä on riittävä ammattitaito, kokemus ja sopivuus työhön."
+      },
+      {
+        "tip": "9. Henkilösuojainten hankkiminen",
+        "details": "Henkilöstöpalveluyritys ja käyttäjäyritys sopivat henkilönsuojainten tarjoamisesta työntekijälle. Työssä tarvittavat suojaimet valitaan työpaikalla tehdyn riskinarvioinnin perusteella.   "
+      },
+      {
+        "tip": "10. Työkyvyn tuki",
+        "details": "Henkilöstöpalveluyritys ja käyttäjäyritys sopivat henkilönsuojainten tarjoamisesta työntekijälle. Työssä tarvittavat suojaimet valitaan työpaikalla tehdyn riskinarvioinnin perusteella.   "
+      },
+      {
+        "tip": "11. Työtapaturmat",
+        "details": "Henkilöstöpalveluyritys ja käyttäjäyritys sopivat henkilönsuojainten tarjoamisesta työntekijälle. Työssä tarvittavat suojaimet valitaan työpaikalla tehdyn riskinarvioinnin perusteella.   "
+      }
+    ],
+    "business": [
+      {
+        "tip": "1. Jaettu työsuojeluvastuu",
+        "details": "Vuokratyössä henkilöstöpalveluyrityksellä ja käyttäjäyrityksellä on yhteinen työsuojeluvastuu työntekijän työturvallisuudesta ja terveydestä. Vuokratyöntekijän työturvallisuuden ja -hyvinvoinnin varmistaminen edellyttää etukäteissuunnittelua, asioista sopimista ja yhteistyötä kaikkien osapuolten kesken.  "
+      },
+      {
+        "tip": "2. Tilaajavastuu ",
+        "details": "Käyttäjäyrityksen on hankittava henkilöstöpalveluyritykseltä ennen sopimuksen solmimista tilaajavastuulain mukaiset selvitykset. Ulkomaista vuokratyövoimaa käytettäessä on huomioitava vastaavat vähimmäistyöehdot kuin kotimaisilla vuokratyöntekijöillä.  "
+      },
+      {
+        "tip": "3. Tietojen antaminen henkilöstöpalveluyritykselle  ",
+        "details": "Käyttäjäyrityksen on annettava henkilöstöpalveluyritykselle tieto vuokratyön ammattitaitovaatimuksista ja erityispiirteistä sekä muut tiedot, jotka henkilöstöpalveluyritys tarvitsee velvollisuuksiensa täyttämiseksi.   "
+      },
+      {
+        "tip": "4. Yleisvastuu työturvallisuudesta",
+        "details": "Käyttäjäyritys on velvollinen huolehtimaan vuokratyöntekijöiden turvallisuudesta ja terveydestä työssä."
+      },
+      {
+        "tip": "5. Työaikalain noudattaminen ",
+        "details": "Henkilöstöpalveluyritys huolehtii työaikakirjanpidosta. Käyttäjäyritys vastaa työaikalain noudattamisesta vuokratyöntekijän työajan järjestämisessä. "
+      },
+      {
+        "tip": "6. Tasa-arvon ja yhdenvertaisuuden edistäminen  ",
+        "details": "Työnantajan pitää edistää tasa-arvoa ja yhdenvertaisuutta työpaikalla. Vuokratyöntekijöitä pitää kohdella yhdenvertaisesti muiden työntekijöiden kanssa. Yli 30 työntekijän työpaikalla pitää laatia tasa-arvo- ja yhdenvertaisuussuunnitelmat. "
+      },
+      {
+        "tip": "7. Henkilösuojainten hankkiminen",
+        "details": "Henkilöstöpalveluyritys ja käyttäjäyritys sopivat henkilönsuojainten tarjoamisesta työntekijälle. Työssä tarvittavat suojaimet valitaan työpaikalla tehdyn riskinarvioinnin perusteella.  "
+      }
+    ],
+    "worker": [
+      {
+        "tip": "1. Huolehdin omasta ja työkavereiden työhyvinvoinnista ja -turvallisuudesta",
+        "details": "Työntekijän on osaamisensa mukaisesti ja käytettävissään olevin keinoin huolehdittava omasta ja muiden työntekijöiden turvallisuudesta ja terveydestä."
+      },
+      {
+        "tip": "2. En häiritse tai kohtele muita epäasiallisesti",
+        "details": "Työntekijän on vältettävä muihin työntekijöihin kohdistuvaa häirintää ja muuta epäasiallista kohtelua.  "
+      },
+      {
+        "tip": "3. Noudatan työpaikan ohjeita",
+        "details": "Työntekijän on noudatettava työnantajan antamia määräyksiä ja ohjeita."
+      },
+      {
+        "tip": "4. Käytän työvälineitä, henkilönsuojaimia ja turvalaitteita asianmukaisesti",
+        "details": "Työntekijän tulee käyttää oikein koneita, työvälineitä ja muita laitteita sekä niissä olevia turvallisuus- ja suojalaitteita. Lisäksi työntekijän tulee käyttää työnantajan antamia henkilönsuojaimia.  "
+      },
+      {
+        "tip": "5. Ilmoitan havaitsemistani vioista ja puutteista",
+        "details": "Työntekijän on ilmoitettava työssä havaitsemistaan vioista ja puutteista työnantajalle ja työsuojeluvaltuutetulle."
+      }
+    ]
+}
+

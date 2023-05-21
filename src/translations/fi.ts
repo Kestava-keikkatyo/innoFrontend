@@ -15,17 +15,17 @@ export default {
     saveButton: 'Tallenna',
     faq: 'Usein kysytyt kysymykset',
 
-  // login
-  login_title: 'Kirjaudu sisään',
-  email_label: 'Sähköposti',
-  password_label: 'Salasana',
-  invalid_email_address: 'Virheellinen sähköposti',
-  required: 'Puuttuu',
-  invalid_token: 'Virheellinen token',
-  logout_successful: 'Uloskirjautuminen onnistui!',
-  logout_failed: 'Ole hyvä ja kirjaudu uudelleen.',
-  login_failed: 'Kirjautuminen epäonnistui!',
-  login_successful: 'Kirjautuminen onnistui!',
+    // login
+    login_title: 'Kirjaudu sisään',
+    email_label: 'Sähköposti',
+    password_label: 'Salasana',
+    invalid_email_address: 'Virheellinen sähköposti',
+    required: 'Puuttuu',
+    invalid_token: 'Virheellinen token',
+    logout_successful: 'Uloskirjautuminen onnistui!',
+    logout_failed: 'Ole hyvä ja kirjaudu uudelleen.',
+    login_failed: 'Kirjautuminen epäonnistui!',
+    login_successful: 'Kirjautuminen onnistui!',
 
     // signup
     firstName: 'Etunimi',
@@ -38,14 +38,14 @@ export default {
     terms_agency: 'vuokrayrityksille',
     signup_successful: 'Rekistöröityminen onnistui',
 
-  // error
-  invalid_email: 'Virheellinen sähköpostiosoite',
-  invalid_length: 'Salasanan on oltava vähintään 8 merkkiä',
-  field_required: 'Pakollinen kenttä',
-  invalid_name: 'Virheellinen nimi',
-  invalid_password: 'Salasana ei täsmää',
-  email_already_used: 'Sähköpostiosoite on jo käytössä',
-  agency_profile_missing: 'Henkilöstöpalveluyrityksen profiilia ei löydy',
+    // error
+    invalid_email: 'Virheellinen sähköpostiosoite',
+    invalid_length: 'Salasanan on oltava vähintään 8 merkkiä',
+    field_required: 'Pakollinen kenttä',
+    invalid_name: 'Virheellinen nimi',
+    invalid_password: 'Salasana ei täsmää',
+    email_already_used: 'Sähköpostiosoite on jo käytössä',
+    agency_profile_missing: 'Henkilöstöpalveluyrityksen profiilia ei löydy',
 
     // option
     role: 'Rooli',
@@ -216,10 +216,10 @@ export default {
     transfer_profile: 'Siirry profiiliin',
     transfer_company_profile: 'Siirry yrityksen profiiliin',
 
-     // Employment page
-     connect_workers_to_business_info: 'Valitse vastaanottajat keikkatyöehdotuksen luomiseksi',
-     employment_no_recipient: 'Sinun täytyy valita vastaanottaja',
-     employ: 'Työllistä',
+    // Employment page
+    connect_workers_to_business_info: 'Valitse vastaanottajat keikkatyöehdotuksen luomiseksi',
+    employment_no_recipient: 'Sinun täytyy valita vastaanottaja',
+    employ: 'Työllistä',
 
     // Contact information
     phone: 'Puhelin',
@@ -403,16 +403,16 @@ export default {
     add_question: 'Lisää kysymys',
     form_editor: 'Lomakkeen muokkaus',
 
-  finland: 'Suomi',
-  english: 'Englanti',
-  tyopoyta: 'TYÖPÖYTÄ',
-  tietopankki: 'TIETOPANKKI',
-  kirjaudu_sisaan: 'KIRJAUDU',
-  form_tooltip_preview: 'Esikatsele lomaketta',
-  form_tooltip_edit: 'Muokkaa lomaketta',
-  form_tooltip_delete: 'Poista lomake',
-  form_tooltip_download: 'Lataa lomake',
-  form_tooltip_copy: 'Kopioi omiin lomakkeisiin',
+    finland: 'Suomi',
+    english: 'Englanti',
+    tyopoyta: 'TYÖPÖYTÄ',
+    tietopankki: 'TIETOPANKKI',
+    kirjaudu_sisaan: 'KIRJAUDU',
+    form_tooltip_preview: 'Esikatsele lomaketta',
+    form_tooltip_edit: 'Muokkaa lomaketta',
+    form_tooltip_delete: 'Poista lomake',
+    form_tooltip_download: 'Lataa lomake',
+    form_tooltip_copy: 'Kopioi omiin lomakkeisiin',
 
     // Joblist
     limit_search: 'Rajaa hakua',
@@ -560,17 +560,17 @@ export default {
     show_less: 'Näytä vähemmän',
     show_more: 'Näytä enemmän',
 
-  // landingPage
-  slogan: 'Tervetuloa käyttämään Keikkakaveria!',
-  intro:
-    'Keikkakaveri on työväline henkilöstöpalveluyrityksen, käyttäjäyrityksen ja vuokratyöntekijän väliseen yhteistyöhön työterveys-, työturvallisuus, ja työhyvinvointiasioissa. Tietopankki-sivustolle on koottu tietoa lainsäädännön velvoitteista sekä turvallisten ja terveellisten työolojen kehittämisestä.',
-  areas_of_responsibility_button: 'LUE LISÄÄ VASTUUALUEISTA',
-  left_box_header: 'Keikkakaveri-työväline',
-  left_box_content: 'Keikkakaverissa on omat sivut käyttäjäyritykselle, henkilöstöpalveluyritykselle ja vuokratyöntekijälle.',
-  enable_button: 'OTA KÄYTTÖÖN',
-  databank_button: 'SIIRRY TIETOPANKKIIN',
-  right_box_header: 'Tietopankki',
-  right_box_content: 'Sivustolle on koottu tietoa työturvallisuuden, työterveyden ja työhyvinvoinnin edistämisestä vuokratyössä.',
+    // landingPage
+    slogan: 'Tervetuloa käyttämään Keikkakaveria!',
+    intro:
+        'Keikkakaveri on työväline henkilöstöpalveluyrityksen, käyttäjäyrityksen ja vuokratyöntekijän väliseen yhteistyöhön työterveys-, työturvallisuus, ja työhyvinvointiasioissa. Tietopankki-sivustolle on koottu tietoa lainsäädännön velvoitteista sekä turvallisten ja terveellisten työolojen kehittämisestä.',
+    areas_of_responsibility_button: 'LUE LISÄÄ VASTUUALUEISTA',
+    left_box_header: 'Keikkakaveri-työväline',
+    left_box_content: 'Keikkakaverissa on omat sivut käyttäjäyritykselle, henkilöstöpalveluyritykselle ja vuokratyöntekijälle.',
+    enable_button: 'OTA KÄYTTÖÖN',
+    databank_button: 'SIIRRY TIETOPANKKIIN',
+    right_box_header: 'Tietopankki',
+    right_box_content: 'Sivustolle on koottu tietoa työturvallisuuden, työterveyden ja työhyvinvoinnin edistämisestä vuokratyössä.',
 
 
     // CreateJobForAgency
@@ -766,38 +766,38 @@ export default {
     employee_order: 'Työntekijän tilaus ja valinta',
     contract_orientation: 'Työsopimus ja yleisperehdytys',
 
-  // Footer Page (old)
-  // worker_question: 'Oletko työntekijä?',
-  // make_money: 'Ansaitse rahaa',
-  // work_flexibly: 'Tee joustavasti töitä',
-  // stressFree_work: 'Stressitön keikkatyö',
-  // register: 'LUO TILI',
-  // user_company: 'Oletko käyttäjäyritys?',
-  // flexible_model: 'Nopea ja joustava malli hankkia työntekijöitä',
-  // recruitment_process: 'Pääset vaikuttamaan rekrytointiprosessiin',
-  // productivity: 'Hyvinvoivien työntekijöiden tuottavuus on jopa 20% normaalia parempi',
-  // rental_company: 'Oletko vuokratyöfirma?',
-  // orientation: 'Keskitä perehdyttäminen yhteen paikkaan',
-  // automation: 'Automatisaatiolla perehdytys on rennompaa',
-  // wellBeing: 'Työntekijöitesi hyvinvointi on meille tärkeää',
-  // topical: 'Ajankohtaista:',
-  // news: 'Uutiset',
-  // collaboration: 'Yhteistyössä:',
-  // ttk: 'Työturvallisuuskeskus',
-  // esr: 'ESR-rahasto',
-  // get_to_know: 'Tutustu:',
-  // privacy_statement: 'Tietosuojaseloste',
+    // Footer Page (old)
+    // worker_question: 'Oletko työntekijä?',
+    // make_money: 'Ansaitse rahaa',
+    // work_flexibly: 'Tee joustavasti töitä',
+    // stressFree_work: 'Stressitön keikkatyö',
+    // register: 'LUO TILI',
+    // user_company: 'Oletko käyttäjäyritys?',
+    // flexible_model: 'Nopea ja joustava malli hankkia työntekijöitä',
+    // recruitment_process: 'Pääset vaikuttamaan rekrytointiprosessiin',
+    // productivity: 'Hyvinvoivien työntekijöiden tuottavuus on jopa 20% normaalia parempi',
+    // rental_company: 'Oletko vuokratyöfirma?',
+    // orientation: 'Keskitä perehdyttäminen yhteen paikkaan',
+    // automation: 'Automatisaatiolla perehdytys on rennompaa',
+    // wellBeing: 'Työntekijöitesi hyvinvointi on meille tärkeää',
+    // topical: 'Ajankohtaista:',
+    // news: 'Uutiset',
+    // collaboration: 'Yhteistyössä:',
+    // ttk: 'Työturvallisuuskeskus',
+    // esr: 'ESR-rahasto',
+    // get_to_know: 'Tutustu:',
+    // privacy_statement: 'Tietosuojaseloste',
 
-  // Footer
-  // Left grid box
-  keikkakaveri_info: 'Keikkakaveri on kehitetty Kestävä Keikkatyö-hankkeessa. Hankkeen toteuttivat Metropolia ammattikorkeakoulu, Satakunnan ammattikorkeakoulu, Tampereen yliopisto ja Oulun yliopisto. Hanketta rahoitti Sosiaali- ja terveysministeriö sekä Euroopan sosiaalirahasto. Keikkakaverin ylläpidosta vastaa Työturvallisuuskeskus.',
-  // Middle grid box
-  databank_link: 'TIETOPANKKI',
-  keikkakaveri_tool_link: 'KEIKKAKAVERI-TYÖVÄLINE',
-  // Right grid box
-  centre_occupational_safety: 'Työturvallisuuskeskus',
-  privacy_policy_link: 'Tietoturvaseloste',
-  accessibility_statement_link: 'Saavutettavuusseloste',
+    // Footer
+    // Left grid box
+    keikkakaveri_info: 'Keikkakaveri on kehitetty Kestävä Keikkatyö-hankkeessa. Hankkeen toteuttivat Metropolia ammattikorkeakoulu, Satakunnan ammattikorkeakoulu, Tampereen yliopisto ja Oulun yliopisto. Hanketta rahoitti Sosiaali- ja terveysministeriö sekä Euroopan sosiaalirahasto. Keikkakaverin ylläpidosta vastaa Työturvallisuuskeskus.',
+    // Middle grid box
+    databank_link: 'TIETOPANKKI',
+    keikkakaveri_tool_link: 'KEIKKAKAVERI-TYÖVÄLINE',
+    // Right grid box
+    centre_occupational_safety: 'Työturvallisuuskeskus',
+    privacy_policy_link: 'Tietoturvaseloste',
+    accessibility_statement_link: 'Saavutettavuusseloste',
 
 
 
@@ -1281,7 +1281,7 @@ export default {
     stages_of_work_summary: 'Vuokratyössä on kolme osapuolta: henkilöstöpalveluyritys, käyttäjäyritys ja vuokratyöntekijä. Alla on kuvattu yhteistyön viisi vaihetta.',
     responsibilities_summary: 'Jokaisella vuokratyön osapuolella on työturvallisuuteen, työterveyteen ja työhyvinvointiin liittyviä vastuita.',
     instructions_summary: 'Ohjeet ovat lyhyitä tekstejä siitä, miten henkilöstöpalveluyritys, käyttäjäyritys ja vuokratyöntekijä voivat huolehtia vuokratyöntekijän työturvallisuudesta, työterveydestä ja työhyvinvoinnista. Ohjeessa on kerrottu aiheeseen liittyvät lait, mahdolliset muut internetlinkit ja lomakkeet.',
-    good_practises_summary: 'Lomakepohjat ohjaavat huolehtimaan tärkeistä asioista vuokratyötoimeksiannon eri vaiheissa. Lomakkeiden täyttäminen varmistaa, että olennaisimmat vuokratyöntekijän työturvallisuuteen liittyvät seikat käydään läpi ja tärkeistä asioista sovitaan pelisäännöt henkilöstöpalvelu- ja käyttäjäyrityksen välillä. Kahden osapuolen kesken täytetty lomake voidaan aina antaa tiedoksi myös kolmannelle osapuolelle. Tämä toimii osana kumppaneiden välistä tiedonkulkua ja tärkeän informaation perillemenon varmistamista.',
+    good_practises_summary: 'Alla on esimerkkejä vuokratyön eri vaiheisiin liittyvistä hyvistä käytännöistä.',
     forms_summary: 'Lomakepohjat ohjaavat huolehtimaan tärkeistä asioista vuokratyötoimeksiannon eri vaiheissa. Lomakkeiden täyttäminen varmistaa, että olennaisimmat vuokratyöntekijän työturvallisuuteen liittyvät seikat käydään läpi ja tärkeistä asioista sovitaan pelisäännöt henkilöstöpalvelu- ja käyttäjäyrityksen välillä. Kahden osapuolen kesken täytetty lomake voidaan aina antaa tiedoksi myös kolmannelle osapuolelle. Tämä toimii osana kumppaneiden välistä tiedonkulkua ja tärkeän informaation perillemenon varmistamista.',
 
     //Forms in databank
@@ -1298,6 +1298,7 @@ export default {
     form4SubHeader: '(käyttäjäyrityksen ja vuokrayrityksen edustajat täyttävät)',
 
     form5HeaderText: 'LOMEKE 5 - PEREHDYTYS JA TYÖHÖNOPASTUS KIIREELLISISSÄ TILANTEISSA',
+    form5SubHeader: '',
 
     //Business homepage
     welcomeTextBusiness: "Tervetuloa käyttäjäyrityksen etusivulle",
@@ -1319,6 +1320,92 @@ export default {
 
     check_new_reports: 'Katso uusimmat turvallisuusraportit',
     print: 'Tulosta pdf',
+    feeling_report_question: 'Mikä fiilis tänän?',
+
+    //Articles
+    //Article1
+    header1: "1. Jaettu työsuojeluvastuu ",
+    info1: "Vuokratyössä henkilöstöpalveluyrityksellä ja käyttäjäyrityksellä on yhteinen työsuojeluvastuu työntekijän työturvallisuudesta ja terveydestä. Vuokratyöntekijän työturvallisuuden ja -hyvinvoinnin varmistaminen edellyttää etukäteissuunnittelua, asioista sopimista ja yhteistyötä kaikkien osapuolten kesken. ",
+
+    //Article2
+    header2: "2. Yleisvastuu työturvallisuudesta ",
+    info2: "Henkilöstöpalveluyritys on velvollinen huolehtimaan työntekijöidensä turvallisuudesta ja terveydestä työssä. Tämä tarkoittaa mm. työn vaarojen selvittämistä ja arviointia, työsuojelun toimintaohjelmaa, työsuojelun yhteistoimintaa ja perehdytystä. ",
+
+    //Article3
+    header3: "3. Työaikalain noudattaminen ",
+    info3: "Henkilöstöpalveluyritys huolehtii työaikakirjanpidosta. Käyttäjäyritys vastaa työaikalain noudattamisesta vuokratyöntekijän työajan järjestämisessä.",
+
+    //Article4
+    header4: "4. Työntekijöiden vakuuttaminen työtapaturmien ja ammattitautien varalta  ",
+    info4: "Henkilöstöpalveluyrityksen pitää vakuuttaa vuokratyöntekijä työtapaturman ja ammattitaudin varalta.  ",
+
+    //Article5
+    header5: "5. Työterveyshuolto    ",
+    info5: "Henkilöstöpalveluyritys järjestää vuokratyöntekijän työterveyshuollon. ",
+
+    //Article6
+    header6: "6. Tasa-arvon ja yhdenvertaisuuden edistäminen   ",
+    info6: "Henkilöstöpalveluyrityksen on arvioitava yhdenvertaisuuden toteutumista työpaikalla.  ",
+
+    //Article7
+    header7: "7. Käyttäjäyrityksen velvoitteiden täyttämisen varmistaminen    ",
+    info7: "Vuokratyössä henkilöstöpalveluyrityksellä ja käyttäjäyrityksellä on jaettu työsuojeluvastuu. Henkilöstöpalveluyrityksen tulee varmistaa, että käyttäjäyritys huolehtii sille kuuluvista työterveys-, työturvallisuus- ja työhyvinvointivastuistaan ja velvoitteistaan.      ",
+
+    //Article8
+    header8: "8. Vuokratyöntekijän sopivuuden varmistaminen     ",
+    info8: "Henkilöstöpalveluyrityksen pitää varmistaa, että vuokratyöntekijällä on riittävä ammattitaito, kokemus ja sopivuus työhön.   ",
+
+    //Article9
+    header9: "9. Henkilösuojainten hankkiminen  ",
+    info9: "Henkilöstöpalveluyritys ja käyttäjäyritys sopivat henkilönsuojainten tarjoamisesta työntekijälle. Työssä tarvittavat suojaimet valitaan työpaikalla tehdyn riskinarvioinnin perusteella.  ",
+
+    //Article10
+    header10: "2. Tilaajavastuu ",
+    info10: "Käyttäjäyrityksen on hankittava henkilöstöpalveluyritykseltä ennen sopimuksen solmimista tilaajavastuulain mukaiset selvitykset. Ulkomaista vuokratyövoimaa käytettäessä on huomioitava vastaavat vähimmäistyöehdot kuin kotimaisilla vuokratyöntekijöillä.  ",
+
+    //Article11
+    header11: "3. Tietojen antaminen henkilöstöpalveluyritykselle   ",
+    info11: "Käyttäjäyrityksen on annettava henkilöstöpalveluyritykselle tieto vuokratyön ammattitaitovaatimuksista ja erityispiirteistä sekä muut tiedot, jotka henkilöstöpalveluyritys tarvitsee velvollisuuksiensa täyttämiseksi. ",
+
+    //Article12
+    header12: "4. Yleisvastuu työturvallisuudesta",
+    info12: "Käyttäjäyritys on velvollinen huolehtimaan vuokratyöntekijöiden turvallisuudesta ja terveydestä työssä.    ",
+
+    //Article13
+    header13: "6. Tasa-arvon ja yhdenvertaisuuden edistäminen  ",
+    info13: "Työnantajan pitää edistää tasa-arvoa ja yhdenvertaisuutta työpaikalla. Vuokratyöntekijöitä pitää kohdella yhdenvertaisesti muiden työntekijöiden kanssa. Yli 30 työntekijän työpaikalla pitää laatia tasa-arvo- ja yhdenvertaisuussuunnitelmat.   ",
+
+    //Article14
+    header14: "1. Huolehdin omasta ja työkavereiden työhyvinvoinnista ja -turvallisuudesta",
+    info14: "Työntekijän on osaamisensa mukaisesti ja käytettävissään olevin keinoin huolehdittava omasta ja muiden työntekijöiden turvallisuudesta ja terveydestä.   ",
+
+    //Article15
+    header15: "2. En häiritse tai kohtele muita epäasiallisesti  ",
+    info15: "Työntekijän on vältettävä muihin työntekijöihin kohdistuvaa häirintää ja muuta epäasiallista kohtelua.  ",
+
+    //Article16
+    header16: "3. Noudatan työpaikan ohjeita ",
+    info16: "Työntekijän on noudatettava työnantajan antamia määräyksiä ja ohjeita.  ",
+
+    //Article17
+    header17: "4. Käytän työvälineitä, henkilönsuojaimia ja turvalaitteita asianmukaisesti",
+    info17: "Työntekijän tulee käyttää oikein koneita, työvälineitä ja muita laitteita sekä niissä olevia turvallisuus- ja suojalaitteita. Lisäksi työntekijän tulee käyttää työnantajan antamia henkilönsuojaimia.  ",
+
+    //Article18
+    header18: "5. Ilmoitan havaitsemistani vioista ja puutteista  ",
+    info18: "Työntekijän on ilmoitettava työssä havaitsemistaan vioista ja puutteista työnantajalle ja työsuojeluvaltuutetulle.  ",
+
+    //Instructions1
+    header19: "2. Henkilöstöpalveluyrityksen yleisvastuu työturvallisuudesta    ",
+    info19: "Henkilöstöpalveluyritys on velvollinen huolehtimaan työntekijöidensä turvallisuudesta ja terveydestä työssä. Tämä tarkoittaa mm. työn vaarojen selvittämistä ja arviointia, työsuojelun toimintaohjelmaa, työsuojelun yhteistoimintaa ja perehdytystä. ",
+
+    //Instructions2
+    header20: "10. Työkyvyn tuki",
+    info20: "Työterveysyhteistyö tarkoittaa vuokratyössä yhteistyötä työterveyshuollon, työnantajan, työntekijän ja vuokratyötä käyttävän yrityksen välillä.  Työkyvyn varhainen tuki tarkoittaa niitä toimenpiteitä, joilla edistetään työntekijän työkykyä ja ehkäistään työkyvyn heikkenemistä. ",
+
+    //Instructions3
+    header21: "11. Työtapaturmat",
+    info21: "Henkilöstöpalveluyrityksen ja käyttäjäyrityksen on sovittava, miten toimitaan, jos vuokratyöntekijälle sattuu tapaturma. Työntekijän tulee saada ohjeistus sovitusta toimintatavasta. ",
 
 }
 

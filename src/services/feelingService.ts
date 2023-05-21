@@ -21,10 +21,38 @@ const authHeader = () => {
  * @function
  * @desc Fetches all feelings avaible with current token.
  */
-const getFeelings = async () => {
+/*const getFeelings = async () => {
   let allData: any = [];
   let currentPage = 1;
 
+  console.log("getFeelings");
+  let res = await axios.get(
+    `${baseUrl}/feelings?page=${currentPage}&limit=10`,
+    authHeader()
+  );
+  console.log("feelingService:getFeelings: res", res);
+
+  for (currentPage; currentPage <= res.data.totalPages; currentPage++) {
+    res = await axios.get(
+      `${baseUrl}/feelings?page=${currentPage}&limit=10`,
+      authHeader()
+    );
+    let docs = res?.data?.docs;
+    docs.map((doc: any) => allData.push(doc));
+  }
+
+  console.log("feelingService:getFeelings: all data", allData);
+  return allData;
+};*/
+
+const getFeelings = async () => {
+  let allData: any = [];
+  let currentPage = 1;
+  
+    /*let res = await axios.get(`${baseUrl}/feelings?page=${currentPage}&limit=10`, authHeader())
+  return res*/
+
+  console.log("getFeelings");
   let res = await axios.get(
     `${baseUrl}/feelings?page=${currentPage}&limit=10`,
     authHeader()
@@ -53,7 +81,13 @@ const postFeeling = async (feeling: Feeling) => {
   return await axios.post(`${baseUrl}/user/feeling/`, feeling, authHeader());
 };
 
+const getAllFeelings = async () => {
+  const res = await axios.get(`${baseUrl}/feeling/allFeelings`, authHeader())
+  return res
+}
+
 export default {
   getFeelings,
   postFeeling,
+  getAllFeelings,
 };
