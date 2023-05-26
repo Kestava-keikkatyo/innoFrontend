@@ -416,3 +416,13 @@ export interface AgreementCode {
   createdAt: string;
   marked: boolean;
 }
+
+export interface CompanyFile {
+  _id: string;
+  title: string;
+  description: string;
+  creator: string;
+  uploadDate: Date;
+  contentType: 'application/pdf' | 'video/mp4' | 'image/jpeg';
+  file: Buffer;
+}
