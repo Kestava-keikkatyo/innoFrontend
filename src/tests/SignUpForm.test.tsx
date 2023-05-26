@@ -53,7 +53,8 @@ describe('<SignUpForm />', () => {
         email: 'wayde@worker.com',
         password: 'worker123',
         role: 'worker',
-        category: ''
+        category: '',
+        companyName: ''
       })
     })
   })
@@ -76,6 +77,7 @@ describe('<SignUpForm />', () => {
         fireEvent.change(inputRoleSelection, { target: { value: 'agency' } })
       }
     })
+    await userEvent.type(screen.getByLabelText('companyName'), 'Tech Agency')
 
     const inputCategorySelection = document.querySelector('input[name="category"]')
 
@@ -97,7 +99,8 @@ describe('<SignUpForm />', () => {
         email: 'annie@agency.com',
         password: 'agent123',
         role: 'agency',
-        category: 'Tekniikka'
+        category: 'Tekniikka',
+        companyName: 'Tech Agency'
       })
     })
   })
