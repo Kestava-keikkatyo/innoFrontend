@@ -123,54 +123,70 @@ const LandingPage = () => {
                   </Link>
                 </Typography>
               </MenuItem> */}
-                <MenuItem key="0" onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">
-                    <Link className="landing-nav-link2-dropdown" to="/databank">
-                      {t('tietopankki')}
-                    </Link>
-                  </Typography>
-                </MenuItem>
-                <MenuItem key="1" onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">
-                    {user ?
-                      <Link className="landing-login-dropdown" to="/home">
-                        <Typography sx={{ fontWeight: 'bold' }}>
-                          {user?.['firstName']}
-                        </Typography>
-                      </Link>
-                      :
-                      <Link className="landing-login-dropdown" to="/login">
-                        <Typography sx={{ fontWeight: 'bold' }}>
-                          {t('kirjaudu_sisaan')}
-                        </Typography>
-                      </Link>
-                    }
-                  </Typography>
-                </MenuItem>
-                <MenuItem key="2" onClick={() => { handleCloseNavMenu(); changeLanguage('fi') }}>
-                  <Typography
-                    sx={{ color: 'black', fontWeight: 600, fontSize: 16 }}>
-                    FI
-                  </Typography>
-                </MenuItem>
-                <MenuItem key="3" onClick={() => { handleCloseNavMenu(); changeLanguage('en') }}>
-                  <Typography
-                    sx={{ color: 'black', fontWeight: 600, fontSize: 16 }}>
-                    EN
-                  </Typography>
-                </MenuItem>
 
-              </Menu>
-            </Box>
+              <MenuItem key="0" onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">
+                  <Link className="landing-nav-link2-dropdown" to="/databank/lifeline">
+                    {t('tietopankki')}
+                  </Link>
+                </Typography>
+              </MenuItem>
+              <MenuItem key="1" onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">
+                  {user ?
+                  <Link className="landing-login-dropdown" to="/home">
+                    <Typography sx={{ fontWeight: 'bold' }}>
+                      {user?.['firstName']}
+                    </Typography>
+                  </Link>
+                  :
+                  <Link className="landing-login-dropdown" to="/login">
+                    <Typography sx={{ fontWeight: 'bold' }}>
+                      {t('kirjaudu_sisaan')}
+                    </Typography>
+                  </Link>
+                }
+                </Typography>
+              </MenuItem>
+              <MenuItem key="2" onClick={() => { handleCloseNavMenu(); changeLanguage('fi') }}>
+                <Typography
+                  sx={{ color: 'black', fontWeight: 600, fontSize: 16 }}>
+                  FI
+                </Typography>
+              </MenuItem>
+              <MenuItem key="3" onClick={() => { handleCloseNavMenu(); changeLanguage('en') }}>
+                <Typography
+                  sx={{ color: 'black', fontWeight: 600, fontSize: 16 }}>
+                  EN
+                </Typography>
+              </MenuItem>
+              
+            </Menu>
+          </Box>
 
-            {/* Keikkakaveri logo when screen width <600px */}
-            <Typography
-              sx={{ mr: 2, display: { xs: 'flex', sm: 'none' }, flexGrow: 1 }}>
-              <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
-                <img src={logo_kk} style={{ width: '200px', marginRight: '33px' }} />
-              </Link>
-            </Typography>
+          {/* Keikkakaveri logo when screen width <600px */}
+          <Typography
+            sx={{ mr: 2, display: { xs: 'flex', sm: 'none' }, flexGrow: 1 }}>
+            <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
+              <img src={logo_kk} style={{ width: '200px', marginRight: '33px' }} />
+            </Link>
+          </Typography>
 
+          {/* Navbar */}
+          <Box sx={{ flexGrow: 0, display: { xs: 'none', sm: 'flex' } }}>
+            <Link className="landing-nav-link2" to="/databank/lifeline" style={{height: '40px'}}>
+              <Typography sx={{ px: 2.5, fontWeight: 'bold' }}>
+                {t('tietopankki')}
+              </Typography>
+            </Link>
+                  
+            {/* Check if user is logged in */}
+            {user ?
+              <Link className="landing-login" to="/home" style={{ backgroundColor: '#FDFDFD', height: '40px' }}>
+                <Typography sx={{ px: 2.5, fontWeight: 'bold' }}>
+                  {user?.['firstName']}
+                </Typography>
+   
             {/* Navbar */}
             <Box sx={{ flexGrow: 0, display: { xs: 'none', sm: 'flex' } }}>
               <Link className="landing-nav-link2" to="/databank" style={{ height: '40px' }}>

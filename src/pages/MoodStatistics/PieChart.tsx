@@ -72,9 +72,9 @@ const PieChart = () => {
     getFeelingsValues();
   }, [feelings, dispatch]);
 
-  console.log('feelings', feelings);
+  /*console.log('feelings', feelings);
   console.log('feelingDataSet:', feelingDataSet);
-  console.log('moodCounts', moodCounts);
+  console.log('moodCounts', moodCounts);*/
 
   return (
     <div style={{ marginTop: 16 }}>

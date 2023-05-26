@@ -169,7 +169,7 @@ const DatabankRoute: React.FC<DatabankProps> = ({ path, children }) => {
                                     {t('homeButton')}
                                 </Button>
                             </Link>
-                            <Link to="/databank" style={{ textDecoration: 'none' }}>
+                            <Link to="/databank/lifeline" style={{ textDecoration: 'none' }}>
                                 <Button className="databank-button" style={{ backgroundColor: '#FDFDFD' }}>
                                     {t('tietopankki')}
                                 </Button>
@@ -279,7 +279,7 @@ const DatabankRoute: React.FC<DatabankProps> = ({ path, children }) => {
                             {t('homeButton')} /
                         </Typography>
                     </Link>
-                    <Link to="/databank" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+                    <Link to="/databank/lifeline" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
                         <Typography className='databank-route' style={{ fontWeight: 'bold', marginRight: '5px' }}>
                             {t('databank')} /
                         </Typography>

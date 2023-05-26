@@ -83,7 +83,7 @@ const ContentResponsibilities: React.FC = () => {
           <Typography variant="h3" className="landing-title">{t('areas_of_responsibility')}</Typography>
         </Grid>
         <Grid item>
-          <Link to="/databank" style={{ textDecoration: 'none' }}>
+          <Link to="/databank/lifeline" style={{ textDecoration: 'none' }}>
             <Button color="primary" variant="contained">
               {t('areas_of_responsibility_button')}
             </Button>

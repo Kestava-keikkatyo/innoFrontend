@@ -34,8 +34,8 @@ const Footer: React.FC<any> = ({ }) => {
             {/* Footer middle row */}
             <Grid className='content-center' item xs={12} sm={12} md={4} style={{ paddingLeft: '0' }}>
               <div className='content-center' style={{ display: 'flex', flexDirection: 'column' }}>
-                <Link to="/databank" style={{ textDecoration: 'none', maxWidth: 'fit-content' }}>
-                  <Typography style={{ textTransform: 'uppercase' }}>{t('databank')}</Typography>
+                <Link to="/databank/lifeline" style={{ textDecoration: 'none', maxWidth: 'fit-content' }}>
+                  <Typography style={{ fontWeight: 'bold', textTransform: 'uppercase' }}>{t('databank')}</Typography>
                 </Link>
                 <Link to="/databank/lifeline" style={{ textDecoration: 'none', maxWidth: 'fit-content' }}>
                   <Typography style={{ textTransform: 'uppercase' }}>{t('stages_of_work')}</Typography>

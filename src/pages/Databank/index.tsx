@@ -12,10 +12,21 @@ import topArrow from '../../assets/icons/sivunalkuun.svg'
 import React, { useState } from 'react';
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material'
 import Ingressi from '../../components/Ingressi';
+import AgencyArticles from './Articles/ArticleLists/AgencyArticles';
+import BusinessArticles from './Articles/ArticleLists/BusinessArticles';
+import WorkerArticles from './Articles/ArticleLists/WorkerArticles';
+import AgencyInstructions from './Intructions/InstructionsLists/AgencyInstructions';
+import BusinessInstructions from './Intructions/InstructionsLists/BusinessInstructions';
+import WorkerInstructions from './Intructions/InstructionsLists/WorkerInstructions';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         marginTop: '2rem',
+    },
+    MuiAccordionroot: {
+        "&.MuiAccordion-root:before": {
+            backgroundColor: "#FFDCBF"
+        }
     },
 }))
 
@@ -23,23 +34,27 @@ export interface DatabankProps { }
 const Databank: React.FC<DatabankProps> = () => {
 
     const classes = useStyles()
-    const [steps, setSteps] = useState(responsibilities.worker)
+    const [steps, setSteps] = useState(responsibilities.agency)
     const { t } = useTranslation();
     const [colors, setColors] = useState({ agency: "#C0CFFA", business: "#F47D20", worker: "#F47D20" })
+    const [role, setRole] = useState(roles.Agency)
 
     const handleSwitch = (role: roles) => {
         switch (role) {
             case roles.Agency:
                 setColors({ ...colors, agency: "#C0CFFA", business: "#F47D20", worker: "#F47D20" })
-                setSteps(responsibilities.worker)
+                setSteps(responsibilities.agency)
+                setRole(roles.Agency)
                 break
             case roles.Business:
                 setColors({ ...colors, agency: "#F47D20", business: "#C0CFFA", worker: "#F47D20" })
-                setSteps(responsibilities.agency)
+                setSteps(responsibilities.business)
+                setRole(roles.Business)
                 break
             case roles.Worker:
                 setColors({ ...colors, agency: "#F47D20", business: "#F47D20", worker: "#C0CFFA" })
-                setSteps(responsibilities.business)
+                setSteps(responsibilities.worker)
+                setRole(roles.Worker)
                 break
         }
     }
@@ -87,27 +102,25 @@ const Databank: React.FC<DatabankProps> = () => {
                 </Grid>
             </Container>
 
-            {/*Content (accordion)*/}
-            <Grid container style={{ backgroundColor: "#FFDCBF" }}>
-                <Grid sx={{ width: { xs: '90%', md: '60%' } }} style={{ backgroundColor: "#FFDCBF", margin: "auto", alignItems: "center", paddingTop: '30px' }}>
-                    {steps.map((step, index) => (
-                        <Accordion defaultExpanded key={index} style={{ borderRadius: '25px', backgroundColor: "#FDFDFD" }}>
-                            <AccordionSummary
-                                expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel1a-content"
-                                id="panel1a-header">
-                                <Typography style={{ fontWeight: 'bold', backgroundColor: "#FDFDFD" }}>{step.tip}</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails style={{ display: 'block', backgroundColor: "#FDFDFD", wordWrap: 'break-word', borderRadius: '25px' }}>
-                                <li style={{ listStyleType: "none" }} key={index}>{step.details}</li>
-                            </AccordionDetails>
-                        </Accordion>
-                    ))}
-                    <div style={{ width: "100%", display: "flex", justifyContent: "right", padding: "10px" }}>
-                        <img style={{ width: "30px", height: "30px" }} onClick={handleToTop} src={topArrow}></img>
-                    </div>
-                </Grid>
-            </Grid>
+       
+
+                {/* Content (accordion) */}
+   
+      {(() => {
+        if (role === "agency") {
+          return (
+            <AgencyInstructions></AgencyInstructions>
+          )
+        } else if (role === "business") {
+          return (
+            <BusinessInstructions></BusinessInstructions>
+          )
+        } else {
+          return (
+            <WorkerInstructions></WorkerInstructions>
+          )
+        }
+      })()}
             <Footer></Footer>
         </div>
     );

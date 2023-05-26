@@ -1,10 +1,8 @@
-import MyWorkers from '../Profile/Workers';
 import React, { useEffect, useState } from 'react';
 import {
-  Button,
   CardMedia,
   createTheme,
-  Grid, Link, ListItemButton, ListItemIcon, ThemeProvider, Typography,
+  Grid, ListItemButton, ListItemIcon, ThemeProvider, Typography,
 } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { useTranslation } from 'react-i18next';
@@ -14,7 +12,7 @@ import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchReports } from '../../actions/reportActions';
 import Report from '../../pages/ReportPage/SimpleReport';
-import AgencyStatisticsSummary from '../../pages/MoodStatistics/AgencyStatisticsSummary';
+import AgencyStatistics from '../MoodStatistics/AgencyStatistics';
 
 const BusinessHome = () => {
   const { t } = useTranslation();
@@ -50,8 +48,8 @@ const BusinessHome = () => {
 
   return (
     <ThemeProvider theme={theme}>
-    <Grid container>
-    <Grid sx={{ height: { md: '300px', sm: '300px', xs: '200px' }}} style={{ marginTop: '20px', marginBottom: '20px', maxHeight: '300px', width: '100%', display: 'flex', backgroundImage: 'linear-gradient(to bottom, #FDFDFD, #FDFDFD 50%, #C0CFFA 50%)', position: 'relative' }}>
+      <Grid container>
+        <Grid sx={{ height: { md: '300px', sm: '300px', xs: '200px' } }} style={{ marginTop: '20px', marginBottom: '20px', maxHeight: '300px', width: '100%', display: 'flex', backgroundImage: 'linear-gradient(to bottom, #FDFDFD, #FDFDFD 50%, #C0CFFA 50%)', position: 'relative' }}>
           <Grid item style={{ bottom: '0', position: 'absolute' }} sx={{ width: { md: '35%', sm: '50%', xs: '90%' } }}>
             <CardMedia
               component="img"
@@ -63,36 +61,34 @@ const BusinessHome = () => {
             <h2>{t('welcomeTextBusiness')}</h2>
           </Grid>
         </Grid>
-    
-      <Grid className={classes.generalInfo} sx={{ display: 'flex', flexDirection: { md: 'row', sm: 'row', xs: 'column' } }} >
-          <Grid item className={classes.item} sx={{marginRight: {md: '20px', sm: '20px', xs: '0'}, }}>
-          <ListItemButton style={{ maxHeight: '50px', justifyContent: 'center', marginBottom: '20px' }}>
+        <Grid className={classes.generalInfo} sx={{ display: 'flex', flexDirection: { md: 'row', sm: 'row', xs: 'column' } }} >
+          <Grid item className={classes.item} sx={{ marginRight: { md: '20px', sm: '20px', xs: '0' }, }}>
+            <ListItemButton style={{ maxHeight: '50px', justifyContent: 'center', marginBottom: '20px' }}>
               <ListItemIcon>
                 <MoodIcon sx={{ color: iconColor.base }} />
               </ListItemIcon>
               <Typography style={{ fontWeight: 'bold' }} align="center" variant="h6"> {t('smileSummary')} </Typography>
             </ListItemButton>
-            <Grid sx={{ margin: {md: '20px', sm: '20px', xs: '0px'}}}>
-              <AgencyStatisticsSummary ></AgencyStatisticsSummary>
+            <Grid sx={{ margin: { md: '20px', sm: '20px', xs: '0px' } }}>
+              <AgencyStatistics></AgencyStatistics>
             </Grid>
           </Grid>
-          <Grid item style={{margin: 0, paddingLeft: 12, paddingRight: 12}} className={classes.item}>
-          <ListItemButton style={{ maxHeight: '50px', justifyContent: 'center', marginBottom: '20px' }}>
+          <Grid item style={{ margin: 0, paddingLeft: 12, paddingRight: 12 }} className={classes.item}>
+            <ListItemButton style={{ maxHeight: '50px', justifyContent: 'center', marginBottom: '20px' }}>
               <ListItemIcon>
                 <ErrorOutlineIcon sx={{ color: iconColor.base }} />
               </ListItemIcon>
               <Typography style={{ fontWeight: 'bold' }} align="center" variant="h6"> {t('newReports')} </Typography>
             </ListItemButton>
             {reports.map((report: any) => (
-              <Grid sx={{ margin: {md: '20px', sm: '20px', xs: '5px'}}}>
+              <Grid sx={{ margin: { md: '20px', sm: '20px', xs: '5px' } }}>
                 <Report key={report._id} report={report} />
               </Grid>
             ))}
           </Grid>
         </Grid>
-
-    </Grid>
-  </ThemeProvider>
+      </Grid>
+    </ThemeProvider>
   );
 };
 

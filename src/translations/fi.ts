@@ -59,7 +59,7 @@ export default {
     field_required: 'Pakollinen kenttä',
     invalid_name: 'Virheellinen nimi',
     invalid_password: 'Salasana ei täsmää',
-  invalid_company_name: 'Yrityksen nimen on oltava vähintään 3 merkkiä',
+    invalid_company_name: 'Yrityksen nimen on oltava vähintään 3 merkkiä',
     email_already_used: 'Sähköpostiosoite on jo käytössä',
     agency_profile_missing: 'Henkilöstöpalveluyrityksen profiilia ei löydy',
 
@@ -1318,7 +1318,7 @@ export default {
     stages_of_work_summary: 'Vuokratyössä on kolme osapuolta: henkilöstöpalveluyritys, käyttäjäyritys ja vuokratyöntekijä. Alla on kuvattu yhteistyön viisi vaihetta.',
     responsibilities_summary: 'Jokaisella vuokratyön osapuolella on työturvallisuuteen, työterveyteen ja työhyvinvointiin liittyviä vastuita.',
     instructions_summary: 'Ohjeet ovat lyhyitä tekstejä siitä, miten henkilöstöpalveluyritys, käyttäjäyritys ja vuokratyöntekijä voivat huolehtia vuokratyöntekijän työturvallisuudesta, työterveydestä ja työhyvinvoinnista. Ohjeessa on kerrottu aiheeseen liittyvät lait, mahdolliset muut internetlinkit ja lomakkeet.',
-    good_practises_summary: 'Lomakepohjat ohjaavat huolehtimaan tärkeistä asioista vuokratyötoimeksiannon eri vaiheissa. Lomakkeiden täyttäminen varmistaa, että olennaisimmat vuokratyöntekijän työturvallisuuteen liittyvät seikat käydään läpi ja tärkeistä asioista sovitaan pelisäännöt henkilöstöpalvelu- ja käyttäjäyrityksen välillä. Kahden osapuolen kesken täytetty lomake voidaan aina antaa tiedoksi myös kolmannelle osapuolelle. Tämä toimii osana kumppaneiden välistä tiedonkulkua ja tärkeän informaation perillemenon varmistamista.',
+    good_practises_summary: 'Alla on esimerkkejä vuokratyön eri vaiheisiin liittyvistä hyvistä käytännöistä.',
     forms_summary: 'Lomakepohjat ohjaavat huolehtimaan tärkeistä asioista vuokratyötoimeksiannon eri vaiheissa. Lomakkeiden täyttäminen varmistaa, että olennaisimmat vuokratyöntekijän työturvallisuuteen liittyvät seikat käydään läpi ja tärkeistä asioista sovitaan pelisäännöt henkilöstöpalvelu- ja käyttäjäyrityksen välillä. Kahden osapuolen kesken täytetty lomake voidaan aina antaa tiedoksi myös kolmannelle osapuolelle. Tämä toimii osana kumppaneiden välistä tiedonkulkua ja tärkeän informaation perillemenon varmistamista.',
 
     //Forms in databank
@@ -1335,6 +1335,7 @@ export default {
     form4SubHeader: '(käyttäjäyrityksen ja vuokrayrityksen edustajat täyttävät)',
 
     form5HeaderText: 'LOMEKE 5 - PEREHDYTYS JA TYÖHÖNOPASTUS KIIREELLISISSÄ TILANTEISSA',
+    form5SubHeader: '',
 
     //Business homepage
     welcomeTextBusiness: "Tervetuloa käyttäjäyrityksen etusivulle",
@@ -1356,6 +1357,92 @@ export default {
 
     check_new_reports: 'Katso uusimmat turvallisuusraportit',
     print: 'Tulosta pdf',
+    feeling_report_question: 'Mikä fiilis tänän?',
+
+    //Articles
+    //Article1
+    header1: "1. Jaettu työsuojeluvastuu ",
+    info1: "Vuokratyössä henkilöstöpalveluyrityksellä ja käyttäjäyrityksellä on yhteinen työsuojeluvastuu työntekijän työturvallisuudesta ja terveydestä. Vuokratyöntekijän työturvallisuuden ja -hyvinvoinnin varmistaminen edellyttää etukäteissuunnittelua, asioista sopimista ja yhteistyötä kaikkien osapuolten kesken. ",
+
+    //Article2
+    header2: "2. Yleisvastuu työturvallisuudesta ",
+    info2: "Henkilöstöpalveluyritys on velvollinen huolehtimaan työntekijöidensä turvallisuudesta ja terveydestä työssä. Tämä tarkoittaa mm. työn vaarojen selvittämistä ja arviointia, työsuojelun toimintaohjelmaa, työsuojelun yhteistoimintaa ja perehdytystä. ",
+
+    //Article3
+    header3: "3. Työaikalain noudattaminen ",
+    info3: "Henkilöstöpalveluyritys huolehtii työaikakirjanpidosta. Käyttäjäyritys vastaa työaikalain noudattamisesta vuokratyöntekijän työajan järjestämisessä.",
+
+    //Article4
+    header4: "4. Työntekijöiden vakuuttaminen työtapaturmien ja ammattitautien varalta  ",
+    info4: "Henkilöstöpalveluyrityksen pitää vakuuttaa vuokratyöntekijä työtapaturman ja ammattitaudin varalta.  ",
+
+    //Article5
+    header5: "5. Työterveyshuolto    ",
+    info5: "Henkilöstöpalveluyritys järjestää vuokratyöntekijän työterveyshuollon. ",
+
+    //Article6
+    header6: "6. Tasa-arvon ja yhdenvertaisuuden edistäminen   ",
+    info6: "Henkilöstöpalveluyrityksen on arvioitava yhdenvertaisuuden toteutumista työpaikalla.  ",
+
+    //Article7
+    header7: "7. Käyttäjäyrityksen velvoitteiden täyttämisen varmistaminen    ",
+    info7: "Vuokratyössä henkilöstöpalveluyrityksellä ja käyttäjäyrityksellä on jaettu työsuojeluvastuu. Henkilöstöpalveluyrityksen tulee varmistaa, että käyttäjäyritys huolehtii sille kuuluvista työterveys-, työturvallisuus- ja työhyvinvointivastuistaan ja velvoitteistaan.      ",
+
+    //Article8
+    header8: "8. Vuokratyöntekijän sopivuuden varmistaminen     ",
+    info8: "Henkilöstöpalveluyrityksen pitää varmistaa, että vuokratyöntekijällä on riittävä ammattitaito, kokemus ja sopivuus työhön.   ",
+
+    //Article9
+    header9: "9. Henkilösuojainten hankkiminen  ",
+    info9: "Henkilöstöpalveluyritys ja käyttäjäyritys sopivat henkilönsuojainten tarjoamisesta työntekijälle. Työssä tarvittavat suojaimet valitaan työpaikalla tehdyn riskinarvioinnin perusteella.  ",
+
+    //Article10
+    header10: "2. Tilaajavastuu ",
+    info10: "Käyttäjäyrityksen on hankittava henkilöstöpalveluyritykseltä ennen sopimuksen solmimista tilaajavastuulain mukaiset selvitykset. Ulkomaista vuokratyövoimaa käytettäessä on huomioitava vastaavat vähimmäistyöehdot kuin kotimaisilla vuokratyöntekijöillä.  ",
+
+    //Article11
+    header11: "3. Tietojen antaminen henkilöstöpalveluyritykselle   ",
+    info11: "Käyttäjäyrityksen on annettava henkilöstöpalveluyritykselle tieto vuokratyön ammattitaitovaatimuksista ja erityispiirteistä sekä muut tiedot, jotka henkilöstöpalveluyritys tarvitsee velvollisuuksiensa täyttämiseksi. ",
+
+    //Article12
+    header12: "4. Yleisvastuu työturvallisuudesta",
+    info12: "Käyttäjäyritys on velvollinen huolehtimaan vuokratyöntekijöiden turvallisuudesta ja terveydestä työssä.    ",
+
+    //Article13
+    header13: "6. Tasa-arvon ja yhdenvertaisuuden edistäminen  ",
+    info13: "Työnantajan pitää edistää tasa-arvoa ja yhdenvertaisuutta työpaikalla. Vuokratyöntekijöitä pitää kohdella yhdenvertaisesti muiden työntekijöiden kanssa. Yli 30 työntekijän työpaikalla pitää laatia tasa-arvo- ja yhdenvertaisuussuunnitelmat.   ",
+
+    //Article14
+    header14: "1. Huolehdin omasta ja työkavereiden työhyvinvoinnista ja -turvallisuudesta",
+    info14: "Työntekijän on osaamisensa mukaisesti ja käytettävissään olevin keinoin huolehdittava omasta ja muiden työntekijöiden turvallisuudesta ja terveydestä.   ",
+
+    //Article15
+    header15: "2. En häiritse tai kohtele muita epäasiallisesti  ",
+    info15: "Työntekijän on vältettävä muihin työntekijöihin kohdistuvaa häirintää ja muuta epäasiallista kohtelua.  ",
+
+    //Article16
+    header16: "3. Noudatan työpaikan ohjeita ",
+    info16: "Työntekijän on noudatettava työnantajan antamia määräyksiä ja ohjeita.  ",
+
+    //Article17
+    header17: "4. Käytän työvälineitä, henkilönsuojaimia ja turvalaitteita asianmukaisesti",
+    info17: "Työntekijän tulee käyttää oikein koneita, työvälineitä ja muita laitteita sekä niissä olevia turvallisuus- ja suojalaitteita. Lisäksi työntekijän tulee käyttää työnantajan antamia henkilönsuojaimia.  ",
+
+    //Article18
+    header18: "5. Ilmoitan havaitsemistani vioista ja puutteista  ",
+    info18: "Työntekijän on ilmoitettava työssä havaitsemistaan vioista ja puutteista työnantajalle ja työsuojeluvaltuutetulle.  ",
+
+    //Instructions1
+    header19: "2. Henkilöstöpalveluyrityksen yleisvastuu työturvallisuudesta    ",
+    info19: "Henkilöstöpalveluyritys on velvollinen huolehtimaan työntekijöidensä turvallisuudesta ja terveydestä työssä. Tämä tarkoittaa mm. työn vaarojen selvittämistä ja arviointia, työsuojelun toimintaohjelmaa, työsuojelun yhteistoimintaa ja perehdytystä. ",
+
+    //Instructions2
+    header20: "10. Työkyvyn tuki",
+    info20: "Työterveysyhteistyö tarkoittaa vuokratyössä yhteistyötä työterveyshuollon, työnantajan, työntekijän ja vuokratyötä käyttävän yrityksen välillä.  Työkyvyn varhainen tuki tarkoittaa niitä toimenpiteitä, joilla edistetään työntekijän työkykyä ja ehkäistään työkyvyn heikkenemistä. ",
+
+    //Instructions3
+    header21: "11. Työtapaturmat",
+    info21: "Henkilöstöpalveluyrityksen ja käyttäjäyrityksen on sovittava, miten toimitaan, jos vuokratyöntekijälle sattuu tapaturma. Työntekijän tulee saada ohjeistus sovitusta toimintatavasta. ",
 
 }
 

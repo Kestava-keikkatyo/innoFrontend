@@ -319,7 +319,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           )}
           {(role === roles.Business || role === roles.Agency) && (
             <>
-              <ListItemButton component="a" href="/databank" target="_blank" onClick={() => handleClick("databank")} className={classes.button}>
+              <ListItemButton component="a" href="/databank/lifeline" target="_blank" onClick={() => handleClick("databank")} className={classes.button}>
                 <ListItemIcon>
                   <Security sx={{ color: iconColor.base }} />
                 </ListItemIcon>
@@ -480,7 +480,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
             <img src={Sisainenlinkki} style={{ width: '30px', marginRight: 10 }}></img>
             <ListItemText style={{ textTransform: 'uppercase' }} primary={t('home')} />
           </ListItemButton>
-          <ListItemButton component={Link} to="/databank">
+          <ListItemButton component={Link} to="/databank/lifeline">
             <img src={Sisainenlinkki} style={{ width: '30px', marginRight: 10 }}></img>
             <ListItemText style={{ textTransform: 'uppercase' }} primary={t('databank')} />
           </ListItemButton>

@@ -32,7 +32,7 @@ const Footer = () => {
                     </Grid>
                     <Grid className='content-center' item xs={12} sm={12} md={4}>
                         <div className='content-center' style={{ display: 'flex', flexDirection: 'column' }}>
-                            <Link to="/databank" style={{ textDecoration: 'none', maxWidth: 'fit-content' }}>
+                            <Link to="/databank/lifeline" style={{ textDecoration: 'none', maxWidth: 'fit-content' }}>
                                 <Typography>{t('databank_link')}</Typography>
                             </Link>
                             <Link to="/login" style={{ textDecoration: 'none', maxWidth: 'fit-content' }}>

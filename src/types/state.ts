@@ -763,6 +763,7 @@ export interface FileState {
   currentFiles: (File | null)[]
 }
 
+export const FEELING_GET_ALL_REQUEST = 'FEELING_GET_ALL_REQUEST'
 export const ADD_FEELING = 'ADD_FEELING'
 export const ADD_FEELINGS = 'ADD_FEELINGS'
 export const FETCH_FEELINGS = 'FETCH_FEELINGS'

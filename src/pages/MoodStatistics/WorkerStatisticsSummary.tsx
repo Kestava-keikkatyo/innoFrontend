@@ -21,7 +21,6 @@ import { useTranslation } from 'react-i18next'
 const WorkerStatisticsSummary = () => {
   const feelings = useSelector((state: IRootState) => state.feeling?.feelings);
   const { t } = useTranslation()
-  console.log('StatsSummary:feelings', feelings);
 
   if (!feelings) {
     return (

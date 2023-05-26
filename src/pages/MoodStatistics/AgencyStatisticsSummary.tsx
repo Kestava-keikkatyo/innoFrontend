@@ -9,18 +9,28 @@ import {
 } from '../../utils/feelingUtils';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next'
+
 /**
  * @component
  */
 const AgencyStatisticsSummary: React.FC<any> = () => {
   const { feelings } = useSelector((state: any) => state.feeling);
-  console.log('AgencyStatisticsSummary:feelings:', feelings);
+  const feelingsList = []
+
+  if (feelings.length != 0) {
+    //console.log('AgencyStatisticsSummary: feelingsList lenght:', feelings.data.length);
+    for (let i = 0; i < feelings.data.length - 1; i++) {
+      feelingsList.push(feelings.data[i].feeling)
+      //console.log('Push:', feelings.data[i].feeling);
+    }
+  }
+
   const { t } = useTranslation()
   if (!feelings) {
     return (
       <div className="worker-statistics-summary">
         <Typography variant="h5" className="no-data-text">
-         {t('no_data')}
+          {t('no_data')}
         </Typography>
       </div>
     );
@@ -28,25 +38,25 @@ const AgencyStatisticsSummary: React.FC<any> = () => {
 
   return (
     <Grid className="worker-statistics-summary" container >
-      <Grid item style={{padding: "0"}}>
-        <ProgressPieChart datasets={getDataSet(averageFeeling(feelings))}>
+      <Grid item style={{ padding: "0" }}>
+        <ProgressPieChart datasets={getDataSet(averageFeeling(feelingsList))}>
           <Typography variant="h2" className='header2'>
-            {averageFeeling(feelings).toString()}
+            {averageFeeling(feelingsList).toString()}
           </Typography>
           <Hidden smDown>
             <Typography variant="h3" className='header4'>
-              {calculateCheer(averageFeeling(feelings), 4)}
+              {calculateCheer(averageFeeling(feelingsList), 4)}
             </Typography>
           </Hidden>
         </ProgressPieChart>
         <Typography>{t('average')}</Typography>
       </Grid>
-      <Grid item style={{padding: "0"}}>
-        <ProgressPieChart datasets={getTotalDataSet(feelings.length)}>
-          <Typography variant="h2" className='header2'>{feelings.length}</Typography>
+      <Grid item style={{ padding: "0" }}>
+        <ProgressPieChart datasets={getTotalDataSet(feelingsList.length)}>
+          <Typography variant="h2" className='header2'>{feelingsList.length}</Typography>
           <Hidden smDown>
             <Typography variant="h3" className='header4'>
-              {calculateCheer(feelings.length, 100)}
+              {calculateCheer(feelingsList.length, 100)}
             </Typography>
           </Hidden>
         </ProgressPieChart>
@@ -57,3 +67,12 @@ const AgencyStatisticsSummary: React.FC<any> = () => {
 };
 
 export default AgencyStatisticsSummary;
+
+/*useEffect(() => {
+  dispatch(fetchFeelings())
+    users.map((worker: any) => {
+      console.log("Worker feeelings" + worker.feelings);
+      return dispatch(addFeelings(worker.feelings));
+    });
+}, [dispatch]);*/
+

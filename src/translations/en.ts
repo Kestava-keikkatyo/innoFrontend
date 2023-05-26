@@ -1053,7 +1053,7 @@ export default {
     form1ByDate: 'by (date)',
 
     // Form 2
-    form2Header: 'FORM 2 â€“ EMPLOYEE GENERAL ORIENTATION (to be completed by the rental company\'s orientation officer)',
+    form2Header: 'FORM 2 - EMPLOYEE GENERAL ORIENTATION (to be completed by the rental company\'s orientation officer)',
     form2Text1: 'The personnel service company\'s orientator fills out the form in connection with the orientation of the temporary employee. The list of subject areas on the form serves as a checklist of things to go through in the orientation. In the latter part of the form, the contact information of persons important to the employee is entered.',
     form2Text2: 'A copy of the completed form must be given to the employee and also sent to the user company. From the completed form, the user company can see what the general orientation has included. This helps the user company in planning the content of the job guidance.',
     form2Text3: 'General orientation given',
@@ -1322,42 +1322,129 @@ export default {
     stages_of_work_summary: 'There are three parties in temporary work: the personnel service company, the user company and the temporary employee. The five stages of cooperation are described below.',
     responsibilities_summary: 'Each party to the temporary work has responsibilities related to occupational safety, occupational health and occupational well- being.',
     instructions_summary: 'The instructions are short texts on how the personnel service company, the user company and the temporary worker can take care of the occupational safety, occupational health and well-being of the temporary worker. The instructions describe the relevant laws, possible other internet links and forms.',
-    good_practises_summary: "The form templates guide you in taking care of important issues in the different phases of the contract. Filling out the forms ensures that the most essential issues related to the temporary employee's job security are reviewed and the rules of the game are agreed on important issues between the personnel service and the user company. A form filled in between two parties can always be given to a third party as well. This works as part of the flow of information between partners and ensuring the transmission of important information.",
+    good_practises_summary: "Below are examples of good practices related to the different phases of temporary work.",
     forms_summary: "The form templates guide you in taking care of important issues in the different phases of the contract. Filling out the forms ensures that the most essential issues related to the temporary employee's job security are reviewed and the rules of the game are agreed on important issues between the personnel service and the user company. A form filled in between two parties can always be given to a third party as well. This works as part of the flow of information between partners and ensuring the transmission of important information.",
 
-    //Forms in databank
-    form1HeaderText: 'FORM 1 - OCCUPATIONAL SAFETY AND WELL-BEING MATTERS RELATED TO THE CUSTOMER AGREEMENT',
-    form1SubHeader: '(to be completed by representatives of the rental company and the user company)',
+     //Forms in databank
+     form1HeaderText: 'FORM 1 - OCCUPATIONAL SAFETY AND WELL-BEING MATTERS RELATED TO THE CUSTOMER AGREEMENT',
+     form1SubHeader: '(to be completed by representatives of the rental company and the user company)',
+ 
+     form2HeaderText: 'FORM 2 – EMPLOYEE GENERAL ORIENTATION',
+     form2SubHeader: '(to be completed by the rental company\'s orientation officer)',
+ 
+     form3HeaderText: 'FORM 3 - JOB COUNSELING',
+     form3SubHeader: '(filled in by the user company\'s job advisor)',
+ 
+     form4HeaderText: 'FORM 4 - FUNCTIONAL EVALUATION',
+     form4SubHeader: '(to be completed by the representatives of the user company and the rental company)',
 
-    form2HeaderText: 'FORM 2 – EMPLOYEE GENERAL ORIENTATION',
-    form2SubHeader: '(to be completed by the rental company\'s orientation officer)',
-
-    form3HeaderText: 'FORM 3 - JOB COUNSELING',
-    form3SubHeader: '(filled in by the user company\'s job advisor)',
-
-    form4HeaderText: 'FORM 4 - FUNCTIONAL EVALUATION',
-    form4SubHeader: '(to be completed by the representatives of the user company and the rental company)',
-
-    form5HeaderText: 'FORM 5 - INDUCTION AND JOB QUIDANCE IN URGENT SITUATIONS',
-
+     form5HeaderText: 'FORM 5 - INDUCTION AND JOB QUIDANCE IN URGENT SITUATIONS',
+     form5SubHeader: '',
+     
     //Business homepage
     welcomeTextBusiness: "Welcome to business homepage",
     smileSummary: "Smile summary",
     newReports: "New reports",
     businessFrontpage: "Business frontpage",
 
-    //Agency homepage
-    welcomeTextAgency: "Welcome to agency homepage",
-    agencyFrontpage: "Agency frontpage",
+     //Agency homepage
+     welcomeTextAgency: "Welcome to agency homepage",
+     agencyFrontpage: "Agency frontpage",
 
-    //Worker homepage
-    welcomeTextWorker: "Welcome to worker homepage ",
-    workerFrontpage: "Worker homepage",
+     //Worker homepage
+     welcomeTextWorker: "Welcome to worker homepage ",
+     workerFrontpage: "Worker homepage",
+ 
+     //Other
+     Name: 'Name',
+     contactInformation: 'Contact information',
+     check_new_reports: 'Check new reports',
+     print: 'Print pdf',
+     feeling_report_question: 'What is your feeling today?',
 
-    //Other
-    Name: 'Name',
-    contactInformation: 'Contact information',
-    check_new_reports: 'Check new reports',
-    print: 'Print pdf',
+    //Articles
+    //Article1
+    header1: "1. Jaettu työsuojeluvastuu ",
+    info1: "Vuokratyössä henkilöstöpalveluyrityksellä ja käyttäjäyrityksellä on yhteinen työsuojeluvastuu työntekijän työturvallisuudesta ja terveydestä. Vuokratyöntekijän työturvallisuuden ja -hyvinvoinnin varmistaminen edellyttää etukäteissuunnittelua, asioista sopimista ja yhteistyötä kaikkien osapuolten kesken. ",
 
+    //Article2
+    header2: "2. Yleisvastuu työturvallisuudesta ",
+    info2: "Henkilöstöpalveluyritys on velvollinen huolehtimaan työntekijöidensä turvallisuudesta ja terveydestä työssä. Tämä tarkoittaa mm. työn vaarojen selvittämistä ja arviointia, työsuojelun toimintaohjelmaa, työsuojelun yhteistoimintaa ja perehdytystä. ",
+
+    //Article3
+    header3: "3. Työaikalain noudattaminen ",
+    info3: "Henkilöstöpalveluyritys huolehtii työaikakirjanpidosta. Käyttäjäyritys vastaa työaikalain noudattamisesta vuokratyöntekijän työajan järjestämisessä.",
+
+    //Article4
+    header4: "4. Työntekijöiden vakuuttaminen työtapaturmien ja ammattitautien varalta  ",
+    info4: "Henkilöstöpalveluyrityksen pitää vakuuttaa vuokratyöntekijä työtapaturman ja ammattitaudin varalta.  ",
+
+    //Article5
+    header5: "5. Työterveyshuolto    ",
+    info5: "Henkilöstöpalveluyritys järjestää vuokratyöntekijän työterveyshuollon. ",
+
+    //Article6
+    header6: "6. Tasa-arvon ja yhdenvertaisuuden edistäminen   ",
+    info6: "Henkilöstöpalveluyrityksen on arvioitava yhdenvertaisuuden toteutumista työpaikalla.  ",
+
+    //Article7
+    header7: "7. Käyttäjäyrityksen velvoitteiden täyttämisen varmistaminen    ",
+    info7: "Vuokratyössä henkilöstöpalveluyrityksellä ja käyttäjäyrityksellä on jaettu työsuojeluvastuu. Henkilöstöpalveluyrityksen tulee varmistaa, että käyttäjäyritys huolehtii sille kuuluvista työterveys-, työturvallisuus- ja työhyvinvointivastuistaan ja velvoitteistaan.      ",
+
+    //Article8
+    header8: "8. Vuokratyöntekijän sopivuuden varmistaminen     ",
+    info8: "Henkilöstöpalveluyrityksen pitää varmistaa, että vuokratyöntekijällä on riittävä ammattitaito, kokemus ja sopivuus työhön.   ",
+
+    //Article9
+    header9: "9. Henkilösuojainten hankkiminen  ",
+    info9: "Henkilöstöpalveluyritys ja käyttäjäyritys sopivat henkilönsuojainten tarjoamisesta työntekijälle. Työssä tarvittavat suojaimet valitaan työpaikalla tehdyn riskinarvioinnin perusteella.  ",
+
+    //Article10
+    header10: "2. Tilaajavastuu ",
+    info10: "Käyttäjäyrityksen on hankittava henkilöstöpalveluyritykseltä ennen sopimuksen solmimista tilaajavastuulain mukaiset selvitykset. Ulkomaista vuokratyövoimaa käytettäessä on huomioitava vastaavat vähimmäistyöehdot kuin kotimaisilla vuokratyöntekijöillä.  ",
+
+    //Article11
+    header11: "3. Tietojen antaminen henkilöstöpalveluyritykselle   ",
+    info11: "Käyttäjäyrityksen on annettava henkilöstöpalveluyritykselle tieto vuokratyön ammattitaitovaatimuksista ja erityispiirteistä sekä muut tiedot, jotka henkilöstöpalveluyritys tarvitsee velvollisuuksiensa täyttämiseksi. ",
+
+    //Article12
+    header12: "4. Yleisvastuu työturvallisuudesta",
+    info12: "Käyttäjäyritys on velvollinen huolehtimaan vuokratyöntekijöiden turvallisuudesta ja terveydestä työssä.    ",
+
+    //Article13
+    header13: "6. Tasa-arvon ja yhdenvertaisuuden edistäminen  ",
+    info13: "Työnantajan pitää edistää tasa-arvoa ja yhdenvertaisuutta työpaikalla. Vuokratyöntekijöitä pitää kohdella yhdenvertaisesti muiden työntekijöiden kanssa. Yli 30 työntekijän työpaikalla pitää laatia tasa-arvo- ja yhdenvertaisuussuunnitelmat.   ",
+
+    //Article14
+    header14: "1. Huolehdin omasta ja työkavereiden työhyvinvoinnista ja -turvallisuudesta",
+    info14: "Työntekijän on osaamisensa mukaisesti ja käytettävissään olevin keinoin huolehdittava omasta ja muiden työntekijöiden turvallisuudesta ja terveydestä.   ",
+
+    //Article15
+    header15: "2. En häiritse tai kohtele muita epäasiallisesti  ",
+    info15: "Työntekijän on vältettävä muihin työntekijöihin kohdistuvaa häirintää ja muuta epäasiallista kohtelua.  ",
+
+    //Article16
+    header16: "3. Noudatan työpaikan ohjeita ",
+    info16: "Työntekijän on noudatettava työnantajan antamia määräyksiä ja ohjeita.  ",
+
+    //Article17
+    header17: "4. Käytän työvälineitä, henkilönsuojaimia ja turvalaitteita asianmukaisesti",
+    info17: "Työntekijän tulee käyttää oikein koneita, työvälineitä ja muita laitteita sekä niissä olevia turvallisuus- ja suojalaitteita. Lisäksi työntekijän tulee käyttää työnantajan antamia henkilönsuojaimia.  ",
+
+    //Article18
+    header18: "5. Ilmoitan havaitsemistani vioista ja puutteista  ",
+    info18: "Työntekijän on ilmoitettava työssä havaitsemistaan vioista ja puutteista työnantajalle ja työsuojeluvaltuutetulle.  ",
+
+     //Instructions1
+     header19: "2. Henkilöstöpalveluyrityksen yleisvastuu työturvallisuudesta    ",
+     info19: "Henkilöstöpalveluyritys on velvollinen huolehtimaan työntekijöidensä turvallisuudesta ja terveydestä työssä. Tämä tarkoittaa mm. työn vaarojen selvittämistä ja arviointia, työsuojelun toimintaohjelmaa, työsuojelun yhteistoimintaa ja perehdytystä. ",
+ 
+     //Instructions2
+     header20: "10. Työkyvyn tuki",
+     info20: "Työterveysyhteistyö tarkoittaa vuokratyössä yhteistyötä työterveyshuollon, työnantajan, työntekijän ja vuokratyötä käyttävän yrityksen välillä.  Työkyvyn varhainen tuki tarkoittaa niitä toimenpiteitä, joilla edistetään työntekijän työkykyä ja ehkäistään työkyvyn heikkenemistä. ",
+ 
+     //Instructions3
+     header21: "11. Työtapaturmat",
+     info21: "Henkilöstöpalveluyrityksen ja käyttäjäyrityksen on sovittava, miten toimitaan, jos vuokratyöntekijälle sattuu tapaturma. Työntekijän tulee saada ohjeistus sovitusta toimintatavasta. ",
+   
 }

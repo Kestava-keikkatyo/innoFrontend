@@ -56,7 +56,7 @@ const FirstLandingPage: React.FC = () => {
             <Grid sx={{ boxShadow: 1, display: 'flex', flexDirection: 'column' }} style={{ textAlign: 'center', paddingTop: '20px', height: '100%' }}>
               <Container style={{ marginBottom: '10px', fontWeight: 'bold', fontSize: '24px' }}>{t('right_box_header')}</Container>
               <Container style={{ marginBottom: '10px' }}>{t('right_box_content')}</Container>
-              <Link to="/databank">
+              <Link to="/databank/lifeline">
                 <Button style={{ border: '3px solid #F47D20', borderRadius: '20px', color: '#2C2C2C', width: '90%', fontWeight: 'bold' }}>{t('databank_button')}</Button>
               </Link>
               <div style={{ marginTop: 'auto' }}>

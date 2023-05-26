@@ -7,7 +7,8 @@
     "form": {
       "formName": "LOMAKE 1 – ASIAKASSOPIMUKSEEN LIITTYVÄT TYÖTURVALLISUUS- JA TYÖHYVINVOINTIASIAT",
       "title": "(henkilöstöpalveluyrityksen ja käyttäjäyrityksen edustajat täyttävät yhdessä)",
-      "description": "Henkilöstöpalveluyritys ja käyttäjäyritys tekevät asiakassopimuksen. Käyttäjäyritys antaa henkilöstöpalveluyritykselle tietoa työolosuhteista ja niihin liittyvistä työturvallisuus-, työterveys- ja työhyvinvointiasioista. Yritykset käyvät läpi työturvallisuuteen, terveyteen ja hyvinvointiin liittyvien vastuiden jakautumisen yritysten kesken. Yritykset sopivat mm. asiakassuhteen aikaisesta tiedonkulusta, henkilönsuojainten hankinnasta, perehdytyksestä ja toimintatavoista työtapaturma-, sairaspoissaolo- ja vaaratilanteisiin."
+      "description": "Henkilöstöpalveluyritys ja käyttäjäyritys tekevät asiakassopimuksen. Käyttäjäyritys antaa henkilöstöpalveluyritykselle tietoa työolosuhteista ja niihin liittyvistä työturvallisuus-, työterveys- ja työhyvinvointiasioista. Yritykset käyvät läpi työturvallisuuteen, terveyteen ja hyvinvointiin liittyvien vastuiden jakautumisen yritysten kesken. Yritykset sopivat mm. asiakassuhteen aikaisesta tiedonkulusta, henkilönsuojainten hankinnasta, perehdytyksestä ja toimintatavoista työtapaturma-, sairaspoissaolo- ja vaaratilanteisiin.",
+      "image": "vtm_A_vuokratyonvaiheet_01.png"
     },
     "details": [
       "Lainsäädännöstä seuraavien työturvallisuusvastuiden läpikäyminen",
@@ -25,7 +26,8 @@
     "form": {
       "formName": "",
       "title": "",
-      "description": "Käyttäjäyritys tilaa henkilöstöpalveluyritykseltä työntekijän työtehtävään. Käyttäjäyritys kertoo henkilöstöpalveluyritykselle työn ammattitaitovaatimukset ja erityispiirteet."
+      "description": "Käyttäjäyritys tilaa henkilöstöpalveluyritykseltä työntekijän työtehtävään. Käyttäjäyritys kertoo henkilöstöpalveluyritykselle työn ammattitaitovaatimukset ja erityispiirteet.",
+      "image": "vtm_A_vuokratyonvaiheet_02.png"
     },
     "details": [
       "Vuokratyöntekijältä edellytettävästä koulutuksesta, työkokemuksesta sekä terveydentila- ja ammattitaitovaatimuksista",
@@ -45,7 +47,8 @@
     "form": {
       "formName": "LOMAKE 2 – TYÖNTEKIJÄN YLEISPEREHDYTYS",
       "title": "(henkilöstöpalveluyrityksen perehdyttäjä täyttää)",
-      "description": "Henkilöstöpalveluyritys ja vuokratyöntekijä tekevät kirjallisen työsopimuksen. Henkilöstöpalveluyritys antaa vuokratyöntekijälle yleisperehdytyksen, jossa käydään läpi mm. työntekijän velvoitteet, työtehtävä ja siinä vaadittava osaaminen, työn vaarat ja erityispiirteet, työvaatetus ja henkilönsuojaimet, työterveyshuolto ja toiminta työtapaturma-, sairastumis- ja muissa vaaratilanteissa."
+      "description": "Henkilöstöpalveluyritys ja vuokratyöntekijä tekevät kirjallisen työsopimuksen. Henkilöstöpalveluyritys antaa vuokratyöntekijälle yleisperehdytyksen, jossa käydään läpi mm. työntekijän velvoitteet, työtehtävä ja siinä vaadittava osaaminen, työn vaarat ja erityispiirteet, työvaatetus ja henkilönsuojaimet, työterveyshuolto ja toiminta työtapaturma-, sairastumis- ja muissa vaaratilanteissa.",
+      "image": "vtm_A_vuokratyonvaiheet_03.png"
     },
     "details": [
       "Työntekijän velvoitteet",
@@ -69,7 +72,8 @@
     "form": {
       "formName": "LOMAKE 3 – TYÖNOPASTUS",
       "title": "(käyttäjäyrityksen työnopastaja täyttää)",
-      "description": "Käyttäjäyritys opastaa vuokratyöntekijän työhön ja työoloihin. Työnopastuksessa käydään läpi mm. työtehtävät ja turvalliset työtavat, työssä esiintyvät haitta- ja vaaratekijät ja niiltä suojautuminen, työajat ja tauot, toiminta onnettomuus- ja poikkeustilanteissa, turvallisuushavaintojen tekeminen sekä tiedotuskäytännöt."
+      "description": "Käyttäjäyritys opastaa vuokratyöntekijän työhön ja työoloihin. Työnopastuksessa käydään läpi mm. työtehtävät ja turvalliset työtavat, työssä esiintyvät haitta- ja vaaratekijät ja niiltä suojautuminen, työajat ja tauot, toiminta onnettomuus- ja poikkeustilanteissa, turvallisuushavaintojen tekeminen sekä tiedotuskäytännöt.",
+      "image": "vtm_A_vuokratyonvaiheet_04.png"
     },
     "details": [
       "Työtehtävät sekä turvalliset ja terveelliset työtavat",
@@ -91,7 +95,8 @@
     "form": {
       "formName": "LOMAKE 4 – TOIMINNAN ARVIOINTI",
       "title": "",
-      "description": "Vuokratyöntekijän työtä johtaa ja valvoo käyttäjäyritys. Henkilöstöpalveluyrityksen, käyttäjäyrityksen ja vuokratyöntekijän on hyvä keskustella ja antaa palautetta toisilleen koko vuokratyötoimeksiannon ajan."
+      "description": "Vuokratyöntekijän työtä johtaa ja valvoo käyttäjäyritys. Henkilöstöpalveluyrityksen, käyttäjäyrityksen ja vuokratyöntekijän on hyvä keskustella ja antaa palautetta toisilleen koko vuokratyötoimeksiannon ajan.",
+      "image": "vtm_A_vuokratyonvaiheet_05.png"
     },
     "details": [
       "Nimetään työpari/ohjaaja, joka auttaa, tukee ja valvoo vuokratyöntekijää erityisesti ensimmäisten päivien ajan",

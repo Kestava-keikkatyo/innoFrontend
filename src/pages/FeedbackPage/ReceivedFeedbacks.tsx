@@ -16,6 +16,7 @@ const ReceivedFeedbacks: React.FC = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const { feedbacks } = useSelector((state: IRootState) => state.feedback || []);
+  console.log('FEEDBACKS: ' + feedbacks)
 
   useEffect(() => {
     dispatch(fetchFeedbacksAppointedToMe());
