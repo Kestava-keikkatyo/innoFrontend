@@ -16,7 +16,7 @@ import {
 } from '@mui/material'
 import { Close as CloseIcon } from '@mui/icons-material'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchBusinessContracts } from '../../actions/businessContractActions'
+import { fetchContractsAsTarget } from '../../actions/contractActions'
 import { postWorkContract } from '../../actions/workContractActions'
 import { IRootState } from '../../utils/store'
 
@@ -30,11 +30,11 @@ import { IRootState } from '../../utils/store'
 const WorkerModal: React.FC<any> = ({ modalState, workerData }) => {
   const {displayModal, setDisplayModal} = modalState
   const [business, setBusiness] = useState('')
-  const businessContracts = useSelector((state: IRootState) => state.businessContracts.madeContracts)
+  const businessContracts = useSelector((state: IRootState) => state.businessContracts.contracts)
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchBusinessContracts())
+    dispatch(fetchContractsAsTarget())
   }, [dispatch])
 
   const submit = () => {

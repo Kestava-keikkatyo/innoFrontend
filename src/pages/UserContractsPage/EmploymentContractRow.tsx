@@ -10,11 +10,10 @@ import {
 import makeStyles from '@mui/styles/makeStyles';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  deleteEmploymentAgreement,
-  fetchBusinessContractsAsTarget,
+  deleteEmploymentContractAsWorkerOrBusiness,
   fetchEmploymentContractsAsWorkerOrBusiness,
-  signEmploymentAgreement,
-} from '../../actions/businessContractActions';
+  signEmploymentContract,
+} from '../../actions/contractActions';
 import { severity, User } from '../../types/types';
 import { setAlert } from '../../actions/alertActions';
 import { 
@@ -38,7 +37,7 @@ const EmploymentContractRow: React.FC<any> = ({ view, contract }) => {
 
 
   function deleteContract(contract: any): void {
-    dispatch(deleteEmploymentAgreement(contract._id))
+    dispatch(deleteEmploymentContractAsWorkerOrBusiness(contract._id))
     dispatch(setAlert('Contract deleted!', severity.Success))
     removeAllContactData()
     switch(role) {
@@ -52,7 +51,7 @@ const EmploymentContractRow: React.FC<any> = ({ view, contract }) => {
   }
 
   function signContract(contract: any): void {
-    dispatch(signEmploymentAgreement(contract._id))
+    dispatch(signEmploymentContract(contract._id))
     dispatch(setAlert('Contract accepted!', severity.Success))
     removeAllContactData()
     switch(role) {

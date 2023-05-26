@@ -5,7 +5,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import { useDispatch, useSelector } from 'react-redux'
 import { IRootState } from '../../utils/store';
 import { fetchWorkContracts } from '../../actions/workContractActions';
-import { fetchBusinessContracts } from '../../actions/businessContractActions';
+import { fetchContractsAsTarget } from '../../actions/contractActions';
 import MakeWorkContracts from './MakeWorkContracts';
 import WorkerModal from './WorkerModal';
 import ManageWorkContracts from './ManageWorkContracts';
@@ -36,7 +36,7 @@ const WorkerContractPage = () => {
   const dispatch = useDispatch()
   
   useEffect(() => {
-    dispatch(fetchBusinessContracts())
+    dispatch(fetchContractsAsTarget())
     dispatch(fetchWorkContracts())
   },[dispatch])
 

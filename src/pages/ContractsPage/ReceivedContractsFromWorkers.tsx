@@ -3,10 +3,10 @@ import { Typography, Grid } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { useDispatch } from 'react-redux';
 import {
-  acceptBusinessContractFromWorker,
-  declineBusinessContract,
-  sendBackBusinessContract,
-} from '../../actions/businessContractActions';
+  acceptContractFromWorker,
+  rejectContract,
+  sendBackContract,
+} from '../../actions/contractActions';
 import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
 import ContractsRequestedTable from './ContractsRequestedTable';
@@ -63,12 +63,12 @@ const ReceicedContractsFromWorkers = (props: {
     userId: string,
     formId: string
   ) => {
-    dispatch(acceptBusinessContractFromWorker(contractId, userId, formId));
+    dispatch(acceptContractFromWorker(contractId, userId, formId));
     dispatch(setAlert('Contract from Worker accepted.', severity.Info, 3));
   };
 
   const declineContract = (contractId: string, userId: string, formId: any) => {
-    dispatch(declineBusinessContract(contractId, userId));
+    dispatch(rejectContract(contractId, userId));
     if (formId) {
       dispatch(deleteBusinessContractForm(formId, userId));
     }
@@ -80,7 +80,7 @@ const ReceicedContractsFromWorkers = (props: {
     userId: string,
     formId: string
   ) => {
-    dispatch(sendBackBusinessContract(contractId, userId, formId));
+    dispatch(sendBackContract(contractId, userId, formId));
     dispatch(setAlert('Contract sended back.', severity.Info, 3));
   };
 

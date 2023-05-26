@@ -14,8 +14,8 @@ import makeStyles from '@mui/styles/makeStyles';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  sendBusinessContract,
-} from '../../actions/businessContractActions';
+  sendContract,
+} from '../../actions/contractActions';
 import { severity } from '../../types/types';
 import { setAlert } from '../../actions/alertActions';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -61,7 +61,7 @@ import Tooltip from '@mui/material/Tooltip';
   const signContract = (contractId: any) => {
     let status = "signed"
     dispatch(
-      sendBusinessContract(
+      sendContract(
         contractId,
         status
       )

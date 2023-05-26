@@ -12,7 +12,7 @@ import {
 import makeStyles from '@mui/styles/makeStyles';
 import { Close as CloseIcon } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
-import { addBusinessContract } from '../../actions/businessContractActions';
+import { addContract } from '../../actions/contractActions';
 import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
 import { useTranslation } from 'react-i18next';
@@ -44,9 +44,9 @@ const CooperationInfoModal: React.FC<any> = ({
   const { t } = useTranslation();
   const [formId, setFormId] = React.useState('None');
 
-  const addContract = async () => {
+  const addNewContract = async () => {
     dispatch(
-      addBusinessContract(
+      addContract(
         agencyId,
         formId,
         'request'
@@ -96,7 +96,7 @@ const CooperationInfoModal: React.FC<any> = ({
       </DialogContent>
       <DialogActions></DialogActions>
       <DialogActions style={{ marginBottom: 10 }}>
-        <Button color="primary" variant="contained" onClick={addContract}>
+        <Button color="primary" variant="contained" onClick={addNewContract}>
           {t('send_contract')}
         </Button>
         <Button color="primary" variant="outlined" onClick={() => closeModal()}>

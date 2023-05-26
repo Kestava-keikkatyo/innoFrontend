@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { me } from '../../actions/userActions';
-import { addAgencyContract, fetchBusinessContracts, fetchEmploymentContractsAsAgency } from '../../actions/businessContractActions';
+import { fetchEmploymentContractsAsAgency } from '../../actions/contractActions';
 import PageLoading from '../../components/PageLoading';
-import SearchTable from './SearchTable';
-import ContractsTable from './ContractsTable';
 import {
   Container,
-  Typography,
   Box,
-  Tabs,
-  AppBar,
-  Tab,
   useTheme,
   Direction,
-  Tooltip,
   useMediaQuery,
   Link,
 } from '@mui/material';
@@ -24,7 +17,7 @@ import { useTranslation } from 'react-i18next';
 import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
 import EmploymentContractsTable from './EmploymentContractsTable';
-import InviteCodeGenerator from './InviteCodeGenerator';
+import EmploymentTable from './Employment';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -70,50 +63,20 @@ const a11yProps = (index: any) => {
  */
 const AgencyContractsPage = () => {
   const { data, ...user } = useSelector((state: any) => state.user);
-  const { businessContract } = useSelector(
-    (state: IRootState) => state.businessContracts
-  );
   const employmentContracts = useSelector((state: any) => state.employmentAgreements.agreements);
 
   const dispatch = useDispatch();
   const classes = useStyles();
   const theme = useTheme();
-  const [searchData, setSearchData] = useState(null);
-  const [displayModal, setDisplayModal] = useState(false);
   const [expanded, setExpanded] = useState<string | false>(false);
   const [value, setValue] = useState(0);
   const { t } = useTranslation();
   const matches = useMediaQuery(theme.breakpoints.down('md'));
 
   useEffect(() => {
-    dispatch(me());
-    dispatch(fetchBusinessContracts());
     dispatch(fetchEmploymentContractsAsAgency())
-  }, [dispatch, data.role]);
+  }, [dispatch]);
 
-  const sendContractProposal = (workerOrBusiness: any) => {
-    dispatch(
-      addAgencyContract(
-        workerOrBusiness._id,
-        "agency"
-      )
-    );
-    dispatch(
-      setAlert(
-        `Success: Contract request sent to ${workerOrBusiness.email}`,
-        severity.Success
-      )
-    );
-  };
-
-  const handleChange = (event: any, newValue: any) => {
-    setValue(newValue);
-  };
-
-  const handleAccChange =
-    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
-      setExpanded(isExpanded ? panel : false)
-    }
 
   if (user.loading) {
     return <PageLoading />;
@@ -124,24 +87,8 @@ const AgencyContractsPage = () => {
       {/* This TabPanel is currently where all actions happen */}
       <TabPanel value={value} index={0} dir={theme.direction}>
 
-        <Typography gutterBottom variant="h1" className='header2'>
-          {t('make_contract')}
-        </Typography>
+        <EmploymentTable />
 
-        <InviteCodeGenerator userId={data._id} />
-
-        <Typography style={{ paddingTop: '1rem' }} variant="h1" className='header'>
-          {t('contracts_overview')}
-        </Typography>
-        <ContractsTable businessContract={businessContract} />
-
-        <Typography gutterBottom variant="h1" className='header2'>
-          <Link href="/employment" underline="hover">{t('connect_workers_to_business')}</Link>
-        </Typography>
-
-        <Typography style={{ paddingTop: '1rem' }} variant="h1" className='header'>
-          {t('employment_contracts_overview')}
-        </Typography>
         <EmploymentContractsTable employmentContracts={employmentContracts} />
 
       </TabPanel>

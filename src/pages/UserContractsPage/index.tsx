@@ -19,8 +19,8 @@ import {
 } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  fetchBusinessContractsAsTarget, fetchEmploymentContractsAsWorkerOrBusiness
-} from '../../actions/businessContractActions';
+  fetchEmploymentContractsAsWorkerOrBusiness
+} from '../../actions/contractActions';
 import { IRootState } from '../../utils/store';
 import { useTranslation } from 'react-i18next';
 import ContractsView from './ContractsView';

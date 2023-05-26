@@ -8,6 +8,8 @@ import {
   IconButton,
   Menu,
   MenuItem,
+  createTheme,
+  ThemeProvider,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import FirstLandingPage from './FirstLandingPage';
@@ -35,6 +37,15 @@ const LandingPage = () => {
   const { t } = useTranslation();
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+
+  const fontTheme = createTheme({
+    typography: {
+      fontFamily: [
+        'Montserrat',
+        'sans-serif',
+      ].join(','),
+    },
+  });
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -64,54 +75,54 @@ const LandingPage = () => {
   }
 
   return (
-    <div className='icd' >
-      <AppBar position="fixed" elevation={1} className="landing-appbar">
-        <Toolbar className="toolbar">
-          {/* Keikkakaveri logo when screen width >599px */}
-          <Typography sx={{ display: { xs: 'none', sm: 'flex' } }}>
-            <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
-              <img src={logo_kk} style={{ width: '200px' }} />
-            </Link>
-          </Typography>
+    <ThemeProvider theme={fontTheme}>
+      <div className='icd' >
+        <AppBar position="fixed" elevation={1} className="landing-appbar">
+          <Toolbar className="toolbar">
+            {/* Keikkakaveri logo when screen width >599px */}
+            <Typography sx={{ display: { xs: 'none', sm: 'flex' } }}>
+              <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
+                <img src={logo_kk} style={{ width: '200px' }} />
+              </Link>
+            </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', sm: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="default"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', sm: 'none' },
-              }}
+            <Box sx={{ flexGrow: 1, display: { xs: 'flex', sm: 'none' } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="default"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: 'block', sm: 'none' },
+                }}
 
-            > {/* Side menu */}
-              {/* <MenuItem key="0" onClick={handleCloseNavMenu}>
+              > {/* Side menu */}
+                {/* <MenuItem key="0" onClick={handleCloseNavMenu}>
                 <Typography textAlign="center">
                   <Link className="landing-nav-link" to="/home">
                     {t('tyopoyta')}
                   </Link>
                 </Typography>
               </MenuItem> */}
-
 
               <MenuItem key="0" onClick={handleCloseNavMenu}>
                 <Typography textAlign="center">
@@ -168,38 +179,54 @@ const LandingPage = () => {
                 {t('tietopankki')}
               </Typography>
             </Link>
+                  
             {/* Check if user is logged in */}
             {user ?
               <Link className="landing-login" to="/home" style={{ backgroundColor: '#FDFDFD', height: '40px' }}>
                 <Typography sx={{ px: 2.5, fontWeight: 'bold' }}>
                   {user?.['firstName']}
                 </Typography>
-              </Link>
-              :
-              <Link className="landing-login" to="/login">
+   
+            {/* Navbar */}
+            <Box sx={{ flexGrow: 0, display: { xs: 'none', sm: 'flex' } }}>
+              <Link className="landing-nav-link2" to="/databank" style={{ height: '40px' }}>
                 <Typography sx={{ px: 2.5, fontWeight: 'bold' }}>
-                  {t('kirjaudu_sisaan')}
+                  {t('tietopankki')}
                 </Typography>
               </Link>
-            }
-            <Button
-              sx={{ color: 'black', fontWeight: 600, fontSize: 16, height: '40px', borderRadius: '50%', ml: '1rem', minWidth: 0, width: '40px' }}
-              style={fiSelected ? { backgroundColor: '#F47D20' } : {}}
-              onClick={() => { changeLanguage('fi'); setFiSelected(!fiSelected) }}>
-              FI
-            </Button>
-            <Button
-              sx={{ color: 'black', fontWeight: 600, fontSize: 16, height: '40px', borderRadius: '50%', ml: '1rem', minWidth: 0, width: '40px' }}
-              style={enSelected ? { backgroundColor: '#F47D20' } : {}}
-              onClick={() => { changeLanguage('en'); setEnSelected(!enSelected) }}>
-              EN
-            </Button>
-          </Box>
-        </Toolbar>
-      </AppBar>
-      <FirstLandingPage />
-      <Footer />
-    </div>
+              {/* Check if user is logged in */}
+              {user ?
+                <Link className="landing-login" to="/home" style={{ backgroundColor: '#FDFDFD', height: '40px' }}>
+                  <Typography sx={{ px: 2.5, fontWeight: 'bold' }}>
+                    {user?.['firstName']}
+                  </Typography>
+                </Link>
+                :
+                <Link className="landing-login" to="/login">
+                  <Typography sx={{ px: 2.5, fontWeight: 'bold' }}>
+                    {t('kirjaudu_sisaan')}
+                  </Typography>
+                </Link>
+              }
+              <Button
+                sx={{ color: 'black', fontWeight: 600, fontSize: 16, height: '40px', borderRadius: '50%', ml: '1rem', minWidth: 0, width: '40px' }}
+                style={fiSelected ? { backgroundColor: '#F47D20' } : {}}
+                onClick={() => { changeLanguage('fi'); setFiSelected(!fiSelected) }}>
+                FI
+              </Button>
+              <Button
+                sx={{ color: 'black', fontWeight: 600, fontSize: 16, height: '40px', borderRadius: '50%', ml: '1rem', minWidth: 0, width: '40px' }}
+                style={enSelected ? { backgroundColor: '#F47D20' } : {}}
+                onClick={() => { changeLanguage('en'); setEnSelected(!enSelected) }}>
+                EN
+              </Button>
+            </Box>
+          </Toolbar>
+        </AppBar>
+        <FirstLandingPage />
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 };
 

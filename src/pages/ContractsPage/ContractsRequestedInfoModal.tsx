@@ -22,7 +22,7 @@ import {
   deleteBusinessContractForm,
   getByIdAndSetBusinessContractForm,
 } from '../../actions/businessContractFormActions';
-import { declineBusinessContract } from '../../actions/businessContractActions';
+import { rejectContract } from '../../actions/contractActions';
 import { setAlert } from '../../actions/alertActions';
 import { severity } from '../../types/types';
 
@@ -54,7 +54,7 @@ const ContractsRequestedInfoModal: React.FC<any> = ({
   const [formId, setFormId] = React.useState('None');
 
   const declineContract = (contractId: string, userId: string, formId: any) => {
-    dispatch(declineBusinessContract(contractId, userId));
+    dispatch(rejectContract(contractId, userId));
     if (formId) {
       dispatch(deleteBusinessContractForm(formId, userId));
     }

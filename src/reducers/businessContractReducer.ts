@@ -7,7 +7,7 @@ import { ACTIVATE_B_CONTRACT, ADD_B_CONTRACT, /*ADD_B_WB_CONTRACT,*/ BusinessCon
 
 const initialState: BusinessContractState = {
   searchList: [],
-  madeContracts: [],
+  contracts: [],
   businessContract: []
 }
 
@@ -27,7 +27,7 @@ const businessContractReducer = (state: BusinessContractState = initialState, ac
     case B_FETCH:
       return {
         ...state,
-        businessContract: action.data
+        contracts: action.data
       }
     case ADD_B_CONTRACT:
       return {
@@ -43,7 +43,7 @@ const businessContractReducer = (state: BusinessContractState = initialState, ac
       return {
         ...state,
         madeContracts:
-          state.madeContracts.map((c: any) => c._id === action.data ? { ...c, contractMade: true }: c)
+          state.contracts.map((c: any) => c._id === action.data ? { ...c, contractMade: true }: c)
       }
     case B_ACCEPT:
       return {
