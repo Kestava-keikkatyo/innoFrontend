@@ -77,6 +77,7 @@ const LandingPage = () => {
   return (
     <ThemeProvider theme={fontTheme}>
       <div className='icd' >
+       
         <AppBar position="fixed" elevation={1} className="landing-appbar">
           <Toolbar className="toolbar">
             {/* Keikkakaveri logo when screen width >599px */}
@@ -172,24 +173,9 @@ const LandingPage = () => {
             </Link>
           </Typography>
 
-          {/* Navbar */}
-          <Box sx={{ flexGrow: 0, display: { xs: 'none', sm: 'flex' } }}>
-            <Link className="landing-nav-link2" to="/databank/lifeline" style={{height: '40px'}}>
-              <Typography sx={{ px: 2.5, fontWeight: 'bold' }}>
-                {t('tietopankki')}
-              </Typography>
-            </Link>
-                  
-            {/* Check if user is logged in */}
-            {user ?
-              <Link className="landing-login" to="/home" style={{ backgroundColor: '#FDFDFD', height: '40px' }}>
-                <Typography sx={{ px: 2.5, fontWeight: 'bold' }}>
-                  {user?.['firstName']}
-                </Typography>
-   
             {/* Navbar */}
             <Box sx={{ flexGrow: 0, display: { xs: 'none', sm: 'flex' } }}>
-              <Link className="landing-nav-link2" to="/databank" style={{ height: '40px' }}>
+              <Link className="landing-nav-link2" to="/databank/lifeline" style={{ height: '40px' }}>
                 <Typography sx={{ px: 2.5, fontWeight: 'bold' }}>
                   {t('tietopankki')}
                 </Typography>
