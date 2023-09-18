@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 import picture from '../../assets/pictures/Kirjautuminen_etusivu_Keikkakaveri_tyovaline_kuvitus.svg'
 import SendFeeling from '../Feeling/SendFeeling';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchReports } from '../../actions/reportActions';
+import { getMyReports } from '../../actions/reportActions';
 import Report from '../ReportPage/Report';
 import SrcFile from '../../pages/ResponsibilitiesPage/SrcFile';
 
@@ -39,7 +39,7 @@ const WorkerHome = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchReports());
+    dispatch(getMyReports());
   }, [dispatch]);
 
   return (
