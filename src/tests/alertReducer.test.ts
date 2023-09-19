@@ -1,11 +1,11 @@
-import alertReducer from '../reducers/alertReducer';
-import { clearAlert, setAlert } from '../actions/alertActions';
+import alertReducer from '../reducers/alertReducer'
+import { clearAlert, setAlert } from '../actions/alertActions'
 
-import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
-import * as types from '../types/state';
-import { severity } from '../types/types';
-import { AnyAction } from 'redux';
+import configureMockStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
+import * as types from '../types/state'
+import { severity } from '../types/types'
+import { AnyAction } from 'redux'
 
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
@@ -14,15 +14,15 @@ describe('alertReducer', () => {
   const defaultData: types.AlertState = {
     severity: severity.Info,
     message: 'this is a test string',
-    open: true
+    open: true,
   }
   const defaultClearAction: types.AlertActionTypes = {
     type: types.ALERT_CLEAR,
-    data: defaultData
+    data: defaultData,
   }
   const defaultSetAction: types.AlertActionTypes = {
     type: types.ALERT_SET,
-    data: defaultData
+    data: defaultData,
   }
 
   test('Should return a new state with action ALERT_SET and ALERT_CLEAR', () => {
@@ -47,12 +47,13 @@ describe('alertReducer', () => {
       type: types.ALERT_SET,
       data: {
         message: expectedMessage,
-        severity: expectedSeverity
-      }
+        severity: expectedSeverity,
+      },
     }
 
     const store = mockStore({})
-    return store.dispatch(setAlert(expectedMessage, expectedSeverity) as unknown as AnyAction)
+    return store
+      .dispatch(setAlert(expectedMessage, expectedSeverity) as unknown as AnyAction)
       .then(() => {
         expect(store.getActions()[0]).toEqual(expectedAction)
       })

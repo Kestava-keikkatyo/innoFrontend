@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import WorkerSearch from './WorkerSearch'
-import { Card, Container, Divider, CardContent, Typography } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
+import { Card, Container, Divider, CardContent, Typography } from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
 import { useDispatch, useSelector } from 'react-redux'
-import { IRootState } from '../../utils/store';
-import { fetchWorkContracts } from '../../actions/workContractActions';
-import { fetchContractsAsTarget } from '../../actions/contractActions';
-import MakeWorkContracts from './MakeWorkContracts';
-import WorkerModal from './WorkerModal';
-import ManageWorkContracts from './ManageWorkContracts';
+import { IRootState } from '../../utils/store'
+import { fetchWorkContracts } from '../../actions/workContractActions'
+import { fetchContractsAsTarget } from '../../actions/contractActions'
+import MakeWorkContracts from './MakeWorkContracts'
+import WorkerModal from './WorkerModal'
+import ManageWorkContracts from './ManageWorkContracts'
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    margin: theme.spacing(2, 0)
+    margin: theme.spacing(2, 0),
   },
 }))
 
@@ -28,17 +28,17 @@ const useStyles = makeStyles((theme) => ({
  * - Creates workcontract between worker and business (agency view)
  */
 const WorkerContractPage = () => {
-  const { businessContract } = useSelector((state:IRootState) => state.businessContracts)
+  const { businessContract } = useSelector((state: IRootState) => state.businessContracts)
   const { workContracts } = useSelector((state: IRootState) => state.workContracts)
   const [workerData, setWorkerData] = useState(null)
   const [displayModal, setDisplayModal] = useState(false)
   const classes = useStyles()
   const dispatch = useDispatch()
-  
+
   useEffect(() => {
     dispatch(fetchContractsAsTarget())
     dispatch(fetchWorkContracts())
-  },[dispatch])
+  }, [dispatch])
 
   const openModal = (worker: any) => {
     setWorkerData(worker)
@@ -46,25 +46,27 @@ const WorkerContractPage = () => {
   }
 
   return (
-    <Container style={{backgroundColor: 'red'}} maxWidth="lg">
-      <Typography style={{ paddingTop: '1rem' }} align="center" variant="h4">
-        Make WorkContracts 
+    <Container style={{ backgroundColor: 'red' }} maxWidth='lg'>
+      <Typography style={{ paddingTop: '1rem' }} align='center' variant='h4'>
+        Make WorkContracts
       </Typography>
-      <Card className={classes.card} variant="outlined">
+      <Card className={classes.card} variant='outlined'>
         <CardContent>
-          <Typography gutterBottom variant="h5" align="center">
+          <Typography gutterBottom variant='h5' align='center'>
             Make WorkContract for Business that has BusinessContract with you.
           </Typography>
           <WorkerSearch />
           <Divider />
-          <MakeWorkContracts addWorker={openModal}
-          madeContracts={businessContract.length >= 1 ? businessContract[0].madeContracts.businesses : []}/>
-          <WorkerModal
-          modalState={{displayModal,setDisplayModal}}
-          workerData={workerData}/>
+          <MakeWorkContracts
+            addWorker={openModal}
+            madeContracts={
+              businessContract.length >= 1 ? businessContract[0].madeContracts.businesses : []
+            }
+          />
+          <WorkerModal modalState={{ displayModal, setDisplayModal }} workerData={workerData} />
         </CardContent>
       </Card>
-      <ManageWorkContracts workContracts={workContracts}/>
+      <ManageWorkContracts workContracts={workContracts} />
     </Container>
   )
 }

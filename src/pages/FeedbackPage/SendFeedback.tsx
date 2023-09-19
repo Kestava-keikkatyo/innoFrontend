@@ -1,37 +1,27 @@
-import React, { useEffect } from 'react';
-import { Feedback } from '../../types/types';
-import * as Yup from 'yup';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  Button,
-  CircularProgress,
-  FormControl,
-  Radio,
-  RadioGroup,
-  Typography
-} from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
-import { Form, Formik, Field } from 'formik';
-import { FormikSelectField, FormikTextField } from '../../components/FormField';
-import { IRootState } from '../../utils/store';
-import { createFeedback } from '../../actions/feedBackActions';
-import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
-import { fetchAllAgencies, fetchAllBusinessesAndAgencies } from '../../actions/usersActions';
-import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
-import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
-import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
-import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
-import User from '../Profile/User';
+import React, { useEffect } from 'react'
+import { Feedback } from '../../types/types'
+import * as Yup from 'yup'
+import { useDispatch, useSelector } from 'react-redux'
+import { Button, CircularProgress, FormControl, Radio, RadioGroup, Typography } from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
+import { Form, Formik, Field } from 'formik'
+import { FormikSelectField, FormikTextField } from '../../components/FormField'
+import { IRootState } from '../../utils/store'
+import { createFeedback } from '../../actions/feedBackActions'
+import { useTranslation } from 'react-i18next'
+import { useHistory } from 'react-router-dom'
+import { fetchAllAgencies, fetchAllBusinessesAndAgencies } from '../../actions/usersActions'
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied'
+import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral'
+import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt'
+import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied'
+import User from '../Profile/User'
 
 const SendFeedbackSchema = Yup.object().shape({
   recipientId: Yup.string()
     .min(4, 'Recipient id must be defined')
     .required('Recipient id is required!'),
-  shift: Yup.number()
-    .min(1, 'Min value 1.')
-    .max(4, 'Max value 4.')
-    .required('Shift is required!'),
+  shift: Yup.number().min(1, 'Min value 1.').max(4, 'Max value 4.').required('Shift is required!'),
   shiftMessage: Yup.string(),
   orientation: Yup.number()
     .min(1, 'Min value 1.')
@@ -55,14 +45,14 @@ const SendFeedbackSchema = Yup.object().shape({
   expectationMessage: Yup.string(),
   additionalMessage: Yup.string(),
   anonymous: Yup.boolean(),
-});
+})
 
 const SendFeedback: React.FC = () => {
-  const { t } = useTranslation();
-  const classes = useStyles();
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const isLoading = useSelector((state: IRootState) => state.feedback.loading);
+  const { t } = useTranslation()
+  const classes = useStyles()
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const isLoading = useSelector((state: IRootState) => state.feedback.loading)
 
   const questions = {
     shift: `${t('feedback_shift')} *`,
@@ -70,10 +60,10 @@ const SendFeedback: React.FC = () => {
     reception: `${t('feedback_reception')} *`,
     appreciation: `${t('feedback_appreciation')} *`,
     expectation: `${t('feedback_expectation')} *`,
-  };
+  }
 
   const recipients = useSelector((state: IRootState) => state.user.contacts)
-  const me = useSelector((state: IRootState) => state.user.data);
+  const me = useSelector((state: IRootState) => state.user.data)
 
   const initialValues: Feedback = {
     recipientId: '',
@@ -92,30 +82,36 @@ const SendFeedback: React.FC = () => {
     additionalMessage: '',
     senderId: me._id,
     senderName: me.name,
-    anonymous: false
-  };
+    anonymous: false,
+  }
 
   useEffect(() => {
-    dispatch(fetchAllBusinessesAndAgencies());
-  }, [dispatch]);
+    dispatch(fetchAllBusinessesAndAgencies())
+  }, [dispatch])
 
   const handleSubmit = (feedback: Feedback) => {
     if (recipients) {
-      feedback.recipientFirstName = recipients.find(recipient => feedback.recipientId === recipient._id)?.firstName
-      feedback.recipientLastName = recipients.find(recipient => feedback.recipientId === recipient._id)?.lastName
+      feedback.recipientFirstName = recipients.find(
+        (recipient) => feedback.recipientId === recipient._id,
+      )?.firstName
+      feedback.recipientLastName = recipients.find(
+        (recipient) => feedback.recipientId === recipient._id,
+      )?.lastName
       console.log(feedback)
-      dispatch(createFeedback(feedback));
+      dispatch(createFeedback(feedback))
       history.push({
         pathname: history.location.pathname,
         search: '?' + new URLSearchParams({ tab: 'my' }).toString(),
       })
     }
-  };
+  }
 
   return (
     <div className={classes.newFeedback}>
       <div className={classes.feedbackTitleContainer}>
-        <Typography color="primary" className={classes.title} variant="h1">{t('send_feedback')}</Typography>
+        <Typography color='primary' className={classes.title} variant='h1'>
+          {t('send_feedback')}
+        </Typography>
       </div>
       <div className={classes.feedbackContainer}>
         <Formik
@@ -127,23 +123,23 @@ const SendFeedback: React.FC = () => {
             <Form>
               <FormikSelectField
                 label={t('feedback_recipient')}
-                name="recipientId"
+                name='recipientId'
                 options={recipients.map((recipient) => {
                   return {
                     value: recipient._id,
-                    label: recipient.companyName
+                    label: recipient.companyName,
                   }
                 })}
                 fullWidth
                 required
               />
-              {Object.entries(questions).map(questionEntry => (
+              {Object.entries(questions).map((questionEntry) => (
                 <div key={questionEntry[0]}>
                   <Typography
-                    color="success"
+                    color='success'
                     id={questionEntry[0] + '-radio-buttons-group-label'}
                     className={classes.questionTitle}
-                    variant="h6"
+                    variant='h6'
                   >
                     {questionEntry[1]}
                   </Typography>
@@ -158,7 +154,9 @@ const SendFeedback: React.FC = () => {
                         name={questionEntry[0]}
                         value={1}
                         icon={<SentimentVeryDissatisfiedIcon className={classes.uncheckedIcon} />}
-                        checkedIcon={<SentimentVeryDissatisfiedIcon className={classes.checkedIcon} />}
+                        checkedIcon={
+                          <SentimentVeryDissatisfiedIcon className={classes.checkedIcon} />
+                        }
                         as={Radio}
                       />
                       <Field
@@ -202,34 +200,38 @@ const SendFeedback: React.FC = () => {
                 rows={10}
                 type='text'
               />
-              <Typography color="primary" className={classes.title} variant="h1">
+              <Typography color='primary' className={classes.title} variant='h1'>
                 {t('thanks_for_feedback')}
               </Typography>
-              {isLoading ?
-                <CircularProgress color="primary" /> :
+              {isLoading ? (
+                <CircularProgress color='primary' />
+              ) : (
                 <>
-                  <Button type="submit" variant="contained" color="primary" className={classes.button}>
+                  <Button
+                    type='submit'
+                    variant='contained'
+                    color='primary'
+                    className={classes.button}
+                  >
                     {t('send')}
                   </Button>
                   <label>
-                    <Field type="checkbox" name="anonymous" />
+                    <Field type='checkbox' name='anonymous' />
                     {t('feedback_send_anonymously')}
                   </label>
                 </>
-              }
+              )}
             </Form>
-          )
-          }
+          )}
         </Formik>
       </div>
     </div>
-  );
+  )
 }
 
 const useStyles = makeStyles((theme) => ({
   newFeedback: {
     flex: '4',
-
   },
   title: {
     marginTop: '5px',
@@ -256,13 +258,13 @@ const useStyles = makeStyles((theme) => ({
     flex: '1',
     padding: '20px',
     webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
-    boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)'
+    boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
   },
   feedbackField: {
     marginBottom: '40px',
   },
   formControl: {
-    width: '100%'
+    width: '100%',
   },
   fieldContainer: {
     display: 'flex',
@@ -298,8 +300,8 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     left: theme.spacing(0),
-    marginRight: '16px'
-  }
-}));
+    marginRight: '16px',
+  },
+}))
 
-export default SendFeedback;
+export default SendFeedback

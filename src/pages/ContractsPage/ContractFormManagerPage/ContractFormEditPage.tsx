@@ -11,14 +11,12 @@ import BusinssContractFormRadioGroup from '../../../components/BusinessContractF
 import BusinssContractFormText from '../../../components/BusinessContractFormComponents/BusinessContractFormText'
 import BusinssContractFormTextArea from '../../../components/BusinessContractFormComponents/BusinessContractFormTextArea'
 
-
 import { setAlert } from '../../../actions/alertActions'
 import { Question, questionTypes, severity } from '../../../types/types'
 import BusinssContractFormContactInfo from '../../../components/BusinessContractFormComponents/BusinessContractFormContactInfo'
 import BusinssContractFormDatepicker from '../../../components/BusinessContractFormComponents/BusinssContractFormDatepicker'
 import BusinssContractFormTimepicker from '../../../components/BusinessContractFormComponents/BusinssContractFormTimepicker'
 import EditHeader from './EditHeader'
-
 
 /**
  * @component
@@ -32,12 +30,9 @@ const ContractFormEditPage: React.FC = () => {
 
   return (
     <Container>
-      <EditHeader/>
-      <div className="create-form">
-        <BusinessContractFormHeader
-          title={title}
-          description={description}
-        />
+      <EditHeader />
+      <div className='create-form'>
+        <BusinessContractFormHeader title={title} description={description} />
         {questions.map((q: Question, k: number) => {
           switch (q.questionType) {
             case questionTypes.Text:
@@ -61,14 +56,11 @@ const ContractFormEditPage: React.FC = () => {
             case questionTypes.ContactInformation:
               return <BusinssContractFormContactInfo key={k} question={q} />
             default:
-              dispatch(
-                setAlert("Cannot read question of type: " + q.questionType, severity.Error)
-              )
+              dispatch(setAlert('Cannot read question of type: ' + q.questionType, severity.Error))
               return <></>
           }
         })}
       </div>
-
     </Container>
   )
 }

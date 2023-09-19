@@ -2,12 +2,20 @@
  * @module reducer/workContract
  * @desc Redux workContract reducer
  */
-import { ADD_W_CONTRACT, WorkContractState, WorkContractActionTypes, W_DELETE, W_FETCH, W_UPDATE, W_JOB } from "../types/state"
+import {
+  ADD_W_CONTRACT,
+  WorkContractState,
+  WorkContractActionTypes,
+  W_DELETE,
+  W_FETCH,
+  W_UPDATE,
+  W_JOB,
+} from '../types/state'
 
 const initialState: WorkContractState = {
   searchList: [],
   madeContracts: [],
-  workContracts: []
+  workContracts: [],
 }
 
 /**
@@ -16,34 +24,37 @@ const initialState: WorkContractState = {
  * @param {WorkContractState} state - current state
  * @param {WorkContractActionTypes} action - dispatched action
  */
-const workContractReducer = (state: WorkContractState = initialState, action: WorkContractActionTypes) => {
+const workContractReducer = (
+  state: WorkContractState = initialState,
+  action: WorkContractActionTypes,
+) => {
   switch (action.type) {
     case W_UPDATE:
       return {
         ...state,
-        searchList: action.data
+        searchList: action.data,
       }
     case W_FETCH:
       return {
         ...state,
-        workContracts: action.data
+        workContracts: action.data,
       }
     case W_DELETE:
       const filteredList = state.madeContracts.filter((value: any) => value._id !== action.data)
       return {
         ...state,
-        madeContracts: filteredList
+        madeContracts: filteredList,
       }
     case ADD_W_CONTRACT:
       return {
         ...state,
-        madeContracts: [...state.madeContracts, action.data]
+        madeContracts: [...state.madeContracts, action.data],
       }
-    case W_JOB: 
+    case W_JOB:
       return {
         ...state,
-        workContracts: [action.data]
-      }  
+        workContracts: [action.data],
+      }
     default:
       return state
   }

@@ -1,13 +1,13 @@
-import { Container } from '@mui/material';
-import LineChart from './LineChart';
-import PieChart from './PieChart';
-import FeedbackCategory from './feedbackCategory';
-import Table from './Table';
-import WorkerStatisticsButtonRow from './WorkerStatisticsButtonRow';
-import WorkerStatisticsSummary from './WorkerStatisticsSummary';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchFeelings } from '../../actions/feelingActions';
+import { Container } from '@mui/material'
+import LineChart from './LineChart'
+import PieChart from './PieChart'
+import FeedbackCategory from './feedbackCategory'
+import Table from './Table'
+import WorkerStatisticsButtonRow from './WorkerStatisticsButtonRow'
+import WorkerStatisticsSummary from './WorkerStatisticsSummary'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchFeelings } from '../../actions/feelingActions'
 
 /**
  * @component
@@ -16,18 +16,18 @@ import { fetchFeelings } from '../../actions/feelingActions';
  * and {@link PieChart}
  */
 const WorkerStatistics = () => {
-  const feelings = useSelector((state: any) => state.feeling?.feelings);
-  console.log('feelings index', feelings);
-  const dispatch = useDispatch();
+  const feelings = useSelector((state: any) => state.feeling?.feelings)
+  console.log('feelings index', feelings)
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchFeelings());
-  }, [dispatch]);
+    dispatch(fetchFeelings())
+  }, [dispatch])
 
-  console.log('### index:feelings:', feelings);
+  console.log('### index:feelings:', feelings)
 
   return (
-    <Container className="worker-statistics">
+    <Container className='worker-statistics'>
       <WorkerStatisticsButtonRow />
       <WorkerStatisticsSummary />
       {feelings && feelings?.length > 0 ? (
@@ -39,7 +39,7 @@ const WorkerStatistics = () => {
         </>
       ) : null}
     </Container>
-  );
-};
+  )
+}
 
-export default WorkerStatistics;
+export default WorkerStatistics

@@ -5,37 +5,36 @@ import { useSelector } from 'react-redux'
 
 import { Button, Grid, Typography } from '@mui/material'
 
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '@mui/styles/makeStyles'
 
 import { useTranslation } from 'react-i18next'
 
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import { Link, useHistory} from 'react-router-dom'
+import Card from '@mui/material/Card'
+import CardActions from '@mui/material/CardActions'
+import CardContent from '@mui/material/CardContent'
+import { Link, useHistory } from 'react-router-dom'
 import pdfMake from 'pdfmake/build/pdfmake'
 import ReactDOMServer from 'react-dom/server'
 import Form from '../../FormsPage/Form'
 import htmlToPdfmake from 'html-to-pdfmake'
-import pdfFonts from 'pdfmake/build/vfs_fonts.js';
+import pdfFonts from 'pdfmake/build/vfs_fonts.js'
 
 const useStyles = makeStyles({
-    root: {
-      minWidth: 275,
-    },
-    bullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)',
-    },
-    title: {
-      fontSize: 14,
-    },
-    pos: {
-      marginBottom: 12,
-    },
-  });
-
+  root: {
+    minWidth: 275,
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  },
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
+})
 
 /**
  * @component
@@ -44,10 +43,10 @@ const useStyles = makeStyles({
  * type of component.
  */
 const ContractFormManagerPage: React.FC = () => {
-  const businessContractForm:any = useSelector((state: any) => state.businessContractForm)
+  const businessContractForm: any = useSelector((state: any) => state.businessContractForm)
 
-  const classes = useStyles();
-  const history:any = useHistory()
+  const classes = useStyles()
+  const history: any = useHistory()
   /*
   const location:any = useLocation()
 
@@ -64,84 +63,79 @@ const ContractFormManagerPage: React.FC = () => {
 
   const { t } = useTranslation()
 
-  console.log("contract form manager: contract form: ", businessContractForm)
+  console.log('contract form manager: contract form: ', businessContractForm)
 
   const handlePreview = () => {
-
     history.push('/contracts/contract-form-manager/contract-form-preview')
   }
 
   const handleEdit = () => {
-
     history.push('/contracts/contract-form-manager/contract-form-edit')
   }
 
   // Print PDF
   const handleDownload = () => {
-
-
-    pdfMake.vfs = pdfFonts.pdfMake.vfs;
+    pdfMake.vfs = pdfFonts.pdfMake.vfs
 
     // pdf content
-    let content:any = []
+    let content: any = []
 
-    let html = ReactDOMServer.renderToString(<Form currentForm={businessContractForm}/>)
-    let htmlForm:any = htmlToPdfmake(html);
+    let html = ReactDOMServer.renderToString(<Form currentForm={businessContractForm} />)
+    let htmlForm: any = htmlToPdfmake(html)
 
     content.push(htmlForm)
 
     // pdf document
     var doc = {
-        content: content
-    };
+      content: content,
+    }
 
-    pdfMake.createPdf(doc).download(businessContractForm.title);
+    pdfMake.createPdf(doc).download(businessContractForm.title)
   }
 
   return (
-      <Container>
-          <Grid container direction="row"
-              justifyContent="space-between">
-              <Grid item xs={6}>
-              <Typography variant="h4" color="secondary" >
-                  {t("contract_form_manager")}
-              </Typography>
-              </Grid>
-              <Grid item xs={6} >
-              <Grid container direction="row-reverse">
-                  <Button>
-                  <Link to="/contracts">{t("back")}</Link>
-                  </Button>
-              </Grid>
-              </Grid>
+    <Container>
+      <Grid container direction='row' justifyContent='space-between'>
+        <Grid item xs={6}>
+          <Typography variant='h4' color='secondary'>
+            {t('contract_form_manager')}
+          </Typography>
+        </Grid>
+        <Grid item xs={6}>
+          <Grid container direction='row-reverse'>
+            <Button>
+              <Link to='/contracts'>{t('back')}</Link>
+            </Button>
           </Grid>
+        </Grid>
+      </Grid>
 
-          <Card className="contract-form-card">
-              <CardContent>
-                  <Typography variant="h5" component="h2">
-                      {businessContractForm.title}
-                  </Typography>
-                  <Typography className={classes.pos} color="textSecondary">
-                      {businessContractForm.description}
-                  </Typography>
-                  <Typography variant="body2" component="p">
-                      {businessContractForm.description}
-                  </Typography>
-              </CardContent>
-              <CardActions>
-                  <Button size="small" color="primary" onClick={handlePreview}>{t("preview")}</Button>
-                  <Button size="small" color="primary"    onClick={handleEdit}>{t("edit")}</Button>
-                  <Button size="small" color="primary" onClick={handleDownload}>{t("download_pdf")}</Button>
-              </CardActions>
-
-          </Card>
-
-
-
-      </Container>
-  );
+      <Card className='contract-form-card'>
+        <CardContent>
+          <Typography variant='h5' component='h2'>
+            {businessContractForm.title}
+          </Typography>
+          <Typography className={classes.pos} color='textSecondary'>
+            {businessContractForm.description}
+          </Typography>
+          <Typography variant='body2' component='p'>
+            {businessContractForm.description}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size='small' color='primary' onClick={handlePreview}>
+            {t('preview')}
+          </Button>
+          <Button size='small' color='primary' onClick={handleEdit}>
+            {t('edit')}
+          </Button>
+          <Button size='small' color='primary' onClick={handleDownload}>
+            {t('download_pdf')}
+          </Button>
+        </CardActions>
+      </Card>
+    </Container>
+  )
 }
-
-
 
 export default ContractFormManagerPage

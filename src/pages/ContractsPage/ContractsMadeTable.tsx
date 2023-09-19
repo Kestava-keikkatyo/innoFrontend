@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {
   Typography,
   TableContainer,
@@ -12,25 +12,20 @@ import {
   useTheme,
   Tooltip,
   Theme,
-} from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
-import { useTranslation } from 'react-i18next';
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  AccordionActions,
-} from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+} from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
+import createStyles from '@mui/styles/createStyles'
+import { useTranslation } from 'react-i18next'
+import { Accordion, AccordionDetails, AccordionSummary, AccordionActions } from '@mui/material'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
-import pdfMake from 'pdfmake/build/pdfmake';
-import ReactDOMServer from 'react-dom/server';
-import Form from '../FormsPage/Form';
-import htmlToPdfmake from 'html-to-pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts.js';
-import SaveAltIcon from '@mui/icons-material/SaveAlt';
-import businessContractFormService from '../../services/businessContractFormService';
+import pdfMake from 'pdfmake/build/pdfmake'
+import ReactDOMServer from 'react-dom/server'
+import Form from '../FormsPage/Form'
+import htmlToPdfmake from 'html-to-pdfmake'
+import pdfFonts from 'pdfmake/build/vfs_fonts.js'
+import SaveAltIcon from '@mui/icons-material/SaveAlt'
+import businessContractFormService from '../../services/businessContractFormService'
 
 /**
  * @component
@@ -39,88 +34,78 @@ import businessContractFormService from '../../services/businessContractFormServ
  *
  */
 const ContractsMadeTable = (prop: { contracts: []; contractId: string }) => {
-  const { contracts, contractId } = prop;
+  const { contracts, contractId } = prop
 
-  console.log('contracts', contracts);
-  console.log('contractId', contractId);
+  console.log('contracts', contracts)
+  console.log('contractId', contractId)
 
-  const theme = useTheme();
-  const classes = useStyles();
-  const matches = useMediaQuery(theme.breakpoints.down('md'));
-  const { t } = useTranslation();
+  const theme = useTheme()
+  const classes = useStyles()
+  const matches = useMediaQuery(theme.breakpoints.down('md'))
+  const { t } = useTranslation()
 
   // Print PDF
   const handleDownload = async (formId: any) => {
-    let businessContractForm: any =
-      await businessContractFormService.fetchBusinessContractFormById(formId);
-    console.log('businessContractForm ', businessContractForm);
+    let businessContractForm: any = await businessContractFormService.fetchBusinessContractFormById(
+      formId,
+    )
+    console.log('businessContractForm ', businessContractForm)
 
-    pdfMake.vfs = pdfFonts.pdfMake.vfs;
+    pdfMake.vfs = pdfFonts.pdfMake.vfs
 
     // pdf content
-    let content: any = [];
+    let content: any = []
 
-    let html = ReactDOMServer.renderToString(
-      <Form currentForm={businessContractForm} />
-    );
-    let htmlForm: any = htmlToPdfmake(html);
+    let html = ReactDOMServer.renderToString(<Form currentForm={businessContractForm} />)
+    let htmlForm: any = htmlToPdfmake(html)
 
-    content.push(htmlForm);
+    content.push(htmlForm)
 
     // pdf document
     var doc = {
       content: content,
-    };
+    }
 
-    pdfMake.createPdf(doc).download(businessContractForm.title);
-  };
+    pdfMake.createPdf(doc).download(businessContractForm.title)
+  }
 
   const tableView = () => {
     return (
       <TableContainer>
-        <Table aria-label="searched workers">
+        <Table aria-label='searched workers'>
           <TableHead>
             <TableRow>
-              <TableCell align="left">{t('name')}</TableCell>
-              <TableCell align="left">{t('email')}</TableCell>
-              <TableCell align="left">{t('role')}</TableCell>
-              <TableCell align="left">{t('status')}</TableCell>
-              <TableCell align="left">{t('download')}</TableCell>
+              <TableCell align='left'>{t('name')}</TableCell>
+              <TableCell align='left'>{t('email')}</TableCell>
+              <TableCell align='left'>{t('role')}</TableCell>
+              <TableCell align='left'>{t('status')}</TableCell>
+              <TableCell align='left'>{t('download')}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {contracts.map((contract: any) => (
               <TableRow key={contract._id}>
-                <TableCell align="left">
-                  {contract.businessId
-                    ? contract.businessId.name
-                    : contract.workerId.name}
+                <TableCell align='left'>
+                  {contract.businessId ? contract.businessId.name : contract.workerId.name}
                 </TableCell>
 
-                <TableCell align="left">
-                  {contract.businessId
-                    ? contract.businessId.email
-                    : contract.workerId.email}
+                <TableCell align='left'>
+                  {contract.businessId ? contract.businessId.email : contract.workerId.email}
                 </TableCell>
 
-                <TableCell align="left">
-                  {contract.businessId
-                    ? contract.businessId.userType
-                    : contract.workerId.userType}
+                <TableCell align='left'>
+                  {contract.businessId ? contract.businessId.userType : contract.workerId.userType}
                 </TableCell>
 
-                <TableCell align="left">{'Made'}</TableCell>
+                <TableCell align='left'>{'Made'}</TableCell>
 
-                <TableCell
-                  padding="none"
-                  align="left"
-                  style={{ paddingLeft: 16 }}
-                >
+                <TableCell padding='none' align='left' style={{ paddingLeft: 16 }}>
                   <IconButton
-                    aria-label="Download"
-                    color="secondary"
+                    aria-label='Download'
+                    color='secondary'
                     onClick={() => handleDownload(contract.formId)}
-                    size="large">
+                    size='large'
+                  >
                     <SaveAltIcon />
                   </IconButton>
                 </TableCell>
@@ -129,8 +114,8 @@ const ContractsMadeTable = (prop: { contracts: []; contractId: string }) => {
           </TableBody>
         </Table>
       </TableContainer>
-    );
-  };
+    )
+  }
 
   const accordionView = () => {
     return contracts.map((contract: any) => (
@@ -138,74 +123,61 @@ const ContractsMadeTable = (prop: { contracts: []; contractId: string }) => {
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
+            aria-controls='panel1a-content'
+            id='panel1a-header'
           >
             <Typography className={classes.heading}>
-              {contract.businessId
-                ? contract.businessId.name
-                : contract.workerId.name}
+              {contract.businessId ? contract.businessId.name : contract.workerId.name}
             </Typography>
           </AccordionSummary>
 
           <AccordionDetails>
             <Typography className={classes.description}>
-              Email:{' '}
-              {contract.businessId
-                ? contract.businessId.email
-                : contract.workerId.email}
+              Email: {contract.businessId ? contract.businessId.email : contract.workerId.email}
             </Typography>
           </AccordionDetails>
 
           <AccordionDetails>
             <Typography className={classes.description}>
               Type:{' '}
-              {contract.businessId
-                ? contract.businessId.userType
-                : contract.workerId.userType}
+              {contract.businessId ? contract.businessId.userType : contract.workerId.userType}
             </Typography>
           </AccordionDetails>
 
           <AccordionDetails className={classes.description}>
-            <Typography className={classes.description}>
-              Status: Made
-            </Typography>
+            <Typography className={classes.description}>Status: Made</Typography>
           </AccordionDetails>
 
           <AccordionActions>
-            <Tooltip title="Download" placement="top" arrow>
+            <Tooltip title='Download' placement='top' arrow>
               <IconButton
-                aria-label="download"
-                color="secondary"
+                aria-label='download'
+                color='secondary'
                 onClick={() => handleDownload(contract.formId)}
-                size="large">
+                size='large'
+              >
                 <SaveAltIcon />
               </IconButton>
             </Tooltip>
           </AccordionActions>
         </Accordion>
       </div>
-    ));
-  };
+    ))
+  }
 
   if (!contracts)
     return (
       <Typography
         style={{ padding: '1rem' }}
-        variant="h6"
-        align="center"
-        className="text-secondary"
+        variant='h6'
+        align='center'
+        className='text-secondary'
       >
         {t('no_results')}
       </Typography>
-    );
-  else
-    return (
-      <div className={classes.container}>
-        {matches ? accordionView() : tableView()}
-      </div>
-    );
-};
+    )
+  else return <div className={classes.container}>{matches ? accordionView() : tableView()}</div>
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -227,6 +199,6 @@ const useStyles = makeStyles((theme: Theme) =>
       color: '#6C6C6C',
       marginTop: 0,
     },
-  })
-);
-export default ContractsMadeTable;
+  }),
+)
+export default ContractsMadeTable

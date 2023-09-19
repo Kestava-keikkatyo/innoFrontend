@@ -1,20 +1,13 @@
-import {
-  Box,
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  IconButton,
-  Typography,
-} from '@mui/material';
-import { Close as CloseIcon } from '@mui/icons-material';
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setAlert } from '../../actions/alertActions';
-import { submitFeeling, updateFeeling } from '../../actions/feelingActions';
-import fileService from '../../services/fileService';
-import { severity } from '../../types/types';
-import { IRootState } from '../../utils/store';
-import MoodForm from '../HomePage/MoodForm';
+import { Box, Dialog, DialogContent, DialogTitle, IconButton, Typography } from '@mui/material'
+import { Close as CloseIcon } from '@mui/icons-material'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setAlert } from '../../actions/alertActions'
+import { submitFeeling, updateFeeling } from '../../actions/feelingActions'
+import fileService from '../../services/fileService'
+import { severity } from '../../types/types'
+import { IRootState } from '../../utils/store'
+import MoodForm from '../HomePage/MoodForm'
 import { useTranslation } from 'react-i18next'
 /**
  * @component
@@ -24,50 +17,46 @@ import { useTranslation } from 'react-i18next'
  */
 const NewFeelingEntryModal: React.FC<any> = ({ modalState }) => {
   const { t } = useTranslation()
-  const { isOpen, setIsOpen } = modalState;
-  const dispatch = useDispatch();
-  const currentFeeling: any = useSelector<IRootState>(
-    (state) => state.feeling.currentFeeling
-  );
+  const { isOpen, setIsOpen } = modalState
+  const dispatch = useDispatch()
+  const currentFeeling: any = useSelector<IRootState>((state) => state.feeling.currentFeeling)
 
-  const currentFiles: any = useSelector<IRootState>(
-    (state) => state.files.currentFiles
-  );
+  const currentFiles: any = useSelector<IRootState>((state) => state.files.currentFiles)
 
   const onHandleSubmit = async () => {
-    console.log('### 1 currentFeeling:', currentFeeling);
+    console.log('### 1 currentFeeling:', currentFeeling)
     //console.log('### currentFile:', currentFile.file);
     if (currentFiles.files[0] !== null) {
-      const res: any = await fileService.postFile(currentFiles.files[0]);
+      const res: any = await fileService.postFile(currentFiles.files[0])
       const copyOfCurrentFeeling = {
         ...currentFeeling,
         fileUrl: res.data.fileUrl,
-      };
+      }
 
-      dispatch(updateFeeling(copyOfCurrentFeeling));
-      dispatch(submitFeeling(copyOfCurrentFeeling));
+      dispatch(updateFeeling(copyOfCurrentFeeling))
+      dispatch(submitFeeling(copyOfCurrentFeeling))
     } else {
-      dispatch(updateFeeling(currentFeeling));
-      dispatch(submitFeeling(currentFeeling));
+      dispatch(updateFeeling(currentFeeling))
+      dispatch(submitFeeling(currentFeeling))
     }
-    setIsOpen(false);
-    dispatch(setAlert('Successfully added new entry.', severity.Success));
+    setIsOpen(false)
+    dispatch(setAlert('Successfully added new entry.', severity.Success))
 
-    console.log('### currentFeeling submitted');
-  };
+    console.log('### currentFeeling submitted')
+  }
 
   return (
     <Dialog
-      className="new-feeling-modal"
+      className='new-feeling-modal'
       open={isOpen}
       onClose={() => setIsOpen(false)}
       fullWidth
       style={{ padding: 16 }}
     >
       <DialogTitle>
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Typography variant="h6">{t('feeling_entry')}</Typography>
-          <IconButton onClick={() => setIsOpen(false)} size="large">
+        <Box display='flex' justifyContent='space-between' alignItems='center'>
+          <Typography variant='h6'>{t('feeling_entry')}</Typography>
+          <IconButton onClick={() => setIsOpen(false)} size='large'>
             <CloseIcon />
           </IconButton>
         </Box>
@@ -145,14 +134,14 @@ const NewFeelingEntryModal: React.FC<any> = ({ modalState }) => {
         </Button>
           </DialogActions>*/}
     </Dialog>
-  );
-};
+  )
+}
 
 NewFeelingEntryModal.defaultProps = {
   modalState: {
     isOpen: false,
     setIsOpen: () => '',
   },
-};
+}
 
-export default NewFeelingEntryModal;
+export default NewFeelingEntryModal

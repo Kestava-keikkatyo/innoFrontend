@@ -1,56 +1,58 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchUserById } from '../../actions/usersActions';
-import { IRootState } from '../../utils/store';
-import { useParams, Link } from 'react-router-dom';
-import PageLoading from '../../components/PageLoading';
-import { Avatar, Typography, Button } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
-import { LocationSearching, MailOutline, PermIdentity, PhoneAndroid } from '@mui/icons-material';
-import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOutlined';
-import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined';
-import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
-import { useTranslation } from 'react-i18next';
-import { roles } from '../../types/types';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchUserById } from '../../actions/usersActions'
+import { IRootState } from '../../utils/store'
+import { useParams, Link } from 'react-router-dom'
+import PageLoading from '../../components/PageLoading'
+import { Avatar, Typography, Button } from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
+import { LocationSearching, MailOutline, PermIdentity, PhoneAndroid } from '@mui/icons-material'
+import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOutlined'
+import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined'
+import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined'
+import { useTranslation } from 'react-i18next'
+import { roles } from '../../types/types'
 
 type UserUrlParams = {
   userId: string
 }
 
 const UserProfile: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
-  const classes = useStyles();
-  const { userId } = useParams<UserUrlParams>();
+  const classes = useStyles()
+  const { userId } = useParams<UserUrlParams>()
 
-  const myUserId = useSelector((state: IRootState) => state.user.data._id);
+  const myUserId = useSelector((state: IRootState) => state.user.data._id)
 
-  const profileId: string = myProfile ? myUserId : userId;
+  const profileId: string = myProfile ? myUserId : userId
 
-  const profileData = useSelector((state: IRootState) => state.users.currentUser);
-  const { t } = useTranslation();
-  const dispatch = useDispatch();
+  const profileData = useSelector((state: IRootState) => state.users.currentUser)
+  const { t } = useTranslation()
+  const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchUserById(profileId));
-  }, [dispatch, profileId]);
+    dispatch(fetchUserById(profileId))
+  }, [dispatch, profileId])
 
-  if (!profileData || profileId !== profileData._id) return (
-    <PageLoading />
-  );
+  if (!profileData || profileId !== profileData._id) return <PageLoading />
 
   return (
     <div className={classes.user}>
       <div className={classes.userTitleContainer}>
-        <Typography color="secondary" className="header" variant="h1">{t('user_profile')}</Typography>
+        <Typography color='secondary' className='header' variant='h1'>
+          {t('user_profile')}
+        </Typography>
       </div>
       <div className={classes.userContainer}>
         <div className={classes.userShow}>
-          {myProfile ?
-            <Button className={classes.edit} color="secondary" component={Link} to="/profile/edit">{t('button_edit')}</Button>
-            : null}
+          {myProfile ? (
+            <Button className={classes.edit} color='secondary' component={Link} to='/profile/edit'>
+              {t('button_edit')}
+            </Button>
+          ) : null}
           <div className={classes.userShowTop}>
             <Avatar
               className={classes.avatar}
-              aria-label="recipe"
-              alt="profile"
+              aria-label='recipe'
+              alt='profile'
               src={profileData.profilePicture}
             />
           </div>
@@ -58,18 +60,20 @@ const UserProfile: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
             <span className={classes.userShowTitle}>{t('user_account_details')}</span>
             <div className={classes.userShowInfo}>
               <PermIdentity className={classes.userShowIcon} />
-              <span className={classes.userShowInfoTitle}>{profileData.firstName} {profileData.lastName}</span>
+              <span className={classes.userShowInfoTitle}>
+                {profileData.firstName} {profileData.lastName}
+              </span>
             </div>
             <div className={classes.userShowInfo}>
               <WorkspacePremiumOutlinedIcon className={classes.userShowIcon} />
               <span className={classes.userShowInfoTitle}>{profileData.userType}</span>
             </div>
-            {(profileData.userType === roles.Agency || profileData.userType === roles.Business) ?
+            {profileData.userType === roles.Agency || profileData.userType === roles.Business ? (
               <div className={classes.userShowInfo}>
                 <CategoryOutlinedIcon className={classes.userShowIcon} />
                 <span className={classes.userShowInfoTitle}> {profileData.category}</span>
               </div>
-              : null}
+            ) : null}
             <span className={classes.userShowTitle}>{t('user_contact_details')}</span>
             <div className={classes.userShowInfo}>
               <PhoneAndroid className={classes.userShowIcon} />
@@ -85,23 +89,23 @@ const UserProfile: React.FC<{ myProfile?: boolean }> = ({ myProfile }) => {
                 {[profileData.street, profileData.zipCode, profileData.city].join(', ')}
               </span>
             </div>
-            {(profileData.userType === roles.Agency || profileData.userType === roles.Business) ?
+            {profileData.userType === roles.Agency || profileData.userType === roles.Business ? (
               <div className={classes.userShowInfo}>
                 <LanguageOutlinedIcon className={classes.userShowIcon} />
                 <span className={classes.userShowInfoTitle}> {profileData.website}</span>
               </div>
-              : null}
-            {profileData.userType === roles.Worker ?
+            ) : null}
+            {profileData.userType === roles.Worker ? (
               <div className={classes.userShowInfo}>
                 <span className={classes.userShowTitle}>{t('user_licenses')}</span>
                 <span className={classes.userShowInfoTitle}>{profileData.licenses}</span>
               </div>
-              : null}
+            ) : null}
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -156,7 +160,7 @@ const useStyles = makeStyles((theme) => ({
   edit: {
     fontSize: '17px',
     float: 'right',
-  }
-}));
+  },
+}))
 
-export default UserProfile;
+export default UserProfile

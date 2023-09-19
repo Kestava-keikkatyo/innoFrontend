@@ -18,7 +18,6 @@ import BusinssContractFormContactInfo from '../../components/BusinessContractFor
 import BusinssContractFormDatepicker from '../../components/BusinessContractFormComponents/BusinssContractFormDatepicker'
 import BusinssContractFormTimepicker from '../../components/BusinessContractFormComponents/BusinssContractFormTimepicker'
 
-
 /**
  * @component
  * @desc A parent component to business contract form preview page.
@@ -29,15 +28,11 @@ const BusinessContractPreviewPage: React.FC = () => {
   const { title, description, questions } = useSelector((state: any) => state.businessContractForm)
   const dispatch = useDispatch()
 
-
   return (
     <Container>
-      <PreviewHeader/>
-      <div className="create-form">
-        <BusinessContractFormHeader
-          title={title}
-          description={description}
-        />
+      <PreviewHeader />
+      <div className='create-form'>
+        <BusinessContractFormHeader title={title} description={description} />
         {questions.map((q: Question, k: number) => {
           switch (q.questionType) {
             case questionTypes.Text:
@@ -55,24 +50,19 @@ const BusinessContractPreviewPage: React.FC = () => {
             case questionTypes.Comment:
               return <BusinssContractFormComment key={k} question={q} />
             case questionTypes.Datepicker:
-              return <BusinssContractFormDatepicker key={k} question={q}/>
+              return <BusinssContractFormDatepicker key={k} question={q} />
             case questionTypes.Timepicker:
               return <BusinssContractFormTimepicker key={k} question={q} />
             case questionTypes.ContactInformation:
               return <BusinssContractFormContactInfo key={k} question={q} />
             default:
-              dispatch(
-                setAlert("Cannot read question of type: " + q.questionType, severity.Error)
-              )
+              dispatch(setAlert('Cannot read question of type: ' + q.questionType, severity.Error))
               return <></>
           }
         })}
       </div>
-
     </Container>
   )
 }
-
-
 
 export default BusinessContractPreviewPage

@@ -45,25 +45,25 @@ export const fetchAllUsers =
  */
 export const fetchUserById =
   (id: string) =>
-    async (dispatch: Dispatch<UserGetCurrentRequest | UserGetCurrentSuccess | UserActionFailure>) => {
-      try {
-        dispatch({
-          type: usersType.USER_GET_CURRENT_REQUEST,
-        })
-        const res = await usersService.fetchUserById(id)
-        dispatch({ type: usersType.USER_GET_CURRENT_SUCCESS, data: res.data })
-      } catch (e) {
-        dispatch({
-          type: usersType.USER_ACTION_FAILURE,
-          data: e as string,
-        })
-        await setAlert('Failed to fetch the user: ' + e, severity.Error, 15)(dispatch)
-      }
+  async (dispatch: Dispatch<UserGetCurrentRequest | UserGetCurrentSuccess | UserActionFailure>) => {
+    try {
+      dispatch({
+        type: usersType.USER_GET_CURRENT_REQUEST,
+      })
+      const res = await usersService.fetchUserById(id)
+      dispatch({ type: usersType.USER_GET_CURRENT_SUCCESS, data: res.data })
+    } catch (e) {
+      dispatch({
+        type: usersType.USER_ACTION_FAILURE,
+        data: e as string,
+      })
+      await setAlert('Failed to fetch the user: ' + e, severity.Error, 15)(dispatch)
     }
+  }
 
 /**
  * @function
- * @description 
+ * @description
  * Fetches all signed contracts that agency has with other users.
  * Then fetches the user profiles accordingly, and saves them into Redux state as user contacts.
  */
@@ -79,18 +79,22 @@ export const fetchAgencyContacts = () => async (dispatch: any) => {
       type: usersType.USER_ACTION_FAILURE,
       data: error as string,
     })
-    await setAlert('Failed to fetch ' + loadUser().role + ' contacts: ' + error, severity.Error, 15)(dispatch)
+    await setAlert(
+      'Failed to fetch ' + loadUser().role + ' contacts: ' + error,
+      severity.Error,
+      15,
+    )(dispatch)
   }
   insertContactData(userList)
   dispatch({ type: FETCH_CONTACTS_SUCCESS, data: userList.flat() })
 }
 
 /**
-* @function
-* @description 
-* Fetches all signed contracts that business has with other users.
-* Then fetches the user profiles accordingly, and saves them into Redux state as user contacts.
-*/
+ * @function
+ * @description
+ * Fetches all signed contracts that business has with other users.
+ * Then fetches the user profiles accordingly, and saves them into Redux state as user contacts.
+ */
 export const fetchBusinessContacts = () => async (dispatch: any) => {
   const userList = []
   try {
@@ -103,18 +107,22 @@ export const fetchBusinessContacts = () => async (dispatch: any) => {
       type: usersType.USER_ACTION_FAILURE,
       data: error as string,
     })
-    await setAlert('Failed to fetch ' + loadUser().role + ' contacts: ' + error, severity.Error, 15)(dispatch)
+    await setAlert(
+      'Failed to fetch ' + loadUser().role + ' contacts: ' + error,
+      severity.Error,
+      15,
+    )(dispatch)
   }
   insertContactData(userList)
   dispatch({ type: FETCH_CONTACTS_SUCCESS, data: userList.flat() })
 }
 
 /**
-* @function
-* @description 
-* Fetches all signed contracts that worker has with other users.
-* Then fetches the user profiles accordingly, and saves them into Redux state as user contacts.
-*/
+ * @function
+ * @description
+ * Fetches all signed contracts that worker has with other users.
+ * Then fetches the user profiles accordingly, and saves them into Redux state as user contacts.
+ */
 export const fetchWorkerContacts = () => async (dispatch: any) => {
   const userList = []
   try {
@@ -127,7 +135,11 @@ export const fetchWorkerContacts = () => async (dispatch: any) => {
       type: usersType.USER_ACTION_FAILURE,
       data: error as string,
     })
-    await setAlert('Failed to fetch ' + loadUser().role + ' contacts: ' + error, severity.Error, 15)(dispatch)
+    await setAlert(
+      'Failed to fetch ' + loadUser().role + ' contacts: ' + error,
+      severity.Error,
+      15,
+    )(dispatch)
   }
   insertContactData(userList)
   dispatch({ type: FETCH_CONTACTS_SUCCESS, data: userList.flat() })
@@ -139,21 +151,21 @@ export const fetchWorkerContacts = () => async (dispatch: any) => {
  */
 export const searchUserByName =
   (input: string) =>
-    async (dispatch: Dispatch<UserGetCurrentRequest | UserGetCurrentSuccess | UserActionFailure>) => {
-      try {
-        dispatch({
-          type: usersType.USER_GET_CURRENT_REQUEST,
-        })
-        const res = await usersService.searchUserByName(input)
-        dispatch({ type: usersType.USER_GET_CURRENT_SUCCESS, data: res.data })
-      } catch (e) {
-        dispatch({
-          type: usersType.USER_ACTION_FAILURE,
-          data: e as string,
-        })
-        await setAlert('Failed to fetch the user: ' + e, severity.Error, 15)(dispatch)
-      }
+  async (dispatch: Dispatch<UserGetCurrentRequest | UserGetCurrentSuccess | UserActionFailure>) => {
+    try {
+      dispatch({
+        type: usersType.USER_GET_CURRENT_REQUEST,
+      })
+      const res = await usersService.searchUserByName(input)
+      dispatch({ type: usersType.USER_GET_CURRENT_SUCCESS, data: res.data })
+    } catch (e) {
+      dispatch({
+        type: usersType.USER_ACTION_FAILURE,
+        data: e as string,
+      })
+      await setAlert('Failed to fetch the user: ' + e, severity.Error, 15)(dispatch)
     }
+  }
 
 /**
  * @function
@@ -280,7 +292,11 @@ export const fetchAllBusinessesAndAgencies =
         type: usersType.USER_ACTION_FAILURE,
         data: e as string,
       })
-      await setAlert('Failed to fetch all agencies or businesses!: ' + e, severity.Error, 15)(dispatch)
+      await setAlert(
+        'Failed to fetch all agencies or businesses!: ' + e,
+        severity.Error,
+        15,
+      )(dispatch)
     }
   }
 
@@ -290,21 +306,21 @@ export const fetchAllBusinessesAndAgencies =
  */
 export const showMyProfile =
   (id: string) =>
-    async (dispatch: Dispatch<UserGetCurrentRequest | UserGetCurrentSuccess | UserActionFailure>) => {
-      try {
-        dispatch({
-          type: usersType.USER_GET_CURRENT_REQUEST,
-        })
-        const res = await usersService.showMyProfile(id)
-        dispatch({ type: usersType.USER_GET_CURRENT_SUCCESS, data: res.data })
-      } catch (e) {
-        dispatch({
-          type: usersType.USER_ACTION_FAILURE,
-          data: e as string,
-        })
-        await setAlert('Failed to fetch user profile: ' + e, severity.Error, 15)(dispatch)
-      }
+  async (dispatch: Dispatch<UserGetCurrentRequest | UserGetCurrentSuccess | UserActionFailure>) => {
+    try {
+      dispatch({
+        type: usersType.USER_GET_CURRENT_REQUEST,
+      })
+      const res = await usersService.showMyProfile(id)
+      dispatch({ type: usersType.USER_GET_CURRENT_SUCCESS, data: res.data })
+    } catch (e) {
+      dispatch({
+        type: usersType.USER_ACTION_FAILURE,
+        data: e as string,
+      })
+      await setAlert('Failed to fetch user profile: ' + e, severity.Error, 15)(dispatch)
     }
+  }
 
 /**
  * @function
@@ -312,36 +328,36 @@ export const showMyProfile =
  */
 export const updateUser =
   (user: User, profilePhoto?: File, myProfile?: boolean) =>
-    async (dispatch: Dispatch<UserAction | UserActionFailure>) => {
-      try {
-        dispatch({
-          type: usersType.USER_UPDATE_REQUEST,
-          data: user,
-        })
+  async (dispatch: Dispatch<UserAction | UserActionFailure>) => {
+    try {
+      dispatch({
+        type: usersType.USER_UPDATE_REQUEST,
+        data: user,
+      })
 
-        if (profilePhoto) {
-          const res = await fileService.postFile(profilePhoto)
-          user.profilePicture = res.data.fileUrl
-        } else if (profilePhoto === null) {
-          user.profilePicture = ''
-        }
-
-        const res = await usersService.updateUser(user)
-        dispatch({ type: usersType.USER_UPDATE_SUCCESS, data: res.data })
-
-        if (myProfile) {
-          history.push('/profile')
-        } else {
-          history.push('/users')
-        }
-      } catch (error) {
-        dispatch({
-          type: usersType.USER_ACTION_FAILURE,
-          data: error as string,
-        })
-        await setAlert('Failed to update user: ' + error, severity.Error, 15)(dispatch)
+      if (profilePhoto) {
+        const res = await fileService.postFile(profilePhoto)
+        user.profilePicture = res.data.fileUrl
+      } else if (profilePhoto === null) {
+        user.profilePicture = ''
       }
+
+      const res = await usersService.updateUser(user)
+      dispatch({ type: usersType.USER_UPDATE_SUCCESS, data: res.data })
+
+      if (myProfile) {
+        history.push('/profile')
+      } else {
+        history.push('/users')
+      }
+    } catch (error) {
+      dispatch({
+        type: usersType.USER_ACTION_FAILURE,
+        data: error as string,
+      })
+      await setAlert('Failed to update user: ' + error, severity.Error, 15)(dispatch)
     }
+  }
 
 /**
  * Create user
@@ -351,28 +367,28 @@ export const updateUser =
  */
 export const createAdmin =
   (firstName: string, lastName: string, email: string, password: string) =>
-    async (dispatch: Dispatch<UserAction | UserActionFailure>) => {
-      try {
-        dispatch({
-          type: usersType.USER_CREATED_REQUEST,
-          data: { firstName, lastName, email, userType: roles.Admin, password, active: true },
-        })
+  async (dispatch: Dispatch<UserAction | UserActionFailure>) => {
+    try {
+      dispatch({
+        type: usersType.USER_CREATED_REQUEST,
+        data: { firstName, lastName, email, userType: roles.Admin, password, active: true },
+      })
 
-        const { data } = await usersService.createUser(firstName, email, 'admin', password)
-        dispatch({
-          type: usersType.USER_CREATED_SUCCESS,
-          data,
-        })
-        await setAlert('user created successfully!')(dispatch)
-        history.push('/userList')
-      } catch (e) {
-        dispatch({
-          type: usersType.USER_ACTION_FAILURE,
-          data: e as string,
-        })
-        await setAlert('Failed to create the user: ' + e, severity.Error, 15)(dispatch)
-      }
+      const { data } = await usersService.createUser(firstName, email, 'admin', password)
+      dispatch({
+        type: usersType.USER_CREATED_SUCCESS,
+        data,
+      })
+      await setAlert('user created successfully!')(dispatch)
+      history.push('/userList')
+    } catch (e) {
+      dispatch({
+        type: usersType.USER_ACTION_FAILURE,
+        data: e as string,
+      })
+      await setAlert('Failed to create the user: ' + e, severity.Error, 15)(dispatch)
     }
+  }
 
 /**
  * @function
@@ -380,29 +396,29 @@ export const createAdmin =
  */
 export const updateUSerStatus =
   (user: User, active: boolean) =>
-    async (dispatch: Dispatch<UserUpdateStatus | UserActionFailure>) => {
-      try {
-        dispatch({
-          type: usersType.USER_UPDATE_STATUS_REQUEST,
-          data: { user, active },
-        })
-        const data = await usersService.setUserStatus(user._id as string, active)
-        dispatch({
-          type: usersType.USER_UPDATE_STATUS_SUCCESS,
-          data: { user, active },
-        })
-        if (active === false) {
-          await setAlert('User deactivated successfully!')(dispatch)
-        } else await setAlert('User activated successfully!')(dispatch)
-        console.log('deactivate data', data)
-      } catch (e) {
-        dispatch({
-          type: usersType.USER_ACTION_FAILURE,
-          data: e as string,
-        })
-        await setAlert('Failed to deactivate the user: ' + e, severity.Error, 15)(dispatch)
-      }
+  async (dispatch: Dispatch<UserUpdateStatus | UserActionFailure>) => {
+    try {
+      dispatch({
+        type: usersType.USER_UPDATE_STATUS_REQUEST,
+        data: { user, active },
+      })
+      const data = await usersService.setUserStatus(user._id as string, active)
+      dispatch({
+        type: usersType.USER_UPDATE_STATUS_SUCCESS,
+        data: { user, active },
+      })
+      if (active === false) {
+        await setAlert('User deactivated successfully!')(dispatch)
+      } else await setAlert('User activated successfully!')(dispatch)
+      console.log('deactivate data', data)
+    } catch (e) {
+      dispatch({
+        type: usersType.USER_ACTION_FAILURE,
+        data: e as string,
+      })
+      await setAlert('Failed to deactivate the user: ' + e, severity.Error, 15)(dispatch)
     }
+  }
 
 /**
  * @function
@@ -410,45 +426,44 @@ export const updateUSerStatus =
  */
 export const changePassword =
   (newPassword: string, currentPassword: string) =>
-    async (dispatch: Dispatch<UserAction | UserActionFailure>) => {
-      try {
-        await usersService.changePassword(newPassword, currentPassword)
-        await setAlert(i18next.t('change_password_password_was_changed_successfully'))(dispatch)
-        history.push('/home')
-      } catch (e) {
-        dispatch({
-          type: usersType.USER_ACTION_FAILURE,
-          data: e as string,
-        })
-        await setAlert(
-          i18next.t('change_password_failed_to_change_password') + e,
-          severity.Error,
-          15,
-        )(dispatch)
-      }
+  async (dispatch: Dispatch<UserAction | UserActionFailure>) => {
+    try {
+      await usersService.changePassword(newPassword, currentPassword)
+      await setAlert(i18next.t('change_password_password_was_changed_successfully'))(dispatch)
+      history.push('/home')
+    } catch (e) {
+      dispatch({
+        type: usersType.USER_ACTION_FAILURE,
+        data: e as string,
+      })
+      await setAlert(
+        i18next.t('change_password_failed_to_change_password') + e,
+        severity.Error,
+        15,
+      )(dispatch)
     }
+  }
 
 /**
-* @function
-* @desc Reset user's forgotten password
-*/
+ * @function
+ * @desc Reset user's forgotten password
+ */
 export const resetPassword =
-  (newPassword: string) =>
-    async (dispatch: Dispatch<UserAction | UserActionFailure>) => {
-      try {
-        await usersService.resetPassword(newPassword)
-        await setAlert(i18next.t('reset_password_password_was_changed_successfully'))(dispatch)
-        removeToken()
-        history.push('/login')
-      } catch (e) {
-        dispatch({
-          type: usersType.USER_ACTION_FAILURE,
-          data: e as string,
-        })
-        await setAlert(
-          i18next.t('change_password_failed_to_change_password') + e,
-          severity.Error,
-          15,
-        )(dispatch)
-      }
+  (newPassword: string) => async (dispatch: Dispatch<UserAction | UserActionFailure>) => {
+    try {
+      await usersService.resetPassword(newPassword)
+      await setAlert(i18next.t('reset_password_password_was_changed_successfully'))(dispatch)
+      removeToken()
+      history.push('/login')
+    } catch (e) {
+      dispatch({
+        type: usersType.USER_ACTION_FAILURE,
+        data: e as string,
+      })
+      await setAlert(
+        i18next.t('change_password_failed_to_change_password') + e,
+        severity.Error,
+        15,
+      )(dispatch)
     }
+  }

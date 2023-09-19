@@ -1,14 +1,10 @@
 [
-    {
-        "title": "Mikä on tietopankki?",
-        "details": [
-          "Tietopankista löytyy laajasti materiaalia liittyen vuokratyöhön."
-        ]
-      },
-      {
-        "title": "Kenelle tietopankki näkyy?",
-        "details": [
-          "Tietopankki on avoin kaikille, eikä se vaadi kirjautumista."
-        ]
-      }
+  {
+    "title": "Mikä on tietopankki?",
+    "details": ["Tietopankista löytyy laajasti materiaalia liittyen vuokratyöhön."]
+  },
+  {
+    "title": "Kenelle tietopankki näkyy?",
+    "details": ["Tietopankki on avoin kaikille, eikä se vaadi kirjautumista."]
+  }
 ]

@@ -1,4 +1,12 @@
-import { Checkbox, FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, Typography } from '@mui/material'
+import {
+  Checkbox,
+  FormControl,
+  FormControlLabel,
+  FormGroup,
+  FormHelperText,
+  FormLabel,
+  Typography,
+} from '@mui/material'
 import React from 'react'
 import { FormComponentProps } from '../../types/props'
 
@@ -11,36 +19,39 @@ import { FormComponentProps } from '../../types/props'
 const BusinssContractFormCheckBoxGroup: React.FC<FormComponentProps> = ({ question }) => {
   const { title, subTitle, options } = question
 
-  let {optionValues} = question
+  let { optionValues } = question
 
   const [state, setState] = React.useState(
-    options.map((name,i) => {
+    options.map((name, i) => {
       return { name, value: optionValues[i] }
-    })
+    }),
   )
 
   const handleChange = (index: number) => {
-    setState(state.map((o, i) => i === index ? { ...o, value: !o.value }: o ))
+    setState(state.map((o, i) => (i === index ? { ...o, value: !o.value } : o)))
     optionValues[index] = !optionValues[index]
-  };
+  }
 
   return (
     <>
-      <Typography variant="h6" >{ title }</Typography>
-        <FormControl component="fieldset" >
-        <FormLabel component="legend">{ title }</FormLabel>
+      <Typography variant='h6'>{title}</Typography>
+      <FormControl component='fieldset'>
+        <FormLabel component='legend'>{title}</FormLabel>
         <FormGroup>
-          { state.map((o, i) =>
-            <FormControlLabel key={o.name}
-              control={<Checkbox checked={o.value} onChange={() => handleChange(i)} name={o.name} />}
+          {state.map((o, i) => (
+            <FormControlLabel
+              key={o.name}
+              control={
+                <Checkbox checked={o.value} onChange={() => handleChange(i)} name={o.name} />
+              }
               label={o.name}
             />
-          )}
+          ))}
         </FormGroup>
-        <FormHelperText>{ subTitle }</FormHelperText>
+        <FormHelperText>{subTitle}</FormHelperText>
       </FormControl>
     </>
-   )
+  )
 }
 
 export default BusinssContractFormCheckBoxGroup

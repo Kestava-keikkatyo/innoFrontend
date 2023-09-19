@@ -12,11 +12,11 @@ const FormTextArea: React.FC<FormComponentProps> = ({ question }) => {
   const { title, rows, subTitle } = question
   return (
     <>
-      <Typography variant="h6" >{ title }</Typography>
-      <Typography variant="body1" >{subTitle}</Typography>
-      <TextField multiline rows={rows} variant="outlined" style={{ width: '90%' }}/>
+      <Typography variant='h6'>{title}</Typography>
+      <Typography variant='body1'>{subTitle}</Typography>
+      <TextField multiline rows={rows} variant='outlined' style={{ width: '90%' }} />
     </>
-   )
+  )
 }
 
 export default FormTextArea

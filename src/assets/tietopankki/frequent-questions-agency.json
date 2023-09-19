@@ -1,20 +1,18 @@
 [
-    {
-        "title": "Mistä palautteet koostuvat?",
-        "details": [
-          "Palautteet koostuvat vuokratyöntekijöiltä kerätyistä fiiliksistä ja heidän antamastaan palautteesta. Palautteet voivat olla anonyymejä tai nimettyjä."
-        ]
-      },
-      {
-        "title": "Voiko palautteisiin vastata?",
-        "details": [
-          "Nimellä lähetettyihin palautteisiin voi vastata. Anonyymeihin palautteisiin ei kuitenkaan ole mahdollista vastata."
-        ]
-      },
-      {
-        "title": "Näkyykö vuokratyöntekijälle samat vastuut kuin henkilöstöpalveluyritykselle?",
-        "details": [
-          "Ei. Vuokratyöntekijällä näkyvät omat häntä koskevat vastuut."
-        ]
-      }
+  {
+    "title": "Mistä palautteet koostuvat?",
+    "details": [
+      "Palautteet koostuvat vuokratyöntekijöiltä kerätyistä fiiliksistä ja heidän antamastaan palautteesta. Palautteet voivat olla anonyymejä tai nimettyjä."
+    ]
+  },
+  {
+    "title": "Voiko palautteisiin vastata?",
+    "details": [
+      "Nimellä lähetettyihin palautteisiin voi vastata. Anonyymeihin palautteisiin ei kuitenkaan ole mahdollista vastata."
+    ]
+  },
+  {
+    "title": "Näkyykö vuokratyöntekijälle samat vastuut kuin henkilöstöpalveluyritykselle?",
+    "details": ["Ei. Vuokratyöntekijällä näkyvät omat häntä koskevat vastuut."]
+  }
 ]
