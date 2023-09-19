@@ -1,7 +1,7 @@
 import React from 'react'
-import { Container, Card, CardContent } from '@mui/material';
+import { Container, Card, CardContent } from '@mui/material'
 
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '@mui/styles/makeStyles'
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -14,11 +14,11 @@ const useStyles = makeStyles((theme) => ({
  * @param {Object} name - name of the form generated and displayed
  * @returns returns a container for the listen forms generated with the form generation tool.
  */
-export const FormContainer: React.FC<{name: string}> = ({ name }) => {
+export const FormContainer: React.FC<{ name: string }> = ({ name }) => {
   const classes = useStyles()
   return (
     <Container>
-      <Card className={classes.card} variant="outlined">
+      <Card className={classes.card} variant='outlined'>
         <CardContent>{name}</CardContent>
       </Card>
     </Container>

@@ -1,12 +1,12 @@
 // MaterialTable.tsx
 
-import React from 'react';
-import { Table, TableBody, TableHead, TableRow, TableCell } from "@mui/material";
-import { CompanyFile } from "../../types/types";
-import MaterialRow from './MaterialRow';
+import React from 'react'
+import { Table, TableBody, TableHead, TableRow, TableCell } from '@mui/material'
+import { CompanyFile } from '../../types/types'
+import MaterialRow from './MaterialRow'
 
 interface MaterialTableProps {
-  files: CompanyFile[];
+  files: CompanyFile[]
 }
 
 const MaterialTable: React.FC<MaterialTableProps> = ({ files }) => {
@@ -26,7 +26,7 @@ const MaterialTable: React.FC<MaterialTableProps> = ({ files }) => {
         ))}
       </TableBody>
     </Table>
-  );
-};
+  )
+}
 
-export default MaterialTable;
+export default MaterialTable

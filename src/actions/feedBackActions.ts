@@ -28,7 +28,11 @@ export const fetchFeedbacksAppointedToMe =
         type: feedbackType.FEEDBACK_ACTION_FAILURE,
         data: e as string,
       })
-      await setAlert('Failed to fetch feedbacks appointed to you!: ' + e, severity.Error, 15)(dispatch)
+      await setAlert(
+        'Failed to fetch feedbacks appointed to you!: ' + e,
+        severity.Error,
+        15,
+      )(dispatch)
     }
   }
 

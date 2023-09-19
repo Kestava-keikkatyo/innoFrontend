@@ -2,10 +2,10 @@
  * @module service/feeling
  * @desc Feeling requests to backend.
  */
-import axios from "axios";
-import { Feeling } from "../types/types";
-import { loadUser } from "../utils/storage";
-import baseUrl from "../utils/baseUrl";
+import axios from 'axios'
+import { Feeling } from '../types/types'
+import { loadUser } from '../utils/storage'
+import baseUrl from '../utils/baseUrl'
 
 /**
  * @function
@@ -13,9 +13,9 @@ import baseUrl from "../utils/baseUrl";
  */
 const authHeader = () => {
   return {
-    headers: { "x-access-token": `${loadUser().token}` },
-  };
-};
+    headers: { 'x-access-token': `${loadUser().token}` },
+  }
+}
 
 /**
  * @function
@@ -46,31 +46,25 @@ const authHeader = () => {
 };*/
 
 const getFeelings = async () => {
-  let allData: any = [];
-  let currentPage = 1;
-  
-    /*let res = await axios.get(`${baseUrl}/feelings?page=${currentPage}&limit=10`, authHeader())
+  let allData: any = []
+  let currentPage = 1
+
+  /*let res = await axios.get(`${baseUrl}/feelings?page=${currentPage}&limit=10`, authHeader())
   return res*/
 
-  console.log("getFeelings");
-  let res = await axios.get(
-    `${baseUrl}/feelings?page=${currentPage}&limit=10`,
-    authHeader()
-  );
-  console.log("feelingService:getFeelings: res", res);
+  console.log('getFeelings')
+  let res = await axios.get(`${baseUrl}/feelings?page=${currentPage}&limit=10`, authHeader())
+  console.log('feelingService:getFeelings: res', res)
 
   for (currentPage; currentPage <= res.data.totalPages; currentPage++) {
-    res = await axios.get(
-      `${baseUrl}/feelings?page=${currentPage}&limit=10`,
-      authHeader()
-    );
-    let docs = res?.data?.docs;
-    docs.map((doc: any) => allData.push(doc));
+    res = await axios.get(`${baseUrl}/feelings?page=${currentPage}&limit=10`, authHeader())
+    let docs = res?.data?.docs
+    docs.map((doc: any) => allData.push(doc))
   }
 
-  console.log("feelingService:getFeelings: all data", allData);
-  return allData;
-};
+  console.log('feelingService:getFeelings: all data', allData)
+  return allData
+}
 
 /**
  * @function
@@ -78,8 +72,8 @@ const getFeelings = async () => {
  * @param {Feeling} feeling new Feeling object
  */
 const postFeeling = async (feeling: Feeling) => {
-  return await axios.post(`${baseUrl}/user/feeling/`, feeling, authHeader());
-};
+  return await axios.post(`${baseUrl}/user/feeling/`, feeling, authHeader())
+}
 
 const getAllFeelings = async () => {
   const res = await axios.get(`${baseUrl}/feeling/allFeelings`, authHeader())
@@ -90,4 +84,4 @@ export default {
   getFeelings,
   postFeeling,
   getAllFeelings,
-};
+}

@@ -18,10 +18,11 @@ const PageLoading: React.FC = () => {
   return (
     <Grid
       container
-      justifyContent="center"
+      justifyContent='center'
       spacing={0}
-      alignItems="center"
-      style={{ minHeight: '100vh' }}>
+      alignItems='center'
+      style={{ minHeight: '100vh' }}
+    >
       <CircularProgress />
     </Grid>
   )

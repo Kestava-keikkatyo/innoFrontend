@@ -1,52 +1,49 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { me } from '../../actions/userActions';
-import { fetchEmploymentContractsAsAgency } from '../../actions/contractActions';
-import PageLoading from '../../components/PageLoading';
-import {
-  Container,
-  Box,
-  useTheme,
-  Direction,
-  useMediaQuery,
-  Link,
-} from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
-import { IRootState } from '../../utils/store';
-import { useTranslation } from 'react-i18next';
-import { setAlert } from '../../actions/alertActions';
-import { severity } from '../../types/types';
-import EmploymentContractsTable from './EmploymentContractsTable';
-import EmploymentTable from './Employment';
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { me } from '../../actions/userActions'
+import { fetchEmploymentContractsAsAgency } from '../../actions/contractActions'
+import PageLoading from '../../components/PageLoading'
+import { Container, Box, useTheme, Direction, useMediaQuery, Link } from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
+import { IRootState } from '../../utils/store'
+import { useTranslation } from 'react-i18next'
+import { setAlert } from '../../actions/alertActions'
+import { severity } from '../../types/types'
+import EmploymentContractsTable from './EmploymentContractsTable'
+import EmploymentTable from './Employment'
 
 interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-  dir: Direction;
+  children?: React.ReactNode
+  index: number
+  value: number
+  dir: Direction
 }
 
 const TabPanel = (props: TabPanelProps) => {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, ...other } = props
   return (
     <div
-      role="tabpanel"
+      role='tabpanel'
       hidden={value !== index}
       id={`full-width-tabpanel-${index}`}
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
     >
-      {value === index && <Box pt={3} px={{ xs: 0, sm: 2 }}>{children}</Box>}
+      {value === index && (
+        <Box pt={3} px={{ xs: 0, sm: 2 }}>
+          {children}
+        </Box>
+      )}
     </div>
-  );
-};
+  )
+}
 
 const a11yProps = (index: any) => {
   return {
     id: `full-width-tab-${index}`,
     'aria-controls': `full-width-tabpanel-${index}`,
-  };
-};
+  }
+}
 
 /**
  * @component
@@ -62,42 +59,37 @@ const a11yProps = (index: any) => {
  * in workerpage
  */
 const AgencyContractsPage = () => {
-  const { data, ...user } = useSelector((state: any) => state.user);
-  const employmentContracts = useSelector((state: any) => state.employmentAgreements.agreements);
+  const { data, ...user } = useSelector((state: any) => state.user)
+  const employmentContracts = useSelector((state: any) => state.employmentAgreements.agreements)
 
-  const dispatch = useDispatch();
-  const classes = useStyles();
-  const theme = useTheme();
-  const [expanded, setExpanded] = useState<string | false>(false);
-  const [value, setValue] = useState(0);
-  const { t } = useTranslation();
-  const matches = useMediaQuery(theme.breakpoints.down('md'));
+  const dispatch = useDispatch()
+  const classes = useStyles()
+  const theme = useTheme()
+  const [expanded, setExpanded] = useState<string | false>(false)
+  const [value, setValue] = useState(0)
+  const { t } = useTranslation()
+  const matches = useMediaQuery(theme.breakpoints.down('md'))
 
   useEffect(() => {
     dispatch(fetchEmploymentContractsAsAgency())
-  }, [dispatch]);
-
+  }, [dispatch])
 
   if (user.loading) {
-    return <PageLoading />;
+    return <PageLoading />
   }
   return (
-    <Container maxWidth="lg" id="maxContainer" className={classes.root}>
-
+    <Container maxWidth='lg' id='maxContainer' className={classes.root}>
       {/* This TabPanel is currently where all actions happen */}
       <TabPanel value={value} index={0} dir={theme.direction}>
-
         <EmploymentTable />
 
         <EmploymentContractsTable employmentContracts={employmentContracts} />
-
       </TabPanel>
-
     </Container>
-  );
-};
+  )
+}
 
-export default AgencyContractsPage;
+export default AgencyContractsPage
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -133,6 +125,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1.75rem',
     lineHeight: '1.334',
     marginTop: '5%',
-    marginBottom: '5%'
-  }
-}));
+    marginBottom: '5%',
+  },
+}))

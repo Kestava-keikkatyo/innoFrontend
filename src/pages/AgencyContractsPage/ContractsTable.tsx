@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from "react-redux";
-import { IRootState } from "../../utils/store";
-import { Typography, Grid, Tooltip } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { IRootState } from '../../utils/store'
+import { Typography, Grid, Tooltip } from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
 import {
   rejectContract,
   acceptContractFromBusiness,
   acceptContractFromWorker,
   sendBackContract,
   deleteContractById,
-} from '../../actions/contractActions';
-import { setAlert } from '../../actions/alertActions';
-import { severity } from '../../types/types';
-import { useTranslation } from 'react-i18next';
+} from '../../actions/contractActions'
+import { setAlert } from '../../actions/alertActions'
+import { severity } from '../../types/types'
+import { useTranslation } from 'react-i18next'
 import {
   TableContainer,
   Table,
@@ -25,20 +25,16 @@ import {
   useMediaQuery,
   useTheme,
   Theme,
-} from '@mui/material';
-import { 
+} from '@mui/material'
+import {
   Delete as DeleteIcon,
   DoneAll as SignedIcon,
-  HourglassEmpty as PendingIcon
-} from '@mui/icons-material';
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-} from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { deleteBusinessContractForm } from '../../actions/businessContractFormActions';
-import { green, red, yellow } from '@mui/material/colors';
+  HourglassEmpty as PendingIcon,
+} from '@mui/icons-material'
+import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import { deleteBusinessContractForm } from '../../actions/businessContractFormActions'
+import { green, red, yellow } from '@mui/material/colors'
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -59,13 +55,13 @@ const useStyles = makeStyles((theme) => ({
     color: '#6C6C6C',
   },
   tableDiv: {
-    width: '100%'
-  }
-}));
+    width: '100%',
+  },
+}))
 
 interface BusinessContractObject {
-  _id: string;
-  status: string;
+  _id: string
+  status: string
 }
 
 /**
@@ -78,34 +74,29 @@ interface BusinessContractObject {
  * @returns Grid
  */
 const ContractsTable: React.FC<any> = ({ businessContract }) => {
-  const profileData: any = useSelector((state: IRootState) => state.users.currentUser);
+  const profileData: any = useSelector((state: IRootState) => state.users.currentUser)
 
-  const classes = useStyles();
-  const dispatch = useDispatch();
-  const contracts = businessContract;
-  const { t } = useTranslation();
+  const classes = useStyles()
+  const dispatch = useDispatch()
+  const contracts = businessContract
+  const { t } = useTranslation()
   const [page, setPage] = React.useState(0)
   const [rowsPerPage, setRowsPerPage] = React.useState(5)
-  const { searchList } = useSelector(
-    (state: IRootState) => state.businessContracts
-  );
-  const workersOrBusinesses = searchList;
+  const { searchList } = useSelector((state: IRootState) => state.businessContracts)
+  const workersOrBusinesses = searchList
 
-  const deleteContract = (
-    contractId: string,
-    userId: string
-  ) => {
-    dispatch(deleteContractById(contractId));
-    dispatch(setAlert('Contract deleted.', severity.Info, 3));
-  };
+  const deleteContract = (contractId: string, userId: string) => {
+    dispatch(deleteContractById(contractId))
+    dispatch(setAlert('Contract deleted.', severity.Info, 3))
+  }
 
   const handleChangePage = (event: any, newPage: number) => {
     setPage(newPage)
   }
 
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
+    setRowsPerPage(parseInt(event.target.value, 10))
+    setPage(0)
   }
 
   const temp = (contract: any) => {
@@ -117,12 +108,12 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
     return (
       <div className={classes.tableDiv}>
         <TableContainer>
-          <Table aria-label="searched workers">
+          <Table aria-label='searched workers'>
             <TableHead>
               <TableRow>
-                <TableCell align="left">{t("status")}</TableCell>
-                <TableCell align="left">{t("email")}</TableCell>
-                <TableCell align="left">{t("action")}</TableCell>
+                <TableCell align='left'>{t('status')}</TableCell>
+                <TableCell align='left'>{t('email')}</TableCell>
+                <TableCell align='left'>{t('action')}</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -137,32 +128,33 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((contract: any) => (
                   <TableRow key={contract._id}>
-                    <TableCell component="th" scope="row" align="left">
-                      {contract.status === "signed" && 
-                        <><Tooltip title="Signed" placement="top" arrow>
-                          <SignedIcon sx={{ color: green[500] }} />
-                        </Tooltip></>}
-                      {contract.status === "pending" && 
-                        <><Tooltip title="Pending" placement="top" arrow>
-                          <PendingIcon sx={{ color: yellow[800] }} />
-                        </Tooltip></>}
+                    <TableCell component='th' scope='row' align='left'>
+                      {contract.status === 'signed' && (
+                        <>
+                          <Tooltip title='Signed' placement='top' arrow>
+                            <SignedIcon sx={{ color: green[500] }} />
+                          </Tooltip>
+                        </>
+                      )}
+                      {contract.status === 'pending' && (
+                        <>
+                          <Tooltip title='Pending' placement='top' arrow>
+                            <PendingIcon sx={{ color: yellow[800] }} />
+                          </Tooltip>
+                        </>
+                      )}
                     </TableCell>
-                    <TableCell align="left">
-                      {contract.target.email}
-                    </TableCell>
+                    <TableCell align='left'>{contract.target.email}</TableCell>
                     {/* <TableCell align="left">contract.form.title</TableCell> */}
-                    <TableCell
-                      padding="none"
-                      align="left"
-                      style={{ paddingLeft: 5 }}
-                    >
-                      <Tooltip title="Delete contract and remove connection" placement="top" arrow>
+                    <TableCell padding='none' align='left' style={{ paddingLeft: 5 }}>
+                      <Tooltip title='Delete contract and remove connection' placement='top' arrow>
                         <IconButton
-                          aria-label="remove contract"
-                          color="secondary"
+                          aria-label='remove contract'
+                          color='secondary'
                           onClick={() => deleteContract(contract._id, contract.creator)}
-                          size="large">
-                            <DeleteIcon sx={{ color: red[500] }}/>
+                          size='large'
+                        >
+                          <DeleteIcon sx={{ color: red[500] }} />
                         </IconButton>
                       </Tooltip>
                     </TableCell>
@@ -173,7 +165,7 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
         </TableContainer>
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
-          component="div"
+          component='div'
           count={businessContract.length}
           rowsPerPage={rowsPerPage}
           page={page}
@@ -181,22 +173,21 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </div>
-    );
-  };
+    )
+  }
 
   if (contracts[0] === undefined || !contracts.length) {
     return (
       <Typography
         style={{ padding: '1rem' }}
-        variant="h6"
-        align="center"
-        className="text-secondary"
+        variant='h6'
+        align='center'
+        className='text-secondary'
       >
         {t('no_results')}
       </Typography>
-    );
-  }
-  else return tableView()
+    )
+  } else return tableView()
 
   // Here below is the old, more complicated presentation. Saved for reference.
   //
@@ -250,7 +241,7 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
   //               id="panel1a-header"
   //             >
   //               <Typography gutterBottom variant="h6">
-  //                 
+  //
   //               </Typography>
   //             </AccordionSummary>
   //             <AccordionDetails>
@@ -378,6 +369,6 @@ const ContractsTable: React.FC<any> = ({ businessContract }) => {
   //     </Grid>
   //   </Grid>
   // </>;
-};
+}
 
-export default ContractsTable;
+export default ContractsTable

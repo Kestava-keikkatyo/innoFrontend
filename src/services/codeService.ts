@@ -1,7 +1,7 @@
-import axios, { AxiosResponse } from "axios";
-import { AgreementCode } from "../types/types";
-import baseUrl from "../utils/baseUrl";
-import { loadUser } from "../utils/storage";
+import axios, { AxiosResponse } from 'axios'
+import { AgreementCode } from '../types/types'
+import baseUrl from '../utils/baseUrl'
+import { loadUser } from '../utils/storage'
 
 /**
  * @function
@@ -9,9 +9,9 @@ import { loadUser } from "../utils/storage";
  */
 const authHeader = () => {
   return {
-    headers: { "x-access-token": `${loadUser().token}` },
-  };
-};
+    headers: { 'x-access-token': `${loadUser().token}` },
+  }
+}
 
 /**
  * Sends a request to the server at the '/addCodes' endpoint to create new agreement codes.
@@ -21,13 +21,13 @@ const authHeader = () => {
  */
 export const addAgreementCodes = async (numberOfCodes: number): Promise<Array<AgreementCode>> => {
   try {
-    const response = await axios.post(`${baseUrl}/code/addCodes`, { numberOfCodes }, authHeader());
-    return response.data.agreementCodes; // Extract the data from the Axios response
+    const response = await axios.post(`${baseUrl}/code/addCodes`, { numberOfCodes }, authHeader())
+    return response.data.agreementCodes // Extract the data from the Axios response
   } catch (error) {
-    console.error(error);
-    return []; // Return an empty array if an error occurs
+    console.error(error)
+    return [] // Return an empty array if an error occurs
   }
-};
+}
 
 /**
  * Sends a request to the server at the '/getAgreementCodesByCreator' endpoint to get the agreement codes created by a user.
@@ -36,14 +36,14 @@ export const addAgreementCodes = async (numberOfCodes: number): Promise<Array<Ag
  */
 export const getAgreementCodesByCreator = async (): Promise<Array<AgreementCode>> => {
   try {
-    const response = await axios.get(`${baseUrl}/code/getAgreementCodesByCreator`, authHeader());
-    console.log(response);
-    return response.data.agreementCodes;
+    const response = await axios.get(`${baseUrl}/code/getAgreementCodesByCreator`, authHeader())
+    console.log(response)
+    return response.data.agreementCodes
   } catch (error) {
-    console.error(error);
-    return [];
+    console.error(error)
+    return []
   }
-};
+}
 
 /**
  * Sends a request to the server at the '/updateMarkedValue' endpoint to update the marked value of an agreement code.
@@ -52,25 +52,28 @@ export const getAgreementCodesByCreator = async (): Promise<Array<AgreementCode>
  * @param marked - The new marked value (boolean) to be set.
  * @returns Promise<AgreementCode> - Resolves to an updated AgreementCode object.
  */
-export const updateAgreementCodeMarkedValue = async (id: string, marked: boolean): Promise<AgreementCode> => {
+export const updateAgreementCodeMarkedValue = async (
+  id: string,
+  marked: boolean,
+): Promise<AgreementCode> => {
   try {
     const response: AxiosResponse = await axios.put(
       `${baseUrl}/code/updateMarkedValue`,
       { id, marked },
-      authHeader()
-    );
-    return response.data.updatedAgreementCode;
+      authHeader(),
+    )
+    return response.data.updatedAgreementCode
   } catch (error) {
-    console.error(error);
-    throw error; // Re-throw the error so you can handle it in your component when calling this function
+    console.error(error)
+    throw error // Re-throw the error so you can handle it in your component when calling this function
   }
-};
+}
 
 export const addAgencyConnection = async (code: String): Promise<void> => {
   try {
-    const response = await axios.post(`${baseUrl}/code/createAgreement`, code, authHeader());
-    console.log(response);
+    const response = await axios.post(`${baseUrl}/code/createAgreement`, code, authHeader())
+    console.log(response)
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
-};
+}

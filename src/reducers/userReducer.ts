@@ -11,7 +11,7 @@ import {
   USER_PROFILE,
   USER_REQUEST,
   FETCH_CONTACTS_SUCCESS,
-  UserState
+  UserState,
 } from '../types/state'
 
 const userData = loadUser()
@@ -21,7 +21,7 @@ const initialState: UserState = {
   loggedIn: !!userData,
   loading: false,
   data: userData || {},
-  contacts: userContacts || []
+  contacts: userContacts || [],
 }
 
 /**
@@ -37,19 +37,19 @@ const userReducer = (state = initialState, action: UserActionTypes) => {
         loading: true,
         loggedIn: state.loggedIn,
         data: state.data,
-        contacts: state.contacts
+        contacts: state.contacts,
       }
     case LOGIN:
       return {
         loading: false,
         loggedIn: true,
         data: action.data,
-        contacts: []
+        contacts: [],
       }
     case FETCH_CONTACTS_SUCCESS:
       return {
         ...state,
-        contacts: action.data
+        contacts: action.data,
       }
     case USER_PROFILE:
       return {
@@ -59,21 +59,21 @@ const userReducer = (state = initialState, action: UserActionTypes) => {
           ...state.data,
           ...action.data,
         },
-        contacts: state.contacts
+        contacts: state.contacts,
       }
     case USER_FAILURE:
       return {
         loading: false,
         loggedIn: false,
         data: {},
-        contacts: []
+        contacts: [],
       }
     case LOGOUT:
       return {
         ...state,
         loggedIn: false,
         data: {},
-        contacts: []
+        contacts: [],
       }
     default:
       return state

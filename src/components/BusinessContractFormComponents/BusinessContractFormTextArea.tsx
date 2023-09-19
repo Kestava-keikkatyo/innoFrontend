@@ -20,22 +20,25 @@ const BusinssContractFormTextArea: React.FC<FormComponentProps> = ({ question })
 
   const dispatch = useDispatch()
 
-  let index:any = question?.ordering
+  let index: any = question?.ordering
 
-  const handleChange = (e:any) => {
-    dispatch(
-      updateQuestion({ ...questions[index], answer: e.target.value }, index)
-    )
-
+  const handleChange = (e: any) => {
+    dispatch(updateQuestion({ ...questions[index], answer: e.target.value }, index))
   }
 
   return (
     <>
-      <Typography variant="h6" >{ title }</Typography>
-      <Typography variant="body1" >{subTitle}</Typography>
-      <TextField value={answer || ''} onChange={handleChange}  multiline rows={rows} variant="outlined"/>
+      <Typography variant='h6'>{title}</Typography>
+      <Typography variant='body1'>{subTitle}</Typography>
+      <TextField
+        value={answer || ''}
+        onChange={handleChange}
+        multiline
+        rows={rows}
+        variant='outlined'
+      />
     </>
-   )
+  )
 }
 
 export default BusinssContractFormTextArea

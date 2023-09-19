@@ -2,10 +2,10 @@
  * @module service/report
  * @desc Report requests to backend.
  */
-import axios from "axios";
-import { Report } from "../types/types";
-import { loadUser } from "../utils/storage";
-import baseUrl from "../utils/baseUrl";
+import axios from 'axios'
+import { Report } from '../types/types'
+import { loadUser } from '../utils/storage'
+import baseUrl from '../utils/baseUrl'
 
 /**
  * @function
@@ -13,9 +13,9 @@ import baseUrl from "../utils/baseUrl";
  */
 const authHeader = () => {
   return {
-    headers: { "x-access-token": `${loadUser().token}` },
-  };
-};
+    headers: { 'x-access-token': `${loadUser().token}` },
+  }
+}
 
 /**
  * @function
@@ -23,23 +23,23 @@ const authHeader = () => {
  */
 const getReports = async () => {
   try {
-    return await axios.get(`${baseUrl}/report/receivedReports`, authHeader());
+    return await axios.get(`${baseUrl}/report/receivedReports`, authHeader())
   } catch (error) {
-    return Promise.reject(error.response);
+    return Promise.reject(error.response)
   }
-};
+}
 
 /**
  * @function
  * @desc Fetches users own reports.
  */
- const getMyReports = async () => {
+const getMyReports = async () => {
   try {
-    return await axios.get(`${baseUrl}/report/myReports`, authHeader());
+    return await axios.get(`${baseUrl}/report/myReports`, authHeader())
   } catch (error) {
-    return Promise.reject(error.response);
+    return Promise.reject(error.response)
   }
-};
+}
 
 /**
  * @function
@@ -47,8 +47,8 @@ const getReports = async () => {
  * @param {Report} report new Report object
  */
 const postReport = async (report: Report) => {
-  return await axios.post(`${baseUrl}/report`, report, authHeader());
-};
+  return await axios.post(`${baseUrl}/report`, report, authHeader())
+}
 
 /**
  * @function
@@ -56,11 +56,11 @@ const postReport = async (report: Report) => {
  * @param {string} id
  * @param {string} reply
  */
- const replyReport = async (id: string, reply: string) => {
+const replyReport = async (id: string, reply: string) => {
   console.log('reportService: replyReport: reply: ', reply)
-   
-  return await axios.put(`${baseUrl}/report/reply/${id}`, {reply: reply}, authHeader());
-};
+
+  return await axios.put(`${baseUrl}/report/reply/${id}`, { reply: reply }, authHeader())
+}
 
 /**
  * @function
@@ -68,9 +68,9 @@ const postReport = async (report: Report) => {
  * @param {string} id
  * @param {string} archived Note: sent as a string
  */
- const archiveReport = async (id: string, archived: string) => {
-  return await axios.put(`${baseUrl}/report/archive/${id}/${archived}`,{},  authHeader());
-};
+const archiveReport = async (id: string, archived: string) => {
+  return await axios.put(`${baseUrl}/report/archive/${id}/${archived}`, {}, authHeader())
+}
 
 /**
  * @function
@@ -78,22 +78,22 @@ const postReport = async (report: Report) => {
  */
 const fetchReportById = async (id: string) => {
   try {
-    const res = await axios.get(`${baseUrl}/admin/report/${id}`, authHeader());
-    return res.data;
+    const res = await axios.get(`${baseUrl}/admin/report/${id}`, authHeader())
+    return res.data
   } catch (error) {
-    console.log(error);
-    return Promise.reject(error.response);
+    console.log(error)
+    return Promise.reject(error.response)
   }
-};
+}
 
 const fetchAllReports = async () => {
   try {
-    const res = await axios.get(`${baseUrl}/admin/allReports`, authHeader());
-    return res;
+    const res = await axios.get(`${baseUrl}/admin/allReports`, authHeader())
+    return res
   } catch (error) {
-    return Promise.reject(error.response);
+    return Promise.reject(error.response)
   }
-};
+}
 export default {
   getReports,
   getMyReports,
@@ -102,4 +102,4 @@ export default {
   archiveReport,
   fetchReportById,
   fetchAllReports,
-};
+}

@@ -1,29 +1,23 @@
-import { Grid, Typography } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
-import React, { useEffect } from 'react';
-import { Pie } from 'react-chartjs-2';
-import { useDispatch, useSelector } from 'react-redux';
+import { Grid, Typography } from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
+import React, { useEffect } from 'react'
+import { Pie } from 'react-chartjs-2'
+import { useDispatch, useSelector } from 'react-redux'
 //import { updateDataSet } from '../../actions/feelingActions';
 import { useTranslation } from 'react-i18next'
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-} from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material'
 
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 /**
  * @component
  * @desc Displays Pie chart "Overall moods" in statistics page.
  */
 const PieChart = () => {
-  const { feelingDataSet, feelings } = useSelector(
-    (state: any) => state.feeling
-  );
-  const dispatch = useDispatch();
-  const classes = useStyles();
+  const { feelingDataSet, feelings } = useSelector((state: any) => state.feeling)
+  const dispatch = useDispatch()
+  const classes = useStyles()
   const { t } = useTranslation()
-  const [moodCounts, setMoodCounts] = React.useState([0, 0, 0, 0, 0]);
+  const [moodCounts, setMoodCounts] = React.useState([0, 0, 0, 0, 0])
 
   const backgroundColors = [
     'rgba(255, 99, 132, 0.5)',
@@ -31,7 +25,7 @@ const PieChart = () => {
     'rgba(255, 206, 86, 0.5)',
     'rgba(75, 192, 192, 0.5)',
     'rgba(153, 102, 255, 0.5)',
-  ];
+  ]
 
   const borderColors = [
     'rgba(255, 99, 132, 1)',
@@ -39,38 +33,38 @@ const PieChart = () => {
     'rgba(255, 206, 86, 1)',
     'rgba(75, 192, 192, 1)',
     'rgba(153, 102, 255, 1)',
-  ];
+  ]
 
   const getFeelingsValues = () => {
-    const copyOfMoodCounts: any = [0, 0, 0, 0, 0];
+    const copyOfMoodCounts: any = [0, 0, 0, 0, 0]
     feelings.map((feel: any) => {
       switch (feel.value) {
         case 0:
-          return copyOfMoodCounts[0]++;
+          return copyOfMoodCounts[0]++
 
         case 1:
-          return copyOfMoodCounts[1]++;
+          return copyOfMoodCounts[1]++
 
         case 2:
-          return copyOfMoodCounts[2]++;
+          return copyOfMoodCounts[2]++
 
         case 3:
-          return copyOfMoodCounts[3]++;
+          return copyOfMoodCounts[3]++
 
         case 4:
-          return copyOfMoodCounts[4]++;
+          return copyOfMoodCounts[4]++
 
         default:
-          return null;
+          return null
       }
-    });
-    setMoodCounts(copyOfMoodCounts);
-  };
+    })
+    setMoodCounts(copyOfMoodCounts)
+  }
 
   useEffect(() => {
     // dispatch(updateDataSet());
-    getFeelingsValues();
-  }, [feelings, dispatch]);
+    getFeelingsValues()
+  }, [feelings, dispatch])
 
   /*console.log('feelings', feelings);
   console.log('feelingDataSet:', feelingDataSet);
@@ -79,27 +73,21 @@ const PieChart = () => {
   return (
     <div style={{ marginTop: 16 }}>
       <Grid item xs={12}>
-        <Accordion className={classes.card} variant="outlined">
+        <Accordion className={classes.card} variant='outlined'>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
+            aria-controls='panel1a-content'
+            id='panel1a-header'
           >
-            <Typography gutterBottom variant="h4" className='header2'>
-            {t('mood_overall')}
+            <Typography gutterBottom variant='h4' className='header2'>
+              {t('mood_overall')}
             </Typography>
           </AccordionSummary>
 
           <AccordionDetails>
             <Pie
               data={{
-                labels: [
-                  t('worst'),
-                  t('bad'),
-                  t('neutral'),
-                  t('good'),
-                  t('excellent'),
-                ],
+                labels: [t('worst'), t('bad'), t('neutral'), t('good'), t('excellent')],
                 datasets: [
                   {
                     label: 'Mood Dataset',
@@ -164,8 +152,8 @@ const PieChart = () => {
         </Accordion>
       </Grid>
     </div>
-  );
-};
+  )
+}
 
 const useStyles = makeStyles((theme) => ({
   table: {
@@ -192,6 +180,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: theme.typography.pxToRem(13),
     color: '#6C6C6C',
   },
-}));
+}))
 
-export default PieChart;
+export default PieChart

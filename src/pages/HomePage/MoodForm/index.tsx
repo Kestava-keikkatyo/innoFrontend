@@ -1,35 +1,32 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import makeStyles from '@mui/styles/makeStyles';
-import withStyles from '@mui/styles/withStyles';
-import clsx from 'clsx';
+import React from 'react'
+import PropTypes from 'prop-types'
+import makeStyles from '@mui/styles/makeStyles'
+import withStyles from '@mui/styles/withStyles'
+import clsx from 'clsx'
 // import Stepper from '@mui/material/Stepper';
 // import Step from '@mui/material/Step';
 // import StepLabel from '@mui/material/StepLabel';
-import StepConnector from '@mui/material/StepConnector';
-import Button from '@mui/material/Button';
+import StepConnector from '@mui/material/StepConnector'
+import Button from '@mui/material/Button'
 // import Typography from '@mui/material/Typography';
-import SendIcon from '@mui/icons-material/Send';
-import CreateIcon from '@mui/icons-material/Create';
-import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+import SendIcon from '@mui/icons-material/Send'
+import CreateIcon from '@mui/icons-material/Create'
+import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions'
 
-import { Container } from '@mui/material';
+import { Container } from '@mui/material'
 // import MoodStepOne from './MoodStepOne';
 // import MoodStepThree from './MoodStepThree';
 // import { setFiles } from '../../../actions/fileActions';
-import { useDispatch } from 'react-redux';
-import { useLocation } from 'react-router';
-import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux'
+import { useLocation } from 'react-router'
+import { useTranslation } from 'react-i18next'
 
 // import { IRootState } from '../../../utils/store';
 // import { roles } from '../../../types/types';
-import MoodStep from './MoodStep';
-import MoodStepEnd from './MoodStepEnd';
-
-
+import MoodStep from './MoodStep'
+import MoodStepEnd from './MoodStepEnd'
 
 const ColorlibConnector = withStyles({
-
   alternativeLabel: {
     top: 22,
   },
@@ -51,7 +48,7 @@ const ColorlibConnector = withStyles({
     backgroundColor: '#eaeaf0',
     borderRadius: 1,
   },
-})(StepConnector);
+})(StepConnector)
 
 const useColorlibStepIconStyles = makeStyles({
   root: {
@@ -74,17 +71,17 @@ const useColorlibStepIconStyles = makeStyles({
     backgroundImage:
       'linear-gradient( 136deg, rgb(255,150,55) 0%, rgb(242,113,33) 50%, rgb(233,64,87) 100%)',
   },
-});
+})
 
 const ColorlibStepIcon = (props: any) => {
-  const classes = useColorlibStepIconStyles();
-  const { active, completed } = props;
+  const classes = useColorlibStepIconStyles()
+  const { active, completed } = props
 
   const icons: any = {
     1: <EmojiEmotionsIcon />,
     2: <CreateIcon />,
     3: <SendIcon />,
-  };
+  }
 
   return (
     <div
@@ -95,8 +92,8 @@ const ColorlibStepIcon = (props: any) => {
     >
       {icons[String(props.icon)]}
     </div>
-  );
-};
+  )
+}
 
 ColorlibStepIcon.propTypes = {
   /**
@@ -111,7 +108,7 @@ ColorlibStepIcon.propTypes = {
    * The label displayed in the step icon.
    */
   icon: PropTypes.node,
-};
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -130,30 +127,30 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(1),
     textAlign: 'center',
   },
-}));
+}))
 
 const MoodForm: React.FC<any> = ({ handleSubmit }) => {
   const { t } = useTranslation()
   //const { data } = useSelector((state: IRootState) => state.user);
 
-  const classes = useStyles();
+  const classes = useStyles()
   const getSteps = () => {
-    return [t('your_mood'), t('fill_details'), t('submit')];
-  };
-  const [activeStep, setActiveStep] = React.useState(0);
-  const steps = getSteps();
+    return [t('your_mood'), t('fill_details'), t('submit')]
+  }
+  const [activeStep, setActiveStep] = React.useState(0)
+  const steps = getSteps()
   // const dispatch = useDispatch();
 
   const getStepContent = (step: any) => {
     switch (step) {
       case 0:
-        return <MoodStep />;
+        return <MoodStep />
       case 2:
-        return <MoodStepEnd />;
+        return <MoodStepEnd />
       default:
-        return <></>;
+        return <></>
     }
-  };
+  }
 
   // const handleNext = () => {
   //   setActiveStep((prevActiveStep) => prevActiveStep + 2);
@@ -169,24 +166,19 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
   // };
 
   const handleFinnish = () => {
-    handleSubmit();
-   // setActiveStep(steps.length);
-    setActiveStep((prevActiveStep) => prevActiveStep + 2);
-    
-  };
+    handleSubmit()
+    // setActiveStep(steps.length);
+    setActiveStep((prevActiveStep) => prevActiveStep + 2)
+  }
 
-  const location = useLocation();
-  console.log('location', location.pathname);
+  const location = useLocation()
+  console.log('location', location.pathname)
 
   return (
     <div
-      className={
-        location.pathname === '/home'
-          ? `mood-form-container ${classes.root}`
-          : undefined
-      }
+      className={location.pathname === '/home' ? `mood-form-container ${classes.root}` : undefined}
     >
-    {/*  <Typography variant="h4" align="center">
+      {/*  <Typography variant="h4" align="center">
         {t('how_do_you_feel_today')}
       </Typography>
       <Stepper
@@ -203,8 +195,8 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
       <div>
         {activeStep === steps.length ? (
           <div>
-            <br/>
-        {/*    <Typography className={classes.instructions}>
+            <br />
+            {/*    <Typography className={classes.instructions}>
               All steps completed - you&apos;re finished
             </Typography>
             <Button onClick={handleReset} className={classes.button}>
@@ -212,10 +204,8 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
             </Button> */}
           </div>
         ) : (
-          <Container maxWidth="md">
-            <div className={classes.instructions}>
-              {getStepContent(activeStep)}
-            </div>
+          <Container maxWidth='md'>
+            <div className={classes.instructions}>{getStepContent(activeStep)}</div>
             <div style={{ marginTop: 24, textAlign: 'center' }}>
               {/*  <Button
                 disabled={activeStep === 0}
@@ -226,10 +216,10 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
               </Button>
             */}
               {activeStep === steps.length - 1 ? (
-              <p> </p>
+                <p> </p>
               ) : (
                 <Button
-                  variant="contained"
+                  variant='contained'
                   onClick={handleFinnish}
                   className={`${classes.button} ${classes.primary}`}
                 >
@@ -241,11 +231,10 @@ const MoodForm: React.FC<any> = ({ handleSubmit }) => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default MoodForm;
-
+export default MoodForm
 
 /*
                 <Button

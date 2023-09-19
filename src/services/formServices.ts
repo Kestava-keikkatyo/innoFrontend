@@ -2,9 +2,9 @@
  * @module service/feeling
  * @desc Feeling requests to backend.
  */
-import axios from "axios";
-import { loadUser } from "../utils/storage";
-import baseUrl from "../utils/baseUrl";
+import axios from 'axios'
+import { loadUser } from '../utils/storage'
+import baseUrl from '../utils/baseUrl'
 
 /**
  * @function
@@ -12,9 +12,9 @@ import baseUrl from "../utils/baseUrl";
  */
 const authHeader = () => {
   return {
-    headers: { "x-access-token": `${loadUser().token}` },
-  };
-};
+    headers: { 'x-access-token': `${loadUser().token}` },
+  }
+}
 
 /**
  * @function
@@ -22,43 +22,43 @@ const authHeader = () => {
  */
 const fetchMyFormList = async () => {
   try {
-    const res = await axios.get(`${baseUrl}/form/myForm`, authHeader());
-    return res.data;
+    const res = await axios.get(`${baseUrl}/form/myForm`, authHeader())
+    return res.data
   } catch (error) {
-    console.log(error);
-    return { docs: [] };
+    console.log(error)
+    return { docs: [] }
   }
-};
+}
 
 const fetchCommunityFormList = async () => {
   try {
-    const res = await axios.get(`${baseUrl}/form/public`, authHeader());
-    return res.data;
+    const res = await axios.get(`${baseUrl}/form/public`, authHeader())
+    return res.data
   } catch (error) {
-    console.log(error);
-    return { docs: [] };
+    console.log(error)
+    return { docs: [] }
   }
-};
+}
 
 const fetchCommonFormList = async () => {
   try {
-    const res = await axios.get(`${baseUrl}/form/common`, authHeader());
-    return res.data;
+    const res = await axios.get(`${baseUrl}/form/common`, authHeader())
+    return res.data
   } catch (error) {
-    console.log(error);
-    return { docs: [] };
+    console.log(error)
+    return { docs: [] }
   }
-};
+}
 
 const fetchFormById = async (id: string) => {
   try {
-    const res = await axios.get(`${baseUrl}/form/myForm/${id}`, authHeader());
-    return res.data;
+    const res = await axios.get(`${baseUrl}/form/myForm/${id}`, authHeader())
+    return res.data
   } catch (error) {
-    console.log(error);
-    return {};
+    console.log(error)
+    return {}
   }
-};
+}
 
 /**
  * @todo make converted form type.
@@ -67,13 +67,13 @@ const fetchFormById = async (id: string) => {
  */
 const postForm = async (form: any) => {
   try {
-    console.log("formServices:form: ", form);
-    const res = await axios.post(`${baseUrl}/form/`, form, authHeader());
-    return res;
+    console.log('formServices:form: ', form)
+    const res = await axios.post(`${baseUrl}/form/`, form, authHeader())
+    return res
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 /**
  * @todo make converted form type.
@@ -82,18 +82,14 @@ const postForm = async (form: any) => {
  */
 const updateForm = async (formId: any, form: any) => {
   try {
-    console.log("formService:updateForm: formId ", formId);
-    console.log("formService:updateForm: FormObject ", form);
-    const res = await axios.put(
-      `${baseUrl}/form/update/${formId}`,
-      form,
-      authHeader()
-    );
-    return res;
+    console.log('formService:updateForm: formId ', formId)
+    console.log('formService:updateForm: FormObject ', form)
+    const res = await axios.put(`${baseUrl}/form/update/${formId}`, form, authHeader())
+    return res
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 /**
  * @param id
@@ -101,16 +97,13 @@ const updateForm = async (formId: any, form: any) => {
  */
 const deleteForm = async (formId: any) => {
   try {
-    const res = await axios.delete(
-      `${baseUrl}/form/delete/${formId}`,
-      authHeader()
-    );
-    console.log("delete res", res);
-    return res;
+    const res = await axios.delete(`${baseUrl}/form/delete/${formId}`, authHeader())
+    console.log('delete res', res)
+    return res
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 export default {
   fetchMyFormList,
@@ -120,4 +113,4 @@ export default {
   postForm,
   updateForm,
   deleteForm,
-};
+}
