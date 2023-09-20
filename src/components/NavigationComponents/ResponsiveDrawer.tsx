@@ -359,6 +359,16 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               <Divider />
             </>
           )}
+          {role === roles.Worker && (
+            <>
+              <ListItemButton style={{ backgroundColor: colors.materials }} component={Link} to="/companyMaterial" onClick={() => handleClick("materials")} className={classes.button}>
+                <ListItemIcon>
+                  <InsertDriveFileOutlinedIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText className={classes.buttonText} primary={t('materials')} />
+              </ListItemButton>
+            </>
+          )}
           {(role === roles.Worker) && (
             <>
               <ListItemButton style={{ backgroundColor: colors.feedback }} component={Link} to="/feedback" onClick={() => handleClick("feedback")} className={classes.button}>
