@@ -72,7 +72,7 @@ export const updateAgreementCodeMarkedValue = async (
 export const addAgencyConnection = async (code: String): Promise<void> => {
   try {
     const response = await axios.post(`${baseUrl}/code/createAgreement`, { code }, authHeader())
-    console.log(response);
+    console.log(response)
   } catch (error) {
     console.error(error)
   }
