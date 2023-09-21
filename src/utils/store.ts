@@ -61,7 +61,7 @@ const rootReducer = (state: any, action: any) => {
 export const setupStore = (preloadedState?: PreloadedState<IRootState>) => {
   return configureStore({
     reducer: rootReducer,
-    preloadedState
+    preloadedState,
   })
 }
 

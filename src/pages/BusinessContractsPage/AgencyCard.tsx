@@ -1,7 +1,7 @@
-import React from 'react';
-import makeStyles from '@mui/styles/makeStyles';
-import clsx from 'clsx';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import React from 'react'
+import makeStyles from '@mui/styles/makeStyles'
+import clsx from 'clsx'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import {
   Avatar,
   Button,
@@ -13,15 +13,15 @@ import {
   IconButton,
   Typography,
   CardActions,
-} from '@mui/material';
-import { useTranslation } from 'react-i18next';
-import CooperationInfoModal from './CooperationInfoModal';
-import { red } from '@mui/material/colors';
-import { useHistory } from 'react-router';
-import { setAlert } from "../../actions/alertActions"
-import { severity } from '../../types/types';
-import { useDispatch } from 'react-redux';
-import i18next from "i18next";
+} from '@mui/material'
+import { useTranslation } from 'react-i18next'
+import CooperationInfoModal from './CooperationInfoModal'
+import { red } from '@mui/material/colors'
+import { useHistory } from 'react-router'
+import { setAlert } from '../../actions/alertActions'
+import { severity } from '../../types/types'
+import { useDispatch } from 'react-redux'
+import i18next from 'i18next'
 
 /**
  * @component
@@ -30,33 +30,33 @@ import i18next from "i18next";
  * Contract request can be sent.
  *
  */
- const AgencyCard: React.FC<any> = ({ agency }) => {
-  const [expanded, setExpanded] = React.useState(false);
-  const classes = useStyles();
-  const { t } = useTranslation();
-  const history = useHistory();
-  const dispatch = useDispatch();
+const AgencyCard: React.FC<any> = ({ agency }) => {
+  const [expanded, setExpanded] = React.useState(false)
+  const classes = useStyles()
+  const { t } = useTranslation()
+  const history = useHistory()
+  const dispatch = useDispatch()
   const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+    setExpanded(!expanded)
+  }
 
-  const [displayModal, setDisplayModal] = React.useState(false);
+  const [displayModal, setDisplayModal] = React.useState(false)
 
   const handleCooperationOpen = () => {
-    setDisplayModal(true);
-  };
+    setDisplayModal(true)
+  }
 
   const handleMoveToProfile = (agency: any) => {
-    if (!agency._id){
-      dispatch(setAlert(i18next.t('agency_profile_missing', severity.Error)));
-      return;
+    if (!agency._id) {
+      dispatch(setAlert(i18next.t('agency_profile_missing', severity.Error)))
+      return
     } else {
       history.push({
         pathname: '/profileView/' + agency._id,
-        state: { profileId: agency._id }
-      });
+        state: { profileId: agency._id },
+      })
     }
-  };
+  }
 
   return (
     <div>
@@ -77,8 +77,9 @@ import i18next from "i18next";
               })}
               onClick={handleExpandClick}
               aria-expanded={expanded}
-              aria-label="show more"
-              size="large">
+              aria-label='show more'
+              size='large'
+            >
               <ExpandMoreIcon />
             </IconButton>
           }
@@ -86,7 +87,7 @@ import i18next from "i18next";
           subheader={agency.email}
         />
 
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <Collapse in={expanded} timeout='auto' unmountOnExit>
           <CardContent>
             <Grid container spacing={0}>
               <Grid className={classes.gridButton} item sm={4} xs={12}>
@@ -94,21 +95,21 @@ import i18next from "i18next";
                   <div className={classes.buttons}>
                     <Button
                       className={classes.button}
-                      variant="contained"
-                      color="primary"
-                      type="button"
+                      variant='contained'
+                      color='primary'
+                      type='button'
                       onClick={handleCooperationOpen}
                     >
                       {t('send_request')}
                     </Button>
-                    <Button variant="contained" onClick={() => handleMoveToProfile(agency)}>
+                    <Button variant='contained' onClick={() => handleMoveToProfile(agency)}>
                       {t('transfer_company_profile')}
                     </Button>
                   </div>
                 </CardActions>
               </Grid>
               <Grid className={classes.gridText} item sm={8} xs={12}>
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography variant='body2' color='textSecondary' component='p'>
                   HP-yrityksen lyhyt kuvaus.
                 </Typography>
               </Grid>
@@ -122,8 +123,8 @@ import i18next from "i18next";
         closeModal={() => setDisplayModal(false)}
       />
     </div>
-  );
-};
+  )
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -176,6 +177,6 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginBottom: '3%',
   },
-}));
+}))
 
-export default AgencyCard;
+export default AgencyCard

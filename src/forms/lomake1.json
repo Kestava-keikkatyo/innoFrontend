@@ -22,40 +22,43 @@
         "checked": false
       }
     ],
-    "checkbox_group":
-    [
+    "checkbox_group": [
       {
         "ordering": 15,
         "title": "Käyttäjäyritys toimittaa vuokrayritykselle kopion (tarvittaessa):",
         "subtitle": "",
         "optional": false,
-        "options": ["Työterveyshuollon työpaikkaselvityksestä", "Viimeisimmän riskin arvioinnin tuloksista", "Työsuojelun toimintaohjelmasta", "Pelastussuunnitelmasta"],
+        "options": [
+          "Työterveyshuollon työpaikkaselvityksestä",
+          "Viimeisimmän riskin arvioinnin tuloksista",
+          "Työsuojelun toimintaohjelmasta",
+          "Pelastussuunnitelmasta"
+        ],
         "optionValues": [false, false, false, false]
       }
-
     ],
     "comment": [],
-    "contact_information":[
+    "contact_information": [
       {
         "ordering": 13,
         "title": "TYÖNTEKIJÄ OTTAA TYÖTURVALLISUUSASIOISSA YHTEYTTÄ HENKILÖÖN/HENKILÖIHIN:",
         "subtitle": "",
         "optional": false,
-        "contactInfoAnswer": {"name": "", "phone": "", "email": ""}
+        "contactInfoAnswer": { "name": "", "phone": "", "email": "" }
       },
       {
         "ordering": 18,
         "title": "VUOKRAYRITYKSEN YHTEYSHENKILÖN YHTEYSTIEDOT",
         "subtitle": "",
         "optional": false,
-        "contactInfoAnswer": {"name": "", "phone": "", "email": ""}
+        "contactInfoAnswer": { "name": "", "phone": "", "email": "" }
       },
       {
         "ordering": 19,
         "title": "KÄYTTÄJÄYRITYKSEN YHTEYSHENKILÖN YHTEYSTIEDOT",
         "subtitle": "",
         "optional": false,
-        "contactInfoAnswer": {"name": "", "phone": "", "email": ""}
+        "contactInfoAnswer": { "name": "", "phone": "", "email": "" }
       }
     ],
     "datepicker": [
@@ -78,7 +81,7 @@
     ],
     "radiobutton_group": [],
     "radiobutton_group_horizontal": [],
-    "text":[
+    "text": [
       {
         "ordering": 0,
         "title": "Vuokrausyritys:",
@@ -150,7 +153,7 @@
       },
       {
         "ordering": 10,
-        "title":  "MITEN TOIMITAAN TYÖTAPATURMAN SATTUESSA VUOKRATYÖNTEKIJÄLLE, SAIRAUSPOISSAOLOTILANTEISSA JA MUISSA VAARATILANTEISSA (onnettomuus ja poikkeustilanteet, läheltä piti –tilanteet, väkivalta- ja uhkatilanteet)",
+        "title": "MITEN TOIMITAAN TYÖTAPATURMAN SATTUESSA VUOKRATYÖNTEKIJÄLLE, SAIRAUSPOISSAOLOTILANTEISSA JA MUISSA VAARATILANTEISSA (onnettomuus ja poikkeustilanteet, läheltä piti –tilanteet, väkivalta- ja uhkatilanteet)",
         "subtitle": "",
         "optional": false,
         "answer": "",
@@ -180,7 +183,7 @@
       },
       {
         "ordering": 17,
-        "title":  "KUVAUS VUOKRAYRITYKSEN JA KÄYTTÄJÄYRITYKSEN VÄLISESTÄ YHTEYDENPIDOSTA ASIAKKUUDEN AIKANA",
+        "title": "KUVAUS VUOKRAYRITYKSEN JA KÄYTTÄJÄYRITYKSEN VÄLISESTÄ YHTEYDENPIDOSTA ASIAKKUUDEN AIKANA",
         "subtitle": "",
         "optional": false,
         "answer": "",
@@ -189,7 +192,7 @@
         "rows": 4
       }
     ],
-    "timepicker":[
+    "timepicker": [
       {
         "ordering": 7,
         "title": "Klo.",
@@ -199,8 +202,5 @@
         "answer": ""
       }
     ]
-
-
   }
-
 }

@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import React, { useEffect } from 'react'
+import { Route, Redirect } from 'react-router-dom'
 
-import { useDispatch, useSelector } from 'react-redux';
-import AppNavigation from './NavigationComponents';
-import { setBreadcrumb } from '../actions/breadcrumbActions';
-import pathConverter from '../utils/pathConverter';
-import { roles } from '../types/types';
-import { PrivateRouteProps } from '../types/props';
-import { IRootState } from '../utils/store';
-import { me } from '../actions/userActions';
+import { useDispatch, useSelector } from 'react-redux'
+import AppNavigation from './NavigationComponents'
+import { setBreadcrumb } from '../actions/breadcrumbActions'
+import pathConverter from '../utils/pathConverter'
+import { roles } from '../types/types'
+import { PrivateRouteProps } from '../types/props'
+import { IRootState } from '../utils/store'
+import { me } from '../actions/userActions'
 
 /**
  * @component
@@ -32,27 +32,22 @@ import { me } from '../actions/userActions';
  *  </PrivateRoute>
  * </Switch>
  */
-const PrivateRoute: React.FC<PrivateRouteProps> = ({
-  roles,
-  children,
-  path,
-  ...rest
-}) => {
-  const { loggedIn, data } = useSelector((state: IRootState) => state.user);
-  const dispatch = useDispatch();
+const PrivateRoute: React.FC<PrivateRouteProps> = ({ roles, children, path, ...rest }) => {
+  const { loggedIn, data } = useSelector((state: IRootState) => state.user)
+  const dispatch = useDispatch()
 
   // Can be used as a user validation (validates token and user role)
   // Run if user has a role
   // Should be switched out when there is actual data to be retrieved
   useEffect(() => {
     if (data.role) {
-      dispatch(me());
+      dispatch(me())
     }
-  }, [dispatch, data.role]);
+  }, [dispatch, data.role])
 
   useEffect(() => {
-    dispatch(setBreadcrumb(pathConverter(path)));
-  }, [dispatch, path]);
+    dispatch(setBreadcrumb(pathConverter(path)))
+  }, [dispatch, path])
   return (
     <Route
       {...rest}
@@ -66,7 +61,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
                 state: { from: location },
               }}
             />
-          );
+          )
         }
         /*
          Redirect the user to home page if he does not have
@@ -81,16 +76,16 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
                 state: { form: location },
               }}
             />
-          );
+          )
         }
-        return <AppNavigation>{children}</AppNavigation>;
+        return <AppNavigation>{children}</AppNavigation>
       }}
     />
-  );
-};
+  )
+}
 
 PrivateRoute.defaultProps = {
   roles: [roles.Worker, roles.Business, roles.Agency, roles.Admin],
-};
+}
 
-export default PrivateRoute;
+export default PrivateRoute

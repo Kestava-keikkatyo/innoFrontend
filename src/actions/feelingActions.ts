@@ -1,14 +1,21 @@
-
 /**
  * @module actions/feeling
  * @desc Redux feeling actions
  */
-import { Dispatch } from "react"
-import feelingService from "../services/feelingService"
-import { ADD_FEELING, ADD_FEELINGS, FETCH_FEELINGS, FeelingActionFailure, FeelingGetAllRequest, FeelingGetAllSuccess, SET_CURRENT_FEELING, UPDATE_FEELING_DATASET } from "../types/state"
-import { Feeling, feelingType, severity } from "../types/types"
-import { setAlert } from "./alertActions"
-
+import { Dispatch } from 'react'
+import feelingService from '../services/feelingService'
+import {
+  ADD_FEELING,
+  ADD_FEELINGS,
+  FETCH_FEELINGS,
+  FeelingActionFailure,
+  FeelingGetAllRequest,
+  FeelingGetAllSuccess,
+  SET_CURRENT_FEELING,
+  UPDATE_FEELING_DATASET,
+} from '../types/state'
+import { Feeling, feelingType, severity } from '../types/types'
+import { setAlert } from './alertActions'
 
 /**
  * @function
@@ -34,7 +41,7 @@ export const updateFeeling = (data: any) => async (dispatch: any) => {
  * @desc Add feelings to the feelings list of agency feeling stats.
  */
 export const addFeelings = (data: any) => async (dispatch: any) => {
-  console.log("ADD FEELING: " + data)
+  console.log('ADD FEELING: ' + data)
   dispatch({ type: ADD_FEELINGS, data: data })
 }
 
@@ -44,7 +51,7 @@ export const addFeelings = (data: any) => async (dispatch: any) => {
  */
 export const updateDataSet = () => async (dispatch: any) => {
   const data = await feelingService.getFeelings() // getFeelings returns array of all feelings
-  console.log("updateDataSet data:", data)
+  console.log('updateDataSet data:', data)
   dispatch({ type: UPDATE_FEELING_DATASET, data: data })
 }
 
@@ -58,7 +65,6 @@ export const updateDataSet = () => async (dispatch: any) => {
 export const submitFeeling = (feeling: Feeling) => async (dispatch: any) => {
   const res = await feelingService.postFeeling(feeling)
   console.log('###Feeling: res: ', res)
-  if (res.status === 200)
-    dispatch({ type: ADD_FEELING, data: res.data })
+  if (res.status === 200) dispatch({ type: ADD_FEELING, data: res.data })
   console.log('Feeling: res.data: ', res.data)
 }

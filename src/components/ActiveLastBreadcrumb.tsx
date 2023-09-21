@@ -1,14 +1,14 @@
-import React from 'react';
-import Breadcrumbs from '@mui/material/Breadcrumbs';
+import React from 'react'
+import Breadcrumbs from '@mui/material/Breadcrumbs'
 //import Link from '@mui/material/Link';
-import { useSelector } from 'react-redux';
-import { BreadcrumbLink } from '../types/types';
-import { IRootState } from '../utils/store';
-import { Link } from 'react-router-dom';
-import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { useSelector } from 'react-redux'
+import { BreadcrumbLink } from '../types/types'
+import { IRootState } from '../utils/store'
+import { Link } from 'react-router-dom'
+import { Theme } from '@mui/material/styles'
+import makeStyles from '@mui/styles/makeStyles'
+import createStyles from '@mui/styles/createStyles'
+import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 import { useTranslation } from 'react-i18next'
 
 /**
@@ -20,19 +20,13 @@ import { useTranslation } from 'react-i18next'
  */
 const ActiveLastBreadcrumb: React.FC = () => {
   const { t } = useTranslation()
-  const links = useSelector((state: IRootState) => state.breadcrumb);
-  const classes = useStyles();
+  const links = useSelector((state: IRootState) => state.breadcrumb)
+  const classes = useStyles()
 
   return (
     <div className={classes.root}>
-      <Breadcrumbs
-        separator={<NavigateNextIcon fontSize="small" />}
-        aria-label="breadcrumb"
-      >
-        <Link
-          style={{ marginLeft: 14, color: '#757575', textDecoration: 'none' }}
-          to="/home"
-        >
+      <Breadcrumbs separator={<NavigateNextIcon fontSize='small' />} aria-label='breadcrumb'>
+        <Link style={{ marginLeft: 14, color: '#757575', textDecoration: 'none' }} to='/home'>
           {t('home')}
         </Link>
         {links.map((l: BreadcrumbLink, key: number) =>
@@ -41,11 +35,11 @@ const ActiveLastBreadcrumb: React.FC = () => {
               key={key}
               style={{ color: '#757575', textDecoration: 'none' }}
               to={l.link}
-              aria-current="page"
+              aria-current='page'
             >
               {t(l.name)}
             </Link>
-          ) : null
+          ) : null,
         )}
       </Breadcrumbs>
 
@@ -71,10 +65,10 @@ const ActiveLastBreadcrumb: React.FC = () => {
       ))}
       </Breadcrumbs>*/}
     </div>
-  );
-};
+  )
+}
 
-export default ActiveLastBreadcrumb;
+export default ActiveLastBreadcrumb
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -86,5 +80,5 @@ const useStyles = makeStyles((theme: Theme) =>
       width: '100%',
       maxWidth: '100%',
     },
-  })
-);
+  }),
+)

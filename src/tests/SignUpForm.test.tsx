@@ -1,9 +1,9 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { act, fireEvent, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, screen, waitFor } from '@testing-library/react'
 import SignUpForm from '../pages/LoginPage/SignUpForm'
 import { renderWithProviders } from '../utils/testUtils'
-import userEvent from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event'
 
 describe('<SignUpForm />', () => {
   let mockSubmit: jest.Mock
@@ -54,7 +54,7 @@ describe('<SignUpForm />', () => {
         password: 'worker123',
         role: 'worker',
         category: '',
-        companyName: ''
+        companyName: '',
       })
     })
   })
@@ -100,7 +100,7 @@ describe('<SignUpForm />', () => {
         password: 'agent123',
         role: 'agency',
         category: 'Tekniikka',
-        companyName: 'Tech Agency'
+        companyName: 'Tech Agency',
       })
     })
   })

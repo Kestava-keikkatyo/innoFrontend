@@ -5,7 +5,7 @@ import {
   SET_AGENCY_WORKERS,
   AllUsersState,
   AllUsersActionTypes,
-} from "../types/state";
+} from '../types/state'
 
 const initialState: AllUsersState = {
   agencies: [],
@@ -13,36 +13,33 @@ const initialState: AllUsersState = {
   workers: [],
   agencyWorkers: [],
   admins: [],
-};
+}
 
-const allUsersReducer = (
-  state: AllUsersState = initialState,
-  action: AllUsersActionTypes
-) => {
+const allUsersReducer = (state: AllUsersState = initialState, action: AllUsersActionTypes) => {
   switch (action.type) {
     case SET_ALL_AGENCIES:
       return {
         ...state,
         agencies: action.data,
-      };
+      }
     case SET_ALL_BUSINESSES:
       return {
         ...state,
         businesses: action.data,
-      };
+      }
     case SET_ALL_WORKERS:
       return {
         ...state,
         workers: action.data,
-      };
+      }
     case SET_AGENCY_WORKERS:
       return {
         ...state,
         agencyWorkers: action.data,
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default allUsersReducer;
+export default allUsersReducer

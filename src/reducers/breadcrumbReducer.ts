@@ -2,8 +2,8 @@
  * @module reducer/breadcrumb
  * @desc Redux breadcrumb reducer
  */
-import { BreadcrumbActionTypes, BREADCRUMB_ADD, BREADCRUMB_SET } from "../types/state"
-import { BreadcrumbLink } from "../types/types"
+import { BreadcrumbActionTypes, BREADCRUMB_ADD, BREADCRUMB_SET } from '../types/state'
+import { BreadcrumbLink } from '../types/types'
 
 /**
  * @function
@@ -16,10 +16,7 @@ const breadcrumbReducer = (state: BreadcrumbLink[] = [], action: BreadcrumbActio
     case BREADCRUMB_SET:
       return action.data
     case BREADCRUMB_ADD:
-      return [
-        ...state,
-        action.data
-      ]
+      return [...state, action.data]
     default:
       return state
   }

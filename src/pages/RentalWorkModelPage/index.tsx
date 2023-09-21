@@ -1,27 +1,27 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react'
+import { useSelector } from 'react-redux'
 
-import PageLoading from '../../components/PageLoading';
+import PageLoading from '../../components/PageLoading'
 
-import { roles } from '../../types/types';
-import RentalWorkModel from './RentalWorkModel';
-import WorkerRentalWorkModel from './WorkerRentalWorkModel';
-
+import { roles } from '../../types/types'
+import RentalWorkModel from './RentalWorkModel'
+import WorkerRentalWorkModel from './WorkerRentalWorkModel'
 
 export interface RentalWorkModelSteps {
-  path: 'rental-work-model' |
-    'customer-contract' |
-    'ordering-employee' |
-    'contract-of-employment' |
-    'guidance-to-work' |
-    'work-performance' 
+  path:
+    | 'rental-work-model'
+    | 'customer-contract'
+    | 'ordering-employee'
+    | 'contract-of-employment'
+    | 'guidance-to-work'
+    | 'work-performance'
 }
 
 const RentalWorkModelPage = ({ path }: RentalWorkModelSteps) => {
-  const { data, ...user } = useSelector((state: any) => state.user);
+  const { data, ...user } = useSelector((state: any) => state.user)
 
   if (user.loading) {
-    return <PageLoading />;
+    return <PageLoading />
   }
 
   const getContent = () => {
@@ -35,9 +35,9 @@ const RentalWorkModelPage = ({ path }: RentalWorkModelSteps) => {
       default:
         return null
     }
-  };
+  }
 
   return getContent()
-};
+}
 
-export default RentalWorkModelPage;
+export default RentalWorkModelPage

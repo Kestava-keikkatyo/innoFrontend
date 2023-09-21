@@ -71,32 +71,58 @@ const initialQuestions = {
 */
 //Convert form questions from old format (object containing arrays) to new format (array containing objects)
 export const convertFormQuestionsToArray = (questions: any) => {
-  if(Array.isArray(questions)){
+  if (Array.isArray(questions)) {
     return questions
   } else {
     let questionList: any[] = []
-    if (questions) { 
+    if (questions) {
       for (const [questionType, questionArray] of Object.entries(questions)) {
-        (questionArray as any[]).map(q=> {
-          let newQ = { 
-            ...q, 
-            questionType: questionType
+        ;(questionArray as any[]).map((q) => {
+          let newQ = {
+            ...q,
+            questionType: questionType,
           }
 
           //Check if required fields exist and if not, inject default value
-          if(!newQ.hasOwnProperty('answerMaxLength')) {newQ.answerMaxLength = 1000}
-          if(!newQ.hasOwnProperty('answerMinLength')) {newQ.answerMinLength = 0}
-          if(!newQ.hasOwnProperty('checked')) {newQ.checked = false}
-          if(!newQ.hasOwnProperty('contactInfoAnswer')) {newQ.contactInfoAnswer = {name: '', phone: '', email: ''}}
-          if(!newQ.hasOwnProperty('optionValues')) {newQ.optionValues = []}
-          if(!newQ.hasOwnProperty('optional')) {newQ.optional = false}
-          if(!newQ.hasOwnProperty('options')) {newQ.options = []}
-          if(!newQ.hasOwnProperty('rows')) {newQ.rows = 4}
-          if(!newQ.hasOwnProperty('scale')) {newQ.scale = 5}
-          if(!newQ.hasOwnProperty('scaleOptionTitleCenter')) {newQ.scaleOptionTitleCenter = ""}
-          if(!newQ.hasOwnProperty('scaleOptionTitleLeft')) {newQ.scaleOptionTitleLeft = ""}
-          if(!newQ.hasOwnProperty('scaleOptionTitleRight')) {newQ.scaleOptionTitleRight = ""}
-          if(!newQ.hasOwnProperty('subTitle')) {newQ.subTitle = ""}
+          if (!newQ.hasOwnProperty('answerMaxLength')) {
+            newQ.answerMaxLength = 1000
+          }
+          if (!newQ.hasOwnProperty('answerMinLength')) {
+            newQ.answerMinLength = 0
+          }
+          if (!newQ.hasOwnProperty('checked')) {
+            newQ.checked = false
+          }
+          if (!newQ.hasOwnProperty('contactInfoAnswer')) {
+            newQ.contactInfoAnswer = { name: '', phone: '', email: '' }
+          }
+          if (!newQ.hasOwnProperty('optionValues')) {
+            newQ.optionValues = []
+          }
+          if (!newQ.hasOwnProperty('optional')) {
+            newQ.optional = false
+          }
+          if (!newQ.hasOwnProperty('options')) {
+            newQ.options = []
+          }
+          if (!newQ.hasOwnProperty('rows')) {
+            newQ.rows = 4
+          }
+          if (!newQ.hasOwnProperty('scale')) {
+            newQ.scale = 5
+          }
+          if (!newQ.hasOwnProperty('scaleOptionTitleCenter')) {
+            newQ.scaleOptionTitleCenter = ''
+          }
+          if (!newQ.hasOwnProperty('scaleOptionTitleLeft')) {
+            newQ.scaleOptionTitleLeft = ''
+          }
+          if (!newQ.hasOwnProperty('scaleOptionTitleRight')) {
+            newQ.scaleOptionTitleRight = ''
+          }
+          if (!newQ.hasOwnProperty('subTitle')) {
+            newQ.subTitle = ''
+          }
 
           questionList.push(newQ)
         })
@@ -158,25 +184,25 @@ export const convertForm = (form: Form): any => {
       case questionTypes.CheckBox:
         temp = {
           ...temp,
-          checked: q.checked
+          checked: q.checked,
         }
         questions.checkbox = questions.checkbox.concat(temp)
         break
 
       case questionTypes.CheckboxGroup:
         temp = {
-           ...temp,
-           options: q.options,
-           optionValues: q.optionValues
+          ...temp,
+          options: q.options,
+          optionValues: q.optionValues,
         }
         questions.checkbox_group = questions.checkbox_group.concat(temp)
         break
 
       case questionTypes.RadiobuttonGroup:
         temp = {
-           ...temp,
-           options: q.options,
-           optionValues: q.optionValues
+          ...temp,
+          options: q.options,
+          optionValues: q.optionValues,
         }
         questions.radiobutton_group = questions.radiobutton_group.concat(temp)
         break
@@ -189,28 +215,24 @@ export const convertForm = (form: Form): any => {
           scaleOptionTitleCenter: q.scaleOptionTitleCenter,
           scaleOptionTitleRight: q.scaleOptionTitleRight,
           options: q.options,
-          optionValues: q.optionValues
+          optionValues: q.optionValues,
         }
-        questions.radiobutton_group_horizontal = questions.radiobutton_group_horizontal.concat(
-          temp
-        )
+        questions.radiobutton_group_horizontal = questions.radiobutton_group_horizontal.concat(temp)
         break
 
       case questionTypes.ContactInformation:
         temp = {
           ...temp,
-          contactInfoAnswer: q.contactInfoAnswer
+          contactInfoAnswer: q.contactInfoAnswer,
         }
-        questions.contact_information = questions.contact_information.concat(
-          temp
-        )
+        questions.contact_information = questions.contact_information.concat(temp)
         break
 
       case questionTypes.Datepicker:
         temp = {
           ...temp,
           isClosedTimeFrame: q.isClosedTimeFrame,
-          answer: q.answer
+          answer: q.answer,
         }
         questions.datepicker = questions.datepicker.concat(temp)
         break
@@ -219,7 +241,7 @@ export const convertForm = (form: Form): any => {
         temp = {
           ...temp,
           isClosedTimeFrame: q.isClosedTimeFrame,
-          answer: q.answer
+          answer: q.answer,
         }
         questions.timepicker = questions.timepicker.concat(temp)
         break
@@ -237,6 +259,6 @@ export const convertForm = (form: Form): any => {
     tags: form.tags,
     isPublic: form.isPublic,
     filled: form.filled,
-    common: form.common
+    common: form.common,
   }
 }

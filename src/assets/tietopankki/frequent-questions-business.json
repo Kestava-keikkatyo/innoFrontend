@@ -1,14 +1,12 @@
 [
-    {
-        "title": "Miten käyttäjäyritys voi palkata työntekijöitä?",
-        "details": [
-          "Keikkakaverin avulla käyttäjäyritys voi tarkastella henkilöstöpalveluyrityksiä, jotka myös käyttävät Keikkakaveria. Käyttäjäyritys voi laittaa henkilöstöpalveluyrityksille suoraan pyyntöä, jossa yritys voi kertoa tarkemmin toivomuksistaan (työntekijöiden määrä, vaatimukset, päivämäärät, yksityiskohdat jne.) Käyttäjäyritys pystyy tarkastelemaan lähetettyjä työpyyntöjä omalla sivullaan (Työpyynnöt)."
-        ]
-      },
-      {
-        "title": "Näkyykö vuokratyöntekijälle samat vastuut kuin käyttäjäyritykselle?",
-        "details": [
-          "Ei. Vuokratyöntekijällä näkyvät omat häntä koskevat vastuut."
-        ]
-      }
+  {
+    "title": "Miten käyttäjäyritys voi palkata työntekijöitä?",
+    "details": [
+      "Keikkakaverin avulla käyttäjäyritys voi tarkastella henkilöstöpalveluyrityksiä, jotka myös käyttävät Keikkakaveria. Käyttäjäyritys voi laittaa henkilöstöpalveluyrityksille suoraan pyyntöä, jossa yritys voi kertoa tarkemmin toivomuksistaan (työntekijöiden määrä, vaatimukset, päivämäärät, yksityiskohdat jne.) Käyttäjäyritys pystyy tarkastelemaan lähetettyjä työpyyntöjä omalla sivullaan (Työpyynnöt)."
+    ]
+  },
+  {
+    "title": "Näkyykö vuokratyöntekijälle samat vastuut kuin käyttäjäyritykselle?",
+    "details": ["Ei. Vuokratyöntekijällä näkyvät omat häntä koskevat vastuut."]
+  }
 ]

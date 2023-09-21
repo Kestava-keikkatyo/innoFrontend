@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 import {
   Dialog,
@@ -11,23 +11,23 @@ import {
   DialogActions,
   MenuItem,
   TextField,
-} from '@mui/material';
-import makeStyles from "@mui/styles/makeStyles";
-import { Close as CloseIcon } from '@mui/icons-material';
-import { useDispatch, useSelector } from 'react-redux';
-import { addContract } from '../../actions/contractActions';
-import { setAlert } from '../../actions/alertActions';
-import { severity } from '../../types/types';
-import { IRootState } from '../../utils/store';
-import { createBusinessContractForm } from '../../actions/businessContractFormActions';
-import { useTranslation } from 'react-i18next';
+} from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
+import { Close as CloseIcon } from '@mui/icons-material'
+import { useDispatch, useSelector } from 'react-redux'
+import { addContract } from '../../actions/contractActions'
+import { setAlert } from '../../actions/alertActions'
+import { severity } from '../../types/types'
+import { IRootState } from '../../utils/store'
+import { createBusinessContractForm } from '../../actions/businessContractFormActions'
+import { useTranslation } from 'react-i18next'
 
 const useStyles = makeStyles((theme) => ({
   selectDiv: {
     marginTop: 16,
     '& .MuiTextField-root': { m: 1, minWidth: '25ch' },
   },
-}));
+}))
 
 /**
  * @component
@@ -45,56 +45,48 @@ const WorkerAndBusinessModal: React.FC<any> = ({
   workerOrBusinessData,
   shrinkAccordion,
 }) => {
-  const dispatch = useDispatch();
-  const { businessContract } = useSelector(
-    (state: IRootState) => state.businessContracts
-  );
-  const forms: any = useSelector((state: any) => state.formList.myForms);
-  const myForms : any[] = Array.from(forms);
+  const dispatch = useDispatch()
+  const { businessContract } = useSelector((state: IRootState) => state.businessContracts)
+  const forms: any = useSelector((state: any) => state.formList.myForms)
+  const myForms: any[] = Array.from(forms)
 
-  const [formId, setFormId] = React.useState('');
-  const classes = useStyles();
+  const [formId, setFormId] = React.useState('')
+  const classes = useStyles()
 
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   const addNewContract = async () => {
     if (formId === 'None') {
       dispatch(
         setAlert(
           `Failed: Please choose a form. If you do not have yet, create one.`,
-          severity.Error
-        )
-      );
+          severity.Error,
+        ),
+      )
     } else {
-      dispatch(
-        addContract(
-          workerOrBusinessData._id,
-          formId,
-          "contract"
-        )
-      );
+      dispatch(addContract(workerOrBusinessData._id, formId, 'contract'))
       dispatch(
         setAlert(
           `Success: Contract request sent to ${workerOrBusinessData.name}`,
-          severity.Success
-        )
-      );
+          severity.Success,
+        ),
+      )
     }
     shrinkAccordion()
-    closeModal();
-  };
+    closeModal()
+  }
 
   const handleChange = (event: any) => {
-    console.log(event.target.value);
-    setFormId(event.target.value);
-  };
+    console.log(event.target.value)
+    setFormId(event.target.value)
+  }
 
   return (
     <Dialog open={displayModal} onClose={closeModal} fullWidth>
       <DialogTitle>
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Typography variant="h6">Create contract</Typography>
-          <IconButton onClick={closeModal} size="large">
+        <Box display='flex' justifyContent='space-between' alignItems='center'>
+          <Typography variant='h6'>Create contract</Typography>
+          <IconButton onClick={closeModal} size='large'>
             <CloseIcon />
           </IconButton>
         </Box>
@@ -102,10 +94,8 @@ const WorkerAndBusinessModal: React.FC<any> = ({
       <DialogContent dividers>
         {workerOrBusinessData && (
           <div>
-            <Typography variant="subtitle1">
-              {workerOrBusinessData.userType} info:
-            </Typography>
-            <Typography color="textSecondary" variant="body2">
+            <Typography variant='subtitle1'>{workerOrBusinessData.userType} info:</Typography>
+            <Typography color='textSecondary' variant='body2'>
               {t('name')}: {workerOrBusinessData.name} <br />
               {t('email')}: {workerOrBusinessData.email} <br />
               {workerOrBusinessData.userType === 'Business' ? (
@@ -113,31 +103,27 @@ const WorkerAndBusinessModal: React.FC<any> = ({
                   {t('category')}: {workerOrBusinessData.category} <br />
                 </>
               ) : null}
-              {t('joined')}:{' '}
-              {new Date(workerOrBusinessData.createdAt).toLocaleDateString()}{' '}
-              <br />
+              {t('joined')}: {new Date(workerOrBusinessData.createdAt).toLocaleDateString()} <br />
             </Typography>
           </div>
         )}
         <div className={classes.selectDiv}>
-          <Typography variant="subtitle1">Select contract form</Typography>
+          <Typography variant='subtitle1'>Select contract form</Typography>
           <TextField
-            id="standard-select-currency"
+            id='standard-select-currency'
             select
-            label="Selected form"
+            label='Selected form'
             value={formId}
             onChange={handleChange}
-            helperText=""
-            variant="standard"
+            helperText=''
+            variant='standard'
           >
-            <MenuItem value="None">None</MenuItem>
+            <MenuItem value='None'>None</MenuItem>
             {myForms &&
               // myForms.docs.map((form: any) => (
               myForms.map((form: any) => (
                 <MenuItem key={form._id} value={form._id}>
-                  {form.title.length > 50
-                    ? `${form.title.substring(0, 50)}...`
-                    : form.title}
+                  {form.title.length > 50 ? `${form.title.substring(0, 50)}...` : form.title}
                 </MenuItem>
               ))}
           </TextField>
@@ -145,12 +131,12 @@ const WorkerAndBusinessModal: React.FC<any> = ({
       </DialogContent>
       <DialogActions></DialogActions>
       <DialogActions style={{ marginBottom: 10 }}>
-        <Button color="primary" variant="outlined" onClick={addNewContract}>
+        <Button color='primary' variant='outlined' onClick={addNewContract}>
           {t('create_contract')}
         </Button>
       </DialogActions>
     </Dialog>
-  );
-};
+  )
+}
 
-export default WorkerAndBusinessModal;
+export default WorkerAndBusinessModal

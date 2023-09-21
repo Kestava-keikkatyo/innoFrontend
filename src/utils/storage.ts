@@ -1,7 +1,7 @@
-import { LoggedInUser } from "../types/state"
+import { LoggedInUser } from '../types/state'
 //import jwt from 'jsonwebtoken';
-import jwt_decode from 'jwt-decode';
-import { Token } from "../types/types";
+import jwt_decode from 'jwt-decode'
+import { Token } from '../types/types'
 
 /**
  * Stores, loads and removes user's information (email, name, token and role) from localStorage
@@ -103,14 +103,12 @@ export const insertContactData = (data: any) => {
     if (!contactData) {
       localStorage.setItem(storageContactsKey, JSON.stringify(contacts))
       return
-    }
-    else if (!(contactData instanceof Array)) {
-      contactData = [contactData];
+    } else if (!(contactData instanceof Array)) {
+      contactData = [contactData]
     }
 
     contactData.push(contacts)
     localStorage.setItem(storageContactsKey, JSON.stringify(contactData))
-
   } catch (err) {
     console.error('storage print\n', err)
   }
@@ -156,13 +154,11 @@ export const loadContacts = () => {
   }
 }
 
-
 export const getUserId = () => {
-
   // token
   const token: any = loadUser().token
   if (!token) {
-    return null;
+    return null
   }
   // decoded token
   // const decodedToken: any = jwt.decode(token)

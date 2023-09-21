@@ -7,23 +7,23 @@ describe('userReducer', () => {
     loggedIn: false,
     loading: false,
     data: {},
-    contacts: []
+    contacts: [],
   }
   const defaultUserRequestAction: types.UserActionTypes = {
     type: types.USER_REQUEST,
-    data: {}
+    data: {},
   }
   const defaultLoginAction: types.UserActionTypes = {
     type: types.LOGIN,
-    data: {}
+    data: {},
   }
   const defaultLogoutAction: types.UserActionTypes = {
     type: types.LOGOUT,
-    data: {}
+    data: {},
   }
   const defaultUserFailureAction: types.UserActionTypes = {
     type: types.USER_FAILURE,
-    data: {}
+    data: {},
   }
 
   test('Returns a new state with action USER_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT and USER_FAILURE', () => {

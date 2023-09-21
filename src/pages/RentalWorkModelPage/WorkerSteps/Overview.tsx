@@ -1,34 +1,33 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import Typography from '@mui/material/Typography';
-import makeStyles from '@mui/styles/makeStyles';
-import { Theme, ThemeProvider, createTheme } from '@mui/material/styles';
-import { Container, Card, ListItem, ListItemText, Stack, Divider } from '@mui/material';
+import React from 'react'
+import { useTranslation } from 'react-i18next'
+import Typography from '@mui/material/Typography'
+import makeStyles from '@mui/styles/makeStyles'
+import { Theme, ThemeProvider, createTheme } from '@mui/material/styles'
+import { Container, Card, ListItem, ListItemText, Stack, Divider } from '@mui/material'
 
 const Overview = () => {
-  const { t } = useTranslation();
-  const classes = useStyles();
-  const overviewArray = (t('RentalWorkModelOverview', { returnObjects: true }) as string[]);
+  const { t } = useTranslation()
+  const classes = useStyles()
+  const overviewArray = t('RentalWorkModelOverview', { returnObjects: true }) as string[]
 
   const theme = createTheme({
     typography: {
       fontFamily: 'Montserrat, serif',
       fontSize: 15,
       allVariants: {
-        color: "black"
+        color: 'black',
       },
     },
-  });
+  })
 
   return (
     <ThemeProvider theme={theme}>
-      <Container maxWidth="xl" className={classes.root}>
-          <Typography variant="h6" style={{fontWeight: 'bold', marginBottom: '20px'}}>
-            {t('overview')}
-          </Typography>
-          <Card className={classes.card}>
-          <Stack
-            divider={<Divider orientation="horizontal" variant="inset" />}>
+      <Container maxWidth='xl' className={classes.root}>
+        <Typography variant='h6' style={{ fontWeight: 'bold', marginBottom: '20px' }}>
+          {t('overview')}
+        </Typography>
+        <Card className={classes.card}>
+          <Stack divider={<Divider orientation='horizontal' variant='inset' />}>
             {overviewArray.map((item: any, index: any) => {
               return (
                 <ListItem key={index} className={classes.list}>
@@ -41,7 +40,7 @@ const Overview = () => {
       </Container>
     </ThemeProvider>
   )
-};
+}
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -54,7 +53,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginLeft: 24,
     fontSize: theme.typography.pxToRem(38),
     fontWeight: theme.typography.fontWeightRegular,
-    marginBottom: 15
+    marginBottom: 15,
   },
   subtitle: {
     marginLeft: 24,
@@ -62,12 +61,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   card: {
     margin: 10,
     padding: 20,
-    width: '90%'
+    width: '90%',
   },
   list: {
     display: 'flex',
     alignItems: 'center',
-  }
-}));
+  },
+}))
 
-export default Overview;
+export default Overview

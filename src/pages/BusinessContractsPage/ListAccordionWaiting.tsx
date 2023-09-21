@@ -1,5 +1,5 @@
-import React from 'react';
-import Typography from '@mui/material/Typography';
+import React from 'react'
+import Typography from '@mui/material/Typography'
 import {
   Accordion,
   AccordionDetails,
@@ -9,23 +9,23 @@ import {
   AccordionActions,
   Tooltip,
   IconButton,
-} from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Button from '@mui/material/Button';
-import Avatar from '@mui/material/Avatar';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { getByIdAndSetBusinessContractForm } from '../../actions/businessContractFormActions';
-import businessContractFormService from '../../services/businessContractFormService';
-import pdfMake from 'pdfmake/build/pdfmake.js';
-import pdfFonts from 'pdfmake/build/vfs_fonts.js';
-import htmlToPdfmake from 'html-to-pdfmake';
-import ReactDOMServer from 'react-dom/server';
-import Form from '../FormsPage/Form';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import SaveAltIcon from '@mui/icons-material/SaveAlt';
-import { useTranslation } from 'react-i18next';
+} from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import Button from '@mui/material/Button'
+import Avatar from '@mui/material/Avatar'
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { getByIdAndSetBusinessContractForm } from '../../actions/businessContractFormActions'
+import businessContractFormService from '../../services/businessContractFormService'
+import pdfMake from 'pdfmake/build/pdfmake.js'
+import pdfFonts from 'pdfmake/build/vfs_fonts.js'
+import htmlToPdfmake from 'html-to-pdfmake'
+import ReactDOMServer from 'react-dom/server'
+import Form from '../FormsPage/Form'
+import VisibilityIcon from '@mui/icons-material/Visibility'
+import SaveAltIcon from '@mui/icons-material/SaveAlt'
+import { useTranslation } from 'react-i18next'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'column',
     width: '30rem',
   },
-}));
+}))
 
 /**
  * @component
@@ -61,49 +61,48 @@ const useStyles = makeStyles((theme: Theme) => ({
  * Currently not in practical use.
  */
 export const ListAccordionWaiting = (prop: { contracts: any[] }) => {
-  const classes = useStyles();
-  const { t } = useTranslation();
-  const dispatch = useDispatch();
+  const classes = useStyles()
+  const { t } = useTranslation()
+  const dispatch = useDispatch()
 
-  const history = useHistory();
+  const history = useHistory()
 
   // Preview business contract form
 
   const handleEsitteleLomaketta = (businessContractFormId: any) => {
     //alert(formId);
-    dispatch(getByIdAndSetBusinessContractForm(businessContractFormId));
-    history.push(`/business-contracts/business-contract-preview`);
-  };
+    dispatch(getByIdAndSetBusinessContractForm(businessContractFormId))
+    history.push(`/business-contracts/business-contract-preview`)
+  }
 
   // Print PDF
   const handleTulostaLomaketta = async (formId: any) => {
-    let businessContractForm: any =
-      await businessContractFormService.fetchBusinessContractFormById(formId);
-    console.log('businessContractForm ', businessContractForm);
+    let businessContractForm: any = await businessContractFormService.fetchBusinessContractFormById(
+      formId,
+    )
+    console.log('businessContractForm ', businessContractForm)
 
-    pdfMake.vfs = pdfFonts.pdfMake.vfs;
+    pdfMake.vfs = pdfFonts.pdfMake.vfs
 
     // pdf content
-    let content: any = [];
+    let content: any = []
 
-    let html = ReactDOMServer.renderToString(
-      <Form currentForm={businessContractForm} />
-    );
-    let htmlForm: any = htmlToPdfmake(html);
+    let html = ReactDOMServer.renderToString(<Form currentForm={businessContractForm} />)
+    let htmlForm: any = htmlToPdfmake(html)
 
-    content.push(htmlForm);
+    content.push(htmlForm)
 
     // pdf document
     var doc = {
       content: content,
-    };
+    }
 
-    pdfMake.createPdf(doc).download(businessContractForm.title);
-  };
+    pdfMake.createPdf(doc).download(businessContractForm.title)
+  }
 
-  const { contracts } = prop;
+  const { contracts } = prop
   if (contracts.length < 1) {
-    return <p>{t('no_results')}</p>;
+    return <p>{t('no_results')}</p>
   } else
     return (
       <div className={classes.root}>
@@ -112,19 +111,14 @@ export const ListAccordionWaiting = (prop: { contracts: any[] }) => {
             {console.log('contract', contract)}
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
+              aria-controls='panel1a-content'
+              id='panel1a-header'
             >
               <div className={classes.logoColumn}>
-                <Avatar
-                  alt="Remy Sharp"
-                  src={contract.agency.profile.profilePicture}
-                />
+                <Avatar alt='Remy Sharp' src={contract.agency.profile.profilePicture} />
               </div>
               <div className={classes.column}>
-                <Typography className={classes.heading}>
-                  {contract.agency.name}
-                </Typography>
+                <Typography className={classes.heading}>{contract.agency.name}</Typography>
               </div>
               <div className={classes.column}>
                 <Typography className={classes.color}>Odottaa</Typography>
@@ -137,36 +131,29 @@ export const ListAccordionWaiting = (prop: { contracts: any[] }) => {
                 </Typography>
                 <Divider />
                 <Typography style={{ margin: '10px 5px' }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                  eget.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
+                  lacus ex, sit amet blandit leo lobortis eget.
                 </Typography>
-                <Button
-                  style={{ margin: '5px' }}
-                  color="primary"
-                  variant="contained"
-                >
+                <Button style={{ margin: '5px' }} color='primary' variant='contained'>
                   {t('website')}
                 </Button>
               </div>
             </AccordionDetails>
             <AccordionActions>
-              <Tooltip title="Esikatsele Lomakettä" placement="top" arrow>
+              <Tooltip title='Esikatsele Lomakettä' placement='top' arrow>
                 <IconButton
-                  onClick={() =>
-                    handleEsitteleLomaketta(contract.requestContracts.formId)
-                  }
-                  size="large">
+                  onClick={() => handleEsitteleLomaketta(contract.requestContracts.formId)}
+                  size='large'
+                >
                   <VisibilityIcon />
                 </IconButton>
               </Tooltip>
 
-              <Tooltip title="Tulosta pdf" placement="top" arrow>
+              <Tooltip title='Tulosta pdf' placement='top' arrow>
                 <IconButton
-                  onClick={() =>
-                    handleTulostaLomaketta(contract.requestContracts.formId)
-                  }
-                  size="large">
+                  onClick={() => handleTulostaLomaketta(contract.requestContracts.formId)}
+                  size='large'
+                >
                   <SaveAltIcon />
                 </IconButton>
               </Tooltip>
@@ -174,6 +161,6 @@ export const ListAccordionWaiting = (prop: { contracts: any[] }) => {
           </Accordion>
         ))}
       </div>
-    );
-};
-export default ListAccordionWaiting;
+    )
+}
+export default ListAccordionWaiting
