@@ -126,7 +126,7 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
           }}
           // handleSubmit doesn't need password confirmation
           // eslint-disable-next-line no-unused-vars
-          onSubmit={({ passwordConfirm, companyName, ...rest }) => {
+          onSubmit={({ passwordConfirm, ...rest }) => {
             handleSubmit(rest)
           }}
         >
