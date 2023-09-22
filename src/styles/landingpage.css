@@ -68,7 +68,7 @@
 }
 
 .bg-orange {
-  background-color: #FF6505;
+  background-color: #ff6505;
 }
 
 .part1 {
@@ -163,9 +163,9 @@
 }
 
 .landing-appbar {
-  background-color: #DBE4FC !important;
+  background-color: #dbe4fc !important;
   height: 60px;
-  box-Shadow: none
+  box-shadow: none;
 }
 
 .landing-nav-link {
@@ -179,7 +179,7 @@
   color: #000000 !important;
   text-decoration: none !important;
   font-weight: bold !important;
-  background-color: #F47D20;
+  background-color: #f47d20;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -198,12 +198,11 @@
   color: #000000 !important;
   text-decoration: none !important;
   font-weight: bold !important;
-  background-color: #F47D20;
+  background-color: #f47d20;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-left: 1rem;
-
 }
 
 .landing-login-dropdown {
@@ -226,7 +225,7 @@
 .background {
   background: none;
   max-width: 1170px;
-  background-color: #DBE4FC;
+  background-color: #dbe4fc;
 }
 
 /* Landing page header and info text */

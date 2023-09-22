@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { me } from '../../actions/userActions';
-import { fetchContractsAsTarget } from '../../actions/contractActions';
-import PageLoading from '../../components/PageLoading';
-import SearchTable from './SearchTable';
-import ContractsTable from './ContractsTable';
-import WorkerAndBusinessModal from './WorkerAndBusinessModal';
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { me } from '../../actions/userActions'
+import { fetchContractsAsTarget } from '../../actions/contractActions'
+import PageLoading from '../../components/PageLoading'
+import SearchTable from './SearchTable'
+import ContractsTable from './ContractsTable'
+import WorkerAndBusinessModal from './WorkerAndBusinessModal'
 import {
   Container,
   Typography,
@@ -17,55 +17,55 @@ import {
   Direction,
   Tooltip,
   useMediaQuery,
-} from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
-import ContractsFromBusiness from './ContractsFromBusiness';
-import { IRootState } from '../../utils/store';
-import ContractsFromWorkers from './ContractsFromWorkers';
-import GroupIcon from '@mui/icons-material/Group';
-import WorkIcon from '@mui/icons-material/Work';
-import BusinessIcon from '@mui/icons-material/Business';
-import { useTranslation } from 'react-i18next';
-import { fetchFormList } from '../../actions/formListActions';
+} from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
+import ContractsFromBusiness from './ContractsFromBusiness'
+import { IRootState } from '../../utils/store'
+import ContractsFromWorkers from './ContractsFromWorkers'
+import GroupIcon from '@mui/icons-material/Group'
+import WorkIcon from '@mui/icons-material/Work'
+import BusinessIcon from '@mui/icons-material/Business'
+import { useTranslation } from 'react-i18next'
+import { fetchFormList } from '../../actions/formListActions'
 
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-} from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
-import ReceivedContractsFromBusinesses from './ReceivedContractsFromBusinesses';
-import ReceivedContractsFromWorkers from './ReceivedContractsFromWorkers';
+import ReceivedContractsFromBusinesses from './ReceivedContractsFromBusinesses'
+import ReceivedContractsFromWorkers from './ReceivedContractsFromWorkers'
 
 interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-  dir: Direction;
+  children?: React.ReactNode
+  index: number
+  value: number
+  dir: Direction
 }
 
 const TabPanel = (props: TabPanelProps) => {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, ...other } = props
   return (
     <div
-      role="tabpanel"
+      role='tabpanel'
       hidden={value !== index}
       id={`full-width-tabpanel-${index}`}
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
     >
-      {value === index && <Box pt={3} px={{xs: 0, sm: 2}}>{children}</Box>}
+      {value === index && (
+        <Box pt={3} px={{ xs: 0, sm: 2 }}>
+          {children}
+        </Box>
+      )}
     </div>
-  );
-};
+  )
+}
 
 const a11yProps = (index: any) => {
   return {
     id: `full-width-tab-${index}`,
     'aria-controls': `full-width-tabpanel-${index}`,
-  };
-};
+  }
+}
 
 /**
  * @component
@@ -82,62 +82,59 @@ const a11yProps = (index: any) => {
  * in workerpage
  */
 const ContractsPage = () => {
-  const { data, ...user } = useSelector((state: any) => state.user);
-  const { businessContract } = useSelector(
-    (state: IRootState) => state.businessContracts
-  );
-  const dispatch = useDispatch();
-  const classes = useStyles();
-  const theme = useTheme();
-  const [searchData, setSearchData] = useState(null);
-  const [displayModal, setDisplayModal] = useState(false);
-  const [expanded, setExpanded] = useState<string | false>(false);
-  const [value, setValue] = useState(0);
-  const { t } = useTranslation();
-  const matches = useMediaQuery(theme.breakpoints.down('md'));
+  const { data, ...user } = useSelector((state: any) => state.user)
+  const { businessContract } = useSelector((state: IRootState) => state.businessContracts)
+  const dispatch = useDispatch()
+  const classes = useStyles()
+  const theme = useTheme()
+  const [searchData, setSearchData] = useState(null)
+  const [displayModal, setDisplayModal] = useState(false)
+  const [expanded, setExpanded] = useState<string | false>(false)
+  const [value, setValue] = useState(0)
+  const { t } = useTranslation()
+  const matches = useMediaQuery(theme.breakpoints.down('md'))
 
   useEffect(() => {
-    dispatch(me());
-    dispatch(fetchContractsAsTarget());
-    dispatch(fetchFormList());
-  }, [dispatch, data.role]);
-  
+    dispatch(me())
+    dispatch(fetchContractsAsTarget())
+    dispatch(fetchFormList())
+  }, [dispatch, data.role])
+
   const openModal = (workerOrBusiness: any) => {
     setExpanded(false)
-    setSearchData(workerOrBusiness);
-    setDisplayModal(true);
-  };
+    setSearchData(workerOrBusiness)
+    setDisplayModal(true)
+  }
 
   const handleChange = (event: any, newValue: any) => {
-    setValue(newValue);
-  };
+    setValue(newValue)
+  }
 
-  const handleAccChange = 
-    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+  const handleAccChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false)
   }
 
   if (user.loading) {
-    return <PageLoading />;
+    return <PageLoading />
   }
   return (
     // TODO: Menu on top of the site is not currently in use and could be removed in future.
-    <Container maxWidth="lg" id="maxContainer" className={classes.root}>
-      <AppBar position="static" color="default">
+    <Container maxWidth='lg' id='maxContainer' className={classes.root}>
+      <AppBar position='static' color='default'>
         <Tabs
           value={value}
           onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          variant="fullWidth"
-          aria-label="full width tabs example"
+          indicatorColor='primary'
+          textColor='primary'
+          variant='fullWidth'
+          aria-label='full width tabs example'
         >
           <Tab
             className={classes.tab}
-            label={matches ? "" : t('own_contracts')}
+            label={matches ? '' : t('own_contracts')}
             icon={
               matches ? (
-                <Tooltip title="Omat sopimukset" placement="top" arrow>
+                <Tooltip title='Omat sopimukset' placement='top' arrow>
                   <WorkIcon />
                 </Tooltip>
               ) : (
@@ -148,13 +145,13 @@ const ContractsPage = () => {
           />
           <Tab
             className={classes.tab}
-            label={matches ? "" : t('arrived_contracts')}
+            label={matches ? '' : t('arrived_contracts')}
             icon={
               matches ? (
                 <Tooltip
                   //title="Käyttäjäyrityksiltä saapuneet sopimukset"
-                  title="Saapuneet sopimukset"
-                  placement="top"
+                  title='Saapuneet sopimukset'
+                  placement='top'
                   arrow
                 >
                   <BusinessIcon />
@@ -167,10 +164,10 @@ const ContractsPage = () => {
           />
           <Tab
             className={classes.tab}
-            label={matches ? "" : t('requests_of_contracts')}
+            label={matches ? '' : t('requests_of_contracts')}
             icon={
               matches ? (
-                <Tooltip title="Sopimusten Pyynnöt" placement="top" arrow>
+                <Tooltip title='Sopimusten Pyynnöt' placement='top' arrow>
                   <GroupIcon />
                 </Tooltip>
               ) : (
@@ -182,21 +179,21 @@ const ContractsPage = () => {
         </Tabs>
       </AppBar>
 
-{/* This TabPanel is currently where all actions happen */}
+      {/* This TabPanel is currently where all actions happen */}
       <TabPanel value={value} index={0} dir={theme.direction}>
-        <Accordion 
+        <Accordion
           className={classes.card}
-          variant="outlined"
+          variant='outlined'
           defaultExpanded={false}
-          expanded={expanded === "panel"}
-          onChange={handleAccChange("panel")}
+          expanded={expanded === 'panel'}
+          onChange={handleAccChange('panel')}
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
+            aria-controls='panel1a-content'
+            id='panel1a-header'
           >
-            <Typography gutterBottom variant="h1" className='header2'>
+            <Typography gutterBottom variant='h1' className='header2'>
               {t('make_contract')}
             </Typography>
           </AccordionSummary>
@@ -207,18 +204,18 @@ const ContractsPage = () => {
               displayModal={displayModal}
               closeModal={() => setDisplayModal(false)}
               workerOrBusinessData={searchData}
-              shrinkAccordion={() => handleAccChange("panel")}
+              shrinkAccordion={() => handleAccChange('panel')}
             />
           </AccordionDetails>
         </Accordion>
 
-        <Typography style={{ paddingTop: '1rem' }} variant="h1" className='header'>
+        <Typography style={{ paddingTop: '1rem' }} variant='h1' className='header'>
           {t('contracts_overview')}
         </Typography>
         <ContractsTable businessContract={businessContract} />
       </TabPanel>
 
-{/* TabPanels below are to be removed, if no use. */}
+      {/* TabPanels below are to be removed, if no use. */}
       <TabPanel value={value} index={1} dir={theme.direction}>
         <ContractsFromBusiness businessContract={businessContract} />
         <ContractsFromWorkers businessContract={businessContract} />
@@ -229,10 +226,10 @@ const ContractsPage = () => {
         <ReceivedContractsFromWorkers businessContract={businessContract} />
       </TabPanel>
     </Container>
-  );
-};
+  )
+}
 
-export default ContractsPage;
+export default ContractsPage
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -263,4 +260,4 @@ const useStyles = makeStyles((theme) => ({
     minWidth: '33.33%',
     maxWidth: '33.33%',
   },
-}));
+}))

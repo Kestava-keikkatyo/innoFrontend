@@ -1,19 +1,19 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
-import PageLoading from '../../components/PageLoading';
-import { RentalWorkModelSteps } from './index';
-import CustomerContract from './WorkerSteps/CustomerContract';
-import OrderingEmployee from './WorkerSteps/OrderingEmployee';
-import ContractOfEmployment from './WorkerSteps/ContractOfEmployment';
-import GuidanceToWork from './WorkerSteps/GuidanceToWork';
-import WorkPerformance from './WorkerSteps/WorkPerformance';
-import Overview from './WorkerSteps/Overview';
+import { useSelector } from 'react-redux'
+import PageLoading from '../../components/PageLoading'
+import { RentalWorkModelSteps } from './index'
+import CustomerContract from './WorkerSteps/CustomerContract'
+import OrderingEmployee from './WorkerSteps/OrderingEmployee'
+import ContractOfEmployment from './WorkerSteps/ContractOfEmployment'
+import GuidanceToWork from './WorkerSteps/GuidanceToWork'
+import WorkPerformance from './WorkerSteps/WorkPerformance'
+import Overview from './WorkerSteps/Overview'
 
 const RentalWorkModel = (props: RentalWorkModelSteps) => {
-  const { data, ...user } = useSelector((state: any) => state.user);
+  const { data, ...user } = useSelector((state: any) => state.user)
 
   if (user.loading) {
-    return <PageLoading />;
+    return <PageLoading />
   }
 
   const getContent = ({ path }: RentalWorkModelSteps) => {
@@ -37,4 +37,4 @@ const RentalWorkModel = (props: RentalWorkModelSteps) => {
   return getContent(props)
 }
 
-export default RentalWorkModel;
+export default RentalWorkModel

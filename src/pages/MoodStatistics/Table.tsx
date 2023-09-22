@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import Paper from '@mui/material/Paper';
-import { useSelector } from 'react-redux';
-import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied';
-import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
-import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
-import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
-import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
-import moment from 'moment';
-import imagePlaceholder from '../../assets/image-placeholder.png';
+import React, { useState } from 'react'
+import Paper from '@mui/material/Paper'
+import { useSelector } from 'react-redux'
+import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied'
+import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied'
+import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt'
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied'
+import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied'
+import moment from 'moment'
+import imagePlaceholder from '../../assets/image-placeholder.png'
 import { useTranslation } from 'react-i18next'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
 import {
   TableContainer,
@@ -21,19 +21,15 @@ import {
   Typography,
   Theme,
   Grid,
-} from '@mui/material';
+} from '@mui/material'
 
-import withStyles from '@mui/styles/withStyles';
-import createStyles from '@mui/styles/createStyles';
-import makeStyles from '@mui/styles/makeStyles';
+import withStyles from '@mui/styles/withStyles'
+import createStyles from '@mui/styles/createStyles'
+import makeStyles from '@mui/styles/makeStyles'
 
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-} from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material'
 
-import PreviewImageModal from './PreviewImageModal';
+import PreviewImageModal from './PreviewImageModal'
 
 /**
  * @component
@@ -41,11 +37,11 @@ import PreviewImageModal from './PreviewImageModal';
  * page. Displays workers feeling entry history.
  */
 export default function CustomizedTables() {
-  const classes = useStyles();
-  const feelings = useSelector((state: any) => state.feeling?.feelings);
+  const classes = useStyles()
+  const feelings = useSelector((state: any) => state.feeling?.feelings)
   const { t } = useTranslation()
-  const [displayModal, setDisplayModal] = useState(false);
-  const [imageSource, setImageSource] = useState('');
+  const [displayModal, setDisplayModal] = useState(false)
+  const [imageSource, setImageSource] = useState('')
 
   // Table head styles
   const StyledTableCell = withStyles((theme: Theme) =>
@@ -54,8 +50,8 @@ export default function CustomizedTables() {
         backgroundColor: theme.palette.common.white,
         color: '#eb5a02',
       },
-    })
-  )(TableCell);
+    }),
+  )(TableCell)
 
   // Table row styles
   const StyledTableRow = withStyles((theme: Theme) =>
@@ -65,81 +61,55 @@ export default function CustomizedTables() {
           //backgroundColor: theme.palette.action.hover,
         },
       },
-    })
-  )(TableRow);
+    }),
+  )(TableRow)
 
   const getIcon = (value: number) => {
     switch (value) {
       case 0:
-        return (
-          <SentimentVeryDissatisfiedIcon
-            className={`${'mood-icon'} ${classes.moodIcon}`}
-          />
-        );
+        return <SentimentVeryDissatisfiedIcon className={`${'mood-icon'} ${classes.moodIcon}`} />
       case 1:
-        return (
-          <SentimentDissatisfiedIcon
-            className={`${'mood-icon'} ${classes.moodIcon}`}
-          />
-        );
+        return <SentimentDissatisfiedIcon className={`${'mood-icon'} ${classes.moodIcon}`} />
       case 2:
-        return (
-          <SentimentSatisfiedIcon
-            className={`${'mood-icon'} ${classes.moodIcon}`}
-          />
-        );
+        return <SentimentSatisfiedIcon className={`${'mood-icon'} ${classes.moodIcon}`} />
       case 3:
-        return (
-          <SentimentSatisfiedAltIcon
-            className={`${'mood-icon'} ${classes.moodIcon}`}
-          />
-        );
+        return <SentimentSatisfiedAltIcon className={`${'mood-icon'} ${classes.moodIcon}`} />
       case 4:
-        return (
-          <SentimentVerySatisfiedIcon
-            className={`${'mood-icon'} ${classes.moodIcon}`}
-          />
-        );
+        return <SentimentVerySatisfiedIcon className={`${'mood-icon'} ${classes.moodIcon}`} />
       default:
-        return null;
+        return null
     }
-  };
+  }
 
   const openImageModal = (src: string) => {
-    setImageSource(src);
-    setDisplayModal(true);
-  };
+    setImageSource(src)
+    setDisplayModal(true)
+  }
 
   // Table view for desktop devices
   const tableView = () => {
     return (
-      <TableContainer
-        style={{ overflow: 'auto' }}
-        component={Paper}
-        className="table-container"
-      >
-        <Table aria-label="searched workers">
+      <TableContainer style={{ overflow: 'auto' }} component={Paper} className='table-container'>
+        <Table aria-label='searched workers'>
           <TableHead>
             <TableRow>
-              <StyledTableCell align="left">{t('mood')}</StyledTableCell>
-              <StyledTableCell align="left">{t('comment')}</StyledTableCell>
-              <StyledTableCell align="left">{t('date')}</StyledTableCell>
-              <StyledTableCell align="left">{t('image')}</StyledTableCell>
+              <StyledTableCell align='left'>{t('mood')}</StyledTableCell>
+              <StyledTableCell align='left'>{t('comment')}</StyledTableCell>
+              <StyledTableCell align='left'>{t('date')}</StyledTableCell>
+              <StyledTableCell align='left'>{t('image')}</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {feelings &&
               feelings.map((feel: any) => (
                 <StyledTableRow key={feel._id}>
-                  <TableCell align="left">{getIcon(feel.value)}</TableCell>
-                  <TableCell align="left">{feel.note}</TableCell>
-                  <TableCell align="left">
-                    {moment(feel.createdAt).format('DD/MM/YYYY')}
-                  </TableCell>
-                  <TableCell padding="none" align="left">
+                  <TableCell align='left'>{getIcon(feel.value)}</TableCell>
+                  <TableCell align='left'>{feel.note}</TableCell>
+                  <TableCell align='left'>{moment(feel.createdAt).format('DD/MM/YYYY')}</TableCell>
+                  <TableCell padding='none' align='left'>
                     <>
                       <img
-                        alt="details"
+                        alt='details'
                         src={feel.fileUrl ? feel.fileUrl : imagePlaceholder}
                         style={{
                           width: 50,
@@ -156,19 +126,19 @@ export default function CustomizedTables() {
           </TableBody>
         </Table>
       </TableContainer>
-    );
-  };
+    )
+  }
 
   return (
     <div style={{ marginTop: 16 }}>
       <Grid item xs={12}>
-        <Accordion className={classes.card} variant="outlined">
+        <Accordion className={classes.card} variant='outlined'>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
+            aria-controls='panel1a-content'
+            id='panel1a-header'
           >
-            <Typography gutterBottom variant="h5">
+            <Typography gutterBottom variant='h5'>
               {t('mood_table')}
             </Typography>
           </AccordionSummary>
@@ -182,7 +152,7 @@ export default function CustomizedTables() {
         imageSource={imageSource}
       />
     </div>
-  );
+  )
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -210,4 +180,4 @@ const useStyles = makeStyles((theme) => ({
     fontSize: theme.typography.pxToRem(13),
     color: '#6C6C6C',
   },
-}));
+}))

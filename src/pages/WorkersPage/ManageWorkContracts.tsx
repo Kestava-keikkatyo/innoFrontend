@@ -1,5 +1,5 @@
-import React from "react"
-import Accordion from '@mui/material/Accordion';
+import React from 'react'
+import Accordion from '@mui/material/Accordion'
 import {
   AccordionDetails,
   AccordionSummary,
@@ -15,16 +15,16 @@ import {
   ListItemText,
   Paper,
   Typography,
-} from "@mui/material";
-import makeStyles from '@mui/styles/makeStyles';
-import DoneOutlineIcon from '@mui/icons-material/DoneOutline';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ClearIcon from '@mui/icons-material/Clear';
+} from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
+import DoneOutlineIcon from '@mui/icons-material/DoneOutline'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import ClearIcon from '@mui/icons-material/Clear'
 import { useTranslation } from 'react-i18next'
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    margin: theme.spacing(2, 0)
+    margin: theme.spacing(2, 0),
   },
   column: {
     flexBasis: '100%',
@@ -36,85 +36,89 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const ManageWorkContracts:React.FC<{workContracts:any}> = ({workContracts}) => {
-    const { t } = useTranslation()
-    const contracts = workContracts
-    const classes = useStyles()
-    if (!contracts.length) {
-      return (
-        <Typography style={{ padding: '1rem' }} variant="h6" align="center" className="text-secondary">
-         {t("no_results")}
-        </Typography>
-      )
-    }
+const ManageWorkContracts: React.FC<{ workContracts: any }> = ({ workContracts }) => {
+  const { t } = useTranslation()
+  const contracts = workContracts
+  const classes = useStyles()
+  if (!contracts.length) {
     return (
-        <>
-        {contracts.map((contract:any) => (
-          <Accordion key={contract._id}>
+      <Typography
+        style={{ padding: '1rem' }}
+        variant='h6'
+        align='center'
+        className='text-secondary'
+      >
+        {t('no_results')}
+      </Typography>
+    )
+  }
+  return (
+    <>
+      {contracts.map((contract: any) => (
+        <Accordion key={contract._id}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
+            aria-controls='panel1a-content'
+            id='panel1a-header'
           >
-            <Typography >Yritys: {contract.business}         Keikkatöitä luotu: {contract.contracts.length}</Typography>
+            <Typography>
+              Yritys: {contract.business} Keikkatöitä luotu: {contract.contracts.length}
+            </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            {contract.contracts.map((job:any) => (
+            {contract.contracts.map((job: any) => (
               <Accordion key={job._id} className={classes.column}>
-                <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}>
-                  <Typography>Keikkatyö: {job._id}  Created: {job.createdAt}</Typography>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography>
+                    Keikkatyö: {job._id} Created: {job.createdAt}
+                  </Typography>
                   <Typography></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <WorkContractsTable contracts={job}/>
+                  <WorkContractsTable contracts={job} />
                 </AccordionDetails>
               </Accordion>
             ))}
           </AccordionDetails>
-          </Accordion>
-        ))}
-        </>
-    )
+        </Accordion>
+      ))}
+    </>
+  )
 }
 
-const WorkContractsTable:React.FC<{contracts:any}> = ({contracts}) => {
-  const [checked, setChecked] = React.useState([0]);
-  const [left] = React.useState([0, 1, 2, 3]);
-  const [right] = React.useState([4, 5, 6, 7]);
+const WorkContractsTable: React.FC<{ contracts: any }> = ({ contracts }) => {
+  const [checked, setChecked] = React.useState([0])
+  const [left] = React.useState([0, 1, 2, 3])
+  const [right] = React.useState([4, 5, 6, 7])
   const job = contracts
   const classes = useStyles()
 
-  const acceptedStatus = (status:boolean) => {
+  const acceptedStatus = (status: boolean) => {
     if (status) {
-      return (
-        <>True</>
-      )
+      return <>True</>
     } else {
-      return (
-        <>False</>
-      )
+      return <>False</>
     }
   }
-  const handleToggle = (value:number) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
+  const handleToggle = (value: number) => () => {
+    const currentIndex = checked.indexOf(value)
+    const newChecked = [...checked]
 
     if (currentIndex === -1) {
-      newChecked.push(value);
+      newChecked.push(value)
     } else {
-      newChecked.splice(currentIndex, 1);
+      newChecked.splice(currentIndex, 1)
     }
 
-    setChecked(newChecked);
+    setChecked(newChecked)
   }
-  const customList = (items:number[]) => (
+  const customList = (items: number[]) => (
     <Paper>
-      <List dense component="div" role="list">
-        {items.map((value:number) => {
-          const labelId = `transfer-list-item-${value}-label`;
+      <List dense component='div' role='list'>
+        {items.map((value: number) => {
+          const labelId = `transfer-list-item-${value}-label`
           return (
-            <ListItem key={value} role="listitem" button onClick={handleToggle(value)}>
+            <ListItem key={value} role='listitem' button onClick={handleToggle(value)}>
               <ListItemIcon>
                 <Checkbox
                   checked={checked.indexOf(value) !== -1}
@@ -125,87 +129,87 @@ const WorkContractsTable:React.FC<{contracts:any}> = ({contracts}) => {
               </ListItemIcon>
               <ListItemText id={labelId} primary={`List item ${value + 1}`} />
             </ListItem>
-          );
+          )
         })}
         <ListItem />
       </List>
     </Paper>
   )
-  return <>
-  <Grid container spacing={1} justifyContent="center" alignItems="stretch">
-    <Grid item xs={12} md={6}>
-      <Card className={classes.card} variant="outlined">
-        <CardContent>
-          <Typography gutterBottom variant="h5">
-            Accepted Workers
-          </Typography>
-        </CardContent>
-        <CardContent>
-          <Typography gutterBottom variant="h6">
-            Workers
-          </Typography>
-          <Divider />
-          {customList(left)}
-        </CardContent>
-      </Card>
-    </Grid>
-    <Grid item xs={12} md={6}>
-      <Card className={classes.card} variant="outlined">
-        <CardContent>
-          <Typography gutterBottom variant="h5">
-            Requested Workers
-          </Typography>
-        </CardContent>
-        <CardContent>
-          <Typography gutterBottom variant="h6">
-            Workers
-          </Typography>
-          <Divider />
-          {customList(right)}
-        </CardContent>
-      </Card>
-    </Grid>
-    <Grid item xs={12} md={6}>
-      <Card className={classes.card} variant="outlined">
-        <CardContent>
-          <Typography gutterBottom variant="h5">
-            Accepted status:
-          </Typography>
-          <Divider/>
-        </CardContent>
-        <CardContent>
-          <Typography gutterBottom variant="h6">
-            Business:{acceptedStatus(job.acceptedBusiness)}
-          </Typography>
-          <Typography gutterBottom variant="h6">
-            Agency:{acceptedStatus(job.acceptedAgency)}
-          </Typography>
-        </CardContent>
-      </Card>
-    </Grid>
-    <Grid item xs={12} md={6}>
-      <Card className={classes.card} variant="outlined">
-        <CardContent>
-          <Button
-            variant="contained"
-            color="primary"
-            endIcon={<DoneOutlineIcon>Accept</DoneOutlineIcon>}
-          >Accept
-          </Button>
-        </CardContent>
-        <Divider/>
-        <CardContent>
-          <Button
-            variant="contained"
-            color="primary"
-            endIcon={<ClearIcon>Decline</ClearIcon>}
-          >Decline
-          </Button>
-        </CardContent>
-      </Card>
-    </Grid>
-  </Grid>
-  </>;
+  return (
+    <>
+      <Grid container spacing={1} justifyContent='center' alignItems='stretch'>
+        <Grid item xs={12} md={6}>
+          <Card className={classes.card} variant='outlined'>
+            <CardContent>
+              <Typography gutterBottom variant='h5'>
+                Accepted Workers
+              </Typography>
+            </CardContent>
+            <CardContent>
+              <Typography gutterBottom variant='h6'>
+                Workers
+              </Typography>
+              <Divider />
+              {customList(left)}
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Card className={classes.card} variant='outlined'>
+            <CardContent>
+              <Typography gutterBottom variant='h5'>
+                Requested Workers
+              </Typography>
+            </CardContent>
+            <CardContent>
+              <Typography gutterBottom variant='h6'>
+                Workers
+              </Typography>
+              <Divider />
+              {customList(right)}
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Card className={classes.card} variant='outlined'>
+            <CardContent>
+              <Typography gutterBottom variant='h5'>
+                Accepted status:
+              </Typography>
+              <Divider />
+            </CardContent>
+            <CardContent>
+              <Typography gutterBottom variant='h6'>
+                Business:{acceptedStatus(job.acceptedBusiness)}
+              </Typography>
+              <Typography gutterBottom variant='h6'>
+                Agency:{acceptedStatus(job.acceptedAgency)}
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Card className={classes.card} variant='outlined'>
+            <CardContent>
+              <Button
+                variant='contained'
+                color='primary'
+                endIcon={<DoneOutlineIcon>Accept</DoneOutlineIcon>}
+              >
+                Accept
+              </Button>
+            </CardContent>
+            <Divider />
+            <CardContent>
+              <Button variant='contained' color='primary' endIcon={<ClearIcon>Decline</ClearIcon>}>
+                Decline
+              </Button>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+    </>
+  )
 }
 
 export default ManageWorkContracts

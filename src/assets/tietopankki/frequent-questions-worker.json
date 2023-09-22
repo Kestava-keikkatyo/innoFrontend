@@ -1,14 +1,14 @@
 [
-    {
-        "title": "Miksi käyttäisin Keikkakaveria?",
-        "details": [
-          "Keikkakaveri tarjoaa vuokratyöntekijälle mahdollisuuden antaa palautetta työnantajasta ja työoloista."
-        ]
-      },
-      {
-        "title": "Mikä on turvallisuushavainto?",
-        "details": [
-          "Turvallisuushavainto-kohdassa voit raportoida tekemääsi työhön liittyviä turvallisuusriskejä, onnettomuuksia tai vaaratilanteita. Turvallisuusriskien raportoiminen on tärkeää, jotta yritykset voivat kehittää toimintaansa ja välttää onnettomuuksia."
-        ]
-      }
+  {
+    "title": "Miksi käyttäisin Keikkakaveria?",
+    "details": [
+      "Keikkakaveri tarjoaa vuokratyöntekijälle mahdollisuuden antaa palautetta työnantajasta ja työoloista."
+    ]
+  },
+  {
+    "title": "Mikä on turvallisuushavainto?",
+    "details": [
+      "Turvallisuushavainto-kohdassa voit raportoida tekemääsi työhön liittyviä turvallisuusriskejä, onnettomuuksia tai vaaratilanteita. Turvallisuusriskien raportoiminen on tärkeää, jotta yritykset voivat kehittää toimintaansa ja välttää onnettomuuksia."
+    ]
+  }
 ]

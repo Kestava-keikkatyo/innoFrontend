@@ -51,10 +51,10 @@ const fetchUserById = async (id: string) => {
  */
 const fetchAgencyContacts = async () => {
   try {
-    const res = await axios.get(`${baseUrl}/user/agencyContacts`, authHeader());
-    return res.data;
+    const res = await axios.get(`${baseUrl}/user/agencyContacts`, authHeader())
+    return res.data
   } catch (error) {
-    return { docs: [] };
+    return { docs: [] }
   }
 }
 
@@ -64,10 +64,10 @@ const fetchAgencyContacts = async () => {
  */
 const fetchBusinessContacts = async () => {
   try {
-    const res = await axios.get(`${baseUrl}/user/businessContacts`, authHeader());
-    return res.data;
+    const res = await axios.get(`${baseUrl}/user/businessContacts`, authHeader())
+    return res.data
   } catch (error) {
-    return { docs: [] };
+    return { docs: [] }
   }
 }
 
@@ -77,10 +77,10 @@ const fetchBusinessContacts = async () => {
  */
 const fetchWorkerContacts = async () => {
   try {
-    const res = await axios.get(`${baseUrl}/user/workerContacts`, authHeader());
-    return res.data;
+    const res = await axios.get(`${baseUrl}/user/workerContacts`, authHeader())
+    return res.data
   } catch (error) {
-    return { docs: [] };
+    return { docs: [] }
   }
 }
 

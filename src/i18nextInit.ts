@@ -10,11 +10,11 @@ const availableLanguages = ['fi', 'en']
 
 const resources = {
   fi: {
-    translation: translationFI
+    translation: translationFI,
   },
   en: {
-    translation: translationEN
-  }
+    translation: translationEN,
+  },
 }
 
 i18n
@@ -26,7 +26,7 @@ i18n
     fallbackLng,
 
     detection: {
-      checkWhitelist: true
+      checkWhitelist: true,
     },
 
     debug: false,
@@ -34,8 +34,8 @@ i18n
     whitelist: availableLanguages,
 
     interpolation: {
-      escapeValue: false
-    }
+      escapeValue: false,
+    },
   })
 
 export const getCurrentLocale = () => {

@@ -9,7 +9,7 @@ import baseUrl from '../utils/baseUrl'
  */
 const authHeader = () => {
   return {
-    headers: { 'x-access-token': `${loadUser().token}` }
+    headers: { 'x-access-token': `${loadUser().token}` },
   }
 }
 
@@ -20,10 +20,7 @@ const authHeader = () => {
  */
 const getAllAgencies = async () => {
   try {
-    const res = await axios.get(
-      `${baseUrl}/user/getByUserType/agency/name=a`,
-      authHeader()
-    )
+    const res = await axios.get(`${baseUrl}/user/getByUserType/agency/name=a`, authHeader())
     return res
   } catch (error) {
     return Promise.reject(error.response)
@@ -37,10 +34,7 @@ const getAllAgencies = async () => {
  */
 const getAllBusinesses = async () => {
   try {
-    const res = await axios.get(
-      `${baseUrl}/user/getByUserType/business/name=a`,
-      authHeader()
-    )
+    const res = await axios.get(`${baseUrl}/user/getByUserType/business/name=a`, authHeader())
     return res
   } catch (error) {
     return Promise.reject(error.response)
@@ -54,10 +48,7 @@ const getAllBusinesses = async () => {
  */
 const getAllWorkers = async () => {
   try {
-    const res = await axios.get(
-      `${baseUrl}/user/getByUserType/worker/name=a`,
-      authHeader()
-    )
+    const res = await axios.get(`${baseUrl}/user/getByUserType/worker/name=a`, authHeader())
     return res
   } catch (error) {
     return Promise.reject(error.response)
@@ -71,10 +62,7 @@ const getAllWorkers = async () => {
  */
 const getAgencyWorkers = async () => {
   try {
-    const res = await axios.get(
-      `${baseUrl}/agencies/myworkers`,
-      authHeader()
-    )
+    const res = await axios.get(`${baseUrl}/agencies/myworkers`, authHeader())
     return res
   } catch (error) {
     return Promise.reject(error.response)
@@ -91,7 +79,7 @@ const searchAgencies = async (input: string) => {
   try {
     const res = await axios.get(
       `${baseUrl}/user/getByUserType/agencies/name=${input}`,
-      authHeader()
+      authHeader(),
     )
     return res
   } catch (error) {
@@ -109,7 +97,7 @@ const searchBusinesses = async (input: string) => {
   try {
     const res = await axios.get(
       `${baseUrl}/user/getByUserType/businesses/name=${input}`,
-      authHeader()
+      authHeader(),
     )
     return res
   } catch (error) {
@@ -125,10 +113,7 @@ const searchBusinesses = async (input: string) => {
  */
 const searchWorkers = async (input: string) => {
   try {
-    const res = await axios.get(
-      `${baseUrl}/user/getByUserType/workers/name=${input}`,
-      authHeader()
-    )
+    const res = await axios.get(`${baseUrl}/user/getByUserType/workers/name=${input}`, authHeader())
     return res
   } catch (error) {
     return Promise.reject(error.response)
@@ -142,5 +127,5 @@ export default {
   getAgencyWorkers,
   searchAgencies,
   searchBusinesses,
-  searchWorkers
+  searchWorkers,
 }

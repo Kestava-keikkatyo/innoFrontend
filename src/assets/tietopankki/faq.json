@@ -1,104 +1,104 @@
 {
-    "agency": [
-      {
-        "id":0,
-        "tip": "Mikä on keikkakaveri?",
-        "details": "Keikkakaveri on työnhakuun ja työnvälitykseen käytettävä käyttöliittymä."
-      },
-      {
-        "id":1,
-        "tip": "Testikysymys 2?",
-        "details": "vastaus 2."
-      },
-      {
-        "id":2,
-        "tip": "Testikysymys 3?",
-        "details": "vastaus 3."
-      },
-      {
-        "id":3,
-        "tip": "Testikysymys 4?",
-        "details": "vastaus 4."
-      },
-      {
-        "id":4,
-        "tip": "Testikysymys 5?",
-        "details": "vastaus 5."
-      },
-      {
-        "id":5,
-        "tip": "Testikysymys 6?",
-        "details": "vastaus 6."
-      },
-      {
-        "id":6,
-        "tip": "Testikysymys 7?",
-        "details": "vastaus 7."
-      },
-      {
-        "id":7,
-        "tip": "Testikysymys 8?",
-        "details": "vastaus 8."
-      }
-    ],
-    "business": [
-      {
-        "tip": "Työn vaarojen selvittäminen ja arviointi",
-        "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
-      },
-      {
-        "tip": "Työn edellyttämien ammattitaitovaatimusten ja erityispiirteiden sekä muiden tarvittavien tietojen ilmoittaminen vuokrayritykselle",
-        "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
-      },
-      {
-        "tip": "Vuokratyön aloittamisesta ilmoittaminen työpaikan työterveyshuollolle ja työsuojeluvaltuutetulle",
-        "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
-      },
-      {
-        "tip": "Tarvittavien henkilönsuojainten hankinta",
-        "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
-      },
-      {
-        "tip": "Työnopastuksen antaminen vuokratyöntekijälle",
-        "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
-      },
-      {
-        "tip": "Vastuu työnjohdosta ja -valvonnasta",
-        "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
-      },
-      {
-        "tip": "Työn aikaisesta työn turvallisuudesta ja terveellisyydestä huolehtiminen",
-        "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
-      },
-      {
-        "tip": "Tarvittavien henkilönsuojainten ja turvavälineiden käyttämisen varmistaminen",
-        "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
-      }
-    ],
-    "worker": [
-      {
-        "tip": "Huolehdin omasta ja työkavereiden työhyvinvoinnista ja -turvallisuudesta",
-        "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
-      },
-      {
-        "tip": "Kohtelen kaikkia yhdenvertaisesti",
-        "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
-      },
-      {
-        "tip": "Noudatan työpaikan ohjeita",
-        "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
-      },
-      {
-        "tip": "Käytän työvälineitä, henkilönsuojaimia ja turvalaitteita asianmukaisesti",
-        "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
-      },
-      {
-        "tip": "Ilmoitan havaitsemistani vioista ja puutteista",
-        "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
-      },
-      {
-        "tip": "Teen tarvittaessa turvallisuusilmoituksen esim. läheltä piti-tilanteesta",
-        "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
-      }
-    ]
-  }
+  "agency": [
+    {
+      "id": 0,
+      "tip": "Mikä on keikkakaveri?",
+      "details": "Keikkakaveri on työnhakuun ja työnvälitykseen käytettävä käyttöliittymä."
+    },
+    {
+      "id": 1,
+      "tip": "Testikysymys 2?",
+      "details": "vastaus 2."
+    },
+    {
+      "id": 2,
+      "tip": "Testikysymys 3?",
+      "details": "vastaus 3."
+    },
+    {
+      "id": 3,
+      "tip": "Testikysymys 4?",
+      "details": "vastaus 4."
+    },
+    {
+      "id": 4,
+      "tip": "Testikysymys 5?",
+      "details": "vastaus 5."
+    },
+    {
+      "id": 5,
+      "tip": "Testikysymys 6?",
+      "details": "vastaus 6."
+    },
+    {
+      "id": 6,
+      "tip": "Testikysymys 7?",
+      "details": "vastaus 7."
+    },
+    {
+      "id": 7,
+      "tip": "Testikysymys 8?",
+      "details": "vastaus 8."
+    }
+  ],
+  "business": [
+    {
+      "tip": "Työn vaarojen selvittäminen ja arviointi",
+      "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
+    },
+    {
+      "tip": "Työn edellyttämien ammattitaitovaatimusten ja erityispiirteiden sekä muiden tarvittavien tietojen ilmoittaminen vuokrayritykselle",
+      "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
+    },
+    {
+      "tip": "Vuokratyön aloittamisesta ilmoittaminen työpaikan työterveyshuollolle ja työsuojeluvaltuutetulle",
+      "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
+    },
+    {
+      "tip": "Tarvittavien henkilönsuojainten hankinta",
+      "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
+    },
+    {
+      "tip": "Työnopastuksen antaminen vuokratyöntekijälle",
+      "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
+    },
+    {
+      "tip": "Vastuu työnjohdosta ja -valvonnasta",
+      "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
+    },
+    {
+      "tip": "Työn aikaisesta työn turvallisuudesta ja terveellisyydestä huolehtiminen",
+      "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
+    },
+    {
+      "tip": "Tarvittavien henkilönsuojainten ja turvavälineiden käyttämisen varmistaminen",
+      "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
+    }
+  ],
+  "worker": [
+    {
+      "tip": "Huolehdin omasta ja työkavereiden työhyvinvoinnista ja -turvallisuudesta",
+      "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
+    },
+    {
+      "tip": "Kohtelen kaikkia yhdenvertaisesti",
+      "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
+    },
+    {
+      "tip": "Noudatan työpaikan ohjeita",
+      "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
+    },
+    {
+      "tip": "Käytän työvälineitä, henkilönsuojaimia ja turvalaitteita asianmukaisesti",
+      "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
+    },
+    {
+      "tip": "Ilmoitan havaitsemistani vioista ja puutteista",
+      "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
+    },
+    {
+      "tip": "Teen tarvittaessa turvallisuusilmoituksen esim. läheltä piti-tilanteesta",
+      "details": "Mahdollisuuksien mukaan edellä kerrottujen asioiden huolehtimisesta ja toteutustavoista tulisi sopia jo asiakassopimuksen solmimisvaiheessa. Osa asioista voidaan kuitenkin jättää käytäväksi läpi tai sovittavaksi vasta työntekijän tilausvaiheessa. Näin kannattaa toimia ainakin silloin, kun vuokratyöntekijöiden työnkuva ei ole vielä tarkkaan tiedossa."
+    }
+  ]
+}

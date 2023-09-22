@@ -1,40 +1,36 @@
-import { DataGrid, GridColumns } from '@mui/x-data-grid';
-import * as React from 'react';
-import { DeleteOutline } from '@mui/icons-material';
-import { deleteUser, fetchAllUsers, updateUSerStatus } from '../../actions/usersActions';
-import { IRootState } from '../../utils/store';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import makeStyles from '@mui/styles/makeStyles';
-import { User } from '../../types/types';
-
+import { DataGrid, GridColumns } from '@mui/x-data-grid'
+import * as React from 'react'
+import { DeleteOutline } from '@mui/icons-material'
+import { deleteUser, fetchAllUsers, updateUSerStatus } from '../../actions/usersActions'
+import { IRootState } from '../../utils/store'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import makeStyles from '@mui/styles/makeStyles'
+import { User } from '../../types/types'
 
 const UserList: React.FC = () => {
+  const classes = useStyles()
+  const dispatch = useDispatch()
 
-  const classes = useStyles();
-  const dispatch = useDispatch();
-
-  const { users } = useSelector((state: IRootState) => state.users || []);
+  const { users } = useSelector((state: IRootState) => state.users || [])
 
   useEffect(() => {
-    dispatch(fetchAllUsers());
-  }, [dispatch]);
+    dispatch(fetchAllUsers())
+  }, [dispatch])
 
-  const rows = [
-    ...users,
-  ];
+  const rows = [...users]
 
   const handleDelete = (id: string) => {
-    console.log(id);
-    dispatch(deleteUser(users.find(user => user._id === id) as User))
+    console.log(id)
+    dispatch(deleteUser(users.find((user) => user._id === id) as User))
   }
 
   const handleStatus = (id: string, active: boolean) => {
-    console.log();
-    dispatch(updateUSerStatus(users.find(user => user._id === id) as User, active))
+    console.log()
+    dispatch(updateUSerStatus(users.find((user) => user._id === id) as User, active))
   }
-  
-  const columns : GridColumns = [
+
+  const columns: GridColumns = [
     {
       field: 'name',
       headerName: 'User',
@@ -42,26 +38,26 @@ const UserList: React.FC = () => {
       renderCell: (params) => {
         return (
           <div className={classes.userListUser}>
-            <img className={classes.userListImg} src={params.row.profilePicture} alt="" />
+            <img className={classes.userListImg} src={params.row.profilePicture} alt='' />
             {params.row.name}
           </div>
-        );
+        )
       },
     },
-    { 
-      field: 'email', 
-      headerName: 'Email', 
-      width: 200
+    {
+      field: 'email',
+      headerName: 'Email',
+      width: 200,
     },
-    { 
-      field: 'city', 
-      headerName: 'City', 
-      width: 200 
+    {
+      field: 'city',
+      headerName: 'City',
+      width: 200,
     },
-    { 
-      field: 'userType', 
-      headerName: 'User Type', 
-      width: 150 
+    {
+      field: 'userType',
+      headerName: 'User Type',
+      width: 150,
     },
     {
       field: 'active',
@@ -78,32 +74,33 @@ const UserList: React.FC = () => {
             <DeleteOutline
               className={classes.userListDelete}
               onClick={() => handleDelete(params.row._id)}
-              
             />
-            <button 
-             className={classes.userListDeactive}
-             onClick={() => handleStatus(params.row._id, !params.row.active)}>{params.row.active ? 'Deactivate' : 'Activate'}</button>
-            
+            <button
+              className={classes.userListDeactive}
+              onClick={() => handleStatus(params.row._id, !params.row.active)}
+            >
+              {params.row.active ? 'Deactivate' : 'Activate'}
+            </button>
           </>
-        );
+        )
       },
     },
-  ];
+  ]
 
   return (
     <div style={{ height: 700, width: '100%' }}>
-    <DataGrid
-      getRowId={(row) => row._id}
-      rows={rows}
-      disableSelectionOnClick
-      columns={columns}
-      pageSize={10}
-      rowsPerPageOptions={[10]}
-      checkboxSelection
-      style={{backgroundColor: 'red'}}
-    />
-  </div>
-  );
+      <DataGrid
+        getRowId={(row) => row._id}
+        rows={rows}
+        disableSelectionOnClick
+        columns={columns}
+        pageSize={10}
+        rowsPerPageOptions={[10]}
+        checkboxSelection
+        style={{ backgroundColor: 'red' }}
+      />
+    </div>
+  )
 }
 
 const useStyles = makeStyles(() => ({
@@ -135,5 +132,5 @@ const useStyles = makeStyles(() => ({
     marginRight: '20px',
     cursor: 'pointer',
   },
-}));
-export default UserList;
+}))
+export default UserList

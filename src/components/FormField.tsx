@@ -11,7 +11,7 @@ import {
   FormLabel,
   RadioGroup,
   Radio,
-  FormControlLabel
+  FormControlLabel,
 } from '@mui/material'
 import './FormikField.css'
 import DatePicker from '@mui/lab/DatePicker'
@@ -38,7 +38,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns'
  */
 export const FormikTextField: React.FC<any> = ({ label, ...props }) => {
   const [field, meta] = useField(props)
-  const errorText = (meta.touched && meta.error && !props.disabled) ? meta.error : ''
+  const errorText = meta.touched && meta.error && !props.disabled ? meta.error : ''
 
   return (
     <TextField
@@ -58,7 +58,7 @@ FormikTextField.propTypes = {
   type: PropTypes.oneOf(['text', 'password']).isRequired,
   placeholder: PropTypes.string,
   disabled: PropTypes.bool,
-  variant: PropTypes.oneOf(['filled', 'outlined', 'standard'])
+  variant: PropTypes.oneOf(['filled', 'outlined', 'standard']),
 }
 
 /**
@@ -82,23 +82,24 @@ FormikTextField.propTypes = {
  *  </Form>
  * </Formik>
  */
-export const FormikSelectField: React.FC<any> = ({ options, label, disabled, setFieldValue, ...props }) => {
+export const FormikSelectField: React.FC<any> = ({
+  options,
+  label,
+  disabled,
+  setFieldValue,
+  ...props
+}) => {
   const [field, meta] = useField(props)
   const errorText = meta.touched && meta.error ? meta.error : ''
 
   useEffect(() => {
     if (disabled) {
-      setFieldValue('category','')
+      setFieldValue('category', '')
     }
-  },[disabled]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [disabled]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <FormControl
-      disabled={disabled}
-      style={{ minWidth: 120 }}
-      error={!!errorText}
-      {...props}
-    >
+    <FormControl disabled={disabled} style={{ minWidth: 120 }} error={!!errorText} {...props}>
       <InputLabel id={props._id || props.name}>{label}</InputLabel>
       <Select {...field} aria-labelledby={props._id || props.name} label={label}>
         {options.map((option: any) => (
@@ -115,14 +116,13 @@ export const FormikSelectField: React.FC<any> = ({ options, label, disabled, set
 FormikSelectField.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(PropTypes.shape({
-    value: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number
-    ]).isRequired,
-    label: PropTypes.string
-  })).isRequired,
-  disabled: PropTypes.bool
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      label: PropTypes.string,
+    }),
+  ).isRequired,
+  disabled: PropTypes.bool,
 }
 
 /**
@@ -152,20 +152,19 @@ export const FormikRadioField: React.FC<any> = ({ options, label, ...props }) =>
   const errorText = meta.touched && meta.error ? meta.error : ''
 
   return (
-    <FormControl
-      style={{ minHeight: '6.5rem' }}
-      error={!!errorText}>
+    <FormControl style={{ minHeight: '6.5rem' }} error={!!errorText}>
       <FormLabel id={props._id || props.name}>{label}</FormLabel>
       <RadioGroup
         style={{ display: 'flex', flexFlow: 'row wrap', justifyContent: 'space-around' }}
-        {...field}>
+        {...field}
+      >
         {options.map((option: any) => (
           <FormControlLabel
             key={option.value}
             value={option.value}
-            control={<Radio color="primary" />}
+            control={<Radio color='primary' />}
             label={option.label}
-            labelPlacement="bottom"
+            labelPlacement='bottom'
           />
         ))}
       </RadioGroup>
@@ -177,45 +176,50 @@ export const FormikRadioField: React.FC<any> = ({ options, label, ...props }) =>
 FormikRadioField.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(PropTypes.shape({
-    value: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number
-    ]).isRequired,
-    label: PropTypes.string
-  })).isRequired
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      label: PropTypes.string,
+    }),
+  ).isRequired,
 }
 
 interface DatePickerFieldProps {
-  name: string;
-  label: string;
-  value?: Date;
-  required?: boolean;
+  name: string
+  label: string
+  value?: Date
+  required?: boolean
 }
 
-export const DatePickerField: React.FC<DatePickerFieldProps & FormikProps<any>> = ({label, name, required, values, setFieldValue}) => {
+export const DatePickerField: React.FC<DatePickerFieldProps & FormikProps<any>> = ({
+  label,
+  name,
+  required,
+  values,
+  setFieldValue,
+}) => {
   return (
     <>
-      <LocalizationProvider dateAdapter={AdapterDateFns} >
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
         <DatePicker
-          renderInput = {props =>
+          renderInput={(props) => (
             <TextField
-              id="date-picker-dialog"
+              id='date-picker-dialog'
               label={label}
               name={name}
               required={required}
               fullWidth
-              style={{ minHeight: '4rem'}}
+              style={{ minHeight: '4rem' }}
               {...props}
             />
-          }
+          )}
           label={label}
-          inputFormat="dd.MM.yyyy"
-          mask="__.__.____"
+          inputFormat='dd.MM.yyyy'
+          mask='__.__.____'
           value={values[name]}
-          onChange={value => setFieldValue(name, value)}
+          onChange={(value) => setFieldValue(name, value)}
           OpenPickerButtonProps={{
-            'aria-label': 'change date'
+            'aria-label': 'change date',
           }}
         />
       </LocalizationProvider>
@@ -224,22 +228,31 @@ export const DatePickerField: React.FC<DatePickerFieldProps & FormikProps<any>> 
 }
 
 interface FormikFieldProps {
-  name: string;
-  label: string;
-  type?: string;
-  required?: boolean;
-  multiline?: boolean;
-  maxRows?: number;
-  minRows?: number;
+  name: string
+  label: string
+  type?: string
+  required?: boolean
+  multiline?: boolean
+  maxRows?: number
+  minRows?: number
   helperClassName?: string
 }
 
-const FormikField: React.FC<FormikFieldProps> = ({ name, label, type = 'text', required = false, multiline = false, maxRows=null, minRows=2, helperClassName}) => {
+const FormikField: React.FC<FormikFieldProps> = ({
+  name,
+  label,
+  type = 'text',
+  required = false,
+  multiline = false,
+  maxRows = null,
+  minRows = 2,
+  helperClassName,
+}) => {
   return (
-    <div className="FormikField">
+    <div className='FormikField'>
       <Field
         required={required}
-        autoComplete="off"
+        autoComplete='off'
         as={TextField}
         label={label}
         name={name}
@@ -248,10 +261,15 @@ const FormikField: React.FC<FormikFieldProps> = ({ name, label, type = 'text', r
         maxRows={maxRows}
         minRows={minRows}
         multiline={multiline}
-        helperText={<ErrorMessage name={name} render={msg => <div className={helperClassName}>{msg}</div>} />}
+        helperText={
+          <ErrorMessage
+            name={name}
+            render={(msg) => <div className={helperClassName}>{msg}</div>}
+          />
+        }
       />
     </div>
-  );
-};
+  )
+}
 
-export default FormikField;
+export default FormikField

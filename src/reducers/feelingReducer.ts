@@ -2,8 +2,17 @@
  * @module reducer/feeling
  * @desc Redux feeling reducer
  */
-import { ADD_FEELING, ADD_FEELINGS, CLEAR_CURRENT_FEELING, FeelingActionTypes, FeelingState, FETCH_FEELINGS, SET_CURRENT_FEELING, UPDATE_FEELING_DATASET } from "../types/state"
-import { Feeling } from "../types/types"
+import {
+  ADD_FEELING,
+  ADD_FEELINGS,
+  CLEAR_CURRENT_FEELING,
+  FeelingActionTypes,
+  FeelingState,
+  FETCH_FEELINGS,
+  SET_CURRENT_FEELING,
+  UPDATE_FEELING_DATASET,
+} from '../types/state'
+import { Feeling } from '../types/types'
 //import { formatDate } from "../utils/dateUtils"
 
 const initialDataset = {
@@ -23,8 +32,8 @@ const initialDataset = {
 
 const initialFeeling: Feeling = {
   value: 0,
-  note: "",
-  fileUrl: "",
+  note: '',
+  fileUrl: '',
   isPrivate: false,
 }
 const initialState: FeelingState = {
@@ -44,45 +53,42 @@ const feelingReducer = (state: FeelingState = initialState, action: FeelingActio
     case FETCH_FEELINGS:
       return {
         ...state,
-        feelings: action.data
+        feelings: action.data,
       }
     case SET_CURRENT_FEELING:
       return {
         ...state,
         currentFeeling: {
           ...state.currentFeeling,
-          ...action.data
-        }
+          ...action.data,
+        },
       }
     case ADD_FEELINGS:
-      console.log("action.data", action.data)
+      console.log('action.data', action.data)
       return {
         ...state,
-        feelings: [
-          ...state.feelings,
-          ...action.data
-        ]
+        feelings: [...state.feelings, ...action.data],
       }
     case ADD_FEELING:
-      console.log("action.data", action.data)
+      console.log('action.data', action.data)
       return {
         ...state,
         feelings: {
           ...state.feelings,
-          ...action.data
+          ...action.data,
         },
-        currentFeeling: initialFeeling
+        currentFeeling: initialFeeling,
       }
     case CLEAR_CURRENT_FEELING:
       return {
         ...state,
-        currentFeeling: initialFeeling
+        currentFeeling: initialFeeling,
       }
     case UPDATE_FEELING_DATASET:
-      console.log("feeling reducer: data: ", action.data)
+      console.log('feeling reducer: data: ', action.data)
       let tempLabels: any = []
       //let tempData: any = []
-      console.log("€€€ state", state)
+      console.log('€€€ state', state)
       /*
       state.feelings.map((f: any) => {
         tempLabels.push(formatDate(f.createdAt))
@@ -98,10 +104,10 @@ const feelingReducer = (state: FeelingState = initialState, action: FeelingActio
           datasets: [
             {
               ...state.feelingDataSet.datasets[0],
-              data: state.feelings
-            }
-          ]
-        }
+              data: state.feelings,
+            },
+          ],
+        },
       }
     default:
       return state

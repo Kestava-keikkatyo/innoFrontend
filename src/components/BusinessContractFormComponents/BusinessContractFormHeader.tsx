@@ -1,6 +1,6 @@
-import { Typography } from '@mui/material';
-import React from 'react';
-import { FormHeaderProps } from '../../types/props';
+import { Typography } from '@mui/material'
+import React from 'react'
+import { FormHeaderProps } from '../../types/props'
 
 /**
  * @component
@@ -12,10 +12,10 @@ import { FormHeaderProps } from '../../types/props';
 const BusinssContractFormHeader: React.FC<FormHeaderProps> = ({ title, description }) => {
   return (
     <>
-      <Typography variant="h4">{ title }</Typography>
-      <Typography variant="body1">{ description }</Typography>
+      <Typography variant='h4'>{title}</Typography>
+      <Typography variant='body1'>{description}</Typography>
     </>
-   );
+  )
 }
 
-export default BusinssContractFormHeader;
+export default BusinssContractFormHeader

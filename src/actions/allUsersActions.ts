@@ -1,12 +1,10 @@
-
 import {
   SET_ALL_AGENCIES,
   SET_ALL_BUSINESSES,
   SET_ALL_WORKERS,
-  SET_AGENCY_WORKERS
+  SET_AGENCY_WORKERS,
 } from '../types/state'
 import allUsersService from '../services/allUsersService'
-
 
 /**
  * @function

@@ -1,36 +1,36 @@
 .calendar {
-    --wide-screen-calendar-height: 520px;
-    --wide-screen-day-container-height: 400px;
-    --wide-screen-font-size: 26px;
-    --wide-screen-cell-size: 64px;
+  --wide-screen-calendar-height: 520px;
+  --wide-screen-day-container-height: 400px;
+  --wide-screen-font-size: 26px;
+  --wide-screen-cell-size: 64px;
 
-    --small-screen-calendar-height: 300px;
-    --small-screen-day-container-height: 220px;
-    --small-screen-font-size: 18px;
-    --small-screen-cell-size: 32px;
+  --small-screen-calendar-height: 300px;
+  --small-screen-day-container-height: 220px;
+  --small-screen-font-size: 18px;
+  --small-screen-cell-size: 32px;
 }
 
 /* Whole calendar view */
 .calendar {
-    width: 100%;
-    min-height: var(--wide-screen-calendar-height);
+  width: 100%;
+  min-height: var(--wide-screen-calendar-height);
 }
 
 /* Days container */
 .calendar .PrivatePickersSlideTransition-root {
-    min-height: var(--wide-screen-day-container-height);
+  min-height: var(--wide-screen-day-container-height);
 }
 
 /* Year container */
 .calendar .MuiYearPicker-root {
-    min-height: 466px;
+  min-height: 466px;
 }
 
 /* Weekday row */
 .calendar .MuiCalendarPicker-viewTransitionContainer > div:first-child > div:first-child,
 /* Day number rows */
 .calendar [role="row"] {
-    justify-content: space-around;
+  justify-content: space-around;
 }
 
 /* Weekday row text ( Su Mo Tu We Th Fr Sa ) */
@@ -39,37 +39,37 @@
 .calendar [role="gridcell"],
 /* Day number cell buttons */
 .calendar [role="gridcell"] > button {
-    font-size: var(--wide-screen-font-size);
-    width: var(--wide-screen-cell-size);
-    height: var(--wide-screen-cell-size);
+  font-size: var(--wide-screen-font-size);
+  width: var(--wide-screen-cell-size);
+  height: var(--wide-screen-cell-size);
 }
 
 /* Selected day */
 .calendar .Mui-selected {
-    color: white !important;
+  color: white !important;
 }
 
 @media only screen and (max-width: 900px) {
-    /* Whole calendar view */
-    .calendar,
+  /* Whole calendar view */
+  .calendar,
     /* Year container */
-    .calendar .MuiYearPicker-root{
-        min-height: var(--small-screen-calendar-height);
-    }
+    .calendar .MuiYearPicker-root {
+    min-height: var(--small-screen-calendar-height);
+  }
 
-    /* Days container */
-    .calendar .PrivatePickersSlideTransition-root {
-        min-height: var(--small-screen-day-container-height);
-    }
+  /* Days container */
+  .calendar .PrivatePickersSlideTransition-root {
+    min-height: var(--small-screen-day-container-height);
+  }
 
-    /* Weekday row text ( Su Mo Tu We Th Fr Sa ) */
-    .calendar .MuiCalendarPicker-viewTransitionContainer > div:first-child > div:first-child span,
+  /* Weekday row text ( Su Mo Tu We Th Fr Sa ) */
+  .calendar .MuiCalendarPicker-viewTransitionContainer > div:first-child > div:first-child span,
     /* Day number cells */
     .calendar [role="gridcell"],
     /* Day number cell buttons */
-    .calendar [role="gridcell"] > button{
-        font-size: var(--small-screen-font-size);
-        width: var(--small-screen-cell-size);
-        height: var(--small-screen-cell-size);
-    }
+    .calendar [role="gridcell"] > button {
+    font-size: var(--small-screen-font-size);
+    width: var(--small-screen-cell-size);
+    height: var(--small-screen-cell-size);
+  }
 }

@@ -1,5 +1,5 @@
-import React, { ReactNode, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import React, { ReactNode, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import {
   Box,
   InputBase,
@@ -13,17 +13,17 @@ import {
   Grid,
   SelectChangeEvent,
   TablePagination,
-} from '@mui/material';
-import { Search as SearchIcon } from '@mui/icons-material';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllAgencies } from '../../actions/allUsersActions';
-import { IRootState } from '../../utils/store';
-import AgencyCard from './AgencyCard';
-import { ToggleButton, ToggleButtonGroup } from '@mui/material';
-import { useTheme, Theme } from '@mui/material/styles';
+} from '@mui/material'
+import { Search as SearchIcon } from '@mui/icons-material'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchAllAgencies } from '../../actions/allUsersActions'
+import { IRootState } from '../../utils/store'
+import AgencyCard from './AgencyCard'
+import { ToggleButton, ToggleButtonGroup } from '@mui/material'
+import { useTheme, Theme } from '@mui/material/styles'
 
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles'
+import createStyles from '@mui/styles/createStyles'
 
 /**
  * @component
@@ -32,14 +32,14 @@ import createStyles from '@mui/styles/createStyles';
  * Agencies can be filtered by their selected category.
  */
 const AgenciesList = () => {
-  const dispatch = useDispatch();
-  const [input, setInput] = useState('');
-  const { agencies } = useSelector((state: IRootState) => state.allUsers);
-  const [alignment, setAlignment] = React.useState('Kaikki');
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('md'));
-  const classes = useStyles();
-  const { t } = useTranslation();
+  const dispatch = useDispatch()
+  const [input, setInput] = useState('')
+  const { agencies } = useSelector((state: IRootState) => state.allUsers)
+  const [alignment, setAlignment] = React.useState('Kaikki')
+  const theme = useTheme()
+  const matches = useMediaQuery(theme.breakpoints.down('md'))
+  const classes = useStyles()
+  const { t } = useTranslation()
   const [page, setPage] = React.useState(0)
   const [rowsPerPage, setRowsPerPage] = React.useState(5)
   const [count, setCount] = React.useState(agencies.length)
@@ -47,12 +47,14 @@ const AgenciesList = () => {
   const [filter, setFilter] = React.useState(false)
 
   useEffect(() => {
-    dispatch(fetchAllAgencies());
-  }, [dispatch]);
+    dispatch(fetchAllAgencies())
+  }, [dispatch])
 
   useEffect(() => {
     const filteredAgencies = agencies.filter((agency: any) => agency.category === alignment)
-    const searchedAgencies = agencies.filter((agency: any) => agency.name.toLowerCase().includes(input.toLowerCase()))
+    const searchedAgencies = agencies.filter((agency: any) =>
+      agency.name.toLowerCase().includes(input.toLowerCase()),
+    )
     const searchedAndFilteredAgencies = agencies
       .filter((agency: any) => agency.category === alignment)
       .filter((agency: any) => agency.name.toLowerCase().includes(input.toLowerCase()))
@@ -61,49 +63,41 @@ const AgenciesList = () => {
       setCount(searchedAndFilteredAgencies.length)
     } else if (search) {
       setCount(searchedAgencies.length)
-    }
-    else {
+    } else {
       alignment === 'Kaikki' ? setCount(agencies.length) : setCount(filteredAgencies.length)
     }
   }, [alignment, input])
 
-  const handleChange = (
-    event: React.MouseEvent<HTMLElement>,
-    value: string
-  ) => {
-    event.preventDefault();
+  const handleChange = (event: React.MouseEvent<HTMLElement>, value: string) => {
+    event.preventDefault()
     setInput('')
     setSearch(false)
     value === 'Kaikki' ? setFilter(false) : setFilter(true)
-    setAlignment(value);
-  };
+    setAlignment(value)
+  }
 
-  const handleMobileChange = (
-    event: SelectChangeEvent<{ value: unknown }>,
-    child: ReactNode
-  ) => {
-    event.preventDefault();
-    setAlignment(event.target.value as string);
-  };
+  const handleMobileChange = (event: SelectChangeEvent<{ value: unknown }>, child: ReactNode) => {
+    event.preventDefault()
+    setAlignment(event.target.value as string)
+  }
 
   const handleQuerySearchChange = (event: any) => {
-    setInput(event.target.value);
-    if (event.target.value === "") {
-      setAlignment('Kaikki');
+    setInput(event.target.value)
+    if (event.target.value === '') {
+      setAlignment('Kaikki')
       setSearch(false)
-    }
-    else {
+    } else {
       setSearch(true)
     }
-  };
+  }
 
   const handleChangePage = (event: any, newPage: number) => {
     setPage(newPage)
   }
 
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
+    setRowsPerPage(parseInt(event.target.value, 10))
+    setPage(0)
   }
 
   const noResults = () => {
@@ -119,53 +113,44 @@ const AgenciesList = () => {
       case 'Kaikki':
         if (search) {
           const query = agencies.filter((agency: any) =>
-          agency.name.toLowerCase().includes(input.toLowerCase())
-          );
+            agency.name.toLowerCase().includes(input.toLowerCase()),
+          )
           if (query.length > 0) {
             return query
-            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            .map((agency: any) => (
-              <AgencyCard key={agency._id} agency={agency} />
-              ));
-            } else {
-              return (<>{noResults()}</>)
-            }
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((agency: any) => <AgencyCard key={agency._id} agency={agency} />)
+          } else {
+            return <>{noResults()}</>
+          }
         } else {
           return agencies
-          .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-          .map((agency: any) => (
-            <AgencyCard key={agency._id} agency={agency} />
-          ));
+            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            .map((agency: any) => <AgencyCard key={agency._id} agency={agency} />)
         }
       default:
         if (search) {
           const filteredAndSearched = agencies
-          .filter((agency: any) => agency.category === alignment)
-          .filter((agency: any) => agency.name.toLowerCase().includes(input.toLowerCase()))
+            .filter((agency: any) => agency.category === alignment)
+            .filter((agency: any) => agency.name.toLowerCase().includes(input.toLowerCase()))
           if (filteredAndSearched.length > 0) {
             return filteredAndSearched
-            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            .map((agency: any) => (
-              <AgencyCard key={agency._id} agency={agency} />
-            ));
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((agency: any) => <AgencyCard key={agency._id} agency={agency} />)
           } else {
-            return (<>{noResults()}</>)
+            return <>{noResults()}</>
           }
-      } else {
-          const filtered = agencies
-          .filter((agency: any) => agency.category === alignment)
+        } else {
+          const filtered = agencies.filter((agency: any) => agency.category === alignment)
           if (filtered.length > 0) {
             return filtered
-            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            .map((agency: any) => (
-              <AgencyCard key={agency._id} agency={agency} />
-              ));
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((agency: any) => <AgencyCard key={agency._id} agency={agency} />)
           } else {
-            return (<>{noResults()}</>)
+            return <>{noResults()}</>
           }
         }
     }
-  };
+  }
 
   const fields = [
     { field: t('all'), category: 'Kaikki' },
@@ -174,14 +159,16 @@ const AgenciesList = () => {
     { field: t('education'), category: 'Koulutus- ja opetusala' },
     { field: t('medicine'), category: 'Lääketeollisuus- ja farmasia' },
     { field: t('estate'), category: 'Kiinteistö' },
-  ];
+  ]
 
   return (
     <div>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Box className={classes.searchBar}>
-            <label htmlFor='search' style={{display: 'none'}}>{t('search_by_name')}</label>
+            <label htmlFor='search' style={{ display: 'none' }}>
+              {t('search_by_name')}
+            </label>
             <InputBase
               id='search'
               placeholder={t('search_by_name')}
@@ -189,7 +176,7 @@ const AgenciesList = () => {
               onChange={handleQuerySearchChange}
               aria-label='search'
             />
-            <IconButton type="submit" size="large" aria-label='search icon'>
+            <IconButton type='submit' size='large' aria-label='search icon'>
               <SearchIcon />
             </IconButton>
           </Box>
@@ -198,11 +185,7 @@ const AgenciesList = () => {
           {matches ? (
             <FormControl style={{ minWidth: '100%' }}>
               <InputLabel>Category</InputLabel>
-              <Select
-                autoWidth={true}
-                value={alignment as any}
-                onChange={handleMobileChange}
-              >
+              <Select autoWidth={true} value={alignment as any} onChange={handleMobileChange}>
                 {fields.map((f) => (
                   <MenuItem key={f.field} value={f.category}>
                     {f.field}
@@ -217,7 +200,7 @@ const AgenciesList = () => {
               value={alignment}
               exclusive
               onChange={handleChange}
-              orientation="vertical"
+              orientation='vertical'
             >
               {fields.map((f) => (
                 <ToggleButton key={f.field} value={f.category}>
@@ -231,7 +214,7 @@ const AgenciesList = () => {
           <div>
             <TablePagination
               rowsPerPageOptions={[5, 10, 25]}
-              component="div"
+              component='div'
               count={count}
               rowsPerPage={rowsPerPage}
               page={page}
@@ -243,8 +226,8 @@ const AgenciesList = () => {
         </Grid>
       </Grid>
     </div>
-  );
-};
+  )
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -264,7 +247,7 @@ const useStyles = makeStyles((theme: Theme) =>
     buttonGroupRoot: {
       borderRadius: '0px',
     },
-  })
-);
+  }),
+)
 
-export default AgenciesList;
+export default AgenciesList

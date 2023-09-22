@@ -2,12 +2,7 @@
  * @module reducer/alert
  * @desc Redux alert reducer
  */
-import {
-  AlertActionTypes,
-  AlertState,
-  ALERT_CLEAR,
-  ALERT_SET
-} from '../types/state';
+import { AlertActionTypes, AlertState, ALERT_CLEAR, ALERT_SET } from '../types/state'
 import { severity } from '../types/types'
 
 const initialState: AlertState = {

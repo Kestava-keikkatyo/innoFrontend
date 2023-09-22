@@ -6,7 +6,7 @@ import React from 'react'
  * Currently not in use
  */
 const ExpectedContracts = () => {
-  return (<></>)
+  return <></>
 }
 
 export default ExpectedContracts

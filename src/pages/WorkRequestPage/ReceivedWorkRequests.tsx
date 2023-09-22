@@ -1,74 +1,80 @@
-import { DataGrid, GridColumns } from '@mui/x-data-grid';
-import * as React from 'react';
-import { Link } from 'react-router-dom';
-import { IRootState } from '../../utils/store';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import makeStyles from '@mui/styles/makeStyles';
-import Typography from '@mui/material/Typography';
-import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
-import { fetchReceivedWorkRequests } from '../../actions/workRequestActions';
-import moment from 'moment';
+import { DataGrid, GridColumns } from '@mui/x-data-grid'
+import * as React from 'react'
+import { Link } from 'react-router-dom'
+import { IRootState } from '../../utils/store'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import makeStyles from '@mui/styles/makeStyles'
+import Typography from '@mui/material/Typography'
+import { useTranslation } from 'react-i18next'
+import i18next from 'i18next'
+import { fetchReceivedWorkRequests } from '../../actions/workRequestActions'
+import moment from 'moment'
 
 const WorkRequests: React.FC = () => {
+  const { t } = useTranslation()
+  const dispatch = useDispatch()
+  const classes = useStyles()
 
-  const { t } = useTranslation();
-  const dispatch = useDispatch();
-  const classes = useStyles();
+  const { workRequests } = useSelector((state: IRootState) => state.workRequest || [])
 
-  const { workRequests } = useSelector((state: IRootState) => state.workRequest || []);
-  
   useEffect(() => {
-    dispatch(fetchReceivedWorkRequests());
-  }, [dispatch]);
+    dispatch(fetchReceivedWorkRequests())
+  }, [dispatch])
 
-  let rows = [];
-  rows = workRequests;
+  let rows = []
+  rows = workRequests
 
   const columns: GridColumns = [
     {
-        field: 'headline',
-        headerName: (i18next.t('work_request_headline')),
-        width: 250,
-    },
-    { 
-        field: 'sender', 
-        headerName: (i18next.t('work_request_sender')), 
-        width: 250,
-        renderCell: (params) => {
-          return <>{params.row.sender.name}</>;
-      } 
+      field: 'headline',
+      headerName: i18next.t('work_request_headline'),
+      width: 250,
     },
     {
-        field: 'createdAt',
-        headerName: (i18next.t('work_request_sent_at')),
-        width: 250,
-        renderCell: (params) => {
-          console.log(params.row);
-          return <>{moment(params.row.createdAt).format('DD/MM/YYYY')}</>; 
-      }
+      field: 'sender',
+      headerName: i18next.t('work_request_sender'),
+      width: 250,
+      renderCell: (params) => {
+        return <>{params.row.sender.name}</>
+      },
     },
     {
-        field: 'action',
-        headerName: (i18next.t('work_request_action')),
-        width: 200,
-        renderCell: (params) => {
-          return (
-            <>
+      field: 'createdAt',
+      headerName: i18next.t('work_request_sent_at'),
+      width: 250,
+      renderCell: (params) => {
+        console.log(params.row)
+        return <>{moment(params.row.createdAt).format('DD/MM/YYYY')}</>
+      },
+    },
+    {
+      field: 'action',
+      headerName: i18next.t('work_request_action'),
+      width: 200,
+      renderCell: (params) => {
+        return (
+          <>
             <Link to={'/receivedWorkRequests/details/' + params.id}>
               <span className={classes.workRequestDetails}>{t('work_request_details')}</span>
             </Link>
-            </>
-          );
-        }
+          </>
+        )
+      },
     },
-  ];
-  
+  ]
+
   return (
     <div style={{ height: 700, width: '100%' }}>
       <div>
-        <Typography className={classes.workRequestTitle} color="primary" align="center" variant="h5">{t('your_received_work_requests')}</Typography>
+        <Typography
+          className={classes.workRequestTitle}
+          color='primary'
+          align='center'
+          variant='h5'
+        >
+          {t('your_received_work_requests')}
+        </Typography>
       </div>
       <DataGrid
         getRowId={(row) => row._id}
@@ -79,7 +85,7 @@ const WorkRequests: React.FC = () => {
         rowsPerPageOptions={[10]}
       />
     </div>
-  );
+  )
 }
 const useStyles = makeStyles(() => ({
   workRequestDetails: {
@@ -91,7 +97,7 @@ const useStyles = makeStyles(() => ({
   workRequestTitle: {
     marginTop: '25px',
     marginBottom: '15px',
-}
-}));
+  },
+}))
 
-export default WorkRequests;
+export default WorkRequests
