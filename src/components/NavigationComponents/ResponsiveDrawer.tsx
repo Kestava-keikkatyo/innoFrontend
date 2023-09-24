@@ -317,7 +317,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
             </ListItemIcon>
             <ListItemText className={classes.buttonText} primary={t('home')} />
           </ListItemButton>
-          {(role === roles.Agency || role === roles.Business) && (
+          {(role === roles.Agency || role === roles.Business || role == roles.Worker) && (
             <>
               <ListItemButton
                 style={{ backgroundColor: colors.reports }}
@@ -658,33 +658,6 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               </ListItemButton>
             </>
           )}
-          {role === roles.Worker && (
-            <>
-              <ListItemButton
-                style={{ backgroundColor: colors.responsibilities }}
-                component={Link}
-                to='/workerResponsibilities'
-                onClick={() => handleClick('responsibilities')}
-                className={classes.button}
-              >
-                <ListItemIcon>
-                  <AccessibilityOutlinedIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText className={classes.buttonText} primary={t('responsibilities')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}
-          {role === roles.Worker && (
-            <>
-              <ListItemButton style={{ backgroundColor: colors.materials }} component={Link} to="/companyMaterial" onClick={() => handleClick("materials")} className={classes.button}>
-                <ListItemIcon>
-                  <InsertDriveFileOutlinedIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText className={classes.buttonText} primary={t('materials')} />
-              </ListItemButton>
-            </>
-          )}
           {(role === roles.Worker) && (
             <>
               <ListItemButton
@@ -704,16 +677,27 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           )}
           {role === roles.Worker && (
             <>
+              <ListItemButton style={{ backgroundColor: colors.materials }} component={Link} to="/companyMaterial" onClick={() => handleClick("materials")} className={classes.button}>
+                <ListItemIcon>
+                  <InsertDriveFileOutlinedIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText className={classes.buttonText} primary={t('materials')} />
+              </ListItemButton>
+            </>
+          )}
+          {role === roles.Worker && (
+            <>
               <ListItemButton
+                style={{ backgroundColor: colors.responsibilities }}
                 component={Link}
-                to='/schedule'
-                onClick={() => handleClick('schedule')}
+                to='/workerResponsibilities'
+                onClick={() => handleClick('responsibilities')}
                 className={classes.button}
               >
                 <ListItemIcon>
-                  <CalendarTodayIcon sx={{ color: iconColor.base }} />
+                  <AccessibilityOutlinedIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
-                <ListItemText className={classes.buttonText} primary={t('schedule')} />
+                <ListItemText className={classes.buttonText} primary={t('responsibilities')} />
               </ListItemButton>
               <Divider />
             </>
@@ -777,23 +761,6 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               <Divider />
             </>
           )}
-          {role === roles.Worker && (
-            <>
-              <ListItemButton
-                style={{ backgroundColor: colors.reports }}
-                component={Link}
-                to='/reports'
-                onClick={() => handleClick('reports')}
-                className={classes.button}
-              >
-                <ListItemIcon>
-                  <ErrorOutlineIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText className={classes.buttonText} primary={t('reports')} />
-              </ListItemButton>
-              <Divider />
-            </>
-          )}
           {role === roles.Admin && (
             <>
               <ListItemButton component={Link} to='/userList'>
@@ -841,6 +808,22 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
                   className={classes.buttonText}
                   primary={t('responsibility_navigate')}
                 />
+              </ListItemButton>
+              <Divider />
+            </>
+          )}
+          {role === roles.Worker && (
+            <>
+              <ListItemButton
+                component={Link}
+                to='/schedule'
+                onClick={() => handleClick('schedule')}
+                className={classes.button}
+              >
+                <ListItemIcon>
+                  <CalendarTodayIcon sx={{ color: iconColor.base }} />
+                </ListItemIcon>
+                <ListItemText className={classes.buttonText} primary={t('schedule')} />
               </ListItemButton>
               <Divider />
             </>
