@@ -317,22 +317,20 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
             </ListItemIcon>
             <ListItemText className={classes.buttonText} primary={t('home')} />
           </ListItemButton>
-          {(role === roles.Agency || role === roles.Business || role == roles.Worker) && (
-            <>
-              <ListItemButton
-                style={{ backgroundColor: colors.reports }}
-                component={Link}
-                to='/reports'
-                onClick={() => handleClick('reports')}
-                className={classes.button}
-              >
-                <ListItemIcon>
-                  <ErrorOutlineIcon sx={{ color: iconColor.base }} />
-                </ListItemIcon>
-                <ListItemText className={classes.buttonText} primary={t('reports')} />
-              </ListItemButton>
-            </>
-          )}
+
+          <ListItemButton
+            style={{ backgroundColor: colors.reports }}
+            component={Link}
+            to='/reports'
+            onClick={() => handleClick('reports')}
+            className={classes.button}
+          >
+            <ListItemIcon>
+              <ErrorOutlineIcon sx={{ color: iconColor.base }} />
+            </ListItemIcon>
+            <ListItemText className={classes.buttonText} primary={t('reports')} />
+          </ListItemButton>
+
           {(role === roles.Agency || role === roles.Business) && (
             <>
               <ListItemButton
@@ -658,7 +656,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               </ListItemButton>
             </>
           )}
-          {(role === roles.Worker) && (
+          {role === roles.Worker && (
             <>
               <ListItemButton
                 style={{ backgroundColor: colors.feedback }}
@@ -677,7 +675,13 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           )}
           {role === roles.Worker && (
             <>
-              <ListItemButton style={{ backgroundColor: colors.materials }} component={Link} to="/companyMaterial" onClick={() => handleClick("materials")} className={classes.button}>
+              <ListItemButton
+                style={{ backgroundColor: colors.materials }}
+                component={Link}
+                to='/companyMaterial'
+                onClick={() => handleClick('materials')}
+                className={classes.button}
+              >
                 <ListItemIcon>
                   <InsertDriveFileOutlinedIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
