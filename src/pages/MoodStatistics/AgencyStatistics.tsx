@@ -32,7 +32,7 @@ const AgencyStatistics = () => {
       if (users[0]) {
         users.forEach((user) => {
           if (user.userType == 'worker') {
-            if (worker.feelings.worker == user._id) {
+            if (worker.feelings && worker.feelings.worker == user._id) {
               workers.push(user)
               return dispatch(addFeelings(worker.feelings))
             }
