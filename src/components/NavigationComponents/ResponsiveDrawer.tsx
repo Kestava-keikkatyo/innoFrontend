@@ -1,5 +1,5 @@
 import makeStyles from '@mui/styles/makeStyles'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Divider from '@mui/material/Divider'
 import List from '@mui/material/List'
 import ListItemButton from '@mui/material/ListItemButton'
@@ -54,7 +54,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
   const { data } = useSelector((state: IRootState) => state.user)
   const role = data.role
 
-  const [colors, setColors] = useState({
+  const blankState = {
     home: '#FDFDFD',
     reports: '#FDFDFD',
     feedback: '#FDFDFD',
@@ -66,6 +66,12 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
     rentalmodel: '#FDFDFD',
     databank: '#FDFDFD',
     businesses: '#FDFDFD',
+    schedule: '#FDFDFD',
+  }
+
+  const [colors, setColors] = useState({
+    ...blankState,
+    home: '#F47D20',
   })
 
   const iconColor = {
@@ -73,23 +79,6 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
     done: '#0F0',
     undone: '#F00',
   }
-
-  useEffect(() => {
-    setColors({
-      ...colors,
-      home: '#F47D20',
-      reports: '#FDFDFD',
-      feedback: '#FDFDFD',
-      contracts: '#FDFDFD',
-      responsibilities: '#FDFDFD',
-      materials: '#FDFDFD',
-      employees: '#FDFDFD',
-      inviteCodes: '#FDFDFD',
-      rentalmodel: '#FDFDFD',
-      databank: '#FDFDFD',
-      businesses: '#FDFDFD',
-    })
-  }, [])
 
   /**
    * Function for opening and closing drawer component.
@@ -105,178 +94,74 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
     switch (page) {
       case 'home':
         setColors({
-          ...colors,
+          ...blankState,
           home: '#F47D20',
-          reports: '#FDFDFD',
-          feedback: '#FDFDFD',
-          contracts: '#FDFDFD',
-          responsibilities: '#FDFDFD',
-          materials: '#FDFDFD',
-          employees: '#FDFDFD',
-          inviteCodes: '#FDFDFD',
-          rentalmodel: '#FDFDFD',
-          databank: '#FDFDFD',
-          businesses: '#FDFDFD',
         })
         break
       case 'reports':
         setColors({
-          ...colors,
-          home: '#FDFDFD',
+          ...blankState,
           reports: '#F47D20',
-          feedback: '#FDFDFD',
-          contracts: '#FDFDFD',
-          responsibilities: '#FDFDFD',
-          materials: '#FDFDFD',
-          employees: '#FDFDFD',
-          inviteCodes: '#FDFDFD',
-          rentalmodel: '#FDFDFD',
-          databank: '#FDFDFD',
-          businesses: '#FDFDFD',
         })
         break
       case 'feedback':
         setColors({
-          ...colors,
-          home: '#FDFDFD',
-          reports: '#FDFDFD',
+          ...blankState,
           feedback: '#F47D20',
-          contracts: '#FDFDFD',
-          responsibilities: '#FDFDFD',
-          materials: '#FDFDFD',
-          employees: '#FDFDFD',
-          inviteCodes: '#FDFDFD',
-          rentalmodel: '#FDFDFD',
-          databank: '#FDFDFD',
-          businesses: '#FDFDFD',
         })
         break
       case 'contracts':
         setColors({
-          ...colors,
-          home: '#FDFDFD',
-          reports: '#FDFDFD',
-          feedback: '#FDFDFD',
+          ...blankState,
           contracts: '#F47D20',
-          responsibilities: '#FDFDFD',
-          materials: '#FDFDFD',
-          employees: '#FDFDFD',
-          inviteCodes: '#FDFDFD',
-          rentalmodel: '#FDFDFD',
-          databank: '#FDFDFD',
-          businesses: '#FDFDFD',
         })
         break
       case 'responsibilities':
         setColors({
-          ...colors,
-          home: '#FDFDFD',
-          reports: '#FDFDFD',
-          feedback: '#FDFDFD',
-          contracts: '#FDFDFD',
+          ...blankState,
           responsibilities: '#F47D20',
-          materials: '#FDFDFD',
-          employees: '#FDFDFD',
-          inviteCodes: '#FDFDFD',
-          rentalmodel: '#FDFDFD',
-          databank: '#FDFDFD',
-          businesses: '#FDFDFD',
         })
         break
       case 'materials':
         setColors({
-          ...colors,
-          home: '#FDFDFD',
-          reports: '#FDFDFD',
-          feedback: '#FDFDFD',
-          contracts: '#FDFDFD',
-          responsibilities: '#FDFDFD',
+          ...blankState,
           materials: '#F47D20',
-          employees: '#FDFDFD',
-          inviteCodes: '#FDFDFD',
-          rentalmodel: '#FDFDFD',
-          databank: '#FDFDFD',
-          businesses: '#FDFDFD',
         })
         break
       case 'employees':
         setColors({
-          ...colors,
-          home: '#FDFDFD',
-          reports: '#FDFDFD',
-          feedback: '#FDFDFD',
-          contracts: '#FDFDFD',
-          responsibilities: '#FDFDFD',
-          materials: '#FDFDFD',
+          ...blankState,
           employees: '#F47D20',
-          inviteCodes: '#FDFDFD',
-          rentalmodel: '#FDFDFD',
-          databank: '#FDFDFD',
-          businesses: '#FDFDFD',
         })
         break
       case 'inviteCodes':
         setColors({
-          ...colors,
-          home: '#FDFDFD',
-          reports: '#FDFDFD',
-          feedback: '#FDFDFD',
-          contracts: '#FDFDFD',
-          responsibilities: '#FDFDFD',
-          materials: '#FDFDFD',
-          employees: '#FDFDFD',
+          ...blankState,
           inviteCodes: '#F47D20',
-          rentalmodel: '#FDFDFD',
-          databank: '#FDFDFD',
-          businesses: '#FDFDFD',
         })
         break
       case 'rentalmodel':
         setColors({
-          ...colors,
-          home: '#FDFDFD',
-          reports: '#FDFDFD',
-          feedback: '#FDFDFD',
-          contracts: '#FDFDFD',
-          responsibilities: '#FDFDFD',
-          materials: '#FDFDFD',
-          employees: '#FDFDFD',
-          inviteCodes: '#FDFDFD',
+          ...blankState,
           rentalmodel: '#F47D20',
-          databank: '#FDFDFD',
-          businesses: '#FDFDFD',
         })
         break
       case 'databank':
         setColors({
-          ...colors,
-          home: '#FDFDFD',
-          reports: '#FDFDFD',
-          feedback: '#FDFDFD',
-          contracts: '#FDFDFD',
-          responsibilities: '#FDFDFD',
-          materials: '#FDFDFD',
-          employees: '#FDFDFD',
-          inviteCodes: '#FDFDFD',
-          rentalmodel: '#FDFDFD',
+          ...blankState,
           databank: '#F47D20',
-          businesses: '#FDFDFD',
         })
         break
       case 'businesses':
         setColors({
-          ...colors,
-          home: '#FDFDFD',
-          reports: '#FDFDFD',
-          feedback: '#FDFDFD',
-          contracts: '#FDFDFD',
-          responsibilities: '#FDFDFD',
-          materials: '#FDFDFD',
-          employees: '#FDFDFD',
-          inviteCodes: '#FDFDFD',
-          rentalmodel: '#FDFDFD',
-          databank: '#FDFDFD',
+          ...blankState,
           businesses: '#F47D20',
+        })
+        break
+      case 'schedule':
+        setColors({
+          ...blankState,
+          schedule: '#F47D20',
         })
         break
     }
@@ -287,17 +172,8 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
   const handleOpenNest = () => {
     setOpenNest(!openNest)
     setColors({
-      ...colors,
-      home: '#FDFDFD',
-      reports: '#FDFDFD',
-      feedback: '#FDFDFD',
-      contracts: '#FDFDFD',
-      responsibilities: '#FDFDFD',
-      materials: '#FDFDFD',
-      employees: '#FDFDFD',
+      ...blankState,
       rentalmodel: '#F47D20',
-      databank: '#FDFDFD',
-      businesses: '#FDFDFD',
     })
   }
 
@@ -819,6 +695,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           {role === roles.Worker && (
             <>
               <ListItemButton
+                style={{ backgroundColor: colors.schedule }}
                 component={Link}
                 to='/schedule'
                 onClick={() => handleClick('schedule')}
