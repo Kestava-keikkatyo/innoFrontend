@@ -80,12 +80,6 @@ const SendFeeling: React.FC = () => {
                           checkedIcon={<SentimentSatisfiedAltIcon className={classes.icons} />}
                           as={Radio}
                         />
-                        <Field
-                          value={4}
-                          icon={<SentimentVerySatisfiedIcon className={classes.icons} />}
-                          checkedIcon={<SentimentVerySatisfiedIcon className={classes.icons} />}
-                          as={Radio}
-                        />
                       </RadioGroup>
                     </FormControl>
                   </div>
