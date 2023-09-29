@@ -320,7 +320,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
               </ListItemButton>
             </>
           )}
-          {role === roles.Business && (
+          {(role === roles.Business || role === roles.Worker) && (
             <>
               <ListItemButton
                 style={{ backgroundColor: colors.contracts }}
