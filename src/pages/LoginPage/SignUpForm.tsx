@@ -124,6 +124,10 @@ const SignUpForm: React.FC<any> = ({ handleSubmit }) => {
             // handleSubmit doesn't need password confirmation
             // eslint-disable-next-line no-unused-vars
             onSubmit={({ passwordConfirm, ...rest }) => {
+              if (rest.role === roles.Worker) {
+                rest.companyName = ''
+                rest.category = ''
+              }
               handleSubmit(rest)
             }}
           >
