@@ -1,14 +1,15 @@
 import { Grid, Hidden, Typography } from '@mui/material'
 import ProgressPieChart from '../../components/ProgressPieChart'
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   averageFeeling,
   calculateCheer,
   getDataSet,
   getTotalDataSet,
 } from '../../utils/feelingUtils'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
+import { fetchEmploymentContractsAsAgency } from '../../actions/contractActions'
 
 /**
  * @component
@@ -17,11 +18,25 @@ const AgencyStatisticsSummary: React.FC<any> = () => {
   const { feelings } = useSelector((state: any) => state.feeling)
   const feelingsList = []
 
+  const workersList = []
+
+  const workers = useSelector((state: any) => state.employmentAgreements.agreements)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchEmploymentContractsAsAgency())
+  }, [dispatch])
+
+  if (workers && workers.length > 0) {
+    for (let worker of workers) {
+      workersList.push(worker.worker._id)
+    }
+  }
+
   if (feelings.length != 0) {
-    //console.log('AgencyStatisticsSummary: feelingsList lenght:', feelings.data.length);
     for (let i = 0; i < feelings.data.length - 1; i++) {
-      feelingsList.push(feelings.data[i].feeling)
-      //console.log('Push:', feelings.data[i].feeling);
+      if (workersList.includes(feelings.data[i].worker)) {
+        feelingsList.push(feelings.data[i].feeling)
+      }
     }
   }
 
