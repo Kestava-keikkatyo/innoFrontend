@@ -9,12 +9,16 @@ import {
 } from '../../utils/feelingUtils'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import { fetchContractsAsAgency } from '../../actions/contractActions'
+import {
+  fetchContractsAsAgency,
+  fetchEmploymentContractsAsWorkerOrBusiness,
+} from '../../actions/contractActions'
 import { IRootState } from '../../utils/store'
+import { roles } from '../../types/types'
 
 type Feeling = {
   comment: string
-  createdAt: string // You may want to use the 'Date' type for timestamps
+  createdAt: string
   feeling: number
   worker: string
   __v: number
@@ -25,22 +29,40 @@ type Feeling = {
  * @component
  */
 const AgencyStatisticsSummary: React.FC = () => {
-  const workers = useSelector((state: IRootState) => state.businessContracts.contracts)
-  const feelingsList: number[] = []
-  const workersList: string[] = []
-  const allFeelings: Feeling[] = []
+  const { data } = useSelector((state: IRootState) => state.user)
+  const role = data.role //Current role: Agency or Business
+
+  const workersList: string[] = [] //IDs of all workers associated with Business or Agency
+  const allFeelings: Feeling[] = [] //All feelings
+  const feelingsList: number[] = [] //Feelings of only workers associated with the Business/Agency as numeric values
   const dispatch = useDispatch()
 
-  if (workers && workers.length > 0) {
-    workers.forEach((contract: any) => {
-      if (contract.target.userType == 'worker') {
-        workersList.push(contract.target._id)
-      }
-    })
+  if (role == roles.Agency) {
+    const contractsAgency = useSelector((state: IRootState) => state.businessContracts.contracts)
+
+    if (contractsAgency && contractsAgency.length > 0) {
+      contractsAgency.forEach((contract: any) => {
+        if (contract.target.userType == 'worker') {
+          workersList.push(contract.target._id)
+        }
+      })
+    }
+  }
+
+  if (role == roles.Business) {
+    const contractsBusiness = useSelector((state: any) => state.employmentAgreements.agreements)
+    console.log(contractsBusiness)
+
+    if (contractsBusiness && contractsBusiness.length > 0) {
+      contractsBusiness.forEach((contract: any) => {
+        workersList.push(contract.worker._id)
+      })
+    }
   }
 
   useEffect(() => {
     dispatch(fetchContractsAsAgency())
+    dispatch(fetchEmploymentContractsAsWorkerOrBusiness())
   }, [dispatch])
 
   const { feelings } = useSelector((state: IRootState) => state.feeling)
@@ -51,16 +73,18 @@ const AgencyStatisticsSummary: React.FC = () => {
     }
   }
 
+  console.log(allFeelings)
+
   if (allFeelings.length != 0) {
     for (let i = 0; i < allFeelings.length - 1; i++) {
       if (workersList.includes(allFeelings[i].worker)) {
         feelingsList.push(allFeelings[i].feeling)
+        console.log(allFeelings[i].feeling + ' antoi ' + allFeelings[i].worker)
       }
     }
   }
 
-  console.log(workersList)
-  console.log(allFeelings)
+  console.log(feelingsList)
 
   const { t } = useTranslation()
   if (!feelings) {
