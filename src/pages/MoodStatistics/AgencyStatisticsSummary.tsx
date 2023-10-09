@@ -9,33 +9,46 @@ import {
 } from '../../utils/feelingUtils'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import { fetchEmploymentContractsAsAgency } from '../../actions/contractActions'
+import {
+  fetchContractsAsAgency,
+  fetchEmploymentContractsAsAgency,
+} from '../../actions/contractActions'
+import { IRootState } from '../../utils/store'
 
 /**
  * @component
  */
 const AgencyStatisticsSummary: React.FC<any> = () => {
-  const { feelings } = useSelector((state: any) => state.feeling)
+  const workers = useSelector((state: IRootState) => state.businessContracts.contracts)
   const feelingsList = []
-
-  const workersList = []
-
-  const workers = useSelector((state: any) => state.employmentAgreements.agreements)
+  const workersList: any = []
+  const allFeelings: any = []
   const dispatch = useDispatch()
+
+  if (workers[0]) {
+    workers.forEach((contract: any) => {
+      if (contract.target.userType == 'worker') {
+        workersList.push(contract.target._id)
+      }
+    })
+  }
+
   useEffect(() => {
-    dispatch(fetchEmploymentContractsAsAgency())
+    dispatch(fetchContractsAsAgency())
   }, [dispatch])
 
-  if (workers && workers.length > 0) {
-    for (let worker of workers) {
-      workersList.push(worker.worker._id)
-    }
-  }
+  const { feelings } = useSelector((state: any) => state.feeling)
 
   if (feelings.length != 0) {
     for (let i = 0; i < feelings.data.length - 1; i++) {
-      if (workersList.includes(feelings.data[i].worker)) {
-        feelingsList.push(feelings.data[i].feeling)
+      allFeelings.push(feelings.data[i])
+    }
+  }
+
+  if (allFeelings.length != 0) {
+    for (let i = 0; i < allFeelings.length - 1; i++) {
+      if (workersList.includes(allFeelings[i].worker)) {
+        feelingsList.push(allFeelings[i].feeling)
       }
     }
   }
