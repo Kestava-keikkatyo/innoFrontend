@@ -31,7 +31,7 @@ export const calculateCheer = (value: number, maxValue: number) => {
   else return 'oops! :('
 }
 
-export const averageFeeling = (feelingList: Feeling[]) => {
+export const averageFeeling = (feelingList: number[]) => {
   let total = 0
 
   //console.log("Feeling list lenght: " + feelingList.length)

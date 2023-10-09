@@ -12,17 +12,26 @@ import { useTranslation } from 'react-i18next'
 import { fetchContractsAsAgency } from '../../actions/contractActions'
 import { IRootState } from '../../utils/store'
 
+type Feeling = {
+  comment: string
+  createdAt: string // You may want to use the 'Date' type for timestamps
+  feeling: number
+  worker: string
+  __v: number
+  _id: string
+}
+
 /**
  * @component
  */
-const AgencyStatisticsSummary: React.FC<any> = () => {
+const AgencyStatisticsSummary: React.FC = () => {
   const workers = useSelector((state: IRootState) => state.businessContracts.contracts)
-  const feelingsList = []
-  const workersList: any = []
-  const allFeelings: any = []
+  const feelingsList: number[] = []
+  const workersList: string[] = []
+  const allFeelings: Feeling[] = []
   const dispatch = useDispatch()
 
-  if (workers[0]) {
+  if (workers && workers.length > 0) {
     workers.forEach((contract: any) => {
       if (contract.target.userType == 'worker') {
         workersList.push(contract.target._id)
@@ -34,7 +43,7 @@ const AgencyStatisticsSummary: React.FC<any> = () => {
     dispatch(fetchContractsAsAgency())
   }, [dispatch])
 
-  const { feelings } = useSelector((state: any) => state.feeling)
+  const { feelings } = useSelector((state: IRootState) => state.feeling)
 
   if (feelings.length != 0) {
     for (let i = 0; i < feelings.data.length - 1; i++) {
@@ -49,6 +58,9 @@ const AgencyStatisticsSummary: React.FC<any> = () => {
       }
     }
   }
+
+  console.log(workersList)
+  console.log(allFeelings)
 
   const { t } = useTranslation()
   if (!feelings) {
