@@ -9,10 +9,7 @@ import {
 } from '../../utils/feelingUtils'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import {
-  fetchContractsAsAgency,
-  fetchEmploymentContractsAsAgency,
-} from '../../actions/contractActions'
+import { fetchContractsAsAgency } from '../../actions/contractActions'
 import { IRootState } from '../../utils/store'
 
 /**
