@@ -33,7 +33,8 @@ const AgencyStatisticsSummary: React.FC = () => {
   const role = data.role //Current role: Agency or Business
 
   const workersList: string[] = [] //IDs of all workers associated with Business or Agency
-  const allFeelings: Feeling[] = [] //All feelings
+  const { feelings } = useSelector((state: IRootState) => state.feeling)
+  const allFeelings: Feeling[] = feelings.data ? [...feelings.data] : [] //All feelings
   const feelingsList: number[] = [] //Feelings of only workers associated with the Business/Agency as numeric values
   const dispatch = useDispatch()
 
@@ -67,14 +68,6 @@ const AgencyStatisticsSummary: React.FC = () => {
       dispatch(fetchEmploymentContractsAsWorkerOrBusiness())
     }
   }, [dispatch])
-
-  const { feelings } = useSelector((state: IRootState) => state.feeling)
-
-  if (feelings.length != 0) {
-    for (let i = 0; i < feelings.data.length - 1; i++) {
-      allFeelings.push(feelings.data[i])
-    }
-  }
 
   if (allFeelings.length != 0) {
     for (let i = 0; i < allFeelings.length - 1; i++) {
