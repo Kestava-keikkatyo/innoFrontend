@@ -1436,7 +1436,7 @@ export default {
 
   check_new_reports: 'Katso uusimmat turvallisuusraportit',
   print: 'Tulosta pdf',
-  feeling_report_question: 'Mikä fiilis tänän?',
+  feeling_report_question: 'Mikä fiilis tänään?',
 
   //Articles
   //Article1
