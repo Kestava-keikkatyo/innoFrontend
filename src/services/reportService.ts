@@ -87,7 +87,7 @@ const fetchReportById = async (id: string) => {
     const res = await axios.get(`${baseUrl}/admin/report/${id}`, authHeader())
     return res.data
   } catch (error) {
-    console.log(error)
+    console.error
     return Promise.reject(error.response)
   }
 }

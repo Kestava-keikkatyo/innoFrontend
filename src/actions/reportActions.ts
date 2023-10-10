@@ -32,7 +32,7 @@ export const getMyReports = () => async (dispatch: any) => {
     const res = await reportService.getMyReports()
     dispatch({ type: SET_REPORTS, data: res.data })
   } catch (error) {
-    console.log('Error getting own reports: ', error)
+    console.error
     dispatch({ type: SET_REPORTS, data: [] })
   }
 }
@@ -56,7 +56,6 @@ export const submitReport = (report: Report) => async (dispatch: any) => {
 export const replyReport =
   (id: string, reply: string, userType: string) => async (dispatch: any) => {
     const res = await reportService.replyReport(id, reply, userType)
-    console.log('Action: replyReport response: ', res)
     return res.data
   }
 
@@ -75,10 +74,9 @@ export const archiveReport =
 export const fetchReportById = (id: string) => async (dispatch: any) => {
   try {
     const data = await reportService.fetchReportById(id)
-    console.log("report's data", data)
     dispatch({ type: SET_CURRENT_REPORT, data: data })
   } catch (error) {
-    console.log(error)
+    console.error
   }
 }
 
@@ -87,7 +85,7 @@ export const fetchAllReports = () => async (dispatch: any) => {
     const res = await reportService.fetchAllReports()
     dispatch({ type: SET_REPORTS, data: res.data })
   } catch (error) {
-    console.log(error)
+    console.error
   }
 }
 
