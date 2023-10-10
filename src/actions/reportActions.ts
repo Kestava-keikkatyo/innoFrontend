@@ -66,10 +66,11 @@ export const replyReport =
  * @param {string} id
  * @param {string} archived Note: sent as a string
  */
-export const archiveReport = (id: string, archived: string) => async (dispatch: any) => {
-  const res = await reportService.archiveReport(id, archived)
-  return res.data
-}
+export const archiveReport =
+  (id: string, archived: string, userType: string) => async (dispatch: any) => {
+    const res = await reportService.archiveReport(id, archived, userType)
+    return res.data
+  }
 
 export const fetchReportById = (id: string) => async (dispatch: any) => {
   try {

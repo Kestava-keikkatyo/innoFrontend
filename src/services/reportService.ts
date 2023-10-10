@@ -70,8 +70,12 @@ const replyReport = async (id: string, reply: string, userType: string) => {
  * @param {string} id
  * @param {string} archived Note: sent as a string
  */
-const archiveReport = async (id: string, archived: string) => {
-  return await axios.put(`${baseUrl}/report/archive/${id}/${archived}`, {}, authHeader())
+const archiveReport = async (id: string, archived: string, userType: string) => {
+  return await axios.put(
+    `${baseUrl}/report/archive/${id}/${archived}`,
+    { userType: userType },
+    authHeader(),
+  )
 }
 
 /**
