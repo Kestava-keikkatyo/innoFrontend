@@ -53,11 +53,12 @@ export const submitReport = (report: Report) => async (dispatch: any) => {
  * @param {string} id
  * @param {string} reply
  */
-export const replyReport = (id: string, reply: string) => async (dispatch: any) => {
-  const res = await reportService.replyReport(id, reply)
-  console.log('Action: replyReport response: ', res)
-  return res.data
-}
+export const replyReport =
+  (id: string, reply: string, userType: string) => async (dispatch: any) => {
+    const res = await reportService.replyReport(id, reply, userType)
+    console.log('Action: replyReport response: ', res)
+    return res.data
+  }
 
 /**
  * @function

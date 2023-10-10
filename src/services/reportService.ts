@@ -56,10 +56,12 @@ const postReport = async (report: Report) => {
  * @param {string} id
  * @param {string} reply
  */
-const replyReport = async (id: string, reply: string) => {
-  console.log('reportService: replyReport: reply: ', reply)
-
-  return await axios.put(`${baseUrl}/report/reply/${id}`, { reply: reply }, authHeader())
+const replyReport = async (id: string, reply: string, userType: string) => {
+  return await axios.put(
+    `${baseUrl}/report/reply/${id}`,
+    { reply: reply, userType: userType },
+    authHeader(),
+  )
 }
 
 /**
