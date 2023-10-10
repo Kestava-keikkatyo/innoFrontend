@@ -37,7 +37,7 @@ const AgencyStatisticsSummary: React.FC = () => {
   const feelingsList: number[] = [] //Feelings of only workers associated with the Business/Agency as numeric values
   const dispatch = useDispatch()
 
-  if (role == roles.Agency) {
+  if (role === roles.Agency) {
     const contractsAgency = useSelector((state: IRootState) => state.businessContracts.contracts)
 
     if (contractsAgency && contractsAgency.length > 0) {
@@ -49,9 +49,8 @@ const AgencyStatisticsSummary: React.FC = () => {
     }
   }
 
-  if (role == roles.Business) {
+  if (role === roles.Business) {
     const contractsBusiness = useSelector((state: any) => state.employmentAgreements.agreements)
-    console.log(contractsBusiness)
 
     if (contractsBusiness && contractsBusiness.length > 0) {
       contractsBusiness.forEach((contract: any) => {
@@ -61,8 +60,12 @@ const AgencyStatisticsSummary: React.FC = () => {
   }
 
   useEffect(() => {
-    dispatch(fetchContractsAsAgency())
-    dispatch(fetchEmploymentContractsAsWorkerOrBusiness())
+    if (role === roles.Agency) {
+      dispatch(fetchContractsAsAgency())
+    }
+    if (role === roles.Business) {
+      dispatch(fetchEmploymentContractsAsWorkerOrBusiness())
+    }
   }, [dispatch])
 
   const { feelings } = useSelector((state: IRootState) => state.feeling)
@@ -73,18 +76,13 @@ const AgencyStatisticsSummary: React.FC = () => {
     }
   }
 
-  console.log(allFeelings)
-
   if (allFeelings.length != 0) {
     for (let i = 0; i < allFeelings.length - 1; i++) {
       if (workersList.includes(allFeelings[i].worker)) {
         feelingsList.push(allFeelings[i].feeling)
-        console.log(allFeelings[i].feeling + ' antoi ' + allFeelings[i].worker)
       }
     }
   }
-
-  console.log(feelingsList)
 
   const { t } = useTranslation()
   if (!feelings) {
