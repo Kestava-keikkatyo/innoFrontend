@@ -32,7 +32,7 @@ export const getMyReports = () => async (dispatch: any) => {
     const res = await reportService.getMyReports()
     dispatch({ type: SET_REPORTS, data: res.data })
   } catch (error) {
-    console.error
+    console.error(error)
     dispatch({ type: SET_REPORTS, data: [] })
   }
 }
@@ -76,7 +76,7 @@ export const fetchReportById = (id: string) => async (dispatch: any) => {
     const data = await reportService.fetchReportById(id)
     dispatch({ type: SET_CURRENT_REPORT, data: data })
   } catch (error) {
-    console.error
+    console.error(error)
   }
 }
 
@@ -85,7 +85,7 @@ export const fetchAllReports = () => async (dispatch: any) => {
     const res = await reportService.fetchAllReports()
     dispatch({ type: SET_REPORTS, data: res.data })
   } catch (error) {
-    console.error
+    console.error(error)
   }
 }
 
