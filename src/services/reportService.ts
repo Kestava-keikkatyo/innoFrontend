@@ -56,10 +56,12 @@ const postReport = async (report: Report) => {
  * @param {string} id
  * @param {string} reply
  */
-const replyReport = async (id: string, reply: string) => {
-  console.log('reportService: replyReport: reply: ', reply)
-
-  return await axios.put(`${baseUrl}/report/reply/${id}`, { reply: reply }, authHeader())
+const replyReport = async (id: string, reply: string, userType: string) => {
+  return await axios.put(
+    `${baseUrl}/report/reply/${id}`,
+    { reply: reply, userType: userType },
+    authHeader(),
+  )
 }
 
 /**
@@ -68,8 +70,12 @@ const replyReport = async (id: string, reply: string) => {
  * @param {string} id
  * @param {string} archived Note: sent as a string
  */
-const archiveReport = async (id: string, archived: string) => {
-  return await axios.put(`${baseUrl}/report/archive/${id}/${archived}`, {}, authHeader())
+const archiveReport = async (id: string, archived: string, userType: string) => {
+  return await axios.put(
+    `${baseUrl}/report/archive/${id}/${archived}`,
+    { userType: userType },
+    authHeader(),
+  )
 }
 
 /**
@@ -81,7 +87,7 @@ const fetchReportById = async (id: string) => {
     const res = await axios.get(`${baseUrl}/admin/report/${id}`, authHeader())
     return res.data
   } catch (error) {
-    console.log(error)
+    console.error(error)
     return Promise.reject(error.response)
   }
 }

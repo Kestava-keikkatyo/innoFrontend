@@ -54,7 +54,7 @@ const Report: React.FC<any> = ({ report }) => {
 
   const handleArchive = async () => {
     //Archiving report
-    await dispatch(archiveReport(report._id, 'true'))
+    await dispatch(archiveReport(report._id, 'true', role))
     /*
     After archiving, load the reports again. Worker gets their own sent reports 
     and other get reports sent to them.
@@ -69,7 +69,7 @@ const Report: React.FC<any> = ({ report }) => {
 
   const handleUnarchive = async () => {
     //Unarchiving report
-    await dispatch(archiveReport(report._id, 'false'))
+    await dispatch(archiveReport(report._id, 'false', role))
     /*
     After archiving, load the reports again. Worker gets their own sent reports 
     and other get reports sent to them.
