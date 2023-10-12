@@ -1,15 +1,13 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { addAgencyConnection } from '../../services/codeService'
-import { Typography, Button, FormControl } from '@mui/material'
+import { Typography, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import makeStyles from '@mui/styles/makeStyles'
-import { Field } from 'formik'
 
 export const InvitationCodeInput = () => {
   const [code, setCode] = useState('')
   const { data, ...user } = useSelector((state: any) => state.user)
-  const initialValues = { receivedCode: code }
 
   const { t } = useTranslation()
   const classes = useStyles()
