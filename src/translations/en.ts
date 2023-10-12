@@ -863,6 +863,8 @@ export default {
   search_by_name: 'Search by name',
   requested_contracts: 'REQUESTED CONTRACTS',
   archived_contracts: 'ARCHIVED CONTRACTS',
+  input_invitation_code: 'INPUT INVITATION CODE',
+  invitation_code: 'Invitation code:',
   send_request: 'SEND REQUEST',
   delete_request: 'Delete contract request?',
   no_results: 'No results',

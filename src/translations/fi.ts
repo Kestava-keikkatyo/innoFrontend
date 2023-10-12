@@ -859,6 +859,8 @@ export default {
   search_by_name: 'Hae nimellä',
   requested_contracts: 'PYYDETYT SOPIMUKSET',
   archived_contracts: 'ARKISTOIDUT SOPIMUKSET',
+  input_invitation_code: 'SYÖTÄ KUTSUKOODI',
+  invitation_code: 'Kutsukoodi:',
   send_request: 'LÄHETÄ PYYNTÖ',
   delete_request: 'Poistetaanko sopimuspyyntö?',
   no_results: 'Ei tuloksia',
