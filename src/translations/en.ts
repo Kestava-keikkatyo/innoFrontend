@@ -140,6 +140,8 @@ export default {
   marked: 'Marked',
   numberOfCodes: 'Number of Invite Codes',
   timeOfCreation: 'Creation Time',
+  invitecode_input_successful: 'Invitation code added',
+  invitecode_input_failed: 'Invitation code not valid',
 
   // Report form
   report_handler: 'Security observations',

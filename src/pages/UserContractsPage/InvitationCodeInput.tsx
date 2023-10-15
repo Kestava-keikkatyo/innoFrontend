@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addAgencyConnection } from '../../services/codeService'
 import { Typography, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import makeStyles from '@mui/styles/makeStyles'
+import i18next from 'i18next'
+import { setAlert } from '../../actions/alertActions'
+import { severity } from '../../types/types'
 
 export const InvitationCodeInput = () => {
   const [code, setCode] = useState('')
@@ -11,6 +14,7 @@ export const InvitationCodeInput = () => {
 
   const { t } = useTranslation()
   const classes = useStyles()
+  const dispatch = useDispatch()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputCode = e.target.value
@@ -19,11 +23,16 @@ export const InvitationCodeInput = () => {
     }
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (code.length === 5) {
-      addAgencyConnection(code)
+      try {
+        const res = await addAgencyConnection(code)
+        dispatch(setAlert(i18next.t('invitecode_input_successful'), severity.Success))
+      } catch (error) {
+        dispatch(setAlert(i18next.t('invitecode_input_failed'), severity.Error))
+      }
     } else {
-      alert('Please enter a 5-character invitation code.')
+      dispatch(setAlert(i18next.t('invitecode_input_failed'), severity.Error))
     }
     setCode('')
   }
@@ -47,8 +56,9 @@ export const InvitationCodeInput = () => {
 const useStyles = makeStyles((theme) => ({
   invitationCodeField: {
     padding: '9px',
+    paddingBottom: '10px',
     marginRight: '5px',
-    marginTop: '2px',
+    marginTop: '3px',
   },
 }))
 

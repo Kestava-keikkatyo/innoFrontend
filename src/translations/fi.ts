@@ -140,6 +140,8 @@ export default {
   marked: 'Merkitty',
   numberOfCodes: 'Kutsukoodien määrä',
   timeOfCreation: 'Luontiaika',
+  invitecode_input_successful: 'Kutsukoodi lisätty',
+  invitecode_input_failed: 'Kutsukoodi ei ole kelvollinen',
 
   // Report form
   report_handler: 'Turvallisuushavainto',
