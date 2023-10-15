@@ -26,7 +26,7 @@ export const InvitationCodeInput = () => {
   const handleSubmit = async () => {
     if (code.length === 5) {
       try {
-        const res = await addAgencyConnection(code)
+        await addAgencyConnection(code)
         dispatch(setAlert(i18next.t('invitecode_input_successful'), severity.Success))
       } catch (error) {
         dispatch(setAlert(i18next.t('invitecode_input_failed'), severity.Error))
