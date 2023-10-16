@@ -5,10 +5,14 @@ import MaterialTable from './MaterialTable'
 import SearchBar from './SearchBar'
 import FileChooser from './FileChooser'
 import { getFilesByCreator } from '../../services/companyMaterialService'
-import { CompanyFile } from '../../types/types'
+import { useSelector } from 'react-redux'
+import { CompanyFile, roles } from '../../types/types'
+import { IRootState } from '../../utils/store'
 
 const CompanyMaterialsPage: React.FC = () => {
   const [files, setFiles] = useState<CompanyFile[]>([])
+  const { data } = useSelector((state: IRootState) => state.user)
+  const role = data.role
 
   useEffect(() => {
     const fetchFiles = async () => {
@@ -21,7 +25,7 @@ const CompanyMaterialsPage: React.FC = () => {
 
   return (
     <div>
-      <FileChooser />
+      {role !== roles.Worker && <FileChooser />}
       <MaterialTable files={files} />
     </div>
   )
