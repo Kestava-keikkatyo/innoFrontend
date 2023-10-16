@@ -64,7 +64,7 @@ const AppNavigation = (props: { windowProp: any; children: ReactNode }) => {
               keepMounted: true, // Better open performance on mobile.
             }}
           >
-            <ResponsiveDrawer isMobile={true} isOpen={mobileOpen} setOpen={setMobileOpen} />
+            <ResponsiveDrawer isMobile={true} setOpen={setMobileOpen} />
           </Drawer>
         </Hidden>
         <Hidden lgDown implementation='css'>
@@ -82,7 +82,7 @@ const AppNavigation = (props: { windowProp: any; children: ReactNode }) => {
             variant='permanent'
             open
           >
-            <ResponsiveDrawer isMobile={false} isOpen={open} />
+            <ResponsiveDrawer isMobile={false} />
           </Drawer>
         </Hidden>
       </nav>

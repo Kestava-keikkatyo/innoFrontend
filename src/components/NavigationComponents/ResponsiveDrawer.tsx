@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import Divider from '@mui/material/Divider'
 import List from '@mui/material/List'
 import ListItemButton from '@mui/material/ListItemButton'
-import ListItem from '@mui/material/ListItem'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import Collapse from '@mui/material/Collapse'
@@ -47,7 +46,12 @@ import Sisainenlinkki from '../../assets/icons/sisainenlinkki.svg'
  * There is actually two drawers which are rendered at different time.
  * One for mobile view one for web view.
  */
-const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
+
+interface DrawerProps {
+  isMobile: boolean
+  setOpen?: (arg0: boolean) => void
+}
+const ResponsiveDrawer: React.FC<DrawerProps> = ({ isMobile, setOpen }) => {
   const classes = useStyles()
   const dispatch = useDispatch()
   const { t } = useTranslation()
@@ -88,7 +92,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
    */
   const handleClick = (page: string) => {
     if (isMobile) {
-      setOpen(false)
+      setOpen && setOpen(false)
     }
 
     switch (page) {
@@ -719,13 +723,10 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           </ListItemButton>
           <ListItemButton>
             <ExitToAppIcon style={{ textTransform: 'uppercase', marginRight: 10, width: '30px' }} />
-            <ListItemText primary={t('logout')} />
+            <ListItemText primary={t('logout')} onClick={() => dispatch(logout())} />
           </ListItemButton>
         </List>
       </div>
-      <ListItem className='drawer-logout' onClick={() => dispatch(logout())}>
-        <Divider />
-      </ListItem>
     </div>
   )
 }
@@ -760,9 +761,5 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '-20px',
   },
 }))
-
-ResponsiveDrawer.defaultProps = {
-  isOpen: true,
-}
 
 export default ResponsiveDrawer
