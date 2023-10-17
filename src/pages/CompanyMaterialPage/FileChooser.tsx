@@ -10,6 +10,7 @@ import {
 } from '@mui/material'
 import { createFile } from '../../services/companyMaterialService'
 import { loadUser } from '../../utils/storage'
+import { useTranslation } from 'react-i18next'
 
 const FileChooser: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -17,6 +18,7 @@ const FileChooser: React.FC = () => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [open, setOpen] = useState(false) // State to control the dialog
+  const { t } = useTranslation()
 
   const handleClick = () => {
     if (fileInputRef.current) {
@@ -53,8 +55,13 @@ const FileChooser: React.FC = () => {
 
   return (
     <div>
-      <Button variant='contained' color='primary' onClick={handleClick}>
-        Open File Dialog
+      <Button
+        variant='contained'
+        color='primary'
+        onClick={handleClick}
+        sx={{ marginTop: '40px', marginLeft: '10px' }}
+      >
+        {t('file_upload_button')}
       </Button>
       <input
         type='file'
@@ -63,28 +70,28 @@ const FileChooser: React.FC = () => {
         onChange={handleFileChange}
       />
       <Dialog open={open} onClose={() => handleDialogClose(false)}>
-        <DialogTitle>Enter File Details</DialogTitle>
+        <DialogTitle>{t('file_information')}</DialogTitle>
         <DialogContent>
-          <DialogContentText>Please enter a title and description for the file.</DialogContentText>
+          <DialogContentText>{t('file_information_prompt')}</DialogContentText>
           <TextField
             autoFocus
             margin='dense'
-            label='Title'
+            label={t('file_title') + '*'}
             fullWidth
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
           <TextField
             margin='dense'
-            label='Description'
+            label={t('file_description') + '*'}
             fullWidth
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => handleDialogClose(false)}>Cancel</Button>
-          <Button onClick={() => handleDialogClose(true)}>Upload</Button>
+          <Button onClick={() => handleDialogClose(false)}>{t('file_popup_cancel')}</Button>
+          <Button onClick={() => handleDialogClose(true)}>{t('file_popup_upload')}</Button>
         </DialogActions>
       </Dialog>
     </div>

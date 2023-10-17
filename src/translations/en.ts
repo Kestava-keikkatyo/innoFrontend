@@ -246,6 +246,18 @@ export default {
   contracts_received_from_the_workers: 'Contracts received from the workers',
   contracts_received_from_businesses: 'Contracts received from the businesses',
 
+  //Company materials
+  file_upload_button: 'Add Materials',
+  file_download_button: 'Download',
+  file_title: 'Title',
+  file_description: 'Description',
+  file_uploader: 'Creator',
+  file_date: 'Upload Date',
+  file_information: 'Enter File Details',
+  file_information_prompt: 'Please enter a title and description for the file.',
+  file_popup_cancel: 'Cancel',
+  file_popup_upload: 'Upload',
+
   // Agencies list
   all: 'All',
   construction: 'Construction',

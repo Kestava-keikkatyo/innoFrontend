@@ -246,6 +246,18 @@ export default {
   contracts_received_from_the_workers: 'Työntekijöiltä saapuneet sopimukset',
   contracts_received_from_businesses: 'Käyttäjäyrityksiltä saapuneet sopimukset',
 
+  //Company materials
+  file_upload_button: 'Lisää materiaaleja',
+  file_download_button: 'Lataa',
+  file_title: 'Otsikko',
+  file_description: 'Kuvaus',
+  file_uploader: 'Lataaja',
+  file_date: 'Päivämäärä',
+  file_information: 'Lisää tiedoston tiedot',
+  file_information_prompt: 'Syötä otsikko ja kuvaus',
+  file_popup_cancel: 'Peruuta',
+  file_popup_upload: 'Lataa',
+
   // Agencies list
   all: 'Kaikki',
   construction: 'Rakennus, asennus ja huolto',
