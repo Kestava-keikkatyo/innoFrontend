@@ -257,6 +257,9 @@ export default {
   file_information_prompt: 'Syötä otsikko ja kuvaus',
   file_popup_cancel: 'Peruuta',
   file_popup_upload: 'Lataa',
+  file_field_error: 'Täytä kaikki kentät',
+  file_upload_error: 'Tiedoston lisäys epäonnistui',
+  file_upload_success: 'Tiedosto lisätty',
 
   // Agencies list
   all: 'Kaikki',

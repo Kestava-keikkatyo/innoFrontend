@@ -11,6 +11,10 @@ import {
 import { createFile } from '../../services/companyMaterialService'
 import { loadUser } from '../../utils/storage'
 import { useTranslation } from 'react-i18next'
+import i18next from 'i18next'
+import { useDispatch } from 'react-redux'
+import { setAlert } from '../../actions/alertActions'
+import { severity } from '../../types/types'
 
 const FileChooser: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -19,6 +23,7 @@ const FileChooser: React.FC = () => {
   const [description, setDescription] = useState('')
   const [open, setOpen] = useState(false) // State to control the dialog
   const { t } = useTranslation()
+  const dispatch = useDispatch()
 
   const handleClick = () => {
     if (fileInputRef.current) {
@@ -36,19 +41,24 @@ const FileChooser: React.FC = () => {
   }
 
   const handleDialogClose = async (shouldUpload: boolean) => {
-    setOpen(false)
     if (shouldUpload && file) {
-      const formData = new FormData()
-      formData.append('file', file)
-      formData.append('title', title)
-      formData.append('description', description)
-      formData.append('creator', loadUser()._id)
+      if (title === '' || description === '') {
+        dispatch(setAlert(i18next.t('file_field_error'), severity.Error))
+      } else {
+        setOpen(false)
+        const formData = new FormData()
+        formData.append('file', file)
+        formData.append('title', title)
+        formData.append('description', description)
+        formData.append('creator', loadUser()._id)
 
-      try {
-        const uploadedFile = await createFile(formData)
-        console.log('File uploaded successfully:', uploadedFile)
-      } catch (error) {
-        console.error('File upload failed:', error)
+        try {
+          await createFile(formData)
+          dispatch(setAlert(i18next.t('file_upload_success'), severity.Success))
+        } catch (error) {
+          console.error('File upload failed:', error)
+          dispatch(setAlert(i18next.t('file_upload_error'), severity.Error))
+        }
       }
     }
   }

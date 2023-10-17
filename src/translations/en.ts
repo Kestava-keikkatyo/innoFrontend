@@ -257,6 +257,9 @@ export default {
   file_information_prompt: 'Please enter a title and description for the file.',
   file_popup_cancel: 'Cancel',
   file_popup_upload: 'Upload',
+  file_field_error: 'Fill Required Fields',
+  file_upload_error: 'Upload failed',
+  file_upload_success: 'File Uploaded',
 
   // Agencies list
   all: 'All',
