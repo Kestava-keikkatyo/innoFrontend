@@ -38,7 +38,7 @@ const EmploymentPage: React.FC<EmploymentProps> = () => {
   const userContracts = useSelector((state: IRootState) => state.businessContracts.contracts)
   const { t } = useTranslation()
 
-  if (userContacts && userContacts.length > 0) {
+  if (userContracts && userContracts.length > 0) {
     userContracts.forEach((contract: any) => {
       if (contract.target.userType == 'worker') {
         workers.push(contract.target)
