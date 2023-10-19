@@ -35,7 +35,7 @@ const EmploymentPage: React.FC<EmploymentProps> = () => {
   const currentForm: any = useSelector((state: any) => state.employmentAgreements.currentAgreement)
   const agreements = useSelector((state: any) => state.employmentAgreements.agreements) || []
   const { data, ...user } = useSelector((state: any) => state.user)
-  const userContacts = useSelector((state: IRootState) => state.businessContracts.contracts)
+  const userContracts = useSelector((state: IRootState) => state.businessContracts.contracts)
   const { t } = useTranslation()
 
   if (userContacts && userContacts.length > 0) {
