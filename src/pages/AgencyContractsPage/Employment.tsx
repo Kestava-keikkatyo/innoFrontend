@@ -39,11 +39,11 @@ const EmploymentPage: React.FC<EmploymentProps> = () => {
   const { t } = useTranslation()
 
   if (userContacts && userContacts.length > 0) {
-    userContacts.forEach((user: any) => {
-      if (user.target.userType == 'worker') {
-        workers.push(user.target)
-      } else if (user.target.userType == 'business') {
-        businesses.push(user.target)
+    userContracts.forEach((contract: any) => {
+      if (contract.target.userType == 'worker') {
+        workers.push(contract.target)
+      } else if (contract.target.userType == 'business') {
+        businesses.push(contract.target)
       }
     })
   }
