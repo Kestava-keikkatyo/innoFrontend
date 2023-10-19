@@ -38,13 +38,15 @@ const EmploymentPage: React.FC<EmploymentProps> = () => {
   const userContacts = useSelector((state: IRootState) => state.businessContracts.contracts)
   const { t } = useTranslation()
 
-  userContacts.forEach((user: any) => {
-    if (user.target.userType == 'worker') {
-      workers.push(user.target)
-    } else if (user.target.userType == 'business') {
-      businesses.push(user.target)
-    }
-  })
+  if (userContacts && userContacts.length > 0) {
+    userContacts.forEach((user: any) => {
+      if (user.target.userType == 'worker') {
+        workers.push(user.target)
+      } else if (user.target.userType == 'business') {
+        businesses.push(user.target)
+      }
+    })
+  }
 
   useEffect(() => {
     dispatch(fetchContractsAsAgency())
