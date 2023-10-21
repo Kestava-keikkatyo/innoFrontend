@@ -14,9 +14,14 @@ import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
 import { useDispatch } from 'react-redux'
 import { setAlert } from '../../actions/alertActions'
-import { severity } from '../../types/types'
+import { CompanyFile, severity } from '../../types/types'
 
-const FileChooser: React.FC = () => {
+interface FileChooserProps {
+  setFiles: any
+  files: CompanyFile[]
+}
+
+const FileChooser: React.FC<FileChooserProps> = ({ setFiles, files }) => {
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [file, setFile] = useState<File | null>(null)
   const [title, setTitle] = useState('')
@@ -53,7 +58,9 @@ const FileChooser: React.FC = () => {
         formData.append('creator', loadUser()._id)
 
         try {
-          await createFile(formData)
+          const newFile = await createFile(formData)
+          console.log(newFile)
+          setFiles((files: CompanyFile[]) => [...files, newFile])
           dispatch(setAlert(i18next.t('file_upload_success'), severity.Success))
         } catch (error) {
           console.error('File upload failed:', error)

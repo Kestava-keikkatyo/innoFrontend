@@ -23,9 +23,7 @@ const MaterialTable: React.FC<MaterialTableProps> = ({ files }) => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {files.map((file) => (
-          <MaterialRow key={file._id} file={file} />
-        ))}
+        {files && files.map((file) => <MaterialRow key={file._id} file={file} />)}
       </TableBody>
     </Table>
   )
