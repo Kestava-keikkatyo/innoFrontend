@@ -4,24 +4,48 @@ import { Add } from '@mui/icons-material'
 import MaterialTable from './MaterialTable'
 import SearchBar from './SearchBar'
 import FileChooser from './FileChooser'
-import { getFilesByCreator } from '../../services/companyMaterialService'
+import { getFilesByCreator, getFilesById } from '../../services/companyMaterialService'
+import contracsService from '../../services/contractsService'
 import { useSelector } from 'react-redux'
 import { CompanyFile, roles } from '../../types/types'
 import { IRootState } from '../../utils/store'
+import { id } from 'date-fns/locale'
 
 const CompanyMaterialsPage: React.FC = () => {
   const [files, setFiles] = useState<CompanyFile[]>([])
   const { data } = useSelector((state: IRootState) => state.user)
   const role = data.role
 
-  useEffect(() => {
-    const fetchFiles = async () => {
-      const filesFromServer = await getFilesByCreator()
-      setFiles(filesFromServer)
-    }
+  {
+    role === roles.Worker &&
+      useEffect(() => {
+        let filesFromServer: CompanyFile[]
 
-    fetchFiles()
-  }, [])
+        const fetchFiles = async () => {
+          const agreementsFromServer =
+            await contracsService.fetchEmploymentContractsAsWorkerOrBusiness()
+          for (let i in agreementsFromServer) {
+            let tempfiles = await getFilesById(agreementsFromServer[i].business)
+            filesFromServer.push(...tempfiles)
+          }
+
+          setFiles(filesFromServer)
+        }
+
+        fetchFiles()
+      }, [])
+  }
+  {
+    role !== roles.Worker &&
+      useEffect(() => {
+        const fetchFiles = async () => {
+          const filesFromServer = await getFilesByCreator()
+          setFiles(filesFromServer)
+        }
+
+        fetchFiles()
+      }, [])
+  }
 
   return (
     <div>

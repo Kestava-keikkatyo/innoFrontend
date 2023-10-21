@@ -78,3 +78,21 @@ export const getFilesByCreator = async (): Promise<CompanyFile[]> => {
     throw error
   }
 }
+
+/**
+ * Sends a request to the server at the '/file/worker/:id' endpoint to get all files created by ID.
+ * Logs the server response or any errors that occur during execution.
+ * @returns Promise<CompanyFile[]> - Resolves to an array of File objects.
+ */
+export const getFilesById = async (userId: string | undefined): Promise<CompanyFile[]> => {
+  try {
+    const response: AxiosResponse = await axios.get(
+      `${baseUrl}/file/worker/${userId}`,
+      authHeader(),
+    )
+    return response.data
+  } catch (error) {
+    console.error(error)
+    throw error
+  }
+}
