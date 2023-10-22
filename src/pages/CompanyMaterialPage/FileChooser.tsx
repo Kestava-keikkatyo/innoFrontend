@@ -33,6 +33,8 @@ const FileChooser: React.FC<FileChooserProps> = ({ setFiles, files }) => {
   const handleClick = () => {
     if (fileInputRef.current) {
       fileInputRef.current.value = ''
+      setDescription('')
+      setTitle('')
       fileInputRef.current.click()
     }
   }
