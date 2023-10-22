@@ -33,7 +33,7 @@ const MaterialRow: React.FC<MaterialRowProps> = ({ file }) => {
       <TableCell>{file.title}</TableCell>
       <TableCell>{file.description}</TableCell>
       <TableCell>{file.creator}</TableCell>
-      <TableCell>{file.uploadDate.toString()}</TableCell>
+      <TableCell>{new Date(file.uploadDate).toLocaleDateString()}</TableCell>
       <TableCell>
         <Button onClick={handleDownload} variant='contained' color='primary'>
           {t('file_download_button')}
