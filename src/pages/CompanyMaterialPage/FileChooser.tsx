@@ -17,7 +17,7 @@ import { setAlert } from '../../actions/alertActions'
 import { CompanyFile, severity } from '../../types/types'
 
 interface FileChooserProps {
-  setFiles: any
+  setFiles: React.Dispatch<React.SetStateAction<CompanyFile[]>>
   files: CompanyFile[]
 }
 
