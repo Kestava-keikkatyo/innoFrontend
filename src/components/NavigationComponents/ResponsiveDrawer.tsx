@@ -1,14 +1,6 @@
 import makeStyles from '@mui/styles/makeStyles'
-import React, { useState } from 'react'
-import Divider from '@mui/material/Divider'
-import List from '@mui/material/List'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItem from '@mui/material/ListItem'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import ListItemText from '@mui/material/ListItemText'
-import Collapse from '@mui/material/Collapse'
-import ExpandLess from '@mui/icons-material/ExpandLess'
-import ExpandMore from '@mui/icons-material/ExpandMore'
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { ExpandLess, ExpandMore, OpenInNew, PersonAdd, Security } from '@mui/icons-material'
 import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined'
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday'
 import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined'
@@ -17,15 +9,8 @@ import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount'
 import MoodIcon from '@mui/icons-material/Mood'
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
 import ExitToAppIcon from '@mui/icons-material/ExitToApp'
-import { OpenInNew, PersonAdd, Security } from '@mui/icons-material'
-import { Link } from 'react-router-dom'
-import { logout } from '../../actions/userActions'
-import { useDispatch, useSelector } from 'react-redux'
-import { roles } from '../../types/types'
-import { IRootState } from '../../utils/store'
 import GroupsIcon from '@mui/icons-material/Group'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
-import { useTranslation } from 'react-i18next'
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline'
 import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined'
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined'
@@ -40,6 +25,25 @@ import HowToRegIcon from '@mui/icons-material/HowToReg'
 import WorkIcon from '@mui/icons-material/Work'
 import AbcIcon from '@mui/icons-material/Abc'
 import Sisainenlinkki from '../../assets/icons/sisainenlinkki.svg'
+import MenuIcon from '@mui/icons-material/Menu'
+import { Link, useLocation } from 'react-router-dom'
+import { logout } from '../../actions/userActions'
+import { useDispatch, useSelector } from 'react-redux'
+import { roles } from '../../types/types'
+import { IRootState } from '../../utils/store'
+import { useTranslation } from 'react-i18next'
+import {
+  IconButton,
+  useMediaQuery,
+  useTheme,
+  ListItemButton,
+  List,
+  Divider,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Collapse,
+} from '@mui/material'
 
 /**
  * @component
@@ -47,32 +51,26 @@ import Sisainenlinkki from '../../assets/icons/sisainenlinkki.svg'
  * There is actually two drawers which are rendered at different time.
  * One for mobile view one for web view.
  */
-const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
+const ResponsiveDrawer: React.FC<{
+  sideMenuState: boolean
+  setSideMenuOpen: Dispatch<SetStateAction<boolean>>
+}> = ({ sideMenuState, setSideMenuOpen }) => {
   const classes = useStyles()
   const dispatch = useDispatch()
   const { t } = useTranslation()
   const { data } = useSelector((state: IRootState) => state.user)
   const role = data.role
+  const { pathname } = useLocation()
+  const theme = useTheme()
+  const isMatch = useMediaQuery(theme.breakpoints.down('md'))
 
-  const blankState = {
-    home: '#FDFDFD',
-    reports: '#FDFDFD',
-    feedback: '#FDFDFD',
-    contracts: '#FDFDFD',
-    responsibilities: '#FDFDFD',
-    materials: '#FDFDFD',
-    employees: '#FDFDFD',
-    inviteCodes: '#FDFDFD',
-    rentalmodel: '#FDFDFD',
-    databank: '#FDFDFD',
-    businesses: '#FDFDFD',
-    schedule: '#FDFDFD',
-  }
+  // Make selected button correspond with current path. Fixes colors on reload
+  useEffect(() => {
+    // remove dash from pathname with slice
+    setSelected(pathname.slice(1))
+  }, [pathname])
 
-  const [colors, setColors] = useState({
-    ...blankState,
-    home: '#F47D20',
-  })
+  const [selected, setSelected] = useState<string>('home')
 
   const iconColor = {
     base: '#000',
@@ -80,113 +78,53 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
     undone: '#F00',
   }
 
-  /**
-   * Function for opening and closing drawer component.
-   * Passed as prop to [AppBar]{@link module:components/AppBar} and
-   * [Drawer]{@link module:components/Drawer}.
-   * @function
-   */
-  const handleClick = (page: string) => {
-    if (isMobile) {
-      setOpen(false)
-    }
-
-    switch (page) {
-      case 'home':
-        setColors({
-          ...blankState,
-          home: '#F47D20',
-        })
-        break
-      case 'reports':
-        setColors({
-          ...blankState,
-          reports: '#F47D20',
-        })
-        break
-      case 'feedback':
-        setColors({
-          ...blankState,
-          feedback: '#F47D20',
-        })
-        break
-      case 'contracts':
-        setColors({
-          ...blankState,
-          contracts: '#F47D20',
-        })
-        break
-      case 'responsibilities':
-        setColors({
-          ...blankState,
-          responsibilities: '#F47D20',
-        })
-        break
-      case 'materials':
-        setColors({
-          ...blankState,
-          materials: '#F47D20',
-        })
-        break
-      case 'employees':
-        setColors({
-          ...blankState,
-          employees: '#F47D20',
-        })
-        break
-      case 'inviteCodes':
-        setColors({
-          ...blankState,
-          inviteCodes: '#F47D20',
-        })
-        break
-      case 'rentalmodel':
-        setColors({
-          ...blankState,
-          rentalmodel: '#F47D20',
-        })
-        break
-      case 'databank':
-        setColors({
-          ...blankState,
-          databank: '#F47D20',
-        })
-        break
-      case 'businesses':
-        setColors({
-          ...blankState,
-          businesses: '#F47D20',
-        })
-        break
-      case 'schedule':
-        setColors({
-          ...blankState,
-          schedule: '#F47D20',
-        })
-        break
-    }
-  }
-
   const [openNest, setOpenNest] = useState(false)
 
   const handleOpenNest = () => {
     setOpenNest(!openNest)
-    setColors({
-      ...blankState,
-      rentalmodel: '#F47D20',
-    })
+    setSelected('rentalWorkModel')
   }
 
   return (
-    <div className='drawer'>
-      <div className='content-wrapper'>
+    <nav
+      style={{
+        zIndex: 1200,
+        margin: '120px 20px 0 20px',
+        width: isMatch ? 'auto' : '20rem',
+      }}
+    >
+      <div style={{ display: 'flex', backgroundColor: '#FDFDFD' }}>
+        <IconButton
+          color='inherit'
+          aria-label='open drawer'
+          onClick={() => setSideMenuOpen(!sideMenuState)}
+          size='large'
+        >
+          <MenuIcon style={{ color: 'black' }} />
+        </IconButton>
+        <h3
+          style={{
+            color: 'black',
+            textTransform: 'uppercase',
+            padding: '5px',
+            fontWeight: 'bold',
+          }}
+        >
+          {data.role === 'worker' && t('workerFrontpage')}
+          {data.role === 'agency' && t('agencyFrontpage')}
+          {data.role === 'business' && t('businessFrontpage')}
+        </h3>
+      </div>
+      <div style={{ display: sideMenuState ? 'block' : 'none' }}>
         <List className='overflow-container'>
           <ListItemButton
-            style={{ marginTop: '170px', backgroundColor: colors.home }}
+            style={{
+              marginTop: '1em',
+              backgroundColor: selected === 'home' ? '#F47D20' : '#FDFDFD',
+            }}
             className={classes.button}
             component={Link}
             to='/home'
-            onClick={() => handleClick('home')}
           >
             <ListItemIcon>
               <HomeOutlinedIcon sx={{ color: iconColor.base }} />
@@ -195,10 +133,10 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           </ListItemButton>
 
           <ListItemButton
-            style={{ backgroundColor: colors.reports }}
+            style={{ backgroundColor: selected === 'reports' ? '#F47D20' : '#FDFDFD' }}
+            onClick={() => setSelected('reports')}
             component={Link}
             to='/reports'
-            onClick={() => handleClick('reports')}
             className={classes.button}
           >
             <ListItemIcon>
@@ -210,10 +148,12 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           {(role === roles.Agency || role === roles.Business) && (
             <>
               <ListItemButton
-                style={{ backgroundColor: colors.feedback }}
+                style={{
+                  backgroundColor: selected === 'receivedFeedbacks' ? '#F47D20' : '#FDFDFD',
+                }}
+                onClick={() => setSelected('receivedFeedbacks')}
                 component={Link}
                 to='/receivedFeedbacks'
-                onClick={() => handleClick('feedback')}
                 className={classes.button}
               >
                 <ListItemIcon>
@@ -226,10 +166,12 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           {role === roles.Agency && (
             <>
               <ListItemButton
-                style={{ backgroundColor: colors.responsibilities }}
+                style={{
+                  backgroundColor: selected === 'agencyResponsibilities' ? '#F47D20' : '#FDFDFD',
+                }}
+                onClick={() => setSelected('agencyResponsibilities')}
                 component={Link}
                 to='/agencyResponsibilities'
-                onClick={() => handleClick('responsibilities')}
                 className={classes.button}
               >
                 <ListItemIcon>
@@ -243,10 +185,10 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           {role === roles.Agency && (
             <>
               <ListItemButton
-                style={{ backgroundColor: colors.materials }}
+                style={{ backgroundColor: selected === 'companyMaterial' ? '#F47D20' : '#FDFDFD' }}
+                onClick={() => setSelected('companyMaterial')}
                 component={Link}
                 to='/companyMaterial'
-                onClick={() => handleClick('materials')}
                 className={classes.button}
               >
                 <ListItemIcon>
@@ -259,10 +201,10 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           {role === roles.Agency && (
             <>
               <ListItemButton
-                style={{ backgroundColor: colors.inviteCodes }}
+                style={{ backgroundColor: selected === 'inviteCodes' ? '#F47D20' : '#FDFDFD' }}
+                onClick={() => setSelected('inviteCodes')}
                 component={Link}
                 to='/inviteCodes'
-                onClick={() => handleClick('inviteCodes')}
                 className={classes.button}
               >
                 <ListItemIcon>
@@ -275,10 +217,10 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           {role === roles.Agency && (
             <>
               <ListItemButton
-                style={{ backgroundColor: colors.contracts }}
+                style={{ backgroundColor: selected === 'agencyContracts' ? '#F47D20' : '#FDFDFD' }}
+                onClick={() => setSelected('agencyContracts')}
                 component={Link}
                 to='/agencyContracts'
-                onClick={() => handleClick('contracts')}
                 className={classes.button}
               >
                 <ListItemIcon>
@@ -291,10 +233,10 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           {role === roles.Agency && (
             <>
               <ListItemButton
-                style={{ backgroundColor: colors.employees }}
+                style={{ backgroundColor: selected === 'agencyWorkers' ? '#F47D20' : '#FDFDFD' }}
+                onClick={() => setSelected('agencyWorkers')}
                 component={Link}
                 to='/agencyWorkers'
-                onClick={() => handleClick('employees')}
                 className={classes.button}
               >
                 <ListItemIcon>
@@ -307,10 +249,10 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           {role === roles.Business && (
             <>
               <ListItemButton
-                style={{ backgroundColor: colors.employees }}
+                style={{ backgroundColor: selected === 'workers' ? '#F47D20' : '#FDFDFD' }}
+                onClick={() => setSelected('workers')}
                 component={Link}
                 to='/workers'
-                onClick={() => handleClick('employees')}
                 className={classes.button}
               >
                 <ListItemIcon>
@@ -323,10 +265,10 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           {(role === roles.Business || role === roles.Worker) && (
             <>
               <ListItemButton
-                style={{ backgroundColor: colors.contracts }}
+                style={{ backgroundColor: selected === 'userContracts' ? '#F47D20' : '#FDFDFD' }}
+                onClick={() => setSelected('userContracts')}
                 component={Link}
                 to='/userContracts'
-                onClick={() => handleClick('contracts')}
                 className={classes.button}
               >
                 <ListItemIcon>
@@ -339,10 +281,10 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           {role === roles.Agency && (
             <>
               <ListItemButton
-                style={{ backgroundColor: colors.businesses }}
+                style={{ backgroundColor: selected === 'businesses' ? '#F47D20' : '#FDFDFD' }}
+                onClick={() => setSelected('businesses')}
                 component={Link}
                 to='/businesses'
-                onClick={() => handleClick('businesses')}
                 className={classes.button}
               >
                 <ListItemIcon>
@@ -355,10 +297,12 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           {role === roles.Business && (
             <>
               <ListItemButton
-                style={{ backgroundColor: colors.responsibilities }}
+                style={{
+                  backgroundColor: selected === 'businessResponsibilities' ? '#F47D20' : '#FDFDFD',
+                }}
+                onClick={() => setSelected('businessResponsibilities')}
                 component={Link}
                 to='/businessResponsibilities'
-                onClick={() => handleClick('responsibilities')}
                 className={classes.button}
               >
                 <ListItemIcon>
@@ -371,10 +315,10 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           {role === roles.Business && (
             <>
               <ListItemButton
-                style={{ backgroundColor: colors.materials }}
+                style={{ backgroundColor: selected === 'companyMaterial' ? '#F47D20' : '#FDFDFD' }}
+                onClick={() => setSelected('companyMaterial')}
                 component={Link}
                 to='/companyMaterial'
-                onClick={() => handleClick('materials')}
                 className={classes.button}
               >
                 <ListItemIcon>
@@ -387,10 +331,10 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           {role === roles.Business && (
             <>
               <ListItemButton
-                style={{ backgroundColor: colors.businesses }}
+                style={{ backgroundColor: selected === 'agencies' ? '#F47D20' : '#FDFDFD' }}
+                onClick={() => setSelected('agencies')}
                 component={Link}
                 to='/agencies'
-                onClick={() => handleClick('businesses')}
                 className={classes.button}
               >
                 <ListItemIcon>
@@ -403,7 +347,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           {(role === roles.Business || role === roles.Agency) && (
             <>
               <ListItemButton
-                style={{ backgroundColor: colors.rentalmodel }}
+                style={{ backgroundColor: selected === 'rentalWorkModel' ? '#F47D20' : '#FDFDFD' }}
                 onClick={handleOpenNest}
                 className={classes.button}
               >
@@ -447,7 +391,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
                   <ListItemButton
                     style={{}}
                     sx={{ pl: 4 }}
-                    onClick={() => handleClick('businesses')}
+                    onClick={() => setSelected('businesses')}
                     component={Link}
                     to='/rentalWorkModel/contractOfEmployment'
                   >
@@ -491,7 +435,6 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
                 component='a'
                 href='/databank/lifeline'
                 target='_blank'
-                onClick={() => handleClick('databank')}
                 className={classes.button}
               >
                 <ListItemIcon>
@@ -504,12 +447,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           )}
           {role === roles.Agency && (
             <>
-              <ListItemButton
-                component={Link}
-                to='/receivedWorkRequests'
-                onClick={() => handleClick('receivedWorkRequests')}
-                disabled
-              >
+              <ListItemButton component={Link} to='/receivedWorkRequests' disabled>
                 <ListItemIcon>
                   <WorkOutlineIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
@@ -519,12 +457,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           )}
           {role === roles.Business && (
             <>
-              <ListItemButton
-                component={Link}
-                to='/workRequests'
-                onClick={() => handleClick('workRequests')}
-                disabled
-              >
+              <ListItemButton component={Link} to='/workRequests' disabled>
                 <ListItemIcon>
                   <AssignmentOutlinedIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
@@ -535,10 +468,10 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           {role === roles.Worker && (
             <>
               <ListItemButton
-                style={{ backgroundColor: colors.feedback }}
+                style={{ backgroundColor: selected === 'feedback' ? '#F47D20' : '#FDFDFD' }}
+                onClick={() => setSelected('feedback')}
                 component={Link}
                 to='/feedback'
-                onClick={() => handleClick('feedback')}
                 className={classes.button}
               >
                 <ListItemIcon>
@@ -552,10 +485,10 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           {role === roles.Worker && (
             <>
               <ListItemButton
-                style={{ backgroundColor: colors.materials }}
+                style={{ backgroundColor: selected === 'companyMaterial' ? '#F47D20' : '#FDFDFD' }}
+                onClick={() => setSelected('companyMaterial')}
                 component={Link}
                 to='/companyMaterial'
-                onClick={() => handleClick('materials')}
                 className={classes.button}
               >
                 <ListItemIcon>
@@ -568,10 +501,12 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           {role === roles.Worker && (
             <>
               <ListItemButton
-                style={{ backgroundColor: colors.responsibilities }}
+                style={{
+                  backgroundColor: selected === 'workerResponsibilities' ? '#F47D20' : '#FDFDFD',
+                }}
+                onClick={() => setSelected('workerResponsibilities')}
                 component={Link}
                 to='/workerResponsibilities'
-                onClick={() => handleClick('responsibilities')}
                 className={classes.button}
               >
                 <ListItemIcon>
@@ -585,7 +520,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           {role === roles.Worker && (
             <>
               <ListItemButton
-                style={{ backgroundColor: colors.rentalmodel }}
+                style={{ backgroundColor: selected === 'rentalWorkModel' ? '#F47D20' : '#FDFDFD' }}
                 onClick={handleOpenNest}
                 className={classes.button}
               >
@@ -676,11 +611,7 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           )}
           {role === roles.Admin && (
             <>
-              <ListItemButton
-                component={Link}
-                to='/responsibilities'
-                onClick={() => handleClick('feedback')}
-              >
+              <ListItemButton component={Link} to='/responsibilities'>
                 <ListItemIcon>
                   <AssignmentIndOutlinedIcon sx={{ color: iconColor.base }} />
                 </ListItemIcon>
@@ -695,10 +626,10 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
           {role === roles.Worker && (
             <>
               <ListItemButton
-                style={{ backgroundColor: colors.schedule }}
+                style={{ backgroundColor: selected === 'schedule' ? '#F47D20' : '#FDFDFD' }}
+                onClick={() => setSelected('schedule')}
                 component={Link}
                 to='/schedule'
-                onClick={() => handleClick('schedule')}
                 className={classes.button}
               >
                 <ListItemIcon>
@@ -722,17 +653,15 @@ const ResponsiveDrawer: React.FC<any> = ({ isMobile, setOpen }) => {
             <ListItemText primary={t('logout')} />
           </ListItemButton>
         </List>
+        <ListItem className='drawer-logout' onClick={() => dispatch(logout())}>
+          <Divider />
+        </ListItem>
       </div>
-      <ListItem className='drawer-logout' onClick={() => dispatch(logout())}>
-        <Divider />
-      </ListItem>
-    </div>
+    </nav>
   )
 }
 
 const useStyles = makeStyles((theme) => ({
-  // necessary for content to be below app bar
-  toolbar: theme.mixins.toolbar,
   logo: {
     height: 100,
     padding: 0,
@@ -760,9 +689,5 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '-20px',
   },
 }))
-
-ResponsiveDrawer.defaultProps = {
-  isOpen: true,
-}
 
 export default ResponsiveDrawer
