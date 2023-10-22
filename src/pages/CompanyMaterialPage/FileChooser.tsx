@@ -32,6 +32,7 @@ const FileChooser: React.FC<FileChooserProps> = ({ setFiles, files }) => {
 
   const handleClick = () => {
     if (fileInputRef.current) {
+      fileInputRef.current.value = ''
       fileInputRef.current.click()
     }
   }
@@ -59,11 +60,9 @@ const FileChooser: React.FC<FileChooserProps> = ({ setFiles, files }) => {
 
         try {
           const newFile = await createFile(formData)
-          console.log(newFile)
           setFiles((files: CompanyFile[]) => [...files, newFile])
           dispatch(setAlert(i18next.t('file_upload_success'), severity.Success))
         } catch (error) {
-          console.error('File upload failed:', error)
           dispatch(setAlert(i18next.t('file_upload_error'), severity.Error))
         }
       }
@@ -84,7 +83,7 @@ const FileChooser: React.FC<FileChooserProps> = ({ setFiles, files }) => {
         type='file'
         style={{ display: 'none' }}
         ref={fileInputRef}
-        onChange={handleFileChange}
+        onChange={(event) => handleFileChange(event)}
       />
       <Dialog open={open} onClose={() => handleDialogClose(false)}>
         <DialogTitle>{t('file_information')}</DialogTitle>
