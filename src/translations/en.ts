@@ -140,6 +140,8 @@ export default {
   marked: 'Marked',
   numberOfCodes: 'Number of Invite Codes',
   timeOfCreation: 'Creation Time',
+  invitecode_input_successful: 'Invitation code added',
+  invitecode_input_failed: 'Invitation code not valid',
 
   // Report form
   report_handler: 'Security observations',
@@ -863,6 +865,8 @@ export default {
   search_by_name: 'Search by name',
   requested_contracts: 'REQUESTED CONTRACTS',
   archived_contracts: 'ARCHIVED CONTRACTS',
+  input_invitation_code: 'INPUT INVITATION CODE',
+  invitation_code: 'Invitation code:',
   send_request: 'SEND REQUEST',
   delete_request: 'Delete contract request?',
   no_results: 'No results',

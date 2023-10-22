@@ -139,102 +139,106 @@ const EmploymentContractsTable: React.FC<any> = ({ employmentContracts }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows
-                // {contractsTest
-                // .filter((workerOrBusiness: any) =>
-                //   workerOrBusiness.name
-                //     .toLowerCase()
-                //     .includes(filter.toLowerCase())
-                // )
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((contract: any) => (
-                  <TableRow key={contract._id}>
-                    <TableCell component='th' scope='row' align='left'>
-                      {contract.status === 'signed' && (
-                        <>
-                          <Tooltip title='Each recipient has signed' placement='top' arrow>
-                            <AllSignedIcon sx={{ color: green[500] }} />
-                          </Tooltip>
-                        </>
-                      )}
-                      {contract.status === 'pending' && (
-                        <>
-                          <Tooltip
-                            title='Pending until each recipient has signed'
-                            placement='top'
-                            arrow
-                          >
-                            <PendingIcon sx={{ color: yellow[800] }} />
-                          </Tooltip>
-                        </>
-                      )}
-                    </TableCell>
+              {rows &&
+                rows
+                  // {contractsTest
+                  // .filter((workerOrBusiness: any) =>
+                  //   workerOrBusiness.name
+                  //     .toLowerCase()
+                  //     .includes(filter.toLowerCase())
+                  // )
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((contract: any) => (
+                    <TableRow key={contract._id}>
+                      <TableCell component='th' scope='row' align='left'>
+                        {contract.status === 'signed' && (
+                          <>
+                            <Tooltip title='Each recipient has signed' placement='top' arrow>
+                              <AllSignedIcon sx={{ color: green[500] }} />
+                            </Tooltip>
+                          </>
+                        )}
+                        {contract.status === 'pending' && (
+                          <>
+                            <Tooltip
+                              title='Pending until each recipient has signed'
+                              placement='top'
+                              arrow
+                            >
+                              <PendingIcon sx={{ color: yellow[800] }} />
+                            </Tooltip>
+                          </>
+                        )}
+                      </TableCell>
 
-                    <TableCell align='left'>
-                      <Link
-                        className={classes.link}
-                        to={'/businesses/profile/' + contract.business._id}
-                      >
-                        {contract.business.companyName}
-                      </Link>
-                    </TableCell>
+                      <TableCell align='left'>
+                        <Link
+                          className={classes.link}
+                          to={'/businesses/profile/' + contract.business._id}
+                        >
+                          {contract.business.companyName}
+                        </Link>
+                      </TableCell>
 
-                    <TableCell align='left'>
-                      {contract.businessSigned && (
-                        <>
-                          <Tooltip title='Signed' placement='top' arrow>
-                            <SignedIcon sx={{ color: green[500] }} />
-                          </Tooltip>
-                        </>
-                      )}
-                      {!contract.businessSigned && (
-                        <>
-                          <Tooltip title='Pending' placement='top' arrow>
-                            <PendingIcon sx={{ color: yellow[800] }} />
-                          </Tooltip>
-                        </>
-                      )}
-                    </TableCell>
+                      <TableCell align='left'>
+                        {contract.businessSigned && (
+                          <>
+                            <Tooltip title='Signed' placement='top' arrow>
+                              <SignedIcon sx={{ color: green[500] }} />
+                            </Tooltip>
+                          </>
+                        )}
+                        {!contract.businessSigned && (
+                          <>
+                            <Tooltip title='Pending' placement='top' arrow>
+                              <PendingIcon sx={{ color: yellow[800] }} />
+                            </Tooltip>
+                          </>
+                        )}
+                      </TableCell>
 
-                    <TableCell align='left'>
-                      <Link className={classes.link} to={'/workers/profile/' + contract.worker._id}>
-                        {contract.worker.firstName} {contract.worker.lastName}
-                      </Link>
-                    </TableCell>
+                      <TableCell align='left'>
+                        <Link
+                          className={classes.link}
+                          to={'/workers/profile/' + contract.worker._id}
+                        >
+                          {contract.worker.firstName} {contract.worker.lastName}
+                        </Link>
+                      </TableCell>
 
-                    <TableCell align='left'>
-                      {contract.workerSigned && (
-                        <>
-                          <Tooltip title='Signed' placement='top' arrow>
-                            <SignedIcon sx={{ color: green[500] }} />
-                          </Tooltip>
-                        </>
-                      )}
-                      {!contract.workerSigned && (
-                        <>
-                          <Tooltip title='Pending' placement='top' arrow>
-                            <PendingIcon sx={{ color: yellow[800] }} />
-                          </Tooltip>
-                        </>
-                      )}
-                    </TableCell>
+                      <TableCell align='left'>
+                        {contract.workerSigned && (
+                          <>
+                            <Tooltip title='Signed' placement='top' arrow>
+                              <SignedIcon sx={{ color: green[500] }} />
+                            </Tooltip>
+                          </>
+                        )}
+                        {!contract.workerSigned && (
+                          <>
+                            <Tooltip title='Pending' placement='top' arrow>
+                              <PendingIcon sx={{ color: yellow[800] }} />
+                            </Tooltip>
+                          </>
+                        )}
+                      </TableCell>
 
-                    <TableCell padding='none' align='left' style={{ paddingLeft: 5 }}>
-                      <DeleteDialogItem
-                        title='Delete and permanently remove connection between the recipients?'
-                        itemId={contract._id}
-                        onConfirm={handleCloseDialog}
-                      />
-                    </TableCell>
-                  </TableRow>
-                ))}
+                      <TableCell padding='none' align='left' style={{ paddingLeft: 5 }}>
+                        <DeleteDialogItem
+                          title='Delete and permanently remove connection between the recipients?'
+                          itemId={contract._id}
+                          onConfirm={handleCloseDialog}
+                        />
+                      </TableCell>
+                    </TableRow>
+                  ))}
             </TableBody>
           </Table>
         </TableContainer>
         <TablePagination
           rowsPerPageOptions={[5, 10, 25, 50]}
           component='div'
-          count={rows.length}
+          count={rows && rows.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

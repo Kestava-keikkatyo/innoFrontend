@@ -650,7 +650,7 @@ const ResponsiveDrawer: React.FC<{
           </ListItemButton>
           <ListItemButton>
             <ExitToAppIcon style={{ textTransform: 'uppercase', marginRight: 10, width: '30px' }} />
-            <ListItemText primary={t('logout')} />
+            <ListItemText primary={t('logout')} onClick={() => dispatch(logout())} />
           </ListItemButton>
         </List>
         <ListItem className='drawer-logout' onClick={() => dispatch(logout())}>

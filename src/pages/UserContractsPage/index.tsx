@@ -5,8 +5,6 @@ import AppBar from '@mui/material/AppBar'
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 import Box from '@mui/material/Box'
-import BusinessIcon from '@mui/icons-material/Business'
-import SendIcon from '@mui/icons-material/Send'
 import AllInboxIcon from '@mui/icons-material/AllInbox'
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive'
 import { Badge, Container, Divider, Tooltip, Typography, useMediaQuery } from '@mui/material'
@@ -164,7 +162,7 @@ const UserContractsPage = () => {
             />
             <Tab
               className={classes.tab}
-              label={matches ? ' ' : 'input invitation code'}
+              label={matches ? ' ' : t('input_invitation_code')}
               icon={
                 <Badge color='secondary'>
                   {matches ? (
