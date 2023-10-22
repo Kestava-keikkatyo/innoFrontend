@@ -28,6 +28,7 @@ const Footer = () => {
           paddingTop: '32px',
           justifyContent: 'center',
           display: 'flex',
+          flexDirection: 'column',
         }}
       >
         <Grid container spacing={4} style={{ maxWidth: '1170px' }}>
@@ -100,17 +101,17 @@ const Footer = () => {
             </div>
           </Grid>
         </Grid>
+        <Typography
+          style={{
+            textAlign: 'center',
+            fontSize: '12px',
+            backgroundColor: '#C0CFFA',
+            padding: '16px 0 16px 0',
+          }}
+        >
+          © {new Date().getFullYear() || ''} Keikkakaveri
+        </Typography>
       </Container>
-      <Typography
-        style={{
-          textAlign: 'center',
-          fontSize: '12px',
-          backgroundColor: '#C0CFFA',
-          padding: '16px 0 16px 0',
-        }}
-      >
-        © 2023 Keikkakaveri
-      </Typography>
     </ThemeProvider>
   )
 }
