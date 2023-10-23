@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Box, Button, ThemeProvider, createTheme } from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, Route, Switch, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { IRootState } from '../../utils/store'
 import PageLoading from '../../components/PageLoading'
@@ -14,6 +14,7 @@ import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral'
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt'
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied'
 import { Feedback } from '../../types/types'
+import FeedbackReplyPage from './FeedbackReplyPage';
 
 type FeedbackUrlParams = {
   feedbackId: string
@@ -23,12 +24,15 @@ interface IFeedbackData extends Feedback {
   [key: string]: any
 }
 
+
+
 const ReceivedDetails: React.FC = () => {
-  const { t } = useTranslation()
-  const { feedbackId } = useParams<FeedbackUrlParams>()
+  const { t } = useTranslation();
+  const { feedbackId } = useParams<FeedbackUrlParams>();
   const feedbackData: IFeedbackData | undefined = useSelector(
     (state: IRootState) => state.feedback.currentFeedback,
   )
+  
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchMyFeedbackById(feedbackId))
@@ -75,6 +79,7 @@ const ReceivedDetails: React.FC = () => {
               <span className={classes.feedbackShowTitle}>{t('feedback_sender')}: </span>
               <span className={classes.feedbackShowInfoTitle}>
                 {feedbackData.anonymous ? t('anonymous') : feedbackData.senderName}
+               
               </span>
             </div>
             <div className={classes.feedbackShowInfo}>
@@ -84,13 +89,21 @@ const ReceivedDetails: React.FC = () => {
                 {moment(feedbackData.createdAt).format('DD/MM/YYYY')}
               </span>
             </div>
+            
             <div className={classes.feedbackShowInfo}>
               <span className={classes.feedbackShowTitle}>{t('feedback_anonymity')}: </span>
               <span className={classes.feedbackShowInfoTitle}>
                 {feedbackData.anonymous ? t('feedback_anonymity_yes') : t('feedback_anonymity_no')}
               </span>
             </div>
+            <Button 
+             className={classes.replyButton}
+             component={Link} 
+             to={`/feedback/reply`}>
+             {t('Vastaa palautteeseen')}
+          </Button>
           </div>
+          
           <div className={classes.feedbackDescription}>
             <span className={classes.feedbackMessageTitle}>{t('feedback_receivedMessage')}</span>
             {Object.entries(questions).map((questionEntry) => (
@@ -163,6 +176,19 @@ const ReceivedDetails: React.FC = () => {
 }
 
 const useStyles = makeStyles(() => ({
+
+  
+
+  replyButton: {
+    marginTop: '20px',
+    backgroundColor: '#F47D20', // Example color, style as needed
+    color: 'white',
+    padding: '8px 15px',
+    '&:hover': {
+      backgroundColor: '#C56C1E', // Darker shade for hover
+    },
+  },
+  
   feedback: {
     flex: '4',
     padding: '20px',

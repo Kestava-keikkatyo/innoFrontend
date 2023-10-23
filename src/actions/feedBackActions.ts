@@ -142,6 +142,22 @@ export const fetchFeedbackById =
     }
   }
 
+  /**
+ * @function
+ * @desc This function sets a reply for a feedback
+ * @param {string} id - ID of the feedback to reply to
+ * @param {string} reply - The reply message
+ */
+export const replyFeedback = (id: string, reply: string) => async (dispatch: any) => {
+  try {
+    const res = await feedBackService.replyFeedback(id, reply);
+    // Dispatch any necessary actions based on success
+    // For example, update the feedback in the Redux store with the new reply
+  } catch (e) {
+    // Handle any errors, such as dispatching an action to show an error message
+  }
+}
+
 /**
  * Send feedback
  * @function

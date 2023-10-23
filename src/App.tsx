@@ -88,6 +88,7 @@ import EmploymentPage from './pages/AgencyContractsPage/Employment'
 import ForgotPassword from './pages/ForgotPasswordPage/ForgotPassword'
 import EmailSent from './pages/ForgotPasswordPage/EmailSent'
 import TokenError from './pages/ForgotPasswordPage/TokenError'
+import FeedbackReplyPage from './pages/FeedbackPage/FeedbackReplyPage'
 
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -347,6 +348,11 @@ const App: React.FC = () => {
             <PrivateRoute path='/receivedFeedbacks' roles={[roles.Agency, roles.Business]}>
               <ReceivedFeedbacks />
             </PrivateRoute>
+
+            <PrivateRoute path='/FeedbackReplyPage' roles={[roles.Agency, roles.Business]}>
+              <FeedbackReplyPage />
+            </PrivateRoute>
+
             <PrivateRoute path='/reports/answer' roles={[roles.Business, roles.Agency]}>
               <ReportReplyPage />
             </PrivateRoute>
