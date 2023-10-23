@@ -25,23 +25,23 @@ const SendFeedbackSchema = Yup.object().shape({
   shiftMessage: Yup.string(),
   orientation: Yup.number()
     .min(1, 'Min value 1.')
-    .max(4, 'Max value 4.')
-    .required('Orientation is required!'),
+    .max(4, 'Max value 4.'),
+    //.required('Orientation is required!'),
   orientationMessage: Yup.string(),
   reception: Yup.number()
     .min(1, 'Min value 1.')
-    .max(4, 'Max value 4.')
-    .required('Reception is required!'),
+    .max(4, 'Max value 4.'),
+    //.required('Reception is required!'),
   receptionMessage: Yup.string(),
   appreciation: Yup.number()
     .min(1, 'Min value 1.')
-    .max(4, 'Max value 4.')
-    .required('Appreciation is required!'),
+    .max(4, 'Max value 4.'),
+    //.required('Appreciation is required!'),
   appreciationMessage: Yup.string(),
   expectation: Yup.number()
     .min(1, 'Min value 1.')
-    .max(4, 'Max value 4.')
-    .required('Expectation is required!'),
+    .max(4, 'Max value 4.'),
+    //.required('Expectation is required!'),
   expectationMessage: Yup.string(),
   additionalMessage: Yup.string(),
   anonymous: Yup.boolean(),
@@ -56,10 +56,10 @@ const SendFeedback: React.FC = () => {
 
   const questions = {
     shift: `${t('feedback_shift')} *`,
-    orientation: `${t('feedback_orientation')} *`,
-    reception: `${t('feedback_reception')} *`,
-    appreciation: `${t('feedback_appreciation')} *`,
-    expectation: `${t('feedback_expectation')} *`,
+    orientation: `${t('feedback_orientation')} `,
+    reception: `${t('feedback_reception')} `,
+    appreciation: `${t('feedback_appreciation')} `,
+    expectation: `${t('feedback_expectation')} `,
   }
 
   const recipients = useSelector((state: IRootState) => state.user.contacts)
@@ -81,7 +81,7 @@ const SendFeedback: React.FC = () => {
     expectationMessage: '',
     additionalMessage: '',
     senderId: me._id,
-    senderName: me.name,
+    senderName: me._name,
     anonymous: false,
   }
 
@@ -90,13 +90,27 @@ const SendFeedback: React.FC = () => {
   }, [dispatch])
 
   const handleSubmit = (feedback: Feedback) => {
-    if (recipients) {
+    if (recipients && feedback.anonymous === false) {
       feedback.recipientFirstName = recipients.find(
         (recipient) => feedback.recipientId === recipient._id,
       )?.firstName
       feedback.recipientLastName = recipients.find(
         (recipient) => feedback.recipientId === recipient._id,
       )?.lastName
+      console.log(feedback)
+      dispatch(createFeedback(feedback))
+      history.push({
+        pathname: history.location.pathname,
+        search: '?' + new URLSearchParams({ tab: 'my' }).toString(),
+      })
+    } else if (recipients && feedback.anonymous === true) {
+      feedback.recipientFirstName = recipients.find(
+        (recipient) => feedback.recipientId === recipient._id,
+      )?.firstName
+      feedback.recipientLastName = recipients.find(
+        (recipient) => feedback.recipientId === recipient._id,
+      )?.lastName
+      feedback.senderName = 'Anonymous'
       console.log(feedback)
       dispatch(createFeedback(feedback))
       history.push({
