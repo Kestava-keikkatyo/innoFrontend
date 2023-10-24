@@ -1,8 +1,8 @@
 import React, { ReactNode, useState } from 'react'
 import TopAppBar from './TopAppBarType'
 import ResponsiveDrawer from './ResponsiveDrawer'
-import Footer from '../../pages/LandingPage/Footer'
-import { Divider, useMediaQuery, useTheme } from '@mui/material'
+import Footer from '../Footer'
+import { Container, useMediaQuery, useTheme } from '@mui/material'
 
 /**
  * @component
@@ -17,26 +17,33 @@ const AppNavigation: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   const contentStyle = {
     display: 'flex',
+    flex: 1,
+    justifyContent: 'space-between',
     backgroundColor: '#FDFDFD',
     marginTop: !isMatch && openSideMenu ? '150px' : 0,
-    justifyContent: 'space-between',
   }
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: isMatch || !openSideMenu ? 'column' : 'row',
-      }}
+    <Container
+      maxWidth={false}
+      disableGutters
+      sx={{ display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}
     >
-      <TopAppBar />
-      <ResponsiveDrawer sideMenuState={openSideMenu} setSideMenuOpen={setOpenSideMenu} />
-      <Divider flexItem orientation='vertical' style={{ width: '5%', borderColor: '#FDFDFD' }} />
-      <div style={{ ...contentStyle, flexDirection: 'column' }}>
-        {children}
-        <Footer />
-      </div>
-    </div>
+      <Container
+        maxWidth={false}
+        disableGutters
+        sx={{
+          display: 'flex',
+          height: '100%',
+          flexDirection: isMatch || !openSideMenu ? 'column' : 'row',
+        }}
+      >
+        <TopAppBar />
+        <ResponsiveDrawer sideMenuState={openSideMenu} setSideMenuOpen={setOpenSideMenu} />
+        <div style={{ ...contentStyle, flexDirection: 'column' }}>{children}</div>
+      </Container>
+      <Footer />
+    </Container>
   )
 }
 

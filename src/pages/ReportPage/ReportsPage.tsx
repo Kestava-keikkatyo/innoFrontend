@@ -243,7 +243,7 @@ const ReportsPage: React.FC<any> = () => {
   }
   return (
     <ThemeProvider theme={theme}>
-      <Container className={classes.container}>
+      <Container maxWidth={false} className={classes.container}>
         {/**Grid (row) for containing Reports page title,
          * new report button (shown only for worker) and display state selection */}
         <Grid

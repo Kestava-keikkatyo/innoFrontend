@@ -32,7 +32,8 @@ const Home = () => {
   }
   return (
     <Container
-      style={{
+      maxWidth={false}
+      sx={{
         paddingBottom: '100px',
         padding: '20px',
         display: 'flex',

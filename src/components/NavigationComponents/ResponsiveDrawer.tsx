@@ -43,6 +43,7 @@ import {
   ListItemIcon,
   ListItemText,
   Collapse,
+  Typography,
 } from '@mui/material'
 
 /**
@@ -87,33 +88,41 @@ const ResponsiveDrawer: React.FC<{
 
   return (
     <nav
+      className='drawer'
       style={{
         zIndex: 1200,
-        margin: '120px 20px 0 20px',
+        marginTop: '120px',
         width: isMatch ? 'auto' : '20rem',
       }}
     >
-      <div style={{ display: 'flex', backgroundColor: '#FDFDFD' }}>
+      <div
+        style={{
+          display: 'flex',
+          paddingLeft: '1rem',
+          alignItems: 'center',
+        }}
+      >
         <IconButton
           color='inherit'
           aria-label='open drawer'
+          edge='end'
           onClick={() => setSideMenuOpen(!sideMenuState)}
           size='large'
         >
-          <MenuIcon style={{ color: 'black' }} />
+          <MenuIcon style={{ color: 'black', fontWeight: 'bold' }} />
         </IconButton>
-        <h3
-          style={{
-            color: 'black',
+        <Typography
+          sx={{
+            fontSize: { md: '20px', sm: '20px', xs: '15px' },
             textTransform: 'uppercase',
-            padding: '5px',
+            paddingLeft: '1rem',
             fontWeight: 'bold',
           }}
         >
           {data.role === 'worker' && t('workerFrontpage')}
           {data.role === 'agency' && t('agencyFrontpage')}
           {data.role === 'business' && t('businessFrontpage')}
-        </h3>
+        </Typography>
       </div>
       <div style={{ display: sideMenuState ? 'block' : 'none' }}>
         <List className='overflow-container'>
@@ -122,6 +131,7 @@ const ResponsiveDrawer: React.FC<{
               marginTop: '1em',
               backgroundColor: selected === 'home' ? '#F47D20' : '#FDFDFD',
             }}
+            onClick={() => setSelected('home')}
             className={classes.button}
             component={Link}
             to='/home'
