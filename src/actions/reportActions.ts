@@ -32,7 +32,7 @@ export const getMyReports = () => async (dispatch: any) => {
     const res = await reportService.getMyReports()
     dispatch({ type: SET_REPORTS, data: res.data })
   } catch (error) {
-    console.log('Error getting own reports: ', error)
+    console.error(error)
     dispatch({ type: SET_REPORTS, data: [] })
   }
 }
@@ -53,11 +53,11 @@ export const submitReport = (report: Report) => async (dispatch: any) => {
  * @param {string} id
  * @param {string} reply
  */
-export const replyReport = (id: string, reply: string) => async (dispatch: any) => {
-  const res = await reportService.replyReport(id, reply)
-  console.log('Action: replyReport response: ', res)
-  return res.data
-}
+export const replyReport =
+  (id: string, reply: string, userType: string) => async (dispatch: any) => {
+    const res = await reportService.replyReport(id, reply, userType)
+    return res.data
+  }
 
 /**
  * @function
@@ -65,18 +65,18 @@ export const replyReport = (id: string, reply: string) => async (dispatch: any) 
  * @param {string} id
  * @param {string} archived Note: sent as a string
  */
-export const archiveReport = (id: string, archived: string) => async (dispatch: any) => {
-  const res = await reportService.archiveReport(id, archived)
-  return res.data
-}
+export const archiveReport =
+  (id: string, archived: string, userType: string) => async (dispatch: any) => {
+    const res = await reportService.archiveReport(id, archived, userType)
+    return res.data
+  }
 
 export const fetchReportById = (id: string) => async (dispatch: any) => {
   try {
     const data = await reportService.fetchReportById(id)
-    console.log("report's data", data)
     dispatch({ type: SET_CURRENT_REPORT, data: data })
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }
 
@@ -85,7 +85,7 @@ export const fetchAllReports = () => async (dispatch: any) => {
     const res = await reportService.fetchAllReports()
     dispatch({ type: SET_REPORTS, data: res.data })
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }
 

@@ -1,24 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import {
-  CardMedia,
-  createTheme,
   Grid,
   ListItemButton,
   ListItemIcon,
   ThemeProvider,
   Typography,
+  createTheme,
 } from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
 import { useTranslation } from 'react-i18next'
-import picture from '../../assets/pictures/Kirjautuminen_etusivu_Keikkakaveri_tyovaline_kuvitus.svg'
+import { useDispatch, useSelector } from 'react-redux'
+import AgencyStatistics from '../MoodStatistics/AgencyStatistics'
 import MoodIcon from '@mui/icons-material/Mood'
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchReports } from '../../actions/reportActions'
 import Report from '../../pages/ReportPage/SimpleReport'
-import AgencyStatistics from '../MoodStatistics/AgencyStatistics'
+import { fetchReports } from '../../actions/reportActions'
+import Header from './Header'
 
-const BusinessHome = () => {
+const BusinessOrAgencyHome: React.FC<{ welcomeText: string }> = ({ welcomeText }) => {
   const { t } = useTranslation()
   const classes = useStyles()
   const reports: any = useSelector((state: any) => state.report.reports)
@@ -28,13 +27,6 @@ const BusinessHome = () => {
     done: '#0F0',
     undone: '#F00',
   }
-
-  enum displayState {
-    All = 'all',
-    Archived = 'archived',
-    NotArchived = 'notArchived',
-  }
-  const [display, setDisplay] = useState(displayState.All)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -53,40 +45,7 @@ const BusinessHome = () => {
   return (
     <ThemeProvider theme={theme}>
       <Grid container>
-        <Grid
-          sx={{ height: { md: '300px', sm: '300px', xs: '200px' } }}
-          style={{
-            marginTop: '20px',
-            marginBottom: '20px',
-            maxHeight: '300px',
-            width: '100%',
-            display: 'flex',
-            backgroundImage: 'linear-gradient(to bottom, #FDFDFD, #FDFDFD 50%, #C0CFFA 50%)',
-            position: 'relative',
-          }}
-        >
-          <Grid
-            item
-            style={{ bottom: '0', position: 'absolute' }}
-            sx={{ width: { md: '35%', sm: '50%', xs: '90%' } }}
-          >
-            <CardMedia component='img' image={picture} style={{}} />
-          </Grid>
-          <Grid
-            item
-            sx={{ visibility: { xs: 'hidden', sm: 'hidden', md: 'visible', lg: 'visible' } }}
-            style={{
-              paddingRight: '50px',
-              textAlign: 'right',
-              textTransform: 'uppercase',
-              bottom: '0',
-              width: '100%',
-              position: 'absolute',
-            }}
-          >
-            <h2>{t('welcomeTextBusiness')}</h2>
-          </Grid>
-        </Grid>
+        <Header welcomeText={welcomeText} />
         <Grid
           className={classes.generalInfo}
           sx={{ display: 'flex', flexDirection: { md: 'row', sm: 'row', xs: 'column' } }}
@@ -128,8 +87,8 @@ const BusinessHome = () => {
               </Typography>
             </ListItemButton>
             {reports.map((report: any) => (
-              <Grid sx={{ margin: { md: '20px', sm: '20px', xs: '5px' } }}>
-                <Report key={report._id} report={report} />
+              <Grid key={report._id} sx={{ margin: { md: '20px', sm: '20px', xs: '5px' } }}>
+                <Report report={report} />
               </Grid>
             ))}
           </Grid>
@@ -154,44 +113,6 @@ const useStyles = makeStyles(() => ({
     webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
     boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
   },
-  container: {
-    margin: '10px 0px',
-    display: 'flex',
-    alignItems: 'center',
-  },
-  pageContent: {
-    flex: '4',
-    padding: '5px',
-  },
-  feelingAnalysis: {
-    flex: 2,
-    padding: '10px',
-    webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
-    boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
-  },
-  latestJobAds: {
-    flex: 2,
-    padding: '10px',
-    webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
-    boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
-    marginLeft: '20px',
-  },
-  contentContainer: {
-    display: 'flex',
-    marginTop: '10px',
-    hight: '500',
-  },
-  title: {
-    marginTop: '5px',
-    marginBottom: '5px',
-  },
-  myWorkers: {
-    flex: 2,
-    padding: '10px',
-    webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
-    boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
-    marginLeft: '20px',
-  },
 }))
 
-export default BusinessHome
+export default BusinessOrAgencyHome

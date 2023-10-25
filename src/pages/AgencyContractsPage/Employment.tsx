@@ -19,9 +19,10 @@ import { EmploymentAgreement, severity, User } from '../../types/types'
 import { fetchAgencyContacts } from '../../actions/usersActions'
 import { setAlert } from '../../actions/alertActions'
 import { E_SET_CURRENT } from '../../types/state'
-import { addEmploymentContract } from '../../actions/contractActions'
+import { addEmploymentContract, fetchContractsAsAgency } from '../../actions/contractActions'
 import { string } from 'prop-types'
 import { useParams } from 'react-router-dom'
+import { IRootState } from '../../utils/store'
 
 export interface EmploymentProps {}
 
@@ -34,16 +35,22 @@ const EmploymentPage: React.FC<EmploymentProps> = () => {
   const currentForm: any = useSelector((state: any) => state.employmentAgreements.currentAgreement)
   const agreements = useSelector((state: any) => state.employmentAgreements.agreements) || []
   const { data, ...user } = useSelector((state: any) => state.user)
-  const userContacts: User[] = useSelector((state: any) => state.user.contacts)
+  const userContracts = useSelector((state: IRootState) => state.businessContracts.contracts)
   const { t } = useTranslation()
 
-  userContacts.forEach((user) => {
-    if (user.userType == 'worker') {
-      workers.push(user)
-    } else if (user.userType == 'business') {
-      businesses.push(user)
-    }
-  })
+  if (userContracts && userContracts.length > 0) {
+    userContracts.forEach((contract: any) => {
+      if (contract.target.userType == 'worker') {
+        workers.push(contract.target)
+      } else if (contract.target.userType == 'business') {
+        businesses.push(contract.target)
+      }
+    })
+  }
+
+  useEffect(() => {
+    dispatch(fetchContractsAsAgency())
+  }, [dispatch])
 
   let businessOptions = Object.values(businesses).map((business) => {
     business.label = business.companyName

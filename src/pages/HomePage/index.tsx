@@ -1,18 +1,15 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { me } from '../../actions/userActions'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import WorkerHome from './WorkerHome'
 import PageLoading from '../../components/PageLoading'
 import { Container } from '@mui/material'
 import { roles } from '../../types/types'
-import BusinessHome from './BusinessHome'
-import AgencyHome from './AgencyHome'
-import { useTranslation } from 'react-i18next'
 import AdminHome from './AdminHome'
+import BusinessOrAgencyHome from './BusinessOrAgencyHome'
+import { useTranslation } from 'react-i18next'
 
 const Home = () => {
   const { data, ...user } = useSelector((state: any) => state.user)
-
   const { t } = useTranslation()
 
   if (user.loading) {
@@ -24,9 +21,9 @@ const Home = () => {
       case roles.Admin:
         return <AdminHome />
       case roles.Business:
-        return <BusinessHome />
+        return <BusinessOrAgencyHome welcomeText={t('welcomeTextAgency')} />
       case roles.Agency:
-        return <AgencyHome />
+        return <BusinessOrAgencyHome welcomeText={t('welcomeTextBusiness')} />
       case roles.Worker:
         return <WorkerHome />
       default:
@@ -35,16 +32,12 @@ const Home = () => {
   }
   return (
     <Container
-      style={{
+      maxWidth={false}
+      sx={{
         paddingBottom: '100px',
         padding: '20px',
-        justifyContent: 'center',
-        margin: 'auto',
-        marginLeft: '0',
-        marginRight: '0',
-        width: '100%',
-        maxWidth: 'none',
         display: 'flex',
+        flexDirection: 'column',
       }}
     >
       {getContent()}

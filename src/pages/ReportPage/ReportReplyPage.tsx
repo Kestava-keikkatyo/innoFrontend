@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom'
 import ReactPlayer from 'react-player'
 import { replyReport } from '../../actions/reportActions'
 import { setAlert } from '../../actions/alertActions'
+import { IRootState } from '../../utils/store'
 /*
   With ReportReplyPage, business and agency users can reply to a workers report.
 */
@@ -15,10 +16,12 @@ const ReportReplyPage = () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const [reply, setReply] = useState('')
+  const { data } = useSelector((state: IRootState) => state.user)
+  const role = data.role
 
   const handleAnswer = () => {
     // Post report reply to database
-    dispatch(replyReport(report._id, reply))
+    dispatch(replyReport(report._id, reply, role))
     setReply('')
     history.push('/reports')
     dispatch(setAlert(t('report_reply_sent_alert')))

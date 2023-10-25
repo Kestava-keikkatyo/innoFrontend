@@ -16,21 +16,17 @@ import FirstLandingPage from './FirstLandingPage'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import logo_kk from '../../assets/logo_keikkakaveri_navbar.svg'
-import Footer from './Footer'
+import Footer from '../../components/Footer'
 
 const LandingPage = () => {
   useEffect(() => {
-    setLanguage()
     checkLoggedInStatus()
   }, [])
 
-  const changeLanguage = (code: any) => {
+  const changeLanguage = (code: string) => {
     localStorage.setItem('i18nextLng', code)
     window.location.reload()
   }
-
-  const [fiSelected, setFiSelected] = useState(false)
-  const [enSelected, setEnSelected] = useState(false)
   const [user, setUser] = useState()
 
   const { t } = useTranslation()
@@ -49,17 +45,6 @@ const LandingPage = () => {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null)
-  }
-
-  const setLanguage = () => {
-    const storedValue = localStorage.getItem('i18nextLng')
-    if (storedValue === 'fi') {
-      setFiSelected(true)
-      setEnSelected(false)
-    } else if (storedValue === 'en') {
-      setEnSelected(true)
-      setFiSelected(false)
-    }
   }
 
   const checkLoggedInStatus = () => {
@@ -111,15 +96,6 @@ const LandingPage = () => {
                   display: { xs: 'block', sm: 'none' },
                 }}
               >
-                {' '}
-                {/* Side menu */}
-                {/* <MenuItem key="0" onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">
-                  <Link className="landing-nav-link" to="/home">
-                    {t('tyopoyta')}
-                  </Link>
-                </Typography>
-              </MenuItem> */}
                 <MenuItem key='0' onClick={handleCloseNavMenu}>
                   <Typography textAlign='center'>
                     <Link className='landing-nav-link2-dropdown' to='/databank/lifeline'>
@@ -206,10 +182,11 @@ const LandingPage = () => {
                   minWidth: 0,
                   width: '40px',
                 }}
-                style={fiSelected ? { backgroundColor: '#F47D20' } : {}}
+                style={{
+                  backgroundColor: `${localStorage.getItem('i18nextLng') === 'fi' && '#F47D20'}`,
+                }}
                 onClick={() => {
                   changeLanguage('fi')
-                  setFiSelected(!fiSelected)
                 }}
               >
                 FI
@@ -225,10 +202,11 @@ const LandingPage = () => {
                   minWidth: 0,
                   width: '40px',
                 }}
-                style={enSelected ? { backgroundColor: '#F47D20' } : {}}
+                style={{
+                  backgroundColor: `${localStorage.getItem('i18nextLng') === 'en' && '#F47D20'}`,
+                }}
                 onClick={() => {
                   changeLanguage('en')
-                  setEnSelected(!enSelected)
                 }}
               >
                 EN

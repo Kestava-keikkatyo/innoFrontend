@@ -140,6 +140,8 @@ export default {
   marked: 'Marked',
   numberOfCodes: 'Number of Invite Codes',
   timeOfCreation: 'Creation Time',
+  invitecode_input_successful: 'Invitation code added',
+  invitecode_input_failed: 'Invitation code not valid',
 
   // Report form
   report_handler: 'Security observations',
@@ -243,6 +245,21 @@ export default {
   done_contracts: 'Done contracts',
   contracts_received_from_the_workers: 'Contracts received from the workers',
   contracts_received_from_businesses: 'Contracts received from the businesses',
+
+  //Company materials
+  file_upload_button: 'Add Materials',
+  file_download_button: 'Download',
+  file_title: 'Title',
+  file_description: 'Description',
+  file_uploader: 'Creator',
+  file_date: 'Upload Date',
+  file_information: 'Enter File Details',
+  file_information_prompt: 'Please enter a title and description for the file.',
+  file_popup_cancel: 'Cancel',
+  file_popup_upload: 'Upload',
+  file_field_error: 'Fill Required Fields',
+  file_upload_error: 'Upload failed',
+  file_upload_success: 'File Uploaded',
 
   // Agencies list
   all: 'All',
@@ -863,6 +880,8 @@ export default {
   search_by_name: 'Search by name',
   requested_contracts: 'REQUESTED CONTRACTS',
   archived_contracts: 'ARCHIVED CONTRACTS',
+  input_invitation_code: 'INPUT INVITATION CODE',
+  invitation_code: 'Invitation code:',
   send_request: 'SEND REQUEST',
   delete_request: 'Delete contract request?',
   no_results: 'No results',

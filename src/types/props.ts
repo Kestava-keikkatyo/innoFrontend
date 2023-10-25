@@ -57,17 +57,6 @@ export interface PrivateRouteProps {
 /**
  * @interface
  */
-export interface TopAppBarProps {
-  /**
-   * An event function. Handles the drawer toggling on small screen size.
-   */
-  handleDrawerToggle: React.MouseEventHandler
-  open: boolean
-}
-
-/**
- * @interface
- */
 export interface FormComponentProps {
   /**
    * A question object

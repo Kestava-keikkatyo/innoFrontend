@@ -140,6 +140,8 @@ export default {
   marked: 'Merkitty',
   numberOfCodes: 'Kutsukoodien määrä',
   timeOfCreation: 'Luontiaika',
+  invitecode_input_successful: 'Kutsukoodi lisätty',
+  invitecode_input_failed: 'Kutsukoodi ei ole kelvollinen',
 
   // Report form
   report_handler: 'Turvallisuushavainto',
@@ -243,6 +245,21 @@ export default {
   done_contracts: 'Valmiit sopimukset',
   contracts_received_from_the_workers: 'Työntekijöiltä saapuneet sopimukset',
   contracts_received_from_businesses: 'Käyttäjäyrityksiltä saapuneet sopimukset',
+
+  //Company materials
+  file_upload_button: 'Lisää materiaaleja',
+  file_download_button: 'Lataa',
+  file_title: 'Otsikko',
+  file_description: 'Kuvaus',
+  file_uploader: 'Lataaja',
+  file_date: 'Päivämäärä',
+  file_information: 'Lisää tiedoston tiedot',
+  file_information_prompt: 'Syötä otsikko ja kuvaus',
+  file_popup_cancel: 'Peruuta',
+  file_popup_upload: 'Lataa',
+  file_field_error: 'Täytä kaikki kentät',
+  file_upload_error: 'Tiedoston lisäys epäonnistui',
+  file_upload_success: 'Tiedosto lisätty',
 
   // Agencies list
   all: 'Kaikki',
@@ -859,6 +876,8 @@ export default {
   search_by_name: 'Hae nimellä',
   requested_contracts: 'PYYDETYT SOPIMUKSET',
   archived_contracts: 'ARKISTOIDUT SOPIMUKSET',
+  input_invitation_code: 'SYÖTÄ KUTSUKOODI',
+  invitation_code: 'Kutsukoodi:',
   send_request: 'LÄHETÄ PYYNTÖ',
   delete_request: 'Poistetaanko sopimuspyyntö?',
   no_results: 'Ei tuloksia',
@@ -1436,7 +1455,7 @@ export default {
 
   check_new_reports: 'Katso uusimmat turvallisuusraportit',
   print: 'Tulosta pdf',
-  feeling_report_question: 'Mikä fiilis tänän?',
+  feeling_report_question: 'Mikä fiilis tänään?',
 
   //Articles
   //Article1

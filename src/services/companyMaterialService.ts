@@ -22,7 +22,7 @@ const authHeader = () => {
 export const createFile = async (fileData: FormData): Promise<CompanyFile> => {
   try {
     const response: AxiosResponse = await axios.post(`${baseUrl}/file`, fileData, authHeader())
-    return response.data.file
+    return response.data
   } catch (error) {
     console.error(error)
     throw error
