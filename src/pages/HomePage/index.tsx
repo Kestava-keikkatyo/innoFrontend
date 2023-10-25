@@ -21,9 +21,9 @@ const Home = () => {
       case roles.Admin:
         return <AdminHome />
       case roles.Business:
-        return <BusinessOrAgencyHome welcomeText={t('welcomeTextAgency')} />
-      case roles.Agency:
         return <BusinessOrAgencyHome welcomeText={t('welcomeTextBusiness')} />
+      case roles.Agency:
+        return <BusinessOrAgencyHome welcomeText={t('welcomeTextAgency')} />
       case roles.Worker:
         return <WorkerHome />
       default:
