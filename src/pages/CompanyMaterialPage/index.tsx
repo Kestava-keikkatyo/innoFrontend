@@ -15,7 +15,7 @@ const CompanyMaterialsPage: React.FC = () => {
   {
     role === roles.Worker &&
       useEffect(() => {
-        let filesFromServer: CompanyFile[] = []
+        const filesFromServer: CompanyFile[] = []
 
         const fetchFiles = async () => {
           const agreementsFromServer =
