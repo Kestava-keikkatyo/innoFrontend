@@ -21,7 +21,7 @@ const CompanyMaterialsPage: React.FC = () => {
           const agreementsFromServer =
             await contracsService.fetchEmploymentContractsAsWorkerOrBusiness()
 
-          for (let i in agreementsFromServer) {
+          for (const i in agreementsFromServer) {
             filesFromServer.push(...(await getFilesById(agreementsFromServer[i].business._id)))
           }
           setFiles(filesFromServer)
