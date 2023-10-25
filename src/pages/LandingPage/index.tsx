@@ -16,7 +16,7 @@ import FirstLandingPage from './FirstLandingPage'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import logo_kk from '../../assets/logo_keikkakaveri_navbar.svg'
-import Footer from './Footer'
+import Footer from '../../components/Footer'
 
 const LandingPage = () => {
   useEffect(() => {

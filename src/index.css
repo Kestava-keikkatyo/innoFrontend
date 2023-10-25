@@ -7,7 +7,10 @@ body {
 body,
 html,
 #root {
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100%;
 }
 
 code {
@@ -102,6 +105,7 @@ code {
 
 .drawer ul {
   margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .kuvake img {
@@ -151,14 +155,6 @@ code {
   margin: 1rem 0 1rem 1rem;
 }
 
-.drawer .MuiDrawer-paper {
-  overflow-y: unset !important;
-}
-
-.drawer {
-  position: relative;
-}
-
 .drawer .MuiListItemIcon-root {
   transform: scale(1.33);
 }
@@ -195,8 +191,6 @@ code {
 *   Drawer overflow
 */
 .drawer {
-  height: 100vh;
-  /* or position:absolute; height:100%; */
   display: flex;
   flex-direction: column;
 }
