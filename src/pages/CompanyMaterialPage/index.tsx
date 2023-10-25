@@ -12,35 +12,33 @@ const CompanyMaterialsPage: React.FC = () => {
   const { data } = useSelector((state: IRootState) => state.user)
   const role = data.role
 
-  {
-    role === roles.Worker &&
-      useEffect(() => {
+  useEffect(() => {
+    {
+      role === roles.Worker
+
+      const fetchFiles = async () => {
         const filesFromServer: CompanyFile[] = []
 
-        const fetchFiles = async () => {
-          const agreementsFromServer =
-            await contracsService.fetchEmploymentContractsAsWorkerOrBusiness()
+        const agreementsFromServer =
+          await contracsService.fetchEmploymentContractsAsWorkerOrBusiness()
 
-          for (const i in agreementsFromServer) {
-            filesFromServer.push(...(await getFilesById(agreementsFromServer[i].business._id)))
-          }
-          setFiles(filesFromServer)
+        for (const i in agreementsFromServer) {
+          filesFromServer.push(...(await getFilesById(agreementsFromServer[i].business._id)))
         }
+        setFiles(filesFromServer)
+      }
+      fetchFiles()
+    }
+    {
+      role !== roles.Worker
 
-        fetchFiles()
-      }, [])
-  }
-  {
-    role !== roles.Worker &&
-      useEffect(() => {
-        const fetchFiles = async () => {
-          const filesFromServer = await getFilesByCreator()
-          setFiles(filesFromServer)
-        }
-
-        fetchFiles()
-      }, [])
-  }
+      const fetchFiles = async () => {
+        const filesFromServer = await getFilesByCreator()
+        setFiles(filesFromServer)
+      }
+      fetchFiles()
+    }
+  }, [])
 
   return (
     <div>
