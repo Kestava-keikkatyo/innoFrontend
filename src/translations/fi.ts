@@ -568,7 +568,7 @@ export default {
   send_cooperation_request: 'Lähetä yhteistyöpyyntö',
   agency_info: 'HP-yrityksen tiedot',
   agency_name: 'Nimi',
-  agency_category: 'Katergoria',
+  agency_category: 'Kategoria',
   agency_email: 'Sähköposti',
   select_contract_form: 'Valitse sopimuspohja',
   selected_form: 'Valittu pohja',
@@ -740,6 +740,7 @@ export default {
   list_action: 'Toiminta',
   list_profile: 'Profiili',
   list_category: 'Kategoria',
+  list_delete_connection: 'Poistetaanko yhteys pysyvästi?',
 
   // User profile
   user_profile: 'Profiili',

@@ -122,7 +122,7 @@ const Businesses: React.FC = () => {
       renderCell: (params) => {
         return (
           <DeleteDialogItem
-            title='Delete and remove connection permanently?'
+            title={t('list_delete_connection')}
             itemId={params.id}
             onConfirm={handleCloseDialog}
           />

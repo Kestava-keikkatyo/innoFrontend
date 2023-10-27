@@ -335,6 +335,8 @@ export default {
   business_signed: 'Business accepted',
   connect_alert_success: 'Employment proposal sent',
   connect_alert_fail: 'Employment proposal already sent',
+
+  //Connections page
   delete_connection_confirmation_message:
     'Delete and permanently remove connection between the recipients?',
   delete_dialog_yes: 'Yes',
@@ -745,6 +747,7 @@ export default {
   list_action: 'Action',
   list_profile: 'Profile',
   list_category: 'Category',
+  list_delete_connection: 'Delete and remove connection permanently?',
 
   // User profile
   user_profile: 'Profile',
