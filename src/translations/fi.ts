@@ -365,6 +365,8 @@ export default {
   wait: 'Odottaa',
   own_feedback: 'Omat palautteet',
   headline: 'Otsikko',
+  feedback_success_alert: 'Palaute lähetetty onnistuneesti!',
+  feedback_updated_successfully: 'Palautteen päivitys onnistui!',
 
   // ContractFormManagerPage
   description: 'Kuvaus',

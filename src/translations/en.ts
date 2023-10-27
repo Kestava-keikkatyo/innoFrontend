@@ -367,6 +367,8 @@ export default {
   wait: 'Wait',
   own_feedback: 'Own feedbacks',
   headline: 'Headline',
+  feedback_success_alert: 'Feedback was sent successfully!',
+  feedback_updated_successfully: 'Feedback was updated successfully!',
 
   // ContractFormManagerPage
   description: 'Description',
