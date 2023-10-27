@@ -245,6 +245,9 @@ export default {
   done_contracts: 'Valmiit sopimukset',
   contracts_received_from_the_workers: 'Työntekijöiltä saapuneet sopimukset',
   contracts_received_from_businesses: 'Käyttäjäyrityksiltä saapuneet sopimukset',
+  contract_accepted_alert: 'Sopimus hyväksytty!',
+  contract_deleted_alert: 'Sopimus poistettu!',
+  delete_contract_tooltip: 'Hylkää ja poista yhteys osapuolten väliltä',
 
   //Company materials
   file_upload_button: 'Lisää materiaaleja',
@@ -896,6 +899,7 @@ export default {
   request: 'Pyyntö',
   signed: 'Allekirjoitettu',
   pending: 'Odottaa hyväksyntää',
+  sign: 'Allekirjoita',
 
   // links
   Fiilismittari: 'Fiilikset',

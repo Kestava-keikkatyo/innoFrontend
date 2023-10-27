@@ -245,6 +245,9 @@ export default {
   done_contracts: 'Done contracts',
   contracts_received_from_the_workers: 'Contracts received from the workers',
   contracts_received_from_businesses: 'Contracts received from the businesses',
+  contract_accepted_alert: 'Contract accepted!',
+  contract_deleted_alert: 'Contract deleted!',
+  delete_contract_tooltip: 'Delete and remove connection between recipients',
 
   //Company materials
   file_upload_button: 'Add Materials',
@@ -903,6 +906,7 @@ export default {
   request: 'Request',
   signed: 'Signed',
   pending: 'Pending',
+  sign: 'Sign',
 
   // links
   Fiilismittari: 'Feelings',
