@@ -336,6 +336,11 @@ export default {
   action: 'Toiminnot',
   connect_alert_success: 'Pyyntö lähetetty',
   connect_alert_fail: 'Olet jo lähettänyt pyynnön',
+  delete_connection_confirmation_message: 'Poistetaanko yhteys pysyvästi?',
+  delete_dialog_yes: 'Kyllä',
+  delete_dialog_no: 'Ei',
+  delete_alert_failure: 'Virhe: Yhteyttä ei poistettu!',
+  delete_alert_success: 'Yhteys poistettu!',
 
   // Rental Work Model
   rwm_responsibilities: 'Vastuut',

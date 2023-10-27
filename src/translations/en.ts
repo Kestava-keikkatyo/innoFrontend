@@ -335,6 +335,12 @@ export default {
   business_signed: 'Business accepted',
   connect_alert_success: 'Employment proposal sent',
   connect_alert_fail: 'Employment proposal already sent',
+  delete_connection_confirmation_message:
+    'Delete and permanently remove connection between the recipients?',
+  delete_dialog_yes: 'Yes',
+  delete_dialog_no: 'No',
+  delete_alert_failure: 'Failure: Contract not deleted!',
+  delete_alert_success: 'Success: Contract deleted!',
 
   // Rental Work Model
   rwm_responsibilities: 'Responsibilities',

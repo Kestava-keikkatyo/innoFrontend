@@ -31,6 +31,7 @@ import { green, red, yellow } from '@mui/material/colors'
 import SearchBox from '../../components/SearchBox'
 import DeleteDialog from '../../components/DeleteDialog'
 import DeleteDialogItem from '../../components/DeleteDialogItem'
+import i18next from 'i18next'
 
 /**
  * @component
@@ -85,11 +86,11 @@ const EmploymentContractsTable: React.FC<any> = ({ employmentContracts }) => {
     setContractToDelete('')
     for (let contract of contracts) {
       if (contract._id === contractId) {
-        dispatch(setAlert('Failure: Contract not deleted!', severity.Error, 3))
+        dispatch(setAlert(i18next.t('delete_alert_failure'), severity.Success))
         break
       }
     }
-    dispatch(setAlert('Success: Contract deleted!', severity.Success, 3))
+    dispatch(setAlert(i18next.t('delete_alert_success'), severity.Success))
   }
 
   useEffect(() => {
@@ -225,7 +226,7 @@ const EmploymentContractsTable: React.FC<any> = ({ employmentContracts }) => {
 
                       <TableCell padding='none' align='left' style={{ paddingLeft: 5 }}>
                         <DeleteDialogItem
-                          title='Delete and permanently remove connection between the recipients?'
+                          title={t('delete_connection_confirmation_message')}
                           itemId={contract._id}
                           onConfirm={handleCloseDialog}
                         />
