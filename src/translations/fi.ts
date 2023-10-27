@@ -236,6 +236,7 @@ export default {
   // Mood step three
   write_comment: 'Kirjoita kommentti',
   tell_feelings: 'Kerro meille miten voit',
+  feeling_sent_successfully: 'Fiilis lähetetty onnistuneesti!',
 
   // BusinessContractsPage
   search_agencies: 'Etsi HP-yrityksiä',

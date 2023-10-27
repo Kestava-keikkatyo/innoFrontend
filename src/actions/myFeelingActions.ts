@@ -9,6 +9,7 @@ import {
   FeelingSimilarActions,
 } from '../types/state'
 import myFeelingService from '../services/myFeelingService'
+import i18next from 'i18next'
 
 /**
  * @function
@@ -54,7 +55,7 @@ export const sendMyFeeling =
         type: feelingType.FEELING_CREATED_SUCCESS,
         data,
       })
-      setAlert('Feeling was sent successfully!')(dispatch)
+      setAlert(i18next.t('feeling_sent_successfully'))(dispatch)
       history.push('/home')
     } catch (e) {
       dispatch({

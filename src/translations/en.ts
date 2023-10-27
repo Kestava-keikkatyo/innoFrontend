@@ -236,6 +236,7 @@ export default {
   // Mood step three
   write_comment: 'Write a comment',
   tell_feelings: 'Tell us about your feeling...',
+  feeling_sent_successfully: 'Feeling was sent successfully!',
 
   // BusinessContractsPage
   search_agencies: 'Search agencies',
