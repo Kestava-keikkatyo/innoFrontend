@@ -341,6 +341,10 @@ export default {
   delete_dialog_no: 'Ei',
   delete_alert_failure: 'Virhe: Yhteyttä ei poistettu!',
   delete_alert_success: 'Yhteys poistettu!',
+  contract_tooltip_signed: 'Hyväksytty',
+  contract_tooltip_pending: 'Odottaa',
+  contract_tooltip_each_signed: 'Kaikki ovat hyväksyneet',
+  contract_tooltip_each_pending: 'Odottaa, kunnes kaikki ovat hyväksyneet',
 
   // Rental Work Model
   rwm_responsibilities: 'Vastuut',

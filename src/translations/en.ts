@@ -341,6 +341,10 @@ export default {
   delete_dialog_no: 'No',
   delete_alert_failure: 'Failure: Contract not deleted!',
   delete_alert_success: 'Success: Contract deleted!',
+  contract_tooltip_signed: 'Signed',
+  contract_tooltip_pending: 'Pending',
+  contract_tooltip_each_signed: 'Each recipient has signed',
+  contract_tooltip_each_pending: 'Pending until each recipient has signed',
 
   // Rental Work Model
   rwm_responsibilities: 'Responsibilities',
