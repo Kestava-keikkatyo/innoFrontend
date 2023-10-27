@@ -47,7 +47,7 @@ const Workers: React.FC = () => {
         break
       }
     }
-    dispatch(setAlert('Success: Contract deleted!', severity.Success, 3))
+    dispatch(setAlert(i18next.t('contract_deleted_alert'), severity.Success))
   }
 
   useEffect(() => {
