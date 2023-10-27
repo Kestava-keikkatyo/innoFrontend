@@ -23,6 +23,7 @@ import { addEmploymentContract, fetchContractsAsAgency } from '../../actions/con
 import { string } from 'prop-types'
 import { useParams } from 'react-router-dom'
 import { IRootState } from '../../utils/store'
+import i18next from 'i18next'
 
 export interface EmploymentProps {}
 
@@ -87,7 +88,7 @@ const EmploymentPage: React.FC<EmploymentProps> = () => {
           currentForm.worker === agreement.worker._id &&
           currentForm.business === agreement.business._id
         ) {
-          dispatch(setAlert(`Employment proposal already sent`, severity.Warning))
+          dispatch(setAlert(i18next.t('connect_alert_fail'), severity.Warning))
           break
         }
       }

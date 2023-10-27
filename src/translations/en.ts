@@ -333,6 +333,8 @@ export default {
   business_name: 'Business',
   worker_signed: 'Worker accepted',
   business_signed: 'Business accepted',
+  connect_alert_success: 'Employment proposal sent',
+  connect_alert_fail: 'Employment proposal already sent',
 
   // Rental Work Model
   rwm_responsibilities: 'Responsibilities',

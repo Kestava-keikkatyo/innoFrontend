@@ -334,6 +334,8 @@ export default {
   worker_signed: 'Työntekijän kuittaus',
   business_signed: 'Yrityksen kuittaus',
   action: 'Toiminnot',
+  connect_alert_success: 'Pyyntö lähetetty',
+  connect_alert_fail: 'Olet jo lähettänyt pyynnön',
 
   // Rental Work Model
   rwm_responsibilities: 'Vastuut',
