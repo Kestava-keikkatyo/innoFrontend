@@ -31,6 +31,7 @@ import { green, red, yellow } from '@mui/material/colors'
 import SearchBox from '../../components/SearchBox'
 import DeleteDialog from '../../components/DeleteDialog'
 import DeleteDialogItem from '../../components/DeleteDialogItem'
+import i18next from 'i18next'
 
 /**
  * @component
@@ -85,11 +86,11 @@ const EmploymentContractsTable: React.FC<any> = ({ employmentContracts }) => {
     setContractToDelete('')
     for (let contract of contracts) {
       if (contract._id === contractId) {
-        dispatch(setAlert('Failure: Contract not deleted!', severity.Error, 3))
+        dispatch(setAlert(i18next.t('delete_alert_failure'), severity.Success))
         break
       }
     }
-    dispatch(setAlert('Success: Contract deleted!', severity.Success, 3))
+    dispatch(setAlert(i18next.t('delete_alert_success'), severity.Success))
   }
 
   useEffect(() => {
@@ -153,7 +154,11 @@ const EmploymentContractsTable: React.FC<any> = ({ employmentContracts }) => {
                       <TableCell component='th' scope='row' align='left'>
                         {contract.status === 'signed' && (
                           <>
-                            <Tooltip title='Each recipient has signed' placement='top' arrow>
+                            <Tooltip
+                              title={t('contract_tooltip_each_signed')}
+                              placement='top'
+                              arrow
+                            >
                               <AllSignedIcon sx={{ color: green[500] }} />
                             </Tooltip>
                           </>
@@ -161,7 +166,7 @@ const EmploymentContractsTable: React.FC<any> = ({ employmentContracts }) => {
                         {contract.status === 'pending' && (
                           <>
                             <Tooltip
-                              title='Pending until each recipient has signed'
+                              title={t('contract_tooltip_each_pending')}
                               placement='top'
                               arrow
                             >
@@ -183,14 +188,14 @@ const EmploymentContractsTable: React.FC<any> = ({ employmentContracts }) => {
                       <TableCell align='left'>
                         {contract.businessSigned && (
                           <>
-                            <Tooltip title='Signed' placement='top' arrow>
+                            <Tooltip title={t('contract_tooltip_signed')} placement='top' arrow>
                               <SignedIcon sx={{ color: green[500] }} />
                             </Tooltip>
                           </>
                         )}
                         {!contract.businessSigned && (
                           <>
-                            <Tooltip title='Pending' placement='top' arrow>
+                            <Tooltip title={t('contract_tooltip_pending')} placement='top' arrow>
                               <PendingIcon sx={{ color: yellow[800] }} />
                             </Tooltip>
                           </>
@@ -209,14 +214,14 @@ const EmploymentContractsTable: React.FC<any> = ({ employmentContracts }) => {
                       <TableCell align='left'>
                         {contract.workerSigned && (
                           <>
-                            <Tooltip title='Signed' placement='top' arrow>
+                            <Tooltip title={t('contract_tooltip_signed')} placement='top' arrow>
                               <SignedIcon sx={{ color: green[500] }} />
                             </Tooltip>
                           </>
                         )}
                         {!contract.workerSigned && (
                           <>
-                            <Tooltip title='Pending' placement='top' arrow>
+                            <Tooltip title={t('contract_tooltip_pending')} placement='top' arrow>
                               <PendingIcon sx={{ color: yellow[800] }} />
                             </Tooltip>
                           </>
@@ -225,7 +230,7 @@ const EmploymentContractsTable: React.FC<any> = ({ employmentContracts }) => {
 
                       <TableCell padding='none' align='left' style={{ paddingLeft: 5 }}>
                         <DeleteDialogItem
-                          title='Delete and permanently remove connection between the recipients?'
+                          title={t('delete_connection_confirmation_message')}
                           itemId={contract._id}
                           onConfirm={handleCloseDialog}
                         />

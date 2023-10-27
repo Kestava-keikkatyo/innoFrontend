@@ -47,7 +47,7 @@ const Workers: React.FC = () => {
         break
       }
     }
-    dispatch(setAlert('Success: Contract deleted!', severity.Success, 3))
+    dispatch(setAlert(i18next.t('contract_deleted_alert'), severity.Success))
   }
 
   useEffect(() => {
@@ -107,7 +107,7 @@ const Workers: React.FC = () => {
       renderCell: (params) => {
         return (
           <DeleteDialogItem
-            title='Delete and remove connection permanently?'
+            title={t('list_delete_connection')}
             itemId={params.id}
             onConfirm={handleCloseDialog}
           />

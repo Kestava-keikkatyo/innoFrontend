@@ -56,6 +56,35 @@ const Notifications = (props: BoxProps) => {
     }
   }
 
+  const renderNotificationMessage = (notification: Notification): string => {
+    let message = `${moment(notification.createdAt).format('D.M.')} • `
+
+    switch (notification.type) {
+      case 'assignment':
+        if (notification.targetDoc === 'WorkRequest') {
+          message += `${notification.sender.firstName} ${notification.sender.lastName} ${t(
+            'requested_work',
+          )}`
+        }
+        break
+      case 'feedback_pending':
+        if (notification.targetDoc === 'FeedBack') {
+          message += `${notification.sender.firstName} ${notification.sender.lastName} ${t(
+            'sent_feedback',
+          )}`
+        }
+        break
+      case 'signature_pending':
+        if (notification.targetDoc === 'EmploymentAgreement') {
+          message += `${notification.sender.firstName} ${notification.sender.lastName} ${t(
+            'sent_employment_agreement',
+          )}`
+        }
+        break
+    }
+    return message
+  }
+
   return (
     <Box className={classes.box}>
       {children}
@@ -96,28 +125,6 @@ const Notifications = (props: BoxProps) => {
       </List>
     </Box>
   )
-}
-
-const renderNotificationMessage = (notification: Notification): string => {
-  let message = `${moment(notification.createdAt).format('D.M.')} • `
-  switch (notification.type) {
-    case 'assignment':
-      if (notification.targetDoc === 'WorkRequest') {
-        message += `${notification.sender.firstName} ${notification.sender.lastName} requested work from you.`
-      }
-      break
-    case 'feedback_pending':
-      if (notification.targetDoc === 'FeedBack') {
-        message += `${notification.sender.firstName} ${notification.sender.lastName} sent you feedback.`
-      }
-      break
-    case 'signature_pending':
-      if (notification.targetDoc === 'EmploymentAgreement') {
-        message += `${notification.sender.firstName} ${notification.sender.lastName} sent you a work offer to sign.`
-      }
-      break
-  }
-  return message
 }
 
 const useStyles = makeStyles(() => ({

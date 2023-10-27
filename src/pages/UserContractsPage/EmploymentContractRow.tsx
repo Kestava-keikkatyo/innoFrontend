@@ -21,6 +21,7 @@ import Tooltip from '@mui/material/Tooltip'
 import { loadUser, removeContactData as removeAllContactData } from '../../utils/storage'
 import { fetchBusinessContacts, fetchWorkerContacts } from '../../actions/usersActions'
 import { green, red, yellow } from '@mui/material/colors'
+import i18next from 'i18next'
 
 const EmploymentContractRow: React.FC<any> = ({ view, contract }) => {
   const classes = useStyles()
@@ -30,7 +31,7 @@ const EmploymentContractRow: React.FC<any> = ({ view, contract }) => {
 
   function deleteContract(contract: any): void {
     dispatch(deleteEmploymentContractAsWorkerOrBusiness(contract._id))
-    dispatch(setAlert('Contract deleted!', severity.Success))
+    dispatch(setAlert(i18next.t('contract_deleted_alert'), severity.Success))
     removeAllContactData()
     switch (role) {
       case 'business':
@@ -44,7 +45,7 @@ const EmploymentContractRow: React.FC<any> = ({ view, contract }) => {
 
   function signContract(contract: any): void {
     dispatch(signEmploymentContract(contract._id))
-    dispatch(setAlert('Contract accepted!', severity.Success))
+    dispatch(setAlert(i18next.t('contract_accepted_alert'), severity.Success))
     removeAllContactData()
     switch (role) {
       case 'business':
@@ -77,14 +78,14 @@ const EmploymentContractRow: React.FC<any> = ({ view, contract }) => {
       <TableCell component='th' scope='row' align='left'>
         {contract.status === 'signed' && (
           <>
-            <Tooltip title='Each recipient has signed' placement='top' arrow>
+            <Tooltip title={t('contract_tooltip_each_signed')} placement='top' arrow>
               <AllSignedIcon sx={{ color: green[500] }} />
             </Tooltip>
           </>
         )}
         {contract.status === 'pending' && (
           <>
-            <Tooltip title='Pending until each recipient has signed' placement='top' arrow>
+            <Tooltip title={t('contract_tooltip_each_pending')} placement='top' arrow>
               <PendingIcon sx={{ color: yellow[800] }} />
             </Tooltip>
           </>
@@ -95,7 +96,7 @@ const EmploymentContractRow: React.FC<any> = ({ view, contract }) => {
       {role == 'worker' && <TableCell align='left'>{contract.business.companyName}</TableCell>}
       {role == 'business' && <TableCell align='left'>{contract.worker.email}</TableCell>}
       <TableCell padding='none' align='left' style={{ paddingLeft: 5 }}>
-        <Tooltip title='Delete and remove connection between recipients' placement='top' arrow>
+        <Tooltip title={t('delete_contract_tooltip')} placement='top' arrow>
           <IconButton onClick={() => deleteContract(contract)} size='large'>
             <DeleteIcon sx={{ color: red[500] }} />
           </IconButton>
@@ -103,7 +104,7 @@ const EmploymentContractRow: React.FC<any> = ({ view, contract }) => {
       </TableCell>
       {view == 'pending' && (
         <TableCell padding='none' align='left' style={{ paddingLeft: 5 }}>
-          <Tooltip title='Sign' placement='top' arrow>
+          <Tooltip title={t('sign')} placement='top' arrow>
             <IconButton
               style={{ color: '#eb5a00' }}
               onClick={() => signContract(contract)}

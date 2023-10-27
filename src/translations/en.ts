@@ -236,6 +236,7 @@ export default {
   // Mood step three
   write_comment: 'Write a comment',
   tell_feelings: 'Tell us about your feeling...',
+  feeling_sent_successfully: 'Feeling was sent successfully!',
 
   // BusinessContractsPage
   search_agencies: 'Search agencies',
@@ -245,6 +246,9 @@ export default {
   done_contracts: 'Done contracts',
   contracts_received_from_the_workers: 'Contracts received from the workers',
   contracts_received_from_businesses: 'Contracts received from the businesses',
+  contract_accepted_alert: 'Contract accepted!',
+  contract_deleted_alert: 'Contract deleted!',
+  delete_contract_tooltip: 'Delete and remove connection between recipients',
 
   //Company materials
   file_upload_button: 'Add Materials',
@@ -333,6 +337,20 @@ export default {
   business_name: 'Business',
   worker_signed: 'Worker accepted',
   business_signed: 'Business accepted',
+  connect_alert_success: 'Employment proposal sent',
+  connect_alert_fail: 'Employment proposal already sent',
+
+  //Connections page
+  delete_connection_confirmation_message:
+    'Delete and permanently remove connection between the recipients?',
+  delete_dialog_yes: 'Yes',
+  delete_dialog_no: 'No',
+  delete_alert_failure: 'Failure: Contract not deleted!',
+  delete_alert_success: 'Success: Contract deleted!',
+  contract_tooltip_signed: 'Signed',
+  contract_tooltip_pending: 'Pending',
+  contract_tooltip_each_signed: 'Each recipient has signed',
+  contract_tooltip_each_pending: 'Pending until each recipient has signed',
 
   // Rental Work Model
   rwm_responsibilities: 'Responsibilities',
@@ -349,6 +367,8 @@ export default {
   wait: 'Wait',
   own_feedback: 'Own feedbacks',
   headline: 'Headline',
+  feedback_success_alert: 'Feedback was sent successfully!',
+  feedback_updated_successfully: 'Feedback was updated successfully!',
 
   // ContractFormManagerPage
   description: 'Description',
@@ -733,6 +753,7 @@ export default {
   list_action: 'Action',
   list_profile: 'Profile',
   list_category: 'Category',
+  list_delete_connection: 'Delete and remove connection permanently?',
 
   // User profile
   user_profile: 'Profile',
@@ -888,6 +909,7 @@ export default {
   request: 'Request',
   signed: 'Signed',
   pending: 'Pending',
+  sign: 'Sign',
 
   // links
   Fiilismittari: 'Feelings',

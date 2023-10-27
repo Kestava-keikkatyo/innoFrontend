@@ -236,6 +236,7 @@ export default {
   // Mood step three
   write_comment: 'Kirjoita kommentti',
   tell_feelings: 'Kerro meille miten voit',
+  feeling_sent_successfully: 'Fiilis lähetetty onnistuneesti!',
 
   // BusinessContractsPage
   search_agencies: 'Etsi HP-yrityksiä',
@@ -245,6 +246,9 @@ export default {
   done_contracts: 'Valmiit sopimukset',
   contracts_received_from_the_workers: 'Työntekijöiltä saapuneet sopimukset',
   contracts_received_from_businesses: 'Käyttäjäyrityksiltä saapuneet sopimukset',
+  contract_accepted_alert: 'Sopimus hyväksytty!',
+  contract_deleted_alert: 'Sopimus poistettu!',
+  delete_contract_tooltip: 'Hylkää ja poista yhteys osapuolten väliltä',
 
   //Company materials
   file_upload_button: 'Lisää materiaaleja',
@@ -334,6 +338,17 @@ export default {
   worker_signed: 'Työntekijän kuittaus',
   business_signed: 'Yrityksen kuittaus',
   action: 'Toiminnot',
+  connect_alert_success: 'Pyyntö lähetetty',
+  connect_alert_fail: 'Olet jo lähettänyt pyynnön',
+  delete_connection_confirmation_message: 'Poistetaanko yhteys pysyvästi?',
+  delete_dialog_yes: 'Kyllä',
+  delete_dialog_no: 'Ei',
+  delete_alert_failure: 'Virhe: Yhteyttä ei poistettu!',
+  delete_alert_success: 'Yhteys poistettu!',
+  contract_tooltip_signed: 'Hyväksytty',
+  contract_tooltip_pending: 'Odottaa',
+  contract_tooltip_each_signed: 'Kaikki ovat hyväksyneet',
+  contract_tooltip_each_pending: 'Odottaa, kunnes kaikki ovat hyväksyneet',
 
   // Rental Work Model
   rwm_responsibilities: 'Vastuut',
@@ -350,6 +365,8 @@ export default {
   wait: 'Odottaa',
   own_feedback: 'Omat palautteet',
   headline: 'Otsikko',
+  feedback_success_alert: 'Palaute lähetetty onnistuneesti!',
+  feedback_updated_successfully: 'Palautteen päivitys onnistui!',
 
   // ContractFormManagerPage
   description: 'Kuvaus',
@@ -557,7 +574,7 @@ export default {
   send_cooperation_request: 'Lähetä yhteistyöpyyntö',
   agency_info: 'HP-yrityksen tiedot',
   agency_name: 'Nimi',
-  agency_category: 'Katergoria',
+  agency_category: 'Kategoria',
   agency_email: 'Sähköposti',
   select_contract_form: 'Valitse sopimuspohja',
   selected_form: 'Valittu pohja',
@@ -729,6 +746,7 @@ export default {
   list_action: 'Toiminta',
   list_profile: 'Profiili',
   list_category: 'Kategoria',
+  list_delete_connection: 'Poistetaanko yhteys pysyvästi?',
 
   // User profile
   user_profile: 'Profiili',
@@ -884,6 +902,7 @@ export default {
   request: 'Pyyntö',
   signed: 'Allekirjoitettu',
   pending: 'Odottaa hyväksyntää',
+  sign: 'Allekirjoita',
 
   // links
   Fiilismittari: 'Fiilikset',

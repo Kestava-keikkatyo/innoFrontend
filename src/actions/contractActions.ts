@@ -2,6 +2,7 @@
  * @module actions/businessContract
  * @desc Redux businessContract actions
  */
+import i18next from 'i18next'
 import contractsService from '../services/contractsService'
 import {
   ACTIVATE_B_CONTRACT,
@@ -193,7 +194,7 @@ export const addEmploymentContract = (form: EmploymentAgreement) => async (dispa
   const res = await contractsService.postEmploymentAgreement(form)
   const r = await contractsService.fetchEmploymentContractsAsAgency()
   if (res && res.status === 200) {
-    dispatch(setAlert(`Success: Employment proposal sent`, severity.Success))
+    dispatch(setAlert(i18next.t('connect_alert_success'), severity.Success))
     dispatch({ type: E_FETCH, data: r })
     return res.status
   }

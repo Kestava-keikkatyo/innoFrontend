@@ -28,6 +28,7 @@ import Tooltip from '@mui/material/Tooltip'
 import { loadUser } from '../../utils/storage'
 import { green, red, yellow } from '@mui/material/colors'
 import { fetchBusinessContacts, fetchWorkerContacts } from '../../actions/usersActions'
+import i18next from 'i18next'
 
 const ContractRow: React.FC<any> = ({ view, contract }) => {
   const classes = useStyles()
@@ -42,7 +43,7 @@ const ContractRow: React.FC<any> = ({ view, contract }) => {
   function signContract(id: string): void {
     let status = 'signed'
     dispatch(sendContract(id, status))
-    dispatch(setAlert('Contract accepted!', severity.Success))
+    dispatch(setAlert(i18next.t('contract_accepted_alert'), severity.Success))
   }
 
   return (
@@ -50,14 +51,14 @@ const ContractRow: React.FC<any> = ({ view, contract }) => {
       <TableCell component='th' scope='row' align='left'>
         {contract.status === 'signed' && (
           <>
-            <Tooltip title='Each party has signed' placement='top' arrow>
+            <Tooltip title={t('contract_tooltip_each_signed')} placement='top' arrow>
               <AllSignedIcon sx={{ color: green[500] }} />
             </Tooltip>
           </>
         )}
         {contract.status === 'pending' && (
           <>
-            <Tooltip title='Pending until each party has signed' placement='top' arrow>
+            <Tooltip title={t('contract_tooltip_each_pending')} placement='top' arrow>
               <PendingIcon sx={{ color: yellow[800] }} />
             </Tooltip>
           </>
