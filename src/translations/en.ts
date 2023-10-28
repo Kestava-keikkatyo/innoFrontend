@@ -253,6 +253,7 @@ export default {
   //Company materials
   file_upload_button: 'Add Materials',
   file_download_button: 'Download',
+  file_remove_button: 'Delete',
   file_title: 'Title',
   file_description: 'Description',
   file_uploader: 'Creator',
@@ -264,6 +265,9 @@ export default {
   file_field_error: 'Fill Required Fields',
   file_upload_error: 'Upload failed',
   file_upload_success: 'File Uploaded',
+  file_delete_success: 'File deleted successfully',
+  file_delete_error: 'Failed to delete file',
+  file_deletion_warning: 'Are you sure you want to delete this file?',
 
   // Agencies list
   all: 'All',

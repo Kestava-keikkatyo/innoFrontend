@@ -12,16 +12,16 @@ import { createFile } from '../../services/companyMaterialService'
 import { loadUser } from '../../utils/storage'
 import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setAlert } from '../../actions/alertActions'
 import { CompanyFile, severity } from '../../types/types'
+import { IRootState } from '../../utils/store'
 
 interface FileChooserProps {
-  setFiles: React.Dispatch<React.SetStateAction<CompanyFile[]>>
-  files: CompanyFile[]
+  setFiles: React.Dispatch<React.SetStateAction<(CompanyFile & { companyName: string })[]>>
 }
 
-const FileChooser: React.FC<FileChooserProps> = ({ setFiles, files }) => {
+const FileChooser: React.FC<FileChooserProps> = ({ setFiles }) => {
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [file, setFile] = useState<File | null>(null)
   const [title, setTitle] = useState('')
@@ -29,6 +29,7 @@ const FileChooser: React.FC<FileChooserProps> = ({ setFiles, files }) => {
   const [open, setOpen] = useState(false) // State to control the dialog
   const { t } = useTranslation()
   const dispatch = useDispatch()
+  const { data } = useSelector((state: IRootState) => state.user)
 
   const handleClick = () => {
     if (fileInputRef.current) {
@@ -62,7 +63,7 @@ const FileChooser: React.FC<FileChooserProps> = ({ setFiles, files }) => {
 
         try {
           const newFile = await createFile(formData)
-          setFiles((files: CompanyFile[]) => [...files, newFile])
+          setFiles((files) => [...files, { ...newFile, companyName: data.companyName }])
           dispatch(setAlert(i18next.t('file_upload_success'), severity.Success))
         } catch (error) {
           dispatch(setAlert(i18next.t('file_upload_error'), severity.Error))
