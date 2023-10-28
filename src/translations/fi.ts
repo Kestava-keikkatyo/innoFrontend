@@ -249,6 +249,7 @@ export default {
   //Company materials
   file_upload_button: 'Lisää materiaaleja',
   file_download_button: 'Lataa',
+  file_remove_button: 'Poista',
   file_title: 'Otsikko',
   file_description: 'Kuvaus',
   file_uploader: 'Lataaja',
@@ -260,6 +261,9 @@ export default {
   file_field_error: 'Täytä kaikki kentät',
   file_upload_error: 'Tiedoston lisäys epäonnistui',
   file_upload_success: 'Tiedosto lisätty',
+  file_delete_success: 'Tiedosto poistettu onnistuneesti',
+  file_delete_error: 'Tiedoston poisto epäonnistui',
+  file_deletion_warning: 'Haluatko varmasti poistaa tämän tiedoston?',
 
   // Agencies list
   all: 'Kaikki',

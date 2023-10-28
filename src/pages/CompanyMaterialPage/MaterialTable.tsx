@@ -7,10 +7,11 @@ import MaterialRow from './MaterialRow'
 import { useTranslation } from 'react-i18next'
 
 interface MaterialTableProps {
-  files: CompanyFile[]
+  files: (CompanyFile & { companyName: string })[]
+  setFiles: React.Dispatch<React.SetStateAction<(CompanyFile & { companyName: string })[]>>
 }
 
-const MaterialTable: React.FC<MaterialTableProps> = ({ files }) => {
+const MaterialTable: React.FC<MaterialTableProps> = ({ files, setFiles }) => {
   const { t } = useTranslation()
   return (
     <Table>
@@ -23,7 +24,8 @@ const MaterialTable: React.FC<MaterialTableProps> = ({ files }) => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {files && files.map((file) => <MaterialRow key={file._id} file={file} />)}
+        {files &&
+          files.map((file) => <MaterialRow key={file._id} file={file} setFiles={setFiles} />)}
       </TableBody>
     </Table>
   )

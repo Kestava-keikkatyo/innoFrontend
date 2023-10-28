@@ -9,15 +9,14 @@ import { CompanyFile, roles } from '../../types/types'
 import { IRootState } from '../../utils/store'
 
 const CompanyMaterialsPage: React.FC = () => {
-  const [files, setFiles] = useState<CompanyFile[]>([])
+  const [files, setFiles] = useState<(CompanyFile & { companyName: string })[]>([])
   const { data } = useSelector((state: IRootState) => state.user)
   const role = data.role
 
   useEffect(() => {
     const fetchFiles = async () => {
+      const filesFromServer: CompanyFile[] = []
       if (role == roles.Worker) {
-        const filesFromServer: CompanyFile[] = []
-
         const agencyAgreementsFromServer = await contracsService.fetchBusinessContractsAsTarget()
 
         const businessaAgreementsFromServer =
@@ -34,29 +33,24 @@ const CompanyMaterialsPage: React.FC = () => {
             )
           }
         }
-
-        for (const i in filesFromServer) {
-          const creator = await usersService.fetchUserById(filesFromServer[i].creator)
-          filesFromServer[i].creator = creator.data.companyName
-        }
-        setFiles(filesFromServer)
       } else if (role == roles.Agency || role == roles.Business) {
-        const filesFromServer = await getFilesByCreator()
-
-        for (const i in filesFromServer) {
-          const creator = await usersService.fetchUserById(filesFromServer[i].creator)
-          filesFromServer[i].creator = creator.data.companyName
-        }
-        setFiles(filesFromServer)
+        filesFromServer.push(...(await getFilesByCreator()))
       }
+
+      for (const i in filesFromServer) {
+        const creator = await usersService.fetchUserById(filesFromServer[i].creator)
+        const fileWithName = { ...filesFromServer[i], companyName: creator.data.companyName }
+        filesFromServer[i] = fileWithName
+      }
+      setFiles(filesFromServer as (CompanyFile & { companyName: string })[])
     }
     fetchFiles()
   }, [])
 
   return (
     <div>
-      {role !== roles.Worker && <FileChooser setFiles={setFiles} files={files} />}
-      <MaterialTable files={files} />
+      {role !== roles.Worker && <FileChooser setFiles={setFiles} />}
+      <MaterialTable files={files} setFiles={setFiles} />
     </div>
   )
 }
