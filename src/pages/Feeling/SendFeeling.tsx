@@ -42,10 +42,9 @@ const SendFeeling: React.FC = () => {
               .min(1, 'Min value 1.')
               .max(5, 'Max value 5.')
               .required('This field is required!'),
-            comment: Yup.string().min(3, 'Comment should be three letters at least!'),
+            comment: Yup.string().min(3, t('feelings_comment_length')),
           })}
           onSubmit={(values, { resetForm }) => {
-            console.log(values, 'asasdasdasdasdasdasd')
             handleSubmit(values)
             resetForm({ values: undefined })
           }}

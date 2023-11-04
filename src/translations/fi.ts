@@ -237,6 +237,7 @@ export default {
   write_comment: 'Kirjoita kommentti',
   tell_feelings: 'Kerro meille miten voit',
   feeling_sent_successfully: 'Fiilis lähetetty onnistuneesti!',
+  feelings_comment_length: 'Kommentin pitää olla vähintään 3 merkkiä!',
 
   // BusinessContractsPage
   search_agencies: 'Etsi HP-yrityksiä',
