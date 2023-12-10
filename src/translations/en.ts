@@ -237,6 +237,7 @@ export default {
   write_comment: 'Write a comment',
   tell_feelings: 'Tell us about your feeling...',
   feeling_sent_successfully: 'Feeling was sent successfully!',
+  feelings_comment_length: 'Comment should be three letters at least!',
 
   // BusinessContractsPage
   search_agencies: 'Search agencies',

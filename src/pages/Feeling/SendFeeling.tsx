@@ -20,14 +20,6 @@ const initialValues: MyFeeling = {
   comment: '',
 }
 
-const SendFeelingSchema = Yup.object().shape({
-  feeling: Yup.number()
-    .min(1, 'Min value 1.')
-    .max(5, 'Max value 5.')
-    .required('This field is required!'),
-  comment: Yup.string().min(3, 'Comment should be three letters at least!'),
-})
-
 const SendFeeling: React.FC = () => {
   const { t } = useTranslation()
   const classes = useStyles()
@@ -45,8 +37,17 @@ const SendFeeling: React.FC = () => {
       <div className={classes.userMood}>
         <Formik
           initialValues={initialValues}
-          onSubmit={handleSubmit}
-          validationSchema={SendFeelingSchema}
+          validationSchema={Yup.object().shape({
+            feeling: Yup.number()
+              .min(1, 'Min value 1.')
+              .max(5, 'Max value 5.')
+              .required('This field is required!'),
+            comment: Yup.string().min(3, t('feelings_comment_length')),
+          })}
+          onSubmit={(values, { resetForm }) => {
+            handleSubmit(values)
+            resetForm({ values: undefined })
+          }}
         >
           {(errors) => {
             console.log(errors)
