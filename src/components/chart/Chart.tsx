@@ -1,28 +1,28 @@
-import React from 'react';
+import React from 'react'
 import {
-    LineChart,
-    Line,
-    XAxis,
-    CartesianGrid,
-    Tooltip,
-    Legend,
-    ResponsiveContainer,
-  } from "recharts";
-import makeStyles from '@mui/styles/makeStyles';
+  LineChart,
+  Line,
+  XAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from 'recharts'
+import makeStyles from '@mui/styles/makeStyles'
 const useStyles = makeStyles(() => ({
   chart: {
     margin: '20px',
     padding: '30px',
     webkitBoxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
-    boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)'
+    boxShadow: '0px 0px 15px -10px rgba(0, 0, 0, 0.75)',
   },
   chartTitle: {
-    marginBottom: '20px'
-  }
-}));
+    marginBottom: '20px',
+  },
+}))
 
 const Chart: React.FC<any> = () => {
-  const classes = useStyles();
+  const classes = useStyles()
   const data = [
     {
       name: 'Jan',
@@ -83,23 +83,23 @@ const Chart: React.FC<any> = () => {
       name: 'Dec',
       activeUser: 6949,
       deActiveUser: 1254,
-    }
-  ];
+    },
+  ]
   return (
-  <div className={classes.chart}>
-    <h3 className={classes.chartTitle}>USER ANALYTICS</h3>
-    <ResponsiveContainer width="100%" aspect={4/ 1}>
-      <LineChart data={data}>
-        <XAxis dataKey="name" stroke="#5550bd" />
-        <Line type="monotone" dataKey="activeUser" stroke="#5550bd" />
-        <Line type="monotone" dataKey="deActiveUser" stroke="#82ca9d" />
-        <Tooltip />
-        <CartesianGrid stroke="#e0dfdf" strokeDasharray="5 5" />
-        <Legend />
-      </LineChart>
-    </ResponsiveContainer>
-  </div>
-  );
-};
+    <div className={classes.chart}>
+      <h3 className={classes.chartTitle}>USER ANALYTICS</h3>
+      <ResponsiveContainer width='100%' aspect={4 / 1}>
+        <LineChart data={data}>
+          <XAxis dataKey='name' stroke='#5550bd' />
+          <Line type='monotone' dataKey='activeUser' stroke='#5550bd' />
+          <Line type='monotone' dataKey='deActiveUser' stroke='#82ca9d' />
+          <Tooltip />
+          <CartesianGrid stroke='#e0dfdf' strokeDasharray='5 5' />
+          <Legend />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
+  )
+}
 
-export default Chart;
+export default Chart

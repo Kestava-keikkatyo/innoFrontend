@@ -2,9 +2,9 @@
  * @module service/user
  * @desc User requests to backend.
  */
-import axios from "axios";
-import baseUrl from "../utils/baseUrl";
-import { loadUser } from "../utils/storage";
+import axios from 'axios'
+import baseUrl from '../utils/baseUrl'
+import { loadUser } from '../utils/storage'
 
 /**
  * helper function for setting up request header
@@ -12,40 +12,36 @@ import { loadUser } from "../utils/storage";
  */
 const authHeader = () => {
   return {
-    headers: { "x-access-token": `${loadUser().token}` },
-  };
-};
+    headers: { 'x-access-token': `${loadUser().token}` },
+  }
+}
 
-const addWorkersToGig = async (
-  contractId: any,
-  contractsId: any,
-  workersId: []
-) => {
+const addWorkersToGig = async (contractId: any, contractsId: any, workersId: []) => {
   try {
     const res: any = await axios.put(
       `${baseUrl}/workcontracts/${contractId}/${contractsId}/acceptWorkers`,
       { workersArray: workersId },
-      authHeader()
-    );
-    return res.data;
+      authHeader(),
+    )
+    return res.data
   } catch (error) {
-    console.log(error);
-    return {};
+    console.log(error)
+    return {}
   }
-};
+}
 // TODO
 const requestWorkerToGig = async (contractId: any, contractsId: any) => {
   try {
     const res: any = await axios.put(
       `${baseUrl}/workcontracts/${contractId}/${contractsId}/add`,
-      authHeader()
-    );
-    return res.data;
+      authHeader(),
+    )
+    return res.data
   } catch (error) {
-    console.log(error);
-    return {};
+    console.log(error)
+    return {}
   }
-};
+}
 
 /**
  * @param businessContractFormId - Business contract form id
@@ -53,15 +49,15 @@ const requestWorkerToGig = async (contractId: any, contractsId: any) => {
  */
 const fetchWorkContracts = async () => {
   try {
-    const res: any = await axios.get(`${baseUrl}/workcontracts`, authHeader());
-    return res.data;
+    const res: any = await axios.get(`${baseUrl}/workcontracts`, authHeader())
+    return res.data
   } catch (error) {
-    console.log(error);
-    return {};
+    console.log(error)
+    return {}
   }
-};
+}
 
 export default {
   fetchWorkContracts,
   addWorkersToGig,
-};
+}

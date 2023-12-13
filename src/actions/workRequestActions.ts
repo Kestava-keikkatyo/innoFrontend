@@ -11,6 +11,7 @@ import {
   WorkRequestSimilarActions,
 } from '../types/state'
 import { Dispatch } from 'redux'
+import i18next from 'i18next'
 
 /**
  * Send work request
@@ -32,13 +33,13 @@ export const sendWorkRequest =
         type: workRequestType.WORKREQUEST_SEND_SUCCESS,
         data,
       })
-      setAlert('Work request was sent successfully!')(dispatch)
+      setAlert(i18next.t('work_request_created_successfully'))(dispatch)
     } catch (e) {
       dispatch({
         type: workRequestType.WORKREQUEST_FAILURE,
         data: e as string,
       })
-      setAlert('Failed to send the work request: ' + e, severity.Error, 15)(dispatch)
+      setAlert(i18next.t('failed_to_send_the_work_request') + e, severity.Error, 15)(dispatch)
     }
   }
 

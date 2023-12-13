@@ -94,7 +94,6 @@ export const verifyToken = (token: Token) => {
       })
 
       saveToken(token)
-
     } catch (error) {
       dispatch({
         type: SEND_MAIL_FAILED,
@@ -174,7 +173,7 @@ export const me = () => async (dispatch: any) => {
       type: USER_PROFILE,
       data,
     })
-    return data;
+    return data
   } catch (error) {
     statusHandler(dispatch, error)
   }

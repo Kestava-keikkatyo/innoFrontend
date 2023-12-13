@@ -1,6 +1,6 @@
-import { Typography } from '@mui/material';
+import { Typography } from '@mui/material'
 import React from 'react'
-import { FormComponentProps } from '../../types/props';
+import { FormComponentProps } from '../../types/props'
 
 /**
  * @component
@@ -12,9 +12,9 @@ const FormComment: React.FC<FormComponentProps> = ({ question }) => {
   const { title } = question
   return (
     <>
-    <Typography variant="h6" >{title}</Typography>
+      <Typography variant='h6'>{title}</Typography>
     </>
-   );
+  )
 }
 
-export default FormComment;
+export default FormComment

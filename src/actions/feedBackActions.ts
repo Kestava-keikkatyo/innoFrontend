@@ -11,6 +11,7 @@ import {
   FeedbackGetCurrentSuccess,
   FeedbackSimilarActions,
 } from '../types/state'
+import i18next from 'i18next'
 
 export const fetchFeedbacksAppointedToMe =
   () =>
@@ -28,7 +29,11 @@ export const fetchFeedbacksAppointedToMe =
         type: feedbackType.FEEDBACK_ACTION_FAILURE,
         data: e as string,
       })
-      await setAlert('Failed to fetch feedbacks appointed to you!: ' + e, severity.Error, 15)(dispatch)
+      await setAlert(
+        'Failed to fetch feedbacks appointed to you!: ' + e,
+        severity.Error,
+        15,
+      )(dispatch)
     }
   }
 
@@ -158,7 +163,7 @@ export const createFeedback =
         type: feedbackType.FEEDBACK_POSTED_SUCCESS,
         data,
       })
-      await setAlert('Feedback was sent successfully!')(dispatch)
+      await setAlert(i18next.t('feedback_success_alert'))(dispatch)
     } catch (e) {
       dispatch({
         type: feedbackType.FEEDBACK_ACTION_FAILURE,

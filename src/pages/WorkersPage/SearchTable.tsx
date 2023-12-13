@@ -7,7 +7,7 @@ import {
   TableRow,
   TableCell,
   TableBody,
-  IconButton
+  IconButton,
 } from '@mui/material'
 import { Add as AddIcon } from '@mui/icons-material'
 import { useSelector } from 'react-redux'
@@ -20,32 +20,35 @@ import { useTranslation } from 'react-i18next'
  * @param {Function} props.addWorker add button click listener function,
  * which passes workers data to parent component state.
  */
-const SearchTable: React.FC<{addWorker: Function}> = ({ addWorker }) => {
+const SearchTable: React.FC<{ addWorker: Function }> = ({ addWorker }) => {
   const { t } = useTranslation()
   const workers = useSelector((state: IRootState) => state.workContracts.searchList)
   return (
     <TableContainer>
-      <Table aria-label="searched workers">
+      <Table aria-label='searched workers'>
         <TableHead>
           <TableRow>
             <TableCell>id</TableCell>
-            <TableCell align="right">{t("name")}</TableCell>
-            <TableCell align="right">{t("email")}</TableCell>
-            <TableCell align="right">{t("add")}</TableCell>
+            <TableCell align='right'>{t('name')}</TableCell>
+            <TableCell align='right'>{t('email')}</TableCell>
+            <TableCell align='right'>{t('add')}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {workers.map((worker: any) => (
             <TableRow key={worker._id}>
-              <TableCell component="th" scope="row">{worker._id}</TableCell>
-              <TableCell align="right">{worker.name}</TableCell>
-              <TableCell align="right">{worker.email}</TableCell>
-              <TableCell padding="none" align="right">
+              <TableCell component='th' scope='row'>
+                {worker._id}
+              </TableCell>
+              <TableCell align='right'>{worker.name}</TableCell>
+              <TableCell align='right'>{worker.email}</TableCell>
+              <TableCell padding='none' align='right'>
                 <IconButton
-                  aria-label="add to organization"
-                  color="secondary"
+                  aria-label='add to organization'
+                  color='secondary'
                   onClick={() => addWorker(worker)}
-                  size="large">
+                  size='large'
+                >
                   <AddIcon />
                 </IconButton>
               </TableCell>
@@ -54,7 +57,7 @@ const SearchTable: React.FC<{addWorker: Function}> = ({ addWorker }) => {
         </TableBody>
       </Table>
     </TableContainer>
-  );
+  )
 }
 
 export default SearchTable

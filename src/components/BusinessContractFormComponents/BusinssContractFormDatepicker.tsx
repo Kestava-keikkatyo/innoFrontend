@@ -56,6 +56,19 @@ const BusinssContractFormDatepicker: React.FC<any> = ({ question }) => {
           />
         </form>
       </div>
+<<<<<<< HEAD
+=======
+
+      {/*
+          <Typography variant="h6">Date</Typography>
+          <FormControl>
+          <FormControlLabel
+              control={<TextField value={answer || '' } onChange={handleChange} type="date"></TextField>}
+              label='Date'
+          ></FormControlLabel>
+          </FormControl>
+      */}
+>>>>>>> d898f451563ca09b40bb904aac3a53ffc007f613
     </>
   )
 }

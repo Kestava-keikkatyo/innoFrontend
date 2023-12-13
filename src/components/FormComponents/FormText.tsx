@@ -10,12 +10,12 @@ import { FormComponentProps } from '../../types/props'
  */
 const FormText: React.FC<FormComponentProps> = ({ question }) => {
   const { title } = question
-  return ( 
+  return (
     <>
-      <Typography variant="h6" >{ title }</Typography>
+      <Typography variant='h6'>{title}</Typography>
       <Input />
     </>
-   )
+  )
 }
- 
+
 export default FormText

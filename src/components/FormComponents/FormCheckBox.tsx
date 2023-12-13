@@ -1,6 +1,6 @@
 import { Checkbox, FormControl, FormControlLabel, Typography } from '@mui/material'
 import React from 'react'
-import { FormComponentProps } from '../../types/props';
+import { FormComponentProps } from '../../types/props'
 
 /**
  * @component
@@ -18,15 +18,15 @@ const FormCheckBox: React.FC<FormComponentProps> = ({ question }) => {
 
   return (
     <>
-      <Typography variant="h6" >{/*Check the box if true.*/}</Typography>
-        <FormControl>
-          <FormControlLabel
-            control={<Checkbox checked={state} onChange={handleChange} />}
-            label={ title }
-          />
-        </FormControl>
+      <Typography variant='h6'>{/*Check the box if true.*/}</Typography>
+      <FormControl>
+        <FormControlLabel
+          control={<Checkbox checked={state} onChange={handleChange} />}
+          label={title}
+        />
+      </FormControl>
     </>
-   )
+  )
 }
 
 export default FormCheckBox

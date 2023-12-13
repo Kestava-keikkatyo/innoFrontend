@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import { TextField, Button } from '@mui/material'
 import React, { useState } from 'react'
+=======
+import { TextField } from '@mui/material'
+import React from 'react'
+>>>>>>> d898f451563ca09b40bb904aac3a53ffc007f613
 import { useTranslation } from 'react-i18next'
 import { Field, Form, Formik } from 'formik'
 import Box from '@mui/material/Box'
@@ -8,6 +13,7 @@ import makeStyles from '@mui/styles/makeStyles'
 import { Theme } from '@mui/material/styles'
 import { useSelector } from 'react-redux'
 import { IRootState } from '../../../../utils/store'
+<<<<<<< HEAD
 import { PDFViewer, Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer'
 
 const CustomerContractForm: React.FC = () => {
@@ -46,6 +52,14 @@ const CustomerContractForm: React.FC = () => {
     )
   }
 
+=======
+
+const CustomerContractForm: React.FC = () => {
+  const { t } = useTranslation()
+  const isLoading = useSelector((state: IRootState) => state.feedback.loading)
+  const classes = useStyles()
+
+>>>>>>> d898f451563ca09b40bb904aac3a53ffc007f613
   return (
     <>
       <h2>{t('form1Header')}</h2>
@@ -270,9 +284,12 @@ const CustomerContractForm: React.FC = () => {
               ></FormikTextField>
             </div>
           </Box>
+<<<<<<< HEAD
           <Button style={{ backgroundColor: '#F47D20', color: 'black', marginTop: '20px' }}>
             {t('print')}
           </Button>
+=======
+>>>>>>> d898f451563ca09b40bb904aac3a53ffc007f613
         </Form>
       </Formik>
     </>

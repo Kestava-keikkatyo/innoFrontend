@@ -9,22 +9,21 @@ import {
   EmploymentAgreementState,
   E_SET_CURRENT,
   E_SAVE,
-  E_FETCH
+  E_FETCH,
 } from '../types/state'
-
 
 const initialEmploymentAgreement: EmploymentAgreement = {
   creator: null,
   worker: null,
   business: null,
   status: '',
-  date: ''
-} 
+  date: '',
+}
 
 const initialState: EmploymentAgreementState = {
   currentAgreement: initialEmploymentAgreement,
-  agreements: []
-}  
+  agreements: [],
+}
 
 /**
  * @function
@@ -32,31 +31,33 @@ const initialState: EmploymentAgreementState = {
  * @param {EmploymentAgreement} state - initial state
  * @param {FormActionTypes} action - dispatched action
  */
-const employmentAgreementReducer = (state = initialState, action: EmploymentAgreementActionTypes) => {
+const employmentAgreementReducer = (
+  state = initialState,
+  action: EmploymentAgreementActionTypes,
+) => {
   switch (action.type) {
     case E_SET_CURRENT:
       return {
         ...state,
-        currentAgreement: action.data
+        currentAgreement: action.data,
       }
     case E_SAVE:
       return {
         ...state,
-        agreements: [...state.agreements, action.data]
+        agreements: [...state.agreements, action.data],
       }
     case E_FETCH:
       return {
         currentAgreement: state.currentAgreement,
-        agreements: action.data
+        agreements: action.data,
       }
 
     case E_CLEAR_CURRENT:
       return {
-        currentAgreement: initialEmploymentAgreement
+        currentAgreement: initialEmploymentAgreement,
       }
     default:
       return state
-
   }
 }
 

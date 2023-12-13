@@ -12,7 +12,6 @@ import { updateQuestion } from '../../actions/businessContractFormActions'
  * @param {Question} props.question A question object.
  */
 const BusinssContractFormText: React.FC<FormComponentProps> = ({ question }) => {
-
   const { title } = question
   let { answer } = question
 
@@ -20,23 +19,18 @@ const BusinssContractFormText: React.FC<FormComponentProps> = ({ question }) => 
 
   const dispatch = useDispatch()
 
-  let index:any = question?.ordering
+  let index: any = question?.ordering
 
-  const handleChange = (e:any) => {
-    dispatch(
-      updateQuestion({ ...questions[index], answer: e.target.value }, index)
-    )
-
+  const handleChange = (e: any) => {
+    dispatch(updateQuestion({ ...questions[index], answer: e.target.value }, index))
   }
 
   return (
     <>
-      <Typography variant="h6" >{ title }</Typography>
-      <Input
-        value={answer || ''}
-        onChange={handleChange} />
+      <Typography variant='h6'>{title}</Typography>
+      <Input value={answer || ''} onChange={handleChange} />
     </>
-   )
+  )
 }
 
 export default BusinssContractFormText

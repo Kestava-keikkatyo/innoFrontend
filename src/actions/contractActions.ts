@@ -2,6 +2,7 @@
  * @module actions/businessContract
  * @desc Redux businessContract actions
  */
+import i18next from 'i18next'
 import contractsService from '../services/contractsService'
 import {
   ACTIVATE_B_CONTRACT,
@@ -15,7 +16,7 @@ import {
   ADD_B_WB_CONTRACT,
   SEND_BACK_B_CONTRACT,
   E_FETCH,
-  E_SAVE
+  E_SAVE,
 } from '../types/state'
 import { businessContractType, EmploymentAgreement, severity } from '../types/types'
 import { setAlert } from './alertActions'
@@ -137,33 +138,29 @@ export const deleteContractById = (id: string) => async (dispatch: any) => {
  * @desc Adds new contract between logged in Agency user and Worker/Business user.
  * Must be Agency to use this.
  */
-export const addContract = (targetId: string, formId: string, type: string) => async (dispatch: any) => {
+export const addContract =
+  (targetId: string, formId: string, type: string) => async (dispatch: any) => {
     const res = await contractsService.addBusinessContract(targetId, formId, type)
     if (res && res.status === 200) {
       dispatch({ type: ADD_B_CONTRACT, data: res.data })
-      type === 'request'
-        ? dispatch(fetchContractsAsTarget())
-        : dispatch(fetchContractsAsAgency())
+      type === 'request' ? dispatch(fetchContractsAsTarget()) : dispatch(fetchContractsAsAgency())
     }
   }
 
 /**
-* @function
-* @desc Adds new contract between logged in Agency user and Worker/Business user.
-* Must be Agency to use this.
-* @param {string} targetId Business or Worker id
-* @param type type of contract
-*/
-export const addAgencyContract =
-  (targetId: string, type: string) => async (dispatch: any) => {
-    const res = await contractsService.addAgencyContract(targetId, type)
-    if (res && res.status === 200) {
-      dispatch({ type: ADD_B_CONTRACT, data: res.data })
-      type === 'request'
-        ? dispatch(fetchContractsAsTarget())
-        : dispatch(fetchContractsAsAgency())
-    }
+ * @function
+ * @desc Adds new contract between logged in Agency user and Worker/Business user.
+ * Must be Agency to use this.
+ * @param {string} targetId Business or Worker id
+ * @param type type of contract
+ */
+export const addAgencyContract = (targetId: string, type: string) => async (dispatch: any) => {
+  const res = await contractsService.addAgencyContract(targetId, type)
+  if (res && res.status === 200) {
+    dispatch({ type: ADD_B_CONTRACT, data: res.data })
+    type === 'request' ? dispatch(fetchContractsAsTarget()) : dispatch(fetchContractsAsAgency())
   }
+}
 
 /**
  * @function
@@ -194,14 +191,14 @@ export const addContractAsWorkerOrBusiness =
  * @param {string} form employment agreement
  */
 export const addEmploymentContract = (form: EmploymentAgreement) => async (dispatch: any) => {
-  const res = await contractsService.postEmploymentAgreement(form);
+  const res = await contractsService.postEmploymentAgreement(form)
   const r = await contractsService.fetchEmploymentContractsAsAgency()
   if (res && res.status === 200) {
-    dispatch(setAlert( `Success: Employment proposal sent`, severity.Success))
+    dispatch(setAlert(i18next.t('connect_alert_success'), severity.Success))
     dispatch({ type: E_FETCH, data: r })
     return res.status
   }
-};
+}
 
 /**
  * @function
@@ -211,15 +208,14 @@ export const addEmploymentContract = (form: EmploymentAgreement) => async (dispa
  * @param {string} contractId contract Id
  * @param {string} form form Id
  */
-export const sendContract =
-  (contractId: string, status: string) => async (dispatch: any) => {
-    const res = await contractsService.signAgreement(contractId, status)
-    const r = await contractsService.fetchBusinessContractsAsTarget()
-    if (res && res.status === 200) {
-      dispatch({ type: B_SEND, data: res.data })
-      dispatch({ type: B_FETCH, data: r })
-    }
+export const sendContract = (contractId: string, status: string) => async (dispatch: any) => {
+  const res = await contractsService.signAgreement(contractId, status)
+  const r = await contractsService.fetchBusinessContractsAsTarget()
+  if (res && res.status === 200) {
+    dispatch({ type: B_SEND, data: res.data })
+    dispatch({ type: B_FETCH, data: r })
   }
+}
 
 /**
  * @function
@@ -270,13 +266,12 @@ export const activateContract = (id: string) => async (dispatch: any) => {
  * @param {string} contractId The id of contract.
  * @param {string} userId The id of Worker or Business.
  */
-export const rejectContract =
-  (contractId: string, userId: string) => async (dispatch: any) => {
-    const res = await contractsService.declineBusinessContract(contractId, userId)
-    if (res && res.status === 200) {
-      dispatch({ type: DECLINE_B_CONTRACT, data: res.data })
-    }
+export const rejectContract = (contractId: string, userId: string) => async (dispatch: any) => {
+  const res = await contractsService.declineBusinessContract(contractId, userId)
+  if (res && res.status === 200) {
+    dispatch({ type: DECLINE_B_CONTRACT, data: res.data })
   }
+}
 /**
  * @function
  * @description

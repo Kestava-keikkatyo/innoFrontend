@@ -1,14 +1,10 @@
 [
-    {
-        "title": "What is the data bank?",
-        "details": [
-          "The data bank has a wide range of material related to rental work."
-        ]
-      },
-      {
-        "title": "Who can see the data bank?",
-        "details": [
-          "The data bank is open to everyone and does not require logging in."
-        ]
-      }
+  {
+    "title": "What is the data bank?",
+    "details": ["The data bank has a wide range of material related to rental work."]
+  },
+  {
+    "title": "Who can see the data bank?",
+    "details": ["The data bank is open to everyone and does not require logging in."]
+  }
 ]

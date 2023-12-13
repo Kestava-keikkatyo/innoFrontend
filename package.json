@@ -74,12 +74,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "aws s3 sync build/ s3://inno-frontend-bucket",
+    "deploy": "aws s3 sync build/ s3://inno-frontend-bucket --delete",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint './src/**/*.{ts,tsx}'",
     "lint:fix": "eslint './src/**/*.{ts,tsx}' --fix",
-    "format": "prettier --write './src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+    "format": "prettier --write './src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc.json",
     "docs": "rm -rf docs && jsdoc -c jsdoc.json"
   },
   "eslintConfig": {

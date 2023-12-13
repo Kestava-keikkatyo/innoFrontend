@@ -10,7 +10,7 @@ import { IRootState } from '../utils/store'
  * The state of this component is handled in {@link alertReducer} and {@link alertActions}
  * @see {@link alertReducer}
  * @see {@link alertActions}
- * @example 
+ * @example
  * return (
  *   <SnackbarNotification />
  * )
@@ -18,21 +18,20 @@ import { IRootState } from '../utils/store'
 const SnackbarNotification: React.FC = () => {
   const alert = useSelector((state: IRootState) => state.alert)
   const dispatch = useDispatch()
-  
-  const handleSnackbarClose = (_: React.SyntheticEvent<any> | Event, reason?: SnackbarCloseReason) => {
+
+  const handleSnackbarClose = (
+    _: React.SyntheticEvent<any> | Event,
+    reason?: SnackbarCloseReason,
+  ) => {
     if (reason !== 'clickaway') {
       dispatch(clearAlert())
     }
   }
 
-  return(
+  return (
     <>
-    <Snackbar open={alert.open} onClose={handleSnackbarClose}>
-        <Alert
-          onClose={handleSnackbarClose}
-          severity={alert.severity}
-          variant="filled"
-        >
+      <Snackbar open={alert.open} onClose={handleSnackbarClose}>
+        <Alert onClose={handleSnackbarClose} severity={alert.severity} variant='filled'>
           {alert.message}
         </Alert>
       </Snackbar>

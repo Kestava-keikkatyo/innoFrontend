@@ -1,23 +1,19 @@
-import { Button, Grid, Typography } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
-import React, { useEffect } from 'react';
+import { Button, Grid, Typography } from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles'
+import React, { useEffect } from 'react'
 import {
   // Bar,
   Line,
   Pie,
   //defaults
-} from 'react-chartjs-2';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateDataSet } from '../../actions/feelingActions';
+} from 'react-chartjs-2'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateDataSet } from '../../actions/feelingActions'
 //import feelingService from '../../services/feelingService';
 import { useTranslation } from 'react-i18next'
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-} from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material'
 
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 /**
  * @deprecated ### NOT IN USE ###
  * @component
@@ -27,20 +23,17 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
  * @todo make buttons work.
  */
 const Chart = () => {
-
   const { t } = useTranslation()
 
-  const { feelingDataSet, feelings } = useSelector(
-    (state: any) => state.feeling
-  );
-  const dispatch = useDispatch();
+  const { feelingDataSet, feelings } = useSelector((state: any) => state.feeling)
+  const dispatch = useDispatch()
 
-  console.log('feelings', feelings);
-  console.log('feelingDataSet:', feelingDataSet);
+  console.log('feelings', feelings)
+  console.log('feelingDataSet:', feelingDataSet)
 
-  const classes = useStyles();
+  const classes = useStyles()
 
-  const [moodCounts, setMoodCounts] = React.useState([0, 0, 0, 0, 0]);
+  const [moodCounts, setMoodCounts] = React.useState([0, 0, 0, 0, 0])
 
   const [labels, setLabels] = React.useState([
     t('monday'),
@@ -48,33 +41,33 @@ const Chart = () => {
     t('wednesday'),
     t('thursday'),
     t('friday'),
-  ]);
+  ])
 
   const getFeelingsValues = () => {
-    const copyOfMoodCounts: any = [0, 0, 0, 0, 0];
+    const copyOfMoodCounts: any = [0, 0, 0, 0, 0]
     feelings.map((feel: any) => {
       switch (feel.value) {
         case 0:
-          return copyOfMoodCounts[0]++;
+          return copyOfMoodCounts[0]++
 
         case 1:
-          return copyOfMoodCounts[1]++;
+          return copyOfMoodCounts[1]++
 
         case 2:
-          return copyOfMoodCounts[2]++;
+          return copyOfMoodCounts[2]++
 
         case 3:
-          return copyOfMoodCounts[3]++;
+          return copyOfMoodCounts[3]++
 
         case 4:
-          return copyOfMoodCounts[4]++;
+          return copyOfMoodCounts[4]++
 
         default:
-          return null;
+          return null
       }
-    });
-    setMoodCounts(copyOfMoodCounts);
-  };
+    })
+    setMoodCounts(copyOfMoodCounts)
+  }
 
   const backgroundColors = [
     'rgba(255, 99, 132, 0.5)',
@@ -82,7 +75,7 @@ const Chart = () => {
     'rgba(255, 206, 86, 0.5)',
     'rgba(75, 192, 192, 0.5)',
     'rgba(153, 102, 255, 0.5)',
-  ];
+  ]
 
   const borderColors = [
     'rgba(255, 99, 132, 1)',
@@ -90,24 +83,16 @@ const Chart = () => {
     'rgba(255, 206, 86, 1)',
     'rgba(75, 192, 192, 1)',
     'rgba(153, 102, 255, 1)',
-  ];
+  ]
 
   const handleClick = (period: string) => {
     switch (period) {
       case '1w':
-        return setLabels([t('monday'), t('tuesday'), t('wednesday'), t('thursday'), t('friday')]);
+        return setLabels([t('monday'), t('tuesday'), t('wednesday'), t('thursday'), t('friday')])
       case '1m':
-        return setLabels([
-          '1th',
-          '5th',
-          '10th',
-          '15th',
-          '20th',
-          '25th',
-          '30th',
-        ]);
+        return setLabels(['1th', '5th', '10th', '15th', '20th', '25th', '30th'])
       case '6m':
-        return setLabels(['1', '2', '3', '4', '5', '6']);
+        return setLabels(['1', '2', '3', '4', '5', '6'])
       case '1y':
         return setLabels([
           'Jan',
@@ -122,62 +107,62 @@ const Chart = () => {
           'Oct',
           'Nov',
           'Dec',
-        ]);
+        ])
       default:
-        return null;
+        return null
     }
-  };
+  }
 
   useEffect(() => {
-    dispatch(updateDataSet());
-    getFeelingsValues();
-  }, [feelings, dispatch]);
+    dispatch(updateDataSet())
+    getFeelingsValues()
+  }, [feelings, dispatch])
 
-  console.log('moodCounts', moodCounts);
+  console.log('moodCounts', moodCounts)
 
   return (
-    <div className="worker-line-chart">
+    <div className='worker-line-chart'>
       <Grid item xs={12}>
-        <Accordion className={classes.card} variant="outlined">
+        <Accordion className={classes.card} variant='outlined'>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
+            aria-controls='panel1a-content'
+            id='panel1a-header'
           >
-            <Typography gutterBottom variant="h5">
+            <Typography gutterBottom variant='h5'>
               {t('mood_history')}
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Button
               onClick={() => handleClick('1w')}
-              variant="outlined"
-              color="primary"
-              size="small"
+              variant='outlined'
+              color='primary'
+              size='small'
             >
-               {t('week')}
+              {t('week')}
             </Button>
             <Button
               onClick={() => handleClick('1m')}
-              variant="outlined"
-              color="primary"
-              size="small"
+              variant='outlined'
+              color='primary'
+              size='small'
             >
               {t('mm')}
             </Button>
             <Button
               onClick={() => handleClick('6m')}
-              variant="outlined"
-              color="primary"
-              size="small"
+              variant='outlined'
+              color='primary'
+              size='small'
             >
               {t('half_year')}
             </Button>
             <Button
               onClick={() => handleClick('1y')}
-              variant="outlined"
-              color="primary"
-              size="small"
+              variant='outlined'
+              color='primary'
+              size='small'
             >
               {t('year')}
             </Button>
@@ -242,13 +227,13 @@ const Chart = () => {
       </Grid>
 
       <Grid item xs={12}>
-        <Accordion className={classes.card} variant="outlined">
+        <Accordion className={classes.card} variant='outlined'>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
+            aria-controls='panel1a-content'
+            id='panel1a-header'
           >
-            <Typography gutterBottom variant="h5">
+            <Typography gutterBottom variant='h5'>
               {t('mood_overall')}
             </Typography>
           </AccordionSummary>
@@ -327,8 +312,8 @@ const Chart = () => {
         </Accordion>
       </Grid>
     </div>
-  );
-};
+  )
+}
 
 const useStyles = makeStyles((theme) => ({
   table: {
@@ -355,6 +340,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: theme.typography.pxToRem(13),
     color: '#6C6C6C',
   },
-}));
+}))
 
-export default Chart;
+export default Chart

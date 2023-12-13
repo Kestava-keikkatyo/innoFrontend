@@ -282,14 +282,20 @@ export interface Notification {
   sender: User
   target: string
   createdAt: Date
-  targetDoc: 'WorkRequest' | 'Agreement' | 'EmploymentAgreement' | 'Form' | 'Application' | 'FeedBack'
+  targetDoc:
+    | 'WorkRequest'
+    | 'Agreement'
+    | 'EmploymentAgreement'
+    | 'Form'
+    | 'Application'
+    | 'FeedBack'
   type:
-  | 'assignment'
-  | 'signature_pending'
-  | 'form_pending'
-  | 'application_pending'
-  | 'feedback_pending'
-  | 'reply'
+    | 'assignment'
+    | 'signature_pending'
+    | 'form_pending'
+    | 'application_pending'
+    | 'feedback_pending'
+    | 'reply'
 }
 
 export interface MyFeeling {
@@ -405,18 +411,18 @@ export interface BusinessContractForm {
 
 export interface AgreementCode {
   _id: string
-  code: string;
-  creator: string;
-  createdAt: string;
-  marked: boolean;
+  code: string
+  creator: string
+  createdAt: string
+  marked: boolean
 }
 
 export interface CompanyFile {
-  _id: string;
-  title: string;
-  description: string;
-  creator: string;
-  uploadDate: Date;
-  contentType: 'application/pdf' | 'video/mp4' | 'image/jpeg';
-  file: Buffer;
+  _id: string
+  title: string
+  description: string
+  creator: string
+  uploadDate: Date
+  contentType: 'application/pdf' | 'video/mp4' | 'image/jpeg'
+  file: Buffer
 }

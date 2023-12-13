@@ -7,9 +7,9 @@ import {
   Table,
   TableCell,
   TableRow,
-  TableBody
-} from "@mui/material"
-import React from "react"
+  TableBody,
+} from '@mui/material'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
 
 /**
@@ -23,20 +23,20 @@ const FormContactInfo: React.FC<any> = ({ question }) => {
 
   return (
     <>
-      <Typography variant="h6">{title}</Typography>
+      <Typography variant='h6'>{title}</Typography>
       <Table>
         <TableBody>
           <TableRow>
             <TableCell>
-              <InputLabel>{t("name")}</InputLabel>
+              <InputLabel>{t('name')}</InputLabel>
               <Input />
             </TableCell>
             <TableCell>
-              <InputLabel>{t("phone")}</InputLabel>
+              <InputLabel>{t('phone')}</InputLabel>
               <Input />
             </TableCell>
             <TableCell>
-              <InputLabel>{t("email")}</InputLabel>
+              <InputLabel>{t('email')}</InputLabel>
               <Input />
             </TableCell>
           </TableRow>

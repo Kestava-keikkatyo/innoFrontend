@@ -1,26 +1,25 @@
-import { DataGrid, GridColDef, GridColumns } from '@mui/x-data-grid';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { IRootState } from '../../utils/store';
-import { Link } from 'react-router-dom';
-import makeStyles from '@mui/styles/makeStyles';
-import { fetchFeedbacksAppointedToMe } from '../../actions/feedBackActions';
-import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
-import moment from 'moment';
-import { Container, ThemeProvider, Typography, createTheme } from '@mui/material';
+import { DataGrid, GridColDef, GridColumns } from '@mui/x-data-grid'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { IRootState } from '../../utils/store'
+import { Link } from 'react-router-dom'
+import makeStyles from '@mui/styles/makeStyles'
+import { fetchFeedbacksAppointedToMe } from '../../actions/feedBackActions'
+import { useTranslation } from 'react-i18next'
+import i18next from 'i18next'
+import moment from 'moment'
+import { Container, ThemeProvider, Typography, createTheme } from '@mui/material'
 
 const ReceivedFeedbacks: React.FC = () => {
-
-  const { t } = useTranslation();
-  const dispatch = useDispatch();
-  const classes = useStyles();
-  const { feedbacks } = useSelector((state: IRootState) => state.feedback || []);
+  const { t } = useTranslation()
+  const dispatch = useDispatch()
+  const classes = useStyles()
+  const { feedbacks } = useSelector((state: IRootState) => state.feedback || [])
   console.log('FEEDBACKS: ' + feedbacks)
 
   useEffect(() => {
-    dispatch(fetchFeedbacksAppointedToMe());
-  }, [dispatch]);
+    dispatch(fetchFeedbacksAppointedToMe())
+  }, [dispatch])
 
   const theme = createTheme({
     typography: {
@@ -28,68 +27,69 @@ const ReceivedFeedbacks: React.FC = () => {
       fontSize: 15,
       fontWeightBold: 'bold',
       allVariants: {
-        color: "black"
+        color: 'black',
       },
     },
-  });
+  })
 
-  const rows = feedbacks;
+  const rows = feedbacks
 
   const columns: GridColDef[] = [
     {
       field: 'senderName',
-      headerName: (i18next.t('feedback_sender')),
+      headerName: i18next.t('feedback_sender'),
       minWidth: 100,
       flex: 1,
       headerClassName: 'super-app-theme--header',
       renderCell: (params) => {
-        return <span>{params.row.anonymous ?
-          t('anonymous') :
-          params.row.senderName
-        }
-        </span>
-      }
+        return <span>{params.row.anonymous ? t('anonymous') : params.row.senderName}</span>
+      },
     },
     {
       field: 'createdAt',
-      headerName: (i18next.t('sending_date')),
+      headerName: i18next.t('sending_date'),
       minWidth: 125,
       flex: 1,
       headerClassName: 'super-app-theme--header',
       renderCell: (params) => {
-        return <>{moment(params.row.createdAt).format('DD/MM/YYYY')}</>;
-      }
+        return <>{moment(params.row.createdAt).format('DD/MM/YYYY')}</>
+      },
     },
     {
       field: 'anonymity',
-      headerName: (i18next.t('feedback_anonymity')),
+      headerName: i18next.t('feedback_anonymity'),
       minWidth: 100,
       flex: 1,
       headerClassName: 'super-app-theme--header',
       renderCell: (params) => {
-        return <span>{params.row.anonymous ?
-          t('feedback_anonymity_yes') :
-          t('feedback_anonymity_no')}
-        </span>
-      }
+        return (
+          <span>
+            {params.row.anonymous ? t('feedback_anonymity_yes') : t('feedback_anonymity_no')}
+          </span>
+        )
+      },
     },
     {
       field: 'action',
-      headerName: (i18next.t('feedback_action')),
+      headerName: i18next.t('feedback_action'),
       minWidth: 100,
       flex: 1,
       headerClassName: 'super-app-theme--header',
       renderCell: (params) => {
-        return <Link style={{ color: 'black' }} to={'/feedback/receivedDetails/' + params.id}>{t('feedback_details')}</Link>
-      }
+        return (
+          <Link style={{ color: 'black' }} to={'/feedback/receivedDetails/' + params.id}>
+            {t('feedback_details')}
+          </Link>
+        )
+      },
     },
-  ];
+  ]
   return (
     <ThemeProvider theme={theme}>
       <Container maxWidth={false}>
         <div style={{ paddingTop: '30px', backgroundColor: '', height: '75vh' }}>
-          <Typography variant="h6" style={{fontWeight: 'bold'}}>
-            {t("feedback")}
+          <Typography variant='h6' style={{ fontWeight: 'bold' }}>
+            {t('feedback')}
           </Typography>
           <DataGrid
             sx={{
@@ -115,7 +115,7 @@ const ReceivedFeedbacks: React.FC = () => {
         </div>
       </Container>
     </ThemeProvider>
-  );
+  )
 }
 const useStyles = makeStyles(() => ({
   update: {
@@ -126,8 +126,8 @@ const useStyles = makeStyles(() => ({
   userListDelete: {
     color: 'red',
     marginRight: '20px',
-    cursor: 'pointer'
-  }
-}));
+    cursor: 'pointer',
+  },
+}))
 
-export default ReceivedFeedbacks;
+export default ReceivedFeedbacks

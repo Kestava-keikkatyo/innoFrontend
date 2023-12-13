@@ -30,11 +30,8 @@ const FormPreviewPage: React.FC = () => {
   return (
     <Container>
       <FormPreviewHeader />
-      <div className="create-form">
-        <FormHeader
-          title={title}
-          description={description}
-        />
+      <div className='create-form'>
+        <FormHeader title={title} description={description} />
         {questions.map((q: Question, k: number) => {
           switch (q.questionType) {
             case questionTypes.Text:
@@ -58,9 +55,7 @@ const FormPreviewPage: React.FC = () => {
             case questionTypes.ContactInformation:
               return <FormContactInfo key={k} question={q} />
             default:
-              dispatch(
-                setAlert("Cannot read question of type: " + q.questionType, severity.Error)
-              )
+              dispatch(setAlert('Cannot read question of type: ' + q.questionType, severity.Error))
               return <></>
           }
         })}

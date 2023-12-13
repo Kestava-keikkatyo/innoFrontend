@@ -1,7 +1,7 @@
-import axios, { AxiosResponse } from "axios";
-import { CompanyFile } from "../types/types";
-import baseUrl from "../utils/baseUrl";
-import { loadUser } from "../utils/storage";
+import axios, { AxiosResponse } from 'axios'
+import { CompanyFile } from '../types/types'
+import baseUrl from '../utils/baseUrl'
+import { loadUser } from '../utils/storage'
 
 /**
  * @function
@@ -9,9 +9,9 @@ import { loadUser } from "../utils/storage";
  */
 const authHeader = () => {
   return {
-    headers: { "x-access-token": `${loadUser().token}` },
-  };
-};
+    headers: { 'x-access-token': `${loadUser().token}` },
+  }
+}
 
 /**
  * Sends a request to the server at the '/file' endpoint to create a new file.
@@ -21,13 +21,13 @@ const authHeader = () => {
  */
 export const createFile = async (fileData: FormData): Promise<CompanyFile> => {
   try {
-    const response: AxiosResponse = await axios.post(`${baseUrl}/file`, fileData, authHeader());
-    return response.data.file;
+    const response: AxiosResponse = await axios.post(`${baseUrl}/file`, fileData, authHeader())
+    return response.data
   } catch (error) {
-    console.error(error);
-    throw error;
+    console.error(error)
+    throw error
   }
-};
+}
 
 /**
  * Sends a request to the server at the '/file/:id' endpoint to get a file by its ID.
@@ -37,13 +37,16 @@ export const createFile = async (fileData: FormData): Promise<CompanyFile> => {
  */
 export const getFileById = async (fileId: string): Promise<ArrayBuffer> => {
   try {
-    const response: AxiosResponse = await axios.get(`${baseUrl}/file/${fileId}`, { ...authHeader(), responseType: 'arraybuffer' });
-    return response.data;
+    const response: AxiosResponse = await axios.get(`${baseUrl}/file/${fileId}`, {
+      ...authHeader(),
+      responseType: 'arraybuffer',
+    })
+    return response.data
   } catch (error) {
-    console.error(error);
-    throw error;
+    console.error(error)
+    throw error
   }
-};
+}
 
 /**
  * Sends a request to the server at the '/file/:id' endpoint to delete a file by its ID.
@@ -53,13 +56,13 @@ export const getFileById = async (fileId: string): Promise<ArrayBuffer> => {
  */
 export const deleteFile = async (fileId: string): Promise<void> => {
   try {
-    const response: AxiosResponse = await axios.delete(`${baseUrl}/file/${fileId}`, authHeader());
-    console.log(response);
+    const response: AxiosResponse = await axios.delete(`${baseUrl}/file/${fileId}`, authHeader())
+    console.log(response)
   } catch (error) {
-    console.error(error);
-    throw error;
+    console.error(error)
+    throw error
   }
-};
+}
 
 /**
  * Sends a request to the server at the '/file/creator' endpoint to get all files created by the logged-in user.
@@ -68,10 +71,28 @@ export const deleteFile = async (fileId: string): Promise<void> => {
  */
 export const getFilesByCreator = async (): Promise<CompanyFile[]> => {
   try {
-    const response: AxiosResponse = await axios.get(`${baseUrl}/file/creator`, authHeader());
-    return response.data;
+    const response: AxiosResponse = await axios.get(`${baseUrl}/file/creator`, authHeader())
+    return response.data
   } catch (error) {
-    console.error(error);
-    throw error;
+    console.error(error)
+    throw error
   }
-};
+}
+
+/**
+ * Sends a request to the server at the '/file/worker/:id' endpoint to get all files created by ID.
+ * Logs the server response or any errors that occur during execution.
+ * @returns Promise<CompanyFile[]> - Resolves to an array of File objects.
+ */
+export const getFilesById = async (userId: string | undefined): Promise<CompanyFile[]> => {
+  try {
+    const response: AxiosResponse = await axios.get(
+      `${baseUrl}/file/worker/${userId}`,
+      authHeader(),
+    )
+    return response.data
+  } catch (error) {
+    console.error(error)
+    throw error
+  }
+}

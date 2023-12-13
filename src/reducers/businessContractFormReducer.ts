@@ -2,7 +2,7 @@
  * @module reducer/businessContractForm
  * @desc Redux businessContractForm reducer
  */
-import { BusinessContractForm } from "../types/types"
+import { BusinessContractForm } from '../types/types'
 import {
   SET_CURRENT_BUSINESS_CONTRACT_FORM,
   UPDATE_BUSINESS_CONTRACT_TITLE,
@@ -17,16 +17,16 @@ import {
   SET_BUSINESS_CONTRACT_QUESTIONS,
   CLEAR_CURRENT_BUSINESS_CONTRACT_FORM,
   BusinessContractFormActionTypes,
-} from "../types/state"
+} from '../types/state'
 
 const initialState: BusinessContractForm = {
-  title: "",
-  description: "",
+  title: '',
+  description: '',
   tags: [],
   isPublic: true,
   questions: [],
   filled: false,
-  common: false
+  common: false,
 }
 
 /**
@@ -36,7 +36,10 @@ const initialState: BusinessContractForm = {
  * @param {FormActionTypes} action - dispatched action
  * @todo - Figure out immutability: formReducer is not a pure function. Ditch temp?
  */
-const bunsinessContractFormReducer = (state = initialState, action: BusinessContractFormActionTypes) => {
+const bunsinessContractFormReducer = (
+  state = initialState,
+  action: BusinessContractFormActionTypes,
+) => {
   switch (action.type) {
     case SET_CURRENT_BUSINESS_CONTRACT_FORM:
       return action.data
@@ -72,8 +75,9 @@ const bunsinessContractFormReducer = (state = initialState, action: BusinessCont
     case UPDATE_BUSINESS_CONTRACT_QUESTION:
       return {
         ...state,
-        questions: state.questions.map((q, i) => i === action.data.index
-          ? action.data.question : q),
+        questions: state.questions.map((q, i) =>
+          i === action.data.index ? action.data.question : q,
+        ),
       }
 
     // Is this broke? check tests: expects the option to be an object but seems to output
@@ -81,27 +85,34 @@ const bunsinessContractFormReducer = (state = initialState, action: BusinessCont
     case UPDATE_BUSINESS_CONTRACT_QUESTION_OPTION:
       return {
         ...state,
-        questions: state.questions.map((q, i) => i !== action.data.questionIndex
-          ? q : {
-            ...q, options: q.options.map((o: any, j: number) => j === action.data.optionIndex
-              ? action.data.option : o
-            )
-          }),
+        questions: state.questions.map((q, i) =>
+          i !== action.data.questionIndex
+            ? q
+            : {
+                ...q,
+                options: q.options.map((o: any, j: number) =>
+                  j === action.data.optionIndex ? action.data.option : o,
+                ),
+              },
+        ),
       }
 
     case REMOVE_BUSINESS_CONTRACT_QUESTION:
       return {
         ...state,
-        questions: state.questions.filter((_, i) => i !== action.data)
+        questions: state.questions.filter((_, i) => i !== action.data),
       }
 
     case REMOVE_BUSINESS_CONTRACT_OPTION:
       return {
         ...state,
-        questions: state.questions.map((q, i) => i !== action.data.questionIndex
-          ? q : {
-            ...q, options: q.options.filter((_: any, j: number) => j !== action.data.optionIndex)
-          }
+        questions: state.questions.map((q, i) =>
+          i !== action.data.questionIndex
+            ? q
+            : {
+                ...q,
+                options: q.options.filter((_: any, j: number) => j !== action.data.optionIndex),
+              },
         ),
       }
 

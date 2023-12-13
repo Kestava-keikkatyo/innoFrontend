@@ -11,13 +11,12 @@ import {
   useTheme,
   MobileStepper,
   Button,
-} from '@mui/material';
+} from '@mui/material'
 
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '@mui/styles/makeStyles'
 
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft'
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight'
-
 
 const ProcessPage = () => {
   const [activeStep, setActiveStep] = useState(0)
@@ -43,7 +42,7 @@ const ProcessPage = () => {
       setActiveStep((prevActiveStep) => prevActiveStep + 1)
       setCheckedBoxes(0)
       setIntroductionStep(introductionStep + 1)
-      setState( {
+      setState({
         checkedA: false,
         checkedB: false,
         checkedC: false,
@@ -60,7 +59,7 @@ const ProcessPage = () => {
     setIntroductionStep(introductionStep - 1)
   }
 
-  const useStyles = makeStyles(({
+  const useStyles = makeStyles({
     root: {
       maxWidth: 1200,
       flexGrow: 1,
@@ -68,103 +67,95 @@ const ProcessPage = () => {
     container: {
       paddingTop: 50,
       paddingBottom: 50,
-    }
-  }))
+    },
+  })
 
   const classes = useStyles()
   const theme = useTheme()
 
-
   return (
     <>
-      <Card variant="outlined">
-        <Paper
-          elevation={5}
-          style={{ padding: '5em' }}
-          className="paper-container"
-        >
-          <Typography variant="h6">Perehdytys {introductionStep}/6</Typography>
+      <Card variant='outlined'>
+        <Paper elevation={5} style={{ padding: '5em' }} className='paper-container'>
+          <Typography variant='h6'>Perehdytys {introductionStep}/6</Typography>
           <Container className={classes.container}>
             <Grid>
               <FormControlLabel
-                control={<Checkbox
-                  checked={state.checkedA}
-                  onChange={handleChange}
-                  name="checkedA" />}
-                label="Olen tutustunut ..."
+                control={
+                  <Checkbox checked={state.checkedA} onChange={handleChange} name='checkedA' />
+                }
+                label='Olen tutustunut ...'
               />
             </Grid>
             <Grid>
               <FormControlLabel
-                control={<Checkbox
-                  checked={state.checkedB}
-                  onChange={handleChange}
-                  name="checkedB"/>}
-                label="Olen selvillä ..."
+                control={
+                  <Checkbox checked={state.checkedB} onChange={handleChange} name='checkedB' />
+                }
+                label='Olen selvillä ...'
               />
             </Grid>
             <Grid>
               <FormControlLabel
-                control={<Checkbox
-                  checked={state.checkedC}
-                  onChange={handleChange}
-                  name="checkedC"/>}
-                label="Olen tutustunut ..."
+                control={
+                  <Checkbox checked={state.checkedC} onChange={handleChange} name='checkedC' />
+                }
+                label='Olen tutustunut ...'
               />
             </Grid>
             <Grid>
               <FormControlLabel
-                control={<Checkbox
-                  checked={state.checkedD}
-                  onChange={handleChange}
-                  name="checkedD" />}
-                label="Olen selvillä ..."
+                control={
+                  <Checkbox checked={state.checkedD} onChange={handleChange} name='checkedD' />
+                }
+                label='Olen selvillä ...'
               />
             </Grid>
             <Grid>
               <FormControlLabel
-                control={<Checkbox
-                  checked={state.checkedE}
-                  onChange={handleChange}
-                  name="checkedE" />}
-                label="Olen tutustunut..."
+                control={
+                  <Checkbox checked={state.checkedE} onChange={handleChange} name='checkedE' />
+                }
+                label='Olen tutustunut...'
               />
             </Grid>
             <Grid>
               <FormControlLabel
-                control={<Checkbox
-                  checked={state.checkedF}
-                  onChange={handleChange}
-                  name="checkedF" />}
-                label="Olen selvillä..."
+                control={
+                  <Checkbox checked={state.checkedF} onChange={handleChange} name='checkedF' />
+                }
+                label='Olen selvillä...'
               />
             </Grid>
             <Grid>
               <FormControlLabel
-                control={<Checkbox
-                  checked={state.checkedG}
-                  onChange={handleChange}
-                  name="checkedG" />}
-                label="Olen tutustunut..."
+                control={
+                  <Checkbox checked={state.checkedG} onChange={handleChange} name='checkedG' />
+                }
+                label='Olen tutustunut...'
               />
             </Grid>
           </Container>
           <MobileStepper
-            variant="progress"
+            variant='progress'
             steps={6}
-            position="static"
+            position='static'
             activeStep={activeStep}
             className={classes.root}
             nextButton={
-              <Button size="small" onClick={handleNext} disabled={ checkedBoxes < 7 || introductionStep === 6}>
-          Seuraava
+              <Button
+                size='small'
+                onClick={handleNext}
+                disabled={checkedBoxes < 7 || introductionStep === 6}
+              >
+                Seuraava
                 {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
               </Button>
             }
             backButton={
-              <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+              <Button size='small' onClick={handleBack} disabled={activeStep === 0}>
                 {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-          Takaisin
+                Takaisin
               </Button>
             }
           />

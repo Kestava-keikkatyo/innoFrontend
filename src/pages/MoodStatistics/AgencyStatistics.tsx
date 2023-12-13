@@ -1,27 +1,26 @@
-import React, { useEffect} from 'react';
-import { Theme } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
-import createStyles from '@mui/styles/createStyles';
-import { Box, Container } from '@mui/material';
+import React, { useEffect } from 'react'
+import { Theme } from '@mui/material/styles'
+import makeStyles from '@mui/styles/makeStyles'
+import createStyles from '@mui/styles/createStyles'
+import { Box, Container } from '@mui/material'
 import { useTranslation } from 'react-i18next'
-import { useDispatch, useSelector } from 'react-redux';
-import AgencyStatisticsSummary from './AgencyStatisticsSummary';
-import { addFeelings } from '../../actions/feelingActions';
-import { IRootState } from '../../utils/store';
-import { fetchFeelings } from '../../actions/feelingActions';
-
+import { useDispatch, useSelector } from 'react-redux'
+import AgencyStatisticsSummary from './AgencyStatisticsSummary'
+import { addFeelings } from '../../actions/feelingActions'
+import { IRootState } from '../../utils/store'
+import { fetchFeelings } from '../../actions/feelingActions'
 
 const AgencyStatistics = () => {
-  const classes = useStyles();
-  const dispatch = useDispatch();
+  const classes = useStyles()
+  const dispatch = useDispatch()
   const { t } = useTranslation()
-  const users = useSelector((state: IRootState) => state.user.contacts);
+  const users = useSelector((state: IRootState) => state.user.contacts)
   const workers: any[] = []
 
   useEffect(() => {
     if (users[0]) {
       users.forEach((user) => {
-        if (user.userType == "worker") {
+        if (user.userType == 'worker') {
           workers.push(user)
           //console.log("Worker: " + user.firstName);
         }
@@ -32,25 +31,25 @@ const AgencyStatistics = () => {
     workers.map((worker: any) => {
       if (users[0]) {
         users.forEach((user) => {
-          if (user.userType == "worker") {
-            if (worker.feelings.worker == user._id) {
+          if (user.userType == 'worker') {
+            if (worker.feelings && worker.feelings.worker == user._id) {
               workers.push(user)
-              return dispatch(addFeelings(worker.feelings));
+              return dispatch(addFeelings(worker.feelings))
             }
           }
         })
       }
-    });
-  }, [dispatch]);
+    })
+  }, [dispatch])
 
   return (
-    <Container maxWidth="lg" id="maxContainer" className={classes.container}>
+    <Container maxWidth='lg' id='maxContainer' className={classes.container}>
       <Box style={{ paddingTop: 10, paddingBottom: 10 }}>
         <AgencyStatisticsSummary />
       </Box>
     </Container>
-  );
-};
+  )
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -61,10 +60,10 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: 10,
       paddingBottom: 20,
     },
-  })
-);
+  }),
+)
 
-export default AgencyStatistics;
+export default AgencyStatistics
 
 /*useEffect(() => {
   allUsersService.getAgencyWorkers().then((res: any) => {
@@ -76,5 +75,3 @@ export default AgencyStatistics;
     });
   });
 }, [dispatch]);*/
-
-
