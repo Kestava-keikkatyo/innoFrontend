@@ -41,9 +41,6 @@ const GuidanceToWork = () => {
           {t('guidance_to_work')}
         </Typography>
         <WorkerStepBase content={tabContent} />
-        <Button style={{ backgroundColor: '#F47D20', color: 'black', marginTop: '20px' }}>
-          {t('print')}
-        </Button>
       </Container>
     </ThemeProvider>
   )

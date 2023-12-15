@@ -41,9 +41,6 @@ const ContractOfEmployment = () => {
           {t('contract_of_employment')}
         </Typography>
         <WorkerStepBase content={tabContent} />
-        <Button style={{ backgroundColor: '#F47D20', color: 'black', marginTop: '20px' }}>
-          {t('print')}
-        </Button>
       </Container>
     </ThemeProvider>
   )
