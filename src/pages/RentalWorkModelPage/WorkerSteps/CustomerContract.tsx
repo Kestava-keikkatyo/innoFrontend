@@ -1,5 +1,6 @@
 import { Button, Container } from '@mui/material'
-import React from 'react'
+import React, { useRef, useState } from 'react'
+import ReactDOM from 'react-dom'
 import { useTranslation } from 'react-i18next'
 import WorkerStepBase from './WorkerStepBase'
 import Typography from '@mui/material/Typography'
@@ -8,9 +9,50 @@ import { Theme, ThemeProvider, createTheme } from '@mui/material/styles'
 import CustomerContractForm from './Forms/CustomerContractForm'
 import SearchFromFileComponent from './SearchFromFileComponent'
 
+interface FormData {
+  rentalCompany: string
+  customerCompany: string
+  text2: string
+  text3: string
+  text4: string
+  text5: string
+  text6: string
+  text7: string
+  text8: string
+  check1: boolean
+  check2: boolean
+  check3: boolean
+  check4: boolean
+  check5: boolean
+  workroom1: string
+  workroom2: string
+  date: Date
+}
+
 const CustomerContract = () => {
   const { t } = useTranslation()
   const classes = useStyles()
+
+  const [formData, setFormData] = useState<FormData>({
+    rentalCompany: '',
+    customerCompany: '',
+    text2: '',
+    text3: '',
+    text4: '',
+    text5: '',
+    text6: '',
+    text7: '',
+    text8: '',
+    check1: false,
+    check2: false,
+    check3: false,
+    check4: false,
+    check5: false,
+    workroom1: '',
+    workroom2: '',
+    date: new Date(),
+  })
+  const formRef = useRef(null)
 
   const theme = createTheme({
     typography: {
@@ -28,7 +70,7 @@ const CustomerContract = () => {
     </div>,*/
 
     <div key='tab0'>
-      <CustomerContractForm />
+      <CustomerContractForm formRef={formRef} formData={formData} setFormData={setFormData} />
     </div>,
     <div key='tab1'>
       <SearchFromFileComponent inputString='good_practices_customer_contract_array' />
@@ -42,9 +84,6 @@ const CustomerContract = () => {
           {t('customer_contract')}
         </Typography>
         <WorkerStepBase content={tabContent} />
-        <Button style={{ backgroundColor: '#F47D20', color: 'black', marginTop: '20px' }}>
-          {t('print')}
-        </Button>
       </Container>
     </ThemeProvider>
   )

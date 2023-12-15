@@ -1,4 +1,4 @@
-import { Divider, TextField } from '@mui/material'
+import { Divider, TextField, Button } from '@mui/material'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Field, Form, Formik } from 'formik'
@@ -10,6 +10,37 @@ import { useSelector } from 'react-redux'
 import { IRootState } from '../../../../utils/store'
 import Tab from '@mui/material/Tab'
 import Tabs from '@mui/material/Tabs'
+import axios from 'axios'
+
+interface Values {
+  rentalCompany: string
+  date: Date
+  worker: string
+  check: boolean
+  check2: boolean
+  check3: boolean
+  check4: boolean
+  check5: boolean
+  check6: boolean
+  check7: boolean
+  check8: boolean
+  check9: boolean
+  check10: boolean
+  check11: boolean
+  check12: boolean
+  contact1: string
+  phonenumber1: string
+  phonenumber2: string
+  phonenumber3: string
+  name1: string
+  name2: string
+  email1: string
+  email2: string
+  address: string
+  workRoomPlace: string
+  orientator: string
+  orientated: string
+}
 
 const ContractOfEmploymentForm: React.FC = () => {
   const { t } = useTranslation()
@@ -54,6 +85,25 @@ const ContractOfEmploymentForm: React.FC = () => {
     }
   }
 
+  const handleSubmit = async (values: Values) => {
+    try {
+      const response = await axios.post(
+        'http://localhost:3001/api/forms/ContractOfEmploymentForm',
+        values,
+        { responseType: 'blob' },
+      )
+
+      const blob = new Blob([response.data], { type: 'application/pdf' })
+      const url = window.URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = 'customercontractform.pdf'
+      a.click()
+    } catch (error) {
+      console.error(console.error)
+    }
+  }
+
   return (
     <>
       <Tabs
@@ -71,9 +121,38 @@ const ContractOfEmploymentForm: React.FC = () => {
       <TabPanel value={value} index={0}>
         <h2>{t('form2Header')}</h2>
         <Formik
-          initialValues={{}}
-          onSubmit={() => {
+          initialValues={{
+            rentalCompany: '',
+            date: new Date(),
+            worker: '',
+            check: false,
+            check2: false,
+            check3: false,
+            check4: false,
+            check5: false,
+            check6: false,
+            check7: false,
+            check8: false,
+            check9: false,
+            check10: false,
+            check11: false,
+            check12: false,
+            contact1: '',
+            phonenumber1: '',
+            phonenumber2: '',
+            phonenumber3: '',
+            name1: '',
+            name2: '',
+            email1: '',
+            email2: '',
+            address: '',
+            workRoomPlace: '',
+            orientator: '',
+            orientated: '',
+          }}
+          onSubmit={(values) => {
             console.log('Submit form2')
+            handleSubmit(values)
           }}
         >
           <Form>
@@ -106,7 +185,7 @@ const ContractOfEmploymentForm: React.FC = () => {
                 {t('form2Check1')}
               </label>
               <label>
-                <input type='radio' name='check' />
+                <input type='radio' name='check2' />
                 {t('form2Check2')}
               </label>
             </Box>
@@ -236,7 +315,12 @@ const ContractOfEmploymentForm: React.FC = () => {
             </Box>
             <Box className={classes.boxColumn}>
               <h4>{t('form2Text9')}</h4>
-              <TextField placeholder={t('textAreaPlaceholder')} multiline rows={4} />
+              <TextField
+                placeholder={t('textAreaPlaceholder')}
+                multiline
+                name={'access'}
+                rows={4}
+              />
             </Box>
             <h4 className={classes.marginTop}>{t('form2Text10')}</h4>
             <Box className={classes.boxRow}>
@@ -329,9 +413,16 @@ const ContractOfEmploymentForm: React.FC = () => {
                 ></FormikTextField>
               </div>
             </Box>
+            <Button
+              type='submit'
+              style={{ backgroundColor: '#F47D20', color: 'black', marginTop: '20px' }}
+            >
+              {t('print')}
+            </Button>
           </Form>
         </Formik>
       </TabPanel>
+
       <TabPanel value={value} index={1}>
         <Formik
           initialValues={{}}
@@ -480,6 +571,12 @@ const ContractOfEmploymentForm: React.FC = () => {
                 type={'text'}
               ></FormikTextField>
             </Box>
+            <Button
+              type='submit'
+              style={{ backgroundColor: '#F47D20', color: 'black', marginTop: '20px' }}
+            >
+              {t('print')}
+            </Button>
           </Form>
         </Formik>
       </TabPanel>

@@ -1,4 +1,4 @@
-import { Divider } from '@mui/material'
+import { Divider, Button } from '@mui/material'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Field, Form, Formik } from 'formik'
@@ -10,6 +10,50 @@ import { useSelector } from 'react-redux'
 import { IRootState } from '../../../../utils/store'
 import Tab from '@mui/material/Tab'
 import Tabs from '@mui/material/Tabs'
+import axios from 'axios'
+
+interface FormThreeValues {
+  rentalCompany: string
+  date1: string
+  worker: string
+  name1: string
+  phonenumber1: string
+  email1: string
+  workstation1: string
+  name2: string
+  phonenumber2: string
+  email2: string
+  workstation2: string
+  orientator: string
+  orientated: string
+}
+
+interface FormFiveValues {
+  serviceCompany: string
+  orientator: string
+  worker: string
+  date2: string
+  requiredSkills: string
+  protectiveEquipment: string
+  safetyAndRisks: string
+  contact1: string
+  addressAndInstructions: string
+  contact2: string
+  userCompanyName: string
+  jobAdvisor: string
+  worker2: string
+  workDuties: string
+  harmfulAndDangerous: string
+  hoursAndBreaks: string
+  equipment: string
+  accidents: string
+  firstAidCabinets: string
+  facilities: string
+  specials: string
+  informationPractices: string
+  licensing: string
+  askHelp: string
+}
 
 const GuidanceToWorkForm: React.FC = () => {
   const { t } = useTranslation()
@@ -54,6 +98,44 @@ const GuidanceToWorkForm: React.FC = () => {
     }
   }
 
+  const handleFormThreeSubmit = async (values: FormThreeValues) => {
+    try {
+      const response = await axios.post(
+        'http://localhost:3001/api/forms/GuidanceToWorkForm',
+        values,
+        { responseType: 'blob' },
+      )
+
+      const blob = new Blob([response.data], { type: 'application/pdf' })
+      const url = window.URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = 'guidancetoworkform.pdf'
+      a.click()
+    } catch (error) {
+      console.error(console.error)
+    }
+  }
+
+  const handleFormFiveSubmit = async (values: FormFiveValues) => {
+    try {
+      const response = await axios.post(
+        'http://localhost:3001/api/forms/OrientationAndGuidanceForm',
+        values,
+        { responseType: 'blob' },
+      )
+
+      const blob = new Blob([response.data], { type: 'application/pdf' })
+      const url = window.URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = 'guidancetoworkform.pdf'
+      a.click()
+    } catch (error) {
+      console.error(console.error)
+    }
+  }
+
   return (
     <>
       <Tabs
@@ -71,8 +153,23 @@ const GuidanceToWorkForm: React.FC = () => {
       <TabPanel value={value} index={0}>
         <h2>{t('form3Header')}</h2>
         <Formik
-          initialValues={{}}
-          onSubmit={() => {
+          initialValues={{
+            rentalCompany: '',
+            date1: '',
+            worker: '',
+            name1: '',
+            phonenumber1: '',
+            email1: '',
+            workstation1: '',
+            name2: '',
+            phonenumber2: '',
+            email2: '',
+            workstation2: '',
+            orientator: '',
+            orientated: '',
+          }}
+          onSubmit={(values) => {
+            handleFormThreeSubmit(values)
             console.log('Submit form3')
           }}
         >
@@ -279,13 +376,45 @@ const GuidanceToWorkForm: React.FC = () => {
                 ></FormikTextField>
               </div>
             </Box>
+            <Button
+              type='submit'
+              style={{ backgroundColor: '#F47D20', color: 'black', marginTop: '20px' }}
+            >
+              {t('print')}
+            </Button>
           </Form>
         </Formik>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Formik
-          initialValues={{}}
-          onSubmit={() => {
+          initialValues={{
+            serviceCompany: '',
+            orientator: '',
+            worker: '',
+            date2: '',
+            requiredSkills: '',
+            protectiveEquipment: '',
+            safetyAndRisks: '',
+            contact1: '',
+            addressAndInstructions: '',
+            contact2: '',
+            userCompanyName: '',
+            jobAdvisor: '',
+            worker2: '',
+            workDuties: '',
+            harmfulAndDangerous: '',
+            hoursAndBreaks: '',
+            equipment: '',
+            accidents: '',
+            firstAidCabinets: '',
+            facilities: '',
+            specials: '',
+            informationPractices: '',
+            licensing: '',
+            askHelp: '',
+          }}
+          onSubmit={(values) => {
+            handleFormFiveSubmit(values)
             console.log('Submit form5')
           }}
         >
@@ -430,6 +559,12 @@ const GuidanceToWorkForm: React.FC = () => {
                 type={'text'}
               ></FormikTextField>
             </Box>
+            <Button
+              type='submit'
+              style={{ backgroundColor: '#F47D20', color: 'black', marginTop: '20px' }}
+            >
+              {t('print')}
+            </Button>
           </Form>
         </Formik>
       </TabPanel>
